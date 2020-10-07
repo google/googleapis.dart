@@ -57,38 +57,30 @@ class ProjectsSnapshotsResourceApi {
       : _requester = client;
 
   /// Creates a snapshot from the requested subscription. Snapshots are used in
-  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-  /// operations, which allow
-  /// you to manage message acknowledgments in bulk. That is, you can set the
-  /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot.
-  /// <br><br>If the snapshot already exists, returns `ALREADY_EXISTS`.
-  /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
-  /// If the backlog in the subscription is too old -- and the resulting
-  /// snapshot
-  /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is
-  /// returned.
-  /// See also the `Snapshot.expire_time` field. If the name is not provided in
-  /// the request, the server will assign a random
-  /// name for this snapshot on the same project as the subscription, conforming
-  /// to the
-  /// [resource name
-  /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-  /// generated name is populated in the returned Snapshot object. Note that for
-  /// REST API requests, you must specify a name in the request.
+  /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+  /// which allow you to manage message acknowledgments in bulk. That is, you
+  /// can set the acknowledgment state of messages in an existing subscription
+  /// to the state captured by a snapshot. If the snapshot already exists,
+  /// returns `ALREADY_EXISTS`. If the requested subscription doesn't exist,
+  /// returns `NOT_FOUND`. If the backlog in the subscription is too old -- and
+  /// the resulting snapshot would expire in less than 1 hour -- then
+  /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time`
+  /// field. If the name is not provided in the request, the server will assign
+  /// a random name for this snapshot on the same project as the subscription,
+  /// conforming to the [resource name format]
+  /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
+  /// name is populated in the returned Snapshot object. Note that for REST API
+  /// requests, you must specify a name in the request.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. User-provided name for this snapshot. If the name is
-  /// not provided in the
-  /// request, the server will assign a random name for this snapshot on the
-  /// same
-  /// project as the subscription. Note that for REST API requests, you must
-  /// specify a name.  See the <a
-  /// href="https://cloud.google.com/pubsub/docs/admin#resource_names"> resource
-  /// name rules</a>. Format is `projects/{project}/snapshots/{snap}`.
+  /// not provided in the request, the server will assign a random name for this
+  /// snapshot on the same project as the subscription. Note that for REST API
+  /// requests, you must specify a name. See the resource name rules. Format is
+  /// `projects/{project}/snapshots/{snap}`.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -131,22 +123,20 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Snapshot.fromJson(data));
   }
 
-  /// Removes an existing snapshot. Snapshots are used in
-  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-  /// operations, which allow
-  /// you to manage message acknowledgments in bulk. That is, you can set the
-  /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot.<br><br>
-  /// When the snapshot is deleted, all messages retained in the snapshot
-  /// are immediately dropped. After a snapshot is deleted, a new one may be
-  /// created with the same name, but the new one has no association with the
-  /// old
-  /// snapshot or its subscription, unless the same subscription is specified.
+  /// Removes an existing snapshot. Snapshots are used in [Seek]
+  /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+  /// allow you to manage message acknowledgments in bulk. That is, you can set
+  /// the acknowledgment state of messages in an existing subscription to the
+  /// state captured by a snapshot. When the snapshot is deleted, all messages
+  /// retained in the snapshot are immediately dropped. After a snapshot is
+  /// deleted, a new one may be created with the same name, but the new one has
+  /// no association with the old snapshot or its subscription, unless the same
+  /// subscription is specified.
   ///
   /// Request parameters:
   ///
-  /// [snapshot] - Required. The name of the snapshot to delete.
-  /// Format is `projects/{project}/snapshots/{snap}`.
+  /// [snapshot] - Required. The name of the snapshot to delete. Format is
+  /// `projects/{project}/snapshots/{snap}`.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -185,17 +175,15 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the configuration details of a snapshot. Snapshots are used in
-  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+  /// Gets the configuration details of a snapshot. Snapshots are used in Seek
   /// operations, which allow you to manage message acknowledgments in bulk.
-  /// That
-  /// is, you can set the acknowledgment state of messages in an existing
+  /// That is, you can set the acknowledgment state of messages in an existing
   /// subscription to the state captured by a snapshot.
   ///
   /// Request parameters:
   ///
-  /// [snapshot] - Required. The name of the snapshot to get.
-  /// Format is `projects/{project}/snapshots/{snap}`.
+  /// [snapshot] - Required. The name of the snapshot to get. Format is
+  /// `projects/{project}/snapshots/{snap}`.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -234,27 +222,23 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Snapshot.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -300,12 +284,11 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Lists the existing snapshots. Snapshots are used in
-  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-  /// operations, which allow
-  /// you to manage message acknowledgments in bulk. That is, you can set the
-  /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot.
+  /// Lists the existing snapshots. Snapshots are used in [Seek](
+  /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+  /// allow you to manage message acknowledgments in bulk. That is, you can set
+  /// the acknowledgment state of messages in an existing subscription to the
+  /// state captured by a snapshot.
   ///
   /// Request parameters:
   ///
@@ -314,9 +297,8 @@ class ProjectsSnapshotsResourceApi {
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - The value returned by the last `ListSnapshotsResponse`;
-  /// indicates that this
-  /// is a continuation of a prior `ListSnapshots` call, and that the system
-  /// should return the next page of data.
+  /// indicates that this is a continuation of a prior `ListSnapshots` call, and
+  /// that the system should return the next page of data.
   ///
   /// [pageSize] - Maximum number of snapshots to return.
   ///
@@ -365,12 +347,10 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
   }
 
-  /// Updates an existing snapshot. Snapshots are used in
-  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-  /// operations, which allow
-  /// you to manage message acknowledgments in bulk. That is, you can set the
-  /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot.
+  /// Updates an existing snapshot. Snapshots are used in Seek operations, which
+  /// allow you to manage message acknowledgments in bulk. That is, you can set
+  /// the acknowledgment state of messages in an existing subscription to the
+  /// state captured by a snapshot.
   ///
   /// [request] - The metadata request object.
   ///
@@ -420,18 +400,16 @@ class ProjectsSnapshotsResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
-  ///
-  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
+  /// `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -477,21 +455,19 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -547,19 +523,16 @@ class ProjectsSubscriptionsResourceApi {
 
   /// Acknowledges the messages associated with the `ack_ids` in the
   /// `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages
-  /// from the subscription.
-  ///
-  /// Acknowledging a message whose ack deadline has expired may succeed,
-  /// but such a message may be redelivered later. Acknowledging a message more
-  /// than once will not result in an error.
+  /// from the subscription. Acknowledging a message whose ack deadline has
+  /// expired may succeed, but such a message may be redelivered later.
+  /// Acknowledging a message more than once will not result in an error.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [subscription] - Required. The subscription whose message is being
-  /// acknowledged.
-  /// Format is `projects/{project}/subscriptions/{sub}`.
+  /// acknowledged. Format is `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -605,20 +578,15 @@ class ProjectsSubscriptionsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Creates a subscription to a given topic. See the
-  /// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-  /// resource name rules</a>.
-  /// If the subscription already exists, returns `ALREADY_EXISTS`.
-  /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
-  ///
-  /// If the name is not provided in the request, the server will assign a
-  /// random
-  /// name for this subscription on the same project as the topic, conforming
-  /// to the
-  /// [resource name
-  /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-  /// generated name is populated in the returned Subscription object. Note that
-  /// for REST API requests, you must specify a name in the request.
+  /// Creates a subscription to a given topic. See the [resource name rules]
+  /// (https://cloud.google.com/pubsub/docs/admin#resource_names). If the
+  /// subscription already exists, returns `ALREADY_EXISTS`. If the
+  /// corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
+  /// provided in the request, the server will assign a random name for this
+  /// subscription on the same project as the topic, conforming to the [resource
+  /// name format] (https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// The generated name is populated in the returned Subscription object. Note
+  /// that for REST API requests, you must specify a name in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -673,17 +641,15 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /// Deletes an existing subscription. All messages retained in the
-  /// subscription
-  /// are immediately dropped. Calls to `Pull` after deletion will return
-  /// `NOT_FOUND`. After a subscription is deleted, a new one may be created
-  /// with
-  /// the same name, but the new one has no association with the old
-  /// subscription or its topic unless the same topic is specified.
+  /// subscription are immediately dropped. Calls to `Pull` after deletion will
+  /// return `NOT_FOUND`. After a subscription is deleted, a new one may be
+  /// created with the same name, but the new one has no association with the
+  /// old subscription or its topic unless the same topic is specified.
   ///
   /// Request parameters:
   ///
-  /// [subscription] - Required. The subscription to delete.
-  /// Format is `projects/{project}/subscriptions/{sub}`.
+  /// [subscription] - Required. The subscription to delete. Format is
+  /// `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -722,12 +688,63 @@ class ProjectsSubscriptionsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
+  /// Detaches a subscription from this topic. All messages retained in the
+  /// subscription are dropped. Subsequent `Pull` and `StreamingPull` requests
+  /// will return FAILED_PRECONDITION. If the subscription is a push
+  /// subscription, pushes to the endpoint will stop.
+  ///
+  /// Request parameters:
+  ///
+  /// [subscription] - Required. The subscription to detach. Format is
+  /// `projects/{project}/subscriptions/{subscription}`.
+  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DetachSubscriptionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DetachSubscriptionResponse> detach(core.String subscription,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (subscription == null) {
+      throw new core.ArgumentError("Parameter subscription is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$subscription') +
+        ':detach';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new DetachSubscriptionResponse.fromJson(data));
+  }
+
   /// Gets the configuration details of a subscription.
   ///
   /// Request parameters:
   ///
-  /// [subscription] - Required. The name of the subscription to get.
-  /// Format is `projects/{project}/subscriptions/{sub}`.
+  /// [subscription] - Required. The name of the subscription to get. Format is
+  /// `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -767,27 +784,23 @@ class ProjectsSubscriptionsResourceApi {
     return _response.then((data) => new Subscription.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -838,14 +851,12 @@ class ProjectsSubscriptionsResourceApi {
   /// Request parameters:
   ///
   /// [project] - Required. The name of the project in which to list
-  /// subscriptions.
-  /// Format is `projects/{project-id}`.
+  /// subscriptions. Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - The value returned by the last `ListSubscriptionsResponse`;
-  /// indicates that
-  /// this is a continuation of a prior `ListSubscriptions` call, and that the
-  /// system should return the next page of data.
+  /// indicates that this is a continuation of a prior `ListSubscriptions` call,
+  /// and that the system should return the next page of data.
   ///
   /// [pageSize] - Maximum number of subscriptions to return.
   ///
@@ -895,18 +906,18 @@ class ProjectsSubscriptionsResourceApi {
         .then((data) => new ListSubscriptionsResponse.fromJson(data));
   }
 
-  /// Modifies the ack deadline for a specific message. This method is useful
-  /// to indicate that more time is needed to process a message by the
-  /// subscriber, or to make the message available for redelivery if the
-  /// processing was interrupted. Note that this does not modify the
-  /// subscription-level `ackDeadlineSeconds` used for subsequent messages.
+  /// Modifies the ack deadline for a specific message. This method is useful to
+  /// indicate that more time is needed to process a message by the subscriber,
+  /// or to make the message available for redelivery if the processing was
+  /// interrupted. Note that this does not modify the subscription-level
+  /// `ackDeadlineSeconds` used for subsequent messages.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [subscription] - Required. The name of the subscription.
-  /// Format is `projects/{project}/subscriptions/{sub}`.
+  /// [subscription] - Required. The name of the subscription. Format is
+  /// `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -952,10 +963,9 @@ class ProjectsSubscriptionsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Modifies the `PushConfig` for a specified subscription.
-  ///
-  /// This may be used to change a push subscription to a pull one (signified by
-  /// an empty `PushConfig`) or vice versa, or change the endpoint URL and other
+  /// Modifies the `PushConfig` for a specified subscription. This may be used
+  /// to change a push subscription to a pull one (signified by an empty
+  /// `PushConfig`) or vice versa, or change the endpoint URL and other
   /// attributes of a push subscription. Messages will accumulate for delivery
   /// continuously through the call regardless of changes to the `PushConfig`.
   ///
@@ -963,8 +973,8 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [subscription] - Required. The name of the subscription.
-  /// Format is `projects/{project}/subscriptions/{sub}`.
+  /// [subscription] - Required. The name of the subscription. Format is
+  /// `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1075,8 +1085,7 @@ class ProjectsSubscriptionsResourceApi {
   /// Request parameters:
   ///
   /// [subscription] - Required. The subscription from which messages should be
-  /// pulled.
-  /// Format is `projects/{project}/subscriptions/{sub}`.
+  /// pulled. Format is `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1122,13 +1131,12 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /// Seeks an existing subscription to a point in time or to a given snapshot,
-  /// whichever is provided in the request. Snapshots are used in
-  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-  /// operations, which allow
-  /// you to manage message acknowledgments in bulk. That is, you can set the
-  /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot. Note that both the subscription and the snapshot
-  /// must be on the same topic.
+  /// whichever is provided in the request. Snapshots are used in [Seek](
+  /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+  /// allow you to manage message acknowledgments in bulk. That is, you can set
+  /// the acknowledgment state of messages in an existing subscription to the
+  /// state captured by a snapshot. Note that both the subscription and the
+  /// snapshot must be on the same topic.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1180,18 +1188,16 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
-  ///
-  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
+  /// `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1237,21 +1243,19 @@ class ProjectsSubscriptionsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1309,9 +1313,8 @@ class ProjectsTopicsResourceApi {
 
   ProjectsTopicsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates the given topic with the given name. See the
-  /// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-  /// resource name rules</a>.
+  /// Creates the given topic with the given name. See the [resource name
+  /// rules]( https://cloud.google.com/pubsub/docs/admin#resource_names).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1373,8 +1376,8 @@ class ProjectsTopicsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [topic] - Required. Name of the topic to delete.
-  /// Format is `projects/{project}/topics/{topic}`.
+  /// [topic] - Required. Name of the topic to delete. Format is
+  /// `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1417,8 +1420,8 @@ class ProjectsTopicsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [topic] - Required. The name of the topic to get.
-  /// Format is `projects/{project}/topics/{topic}`.
+  /// [topic] - Required. The name of the topic to get. Format is
+  /// `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1457,27 +1460,23 @@ class ProjectsTopicsResourceApi {
     return _response.then((data) => new Topic.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1531,12 +1530,11 @@ class ProjectsTopicsResourceApi {
   /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The value returned by the last `ListTopicsResponse`;
-  /// indicates that this is
-  /// a continuation of a prior `ListTopics` call, and that the system should
-  /// return the next page of data.
-  ///
   /// [pageSize] - Maximum number of topics to return.
+  ///
+  /// [pageToken] - The value returned by the last `ListTopicsResponse`;
+  /// indicates that this is a continuation of a prior `ListTopics` call, and
+  /// that the system should return the next page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1549,7 +1547,7 @@ class ProjectsTopicsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTopicsResponse> list(core.String project,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1560,11 +1558,11 @@ class ProjectsTopicsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1582,8 +1580,8 @@ class ProjectsTopicsResourceApi {
     return _response.then((data) => new ListTopicsResponse.fromJson(data));
   }
 
-  /// Updates an existing topic. Note that certain properties of a
-  /// topic are not modifiable.
+  /// Updates an existing topic. Note that certain properties of a topic are not
+  /// modifiable.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1645,8 +1643,7 @@ class ProjectsTopicsResourceApi {
   /// Request parameters:
   ///
   /// [topic] - Required. The messages in the request will be published on this
-  /// topic.
-  /// Format is `projects/{project}/topics/{topic}`.
+  /// topic. Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1691,18 +1688,16 @@ class ProjectsTopicsResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
-  ///
-  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
+  /// `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1748,21 +1743,19 @@ class ProjectsTopicsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1817,11 +1810,10 @@ class ProjectsTopicsSnapshotsResourceApi {
       : _requester = client;
 
   /// Lists the names of the snapshots on this topic. Snapshots are used in
-  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-  /// operations, which allow
-  /// you to manage message acknowledgments in bulk. That is, you can set the
-  /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot.
+  /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+  /// which allow you to manage message acknowledgments in bulk. That is, you
+  /// can set the acknowledgment state of messages in an existing subscription
+  /// to the state captured by a snapshot.
   ///
   /// Request parameters:
   ///
@@ -1829,12 +1821,11 @@ class ProjectsTopicsSnapshotsResourceApi {
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
-  /// [pageToken] - The value returned by the last `ListTopicSnapshotsResponse`;
-  /// indicates
-  /// that this is a continuation of a prior `ListTopicSnapshots` call, and
-  /// that the system should return the next page of data.
-  ///
   /// [pageSize] - Maximum number of snapshot names to return.
+  ///
+  /// [pageToken] - The value returned by the last `ListTopicSnapshotsResponse`;
+  /// indicates that this is a continuation of a prior `ListTopicSnapshots`
+  /// call, and that the system should return the next page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1847,7 +1838,7 @@ class ProjectsTopicsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTopicSnapshotsResponse> list(core.String topic,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1858,11 +1849,11 @@ class ProjectsTopicsSnapshotsResourceApi {
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1888,19 +1879,18 @@ class ProjectsTopicsSubscriptionsResourceApi {
   ProjectsTopicsSubscriptionsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists the names of the subscriptions on this topic.
+  /// Lists the names of the attached subscriptions on this topic.
   ///
   /// Request parameters:
   ///
   /// [topic] - Required. The name of the topic that subscriptions are attached
-  /// to.
-  /// Format is `projects/{project}/topics/{topic}`.
+  /// to. Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
   /// [pageToken] - The value returned by the last
-  /// `ListTopicSubscriptionsResponse`; indicates
-  /// that this is a continuation of a prior `ListTopicSubscriptions` call, and
-  /// that the system should return the next page of data.
+  /// `ListTopicSubscriptionsResponse`; indicates that this is a continuation of
+  /// a prior `ListTopicSubscriptions` call, and that the system should return
+  /// the next page of data.
   ///
   /// [pageSize] - Maximum number of subscription names to return.
   ///
@@ -1954,8 +1944,8 @@ class ProjectsTopicsSubscriptionsResourceApi {
 /// Request for the Acknowledge method.
 class AcknowledgeRequest {
   /// Required. The acknowledgment ID for the messages being acknowledged that
-  /// was returned
-  /// by the Pub/Sub system in the `Pull` response. Must not be empty.
+  /// was returned by the Pub/Sub system in the `Pull` response. Must not be
+  /// empty.
   core.List<core.String> ackIds;
 
   AcknowledgeRequest();
@@ -1978,64 +1968,60 @@ class AcknowledgeRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  /// NOTE: An unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
+  /// A client-specified ID for this binding. Expected to be globally unique to
+  /// support the internal bindings-by-ID API.
+  core.String bindingId;
+
+  /// The condition that is associated with this binding. If the condition
+  /// evaluates to `true`, then this binding applies to the current request. If
+  /// the condition evaluates to `false`, then this binding does not apply to
+  /// the current request. However, a different role binding might grant the
+  /// same role to one or more of the members in this binding. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
-  /// `members` can have the following values:
-  ///
-  /// * `allUsers`: A special identifier that represents anyone who is
-  ///    on the internet; with or without a Google account.
-  ///
-  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
-  ///    who is authenticated with a Google account or a service account.
-  ///
-  /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@example.com` .
-  ///
-  ///
-  /// * `serviceAccount:{emailid}`: An email address that represents a service
-  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  ///
-  /// * `group:{emailid}`: An email address that represents a Google group.
-  ///    For example, `admins@example.com`.
-  ///
-  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a user that has been recently deleted. For
-  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
-  /// recovered, this value reverts to `user:{emailid}` and the recovered user
-  ///    retains the role in the binding.
-  ///
-  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
-  /// (plus
-  /// unique identifier) representing a service account that has been recently
-  ///    deleted. For example,
-  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-  ///    If the service account is undeleted, this value reverts to
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
-  ///    role in the binding.
-  ///
-  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a Google group that has been recently
-  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-  /// the group is recovered, this value reverts to `group:{emailid}` and the
-  ///    recovered group retains the role in the binding.
-  ///
-  ///
-  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
-  ///    users of that domain. For example, `google.com` or `example.com`.
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`.
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`. For example, `roles/viewer`,
+  /// `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingId")) {
+      bindingId = _json["bindingId"];
+    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -2050,6 +2036,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bindingId != null) {
+      _json["bindingId"] = bindingId;
+    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -2065,19 +2054,17 @@ class Binding {
 
 /// Request for the `CreateSnapshot` method.
 class CreateSnapshotRequest {
-  /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-  /// managing labels</a>.
+  /// See Creating and managing labels.
   core.Map<core.String, core.String> labels;
 
   /// Required. The subscription whose backlog the snapshot retains.
-  /// Specifically, the created snapshot is guaranteed to retain:
-  ///  (a) The existing backlog on the subscription. More precisely, this is
-  ///      defined as the messages in the subscription's backlog that are
-  ///      unacknowledged upon the successful completion of the
-  ///      `CreateSnapshot` request; as well as:
-  ///  (b) Any messages published to the subscription's topic following the
-  ///      successful completion of the CreateSnapshot request.
-  /// Format is `projects/{project}/subscriptions/{sub}`.
+  /// Specifically, the created snapshot is guaranteed to retain: (a) The
+  /// existing backlog on the subscription. More precisely, this is defined as
+  /// the messages in the subscription's backlog that are unacknowledged upon
+  /// the successful completion of the `CreateSnapshot` request; as well as: (b)
+  /// Any messages published to the subscription's topic following the
+  /// successful completion of the CreateSnapshot request. Format is
+  /// `projects/{project}/subscriptions/{sub}`.
   core.String subscription;
 
   CreateSnapshotRequest();
@@ -2105,35 +2092,27 @@ class CreateSnapshotRequest {
 }
 
 /// Dead lettering is done on a best effort basis. The same message might be
-/// dead lettered multiple times.
-///
-/// If validation on any of the fields fails at subscription creation/updation,
-/// the create/update subscription request will fail.
+/// dead lettered multiple times. If validation on any of the fields fails at
+/// subscription creation/updation, the create/update subscription request will
+/// fail.
 class DeadLetterPolicy {
   /// The name of the topic to which dead letter messages should be published.
   /// Format is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service
   /// account associated with the enclosing subscription's parent project (i.e.,
   /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-  /// permission to Publish() to this topic.
-  ///
-  /// The operation will fail if the topic does not exist.
-  /// Users should ensure that there is a subscription attached to this topic
-  /// since messages published to a topic with no subscriptions are lost.
+  /// permission to Publish() to this topic. The operation will fail if the
+  /// topic does not exist. Users should ensure that there is a subscription
+  /// attached to this topic since messages published to a topic with no
+  /// subscriptions are lost.
   core.String deadLetterTopic;
 
   /// The maximum number of delivery attempts for any message. The value must be
-  /// between 5 and 100.
-  ///
-  /// The number of delivery attempts is defined as 1 + (the sum of number of
-  /// NACKs and number of times the acknowledgement deadline has been exceeded
-  /// for the message).
-  ///
-  /// A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
-  /// client libraries may automatically extend ack_deadlines.
-  ///
-  /// This field will be honored on a best effort basis.
-  ///
-  /// If this parameter is 0, a default value of 5 is used.
+  /// between 5 and 100. The number of delivery attempts is defined as 1 + (the
+  /// sum of number of NACKs and number of times the acknowledgement deadline
+  /// has been exceeded for the message). A NACK is any call to
+  /// ModifyAckDeadline with a 0 deadline. Note that client libraries may
+  /// automatically extend ack_deadlines. This field will be honored on a best
+  /// effort basis. If this parameter is 0, a default value of 5 is used.
   core.int maxDeliveryAttempts;
 
   DeadLetterPolicy();
@@ -2160,15 +2139,24 @@ class DeadLetterPolicy {
   }
 }
 
+/// Response for the DetachSubscription method. Reserved for future use.
+class DetachSubscriptionResponse {
+  DetachSubscriptionResponse();
+
+  DetachSubscriptionResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -2212,36 +2200,20 @@ class ExpirationPolicy {
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec.
-///
-/// Example (Comparison):
-///
-///     title: "Summary size limit"
-///     description: "Determines if a summary is less than 100 chars"
-///     expression: "document.summary.size() < 100"
-///
-/// Example (Equality):
-///
-///     title: "Requestor is owner"
-///     description: "Determines if requestor is the document owner"
-///     expression: "document.owner == request.auth.claims.email"
-///
-/// Example (Logic):
-///
-///     title: "Public documents"
+/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
 /// description: "Determine whether the document should be publicly visible"
-///     expression: "document.type != 'private' && document.type != 'internal'"
-///
-/// Example (Data Manipulation):
-///
-///     title: "Notification string"
-///     description: "Create a notification string with a timestamp."
-///     expression: "'New message received at ' + string(document.create_time)"
-///
-/// The exact variables and functions that may be referenced within an
-/// expression
-/// are determined by the service that evaluates it. See the service
-/// documentation for additional information.
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
 class Expr {
   /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
@@ -2255,9 +2227,8 @@ class Expr {
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
+  /// Optional. Title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
   Expr();
@@ -2370,9 +2341,9 @@ class ListSubscriptionsResponse {
 
 /// Response for the `ListTopicSnapshots` method.
 class ListTopicSnapshotsResponse {
-  /// If not empty, indicates that there may be more snapshots that match
-  /// the request; this value should be passed in a new
-  /// `ListTopicSnapshotsRequest` to get more snapshots.
+  /// If not empty, indicates that there may be more snapshots that match the
+  /// request; this value should be passed in a new `ListTopicSnapshotsRequest`
+  /// to get more snapshots.
   core.String nextPageToken;
 
   /// The names of the snapshots that match the request.
@@ -2409,7 +2380,7 @@ class ListTopicSubscriptionsResponse {
   /// `ListTopicSubscriptionsRequest` to get more subscriptions.
   core.String nextPageToken;
 
-  /// The names of the subscriptions that match the request.
+  /// The names of subscriptions attached to the topic specified in the request.
   core.List<core.String> subscriptions;
 
   ListTopicSubscriptionsResponse();
@@ -2471,13 +2442,13 @@ class ListTopicsResponse {
   }
 }
 
+/// A policy constraining the storage of messages published to the topic.
 class MessageStoragePolicy {
   /// A list of IDs of GCP regions where messages that are published to the
-  /// topic
-  /// may be persisted in storage. Messages published by publishers running in
-  /// non-allowed GCP regions (or running outside of GCP altogether) will be
-  /// routed for storage in one of the allowed regions. An empty list means that
-  /// no regions are allowed, and is not a valid configuration.
+  /// topic may be persisted in storage. Messages published by publishers
+  /// running in non-allowed GCP regions (or running outside of GCP altogether)
+  /// will be routed for storage in one of the allowed regions. An empty list
+  /// means that no regions are allowed, and is not a valid configuration.
   core.List<core.String> allowedPersistenceRegions;
 
   MessageStoragePolicy();
@@ -2502,14 +2473,13 @@ class MessageStoragePolicy {
 /// Request for the ModifyAckDeadline method.
 class ModifyAckDeadlineRequest {
   /// Required. The new ack deadline with respect to the time this request was
-  /// sent to
-  /// the Pub/Sub system. For example, if the value is 10, the new
-  /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-  /// was made. Specifying zero might immediately make the message available for
+  /// sent to the Pub/Sub system. For example, if the value is 10, the new ack
+  /// deadline will expire 10 seconds after the `ModifyAckDeadline` call was
+  /// made. Specifying zero might immediately make the message available for
   /// delivery to another subscriber client. This typically results in an
-  /// increase in the rate of message redeliveries (that is, duplicates).
-  /// The minimum deadline you can specify is 0 seconds.
-  /// The maximum deadline you can specify is 600 seconds (10 minutes).
+  /// increase in the rate of message redeliveries (that is, duplicates). The
+  /// minimum deadline you can specify is 0 seconds. The maximum deadline you
+  /// can specify is 600 seconds (10 minutes).
   core.int ackDeadlineSeconds;
 
   /// Required. List of acknowledgment IDs.
@@ -2541,12 +2511,11 @@ class ModifyAckDeadlineRequest {
 
 /// Request for the ModifyPushConfig method.
 class ModifyPushConfigRequest {
-  /// Required. The push configuration for future deliveries.
-  ///
-  /// An empty `pushConfig` indicates that the Pub/Sub system should
-  /// stop pushing messages from the given subscription and allow
-  /// messages to be pulled and acknowledged - effectively pausing
-  /// the subscription if `Pull` or `StreamingPull` is not called.
+  /// Required. The push configuration for future deliveries. An empty
+  /// `pushConfig` indicates that the Pub/Sub system should stop pushing
+  /// messages from the given subscription and allow messages to be pulled and
+  /// acknowledged - effectively pausing the subscription if `Pull` or
+  /// `StreamingPull` is not called.
   PushConfig pushConfig;
 
   ModifyPushConfigRequest();
@@ -2567,23 +2536,22 @@ class ModifyPushConfigRequest {
   }
 }
 
-/// Contains information needed for generating an
-/// [OpenID Connect
+/// Contains information needed for generating an [OpenID Connect
 /// token](https://developers.google.com/identity/protocols/OpenIDConnect).
 class OidcToken {
   /// Audience to be used when generating OIDC token. The audience claim
-  /// identifies the recipients that the JWT is intended for. The audience
-  /// value is a single case-sensitive string. Having multiple values (array)
-  /// for the audience field is not supported. More info about the OIDC JWT
-  /// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
-  /// Note: if not specified, the Push endpoint URL will be used.
+  /// identifies the recipients that the JWT is intended for. The audience value
+  /// is a single case-sensitive string. Having multiple values (array) for the
+  /// audience field is not supported. More info about the OIDC JWT token
+  /// audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if
+  /// not specified, the Push endpoint URL will be used.
   core.String audience;
 
   /// [Service account
-  /// email](https://cloud.google.com/iam/docs/service-accounts)
-  /// to be used for generating the OIDC token. The caller (for
-  /// CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
-  /// have the iam.serviceAccounts.actAs permission for the service account.
+  /// email](https://cloud.google.com/iam/docs/service-accounts) to be used for
+  /// generating the OIDC token. The caller (for CreateSubscription,
+  /// UpdateSubscription, and ModifyPushConfig RPCs) must have the
+  /// iam.serviceAccounts.actAs permission for the service account.
   core.String serviceAccountEmail;
 
   OidcToken();
@@ -2611,90 +2579,51 @@ class OidcToken {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources.
-///
-///
-/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts,
-/// Google groups, and domains (such as G Suite). A `role` is a named list of
-/// permissions; each `role` can be an IAM predefined role or a user-created
-/// custom role.
-///
-/// Optionally, a `binding` can specify a `condition`, which is a logical
-/// expression that allows access to a resource only if the expression evaluates
-/// to `true`. A condition can add constraints based on attributes of the
-/// request, the resource, or both.
-///
-/// **JSON example:**
-///
-///     {
-///       "bindings": [
-///         {
-///           "role": "roles/resourcemanager.organizationAdmin",
-///           "members": [
-///             "user:mike@example.com",
-///             "group:admins@example.com",
-///             "domain:google.com",
-///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-///           ]
-///         },
-///         {
-///           "role": "roles/resourcemanager.organizationViewer",
-///           "members": ["user:eve@example.com"],
-///           "condition": {
-///             "title": "expirable access",
-///             "description": "Does not grant access after Sep 2020",
-/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-///           }
-///         }
-///       ],
-///       "etag": "BwWWja0YfJA=",
-///       "version": 3
-///     }
-///
-/// **YAML example:**
-///
-///     bindings:
-///     - members:
-///       - user:mike@example.com
-///       - group:admins@example.com
-///       - domain:google.com
-///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
-///       role: roles/resourcemanager.organizationAdmin
-///     - members:
-///       - user:eve@example.com
-///       role: roles/resourcemanager.organizationViewer
-///       condition:
-///         title: expirable access
-///         description: Does not grant access after Sep 2020
-///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-///     - etag: BwWWja0YfJA=
-///     - version: 3
-///
-/// For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// controls for Google Cloud resources. A `Policy` is a collection of
+/// `bindings`. A `binding` binds one or more `members` to a single `role`.
+/// Members can be user accounts, service accounts, Google groups, and domains
+/// (such as G Suite). A `role` is a named list of permissions; each `role` can
+/// be an IAM predefined role or a user-created custom role. For some types of
+/// Google Cloud resources, a `binding` can also specify a `condition`, which is
+/// a logical expression that allows access to a resource only if the expression
+/// evaluates to `true`. A condition can add constraints based on attributes of
+/// the request, the resource, or both. To learn which resources support
+/// conditions in their IAM policies, see the [IAM
+/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// version: 3 For a description of IAM and its features, see the [IAM
+/// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members` to a `role`. Optionally, may specify a
   /// `condition` that determines how and when the `bindings` are applied. Each
   /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a policy from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other. It is
+  /// strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
   /// ensure that their change will be applied to the same version of the
-  /// policy.
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -2705,29 +2634,21 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Specifies the format of the policy.
-  ///
-  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-  /// are rejected.
-  ///
-  /// Any operation that affects conditional role bindings must specify version
-  /// `3`. This requirement applies to the following operations:
-  ///
-  /// * Getting a policy that includes a conditional role binding
-  /// * Adding a conditional role binding to a policy
-  /// * Changing a conditional role binding in a policy
-  /// * Removing any role binding, with or without a condition, from a policy
-  ///   that includes conditions
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
-  ///
-  /// If a policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset.
+  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+  /// Requests that specify an invalid value are rejected. Any operation that
+  /// affects conditional role bindings must specify version `3`. This
+  /// requirement applies to the following operations: * Getting a policy that
+  /// includes a conditional role binding * Adding a conditional role binding to
+  /// a policy * Changing a conditional role binding in a policy * Removing any
+  /// role binding, with or without a condition, from a policy that includes
+  /// conditions **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost. If a
+  /// policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -2789,9 +2710,8 @@ class PublishRequest {
 
 /// Response for the `Publish` method.
 class PublishResponse {
-  /// The server-assigned ID of each published message, in the same order as
-  /// the messages in the request. IDs are guaranteed to be unique within
-  /// the topic.
+  /// The server-assigned ID of each published message, in the same order as the
+  /// messages in the request. IDs are guaranteed to be unique within the topic.
   core.List<core.String> messageIds;
 
   PublishResponse();
@@ -2814,16 +2734,16 @@ class PublishResponse {
 
 /// A message that is published by publishers and consumed by subscribers. The
 /// message must contain either a non-empty data field or at least one
-/// attribute.
-/// Note that client libraries represent this object differently
-/// depending on the language. See the corresponding
-/// <a href="https://cloud.google.com/pubsub/docs/reference/libraries">client
-/// library documentation</a> for more information. See
-/// <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
-/// for more information about message limits.
+/// attribute. Note that client libraries represent this object differently
+/// depending on the language. See the corresponding [client library
+/// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
+/// more information. See [quotas and limits]
+/// (https://cloud.google.com/pubsub/quotas) for more information about message
+/// limits.
 class PubsubMessage {
   /// Attributes for this message. If this field is empty, the message must
-  /// contain non-empty data.
+  /// contain non-empty data. This can be used to filter messages on the
+  /// subscription.
   core.Map<core.String, core.String> attributes;
 
   /// The message data field. If this field is empty, the message must contain
@@ -2844,9 +2764,17 @@ class PubsubMessage {
   /// delivery. It must not be populated by the publisher in a `Publish` call.
   core.String messageId;
 
+  /// If non-empty, identifies related messages for which publish order should
+  /// be respected. If a `Subscription` has `enable_message_ordering` set to
+  /// `true`, messages published with the same non-empty `ordering_key` value
+  /// will be delivered to subscribers in the order in which they are received
+  /// by the Pub/Sub system. All `PubsubMessage`s published in a given
+  /// `PublishRequest` must specify the same `ordering_key` value.
+  core.String orderingKey;
+
   /// The time at which the message was published, populated by the server when
-  /// it receives the `Publish` call. It must not be populated by the
-  /// publisher in a `Publish` call.
+  /// it receives the `Publish` call. It must not be populated by the publisher
+  /// in a `Publish` call.
   core.String publishTime;
 
   PubsubMessage();
@@ -2861,6 +2789,9 @@ class PubsubMessage {
     }
     if (_json.containsKey("messageId")) {
       messageId = _json["messageId"];
+    }
+    if (_json.containsKey("orderingKey")) {
+      orderingKey = _json["orderingKey"];
     }
     if (_json.containsKey("publishTime")) {
       publishTime = _json["publishTime"];
@@ -2879,6 +2810,9 @@ class PubsubMessage {
     if (messageId != null) {
       _json["messageId"] = messageId;
     }
+    if (orderingKey != null) {
+      _json["orderingKey"] = orderingKey;
+    }
     if (publishTime != null) {
       _json["publishTime"] = publishTime;
     }
@@ -2889,20 +2823,17 @@ class PubsubMessage {
 /// Request for the `Pull` method.
 class PullRequest {
   /// Required. The maximum number of messages to return for this request. Must
-  /// be a
-  /// positive integer. The Pub/Sub system may return fewer than the number
+  /// be a positive integer. The Pub/Sub system may return fewer than the number
   /// specified.
   core.int maxMessages;
 
   /// Optional. If this field set to true, the system will respond immediately
-  /// even if
-  /// it there are no messages available to return in the `Pull` response.
-  /// Otherwise, the system may wait (for a bounded amount of time) until at
-  /// least one message is available, rather than returning no messages.
-  /// Warning:
-  /// setting this field to `true` is discouraged because it adversely impacts
-  /// the performance of `Pull` operations. We recommend that users do not set
-  /// this field.
+  /// even if it there are no messages available to return in the `Pull`
+  /// response. Otherwise, the system may wait (for a bounded amount of time)
+  /// until at least one message is available, rather than returning no
+  /// messages. Warning: setting this field to `true` is discouraged because it
+  /// adversely impacts the performance of `Pull` operations. We recommend that
+  /// users do not set this field.
   core.bool returnImmediately;
 
   PullRequest();
@@ -2934,8 +2865,7 @@ class PullResponse {
   /// Received Pub/Sub messages. The list will be empty if there are no more
   /// messages available in the backlog. For JSON, the response can be entirely
   /// empty. The Pub/Sub system may return fewer than the `maxMessages`
-  /// requested
-  /// even if there are more messages available in the backlog.
+  /// requested even if there are more messages available in the backlog.
   core.List<ReceivedMessage> receivedMessages;
 
   PullResponse();
@@ -2962,34 +2892,27 @@ class PullResponse {
 /// Configuration for a push delivery endpoint.
 class PushConfig {
   /// Endpoint configuration attributes that can be used to control different
-  /// aspects of the message delivery.
-  ///
-  /// The only currently supported attribute is `x-goog-version`, which you can
-  /// use to change the format of the pushed message. This attribute
-  /// indicates the version of the data expected by the endpoint. This
-  /// controls the shape of the pushed message (i.e., its fields and metadata).
-  ///
-  /// If not present during the `CreateSubscription` call, it will default to
-  /// the version of the Pub/Sub API used to make such call. If not present in a
-  /// `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
-  /// calls will always return a valid version, even if the subscription was
-  /// created without this attribute.
-  ///
-  /// The only supported values for the `x-goog-version` attribute are:
-  ///
-  /// * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
-  /// * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
-  ///
-  /// For example:
-  /// <pre><code>attributes { "x-goog-version": "v1" } </code></pre>
+  /// aspects of the message delivery. The only currently supported attribute is
+  /// `x-goog-version`, which you can use to change the format of the pushed
+  /// message. This attribute indicates the version of the data expected by the
+  /// endpoint. This controls the shape of the pushed message (i.e., its fields
+  /// and metadata). If not present during the `CreateSubscription` call, it
+  /// will default to the version of the Pub/Sub API used to make such call. If
+  /// not present in a `ModifyPushConfig` call, its value will not be changed.
+  /// `GetSubscription` calls will always return a valid version, even if the
+  /// subscription was created without this attribute. The only supported values
+  /// for the `x-goog-version` attribute are: * `v1beta1`: uses the push format
+  /// defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push
+  /// format defined in the v1 Pub/Sub API. For example: attributes {
+  /// "x-goog-version": "v1" }
   core.Map<core.String, core.String> attributes;
 
   /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
   /// `Authorization` header in the HTTP request for every pushed message.
   OidcToken oidcToken;
 
-  /// A URL locating the endpoint to which messages should be pushed.
-  /// For example, a Webhook endpoint might use "https://example.com/push".
+  /// A URL locating the endpoint to which messages should be pushed. For
+  /// example, a Webhook endpoint might use `https://example.com/push`.
   core.String pushEndpoint;
 
   PushConfig();
@@ -3028,22 +2951,17 @@ class ReceivedMessage {
   /// This ID can be used to acknowledge the received message.
   core.String ackId;
 
-  /// Delivery attempt counter is 1 + (the sum of number of NACKs and number of
-  /// ack_deadline exceeds) for this message.
-  ///
-  /// A NACK is any call to ModifyAckDeadline with a 0 deadline. An ack_deadline
+  /// The approximate number of times that Cloud Pub/Sub has attempted to
+  /// deliver the associated message to a subscriber. More precisely, this is 1
+  /// + (number of NACKs) + (number of ack_deadline exceeds) for this message. A
+  /// NACK is any call to ModifyAckDeadline with a 0 deadline. An ack_deadline
   /// exceeds event is whenever a message is not acknowledged within
   /// ack_deadline. Note that ack_deadline is initially
-  /// Subscription.ackDeadlineSeconds, but may get extended automatically by
-  /// the client library.
-  ///
-  /// The first delivery of a given message will have this value as 1. The value
-  /// is calculated at best effort and is approximate.
-  ///
-  /// If a DeadLetterPolicy is not set on the subscription, this will be 0.
-  /// <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
-  /// API might be changed in backward-incompatible ways and is not recommended
-  /// for production use. It is not subject to any SLA or deprecation policy.
+  /// Subscription.ackDeadlineSeconds, but may get extended automatically by the
+  /// client library. Upon the first delivery of a given message,
+  /// `delivery_attempt` will have a value of 1. The value is calculated at best
+  /// effort and is approximate. If a DeadLetterPolicy is not set on the
+  /// subscription, this will be 0.
   core.int deliveryAttempt;
 
   /// The message.
@@ -3079,24 +2997,63 @@ class ReceivedMessage {
   }
 }
 
+/// A policy that specifies how Cloud Pub/Sub retries message delivery. Retry
+/// delay will be exponential based on provided minimum and maximum backoffs.
+/// https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be
+/// triggered on NACKs or acknowledgement deadline exceeded events for a given
+/// message. Retry Policy is implemented on a best effort basis. At times, the
+/// delay between consecutive deliveries may not match the configuration. That
+/// is, delay can be more or less than configured backoff.
+class RetryPolicy {
+  /// The maximum delay between consecutive deliveries of a given message. Value
+  /// should be between 0 and 600 seconds. Defaults to 600 seconds.
+  core.String maximumBackoff;
+
+  /// The minimum delay between consecutive deliveries of a given message. Value
+  /// should be between 0 and 600 seconds. Defaults to 10 seconds.
+  core.String minimumBackoff;
+
+  RetryPolicy();
+
+  RetryPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("maximumBackoff")) {
+      maximumBackoff = _json["maximumBackoff"];
+    }
+    if (_json.containsKey("minimumBackoff")) {
+      minimumBackoff = _json["minimumBackoff"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maximumBackoff != null) {
+      _json["maximumBackoff"] = maximumBackoff;
+    }
+    if (minimumBackoff != null) {
+      _json["minimumBackoff"] = minimumBackoff;
+    }
+    return _json;
+  }
+}
+
 /// Request for the `Seek` method.
 class SeekRequest {
   /// The snapshot to seek to. The snapshot's topic must be the same as that of
-  /// the provided subscription.
-  /// Format is `projects/{project}/snapshots/{snap}`.
+  /// the provided subscription. Format is
+  /// `projects/{project}/snapshots/{snap}`.
   core.String snapshot;
 
-  /// The time to seek to.
-  /// Messages retained in the subscription that were published before this
-  /// time are marked as acknowledged, and messages retained in the
-  /// subscription that were published after this time are marked as
-  /// unacknowledged. Note that this operation affects only those messages
-  /// retained in the subscription (configured by the combination of
-  /// `message_retention_duration` and `retain_acked_messages`). For example,
-  /// if `time` corresponds to a point before the message retention
-  /// window (or to a point before the system's notion of the subscription
-  /// creation time), only retained messages will be marked as unacknowledged,
-  /// and already-expunged messages will not be restored.
+  /// The time to seek to. Messages retained in the subscription that were
+  /// published before this time are marked as acknowledged, and messages
+  /// retained in the subscription that were published after this time are
+  /// marked as unacknowledged. Note that this operation affects only those
+  /// messages retained in the subscription (configured by the combination of
+  /// `message_retention_duration` and `retain_acked_messages`). For example, if
+  /// `time` corresponds to a point before the message retention window (or to a
+  /// point before the system's notion of the subscription creation time), only
+  /// retained messages will be marked as unacknowledged, and already-expunged
+  /// messages will not be restored.
   core.String time;
 
   SeekRequest();
@@ -3139,9 +3096,9 @@ class SeekResponse {
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects)
-  /// might reject them.
+  /// the policy is limited to a few 10s of KB. An empty policy is a valid
+  /// policy but certain Cloud Platform services (such as Projects) might reject
+  /// them.
   Policy policy;
 
   SetIamPolicyRequest();
@@ -3163,29 +3120,25 @@ class SetIamPolicyRequest {
 }
 
 /// A snapshot resource. Snapshots are used in
-/// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-/// operations, which allow
-/// you to manage message acknowledgments in bulk. That is, you can set the
-/// acknowledgment state of messages in an existing subscription to the state
-/// captured by a snapshot.
+/// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+/// which allow you to manage message acknowledgments in bulk. That is, you can
+/// set the acknowledgment state of messages in an existing subscription to the
+/// state captured by a snapshot.
 class Snapshot {
-  /// The snapshot is guaranteed to exist up until this time.
-  /// A newly-created snapshot expires no later than 7 days from the time of its
-  /// creation. Its exact lifetime is determined at creation by the existing
-  /// backlog in the source subscription. Specifically, the lifetime of the
-  /// snapshot is `7 days - (age of oldest unacked message in the
-  /// subscription)`.
-  /// For example, consider a subscription whose oldest unacked message is 3
-  /// days
-  /// old. If a snapshot is created from this subscription, the snapshot --
-  /// which
-  /// will always capture this 3-day-old backlog as long as the snapshot
-  /// exists -- will expire in 4 days. The service will refuse to create a
-  /// snapshot that would expire in less than 1 hour after creation.
+  /// The snapshot is guaranteed to exist up until this time. A newly-created
+  /// snapshot expires no later than 7 days from the time of its creation. Its
+  /// exact lifetime is determined at creation by the existing backlog in the
+  /// source subscription. Specifically, the lifetime of the snapshot is `7 days
+  /// - (age of oldest unacked message in the subscription)`. For example,
+  /// consider a subscription whose oldest unacked message is 3 days old. If a
+  /// snapshot is created from this subscription, the snapshot -- which will
+  /// always capture this 3-day-old backlog as long as the snapshot exists --
+  /// will expire in 4 days. The service will refuse to create a snapshot that
+  /// would expire in less than 1 hour after creation.
   core.String expireTime;
 
-  /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-  /// managing labels</a>.
+  /// See [Creating and managing labels]
+  /// (https://cloud.google.com/pubsub/docs/labels).
   core.Map<core.String, core.String> labels;
 
   /// The name of the snapshot.
@@ -3235,38 +3188,40 @@ class Subscription {
   /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
   /// the subscriber to acknowledge receipt before resending the message. In the
   /// interval after the message is delivered and before it is acknowledged, it
-  /// is considered to be <i>outstanding</i>. During that time period, the
-  /// message will not be redelivered (on a best-effort basis).
-  ///
-  /// For pull subscriptions, this value is used as the initial value for the
-  /// ack
-  /// deadline. To override this value for a given message, call
-  /// `ModifyAckDeadline` with the corresponding `ack_id` if using
-  /// non-streaming pull or send the `ack_id` in a
-  /// `StreamingModifyAckDeadlineRequest` if using streaming pull.
-  /// The minimum custom deadline you can specify is 10 seconds.
-  /// The maximum custom deadline you can specify is 600 seconds (10 minutes).
-  /// If this parameter is 0, a default value of 10 seconds is used.
-  ///
-  /// For push delivery, this value is also used to set the request timeout for
-  /// the call to the push endpoint.
-  ///
-  /// If the subscriber never acknowledges the message, the Pub/Sub
-  /// system will eventually redeliver the message.
+  /// is considered to be *outstanding*. During that time period, the message
+  /// will not be redelivered (on a best-effort basis). For pull subscriptions,
+  /// this value is used as the initial value for the ack deadline. To override
+  /// this value for a given message, call `ModifyAckDeadline` with the
+  /// corresponding `ack_id` if using non-streaming pull or send the `ack_id` in
+  /// a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum
+  /// custom deadline you can specify is 10 seconds. The maximum custom deadline
+  /// you can specify is 600 seconds (10 minutes). If this parameter is 0, a
+  /// default value of 10 seconds is used. For push delivery, this value is also
+  /// used to set the request timeout for the call to the push endpoint. If the
+  /// subscriber never acknowledges the message, the Pub/Sub system will
+  /// eventually redeliver the message.
   core.int ackDeadlineSeconds;
 
-  /// A policy that specifies the conditions for dead lettering messages in
-  /// this subscription. If dead_letter_policy is not set, dead lettering
-  /// is disabled.
-  ///
-  /// The Cloud Pub/Sub service account associated with this subscriptions's
-  /// parent project (i.e.,
+  /// A policy that specifies the conditions for dead lettering messages in this
+  /// subscription. If dead_letter_policy is not set, dead lettering is
+  /// disabled. The Cloud Pub/Sub service account associated with this
+  /// subscriptions's parent project (i.e.,
   /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
   /// permission to Acknowledge() messages on this subscription.
-  /// <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
-  /// API might be changed in backward-incompatible ways and is not recommended
-  /// for production use. It is not subject to any SLA or deprecation policy.
   DeadLetterPolicy deadLetterPolicy;
+
+  /// Indicates whether the subscription is detached from its topic. Detached
+  /// subscriptions don't receive messages from their topic and don't retain any
+  /// backlog. `Pull` and `StreamingPull` requests will return
+  /// FAILED_PRECONDITION. If the subscription is a push subscription, pushes to
+  /// the endpoint will not be made.
+  core.bool detached;
+
+  /// If true, messages published with the same `ordering_key` in
+  /// `PubsubMessage` will be delivered to the subscribers in the order in which
+  /// they are received by the Pub/Sub system. Otherwise, they may be delivered
+  /// in any order.
+  core.bool enableMessageOrdering;
 
   /// A policy that specifies the conditions for this subscription's expiration.
   /// A subscription is considered active as long as any connected subscriber is
@@ -3276,19 +3231,21 @@ class Subscription {
   /// value for `expiration_policy.ttl` is 1 day.
   ExpirationPolicy expirationPolicy;
 
-  /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-  /// managing labels</a>.
+  /// An expression written in the Pub/Sub [filter
+  /// language](https://cloud.google.com/pubsub/docs/filtering). If non-empty,
+  /// then only `PubsubMessage`s whose `attributes` field matches the filter are
+  /// delivered on this subscription. If empty, then no messages are filtered
+  /// out.
+  core.String filter;
+
+  /// See Creating and managing labels.
   core.Map<core.String, core.String> labels;
 
   /// How long to retain unacknowledged messages in the subscription's backlog,
-  /// from the moment a message is published.
-  /// If `retain_acked_messages` is true, then this also configures the
-  /// retention
-  /// of acknowledged messages, and thus configures how far back in time a
-  /// `Seek`
-  /// can be done. Defaults to 7 days. Cannot be more than 7 days or less than
-  /// 10
-  /// minutes.
+  /// from the moment a message is published. If `retain_acked_messages` is
+  /// true, then this also configures the retention of acknowledged messages,
+  /// and thus configures how far back in time a `Seek` can be done. Defaults to
+  /// 7 days. Cannot be more than 7 days or less than 10 minutes.
   core.String messageRetentionDuration;
 
   /// Required. The name of the subscription. It must have the format
@@ -3299,26 +3256,28 @@ class Subscription {
   /// in length, and it must not start with `"goog"`.
   core.String name;
 
-  /// If push delivery is used with this subscription, this field is
-  /// used to configure it. An empty `pushConfig` signifies that the subscriber
-  /// will pull and ack messages using API methods.
+  /// If push delivery is used with this subscription, this field is used to
+  /// configure it. An empty `pushConfig` signifies that the subscriber will
+  /// pull and ack messages using API methods.
   PushConfig pushConfig;
 
-  /// Indicates whether to retain acknowledged messages. If true, then
-  /// messages are not expunged from the subscription's backlog, even if they
-  /// are
+  /// Indicates whether to retain acknowledged messages. If true, then messages
+  /// are not expunged from the subscription's backlog, even if they are
   /// acknowledged, until they fall out of the `message_retention_duration`
-  /// window. This must be true if you would like to
-  /// <a
-  /// href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">
-  /// Seek to a timestamp</a>.
+  /// window. This must be true if you would like to [Seek to a timestamp]
+  /// (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
   core.bool retainAckedMessages;
 
+  /// A policy that specifies how Pub/Sub retries message delivery for this
+  /// subscription. If not set, the default retry policy is applied. This
+  /// generally implies that messages will be retried as soon as possible for
+  /// healthy subscribers. RetryPolicy will be triggered on NACKs or
+  /// acknowledgement deadline exceeded events for a given message.
+  RetryPolicy retryPolicy;
+
   /// Required. The name of the topic from which this subscription is receiving
-  /// messages.
-  /// Format is `projects/{project}/topics/{topic}`.
-  /// The value of this field will be `_deleted-topic_` if the topic has been
-  /// deleted.
+  /// messages. Format is `projects/{project}/topics/{topic}`. The value of this
+  /// field will be `_deleted-topic_` if the topic has been deleted.
   core.String topic;
 
   Subscription();
@@ -3331,9 +3290,18 @@ class Subscription {
       deadLetterPolicy =
           new DeadLetterPolicy.fromJson(_json["deadLetterPolicy"]);
     }
+    if (_json.containsKey("detached")) {
+      detached = _json["detached"];
+    }
+    if (_json.containsKey("enableMessageOrdering")) {
+      enableMessageOrdering = _json["enableMessageOrdering"];
+    }
     if (_json.containsKey("expirationPolicy")) {
       expirationPolicy =
           new ExpirationPolicy.fromJson(_json["expirationPolicy"]);
+    }
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
     }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
@@ -3350,6 +3318,9 @@ class Subscription {
     if (_json.containsKey("retainAckedMessages")) {
       retainAckedMessages = _json["retainAckedMessages"];
     }
+    if (_json.containsKey("retryPolicy")) {
+      retryPolicy = new RetryPolicy.fromJson(_json["retryPolicy"]);
+    }
     if (_json.containsKey("topic")) {
       topic = _json["topic"];
     }
@@ -3364,8 +3335,17 @@ class Subscription {
     if (deadLetterPolicy != null) {
       _json["deadLetterPolicy"] = (deadLetterPolicy).toJson();
     }
+    if (detached != null) {
+      _json["detached"] = detached;
+    }
+    if (enableMessageOrdering != null) {
+      _json["enableMessageOrdering"] = enableMessageOrdering;
+    }
     if (expirationPolicy != null) {
       _json["expirationPolicy"] = (expirationPolicy).toJson();
+    }
+    if (filter != null) {
+      _json["filter"] = filter;
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -3382,6 +3362,9 @@ class Subscription {
     if (retainAckedMessages != null) {
       _json["retainAckedMessages"] = retainAckedMessages;
     }
+    if (retryPolicy != null) {
+      _json["retryPolicy"] = (retryPolicy).toJson();
+    }
     if (topic != null) {
       _json["topic"] = topic;
     }
@@ -3393,8 +3376,8 @@ class Subscription {
 class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`. Permissions with
   /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// information see [IAM
+  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();
@@ -3442,20 +3425,17 @@ class TestIamPermissionsResponse {
 /// A topic resource.
 class Topic {
   /// The resource name of the Cloud KMS CryptoKey to be used to protect access
-  /// to messages published on this topic.
-  ///
-  /// The expected format is `projects / * /locations / * /keyRings / *
-  /// /cryptoKeys / * `.
+  /// to messages published on this topic. The expected format is `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * `.
   core.String kmsKeyName;
 
-  /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-  /// managing labels</a>.
+  /// See [Creating and managing labels]
+  /// (https://cloud.google.com/pubsub/docs/labels).
   core.Map<core.String, core.String> labels;
 
   /// Policy constraining the set of Google Cloud Platform regions where
-  /// messages
-  /// published to the topic may be stored. If not present, then no constraints
-  /// are in effect.
+  /// messages published to the topic may be stored. If not present, then no
+  /// constraints are in effect.
   MessageStoragePolicy messageStoragePolicy;
 
   /// Required. The name of the topic. It must have the format
@@ -3508,8 +3488,8 @@ class UpdateSnapshotRequest {
   /// Required. The updated snapshot object.
   Snapshot snapshot;
 
-  /// Required. Indicates which fields in the provided snapshot to update.
-  /// Must be specified and non-empty.
+  /// Required. Indicates which fields in the provided snapshot to update. Must
+  /// be specified and non-empty.
   core.String updateMask;
 
   UpdateSnapshotRequest();
@@ -3575,8 +3555,7 @@ class UpdateTopicRequest {
   Topic topic;
 
   /// Required. Indicates which fields in the provided topic to update. Must be
-  /// specified
-  /// and non-empty. Note that if `update_mask` contains
+  /// specified and non-empty. Note that if `update_mask` contains
   /// "message_storage_policy" but the `message_storage_policy` is not set in
   /// the `topic` provided above, then the updated value is determined by the
   /// policy configured at the project or organization level.

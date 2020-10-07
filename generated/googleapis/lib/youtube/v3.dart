@@ -24,8 +24,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client youtube/v3';
 
-/// Supports core YouTube features, such as uploading videos, creating and
-/// managing playlists, searching for content, and much more.
+/// The YouTube Data API v3 is an API that provides access to YouTube data, such
+/// as videos, playlists, and channels.
 class YoutubeApi {
   /// Manage your YouTube account
   static const YoutubeScope = "https://www.googleapis.com/auth/youtube";
@@ -59,6 +59,8 @@ class YoutubeApi {
 
   final commons.ApiRequester _requester;
 
+  AbuseReportsResourceApi get abuseReports =>
+      new AbuseReportsResourceApi(_requester);
   ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
   CaptionsResourceApi get captions => new CaptionsResourceApi(_requester);
   ChannelBannersResourceApi get channelBanners =>
@@ -69,8 +71,6 @@ class YoutubeApi {
   CommentThreadsResourceApi get commentThreads =>
       new CommentThreadsResourceApi(_requester);
   CommentsResourceApi get comments => new CommentsResourceApi(_requester);
-  GuideCategoriesResourceApi get guideCategories =>
-      new GuideCategoriesResourceApi(_requester);
   I18nLanguagesResourceApi get i18nLanguages =>
       new I18nLanguagesResourceApi(_requester);
   I18nRegionsResourceApi get i18nRegions =>
@@ -97,6 +97,9 @@ class YoutubeApi {
       new SubscriptionsResourceApi(_requester);
   SuperChatEventsResourceApi get superChatEvents =>
       new SuperChatEventsResourceApi(_requester);
+  TestsResourceApi get tests => new TestsResourceApi(_requester);
+  ThirdPartyLinksResourceApi get thirdPartyLinks =>
+      new ThirdPartyLinksResourceApi(_requester);
   ThumbnailsResourceApi get thumbnails => new ThumbnailsResourceApi(_requester);
   VideoAbuseReportReasonsResourceApi get videoAbuseReportReasons =>
       new VideoAbuseReportReasonsResourceApi(_requester);
@@ -107,44 +110,38 @@ class YoutubeApi {
 
   YoutubeApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "youtube/v3/"})
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
-class ActivitiesResourceApi {
+class AbuseReportsResourceApi {
   final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi(commons.ApiRequester client) : _requester = client;
+  AbuseReportsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Posts a bulletin for a specific channel. (The user submitting the request
-  /// must be authorized to act on the channel's behalf.)
-  ///
-  /// Note: Even though an activity resource can contain information about
-  /// actions like a user rating a video or marking a video as a favorite, you
-  /// need to use other API methods to generate those activity resources. For
-  /// example, you would use the API's videos.rate() method to rate a video and
-  /// the playlistItems.insert() method to mark a video as a favorite.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
   /// properties that the API response will include.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Activity].
+  /// Completes with a [AbuseReport].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Activity> insert(Activity request, core.String part,
+  async.Future<AbuseReport> insert(
+      AbuseReport request, core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -156,15 +153,15 @@ class ActivitiesResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'activities';
+    _url = 'youtube/v3/abuseReports';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -172,63 +169,46 @@ class ActivitiesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new Activity.fromJson(data));
+    return _response.then((data) => new AbuseReport.fromJson(data));
   }
+}
 
-  /// Returns a list of channel activity events that match the request criteria.
-  /// For example, you can retrieve events associated with a particular channel,
-  /// events associated with the user's subscriptions and Google+ friends, or
-  /// the YouTube home page feed, which is customized for each user.
+class ActivitiesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ActivitiesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
-  /// more activity resource properties that the API response will include.
-  ///
-  /// If the parameter identifies a property that contains child properties, the
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
+  /// more activity resource properties that the API response will include. If
+  /// the parameter identifies a property that contains child properties, the
   /// child properties will be included in the response. For example, in an
   /// activity resource, the snippet property contains other properties that
   /// identify the type of activity, a display title for the activity, and so
-  /// forth. If you set part=snippet, the API response will also contain all of
-  /// those nested properties.
+  /// forth. If you set *part=snippet*, the API response will also contain all
+  /// of those nested properties.
   ///
-  /// [channelId] - The channelId parameter specifies a unique YouTube channel
-  /// ID. The API will then return a list of that channel's activities.
+  /// [home] - null
   ///
-  /// [home] - Set this parameter's value to true to retrieve the activity feed
-  /// that displays on the YouTube home page for the currently authenticated
-  /// user.
+  /// [mine] - null
   ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
+  /// [regionCode] - null
   ///
-  /// [mine] - Set this parameter's value to true to retrieve a feed of the
-  /// authenticated user's activities.
+  /// [publishedBefore] - null
   ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
   ///
-  /// [publishedAfter] - The publishedAfter parameter specifies the earliest
-  /// date and time that an activity could have occurred for that activity to be
-  /// included in the API response. If the parameter value specifies a day, but
-  /// not a time, then any activities that occurred that day will be included in
-  /// the result set. The value is specified in ISO 8601
-  /// (YYYY-MM-DDThh:mm:ss.sZ) format.
+  /// [channelId] - null
   ///
-  /// [publishedBefore] - The publishedBefore parameter specifies the date and
-  /// time before which an activity must have occurred for that activity to be
-  /// included in the API response. If the parameter value specifies a day, but
-  /// not a time, then any activities that occurred that day will be excluded
-  /// from the result set. The value is specified in ISO 8601
-  /// (YYYY-MM-DDThh:mm:ss.sZ) format.
+  /// [publishedAfter] - null
   ///
-  /// [regionCode] - The regionCode parameter instructs the API to return
-  /// results for the specified country. The parameter value is an ISO 3166-1
-  /// alpha-2 country code. YouTube uses this value when the authorized user's
-  /// previous activity on YouTube does not provide enough information to
-  /// generate the activity feed.
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -240,15 +220,15 @@ class ActivitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ActivityListResponse> list(core.String part,
-      {core.String channelId,
-      core.bool home,
-      core.int maxResults,
+  async.Future<ActivityListResponse> list(core.List<core.String> part,
+      {core.bool home,
       core.bool mine,
-      core.String pageToken,
-      core.DateTime publishedAfter,
-      core.DateTime publishedBefore,
       core.String regionCode,
+      core.String publishedBefore,
+      core.String pageToken,
+      core.String channelId,
+      core.String publishedAfter,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -257,39 +237,39 @@ class ActivitiesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
-    }
+    _queryParams["part"] = part;
     if (home != null) {
       _queryParams["home"] = ["${home}"];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
     }
+    if (regionCode != null) {
+      _queryParams["regionCode"] = [regionCode];
+    }
+    if (publishedBefore != null) {
+      _queryParams["publishedBefore"] = [publishedBefore];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
     if (publishedAfter != null) {
-      _queryParams["publishedAfter"] = [(publishedAfter).toIso8601String()];
+      _queryParams["publishedAfter"] = [publishedAfter];
     }
-    if (publishedBefore != null) {
-      _queryParams["publishedBefore"] = [(publishedBefore).toIso8601String()];
-    }
-    if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'activities';
+    _url = 'youtube/v3/activities';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -306,29 +286,25 @@ class CaptionsResourceApi {
 
   CaptionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a specified caption track.
+  /// Deletes a resource.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter identifies the caption track that is being
-  /// deleted. The value is a caption track ID as identified by the id property
-  /// in a caption resource.
+  /// [id] - null
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The actual CMS account that the user authenticates
+  /// with must be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
   /// be on behalf of
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The actual
-  /// CMS account that the user authenticates with must be linked to the
-  /// specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -339,8 +315,8 @@ class CaptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String id,
-      {core.String onBehalfOf,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
+      core.String onBehalfOf,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -353,11 +329,11 @@ class CaptionsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-    if (onBehalfOf != null) {
-      _queryParams["onBehalfOf"] = [onBehalfOf];
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (onBehalfOf != null) {
+      _queryParams["onBehalfOf"] = [onBehalfOf];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -365,7 +341,7 @@ class CaptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'captions';
+    _url = 'youtube/v3/captions';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -376,48 +352,31 @@ class CaptionsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Downloads a caption track. The caption track is returned in its original
-  /// format unless the request specifies a value for the tfmt parameter and in
-  /// its original language unless the request specifies a value for the tlang
-  /// parameter.
+  /// Downloads a caption track.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter identifies the caption track that is being
-  /// retrieved. The value is a caption track ID as identified by the id
-  /// property in a caption resource.
+  /// [id] - The ID of the caption track to download, required for One Platform.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The actual CMS account that the user authenticates
+  /// with must be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
   /// be on behalf of
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// [tlang] - tlang is the language code; machine translate the captions into
+  /// this language.
   ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The actual
-  /// CMS account that the user authenticates with must be linked to the
-  /// specified YouTube content owner.
-  ///
-  /// [tfmt] - The tfmt parameter specifies that the caption track should be
-  /// returned in a specific format. If the parameter is not included in the
-  /// request, the track is returned in its original format.
-  /// Possible string values are:
-  /// - "sbv" : SubViewer subtitle.
-  /// - "scc" : Scenarist Closed Caption format.
-  /// - "srt" : SubRip subtitle.
-  /// - "ttml" : Timed Text Markup Language caption.
-  /// - "vtt" : Web Video Text Tracks caption.
-  ///
-  /// [tlang] - The tlang parameter specifies that the API response should
-  /// return a translation of the specified caption track. The parameter value
-  /// is an ISO 639-1 two-letter language code that identifies the desired
-  /// caption language. The translation is generated by using machine
-  /// translation, such as Google Translate.
+  /// [tfmt] - Convert the captions into this format. Supported options are sbv,
+  /// srt, and vtt.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -432,10 +391,10 @@ class CaptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future download(core.String id,
-      {core.String onBehalfOf,
-      core.String onBehalfOfContentOwner,
-      core.String tfmt,
+      {core.String onBehalfOfContentOwner,
+      core.String onBehalfOf,
       core.String tlang,
+      core.String tfmt,
       core.String $fields,
       commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
@@ -449,17 +408,17 @@ class CaptionsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-    if (onBehalfOf != null) {
-      _queryParams["onBehalfOf"] = [onBehalfOf];
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-    if (tfmt != null) {
-      _queryParams["tfmt"] = [tfmt];
+    if (onBehalfOf != null) {
+      _queryParams["onBehalfOf"] = [onBehalfOf];
     }
     if (tlang != null) {
       _queryParams["tlang"] = [tlang];
+    }
+    if (tfmt != null) {
+      _queryParams["tfmt"] = [tfmt];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -467,7 +426,7 @@ class CaptionsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'captions/' + commons.Escaper.ecapeVariable('$id');
+    _url = 'youtube/v3/captions/' + commons.Escaper.ecapeVariable('$id');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -483,39 +442,31 @@ class CaptionsResourceApi {
     }
   }
 
-  /// Uploads a caption track.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies the caption resource parts that the
-  /// API response will include. Set the parameter value to snippet.
+  /// [part] - The *part* parameter specifies the caption resource parts that
+  /// the API response will include. Set the parameter value to snippet.
+  ///
+  /// [sync] - Extra parameter to allow automatically syncing the uploaded
+  /// caption/transcript with the audio.
   ///
   /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
   /// be on behalf of
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The actual
-  /// CMS account that the user authenticates with must be linked to the
-  /// specified YouTube content owner.
-  ///
-  /// [sync] - The sync parameter indicates whether YouTube should automatically
-  /// synchronize the caption file with the audio track of the video. If you set
-  /// the value to true, YouTube will disregard any time codes that are in the
-  /// uploaded caption file and generate new time codes for the captions.
-  ///
-  /// You should set the sync parameter to true if you are uploading a
-  /// transcript, which has no time codes, or if you suspect the time codes in
-  /// your file are incorrect and want YouTube to try to fix them.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The actual CMS account that the user authenticates
+  /// with must be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -533,10 +484,10 @@ class CaptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Caption> insert(Caption request, core.String part,
-      {core.String onBehalfOf,
+  async.Future<Caption> insert(Caption request, core.List<core.String> part,
+      {core.bool sync,
+      core.String onBehalfOf,
       core.String onBehalfOfContentOwner,
-      core.bool sync,
       core.String $fields,
       commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
@@ -550,18 +501,18 @@ class CaptionsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
+    if (sync != null) {
+      _queryParams["sync"] = ["${sync}"];
+    }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (sync != null) {
-      _queryParams["sync"] = ["${sync}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -571,7 +522,7 @@ class CaptionsResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'captions';
+      _url = 'youtube/v3/captions';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/captions';
     } else {
@@ -587,39 +538,31 @@ class CaptionsResourceApi {
     return _response.then((data) => new Caption.fromJson(data));
   }
 
-  /// Returns a list of caption tracks that are associated with a specified
-  /// video. Note that the API response does not contain the actual captions and
-  /// that the captions.download method provides the ability to retrieve a
-  /// caption track.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [videoId] - Returns the captions for the specified video.
+  ///
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more caption resource parts that the API response will include. The part
   /// names that you can include in the parameter value are id and snippet.
   ///
-  /// [videoId] - The videoId parameter specifies the YouTube video ID of the
-  /// video for which the API should return caption tracks.
-  ///
-  /// [id] - The id parameter specifies a comma-separated list of IDs that
-  /// identify the caption resources that should be retrieved. Each ID must
-  /// identify a caption track associated with the specified video.
+  /// [id] - Returns the captions with the given IDs for Stubby or Apiary.
   ///
   /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
   /// on behalf of.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The actual
-  /// CMS account that the user authenticates with must be linked to the
-  /// specified YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The actual CMS account that the user authenticates
+  /// with must be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -631,8 +574,9 @@ class CaptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CaptionListResponse> list(core.String part, core.String videoId,
-      {core.String id,
+  async.Future<CaptionListResponse> list(
+      core.String videoId, core.List<core.String> part,
+      {core.List<core.String> id,
       core.String onBehalfOf,
       core.String onBehalfOfContentOwner,
       core.String $fields}) {
@@ -643,16 +587,16 @@ class CaptionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
-      throw new core.ArgumentError("Parameter part is required.");
-    }
-    _queryParams["part"] = [part];
     if (videoId == null) {
       throw new core.ArgumentError("Parameter videoId is required.");
     }
     _queryParams["videoId"] = [videoId];
+    if (part == null || part.isEmpty) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = part;
     if (id != null) {
-      _queryParams["id"] = [id];
+      _queryParams["id"] = id;
     }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
@@ -664,7 +608,7 @@ class CaptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'captions';
+    _url = 'youtube/v3/captions';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -675,42 +619,32 @@ class CaptionsResourceApi {
     return _response.then((data) => new CaptionListResponse.fromJson(data));
   }
 
-  /// Updates a caption track. When updating a caption track, you can change the
-  /// track's draft status, upload a new caption file for the track, or both.
+  /// Updates an existing resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
-  /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include. Set the property value to
-  /// snippet if you are updating the track's draft status. Otherwise, set the
-  /// property value to id.
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
+  /// more caption resource parts that the API response will include. The part
+  /// names that you can include in the parameter value are id and snippet.
+  ///
+  /// [sync] - Extra parameter to allow automatically syncing the uploaded
+  /// caption/transcript with the audio.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The actual CMS account that the user authenticates
+  /// with must be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
-  /// be on behalf of
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The actual
-  /// CMS account that the user authenticates with must be linked to the
-  /// specified YouTube content owner.
-  ///
-  /// [sync] - Note: The API server only processes the parameter value if the
-  /// request contains an updated caption file.
-  ///
-  /// The sync parameter indicates whether YouTube should automatically
-  /// synchronize the caption file with the audio track of the video. If you set
-  /// the value to true, YouTube will automatically synchronize the caption
-  /// track with the audio track.
+  /// on behalf of.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -728,10 +662,10 @@ class CaptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Caption> update(Caption request, core.String part,
-      {core.String onBehalfOf,
+  async.Future<Caption> update(Caption request, core.List<core.String> part,
+      {core.bool sync,
       core.String onBehalfOfContentOwner,
-      core.bool sync,
+      core.String onBehalfOf,
       core.String $fields,
       commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
@@ -745,18 +679,18 @@ class CaptionsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (onBehalfOf != null) {
-      _queryParams["onBehalfOf"] = [onBehalfOf];
+    _queryParams["part"] = part;
+    if (sync != null) {
+      _queryParams["sync"] = ["${sync}"];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-    if (sync != null) {
-      _queryParams["sync"] = ["${sync}"];
+    if (onBehalfOf != null) {
+      _queryParams["onBehalfOf"] = [onBehalfOf];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -766,7 +700,7 @@ class CaptionsResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'captions';
+      _url = 'youtube/v3/captions';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/captions';
     } else {
@@ -788,44 +722,42 @@ class ChannelBannersResourceApi {
 
   ChannelBannersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Uploads a channel banner image to YouTube. This method represents the
-  /// first two steps in a three-step process to update the banner image for a
-  /// channel:
-  ///
-  /// - Call the channelBanners.insert method to upload the binary image data to
-  /// YouTube. The image must have a 16:9 aspect ratio and be at least 2120x1192
-  /// pixels.
-  /// - Extract the url property's value from the response that the API returns
-  /// for step 1.
-  /// - Call the channels.update method to update the channel's branding
-  /// settings. Set the brandingSettings.image.bannerExternalUrl property's
-  /// value to the URL obtained in step 2.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [channelId] - The channelId parameter identifies the YouTube channel to
-  /// which the banner is uploaded. The channelId parameter was introduced as a
-  /// required parameter in May 2017. As this was a backward-incompatible
-  /// change, channelBanners.insert requests that do not specify this parameter
-  /// will not return an error until six months have passed from the time that
-  /// the parameter was introduced. Please see the API Terms of Service for the
-  /// official policy regarding backward incompatible changes and the API
-  /// revision history for the exact date that the parameter was introduced.
+  /// [channelId] - Unused, channel_id is currently derived from the security
+  /// context of the requestor.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The actual CMS account that the user authenticates
+  /// with must be linked to the specified YouTube content owner.
   ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -846,6 +778,7 @@ class ChannelBannersResourceApi {
   async.Future<ChannelBannerResource> insert(ChannelBannerResource request,
       {core.String channelId,
       core.String onBehalfOfContentOwner,
+      core.String onBehalfOfContentOwnerChannel,
       core.String $fields,
       commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
@@ -865,6 +798,11 @@ class ChannelBannersResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
+    if (onBehalfOfContentOwnerChannel != null) {
+      _queryParams["onBehalfOfContentOwnerChannel"] = [
+        onBehalfOfContentOwnerChannel
+      ];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -873,7 +811,7 @@ class ChannelBannersResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'channelBanners/insert';
+      _url = 'youtube/v3/channelBanners/insert';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/channelBanners/insert';
     } else {
@@ -895,26 +833,22 @@ class ChannelSectionsResourceApi {
 
   ChannelSectionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a channelSection.
+  /// Deletes a resource.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube channelSection ID for the
-  /// resource that is being deleted. In a channelSection resource, the id
-  /// property specifies the YouTube channelSection ID.
+  /// [id] - null
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -946,7 +880,7 @@ class ChannelSectionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'channelSections';
+    _url = 'youtube/v3/channelSections';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -957,51 +891,44 @@ class ChannelSectionsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Adds a channelSection for the authenticated user's channel.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
+  /// properties that the API response will include. The part names that you can
+  /// include in the parameter value are snippet and contentDetails.
   ///
-  /// The part names that you can include in the parameter value are snippet and
-  /// contentDetails.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1013,7 +940,8 @@ class ChannelSectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChannelSection> insert(ChannelSection request, core.String part,
+  async.Future<ChannelSection> insert(
+      ChannelSection request, core.List<core.String> part,
       {core.String onBehalfOfContentOwner,
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
@@ -1027,10 +955,10 @@ class ChannelSectionsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -1043,7 +971,7 @@ class ChannelSectionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'channelSections';
+    _url = 'youtube/v3/channelSections';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1054,52 +982,39 @@ class ChannelSectionsResourceApi {
     return _response.then((data) => new ChannelSection.fromJson(data));
   }
 
-  /// Returns channelSection resources that match the API request criteria.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more channelSection resource properties that the API response will
   /// include. The part names that you can include in the parameter value are
-  /// id, snippet, and contentDetails.
+  /// id, snippet, and contentDetails. If the parameter identifies a property
+  /// that contains child properties, the child properties will be included in
+  /// the response. For example, in a channelSection resource, the snippet
+  /// property contains other properties, such as a display title for the
+  /// channelSection. If you set *part=snippet*, the API response will also
+  /// contain all of those nested properties.
   ///
-  /// If the parameter identifies a property that contains child properties, the
-  /// child properties will be included in the response. For example, in a
-  /// channelSection resource, the snippet property contains other properties,
-  /// such as a display title for the channelSection. If you set part=snippet,
-  /// the API response will also contain all of those nested properties.
+  /// [id] - Return the ChannelSections with the given IDs for Stubby or Apiary.
   ///
-  /// [channelId] - The channelId parameter specifies a YouTube channel ID. The
-  /// API will only return that channel's channelSections.
+  /// [hl] - Return content in specified language
   ///
-  /// [hl] - The hl parameter indicates that the snippet.localized property
-  /// values in the returned channelSection resources should be in the specified
-  /// language if localized values for that language are available. For example,
-  /// if the API request specifies hl=de, the snippet.localized properties in
-  /// the API response will contain German titles if German titles are
-  /// available. Channel owners can provide localized channel section titles
-  /// using either the channelSections.insert or channelSections.update method.
+  /// [channelId] - Return the ChannelSections owned by the specified channel
+  /// ID.
   ///
-  /// [id] - The id parameter specifies a comma-separated list of the YouTube
-  /// channelSection ID(s) for the resource(s) that are being retrieved. In a
-  /// channelSection resource, the id property specifies the YouTube
-  /// channelSection ID.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
-  /// [mine] - Set this parameter's value to true to retrieve a feed of the
-  /// authenticated user's channelSections.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [mine] - Return the ChannelSections owned by the authenticated user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1111,12 +1026,12 @@ class ChannelSectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChannelSectionListResponse> list(core.String part,
-      {core.String channelId,
+  async.Future<ChannelSectionListResponse> list(core.List<core.String> part,
+      {core.List<core.String> id,
       core.String hl,
-      core.String id,
-      core.bool mine,
+      core.String channelId,
       core.String onBehalfOfContentOwner,
+      core.bool mine,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1125,30 +1040,30 @@ class ChannelSectionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
+    _queryParams["part"] = part;
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if (hl != null) {
       _queryParams["hl"] = [hl];
     }
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
-    if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'channelSections';
+    _url = 'youtube/v3/channelSections';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1160,31 +1075,27 @@ class ChannelSectionsResourceApi {
         .then((data) => new ChannelSectionListResponse.fromJson(data));
   }
 
-  /// Update a channelSection.
+  /// Updates an existing resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
+  /// properties that the API response will include. The part names that you can
+  /// include in the parameter value are snippet and contentDetails.
   ///
-  /// The part names that you can include in the parameter value are snippet and
-  /// contentDetails.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1196,7 +1107,8 @@ class ChannelSectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChannelSection> update(ChannelSection request, core.String part,
+  async.Future<ChannelSection> update(
+      ChannelSection request, core.List<core.String> part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1208,10 +1120,10 @@ class ChannelSectionsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -1219,7 +1131,7 @@ class ChannelSectionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'channelSections';
+    _url = 'youtube/v3/channelSections';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -1236,70 +1148,53 @@ class ChannelsResourceApi {
 
   ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a collection of zero or more channel resources that match the
-  /// request criteria.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
-  /// more channel resource properties that the API response will include.
-  ///
-  /// If the parameter identifies a property that contains child properties, the
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
+  /// more channel resource properties that the API response will include. If
+  /// the parameter identifies a property that contains child properties, the
   /// child properties will be included in the response. For example, in a
   /// channel resource, the contentDetails property contains other properties,
-  /// such as the uploads properties. As such, if you set part=contentDetails,
+  /// such as the uploads properties. As such, if you set *part=contentDetails*,
   /// the API response will also contain all of those nested properties.
   ///
-  /// [categoryId] - The categoryId parameter specifies a YouTube guide
-  /// category, thereby requesting YouTube channels associated with that
-  /// category.
-  ///
-  /// [forUsername] - The forUsername parameter specifies a YouTube username,
-  /// thereby requesting the channel associated with that username.
-  ///
-  /// [hl] - The hl parameter should be used for filter out the properties that
-  /// are not in the given language. Used for the brandingSettings part.
-  ///
-  /// [id] - The id parameter specifies a comma-separated list of the YouTube
-  /// channel ID(s) for the resource(s) that are being retrieved. In a channel
-  /// resource, the id property specifies the channel's YouTube channel ID.
-  ///
-  /// [managedByMe] - Note: This parameter is intended exclusively for YouTube
-  /// content partners.
-  ///
-  /// Set this parameter's value to true to instruct the API to only return
-  /// channels managed by the content owner that the onBehalfOfContentOwner
-  /// parameter specifies. The user must be authenticated as a CMS account
-  /// linked to the specified content owner and onBehalfOfContentOwner must be
-  /// provided.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
-  ///
-  /// [mine] - Set this parameter's value to true to instruct the API to only
-  /// return channels owned by the authenticated user.
-  ///
-  /// [mySubscribers] - Use the subscriptions.list method and its mySubscribers
-  /// parameter to retrieve a list of subscribers to the authenticated user's
-  /// channel.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [hl] - Stands for "host language". Specifies the localization language of
+  /// the metadata to be filled into snippet.localized. The field is filled with
+  /// the default metadata if there is no localization in the specified
+  /// language. The parameter value must be a language code included in the list
+  /// returned by the i18nLanguages.list method (e.g. en_US, es_MX).
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [managedByMe] - Return the channels managed by the authenticated user.
+  ///
+  /// [categoryId] - Return the channels within the specified guide category ID.
+  ///
+  /// [mySubscribers] - Return the channels subscribed to the authenticated user
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [forUsername] - Return the channel associated with a YouTube username.
+  ///
+  /// [mine] - Return the ids of channels owned by the authenticated user.
+  ///
+  /// [id] - Return the channels with the specified IDs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1311,17 +1206,17 @@ class ChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChannelListResponse> list(core.String part,
-      {core.String categoryId,
-      core.String forUsername,
+  async.Future<ChannelListResponse> list(core.List<core.String> part,
+      {core.String pageToken,
       core.String hl,
-      core.String id,
-      core.bool managedByMe,
-      core.int maxResults,
-      core.bool mine,
-      core.bool mySubscribers,
       core.String onBehalfOfContentOwner,
-      core.String pageToken,
+      core.bool managedByMe,
+      core.String categoryId,
+      core.bool mySubscribers,
+      core.int maxResults,
+      core.String forUsername,
+      core.bool mine,
+      core.List<core.String> id,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1330,45 +1225,45 @@ class ChannelsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (categoryId != null) {
-      _queryParams["categoryId"] = [categoryId];
-    }
-    if (forUsername != null) {
-      _queryParams["forUsername"] = [forUsername];
+    _queryParams["part"] = part;
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (hl != null) {
       _queryParams["hl"] = [hl];
     }
-    if (id != null) {
-      _queryParams["id"] = [id];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if (managedByMe != null) {
       _queryParams["managedByMe"] = ["${managedByMe}"];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
+    if (categoryId != null) {
+      _queryParams["categoryId"] = [categoryId];
     }
     if (mySubscribers != null) {
       _queryParams["mySubscribers"] = ["${mySubscribers}"];
     }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (forUsername != null) {
+      _queryParams["forUsername"] = [forUsername];
+    }
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
+    }
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'channels';
+    _url = 'youtube/v3/channels';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1379,32 +1274,27 @@ class ChannelsResourceApi {
     return _response.then((data) => new ChannelListResponse.fromJson(data));
   }
 
-  /// Updates a channel's metadata. Note that this method currently only
-  /// supports updates to the channel resource's brandingSettings and
-  /// invideoPromotion objects and their child properties.
+  /// Updates an existing resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
+  /// properties that the API response will include. The API currently only
+  /// allows the parameter value to be set to either brandingSettings or
+  /// invideoPromotion. (You cannot update both of those parts with a single
+  /// request.) Note that this method overrides the existing values for all of
+  /// the mutable properties that are contained in any parts that the parameter
+  /// value specifies.
   ///
-  /// The API currently only allows the parameter value to be set to either
-  /// brandingSettings or invideoPromotion. (You cannot update both of those
-  /// parts with a single request.)
-  ///
-  /// Note that this method overrides the existing values for all of the mutable
-  /// properties that are contained in any parts that the parameter value
-  /// specifies.
-  ///
-  /// [onBehalfOfContentOwner] - The onBehalfOfContentOwner parameter indicates
-  /// that the authenticated user is acting on behalf of the content owner
-  /// specified in the parameter value. This parameter is intended for YouTube
-  /// content partners that own and manage many different YouTube channels. It
-  /// allows content owners to authenticate once and get access to all their
-  /// video and channel data, without having to provide authentication
+  /// [onBehalfOfContentOwner] - The *onBehalfOfContentOwner* parameter
+  /// indicates that the authenticated user is acting on behalf of the content
+  /// owner specified in the parameter value. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and get access to
+  /// all their video and channel data, without having to provide authentication
   /// credentials for each individual channel. The actual CMS account that the
   /// user authenticates with needs to be linked to the specified YouTube
   /// content owner.
@@ -1419,7 +1309,7 @@ class ChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> update(Channel request, core.String part,
+  async.Future<Channel> update(Channel request, core.List<core.String> part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1431,10 +1321,10 @@ class ChannelsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -1442,7 +1332,7 @@ class ChannelsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'channels';
+    _url = 'youtube/v3/channels';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -1459,14 +1349,13 @@ class CommentThreadsResourceApi {
 
   CommentThreadsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new top-level comment. To add a reply to an existing comment,
-  /// use the comments.insert method instead.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter identifies the properties that the API
+  /// [part] - The *part* parameter identifies the properties that the API
   /// response will include. Set the parameter value to snippet. The snippet
   /// part has a quota cost of 2 units.
   ///
@@ -1480,7 +1369,8 @@ class CommentThreadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CommentThread> insert(CommentThread request, core.String part,
+  async.Future<CommentThread> insert(
+      CommentThread request, core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1492,15 +1382,15 @@ class CommentThreadsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'commentThreads';
+    _url = 'youtube/v3/commentThreads';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1511,83 +1401,54 @@ class CommentThreadsResourceApi {
     return _response.then((data) => new CommentThread.fromJson(data));
   }
 
-  /// Returns a list of comment threads that match the API request parameters.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more commentThread resource properties that the API response will include.
   ///
-  /// [allThreadsRelatedToChannelId] - The allThreadsRelatedToChannelId
-  /// parameter instructs the API to return all comment threads associated with
-  /// the specified channel. The response can include comments about the channel
-  /// or about the channel's videos.
-  ///
-  /// [channelId] - The channelId parameter instructs the API to return comment
-  /// threads containing comments about the specified channel. (The response
-  /// will not include comments left on videos that the channel uploaded.)
-  ///
-  /// [id] - The id parameter specifies a comma-separated list of comment thread
-  /// IDs for the resources that should be retrieved.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  ///
-  /// Note: This parameter is not supported for use in conjunction with the id
-  /// parameter.
-  /// Value must be between "1" and "100".
-  ///
-  /// [moderationStatus] - Set this parameter to limit the returned comment
-  /// threads to a particular moderation state.
-  ///
-  /// Note: This parameter is not supported for use in conjunction with the id
-  /// parameter.
-  /// Possible string values are:
-  /// - "heldForReview" : Retrieve comment threads that are awaiting review by a
-  /// moderator. A comment thread can be included in the response if the
-  /// top-level comment or at least one of the replies to that comment are
-  /// awaiting review.
-  /// - "likelySpam" : Retrieve comment threads classified as likely to be spam.
-  /// A comment thread can be included in the response if the top-level comment
-  /// or at least one of the replies to that comment is considered likely to be
-  /// spam.
-  /// - "published" : Retrieve threads of published comments. This is the
-  /// default value. A comment thread can be included in the response if its
-  /// top-level comment has been published.
-  ///
-  /// [order] - The order parameter specifies the order in which the API
-  /// response should list comment threads. Valid values are:
-  /// - time - Comment threads are ordered by time. This is the default
-  /// behavior.
-  /// - relevance - Comment threads are ordered by relevance.Note: This
-  /// parameter is not supported for use in conjunction with the id parameter.
-  /// Possible string values are:
-  /// - "relevance" : Order by relevance.
-  /// - "time" : Order by time.
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
-  /// property identifies the next page of the result that can be retrieved.
+  /// and prevPageToken properties identify other pages that could be retrieved.
   ///
-  /// Note: This parameter is not supported for use in conjunction with the id
-  /// parameter.
-  ///
-  /// [searchTerms] - The searchTerms parameter instructs the API to limit the
-  /// API response to only contain comments that contain the specified search
-  /// terms.
-  ///
-  /// Note: This parameter is not supported for use in conjunction with the id
-  /// parameter.
-  ///
-  /// [textFormat] - Set this parameter's value to html or plainText to instruct
-  /// the API to return the comments left by users in html formatted or in plain
-  /// text.
+  /// [textFormat] - The requested text format for the returned comments.
   /// Possible string values are:
+  /// - "textFormatUnspecified"
   /// - "html" : Returns the comments in HTML format. This is the default value.
   /// - "plainText" : Returns the comments in plain text format.
   ///
-  /// [videoId] - The videoId parameter instructs the API to return comment
-  /// threads associated with the specified video ID.
+  /// [searchTerms] - Limits the returned comment threads to those matching the
+  /// specified key words. Not compatible with the 'id' filter.
+  ///
+  /// [moderationStatus] - Limits the returned comment threads to those with the
+  /// specified moderation status. Not compatible with the 'id' filter. Valid
+  /// values: published, heldForReview, likelySpam.
+  /// Possible string values are:
+  /// - "published" : The comment is available for public display.
+  /// - "heldForReview" : The comment is awaiting review by a moderator.
+  /// - "likelySpam"
+  /// - "rejected" : The comment is unfit for display.
+  ///
+  /// [channelId] - Returns the comment threads for all the channel comments (ie
+  /// does not include comments left on videos).
+  ///
+  /// [allThreadsRelatedToChannelId] - Returns the comment threads of all videos
+  /// of the channel and the channel comments as well.
+  ///
+  /// [id] - Returns the comment threads with the given IDs for Stubby or
+  /// Apiary.
+  ///
+  /// [videoId] - Returns the comment threads of the specified video.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [order] - null
+  /// Possible string values are:
+  /// - "orderUnspecified"
+  /// - "time" : Order by time.
+  /// - "relevance" : Order by relevance.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1599,17 +1460,17 @@ class CommentThreadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CommentThreadListResponse> list(core.String part,
-      {core.String allThreadsRelatedToChannelId,
-      core.String channelId,
-      core.String id,
-      core.int maxResults,
-      core.String moderationStatus,
-      core.String order,
-      core.String pageToken,
-      core.String searchTerms,
+  async.Future<CommentThreadListResponse> list(core.List<core.String> part,
+      {core.String pageToken,
       core.String textFormat,
+      core.String searchTerms,
+      core.String moderationStatus,
+      core.String channelId,
+      core.String allThreadsRelatedToChannelId,
+      core.List<core.String> id,
       core.String videoId,
+      core.int maxResults,
+      core.String order,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1618,47 +1479,47 @@ class CommentThreadsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (textFormat != null) {
+      _queryParams["textFormat"] = [textFormat];
+    }
+    if (searchTerms != null) {
+      _queryParams["searchTerms"] = [searchTerms];
+    }
+    if (moderationStatus != null) {
+      _queryParams["moderationStatus"] = [moderationStatus];
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
     if (allThreadsRelatedToChannelId != null) {
       _queryParams["allThreadsRelatedToChannelId"] = [
         allThreadsRelatedToChannelId
       ];
     }
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
-    }
     if (id != null) {
-      _queryParams["id"] = [id];
+      _queryParams["id"] = id;
+    }
+    if (videoId != null) {
+      _queryParams["videoId"] = [videoId];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (moderationStatus != null) {
-      _queryParams["moderationStatus"] = [moderationStatus];
-    }
     if (order != null) {
       _queryParams["order"] = [order];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (searchTerms != null) {
-      _queryParams["searchTerms"] = [searchTerms];
-    }
-    if (textFormat != null) {
-      _queryParams["textFormat"] = [textFormat];
-    }
-    if (videoId != null) {
-      _queryParams["videoId"] = [videoId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'commentThreads';
+    _url = 'youtube/v3/commentThreads';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1670,13 +1531,13 @@ class CommentThreadsResourceApi {
         .then((data) => new CommentThreadListResponse.fromJson(data));
   }
 
-  /// Modifies the top-level comment in a comment thread.
+  /// Updates an existing resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of
+  /// [part] - The *part* parameter specifies a comma-separated list of
   /// commentThread resource properties that the API response will include. You
   /// must at least include the snippet part in the parameter value since that
   /// part contains all of the properties that the API request can update.
@@ -1691,7 +1552,8 @@ class CommentThreadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CommentThread> update(CommentThread request, core.String part,
+  async.Future<CommentThread> update(
+      CommentThread request, core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1703,15 +1565,15 @@ class CommentThreadsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'commentThreads';
+    _url = 'youtube/v3/commentThreads';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -1728,12 +1590,11 @@ class CommentsResourceApi {
 
   CommentsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a comment.
+  /// Deletes a resource.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the comment ID for the resource that is
-  /// being deleted.
+  /// [id] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1761,7 +1622,7 @@ class CommentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'comments';
+    _url = 'youtube/v3/comments';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -1772,14 +1633,13 @@ class CommentsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Creates a reply to an existing comment. Note: To create a top-level
-  /// comment, use the commentThreads.insert method.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter identifies the properties that the API
+  /// [part] - The *part* parameter identifies the properties that the API
   /// response will include. Set the parameter value to snippet. The snippet
   /// part has a quota cost of 2 units.
   ///
@@ -1793,7 +1653,7 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Comment> insert(Comment request, core.String part,
+  async.Future<Comment> insert(Comment request, core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1805,15 +1665,15 @@ class CommentsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'comments';
+    _url = 'youtube/v3/comments';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1824,42 +1684,31 @@ class CommentsResourceApi {
     return _response.then((data) => new Comment.fromJson(data));
   }
 
-  /// Returns a list of comments that match the API request parameters.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more comment resource properties that the API response will include.
   ///
-  /// [id] - The id parameter specifies a comma-separated list of comment IDs
-  /// for the resources that are being retrieved. In a comment resource, the id
-  /// property specifies the comment's ID.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
   ///
-  /// Note: This parameter is not supported for use in conjunction with the id
-  /// parameter.
-  /// Value must be between "1" and "100".
+  /// [parentId] - Returns replies to the specified comment. Note, currently
+  /// YouTube features only one level of replies (ie replies to top level
+  /// comments). However replies to replies may be supported in the future.
   ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
-  /// property identifies the next page of the result that can be retrieved.
+  /// and prevPageToken properties identify other pages that could be retrieved.
   ///
-  /// Note: This parameter is not supported for use in conjunction with the id
-  /// parameter.
-  ///
-  /// [parentId] - The parentId parameter specifies the ID of the comment for
-  /// which replies should be retrieved.
-  ///
-  /// Note: YouTube currently supports replies only for top-level comments.
-  /// However, replies to replies may be supported in the future.
-  ///
-  /// [textFormat] - This parameter indicates whether the API should return
-  /// comments formatted as HTML or as plain text.
+  /// [textFormat] - The requested text format for the returned comments.
   /// Possible string values are:
+  /// - "textFormatUnspecified"
   /// - "html" : Returns the comments in HTML format. This is the default value.
   /// - "plainText" : Returns the comments in plain text format.
+  ///
+  /// [id] - Returns the comments with the given IDs for One Platform.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1871,12 +1720,12 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CommentListResponse> list(core.String part,
-      {core.String id,
-      core.int maxResults,
-      core.String pageToken,
+  async.Future<CommentListResponse> list(core.List<core.String> part,
+      {core.int maxResults,
       core.String parentId,
+      core.String pageToken,
       core.String textFormat,
+      core.List<core.String> id,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1885,30 +1734,30 @@ class CommentsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
+    _queryParams["part"] = part;
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (parentId != null) {
       _queryParams["parentId"] = [parentId];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (textFormat != null) {
       _queryParams["textFormat"] = [textFormat];
+    }
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'comments';
+    _url = 'youtube/v3/comments';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1924,8 +1773,8 @@ class CommentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies a comma-separated list of IDs of
-  /// comments that the caller believes should be classified as spam.
+  /// [id] - Flags the comments with the given IDs as spam in the caller's
+  /// opinion.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1935,7 +1784,7 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future markAsSpam(core.String id, {core.String $fields}) {
+  async.Future markAsSpam(core.List<core.String> id, {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1943,17 +1792,17 @@ class CommentsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (id == null) {
+    if (id == null || id.isEmpty) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-    _queryParams["id"] = [id];
+    _queryParams["id"] = id;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
 
-    _url = 'comments/markAsSpam';
+    _url = 'youtube/v3/comments/markAsSpam';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1964,35 +1813,26 @@ class CommentsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Sets the moderation status of one or more comments. The API request must
-  /// be authorized by the owner of the channel or video associated with the
-  /// comments.
+  /// Sets the moderation status of one or more comments.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies a comma-separated list of IDs that
-  /// identify the comments for which you are updating the moderation status.
+  /// [id] - Modifies the moderation status of the comments with the given IDs
   ///
-  /// [moderationStatus] - Identifies the new moderation status of the specified
-  /// comments.
+  /// [moderationStatus] - Specifies the requested moderation status. Note,
+  /// comments can be in statuses, which are not available through this call.
+  /// For example, this call does not allow to mark a comment as 'likely spam'.
+  /// Valid values: MODERATION_STATUS_PUBLISHED,
+  /// MODERATION_STATUS_HELD_FOR_REVIEW, MODERATION_STATUS_REJECTED.
   /// Possible string values are:
-  /// - "heldForReview" : Marks a comment as awaiting review by a moderator.
-  /// - "published" : Clears a comment for public display.
-  /// - "rejected" : Rejects a comment as being unfit for display. This action
-  /// also effectively hides all replies to the rejected comment.
+  /// - "published" : The comment is available for public display.
+  /// - "heldForReview" : The comment is awaiting review by a moderator.
+  /// - "likelySpam"
+  /// - "rejected" : The comment is unfit for display.
   ///
-  /// Note: The API does not currently provide a way to list or otherwise
-  /// discover rejected comments. However, you can change the moderation status
-  /// of a rejected comment if you still know its ID. If you were to change the
-  /// moderation status of a rejected comment, the comment replies would
-  /// subsequently be discoverable again as well.
-  ///
-  /// [banAuthor] - The banAuthor parameter lets you indicate that you want to
-  /// automatically reject any additional comments written by the comment's
-  /// author. Set the parameter value to true to ban the author.
-  ///
-  /// Note: This parameter is only valid if the moderationStatus parameter is
-  /// also set to rejected.
+  /// [banAuthor] - If set to true the author of the comment gets added to the
+  /// ban list. This means all future comments of the author will autmomatically
+  /// be rejected. Only valid in combination with STATUS_REJECTED.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2002,7 +1842,8 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future setModerationStatus(core.String id, core.String moderationStatus,
+  async.Future setModerationStatus(
+      core.List<core.String> id, core.String moderationStatus,
       {core.bool banAuthor, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2011,10 +1852,10 @@ class CommentsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (id == null) {
+    if (id == null || id.isEmpty) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-    _queryParams["id"] = [id];
+    _queryParams["id"] = id;
     if (moderationStatus == null) {
       throw new core.ArgumentError("Parameter moderationStatus is required.");
     }
@@ -2028,7 +1869,7 @@ class CommentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'comments/setModerationStatus';
+    _url = 'youtube/v3/comments/setModerationStatus';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2039,13 +1880,13 @@ class CommentsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Modifies a comment.
+  /// Updates an existing resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter identifies the properties that the API
+  /// [part] - The *part* parameter identifies the properties that the API
   /// response will include. You must at least include the snippet part in the
   /// parameter value since that part contains all of the properties that the
   /// API request can update.
@@ -2060,7 +1901,7 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Comment> update(Comment request, core.String part,
+  async.Future<Comment> update(Comment request, core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2072,15 +1913,15 @@ class CommentsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'comments';
+    _url = 'youtube/v3/comments';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -2092,97 +1933,20 @@ class CommentsResourceApi {
   }
 }
 
-class GuideCategoriesResourceApi {
-  final commons.ApiRequester _requester;
-
-  GuideCategoriesResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Returns a list of categories that can be associated with YouTube channels.
-  ///
-  /// Request parameters:
-  ///
-  /// [part] - The part parameter specifies the guideCategory resource
-  /// properties that the API response will include. Set the parameter value to
-  /// snippet.
-  ///
-  /// [hl] - The hl parameter specifies the language that will be used for text
-  /// values in the API response.
-  ///
-  /// [id] - The id parameter specifies a comma-separated list of the YouTube
-  /// channel category ID(s) for the resource(s) that are being retrieved. In a
-  /// guideCategory resource, the id property specifies the YouTube channel
-  /// category ID.
-  ///
-  /// [regionCode] - The regionCode parameter instructs the API to return the
-  /// list of guide categories available in the specified country. The parameter
-  /// value is an ISO 3166-1 alpha-2 country code.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GuideCategoryListResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GuideCategoryListResponse> list(core.String part,
-      {core.String hl,
-      core.String id,
-      core.String regionCode,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (part == null) {
-      throw new core.ArgumentError("Parameter part is required.");
-    }
-    _queryParams["part"] = [part];
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
-    }
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
-    if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'guideCategories';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GuideCategoryListResponse.fromJson(data));
-  }
-}
-
 class I18nLanguagesResourceApi {
   final commons.ApiRequester _requester;
 
   I18nLanguagesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a list of application languages that the YouTube website supports.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies the i18nLanguage resource properties
-  /// that the API response will include. Set the parameter value to snippet.
+  /// [part] - The *part* parameter specifies the i18nLanguage resource
+  /// properties that the API response will include. Set the parameter value to
+  /// snippet.
   ///
-  /// [hl] - The hl parameter specifies the language that should be used for
-  /// text values in the API response.
+  /// [hl] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2194,7 +1958,7 @@ class I18nLanguagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<I18nLanguageListResponse> list(core.String part,
+  async.Future<I18nLanguageListResponse> list(core.List<core.String> part,
       {core.String hl, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2203,10 +1967,10 @@ class I18nLanguagesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (hl != null) {
       _queryParams["hl"] = [hl];
     }
@@ -2214,7 +1978,7 @@ class I18nLanguagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'i18nLanguages';
+    _url = 'youtube/v3/i18nLanguages';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2232,15 +1996,14 @@ class I18nRegionsResourceApi {
 
   I18nRegionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a list of content regions that the YouTube website supports.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies the i18nRegion resource properties
+  /// [part] - The *part* parameter specifies the i18nRegion resource properties
   /// that the API response will include. Set the parameter value to snippet.
   ///
-  /// [hl] - The hl parameter specifies the language that should be used for
-  /// text values in the API response.
+  /// [hl] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2252,7 +2015,7 @@ class I18nRegionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<I18nRegionListResponse> list(core.String part,
+  async.Future<I18nRegionListResponse> list(core.List<core.String> part,
       {core.String hl, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2261,10 +2024,10 @@ class I18nRegionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (hl != null) {
       _queryParams["hl"] = [hl];
     }
@@ -2272,7 +2035,7 @@ class I18nRegionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'i18nRegions';
+    _url = 'youtube/v3/i18nRegions';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2289,58 +2052,46 @@ class LiveBroadcastsResourceApi {
 
   LiveBroadcastsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Binds a YouTube broadcast to a stream or removes an existing binding
-  /// between a broadcast and a stream. A broadcast can only be bound to one
-  /// video stream, though a video stream may be bound to more than one
-  /// broadcast.
+  /// Bind a broadcast to a stream.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the unique ID of the broadcast that is
-  /// being bound to a video stream.
+  /// [id] - Broadcast to bind to the stream
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more liveBroadcast resource properties that the API response will include.
   /// The part names that you can include in the parameter value are id,
   /// snippet, contentDetails, and status.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
-  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
+  /// [streamId] - Stream to bind, if not set unbind the current one.
   ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
-  ///
-  /// [streamId] - The streamId parameter specifies the unique ID of the video
-  /// stream that is being bound to a broadcast. If this parameter is omitted,
-  /// the API will remove any existing binding between the broadcast and a video
-  /// stream.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2352,10 +2103,10 @@ class LiveBroadcastsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveBroadcast> bind(core.String id, core.String part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+  async.Future<LiveBroadcast> bind(core.String id, core.List<core.String> part,
+      {core.String onBehalfOfContentOwnerChannel,
       core.String streamId,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2368,13 +2119,10 @@ class LiveBroadcastsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
@@ -2383,11 +2131,14 @@ class LiveBroadcastsResourceApi {
     if (streamId != null) {
       _queryParams["streamId"] = [streamId];
     }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveBroadcasts/bind';
+    _url = 'youtube/v3/liveBroadcasts/bind';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2398,73 +2149,56 @@ class LiveBroadcastsResourceApi {
     return _response.then((data) => new LiveBroadcast.fromJson(data));
   }
 
-  /// Controls the settings for a slate that can be displayed in the broadcast
-  /// stream.
+  /// Slate and recording control of the live broadcast. Support actions: slate
+  /// on/off, recording start/stop/pause/resume. Design doc:
+  /// goto/yt-api-liveBroadcast-control
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube live broadcast ID that
-  /// uniquely identifies the broadcast in which the slate is being updated.
+  /// [id] - Broadcast to operate.
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more liveBroadcast resource properties that the API response will include.
   /// The part names that you can include in the parameter value are id,
   /// snippet, contentDetails, and status.
   ///
-  /// [displaySlate] - The displaySlate parameter specifies whether the slate is
-  /// being enabled or disabled.
+  /// [offsetTimeMs] - The exact time when the actions (e.g. slate on) are
+  /// executed. It is an offset from the first frame of the monitor stream. If
+  /// not set, it means "now" or ASAP. This field should not be set if the
+  /// monitor stream is disabled, otherwise an error will be returned.
   ///
-  /// [offsetTimeMs] - The offsetTimeMs parameter specifies a positive time
-  /// offset when the specified slate change will occur. The value is measured
-  /// in milliseconds from the beginning of the broadcast's monitor stream,
-  /// which is the time that the testing phase for the broadcast began. Even
-  /// though it is specified in milliseconds, the value is actually an
-  /// approximation, and YouTube completes the requested action as closely as
-  /// possible to that time.
+  /// [displaySlate] - Whether display or hide slate.
   ///
-  /// If you do not specify a value for this parameter, then YouTube performs
-  /// the action as soon as possible. See the Getting started guide for more
-  /// details.
+  /// [walltime] - The wall clock time at which the action should be executed.
+  /// Only one of offset_time_ms and walltime may be set at a time.
   ///
-  /// Important: You should only specify a value for this parameter if your
-  /// broadcast stream is delayed.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
-  ///
-  /// [walltime] - The walltime parameter specifies the wall clock time at which
-  /// the specified slate change will occur. The value is specified in ISO 8601
-  /// (YYYY-MM-DDThh:mm:ss.sssZ) format.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2476,12 +2210,13 @@ class LiveBroadcastsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveBroadcast> control(core.String id, core.String part,
-      {core.bool displaySlate,
-      core.String offsetTimeMs,
+  async.Future<LiveBroadcast> control(
+      core.String id, core.List<core.String> part,
+      {core.String offsetTimeMs,
+      core.bool displaySlate,
+      core.String walltime,
       core.String onBehalfOfContentOwner,
       core.String onBehalfOfContentOwnerChannel,
-      core.DateTime walltime,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2494,15 +2229,18 @@ class LiveBroadcastsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
+    if (offsetTimeMs != null) {
+      _queryParams["offsetTimeMs"] = [offsetTimeMs];
+    }
     if (displaySlate != null) {
       _queryParams["displaySlate"] = ["${displaySlate}"];
     }
-    if (offsetTimeMs != null) {
-      _queryParams["offsetTimeMs"] = [offsetTimeMs];
+    if (walltime != null) {
+      _queryParams["walltime"] = [walltime];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -2512,14 +2250,11 @@ class LiveBroadcastsResourceApi {
         onBehalfOfContentOwnerChannel
       ];
     }
-    if (walltime != null) {
-      _queryParams["walltime"] = [(walltime).toIso8601String()];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveBroadcasts/control';
+    _url = 'youtube/v3/liveBroadcasts/control';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2530,45 +2265,39 @@ class LiveBroadcastsResourceApi {
     return _response.then((data) => new LiveBroadcast.fromJson(data));
   }
 
-  /// Deletes a broadcast.
+  /// Delete a given broadcast.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube live broadcast ID for the
-  /// resource that is being deleted.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [id] - Broadcast to delete.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2579,8 +2308,8 @@ class LiveBroadcastsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+      {core.String onBehalfOfContentOwnerChannel,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2593,13 +2322,13 @@ class LiveBroadcastsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2607,7 +2336,7 @@ class LiveBroadcastsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'liveBroadcasts';
+    _url = 'youtube/v3/liveBroadcasts';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -2618,51 +2347,45 @@ class LiveBroadcastsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Creates a broadcast.
+  /// Inserts a new stream for the authenticated user.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
-  ///
-  /// The part properties that you can include in the parameter value are id,
-  /// snippet, contentDetails, and status.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// properties that the API response will include. The part properties that
+  /// you can include in the parameter value are id, snippet, contentDetails,
+  /// and status.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2674,9 +2397,10 @@ class LiveBroadcastsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveBroadcast> insert(LiveBroadcast request, core.String part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+  async.Future<LiveBroadcast> insert(
+      LiveBroadcast request, core.List<core.String> part,
+      {core.String onBehalfOfContentOwnerChannel,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2688,23 +2412,23 @@ class LiveBroadcastsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
     }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveBroadcasts';
+    _url = 'youtube/v3/liveBroadcasts';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2715,78 +2439,67 @@ class LiveBroadcastsResourceApi {
     return _response.then((data) => new LiveBroadcast.fromJson(data));
   }
 
-  /// Returns a list of YouTube broadcasts that match the API request
-  /// parameters.
+  /// Retrieve the list of broadcasts associated with the given channel.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more liveBroadcast resource properties that the API response will include.
   /// The part names that you can include in the parameter value are id,
-  /// snippet, contentDetails, and status.
+  /// snippet, contentDetails, status and statistics.
   ///
-  /// [broadcastStatus] - The broadcastStatus parameter filters the API response
-  /// to only include broadcasts with the specified status.
-  /// Possible string values are:
-  /// - "active" : Return current live broadcasts.
-  /// - "all" : Return all broadcasts.
-  /// - "completed" : Return broadcasts that have already ended.
-  /// - "upcoming" : Return broadcasts that have not yet started.
+  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
-  /// [broadcastType] - The broadcastType parameter filters the API response to
-  /// only include broadcasts with the specified type. This is only compatible
-  /// with the mine filter for now.
+  /// [broadcastType] - Return only broadcasts with the selected type.
   /// Possible string values are:
+  /// - "broadcastTypeFilterUnspecified"
   /// - "all" : Return all broadcasts.
   /// - "event" : Return only scheduled event broadcasts.
   /// - "persistent" : Return only persistent broadcasts.
   ///
-  /// [id] - The id parameter specifies a comma-separated list of YouTube
-  /// broadcast IDs that identify the broadcasts being retrieved. In a
-  /// liveBroadcast resource, the id property specifies the broadcast's ID.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
   ///
-  /// [mine] - The mine parameter can be used to instruct the API to only return
-  /// broadcasts owned by the authenticated user. Set the parameter value to
-  /// true to only retrieve your own broadcasts.
+  /// [mine] - null
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [id] - Return broadcasts with the given ids from Stubby or Apiary.
   ///
-  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// [broadcastStatus] - Return broadcasts with a certain status, e.g. active
+  /// broadcasts.
+  /// Possible string values are:
+  /// - "broadcastStatusFilterUnspecified"
+  /// - "all" : Return all broadcasts.
+  /// - "active" : Return current live broadcasts.
+  /// - "upcoming" : Return broadcasts that have not yet started.
+  /// - "completed" : Return broadcasts that have already ended.
   ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
   ///
@@ -2800,14 +2513,14 @@ class LiveBroadcastsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveBroadcastListResponse> list(core.String part,
-      {core.String broadcastStatus,
+  async.Future<LiveBroadcastListResponse> list(core.List<core.String> part,
+      {core.String onBehalfOfContentOwnerChannel,
       core.String broadcastType,
-      core.String id,
       core.int maxResults,
       core.bool mine,
       core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+      core.List<core.String> id,
+      core.String broadcastStatus,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -2817,18 +2530,17 @@ class LiveBroadcastsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (broadcastStatus != null) {
-      _queryParams["broadcastStatus"] = [broadcastStatus];
+    _queryParams["part"] = part;
+    if (onBehalfOfContentOwnerChannel != null) {
+      _queryParams["onBehalfOfContentOwnerChannel"] = [
+        onBehalfOfContentOwnerChannel
+      ];
     }
     if (broadcastType != null) {
       _queryParams["broadcastType"] = [broadcastType];
-    }
-    if (id != null) {
-      _queryParams["id"] = [id];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -2839,10 +2551,11 @@ class LiveBroadcastsResourceApi {
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
-        onBehalfOfContentOwnerChannel
-      ];
+    if (id != null) {
+      _queryParams["id"] = id;
+    }
+    if (broadcastStatus != null) {
+      _queryParams["broadcastStatus"] = [broadcastStatus];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2851,7 +2564,7 @@ class LiveBroadcastsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveBroadcasts';
+    _url = 'youtube/v3/liveBroadcasts';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2863,68 +2576,56 @@ class LiveBroadcastsResourceApi {
         .then((data) => new LiveBroadcastListResponse.fromJson(data));
   }
 
-  /// Changes the status of a YouTube live broadcast and initiates any processes
-  /// associated with the new status. For example, when you transition a
-  /// broadcast's status to testing, YouTube starts to transmit video to that
-  /// broadcast's monitor stream. Before calling this method, you should confirm
-  /// that the value of the status.streamStatus property for the stream bound to
-  /// your broadcast is active.
+  /// Transition a broadcast to a given status.
   ///
   /// Request parameters:
   ///
-  /// [broadcastStatus] - The broadcastStatus parameter identifies the state to
-  /// which the broadcast is changing. Note that to transition a broadcast to
-  /// either the testing or live state, the status.streamStatus must be active
-  /// for the stream that the broadcast is bound to.
+  /// [id] - Broadcast to transition.
+  ///
+  /// [broadcastStatus] - The status to which the broadcast is going to
+  /// transition.
   /// Possible string values are:
-  /// - "complete" : The broadcast is over. YouTube stops transmitting video.
-  /// - "live" : The broadcast is visible to its audience. YouTube transmits
-  /// video to the broadcast's monitor stream and its broadcast stream.
+  /// - "statusUnspecified"
   /// - "testing" : Start testing the broadcast. YouTube transmits video to the
   /// broadcast's monitor stream. Note that you can only transition a broadcast
   /// to the testing state if its
-  /// contentDetails.monitorStream.enableMonitorStream property is set to true.
+  /// contentDetails.monitorStream.enableMonitorStream property is set to
+  /// true.",
+  /// - "live" : Return only persistent broadcasts.
+  /// - "complete" : The broadcast is over. YouTube stops transmitting video.
   ///
-  /// [id] - The id parameter specifies the unique ID of the broadcast that is
-  /// transitioning to another status.
-  ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more liveBroadcast resource properties that the API response will include.
   /// The part names that you can include in the parameter value are id,
   /// snippet, contentDetails, and status.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2937,7 +2638,7 @@ class LiveBroadcastsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> transition(
-      core.String broadcastStatus, core.String id, core.String part,
+      core.String id, core.String broadcastStatus, core.List<core.String> part,
       {core.String onBehalfOfContentOwner,
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
@@ -2948,18 +2649,18 @@ class LiveBroadcastsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (broadcastStatus == null) {
-      throw new core.ArgumentError("Parameter broadcastStatus is required.");
-    }
-    _queryParams["broadcastStatus"] = [broadcastStatus];
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-    if (part == null) {
+    if (broadcastStatus == null) {
+      throw new core.ArgumentError("Parameter broadcastStatus is required.");
+    }
+    _queryParams["broadcastStatus"] = [broadcastStatus];
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -2972,7 +2673,7 @@ class LiveBroadcastsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveBroadcasts/transition';
+    _url = 'youtube/v3/liveBroadcasts/transition';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2983,62 +2684,53 @@ class LiveBroadcastsResourceApi {
     return _response.then((data) => new LiveBroadcast.fromJson(data));
   }
 
-  /// Updates a broadcast. For example, you could modify the broadcast settings
-  /// defined in the liveBroadcast resource's contentDetails object.
+  /// Updates an existing broadcast for the authenticated user.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
-  ///
-  /// The part properties that you can include in the parameter value are id,
-  /// snippet, contentDetails, and status.
-  ///
-  /// Note that this method will override the existing values for all of the
-  /// mutable properties that are contained in any parts that the parameter
-  /// value specifies. For example, a broadcast's privacy status is defined in
-  /// the status part. As such, if your request is updating a private or
-  /// unlisted broadcast, and the request's part parameter value includes the
+  /// properties that the API response will include. The part properties that
+  /// you can include in the parameter value are id, snippet, contentDetails,
+  /// and status. Note that this method will override the existing values for
+  /// all of the mutable properties that are contained in any parts that the
+  /// parameter value specifies. For example, a broadcast's privacy status is
+  /// defined in the status part. As such, if your request is updating a private
+  /// or unlisted broadcast, and the request's part parameter value includes the
   /// status part, the broadcast's privacy setting will be updated to whatever
   /// value the request body specifies. If the request body does not specify a
   /// value, the existing privacy setting will be removed and the broadcast will
   /// revert to the default privacy setting.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
-  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3050,9 +2742,10 @@ class LiveBroadcastsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveBroadcast> update(LiveBroadcast request, core.String part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+  async.Future<LiveBroadcast> update(
+      LiveBroadcast request, core.List<core.String> part,
+      {core.String onBehalfOfContentOwnerChannel,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3064,23 +2757,23 @@ class LiveBroadcastsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
     }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveBroadcasts';
+    _url = 'youtube/v3/liveBroadcasts';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -3097,12 +2790,11 @@ class LiveChatBansResourceApi {
 
   LiveChatBansResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Removes a chat ban.
+  /// Deletes a chat ban.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter identifies the chat ban to remove. The value
-  /// uniquely identifies both the ban and the chat.
+  /// [id] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3130,7 +2822,7 @@ class LiveChatBansResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'liveChat/bans';
+    _url = 'youtube/v3/liveChat/bans';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -3141,13 +2833,13 @@ class LiveChatBansResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Adds a new ban to the chat.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
   /// properties that the API response returns. Set the parameter value to
   /// snippet.
@@ -3162,7 +2854,8 @@ class LiveChatBansResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveChatBan> insert(LiveChatBan request, core.String part,
+  async.Future<LiveChatBan> insert(
+      LiveChatBan request, core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3174,15 +2867,15 @@ class LiveChatBansResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveChat/bans';
+    _url = 'youtube/v3/liveChat/bans';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -3204,8 +2897,7 @@ class LiveChatMessagesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube chat message ID of the
-  /// resource that is being deleted.
+  /// [id] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3233,7 +2925,7 @@ class LiveChatMessagesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'liveChat/messages';
+    _url = 'youtube/v3/liveChat/messages';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -3244,13 +2936,13 @@ class LiveChatMessagesResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Adds a message to a live chat.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes. It identifies the
+  /// [part] - The *part* parameter serves two purposes. It identifies the
   /// properties that the write operation will set as well as the properties
   /// that the API response will include. Set the parameter value to snippet.
   ///
@@ -3265,7 +2957,7 @@ class LiveChatMessagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveChatMessage> insert(
-      LiveChatMessage request, core.String part,
+      LiveChatMessage request, core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3277,15 +2969,15 @@ class LiveChatMessagesResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveChat/messages';
+    _url = 'youtube/v3/liveChat/messages';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -3296,38 +2988,28 @@ class LiveChatMessagesResourceApi {
     return _response.then((data) => new LiveChatMessage.fromJson(data));
   }
 
-  /// Lists live chat messages for a specific chat.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [liveChatId] - The liveChatId parameter specifies the ID of the chat whose
-  /// messages will be returned.
+  /// [liveChatId] - The id of the live chat for which comments should be
+  /// returned.
   ///
-  /// [part] - The part parameter specifies the liveChatComment resource parts
+  /// [part] - The *part* parameter specifies the liveChatComment resource parts
   /// that the API response will include. Supported values are id and snippet.
   ///
-  /// [hl] - The hl parameter instructs the API to retrieve localized resource
-  /// metadata for a specific application language that the YouTube website
-  /// supports. The parameter value must be a language code included in the list
-  /// returned by the i18nLanguages.list method.
+  /// [hl] - Specifies the localization language in which the system messages
+  /// should be returned.
   ///
-  /// If localized resource details are available in that language, the
-  /// resource's snippet.localized object will contain the localized values.
-  /// However, if localized details are not available, the snippet.localized
-  /// object will contain resource details in the resource's default language.
+  /// [profileImageSize] - Specifies the size of the profile image that should
+  /// be returned for each user.
   ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// messages that should be returned in the result set.
-  /// Value must be between "200" and "2000".
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// property identify other pages that could be retrieved.
   ///
-  /// [profileImageSize] - The profileImageSize parameter specifies the size of
-  /// the user profile pictures that should be returned in the result set.
-  /// Default: 88.
-  /// Value must be between "16" and "720".
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3340,11 +3022,11 @@ class LiveChatMessagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveChatMessageListResponse> list(
-      core.String liveChatId, core.String part,
+      core.String liveChatId, core.List<core.String> part,
       {core.String hl,
-      core.int maxResults,
-      core.String pageToken,
       core.int profileImageSize,
+      core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3357,27 +3039,27 @@ class LiveChatMessagesResourceApi {
       throw new core.ArgumentError("Parameter liveChatId is required.");
     }
     _queryParams["liveChatId"] = [liveChatId];
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (hl != null) {
       _queryParams["hl"] = [hl];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (profileImageSize != null) {
+      _queryParams["profileImageSize"] = ["${profileImageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (profileImageSize != null) {
-      _queryParams["profileImageSize"] = ["${profileImageSize}"];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveChat/messages';
+    _url = 'youtube/v3/liveChat/messages';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3396,12 +3078,11 @@ class LiveChatModeratorsResourceApi {
   LiveChatModeratorsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Removes a chat moderator.
+  /// Deletes a chat moderator.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter identifies the chat moderator to remove. The value
-  /// uniquely identifies both the moderator and the chat.
+  /// [id] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3429,7 +3110,7 @@ class LiveChatModeratorsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'liveChat/moderators';
+    _url = 'youtube/v3/liveChat/moderators';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -3440,13 +3121,13 @@ class LiveChatModeratorsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Adds a new moderator for the chat.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
   /// properties that the API response returns. Set the parameter value to
   /// snippet.
@@ -3462,7 +3143,7 @@ class LiveChatModeratorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveChatModerator> insert(
-      LiveChatModerator request, core.String part,
+      LiveChatModerator request, core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3474,15 +3155,15 @@ class LiveChatModeratorsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveChat/moderators';
+    _url = 'youtube/v3/liveChat/moderators';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -3493,23 +3174,23 @@ class LiveChatModeratorsResourceApi {
     return _response.then((data) => new LiveChatModerator.fromJson(data));
   }
 
-  /// Lists moderators for a live chat.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [liveChatId] - The liveChatId parameter specifies the YouTube live chat
-  /// for which the API should return moderators.
+  /// [liveChatId] - The id of the live chat for which moderators should be
+  /// returned.
   ///
-  /// [part] - The part parameter specifies the liveChatModerator resource parts
-  /// that the API response will include. Supported values are id and snippet.
+  /// [part] - The *part* parameter specifies the liveChatModerator resource
+  /// parts that the API response will include. Supported values are id and
+  /// snippet.
   ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3522,8 +3203,8 @@ class LiveChatModeratorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveChatModeratorListResponse> list(
-      core.String liveChatId, core.String part,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      core.String liveChatId, core.List<core.String> part,
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3535,21 +3216,21 @@ class LiveChatModeratorsResourceApi {
       throw new core.ArgumentError("Parameter liveChatId is required.");
     }
     _queryParams["liveChatId"] = [liveChatId];
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
+    _queryParams["part"] = part;
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveChat/moderators';
+    _url = 'youtube/v3/liveChat/moderators';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3567,45 +3248,39 @@ class LiveStreamsResourceApi {
 
   LiveStreamsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a video stream.
+  /// Deletes an existing stream for the authenticated user.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube live stream ID for the
-  /// resource that is being deleted.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [id] - null
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3616,8 +3291,8 @@ class LiveStreamsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+      {core.String onBehalfOfContentOwnerChannel,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3630,13 +3305,13 @@ class LiveStreamsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3644,7 +3319,7 @@ class LiveStreamsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'liveStreams';
+    _url = 'youtube/v3/liveStreams';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -3655,52 +3330,44 @@ class LiveStreamsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Creates a video stream. The stream enables you to send your video to
-  /// YouTube, which can then broadcast the video to your audience.
+  /// Inserts a new stream for the authenticated user.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
+  /// properties that the API response will include. The part properties that
+  /// you can include in the parameter value are id, snippet, cdn, and status.
   ///
-  /// The part properties that you can include in the parameter value are id,
-  /// snippet, cdn, and status.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3712,7 +3379,8 @@ class LiveStreamsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveStream> insert(LiveStream request, core.String part,
+  async.Future<LiveStream> insert(
+      LiveStream request, core.List<core.String> part,
       {core.String onBehalfOfContentOwner,
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
@@ -3726,10 +3394,10 @@ class LiveStreamsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -3742,7 +3410,7 @@ class LiveStreamsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveStreams';
+    _url = 'youtube/v3/liveStreams';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -3753,63 +3421,53 @@ class LiveStreamsResourceApi {
     return _response.then((data) => new LiveStream.fromJson(data));
   }
 
-  /// Returns a list of video streams that match the API request parameters.
+  /// Retrieve the list of streams associated with the given channel. --
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more liveStream resource properties that the API response will include.
   /// The part names that you can include in the parameter value are id,
   /// snippet, cdn, and status.
   ///
-  /// [id] - The id parameter specifies a comma-separated list of YouTube stream
-  /// IDs that identify the streams being retrieved. In a liveStream resource,
-  /// the id property specifies the stream's ID.
+  /// [mine] - null
   ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
-  ///
-  /// [mine] - The mine parameter can be used to instruct the API to only return
-  /// streams owned by the authenticated user. Set the parameter value to true
-  /// to only retrieve your own streams.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
-  ///
-  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
+  ///
+  /// [id] - Return LiveStreams with the given ids from Stubby or Apiary.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3821,13 +3479,13 @@ class LiveStreamsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveStreamListResponse> list(core.String part,
-      {core.String id,
-      core.int maxResults,
-      core.bool mine,
-      core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+  async.Future<LiveStreamListResponse> list(core.List<core.String> part,
+      {core.bool mine,
       core.String pageToken,
+      core.String onBehalfOfContentOwner,
+      core.int maxResults,
+      core.String onBehalfOfContentOwnerChannel,
+      core.List<core.String> id,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3836,35 +3494,35 @@ class LiveStreamsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
+    _queryParams["part"] = part;
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveStreams';
+    _url = 'youtube/v3/liveStreams';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3875,57 +3533,48 @@ class LiveStreamsResourceApi {
     return _response.then((data) => new LiveStreamListResponse.fromJson(data));
   }
 
-  /// Updates a video stream. If the properties that you want to change cannot
-  /// be updated, then you need to create a new stream with the proper settings.
+  /// Updates an existing stream for the authenticated user.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
-  ///
-  /// The part properties that you can include in the parameter value are id,
-  /// snippet, cdn, and status.
-  ///
+  /// properties that the API response will include. The part properties that
+  /// you can include in the parameter value are id, snippet, cdn, and status.
   /// Note that this method will override the existing values for all of the
   /// mutable properties that are contained in any parts that the parameter
   /// value specifies. If the request body does not specify a value for a
   /// mutable property, the existing value for that property will be removed.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3937,7 +3586,8 @@ class LiveStreamsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveStream> update(LiveStream request, core.String part,
+  async.Future<LiveStream> update(
+      LiveStream request, core.List<core.String> part,
       {core.String onBehalfOfContentOwner,
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
@@ -3951,10 +3601,10 @@ class LiveStreamsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -3967,7 +3617,7 @@ class LiveStreamsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liveStreams';
+    _url = 'youtube/v3/liveStreams';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -3984,37 +3634,32 @@ class MembersResourceApi {
 
   MembersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Lists members for a channel.
+  /// Retrieves a list of members that match the request criteria for a channel.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies the member resource parts that the
+  /// [part] - The *part* parameter specifies the member resource parts that the
   /// API response will include. Set the parameter value to snippet.
   ///
-  /// [filterByMemberChannelId] - The filterByMemberChannelId parameter
-  /// represents a comma separated list of channel IDs. Only data about members
-  /// that are part of this list will be included in the response. It can be
-  /// used to efficiently check whether specific users are entitled to perks
-  /// offered via third parties.
+  /// [hasAccessToLevel] - Filter members in the results set to the ones that
+  /// have access to a level.
   ///
-  /// [hasAccessToLevel] - The hasAccessToLevel parameter specifies, when set,
-  /// the ID of a pricing level that members from the results set should have
-  /// access to. When not set, all members will be considered, regardless of
-  /// their active pricing level.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [mode] - The mode parameter specifies which channel members to return.
-  /// Possible string values are:
-  /// - "all_current" : Return all current members, from newest to oldest.
-  /// - "updates" : Return only members that joined after the first call with
-  /// this mode was made.
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [filterByMemberChannelId] - Comma separated list of channel IDs. Only data
+  /// about members that are part of this list will be included in the response.
+  ///
+  /// [mode] - Parameter that specifies which channel members to return.
+  /// Possible string values are:
+  /// - "listMembersModeUnknown"
+  /// - "updates" : Return only members that joined after the first call with
+  /// this mode was made.
+  /// - "all_current" : Return all current members, from newest to oldest.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4026,12 +3671,12 @@ class MembersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MemberListResponse> list(core.String part,
-      {core.String filterByMemberChannelId,
-      core.String hasAccessToLevel,
-      core.int maxResults,
-      core.String mode,
+  async.Future<MemberListResponse> list(core.List<core.String> part,
+      {core.String hasAccessToLevel,
       core.String pageToken,
+      core.int maxResults,
+      core.String filterByMemberChannelId,
+      core.String mode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4040,30 +3685,30 @@ class MembersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (filterByMemberChannelId != null) {
-      _queryParams["filterByMemberChannelId"] = [filterByMemberChannelId];
-    }
+    _queryParams["part"] = part;
     if (hasAccessToLevel != null) {
       _queryParams["hasAccessToLevel"] = [hasAccessToLevel];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (filterByMemberChannelId != null) {
+      _queryParams["filterByMemberChannelId"] = [filterByMemberChannelId];
+    }
     if (mode != null) {
       _queryParams["mode"] = [mode];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'members';
+    _url = 'youtube/v3/members';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -4081,12 +3726,13 @@ class MembershipsLevelsResourceApi {
   MembershipsLevelsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists pricing levels for a channel.
+  /// Retrieves a list of all pricing levels offered by a creator to the fans.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies the membershipsLevel resource parts
-  /// that the API response will include. Supported values are id and snippet.
+  /// [part] - The *part* parameter specifies the membershipsLevel resource
+  /// parts that the API response will include. Supported values are id and
+  /// snippet.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4098,7 +3744,7 @@ class MembershipsLevelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MembershipsLevelListResponse> list(core.String part,
+  async.Future<MembershipsLevelListResponse> list(core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4107,15 +3753,15 @@ class MembershipsLevelsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'membershipsLevels';
+    _url = 'youtube/v3/membershipsLevels';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -4133,26 +3779,22 @@ class PlaylistItemsResourceApi {
 
   PlaylistItemsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a playlist item.
+  /// Deletes a resource.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube playlist item ID for the
-  /// playlist item that is being deleted. In a playlistItem resource, the id
-  /// property specifies the playlist item's ID.
+  /// [id] - null
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4184,7 +3826,7 @@ class PlaylistItemsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'playlistItems';
+    _url = 'youtube/v3/playlistItems';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -4195,28 +3837,26 @@ class PlaylistItemsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Adds a resource to a playlist.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
   /// properties that the API response will include.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4228,7 +3868,8 @@ class PlaylistItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlaylistItem> insert(PlaylistItem request, core.String part,
+  async.Future<PlaylistItem> insert(
+      PlaylistItem request, core.List<core.String> part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4240,10 +3881,10 @@ class PlaylistItemsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -4251,7 +3892,7 @@ class PlaylistItemsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'playlistItems';
+    _url = 'youtube/v3/playlistItems';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -4262,54 +3903,42 @@ class PlaylistItemsResourceApi {
     return _response.then((data) => new PlaylistItem.fromJson(data));
   }
 
-  /// Returns a collection of playlist items that match the API request
-  /// parameters. You can retrieve all of the playlist items in a specified
-  /// playlist or retrieve one or more playlist items by their unique IDs.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more playlistItem resource properties that the API response will include.
-  ///
   /// If the parameter identifies a property that contains child properties, the
   /// child properties will be included in the response. For example, in a
   /// playlistItem resource, the snippet property contains numerous fields,
   /// including the title, description, position, and resourceId properties. As
-  /// such, if you set part=snippet, the API response will contain all of those
-  /// properties.
+  /// such, if you set *part=snippet*, the API response will contain all of
+  /// those properties.
   ///
-  /// [id] - The id parameter specifies a comma-separated list of one or more
-  /// unique playlist item IDs.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// [id] - null
   ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
   ///
-  /// [playlistId] - The playlistId parameter specifies the unique ID of the
-  /// playlist for which you want to retrieve playlist items. Note that even
-  /// though this is an optional parameter, every request to retrieve playlist
-  /// items must specify a value for either the id parameter or the playlistId
-  /// parameter.
+  /// [videoId] - Return the playlist items associated with the given video ID.
   ///
-  /// [videoId] - The videoId parameter specifies that the request should return
-  /// only the playlist items that contain the specified video.
+  /// [playlistId] - Return the playlist items within the given playlist.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4321,13 +3950,13 @@ class PlaylistItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlaylistItemListResponse> list(core.String part,
-      {core.String id,
-      core.int maxResults,
+  async.Future<PlaylistItemListResponse> list(core.List<core.String> part,
+      {core.int maxResults,
+      core.List<core.String> id,
       core.String onBehalfOfContentOwner,
       core.String pageToken,
-      core.String playlistId,
       core.String videoId,
+      core.String playlistId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4336,15 +3965,15 @@ class PlaylistItemsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
+    _queryParams["part"] = part;
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -4352,17 +3981,17 @@ class PlaylistItemsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (playlistId != null) {
-      _queryParams["playlistId"] = [playlistId];
-    }
     if (videoId != null) {
       _queryParams["videoId"] = [videoId];
+    }
+    if (playlistId != null) {
+      _queryParams["playlistId"] = [playlistId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'playlistItems';
+    _url = 'youtube/v3/playlistItems';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -4374,40 +4003,36 @@ class PlaylistItemsResourceApi {
         .then((data) => new PlaylistItemListResponse.fromJson(data));
   }
 
-  /// Modifies a playlist item. For example, you could update the item's
-  /// position in the playlist.
+  /// Updates an existing resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
+  /// properties that the API response will include. Note that this method will
+  /// override the existing values for all of the mutable properties that are
+  /// contained in any parts that the parameter value specifies. For example, a
+  /// playlist item can specify a start time and end time, which identify the
+  /// times portion of the video that should play when users watch the video in
+  /// the playlist. If your request is updating a playlist item that sets these
+  /// values, and the request's part parameter value includes the contentDetails
+  /// part, the playlist item's start and end times will be updated to whatever
+  /// value the request body specifies. If the request body does not specify
+  /// values, the existing start and end times will be removed and replaced with
+  /// the default settings.
   ///
-  /// Note that this method will override the existing values for all of the
-  /// mutable properties that are contained in any parts that the parameter
-  /// value specifies. For example, a playlist item can specify a start time and
-  /// end time, which identify the times portion of the video that should play
-  /// when users watch the video in the playlist. If your request is updating a
-  /// playlist item that sets these values, and the request's part parameter
-  /// value includes the contentDetails part, the playlist item's start and end
-  /// times will be updated to whatever value the request body specifies. If the
-  /// request body does not specify values, the existing start and end times
-  /// will be removed and replaced with the default settings.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4419,7 +4044,8 @@ class PlaylistItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlaylistItem> update(PlaylistItem request, core.String part,
+  async.Future<PlaylistItem> update(
+      PlaylistItem request, core.List<core.String> part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4431,10 +4057,10 @@ class PlaylistItemsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -4442,7 +4068,7 @@ class PlaylistItemsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'playlistItems';
+    _url = 'youtube/v3/playlistItems';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -4459,26 +4085,22 @@ class PlaylistsResourceApi {
 
   PlaylistsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a playlist.
+  /// Deletes a resource.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube playlist ID for the playlist
-  /// that is being deleted. In a playlist resource, the id property specifies
-  /// the playlist's ID.
+  /// [id] - null
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4510,7 +4132,7 @@ class PlaylistsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'playlists';
+    _url = 'youtube/v3/playlists';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -4521,48 +4143,43 @@ class PlaylistsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Creates a playlist.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
   /// properties that the API response will include.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
-  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4574,9 +4191,9 @@ class PlaylistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Playlist> insert(Playlist request, core.String part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+  async.Future<Playlist> insert(Playlist request, core.List<core.String> part,
+      {core.String onBehalfOfContentOwnerChannel,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4588,23 +4205,23 @@ class PlaylistsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
     }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'playlists';
+    _url = 'youtube/v3/playlists';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -4615,74 +4232,60 @@ class PlaylistsResourceApi {
     return _response.then((data) => new Playlist.fromJson(data));
   }
 
-  /// Returns a collection of playlists that match the API request parameters.
-  /// For example, you can retrieve all playlists that the authenticated user
-  /// owns, or you can retrieve one or more playlists by their unique IDs.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
-  /// more playlist resource properties that the API response will include.
-  ///
-  /// If the parameter identifies a property that contains child properties, the
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
+  /// more playlist resource properties that the API response will include. If
+  /// the parameter identifies a property that contains child properties, the
   /// child properties will be included in the response. For example, in a
   /// playlist resource, the snippet property contains properties like author,
   /// title, description, tags, and timeCreated. As such, if you set
-  /// part=snippet, the API response will contain all of those properties.
-  ///
-  /// [channelId] - This value indicates that the API should only return the
-  /// specified channel's playlists.
-  ///
-  /// [hl] - The hl parameter should be used for filter out the properties that
-  /// are not in the given language. Used for the snippet part.
-  ///
-  /// [id] - The id parameter specifies a comma-separated list of the YouTube
-  /// playlist ID(s) for the resource(s) that are being retrieved. In a playlist
-  /// resource, the id property specifies the playlist's YouTube playlist ID.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
-  ///
-  /// [mine] - Set this parameter's value to true to instruct the API to only
-  /// return playlists owned by the authenticated user.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// *part=snippet*, the API response will contain all of those properties.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
   ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [id] - Return the playlists with the given IDs for Stubby or Apiary.
+  ///
+  /// [channelId] - Return the playlists owned by the specified channel ID.
+  ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [hl] - Returen content in specified language
+  ///
+  /// [mine] - Return the playlists owned by the authenticated user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4694,15 +4297,15 @@ class PlaylistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlaylistListResponse> list(core.String part,
-      {core.String channelId,
-      core.String hl,
-      core.String id,
-      core.int maxResults,
-      core.bool mine,
+  async.Future<PlaylistListResponse> list(core.List<core.String> part,
+      {core.String onBehalfOfContentOwnerChannel,
       core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+      core.int maxResults,
+      core.List<core.String> id,
+      core.String channelId,
       core.String pageToken,
+      core.String hl,
+      core.bool mine,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4711,41 +4314,41 @@ class PlaylistsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
-    }
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
-    }
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
     }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (id != null) {
+      _queryParams["id"] = id;
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
+    }
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'playlists';
+    _url = 'youtube/v3/playlists';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -4756,36 +4359,32 @@ class PlaylistsResourceApi {
     return _response.then((data) => new PlaylistListResponse.fromJson(data));
   }
 
-  /// Modifies a playlist. For example, you could change a playlist's title,
-  /// description, or privacy status.
+  /// Updates an existing resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
+  /// properties that the API response will include. Note that this method will
+  /// override the existing values for mutable properties that are contained in
+  /// any parts that the request body specifies. For example, a playlist's
+  /// description is contained in the snippet part, which must be included in
+  /// the request body. If the request does not specify a value for the
+  /// snippet.description property, the playlist's existing description will be
+  /// deleted.
   ///
-  /// Note that this method will override the existing values for mutable
-  /// properties that are contained in any parts that the request body
-  /// specifies. For example, a playlist's description is contained in the
-  /// snippet part, which must be included in the request body. If the request
-  /// does not specify a value for the snippet.description property, the
-  /// playlist's existing description will be deleted.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4797,7 +4396,7 @@ class PlaylistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Playlist> update(Playlist request, core.String part,
+  async.Future<Playlist> update(Playlist request, core.List<core.String> part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4809,10 +4408,10 @@ class PlaylistsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -4820,7 +4419,7 @@ class PlaylistsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'playlists';
+    _url = 'youtube/v3/playlists';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -4837,251 +4436,160 @@ class SearchResourceApi {
 
   SearchResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a collection of search results that match the query parameters
-  /// specified in the API request. By default, a search result set identifies
-  /// matching video, channel, and playlist resources, but you can also
-  /// configure queries to only retrieve a specific type of resource.
+  /// Retrieves a list of search resources
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more search resource properties that the API response will include. Set
   /// the parameter value to snippet.
   ///
-  /// [channelId] - The channelId parameter indicates that the API response
-  /// should only contain resources created by the channel
-  ///
-  /// [channelType] - The channelType parameter lets you restrict a search to a
-  /// particular type of channel.
+  /// [videoCaption] - Filter on the presence of captions on the videos.
   /// Possible string values are:
+  /// - "videoCaptionUnspecified"
+  /// - "any" : Do not filter results based on caption availability.
+  /// - "closedCaption" : Only include videos that have captions.
+  /// - "none" : Only include videos that do not have captions.
+  ///
+  /// [locationRadius] - Filter on distance from the location (specified above).
+  ///
+  /// [relevanceLanguage] - Return results relevant to this language.
+  ///
+  /// [forMine] - Search for the private videos of the authenticated user.
+  ///
+  /// [channelType] - Add a filter on the channel search.
+  /// Possible string values are:
+  /// - "channelTypeUnspecified"
   /// - "any" : Return all channels.
   /// - "show" : Only retrieve shows.
   ///
-  /// [eventType] - The eventType parameter restricts a search to broadcast
-  /// events. If you specify a value for this parameter, you must also set the
-  /// type parameter's value to video.
+  /// [videoDefinition] - Filter on the definition of the videos.
   /// Possible string values are:
-  /// - "completed" : Only include completed broadcasts.
-  /// - "live" : Only include active broadcasts.
-  /// - "upcoming" : Only include upcoming broadcasts.
+  /// - "any" : Return all videos, regardless of their resolution.
+  /// - "standard" : Only retrieve videos in standard definition.
+  /// - "high" : Only retrieve HD videos.
   ///
-  /// [forContentOwner] - Note: This parameter is intended exclusively for
-  /// YouTube content partners.
+  /// [eventType] - Filter on the livestream status of the videos.
+  /// Possible string values are:
+  /// - "none"
+  /// - "upcoming" : The live broadcast is upcoming.
+  /// - "live" : The live broadcast is active.
+  /// - "completed" : The live broadcast has been completed.
   ///
-  /// The forContentOwner parameter restricts the search to only retrieve
-  /// resources owned by the content owner specified by the
-  /// onBehalfOfContentOwner parameter. The user must be authenticated using a
-  /// CMS account linked to the specified content owner and
-  /// onBehalfOfContentOwner must be provided.
+  /// [topicId] - Restrict results to a particular topic.
   ///
-  /// [forDeveloper] - The forDeveloper parameter restricts the search to only
-  /// retrieve videos uploaded via the developer's application or website. The
-  /// API server uses the request's authorization credentials to identify the
-  /// developer. Therefore, a developer can restrict results to videos uploaded
-  /// through the developer's own app or website but not to videos uploaded
-  /// through other apps or sites.
+  /// [forDeveloper] - Restrict the search to only retrieve videos uploaded
+  /// using the project id of the authenticated user.
   ///
-  /// [forMine] - The forMine parameter restricts the search to only retrieve
-  /// videos owned by the authenticated user. If you set this parameter to true,
-  /// then the type parameter's value must also be set to video.
+  /// [videoType] - Filter on videos of a specific type.
+  /// Possible string values are:
+  /// - "videoTypeUnspecified"
+  /// - "any" : Return all videos.
+  /// - "movie" : Only retrieve movies.
+  /// - "episode" : Only retrieve episodes of shows.
   ///
-  /// [location] - The location parameter, in conjunction with the
-  /// locationRadius parameter, defines a circular geographic area and also
-  /// restricts a search to videos that specify, in their metadata, a geographic
-  /// location that falls within that area. The parameter value is a string that
-  /// specifies latitude/longitude coordinates e.g. (37.42307,-122.08427).
+  /// [relatedToVideoId] - Search related to a resource.
   ///
+  /// [q] - Textual search terms to match.
   ///
-  /// - The location parameter value identifies the point at the center of the
-  /// area.
-  /// - The locationRadius parameter specifies the maximum distance that the
-  /// location associated with a video can be from that point for the video to
-  /// still be included in the search results.The API returns an error if your
-  /// request specifies a value for the location parameter but does not also
-  /// specify a value for the locationRadius parameter.
+  /// [safeSearch] - Indicates whether the search results should include
+  /// restricted content as well as standard content.
+  /// Possible string values are:
+  /// - "safeSearchSettingUnspecified"
+  /// - "none" : YouTube will not filter the search result set.
+  /// - "moderate" : YouTube will filter some content from search results and,
+  /// at the least, will filter content that is restricted in your locale. Based
+  /// on their content, search results could be removed from search results or
+  /// demoted in search results. This is the default parameter value.
+  /// - "strict" : YouTube will try to exclude all restricted content from the
+  /// search result set. Based on their content, search results could be removed
+  /// from search results or demoted in search results.
   ///
-  /// [locationRadius] - The locationRadius parameter, in conjunction with the
-  /// location parameter, defines a circular geographic area.
+  /// [videoEmbeddable] - Filter on embeddable videos.
+  /// Possible string values are:
+  /// - "videoEmbeddableUnspecified"
+  /// - "any" : Return all videos, embeddable or not.
+  /// - "true" : Only retrieve embeddable videos.
   ///
-  /// The parameter value must be a floating point number followed by a
-  /// measurement unit. Valid measurement units are m, km, ft, and mi. For
-  /// example, valid parameter values include 1500m, 5km, 10000ft, and 0.75mi.
-  /// The API does not support locationRadius parameter values larger than 1000
-  /// kilometers.
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
   ///
-  /// Note: See the definition of the location parameter for more information.
+  /// [videoLicense] - Filter on the license of the videos.
+  /// Possible string values are:
+  /// - "any" : Return all videos, regardless of which license they have, that
+  /// match the query parameters.
+  /// - "youtube" : Only return videos that have the standard YouTube license.
+  /// - "creativeCommon" : Only return videos that have a Creative Commons
+  /// license. Users can reuse videos with this license in other videos that
+  /// they create. Learn more.
   ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
+  /// [publishedBefore] - Filter on resources published before this date.
+  ///
+  /// [videoSyndicated] - Filter on syndicated videos.
+  /// Possible string values are:
+  /// - "videoSyndicatedUnspecified"
+  /// - "any" : Return all videos, syndicated or not.
+  /// - "true" : Only retrieve syndicated videos.
+  ///
+  /// [videoCategoryId] - Filter on videos in a specific category.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
+  /// [channelId] - Filter on resources belonging to this channelId.
   ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
-  ///
-  /// [order] - The order parameter specifies the method that will be used to
-  /// order resources in the API response.
+  /// [videoDimension] - Filter on 3d videos.
   /// Possible string values are:
+  /// - "any"
+  /// - "2d" : Restrict search results to exclude 3D videos.
+  /// - "3d" : Restrict search results to only include 3D videos.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [location] - Filter on location of the video
+  ///
+  /// [regionCode] - Display the content as seen by viewers in this country.
+  ///
+  /// [order] - Sort order of the results.
+  /// Possible string values are:
+  /// - "searchSortUnspecified"
   /// - "date" : Resources are sorted in reverse chronological order based on
   /// the date they were created.
   /// - "rating" : Resources are sorted from highest to lowest rating.
+  /// - "viewCount" : Resources are sorted from highest to lowest number of
+  /// views.
   /// - "relevance" : Resources are sorted based on their relevance to the
   /// search query. This is the default value for this parameter.
   /// - "title" : Resources are sorted alphabetically by title.
   /// - "videoCount" : Channels are sorted in descending order of their number
   /// of uploaded videos.
-  /// - "viewCount" : Resources are sorted from highest to lowest number of
-  /// views.
   ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
+  /// [type] - Restrict results to a particular set of resource types from One
+  /// Platform.
   ///
-  /// [publishedAfter] - The publishedAfter parameter indicates that the API
-  /// response should only contain resources created after the specified time.
-  /// The value is an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z).
-  ///
-  /// [publishedBefore] - The publishedBefore parameter indicates that the API
-  /// response should only contain resources created before the specified time.
-  /// The value is an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z).
-  ///
-  /// [q] - The q parameter specifies the query term to search for.
-  ///
-  /// Your request can also use the Boolean NOT (-) and OR (|) operators to
-  /// exclude videos or to find videos that are associated with one of several
-  /// search terms. For example, to search for videos matching either "boating"
-  /// or "sailing", set the q parameter value to boating|sailing. Similarly, to
-  /// search for videos matching either "boating" or "sailing" but not
-  /// "fishing", set the q parameter value to boating|sailing -fishing. Note
-  /// that the pipe character must be URL-escaped when it is sent in your API
-  /// request. The URL-escaped value for the pipe character is %7C.
-  ///
-  /// [regionCode] - The regionCode parameter instructs the API to return search
-  /// results for the specified country. The parameter value is an ISO 3166-1
-  /// alpha-2 country code.
-  ///
-  /// [relatedToVideoId] - The relatedToVideoId parameter retrieves a list of
-  /// videos that are related to the video that the parameter value identifies.
-  /// The parameter value must be set to a YouTube video ID and, if you are
-  /// using this parameter, the type parameter must be set to video.
-  ///
-  /// [relevanceLanguage] - The relevanceLanguage parameter instructs the API to
-  /// return search results that are most relevant to the specified language.
-  /// The parameter value is typically an ISO 639-1 two-letter language code.
-  /// However, you should use the values zh-Hans for simplified Chinese and
-  /// zh-Hant for traditional Chinese. Please note that results in other
-  /// languages will still be returned if they are highly relevant to the search
-  /// query term.
-  ///
-  /// [safeSearch] - The safeSearch parameter indicates whether the search
-  /// results should include restricted content as well as standard content.
+  /// [videoDuration] - Filter on the duration of the videos.
   /// Possible string values are:
-  /// - "moderate" : YouTube will filter some content from search results and,
-  /// at the least, will filter content that is restricted in your locale. Based
-  /// on their content, search results could be removed from search results or
-  /// demoted in search results. This is the default parameter value.
-  /// - "none" : YouTube will not filter the search result set.
-  /// - "strict" : YouTube will try to exclude all restricted content from the
-  /// search result set. Based on their content, search results could be removed
-  /// from search results or demoted in search results.
-  ///
-  /// [topicId] - The topicId parameter indicates that the API response should
-  /// only contain resources associated with the specified topic. The value
-  /// identifies a Freebase topic ID.
-  ///
-  /// [type] - The type parameter restricts a search query to only retrieve a
-  /// particular type of resource. The value is a comma-separated list of
-  /// resource types.
-  ///
-  /// [videoCaption] - The videoCaption parameter indicates whether the API
-  /// should filter video search results based on whether they have captions. If
-  /// you specify a value for this parameter, you must also set the type
-  /// parameter's value to video.
-  /// Possible string values are:
-  /// - "any" : Do not filter results based on caption availability.
-  /// - "closedCaption" : Only include videos that have captions.
-  /// - "none" : Only include videos that do not have captions.
-  ///
-  /// [videoCategoryId] - The videoCategoryId parameter filters video search
-  /// results based on their category. If you specify a value for this
-  /// parameter, you must also set the type parameter's value to video.
-  ///
-  /// [videoDefinition] - The videoDefinition parameter lets you restrict a
-  /// search to only include either high definition (HD) or standard definition
-  /// (SD) videos. HD videos are available for playback in at least 720p, though
-  /// higher resolutions, like 1080p, might also be available. If you specify a
-  /// value for this parameter, you must also set the type parameter's value to
-  /// video.
-  /// Possible string values are:
-  /// - "any" : Return all videos, regardless of their resolution.
-  /// - "high" : Only retrieve HD videos.
-  /// - "standard" : Only retrieve videos in standard definition.
-  ///
-  /// [videoDimension] - The videoDimension parameter lets you restrict a search
-  /// to only retrieve 2D or 3D videos. If you specify a value for this
-  /// parameter, you must also set the type parameter's value to video.
-  /// Possible string values are:
-  /// - "2d" : Restrict search results to exclude 3D videos.
-  /// - "3d" : Restrict search results to only include 3D videos.
-  /// - "any" : Include both 3D and non-3D videos in returned results. This is
-  /// the default value.
-  ///
-  /// [videoDuration] - The videoDuration parameter filters video search results
-  /// based on their duration. If you specify a value for this parameter, you
-  /// must also set the type parameter's value to video.
-  /// Possible string values are:
+  /// - "videoDurationUnspecified"
   /// - "any" : Do not filter video search results based on their duration. This
   /// is the default value.
-  /// - "long" : Only include videos longer than 20 minutes.
+  /// - "short" : Only include videos that are less than four minutes long.
   /// - "medium" : Only include videos that are between four and 20 minutes long
   /// (inclusive).
-  /// - "short" : Only include videos that are less than four minutes long.
+  /// - "long" : Only include videos longer than 20 minutes.
   ///
-  /// [videoEmbeddable] - The videoEmbeddable parameter lets you to restrict a
-  /// search to only videos that can be embedded into a webpage. If you specify
-  /// a value for this parameter, you must also set the type parameter's value
-  /// to video.
-  /// Possible string values are:
-  /// - "any" : Return all videos, embeddable or not.
-  /// - "true" : Only retrieve embeddable videos.
+  /// [forContentOwner] - Search owned by a content owner.
   ///
-  /// [videoLicense] - The videoLicense parameter filters search results to only
-  /// include videos with a particular license. YouTube lets video uploaders
-  /// choose to attach either the Creative Commons license or the standard
-  /// YouTube license to each of their videos. If you specify a value for this
-  /// parameter, you must also set the type parameter's value to video.
-  /// Possible string values are:
-  /// - "any" : Return all videos, regardless of which license they have, that
-  /// match the query parameters.
-  /// - "creativeCommon" : Only return videos that have a Creative Commons
-  /// license. Users can reuse videos with this license in other videos that
-  /// they create. Learn more.
-  /// - "youtube" : Only return videos that have the standard YouTube license.
-  ///
-  /// [videoSyndicated] - The videoSyndicated parameter lets you to restrict a
-  /// search to only videos that can be played outside youtube.com. If you
-  /// specify a value for this parameter, you must also set the type parameter's
-  /// value to video.
-  /// Possible string values are:
-  /// - "any" : Return all videos, syndicated or not.
-  /// - "true" : Only retrieve syndicated videos.
-  ///
-  /// [videoType] - The videoType parameter lets you restrict a search to a
-  /// particular type of videos. If you specify a value for this parameter, you
-  /// must also set the type parameter's value to video.
-  /// Possible string values are:
-  /// - "any" : Return all videos.
-  /// - "episode" : Only retrieve episodes of shows.
-  /// - "movie" : Only retrieve movies.
+  /// [publishedAfter] - Filter on resources published after this date.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5093,37 +4601,37 @@ class SearchResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchListResponse> list(core.String part,
-      {core.String channelId,
-      core.String channelType,
-      core.String eventType,
-      core.bool forContentOwner,
-      core.bool forDeveloper,
-      core.bool forMine,
-      core.String location,
+  async.Future<SearchListResponse> list(core.List<core.String> part,
+      {core.String videoCaption,
       core.String locationRadius,
-      core.int maxResults,
-      core.String onBehalfOfContentOwner,
-      core.String order,
-      core.String pageToken,
-      core.DateTime publishedAfter,
-      core.DateTime publishedBefore,
-      core.String q,
-      core.String regionCode,
-      core.String relatedToVideoId,
       core.String relevanceLanguage,
-      core.String safeSearch,
-      core.String topicId,
-      core.String type,
-      core.String videoCaption,
-      core.String videoCategoryId,
+      core.bool forMine,
+      core.String channelType,
       core.String videoDefinition,
-      core.String videoDimension,
-      core.String videoDuration,
-      core.String videoEmbeddable,
-      core.String videoLicense,
-      core.String videoSyndicated,
+      core.String eventType,
+      core.String topicId,
+      core.bool forDeveloper,
       core.String videoType,
+      core.String relatedToVideoId,
+      core.String q,
+      core.String safeSearch,
+      core.String videoEmbeddable,
+      core.String pageToken,
+      core.String videoLicense,
+      core.String publishedBefore,
+      core.String videoSyndicated,
+      core.String videoCategoryId,
+      core.int maxResults,
+      core.String channelId,
+      core.String videoDimension,
+      core.String onBehalfOfContentOwner,
+      core.String location,
+      core.String regionCode,
+      core.String order,
+      core.List<core.String> type,
+      core.String videoDuration,
+      core.bool forContentOwner,
+      core.String publishedAfter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5132,105 +4640,105 @@ class SearchResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
-    }
-    if (channelType != null) {
-      _queryParams["channelType"] = [channelType];
-    }
-    if (eventType != null) {
-      _queryParams["eventType"] = [eventType];
-    }
-    if (forContentOwner != null) {
-      _queryParams["forContentOwner"] = ["${forContentOwner}"];
-    }
-    if (forDeveloper != null) {
-      _queryParams["forDeveloper"] = ["${forDeveloper}"];
-    }
-    if (forMine != null) {
-      _queryParams["forMine"] = ["${forMine}"];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
+    _queryParams["part"] = part;
+    if (videoCaption != null) {
+      _queryParams["videoCaption"] = [videoCaption];
     }
     if (locationRadius != null) {
       _queryParams["locationRadius"] = [locationRadius];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (order != null) {
-      _queryParams["order"] = [order];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (publishedAfter != null) {
-      _queryParams["publishedAfter"] = [(publishedAfter).toIso8601String()];
-    }
-    if (publishedBefore != null) {
-      _queryParams["publishedBefore"] = [(publishedBefore).toIso8601String()];
-    }
-    if (q != null) {
-      _queryParams["q"] = [q];
-    }
-    if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
-    }
-    if (relatedToVideoId != null) {
-      _queryParams["relatedToVideoId"] = [relatedToVideoId];
-    }
     if (relevanceLanguage != null) {
       _queryParams["relevanceLanguage"] = [relevanceLanguage];
     }
-    if (safeSearch != null) {
-      _queryParams["safeSearch"] = [safeSearch];
+    if (forMine != null) {
+      _queryParams["forMine"] = ["${forMine}"];
     }
-    if (topicId != null) {
-      _queryParams["topicId"] = [topicId];
-    }
-    if (type != null) {
-      _queryParams["type"] = [type];
-    }
-    if (videoCaption != null) {
-      _queryParams["videoCaption"] = [videoCaption];
-    }
-    if (videoCategoryId != null) {
-      _queryParams["videoCategoryId"] = [videoCategoryId];
+    if (channelType != null) {
+      _queryParams["channelType"] = [channelType];
     }
     if (videoDefinition != null) {
       _queryParams["videoDefinition"] = [videoDefinition];
     }
-    if (videoDimension != null) {
-      _queryParams["videoDimension"] = [videoDimension];
+    if (eventType != null) {
+      _queryParams["eventType"] = [eventType];
     }
-    if (videoDuration != null) {
-      _queryParams["videoDuration"] = [videoDuration];
+    if (topicId != null) {
+      _queryParams["topicId"] = [topicId];
+    }
+    if (forDeveloper != null) {
+      _queryParams["forDeveloper"] = ["${forDeveloper}"];
+    }
+    if (videoType != null) {
+      _queryParams["videoType"] = [videoType];
+    }
+    if (relatedToVideoId != null) {
+      _queryParams["relatedToVideoId"] = [relatedToVideoId];
+    }
+    if (q != null) {
+      _queryParams["q"] = [q];
+    }
+    if (safeSearch != null) {
+      _queryParams["safeSearch"] = [safeSearch];
     }
     if (videoEmbeddable != null) {
       _queryParams["videoEmbeddable"] = [videoEmbeddable];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (videoLicense != null) {
       _queryParams["videoLicense"] = [videoLicense];
+    }
+    if (publishedBefore != null) {
+      _queryParams["publishedBefore"] = [publishedBefore];
     }
     if (videoSyndicated != null) {
       _queryParams["videoSyndicated"] = [videoSyndicated];
     }
-    if (videoType != null) {
-      _queryParams["videoType"] = [videoType];
+    if (videoCategoryId != null) {
+      _queryParams["videoCategoryId"] = [videoCategoryId];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
+    if (videoDimension != null) {
+      _queryParams["videoDimension"] = [videoDimension];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
+    if (regionCode != null) {
+      _queryParams["regionCode"] = [regionCode];
+    }
+    if (order != null) {
+      _queryParams["order"] = [order];
+    }
+    if (type != null) {
+      _queryParams["type"] = type;
+    }
+    if (videoDuration != null) {
+      _queryParams["videoDuration"] = [videoDuration];
+    }
+    if (forContentOwner != null) {
+      _queryParams["forContentOwner"] = ["${forContentOwner}"];
+    }
+    if (publishedAfter != null) {
+      _queryParams["publishedAfter"] = [publishedAfter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'search';
+    _url = 'youtube/v3/search';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5247,26 +4755,26 @@ class SponsorsResourceApi {
 
   SponsorsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Lists sponsors for a channel.
+  /// Retrieves a list of sponsors that match the request criteria for a
+  /// channel.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies the sponsor resource parts that the
-  /// API response will include. Supported values are id and snippet.
+  /// [part] - The *part* parameter specifies the sponsor resource parts that
+  /// the API response will include. Supported values are id and snippet.
   ///
-  /// [filter] - The filter parameter specifies which channel sponsors to
-  /// return.
-  /// Possible string values are:
-  /// - "all" : Return all sponsors, from newest to oldest.
-  /// - "newest" : Return the most recent sponsors, from newest to oldest.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [filter] - Parameter that specifies which channel sponsors to return.
+  /// Possible string values are:
+  /// - "sponsorFilterUnknown"
+  /// - "newest" : Return the most recent sponsors, from newest to oldest.
+  /// - "all" : Return all sponsors, from newest to oldest.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5278,10 +4786,10 @@ class SponsorsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SponsorListResponse> list(core.String part,
-      {core.String filter,
+  async.Future<SponsorListResponse> list(core.List<core.String> part,
+      {core.String pageToken,
       core.int maxResults,
-      core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5290,24 +4798,24 @@ class SponsorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    _queryParams["part"] = part;
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'sponsors';
+    _url = 'youtube/v3/sponsors';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5324,13 +4832,11 @@ class SubscriptionsResourceApi {
 
   SubscriptionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a subscription.
+  /// Deletes a resource.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube subscription ID for the
-  /// resource that is being deleted. In a subscription resource, the id
-  /// property specifies the YouTube subscription ID.
+  /// [id] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5358,7 +4864,7 @@ class SubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'subscriptions';
+    _url = 'youtube/v3/subscriptions';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -5369,13 +4875,13 @@ class SubscriptionsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Adds a subscription for the authenticated user's channel.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
   /// properties that the API response will include.
   ///
@@ -5389,7 +4895,8 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subscription> insert(Subscription request, core.String part,
+  async.Future<Subscription> insert(
+      Subscription request, core.List<core.String> part,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5401,15 +4908,15 @@ class SubscriptionsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'subscriptions';
+    _url = 'youtube/v3/subscriptions';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5420,88 +4927,72 @@ class SubscriptionsResourceApi {
     return _response.then((data) => new Subscription.fromJson(data));
   }
 
-  /// Returns subscription resources that match the API request criteria.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more subscription resource properties that the API response will include.
-  ///
   /// If the parameter identifies a property that contains child properties, the
   /// child properties will be included in the response. For example, in a
   /// subscription resource, the snippet property contains other properties,
-  /// such as a display title for the subscription. If you set part=snippet, the
-  /// API response will also contain all of those nested properties.
+  /// such as a display title for the subscription. If you set *part=snippet*,
+  /// the API response will also contain all of those nested properties.
   ///
-  /// [channelId] - The channelId parameter specifies a YouTube channel ID. The
-  /// API will only return that channel's subscriptions.
-  ///
-  /// [forChannelId] - The forChannelId parameter specifies a comma-separated
-  /// list of channel IDs. The API response will then only contain subscriptions
-  /// matching those channels.
-  ///
-  /// [id] - The id parameter specifies a comma-separated list of the YouTube
-  /// subscription ID(s) for the resource(s) that are being retrieved. In a
-  /// subscription resource, the id property specifies the YouTube subscription
-  /// ID.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
-  ///
-  /// [mine] - Set this parameter's value to true to retrieve a feed of the
-  /// authenticated user's subscriptions.
-  ///
-  /// [myRecentSubscribers] - Set this parameter's value to true to retrieve a
-  /// feed of the subscribers of the authenticated user in reverse chronological
-  /// order (newest first).
-  ///
-  /// [mySubscribers] - Set this parameter's value to true to retrieve a feed of
-  /// the subscribers of the authenticated user in no particular order.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
-  ///
-  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
-  ///
-  /// [order] - The order parameter specifies the method that will be used to
-  /// sort resources in the API response.
+  /// [order] - The order of the returned subscriptions
   /// Possible string values are:
-  /// - "alphabetical" : Sort alphabetically.
+  /// - "subscriptionOrderUnspecified"
   /// - "relevance" : Sort by relevance.
   /// - "unread" : Sort by order of activity.
+  /// - "alphabetical" : Sort alphabetically.
   ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [mySubscribers] - Return the subscribers of the given channel owner.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
+  ///
+  /// [forChannelId] - Return the subscriptions to the subset of these channels
+  /// that the authenticated user is subscribed to.
+  ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [mine] - Flag for returning the subscriptions of the authenticated user.
+  ///
+  /// [myRecentSubscribers] - null
+  ///
+  /// [channelId] - Return the subscriptions of the given channel owner.
+  ///
+  /// [id] - Return the subscriptions with the given IDs for Stubby or Apiary.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5513,18 +5004,18 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SubscriptionListResponse> list(core.String part,
-      {core.String channelId,
-      core.String forChannelId,
-      core.String id,
-      core.int maxResults,
-      core.bool mine,
-      core.bool myRecentSubscribers,
+  async.Future<SubscriptionListResponse> list(core.List<core.String> part,
+      {core.String order,
       core.bool mySubscribers,
       core.String onBehalfOfContentOwner,
       core.String onBehalfOfContentOwnerChannel,
-      core.String order,
+      core.String forChannelId,
       core.String pageToken,
+      core.bool mine,
+      core.bool myRecentSubscribers,
+      core.String channelId,
+      core.List<core.String> id,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5533,27 +5024,12 @@ class SubscriptionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
-    }
-    if (forChannelId != null) {
-      _queryParams["forChannelId"] = [forChannelId];
-    }
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
-    }
-    if (myRecentSubscribers != null) {
-      _queryParams["myRecentSubscribers"] = ["${myRecentSubscribers}"];
+    _queryParams["part"] = part;
+    if (order != null) {
+      _queryParams["order"] = [order];
     }
     if (mySubscribers != null) {
       _queryParams["mySubscribers"] = ["${mySubscribers}"];
@@ -5566,17 +5042,32 @@ class SubscriptionsResourceApi {
         onBehalfOfContentOwnerChannel
       ];
     }
-    if (order != null) {
-      _queryParams["order"] = [order];
+    if (forChannelId != null) {
+      _queryParams["forChannelId"] = [forChannelId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
+    }
+    if (myRecentSubscribers != null) {
+      _queryParams["myRecentSubscribers"] = ["${myRecentSubscribers}"];
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
+    if (id != null) {
+      _queryParams["id"] = id;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'subscriptions';
+    _url = 'youtube/v3/subscriptions';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5594,30 +5085,21 @@ class SuperChatEventsResourceApi {
 
   SuperChatEventsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Lists Super Chat events for a channel.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies the superChatEvent resource parts
+  /// [part] - The *part* parameter specifies the superChatEvent resource parts
   /// that the API response will include. Supported values are id and snippet.
   ///
-  /// [hl] - The hl parameter instructs the API to retrieve localized resource
-  /// metadata for a specific application language that the YouTube website
-  /// supports. The parameter value must be a language code included in the list
-  /// returned by the i18nLanguages.list method.
-  ///
-  /// If localized resource details are available in that language, the
-  /// resource's snippet.localized object will contain the localized values.
-  /// However, if localized details are not available, the snippet.localized
-  /// object will contain resource details in the resource's default language.
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  /// Value must be between "1" and "50".
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [hl] - Return rendered funding amounts in specified language.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5629,10 +5111,10 @@ class SuperChatEventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SuperChatEventListResponse> list(core.String part,
-      {core.String hl,
+  async.Future<SuperChatEventListResponse> list(core.List<core.String> part,
+      {core.String pageToken,
       core.int maxResults,
-      core.String pageToken,
+      core.String hl,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5641,24 +5123,24 @@ class SuperChatEventsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
+    _queryParams["part"] = part;
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'superChatEvents';
+    _url = 'youtube/v3/superChatEvents';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5671,30 +5153,316 @@ class SuperChatEventsResourceApi {
   }
 }
 
+class TestsResourceApi {
+  final commons.ApiRequester _requester;
+
+  TestsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// POST method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [part] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestItem].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestItem> insert(TestItem request, core.List<core.String> part,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (part == null || part.isEmpty) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = part;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'youtube/v3/tests';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestItem.fromJson(data));
+  }
+}
+
+class ThirdPartyLinksResourceApi {
+  final commons.ApiRequester _requester;
+
+  ThirdPartyLinksResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes a resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [linkingToken] - Delete the partner links with the given linking token.
+  ///
+  /// [type] - Type of the link to be deleted.
+  /// Possible string values are:
+  /// - "linkUnspecified"
+  /// - "channelToStoreLink" : A link that is connecting (or about to connect) a
+  /// channel with a store on a merchandising platform in order to enable retail
+  /// commerce capabilities for that channel on YouTube.
+  ///
+  /// [part] - Do not use. Required for compatibility.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String linkingToken, core.String type,
+      {core.List<core.String> part, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (linkingToken == null) {
+      throw new core.ArgumentError("Parameter linkingToken is required.");
+    }
+    _queryParams["linkingToken"] = [linkingToken];
+    if (type == null) {
+      throw new core.ArgumentError("Parameter type is required.");
+    }
+    _queryParams["type"] = [type];
+    if (part != null) {
+      _queryParams["part"] = part;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'youtube/v3/thirdPartyLinks';
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Inserts a new resource into this collection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [part] - The *part* parameter specifies the thirdPartyLink resource parts
+  /// that the API request and response will include. Supported values are
+  /// linkingToken, status, and snippet.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ThirdPartyLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ThirdPartyLink> insert(
+      ThirdPartyLink request, core.List<core.String> part,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (part == null || part.isEmpty) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = part;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'youtube/v3/thirdPartyLinks';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ThirdPartyLink.fromJson(data));
+  }
+
+  /// Retrieves a list of resources, possibly filtered.
+  ///
+  /// Request parameters:
+  ///
+  /// [part] - The *part* parameter specifies the thirdPartyLink resource parts
+  /// that the API response will include. Supported values are linkingToken,
+  /// status, and snippet.
+  ///
+  /// [type] - Get a third party link of the given type.
+  /// Possible string values are:
+  /// - "linkUnspecified"
+  /// - "channelToStoreLink" : A link that is connecting (or about to connect) a
+  /// channel with a store on a merchandising platform in order to enable retail
+  /// commerce capabilities for that channel on YouTube.
+  ///
+  /// [linkingToken] - Get a third party link with the given linking token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ThirdPartyLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ThirdPartyLink> list(core.List<core.String> part,
+      {core.String type, core.String linkingToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (part == null || part.isEmpty) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = part;
+    if (type != null) {
+      _queryParams["type"] = [type];
+    }
+    if (linkingToken != null) {
+      _queryParams["linkingToken"] = [linkingToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'youtube/v3/thirdPartyLinks';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ThirdPartyLink.fromJson(data));
+  }
+
+  /// Updates an existing resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [part] - The *part* parameter specifies the thirdPartyLink resource parts
+  /// that the API request and response will include. Supported values are
+  /// linkingToken, status, and snippet.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ThirdPartyLink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ThirdPartyLink> update(
+      ThirdPartyLink request, core.List<core.String> part,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (part == null || part.isEmpty) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = part;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'youtube/v3/thirdPartyLinks';
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ThirdPartyLink.fromJson(data));
+  }
+}
+
 class ThumbnailsResourceApi {
   final commons.ApiRequester _requester;
 
   ThumbnailsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Uploads a custom video thumbnail to YouTube and sets it for a video.
+  /// As this is not an insert in a strict sense (it supports uploading/setting
+  /// of a thumbnail for multiple videos, which doesn't result in creation of a
+  /// single resource), I use a custom verb here.
   ///
   /// Request parameters:
   ///
-  /// [videoId] - The videoId parameter specifies a YouTube video ID for which
-  /// the custom video thumbnail is being provided.
+  /// [videoId] - Returns the Thumbnail with the given video IDs for Stubby or
+  /// Apiary.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The actual
-  /// CMS account that the user authenticates with must be linked to the
-  /// specified YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The actual CMS account that the user authenticates
+  /// with must be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5739,7 +5507,7 @@ class ThumbnailsResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'thumbnails/set';
+      _url = 'youtube/v3/thumbnails/set';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/thumbnails/set';
     } else {
@@ -5762,16 +5530,14 @@ class VideoAbuseReportReasonsResourceApi {
   VideoAbuseReportReasonsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Returns a list of abuse reasons that can be used for reporting abusive
-  /// videos.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies the videoCategory resource parts
+  /// [part] - The *part* parameter specifies the videoCategory resource parts
   /// that the API response will include. Supported values are id and snippet.
   ///
-  /// [hl] - The hl parameter specifies the language that should be used for
-  /// text values in the API response.
+  /// [hl] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5783,8 +5549,10 @@ class VideoAbuseReportReasonsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoAbuseReportReasonListResponse> list(core.String part,
-      {core.String hl, core.String $fields}) {
+  async.Future<VideoAbuseReportReasonListResponse> list(
+      core.List<core.String> part,
+      {core.String hl,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -5792,10 +5560,10 @@ class VideoAbuseReportReasonsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (hl != null) {
       _queryParams["hl"] = [hl];
     }
@@ -5803,7 +5571,7 @@ class VideoAbuseReportReasonsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'videoAbuseReportReasons';
+    _url = 'youtube/v3/videoAbuseReportReasons';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5821,23 +5589,20 @@ class VideoCategoriesResourceApi {
 
   VideoCategoriesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a list of categories that can be associated with YouTube videos.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies the videoCategory resource
+  /// [part] - The *part* parameter specifies the videoCategory resource
   /// properties that the API response will include. Set the parameter value to
   /// snippet.
   ///
-  /// [hl] - The hl parameter specifies the language that should be used for
-  /// text values in the API response.
+  /// [regionCode] - null
   ///
-  /// [id] - The id parameter specifies a comma-separated list of video category
-  /// IDs for the resources that you are retrieving.
+  /// [id] - Returns the video categories with the given IDs for Stubby or
+  /// Apiary.
   ///
-  /// [regionCode] - The regionCode parameter instructs the API to return the
-  /// list of video categories available in the specified country. The parameter
-  /// value is an ISO 3166-1 alpha-2 country code.
+  /// [hl] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5849,10 +5614,10 @@ class VideoCategoriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoCategoryListResponse> list(core.String part,
-      {core.String hl,
-      core.String id,
-      core.String regionCode,
+  async.Future<VideoCategoryListResponse> list(core.List<core.String> part,
+      {core.String regionCode,
+      core.List<core.String> id,
+      core.String hl,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5861,24 +5626,24 @@ class VideoCategoriesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
-    }
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
+    _queryParams["part"] = part;
     if (regionCode != null) {
       _queryParams["regionCode"] = [regionCode];
+    }
+    if (id != null) {
+      _queryParams["id"] = id;
+    }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'videoCategories';
+    _url = 'youtube/v3/videoCategories';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5896,26 +5661,22 @@ class VideosResourceApi {
 
   VideosResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a YouTube video.
+  /// Deletes a resource.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube video ID for the resource
-  /// that is being deleted. In a video resource, the id property specifies the
-  /// video's ID.
+  /// [id] - null
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The actual
-  /// CMS account that the user authenticates with must be linked to the
-  /// specified YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The actual CMS account that the user authenticates
+  /// with must be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5947,7 +5708,7 @@ class VideosResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'videos';
+    _url = 'youtube/v3/videos';
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -5963,34 +5724,30 @@ class VideosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies a comma-separated list of the YouTube
-  /// video ID(s) for the resource(s) for which you are retrieving rating data.
-  /// In a video resource, the id property specifies the video's ID.
+  /// [id] - null
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [VideoGetRatingResponse].
+  /// Completes with a [VideoRatingListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoGetRatingResponse> getRating(core.String id,
+  async.Future<VideoRatingListResponse> getRating(core.List<core.String> id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5999,10 +5756,10 @@ class VideosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (id == null) {
+    if (id == null || id.isEmpty) {
       throw new core.ArgumentError("Parameter id is required.");
     }
-    _queryParams["id"] = [id];
+    _queryParams["id"] = id;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -6010,7 +5767,7 @@ class VideosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'videos/getRating';
+    _url = 'youtube/v3/videos/getRating';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -6018,72 +5775,58 @@ class VideosResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new VideoGetRatingResponse.fromJson(data));
+    return _response.then((data) => new VideoRatingListResponse.fromJson(data));
   }
 
-  /// Uploads a video to YouTube and optionally sets the video's metadata.
+  /// Inserts a new resource into this collection.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
+  /// properties that the API response will include. Note that not all parts
+  /// contain properties that can be set when inserting or updating a video. For
+  /// example, the statistics object encapsulates statistics that YouTube
+  /// calculates for a video and does not contain values that you can set or
+  /// modify. If the parameter value specifies a part that does not contain
+  /// mutable values, that part will still be included in the API response.
   ///
-  /// Note that not all parts contain properties that can be set when inserting
-  /// or updating a video. For example, the statistics object encapsulates
-  /// statistics that YouTube calculates for a video and does not contain values
-  /// that you can set or modify. If the parameter value specifies a part that
-  /// does not contain mutable values, that part will still be included in the
-  /// API response.
+  /// [stabilize] - Should stabilize be applied to the upload.
   ///
-  /// [autoLevels] - The autoLevels parameter indicates whether YouTube should
-  /// automatically enhance the video's lighting and color.
+  /// [autoLevels] - Should auto-levels be applied to the upload.
   ///
-  /// [notifySubscribers] - The notifySubscribers parameter indicates whether
-  /// YouTube should send a notification about the new video to users who
-  /// subscribe to the video's channel. A parameter value of True indicates that
-  /// subscribers will be notified of newly uploaded videos. However, a channel
-  /// owner who is uploading many videos might prefer to set the value to False
-  /// to avoid sending a notification about each new video to the channel's
-  /// subscribers.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [notifySubscribers] - Notify the channel subscribers about the new video.
+  /// As default, the notification is enabled.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel
-  /// ID of the channel to which a video is being added. This parameter is
-  /// required when a request specifies a value for the onBehalfOfContentOwner
-  /// parameter, and it can only be used in conjunction with that parameter. In
-  /// addition, the request must be authorized using a CMS account that is
-  /// linked to the content owner that the onBehalfOfContentOwner parameter
-  /// specifies. Finally, the channel that the onBehalfOfContentOwnerChannel
-  /// parameter value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies.
-  ///
-  /// This parameter is intended for YouTube content partners that own and
-  /// manage many different YouTube channels. It allows content owners to
-  /// authenticate once and perform actions on behalf of the channel specified
-  /// in the parameter value, without having to provide authentication
-  /// credentials for each separate channel.
-  ///
-  /// [stabilize] - The stabilize parameter indicates whether YouTube should
-  /// adjust the video to remove shaky camera motions.
+  /// properly authorized request. *Note:* This parameter is intended
+  /// exclusively for YouTube content partners. The
+  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
+  /// of the channel to which a video is being added. This parameter is required
+  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
+  /// and it can only be used in conjunction with that parameter. In addition,
+  /// the request must be authorized using a CMS account that is linked to the
+  /// content owner that the onBehalfOfContentOwner parameter specifies.
+  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
+  /// value specifies must be linked to the content owner that the
+  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. It allows content owners to authenticate once and perform
+  /// actions on behalf of the channel specified in the parameter value, without
+  /// having to provide authentication credentials for each separate channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6101,12 +5844,12 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Video> insert(Video request, core.String part,
-      {core.bool autoLevels,
-      core.bool notifySubscribers,
+  async.Future<Video> insert(Video request, core.List<core.String> part,
+      {core.bool stabilize,
+      core.bool autoLevels,
       core.String onBehalfOfContentOwner,
+      core.bool notifySubscribers,
       core.String onBehalfOfContentOwnerChannel,
-      core.bool stabilize,
       core.String $fields,
       commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
@@ -6120,26 +5863,26 @@ class VideosResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
+    if (stabilize != null) {
+      _queryParams["stabilize"] = ["${stabilize}"];
+    }
     if (autoLevels != null) {
       _queryParams["autoLevels"] = ["${autoLevels}"];
     }
-    if (notifySubscribers != null) {
-      _queryParams["notifySubscribers"] = ["${notifySubscribers}"];
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (notifySubscribers != null) {
+      _queryParams["notifySubscribers"] = ["${notifySubscribers}"];
     }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
-    }
-    if (stabilize != null) {
-      _queryParams["stabilize"] = ["${stabilize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6149,7 +5892,7 @@ class VideosResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'videos';
+      _url = 'youtube/v3/videos';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/videos';
     } else {
@@ -6165,95 +5908,72 @@ class VideosResourceApi {
     return _response.then((data) => new Video.fromJson(data));
   }
 
-  /// Returns a list of videos that match the API request parameters.
+  /// Retrieves a list of resources, possibly filtered.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter specifies a comma-separated list of one or
-  /// more video resource properties that the API response will include.
-  ///
-  /// If the parameter identifies a property that contains child properties, the
-  /// child properties will be included in the response. For example, in a video
+  /// [part] - The *part* parameter specifies a comma-separated list of one or
+  /// more video resource properties that the API response will include. If the
+  /// parameter identifies a property that contains child properties, the child
+  /// properties will be included in the response. For example, in a video
   /// resource, the snippet property contains the channelId, title, description,
-  /// tags, and categoryId properties. As such, if you set part=snippet, the API
-  /// response will contain all of those properties.
+  /// tags, and categoryId properties. As such, if you set *part=snippet*, the
+  /// API response will contain all of those properties.
   ///
-  /// [chart] - The chart parameter identifies the chart that you want to
-  /// retrieve.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [maxHeight] - null
+  ///
+  /// [myRating] - Return videos liked/disliked by the authenticated user. Does
+  /// not support RateType.RATED_TYPE_NONE.
   /// Possible string values are:
+  /// - "none"
+  /// - "like" : The entity is liked.
+  /// - "dislike" : The entity is disliked.
+  ///
+  /// [videoCategoryId] - Use chart that is specific to the specified video
+  /// category
+  ///
+  /// [id] - Return videos with the given ids.
+  ///
+  /// [regionCode] - Use a chart that is specific to the specified region
+  ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
+  /// *Note:* This parameter is supported for use in conjunction with the
+  /// myRating and chart parameters, but it is not supported for use in
+  /// conjunction with the id parameter.
+  ///
+  /// [locale] - null
+  ///
+  /// [chart] - Return the videos that are in the specified chart.
+  /// Possible string values are:
+  /// - "chartUnspecified"
   /// - "mostPopular" : Return the most popular videos for the specified content
   /// region and video category.
   ///
-  /// [hl] - The hl parameter instructs the API to retrieve localized resource
-  /// metadata for a specific application language that the YouTube website
-  /// supports. The parameter value must be a language code included in the list
-  /// returned by the i18nLanguages.list method.
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set. *Note:* This parameter is
+  /// supported for use in conjunction with the myRating and chart parameters,
+  /// but it is not supported for use in conjunction with the id parameter.
   ///
-  /// If localized resource details are available in that language, the
-  /// resource's snippet.localized object will contain the localized values.
-  /// However, if localized details are not available, the snippet.localized
-  /// object will contain resource details in the resource's default language.
+  /// [maxWidth] - Return the player with maximum height specified in
   ///
-  /// [id] - The id parameter specifies a comma-separated list of the YouTube
-  /// video ID(s) for the resource(s) that are being retrieved. In a video
-  /// resource, the id property specifies the video's ID.
-  ///
-  /// [locale] - DEPRECATED
-  ///
-  /// [maxHeight] - The maxHeight parameter specifies a maximum height of the
-  /// embedded player. If maxWidth is provided, maxHeight may not be reached in
-  /// order to not violate the width request.
-  /// Value must be between "72" and "8192".
-  ///
-  /// [maxResults] - The maxResults parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  ///
-  /// Note: This parameter is supported for use in conjunction with the myRating
-  /// and chart parameters, but it is not supported for use in conjunction with
-  /// the id parameter.
-  /// Value must be between "1" and "50".
-  ///
-  /// [maxWidth] - The maxWidth parameter specifies a maximum width of the
-  /// embedded player. If maxHeight is provided, maxWidth may not be reached in
-  /// order to not violate the height request.
-  /// Value must be between "72" and "8192".
-  ///
-  /// [myRating] - Set this parameter's value to like or dislike to instruct the
-  /// API to only return videos liked or disliked by the authenticated user.
-  /// Possible string values are:
-  /// - "dislike" : Returns only videos disliked by the authenticated user.
-  /// - "like" : Returns only video liked by the authenticated user.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
-  ///
-  /// [pageToken] - The pageToken parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// Note: This parameter is supported for use in conjunction with the myRating
-  /// and chart parameters, but it is not supported for use in conjunction with
-  /// the id parameter.
-  ///
-  /// [regionCode] - The regionCode parameter instructs the API to select a
-  /// video chart available in the specified region. This parameter can only be
-  /// used in conjunction with the chart parameter. The parameter value is an
-  /// ISO 3166-1 alpha-2 country code.
-  ///
-  /// [videoCategoryId] - The videoCategoryId parameter identifies the video
-  /// category for which the chart should be retrieved. This parameter can only
-  /// be used in conjunction with the chart parameter. By default, charts are
-  /// not restricted to a particular category.
+  /// [hl] - Stands for "host language". Specifies the localization language of
+  /// the metadata to be filled into snippet.localized. The field is filled with
+  /// the default metadata if there is no localization in the specified
+  /// language. The parameter value must be a language code included in the list
+  /// returned by the i18nLanguages.list method (e.g. en_US, es_MX).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6265,19 +5985,19 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoListResponse> list(core.String part,
-      {core.String chart,
-      core.String hl,
-      core.String id,
-      core.String locale,
+  async.Future<VideoListResponse> list(core.List<core.String> part,
+      {core.String onBehalfOfContentOwner,
       core.int maxHeight,
+      core.String myRating,
+      core.String videoCategoryId,
+      core.List<core.String> id,
+      core.String regionCode,
+      core.String pageToken,
+      core.String locale,
+      core.String chart,
       core.int maxResults,
       core.int maxWidth,
-      core.String myRating,
-      core.String onBehalfOfContentOwner,
-      core.String pageToken,
-      core.String regionCode,
-      core.String videoCategoryId,
+      core.String hl,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6286,24 +6006,36 @@ class VideosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
-    if (chart != null) {
-      _queryParams["chart"] = [chart];
+    _queryParams["part"] = part;
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
+    if (maxHeight != null) {
+      _queryParams["maxHeight"] = ["${maxHeight}"];
+    }
+    if (myRating != null) {
+      _queryParams["myRating"] = [myRating];
+    }
+    if (videoCategoryId != null) {
+      _queryParams["videoCategoryId"] = [videoCategoryId];
     }
     if (id != null) {
-      _queryParams["id"] = [id];
+      _queryParams["id"] = id;
+    }
+    if (regionCode != null) {
+      _queryParams["regionCode"] = [regionCode];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
-    if (maxHeight != null) {
-      _queryParams["maxHeight"] = ["${maxHeight}"];
+    if (chart != null) {
+      _queryParams["chart"] = [chart];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -6311,26 +6043,14 @@ class VideosResourceApi {
     if (maxWidth != null) {
       _queryParams["maxWidth"] = ["${maxWidth}"];
     }
-    if (myRating != null) {
-      _queryParams["myRating"] = [myRating];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
-    }
-    if (videoCategoryId != null) {
-      _queryParams["videoCategoryId"] = [videoCategoryId];
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'videos';
+    _url = 'youtube/v3/videos';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -6341,19 +6061,17 @@ class VideosResourceApi {
     return _response.then((data) => new VideoListResponse.fromJson(data));
   }
 
-  /// Add a like or dislike rating to a video or remove a rating from a video.
+  /// Adds a like or dislike rating to a video or removes a rating from a video.
   ///
   /// Request parameters:
   ///
-  /// [id] - The id parameter specifies the YouTube video ID of the video that
-  /// is being rated or having its rating removed.
+  /// [id] - null
   ///
-  /// [rating] - Specifies the rating to record.
+  /// [rating] - null
   /// Possible string values are:
-  /// - "dislike" : Records that the authenticated user disliked the video.
-  /// - "like" : Records that the authenticated user liked the video.
-  /// - "none" : Removes any rating that the authenticated user had previously
-  /// set for the video.
+  /// - "none"
+  /// - "like" : The entity is liked.
+  /// - "dislike" : The entity is disliked.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6385,7 +6103,7 @@ class VideosResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'videos/rate';
+    _url = 'youtube/v3/videos/rate';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -6402,18 +6120,16 @@ class VideosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6444,7 +6160,7 @@ class VideosResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'videos/reportAbuse';
+    _url = 'youtube/v3/videos/reportAbuse';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -6455,45 +6171,40 @@ class VideosResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Updates a video's metadata.
+  /// Updates an existing resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [part] - The part parameter serves two purposes in this operation. It
+  /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
-  /// properties that the API response will include.
+  /// properties that the API response will include. Note that this method will
+  /// override the existing values for all of the mutable properties that are
+  /// contained in any parts that the parameter value specifies. For example, a
+  /// video's privacy setting is contained in the status part. As such, if your
+  /// request is updating a private video, and the request's part parameter
+  /// value includes the status part, the video's privacy setting will be
+  /// updated to whatever value the request body specifies. If the request body
+  /// does not specify a value, the existing privacy setting will be removed and
+  /// the video will revert to the default privacy setting. In addition, not all
+  /// parts contain properties that can be set when inserting or updating a
+  /// video. For example, the statistics object encapsulates statistics that
+  /// YouTube calculates for a video and does not contain values that you can
+  /// set or modify. If the parameter value specifies a part that does not
+  /// contain mutable values, that part will still be included in the API
+  /// response.
   ///
-  /// Note that this method will override the existing values for all of the
-  /// mutable properties that are contained in any parts that the parameter
-  /// value specifies. For example, a video's privacy setting is contained in
-  /// the status part. As such, if your request is updating a private video, and
-  /// the request's part parameter value includes the status part, the video's
-  /// privacy setting will be updated to whatever value the request body
-  /// specifies. If the request body does not specify a value, the existing
-  /// privacy setting will be removed and the video will revert to the default
-  /// privacy setting.
-  ///
-  /// In addition, not all parts contain properties that can be set when
-  /// inserting or updating a video. For example, the statistics object
-  /// encapsulates statistics that YouTube calculates for a video and does not
-  /// contain values that you can set or modify. If the parameter value
-  /// specifies a part that does not contain mutable values, that part will
-  /// still be included in the API response.
-  ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The actual
-  /// CMS account that the user authenticates with must be linked to the
-  /// specified YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The actual CMS account that the user authenticates
+  /// with must be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6505,7 +6216,7 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Video> update(Video request, core.String part,
+  async.Future<Video> update(Video request, core.List<core.String> part,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6517,10 +6228,10 @@ class VideosResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (part == null) {
+    if (part == null || part.isEmpty) {
       throw new core.ArgumentError("Parameter part is required.");
     }
-    _queryParams["part"] = [part];
+    _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -6528,7 +6239,7 @@ class VideosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'videos';
+    _url = 'youtube/v3/videos';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -6545,27 +6256,24 @@ class WatermarksResourceApi {
 
   WatermarksResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Uploads a watermark image to YouTube and sets it for a channel.
+  /// Allows upload of watermark image and setting it for a channel.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [channelId] - The channelId parameter specifies the YouTube channel ID for
-  /// which the watermark is being provided.
+  /// [channelId] - null
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6612,7 +6320,7 @@ class WatermarksResourceApi {
     _downloadOptions = null;
 
     if (_uploadMedia == null) {
-      _url = 'watermarks/set';
+      _url = 'youtube/v3/watermarks/set';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/youtube/v3/watermarks/set';
     } else {
@@ -6628,25 +6336,22 @@ class WatermarksResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Deletes a channel's watermark image.
+  /// Allows removal of channel watermark.
   ///
   /// Request parameters:
   ///
-  /// [channelId] - The channelId parameter specifies the YouTube channel ID for
-  /// which the watermark is being unset.
+  /// [channelId] - null
   ///
-  /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
-  /// for YouTube content partners.
-  ///
-  /// The onBehalfOfContentOwner parameter indicates that the request's
-  /// authorization credentials identify a YouTube CMS user who is acting on
-  /// behalf of the content owner specified in the parameter value. This
-  /// parameter is intended for YouTube content partners that own and manage
-  /// many different YouTube channels. It allows content owners to authenticate
-  /// once and get access to all their video and channel data, without having to
-  /// provide authentication credentials for each individual channel. The CMS
-  /// account that the user authenticates with must be linked to the specified
-  /// YouTube content owner.
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6678,7 +6383,7 @@ class WatermarksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'watermarks/unset';
+    _url = 'youtube/v3/watermarks/unset';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -6687,6 +6392,75 @@ class WatermarksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => null);
+  }
+}
+
+class AbuseReport {
+  core.List<AbuseType> abuseTypes;
+  core.String description;
+  core.List<RelatedEntity> relatedEntities;
+  Entity subject;
+
+  AbuseReport();
+
+  AbuseReport.fromJson(core.Map _json) {
+    if (_json.containsKey("abuseTypes")) {
+      abuseTypes = (_json["abuseTypes"] as core.List)
+          .map<AbuseType>((value) => new AbuseType.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("relatedEntities")) {
+      relatedEntities = (_json["relatedEntities"] as core.List)
+          .map<RelatedEntity>((value) => new RelatedEntity.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("subject")) {
+      subject = new Entity.fromJson(_json["subject"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (abuseTypes != null) {
+      _json["abuseTypes"] =
+          abuseTypes.map((value) => (value).toJson()).toList();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (relatedEntities != null) {
+      _json["relatedEntities"] =
+          relatedEntities.map((value) => (value).toJson()).toList();
+    }
+    if (subject != null) {
+      _json["subject"] = (subject).toJson();
+    }
+    return _json;
+  }
+}
+
+class AbuseType {
+  core.String id;
+
+  AbuseType();
+
+  AbuseType.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    return _json;
   }
 }
 
@@ -6724,9 +6498,9 @@ class AccessPolicy {
   }
 }
 
-/// An activity resource contains information about an action that a particular
-/// channel, or user, has taken on YouTube.The actions reported in activity
-/// feeds include rating a video, sharing a video, marking a video as a
+/// An *activity* resource contains information about an action that a
+/// particular channel, or user, has taken on YouTube.The actions reported in
+/// activity feeds include rating a video, sharing a video, marking a video as a
 /// favorite, commenting on a video, uploading a video, and so forth. Each
 /// activity resource identifies the type of action, the channel associated with
 /// the action, and the resource(s) associated with the action, such as the
@@ -6738,7 +6512,7 @@ class Activity {
   /// video.
   ActivityContentDetails contentDetails;
 
-  /// Etag of this resource.
+  /// Etag of this resource
   core.String etag;
 
   /// The ID that YouTube uses to uniquely identify the activity.
@@ -6934,7 +6708,7 @@ class ActivityContentDetails {
 /// Details about a channel bulletin post.
 class ActivityContentDetailsBulletin {
   /// The resourceId object contains information that identifies the resource
-  /// associated with a bulletin post.
+  /// associated with a bulletin post. @mutable youtube.activities.insert
   ResourceId resourceId;
 
   ActivityContentDetailsBulletin();
@@ -7109,7 +6883,7 @@ class ActivityContentDetailsPromotedItem {
   /// The type of call-to-action, a message to the user indicating action that
   /// can be taken.
   /// Possible string values are:
-  /// - "unspecified"
+  /// - "ctaTypeUnspecified"
   /// - "visitAdvertiserSite"
   core.String ctaType;
 
@@ -7213,7 +6987,7 @@ class ActivityContentDetailsPromotedItem {
 class ActivityContentDetailsRecommendation {
   /// The reason that the resource is recommended to the user.
   /// Possible string values are:
-  /// - "unspecified"
+  /// - "reasonUnspecified"
   /// - "videoFavorited"
   /// - "videoLiked"
   /// - "videoWatched"
@@ -7274,10 +7048,10 @@ class ActivityContentDetailsSocial {
 
   /// The name of the social network.
   /// Possible string values are:
-  /// - "facebook"
+  /// - "typeUnspecified"
   /// - "googlePlus"
+  /// - "facebook"
   /// - "twitter"
-  /// - "unspecified"
   core.String type;
 
   ActivityContentDetailsSocial();
@@ -7375,8 +7149,6 @@ class ActivityListResponse {
 
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
-
-  /// A list of activities, or events, that match the request criteria.
   core.List<Activity> items;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -7386,6 +7158,8 @@ class ActivityListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -7465,7 +7239,7 @@ class ActivityListResponse {
 }
 
 /// Basic details about an activity, including title, description, thumbnails,
-/// activity type and group.
+/// activity type and group. Next ID: 12
 class ActivitySnippet {
   /// The ID that YouTube uses to uniquely identify the channel associated with
   /// the activity.
@@ -7475,6 +7249,7 @@ class ActivitySnippet {
   core.String channelTitle;
 
   /// The description of the resource primarily associated with the activity.
+  /// @mutable youtube.activities.insert
   core.String description;
 
   /// The group ID associated with the activity. A group ID identifies user
@@ -7486,8 +7261,8 @@ class ActivitySnippet {
   core.String groupId;
 
   /// The date and time that the video was uploaded. The value is specified in
-  /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishedAt;
+  /// ISO 8601 format.
+  core.String publishedAt;
 
   /// A map of thumbnail images associated with the resource that is primarily
   /// associated with the activity. For each object in the map, the key is the
@@ -7500,17 +7275,18 @@ class ActivitySnippet {
 
   /// The type of activity that the resource describes.
   /// Possible string values are:
-  /// - "bulletin"
-  /// - "channelItem"
-  /// - "comment"
-  /// - "favorite"
-  /// - "like"
-  /// - "playlistItem"
-  /// - "promotedItem"
-  /// - "recommendation"
-  /// - "social"
-  /// - "subscription"
+  /// - "typeUnspecified"
   /// - "upload"
+  /// - "like"
+  /// - "favorite"
+  /// - "comment"
+  /// - "subscription"
+  /// - "playlistItem"
+  /// - "recommendation"
+  /// - "bulletin"
+  /// - "social"
+  /// - "channelItem"
+  /// - "promotedItem"
   core.String type;
 
   ActivitySnippet();
@@ -7529,7 +7305,7 @@ class ActivitySnippet {
       groupId = _json["groupId"];
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("thumbnails")) {
       thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
@@ -7558,7 +7334,7 @@ class ActivitySnippet {
       _json["groupId"] = groupId;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (thumbnails != null) {
       _json["thumbnails"] = (thumbnails).toJson();
@@ -7573,7 +7349,7 @@ class ActivitySnippet {
   }
 }
 
-/// A caption resource represents a YouTube caption track. A caption track is
+/// A *caption* resource represents a YouTube caption track. A caption track is
 /// associated with exactly one YouTube video.
 class Caption {
   /// Etag of this resource.
@@ -7690,18 +7466,18 @@ class CaptionListResponse {
 class CaptionSnippet {
   /// The type of audio track associated with the caption track.
   /// Possible string values are:
+  /// - "unknown"
+  /// - "primary"
   /// - "commentary"
   /// - "descriptive"
-  /// - "primary"
-  /// - "unknown"
   core.String audioTrackType;
 
   /// The reason that YouTube failed to process the caption track. This property
   /// is only present if the state property's value is failed.
   /// Possible string values are:
-  /// - "processingFailed"
   /// - "unknownFormat"
   /// - "unsupportedFormat"
+  /// - "processingFailed"
   core.String failureReason;
 
   /// Indicates whether YouTube synchronized the caption track to the audio
@@ -7718,7 +7494,8 @@ class CaptionSnippet {
   core.bool isCC;
 
   /// Indicates whether the caption track is a draft. If the value is true, then
-  /// the track is not publicly visible. The default value is false.
+  /// the track is not publicly visible. The default value is false. @mutable
+  /// youtube.captions.insert youtube.captions.update
   core.bool isDraft;
 
   /// Indicates whether caption track is formatted for "easy reader," meaning it
@@ -7735,8 +7512,8 @@ class CaptionSnippet {
   core.String language;
 
   /// The date and time when the caption track was last updated. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime lastUpdated;
+  /// specified in ISO 8601 format.
+  core.String lastUpdated;
 
   /// The name of the caption track. The name is intended to be visible to the
   /// user as an option during playback.
@@ -7744,20 +7521,20 @@ class CaptionSnippet {
 
   /// The caption track's status.
   /// Possible string values are:
-  /// - "failed"
   /// - "serving"
   /// - "syncing"
+  /// - "failed"
   core.String status;
 
   /// The caption track's type.
   /// Possible string values are:
+  /// - "standard"
   /// - "ASR"
   /// - "forced"
-  /// - "standard"
   core.String trackKind;
 
   /// The ID that YouTube uses to uniquely identify the video associated with
-  /// the caption track.
+  /// the caption track. @mutable youtube.captions.insert
   core.String videoId;
 
   CaptionSnippet();
@@ -7788,7 +7565,7 @@ class CaptionSnippet {
       language = _json["language"];
     }
     if (_json.containsKey("lastUpdated")) {
-      lastUpdated = core.DateTime.parse(_json["lastUpdated"]);
+      lastUpdated = _json["lastUpdated"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -7832,7 +7609,7 @@ class CaptionSnippet {
       _json["language"] = language;
     }
     if (lastUpdated != null) {
-      _json["lastUpdated"] = (lastUpdated).toIso8601String();
+      _json["lastUpdated"] = lastUpdated;
     }
     if (name != null) {
       _json["name"] = name;
@@ -7866,23 +7643,23 @@ class CdnSettings {
   /// you need to transmit your RTMP or HTTP stream to YouTube.
   IngestionInfo ingestionInfo;
 
-  /// The method or protocol used to transmit the video stream.
+  ///  The method or protocol used to transmit the video stream.
   /// Possible string values are:
-  /// - "dash"
-  /// - "hls"
   /// - "rtmp"
+  /// - "dash"
   /// - "webrtc"
+  /// - "hls"
   core.String ingestionType;
 
   /// The resolution of the inbound video data.
   /// Possible string values are:
-  /// - "1080p"
-  /// - "1440p"
-  /// - "2160p"
   /// - "240p"
   /// - "360p"
   /// - "480p"
   /// - "720p"
+  /// - "1080p"
+  /// - "1440p"
+  /// - "2160p"
   /// - "variable"
   core.String resolution;
 
@@ -7928,7 +7705,7 @@ class CdnSettings {
   }
 }
 
-/// A channel resource contains information about a YouTube channel.
+/// A *channel* resource contains information about a YouTube channel.
 class Channel {
   /// The auditionDetails object encapsulates channel data that is relevant for
   /// YouTube Partners during the audition process.
@@ -7955,10 +7732,6 @@ class Channel {
 
   /// The ID that YouTube uses to uniquely identify the channel.
   core.String id;
-
-  /// The invideoPromotion object encapsulates information about promotion
-  /// campaign associated with the channel.
-  InvideoPromotion invideoPromotion;
 
   /// Identifies what kind of resource this is. Value: the fixed string
   /// "youtube#channel".
@@ -8010,10 +7783,6 @@ class Channel {
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
-    if (_json.containsKey("invideoPromotion")) {
-      invideoPromotion =
-          new InvideoPromotion.fromJson(_json["invideoPromotion"]);
-    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -8059,9 +7828,6 @@ class Channel {
     }
     if (id != null) {
       _json["id"] = id;
-    }
-    if (invideoPromotion != null) {
-      _json["invideoPromotion"] = (invideoPromotion).toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -8133,7 +7899,6 @@ class ChannelAuditDetails {
 
 /// A channel banner returned as the response to a channel_banner.insert call.
 class ChannelBannerResource {
-  /// Etag of this resource.
   core.String etag;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -8227,27 +7992,27 @@ class ChannelBrandingSettings {
 
 class ChannelContentDetailsRelatedPlaylists {
   /// The ID of the playlist that contains the channel"s favorite videos. Use
-  /// the  playlistItems.insert and  playlistItems.delete to add or remove items
+  /// the playlistItems.insert and playlistItems.delete to add or remove items
   /// from that list.
   core.String favorites;
 
   /// The ID of the playlist that contains the channel"s liked videos. Use the
-  /// playlistItems.insert and  playlistItems.delete to add or remove items from
+  /// playlistItems.insert and playlistItems.delete to add or remove items from
   /// that list.
   core.String likes;
 
   /// The ID of the playlist that contains the channel"s uploaded videos. Use
-  /// the  videos.insert method to upload new videos and the videos.delete
-  /// method to delete previously uploaded videos.
+  /// the videos.insert method to upload new videos and the videos.delete method
+  /// to delete previously uploaded videos.
   core.String uploads;
 
   /// The ID of the playlist that contains the channel"s watch history. Use the
-  /// playlistItems.insert and  playlistItems.delete to add or remove items from
+  /// playlistItems.insert and playlistItems.delete to add or remove items from
   /// that list.
   core.String watchHistory;
 
   /// The ID of the playlist that contains the channel"s watch later playlist.
-  /// Use the playlistItems.insert and  playlistItems.delete to add or remove
+  /// Use the playlistItems.insert and playlistItems.delete to add or remove
   /// items from that list.
   core.String watchLater;
 
@@ -8323,8 +8088,8 @@ class ChannelContentOwnerDetails {
   core.String contentOwner;
 
   /// The date and time of when the channel was linked to the content owner. The
-  /// value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime timeLinked;
+  /// value is specified in ISO 8601 format.
+  core.String timeLinked;
 
   ChannelContentOwnerDetails();
 
@@ -8333,7 +8098,7 @@ class ChannelContentOwnerDetails {
       contentOwner = _json["contentOwner"];
     }
     if (_json.containsKey("timeLinked")) {
-      timeLinked = core.DateTime.parse(_json["timeLinked"]);
+      timeLinked = _json["timeLinked"];
     }
   }
 
@@ -8344,7 +8109,7 @@ class ChannelContentOwnerDetails {
       _json["contentOwner"] = contentOwner;
     }
     if (timeLinked != null) {
-      _json["timeLinked"] = (timeLinked).toIso8601String();
+      _json["timeLinked"] = timeLinked;
     }
     return _json;
   }
@@ -8356,9 +8121,9 @@ class ChannelContentOwnerDetails {
 class ChannelConversionPing {
   /// Defines the context of the ping.
   /// Possible string values are:
-  /// - "cview"
   /// - "subscribe"
   /// - "unsubscribe"
+  /// - "cview"
   core.String context;
 
   /// The url (without the schema) that the player shall send the ping to. It's
@@ -8429,8 +8194,6 @@ class ChannelListResponse {
 
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
-
-  /// A list of channels that match the request criteria.
   core.List<Channel> items;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -8440,6 +8203,8 @@ class ChannelListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -8818,7 +8583,7 @@ class ChannelSectionSnippet {
 
   /// The style of the channel section.
   /// Possible string values are:
-  /// - "channelsectionStyleUndefined"
+  /// - "channelsectionStyleUnspecified"
   /// - "horizontalRow"
   /// - "verticalList"
   core.String style;
@@ -8828,23 +8593,23 @@ class ChannelSectionSnippet {
 
   /// The type of the channel section.
   /// Possible string values are:
-  /// - "allPlaylists"
-  /// - "channelsectionTypeUndefined"
-  /// - "completedEvents"
-  /// - "likedPlaylists"
-  /// - "likes"
-  /// - "liveEvents"
-  /// - "multipleChannels"
+  /// - "channelsectionTypeUnspecified"
+  /// - "singlePlaylist"
   /// - "multiplePlaylists"
   /// - "popularUploads"
-  /// - "postedPlaylists"
-  /// - "postedVideos"
-  /// - "recentActivity"
-  /// - "recentPosts"
   /// - "recentUploads"
-  /// - "singlePlaylist"
-  /// - "subscriptions"
+  /// - "likes"
+  /// - "allPlaylists"
+  /// - "likedPlaylists"
+  /// - "recentPosts"
+  /// - "recentActivity"
+  /// - "liveEvents"
   /// - "upcomingEvents"
+  /// - "completedEvents"
+  /// - "multipleChannels"
+  /// - "postedVideos"
+  /// - "postedPlaylists"
+  /// - "subscriptions"
   core.String type;
 
   ChannelSectionSnippet();
@@ -9101,22 +8866,20 @@ class ChannelSnippet {
   ChannelLocalization localized;
 
   /// The date and time that the channel was created. The value is specified in
-  /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishedAt;
+  /// < a href="//www.w3.org/TR/NOTE-datetime">ISO 8601 format.
+  core.String publishedAt;
 
   /// A map of thumbnail images associated with the channel. For each object in
   /// the map, the key is the name of the thumbnail image, and the value is an
-  /// object that contains other information about the thumbnail.
-  ///
-  /// When displaying thumbnails in your application, make sure that your code
-  /// uses the image URLs exactly as they are returned in API responses. For
-  /// example, your application should not use the http domain instead of the
-  /// https domain in a URL returned in an API response.
-  ///
-  /// Beginning in July 2018, channel thumbnail URLs will only be available in
-  /// the https domain, which is how the URLs appear in API responses. After
-  /// that time, you might see broken images in your application if it tries to
-  /// load YouTube images from the http domain.
+  /// object that contains other information about the thumbnail. When
+  /// displaying thumbnails in your application, make sure that your code uses
+  /// the image URLs exactly as they are returned in API responses. For example,
+  /// your application should not use the http domain instead of the https
+  /// domain in a URL returned in an API response. Beginning in July 2018,
+  /// channel thumbnail URLs will only be available in the https domain, which
+  /// is how the URLs appear in API responses. After that time, you might see
+  /// broken images in your application if it tries to load YouTube images from
+  /// the http domain.
   ThumbnailDetails thumbnails;
 
   /// The channel's title.
@@ -9141,7 +8904,7 @@ class ChannelSnippet {
       localized = new ChannelLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("thumbnails")) {
       thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
@@ -9170,7 +8933,7 @@ class ChannelSnippet {
       _json["localized"] = (localized).toJson();
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (thumbnails != null) {
       _json["thumbnails"] = (thumbnails).toJson();
@@ -9249,19 +9012,20 @@ class ChannelStatus {
   core.bool isLinked;
 
   /// The long uploads status of this channel. See
+  /// https://support.google.com/youtube/answer/71673 for more information.
   /// Possible string values are:
-  /// - "allowed"
-  /// - "disallowed"
-  /// - "eligible"
   /// - "longUploadsUnspecified"
+  /// - "allowed"
+  /// - "eligible"
+  /// - "disallowed"
   core.String longUploadsStatus;
   core.bool madeForKids;
 
   /// Privacy status of the channel.
   /// Possible string values are:
-  /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "private"
   core.String privacyStatus;
   core.bool selfDeclaredMadeForKids;
 
@@ -9307,6 +9071,39 @@ class ChannelStatus {
   }
 }
 
+/// Information specific to a store on a merchandising platform linked to a
+/// YouTube channel.
+class ChannelToStoreLinkDetails {
+  /// Name of the store.
+  core.String storeName;
+
+  /// Landing page of the store.
+  core.String storeUrl;
+
+  ChannelToStoreLinkDetails();
+
+  ChannelToStoreLinkDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("storeName")) {
+      storeName = _json["storeName"];
+    }
+    if (_json.containsKey("storeUrl")) {
+      storeUrl = _json["storeUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (storeName != null) {
+      _json["storeName"] = storeName;
+    }
+    if (storeUrl != null) {
+      _json["storeUrl"] = storeUrl;
+    }
+    return _json;
+  }
+}
+
 /// Freebase topic information related to the channel.
 class ChannelTopicDetails {
   /// A list of Wikipedia URLs that describe the channel's content.
@@ -9341,7 +9138,7 @@ class ChannelTopicDetails {
   }
 }
 
-/// A comment represents a single YouTube comment.
+/// A *comment* represents a single YouTube comment.
 class Comment {
   /// Etag of this resource.
   core.String etag;
@@ -9409,6 +9206,8 @@ class CommentListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
   TokenPagination tokenPagination;
 
@@ -9479,11 +9278,7 @@ class CommentListResponse {
 
 /// Basic details about a comment, such as its author and text.
 class CommentSnippet {
-  /// The id of the author's YouTube channel, if any.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object authorChannelId;
+  CommentSnippetAuthorChannelId authorChannelId;
 
   /// Link to the author's YouTube channel, if any.
   core.String authorChannelUrl;
@@ -9508,18 +9303,18 @@ class CommentSnippet {
   /// The comment's moderation status. Will not be set if the comments were
   /// requested through the id filter.
   /// Possible string values are:
-  /// - "heldForReview"
+  /// - "published" : The comment is available for public display.
+  /// - "heldForReview" : The comment is awaiting review by a moderator.
   /// - "likelySpam"
-  /// - "published"
-  /// - "rejected"
+  /// - "rejected" : The comment is unfit for display.
   core.String moderationStatus;
 
   /// The unique id of the parent comment, only set for replies.
   core.String parentId;
 
   /// The date and time when the comment was orignally published. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishedAt;
+  /// specified in ISO 8601 format.
+  core.String publishedAt;
 
   /// The comment's text. The format is either plain text or HTML dependent on
   /// what has been requested. Even the plain text representation may differ
@@ -9533,8 +9328,8 @@ class CommentSnippet {
   core.String textOriginal;
 
   /// The date and time when was last updated . The value is specified in ISO
-  /// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime updatedAt;
+  /// 8601 format.
+  core.String updatedAt;
 
   /// The ID of the video the comment refers to, if any.
   core.String videoId;
@@ -9543,17 +9338,17 @@ class CommentSnippet {
   /// will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE.
   /// This may change in the future.
   /// Possible string values are:
-  /// - "dislike"
-  /// - "like"
   /// - "none"
-  /// - "unspecified"
+  /// - "like" : The entity is liked.
+  /// - "dislike" : The entity is disliked.
   core.String viewerRating;
 
   CommentSnippet();
 
   CommentSnippet.fromJson(core.Map _json) {
     if (_json.containsKey("authorChannelId")) {
-      authorChannelId = _json["authorChannelId"];
+      authorChannelId =
+          new CommentSnippetAuthorChannelId.fromJson(_json["authorChannelId"]);
     }
     if (_json.containsKey("authorChannelUrl")) {
       authorChannelUrl = _json["authorChannelUrl"];
@@ -9580,7 +9375,7 @@ class CommentSnippet {
       parentId = _json["parentId"];
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("textDisplay")) {
       textDisplay = _json["textDisplay"];
@@ -9589,7 +9384,7 @@ class CommentSnippet {
       textOriginal = _json["textOriginal"];
     }
     if (_json.containsKey("updatedAt")) {
-      updatedAt = core.DateTime.parse(_json["updatedAt"]);
+      updatedAt = _json["updatedAt"];
     }
     if (_json.containsKey("videoId")) {
       videoId = _json["videoId"];
@@ -9603,7 +9398,7 @@ class CommentSnippet {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
     if (authorChannelId != null) {
-      _json["authorChannelId"] = authorChannelId;
+      _json["authorChannelId"] = (authorChannelId).toJson();
     }
     if (authorChannelUrl != null) {
       _json["authorChannelUrl"] = authorChannelUrl;
@@ -9630,7 +9425,7 @@ class CommentSnippet {
       _json["parentId"] = parentId;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (textDisplay != null) {
       _json["textDisplay"] = textDisplay;
@@ -9639,7 +9434,7 @@ class CommentSnippet {
       _json["textOriginal"] = textOriginal;
     }
     if (updatedAt != null) {
-      _json["updatedAt"] = (updatedAt).toIso8601String();
+      _json["updatedAt"] = updatedAt;
     }
     if (videoId != null) {
       _json["videoId"] = videoId;
@@ -9651,9 +9446,31 @@ class CommentSnippet {
   }
 }
 
-/// A comment thread represents information that applies to a top level comment
-/// and all its replies. It can also include the top level comment itself and
-/// some of the replies.
+/// The id of the author's YouTube channel, if any.
+class CommentSnippetAuthorChannelId {
+  core.String value;
+
+  CommentSnippetAuthorChannelId();
+
+  CommentSnippetAuthorChannelId.fromJson(core.Map _json) {
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// A *comment thread* represents information that applies to a top level
+/// comment and all its replies. It can also include the top level comment
+/// itself and some of the replies.
 class CommentThread {
   /// Etag of this resource.
   core.String etag;
@@ -9732,6 +9549,8 @@ class CommentThreadListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
   TokenPagination tokenPagination;
 
@@ -9901,79 +9720,90 @@ class CommentThreadSnippet {
 }
 
 /// Ratings schemes. The country-specific ratings are mostly for movies and
-/// shows. NEXT_ID: 72
+/// shows. LINT.IfChange
 class ContentRating {
   /// The video's Australian Classification Board (ACB) or Australian
   /// Communications and Media Authority (ACMA) rating. ACMA ratings are used to
   /// classify children's television programming.
   /// Possible string values are:
-  /// - "acbC"
-  /// - "acbE"
-  /// - "acbG"
-  /// - "acbM"
-  /// - "acbMa15plus"
-  /// - "acbP"
-  /// - "acbPg"
-  /// - "acbR18plus"
+  /// - "acbUnspecified"
+  /// - "acbE" : E
+  /// - "acbP" : Programs that have been given a P classification by the
+  /// Australian Communications and Media Authority. These programs are intended
+  /// for preschool children.
+  /// - "acbC" : Programs that have been given a C classification by the
+  /// Australian Communications and Media Authority. These programs are intended
+  /// for children (other than preschool children) who are younger than 14 years
+  /// of age.
+  /// - "acbG" : G
+  /// - "acbPg" : PG
+  /// - "acbM" : M
+  /// - "acbMa15plus" : MA15+
+  /// - "acbR18plus" : R18+
   /// - "acbUnrated"
   core.String acbRating;
 
   /// The video's rating from Italy's Autorità per le Garanzie nelle
   /// Comunicazioni (AGCOM).
   /// Possible string values are:
-  /// - "agcomT"
+  /// - "agcomUnspecified"
+  /// - "agcomT" : T
+  /// - "agcomVm14" : VM14
+  /// - "agcomVm18" : VM18
   /// - "agcomUnrated"
-  /// - "agcomVm14"
-  /// - "agcomVm18"
   core.String agcomRating;
 
   /// The video's Anatel (Asociación Nacional de Televisión) rating for Chilean
   /// television.
   /// Possible string values are:
-  /// - "anatelA"
-  /// - "anatelF"
-  /// - "anatelI"
-  /// - "anatelI10"
-  /// - "anatelI12"
-  /// - "anatelI7"
-  /// - "anatelR"
+  /// - "anatelUnspecified"
+  /// - "anatelF" : F
+  /// - "anatelI" : I
+  /// - "anatelI7" : I-7
+  /// - "anatelI10" : I-10
+  /// - "anatelI12" : I-12
+  /// - "anatelR" : R
+  /// - "anatelA" : A
   /// - "anatelUnrated"
   core.String anatelRating;
 
   /// The video's British Board of Film Classification (BBFC) rating.
   /// Possible string values are:
-  /// - "bbfc12"
-  /// - "bbfc12a"
-  /// - "bbfc15"
-  /// - "bbfc18"
-  /// - "bbfcPg"
-  /// - "bbfcR18"
-  /// - "bbfcU"
+  /// - "bbfcUnspecified"
+  /// - "bbfcU" : U
+  /// - "bbfcPg" : PG
+  /// - "bbfc12a" : 12A
+  /// - "bbfc12" : 12
+  /// - "bbfc15" : 15
+  /// - "bbfc18" : 18
+  /// - "bbfcR18" : R18
   /// - "bbfcUnrated"
   core.String bbfcRating;
 
   /// The video's rating from Thailand's Board of Film and Video Censors.
   /// Possible string values are:
-  /// - "bfvc13"
-  /// - "bfvc15"
-  /// - "bfvc18"
-  /// - "bfvc20"
-  /// - "bfvcB"
-  /// - "bfvcE"
-  /// - "bfvcG"
+  /// - "bfvcUnspecified"
+  /// - "bfvcG" : G
+  /// - "bfvcE" : E
+  /// - "bfvc13" : 13
+  /// - "bfvc15" : 15
+  /// - "bfvc18" : 18
+  /// - "bfvc20" : 20
+  /// - "bfvcB" : B
   /// - "bfvcUnrated"
   core.String bfvcRating;
 
   /// The video's rating from the Austrian Board of Media Classification
   /// (Bundesministerium für Unterricht, Kunst und Kultur).
   /// Possible string values are:
-  /// - "bmukk10"
-  /// - "bmukk12"
-  /// - "bmukk14"
-  /// - "bmukk16"
-  /// - "bmukk6"
-  /// - "bmukk8"
-  /// - "bmukkAa"
+  /// - "bmukkUnspecified"
+  /// - "bmukkAa" : Unrestricted
+  /// - "bmukk6" : 6+
+  /// - "bmukk8" : 8+
+  /// - "bmukk10" : 10+
+  /// - "bmukk12" : 12+
+  /// - "bmukk14" : 14+
+  /// - "bmukk16" : 16+
   /// - "bmukkUnrated"
   core.String bmukkRating;
 
@@ -9982,13 +9812,15 @@ class ContentRating {
   /// Commission (CRTC) for Canadian English-language broadcasts. For more
   /// information, see the Canadian Broadcast Standards Council website.
   /// Possible string values are:
-  /// - "catv14plus"
-  /// - "catv18plus"
-  /// - "catvC"
-  /// - "catvC8"
-  /// - "catvG"
-  /// - "catvPg"
+  /// - "catvUnspecified"
+  /// - "catvC" : C
+  /// - "catvC8" : C8
+  /// - "catvG" : G
+  /// - "catvPg" : PG
+  /// - "catv14plus" : 14+
+  /// - "catv18plus" : 18+
   /// - "catvUnrated"
+  /// - "catvE"
   core.String catvRating;
 
   /// The video's rating from the Canadian Radio-Television and
@@ -9996,157 +9828,171 @@ class ContentRating {
   /// broadcasts. For more information, see the Canadian Broadcast Standards
   /// Council website.
   /// Possible string values are:
-  /// - "catvfr13plus"
-  /// - "catvfr16plus"
-  /// - "catvfr18plus"
-  /// - "catvfr8plus"
-  /// - "catvfrG"
+  /// - "catvfrUnspecified"
+  /// - "catvfrG" : G
+  /// - "catvfr8plus" : 8+
+  /// - "catvfr13plus" : 13+
+  /// - "catvfr16plus" : 16+
+  /// - "catvfr18plus" : 18+
   /// - "catvfrUnrated"
+  /// - "catvfrE"
   core.String catvfrRating;
 
   /// The video's Central Board of Film Certification (CBFC - India) rating.
   /// Possible string values are:
-  /// - "cbfcA"
-  /// - "cbfcS"
-  /// - "cbfcU"
-  /// - "cbfcUA"
+  /// - "cbfcUnspecified"
+  /// - "cbfcU" : U
+  /// - "cbfcUA" : U/A
+  /// - "cbfcA" : A
+  /// - "cbfcS" : S
   /// - "cbfcUnrated"
   core.String cbfcRating;
 
   /// The video's Consejo de Calificación Cinematográfica (Chile) rating.
   /// Possible string values are:
-  /// - "ccc14"
-  /// - "ccc18"
-  /// - "ccc18s"
-  /// - "ccc18v"
-  /// - "ccc6"
-  /// - "cccTe"
+  /// - "cccUnspecified"
+  /// - "cccTe" : Todo espectador
+  /// - "ccc6" : 6+ - Inconveniente para menores de 7 años
+  /// - "ccc14" : 14+
+  /// - "ccc18" : 18+
+  /// - "ccc18v" : 18+ - contenido excesivamente violento
+  /// - "ccc18s" : 18+ - contenido pornográfico
   /// - "cccUnrated"
   core.String cccRating;
 
   /// The video's rating from Portugal's Comissão de Classificação de
   /// Espect´culos.
   /// Possible string values are:
-  /// - "cceM12"
-  /// - "cceM14"
-  /// - "cceM16"
-  /// - "cceM18"
-  /// - "cceM4"
-  /// - "cceM6"
+  /// - "cceUnspecified"
+  /// - "cceM4" : 4
+  /// - "cceM6" : 6
+  /// - "cceM12" : 12
+  /// - "cceM16" : 16
+  /// - "cceM18" : 18
   /// - "cceUnrated"
+  /// - "cceM14" : 14
   core.String cceRating;
 
   /// The video's rating in Switzerland.
   /// Possible string values are:
-  /// - "chfilm0"
-  /// - "chfilm12"
-  /// - "chfilm16"
-  /// - "chfilm18"
-  /// - "chfilm6"
+  /// - "chfilmUnspecified"
+  /// - "chfilm0" : 0
+  /// - "chfilm6" : 6
+  /// - "chfilm12" : 12
+  /// - "chfilm16" : 16
+  /// - "chfilm18" : 18
   /// - "chfilmUnrated"
   core.String chfilmRating;
 
   /// The video's Canadian Home Video Rating System (CHVRS) rating.
   /// Possible string values are:
-  /// - "chvrs14a"
-  /// - "chvrs18a"
-  /// - "chvrsE"
-  /// - "chvrsG"
-  /// - "chvrsPg"
-  /// - "chvrsR"
+  /// - "chvrsUnspecified"
+  /// - "chvrsG" : G
+  /// - "chvrsPg" : PG
+  /// - "chvrs14a" : 14A
+  /// - "chvrs18a" : 18A
+  /// - "chvrsR" : R
+  /// - "chvrsE" : E
   /// - "chvrsUnrated"
   core.String chvrsRating;
 
   /// The video's rating from the Commission de Contrôle des Films (Belgium).
   /// Possible string values are:
-  /// - "cicfE"
-  /// - "cicfKntEna"
-  /// - "cicfKtEa"
+  /// - "cicfUnspecified"
+  /// - "cicfE" : E
+  /// - "cicfKtEa" : KT/EA
+  /// - "cicfKntEna" : KNT/ENA
   /// - "cicfUnrated"
   core.String cicfRating;
 
   /// The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI
   /// (CNA).
   /// Possible string values are:
-  /// - "cna12"
-  /// - "cna15"
-  /// - "cna18"
-  /// - "cna18plus"
-  /// - "cnaAp"
+  /// - "cnaUnspecified"
+  /// - "cnaAp" : AP
+  /// - "cna12" : 12
+  /// - "cna15" : 15
+  /// - "cna18" : 18
+  /// - "cna18plus" : 18+
   /// - "cnaUnrated"
   core.String cnaRating;
 
   /// Rating system in France - Commission de classification cinematographique
   /// Possible string values are:
-  /// - "cnc10"
-  /// - "cnc12"
-  /// - "cnc16"
-  /// - "cnc18"
-  /// - "cncE"
-  /// - "cncInterdiction"
-  /// - "cncT"
+  /// - "cncUnspecified"
+  /// - "cncT" : T
+  /// - "cnc10" : 10
+  /// - "cnc12" : 12
+  /// - "cnc16" : 16
+  /// - "cnc18" : 18
+  /// - "cncE" : E
+  /// - "cncInterdiction" : interdiction
   /// - "cncUnrated"
   core.String cncRating;
 
-  /// The video's rating from France's Conseil supérieur de l?audiovisuel, which
+  /// The video's rating from France's Conseil supérieur de l’audiovisuel, which
   /// rates broadcast content.
   /// Possible string values are:
-  /// - "csa10"
-  /// - "csa12"
-  /// - "csa16"
-  /// - "csa18"
-  /// - "csaInterdiction"
-  /// - "csaT"
+  /// - "csaUnspecified"
+  /// - "csaT" : T
+  /// - "csa10" : 10
+  /// - "csa12" : 12
+  /// - "csa16" : 16
+  /// - "csa18" : 18
+  /// - "csaInterdiction" : Interdiction
   /// - "csaUnrated"
   core.String csaRating;
 
   /// The video's rating from Luxembourg's Commission de surveillance de la
   /// classification des films (CSCF).
   /// Possible string values are:
-  /// - "cscf12"
-  /// - "cscf16"
-  /// - "cscf18"
-  /// - "cscf6"
-  /// - "cscf9"
-  /// - "cscfA"
-  /// - "cscfAl"
+  /// - "cscfUnspecified"
+  /// - "cscfAl" : AL
+  /// - "cscfA" : A
+  /// - "cscf6" : 6
+  /// - "cscf9" : 9
+  /// - "cscf12" : 12
+  /// - "cscf16" : 16
+  /// - "cscf18" : 18
   /// - "cscfUnrated"
   core.String cscfRating;
 
   /// The video's rating in the Czech Republic.
   /// Possible string values are:
-  /// - "czfilm12"
-  /// - "czfilm14"
-  /// - "czfilm18"
-  /// - "czfilmU"
+  /// - "czfilmUnspecified"
+  /// - "czfilmU" : U
+  /// - "czfilm12" : 12
+  /// - "czfilm14" : 14
+  /// - "czfilm18" : 18
   /// - "czfilmUnrated"
   core.String czfilmRating;
 
   /// The video's Departamento de Justiça, Classificação, Qualificação e Títulos
   /// (DJCQT - Brazil) rating.
   /// Possible string values are:
-  /// - "djctq10"
-  /// - "djctq1012"
-  /// - "djctq1014"
-  /// - "djctq1016"
-  /// - "djctq1018"
-  /// - "djctq12"
-  /// - "djctq1214"
-  /// - "djctq1216"
-  /// - "djctq1218"
-  /// - "djctq14"
-  /// - "djctq1416"
-  /// - "djctq1418"
-  /// - "djctq16"
-  /// - "djctq1618"
-  /// - "djctq18"
+  /// - "djctqUnspecified"
+  /// - "djctqL" : L
+  /// - "djctq10" : 10
+  /// - "djctq12" : 12
+  /// - "djctq14" : 14
+  /// - "djctq16" : 16
+  /// - "djctq18" : 18
   /// - "djctqEr"
-  /// - "djctqL"
   /// - "djctqL10"
   /// - "djctqL12"
   /// - "djctqL14"
   /// - "djctqL16"
   /// - "djctqL18"
+  /// - "djctq1012"
+  /// - "djctq1014"
+  /// - "djctq1016"
+  /// - "djctq1018"
+  /// - "djctq1214"
+  /// - "djctq1216"
+  /// - "djctq1218"
+  /// - "djctq1416"
+  /// - "djctq1418"
+  /// - "djctq1618"
   /// - "djctqUnrated"
   core.String djctqRating;
 
@@ -10156,96 +10002,104 @@ class ContentRating {
   /// Rating system in Turkey - Evaluation and Classification Board of the
   /// Ministry of Culture and Tourism
   /// Possible string values are:
-  /// - "ecbmct13a"
-  /// - "ecbmct13plus"
-  /// - "ecbmct15a"
-  /// - "ecbmct15plus"
-  /// - "ecbmct18plus"
-  /// - "ecbmct7a"
-  /// - "ecbmct7plus"
-  /// - "ecbmctG"
+  /// - "ecbmctUnspecified"
+  /// - "ecbmctG" : G
+  /// - "ecbmct7a" : 7A
+  /// - "ecbmct7plus" : 7+
+  /// - "ecbmct13a" : 13A
+  /// - "ecbmct13plus" : 13+
+  /// - "ecbmct15a" : 15A
+  /// - "ecbmct15plus" : 15+
+  /// - "ecbmct18plus" : 18+
   /// - "ecbmctUnrated"
   core.String ecbmctRating;
 
   /// The video's rating in Estonia.
   /// Possible string values are:
-  /// - "eefilmK12"
-  /// - "eefilmK14"
-  /// - "eefilmK16"
-  /// - "eefilmK6"
-  /// - "eefilmL"
-  /// - "eefilmMs12"
-  /// - "eefilmMs6"
-  /// - "eefilmPere"
+  /// - "eefilmUnspecified"
+  /// - "eefilmPere" : Pere
+  /// - "eefilmL" : L
+  /// - "eefilmMs6" : MS-6
+  /// - "eefilmK6" : K-6
+  /// - "eefilmMs12" : MS-12
+  /// - "eefilmK12" : K-12
+  /// - "eefilmK14" : K-14
+  /// - "eefilmK16" : K-16
   /// - "eefilmUnrated"
   core.String eefilmRating;
 
   /// The video's rating in Egypt.
   /// Possible string values are:
-  /// - "egfilm18"
-  /// - "egfilmBn"
-  /// - "egfilmGn"
+  /// - "egfilmUnspecified"
+  /// - "egfilmGn" : GN
+  /// - "egfilm18" : 18
+  /// - "egfilmBn" : BN
   /// - "egfilmUnrated"
   core.String egfilmRating;
 
   /// The video's Eirin (映倫) rating. Eirin is the Japanese rating system.
   /// Possible string values are:
-  /// - "eirinG"
-  /// - "eirinPg12"
-  /// - "eirinR15plus"
-  /// - "eirinR18plus"
+  /// - "eirinUnspecified"
+  /// - "eirinG" : G
+  /// - "eirinPg12" : PG-12
+  /// - "eirinR15plus" : R15+
+  /// - "eirinR18plus" : R18+
   /// - "eirinUnrated"
   core.String eirinRating;
 
   /// The video's rating from Malaysia's Film Censorship Board.
   /// Possible string values are:
-  /// - "fcbm18"
-  /// - "fcbm18pa"
-  /// - "fcbm18pl"
-  /// - "fcbm18sg"
-  /// - "fcbm18sx"
-  /// - "fcbmP13"
-  /// - "fcbmPg13"
-  /// - "fcbmU"
+  /// - "fcbmUnspecified"
+  /// - "fcbmU" : U
+  /// - "fcbmPg13" : PG13
+  /// - "fcbmP13" : P13
+  /// - "fcbm18" : 18
+  /// - "fcbm18sx" : 18SX
+  /// - "fcbm18pa" : 18PA
+  /// - "fcbm18sg" : 18SG
+  /// - "fcbm18pl" : 18PL
   /// - "fcbmUnrated"
   core.String fcbmRating;
 
   /// The video's rating from Hong Kong's Office for Film, Newspaper and Article
   /// Administration.
   /// Possible string values are:
-  /// - "fcoI"
-  /// - "fcoIi"
-  /// - "fcoIia"
-  /// - "fcoIib"
-  /// - "fcoIii"
+  /// - "fcoUnspecified"
+  /// - "fcoI" : I
+  /// - "fcoIia" : IIA
+  /// - "fcoIib" : IIB
+  /// - "fcoIi" : II
+  /// - "fcoIii" : III
   /// - "fcoUnrated"
   core.String fcoRating;
 
   /// This property has been deprecated. Use the
   /// contentDetails.contentRating.cncRating instead.
   /// Possible string values are:
-  /// - "fmoc10"
-  /// - "fmoc12"
-  /// - "fmoc16"
-  /// - "fmoc18"
-  /// - "fmocE"
-  /// - "fmocU"
+  /// - "fmocUnspecified"
+  /// - "fmocU" : U
+  /// - "fmoc10" : 10
+  /// - "fmoc12" : 12
+  /// - "fmoc16" : 16
+  /// - "fmoc18" : 18
+  /// - "fmocE" : E
   /// - "fmocUnrated"
   core.String fmocRating;
 
   /// The video's rating from South Africa's Film and Publication Board.
   /// Possible string values are:
-  /// - "fpb10"
-  /// - "fpb1012Pg"
-  /// - "fpb13"
-  /// - "fpb16"
-  /// - "fpb18"
-  /// - "fpb79Pg"
-  /// - "fpbA"
-  /// - "fpbPg"
+  /// - "fpbUnspecified"
+  /// - "fpbA" : A
+  /// - "fpbPg" : PG
+  /// - "fpb79Pg" : 7-9PG
+  /// - "fpb1012Pg" : 10-12PG
+  /// - "fpb13" : 13
+  /// - "fpb16" : 16
+  /// - "fpb18" : 18
+  /// - "fpbX18" : X18
+  /// - "fpbXx" : XX
   /// - "fpbUnrated"
-  /// - "fpbX18"
-  /// - "fpbXx"
+  /// - "fpb10" : 10
   core.String fpbRating;
 
   /// Reasons that explain why the video received its FPB (South Africa) rating.
@@ -10254,453 +10108,501 @@ class ContentRating {
   /// The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany)
   /// rating.
   /// Possible string values are:
-  /// - "fsk0"
-  /// - "fsk12"
-  /// - "fsk16"
-  /// - "fsk18"
-  /// - "fsk6"
+  /// - "fskUnspecified"
+  /// - "fsk0" : FSK 0
+  /// - "fsk6" : FSK 6
+  /// - "fsk12" : FSK 12
+  /// - "fsk16" : FSK 16
+  /// - "fsk18" : FSK 18
   /// - "fskUnrated"
   core.String fskRating;
 
   /// The video's rating in Greece.
   /// Possible string values are:
-  /// - "grfilmE"
-  /// - "grfilmK"
-  /// - "grfilmK12"
-  /// - "grfilmK13"
-  /// - "grfilmK15"
-  /// - "grfilmK17"
-  /// - "grfilmK18"
+  /// - "grfilmUnspecified"
+  /// - "grfilmK" : K
+  /// - "grfilmE" : E
+  /// - "grfilmK12" : K-12
+  /// - "grfilmK13" : K-13
+  /// - "grfilmK15" : K-15
+  /// - "grfilmK17" : K-17
+  /// - "grfilmK18" : K-18
   /// - "grfilmUnrated"
   core.String grfilmRating;
 
   /// The video's Instituto de la Cinematografía y de las Artes Audiovisuales
   /// (ICAA - Spain) rating.
   /// Possible string values are:
-  /// - "icaa12"
-  /// - "icaa13"
-  /// - "icaa16"
-  /// - "icaa18"
-  /// - "icaa7"
-  /// - "icaaApta"
+  /// - "icaaUnspecified"
+  /// - "icaaApta" : APTA
+  /// - "icaa7" : 7
+  /// - "icaa12" : 12
+  /// - "icaa13" : 13
+  /// - "icaa16" : 16
+  /// - "icaa18" : 18
+  /// - "icaaX" : X
   /// - "icaaUnrated"
-  /// - "icaaX"
   core.String icaaRating;
 
   /// The video's Irish Film Classification Office (IFCO - Ireland) rating. See
   /// the IFCO website for more information.
   /// Possible string values are:
-  /// - "ifco12"
-  /// - "ifco12a"
-  /// - "ifco15"
-  /// - "ifco15a"
-  /// - "ifco16"
-  /// - "ifco18"
-  /// - "ifcoG"
-  /// - "ifcoPg"
+  /// - "ifcoUnspecified"
+  /// - "ifcoG" : G
+  /// - "ifcoPg" : PG
+  /// - "ifco12" : 12
+  /// - "ifco12a" : 12A
+  /// - "ifco15" : 15
+  /// - "ifco15a" : 15A
+  /// - "ifco16" : 16
+  /// - "ifco18" : 18
   /// - "ifcoUnrated"
   core.String ifcoRating;
 
   /// The video's rating in Israel.
   /// Possible string values are:
-  /// - "ilfilm12"
-  /// - "ilfilm14"
-  /// - "ilfilm16"
-  /// - "ilfilm18"
-  /// - "ilfilmAa"
+  /// - "ilfilmUnspecified"
+  /// - "ilfilmAa" : AA
+  /// - "ilfilm12" : 12
+  /// - "ilfilm14" : 14
+  /// - "ilfilm16" : 16
+  /// - "ilfilm18" : 18
   /// - "ilfilmUnrated"
   core.String ilfilmRating;
 
   /// The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales -
   /// Argentina) rating.
   /// Possible string values are:
-  /// - "incaaAtp"
-  /// - "incaaC"
-  /// - "incaaSam13"
-  /// - "incaaSam16"
-  /// - "incaaSam18"
+  /// - "incaaUnspecified"
+  /// - "incaaAtp" : ATP (Apta para todo publico)
+  /// - "incaaSam13" : 13 (Solo apta para mayores de 13 años)
+  /// - "incaaSam16" : 16 (Solo apta para mayores de 16 años)
+  /// - "incaaSam18" : 18 (Solo apta para mayores de 18 años)
+  /// - "incaaC" : X (Solo apta para mayores de 18 años, de exhibición
+  /// condicionada)
   /// - "incaaUnrated"
   core.String incaaRating;
 
   /// The video's rating from the Kenya Film Classification Board.
   /// Possible string values are:
-  /// - "kfcb16plus"
-  /// - "kfcbG"
-  /// - "kfcbPg"
-  /// - "kfcbR"
+  /// - "kfcbUnspecified"
+  /// - "kfcbG" : GE
+  /// - "kfcbPg" : PG
+  /// - "kfcb16plus" : 16
+  /// - "kfcbR" : 18
   /// - "kfcbUnrated"
   core.String kfcbRating;
 
-  /// voor de Classificatie van Audiovisuele Media (Netherlands).
+  /// The video's NICAM/Kijkwijzer rating from the Nederlands Instituut voor de
+  /// Classificatie van Audiovisuele Media (Netherlands).
   /// Possible string values are:
-  /// - "kijkwijzer12"
-  /// - "kijkwijzer16"
+  /// - "kijkwijzerUnspecified"
+  /// - "kijkwijzerAl" : AL
+  /// - "kijkwijzer6" : 6
+  /// - "kijkwijzer9" : 9
+  /// - "kijkwijzer12" : 12
+  /// - "kijkwijzer16" : 16
   /// - "kijkwijzer18"
-  /// - "kijkwijzer6"
-  /// - "kijkwijzer9"
-  /// - "kijkwijzerAl"
   /// - "kijkwijzerUnrated"
   core.String kijkwijzerRating;
 
   /// The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates
   /// videos in South Korea.
   /// Possible string values are:
-  /// - "kmrb12plus"
-  /// - "kmrb15plus"
-  /// - "kmrbAll"
-  /// - "kmrbR"
+  /// - "kmrbUnspecified"
+  /// - "kmrbAll" : 전체관람가
+  /// - "kmrb12plus" : 12세 이상 관람가
+  /// - "kmrb15plus" : 15세 이상 관람가
   /// - "kmrbTeenr"
+  /// - "kmrbR" : 청소년 관람불가
   /// - "kmrbUnrated"
   core.String kmrbRating;
 
   /// The video's rating from Indonesia's Lembaga Sensor Film.
   /// Possible string values are:
-  /// - "lsf13"
-  /// - "lsf17"
-  /// - "lsf21"
-  /// - "lsfA"
-  /// - "lsfBo"
-  /// - "lsfD"
-  /// - "lsfR"
-  /// - "lsfSu"
+  /// - "lsfUnspecified"
+  /// - "lsfSu" : SU
+  /// - "lsfA" : A
+  /// - "lsfBo" : BO
+  /// - "lsf13" : 13
+  /// - "lsfR" : R
+  /// - "lsf17" : 17
+  /// - "lsfD" : D
+  /// - "lsf21" : 21
   /// - "lsfUnrated"
   core.String lsfRating;
 
   /// The video's rating from Malta's Film Age-Classification Board.
   /// Possible string values are:
-  /// - "mccaa12"
-  /// - "mccaa12a"
-  /// - "mccaa14"
-  /// - "mccaa15"
-  /// - "mccaa16"
-  /// - "mccaa18"
-  /// - "mccaaPg"
-  /// - "mccaaU"
+  /// - "mccaaUnspecified"
+  /// - "mccaaU" : U
+  /// - "mccaaPg" : PG
+  /// - "mccaa12a" : 12A
+  /// - "mccaa12" : 12
+  /// - "mccaa14" : 14 - this rating was removed from the new classification
+  /// structure introduced in 2013.
+  /// - "mccaa15" : 15
+  /// - "mccaa16" : 16 - this rating was removed from the new classification
+  /// structure introduced in 2013.
+  /// - "mccaa18" : 18
   /// - "mccaaUnrated"
   core.String mccaaRating;
 
   /// The video's rating from the Danish Film Institute's (Det Danske
   /// Filminstitut) Media Council for Children and Young People.
   /// Possible string values are:
-  /// - "mccyp11"
-  /// - "mccyp15"
-  /// - "mccyp7"
-  /// - "mccypA"
+  /// - "mccypUnspecified"
+  /// - "mccypA" : A
+  /// - "mccyp7" : 7
+  /// - "mccyp11" : 11
+  /// - "mccyp15" : 15
   /// - "mccypUnrated"
   core.String mccypRating;
 
   /// The video's rating system for Vietnam - MCST
   /// Possible string values are:
-  /// - "mcst0"
-  /// - "mcst16plus"
-  /// - "mcstC13"
-  /// - "mcstC16"
-  /// - "mcstC18"
-  /// - "mcstGPg"
-  /// - "mcstP"
+  /// - "mcstUnspecified"
+  /// - "mcstP" : P
+  /// - "mcst0" : 0
+  /// - "mcstC13" : C13
+  /// - "mcstC16" : C16
+  /// - "mcst16plus" : 16+
+  /// - "mcstC18" : C18
+  /// - "mcstGPg" : MCST_G_PG
   /// - "mcstUnrated"
   core.String mcstRating;
 
   /// The video's rating from Singapore's Media Development Authority (MDA) and,
   /// specifically, it's Board of Film Censors (BFC).
   /// Possible string values are:
-  /// - "mdaG"
-  /// - "mdaM18"
-  /// - "mdaNc16"
-  /// - "mdaPg"
-  /// - "mdaPg13"
-  /// - "mdaR21"
+  /// - "mdaUnspecified"
+  /// - "mdaG" : G
+  /// - "mdaPg" : PG
+  /// - "mdaPg13" : PG13
+  /// - "mdaNc16" : NC16
+  /// - "mdaM18" : M18
+  /// - "mdaR21" : R21
   /// - "mdaUnrated"
   core.String mdaRating;
 
   /// The video's rating from Medietilsynet, the Norwegian Media Authority.
   /// Possible string values are:
-  /// - "medietilsynet11"
-  /// - "medietilsynet12"
-  /// - "medietilsynet15"
-  /// - "medietilsynet18"
-  /// - "medietilsynet6"
-  /// - "medietilsynet7"
-  /// - "medietilsynet9"
-  /// - "medietilsynetA"
+  /// - "medietilsynetUnspecified"
+  /// - "medietilsynetA" : A
+  /// - "medietilsynet6" : 6
+  /// - "medietilsynet7" : 7
+  /// - "medietilsynet9" : 9
+  /// - "medietilsynet11" : 11
+  /// - "medietilsynet12" : 12
+  /// - "medietilsynet15" : 15
+  /// - "medietilsynet18" : 18
   /// - "medietilsynetUnrated"
   core.String medietilsynetRating;
 
   /// The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti
   /// (National Audiovisual Institute).
   /// Possible string values are:
-  /// - "meku12"
-  /// - "meku16"
-  /// - "meku18"
-  /// - "meku7"
-  /// - "mekuS"
+  /// - "mekuUnspecified"
+  /// - "mekuS" : S
+  /// - "meku7" : 7
+  /// - "meku12" : 12
+  /// - "meku16" : 16
+  /// - "meku18" : 18
   /// - "mekuUnrated"
   core.String mekuRating;
 
   /// The rating system for MENA countries, a clone of MPAA. It is needed to
+  /// prevent titles go live w/o additional QC check, since some of them can be
+  /// inappropriate for the countries at all. See b/33408548 for more details.
   /// Possible string values are:
-  /// - "menaMpaaG"
-  /// - "menaMpaaPg"
-  /// - "menaMpaaPg13"
-  /// - "menaMpaaR"
-  /// - "menaMpaaUnrated"
+  /// - "menaMpaaUnspecified"
+  /// - "menaMpaaG" : G
+  /// - "menaMpaaPg" : PG
+  /// - "menaMpaaPg13" : PG-13
+  /// - "menaMpaaR" : R
+  /// - "menaMpaaUnrated" : To keep the same enum values as MPAA's items have,
+  /// skip NC_17.
   core.String menaMpaaRating;
 
   /// The video's rating from the Ministero dei Beni e delle Attività Culturali
   /// e del Turismo (Italy).
   /// Possible string values are:
+  /// - "mibacUnspecified"
   /// - "mibacT"
-  /// - "mibacUnrated"
   /// - "mibacVap"
   /// - "mibacVm12"
   /// - "mibacVm14"
   /// - "mibacVm18"
+  /// - "mibacUnrated"
   core.String mibacRating;
 
   /// The video's Ministerio de Cultura (Colombia) rating.
   /// Possible string values are:
-  /// - "moc12"
-  /// - "moc15"
-  /// - "moc18"
-  /// - "moc7"
-  /// - "mocBanned"
-  /// - "mocE"
-  /// - "mocT"
+  /// - "mocUnspecified"
+  /// - "mocE" : E
+  /// - "mocT" : T
+  /// - "moc7" : 7
+  /// - "moc12" : 12
+  /// - "moc15" : 15
+  /// - "moc18" : 18
+  /// - "mocX" : X
+  /// - "mocBanned" : Banned
   /// - "mocUnrated"
-  /// - "mocX"
   core.String mocRating;
 
   /// The video's rating from Taiwan's Ministry of Culture (文化部).
   /// Possible string values are:
-  /// - "moctwG"
-  /// - "moctwP"
-  /// - "moctwPg"
-  /// - "moctwR"
-  /// - "moctwR12"
-  /// - "moctwR15"
+  /// - "moctwUnspecified"
+  /// - "moctwG" : G
+  /// - "moctwP" : P
+  /// - "moctwPg" : PG
+  /// - "moctwR" : R
   /// - "moctwUnrated"
+  /// - "moctwR12" : R-12
+  /// - "moctwR15" : R-15
   core.String moctwRating;
 
   /// The video's Motion Picture Association of America (MPAA) rating.
   /// Possible string values are:
-  /// - "mpaaG"
-  /// - "mpaaNc17"
-  /// - "mpaaPg"
-  /// - "mpaaPg13"
-  /// - "mpaaR"
+  /// - "mpaaUnspecified"
+  /// - "mpaaG" : G
+  /// - "mpaaPg" : PG
+  /// - "mpaaPg13" : PG-13
+  /// - "mpaaR" : R
+  /// - "mpaaNc17" : NC-17
+  /// - "mpaaX" : ! X
   /// - "mpaaUnrated"
-  /// - "mpaaX"
   core.String mpaaRating;
 
   /// The rating system for trailer, DVD, and Ad in the US. See
   /// http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html.
   /// Possible string values are:
-  /// - "mpaatGb"
-  /// - "mpaatRb"
+  /// - "mpaatUnspecified"
+  /// - "mpaatGb" : GB
+  /// - "mpaatRb" : RB
   core.String mpaatRating;
 
   /// The video's rating from the Movie and Television Review and Classification
   /// Board (Philippines).
   /// Possible string values are:
-  /// - "mtrcbG"
-  /// - "mtrcbPg"
-  /// - "mtrcbR13"
-  /// - "mtrcbR16"
-  /// - "mtrcbR18"
+  /// - "mtrcbUnspecified"
+  /// - "mtrcbG" : G
+  /// - "mtrcbPg" : PG
+  /// - "mtrcbR13" : R-13
+  /// - "mtrcbR16" : R-16
+  /// - "mtrcbR18" : R-18
+  /// - "mtrcbX" : X
   /// - "mtrcbUnrated"
-  /// - "mtrcbX"
   core.String mtrcbRating;
 
   /// The video's rating from the Maldives National Bureau of Classification.
   /// Possible string values are:
-  /// - "nbc12plus"
-  /// - "nbc15plus"
-  /// - "nbc18plus"
-  /// - "nbc18plusr"
-  /// - "nbcG"
-  /// - "nbcPg"
-  /// - "nbcPu"
+  /// - "nbcUnspecified"
+  /// - "nbcG" : G
+  /// - "nbcPg" : PG
+  /// - "nbc12plus" : 12+
+  /// - "nbc15plus" : 15+
+  /// - "nbc18plus" : 18+
+  /// - "nbc18plusr" : 18+R
+  /// - "nbcPu" : PU
   /// - "nbcUnrated"
   core.String nbcRating;
 
   /// The video's rating in Poland.
   /// Possible string values are:
-  /// - "nbcpl18plus"
+  /// - "nbcplUnspecified"
   /// - "nbcplI"
   /// - "nbcplIi"
   /// - "nbcplIii"
   /// - "nbcplIv"
+  /// - "nbcpl18plus"
   /// - "nbcplUnrated"
   core.String nbcplRating;
 
   /// The video's rating from the Bulgarian National Film Center.
   /// Possible string values are:
-  /// - "nfrcA"
-  /// - "nfrcB"
-  /// - "nfrcC"
-  /// - "nfrcD"
+  /// - "nfrcUnspecified"
+  /// - "nfrcA" : A
+  /// - "nfrcB" : B
+  /// - "nfrcC" : C
+  /// - "nfrcD" : D
+  /// - "nfrcX" : X
   /// - "nfrcUnrated"
-  /// - "nfrcX"
   core.String nfrcRating;
 
   /// The video's rating from Nigeria's National Film and Video Censors Board.
   /// Possible string values are:
-  /// - "nfvcb12"
-  /// - "nfvcb12a"
-  /// - "nfvcb15"
-  /// - "nfvcb18"
-  /// - "nfvcbG"
-  /// - "nfvcbPg"
-  /// - "nfvcbRe"
+  /// - "nfvcbUnspecified"
+  /// - "nfvcbG" : G
+  /// - "nfvcbPg" : PG
+  /// - "nfvcb12" : 12
+  /// - "nfvcb12a" : 12A
+  /// - "nfvcb15" : 15
+  /// - "nfvcb18" : 18
+  /// - "nfvcbRe" : RE
   /// - "nfvcbUnrated"
   core.String nfvcbRating;
 
   /// The video's rating from the Nacionãlais Kino centrs (National Film Centre
   /// of Latvia).
   /// Possible string values are:
-  /// - "nkclv12plus"
-  /// - "nkclv16plus"
-  /// - "nkclv18plus"
-  /// - "nkclv7plus"
-  /// - "nkclvU"
+  /// - "nkclvUnspecified"
+  /// - "nkclvU" : U
+  /// - "nkclv7plus" : 7+
+  /// - "nkclv12plus" : 12+
+  /// - "nkclv16plus" : ! 16+
+  /// - "nkclv18plus" : 18+
   /// - "nkclvUnrated"
   core.String nkclvRating;
 
-  ///
+  /// The National Media Council ratings system for United Arab Emirates.
   /// Possible string values are:
-  /// - "nmc15plus"
-  /// - "nmc18plus"
-  /// - "nmc18tc"
-  /// - "nmcG"
-  /// - "nmcPg"
-  /// - "nmcPg13"
-  /// - "nmcPg15"
+  /// - "nmcUnspecified"
+  /// - "nmcG" : G
+  /// - "nmcPg" : PG
+  /// - "nmcPg13" : PG-13
+  /// - "nmcPg15" : PG-15
+  /// - "nmc15plus" : 15+
+  /// - "nmc18plus" : 18+
+  /// - "nmc18tc" : 18TC
   /// - "nmcUnrated"
   core.String nmcRating;
 
   /// The video's Office of Film and Literature Classification (OFLC - New
   /// Zealand) rating.
   /// Possible string values are:
-  /// - "oflcG"
-  /// - "oflcM"
-  /// - "oflcPg"
-  /// - "oflcR13"
-  /// - "oflcR15"
-  /// - "oflcR16"
-  /// - "oflcR18"
-  /// - "oflcRp13"
-  /// - "oflcRp16"
-  /// - "oflcRp18"
+  /// - "oflcUnspecified"
+  /// - "oflcG" : G
+  /// - "oflcPg" : PG
+  /// - "oflcM" : M
+  /// - "oflcR13" : R13
+  /// - "oflcR15" : R15
+  /// - "oflcR16" : R16
+  /// - "oflcR18" : R18
   /// - "oflcUnrated"
+  /// - "oflcRp13" : RP13
+  /// - "oflcRp16" : RP16
+  /// - "oflcRp18" : RP18
   core.String oflcRating;
 
   /// The video's rating in Peru.
   /// Possible string values are:
-  /// - "pefilm14"
-  /// - "pefilm18"
-  /// - "pefilmPg"
-  /// - "pefilmPt"
+  /// - "pefilmUnspecified"
+  /// - "pefilmPt" : PT
+  /// - "pefilmPg" : PG
+  /// - "pefilm14" : 14
+  /// - "pefilm18" : 18
   /// - "pefilmUnrated"
   core.String pefilmRating;
 
   /// The video's rating from the Hungarian Nemzeti Filmiroda, the Rating
   /// Committee of the National Office of Film.
   /// Possible string values are:
+  /// - "rcnofUnspecified"
   /// - "rcnofI"
   /// - "rcnofIi"
   /// - "rcnofIii"
   /// - "rcnofIv"
-  /// - "rcnofUnrated"
   /// - "rcnofV"
   /// - "rcnofVi"
+  /// - "rcnofUnrated"
   core.String rcnofRating;
 
   /// The video's rating in Venezuela.
   /// Possible string values are:
-  /// - "resorteviolenciaA"
-  /// - "resorteviolenciaB"
-  /// - "resorteviolenciaC"
-  /// - "resorteviolenciaD"
-  /// - "resorteviolenciaE"
+  /// - "resorteviolenciaUnspecified"
+  /// - "resorteviolenciaA" : A
+  /// - "resorteviolenciaB" : B
+  /// - "resorteviolenciaC" : C
+  /// - "resorteviolenciaD" : D
+  /// - "resorteviolenciaE" : E
   /// - "resorteviolenciaUnrated"
   core.String resorteviolenciaRating;
 
   /// The video's General Directorate of Radio, Television and Cinematography
   /// (Mexico) rating.
   /// Possible string values are:
-  /// - "rtcA"
-  /// - "rtcAa"
-  /// - "rtcB"
-  /// - "rtcB15"
-  /// - "rtcC"
-  /// - "rtcD"
+  /// - "rtcUnspecified"
+  /// - "rtcAa" : AA
+  /// - "rtcA" : A
+  /// - "rtcB" : B
+  /// - "rtcB15" : B15
+  /// - "rtcC" : C
+  /// - "rtcD" : D
   /// - "rtcUnrated"
   core.String rtcRating;
 
   /// The video's rating from Ireland's Raidió Teilifís Éireann.
   /// Possible string values are:
-  /// - "rteCh"
-  /// - "rteGa"
-  /// - "rteMa"
-  /// - "rtePs"
+  /// - "rteUnspecified"
+  /// - "rteGa" : GA
+  /// - "rteCh" : CH
+  /// - "rtePs" : PS
+  /// - "rteMa" : MA
   /// - "rteUnrated"
   core.String rteRating;
 
   /// The video's National Film Registry of the Russian Federation (MKRF -
   /// Russia) rating.
   /// Possible string values are:
-  /// - "russia0"
-  /// - "russia12"
-  /// - "russia16"
-  /// - "russia18"
-  /// - "russia6"
+  /// - "russiaUnspecified"
+  /// - "russia0" : 0+
+  /// - "russia6" : 6+
+  /// - "russia12" : 12+
+  /// - "russia16" : 16+
+  /// - "russia18" : 18+
   /// - "russiaUnrated"
   core.String russiaRating;
 
   /// The video's rating in Slovakia.
   /// Possible string values are:
-  /// - "skfilmG"
-  /// - "skfilmP2"
-  /// - "skfilmP5"
-  /// - "skfilmP8"
+  /// - "skfilmUnspecified"
+  /// - "skfilmG" : G
+  /// - "skfilmP2" : P2
+  /// - "skfilmP5" : P5
+  /// - "skfilmP8" : P8
   /// - "skfilmUnrated"
   core.String skfilmRating;
 
   /// The video's rating in Iceland.
   /// Possible string values are:
-  /// - "smais12"
-  /// - "smais14"
-  /// - "smais16"
-  /// - "smais18"
-  /// - "smais7"
-  /// - "smaisL"
+  /// - "smaisUnspecified"
+  /// - "smaisL" : L
+  /// - "smais7" : 7
+  /// - "smais12" : 12
+  /// - "smais14" : 14
+  /// - "smais16" : 16
+  /// - "smais18" : 18
   /// - "smaisUnrated"
   core.String smaisRating;
 
   /// The video's rating from Statens medieråd (Sweden's National Media
   /// Council).
   /// Possible string values are:
-  /// - "smsa11"
-  /// - "smsa15"
-  /// - "smsa7"
-  /// - "smsaA"
+  /// - "smsaUnspecified"
+  /// - "smsaA" : All ages
+  /// - "smsa7" : 7
+  /// - "smsa11" : 11
+  /// - "smsa15" : 15
   /// - "smsaUnrated"
   core.String smsaRating;
 
   /// The video's TV Parental Guidelines (TVPG) rating.
   /// Possible string values are:
-  /// - "pg14"
-  /// - "tvpgG"
-  /// - "tvpgMa"
-  /// - "tvpgPg"
+  /// - "tvpgUnspecified"
+  /// - "tvpgY" : TV-Y
+  /// - "tvpgY7" : TV-Y7
+  /// - "tvpgY7Fv" : TV-Y7-FV
+  /// - "tvpgG" : TV-G
+  /// - "tvpgPg" : TV-PG
+  /// - "pg14" : TV-14
+  /// - "tvpgMa" : TV-MA
   /// - "tvpgUnrated"
-  /// - "tvpgY"
-  /// - "tvpgY7"
-  /// - "tvpgY7Fv"
   core.String tvpgRating;
 
   /// A rating that YouTube uses to identify age-restricted content.
   /// Possible string values are:
+  /// - "ytUnspecified"
   /// - "ytAgeRestricted"
   core.String ytRating;
 
@@ -11144,6 +11046,41 @@ class ContentRating {
   }
 }
 
+class Entity {
+  core.String id;
+  core.String typeId;
+  core.String url;
+
+  Entity();
+
+  Entity.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("typeId")) {
+      typeId = _json["typeId"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (typeId != null) {
+      _json["typeId"] = typeId;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
 /// Geographical coordinates of a point, in WGS84.
 class GeoPoint {
   /// Altitude above the reference ellipsoid, in meters.
@@ -11185,191 +11122,7 @@ class GeoPoint {
   }
 }
 
-/// A guideCategory resource identifies a category that YouTube algorithmically
-/// assigns based on a channel's content or other indicators, such as the
-/// channel's popularity. The list is similar to video categories, with the
-/// difference being that a video's uploader can assign a video category but
-/// only YouTube can assign a channel category.
-class GuideCategory {
-  /// Etag of this resource.
-  core.String etag;
-
-  /// The ID that YouTube uses to uniquely identify the guide category.
-  core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#guideCategory".
-  core.String kind;
-
-  /// The snippet object contains basic details about the category, such as its
-  /// title.
-  GuideCategorySnippet snippet;
-
-  GuideCategory();
-
-  GuideCategory.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("snippet")) {
-      snippet = new GuideCategorySnippet.fromJson(_json["snippet"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
-    }
-    return _json;
-  }
-}
-
-class GuideCategoryListResponse {
-  /// Etag of this resource.
-  core.String etag;
-
-  /// Serialized EventId of the request which produced this response.
-  core.String eventId;
-
-  /// A list of categories that can be associated with YouTube channels. In this
-  /// map, the category ID is the map key, and its value is the corresponding
-  /// guideCategory resource.
-  core.List<GuideCategory> items;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#guideCategoryListResponse".
-  core.String kind;
-
-  /// The token that can be used as the value of the pageToken parameter to
-  /// retrieve the next page in the result set.
-  core.String nextPageToken;
-  PageInfo pageInfo;
-
-  /// The token that can be used as the value of the pageToken parameter to
-  /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
-
-  /// The visitorId identifies the visitor.
-  core.String visitorId;
-
-  GuideCategoryListResponse();
-
-  GuideCategoryListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
-    }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<GuideCategory>((value) => new GuideCategory.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-    if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
-    }
-    if (_json.containsKey("prevPageToken")) {
-      prevPageToken = _json["prevPageToken"];
-    }
-    if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
-    }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
-    if (eventId != null) {
-      _json["eventId"] = eventId;
-    }
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
-    }
-    if (prevPageToken != null) {
-      _json["prevPageToken"] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
-    }
-    if (visitorId != null) {
-      _json["visitorId"] = visitorId;
-    }
-    return _json;
-  }
-}
-
-/// Basic details about a guide category.
-class GuideCategorySnippet {
-  core.String channelId;
-
-  /// Description of the guide category.
-  core.String title;
-
-  GuideCategorySnippet();
-
-  GuideCategorySnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("channelId")) {
-      channelId = _json["channelId"];
-    }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (channelId != null) {
-      _json["channelId"] = channelId;
-    }
-    if (title != null) {
-      _json["title"] = title;
-    }
-    return _json;
-  }
-}
-
-/// An i18nLanguage resource identifies a UI language currently supported by
+/// An *i18nLanguage* resource identifies a UI language currently supported by
 /// YouTube.
 class I18nLanguage {
   /// Etag of this resource.
@@ -11517,7 +11270,7 @@ class I18nLanguageSnippet {
   }
 }
 
-/// A i18nRegion resource identifies a region where YouTube is available.
+/// A *i18nRegion* resource identifies a region where YouTube is available.
 class I18nRegion {
   /// Etag of this resource.
   core.String etag;
@@ -11727,16 +11480,14 @@ class ImageSettings {
   LocalizedProperty smallBrandedBannerImageImapScript;
 
   /// The URL for the 640px by 70px banner image that appears below the video
-  /// player in the default view of the video watch page.
+  /// player in the default view of the video watch page. The URL for the image
+  /// that appears above the top-left corner of the video player. This is a
+  /// 25-pixel-high image with a flexible width that cannot exceed 170 pixels.
   LocalizedProperty smallBrandedBannerImageUrl;
 
   /// The URL for a 1px by 1px tracking pixel that can be used to collect
   /// statistics for views of the channel or video pages.
   core.String trackingImageUrl;
-
-  /// The URL for the image that appears above the top-left corner of the video
-  /// player. This is a 25-pixel-high image with a flexible width that cannot
-  /// exceed 170 pixels.
   core.String watchIconImageUrl;
 
   ImageSettings();
@@ -11900,14 +11651,19 @@ class IngestionInfo {
   core.String backupIngestionAddress;
 
   /// The primary ingestion URL that you should use to stream video to YouTube.
-  /// You must stream video to this URL.
-  ///
-  /// Depending on which application or tool you use to encode your video
-  /// stream, you may need to enter the stream URL and stream name separately or
-  /// you may need to concatenate them in the following format:
-  ///
-  /// STREAM_URL/STREAM_NAME
+  /// You must stream video to this URL. Depending on which application or tool
+  /// you use to encode your video stream, you may need to enter the stream URL
+  /// and stream name separately or you may need to concatenate them in the
+  /// following format: *STREAM_URL/STREAM_NAME*
   core.String ingestionAddress;
+
+  /// This ingestion url may be used instead of backupIngestionAddress in order
+  /// to stream via RTMPS. Not applicable to non-RTMP streams.
+  core.String rtmpsBackupIngestionAddress;
+
+  /// This ingestion url may be used instead of ingestionAddress in order to
+  /// stream via RTMPS. Not applicable to non-RTMP streams.
+  core.String rtmpsIngestionAddress;
 
   /// The HTTP or RTMP stream name that YouTube assigns to the video stream.
   core.String streamName;
@@ -11920,6 +11676,12 @@ class IngestionInfo {
     }
     if (_json.containsKey("ingestionAddress")) {
       ingestionAddress = _json["ingestionAddress"];
+    }
+    if (_json.containsKey("rtmpsBackupIngestionAddress")) {
+      rtmpsBackupIngestionAddress = _json["rtmpsBackupIngestionAddress"];
+    }
+    if (_json.containsKey("rtmpsIngestionAddress")) {
+      rtmpsIngestionAddress = _json["rtmpsIngestionAddress"];
     }
     if (_json.containsKey("streamName")) {
       streamName = _json["streamName"];
@@ -11935,6 +11697,12 @@ class IngestionInfo {
     if (ingestionAddress != null) {
       _json["ingestionAddress"] = ingestionAddress;
     }
+    if (rtmpsBackupIngestionAddress != null) {
+      _json["rtmpsBackupIngestionAddress"] = rtmpsBackupIngestionAddress;
+    }
+    if (rtmpsIngestionAddress != null) {
+      _json["rtmpsIngestionAddress"] = rtmpsIngestionAddress;
+    }
     if (streamName != null) {
       _json["streamName"] = streamName;
     }
@@ -11942,7 +11710,9 @@ class IngestionInfo {
   }
 }
 
+/// LINT.IfChange Describes an invideo branding.
 class InvideoBranding {
+  /// The bytes the uploaded image. Only used in api to youtube communication.
   core.String imageBytes;
   core.List<core.int> get imageBytesAsBytes {
     return convert.base64.decode(imageBytes);
@@ -11953,9 +11723,18 @@ class InvideoBranding {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
+  /// The url of the uploaded image. Only used in apiary to api communication.
   core.String imageUrl;
+
+  /// The spatial position within the video where the branding watermark will be
+  /// displayed.
   InvideoPosition position;
+
+  /// The channel to which this branding links. If not present it defaults to
+  /// the current channel.
   core.String targetChannelId;
+
+  /// The temporal position within the video where watermark will be displayed.
   InvideoTiming timing;
 
   InvideoBranding();
@@ -12005,10 +11784,10 @@ class InvideoBranding {
 class InvideoPosition {
   /// Describes in which corner of the video the visual widget will appear.
   /// Possible string values are:
-  /// - "bottomLeft"
-  /// - "bottomRight"
   /// - "topLeft"
   /// - "topRight"
+  /// - "bottomLeft"
+  /// - "bottomRight"
   core.String cornerPosition;
 
   /// Defines the position type.
@@ -12040,65 +11819,6 @@ class InvideoPosition {
   }
 }
 
-/// Describes an invideo promotion campaign consisting of multiple promoted
-/// items. A campaign belongs to a single channel_id.
-class InvideoPromotion {
-  /// The default temporal position within the video where the promoted item
-  /// will be displayed. Can be overriden by more specific timing in the item.
-  InvideoTiming defaultTiming;
-
-  /// List of promoted items in decreasing priority.
-  core.List<PromotedItem> items;
-
-  /// The spatial position within the video where the promoted item will be
-  /// displayed.
-  InvideoPosition position;
-
-  /// Indicates whether the channel's promotional campaign uses "smart timing."
-  /// This feature attempts to show promotions at a point in the video when they
-  /// are more likely to be clicked and less likely to disrupt the viewing
-  /// experience. This feature also picks up a single promotion to show on each
-  /// video.
-  core.bool useSmartTiming;
-
-  InvideoPromotion();
-
-  InvideoPromotion.fromJson(core.Map _json) {
-    if (_json.containsKey("defaultTiming")) {
-      defaultTiming = new InvideoTiming.fromJson(_json["defaultTiming"]);
-    }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<PromotedItem>((value) => new PromotedItem.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("position")) {
-      position = new InvideoPosition.fromJson(_json["position"]);
-    }
-    if (_json.containsKey("useSmartTiming")) {
-      useSmartTiming = _json["useSmartTiming"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (defaultTiming != null) {
-      _json["defaultTiming"] = (defaultTiming).toJson();
-    }
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (position != null) {
-      _json["position"] = (position).toJson();
-    }
-    if (useSmartTiming != null) {
-      _json["useSmartTiming"] = useSmartTiming;
-    }
-    return _json;
-  }
-}
-
 /// Describes a temporal position of a visual widget inside a video.
 class InvideoTiming {
   /// Defines the duration in milliseconds for which the promotion should be
@@ -12115,8 +11835,8 @@ class InvideoTiming {
   /// value is offsetFromEnd, then the offsetMs field represents an offset from
   /// the end of the video.
   /// Possible string values are:
-  /// - "offsetFromEnd"
   /// - "offsetFromStart"
+  /// - "offsetFromEnd"
   core.String type;
 
   InvideoTiming();
@@ -12171,6 +11891,7 @@ class LanguageTag {
 }
 
 class LevelDetails {
+  /// The name that should be used when referring to this level.
   core.String displayName;
 
   LevelDetails();
@@ -12191,8 +11912,8 @@ class LevelDetails {
   }
 }
 
-/// A liveBroadcast resource represents an event that will be streamed, via live
-/// video, on YouTube.
+/// A *liveBroadcast* resource represents an event that will be streamed, via
+/// live video, on YouTube.
 class LiveBroadcast {
   /// The contentDetails object contains information about the event's video
   /// content, such as whether the content can be shown in an embedded video
@@ -12285,17 +12006,24 @@ class LiveBroadcastContentDetails {
 
   /// The date and time that the live stream referenced by boundStreamId was
   /// last updated.
-  core.DateTime boundStreamLastUpdateTimeMs;
+  core.String boundStreamLastUpdateTimeMs;
 
   ///
   /// Possible string values are:
+  /// - "closedCaptionsTypeUnspecified"
   /// - "closedCaptionsDisabled"
-  /// - "closedCaptionsEmbedded"
   /// - "closedCaptionsHttpPost"
+  /// - "closedCaptionsEmbedded"
   core.String closedCaptionsType;
 
   /// This setting indicates whether auto start is enabled for this broadcast.
+  /// The default value for this property is false. This setting can only be
+  /// used by Events.
   core.bool enableAutoStart;
+
+  /// This setting indicates whether auto stop is enabled for this broadcast.
+  /// The default value for this property is false. This setting can only be
+  /// used by Events.
   core.bool enableAutoStop;
 
   /// This setting indicates whether HTTP POST closed captioning is enabled for
@@ -12312,13 +12040,9 @@ class LiveBroadcastContentDetails {
   /// This setting determines whether viewers can access DVR controls while
   /// watching the video. DVR controls enable the viewer to control the video
   /// playback experience by pausing, rewinding, or fast forwarding content. The
-  /// default value for this property is true.
-  ///
-  ///
-  ///
-  /// Important: You must set the value to true and also set the enableArchive
-  /// property's value to true if you want to make playback available
-  /// immediately after the broadcast ends.
+  /// default value for this property is true. *Important:* You must set the
+  /// value to true and also set the enableArchive property's value to true if
+  /// you want to make playback available immediately after the broadcast ends.
   core.bool enableDvr;
 
   /// This setting indicates whether the broadcast video can be played in an
@@ -12335,14 +12059,18 @@ class LiveBroadcastContentDetails {
   /// match enable_low_latency=true LATENCY_ULTRA_LOW should have
   /// enable_low_latency omitted.
   /// Possible string values are:
-  /// - "low"
-  /// - "normal"
-  /// - "ultraLow"
+  /// - "latencyPreferenceUnspecified"
+  /// - "normal" : Best for: highest quality viewer playbacks and higher
+  /// resolutions.
+  /// - "low" : Best for: near real-time interaction, with minimal playback
+  /// buffering.
+  /// - "ultraLow" : Best for: real-time interaction Does not support: Closed
+  /// captions, 1440p, and 4k resolutions
   core.String latencyPreference;
 
   /// The mesh for projecting the video if projection is mesh. The mesh value
   /// must be a UTF-8 string containing the base-64 encoding of 3D mesh data
-  /// that follows the  Spherical Video V2 RFC specification for an mshp box,
+  /// that follows the Spherical Video V2 RFC specification for an mshp box,
   /// excluding the box size and type but including the following four reserved
   /// zero bytes for the version and flags.
   core.String mesh;
@@ -12362,21 +12090,19 @@ class LiveBroadcastContentDetails {
 
   /// The projection format of this broadcast. This defaults to rectangular.
   /// Possible string values are:
+  /// - "projectionUnspecified"
+  /// - "rectangular"
   /// - "360"
   /// - "mesh"
-  /// - "rectangular"
   core.String projection;
 
   /// Automatically start recording after the event goes live. The default value
-  /// for this property is true.
-  ///
-  ///
-  ///
-  /// Important: You must also set the enableDvr property's value to true if you
-  /// want the playback to be available immediately after the broadcast ends. If
-  /// you set this property's value to true but do not also set the enableDvr
-  /// property to true, there may be a delay of around one day before the
-  /// archived video will be available for playback.
+  /// for this property is true. *Important:* You must also set the enableDvr
+  /// property's value to true if you want the playback to be available
+  /// immediately after the broadcast ends. If you set this property's value to
+  /// true but do not also set the enableDvr property to true, there may be a
+  /// delay of around one day before the archived video will be available for
+  /// playback.
   core.bool recordFromStart;
 
   /// This setting indicates whether the broadcast should automatically begin
@@ -12386,13 +12112,6 @@ class LiveBroadcastContentDetails {
   /// slate and make your broadcast stream visible to viewers.
   core.bool startWithSlate;
 
-  ///
-  /// Possible string values are:
-  /// - "left_right"
-  /// - "mono"
-  /// - "top_bottom"
-  core.String stereoLayout;
-
   LiveBroadcastContentDetails();
 
   LiveBroadcastContentDetails.fromJson(core.Map _json) {
@@ -12400,8 +12119,7 @@ class LiveBroadcastContentDetails {
       boundStreamId = _json["boundStreamId"];
     }
     if (_json.containsKey("boundStreamLastUpdateTimeMs")) {
-      boundStreamLastUpdateTimeMs =
-          core.DateTime.parse(_json["boundStreamLastUpdateTimeMs"]);
+      boundStreamLastUpdateTimeMs = _json["boundStreamLastUpdateTimeMs"];
     }
     if (_json.containsKey("closedCaptionsType")) {
       closedCaptionsType = _json["closedCaptionsType"];
@@ -12445,9 +12163,6 @@ class LiveBroadcastContentDetails {
     if (_json.containsKey("startWithSlate")) {
       startWithSlate = _json["startWithSlate"];
     }
-    if (_json.containsKey("stereoLayout")) {
-      stereoLayout = _json["stereoLayout"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -12457,8 +12172,7 @@ class LiveBroadcastContentDetails {
       _json["boundStreamId"] = boundStreamId;
     }
     if (boundStreamLastUpdateTimeMs != null) {
-      _json["boundStreamLastUpdateTimeMs"] =
-          (boundStreamLastUpdateTimeMs).toIso8601String();
+      _json["boundStreamLastUpdateTimeMs"] = boundStreamLastUpdateTimeMs;
     }
     if (closedCaptionsType != null) {
       _json["closedCaptionsType"] = closedCaptionsType;
@@ -12502,9 +12216,6 @@ class LiveBroadcastContentDetails {
     if (startWithSlate != null) {
       _json["startWithSlate"] = startWithSlate;
     }
-    if (stereoLayout != null) {
-      _json["stereoLayout"] = stereoLayout;
-    }
     return _json;
   }
 }
@@ -12526,6 +12237,8 @@ class LiveBroadcastListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -12604,30 +12317,17 @@ class LiveBroadcastListResponse {
   }
 }
 
+/// Basic broadcast information.
 class LiveBroadcastSnippet {
   /// The date and time that the broadcast actually ended. This information is
   /// only available once the broadcast's state is complete. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime actualEndTime;
+  /// specified in ISO 8601 format.
+  core.String actualEndTime;
 
   /// The date and time that the broadcast actually started. This information is
   /// only available once the broadcast's state is live. The value is specified
-  /// in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime actualStartTime;
-
-  ///
-  /// Possible string values are:
-  /// - "fludd"
-  /// - "fluddArchive"
-  /// - "gplusHoa"
-  /// - "lcrEncoder"
-  /// - "mobile"
-  /// - "persistent"
-  /// - "premiere"
-  /// - "unspecified"
-  /// - "webcam"
-  /// - "ytHoa"
-  core.String broadcastType;
+  /// in ISO 8601 format.
+  core.String actualStartTime;
 
   /// The ID that YouTube uses to uniquely identify the channel that is
   /// publishing the broadcast.
@@ -12637,23 +12337,24 @@ class LiveBroadcastSnippet {
   /// modifying the broadcast resource or by setting the description field of
   /// the corresponding video resource.
   core.String description;
+
+  /// Indicates whether this broadcast is the default broadcast. Internal only.
   core.bool isDefaultBroadcast;
 
   /// The id of the live chat for this broadcast.
   core.String liveChatId;
 
   /// The date and time that the broadcast was added to YouTube's live broadcast
-  /// schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ)
-  /// format.
-  core.DateTime publishedAt;
+  /// schedule. The value is specified in ISO 8601 format.
+  core.String publishedAt;
 
   /// The date and time that the broadcast is scheduled to end. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime scheduledEndTime;
+  /// specified in ISO 8601 format.
+  core.String scheduledEndTime;
 
   /// The date and time that the broadcast is scheduled to start. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime scheduledStartTime;
+  /// specified in ISO 8601 format.
+  core.String scheduledStartTime;
 
   /// A map of thumbnail images associated with the broadcast. For each nested
   /// object in this object, the key is the name of the thumbnail image, and the
@@ -12669,13 +12370,10 @@ class LiveBroadcastSnippet {
 
   LiveBroadcastSnippet.fromJson(core.Map _json) {
     if (_json.containsKey("actualEndTime")) {
-      actualEndTime = core.DateTime.parse(_json["actualEndTime"]);
+      actualEndTime = _json["actualEndTime"];
     }
     if (_json.containsKey("actualStartTime")) {
-      actualStartTime = core.DateTime.parse(_json["actualStartTime"]);
-    }
-    if (_json.containsKey("broadcastType")) {
-      broadcastType = _json["broadcastType"];
+      actualStartTime = _json["actualStartTime"];
     }
     if (_json.containsKey("channelId")) {
       channelId = _json["channelId"];
@@ -12690,13 +12388,13 @@ class LiveBroadcastSnippet {
       liveChatId = _json["liveChatId"];
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("scheduledEndTime")) {
-      scheduledEndTime = core.DateTime.parse(_json["scheduledEndTime"]);
+      scheduledEndTime = _json["scheduledEndTime"];
     }
     if (_json.containsKey("scheduledStartTime")) {
-      scheduledStartTime = core.DateTime.parse(_json["scheduledStartTime"]);
+      scheduledStartTime = _json["scheduledStartTime"];
     }
     if (_json.containsKey("thumbnails")) {
       thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
@@ -12710,13 +12408,10 @@ class LiveBroadcastSnippet {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
     if (actualEndTime != null) {
-      _json["actualEndTime"] = (actualEndTime).toIso8601String();
+      _json["actualEndTime"] = actualEndTime;
     }
     if (actualStartTime != null) {
-      _json["actualStartTime"] = (actualStartTime).toIso8601String();
-    }
-    if (broadcastType != null) {
-      _json["broadcastType"] = broadcastType;
+      _json["actualStartTime"] = actualStartTime;
     }
     if (channelId != null) {
       _json["channelId"] = channelId;
@@ -12731,13 +12426,13 @@ class LiveBroadcastSnippet {
       _json["liveChatId"] = liveChatId;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (scheduledEndTime != null) {
-      _json["scheduledEndTime"] = (scheduledEndTime).toIso8601String();
+      _json["scheduledEndTime"] = scheduledEndTime;
     }
     if (scheduledStartTime != null) {
-      _json["scheduledStartTime"] = (scheduledStartTime).toIso8601String();
+      _json["scheduledStartTime"] = scheduledStartTime;
     }
     if (thumbnails != null) {
       _json["thumbnails"] = (thumbnails).toJson();
@@ -12753,15 +12448,6 @@ class LiveBroadcastSnippet {
 /// values at the time of the request. Statistics are only returned for live
 /// broadcasts.
 class LiveBroadcastStatistics {
-  /// The number of viewers currently watching the broadcast. The property and
-  /// its value will be present if the broadcast has current viewers and the
-  /// broadcast owner has not hidden the viewcount for the video. Note that
-  /// YouTube stops tracking the number of concurrent viewers for a broadcast
-  /// when the broadcast ends. So, this property would not identify the number
-  /// of viewers watching an archived video of a live broadcast that already
-  /// ended.
-  core.String concurrentViewers;
-
   /// The total number of live chat messages currently on the broadcast. The
   /// property and its value will be present if the broadcast is public, has the
   /// live chat feature enabled, and has at least one message. Note that this
@@ -12773,9 +12459,6 @@ class LiveBroadcastStatistics {
   LiveBroadcastStatistics();
 
   LiveBroadcastStatistics.fromJson(core.Map _json) {
-    if (_json.containsKey("concurrentViewers")) {
-      concurrentViewers = _json["concurrentViewers"];
-    }
     if (_json.containsKey("totalChatCount")) {
       totalChatCount = _json["totalChatCount"];
     }
@@ -12784,9 +12467,6 @@ class LiveBroadcastStatistics {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (concurrentViewers != null) {
-      _json["concurrentViewers"] = concurrentViewers;
-    }
     if (totalChatCount != null) {
       _json["totalChatCount"] = totalChatCount;
     }
@@ -12794,26 +12474,34 @@ class LiveBroadcastStatistics {
   }
 }
 
+/// Live broadcast state.
 class LiveBroadcastStatus {
   /// The broadcast's status. The status can be updated using the API's
   /// liveBroadcasts.transition method.
   /// Possible string values are:
-  /// - "complete"
-  /// - "created"
-  /// - "live"
-  /// - "liveStarting"
-  /// - "ready"
-  /// - "revoked"
-  /// - "testStarting"
-  /// - "testing"
+  /// - "lifeCycleStatusUnspecified" : No value or the value is unknown.
+  /// - "created" : Incomplete settings, but otherwise valid
+  /// - "ready" : Complete settings
+  /// - "testing" : Visible only to partner, may need special UI treatment
+  /// - "live" : Viper is recording; this means the "clock" is running
+  /// - "complete" : The broadcast is finished.
+  /// - "revoked" : This broadcast was removed by admin action
+  /// - "testStarting" : Transition into TESTING has been requested
+  /// - "liveStarting" : Transition into LIVE has been requested
   core.String lifeCycleStatus;
 
   /// Priority of the live broadcast event (internal state).
   /// Possible string values are:
-  /// - "high"
-  /// - "low"
-  /// - "normal"
+  /// - "liveBroadcastPriorityUnspecified"
+  /// - "low" : Low priority broadcast: for low view count HoAs or other low
+  /// priority broadcasts.
+  /// - "normal" : Normal priority broadcast: for regular HoAs and broadcasts.
+  /// - "high" : High priority broadcast: for high profile HoAs, like PixelCorp
+  /// ones.
   core.String liveBroadcastPriority;
+
+  /// Whether the broadcast is made for kids or not, decided by YouTube instead
+  /// of the creator. This field is read only.
   core.bool madeForKids;
 
   /// The broadcast's privacy status. Note that the broadcast represents exactly
@@ -12822,17 +12510,22 @@ class LiveBroadcastStatus {
   /// broadcast resource or by setting the privacyStatus field of the
   /// corresponding video resource.
   /// Possible string values are:
-  /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "private"
   core.String privacyStatus;
 
   /// The broadcast's recording status.
   /// Possible string values are:
-  /// - "notRecording"
-  /// - "recorded"
-  /// - "recording"
+  /// - "liveBroadcastRecordingStatusUnspecified" : No value or the value is
+  /// unknown.
+  /// - "notRecording" : The recording has not yet been started.
+  /// - "recording" : The recording is currently on.
+  /// - "recorded" : The recording is completed, and cannot be started again.
   core.String recordingStatus;
+
+  /// This field will be set to True if the creator declares the broadcast to be
+  /// kids only: go/live-cw-work.
   core.bool selfDeclaredMadeForKids;
 
   LiveBroadcastStatus();
@@ -12883,7 +12576,7 @@ class LiveBroadcastStatus {
   }
 }
 
-/// A liveChatBan resource represents a ban for a YouTube live chat.
+/// A `__liveChatBan__` resource represents a ban for a YouTube live chat.
 class LiveChatBan {
   /// Etag of this resource.
   core.String etag;
@@ -12892,10 +12585,10 @@ class LiveChatBan {
   core.String id;
 
   /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#liveChatBan".
+  /// `"youtube#liveChatBan"`.
   core.String kind;
 
-  /// The snippet object contains basic details about the ban.
+  /// The `snippet` object contains basic details about the ban.
   LiveChatBanSnippet snippet;
 
   LiveChatBan();
@@ -12944,8 +12637,9 @@ class LiveChatBanSnippet {
 
   /// The type of ban.
   /// Possible string values are:
-  /// - "permanent"
-  /// - "temporary"
+  /// - "liveChatBanTypeUnspecified" : An invalid ban type.
+  /// - "permanent" : A permanent ban.
+  /// - "temporary" : A temporary ban.
   core.String type;
 
   LiveChatBanSnippet();
@@ -13034,7 +12728,8 @@ class LiveChatFanFundingEventDetails {
   }
 }
 
-/// A liveChatMessage resource represents a chat message in a YouTube Live Chat.
+/// A *liveChatMessage* resource represents a chat message in a YouTube Live
+/// Chat.
 class LiveChatMessage {
   /// The authorDetails object contains basic details about the user that posted
   /// this message.
@@ -13208,21 +12903,18 @@ class LiveChatMessageListResponse {
 
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
-
-  /// A list of live chat messages.
   core.List<LiveChatMessage> items;
 
   /// Identifies what kind of resource this is. Value: the fixed string
   /// "youtube#liveChatMessageListResponse".
   core.String kind;
-
-  /// The token that can be used as the value of the pageToken parameter to
-  /// retrieve the next page in the result set.
   core.String nextPageToken;
 
   /// The date and time when the underlying stream went offline. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime offlineAt;
+  /// specified in ISO 8601 format.
+  core.String offlineAt;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The amount of time the client should wait before polling again.
@@ -13253,7 +12945,7 @@ class LiveChatMessageListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("offlineAt")) {
-      offlineAt = core.DateTime.parse(_json["offlineAt"]);
+      offlineAt = _json["offlineAt"];
     }
     if (_json.containsKey("pageInfo")) {
       pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
@@ -13288,7 +12980,7 @@ class LiveChatMessageListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (offlineAt != null) {
-      _json["offlineAt"] = (offlineAt).toIso8601String();
+      _json["offlineAt"] = offlineAt;
     }
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
@@ -13351,14 +13043,10 @@ class LiveChatMessageSnippet {
   core.String liveChatId;
   LiveChatMessageDeletedDetails messageDeletedDetails;
   LiveChatMessageRetractedDetails messageRetractedDetails;
-  LiveChatPollClosedDetails pollClosedDetails;
-  LiveChatPollEditedDetails pollEditedDetails;
-  LiveChatPollOpenedDetails pollOpenedDetails;
-  LiveChatPollVotedDetails pollVotedDetails;
 
   /// The date and time when the message was orignally published. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishedAt;
+  /// specified in ISO 8601 format.
+  core.String publishedAt;
 
   /// Details about the Super Chat event, this is only set if the type is
   /// 'superChatEvent'.
@@ -13375,22 +13063,19 @@ class LiveChatMessageSnippet {
   /// The type of message, this will always be present, it determines the
   /// contents of the message as well as which fields will be present.
   /// Possible string values are:
-  /// - "chatEndedEvent"
-  /// - "fanFundingEvent"
-  /// - "messageDeletedEvent"
-  /// - "messageRetractedEvent"
-  /// - "newSponsorEvent"
-  /// - "pollClosedEvent"
-  /// - "pollEditedEvent"
-  /// - "pollOpenedEvent"
-  /// - "pollVotedEvent"
-  /// - "sponsorOnlyModeEndedEvent"
-  /// - "sponsorOnlyModeStartedEvent"
-  /// - "superChatEvent"
-  /// - "superStickerEvent"
+  /// - "invalidType"
   /// - "textMessageEvent"
   /// - "tombstone"
+  /// - "fanFundingEvent"
+  /// - "chatEndedEvent"
+  /// - "sponsorOnlyModeStartedEvent"
+  /// - "sponsorOnlyModeEndedEvent"
+  /// - "newSponsorEvent"
+  /// - "messageDeletedEvent"
+  /// - "messageRetractedEvent"
   /// - "userBannedEvent"
+  /// - "superChatEvent"
+  /// - "superStickerEvent"
   core.String type;
   LiveChatUserBannedMessageDetails userBannedDetails;
 
@@ -13421,24 +13106,8 @@ class LiveChatMessageSnippet {
       messageRetractedDetails = new LiveChatMessageRetractedDetails.fromJson(
           _json["messageRetractedDetails"]);
     }
-    if (_json.containsKey("pollClosedDetails")) {
-      pollClosedDetails =
-          new LiveChatPollClosedDetails.fromJson(_json["pollClosedDetails"]);
-    }
-    if (_json.containsKey("pollEditedDetails")) {
-      pollEditedDetails =
-          new LiveChatPollEditedDetails.fromJson(_json["pollEditedDetails"]);
-    }
-    if (_json.containsKey("pollOpenedDetails")) {
-      pollOpenedDetails =
-          new LiveChatPollOpenedDetails.fromJson(_json["pollOpenedDetails"]);
-    }
-    if (_json.containsKey("pollVotedDetails")) {
-      pollVotedDetails =
-          new LiveChatPollVotedDetails.fromJson(_json["pollVotedDetails"]);
-    }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("superChatDetails")) {
       superChatDetails =
@@ -13485,20 +13154,8 @@ class LiveChatMessageSnippet {
     if (messageRetractedDetails != null) {
       _json["messageRetractedDetails"] = (messageRetractedDetails).toJson();
     }
-    if (pollClosedDetails != null) {
-      _json["pollClosedDetails"] = (pollClosedDetails).toJson();
-    }
-    if (pollEditedDetails != null) {
-      _json["pollEditedDetails"] = (pollEditedDetails).toJson();
-    }
-    if (pollOpenedDetails != null) {
-      _json["pollOpenedDetails"] = (pollOpenedDetails).toJson();
-    }
-    if (pollVotedDetails != null) {
-      _json["pollVotedDetails"] = (pollVotedDetails).toJson();
-    }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (superChatDetails != null) {
       _json["superChatDetails"] = (superChatDetails).toJson();
@@ -13519,9 +13176,9 @@ class LiveChatMessageSnippet {
   }
 }
 
-/// A liveChatModerator resource represents a moderator for a YouTube live chat.
-/// A chat moderator has the ability to ban/unban users from a chat, remove
-/// message, etc.
+/// A *liveChatModerator* resource represents a moderator for a YouTube live
+/// chat. A chat moderator has the ability to ban/unban users from a chat,
+/// remove message, etc.
 class LiveChatModerator {
   /// Etag of this resource.
   core.String etag;
@@ -13589,6 +13246,8 @@ class LiveChatModeratorListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -13695,164 +13354,6 @@ class LiveChatModeratorSnippet {
     }
     if (moderatorDetails != null) {
       _json["moderatorDetails"] = (moderatorDetails).toJson();
-    }
-    return _json;
-  }
-}
-
-class LiveChatPollClosedDetails {
-  /// The id of the poll that was closed.
-  core.String pollId;
-
-  LiveChatPollClosedDetails();
-
-  LiveChatPollClosedDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("pollId")) {
-      pollId = _json["pollId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (pollId != null) {
-      _json["pollId"] = pollId;
-    }
-    return _json;
-  }
-}
-
-class LiveChatPollEditedDetails {
-  core.String id;
-  core.List<LiveChatPollItem> items;
-  core.String prompt;
-
-  LiveChatPollEditedDetails();
-
-  LiveChatPollEditedDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<LiveChatPollItem>(
-              (value) => new LiveChatPollItem.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("prompt")) {
-      prompt = _json["prompt"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (prompt != null) {
-      _json["prompt"] = prompt;
-    }
-    return _json;
-  }
-}
-
-class LiveChatPollItem {
-  /// Plain text description of the item.
-  core.String description;
-  core.String itemId;
-
-  LiveChatPollItem();
-
-  LiveChatPollItem.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("itemId")) {
-      itemId = _json["itemId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (itemId != null) {
-      _json["itemId"] = itemId;
-    }
-    return _json;
-  }
-}
-
-class LiveChatPollOpenedDetails {
-  core.String id;
-  core.List<LiveChatPollItem> items;
-  core.String prompt;
-
-  LiveChatPollOpenedDetails();
-
-  LiveChatPollOpenedDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<LiveChatPollItem>(
-              (value) => new LiveChatPollItem.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("prompt")) {
-      prompt = _json["prompt"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (prompt != null) {
-      _json["prompt"] = prompt;
-    }
-    return _json;
-  }
-}
-
-class LiveChatPollVotedDetails {
-  /// The poll item the user chose.
-  core.String itemId;
-
-  /// The poll the user voted on.
-  core.String pollId;
-
-  LiveChatPollVotedDetails();
-
-  LiveChatPollVotedDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("itemId")) {
-      itemId = _json["itemId"];
-    }
-    if (_json.containsKey("pollId")) {
-      pollId = _json["pollId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (itemId != null) {
-      _json["itemId"] = itemId;
-    }
-    if (pollId != null) {
-      _json["pollId"] = pollId;
     }
     return _json;
   }
@@ -14136,47 +13637,47 @@ class LiveStreamConfigurationIssue {
 
   /// How severe this issue is to the stream.
   /// Possible string values are:
-  /// - "error"
   /// - "info"
   /// - "warning"
+  /// - "error"
   core.String severity;
 
   /// The kind of error happening.
   /// Possible string values are:
+  /// - "gopSizeOver"
+  /// - "gopSizeLong"
+  /// - "gopSizeShort"
+  /// - "openGop"
+  /// - "badContainer"
   /// - "audioBitrateHigh"
   /// - "audioBitrateLow"
-  /// - "audioBitrateMismatch"
-  /// - "audioCodec"
-  /// - "audioCodecMismatch"
   /// - "audioSampleRate"
-  /// - "audioSampleRateMismatch"
-  /// - "audioStereoMismatch"
-  /// - "audioTooManyChannels"
-  /// - "badContainer"
   /// - "bitrateHigh"
   /// - "bitrateLow"
-  /// - "frameRateHigh"
-  /// - "framerateMismatch"
-  /// - "gopMismatch"
-  /// - "gopSizeLong"
-  /// - "gopSizeOver"
-  /// - "gopSizeShort"
-  /// - "interlacedVideo"
-  /// - "multipleAudioStreams"
-  /// - "multipleVideoStreams"
+  /// - "audioCodec"
+  /// - "videoCodec"
   /// - "noAudioStream"
   /// - "noVideoStream"
-  /// - "openGop"
+  /// - "multipleVideoStreams"
+  /// - "multipleAudioStreams"
+  /// - "audioTooManyChannels"
+  /// - "interlacedVideo"
+  /// - "frameRateHigh"
   /// - "resolutionMismatch"
-  /// - "videoBitrateMismatch"
-  /// - "videoCodec"
   /// - "videoCodecMismatch"
-  /// - "videoIngestionFasterThanRealtime"
-  /// - "videoIngestionStarved"
   /// - "videoInterlaceMismatch"
   /// - "videoProfileMismatch"
+  /// - "videoBitrateMismatch"
+  /// - "framerateMismatch"
+  /// - "gopMismatch"
+  /// - "audioSampleRateMismatch"
+  /// - "audioStereoMismatch"
+  /// - "audioCodecMismatch"
+  /// - "audioBitrateMismatch"
   /// - "videoResolutionSuboptimal"
   /// - "videoResolutionUnsupported"
+  /// - "videoIngestionStarved"
+  /// - "videoIngestionFasterThanRealtime"
   core.String type;
 
   LiveStreamConfigurationIssue();
@@ -14223,15 +13724,12 @@ class LiveStreamContentDetails {
   /// Indicates whether the stream is reusable, which means that it can be bound
   /// to multiple broadcasts. It is common for broadcasters to reuse the same
   /// stream for many different broadcasts if those broadcasts occur at
-  /// different times.
-  ///
-  /// If you set this value to false, then the stream will not be reusable,
-  /// which means that it can only be bound to one broadcast. Non-reusable
-  /// streams differ from reusable streams in the following ways:
-  /// - A non-reusable stream can only be bound to one broadcast.
-  /// - A non-reusable stream might be deleted by an automated process after the
-  /// broadcast ends.
-  /// - The  liveStreams.list method does not list non-reusable streams if you
+  /// different times. If you set this value to false, then the stream will not
+  /// be reusable, which means that it can only be bound to one broadcast.
+  /// Non-reusable streams differ from reusable streams in the following ways: -
+  /// A non-reusable stream can only be bound to one broadcast. - A non-reusable
+  /// stream might be deleted by an automated process after the broadcast ends.
+  /// - The liveStreams.list method does not list non-reusable streams if you
   /// call the method and set the mine parameter to true. The only way to use
   /// that method to retrieve the resource for a non-reusable stream is to use
   /// the id parameter to identify the stream.
@@ -14270,10 +13768,10 @@ class LiveStreamHealthStatus {
 
   /// The status code of this stream
   /// Possible string values are:
-  /// - "bad"
   /// - "good"
-  /// - "noData"
   /// - "ok"
+  /// - "bad"
+  /// - "noData"
   /// - "revoked"
   core.String status;
 
@@ -14417,8 +13915,8 @@ class LiveStreamSnippet {
   core.bool isDefaultStream;
 
   /// The date and time that the stream was created. The value is specified in
-  /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishedAt;
+  /// ISO 8601 format.
+  core.String publishedAt;
 
   /// The stream's title. The value must be between 1 and 128 characters long.
   core.String title;
@@ -14436,7 +13934,7 @@ class LiveStreamSnippet {
       isDefaultStream = _json["isDefaultStream"];
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -14456,7 +13954,7 @@ class LiveStreamSnippet {
       _json["isDefaultStream"] = isDefaultStream;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (title != null) {
       _json["title"] = title;
@@ -14472,11 +13970,11 @@ class LiveStreamStatus {
 
   ///
   /// Possible string values are:
-  /// - "active"
   /// - "created"
-  /// - "error"
-  /// - "inactive"
   /// - "ready"
+  /// - "active"
+  /// - "inactive"
+  /// - "error"
   core.String streamStatus;
 
   LiveStreamStatus();
@@ -14570,7 +14068,7 @@ class LocalizedString {
   }
 }
 
-/// A member resource represents a member for a YouTube channel. A member
+/// A *member* resource represents a member for a YouTube channel. A member
 /// provides recurring monetary support to a creator and receives special
 /// benefits.
 class Member {
@@ -14750,7 +14248,7 @@ class MembershipsDetails {
   /// Id of the highest level that the user has access to at the moment.
   core.String highestAccessibleLevel;
 
-  /// Display name of the highest level that the user has access to at the
+  /// Display name for the highest level that the user has access to at the
   /// moment.
   core.String highestAccessibleLevelDisplayName;
 
@@ -14846,7 +14344,7 @@ class MembershipsDuration {
 }
 
 class MembershipsDurationAtLevel {
-  /// Pricing level id.
+  /// Pricing level ID.
   core.String level;
 
   /// The date and time when the user became a continuous member for the given
@@ -14887,10 +14385,10 @@ class MembershipsDurationAtLevel {
   }
 }
 
-/// A membershipsLevel resource represents an offer made by YouTube creators for
-/// their fans. Users can become members of the channel by joining one of the
-/// available levels. They will provide recurring monetary support and receives
-/// special benefits.
+/// A *membershipsLevel* resource represents an offer made by YouTube creators
+/// for their fans. Users can become members of the channel by joining one of
+/// the available levels. They will provide recurring monetary support and
+/// receives special benefits.
 class MembershipsLevel {
   /// Etag of this resource.
   core.String etag;
@@ -14899,7 +14397,7 @@ class MembershipsLevel {
   core.String id;
 
   /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#membershipsLevel".
+  /// "youtube#membershipsLevelListResponse".
   core.String kind;
 
   /// The snippet object contains basic details about the level.
@@ -15006,6 +14504,8 @@ class MembershipsLevelListResponse {
 class MembershipsLevelSnippet {
   /// The id of the channel that's offering channel memberships.
   core.String creatorChannelId;
+
+  /// Details about the pricing level.
   LevelDetails levelDetails;
 
   MembershipsLevelSnippet();
@@ -15045,13 +14545,10 @@ class MonitorStreamInfo {
   /// broadcast. If the monitor stream is enabled, then YouTube will broadcast
   /// the event content on a special stream intended only for the broadcaster's
   /// consumption. The broadcaster can use the stream to review the event
-  /// content and also to identify the optimal times to insert cuepoints.
-  ///
-  /// You need to set this value to true if you intend to have a broadcast delay
-  /// for your event.
-  ///
-  /// Note: This property cannot be updated once the broadcast is in the testing
-  /// or live state.
+  /// content and also to identify the optimal times to insert cuepoints. You
+  /// need to set this value to true if you intend to have a broadcast delay for
+  /// your event. *Note:* This property cannot be updated once the broadcast is
+  /// in the testing or live state.
   core.bool enableMonitorStream;
 
   MonitorStreamInfo();
@@ -15079,59 +14576,6 @@ class MonitorStreamInfo {
     }
     if (enableMonitorStream != null) {
       _json["enableMonitorStream"] = enableMonitorStream;
-    }
-    return _json;
-  }
-}
-
-/// Nonprofit information.
-class Nonprofit {
-  /// Id of the nonprofit.
-  NonprofitId nonprofitId;
-
-  /// Legal name of the nonprofit.
-  core.String nonprofitLegalName;
-
-  Nonprofit();
-
-  Nonprofit.fromJson(core.Map _json) {
-    if (_json.containsKey("nonprofitId")) {
-      nonprofitId = new NonprofitId.fromJson(_json["nonprofitId"]);
-    }
-    if (_json.containsKey("nonprofitLegalName")) {
-      nonprofitLegalName = _json["nonprofitLegalName"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (nonprofitId != null) {
-      _json["nonprofitId"] = (nonprofitId).toJson();
-    }
-    if (nonprofitLegalName != null) {
-      _json["nonprofitLegalName"] = nonprofitLegalName;
-    }
-    return _json;
-  }
-}
-
-class NonprofitId {
-  core.String value;
-
-  NonprofitId();
-
-  NonprofitId.fromJson(core.Map _json) {
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (value != null) {
-      _json["value"] = value;
     }
     return _json;
   }
@@ -15170,26 +14614,20 @@ class PageInfo {
   }
 }
 
-/// A playlist resource represents a YouTube playlist. A playlist is a
+/// A *playlist* resource represents a YouTube playlist. A playlist is a
 /// collection of videos that can be viewed sequentially and shared with other
 /// users. A playlist can contain up to 200 videos, and YouTube does not limit
 /// the number of playlists that each user creates. By default, playlists are
 /// publicly visible to other users, but playlists can be public or private.
-///
 /// YouTube also uses playlists to identify special collections of videos for a
-/// channel, such as:
-/// - uploaded videos
-/// - favorite videos
-/// - positively rated (liked) videos
-/// - watch history
-/// - watch later  To be more specific, these lists are associated with a
-/// channel, which is a collection of a person, group, or company's videos,
-/// playlists, and other YouTube information. You can retrieve the playlist IDs
-/// for each of these lists from the  channel resource for a given channel.
-///
-/// You can then use the   playlistItems.list method to retrieve any of those
-/// lists. You can also add or remove items from those lists by calling the
-/// playlistItems.insert and   playlistItems.delete methods.
+/// channel, such as: - uploaded videos - favorite videos - positively rated
+/// (liked) videos - watch history - watch later To be more specific, these
+/// lists are associated with a channel, which is a collection of a person,
+/// group, or company's videos, playlists, and other YouTube information. You
+/// can retrieve the playlist IDs for each of these lists from the channel
+/// resource for a given channel. You can then use the playlistItems.list method
+/// to retrieve any of those lists. You can also add or remove items from those
+/// lists by calling the playlistItems.insert and playlistItems.delete methods.
 class Playlist {
   /// The contentDetails object contains information like video count.
   PlaylistContentDetails contentDetails;
@@ -15305,28 +14743,21 @@ class PlaylistContentDetails {
   }
 }
 
-/// A playlistItem resource identifies another resource, such as a video, that
-/// is included in a playlist. In addition, the playlistItem  resource contains
+/// A *playlistItem* resource identifies another resource, such as a video, that
+/// is included in a playlist. In addition, the playlistItem resource contains
 /// details about the included resource that pertain specifically to how that
-/// resource is used in that playlist.
-///
-/// YouTube uses playlists to identify special collections of videos for a
-/// channel, such as:
-/// - uploaded videos
-/// - favorite videos
-/// - positively rated (liked) videos
-/// - watch history
-/// - watch later  To be more specific, these lists are associated with a
-/// channel, which is a collection of a person, group, or company's videos,
-/// playlists, and other YouTube information.
-///
-/// You can retrieve the playlist IDs for each of these lists from the  channel
-/// resource  for a given channel. You can then use the   playlistItems.list
-/// method to retrieve any of those lists. You can also add or remove items from
-/// those lists by calling the   playlistItems.insert and   playlistItems.delete
-/// methods. For example, if a user gives a positive rating to a video, you
-/// would insert that video into the liked videos playlist for that user's
-/// channel.
+/// resource is used in that playlist. YouTube uses playlists to identify
+/// special collections of videos for a channel, such as: - uploaded videos -
+/// favorite videos - positively rated (liked) videos - watch history - watch
+/// later To be more specific, these lists are associated with a channel, which
+/// is a collection of a person, group, or company's videos, playlists, and
+/// other YouTube information. You can retrieve the playlist IDs for each of
+/// these lists from the channel resource for a given channel. You can then use
+/// the playlistItems.list method to retrieve any of those lists. You can also
+/// add or remove items from those lists by calling the playlistItems.insert and
+/// playlistItems.delete methods. For example, if a user gives a positive rating
+/// to a video, you would insert that video into the liked videos playlist for
+/// that user's channel.
 class PlaylistItem {
   /// The contentDetails object is included in the resource if the included item
   /// is a YouTube video. The object contains additional information about the
@@ -15423,8 +14854,8 @@ class PlaylistItemContentDetails {
   core.String videoId;
 
   /// The date and time that the video was published to YouTube. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime videoPublishedAt;
+  /// specified in ISO 8601 format.
+  core.String videoPublishedAt;
 
   PlaylistItemContentDetails();
 
@@ -15442,7 +14873,7 @@ class PlaylistItemContentDetails {
       videoId = _json["videoId"];
     }
     if (_json.containsKey("videoPublishedAt")) {
-      videoPublishedAt = core.DateTime.parse(_json["videoPublishedAt"]);
+      videoPublishedAt = _json["videoPublishedAt"];
     }
   }
 
@@ -15462,14 +14893,13 @@ class PlaylistItemContentDetails {
       _json["videoId"] = videoId;
     }
     if (videoPublishedAt != null) {
-      _json["videoPublishedAt"] = (videoPublishedAt).toIso8601String();
+      _json["videoPublishedAt"] = videoPublishedAt;
     }
     return _json;
   }
 }
 
 class PlaylistItemListResponse {
-  /// Etag of this resource.
   core.String etag;
 
   /// Serialized EventId of the request which produced this response.
@@ -15479,12 +14909,14 @@ class PlaylistItemListResponse {
   core.List<PlaylistItem> items;
 
   /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#playlistItemListResponse".
+  /// "youtube#playlistItemListResponse". Etag of this resource.
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -15564,6 +14996,7 @@ class PlaylistItemListResponse {
 }
 
 /// Basic details about a playlist, including title, description and thumbnails.
+/// Basic details of a YouTube Playlist item provided by the author. Next ID: 13
 class PlaylistItemSnippet {
   /// The ID that YouTube uses to uniquely identify the user that added the item
   /// to the playlist.
@@ -15575,7 +15008,7 @@ class PlaylistItemSnippet {
   /// The item's description.
   core.String description;
 
-  /// The ID that YouTube uses to uniquely identify the playlist that the
+  /// The ID that YouTube uses to uniquely identify thGe playlist that the
   /// playlist item is in.
   core.String playlistId;
 
@@ -15585,8 +15018,8 @@ class PlaylistItemSnippet {
   core.int position;
 
   /// The date and time that the item was added to the playlist. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishedAt;
+  /// specified in ISO 8601 format.
+  core.String publishedAt;
 
   /// The id object contains information that can be used to uniquely identify
   /// the resource that is included in the playlist as the playlist item.
@@ -15619,7 +15052,7 @@ class PlaylistItemSnippet {
       position = _json["position"];
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("resourceId")) {
       resourceId = new ResourceId.fromJson(_json["resourceId"]);
@@ -15651,7 +15084,7 @@ class PlaylistItemSnippet {
       _json["position"] = position;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (resourceId != null) {
       _json["resourceId"] = (resourceId).toJson();
@@ -15670,9 +15103,9 @@ class PlaylistItemSnippet {
 class PlaylistItemStatus {
   /// This resource's privacy status.
   /// Possible string values are:
-  /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "private"
   core.String privacyStatus;
 
   PlaylistItemStatus();
@@ -15700,7 +15133,7 @@ class PlaylistListResponse {
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
 
-  /// A list of playlists that match the request criteria.
+  /// A list of playlists that match the request criteria
   core.List<Playlist> items;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -15710,6 +15143,8 @@ class PlaylistListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -15861,8 +15296,8 @@ class PlaylistSnippet {
   PlaylistLocalization localized;
 
   /// The date and time that the playlist was created. The value is specified in
-  /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishedAt;
+  /// ISO 8601 format.
+  core.String publishedAt;
 
   /// Keyword tags associated with the playlist.
   core.List<core.String> tags;
@@ -15894,7 +15329,7 @@ class PlaylistSnippet {
       localized = new PlaylistLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List).cast<core.String>();
@@ -15926,7 +15361,7 @@ class PlaylistSnippet {
       _json["localized"] = (localized).toJson();
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (tags != null) {
       _json["tags"] = tags;
@@ -15944,9 +15379,9 @@ class PlaylistSnippet {
 class PlaylistStatus {
   /// The playlist's privacy status.
   /// Possible string values are:
-  /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "private"
   core.String privacyStatus;
 
   PlaylistStatus();
@@ -15962,121 +15397,6 @@ class PlaylistStatus {
         new core.Map<core.String, core.Object>();
     if (privacyStatus != null) {
       _json["privacyStatus"] = privacyStatus;
-    }
-    return _json;
-  }
-}
-
-/// Describes a single promoted item.
-class PromotedItem {
-  /// A custom message to display for this promotion. This field is currently
-  /// ignored unless the promoted item is a website.
-  core.String customMessage;
-
-  /// Identifies the promoted item.
-  PromotedItemId id;
-
-  /// If true, the content owner's name will be used when displaying the
-  /// promotion. This field can only be set when the update is made on behalf of
-  /// the content owner.
-  core.bool promotedByContentOwner;
-
-  /// The temporal position within the video where the promoted item will be
-  /// displayed. If present, it overrides the default timing.
-  InvideoTiming timing;
-
-  PromotedItem();
-
-  PromotedItem.fromJson(core.Map _json) {
-    if (_json.containsKey("customMessage")) {
-      customMessage = _json["customMessage"];
-    }
-    if (_json.containsKey("id")) {
-      id = new PromotedItemId.fromJson(_json["id"]);
-    }
-    if (_json.containsKey("promotedByContentOwner")) {
-      promotedByContentOwner = _json["promotedByContentOwner"];
-    }
-    if (_json.containsKey("timing")) {
-      timing = new InvideoTiming.fromJson(_json["timing"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (customMessage != null) {
-      _json["customMessage"] = customMessage;
-    }
-    if (id != null) {
-      _json["id"] = (id).toJson();
-    }
-    if (promotedByContentOwner != null) {
-      _json["promotedByContentOwner"] = promotedByContentOwner;
-    }
-    if (timing != null) {
-      _json["timing"] = (timing).toJson();
-    }
-    return _json;
-  }
-}
-
-/// Describes a single promoted item id. It is a union of various possible
-/// types.
-class PromotedItemId {
-  /// If type is recentUpload, this field identifies the channel from which to
-  /// take the recent upload. If missing, the channel is assumed to be the same
-  /// channel for which the invideoPromotion is set.
-  core.String recentlyUploadedBy;
-
-  /// Describes the type of the promoted item.
-  /// Possible string values are:
-  /// - "recentUpload"
-  /// - "video"
-  /// - "website"
-  core.String type;
-
-  /// If the promoted item represents a video, this field represents the unique
-  /// YouTube ID identifying it. This field will be present only if type has the
-  /// value video.
-  core.String videoId;
-
-  /// If the promoted item represents a website, this field represents the url
-  /// pointing to the website. This field will be present only if type has the
-  /// value website.
-  core.String websiteUrl;
-
-  PromotedItemId();
-
-  PromotedItemId.fromJson(core.Map _json) {
-    if (_json.containsKey("recentlyUploadedBy")) {
-      recentlyUploadedBy = _json["recentlyUploadedBy"];
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-    if (_json.containsKey("videoId")) {
-      videoId = _json["videoId"];
-    }
-    if (_json.containsKey("websiteUrl")) {
-      websiteUrl = _json["websiteUrl"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (recentlyUploadedBy != null) {
-      _json["recentlyUploadedBy"] = recentlyUploadedBy;
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    if (videoId != null) {
-      _json["videoId"] = videoId;
-    }
-    if (websiteUrl != null) {
-      _json["websiteUrl"] = websiteUrl;
     }
     return _json;
   }
@@ -16109,6 +15429,27 @@ class PropertyValue {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+class RelatedEntity {
+  Entity entity;
+
+  RelatedEntity();
+
+  RelatedEntity.fromJson(core.Map _json) {
+    if (_json.containsKey("entity")) {
+      entity = new Entity.fromJson(_json["entity"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entity != null) {
+      _json["entity"] = (entity).toJson();
     }
     return _json;
   }
@@ -16178,7 +15519,7 @@ class SearchListResponse {
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
 
-  /// A list of results that match the search criteria.
+  /// Pagination information for token pagination.
   core.List<SearchResult> items;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16188,6 +15529,8 @@ class SearchListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -16349,15 +15692,15 @@ class SearchResultSnippet {
   /// broadcast content. Or it's "none" if there is not any upcoming/active live
   /// broadcasts.
   /// Possible string values are:
-  /// - "live"
   /// - "none"
-  /// - "upcoming"
+  /// - "upcoming" : The live broadcast is upcoming.
+  /// - "live" : The live broadcast is active.
+  /// - "completed" : The live broadcast has been completed.
   core.String liveBroadcastContent;
 
   /// The creation date and time of the resource that the search result
-  /// identifies. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ)
-  /// format.
-  core.DateTime publishedAt;
+  /// identifies. The value is specified in ISO 8601 format.
+  core.String publishedAt;
 
   /// A map of thumbnail images associated with the search result. For each
   /// object in the map, the key is the name of the thumbnail image, and the
@@ -16383,7 +15726,7 @@ class SearchResultSnippet {
       liveBroadcastContent = _json["liveBroadcastContent"];
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("thumbnails")) {
       thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
@@ -16409,7 +15752,7 @@ class SearchResultSnippet {
       _json["liveBroadcastContent"] = liveBroadcastContent;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (thumbnails != null) {
       _json["thumbnails"] = (thumbnails).toJson();
@@ -16421,18 +15764,18 @@ class SearchResultSnippet {
   }
 }
 
-/// A sponsor resource represents a sponsor for a YouTube channel. A sponsor
-/// provides recurring monetary support to a creator and receives special
-/// benefits.
+/// A `__sponsor__` resource represents a sponsor for a YouTube channel. A
+/// sponsor provides recurring monetary support to a creator and receives
+/// special benefits.
 class Sponsor {
   /// Etag of this resource.
   core.String etag;
 
   /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#sponsor".
+  /// `"youtube#sponsor"`.
   core.String kind;
 
-  /// The snippet object contains basic details about the sponsor.
+  /// The `snippet` object contains basic details about the sponsor.
   SponsorSnippet snippet;
 
   Sponsor();
@@ -16476,16 +15819,16 @@ class SponsorListResponse {
   core.List<Sponsor> items;
 
   /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#sponsorListResponse".
+  /// `"youtube#sponsorListResponse".
   core.String kind;
 
-  /// The token that can be used as the value of the pageToken parameter to
+  /// The token that can be used as the value of the `pageToken` parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
   PageInfo pageInfo;
   TokenPagination tokenPagination;
 
-  /// The visitorId identifies the visitor.
+  /// The `visitorId` identifies the visitor.
   core.String visitorId;
 
   SponsorListResponse();
@@ -16561,8 +15904,8 @@ class SponsorSnippet {
   ChannelProfileDetails sponsorDetails;
 
   /// The date and time when the user became a sponsor. The value is specified
-  /// in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime sponsorSince;
+  /// in ISO 8601 (`YYYY-MM-DDThh:mm:ss.sZ`) format.
+  core.String sponsorSince;
 
   SponsorSnippet();
 
@@ -16578,7 +15921,7 @@ class SponsorSnippet {
           new ChannelProfileDetails.fromJson(_json["sponsorDetails"]);
     }
     if (_json.containsKey("sponsorSince")) {
-      sponsorSince = core.DateTime.parse(_json["sponsorSince"]);
+      sponsorSince = _json["sponsorSince"];
     }
   }
 
@@ -16595,13 +15938,13 @@ class SponsorSnippet {
       _json["sponsorDetails"] = (sponsorDetails).toJson();
     }
     if (sponsorSince != null) {
-      _json["sponsorSince"] = (sponsorSince).toIso8601String();
+      _json["sponsorSince"] = sponsorSince;
     }
     return _json;
   }
 }
 
-/// A subscription resource contains information about a YouTube user
+/// A *subscription* resource contains information about a YouTube user
 /// subscription. A subscription notifies a user when new videos are added to a
 /// channel or when another user takes one of several actions on YouTube, such
 /// as uploading a video, rating a video, or commenting on a video.
@@ -16624,7 +15967,7 @@ class Subscription {
   /// including its title and the channel that the user subscribed to.
   SubscriptionSnippet snippet;
 
-  /// The subscriberSnippet object contains basic details about the sbuscriber.
+  /// The subscriberSnippet object contains basic details about the subscriber.
   SubscriptionSubscriberSnippet subscriberSnippet;
 
   Subscription();
@@ -16681,6 +16024,7 @@ class Subscription {
 class SubscriptionContentDetails {
   /// The type of activity this subscription is for (only uploads, everything).
   /// Possible string values are:
+  /// - "subscriptionActivityTypeUnspecified"
   /// - "all"
   /// - "uploads"
   core.String activityType;
@@ -16830,8 +16174,8 @@ class SubscriptionSnippet {
   core.String description;
 
   /// The date and time that the subscription was created. The value is
-  /// specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishedAt;
+  /// specified in ISO 8601 format.
+  core.String publishedAt;
 
   /// The id object contains information about the channel that the user
   /// subscribed to.
@@ -16858,7 +16202,7 @@ class SubscriptionSnippet {
       description = _json["description"];
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("resourceId")) {
       resourceId = new ResourceId.fromJson(_json["resourceId"]);
@@ -16884,7 +16228,7 @@ class SubscriptionSnippet {
       _json["description"] = description;
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (resourceId != null) {
       _json["resourceId"] = (resourceId).toJson();
@@ -16950,8 +16294,8 @@ class SubscriptionSubscriberSnippet {
   }
 }
 
-/// A superChatEvent resource represents a Super Chat purchase on a YouTube
-/// channel.
+/// A `__superChatEvent__` resource represents a Super Chat purchase on a
+/// YouTube channel.
 class SuperChatEvent {
   /// Etag of this resource.
   core.String etag;
@@ -16960,10 +16304,10 @@ class SuperChatEvent {
   core.String id;
 
   /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#superChatEvent".
+  /// `"youtube#superChatEvent"`.
   core.String kind;
 
-  /// The snippet object contains basic details about the Super Chat event.
+  /// The `snippet` object contains basic details about the Super Chat event.
   SuperChatEventSnippet snippet;
 
   SuperChatEvent();
@@ -17099,8 +16443,8 @@ class SuperChatEventSnippet {
   core.String commentText;
 
   /// The date and time when the event occurred. The value is specified in ISO
-  /// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime createdAt;
+  /// 8601 format.
+  core.String createdAt;
 
   /// The currency in which the purchase was made. ISO 4217.
   core.String currency;
@@ -17109,19 +16453,12 @@ class SuperChatEventSnippet {
   /// "$1.00"). The string is rendered for the given language.
   core.String displayString;
 
-  /// True if this event is a Super Chat for Good purchase.
-  core.bool isSuperChatForGood;
-
   /// True if this event is a Super Sticker event.
   core.bool isSuperStickerEvent;
 
   /// The tier for the paid message, which is based on the amount of money spent
   /// to purchase the message.
   core.int messageType;
-
-  /// If this event is a Super Chat for Good purchase, this field will contain
-  /// information about the charity the purchase is donated to.
-  Nonprofit nonprofit;
 
   /// If this event is a Super Sticker event, this field will contain metadata
   /// about the Super Sticker.
@@ -17143,7 +16480,7 @@ class SuperChatEventSnippet {
       commentText = _json["commentText"];
     }
     if (_json.containsKey("createdAt")) {
-      createdAt = core.DateTime.parse(_json["createdAt"]);
+      createdAt = _json["createdAt"];
     }
     if (_json.containsKey("currency")) {
       currency = _json["currency"];
@@ -17151,17 +16488,11 @@ class SuperChatEventSnippet {
     if (_json.containsKey("displayString")) {
       displayString = _json["displayString"];
     }
-    if (_json.containsKey("isSuperChatForGood")) {
-      isSuperChatForGood = _json["isSuperChatForGood"];
-    }
     if (_json.containsKey("isSuperStickerEvent")) {
       isSuperStickerEvent = _json["isSuperStickerEvent"];
     }
     if (_json.containsKey("messageType")) {
       messageType = _json["messageType"];
-    }
-    if (_json.containsKey("nonprofit")) {
-      nonprofit = new Nonprofit.fromJson(_json["nonprofit"]);
     }
     if (_json.containsKey("superStickerMetadata")) {
       superStickerMetadata =
@@ -17186,7 +16517,7 @@ class SuperChatEventSnippet {
       _json["commentText"] = commentText;
     }
     if (createdAt != null) {
-      _json["createdAt"] = (createdAt).toIso8601String();
+      _json["createdAt"] = createdAt;
     }
     if (currency != null) {
       _json["currency"] = currency;
@@ -17194,17 +16525,11 @@ class SuperChatEventSnippet {
     if (displayString != null) {
       _json["displayString"] = displayString;
     }
-    if (isSuperChatForGood != null) {
-      _json["isSuperChatForGood"] = isSuperChatForGood;
-    }
     if (isSuperStickerEvent != null) {
       _json["isSuperStickerEvent"] = isSuperStickerEvent;
     }
     if (messageType != null) {
       _json["messageType"] = messageType;
-    }
-    if (nonprofit != null) {
-      _json["nonprofit"] = (nonprofit).toJson();
     }
     if (superStickerMetadata != null) {
       _json["superStickerMetadata"] = (superStickerMetadata).toJson();
@@ -17254,6 +16579,185 @@ class SuperStickerMetadata {
     }
     if (stickerId != null) {
       _json["stickerId"] = stickerId;
+    }
+    return _json;
+  }
+}
+
+class TestItem {
+  core.String gaia;
+  core.String id;
+  TestItemTestItemSnippet snippet;
+
+  TestItem();
+
+  TestItem.fromJson(core.Map _json) {
+    if (_json.containsKey("gaia")) {
+      gaia = _json["gaia"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new TestItemTestItemSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (gaia != null) {
+      _json["gaia"] = gaia;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class TestItemTestItemSnippet {
+  TestItemTestItemSnippet();
+
+  TestItemTestItemSnippet.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A *third party account link* resource represents a link between a YouTube
+/// account or a channel and an account on a third-party service.
+class ThirdPartyLink {
+  /// Etag of this resource
+  core.String etag;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "youtube#thirdPartyLink".
+  core.String kind;
+
+  /// The linking_token identifies a YouTube account and channel with which the
+  /// third party account is linked.
+  core.String linkingToken;
+
+  /// The snippet object contains basic details about the third- party account
+  /// link.
+  ThirdPartyLinkSnippet snippet;
+
+  /// The status object contains information about the status of the link.
+  ThirdPartyLinkStatus status;
+
+  ThirdPartyLink();
+
+  ThirdPartyLink.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("linkingToken")) {
+      linkingToken = _json["linkingToken"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new ThirdPartyLinkSnippet.fromJson(_json["snippet"]);
+    }
+    if (_json.containsKey("status")) {
+      status = new ThirdPartyLinkStatus.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (linkingToken != null) {
+      _json["linkingToken"] = linkingToken;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Basic information about a third party account link, including its type and
+/// type-specific information.
+class ThirdPartyLinkSnippet {
+  /// Information specific to a link between a channel and a store on a
+  /// merchandising platform.
+  ChannelToStoreLinkDetails channelToStoreLink;
+
+  /// Type of the link named after the entities that are being linked.
+  /// Possible string values are:
+  /// - "linkUnspecified"
+  /// - "channelToStoreLink" : A link that is connecting (or about to connect) a
+  /// channel with a store on a merchandising platform in order to enable retail
+  /// commerce capabilities for that channel on YouTube.
+  core.String type;
+
+  ThirdPartyLinkSnippet();
+
+  ThirdPartyLinkSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("channelToStoreLink")) {
+      channelToStoreLink =
+          new ChannelToStoreLinkDetails.fromJson(_json["channelToStoreLink"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (channelToStoreLink != null) {
+      _json["channelToStoreLink"] = (channelToStoreLink).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// The third-party link status object contains information about the status of
+/// the link.
+class ThirdPartyLinkStatus {
+  ///
+  /// Possible string values are:
+  /// - "unknown"
+  /// - "failed"
+  /// - "pending"
+  /// - "linked"
+  core.String linkStatus;
+
+  ThirdPartyLinkStatus();
+
+  ThirdPartyLinkStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("linkStatus")) {
+      linkStatus = _json["linkStatus"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (linkStatus != null) {
+      _json["linkStatus"] = linkStatus;
     }
     return _json;
   }
@@ -17434,7 +16938,7 @@ class TokenPagination {
   }
 }
 
-/// A video resource represents a YouTube video.
+/// A *video* resource represents a YouTube video.
 class Video {
   /// Age restriction details related to a video. This data can only be
   /// retrieved by the video owner.
@@ -17465,7 +16969,8 @@ class Video {
   /// video is an upcoming, live, or completed live broadcast.
   VideoLiveStreamingDetails liveStreamingDetails;
 
-  /// List with all localizations.
+  /// The localizations object contains localized versions of the basic details
+  /// about the video, such as its title and description.
   core.Map<core.String, VideoLocalization> localizations;
 
   /// The monetizationDetails object encapsulates information about the
@@ -17481,11 +16986,10 @@ class Video {
   /// object identify the current processing status and an estimate of the time
   /// remaining until YouTube finishes processing the video. This part also
   /// indicates whether different types of data or content, such as file details
-  /// or thumbnail images, are available for the video.
-  ///
-  /// The processingProgress object is designed to be polled so that the video
-  /// uploaded can track the progress that YouTube has made in processing the
-  /// uploaded video file. This data can only be retrieved by the video owner.
+  /// or thumbnail images, are available for the video. The processingProgress
+  /// object is designed to be polled so that the video uploaded can track the
+  /// progress that YouTube has made in processing the uploaded video file. This
+  /// data can only be retrieved by the video owner.
   VideoProcessingDetails processingDetails;
 
   /// The projectDetails object contains information about the project specific
@@ -17707,9 +17211,9 @@ class VideoAbuseReport {
   }
 }
 
-/// A videoAbuseReportReason resource identifies a reason that a video could be
-/// reported as abusive. Video abuse report reasons are used with
-/// video.ReportAbuse.
+/// A `__videoAbuseReportReason__` resource identifies a reason that a video
+/// could be reported as abusive. Video abuse report reasons are used with
+/// `video.ReportAbuse`.
 class VideoAbuseReportReason {
   /// Etag of this resource.
   core.String etag;
@@ -17718,10 +17222,10 @@ class VideoAbuseReportReason {
   core.String id;
 
   /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#videoAbuseReportReason".
+  /// `"youtube#videoAbuseReportReason"`.
   core.String kind;
 
-  /// The snippet object contains basic details about the abuse report reason.
+  /// The `snippet` object contains basic details about the abuse report reason.
   VideoAbuseReportReasonSnippet snippet;
 
   VideoAbuseReportReason();
@@ -17767,14 +17271,14 @@ class VideoAbuseReportReasonListResponse {
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
 
-  /// A list of valid abuse reasons that are used with video.ReportAbuse.
+  /// A list of valid abuse reasons that are used with `video.ReportAbuse`.
   core.List<VideoAbuseReportReason> items;
 
   /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#videoAbuseReportReasonListResponse".
+  /// `"youtube#videoAbuseReportReasonListResponse"`.
   core.String kind;
 
-  /// The visitorId identifies the visitor.
+  /// The `visitorId` identifies the visitor.
   core.String visitorId;
 
   VideoAbuseReportReasonListResponse();
@@ -17940,7 +17444,7 @@ class VideoAgeGating {
   }
 }
 
-/// A videoCategory resource identifies a category that has been or could be
+/// A *videoCategory* resource identifies a category that has been or could be
 /// associated with uploaded videos.
 class VideoCategory {
   /// Etag of this resource.
@@ -18012,6 +17516,8 @@ class VideoCategoryListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -18134,8 +17640,8 @@ class VideoCategorySnippet {
 class VideoContentDetails {
   /// The value of captions indicates whether the video has captions or not.
   /// Possible string values are:
-  /// - "false"
   /// - "true"
+  /// - "false"
   core.String caption;
 
   /// Specifies the ratings that the video received under various rating
@@ -18149,8 +17655,8 @@ class VideoContentDetails {
   /// The value of definition indicates whether the video is available in high
   /// definition or only in standard definition.
   /// Possible string values are:
-  /// - "hd"
-  /// - "sd"
+  /// - "sd" : sd
+  /// - "hd" : hd
   core.String definition;
 
   /// The value of dimension indicates whether the video is available in 3D or
@@ -18176,8 +17682,8 @@ class VideoContentDetails {
 
   /// Specifies the projection format of the video.
   /// Possible string values are:
-  /// - "360"
   /// - "rectangular"
+  /// - "360"
   core.String projection;
 
   /// The regionRestriction object contains information about the countries
@@ -18316,10 +17822,8 @@ class VideoFileDetails {
 
   /// The date and time when the uploaded video file was created. The value is
   /// specified in ISO 8601 format. Currently, the following ISO 8601 formats
-  /// are supported:
-  /// - Date only: YYYY-MM-DD
-  /// - Naive time: YYYY-MM-DDTHH:MM:SS
-  /// - Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM
+  /// are supported: - Date only: YYYY-MM-DD - Naive time: YYYY-MM-DDTHH:MM:SS -
+  /// Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM
   core.String creationTime;
 
   /// The length of the uploaded video in milliseconds.
@@ -18337,13 +17841,14 @@ class VideoFileDetails {
   /// Currently, YouTube only processes video files, but this field is present
   /// whether a video file or another type of file was uploaded.
   /// Possible string values are:
-  /// - "archive"
-  /// - "audio"
-  /// - "document"
-  /// - "image"
-  /// - "other"
-  /// - "project"
-  /// - "video"
+  /// - "video" : Known video file (e.g., an MP4 file).
+  /// - "audio" : Audio only file (e.g., an MP3 file).
+  /// - "image" : Image file (e.g., a JPEG image).
+  /// - "archive" : Archive file (e.g., a ZIP archive).
+  /// - "document" : Document or text file (e.g., MS Word document).
+  /// - "project" : Movie project file (e.g., Microsoft Windows Movie Maker
+  /// project).
+  /// - "other" : Other non-video file type.
   core.String fileType;
 
   /// A list of video streams contained in the uploaded video file. Each item in
@@ -18496,11 +18001,11 @@ class VideoFileDetailsVideoStream {
   /// The amount that YouTube needs to rotate the original source content to
   /// properly display the video.
   /// Possible string values are:
-  /// - "clockwise"
-  /// - "counterClockwise"
   /// - "none"
-  /// - "other"
+  /// - "clockwise"
   /// - "upsideDown"
+  /// - "counterClockwise"
+  /// - "other"
   core.String rotation;
 
   /// A value that uniquely identifies a video vendor. Typically, the value is a
@@ -18508,7 +18013,7 @@ class VideoFileDetailsVideoStream {
   core.String vendor;
 
   /// The encoded video content's width in pixels. You can calculate the video's
-  /// encoding aspect ratio as width_pixels / height_pixels.
+  /// encoding aspect ratio as width_pixels / height_pixels.
   core.int widthPixels;
 
   VideoFileDetailsVideoStream();
@@ -18571,75 +18076,12 @@ class VideoFileDetailsVideoStream {
   }
 }
 
-class VideoGetRatingResponse {
-  /// Etag of this resource.
-  core.String etag;
-
-  /// Serialized EventId of the request which produced this response.
-  core.String eventId;
-
-  /// A list of ratings that match the request criteria.
-  core.List<VideoRating> items;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#videoGetRatingResponse".
-  core.String kind;
-
-  /// The visitorId identifies the visitor.
-  core.String visitorId;
-
-  VideoGetRatingResponse();
-
-  VideoGetRatingResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
-    }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<VideoRating>((value) => new VideoRating.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("visitorId")) {
-      visitorId = _json["visitorId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
-    if (eventId != null) {
-      _json["eventId"] = eventId;
-    }
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (visitorId != null) {
-      _json["visitorId"] = visitorId;
-    }
-    return _json;
-  }
-}
-
 class VideoListResponse {
   /// Etag of this resource.
   core.String etag;
 
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
-
-  /// A list of videos that match the request criteria.
   core.List<Video> items;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -18649,6 +18091,8 @@ class VideoListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
   core.String nextPageToken;
+
+  /// General pagination information.
   PageInfo pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -18738,14 +18182,13 @@ class VideoLiveStreamingDetails {
   core.String activeLiveChatId;
 
   /// The time that the broadcast actually ended. The value is specified in ISO
-  /// 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available
-  /// until the broadcast is over.
-  core.DateTime actualEndTime;
+  /// 8601 format. This value will not be available until the broadcast is over.
+  core.String actualEndTime;
 
   /// The time that the broadcast actually started. The value is specified in
-  /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. This value will not be available
-  /// until the broadcast begins.
-  core.DateTime actualStartTime;
+  /// ISO 8601 format. This value will not be available until the broadcast
+  /// begins.
+  core.String actualStartTime;
 
   /// The number of viewers currently watching the broadcast. The property and
   /// its value will be present if the broadcast has current viewers and the
@@ -18757,14 +18200,13 @@ class VideoLiveStreamingDetails {
   core.String concurrentViewers;
 
   /// The time that the broadcast is scheduled to end. The value is specified in
-  /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. If the value is empty or the
-  /// property is not present, then the broadcast is scheduled to continue
-  /// indefinitely.
-  core.DateTime scheduledEndTime;
+  /// ISO 8601 format. If the value is empty or the property is not present,
+  /// then the broadcast is scheduled to continue indefinitely.
+  core.String scheduledEndTime;
 
   /// The time that the broadcast is scheduled to begin. The value is specified
-  /// in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime scheduledStartTime;
+  /// in ISO 8601 format.
+  core.String scheduledStartTime;
 
   VideoLiveStreamingDetails();
 
@@ -18773,19 +18215,19 @@ class VideoLiveStreamingDetails {
       activeLiveChatId = _json["activeLiveChatId"];
     }
     if (_json.containsKey("actualEndTime")) {
-      actualEndTime = core.DateTime.parse(_json["actualEndTime"]);
+      actualEndTime = _json["actualEndTime"];
     }
     if (_json.containsKey("actualStartTime")) {
-      actualStartTime = core.DateTime.parse(_json["actualStartTime"]);
+      actualStartTime = _json["actualStartTime"];
     }
     if (_json.containsKey("concurrentViewers")) {
       concurrentViewers = _json["concurrentViewers"];
     }
     if (_json.containsKey("scheduledEndTime")) {
-      scheduledEndTime = core.DateTime.parse(_json["scheduledEndTime"]);
+      scheduledEndTime = _json["scheduledEndTime"];
     }
     if (_json.containsKey("scheduledStartTime")) {
-      scheduledStartTime = core.DateTime.parse(_json["scheduledStartTime"]);
+      scheduledStartTime = _json["scheduledStartTime"];
     }
   }
 
@@ -18796,19 +18238,19 @@ class VideoLiveStreamingDetails {
       _json["activeLiveChatId"] = activeLiveChatId;
     }
     if (actualEndTime != null) {
-      _json["actualEndTime"] = (actualEndTime).toIso8601String();
+      _json["actualEndTime"] = actualEndTime;
     }
     if (actualStartTime != null) {
-      _json["actualStartTime"] = (actualStartTime).toIso8601String();
+      _json["actualStartTime"] = actualStartTime;
     }
     if (concurrentViewers != null) {
       _json["concurrentViewers"] = concurrentViewers;
     }
     if (scheduledEndTime != null) {
-      _json["scheduledEndTime"] = (scheduledEndTime).toIso8601String();
+      _json["scheduledEndTime"] = scheduledEndTime;
     }
     if (scheduledStartTime != null) {
-      _json["scheduledStartTime"] = (scheduledStartTime).toIso8601String();
+      _json["scheduledStartTime"] = scheduledStartTime;
     }
     return _json;
   }
@@ -18926,10 +18368,10 @@ class VideoProcessingDetails {
   /// The reason that YouTube failed to process the video. This property will
   /// only have a value if the processingStatus property's value is failed.
   /// Possible string values are:
-  /// - "other"
-  /// - "streamingFailed"
-  /// - "transcodeFailed"
   /// - "uploadFailed"
+  /// - "transcodeFailed"
+  /// - "streamingFailed"
+  /// - "other"
   core.String processingFailureReason;
 
   /// This value indicates whether the video processing engine has generated
@@ -18947,9 +18389,9 @@ class VideoProcessingDetails {
   /// The video's processing status. This value indicates whether YouTube was
   /// able to process the video or if the video is still being processed.
   /// Possible string values are:
-  /// - "failed"
   /// - "processing"
   /// - "succeeded"
+  /// - "failed"
   /// - "terminated"
   core.String processingStatus;
 
@@ -19029,13 +18471,11 @@ class VideoProcessingDetails {
 class VideoProcessingDetailsProcessingProgress {
   /// The number of parts of the video that YouTube has already processed. You
   /// can estimate the percentage of the video that YouTube has already
-  /// processed by calculating:
-  /// 100 * parts_processed / parts_total
-  ///
-  /// Note that since the estimated number of parts could increase without a
-  /// corresponding increase in the number of parts that have already been
-  /// processed, it is possible that the calculated progress could periodically
-  /// decrease while YouTube processes a video.
+  /// processed by calculating: 100 * parts_processed / parts_total Note that
+  /// since the estimated number of parts could increase without a corresponding
+  /// increase in the number of parts that have already been processed, it is
+  /// possible that the calculated progress could periodically decrease while
+  /// YouTube processes a video.
   core.String partsProcessed;
 
   /// An estimate of the total number of parts that need to be processed for the
@@ -19100,14 +18540,16 @@ class VideoProjectDetails {
   }
 }
 
+/// Basic details about rating of a video.
 class VideoRating {
-  ///
+  /// Rating of a video.
   /// Possible string values are:
-  /// - "dislike"
-  /// - "like"
   /// - "none"
-  /// - "unspecified"
+  /// - "like" : The entity is liked.
+  /// - "dislike" : The entity is disliked.
   core.String rating;
+
+  /// The ID that YouTube uses to uniquely identify the video.
   core.String videoId;
 
   VideoRating();
@@ -19134,6 +18576,67 @@ class VideoRating {
   }
 }
 
+class VideoRatingListResponse {
+  /// Etag of this resource.
+  core.String etag;
+
+  /// Serialized EventId of the request which produced this response.
+  core.String eventId;
+
+  /// A list of ratings that match the request criteria.
+  core.List<VideoRating> items;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "youtube#videoGetRatingResponse".
+  core.String kind;
+
+  /// The visitorId identifies the visitor.
+  core.String visitorId;
+
+  VideoRatingListResponse();
+
+  VideoRatingListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<VideoRating>((value) => new VideoRating.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
 /// Recording information associated with the video.
 class VideoRecordingDetails {
   /// The geolocation information associated with the video.
@@ -19144,7 +18647,7 @@ class VideoRecordingDetails {
 
   /// The date and time when the video was recorded. The value is specified in
   /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
-  core.DateTime recordingDate;
+  core.String recordingDate;
 
   VideoRecordingDetails();
 
@@ -19156,7 +18659,7 @@ class VideoRecordingDetails {
       locationDescription = _json["locationDescription"];
     }
     if (_json.containsKey("recordingDate")) {
-      recordingDate = core.DateTime.parse(_json["recordingDate"]);
+      recordingDate = _json["recordingDate"];
     }
   }
 
@@ -19170,7 +18673,7 @@ class VideoRecordingDetails {
       _json["locationDescription"] = locationDescription;
     }
     if (recordingDate != null) {
-      _json["recordingDate"] = (recordingDate).toIso8601String();
+      _json["recordingDate"] = recordingDate;
     }
     return _json;
   }
@@ -19196,15 +18699,17 @@ class VideoSnippet {
   /// The language of the videos's default snippet.
   core.String defaultLanguage;
 
-  /// The video's description.
+  /// The video's description. @mutable youtube.videos.insert
+  /// youtube.videos.update
   core.String description;
 
   /// Indicates if the video is an upcoming/active live broadcast. Or it's
   /// "none" if the video is not an upcoming/active live broadcast.
   /// Possible string values are:
-  /// - "live"
   /// - "none"
-  /// - "upcoming"
+  /// - "upcoming" : The live broadcast is upcoming.
+  /// - "live" : The live broadcast is active.
+  /// - "completed" : The live broadcast has been completed.
   core.String liveBroadcastContent;
 
   /// Localized snippet selected with the hl parameter. If no such localization
@@ -19212,8 +18717,8 @@ class VideoSnippet {
   VideoLocalization localized;
 
   /// The date and time that the video was uploaded. The value is specified in
-  /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishedAt;
+  /// ISO 8601 format.
+  core.String publishedAt;
 
   /// A list of keyword tags associated with the video. Tags may contain spaces.
   core.List<core.String> tags;
@@ -19223,7 +18728,7 @@ class VideoSnippet {
   /// object that contains other information about the thumbnail.
   ThumbnailDetails thumbnails;
 
-  /// The video's title.
+  /// The video's title. @mutable youtube.videos.insert youtube.videos.update
   core.String title;
 
   VideoSnippet();
@@ -19254,7 +18759,7 @@ class VideoSnippet {
       localized = new VideoLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("publishedAt")) {
-      publishedAt = core.DateTime.parse(_json["publishedAt"]);
+      publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List).cast<core.String>();
@@ -19295,7 +18800,7 @@ class VideoSnippet {
       _json["localized"] = (localized).toJson();
     }
     if (publishedAt != null) {
-      _json["publishedAt"] = (publishedAt).toIso8601String();
+      _json["publishedAt"] = publishedAt;
     }
     if (tags != null) {
       _json["tags"] = tags;
@@ -19373,70 +18878,73 @@ class VideoStatistics {
   }
 }
 
-/// Basic details about a video category, such as its localized title.
+/// Basic details about a video category, such as its localized title. Next Id:
+/// 17
 class VideoStatus {
   /// This value indicates if the video can be embedded on another website.
+  /// @mutable youtube.videos.insert youtube.videos.update
   core.bool embeddable;
 
   /// This value explains why a video failed to upload. This property is only
   /// present if the uploadStatus property indicates that the upload failed.
   /// Possible string values are:
-  /// - "codec"
-  /// - "conversion"
-  /// - "emptyFile"
-  /// - "invalidFile"
-  /// - "tooSmall"
-  /// - "uploadAborted"
+  /// - "conversion" : Unable to convert video content.
+  /// - "invalidFile" : Invalid file format.
+  /// - "emptyFile" : Empty file.
+  /// - "tooSmall" : File was too small.
+  /// - "codec" : Unsupported codec.
+  /// - "uploadAborted" : Upload wasn't finished.
   core.String failureReason;
 
-  /// The video's license.
+  /// The video's license. @mutable youtube.videos.insert youtube.videos.update
   /// Possible string values are:
-  /// - "creativeCommon"
   /// - "youtube"
+  /// - "creativeCommon"
   core.String license;
   core.bool madeForKids;
 
   /// The video's privacy status.
   /// Possible string values are:
-  /// - "private"
   /// - "public"
   /// - "unlisted"
+  /// - "private"
   core.String privacyStatus;
 
   /// This value indicates if the extended video statistics on the watch page
   /// can be viewed by everyone. Note that the view count, likes, etc will still
-  /// be visible if this is disabled.
+  /// be visible if this is disabled. @mutable youtube.videos.insert
+  /// youtube.videos.update
   core.bool publicStatsViewable;
 
   /// The date and time when the video is scheduled to publish. It can be set
   /// only if the privacy status of the video is private. The value is specified
-  /// in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.DateTime publishAt;
+  /// in ISO 8601 format.
+  core.String publishAt;
 
   /// This value explains why YouTube rejected an uploaded video. This property
   /// is only present if the uploadStatus property indicates that the upload was
   /// rejected.
   /// Possible string values are:
-  /// - "claim"
-  /// - "copyright"
-  /// - "duplicate"
-  /// - "inappropriate"
-  /// - "legal"
-  /// - "length"
-  /// - "termsOfUse"
-  /// - "trademark"
-  /// - "uploaderAccountClosed"
-  /// - "uploaderAccountSuspended"
+  /// - "copyright" : Copyright infringement.
+  /// - "inappropriate" : Inappropriate video content.
+  /// - "duplicate" : Duplicate upload in the same channel.
+  /// - "termsOfUse" : Terms of use violation.
+  /// - "uploaderAccountSuspended" : Uploader account was suspended.
+  /// - "length" : Video duration was too long.
+  /// - "claim" : Blocked by content owner.
+  /// - "uploaderAccountClosed" : Uploader closed his/her account.
+  /// - "trademark" : Trademark infringement.
+  /// - "legal" : An unspecified legal reason.
   core.String rejectionReason;
   core.bool selfDeclaredMadeForKids;
 
   /// The status of the uploaded video.
   /// Possible string values are:
-  /// - "deleted"
-  /// - "failed"
-  /// - "processed"
-  /// - "rejected"
-  /// - "uploaded"
+  /// - "uploaded" : Video has been uploaded but not processed yet.
+  /// - "processed" : Video has been successfully processed.
+  /// - "failed" : Processing has failed. See FailureReason.
+  /// - "rejected" : Video has been rejected. See RejectionReason.
+  /// - "deleted" : Video has been deleted.
   core.String uploadStatus;
 
   VideoStatus();
@@ -19461,7 +18969,7 @@ class VideoStatus {
       publicStatsViewable = _json["publicStatsViewable"];
     }
     if (_json.containsKey("publishAt")) {
-      publishAt = core.DateTime.parse(_json["publishAt"]);
+      publishAt = _json["publishAt"];
     }
     if (_json.containsKey("rejectionReason")) {
       rejectionReason = _json["rejectionReason"];
@@ -19496,7 +19004,7 @@ class VideoStatus {
       _json["publicStatsViewable"] = publicStatsViewable;
     }
     if (publishAt != null) {
-      _json["publishAt"] = (publishAt).toIso8601String();
+      _json["publishAt"] = publishAt;
     }
     if (rejectionReason != null) {
       _json["rejectionReason"] = rejectionReason;
@@ -19642,7 +19150,8 @@ class VideoTopicDetails {
   /// A list of Freebase topic IDs that are centrally associated with the video.
   /// These are topics that are centrally featured in the video, and it can be
   /// said that the video is mainly about each of these. You can retrieve
-  /// information about each topic using the Freebase Topic API.
+  /// information about each topic using the < a
+  /// href="http://wiki.freebase.com/wiki/Topic_API">Freebase Topic API.
   core.List<core.String> topicIds;
 
   VideoTopicDetails();

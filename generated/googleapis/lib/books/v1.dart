@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client books/v1';
 
-/// Searches for books and manages your Google Books library.
+/// The Google Books API allows clients to access the Google Books repository.
 class BooksApi {
   /// Manage your books
   static const BooksScope = "https://www.googleapis.com/auth/books";
@@ -43,8 +43,8 @@ class BooksApi {
   VolumesResourceApi get volumes => new VolumesResourceApi(_requester);
 
   BooksApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "books/v1/"})
+      {core.String rootUrl = "https://books.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -99,7 +99,7 @@ class BookshelvesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'books/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf');
@@ -150,7 +150,9 @@ class BookshelvesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves';
+    _url = 'books/v1/users/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/bookshelves';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -176,14 +178,14 @@ class BookshelvesVolumesResourceApi {
   ///
   /// [shelf] - ID of bookshelf to retrieve volumes.
   ///
-  /// [maxResults] - Maximum number of results to return
+  /// [startIndex] - Index of the first element to return (starts at 0)
   ///
   /// [showPreorders] - Set to true to show pre-ordered books. Defaults to
   /// false.
   ///
   /// [source] - String to identify the originator of this request.
   ///
-  /// [startIndex] - Index of the first element to return (starts at 0)
+  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -196,10 +198,10 @@ class BookshelvesVolumesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumes> list(core.String userId, core.String shelf,
-      {core.int maxResults,
+      {core.int startIndex,
       core.bool showPreorders,
       core.String source,
-      core.int startIndex,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -214,8 +216,8 @@ class BookshelvesVolumesResourceApi {
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
     }
     if (showPreorders != null) {
       _queryParams["showPreorders"] = ["${showPreorders}"];
@@ -223,14 +225,14 @@ class BookshelvesVolumesResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'books/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
@@ -251,6 +253,8 @@ class CloudloadingResourceApi {
 
   CloudloadingResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Add a user-upload volume and triggers processing.
+  ///
   /// Request parameters:
   ///
   /// [driveDocumentId] - A drive document id. The upload_client_token must not
@@ -259,10 +263,10 @@ class CloudloadingResourceApi {
   /// [mimeType] - The document MIME type. It can be set only if the
   /// drive_document_id is set.
   ///
+  /// [uploadClientToken] - Scotty upload token.
+  ///
   /// [name] - The document name. It can be set only if the drive_document_id is
   /// set.
-  ///
-  /// [uploadClientToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -277,8 +281,8 @@ class CloudloadingResourceApi {
   async.Future<BooksCloudloadingResource> addBook(
       {core.String driveDocumentId,
       core.String mimeType,
-      core.String name,
       core.String uploadClientToken,
+      core.String name,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -293,17 +297,17 @@ class CloudloadingResourceApi {
     if (mimeType != null) {
       _queryParams["mime_type"] = [mimeType];
     }
-    if (name != null) {
-      _queryParams["name"] = [name];
-    }
     if (uploadClientToken != null) {
       _queryParams["upload_client_token"] = [uploadClientToken];
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'cloudloading/addBook';
+    _url = 'books/v1/cloudloading/addBook';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -324,12 +328,14 @@ class CloudloadingResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
+  /// Completes with a [Empty].
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future deleteBook(core.String volumeId, {core.String $fields}) {
+  async.Future<Empty> deleteBook({core.String volumeId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -337,17 +343,14 @@ class CloudloadingResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (volumeId == null) {
-      throw new core.ArgumentError("Parameter volumeId is required.");
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
     }
-    _queryParams["volumeId"] = [volumeId];
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'cloudloading/deleteBook';
+    _url = 'books/v1/cloudloading/deleteBook';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -355,9 +358,11 @@ class CloudloadingResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
+  /// Updates a user-upload volume.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -389,7 +394,7 @@ class CloudloadingResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'cloudloading/updateBook';
+    _url = 'books/v1/cloudloading/updateBook';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -423,8 +428,8 @@ class DictionaryResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Metadata> listOfflineMetadata(core.String cpksver,
-      {core.String $fields}) {
+  async.Future<Metadata> listOfflineMetadata(
+      {core.String cpksver, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -432,15 +437,14 @@ class DictionaryResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (cpksver == null) {
-      throw new core.ArgumentError("Parameter cpksver is required.");
+    if (cpksver != null) {
+      _queryParams["cpksver"] = [cpksver];
     }
-    _queryParams["cpksver"] = [cpksver];
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'dictionary/listOfflineMetadata';
+    _url = 'books/v1/dictionary/listOfflineMetadata';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -489,7 +493,7 @@ class FamilysharingResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'familysharing/getFamilyInfo';
+    _url = 'books/v1/familysharing/getFamilyInfo';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -505,24 +509,26 @@ class FamilysharingResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [docId] - The docid to share.
-  ///
   /// [source] - String to identify the originator of this request.
   ///
   /// [volumeId] - The volume to share.
   ///
+  /// [docId] - The docid to share.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
+  ///
+  /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future share(
-      {core.String docId,
-      core.String source,
+  async.Future<Empty> share(
+      {core.String source,
       core.String volumeId,
+      core.String docId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -531,22 +537,20 @@ class FamilysharingResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (docId != null) {
-      _queryParams["docId"] = [docId];
-    }
     if (source != null) {
       _queryParams["source"] = [source];
     }
     if (volumeId != null) {
       _queryParams["volumeId"] = [volumeId];
     }
+    if (docId != null) {
+      _queryParams["docId"] = [docId];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'familysharing/share';
+    _url = 'books/v1/familysharing/share';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -554,7 +558,7 @@ class FamilysharingResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
   /// Initiates revoking content that has already been shared with the user's
@@ -562,24 +566,26 @@ class FamilysharingResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [volumeId] - The volume to unshare.
+  ///
   /// [docId] - The docid to unshare.
   ///
   /// [source] - String to identify the originator of this request.
   ///
-  /// [volumeId] - The volume to unshare.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
+  ///
+  /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future unshare(
-      {core.String docId,
+  async.Future<Empty> unshare(
+      {core.String volumeId,
+      core.String docId,
       core.String source,
-      core.String volumeId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -588,22 +594,20 @@ class FamilysharingResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
+    }
     if (docId != null) {
       _queryParams["docId"] = [docId];
     }
     if (source != null) {
       _queryParams["source"] = [source];
     }
-    if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'familysharing/unshare';
+    _url = 'books/v1/familysharing/unshare';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -611,7 +615,7 @@ class FamilysharingResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 }
 
@@ -672,7 +676,7 @@ class LayersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/' +
+    _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layersummary/' +
         commons.Escaper.ecapeVariable('$summaryId');
@@ -692,12 +696,11 @@ class LayersResourceApi {
   ///
   /// [volumeId] - The volume to retrieve layers for.
   ///
+  /// [pageToken] - The value of the nextToken from the previous page.
+  ///
   /// [contentVersion] - The content version for the requested volume.
   ///
   /// [maxResults] - Maximum number of results to return
-  /// Value must be between "0" and "200".
-  ///
-  /// [pageToken] - The value of the nextToken from the previous page.
   ///
   /// [source] - String to identify the originator of this request.
   ///
@@ -712,9 +715,9 @@ class LayersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Layersummaries> list(core.String volumeId,
-      {core.String contentVersion,
+      {core.String pageToken,
+      core.String contentVersion,
       core.int maxResults,
-      core.String pageToken,
       core.String source,
       core.String $fields}) {
     var _url;
@@ -727,14 +730,14 @@ class LayersResourceApi {
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (contentVersion != null) {
       _queryParams["contentVersion"] = [contentVersion];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (source != null) {
       _queryParams["source"] = [source];
@@ -743,7 +746,7 @@ class LayersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/' +
+    _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layersummary';
 
@@ -776,40 +779,41 @@ class LayersAnnotationDataResourceApi {
   /// [contentVersion] - The content version for the volume you are trying to
   /// retrieve.
   ///
-  /// [allowWebDefinitions] - For the dictionary layer. Whether or not to allow
-  /// web definitions.
+  /// [locale] - The locale information for the data. ISO-639-1 language and
+  /// ISO-3166-1 country code. Ex: 'en_US'.
   ///
   /// [h] - The requested pixel height for any images. If height is provided
   /// width must also be provided.
   ///
-  /// [locale] - The locale information for the data. ISO-639-1 language and
-  /// ISO-3166-1 country code. Ex: 'en_US'.
+  /// [w] - The requested pixel width for any images. If width is provided
+  /// height must also be provided.
+  ///
+  /// [allowWebDefinitions] - For the dictionary layer. Whether or not to allow
+  /// web definitions.
   ///
   /// [scale] - The requested scale for the image.
   ///
   /// [source] - String to identify the originator of this request.
   ///
-  /// [w] - The requested pixel width for any images. If width is provided
-  /// height must also be provided.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Annotationdata].
+  /// Completes with a [DictionaryAnnotationdata].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Annotationdata> get(core.String volumeId, core.String layerId,
-      core.String annotationDataId, core.String contentVersion,
-      {core.bool allowWebDefinitions,
-      core.int h,
+  async.Future<DictionaryAnnotationdata> get(
+      core.String volumeId, core.String layerId, core.String annotationDataId,
+      {core.String contentVersion,
       core.String locale,
+      core.int h,
+      core.int w,
+      core.bool allowWebDefinitions,
       core.int scale,
       core.String source,
-      core.int w,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -827,18 +831,20 @@ class LayersAnnotationDataResourceApi {
     if (annotationDataId == null) {
       throw new core.ArgumentError("Parameter annotationDataId is required.");
     }
-    if (contentVersion == null) {
-      throw new core.ArgumentError("Parameter contentVersion is required.");
+    if (contentVersion != null) {
+      _queryParams["contentVersion"] = [contentVersion];
     }
-    _queryParams["contentVersion"] = [contentVersion];
-    if (allowWebDefinitions != null) {
-      _queryParams["allowWebDefinitions"] = ["${allowWebDefinitions}"];
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
     }
     if (h != null) {
       _queryParams["h"] = ["${h}"];
     }
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
+    if (w != null) {
+      _queryParams["w"] = ["${w}"];
+    }
+    if (allowWebDefinitions != null) {
+      _queryParams["allowWebDefinitions"] = ["${allowWebDefinitions}"];
     }
     if (scale != null) {
       _queryParams["scale"] = ["${scale}"];
@@ -846,14 +852,11 @@ class LayersAnnotationDataResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-    if (w != null) {
-      _queryParams["w"] = ["${w}"];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/' +
+    _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layers/' +
         commons.Escaper.ecapeVariable('$layerId') +
@@ -866,7 +869,8 @@ class LayersAnnotationDataResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new Annotationdata.fromJson(data));
+    return _response
+        .then((data) => new DictionaryAnnotationdata.fromJson(data));
   }
 
   /// Gets the annotation data for a volume and layer.
@@ -877,25 +881,18 @@ class LayersAnnotationDataResourceApi {
   ///
   /// [layerId] - The ID for the layer to get the annotation data.
   ///
-  /// [contentVersion] - The content version for the requested volume.
+  /// [scale] - The requested scale for the image.
   ///
-  /// [annotationDataId] - The list of Annotation Data Ids to retrieve.
-  /// Pagination is ignored if this is set.
-  ///
-  /// [h] - The requested pixel height for any images. If height is provided
-  /// width must also be provided.
+  /// [pageToken] - The value of the nextToken from the previous page.
   ///
   /// [locale] - The locale information for the data. ISO-639-1 language and
   /// ISO-3166-1 country code. Ex: 'en_US'.
   ///
-  /// [maxResults] - Maximum number of results to return
-  /// Value must be between "0" and "200".
+  /// [w] - The requested pixel width for any images. If width is provided
+  /// height must also be provided.
   ///
-  /// [pageToken] - The value of the nextToken from the previous page.
-  ///
-  /// [scale] - The requested scale for the image.
-  ///
-  /// [source] - String to identify the originator of this request.
+  /// [h] - The requested pixel height for any images. If height is provided
+  /// width must also be provided.
   ///
   /// [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
   /// this timestamp (exclusive).
@@ -903,8 +900,14 @@ class LayersAnnotationDataResourceApi {
   /// [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
   /// timestamp (inclusive).
   ///
-  /// [w] - The requested pixel width for any images. If width is provided
-  /// height must also be provided.
+  /// [contentVersion] - The content version for the requested volume.
+  ///
+  /// [maxResults] - Maximum number of results to return
+  ///
+  /// [annotationDataId] - The list of Annotation Data Ids to retrieve.
+  /// Pagination is ignored if this is set.
+  ///
+  /// [source] - String to identify the originator of this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -916,18 +919,18 @@ class LayersAnnotationDataResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Annotationsdata> list(
-      core.String volumeId, core.String layerId, core.String contentVersion,
-      {core.List<core.String> annotationDataId,
-      core.int h,
-      core.String locale,
-      core.int maxResults,
+  async.Future<Annotationsdata> list(core.String volumeId, core.String layerId,
+      {core.int scale,
       core.String pageToken,
-      core.int scale,
-      core.String source,
+      core.String locale,
+      core.int w,
+      core.int h,
       core.String updatedMax,
       core.String updatedMin,
-      core.int w,
+      core.String contentVersion,
+      core.int maxResults,
+      core.List<core.String> annotationDataId,
+      core.String source,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -942,30 +945,20 @@ class LayersAnnotationDataResourceApi {
     if (layerId == null) {
       throw new core.ArgumentError("Parameter layerId is required.");
     }
-    if (contentVersion == null) {
-      throw new core.ArgumentError("Parameter contentVersion is required.");
-    }
-    _queryParams["contentVersion"] = [contentVersion];
-    if (annotationDataId != null) {
-      _queryParams["annotationDataId"] = annotationDataId;
-    }
-    if (h != null) {
-      _queryParams["h"] = ["${h}"];
-    }
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (scale != null) {
+      _queryParams["scale"] = ["${scale}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (scale != null) {
-      _queryParams["scale"] = ["${scale}"];
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
     }
-    if (source != null) {
-      _queryParams["source"] = [source];
+    if (w != null) {
+      _queryParams["w"] = ["${w}"];
+    }
+    if (h != null) {
+      _queryParams["h"] = ["${h}"];
     }
     if (updatedMax != null) {
       _queryParams["updatedMax"] = [updatedMax];
@@ -973,14 +966,23 @@ class LayersAnnotationDataResourceApi {
     if (updatedMin != null) {
       _queryParams["updatedMin"] = [updatedMin];
     }
-    if (w != null) {
-      _queryParams["w"] = ["${w}"];
+    if (contentVersion != null) {
+      _queryParams["contentVersion"] = [contentVersion];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (annotationDataId != null) {
+      _queryParams["annotationDataId"] = annotationDataId;
+    }
+    if (source != null) {
+      _queryParams["source"] = [source];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/' +
+    _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layers/' +
         commons.Escaper.ecapeVariable('$layerId') +
@@ -1056,7 +1058,7 @@ class LayersVolumeAnnotationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/' +
+    _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layers/' +
         commons.Escaper.ecapeVariable('$layerId') +
@@ -1080,19 +1082,22 @@ class LayersVolumeAnnotationsResourceApi {
   ///
   /// [layerId] - The ID for the layer to get the annotations.
   ///
-  /// [contentVersion] - The content version for the requested volume.
-  ///
-  /// [endOffset] - The end offset to end retrieving data from.
-  ///
-  /// [endPosition] - The end position to end retrieving data from.
-  ///
   /// [locale] - The locale information for the data. ISO-639-1 language and
   /// ISO-3166-1 country code. Ex: 'en_US'.
   ///
   /// [maxResults] - Maximum number of results to return
-  /// Value must be between "0" and "200".
+  ///
+  /// [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
+  /// this timestamp (exclusive).
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
+  ///
+  /// [contentVersion] - The content version for the requested volume.
+  ///
+  /// [endPosition] - The end position to end retrieving data from.
+  ///
+  /// [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
+  /// timestamp (inclusive).
   ///
   /// [showDeleted] - Set to true to return deleted annotations. updatedMin must
   /// be in the request to use this. Defaults to false.
@@ -1101,13 +1106,9 @@ class LayersVolumeAnnotationsResourceApi {
   ///
   /// [startOffset] - The start offset to start retrieving data from.
   ///
+  /// [endOffset] - The end offset to end retrieving data from.
+  ///
   /// [startPosition] - The start position to start retrieving data from.
-  ///
-  /// [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
-  /// this timestamp (exclusive).
-  ///
-  /// [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
-  /// timestamp (inclusive).
   ///
   /// [volumeAnnotationsVersion] - The version of the volume annotations that
   /// you are requesting.
@@ -1123,18 +1124,19 @@ class LayersVolumeAnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumeannotations> list(
-      core.String volumeId, core.String layerId, core.String contentVersion,
-      {core.String endOffset,
-      core.String endPosition,
-      core.String locale,
+      core.String volumeId, core.String layerId,
+      {core.String locale,
       core.int maxResults,
+      core.String updatedMax,
       core.String pageToken,
+      core.String contentVersion,
+      core.String endPosition,
+      core.String updatedMin,
       core.bool showDeleted,
       core.String source,
       core.String startOffset,
+      core.String endOffset,
       core.String startPosition,
-      core.String updatedMax,
-      core.String updatedMin,
       core.String volumeAnnotationsVersion,
       core.String $fields}) {
     var _url;
@@ -1150,24 +1152,26 @@ class LayersVolumeAnnotationsResourceApi {
     if (layerId == null) {
       throw new core.ArgumentError("Parameter layerId is required.");
     }
-    if (contentVersion == null) {
-      throw new core.ArgumentError("Parameter contentVersion is required.");
-    }
-    _queryParams["contentVersion"] = [contentVersion];
-    if (endOffset != null) {
-      _queryParams["endOffset"] = [endOffset];
-    }
-    if (endPosition != null) {
-      _queryParams["endPosition"] = [endPosition];
-    }
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (updatedMax != null) {
+      _queryParams["updatedMax"] = [updatedMax];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (contentVersion != null) {
+      _queryParams["contentVersion"] = [contentVersion];
+    }
+    if (endPosition != null) {
+      _queryParams["endPosition"] = [endPosition];
+    }
+    if (updatedMin != null) {
+      _queryParams["updatedMin"] = [updatedMin];
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
@@ -1178,14 +1182,11 @@ class LayersVolumeAnnotationsResourceApi {
     if (startOffset != null) {
       _queryParams["startOffset"] = [startOffset];
     }
+    if (endOffset != null) {
+      _queryParams["endOffset"] = [endOffset];
+    }
     if (startPosition != null) {
       _queryParams["startPosition"] = [startPosition];
-    }
-    if (updatedMax != null) {
-      _queryParams["updatedMax"] = [updatedMax];
-    }
-    if (updatedMin != null) {
-      _queryParams["updatedMin"] = [updatedMin];
     }
     if (volumeAnnotationsVersion != null) {
       _queryParams["volumeAnnotationsVersion"] = [volumeAnnotationsVersion];
@@ -1194,7 +1195,7 @@ class LayersVolumeAnnotationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/' +
+    _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layers/' +
         commons.Escaper.ecapeVariable('$layerId');
@@ -1218,6 +1219,9 @@ class MyconfigResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [country] - Unused. Added only to workaround TEX mandatory request
+  /// template requirement
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1228,7 +1232,8 @@ class MyconfigResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Usersettings> getUserSettings({core.String $fields}) {
+  async.Future<Usersettings> getUserSettings(
+      {core.String country, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1236,11 +1241,14 @@ class MyconfigResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (country != null) {
+      _queryParams["country"] = [country];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'myconfig/getUserSettings';
+    _url = 'books/v1/myconfig/getUserSettings';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1255,14 +1263,14 @@ class MyconfigResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [volumeIds] - The volume(s) to release restrictions for.
-  ///
-  /// [cpksver] - The device/version ID from which to release the restriction.
-  ///
   /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
   /// en_US.
   ///
   /// [source] - String to identify the originator of this request.
+  ///
+  /// [volumeIds] - The volume(s) to release restrictions for.
+  ///
+  /// [cpksver] - The device/version ID from which to release the restriction.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1275,8 +1283,11 @@ class MyconfigResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DownloadAccesses> releaseDownloadAccess(
-      core.List<core.String> volumeIds, core.String cpksver,
-      {core.String locale, core.String source, core.String $fields}) {
+      {core.String locale,
+      core.String source,
+      core.List<core.String> volumeIds,
+      core.String cpksver,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1284,25 +1295,23 @@ class MyconfigResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (volumeIds == null || volumeIds.isEmpty) {
-      throw new core.ArgumentError("Parameter volumeIds is required.");
-    }
-    _queryParams["volumeIds"] = volumeIds;
-    if (cpksver == null) {
-      throw new core.ArgumentError("Parameter cpksver is required.");
-    }
-    _queryParams["cpksver"] = [cpksver];
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
     if (source != null) {
       _queryParams["source"] = [source];
     }
+    if (volumeIds != null) {
+      _queryParams["volumeIds"] = volumeIds;
+    }
+    if (cpksver != null) {
+      _queryParams["cpksver"] = [cpksver];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'myconfig/releaseDownloadAccess';
+    _url = 'books/v1/myconfig/releaseDownloadAccess';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1317,17 +1326,10 @@ class MyconfigResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [source] - String to identify the originator of this request.
-  ///
-  /// [volumeId] - The volume to request concurrent/download restrictions for.
-  ///
-  /// [nonce] - The client nonce value.
-  ///
-  /// [cpksver] - The device/version ID from which to request the restrictions.
-  ///
   /// [licenseTypes] - The type of access license to request. If not specified,
   /// the default is BOTH.
   /// Possible string values are:
+  /// - "LICENSE_TYPES_UNDEFINED"
   /// - "BOTH" : Both concurrent and download licenses.
   /// - "CONCURRENT" : Concurrent access license.
   /// - "DOWNLOAD" : Offline download access license.
@@ -1335,19 +1337,32 @@ class MyconfigResourceApi {
   /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
   /// en_US.
   ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [nonce] - The client nonce value.
+  ///
+  /// [cpksver] - The device/version ID from which to request the restrictions.
+  ///
+  /// [volumeId] - The volume to request concurrent/download restrictions for.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [RequestAccess].
+  /// Completes with a [RequestAccessData].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RequestAccess> requestAccess(core.String source,
-      core.String volumeId, core.String nonce, core.String cpksver,
-      {core.String licenseTypes, core.String locale, core.String $fields}) {
+  async.Future<RequestAccessData> requestAccess(
+      {core.String licenseTypes,
+      core.String locale,
+      core.String source,
+      core.String nonce,
+      core.String cpksver,
+      core.String volumeId,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1355,33 +1370,29 @@ class MyconfigResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (source == null) {
-      throw new core.ArgumentError("Parameter source is required.");
-    }
-    _queryParams["source"] = [source];
-    if (volumeId == null) {
-      throw new core.ArgumentError("Parameter volumeId is required.");
-    }
-    _queryParams["volumeId"] = [volumeId];
-    if (nonce == null) {
-      throw new core.ArgumentError("Parameter nonce is required.");
-    }
-    _queryParams["nonce"] = [nonce];
-    if (cpksver == null) {
-      throw new core.ArgumentError("Parameter cpksver is required.");
-    }
-    _queryParams["cpksver"] = [cpksver];
     if (licenseTypes != null) {
       _queryParams["licenseTypes"] = [licenseTypes];
     }
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
+    if (nonce != null) {
+      _queryParams["nonce"] = [nonce];
+    }
+    if (cpksver != null) {
+      _queryParams["cpksver"] = [cpksver];
+    }
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'myconfig/requestAccess';
+    _url = 'books/v1/myconfig/requestAccess';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1389,7 +1400,7 @@ class MyconfigResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new RequestAccess.fromJson(data));
+    return _response.then((data) => new RequestAccessData.fromJson(data));
   }
 
   /// Request downloaded content access for specified volumes on the My eBooks
@@ -1397,24 +1408,24 @@ class MyconfigResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [source] - String to identify the originator of this request.
-  ///
-  /// [nonce] - The client nonce value.
-  ///
   /// [cpksver] - The device/version ID from which to release the restriction.
   ///
-  /// [features] - List of features supported by the client, i.e., 'RENTALS'
+  /// [source] - String to identify the originator of this request.
   ///
-  /// [includeNonComicsSeries] - Set to true to include non-comics series.
-  /// Defaults to false.
+  /// [volumeIds] - The volume(s) to request download restrictions for.
   ///
-  /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
-  /// en_US.
+  /// [nonce] - The client nonce value.
   ///
   /// [showPreorders] - Set to true to show pre-ordered books. Defaults to
   /// false.
   ///
-  /// [volumeIds] - The volume(s) to request download restrictions for.
+  /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
+  /// en_US.
+  ///
+  /// [includeNonComicsSeries] - Set to true to include non-comics series.
+  /// Defaults to false.
+  ///
+  /// [features] - List of features supported by the client, i.e., 'RENTALS'
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1427,12 +1438,14 @@ class MyconfigResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumes> syncVolumeLicenses(
-      core.String source, core.String nonce, core.String cpksver,
-      {core.List<core.String> features,
-      core.bool includeNonComicsSeries,
-      core.String locale,
-      core.bool showPreorders,
+      {core.String cpksver,
+      core.String source,
       core.List<core.String> volumeIds,
+      core.String nonce,
+      core.bool showPreorders,
+      core.String locale,
+      core.bool includeNonComicsSeries,
+      core.List<core.String> features,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1441,38 +1454,35 @@ class MyconfigResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (source == null) {
-      throw new core.ArgumentError("Parameter source is required.");
+    if (cpksver != null) {
+      _queryParams["cpksver"] = [cpksver];
     }
-    _queryParams["source"] = [source];
-    if (nonce == null) {
-      throw new core.ArgumentError("Parameter nonce is required.");
+    if (source != null) {
+      _queryParams["source"] = [source];
     }
-    _queryParams["nonce"] = [nonce];
-    if (cpksver == null) {
-      throw new core.ArgumentError("Parameter cpksver is required.");
+    if (volumeIds != null) {
+      _queryParams["volumeIds"] = volumeIds;
     }
-    _queryParams["cpksver"] = [cpksver];
-    if (features != null) {
-      _queryParams["features"] = features;
-    }
-    if (includeNonComicsSeries != null) {
-      _queryParams["includeNonComicsSeries"] = ["${includeNonComicsSeries}"];
-    }
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
+    if (nonce != null) {
+      _queryParams["nonce"] = [nonce];
     }
     if (showPreorders != null) {
       _queryParams["showPreorders"] = ["${showPreorders}"];
     }
-    if (volumeIds != null) {
-      _queryParams["volumeIds"] = volumeIds;
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
+    if (includeNonComicsSeries != null) {
+      _queryParams["includeNonComicsSeries"] = ["${includeNonComicsSeries}"];
+    }
+    if (features != null) {
+      _queryParams["features"] = features;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'myconfig/syncVolumeLicenses';
+    _url = 'books/v1/myconfig/syncVolumeLicenses';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1517,7 +1527,7 @@ class MyconfigResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'myconfig/updateUserSettings';
+    _url = 'books/v1/myconfig/updateUserSettings';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1559,12 +1569,14 @@ class MylibraryAnnotationsResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
+  /// Completes with a [Empty].
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String annotationId,
+  async.Future<Empty> delete(core.String annotationId,
       {core.String source, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1583,9 +1595,7 @@ class MylibraryAnnotationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'mylibrary/annotations/' +
+    _url = 'books/v1/mylibrary/annotations/' +
         commons.Escaper.ecapeVariable('$annotationId');
 
     var _response = _requester.request(_url, "DELETE",
@@ -1594,7 +1604,7 @@ class MylibraryAnnotationsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
   /// Inserts a new annotation.
@@ -1603,14 +1613,14 @@ class MylibraryAnnotationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [annotationId] - The ID for the annotation to insert.
-  ///
-  /// [country] - ISO-3166-1 code to override the IP-based location.
-  ///
   /// [showOnlySummaryInResponse] - Requests that only the summary of the
   /// specified layer be provided in the response.
   ///
   /// [source] - String to identify the originator of this request.
+  ///
+  /// [annotationId] - The ID for the annotation to insert.
+  ///
+  /// [country] - ISO-3166-1 code to override the IP-based location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1623,10 +1633,10 @@ class MylibraryAnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Annotation> insert(Annotation request,
-      {core.String annotationId,
-      core.String country,
-      core.bool showOnlySummaryInResponse,
+      {core.bool showOnlySummaryInResponse,
       core.String source,
+      core.String annotationId,
+      core.String country,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1638,12 +1648,6 @@ class MylibraryAnnotationsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (annotationId != null) {
-      _queryParams["annotationId"] = [annotationId];
-    }
-    if (country != null) {
-      _queryParams["country"] = [country];
-    }
     if (showOnlySummaryInResponse != null) {
       _queryParams["showOnlySummaryInResponse"] = [
         "${showOnlySummaryInResponse}"
@@ -1652,11 +1656,17 @@ class MylibraryAnnotationsResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
+    if (annotationId != null) {
+      _queryParams["annotationId"] = [annotationId];
+    }
+    if (country != null) {
+      _queryParams["country"] = [country];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'mylibrary/annotations';
+    _url = 'books/v1/mylibrary/annotations';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1671,29 +1681,28 @@ class MylibraryAnnotationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [contentVersion] - The content version for the requested volume.
+  /// [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
+  /// timestamp (inclusive).
+  ///
+  /// [volumeId] - The volume to restrict annotations to.
   ///
   /// [layerId] - The layer ID to limit annotation by.
   ///
   /// [layerIds] - The layer ID(s) to limit annotation by.
   ///
+  /// [contentVersion] - The content version for the requested volume.
+  ///
   /// [maxResults] - Maximum number of results to return
-  /// Value must be between "0" and "40".
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
+  ///
+  /// [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
+  /// this timestamp (exclusive).
   ///
   /// [showDeleted] - Set to true to return deleted annotations. updatedMin must
   /// be in the request to use this. Defaults to false.
   ///
   /// [source] - String to identify the originator of this request.
-  ///
-  /// [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
-  /// this timestamp (exclusive).
-  ///
-  /// [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
-  /// timestamp (inclusive).
-  ///
-  /// [volumeId] - The volume to restrict annotations to.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1706,16 +1715,16 @@ class MylibraryAnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Annotations> list(
-      {core.String contentVersion,
+      {core.String updatedMin,
+      core.String volumeId,
       core.String layerId,
       core.List<core.String> layerIds,
+      core.String contentVersion,
       core.int maxResults,
       core.String pageToken,
+      core.String updatedMax,
       core.bool showDeleted,
       core.String source,
-      core.String updatedMax,
-      core.String updatedMin,
-      core.String volumeId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1724,8 +1733,11 @@ class MylibraryAnnotationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (contentVersion != null) {
-      _queryParams["contentVersion"] = [contentVersion];
+    if (updatedMin != null) {
+      _queryParams["updatedMin"] = [updatedMin];
+    }
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
     }
     if (layerId != null) {
       _queryParams["layerId"] = [layerId];
@@ -1733,11 +1745,17 @@ class MylibraryAnnotationsResourceApi {
     if (layerIds != null) {
       _queryParams["layerIds"] = layerIds;
     }
+    if (contentVersion != null) {
+      _queryParams["contentVersion"] = [contentVersion];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (updatedMax != null) {
+      _queryParams["updatedMax"] = [updatedMax];
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
@@ -1745,20 +1763,11 @@ class MylibraryAnnotationsResourceApi {
     if (source != null) {
       _queryParams["source"] = [source];
     }
-    if (updatedMax != null) {
-      _queryParams["updatedMax"] = [updatedMax];
-    }
-    if (updatedMin != null) {
-      _queryParams["updatedMin"] = [updatedMin];
-    }
-    if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'mylibrary/annotations';
+    _url = 'books/v1/mylibrary/annotations';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1773,9 +1782,9 @@ class MylibraryAnnotationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [layerIds] - Array of layer IDs to get the summary for.
-  ///
   /// [volumeId] - Volume id to get the summary for.
+  ///
+  /// [layerIds] - Array of layer IDs to get the summary for.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1788,8 +1797,9 @@ class MylibraryAnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnnotationsSummary> summary(
-      core.List<core.String> layerIds, core.String volumeId,
-      {core.String $fields}) {
+      {core.String volumeId,
+      core.List<core.String> layerIds,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1797,19 +1807,17 @@ class MylibraryAnnotationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (layerIds == null || layerIds.isEmpty) {
-      throw new core.ArgumentError("Parameter layerIds is required.");
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
     }
-    _queryParams["layerIds"] = layerIds;
-    if (volumeId == null) {
-      throw new core.ArgumentError("Parameter volumeId is required.");
+    if (layerIds != null) {
+      _queryParams["layerIds"] = layerIds;
     }
-    _queryParams["volumeId"] = [volumeId];
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'mylibrary/annotations/summary';
+    _url = 'books/v1/mylibrary/annotations/summary';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1862,7 +1870,7 @@ class MylibraryAnnotationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'mylibrary/annotations/' +
+    _url = 'books/v1/mylibrary/annotations/' +
         commons.Escaper.ecapeVariable('$annotationId');
 
     var _response = _requester.request(_url, "PUT",
@@ -1892,24 +1900,30 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// [volumeId] - ID of volume to add.
   ///
+  /// [source] - String to identify the originator of this request.
+  ///
   /// [reason] - The reason for which the book is added to the library.
   /// Possible string values are:
+  /// - "REASON_UNDEFINED"
   /// - "IOS_PREX" : Volumes added from the PREX flow on iOS.
   /// - "IOS_SEARCH" : Volumes added from the Search flow on iOS.
   /// - "ONBOARDING" : Volumes added from the Onboarding flow.
   ///
-  /// [source] - String to identify the originator of this request.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
+  ///
+  /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future addVolume(core.String shelf, core.String volumeId,
-      {core.String reason, core.String source, core.String $fields}) {
+  async.Future<Empty> addVolume(core.String shelf,
+      {core.String volumeId,
+      core.String source,
+      core.String reason,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1920,23 +1934,20 @@ class MylibraryBookshelvesResourceApi {
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
     }
-    if (volumeId == null) {
-      throw new core.ArgumentError("Parameter volumeId is required.");
-    }
-    _queryParams["volumeId"] = [volumeId];
-    if (reason != null) {
-      _queryParams["reason"] = [reason];
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if (reason != null) {
+      _queryParams["reason"] = [reason];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'mylibrary/bookshelves/' +
+    _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/addVolume';
 
@@ -1946,7 +1957,7 @@ class MylibraryBookshelvesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
   /// Clears all volumes from a bookshelf.
@@ -1960,12 +1971,14 @@ class MylibraryBookshelvesResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
+  /// Completes with a [Empty].
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future clearVolumes(core.String shelf,
+  async.Future<Empty> clearVolumes(core.String shelf,
       {core.String source, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1984,9 +1997,7 @@ class MylibraryBookshelvesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'mylibrary/bookshelves/' +
+    _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/clearVolumes';
 
@@ -1996,7 +2007,7 @@ class MylibraryBookshelvesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
   /// Retrieves metadata for a specific bookshelf belonging to the authenticated
@@ -2037,7 +2048,8 @@ class MylibraryBookshelvesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf');
+    _url = 'books/v1/mylibrary/bookshelves/' +
+        commons.Escaper.ecapeVariable('$shelf');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2079,7 +2091,7 @@ class MylibraryBookshelvesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'mylibrary/bookshelves';
+    _url = 'books/v1/mylibrary/bookshelves';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2107,14 +2119,18 @@ class MylibraryBookshelvesResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
+  /// Completes with a [Empty].
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future moveVolume(
-      core.String shelf, core.String volumeId, core.int volumePosition,
-      {core.String source, core.String $fields}) {
+  async.Future<Empty> moveVolume(core.String shelf,
+      {core.String volumeId,
+      core.int volumePosition,
+      core.String source,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2125,14 +2141,12 @@ class MylibraryBookshelvesResourceApi {
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
     }
-    if (volumeId == null) {
-      throw new core.ArgumentError("Parameter volumeId is required.");
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
     }
-    _queryParams["volumeId"] = [volumeId];
-    if (volumePosition == null) {
-      throw new core.ArgumentError("Parameter volumePosition is required.");
+    if (volumePosition != null) {
+      _queryParams["volumePosition"] = ["${volumePosition}"];
     }
-    _queryParams["volumePosition"] = ["${volumePosition}"];
     if (source != null) {
       _queryParams["source"] = [source];
     }
@@ -2140,9 +2154,7 @@ class MylibraryBookshelvesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'mylibrary/bookshelves/' +
+    _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/moveVolume';
 
@@ -2152,7 +2164,7 @@ class MylibraryBookshelvesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
   /// Removes a volume from a bookshelf.
@@ -2161,24 +2173,30 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// [shelf] - ID of bookshelf from which to remove a volume.
   ///
+  /// [source] - String to identify the originator of this request.
+  ///
   /// [volumeId] - ID of volume to remove.
   ///
   /// [reason] - The reason for which the book is removed from the library.
   /// Possible string values are:
+  /// - "REASON_UNDEFINED"
   /// - "ONBOARDING" : Samples removed from the Onboarding flow.
-  ///
-  /// [source] - String to identify the originator of this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
+  ///
+  /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future removeVolume(core.String shelf, core.String volumeId,
-      {core.String reason, core.String source, core.String $fields}) {
+  async.Future<Empty> removeVolume(core.String shelf,
+      {core.String source,
+      core.String volumeId,
+      core.String reason,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2189,23 +2207,20 @@ class MylibraryBookshelvesResourceApi {
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
     }
-    if (volumeId == null) {
-      throw new core.ArgumentError("Parameter volumeId is required.");
-    }
-    _queryParams["volumeId"] = [volumeId];
-    if (reason != null) {
-      _queryParams["reason"] = [reason];
-    }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
+    }
+    if (reason != null) {
+      _queryParams["reason"] = [reason];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'mylibrary/bookshelves/' +
+    _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/removeVolume';
 
@@ -2215,7 +2230,7 @@ class MylibraryBookshelvesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 }
 
@@ -2231,21 +2246,22 @@ class MylibraryBookshelvesVolumesResourceApi {
   ///
   /// [shelf] - The bookshelf ID or name retrieve volumes for.
   ///
+  /// [source] - String to identify the originator of this request.
+  ///
   /// [country] - ISO-3166-1 code to override the IP-based location.
   ///
-  /// [maxResults] - Maximum number of results to return
+  /// [q] - Full-text search query string in this bookshelf.
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
-  /// - "full" : Includes all volume data.
-  /// - "lite" : Includes a subset of fields in volumeInfo and accessInfo.
-  ///
-  /// [q] - Full-text search query string in this bookshelf.
+  /// - "PROJECTION_UNDEFINED"
+  /// - "FULL" : Includes all volume data.
+  /// - "LITE" : Includes a subset of fields in volumeInfo and accessInfo.
   ///
   /// [showPreorders] - Set to true to show pre-ordered books. Defaults to
   /// false.
   ///
-  /// [source] - String to identify the originator of this request.
+  /// [maxResults] - Maximum number of results to return
   ///
   /// [startIndex] - Index of the first element to return (starts at 0)
   ///
@@ -2260,12 +2276,12 @@ class MylibraryBookshelvesVolumesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumes> list(core.String shelf,
-      {core.String country,
-      core.int maxResults,
-      core.String projection,
+      {core.String source,
+      core.String country,
       core.String q,
+      core.String projection,
       core.bool showPreorders,
-      core.String source,
+      core.int maxResults,
       core.int startIndex,
       core.String $fields}) {
     var _url;
@@ -2278,23 +2294,23 @@ class MylibraryBookshelvesVolumesResourceApi {
     if (shelf == null) {
       throw new core.ArgumentError("Parameter shelf is required.");
     }
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
     if (country != null) {
       _queryParams["country"] = [country];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (projection != null) {
-      _queryParams["projection"] = [projection];
     }
     if (q != null) {
       _queryParams["q"] = [q];
     }
+    if (projection != null) {
+      _queryParams["projection"] = [projection];
+    }
     if (showPreorders != null) {
       _queryParams["showPreorders"] = ["${showPreorders}"];
     }
-    if (source != null) {
-      _queryParams["source"] = [source];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
@@ -2303,7 +2319,7 @@ class MylibraryBookshelvesVolumesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'mylibrary/bookshelves/' +
+    _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/volumes';
 
@@ -2366,7 +2382,7 @@ class MylibraryReadingpositionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'mylibrary/readingpositions/' +
+    _url = 'books/v1/mylibrary/readingpositions/' +
         commons.Escaper.ecapeVariable('$volumeId');
 
     var _response = _requester.request(_url, "GET",
@@ -2387,10 +2403,12 @@ class MylibraryReadingpositionsResourceApi {
   /// [timestamp] - RFC 3339 UTC format timestamp associated with this reading
   /// position.
   ///
-  /// [position] - Position string for the new volume reading position.
+  /// [contentVersion] - Volume content version for which this reading position
+  /// applies.
   ///
   /// [action] - Action that caused this reading position to be set.
   /// Possible string values are:
+  /// - "ACTION_UNDEFINED"
   /// - "bookmark" : User chose bookmark within volume.
   /// - "chapter" : User selected chapter from list.
   /// - "next-page" : Next page event.
@@ -2398,27 +2416,29 @@ class MylibraryReadingpositionsResourceApi {
   /// - "scroll" : User navigated to page.
   /// - "search" : User chose search results within volume.
   ///
-  /// [contentVersion] - Volume content version for which this reading position
-  /// applies.
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [position] - Position string for the new volume reading position.
   ///
   /// [deviceCookie] - Random persistent device cookie optional on set position.
   ///
-  /// [source] - String to identify the originator of this request.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
+  ///
+  /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future setPosition(
-      core.String volumeId, core.String timestamp, core.String position,
-      {core.String action,
+  async.Future<Empty> setPosition(core.String volumeId,
+      {core.String timestamp,
       core.String contentVersion,
-      core.String deviceCookie,
+      core.String action,
       core.String source,
+      core.String position,
+      core.String deviceCookie,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2430,33 +2450,29 @@ class MylibraryReadingpositionsResourceApi {
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
     }
-    if (timestamp == null) {
-      throw new core.ArgumentError("Parameter timestamp is required.");
-    }
-    _queryParams["timestamp"] = [timestamp];
-    if (position == null) {
-      throw new core.ArgumentError("Parameter position is required.");
-    }
-    _queryParams["position"] = [position];
-    if (action != null) {
-      _queryParams["action"] = [action];
+    if (timestamp != null) {
+      _queryParams["timestamp"] = [timestamp];
     }
     if (contentVersion != null) {
       _queryParams["contentVersion"] = [contentVersion];
     }
-    if (deviceCookie != null) {
-      _queryParams["deviceCookie"] = [deviceCookie];
+    if (action != null) {
+      _queryParams["action"] = [action];
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if (position != null) {
+      _queryParams["position"] = [position];
+    }
+    if (deviceCookie != null) {
+      _queryParams["deviceCookie"] = [deviceCookie];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'mylibrary/readingpositions/' +
+    _url = 'books/v1/mylibrary/readingpositions/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/setPosition';
 
@@ -2466,7 +2482,7 @@ class MylibraryReadingpositionsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 }
 
@@ -2496,8 +2512,11 @@ class NotificationResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Notification> get(core.String notificationId,
-      {core.String locale, core.String source, core.String $fields}) {
+  async.Future<Notification> get(
+      {core.String notificationId,
+      core.String locale,
+      core.String source,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2505,10 +2524,9 @@ class NotificationResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (notificationId == null) {
-      throw new core.ArgumentError("Parameter notificationId is required.");
+    if (notificationId != null) {
+      _queryParams["notification_id"] = [notificationId];
     }
-    _queryParams["notification_id"] = [notificationId];
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
@@ -2519,7 +2537,7 @@ class NotificationResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'notification/get';
+    _url = 'books/v1/notification/get';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2569,7 +2587,7 @@ class OnboardingResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'onboarding/listCategories';
+    _url = 'books/v1/onboarding/listCategories';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2586,17 +2604,18 @@ class OnboardingResourceApi {
   ///
   /// [categoryId] - List of category ids requested.
   ///
+  /// [pageSize] - Number of maximum results per page to be included in the
+  /// response.
+  ///
   /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Default is
   /// en-US if unset.
   ///
   /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
   /// returned volumes. Books with a higher maturity rating are filtered out.
   /// Possible string values are:
-  /// - "mature" : Show books which are rated mature or lower.
+  /// - "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  /// - "MATURE" : Show books which are rated mature or lower.
   /// - "not-mature" : Show books which are rated not mature.
-  ///
-  /// [pageSize] - Number of maximum results per page to be included in the
-  /// response.
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
   ///
@@ -2612,9 +2631,9 @@ class OnboardingResourceApi {
   /// this method will complete with the same error.
   async.Future<Volume2> listCategoryVolumes(
       {core.List<core.String> categoryId,
+      core.int pageSize,
       core.String locale,
       core.String maxAllowedMaturityRating,
-      core.int pageSize,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -2627,14 +2646,14 @@ class OnboardingResourceApi {
     if (categoryId != null) {
       _queryParams["categoryId"] = categoryId;
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
     if (maxAllowedMaturityRating != null) {
       _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2643,7 +2662,7 @@ class OnboardingResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'onboarding/listCategoryVolumes';
+    _url = 'books/v1/onboarding/listCategoryVolumes';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2665,17 +2684,18 @@ class PersonalizedstreamResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-  /// Used for generating recommendations.
-  ///
   /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
   /// returned recommendations. Books with a higher maturity rating are filtered
   /// out.
   /// Possible string values are:
-  /// - "mature" : Show books which are rated mature or lower.
+  /// - "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  /// - "MATURE" : Show books which are rated mature or lower.
   /// - "not-mature" : Show books which are rated not mature.
   ///
   /// [source] - String to identify the originator of this request.
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating recommendations.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2688,9 +2708,9 @@ class PersonalizedstreamResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Discoveryclusters> get(
-      {core.String locale,
-      core.String maxAllowedMaturityRating,
+      {core.String maxAllowedMaturityRating,
       core.String source,
+      core.String locale,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2699,20 +2719,20 @@ class PersonalizedstreamResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
-    }
     if (maxAllowedMaturityRating != null) {
       _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
     }
     if (source != null) {
       _queryParams["source"] = [source];
     }
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'personalizedstream/get';
+    _url = 'books/v1/personalizedstream/get';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2729,122 +2749,128 @@ class PromoofferResourceApi {
 
   PromoofferResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Accepts the promo offer.
+  ///
   /// Request parameters:
-  ///
-  /// [androidId] - device android_id
-  ///
-  /// [device] - device device
-  ///
-  /// [manufacturer] - device manufacturer
-  ///
-  /// [model] - device model
-  ///
-  /// [offerId] - null
-  ///
-  /// [product] - device product
-  ///
-  /// [serial] - device serial
   ///
   /// [volumeId] - Volume id to exercise the offer
   ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
+  /// [offerId] - null
   ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future accept(
-      {core.String androidId,
-      core.String device,
-      core.String manufacturer,
-      core.String model,
-      core.String offerId,
-      core.String product,
-      core.String serial,
-      core.String volumeId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (androidId != null) {
-      _queryParams["androidId"] = [androidId];
-    }
-    if (device != null) {
-      _queryParams["device"] = [device];
-    }
-    if (manufacturer != null) {
-      _queryParams["manufacturer"] = [manufacturer];
-    }
-    if (model != null) {
-      _queryParams["model"] = [model];
-    }
-    if (offerId != null) {
-      _queryParams["offerId"] = [offerId];
-    }
-    if (product != null) {
-      _queryParams["product"] = [product];
-    }
-    if (serial != null) {
-      _queryParams["serial"] = [serial];
-    }
-    if (volumeId != null) {
-      _queryParams["volumeId"] = [volumeId];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'promooffer/accept';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Request parameters:
+  /// [serial] - device serial
   ///
   /// [androidId] - device android_id
+  ///
+  /// [model] - device model
   ///
   /// [device] - device device
   ///
   /// [manufacturer] - device manufacturer
   ///
-  /// [model] - device model
-  ///
-  /// [offerId] - Offer to dimiss
-  ///
   /// [product] - device product
-  ///
-  /// [serial] - device serial
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
+  ///
+  /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future dismiss(
-      {core.String androidId,
+  async.Future<Empty> accept(
+      {core.String volumeId,
+      core.String offerId,
+      core.String serial,
+      core.String androidId,
+      core.String model,
       core.String device,
       core.String manufacturer,
-      core.String model,
-      core.String offerId,
       core.String product,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
+    }
+    if (offerId != null) {
+      _queryParams["offerId"] = [offerId];
+    }
+    if (serial != null) {
+      _queryParams["serial"] = [serial];
+    }
+    if (androidId != null) {
+      _queryParams["androidId"] = [androidId];
+    }
+    if (model != null) {
+      _queryParams["model"] = [model];
+    }
+    if (device != null) {
+      _queryParams["device"] = [device];
+    }
+    if (manufacturer != null) {
+      _queryParams["manufacturer"] = [manufacturer];
+    }
+    if (product != null) {
+      _queryParams["product"] = [product];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'books/v1/promooffer/accept';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Marks the promo offer as dismissed.
+  ///
+  /// Request parameters:
+  ///
+  /// [androidId] - device android_id
+  ///
+  /// [serial] - device serial
+  ///
+  /// [product] - device product
+  ///
+  /// [model] - device model
+  ///
+  /// [manufacturer] - device manufacturer
+  ///
+  /// [device] - device device
+  ///
+  /// [offerId] - Offer to dimiss
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> dismiss(
+      {core.String androidId,
       core.String serial,
+      core.String product,
+      core.String model,
+      core.String manufacturer,
+      core.String device,
+      core.String offerId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2856,31 +2882,29 @@ class PromoofferResourceApi {
     if (androidId != null) {
       _queryParams["androidId"] = [androidId];
     }
-    if (device != null) {
-      _queryParams["device"] = [device];
-    }
-    if (manufacturer != null) {
-      _queryParams["manufacturer"] = [manufacturer];
-    }
-    if (model != null) {
-      _queryParams["model"] = [model];
-    }
-    if (offerId != null) {
-      _queryParams["offerId"] = [offerId];
+    if (serial != null) {
+      _queryParams["serial"] = [serial];
     }
     if (product != null) {
       _queryParams["product"] = [product];
     }
-    if (serial != null) {
-      _queryParams["serial"] = [serial];
+    if (model != null) {
+      _queryParams["model"] = [model];
+    }
+    if (manufacturer != null) {
+      _queryParams["manufacturer"] = [manufacturer];
+    }
+    if (device != null) {
+      _queryParams["device"] = [device];
+    }
+    if (offerId != null) {
+      _queryParams["offerId"] = [offerId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'promooffer/dismiss';
+    _url = 'books/v1/promooffer/dismiss';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2888,24 +2912,24 @@ class PromoofferResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
   /// Returns a list of promo offers available to the user
   ///
   /// Request parameters:
   ///
-  /// [androidId] - device android_id
+  /// [serial] - device serial
+  ///
+  /// [model] - device model
   ///
   /// [device] - device device
   ///
   /// [manufacturer] - device manufacturer
   ///
-  /// [model] - device model
-  ///
   /// [product] - device product
   ///
-  /// [serial] - device serial
+  /// [androidId] - device android_id
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2918,12 +2942,12 @@ class PromoofferResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Offers> get(
-      {core.String androidId,
+      {core.String serial,
+      core.String model,
       core.String device,
       core.String manufacturer,
-      core.String model,
       core.String product,
-      core.String serial,
+      core.String androidId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2932,8 +2956,11 @@ class PromoofferResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (androidId != null) {
-      _queryParams["androidId"] = [androidId];
+    if (serial != null) {
+      _queryParams["serial"] = [serial];
+    }
+    if (model != null) {
+      _queryParams["model"] = [model];
     }
     if (device != null) {
       _queryParams["device"] = [device];
@@ -2941,20 +2968,17 @@ class PromoofferResourceApi {
     if (manufacturer != null) {
       _queryParams["manufacturer"] = [manufacturer];
     }
-    if (model != null) {
-      _queryParams["model"] = [model];
-    }
     if (product != null) {
       _queryParams["product"] = [product];
     }
-    if (serial != null) {
-      _queryParams["serial"] = [serial];
+    if (androidId != null) {
+      _queryParams["androidId"] = [androidId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'promooffer/get';
+    _url = 'books/v1/promooffer/get';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2990,8 +3014,8 @@ class SeriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Series> get(core.List<core.String> seriesId,
-      {core.String $fields}) {
+  async.Future<Series> get(
+      {core.List<core.String> seriesId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2999,15 +3023,14 @@ class SeriesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (seriesId == null || seriesId.isEmpty) {
-      throw new core.ArgumentError("Parameter seriesId is required.");
+    if (seriesId != null) {
+      _queryParams["series_id"] = seriesId;
     }
-    _queryParams["series_id"] = seriesId;
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'series/get';
+    _url = 'books/v1/series/get';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3029,12 +3052,12 @@ class SeriesMembershipResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The value of the nextToken from the previous page.
+  ///
   /// [seriesId] - String that identifies the series
   ///
   /// [pageSize] - Number of maximum results per page to be included in the
   /// response.
-  ///
-  /// [pageToken] - The value of the nextToken from the previous page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3046,8 +3069,11 @@ class SeriesMembershipResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Seriesmembership> get(core.String seriesId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+  async.Future<Seriesmembership> get(
+      {core.String pageToken,
+      core.String seriesId,
+      core.int pageSize,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3055,21 +3081,20 @@ class SeriesMembershipResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (seriesId == null) {
-      throw new core.ArgumentError("Parameter seriesId is required.");
-    }
-    _queryParams["series_id"] = [seriesId];
-    if (pageSize != null) {
-      _queryParams["page_size"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["page_token"] = [pageToken];
+    }
+    if (seriesId != null) {
+      _queryParams["series_id"] = [seriesId];
+    }
+    if (pageSize != null) {
+      _queryParams["page_size"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'series/membership/get';
+    _url = 'books/v1/series/membership/get';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3101,21 +3126,22 @@ class VolumesResourceApi {
   ///
   /// [volumeId] - ID of volume to retrieve.
   ///
-  /// [country] - ISO-3166-1 code to override the IP-based location.
-  ///
   /// [includeNonComicsSeries] - Set to true to include non-comics series.
   /// Defaults to false.
   ///
+  /// [userLibraryConsistentRead] - null
+  ///
   /// [partner] - Brand results for partner ID.
+  ///
+  /// [country] - ISO-3166-1 code to override the IP-based location.
+  ///
+  /// [source] - string to identify the originator of this request.
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
-  /// - "full" : Includes all volume data.
-  /// - "lite" : Includes a subset of fields in volumeInfo and accessInfo.
-  ///
-  /// [source] - String to identify the originator of this request.
-  ///
-  /// [userLibraryConsistentRead] - null
+  /// - "PROJECTION_UNDEFINED"
+  /// - "FULL" : Includes all volume data.
+  /// - "LITE" : Includes a subset of fields in volumeInfo and accessInfo.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3128,12 +3154,12 @@ class VolumesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volume> get(core.String volumeId,
-      {core.String country,
-      core.bool includeNonComicsSeries,
-      core.String partner,
-      core.String projection,
-      core.String source,
+      {core.bool includeNonComicsSeries,
       core.bool userLibraryConsistentRead,
+      core.String partner,
+      core.String country,
+      core.String source,
+      core.String projection,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3145,31 +3171,31 @@ class VolumesResourceApi {
     if (volumeId == null) {
       throw new core.ArgumentError("Parameter volumeId is required.");
     }
-    if (country != null) {
-      _queryParams["country"] = [country];
-    }
     if (includeNonComicsSeries != null) {
       _queryParams["includeNonComicsSeries"] = ["${includeNonComicsSeries}"];
-    }
-    if (partner != null) {
-      _queryParams["partner"] = [partner];
-    }
-    if (projection != null) {
-      _queryParams["projection"] = [projection];
-    }
-    if (source != null) {
-      _queryParams["source"] = [source];
     }
     if (userLibraryConsistentRead != null) {
       _queryParams["user_library_consistent_read"] = [
         "${userLibraryConsistentRead}"
       ];
     }
+    if (partner != null) {
+      _queryParams["partner"] = [partner];
+    }
+    if (country != null) {
+      _queryParams["country"] = [country];
+    }
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
+    if (projection != null) {
+      _queryParams["projection"] = [projection];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId');
+    _url = 'books/v1/volumes/' + commons.Escaper.ecapeVariable('$volumeId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3184,61 +3210,67 @@ class VolumesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [startIndex] - Index of the first result to return (starts at 0)
+  ///
   /// [q] - Full-text search query string.
   ///
-  /// [download] - Restrict to volumes by download availability.
-  /// Possible string values are:
-  /// - "epub" : All volumes with epub.
-  ///
-  /// [filter] - Filter search results.
-  /// Possible string values are:
-  /// - "ebooks" : All Google eBooks.
-  /// - "free-ebooks" : Google eBook with full volume text viewability.
-  /// - "full" : Public can view entire volume text.
-  /// - "paid-ebooks" : Google eBook with a price.
-  /// - "partial" : Public able to see parts of text.
-  ///
-  /// [langRestrict] - Restrict results to books with this language code.
-  ///
-  /// [libraryRestrict] - Restrict search to this user's library.
-  /// Possible string values are:
-  /// - "my-library" : Restrict to the user's library, any shelf.
-  /// - "no-restrict" : Do not restrict based on user's library.
+  /// [maxResults] - Maximum number of results to return.
   ///
   /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
   /// returned recommendations. Books with a higher maturity rating are filtered
   /// out.
   /// Possible string values are:
-  /// - "mature" : Show books which are rated mature or lower.
+  /// - "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  /// - "MATURE" : Show books which are rated mature or lower.
   /// - "not-mature" : Show books which are rated not mature.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "40".
-  ///
-  /// [orderBy] - Sort search results.
-  /// Possible string values are:
-  /// - "newest" : Most recently published.
-  /// - "relevance" : Relevance to search terms.
-  ///
-  /// [partner] - Restrict and brand results for partner ID.
-  ///
-  /// [printType] - Restrict to books or magazines.
-  /// Possible string values are:
-  /// - "all" : All volume content types.
-  /// - "books" : Just books.
-  /// - "magazines" : Just magazines.
-  ///
-  /// [projection] - Restrict information returned to a set of selected fields.
-  /// Possible string values are:
-  /// - "full" : Includes all volume data.
-  /// - "lite" : Includes a subset of fields in volumeInfo and accessInfo.
   ///
   /// [showPreorders] - Set to true to show books available for preorder.
   /// Defaults to false.
   ///
+  /// [langRestrict] - Restrict results to books with this language code.
+  ///
+  /// [partner] - Restrict and brand results for partner ID.
+  ///
+  /// [projection] - Restrict information returned to a set of selected fields.
+  /// Possible string values are:
+  /// - "PROJECTION_UNDEFINED"
+  /// - "FULL" : Includes all volume data.
+  /// - "LITE" : Includes a subset of fields in volumeInfo and accessInfo.
+  ///
+  /// [printType] - Restrict to books or magazines.
+  /// Possible string values are:
+  /// - "PRINT_TYPE_UNDEFINED"
+  /// - "ALL" : All volume content types.
+  /// - "BOOKS" : Just books.
+  /// - "MAGAZINES" : Just magazines.
+  ///
+  /// [orderBy] - Sort search results.
+  /// Possible string values are:
+  /// - "ORDER_BY_UNDEFINED"
+  /// - "newest" : Most recently published.
+  /// - "relevance" : Relevance to search terms.
+  ///
   /// [source] - String to identify the originator of this request.
   ///
-  /// [startIndex] - Index of the first result to return (starts at 0)
+  /// [libraryRestrict] - Restrict search to this user's library.
+  /// Possible string values are:
+  /// - "LIBRARY_RESTRICT_UNDEFINED"
+  /// - "my-library" : Restrict to the user's library, any shelf.
+  /// - "no-restrict" : Do not restrict based on user's library.
+  ///
+  /// [download] - Restrict to volumes by download availability.
+  /// Possible string values are:
+  /// - "DOWNLOAD_UNDEFINED"
+  /// - "EPUB" : All volumes with epub.
+  ///
+  /// [filter] - Filter search results.
+  /// Possible string values are:
+  /// - "FILTER_UNDEFINED"
+  /// - "ebooks" : All Google eBooks.
+  /// - "free-ebooks" : Google eBook with full volume text viewability.
+  /// - "full" : Public can view entire volume text.
+  /// - "paid-ebooks" : Google eBook with a price.
+  /// - "partial" : Public able to see parts of text.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3250,20 +3282,21 @@ class VolumesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Volumes> list(core.String q,
-      {core.String download,
-      core.String filter,
-      core.String langRestrict,
-      core.String libraryRestrict,
-      core.String maxAllowedMaturityRating,
+  async.Future<Volumes> list(
+      {core.int startIndex,
+      core.String q,
       core.int maxResults,
-      core.String orderBy,
-      core.String partner,
-      core.String printType,
-      core.String projection,
+      core.String maxAllowedMaturityRating,
       core.bool showPreorders,
+      core.String langRestrict,
+      core.String partner,
+      core.String projection,
+      core.String printType,
+      core.String orderBy,
       core.String source,
-      core.int startIndex,
+      core.String libraryRestrict,
+      core.String download,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3272,54 +3305,53 @@ class VolumesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (q == null) {
-      throw new core.ArgumentError("Parameter q is required.");
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
     }
-    _queryParams["q"] = [q];
+    if (q != null) {
+      _queryParams["q"] = [q];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (maxAllowedMaturityRating != null) {
+      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
+    }
+    if (showPreorders != null) {
+      _queryParams["showPreorders"] = ["${showPreorders}"];
+    }
+    if (langRestrict != null) {
+      _queryParams["langRestrict"] = [langRestrict];
+    }
+    if (partner != null) {
+      _queryParams["partner"] = [partner];
+    }
+    if (projection != null) {
+      _queryParams["projection"] = [projection];
+    }
+    if (printType != null) {
+      _queryParams["printType"] = [printType];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
+    if (libraryRestrict != null) {
+      _queryParams["libraryRestrict"] = [libraryRestrict];
+    }
     if (download != null) {
       _queryParams["download"] = [download];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (langRestrict != null) {
-      _queryParams["langRestrict"] = [langRestrict];
-    }
-    if (libraryRestrict != null) {
-      _queryParams["libraryRestrict"] = [libraryRestrict];
-    }
-    if (maxAllowedMaturityRating != null) {
-      _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (partner != null) {
-      _queryParams["partner"] = [partner];
-    }
-    if (printType != null) {
-      _queryParams["printType"] = [printType];
-    }
-    if (projection != null) {
-      _queryParams["projection"] = [projection];
-    }
-    if (showPreorders != null) {
-      _queryParams["showPreorders"] = ["${showPreorders}"];
-    }
-    if (source != null) {
-      _queryParams["source"] = [source];
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes';
+    _url = 'books/v1/volumes';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3345,21 +3377,23 @@ class VolumesAssociatedResourceApi {
   ///
   /// [association] - Association type.
   /// Possible string values are:
+  /// - "ASSOCIATION_UNDEFINED"
   /// - "end-of-sample" : Recommendations for display end-of-sample.
   /// - "end-of-volume" : Recommendations for display end-of-volume.
   /// - "related-for-play" : Related volumes for Play Store.
-  ///
-  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-  /// Used for generating recommendations.
   ///
   /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
   /// returned recommendations. Books with a higher maturity rating are filtered
   /// out.
   /// Possible string values are:
-  /// - "mature" : Show books which are rated mature or lower.
+  /// - "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  /// - "MATURE" : Show books which are rated mature or lower.
   /// - "not-mature" : Show books which are rated not mature.
   ///
   /// [source] - String to identify the originator of this request.
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating recommendations.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3373,9 +3407,9 @@ class VolumesAssociatedResourceApi {
   /// this method will complete with the same error.
   async.Future<Volumes> list(core.String volumeId,
       {core.String association,
-      core.String locale,
       core.String maxAllowedMaturityRating,
       core.String source,
+      core.String locale,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3390,21 +3424,22 @@ class VolumesAssociatedResourceApi {
     if (association != null) {
       _queryParams["association"] = [association];
     }
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
-    }
     if (maxAllowedMaturityRating != null) {
       _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
     }
     if (source != null) {
       _queryParams["source"] = [source];
     }
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/associated';
+    _url = 'books/v1/volumes/' +
+        commons.Escaper.ecapeVariable('$volumeId') +
+        '/associated';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3425,23 +3460,22 @@ class VolumesMybooksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [acquireMethod] - How the book was acquired
+  /// [startIndex] - Index of the first result to return (starts at 0)
   ///
   /// [country] - ISO-3166-1 code to override the IP-based location.
+  ///
+  /// [acquireMethod] - How the book was acquired
   ///
   /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'.
   /// Used for generating recommendations.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "100".
+  ///
+  /// [source] - String to identify the originator of this request.
   ///
   /// [processingState] - The processing state of the user uploaded volumes to
   /// be returned. Applicable only if the UPLOADED is specified in the
   /// acquireMethod.
-  ///
-  /// [source] - String to identify the originator of this request.
-  ///
-  /// [startIndex] - Index of the first result to return (starts at 0)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3454,13 +3488,13 @@ class VolumesMybooksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumes> list(
-      {core.List<core.String> acquireMethod,
+      {core.int startIndex,
       core.String country,
+      core.List<core.String> acquireMethod,
       core.String locale,
       core.int maxResults,
-      core.List<core.String> processingState,
       core.String source,
-      core.int startIndex,
+      core.List<core.String> processingState,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3469,11 +3503,14 @@ class VolumesMybooksResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (acquireMethod != null) {
-      _queryParams["acquireMethod"] = acquireMethod;
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
     }
     if (country != null) {
       _queryParams["country"] = [country];
+    }
+    if (acquireMethod != null) {
+      _queryParams["acquireMethod"] = acquireMethod;
     }
     if (locale != null) {
       _queryParams["locale"] = [locale];
@@ -3481,20 +3518,17 @@ class VolumesMybooksResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (processingState != null) {
-      _queryParams["processingState"] = processingState;
-    }
     if (source != null) {
       _queryParams["source"] = [source];
     }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+    if (processingState != null) {
+      _queryParams["processingState"] = processingState;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/mybooks';
+    _url = 'books/v1/volumes/mybooks';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3516,17 +3550,18 @@ class VolumesRecommendedResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-  /// Used for generating recommendations.
-  ///
   /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
   /// returned recommendations. Books with a higher maturity rating are filtered
   /// out.
   /// Possible string values are:
-  /// - "mature" : Show books which are rated mature or lower.
+  /// - "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  /// - "MATURE" : Show books which are rated mature or lower.
   /// - "not-mature" : Show books which are rated not mature.
   ///
   /// [source] - String to identify the originator of this request.
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating recommendations.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3539,9 +3574,9 @@ class VolumesRecommendedResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumes> list(
-      {core.String locale,
-      core.String maxAllowedMaturityRating,
+      {core.String maxAllowedMaturityRating,
       core.String source,
+      core.String locale,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3550,20 +3585,20 @@ class VolumesRecommendedResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
-    }
     if (maxAllowedMaturityRating != null) {
       _queryParams["maxAllowedMaturityRating"] = [maxAllowedMaturityRating];
     }
     if (source != null) {
       _queryParams["source"] = [source];
     }
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/recommended';
+    _url = 'books/v1/volumes/recommended';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3578,17 +3613,18 @@ class VolumesRecommendedResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [rating] - Rating to be given to the volume.
-  /// Possible string values are:
-  /// - "HAVE_IT" : Rating indicating a dismissal due to ownership.
-  /// - "NOT_INTERESTED" : Rating indicating a negative dismissal of a volume.
-  ///
-  /// [volumeId] - ID of the source volume.
-  ///
   /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
   /// Used for generating recommendations.
   ///
   /// [source] - String to identify the originator of this request.
+  ///
+  /// [rating] - Rating to be given to the volume.
+  /// Possible string values are:
+  /// - "RATING_UNDEFINED"
+  /// - "HAVE_IT" : Rating indicating a dismissal due to ownership.
+  /// - "NOT_INTERESTED" : Rating indicating a negative dismissal of a volume.
+  ///
+  /// [volumeId] - ID of the source volume.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3601,8 +3637,11 @@ class VolumesRecommendedResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BooksVolumesRecommendedRateResponse> rate(
-      core.String rating, core.String volumeId,
-      {core.String locale, core.String source, core.String $fields}) {
+      {core.String locale,
+      core.String source,
+      core.String rating,
+      core.String volumeId,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3610,25 +3649,23 @@ class VolumesRecommendedResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (rating == null) {
-      throw new core.ArgumentError("Parameter rating is required.");
-    }
-    _queryParams["rating"] = [rating];
-    if (volumeId == null) {
-      throw new core.ArgumentError("Parameter volumeId is required.");
-    }
-    _queryParams["volumeId"] = [volumeId];
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
     if (source != null) {
       _queryParams["source"] = [source];
     }
+    if (rating != null) {
+      _queryParams["rating"] = [rating];
+    }
+    if (volumeId != null) {
+      _queryParams["volumeId"] = [volumeId];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/recommended/rate';
+    _url = 'books/v1/volumes/recommended/rate';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -3651,21 +3688,20 @@ class VolumesUseruploadedResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [startIndex] - Index of the first result to return (starts at 0)
+  ///
   /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
   /// Used for generating recommendations.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "40".
   ///
   /// [processingState] - The processing state of the user uploaded volumes to
   /// be returned.
   ///
-  /// [source] - String to identify the originator of this request.
-  ///
-  /// [startIndex] - Index of the first result to return (starts at 0)
-  ///
   /// [volumeId] - The ids of the volumes to be returned. If not specified all
   /// that match the processingState are returned.
+  ///
+  /// [source] - String to identify the originator of this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3678,12 +3714,12 @@ class VolumesUseruploadedResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumes> list(
-      {core.String locale,
+      {core.int startIndex,
+      core.String locale,
       core.int maxResults,
       core.List<core.String> processingState,
-      core.String source,
-      core.int startIndex,
       core.List<core.String> volumeId,
+      core.String source,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3692,6 +3728,9 @@ class VolumesUseruploadedResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
@@ -3701,20 +3740,17 @@ class VolumesUseruploadedResourceApi {
     if (processingState != null) {
       _queryParams["processingState"] = processingState;
     }
-    if (source != null) {
-      _queryParams["source"] = [source];
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
-    }
     if (volumeId != null) {
       _queryParams["volumeId"] = volumeId;
+    }
+    if (source != null) {
+      _queryParams["source"] = [source];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'volumes/useruploaded';
+    _url = 'books/v1/volumes/useruploaded';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3901,7 +3937,7 @@ class Annotation {
   AnnotationClientVersionRanges clientVersionRanges;
 
   /// Timestamp for the created time of this annotation.
-  core.DateTime created;
+  core.String created;
 
   /// Selection ranges for the most recent content version.
   AnnotationCurrentVersionRanges currentVersionRanges;
@@ -3935,7 +3971,7 @@ class Annotation {
   core.String selfLink;
 
   /// Timestamp for the last time this annotation was modified.
-  core.DateTime updated;
+  core.String updated;
 
   /// The volume that this annotation belongs to.
   core.String volumeId;
@@ -3954,7 +3990,7 @@ class Annotation {
           _json["clientVersionRanges"]);
     }
     if (_json.containsKey("created")) {
-      created = core.DateTime.parse(_json["created"]);
+      created = _json["created"];
     }
     if (_json.containsKey("currentVersionRanges")) {
       currentVersionRanges = new AnnotationCurrentVersionRanges.fromJson(
@@ -3991,7 +4027,7 @@ class Annotation {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
     if (_json.containsKey("volumeId")) {
       volumeId = _json["volumeId"];
@@ -4011,7 +4047,7 @@ class Annotation {
       _json["clientVersionRanges"] = (clientVersionRanges).toJson();
     }
     if (created != null) {
-      _json["created"] = (created).toIso8601String();
+      _json["created"] = created;
     }
     if (currentVersionRanges != null) {
       _json["currentVersionRanges"] = (currentVersionRanges).toJson();
@@ -4047,113 +4083,7 @@ class Annotation {
       _json["selfLink"] = selfLink;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
-    }
-    if (volumeId != null) {
-      _json["volumeId"] = volumeId;
-    }
-    return _json;
-  }
-}
-
-class Annotationdata {
-  /// The type of annotation this data is for.
-  core.String annotationType;
-
-  ///
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object data;
-
-  /// Base64 encoded data for this annotation data.
-  core.String encodedData;
-  core.List<core.int> get encodedDataAsBytes {
-    return convert.base64.decode(encodedData);
-  }
-
-  set encodedDataAsBytes(core.List<core.int> _bytes) {
-    encodedData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// Unique id for this annotation data.
-  core.String id;
-
-  /// Resource Type
-  core.String kind;
-
-  /// The Layer id for this data. *
-  core.String layerId;
-
-  /// URL for this resource. *
-  core.String selfLink;
-
-  /// Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
-  /// format).
-  core.DateTime updated;
-
-  /// The volume id for this data. *
-  core.String volumeId;
-
-  Annotationdata();
-
-  Annotationdata.fromJson(core.Map _json) {
-    if (_json.containsKey("annotationType")) {
-      annotationType = _json["annotationType"];
-    }
-    if (_json.containsKey("data")) {
-      data = _json["data"];
-    }
-    if (_json.containsKey("encoded_data")) {
-      encodedData = _json["encoded_data"];
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("layerId")) {
-      layerId = _json["layerId"];
-    }
-    if (_json.containsKey("selfLink")) {
-      selfLink = _json["selfLink"];
-    }
-    if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
-    }
-    if (_json.containsKey("volumeId")) {
-      volumeId = _json["volumeId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (annotationType != null) {
-      _json["annotationType"] = annotationType;
-    }
-    if (data != null) {
-      _json["data"] = data;
-    }
-    if (encodedData != null) {
-      _json["encoded_data"] = encodedData;
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (layerId != null) {
-      _json["layerId"] = layerId;
-    }
-    if (selfLink != null) {
-      _json["selfLink"] = selfLink;
-    }
-    if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     if (volumeId != null) {
       _json["volumeId"] = volumeId;
@@ -4220,7 +4150,7 @@ class AnnotationsSummaryLayers {
   core.String layerId;
   core.String limitType;
   core.int remainingCharacterCount;
-  core.DateTime updated;
+  core.String updated;
 
   AnnotationsSummaryLayers();
 
@@ -4238,7 +4168,7 @@ class AnnotationsSummaryLayers {
       remainingCharacterCount = _json["remainingCharacterCount"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
   }
 
@@ -4258,7 +4188,7 @@ class AnnotationsSummaryLayers {
       _json["remainingCharacterCount"] = remainingCharacterCount;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     return _json;
   }
@@ -4297,7 +4227,7 @@ class AnnotationsSummary {
 
 class Annotationsdata {
   /// A list of Annotation Data.
-  core.List<Annotationdata> items;
+  core.List<GeoAnnotationdata> items;
 
   /// Resource type
   core.String kind;
@@ -4314,7 +4244,8 @@ class Annotationsdata {
   Annotationsdata.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Annotationdata>((value) => new Annotationdata.fromJson(value))
+          .map<GeoAnnotationdata>(
+              (value) => new GeoAnnotationdata.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4438,55 +4369,6 @@ class BooksCloudloadingResource {
   }
 }
 
-class BooksSubscriptionReleaseInfo {
-  /// Amount in micros of the specified currency code.
-  core.String amountInMicros;
-
-  /// Currency code of the amount.
-  core.String currencyCode;
-
-  /// The release number of this issue/volume/book.
-  core.String releaseNumber;
-
-  /// The release date.
-  core.String releaseTimestampUs;
-
-  BooksSubscriptionReleaseInfo();
-
-  BooksSubscriptionReleaseInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("amountInMicros")) {
-      amountInMicros = _json["amountInMicros"];
-    }
-    if (_json.containsKey("currencyCode")) {
-      currencyCode = _json["currencyCode"];
-    }
-    if (_json.containsKey("releaseNumber")) {
-      releaseNumber = _json["releaseNumber"];
-    }
-    if (_json.containsKey("releaseTimestampUs")) {
-      releaseTimestampUs = _json["releaseTimestampUs"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (amountInMicros != null) {
-      _json["amountInMicros"] = amountInMicros;
-    }
-    if (currencyCode != null) {
-      _json["currencyCode"] = currencyCode;
-    }
-    if (releaseNumber != null) {
-      _json["releaseNumber"] = releaseNumber;
-    }
-    if (releaseTimestampUs != null) {
-      _json["releaseTimestampUs"] = releaseTimestampUs;
-    }
-    return _json;
-  }
-}
-
 class BooksVolumesRecommendedRateResponse {
   core.String consistencyToken;
 
@@ -4514,7 +4396,7 @@ class Bookshelf {
 
   /// Created time for this bookshelf (formatted UTC timestamp with millisecond
   /// resolution).
-  core.DateTime created;
+  core.String created;
 
   /// Description of this bookshelf.
   core.String description;
@@ -4533,14 +4415,14 @@ class Bookshelf {
 
   /// Last modified time of this bookshelf (formatted UTC timestamp with
   /// millisecond resolution).
-  core.DateTime updated;
+  core.String updated;
 
   /// Number of volumes in this bookshelf.
   core.int volumeCount;
 
   /// Last time a volume was added or removed from this bookshelf (formatted UTC
   /// timestamp with millisecond resolution).
-  core.DateTime volumesLastUpdated;
+  core.String volumesLastUpdated;
 
   Bookshelf();
 
@@ -4549,7 +4431,7 @@ class Bookshelf {
       access = _json["access"];
     }
     if (_json.containsKey("created")) {
-      created = core.DateTime.parse(_json["created"]);
+      created = _json["created"];
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -4567,13 +4449,13 @@ class Bookshelf {
       title = _json["title"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
     if (_json.containsKey("volumeCount")) {
       volumeCount = _json["volumeCount"];
     }
     if (_json.containsKey("volumesLastUpdated")) {
-      volumesLastUpdated = core.DateTime.parse(_json["volumesLastUpdated"]);
+      volumesLastUpdated = _json["volumesLastUpdated"];
     }
   }
 
@@ -4584,7 +4466,7 @@ class Bookshelf {
       _json["access"] = access;
     }
     if (created != null) {
-      _json["created"] = (created).toIso8601String();
+      _json["created"] = created;
     }
     if (description != null) {
       _json["description"] = description;
@@ -4602,13 +4484,13 @@ class Bookshelf {
       _json["title"] = title;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     if (volumeCount != null) {
       _json["volumeCount"] = volumeCount;
     }
     if (volumesLastUpdated != null) {
-      _json["volumesLastUpdated"] = (volumesLastUpdated).toIso8601String();
+      _json["volumesLastUpdated"] = volumesLastUpdated;
     }
     return _json;
   }
@@ -4820,6 +4702,110 @@ class ConcurrentAccessRestriction {
     }
     if (timeWindowSeconds != null) {
       _json["timeWindowSeconds"] = timeWindowSeconds;
+    }
+    if (volumeId != null) {
+      _json["volumeId"] = volumeId;
+    }
+    return _json;
+  }
+}
+
+class DictionaryAnnotationdata {
+  /// The type of annotation this data is for.
+  core.String annotationType;
+
+  /// JSON encoded data for this dictionary annotation data. Emitted with name
+  /// 'data' in JSON output. Either this or geo_data will be populated.
+  Dictlayerdata data;
+
+  /// Base64 encoded data for this annotation data.
+  core.String encodedData;
+  core.List<core.int> get encodedDataAsBytes {
+    return convert.base64.decode(encodedData);
+  }
+
+  set encodedDataAsBytes(core.List<core.int> _bytes) {
+    encodedData =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// Unique id for this annotation data.
+  core.String id;
+
+  /// Resource Type
+  core.String kind;
+
+  /// The Layer id for this data. *
+  core.String layerId;
+
+  /// URL for this resource. *
+  core.String selfLink;
+
+  /// Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
+  /// format).
+  core.String updated;
+
+  /// The volume id for this data. *
+  core.String volumeId;
+
+  DictionaryAnnotationdata();
+
+  DictionaryAnnotationdata.fromJson(core.Map _json) {
+    if (_json.containsKey("annotationType")) {
+      annotationType = _json["annotationType"];
+    }
+    if (_json.containsKey("data")) {
+      data = new Dictlayerdata.fromJson(_json["data"]);
+    }
+    if (_json.containsKey("encodedData")) {
+      encodedData = _json["encodedData"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("layerId")) {
+      layerId = _json["layerId"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("updated")) {
+      updated = _json["updated"];
+    }
+    if (_json.containsKey("volumeId")) {
+      volumeId = _json["volumeId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (annotationType != null) {
+      _json["annotationType"] = annotationType;
+    }
+    if (data != null) {
+      _json["data"] = (data).toJson();
+    }
+    if (encodedData != null) {
+      _json["encodedData"] = encodedData;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (layerId != null) {
+      _json["layerId"] = layerId;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (updated != null) {
+      _json["updated"] = updated;
     }
     if (volumeId != null) {
       _json["volumeId"] = volumeId;
@@ -5750,6 +5736,23 @@ class DownloadAccesses {
   }
 }
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
+class Empty {
+  Empty();
+
+  Empty.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Family membership info of the user that made the request.
 class FamilyInfoMembership {
   /// Restrictions on user buying and acquiring content.
@@ -5838,6 +5841,110 @@ class FamilyInfo {
   }
 }
 
+class GeoAnnotationdata {
+  /// The type of annotation this data is for.
+  core.String annotationType;
+
+  /// JSON encoded data for this geo annotation data. Emitted with name 'data'
+  /// in JSON output. Either this or dict_data will be populated.
+  Geolayerdata data;
+
+  /// Base64 encoded data for this annotation data.
+  core.String encodedData;
+  core.List<core.int> get encodedDataAsBytes {
+    return convert.base64.decode(encodedData);
+  }
+
+  set encodedDataAsBytes(core.List<core.int> _bytes) {
+    encodedData =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// Unique id for this annotation data.
+  core.String id;
+
+  /// Resource Type
+  core.String kind;
+
+  /// The Layer id for this data. *
+  core.String layerId;
+
+  /// URL for this resource. *
+  core.String selfLink;
+
+  /// Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
+  /// format).
+  core.String updated;
+
+  /// The volume id for this data. *
+  core.String volumeId;
+
+  GeoAnnotationdata();
+
+  GeoAnnotationdata.fromJson(core.Map _json) {
+    if (_json.containsKey("annotationType")) {
+      annotationType = _json["annotationType"];
+    }
+    if (_json.containsKey("data")) {
+      data = new Geolayerdata.fromJson(_json["data"]);
+    }
+    if (_json.containsKey("encodedData")) {
+      encodedData = _json["encodedData"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("layerId")) {
+      layerId = _json["layerId"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("updated")) {
+      updated = _json["updated"];
+    }
+    if (_json.containsKey("volumeId")) {
+      volumeId = _json["volumeId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (annotationType != null) {
+      _json["annotationType"] = annotationType;
+    }
+    if (data != null) {
+      _json["data"] = (data).toJson();
+    }
+    if (encodedData != null) {
+      _json["encodedData"] = encodedData;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (layerId != null) {
+      _json["layerId"] = layerId;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (updated != null) {
+      _json["updated"] = updated;
+    }
+    if (volumeId != null) {
+      _json["volumeId"] = volumeId;
+    }
+    return _json;
+  }
+}
+
 class GeolayerdataCommon {
   /// The language of the information url and description.
   core.String lang;
@@ -5892,34 +5999,6 @@ class GeolayerdataCommon {
     }
     if (title != null) {
       _json["title"] = title;
-    }
-    return _json;
-  }
-}
-
-class GeolayerdataGeoBoundary {
-  core.int latitude;
-  core.int longitude;
-
-  GeolayerdataGeoBoundary();
-
-  GeolayerdataGeoBoundary.fromJson(core.Map _json) {
-    if (_json.containsKey("latitude")) {
-      latitude = _json["latitude"];
-    }
-    if (_json.containsKey("longitude")) {
-      longitude = _json["longitude"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (latitude != null) {
-      _json["latitude"] = latitude;
-    }
-    if (longitude != null) {
-      _json["longitude"] = longitude;
     }
     return _json;
   }
@@ -6014,7 +6093,7 @@ class GeolayerdataGeoViewport {
 class GeolayerdataGeo {
   /// The boundary of the location as a set of loops containing pairs of
   /// latitude, longitude coordinates.
-  core.List<core.List<GeolayerdataGeoBoundary>> boundary;
+  core.List<core.String> boundary;
 
   /// The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER
   core.String cachePolicy;
@@ -6038,21 +6117,15 @@ class GeolayerdataGeo {
 
   /// The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom
   /// level, in which the entire world can be seen on one map) to 21+ (down to
-  /// individual buildings). See:
-  /// https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels
+  /// individual buildings). See: https:
+  /// //developers.google.com/maps/documentation/staticmaps/#Zoomlevels
   core.int zoom;
 
   GeolayerdataGeo();
 
   GeolayerdataGeo.fromJson(core.Map _json) {
     if (_json.containsKey("boundary")) {
-      boundary = (_json["boundary"] as core.List)
-          .map<core.List<GeolayerdataGeoBoundary>>((value) =>
-              (value as core.List)
-                  .map<GeolayerdataGeoBoundary>(
-                      (value) => new GeolayerdataGeoBoundary.fromJson(value))
-                  .toList())
-          .toList();
+      boundary = (_json["boundary"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("cachePolicy")) {
       cachePolicy = _json["cachePolicy"];
@@ -6081,9 +6154,7 @@ class GeolayerdataGeo {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
     if (boundary != null) {
-      _json["boundary"] = boundary
-          .map((value) => value.map((value) => (value).toJson()).toList())
-          .toList();
+      _json["boundary"] = boundary;
     }
     if (cachePolicy != null) {
       _json["cachePolicy"] = cachePolicy;
@@ -6220,7 +6291,7 @@ class Layersummary {
 
   /// Timestamp for the last time an item in this layer was updated. (RFC 3339
   /// UTC date-time format).
-  core.DateTime updated;
+  core.String updated;
 
   /// The current version of this layer's volume annotations. Note that this
   /// version applies only to the data in the books.layers.volumeAnnotations.*
@@ -6265,7 +6336,7 @@ class Layersummary {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
     if (_json.containsKey("volumeAnnotationsVersion")) {
       volumeAnnotationsVersion = _json["volumeAnnotationsVersion"];
@@ -6309,7 +6380,7 @@ class Layersummary {
       _json["selfLink"] = selfLink;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     if (volumeAnnotationsVersion != null) {
       _json["volumeAnnotationsVersion"] = volumeAnnotationsVersion;
@@ -6688,7 +6759,7 @@ class ReadingPosition {
 
   /// Timestamp when this reading position was last updated (formatted UTC
   /// timestamp with millisecond resolution).
-  core.DateTime updated;
+  core.String updated;
 
   /// Volume id associated with this reading position.
   core.String volumeId;
@@ -6712,7 +6783,7 @@ class ReadingPosition {
       pdfPosition = _json["pdfPosition"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
     if (_json.containsKey("volumeId")) {
       volumeId = _json["volumeId"];
@@ -6738,7 +6809,7 @@ class ReadingPosition {
       _json["pdfPosition"] = pdfPosition;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     if (volumeId != null) {
       _json["volumeId"] = volumeId;
@@ -6747,7 +6818,7 @@ class ReadingPosition {
   }
 }
 
-class RequestAccess {
+class RequestAccessData {
   /// A concurrent access response.
   ConcurrentAccessRestriction concurrentAccess;
 
@@ -6757,9 +6828,9 @@ class RequestAccess {
   /// Resource type.
   core.String kind;
 
-  RequestAccess();
+  RequestAccessData();
 
-  RequestAccess.fromJson(core.Map _json) {
+  RequestAccessData.fromJson(core.Map _json) {
     if (_json.containsKey("concurrentAccess")) {
       concurrentAccess =
           new ConcurrentAccessRestriction.fromJson(_json["concurrentAccess"]);
@@ -6960,32 +7031,114 @@ class Review {
   }
 }
 
+class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
+  core.double amountInMicros;
+  core.String currencyCode;
+  core.String releaseNumber;
+  core.String releaseTime;
+
+  SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo();
+
+  SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("amountInMicros")) {
+      amountInMicros = _json["amountInMicros"].toDouble();
+    }
+    if (_json.containsKey("currencyCode")) {
+      currencyCode = _json["currencyCode"];
+    }
+    if (_json.containsKey("releaseNumber")) {
+      releaseNumber = _json["releaseNumber"];
+    }
+    if (_json.containsKey("releaseTime")) {
+      releaseTime = _json["releaseTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amountInMicros != null) {
+      _json["amountInMicros"] = amountInMicros;
+    }
+    if (currencyCode != null) {
+      _json["currencyCode"] = currencyCode;
+    }
+    if (releaseNumber != null) {
+      _json["releaseNumber"] = releaseNumber;
+    }
+    if (releaseTime != null) {
+      _json["releaseTime"] = releaseTime;
+    }
+    return _json;
+  }
+}
+
+class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
+  core.double amountInMicros;
+  core.String currencyCode;
+  core.String releaseNumber;
+  core.String releaseTime;
+
+  SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo();
+
+  SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("amountInMicros")) {
+      amountInMicros = _json["amountInMicros"].toDouble();
+    }
+    if (_json.containsKey("currencyCode")) {
+      currencyCode = _json["currencyCode"];
+    }
+    if (_json.containsKey("releaseNumber")) {
+      releaseNumber = _json["releaseNumber"];
+    }
+    if (_json.containsKey("releaseTime")) {
+      releaseTime = _json["releaseTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amountInMicros != null) {
+      _json["amountInMicros"] = amountInMicros;
+    }
+    if (currencyCode != null) {
+      _json["currencyCode"] = currencyCode;
+    }
+    if (releaseNumber != null) {
+      _json["releaseNumber"] = releaseNumber;
+    }
+    if (releaseTime != null) {
+      _json["releaseTime"] = releaseTime;
+    }
+    return _json;
+  }
+}
+
 class SeriesSeriesSeriesSubscriptionReleaseInfo {
-  /// Cancellation date of the series subscription (or when it ends).
-  core.String cancellationTimestampUs;
-
-  /// Release information for the last release.
-  BooksSubscriptionReleaseInfo currentReleaseInfo;
-
-  /// Release information for the next release.
-  BooksSubscriptionReleaseInfo nextReleaseInfo;
-
-  /// series subscription type.
+  core.String cancelTime;
+  SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo
+      currentReleaseInfo;
+  SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo nextReleaseInfo;
   core.String seriesSubscriptionType;
 
   SeriesSeriesSeriesSubscriptionReleaseInfo();
 
   SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("cancellationTimestampUs")) {
-      cancellationTimestampUs = _json["cancellationTimestampUs"];
+    if (_json.containsKey("cancelTime")) {
+      cancelTime = _json["cancelTime"];
     }
     if (_json.containsKey("currentReleaseInfo")) {
-      currentReleaseInfo = new BooksSubscriptionReleaseInfo.fromJson(
-          _json["currentReleaseInfo"]);
+      currentReleaseInfo =
+          new SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo
+              .fromJson(_json["currentReleaseInfo"]);
     }
     if (_json.containsKey("nextReleaseInfo")) {
       nextReleaseInfo =
-          new BooksSubscriptionReleaseInfo.fromJson(_json["nextReleaseInfo"]);
+          new SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
+              _json["nextReleaseInfo"]);
     }
     if (_json.containsKey("seriesSubscriptionType")) {
       seriesSubscriptionType = _json["seriesSubscriptionType"];
@@ -6995,8 +7148,8 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (cancellationTimestampUs != null) {
-      _json["cancellationTimestampUs"] = cancellationTimestampUs;
+    if (cancelTime != null) {
+      _json["cancelTime"] = cancelTime;
     }
     if (currentReleaseInfo != null) {
       _json["currentReleaseInfo"] = (currentReleaseInfo).toJson();
@@ -7958,7 +8111,7 @@ class VolumeSaleInfo {
   core.List<VolumeSaleInfoOffers> offers;
 
   /// The date on which this book is available for sale.
-  core.DateTime onSaleDate;
+  core.String onSaleDate;
 
   /// The actual selling price of the book. This is the same as the suggested
   /// retail or list price unless there are offers or discounts on this volume.
@@ -7993,7 +8146,7 @@ class VolumeSaleInfo {
           .toList();
     }
     if (_json.containsKey("onSaleDate")) {
-      onSaleDate = core.DateTime.parse(_json["onSaleDate"]);
+      onSaleDate = _json["onSaleDate"];
     }
     if (_json.containsKey("retailPrice")) {
       retailPrice =
@@ -8023,7 +8176,7 @@ class VolumeSaleInfo {
       _json["offers"] = offers.map((value) => (value).toJson()).toList();
     }
     if (onSaleDate != null) {
-      _json["onSaleDate"] = (onSaleDate).toIso8601String();
+      _json["onSaleDate"] = onSaleDate;
     }
     if (retailPrice != null) {
       _json["retailPrice"] = (retailPrice).toJson();
@@ -8063,7 +8216,7 @@ class VolumeUserInfoCopy {
   core.int allowedCharacterCount;
   core.String limitType;
   core.int remainingCharacterCount;
-  core.DateTime updated;
+  core.String updated;
 
   VolumeUserInfoCopy();
 
@@ -8078,7 +8231,7 @@ class VolumeUserInfoCopy {
       remainingCharacterCount = _json["remainingCharacterCount"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
   }
 
@@ -8095,7 +8248,7 @@ class VolumeUserInfoCopy {
       _json["remainingCharacterCount"] = remainingCharacterCount;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     return _json;
   }
@@ -8201,7 +8354,7 @@ class VolumeUserInfo {
   /// Timestamp when this volume was acquired by the user. (RFC 3339 UTC
   /// date-time format) Acquiring includes purchase, user upload, receiving
   /// family sharing, etc.
-  core.DateTime acquiredTime;
+  core.String acquiredTime;
 
   /// How this volume was acquired.
   core.int acquisitionType;
@@ -8257,14 +8410,14 @@ class VolumeUserInfo {
   /// Timestamp when this volume was last modified by a user action, such as a
   /// reading position update, volume purchase or writing a review. (RFC 3339
   /// UTC date-time format).
-  core.DateTime updated;
+  core.String updated;
   VolumeUserInfoUserUploadedVolumeInfo userUploadedVolumeInfo;
 
   VolumeUserInfo();
 
   VolumeUserInfo.fromJson(core.Map _json) {
     if (_json.containsKey("acquiredTime")) {
-      acquiredTime = core.DateTime.parse(_json["acquiredTime"]);
+      acquiredTime = _json["acquiredTime"];
     }
     if (_json.containsKey("acquisitionType")) {
       acquisitionType = _json["acquisitionType"];
@@ -8317,7 +8470,7 @@ class VolumeUserInfo {
       review = new Review.fromJson(_json["review"]);
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
     if (_json.containsKey("userUploadedVolumeInfo")) {
       userUploadedVolumeInfo =
@@ -8330,7 +8483,7 @@ class VolumeUserInfo {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
     if (acquiredTime != null) {
-      _json["acquiredTime"] = (acquiredTime).toIso8601String();
+      _json["acquiredTime"] = acquiredTime;
     }
     if (acquisitionType != null) {
       _json["acquisitionType"] = acquisitionType;
@@ -8381,7 +8534,7 @@ class VolumeUserInfo {
       _json["review"] = (review).toJson();
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     if (userUploadedVolumeInfo != null) {
       _json["userUploadedVolumeInfo"] = (userUploadedVolumeInfo).toJson();
@@ -8576,6 +8729,35 @@ class VolumeVolumeInfoPanelizationSummary {
   }
 }
 
+/// The reading modes available for this volume.
+class VolumeVolumeInfoReadingModes {
+  core.bool image;
+  core.bool text;
+
+  VolumeVolumeInfoReadingModes();
+
+  VolumeVolumeInfoReadingModes.fromJson(core.Map _json) {
+    if (_json.containsKey("image")) {
+      image = _json["image"];
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (image != null) {
+      _json["image"] = image;
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
 /// General volume information.
 class VolumeVolumeInfo {
   /// Whether anonymous logging should be allowed.
@@ -8654,10 +8836,7 @@ class VolumeVolumeInfo {
   core.int ratingsCount;
 
   /// The reading modes available for this volume.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object readingModes;
+  VolumeVolumeInfoReadingModes readingModes;
 
   /// Total number of sample pages as per publisher metadata.
   core.int samplePageCount;
@@ -8746,7 +8925,8 @@ class VolumeVolumeInfo {
       ratingsCount = _json["ratingsCount"];
     }
     if (_json.containsKey("readingModes")) {
-      readingModes = _json["readingModes"];
+      readingModes =
+          new VolumeVolumeInfoReadingModes.fromJson(_json["readingModes"]);
     }
     if (_json.containsKey("samplePageCount")) {
       samplePageCount = _json["samplePageCount"];
@@ -8836,7 +9016,7 @@ class VolumeVolumeInfo {
       _json["ratingsCount"] = ratingsCount;
     }
     if (readingModes != null) {
-      _json["readingModes"] = readingModes;
+      _json["readingModes"] = (readingModes).toJson();
     }
     if (samplePageCount != null) {
       _json["samplePageCount"] = samplePageCount;
@@ -9103,7 +9283,7 @@ class Volumeannotation {
 
   /// Timestamp for the last time this anntoation was updated. (RFC 3339 UTC
   /// date-time format).
-  core.DateTime updated;
+  core.String updated;
 
   /// The Volume this annotation is for.
   core.String volumeId;
@@ -9149,7 +9329,7 @@ class Volumeannotation {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
     if (_json.containsKey("volumeId")) {
       volumeId = _json["volumeId"];
@@ -9196,7 +9376,7 @@ class Volumeannotation {
       _json["selfLink"] = selfLink;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     if (volumeId != null) {
       _json["volumeId"] = volumeId;

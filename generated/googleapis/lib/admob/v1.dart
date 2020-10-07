@@ -16,8 +16,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client admob/v1';
 
-/// The Google AdMob API lets you programmatically get reports on earnings.
+/// The AdMob API allows publishers to programmatically get information about
+/// their AdMob account.
 class AdmobApi {
+  /// See your AdMob data
+  static const AdmobReportScope =
+      "https://www.googleapis.com/auth/admob.report";
+
   final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
@@ -43,8 +48,8 @@ class AccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the publisher account to retrieve.
-  /// Example: accounts/pub-9876543210987654
+  /// [name] - Resource name of the publisher account to retrieve. Example:
+  /// accounts/pub-9876543210987654
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -88,12 +93,12 @@ class AccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Maximum number of accounts to return.
-  ///
   /// [pageToken] - The value returned by the last
-  /// `ListPublisherAccountsResponse`; indicates
-  /// that this is a continuation of a prior `ListPublisherAccounts` call, and
-  /// that the system should return the next page of data.
+  /// `ListPublisherAccountsResponse`; indicates that this is a continuation of
+  /// a prior `ListPublisherAccounts` call, and that the system should return
+  /// the next page of data.
+  ///
+  /// [pageSize] - Maximum number of accounts to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -106,7 +111,7 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPublisherAccountsResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -114,11 +119,11 @@ class AccountsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -262,18 +267,13 @@ class AccountsNetworkReportResourceApi {
 }
 
 /// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day
-/// and time zone are either specified elsewhere or are not significant. The
-/// date
-/// is relative to the Proleptic Gregorian Calendar. This can represent:
-///
-/// * A full date, with non-zero year, month and day values
-/// * A month and day value, with a zero year, e.g. an anniversary
-/// * A year on its own, with zero month and day values
-/// * A year and month value, with a zero day, e.g. a credit card expiration
-/// date
-///
-/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// day and time zone are either specified elsewhere or are not significant. The
+/// date is relative to the Proleptic Gregorian Calendar. This can represent: *
+/// A full date, with non-zero year, month and day values * A month and day
+/// value, with a zero year, e.g. an anniversary * A year on its own, with zero
+/// month and day values * A year and month value, with a zero day, e.g. a
+/// credit card expiration date Related types are google.type.TimeOfDay and
+/// `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
   /// if specifying a year by itself or a year and month where the day is not
@@ -284,8 +284,8 @@ class Date {
   /// month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-  /// a year.
+  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
+  /// year.
   core.int year;
 
   Date();
@@ -321,8 +321,7 @@ class Date {
 /// Specification of a single date range. Both dates are inclusive.
 class DateRange {
   /// End date of the date range, inclusive. Must be greater than or equal to
-  /// the
-  /// start date.
+  /// the start date.
   Date endDate;
 
   /// Start date of the date range, inclusive. Must be less than or equal to the
@@ -378,46 +377,21 @@ class GenerateMediationReportRequest {
 
 /// The streaming response for the AdMob Mediation report where the first
 /// response contains the report header, then a stream of row responses, and
-/// finally a footer as the last response message.
-///
-/// For example:
-///
-///     [{
-///       "header": {
-///         "date_range": {
-///           "start_date": {"year": 2018, "month": 9, "day": 1},
-///           "end_date": {"year": 2018, "month": 9, "day": 30}
-///         }
-///         "localization_settings": {
-///           "currency_code": "USD",
-///           "language_code": "en-US"
-///         }
-///       }
-///     },
-///     {
-///       "row": {
-///         "dimension_values": {
-///           "DATE": {"value": "20180918"},
-///           "APP": {
-///             "value": "ca-app-pub-8123415297019784~1001342552",
-///              "display_label": "My app name!"
-///           }
-///         },
-///         "metric_values": {
-///           "ESTIMATED_EARNINGS": {"decimal_value": "1324746"}
-///         }
-///       }
-///     },
-///     {
-///       "footer": {"matching_row_count": 1}
-///     }]
+/// finally a footer as the last response message. For example: [{ "header": {
+/// "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1},
+/// "end_date": {"year": 2018, "month": 9, "day": 1} }, "localization_settings":
+/// { "currency_code": "USD", "language_code": "en-US" } } }, { "row": {
+/// "dimension_values": { "DATE": {"value": "20180918"}, "APP": { "value":
+/// "ca-app-pub-8123415297019784~1001342552", "display_label": "My app name!" }
+/// }, "metric_values": { "ESTIMATED_EARNINGS": {"decimal_value": "1324746"} } }
+/// }, { "footer": {"matching_row_count": 1} }]
 class GenerateMediationReportResponse {
   /// Additional information about the generated report, such as warnings about
   /// the data.
   ReportFooter footer;
 
-  /// Report generation settings that describes the report contents, such as
-  /// the report date range and localization settings.
+  /// Report generation settings that describes the report contents, such as the
+  /// report date range and localization settings.
   ReportHeader header;
 
   /// Actual report data.
@@ -478,47 +452,21 @@ class GenerateNetworkReportRequest {
 
 /// The streaming response for the AdMob Network report where the first response
 /// contains the report header, then a stream of row responses, and finally a
-/// footer as the last response message.
-///
-/// For example:
-///
-///     [{
-///       "header": {
-///         "dateRange": {
-///           "startDate": {"year": 2018, "month": 9, "day": 1},
-///           "endDate": {"year": 2018, "month": 9, "day": 30}
-///         }
-///         "localizationSettings": {
-///           "currencyCode": "USD",
-///           "languageCode": "en-US"
-///         }
-///       }
-///     },
-///     {
-///       "row": {
-///         "dimensionValues": {
-///           "DATE": {"value": "20180918"},
-///           "APP": {
-///             "value": "ca-app-pub-8123415297019784~1001342552",
-///              displayLabel: "My app name!"
-///           }
-///         },
-///         "metricValues": {
-///           "ESTIMATED_EARNINGS": {"microsValue": 6500000}
-///         }
-///       }
-///     },
-///     ...
-///     {
-///       "footer": {"matchingRowCount": 5}
-///     }]
+/// footer as the last response message. For example: [{ "header": {
+/// "dateRange": { "startDate": {"year": 2018, "month": 9, "day": 1}, "endDate":
+/// {"year": 2018, "month": 9, "day": 1} }, "localizationSettings": {
+/// "currencyCode": "USD", "languageCode": "en-US" } } }, { "row": {
+/// "dimensionValues": { "DATE": {"value": "20180918"}, "APP": { "value":
+/// "ca-app-pub-8123415297019784~1001342552", displayLabel: "My app name!" } },
+/// "metricValues": { "ESTIMATED_EARNINGS": {"microsValue": 6500000} } } }, {
+/// "footer": {"matchingRowCount": 1} }]
 class GenerateNetworkReportResponse {
   /// Additional information about the generated report, such as warnings about
   /// the data.
   ReportFooter footer;
 
-  /// Report generation settings that describes the report contents, such as
-  /// the report date range and localization settings.
+  /// Report generation settings that describes the report contents, such as the
+  /// report date range and localization settings.
   ReportHeader header;
 
   /// Actual report data.
@@ -627,41 +575,20 @@ class LocalizationSettings {
   }
 }
 
-/// The specification for generating an AdMob Mediation report.
-/// For example, the specification to get observed ECPM sliced by ad source and
-/// app for the 'US' and 'CN' countries can look like the following example:
-///
-///     {
-///       "date_range": {
-///         "start_date": {"year": 2018, "month": 9, "day": 1},
-///         "end_date": {"year": 2018, "month": 9, "day": 30}
-///       },
-///       "dimensions": ["AD_SOURCE", "APP", "COUNTRY"],
-///       "metrics": ["OBSERVED_ECPM"],
-///       "dimension_filters": [
-///         {
-///           "dimension": "COUNTRY",
-///           "matches_any": {"values": [{"value": "US", "value": "CN"}]}
-///         }
-///       ],
-///       "sort_conditions": [
-///         {"dimension":"APP", order: "ASCENDING"}
-///       ],
-///       "localization_settings": {
-///         "currency_code": "USD",
-///         "language_code": "en-US"
-///       }
-///     }
-///
-/// For a better understanding, you can treat the preceding specification like
-/// the following pseudo SQL:
-///
-///     SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM
-///     FROM MEDIATION_REPORT
-///     WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30'
-///         AND COUNTRY IN ('US', 'CN')
-///     GROUP BY AD_SOURCE, APP, COUNTRY
-///     ORDER BY APP ASC;
+/// The specification for generating an AdMob Mediation report. For example, the
+/// specification to get observed ECPM sliced by ad source and app for the 'US'
+/// and 'CN' countries can look like the following example: { "date_range": {
+/// "start_date": {"year": 2018, "month": 9, "day": 1}, "end_date": {"year":
+/// 2018, "month": 9, "day": 30} }, "dimensions": ["AD_SOURCE", "APP",
+/// "COUNTRY"], "metrics": ["OBSERVED_ECPM"], "dimension_filters": [ {
+/// "dimension": "COUNTRY", "matches_any": {"values": [{"value": "US", "value":
+/// "CN"}]} } ], "sort_conditions": [ {"dimension":"APP", order: "ASCENDING"} ],
+/// "localization_settings": { "currency_code": "USD", "language_code": "en-US"
+/// } } For a better understanding, you can treat the preceding specification
+/// like the following pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM
+/// FROM MEDIATION_REPORT WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30'
+/// AND COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP
+/// ASC;
 class MediationReportSpec {
   /// The date range for which the report is generated.
   DateRange dateRange;
@@ -670,9 +597,9 @@ class MediationReportSpec {
   core.List<MediationReportSpecDimensionFilter> dimensionFilters;
 
   /// List of dimensions of the report. The value combination of these
-  /// dimensions
-  /// determines the row of the report. If no dimensions are specified, the
-  /// report returns a single row of requested metrics for the entire account.
+  /// dimensions determines the row of the report. If no dimensions are
+  /// specified, the report returns a single row of requested metrics for the
+  /// entire account.
   core.List<core.String> dimensions;
 
   /// Localization settings of the report.
@@ -680,7 +607,7 @@ class MediationReportSpec {
 
   /// Maximum number of report data rows to return. If the value is not set, the
   /// API returns as many rows as possible, up to 100000. Acceptable values are
-  /// 1-100000, inclusive. Any other values are treated as 100000.
+  /// 1-100000, inclusive. Values larger than 100000 return an error.
   core.int maxReportRows;
 
   /// List of metrics of the report. A report must specify at least one metric.
@@ -693,11 +620,9 @@ class MediationReportSpec {
   core.List<MediationReportSpecSortCondition> sortConditions;
 
   /// A report time zone. Accepts an IANA TZ name values, such as
-  /// "America/Los_Angeles."  If no time zone is defined, the account default
-  /// takes effect. Check default value by the get account action.
-  ///
-  /// **Warning:** The "America/Los_Angeles" is the only supported value at
-  /// the moment.
+  /// "America/Los_Angeles." If no time zone is defined, the account default
+  /// takes effect. Check default value by the get account action. **Warning:**
+  /// The "America/Los_Angeles" is the only supported value at the moment.
   core.String timeZone;
 
   MediationReportSpec();
@@ -775,41 +700,27 @@ class MediationReportSpecDimensionFilter {
   /// Possible string values are:
   /// - "DIMENSION_UNSPECIFIED" : Default value for an unset field. Do not use.
   /// - "DATE" : A date in the YYYY-MM-DD format (for example, "2018-12-21").
-  /// Requests can
-  /// specify at most one time dimension.
+  /// Requests can specify at most one time dimension.
   /// - "MONTH" : A month in the YYYY-MM format (for example, "2018-12").
-  /// Requests can
-  /// specify at most one time dimension.
+  /// Requests can specify at most one time dimension.
   /// - "WEEK" : The date of the first day of a week in the YYYY-MM-DD format
   /// (for example, "2018-12-21"). Requests can specify at most one time
   /// dimension.
-  /// - "AD_SOURCE" : The unique ID of the ad source (for example,
-  /// "5450213213286189855" and
-  /// "AdMob Network" as label value).
+  /// - "AD_SOURCE" : The [unique ID of the ad source](/admob/api/v1/ad_sources)
+  /// (for example, "5450213213286189855" and "AdMob Network" as label value).
   /// - "AD_SOURCE_INSTANCE" : The unique ID of the ad source instance (for
-  /// example,
-  /// "ca-app-pub-1234#5678" and "AdMob (default)" as label value).
-  ///
-  /// **Warning:** The dimension is incompatible with
-  /// [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) and
-  /// [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// example, "ca-app-pub-1234#5678" and "AdMob (default)" as label value).
   /// - "AD_UNIT" : The unique ID of the ad unit (for example,
-  /// "ca-app-pub-1234/8790").
-  /// If AD_UNIT dimension is specified, then APP is included automatically.
+  /// "ca-app-pub-1234/8790"). If AD_UNIT dimension is specified, then APP is
+  /// included automatically.
   /// - "APP" : The unique ID of the mobile application (for example,
   /// "ca-app-pub-1234~1234").
   /// - "MEDIATION_GROUP" : The unique ID of the mediation group (for example,
   /// "ca-app-pub-1234:mg:1234" and "AdMob (default)" as label value).
-  ///
-  /// **Warning:** The dimension is incompatible with
-  /// [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) and
-  /// [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
   /// - "COUNTRY" : CLDR country code of the place where the ad views/clicks
-  /// occur (for
-  /// example, "US" or "FR"). This is a geography dimension.
+  /// occur (for example, "US" or "FR"). This is a geography dimension.
   /// - "FORMAT" : Format of the ad unit (for example, "banner", "native"), an
-  /// ad delivery
-  /// dimension.
+  /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
   core.String dimension;
@@ -848,41 +759,27 @@ class MediationReportSpecSortCondition {
   /// Possible string values are:
   /// - "DIMENSION_UNSPECIFIED" : Default value for an unset field. Do not use.
   /// - "DATE" : A date in the YYYY-MM-DD format (for example, "2018-12-21").
-  /// Requests can
-  /// specify at most one time dimension.
+  /// Requests can specify at most one time dimension.
   /// - "MONTH" : A month in the YYYY-MM format (for example, "2018-12").
-  /// Requests can
-  /// specify at most one time dimension.
+  /// Requests can specify at most one time dimension.
   /// - "WEEK" : The date of the first day of a week in the YYYY-MM-DD format
   /// (for example, "2018-12-21"). Requests can specify at most one time
   /// dimension.
-  /// - "AD_SOURCE" : The unique ID of the ad source (for example,
-  /// "5450213213286189855" and
-  /// "AdMob Network" as label value).
+  /// - "AD_SOURCE" : The [unique ID of the ad source](/admob/api/v1/ad_sources)
+  /// (for example, "5450213213286189855" and "AdMob Network" as label value).
   /// - "AD_SOURCE_INSTANCE" : The unique ID of the ad source instance (for
-  /// example,
-  /// "ca-app-pub-1234#5678" and "AdMob (default)" as label value).
-  ///
-  /// **Warning:** The dimension is incompatible with
-  /// [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) and
-  /// [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// example, "ca-app-pub-1234#5678" and "AdMob (default)" as label value).
   /// - "AD_UNIT" : The unique ID of the ad unit (for example,
-  /// "ca-app-pub-1234/8790").
-  /// If AD_UNIT dimension is specified, then APP is included automatically.
+  /// "ca-app-pub-1234/8790"). If AD_UNIT dimension is specified, then APP is
+  /// included automatically.
   /// - "APP" : The unique ID of the mobile application (for example,
   /// "ca-app-pub-1234~1234").
   /// - "MEDIATION_GROUP" : The unique ID of the mediation group (for example,
   /// "ca-app-pub-1234:mg:1234" and "AdMob (default)" as label value).
-  ///
-  /// **Warning:** The dimension is incompatible with
-  /// [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) and
-  /// [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
   /// - "COUNTRY" : CLDR country code of the place where the ad views/clicks
-  /// occur (for
-  /// example, "US" or "FR"). This is a geography dimension.
+  /// occur (for example, "US" or "FR"). This is a geography dimension.
   /// - "FORMAT" : Format of the ad unit (for example, "banner", "native"), an
-  /// ad delivery
-  /// dimension.
+  /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
   core.String dimension;
@@ -894,34 +791,27 @@ class MediationReportSpecSortCondition {
   /// - "CLICKS" : The number of times a user clicks an ad. The value is an
   /// integer.
   /// - "ESTIMATED_EARNINGS" : The estimated earnings of the AdMob publisher.
-  /// The currency unit (USD,
-  /// EUR, or other) of the earning metrics are determined by the localization
-  /// setting for currency. The amount is in micros. For example, $6.50 would
-  /// be represented as 6500000.
-  ///
-  /// **Warning:** The metric is incompatible with
-  /// [AD_SOURCE_INSTANCE](#Dimension.ENUM_VALUES.AD_SOURCE_INSTANCE) and
-  /// [MEDIATION_GROUP](#Dimension.ENUM_VALUES.MEDIATION_GROUP) dimensions.
+  /// The currency unit (USD, EUR, or other) of the earning metrics are
+  /// determined by the localization setting for currency. The amount is in
+  /// micros. For example, $6.50 would be represented as 6500000. Estimated
+  /// earnings per mediation group and per ad source instance level is supported
+  /// dating back to October 20, 2019. Third-party estimated earnings will show
+  /// 0 for dates prior to October 20, 2019.
   /// - "IMPRESSIONS" : The total number of ads shown to users. The value is an
   /// integer.
   /// - "IMPRESSION_CTR" : The ratio of clicks over impressions. The value is a
-  /// double precision
-  /// (approximate) decimal value.
+  /// double precision (approximate) decimal value.
   /// - "MATCHED_REQUESTS" : The number of times ads are returned in response to
-  /// a request. The value
-  /// is an integer.
+  /// a request. The value is an integer.
   /// - "MATCH_RATE" : The ratio of matched ad requests over the total ad
-  /// requests. The value is
-  /// a double precision (approximate) decimal value.
+  /// requests. The value is a double precision (approximate) decimal value.
   /// - "OBSERVED_ECPM" : The third-party ad network's estimated average eCPM.
-  /// The currency unit
-  /// (USD, EUR, or other) of the earning metrics are determined by the
-  /// localization setting for currency. The amount is in micros. For example,
-  /// $2.30 would be represented as 2300000.
-  ///
-  /// **Warning:** The metric is incompatible with
-  /// [AD_SOURCE_INSTANCE](#Dimension.ENUM_VALUES.AD_SOURCE_INSTANCE) and
-  /// [MEDIATION_GROUP](#Dimension.ENUM_VALUES.MEDIATION_GROUP) dimensions.
+  /// The currency unit (USD, EUR, or other) of the earning metrics are
+  /// determined by the localization setting for currency. The amount is in
+  /// micros. For example, $2.30 would be represented as 2300000. The estimated
+  /// average eCPM per mediation group and per ad source instance level is
+  /// supported dating back to October 20, 2019. Third-party estimated average
+  /// eCPM will show 0 for dates prior to October 20, 2019.
   core.String metric;
 
   /// Sorting order of the dimension or metric.
@@ -961,42 +851,21 @@ class MediationReportSpecSortCondition {
   }
 }
 
-/// The specification for generating an AdMob Network report.
-/// For example, the specification to get clicks and estimated earnings for only
-/// the 'US' and 'CN' countries can look like the following example:
-///
-///     {
-///       'date_range': {
-///         'start_date': {'year': 2018, 'month': 9, 'day': 1},
-///         'end_date': {'year': 2018, 'month': 9, 'day': 30}
-///       },
-///       'dimensions': ['DATE', 'APP', 'COUNTRY'],
-///       'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'],
-///       'dimension_filters': [
-///         {
-///           'dimension': 'COUNTRY',
-///           'matches_any': {'values': [{'value': 'US', 'value': 'CN'}]}
-///         }
-///       ],
-///       'sort_conditions': [
-///         {'dimension':'APP', order: 'ASCENDING'},
-///         {'metric':'CLICKS', order: 'DESCENDING'}
-///       ],
-///       'localization_settings': {
-///         'currency_code': 'USD',
-///         'language_code': 'en-US'
-///       }
-///     }
-///
-/// For a better understanding, you can treat the preceding specification like
-/// the following pseudo SQL:
-///
-///     SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS
-///     FROM NETWORK_REPORT
-///     WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30'
-///         AND COUNTRY IN ('US', 'CN')
-///     GROUP BY DATE, APP, COUNTRY
-///     ORDER BY APP ASC, CLICKS DESC;
+/// The specification for generating an AdMob Network report. For example, the
+/// specification to get clicks and estimated earnings for only the 'US' and
+/// 'CN' countries can look like the following example: { 'date_range': {
+/// 'start_date': {'year': 2018, 'month': 9, 'day': 1}, 'end_date': {'year':
+/// 2018, 'month': 9, 'day': 30} }, 'dimensions': ['DATE', 'APP', 'COUNTRY'],
+/// 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'], 'dimension_filters': [ {
+/// 'dimension': 'COUNTRY', 'matches_any': {'values': [{'value': 'US', 'value':
+/// 'CN'}]} } ], 'sort_conditions': [ {'dimension':'APP', order: 'ASCENDING'},
+/// {'metric':'CLICKS', order: 'DESCENDING'} ], 'localization_settings': {
+/// 'currency_code': 'USD', 'language_code': 'en-US' } } For a better
+/// understanding, you can treat the preceding specification like the following
+/// pseudo SQL: SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM
+/// NETWORK_REPORT WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30' AND
+/// COUNTRY IN ('US', 'CN') GROUP BY DATE, APP, COUNTRY ORDER BY APP ASC, CLICKS
+/// DESC;
 class NetworkReportSpec {
   /// The date range for which the report is generated.
   DateRange dateRange;
@@ -1005,9 +874,9 @@ class NetworkReportSpec {
   core.List<NetworkReportSpecDimensionFilter> dimensionFilters;
 
   /// List of dimensions of the report. The value combination of these
-  /// dimensions
-  /// determines the row of the report. If no dimensions are specified, the
-  /// report returns a single row of requested metrics for the entire account.
+  /// dimensions determines the row of the report. If no dimensions are
+  /// specified, the report returns a single row of requested metrics for the
+  /// entire account.
   core.List<core.String> dimensions;
 
   /// Localization settings of the report.
@@ -1015,7 +884,7 @@ class NetworkReportSpec {
 
   /// Maximum number of report data rows to return. If the value is not set, the
   /// API returns as many rows as possible, up to 100000. Acceptable values are
-  /// 1-100000, inclusive. Any other values are treated as 100000.
+  /// 1-100000, inclusive. Values larger than 100000 return an error.
   core.int maxReportRows;
 
   /// List of metrics of the report. A report must specify at least one metric.
@@ -1028,11 +897,9 @@ class NetworkReportSpec {
   core.List<NetworkReportSpecSortCondition> sortConditions;
 
   /// A report time zone. Accepts an IANA TZ name values, such as
-  /// "America/Los_Angeles."  If no time zone is defined, the account default
-  /// takes effect. Check default value by the get account action.
-  ///
-  /// **Warning:** The "America/Los_Angeles" is the only supported value at
-  /// the moment.
+  /// "America/Los_Angeles." If no time zone is defined, the account default
+  /// takes effect. Check default value by the get account action. **Warning:**
+  /// The "America/Los_Angeles" is the only supported value at the moment.
   core.String timeZone;
 
   NetworkReportSpec();
@@ -1110,33 +977,26 @@ class NetworkReportSpecDimensionFilter {
   /// Possible string values are:
   /// - "DIMENSION_UNSPECIFIED" : Default value for an unset field. Do not use.
   /// - "DATE" : A date in the YYYY-MM-DD format (for example, "2018-12-21").
-  /// Requests can
-  /// specify at most one time dimension.
+  /// Requests can specify at most one time dimension.
   /// - "MONTH" : A month in the YYYY-MM format (for example, "2018-12").
-  /// Requests can
-  /// specify at most one time dimension.
+  /// Requests can specify at most one time dimension.
   /// - "WEEK" : The date of the first day of a week in the YYYY-MM-DD format
   /// (for example, "2018-12-21"). Requests can specify at most one time
   /// dimension.
   /// - "AD_UNIT" : The unique ID of the ad unit (for example,
-  /// "ca-app-pub-1234/1234").
-  /// If AD_UNIT dimension is specified, then APP is included automatically.
+  /// "ca-app-pub-1234/1234"). If AD_UNIT dimension is specified, then APP is
+  /// included automatically.
   /// - "APP" : The unique ID of the mobile application (for example,
   /// "ca-app-pub-1234~1234").
   /// - "AD_TYPE" : Type of the ad (for example, "text" or "image"), an ad
-  /// delivery
-  /// dimension.
-  ///
-  /// **Warning:** The dimension is incompatible with
+  /// delivery dimension. **Warning:** The dimension is incompatible with
   /// [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS),
   /// [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and
   /// [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.
   /// - "COUNTRY" : CLDR country code of the place where the ad views/clicks
-  /// occur (for
-  /// example, "US" or "FR"). This is a geography dimension.
+  /// occur (for example, "US" or "FR"). This is a geography dimension.
   /// - "FORMAT" : Format of the ad unit (for example, "banner", "native"), an
-  /// ad delivery
-  /// dimension.
+  /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
   core.String dimension;
@@ -1175,33 +1035,26 @@ class NetworkReportSpecSortCondition {
   /// Possible string values are:
   /// - "DIMENSION_UNSPECIFIED" : Default value for an unset field. Do not use.
   /// - "DATE" : A date in the YYYY-MM-DD format (for example, "2018-12-21").
-  /// Requests can
-  /// specify at most one time dimension.
+  /// Requests can specify at most one time dimension.
   /// - "MONTH" : A month in the YYYY-MM format (for example, "2018-12").
-  /// Requests can
-  /// specify at most one time dimension.
+  /// Requests can specify at most one time dimension.
   /// - "WEEK" : The date of the first day of a week in the YYYY-MM-DD format
   /// (for example, "2018-12-21"). Requests can specify at most one time
   /// dimension.
   /// - "AD_UNIT" : The unique ID of the ad unit (for example,
-  /// "ca-app-pub-1234/1234").
-  /// If AD_UNIT dimension is specified, then APP is included automatically.
+  /// "ca-app-pub-1234/1234"). If AD_UNIT dimension is specified, then APP is
+  /// included automatically.
   /// - "APP" : The unique ID of the mobile application (for example,
   /// "ca-app-pub-1234~1234").
   /// - "AD_TYPE" : Type of the ad (for example, "text" or "image"), an ad
-  /// delivery
-  /// dimension.
-  ///
-  /// **Warning:** The dimension is incompatible with
+  /// delivery dimension. **Warning:** The dimension is incompatible with
   /// [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS),
   /// [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and
   /// [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.
   /// - "COUNTRY" : CLDR country code of the place where the ad views/clicks
-  /// occur (for
-  /// example, "US" or "FR"). This is a geography dimension.
+  /// occur (for example, "US" or "FR"). This is a geography dimension.
   /// - "FORMAT" : Format of the ad unit (for example, "banner", "native"), an
-  /// ad delivery
-  /// dimension.
+  /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
   core.String dimension;
@@ -1210,40 +1063,31 @@ class NetworkReportSpecSortCondition {
   /// Possible string values are:
   /// - "METRIC_UNSPECIFIED" : Default value for an unset field. Do not use.
   /// - "AD_REQUESTS" : The number of ad requests. The value is an integer.
-  ///
   /// **Warning:** The metric is incompatible with
   /// [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
   /// - "CLICKS" : The number of times a user clicks an ad. The value is an
   /// integer.
   /// - "ESTIMATED_EARNINGS" : The estimated earnings of the AdMob publisher.
-  /// The currency unit (USD,
-  /// EUR, or other) of the earning metrics are determined by the localization
-  /// setting for currency. The amount is in micros. For example, $6.50 would
-  /// be represented as 6500000.
+  /// The currency unit (USD, EUR, or other) of the earning metrics are
+  /// determined by the localization setting for currency. The amount is in
+  /// micros. For example, $6.50 would be represented as 6500000.
   /// - "IMPRESSIONS" : The total number of ads shown to users. The value is an
   /// integer.
   /// - "IMPRESSION_CTR" : The ratio of clicks over impressions. The value is a
-  /// double precision
-  /// (approximate) decimal value.
+  /// double precision (approximate) decimal value.
   /// - "IMPRESSION_RPM" : The estimated earnings per thousand ad impressions.
-  /// The value is in
-  /// micros. For example, $1.03 would be represented as 1030000.
-  ///
-  /// **Warning:** The metric is incompatible with
+  /// The value is in micros. For example, $1.03 would be represented as
+  /// 1030000. **Warning:** The metric is incompatible with
   /// [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
   /// - "MATCHED_REQUESTS" : The number of times ads are returned in response to
-  /// a request. The value
-  /// is an integer.
+  /// a request. The value is an integer.
   /// - "MATCH_RATE" : The ratio of matched ad requests over the total ad
-  /// requests. The value is
-  /// a double precision (approximate) decimal value.
-  ///
+  /// requests. The value is a double precision (approximate) decimal value.
   /// **Warning:** The metric is incompatible with
   /// [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
   /// - "SHOW_RATE" : The ratio of ads that are displayed over ads that are
-  /// returned, defined
-  /// as impressions / matched requests. The value is a double precision
-  /// (approximate) decimal value.
+  /// returned, defined as impressions / matched requests. The value is a double
+  /// precision (approximate) decimal value.
   core.String metric;
 
   /// Sorting order of the dimension or metric.
@@ -1291,17 +1135,16 @@ class PublisherAccount {
   /// conversion.
   core.String currencyCode;
 
-  /// Resource name of this account.
-  /// Format is accounts/{publisher_id}.
+  /// Resource name of this account. Format is accounts/{publisher_id}.
   core.String name;
 
-  /// The unique ID by which this publisher account can be identified
-  /// in the API requests (for example, pub-1234567890).
+  /// The unique ID by which this publisher account can be identified in the API
+  /// requests (for example, pub-1234567890).
   core.String publisherId;
 
   /// The time zone that is used in reports that are generated for this account.
-  /// The value is a time-zone ID as specified by the CLDR project,
-  /// for example, "America/Los_Angeles".
+  /// The value is a time-zone ID as specified by the CLDR project, for example,
+  /// "America/Los_Angeles".
   core.String reportingTimeZone;
 
   PublisherAccount();
@@ -1343,7 +1186,9 @@ class PublisherAccount {
 /// Groups data available after report generation, for example, warnings and row
 /// counts. Always sent as the last message in the stream response.
 class ReportFooter {
-  /// Total number of rows that did match the request.
+  /// Total number of rows that matched the request. Warning: This count does
+  /// NOT always match the number of rows in the response. Do not make that
+  /// assumption when processing the response.
   core.String matchingRowCount;
 
   /// Warnings associated with generation of the report.
@@ -1382,8 +1227,8 @@ class ReportHeader {
   /// range specified in the report request.
   DateRange dateRange;
 
-  /// Localization settings of the report. This is identical to the settings
-  /// in the report request.
+  /// Localization settings of the report. This is identical to the settings in
+  /// the report request.
   LocalizationSettings localizationSettings;
 
   /// The report time zone. The value is a time-zone ID as specified by the CLDR
@@ -1427,9 +1272,8 @@ class ReportRow {
   /// dimensions.
   core.Map<core.String, ReportRowDimensionValue> dimensionValues;
 
-  /// Map of metric values in a row, with keys as enum name of the metrics. If
-  /// a metric being requested has no value returned, the map will not include
-  /// it.
+  /// Map of metric values in a row, with keys as enum name of the metrics. If a
+  /// metric being requested has no value returned, the map will not include it.
   core.Map<core.String, ReportRowMetricValue> metricValues;
 
   ReportRow();
@@ -1507,9 +1351,9 @@ class ReportRowMetricValue {
   /// Metric integer value.
   core.String integerValue;
 
-  /// Amount in micros. One million is equivalent to one unit. Currency value
-  /// is in the unit (USD, EUR or other) specified by the request.
-  /// For example, $6.50 whould be represented as 6500000 micros.
+  /// Amount in micros. One million is equivalent to one unit. Currency value is
+  /// in the unit (USD, EUR or other) specified by the request. For example,
+  /// $6.50 whould be represented as 6500000 micros.
   core.String microsValue;
 
   ReportRowMetricValue();
@@ -1551,24 +1395,20 @@ class ReportWarning {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value for an unset field. Do not use.
   /// - "DATA_BEFORE_ACCOUNT_TIMEZONE_CHANGE" : Some data in this report is
-  /// aggregated based on a time zone different
-  /// from the requested time zone. This could happen if a local time-zone
-  /// report has the start time before the last time this time zone changed.
-  /// The description field will contain the date of the last time zone
-  /// change.
+  /// aggregated based on a time zone different from the requested time zone.
+  /// This could happen if a local time-zone report has the start time before
+  /// the last time this time zone changed. The description field will contain
+  /// the date of the last time zone change.
   /// - "DATA_DELAYED" : There is an unusual delay in processing the source data
-  /// for the
-  /// requested date range. The report results might be less up to date than
-  /// usual. AdMob is aware of the issue and is actively working to resolve
+  /// for the requested date range. The report results might be less up to date
+  /// than usual. AdMob is aware of the issue and is actively working to resolve
   /// it.
   /// - "OTHER" : Warnings that are exposed without a specific type. Useful when
-  /// new
-  /// warning types are added but the API is not changed yet.
+  /// new warning types are added but the API is not changed yet.
   /// - "REPORT_CURRENCY_NOT_ACCOUNT_CURRENCY" : The currency being requested is
-  /// not the account currency. The earning
-  /// metrics will be based on the requested currency, and thus not a good
-  /// estimation of the final payment anymore, due to the currency rate
-  /// fluctuation.
+  /// not the account currency. The earning metrics will be based on the
+  /// requested currency, and thus not a good estimation of the final payment
+  /// anymore, due to the currency rate fluctuation.
   core.String type;
 
   ReportWarning();

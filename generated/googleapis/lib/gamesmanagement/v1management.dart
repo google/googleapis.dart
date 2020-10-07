@@ -16,7 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client gamesManagement/v1management';
 
-/// The Management API for Google Play Game Services.
+/// The Google Play Game Management API allows developers to manage resources
+/// from the Google Play Game service.
 class GamesManagementApi {
   /// Create, edit, and delete your Google Play Games activity
   static const GamesScope = "https://www.googleapis.com/auth/games";
@@ -29,14 +30,11 @@ class GamesManagementApi {
       new ApplicationsResourceApi(_requester);
   EventsResourceApi get events => new EventsResourceApi(_requester);
   PlayersResourceApi get players => new PlayersResourceApi(_requester);
-  RoomsResourceApi get rooms => new RoomsResourceApi(_requester);
   ScoresResourceApi get scores => new ScoresResourceApi(_requester);
-  TurnBasedMatchesResourceApi get turnBasedMatches =>
-      new TurnBasedMatchesResourceApi(_requester);
 
   GamesManagementApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "games/v1management/"})
+      {core.String rootUrl = "https://gamesmanagement.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -80,7 +78,7 @@ class AchievementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements/' +
+    _url = 'games/v1management/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/reset';
 
@@ -122,7 +120,7 @@ class AchievementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements/reset';
+    _url = 'games/v1management/achievements/reset';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -161,7 +159,7 @@ class AchievementsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'achievements/resetAllForAllPlayers';
+    _url = 'games/v1management/achievements/resetAllForAllPlayers';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -206,7 +204,7 @@ class AchievementsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'achievements/' +
+    _url = 'games/v1management/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/resetForAllPlayers';
 
@@ -254,7 +252,7 @@ class AchievementsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'achievements/resetMultipleForAllPlayers';
+    _url = 'games/v1management/achievements/resetMultipleForAllPlayers';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -281,8 +279,7 @@ class ApplicationsResourceApi {
   ///
   /// [maxResults] - The maximum number of player resources to return in the
   /// response, used for paging. For any response, the actual number of player
-  /// resources returned may be less than the specified maxResults.
-  /// Value must be between "1" and "50".
+  /// resources returned may be less than the specified `maxResults`.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -318,7 +315,7 @@ class ApplicationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'applications/' +
+    _url = 'games/v1management/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/players/hidden';
 
@@ -370,7 +367,9 @@ class EventsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'events/' + commons.Escaper.ecapeVariable('$eventId') + '/reset';
+    _url = 'games/v1management/events/' +
+        commons.Escaper.ecapeVariable('$eventId') +
+        '/reset';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -409,7 +408,7 @@ class EventsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'events/reset';
+    _url = 'games/v1management/events/reset';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -447,7 +446,7 @@ class EventsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'events/resetAllForAllPlayers';
+    _url = 'games/v1management/events/resetAllForAllPlayers';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -491,7 +490,7 @@ class EventsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'events/' +
+    _url = 'games/v1management/events/' +
         commons.Escaper.ecapeVariable('$eventId') +
         '/resetForAllPlayers';
 
@@ -539,7 +538,7 @@ class EventsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'events/resetMultipleForAllPlayers';
+    _url = 'games/v1management/events/resetMultipleForAllPlayers';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -564,7 +563,7 @@ class PlayersResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
-  /// [playerId] - A player ID. A value of me may be used in place of the
+  /// [playerId] - A player ID. A value of `me` may be used in place of the
   /// authenticated player's ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -596,7 +595,7 @@ class PlayersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'applications/' +
+    _url = 'games/v1management/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/players/hidden/' +
         commons.Escaper.ecapeVariable('$playerId');
@@ -618,7 +617,7 @@ class PlayersResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
-  /// [playerId] - A player ID. A value of me may be used in place of the
+  /// [playerId] - A player ID. A value of `me` may be used in place of the
   /// authenticated player's ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -650,96 +649,12 @@ class PlayersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'applications/' +
+    _url = 'games/v1management/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/players/hidden/' +
         commons.Escaper.ecapeVariable('$playerId');
 
     var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-}
-
-class RoomsResourceApi {
-  final commons.ApiRequester _requester;
-
-  RoomsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Reset all rooms for the currently authenticated player for your
-  /// application. This method is only accessible to whitelisted tester accounts
-  /// for your application.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future reset({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'rooms/reset';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Deletes rooms where the only room participants are from whitelisted tester
-  /// accounts for your application. This method is only available to user
-  /// accounts for your developer console.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future resetForAllPlayers({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'rooms/resetForAllPlayers';
-
-    var _response = _requester.request(_url, "POST",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -788,7 +703,7 @@ class ScoresResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'leaderboards/' +
+    _url = 'games/v1management/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/reset';
 
@@ -830,7 +745,7 @@ class ScoresResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'scores/reset';
+    _url = 'games/v1management/scores/reset';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -869,7 +784,7 @@ class ScoresResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'scores/resetAllForAllPlayers';
+    _url = 'games/v1management/scores/resetAllForAllPlayers';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -914,7 +829,7 @@ class ScoresResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'leaderboards/' +
+    _url = 'games/v1management/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/resetForAllPlayers';
 
@@ -962,7 +877,7 @@ class ScoresResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'scores/resetMultipleForAllPlayers';
+    _url = 'games/v1management/scores/resetMultipleForAllPlayers';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -974,94 +889,10 @@ class ScoresResourceApi {
   }
 }
 
-class TurnBasedMatchesResourceApi {
-  final commons.ApiRequester _requester;
-
-  TurnBasedMatchesResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Reset all turn-based match data for a user. This method is only accessible
-  /// to whitelisted tester accounts for your application.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future reset({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'turnbasedmatches/reset';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Deletes turn-based matches where the only match participants are from
-  /// whitelisted tester accounts for your application. This method is only
-  /// available to user accounts for your developer console.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future resetForAllPlayers({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'turnbasedmatches/resetForAllPlayers';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-}
-
-/// This is a JSON template for achievement reset all response.
+/// Achievement reset all response.
 class AchievementResetAllResponse {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#achievementResetAllResponse.
+  /// string `gamesManagement#achievementResetAllResponse`.
   core.String kind;
 
   /// The achievement reset results.
@@ -1094,13 +925,12 @@ class AchievementResetAllResponse {
   }
 }
 
-/// This is a JSON template for multiple achievements reset all request.
 class AchievementResetMultipleForAllRequest {
   /// The IDs of achievements to reset.
   core.List<core.String> achievementIds;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#achievementResetMultipleForAllRequest.
+  /// string `gamesManagement#achievementResetMultipleForAllRequest`.
   core.String kind;
 
   AchievementResetMultipleForAllRequest();
@@ -1128,21 +958,19 @@ class AchievementResetMultipleForAllRequest {
   }
 }
 
-/// This is a JSON template for an achievement reset response.
+/// An achievement reset response.
 class AchievementResetResponse {
   /// The current state of the achievement. This is the same as the initial
-  /// state of the achievement.
-  /// Possible values are:
-  /// - "HIDDEN"- Achievement is hidden.
-  /// - "REVEALED" - Achievement is revealed.
-  /// - "UNLOCKED" - Achievement is unlocked.
+  /// state of the achievement. Possible values are: - "`HIDDEN`"- Achievement
+  /// is hidden. - "`REVEALED`" - Achievement is revealed. - "`UNLOCKED`" -
+  /// Achievement is unlocked.
   core.String currentState;
 
   /// The ID of an achievement for which player state has been updated.
   core.String definitionId;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#achievementResetResponse.
+  /// string `gamesManagement#achievementResetResponse`.
   core.String kind;
 
   /// Flag to indicate if the requested update actually occurred.
@@ -1184,13 +1012,13 @@ class AchievementResetResponse {
   }
 }
 
-/// This is a JSON template for multiple events reset all request.
+/// Multiple events reset all request.
 class EventsResetMultipleForAllRequest {
   /// The IDs of events to reset.
   core.List<core.String> eventIds;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#eventsResetMultipleForAllRequest.
+  /// string `gamesManagement#eventsResetMultipleForAllRequest`.
   core.String kind;
 
   EventsResetMultipleForAllRequest();
@@ -1217,41 +1045,7 @@ class EventsResetMultipleForAllRequest {
   }
 }
 
-/// This is a JSON template for metadata about a player playing a game with the
-/// currently authenticated user.
-class GamesPlayedResource {
-  /// True if the player was auto-matched with the currently authenticated user.
-  core.bool autoMatched;
-
-  /// The last time the player played the game in milliseconds since the epoch
-  /// in UTC.
-  core.String timeMillis;
-
-  GamesPlayedResource();
-
-  GamesPlayedResource.fromJson(core.Map _json) {
-    if (_json.containsKey("autoMatched")) {
-      autoMatched = _json["autoMatched"];
-    }
-    if (_json.containsKey("timeMillis")) {
-      timeMillis = _json["timeMillis"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (autoMatched != null) {
-      _json["autoMatched"] = autoMatched;
-    }
-    if (timeMillis != null) {
-      _json["timeMillis"] = timeMillis;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for 1P/3P metadata about the player's experience.
+/// 1P/3P metadata about the player's experience.
 class GamesPlayerExperienceInfoResource {
   /// The current number of experience points for the player.
   core.String currentExperiencePoints;
@@ -1304,7 +1098,7 @@ class GamesPlayerExperienceInfoResource {
   }
 }
 
-/// This is a JSON template for 1P/3P metadata about a user's level.
+/// 1P/3P metadata about a user's level.
 class GamesPlayerLevelResource {
   /// The level for the user.
   core.int level;
@@ -1345,16 +1139,16 @@ class GamesPlayerLevelResource {
   }
 }
 
-/// This is a JSON template for the HiddenPlayer resource.
+/// The HiddenPlayer resource.
 class HiddenPlayer {
-  /// The time this player was hidden.
+  /// Output only. The time this player was hidden.
   core.String hiddenTimeMillis;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#hiddenPlayer.
+  /// Output only. Uniquely identifies the type of this resource. Value is
+  /// always the fixed string `gamesManagement#hiddenPlayer`.
   core.String kind;
 
-  /// The player information.
+  /// Output only. The player information.
   Player player;
 
   HiddenPlayer();
@@ -1387,13 +1181,13 @@ class HiddenPlayer {
   }
 }
 
-/// This is a JSON template for a list of hidden players.
+/// A list of hidden players.
 class HiddenPlayerList {
   /// The players.
   core.List<HiddenPlayer> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#hiddenPlayerList.
+  /// string `gamesManagement#hiddenPlayerList`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -1466,7 +1260,7 @@ class PlayerName {
   }
 }
 
-/// This is a JSON template for a Player resource.
+/// A Player resource.
 class Player {
   /// The base URL for the image that represents the player.
   core.String avatarImageUrl;
@@ -1483,18 +1277,9 @@ class Player {
   /// An object to represent Play Game experience information for the player.
   GamesPlayerExperienceInfoResource experienceInfo;
 
-  /// The friend status of the given player, relative to the requester. This is
-  /// unset if the player is not sharing their friends list with the game.
-  core.String friendStatus;
-
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#player.
+  /// string `gamesManagement#player`.
   core.String kind;
-
-  /// Details about the last time this player played a multiplayer game with the
-  /// currently authenticated player. Populated for PLAYED_WITH player
-  /// collection members.
-  GamesPlayedResource lastPlayedWith;
 
   /// An object representation of the individual components of the player's
   /// name. For some players, these fields may not be present.
@@ -1535,15 +1320,8 @@ class Player {
       experienceInfo = new GamesPlayerExperienceInfoResource.fromJson(
           _json["experienceInfo"]);
     }
-    if (_json.containsKey("friendStatus")) {
-      friendStatus = _json["friendStatus"];
-    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
-    }
-    if (_json.containsKey("lastPlayedWith")) {
-      lastPlayedWith =
-          new GamesPlayedResource.fromJson(_json["lastPlayedWith"]);
     }
     if (_json.containsKey("name")) {
       name = new PlayerName.fromJson(_json["name"]);
@@ -1580,14 +1358,8 @@ class Player {
     if (experienceInfo != null) {
       _json["experienceInfo"] = (experienceInfo).toJson();
     }
-    if (friendStatus != null) {
-      _json["friendStatus"] = friendStatus;
-    }
     if (kind != null) {
       _json["kind"] = kind;
-    }
-    if (lastPlayedWith != null) {
-      _json["lastPlayedWith"] = (lastPlayedWith).toJson();
     }
     if (name != null) {
       _json["name"] = (name).toJson();
@@ -1608,10 +1380,10 @@ class Player {
   }
 }
 
-/// This is a JSON template for a list of leaderboard reset resources.
+/// A list of leaderboard reset resources.
 class PlayerScoreResetAllResponse {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#playerScoreResetResponse.
+  /// string `gamesManagement#playerScoreResetAllResponse`.
   core.String kind;
 
   /// The leaderboard reset results.
@@ -1644,20 +1416,18 @@ class PlayerScoreResetAllResponse {
   }
 }
 
-/// This is a JSON template for a list of reset leaderboard entry resources.
+/// A list of reset leaderboard entry resources.
 class PlayerScoreResetResponse {
   /// The ID of an leaderboard for which player state has been updated.
   core.String definitionId;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#playerScoreResetResponse.
+  /// string `gamesManagement#playerScoreResetResponse`.
   core.String kind;
 
-  /// The time spans of the updated score.
-  /// Possible values are:
-  /// - "ALL_TIME" - The score is an all-time score.
-  /// - "WEEKLY" - The score is a weekly score.
-  /// - "DAILY" - The score is a daily score.
+  /// The time spans of the updated score. Possible values are: - "`ALL_TIME`" -
+  /// The score is an all-time score. - "`WEEKLY`" - The score is a weekly
+  /// score. - "`DAILY`" - The score is a daily score.
   core.List<core.String> resetScoreTimeSpans;
 
   PlayerScoreResetResponse();
@@ -1691,10 +1461,10 @@ class PlayerScoreResetResponse {
   }
 }
 
-/// This is a JSON template for profile settings
+/// Profile settings
 class ProfileSettings {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#profileSettings.
+  /// string `gamesManagement#profileSettings`.
   core.String kind;
   core.bool profileVisible;
 
@@ -1722,10 +1492,9 @@ class ProfileSettings {
   }
 }
 
-/// This is a JSON template for multiple scores reset all request.
 class ScoresResetMultipleForAllRequest {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#scoresResetMultipleForAllRequest.
+  /// string `gamesManagement#scoresResetMultipleForAllRequest`.
   core.String kind;
 
   /// The IDs of leaderboards to reset.

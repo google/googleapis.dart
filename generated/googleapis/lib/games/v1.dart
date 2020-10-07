@@ -16,7 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client games/v1';
 
-/// The API for Google Play Game Services.
+/// The Google Play games service allows developers to enhance games with social
+/// leaderboards, achievements, game state, sign-in with Google, and more.
 class GamesApi {
   /// View and manage its own configuration data in your Google Drive
   static const DriveAppdataScope =
@@ -38,17 +39,14 @@ class GamesApi {
       new LeaderboardsResourceApi(_requester);
   MetagameResourceApi get metagame => new MetagameResourceApi(_requester);
   PlayersResourceApi get players => new PlayersResourceApi(_requester);
-  PushtokensResourceApi get pushtokens => new PushtokensResourceApi(_requester);
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
-  RoomsResourceApi get rooms => new RoomsResourceApi(_requester);
   ScoresResourceApi get scores => new ScoresResourceApi(_requester);
   SnapshotsResourceApi get snapshots => new SnapshotsResourceApi(_requester);
-  TurnBasedMatchesResourceApi get turnBasedMatches =>
-      new TurnBasedMatchesResourceApi(_requester);
+  StatsResourceApi get stats => new StatsResourceApi(_requester);
 
   GamesApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "games/v1/"})
+      {core.String rootUrl = "https://games.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -68,8 +66,8 @@ class AchievementDefinitionsResourceApi {
   ///
   /// [maxResults] - The maximum number of achievement resources to return in
   /// the response, used for paging. For any response, the actual number of
-  /// achievement resources returned may be less than the specified maxResults.
-  /// Value must be between "1" and "200".
+  /// achievement resources returned may be less than the specified
+  /// `maxResults`.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -108,7 +106,7 @@ class AchievementDefinitionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements';
+    _url = 'games/v1/achievements';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -173,7 +171,7 @@ class AchievementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements/' +
+    _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/increment';
 
@@ -192,18 +190,15 @@ class AchievementsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [playerId] - A player ID. A value of me may be used in place of the
+  /// [playerId] - A player ID. A value of `me` may be used in place of the
   /// authenticated player's ID.
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [maxResults] - The maximum number of achievement resources to return in
   /// the response, used for paging. For any response, the actual number of
-  /// achievement resources returned may be less than the specified maxResults.
-  /// Value must be between "1" and "200".
-  ///
-  /// [pageToken] - The token returned by the previous request.
+  /// achievement resources returned may be less than the specified
+  /// `maxResults`.
   ///
   /// [state] - Tells the server to return only achievements with the specified
   /// state. If this parameter isn't specified, all achievements are returned.
@@ -212,6 +207,9 @@ class AchievementsResourceApi {
   /// - "HIDDEN" : List only hidden achievements.
   /// - "REVEALED" : List only revealed achievements.
   /// - "UNLOCKED" : List only unlocked achievements.
+  ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -224,10 +222,10 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerAchievementListResponse> list(core.String playerId,
-      {core.String language,
+      {core.String pageToken,
       core.int maxResults,
-      core.String pageToken,
       core.String state,
+      core.String language,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -239,23 +237,23 @@ class AchievementsResourceApi {
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
     }
-    if (language != null) {
-      _queryParams["language"] = [language];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (state != null) {
       _queryParams["state"] = [state];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'players/' +
+    _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
         '/achievements';
 
@@ -269,7 +267,7 @@ class AchievementsResourceApi {
         .then((data) => new PlayerAchievementListResponse.fromJson(data));
   }
 
-  /// Sets the state of the achievement with the given ID to REVEALED for the
+  /// Sets the state of the achievement with the given ID to `REVEALED` for the
   /// currently authenticated player.
   ///
   /// Request parameters:
@@ -302,7 +300,7 @@ class AchievementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements/' +
+    _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/reveal';
 
@@ -358,7 +356,7 @@ class AchievementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements/' +
+    _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/setStepsAtLeast';
 
@@ -404,7 +402,7 @@ class AchievementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements/' +
+    _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/unlock';
 
@@ -451,7 +449,7 @@ class AchievementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements/updateMultiple';
+    _url = 'games/v1/achievements/updateMultiple';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -470,8 +468,8 @@ class ApplicationsResourceApi {
   ApplicationsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the metadata of the application with the given ID. If the
-  /// requested application is not available for the specified platformType, the
-  /// returned response will not include any instance data.
+  /// requested application is not available for the specified `platformType`,
+  /// the returned response will not include any instance data.
   ///
   /// Request parameters:
   ///
@@ -484,6 +482,7 @@ class ApplicationsResourceApi {
   /// [platformType] - Restrict application details returned to the specific
   /// platform.
   /// Possible string values are:
+  /// - "PLATFORM_TYPE_UNSPECIFIED" : Default value, don't use.
   /// - "ANDROID" : Retrieve applications that can be played on Android.
   /// - "IOS" : Retrieve applications that can be played on iOS.
   /// - "WEB_APP" : Retrieve applications that can be played on desktop web.
@@ -520,7 +519,8 @@ class ApplicationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId');
+    _url = 'games/v1/applications/' +
+        commons.Escaper.ecapeVariable('$applicationId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -531,7 +531,7 @@ class ApplicationsResourceApi {
     return _response.then((data) => new Application.fromJson(data));
   }
 
-  /// Indicate that the the currently authenticated user is playing your
+  /// Indicate that the currently authenticated user is playing your
   /// application.
   ///
   /// Request parameters:
@@ -558,7 +558,7 @@ class ApplicationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'applications/played';
+    _url = 'games/v1/applications/played';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -604,7 +604,7 @@ class ApplicationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'applications/' +
+    _url = 'games/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/verify';
 
@@ -629,15 +629,14 @@ class EventsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
   /// [maxResults] - The maximum number of events to return in the response,
   /// used for paging. For any response, the actual number of events to return
   /// may be less than the specified maxResults.
-  /// Value must be between "1" and "100".
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -650,9 +649,9 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerEventListResponse> listByPlayer(
-      {core.String language,
+      {core.String pageToken,
+      core.String language,
       core.int maxResults,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -661,20 +660,20 @@ class EventsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (language != null) {
       _queryParams["language"] = [language];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'events';
+    _url = 'games/v1/events';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -694,8 +693,7 @@ class EventsResourceApi {
   ///
   /// [maxResults] - The maximum number of event definitions to return in the
   /// response, used for paging. For any response, the actual number of event
-  /// definitions to return may be less than the specified maxResults.
-  /// Value must be between "1" and "100".
+  /// definitions to return may be less than the specified `maxResults`.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -734,7 +732,7 @@ class EventsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'eventDefinitions';
+    _url = 'games/v1/eventDefinitions';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -785,7 +783,7 @@ class EventsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'events';
+    _url = 'games/v1/events';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -840,7 +838,8 @@ class LeaderboardsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
+    _url = 'games/v1/leaderboards/' +
+        commons.Escaper.ecapeVariable('$leaderboardId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -855,15 +854,14 @@ class LeaderboardsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
   /// [maxResults] - The maximum number of leaderboards to return in the
   /// response. For any response, the actual number of leaderboards returned may
-  /// be less than the specified maxResults.
-  /// Value must be between "1" and "200".
+  /// be less than the specified `maxResults`.
   ///
   /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -876,9 +874,9 @@ class LeaderboardsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardListResponse> list(
-      {core.String language,
-      core.int maxResults,
+      {core.int maxResults,
       core.String pageToken,
+      core.String language,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -887,20 +885,20 @@ class LeaderboardsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (language != null) {
+      _queryParams["language"] = [language];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'leaderboards';
+    _url = 'games/v1/leaderboards';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -943,7 +941,7 @@ class MetagameResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'metagameConfig';
+    _url = 'games/v1/metagameConfig';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -955,25 +953,25 @@ class MetagameResourceApi {
   }
 
   /// List play data aggregated per category for the player corresponding to
-  /// playerId.
+  /// `playerId`.
   ///
   /// Request parameters:
   ///
-  /// [playerId] - A player ID. A value of me may be used in place of the
+  /// [playerId] - A player ID. A value of `me` may be used in place of the
   /// authenticated player's ID.
   ///
   /// [collection] - The collection of categories for which data will be
   /// returned.
   /// Possible string values are:
-  /// - "all" : Retrieve data for all categories. This is the default.
+  /// - "COLLECTION_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ALL" : Retrieve data for all categories. This is the default.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
   /// [maxResults] - The maximum number of category resources to return in the
   /// response, used for paging. For any response, the actual number of category
-  /// resources returned may be less than the specified maxResults.
-  /// Value must be between "1" and "100".
+  /// resources returned may be less than the specified `maxResults`.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -1019,7 +1017,7 @@ class MetagameResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'players/' +
+    _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
         '/categories/' +
         commons.Escaper.ecapeVariable('$collection');
@@ -1040,11 +1038,11 @@ class PlayersResourceApi {
   PlayersResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the Player resource with the given ID. To retrieve the player
-  /// for the currently authenticated user, set playerId to me.
+  /// for the currently authenticated user, set `playerId` to `me`.
   ///
   /// Request parameters:
   ///
-  /// [playerId] - A player ID. A value of me may be used in place of the
+  /// [playerId] - A player ID. A value of `me` may be used in place of the
   /// authenticated player's ID.
   ///
   /// [language] - The preferred language to use for strings returned by this
@@ -1079,7 +1077,7 @@ class PlayersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'players/' + commons.Escaper.ecapeVariable('$playerId');
+    _url = 'games/v1/players/' + commons.Escaper.ecapeVariable('$playerId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1096,26 +1094,21 @@ class PlayersResourceApi {
   ///
   /// [collection] - Collection of players being retrieved
   /// Possible string values are:
-  /// - "connected" : (DEPRECATED) Retrieve a list of players that are also
-  /// playing this game in reverse chronological order.
-  /// - "friends_all" : Retrieve a list of players who are friends of the user
+  /// - "CONNECTED" : Retrieve a list of players that are also playing this game
+  /// in reverse chronological order.
+  /// - "VISIBLE" : Retrieve a list of players in the user's social graph that
+  /// are visible to this game.
+  /// - "FRIENDS_ALL" : Retrieve a list of players who are friends of the user
   /// in alphabetical order.
-  /// - "playedWith" : (DEPRECATED) Retrieve a list of players you have played a
-  /// multiplayer game (realtime or turn-based) with recently.
-  /// - "played_with" : (DEPRECATED) Retrieve a list of players you have played
-  /// a multiplayer game (realtime or turn-based) with recently.
-  /// - "visible" : (DEPRECATED: please use FRIENDS_ALL) Retrieve a list of
-  /// players in the user's social graph that are visible to this game.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
   ///
   /// [maxResults] - The maximum number of player resources to return in the
   /// response, used for paging. For any response, the actual number of player
-  /// resources returned may be less than the specified maxResults.
-  /// Value must be between "1" and "50".
+  /// resources returned may be less than the specified `maxResults`.
   ///
   /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1128,9 +1121,9 @@ class PlayersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerListResponse> list(core.String collection,
-      {core.String language,
-      core.int maxResults,
+      {core.int maxResults,
       core.String pageToken,
+      core.String language,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1142,20 +1135,21 @@ class PlayersResourceApi {
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
     }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (language != null) {
+      _queryParams["language"] = [language];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'players/me/players/' + commons.Escaper.ecapeVariable('$collection');
+    _url = 'games/v1/players/me/players/' +
+        commons.Escaper.ecapeVariable('$collection');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1164,97 +1158,6 @@ class PlayersResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new PlayerListResponse.fromJson(data));
-  }
-}
-
-class PushtokensResourceApi {
-  final commons.ApiRequester _requester;
-
-  PushtokensResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Removes a push token for the current user and application. Removing a
-  /// non-existent push token will report success.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future remove(PushTokenId request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'pushtokens/remove';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Registers a push token for the current user and application.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future update(PushToken request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'pushtokens';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
   }
 }
 
@@ -1268,12 +1171,10 @@ class RevisionsResourceApi {
   /// Request parameters:
   ///
   /// [clientRevision] - The revision of the client SDK used by your
-  /// application. Format:
-  /// [PLATFORM_TYPE]:[VERSION_NUMBER]. Possible values of PLATFORM_TYPE are:
-  ///
-  /// - "ANDROID" - Client is running the Android SDK.
-  /// - "IOS" - Client is running the iOS SDK.
-  /// - "WEB_APP" - Client is running as a Web App.
+  /// application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values
+  /// of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. *
+  /// `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as
+  /// a Web App.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1302,7 +1203,7 @@ class RevisionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'revisions/check';
+    _url = 'games/v1/revisions/check';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1314,446 +1215,20 @@ class RevisionsResourceApi {
   }
 }
 
-class RoomsResourceApi {
-  final commons.ApiRequester _requester;
-
-  RoomsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Create a room. For internal use by the Games SDK only. Calling this method
-  /// directly is unsupported.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Room].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Room> create(RoomCreateRequest request,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'rooms/create';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Room.fromJson(data));
-  }
-
-  /// Decline an invitation to join a room. For internal use by the Games SDK
-  /// only. Calling this method directly is unsupported.
-  ///
-  /// Request parameters:
-  ///
-  /// [roomId] - The ID of the room.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Room].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Room> decline(core.String roomId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (roomId == null) {
-      throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/decline';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Room.fromJson(data));
-  }
-
-  /// Dismiss an invitation to join a room. For internal use by the Games SDK
-  /// only. Calling this method directly is unsupported.
-  ///
-  /// Request parameters:
-  ///
-  /// [roomId] - The ID of the room.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future dismiss(core.String roomId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (roomId == null) {
-      throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/dismiss';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Get the data for a room.
-  ///
-  /// Request parameters:
-  ///
-  /// [roomId] - The ID of the room.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Room].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Room> get(core.String roomId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (roomId == null) {
-      throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Room.fromJson(data));
-  }
-
-  /// Join a room. For internal use by the Games SDK only. Calling this method
-  /// directly is unsupported.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [roomId] - The ID of the room.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Room].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Room> join(RoomJoinRequest request, core.String roomId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (roomId == null) {
-      throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/join';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Room.fromJson(data));
-  }
-
-  /// Leave a room. For internal use by the Games SDK only. Calling this method
-  /// directly is unsupported.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [roomId] - The ID of the room.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Room].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Room> leave(RoomLeaveRequest request, core.String roomId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (roomId == null) {
-      throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/leave';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Room.fromJson(data));
-  }
-
-  /// Returns invitations to join rooms.
-  ///
-  /// Request parameters:
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [maxResults] - The maximum number of rooms to return in the response, used
-  /// for paging. For any response, the actual number of rooms to return may be
-  /// less than the specified maxResults.
-  /// Value must be between "1" and "500".
-  ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RoomList].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RoomList> list(
-      {core.String language,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'rooms';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RoomList.fromJson(data));
-  }
-
-  /// Updates sent by a client reporting the status of peers in a room. For
-  /// internal use by the Games SDK only. Calling this method directly is
-  /// unsupported.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [roomId] - The ID of the room.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RoomStatus].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RoomStatus> reportStatus(
-      RoomP2PStatuses request, core.String roomId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (roomId == null) {
-      throw new core.ArgumentError("Parameter roomId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url =
-        'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/reportstatus';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RoomStatus.fromJson(data));
-  }
-}
-
 class ScoresResourceApi {
   final commons.ApiRequester _requester;
 
   ScoresResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Get high scores, and optionally ranks, in leaderboards for the currently
-  /// authenticated player. For a specific time span, leaderboardId can be set
-  /// to ALL to retrieve data for all leaderboards in a given time span.
-  /// NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the
+  /// authenticated player. For a specific time span, `leaderboardId` can be set
+  /// to `ALL` to retrieve data for all leaderboards in a given time span.
+  /// `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the
   /// same request; only one parameter may be set to 'ALL'.
   ///
   /// Request parameters:
   ///
-  /// [playerId] - A player ID. A value of me may be used in place of the
+  /// [playerId] - A player ID. A value of `me` may be used in place of the
   /// authenticated player's ID.
   ///
   /// [leaderboardId] - The ID of the leaderboard. Can be set to 'ALL' to
@@ -1761,27 +1236,30 @@ class ScoresResourceApi {
   ///
   /// [timeSpan] - The time span for the scores and ranks you're requesting.
   /// Possible string values are:
+  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
   /// - "ALL" : Get the high scores for all time spans. If this is used,
   /// maxResults values will be ignored.
   /// - "ALL_TIME" : Get the all time high score.
-  /// - "DAILY" : List the top scores for the current day.
-  /// - "WEEKLY" : List the top scores for the current week.
-  ///
-  /// [includeRankType] - The types of ranks to return. If the parameter is
-  /// omitted, no ranks will be returned.
-  /// Possible string values are:
-  /// - "ALL" : Retrieve public and social ranks.
-  /// - "PUBLIC" : Retrieve public ranks, if the player is sharing their
-  /// gameplay activity publicly.
-  /// - "SOCIAL" : Retrieve the social rank.
+  /// - "WEEKLY" : List the top scores for the current day.
+  /// - "DAILY" : List the top scores for the current week.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [includeRankType] - The types of ranks to return. If the parameter is
+  /// omitted, no ranks will be returned.
+  /// Possible string values are:
+  /// - "INCLUDE_RANK_TYPE_UNSPECIFIED" : Default value. Should be unused.
+  /// - "ALL" : Retrieve all supported ranks. In HTTP, this parameter value can
+  /// also be specified as `ALL`.
+  /// - "PUBLIC" : Retrieve public ranks, if the player is sharing their
+  /// gameplay activity publicly.
+  /// - "SOCIAL" : (Obsolete) Retrieve the social rank.
+  /// - "FRIENDS" : Retrieve the rank on the friends collection.
+  ///
   /// [maxResults] - The maximum number of leaderboard scores to return in the
   /// response. For any response, the actual number of leaderboard scores
-  /// returned may be less than the specified maxResults.
-  /// Value must be between "1" and "30".
+  /// returned may be less than the specified `maxResults`.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -1797,8 +1275,8 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<PlayerLeaderboardScoreListResponse> get(
       core.String playerId, core.String leaderboardId, core.String timeSpan,
-      {core.String includeRankType,
-      core.String language,
+      {core.String language,
+      core.String includeRankType,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -1818,11 +1296,11 @@ class ScoresResourceApi {
     if (timeSpan == null) {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
-    if (includeRankType != null) {
-      _queryParams["includeRankType"] = [includeRankType];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if (includeRankType != null) {
+      _queryParams["includeRankType"] = [includeRankType];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1834,7 +1312,7 @@ class ScoresResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'players/' +
+    _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
         '/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
@@ -1859,24 +1337,26 @@ class ScoresResourceApi {
   ///
   /// [collection] - The collection of scores you're requesting.
   /// Possible string values are:
+  /// - "SCORE_COLLECTION_UNSPECIFIED" : Default value. This value is unused.
   /// - "PUBLIC" : List all scores in the public leaderboard.
-  /// - "SOCIAL" : List only social scores.
+  /// - "SOCIAL" : (Obsolete) Legacy G+ social scores.
+  /// - "FRIENDS" : List only scores of friends.
   ///
   /// [timeSpan] - The time span for the scores and ranks you're requesting.
   /// Possible string values are:
-  /// - "ALL_TIME" : List the all-time top scores.
-  /// - "DAILY" : List the top scores for the current day.
-  /// - "WEEKLY" : List the top scores for the current week.
+  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ALL_TIME" : The score is an all-time score.
+  /// - "WEEKLY" : The score is a weekly score.
+  /// - "DAILY" : The score is a daily score.
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [maxResults] - The maximum number of leaderboard scores to return in the
   /// response. For any response, the actual number of leaderboard scores
-  /// returned may be less than the specified maxResults.
-  /// Value must be between "1" and "30".
+  /// returned may be less than the specified `maxResults`.
   ///
-  /// [pageToken] - The token returned by the previous request.
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1890,9 +1370,9 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardScores> list(
       core.String leaderboardId, core.String collection, core.String timeSpan,
-      {core.String language,
+      {core.String pageToken,
       core.int maxResults,
-      core.String pageToken,
+      core.String language,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1911,20 +1391,20 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
-    if (language != null) {
-      _queryParams["language"] = [language];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'leaderboards/' +
+    _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/' +
         commons.Escaper.ecapeVariable('$collection');
@@ -1946,29 +1426,31 @@ class ScoresResourceApi {
   ///
   /// [collection] - The collection of scores you're requesting.
   /// Possible string values are:
+  /// - "SCORE_COLLECTION_UNSPECIFIED" : Default value. This value is unused.
   /// - "PUBLIC" : List all scores in the public leaderboard.
-  /// - "SOCIAL" : List only social scores.
+  /// - "SOCIAL" : (Obsolete) Legacy G+ social scores.
+  /// - "FRIENDS" : List only scores of friends.
   ///
   /// [timeSpan] - The time span for the scores and ranks you're requesting.
   /// Possible string values are:
-  /// - "ALL_TIME" : List the all-time top scores.
-  /// - "DAILY" : List the top scores for the current day.
-  /// - "WEEKLY" : List the top scores for the current week.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
+  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ALL_TIME" : The score is an all-time score.
+  /// - "WEEKLY" : The score is a weekly score.
+  /// - "DAILY" : The score is a daily score.
   ///
   /// [maxResults] - The maximum number of leaderboard scores to return in the
   /// response. For any response, the actual number of leaderboard scores
-  /// returned may be less than the specified maxResults.
-  /// Value must be between "1" and "30".
+  /// returned may be less than the specified `maxResults`.
   ///
-  /// [pageToken] - The token returned by the previous request.
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [resultsAbove] - The preferred number of scores to return above the
   /// player's score. More scores may be returned if the player is at the bottom
   /// of the leaderboard; fewer may be returned if the player is at the top.
   /// Must be less than or equal to maxResults.
+  ///
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [returnTopIfAbsent] - True if the top scores should be returned when the
   /// player is not in the leaderboard. Defaults to true.
@@ -1985,10 +1467,10 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardScores> listWindow(
       core.String leaderboardId, core.String collection, core.String timeSpan,
-      {core.String language,
-      core.int maxResults,
-      core.String pageToken,
+      {core.int maxResults,
+      core.String language,
       core.int resultsAbove,
+      core.String pageToken,
       core.bool returnTopIfAbsent,
       core.String $fields}) {
     var _url;
@@ -2008,17 +1490,17 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if (resultsAbove != null) {
       _queryParams["resultsAbove"] = ["${resultsAbove}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (returnTopIfAbsent != null) {
       _queryParams["returnTopIfAbsent"] = ["${returnTopIfAbsent}"];
@@ -2027,7 +1509,7 @@ class ScoresResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'leaderboards/' +
+    _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/window/' +
         commons.Escaper.ecapeVariable('$collection');
@@ -2099,7 +1581,7 @@ class ScoresResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'leaderboards/' +
+    _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores';
 
@@ -2152,7 +1634,7 @@ class ScoresResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'leaderboards/scores';
+    _url = 'games/v1/leaderboards/scores';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2207,7 +1689,7 @@ class SnapshotsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
+    _url = 'games/v1/snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2223,18 +1705,17 @@ class SnapshotsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [playerId] - A player ID. A value of me may be used in place of the
+  /// [playerId] - A player ID. A value of `me` may be used in place of the
   /// authenticated player's ID.
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [maxResults] - The maximum number of snapshot resources to return in the
   /// response, used for paging. For any response, the actual number of snapshot
-  /// resources returned may be less than the specified maxResults.
-  /// Value must be between "1" and "25".
+  /// resources returned may be less than the specified `maxResults`.
   ///
-  /// [pageToken] - The token returned by the previous request.
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2247,9 +1728,9 @@ class SnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SnapshotListResponse> list(core.String playerId,
-      {core.String language,
+      {core.String pageToken,
       core.int maxResults,
-      core.String pageToken,
+      core.String language,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2261,21 +1742,22 @@ class SnapshotsResourceApi {
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
     }
-    if (language != null) {
-      _queryParams["language"] = [language];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'players/' + commons.Escaper.ecapeVariable('$playerId') + '/snapshots';
+    _url = 'games/v1/players/' +
+        commons.Escaper.ecapeVariable('$playerId') +
+        '/snapshots';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2287,27 +1769,27 @@ class SnapshotsResourceApi {
   }
 }
 
-class TurnBasedMatchesResourceApi {
+class StatsResourceApi {
   final commons.ApiRequester _requester;
 
-  TurnBasedMatchesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  StatsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Cancel a turn-based match.
+  /// Returns engagement and spend statistics in this application for the
+  /// currently authenticated user.
   ///
   /// Request parameters:
   ///
-  /// [matchId] - The ID of the match.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
+  ///
+  /// Completes with a [StatsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future cancel(core.String matchId, {core.String $fields}) {
+  async.Future<StatsResponse> get({core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2315,276 +1797,11 @@ class TurnBasedMatchesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
-    _url = 'turnbasedmatches/' +
-        commons.Escaper.ecapeVariable('$matchId') +
-        '/cancel';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Create a turn-based match.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatch].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatch> create(TurnBasedMatchCreateRequest request,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/create';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatch.fromJson(data));
-  }
-
-  /// Decline an invitation to play a turn-based match.
-  ///
-  /// Request parameters:
-  ///
-  /// [matchId] - The ID of the match.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatch].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatch> decline(core.String matchId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/' +
-        commons.Escaper.ecapeVariable('$matchId') +
-        '/decline';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatch.fromJson(data));
-  }
-
-  /// Dismiss a turn-based match from the match list. The match will no longer
-  /// show up in the list and will not generate notifications.
-  ///
-  /// Request parameters:
-  ///
-  /// [matchId] - The ID of the match.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future dismiss(core.String matchId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'turnbasedmatches/' +
-        commons.Escaper.ecapeVariable('$matchId') +
-        '/dismiss';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Finish a turn-based match. Each player should make this call once, after
-  /// all results are in. Only the player whose turn it is may make the first
-  /// call to Finish, and can pass in the final match state.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [matchId] - The ID of the match.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatch].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatch> finish(
-      TurnBasedMatchResults request, core.String matchId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/' +
-        commons.Escaper.ecapeVariable('$matchId') +
-        '/finish';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatch.fromJson(data));
-  }
-
-  /// Get the data for a turn-based match.
-  ///
-  /// Request parameters:
-  ///
-  /// [matchId] - The ID of the match.
-  ///
-  /// [includeMatchData] - Get match data along with metadata.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatch].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatch> get(core.String matchId,
-      {core.bool includeMatchData, core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (includeMatchData != null) {
-      _queryParams["includeMatchData"] = ["${includeMatchData}"];
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId');
+    _url = 'games/v1/stats';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2592,467 +1809,17 @@ class TurnBasedMatchesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatch.fromJson(data));
-  }
-
-  /// Join a turn-based match.
-  ///
-  /// Request parameters:
-  ///
-  /// [matchId] - The ID of the match.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatch].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatch> join(core.String matchId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/' +
-        commons.Escaper.ecapeVariable('$matchId') +
-        '/join';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatch.fromJson(data));
-  }
-
-  /// Leave a turn-based match when it is not the current player's turn, without
-  /// canceling the match.
-  ///
-  /// Request parameters:
-  ///
-  /// [matchId] - The ID of the match.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatch].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatch> leave(core.String matchId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/' +
-        commons.Escaper.ecapeVariable('$matchId') +
-        '/leave';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatch.fromJson(data));
-  }
-
-  /// Leave a turn-based match during the current player's turn, without
-  /// canceling the match.
-  ///
-  /// Request parameters:
-  ///
-  /// [matchId] - The ID of the match.
-  ///
-  /// [matchVersion] - The version of the match being updated.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [pendingParticipantId] - The ID of another participant who should take
-  /// their turn next. If not set, the match will wait for other player(s) to
-  /// join via automatching; this is only valid if automatch criteria is set on
-  /// the match with remaining slots for automatched players.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatch].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatch> leaveTurn(
-      core.String matchId, core.int matchVersion,
-      {core.String language,
-      core.String pendingParticipantId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (matchVersion == null) {
-      throw new core.ArgumentError("Parameter matchVersion is required.");
-    }
-    _queryParams["matchVersion"] = ["${matchVersion}"];
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if (pendingParticipantId != null) {
-      _queryParams["pendingParticipantId"] = [pendingParticipantId];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/' +
-        commons.Escaper.ecapeVariable('$matchId') +
-        '/leaveTurn';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatch.fromJson(data));
-  }
-
-  /// Returns turn-based matches the player is or was involved in.
-  ///
-  /// Request parameters:
-  ///
-  /// [includeMatchData] - True if match data should be returned in the
-  /// response. Note that not all data will necessarily be returned if
-  /// include_match_data is true; the server may decide to only return data for
-  /// some of the matches to limit download size for the client. The remainder
-  /// of the data for these matches will be retrievable on request.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [maxCompletedMatches] - The maximum number of completed or canceled
-  /// matches to return in the response. If not set, all matches returned could
-  /// be completed or canceled.
-  /// Value must be between "0" and "500".
-  ///
-  /// [maxResults] - The maximum number of matches to return in the response,
-  /// used for paging. For any response, the actual number of matches to return
-  /// may be less than the specified maxResults.
-  /// Value must be between "1" and "500".
-  ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatchList].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatchList> list(
-      {core.bool includeMatchData,
-      core.String language,
-      core.int maxCompletedMatches,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (includeMatchData != null) {
-      _queryParams["includeMatchData"] = ["${includeMatchData}"];
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if (maxCompletedMatches != null) {
-      _queryParams["maxCompletedMatches"] = ["${maxCompletedMatches}"];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatchList.fromJson(data));
-  }
-
-  /// Create a rematch of a match that was previously completed, with the same
-  /// participants. This can be called by only one player on a match still in
-  /// their list; the player must have called Finish first. Returns the newly
-  /// created match; it will be the caller's turn.
-  ///
-  /// Request parameters:
-  ///
-  /// [matchId] - The ID of the match.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [requestId] - A randomly generated numeric ID for each request specified
-  /// by the caller. This number is used at the server to ensure that the
-  /// request is handled correctly across retries.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatchRematch].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatchRematch> rematch(core.String matchId,
-      {core.String language, core.String requestId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/' +
-        commons.Escaper.ecapeVariable('$matchId') +
-        '/rematch';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatchRematch.fromJson(data));
-  }
-
-  /// Returns turn-based matches the player is or was involved in that changed
-  /// since the last sync call, with the least recent changes coming first.
-  /// Matches that should be removed from the local cache will have a status of
-  /// MATCH_DELETED.
-  ///
-  /// Request parameters:
-  ///
-  /// [includeMatchData] - True if match data should be returned in the
-  /// response. Note that not all data will necessarily be returned if
-  /// include_match_data is true; the server may decide to only return data for
-  /// some of the matches to limit download size for the client. The remainder
-  /// of the data for these matches will be retrievable on request.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [maxCompletedMatches] - The maximum number of completed or canceled
-  /// matches to return in the response. If not set, all matches returned could
-  /// be completed or canceled.
-  /// Value must be between "0" and "500".
-  ///
-  /// [maxResults] - The maximum number of matches to return in the response,
-  /// used for paging. For any response, the actual number of matches to return
-  /// may be less than the specified maxResults.
-  /// Value must be between "1" and "500".
-  ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatchSync].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatchSync> sync(
-      {core.bool includeMatchData,
-      core.String language,
-      core.int maxCompletedMatches,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (includeMatchData != null) {
-      _queryParams["includeMatchData"] = ["${includeMatchData}"];
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if (maxCompletedMatches != null) {
-      _queryParams["maxCompletedMatches"] = ["${maxCompletedMatches}"];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/sync';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatchSync.fromJson(data));
-  }
-
-  /// Commit the results of a player turn.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [matchId] - The ID of the match.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TurnBasedMatch].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TurnBasedMatch> takeTurn(
-      TurnBasedMatchTurn request, core.String matchId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (matchId == null) {
-      throw new core.ArgumentError("Parameter matchId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'turnbasedmatches/' +
-        commons.Escaper.ecapeVariable('$matchId') +
-        '/turn';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TurnBasedMatch.fromJson(data));
+    return _response.then((data) => new StatsResponse.fromJson(data));
   }
 }
 
-/// This is a JSON template for an achievement definition object.
+/// An achievement definition object.
 class AchievementDefinition {
   /// The type of the achievement.
-  /// Possible values are:
-  /// - "STANDARD" - Achievement is either locked or unlocked.
-  /// - "INCREMENTAL" - Achievement is incremental.
+  /// Possible string values are:
+  /// - "ACHIEVEMENT_TYPE_UNSPECIFIED" : Safe default, don't use.
+  /// - "STANDARD" : Achievement is either locked or unlocked.
+  /// - "INCREMENTAL" : Achievement is incremental.
   core.String achievementType;
 
   /// The description of the achievement.
@@ -3068,10 +1835,11 @@ class AchievementDefinition {
   core.String id;
 
   /// The initial state of the achievement.
-  /// Possible values are:
-  /// - "HIDDEN" - Achievement is hidden.
-  /// - "REVEALED" - Achievement is revealed.
-  /// - "UNLOCKED" - Achievement is unlocked.
+  /// Possible string values are:
+  /// - "INITIAL_ACHIEVEMENT_STATE_UNSPECIFIED" : Safe default, don't use.
+  /// - "HIDDEN" : Achievement is hidden.
+  /// - "REVEALED" : Achievement is revealed.
+  /// - "UNLOCKED" : Achievement is unlocked.
   core.String initialState;
 
   /// Indicates whether the revealed icon image being returned is a default
@@ -3083,7 +1851,7 @@ class AchievementDefinition {
   core.bool isUnlockedIconUrlDefault;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementDefinition.
+  /// string `games#achievementDefinition`.
   core.String kind;
 
   /// The name of the achievement.
@@ -3188,13 +1956,13 @@ class AchievementDefinition {
   }
 }
 
-/// This is a JSON template for a list of achievement definition objects.
+/// A list of achievement definition objects.
 class AchievementDefinitionsListResponse {
   /// The achievement definitions.
   core.List<AchievementDefinition> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementDefinitionsListResponse.
+  /// string `games#achievementDefinitionsListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -3233,13 +2001,13 @@ class AchievementDefinitionsListResponse {
   }
 }
 
-/// This is a JSON template for an achievement increment response
+/// An achievement increment response
 class AchievementIncrementResponse {
   /// The current steps recorded for this incremental achievement.
   core.int currentSteps;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementIncrementResponse.
+  /// string `games#achievementIncrementResponse`.
   core.String kind;
 
   /// Whether the current steps for the achievement has reached the number of
@@ -3276,17 +2044,18 @@ class AchievementIncrementResponse {
   }
 }
 
-/// This is a JSON template for an achievement reveal response
+/// An achievement reveal response
 class AchievementRevealResponse {
   /// The current state of the achievement for which a reveal was attempted.
-  /// This might be UNLOCKED if the achievement was already unlocked.
-  /// Possible values are:
-  /// - "REVEALED" - Achievement is revealed.
-  /// - "UNLOCKED" - Achievement is unlocked.
+  /// This might be `UNLOCKED` if the achievement was already unlocked.
+  /// Possible string values are:
+  /// - "REVEAL_ACHIEVEMENT_STATE_UNSPECIFIED" : Safe default, don't use.
+  /// - "REVEALED" : Achievement is revealed.
+  /// - "UNLOCKED" : Achievement is unlocked.
   core.String currentState;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementRevealResponse.
+  /// string `games#achievementRevealResponse`.
   core.String kind;
 
   AchievementRevealResponse();
@@ -3313,17 +2082,17 @@ class AchievementRevealResponse {
   }
 }
 
-/// This is a JSON template for an achievement set steps at least response.
+/// An achievement set steps at least response.
 class AchievementSetStepsAtLeastResponse {
   /// The current steps recorded for this incremental achievement.
   core.int currentSteps;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementSetStepsAtLeastResponse.
+  /// string `games#achievementSetStepsAtLeastResponse`.
   core.String kind;
 
-  /// Whether the the current steps for the achievement has reached the number
-  /// of steps required to unlock.
+  /// Whether the current steps for the achievement has reached the number of
+  /// steps required to unlock.
   core.bool newlyUnlocked;
 
   AchievementSetStepsAtLeastResponse();
@@ -3356,10 +2125,10 @@ class AchievementSetStepsAtLeastResponse {
   }
 }
 
-/// This is a JSON template for an achievement unlock response
+/// An achievement unlock response
 class AchievementUnlockResponse {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementUnlockResponse.
+  /// string `games#achievementUnlockResponse`.
   core.String kind;
 
   /// Whether this achievement was newly unlocked (that is, whether the unlock
@@ -3390,10 +2159,10 @@ class AchievementUnlockResponse {
   }
 }
 
-/// This is a JSON template for a list of achievement update requests.
+/// A list of achievement update requests.
 class AchievementUpdateMultipleRequest {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementUpdateMultipleRequest.
+  /// string `games#achievementUpdateMultipleRequest`.
   core.String kind;
 
   /// The individual achievement update requests.
@@ -3426,10 +2195,10 @@ class AchievementUpdateMultipleRequest {
   }
 }
 
-/// This is a JSON template for an achievement unlock response.
+/// Response message for UpdateMultipleAchievements rpc.
 class AchievementUpdateMultipleResponse {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementUpdateMultipleResponse.
+  /// string `games#achievementUpdateMultipleResponse`.
   core.String kind;
 
   /// The updated state of the achievements.
@@ -3463,29 +2232,30 @@ class AchievementUpdateMultipleResponse {
   }
 }
 
-/// This is a JSON template for a request to update an achievement.
+/// A request to update an achievement.
 class AchievementUpdateRequest {
   /// The achievement this update is being applied to.
   core.String achievementId;
 
-  /// The payload if an update of type INCREMENT was requested for the
+  /// The payload if an update of type `INCREMENT` was requested for the
   /// achievement.
   GamesAchievementIncrement incrementPayload;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementUpdateRequest.
+  /// string `games#achievementUpdateRequest`.
   core.String kind;
 
-  /// The payload if an update of type SET_STEPS_AT_LEAST was requested for the
-  /// achievement.
+  /// The payload if an update of type `SET_STEPS_AT_LEAST` was requested for
+  /// the achievement.
   GamesAchievementSetStepsAtLeast setStepsAtLeastPayload;
 
   /// The type of update being applied.
-  /// Possible values are:
-  /// - "REVEAL" - Achievement is revealed.
-  /// - "UNLOCK" - Achievement is unlocked.
-  /// - "INCREMENT" - Achievement is incremented.
-  /// - "SET_STEPS_AT_LEAST" - Achievement progress is set to at least the
+  /// Possible string values are:
+  /// - "ACHIEVEMENT_UPDATE_TYPE_UNSPECIFIED" : Safe default, don't use.
+  /// - "REVEAL" : Achievement is revealed.
+  /// - "UNLOCK" : Achievement is unlocked.
+  /// - "INCREMENT" : Achievement is incremented.
+  /// - "SET_STEPS_AT_LEAST" : Achievement progress is set to at least the
   /// passed value.
   core.String updateType;
 
@@ -3533,23 +2303,24 @@ class AchievementUpdateRequest {
   }
 }
 
-/// This is a JSON template for an achievement update response.
+/// An updated achievement.
 class AchievementUpdateResponse {
   /// The achievement this update is was applied to.
   core.String achievementId;
 
   /// The current state of the achievement.
-  /// Possible values are:
-  /// - "HIDDEN" - Achievement is hidden.
-  /// - "REVEALED" - Achievement is revealed.
-  /// - "UNLOCKED" - Achievement is unlocked.
+  /// Possible string values are:
+  /// - "UPDATED_ACHIEVEMENT_STATE_UNSPECIFIED" : Safe default, don't use.
+  /// - "HIDDEN" : Achievement is hidden.
+  /// - "REVEALED" : Achievement is revealed.
+  /// - "UNLOCKED" : Achievement is unlocked.
   core.String currentState;
 
   /// The current steps recorded for this achievement if it is incremental.
   core.int currentSteps;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementUpdateResponse.
+  /// string `games#achievementUpdateResponse`.
   core.String kind;
 
   /// Whether this achievement was newly unlocked (that is, whether the unlock
@@ -3607,109 +2378,7 @@ class AchievementUpdateResponse {
   }
 }
 
-/// This is a JSON template for aggregate stats.
-class AggregateStats {
-  /// The number of messages sent between a pair of peers.
-  core.String count;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#aggregateStats.
-  core.String kind;
-
-  /// The maximum amount.
-  core.String max;
-
-  /// The minimum amount.
-  core.String min;
-
-  /// The total number of bytes sent for messages between a pair of peers.
-  core.String sum;
-
-  AggregateStats();
-
-  AggregateStats.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("max")) {
-      max = _json["max"];
-    }
-    if (_json.containsKey("min")) {
-      min = _json["min"];
-    }
-    if (_json.containsKey("sum")) {
-      sum = _json["sum"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (count != null) {
-      _json["count"] = count;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (max != null) {
-      _json["max"] = max;
-    }
-    if (min != null) {
-      _json["min"] = min;
-    }
-    if (sum != null) {
-      _json["sum"] = sum;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for an anonymous player
-class AnonymousPlayer {
-  /// The base URL for the image to display for the anonymous player.
-  core.String avatarImageUrl;
-
-  /// The name to display for the anonymous player.
-  core.String displayName;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#anonymousPlayer.
-  core.String kind;
-
-  AnonymousPlayer();
-
-  AnonymousPlayer.fromJson(core.Map _json) {
-    if (_json.containsKey("avatarImageUrl")) {
-      avatarImageUrl = _json["avatarImageUrl"];
-    }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (avatarImageUrl != null) {
-      _json["avatarImageUrl"] = avatarImageUrl;
-    }
-    if (displayName != null) {
-      _json["displayName"] = displayName;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for the Application resource.
+/// The Application resource.
 class Application {
   /// The number of achievements visible to the currently authenticated player.
   core.int achievementCount;
@@ -3727,8 +2396,6 @@ class Application {
   core.String description;
 
   /// A list of features that have been enabled for the application.
-  /// Possible values are:
-  /// - "SNAPSHOTS" - Snapshots has been enabled
   core.List<core.String> enabledFeatures;
 
   /// The ID of the application.
@@ -3738,7 +2405,7 @@ class Application {
   core.List<Instance> instances;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#application.
+  /// string `games#application`.
   core.String kind;
 
   /// The last updated timestamp of the application.
@@ -3849,10 +2516,10 @@ class Application {
   }
 }
 
-/// This is a JSON template for an application category object.
+/// An application category object.
 class ApplicationCategory {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#applicationCategory.
+  /// string `games#applicationCategory`.
   core.String kind;
 
   /// The primary category.
@@ -3891,15 +2558,14 @@ class ApplicationCategory {
   }
 }
 
-/// This is a JSON template for a third party application verification response
-/// resource.
+/// A third party application verification response resource.
 class ApplicationVerifyResponse {
   /// An alternate ID that was once used for the player that was issued the auth
   /// token used in this request. (This field is not normally populated.)
   core.String alternatePlayerId;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#applicationVerifyResponse.
+  /// string `games#applicationVerifyResponse`.
   core.String kind;
 
   /// The ID of the player that was issued the auth token used in this request.
@@ -3935,7 +2601,7 @@ class ApplicationVerifyResponse {
   }
 }
 
-/// This is a JSON template for data related to individual game categories.
+/// Data related to individual game categories.
 class Category {
   /// The category name.
   core.String category;
@@ -3944,7 +2610,7 @@ class Category {
   core.String experiencePoints;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#category.
+  /// string `games#category`.
   core.String kind;
 
   Category();
@@ -3977,13 +2643,13 @@ class Category {
   }
 }
 
-/// This is a JSON template for a list of category data objects.
+/// A third party list metagame categories response.
 class CategoryListResponse {
   /// The list of categories with usage data.
   core.List<Category> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#categoryListResponse.
+  /// string `games#categoryListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -4021,26 +2687,27 @@ class CategoryListResponse {
   }
 }
 
-/// This is a JSON template for a batch update failure resource.
+/// A batch update failure resource.
 class EventBatchRecordFailure {
   /// The cause for the update failure.
-  /// Possible values are:
-  /// - "TOO_LARGE": A batch request was issued with more events than are
+  /// Possible string values are:
+  /// - "EVENT_FAILURE_CAUSE_UNSPECIFIED" : Default value. Should not be used.
+  /// - "TOO_LARGE" : A batch request was issued with more events than are
   /// allowed in a single batch.
-  /// - "TIME_PERIOD_EXPIRED": A batch was sent with data too far in the past to
-  /// record.
-  /// - "TIME_PERIOD_SHORT": A batch was sent with a time range that was too
+  /// - "TIME_PERIOD_EXPIRED" : A batch was sent with data too far in the past
+  /// to record.
+  /// - "TIME_PERIOD_SHORT" : A batch was sent with a time range that was too
   /// short.
-  /// - "TIME_PERIOD_LONG": A batch was sent with a time range that was too
+  /// - "TIME_PERIOD_LONG" : A batch was sent with a time range that was too
   /// long.
-  /// - "ALREADY_UPDATED": An attempt was made to record a batch of data which
+  /// - "ALREADY_UPDATED" : An attempt was made to record a batch of data which
   /// was already seen.
-  /// - "RECORD_RATE_HIGH": An attempt was made to record data faster than the
+  /// - "RECORD_RATE_HIGH" : An attempt was made to record data faster than the
   /// server will apply updates.
   core.String failureCause;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventBatchRecordFailure.
+  /// string `games#eventBatchRecordFailure`.
   core.String kind;
 
   /// The time range which was rejected; empty for a request-wide failure.
@@ -4076,13 +2743,13 @@ class EventBatchRecordFailure {
   }
 }
 
-/// This is a JSON template for an event child relationship resource.
+/// An event child relationship resource.
 class EventChild {
   /// The ID of the child event.
   core.String childId;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventChild.
+  /// string `games#eventChild`.
   core.String kind;
 
   EventChild();
@@ -4109,7 +2776,7 @@ class EventChild {
   }
 }
 
-/// This is a JSON template for an event definition resource.
+/// An event definition resource.
 class EventDefinition {
   /// A list of events that are a child of this event.
   core.List<EventChild> childEvents;
@@ -4131,13 +2798,14 @@ class EventDefinition {
   core.bool isDefaultImageUrl;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventDefinition.
+  /// string `games#eventDefinition`.
   core.String kind;
 
   /// The visibility of event being tracked in this definition.
-  /// Possible values are:
-  /// - "REVEALED": This event should be visible to all users.
-  /// - "HIDDEN": This event should only be shown to users that have recorded
+  /// Possible string values are:
+  /// - "EVENT_VISIBILITY_UNSPECIFIED" : Default value. Should not be used.
+  /// - "REVEALED" : This event should be visible to all users.
+  /// - "HIDDEN" : This event should only be shown to users that have recorded
   /// this event at least once.
   core.String visibility;
 
@@ -4204,13 +2872,13 @@ class EventDefinition {
   }
 }
 
-/// This is a JSON template for a ListDefinitions response.
+/// A ListDefinitions response.
 class EventDefinitionListResponse {
   /// The event definitions.
   core.List<EventDefinition> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventDefinitionListResponse.
+  /// string `games#eventDefinitionListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -4248,10 +2916,10 @@ class EventDefinitionListResponse {
   }
 }
 
-/// This is a JSON template for an event period time range.
+/// An event period time range.
 class EventPeriodRange {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventPeriodRange.
+  /// string `games#eventPeriodRange`.
   core.String kind;
 
   /// The time when this update period ends, in millis, since 1970 UTC (Unix
@@ -4292,10 +2960,10 @@ class EventPeriodRange {
   }
 }
 
-/// This is a JSON template for an event period update resource.
+/// An event period update resource.
 class EventPeriodUpdate {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventPeriodUpdate.
+  /// string `games#eventPeriodUpdate`.
   core.String kind;
 
   /// The time period being covered by this update.
@@ -4337,20 +3005,22 @@ class EventPeriodUpdate {
   }
 }
 
-/// This is a JSON template for an event update failure resource.
+/// An event update failure resource.
 class EventRecordFailure {
   /// The ID of the event that was not updated.
   core.String eventId;
 
   /// The cause for the update failure.
-  /// Possible values are:
-  /// - "NOT_FOUND" - An attempt was made to set an event that was not defined.
-  /// - "INVALID_UPDATE_VALUE" - An attempt was made to increment an event by a
+  /// Possible string values are:
+  /// - "EVENT_UPDATE_FAILURE_CAUSE_UNSPECIFIED" : Default value. Should not
+  /// use.
+  /// - "NOT_FOUND" : An attempt was made to set an event that was not defined.
+  /// - "INVALID_UPDATE_VALUE" : An attempt was made to increment an event by a
   /// non-positive value.
   core.String failureCause;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventRecordFailure.
+  /// string `games#eventRecordFailure`.
   core.String kind;
 
   EventRecordFailure();
@@ -4383,14 +3053,14 @@ class EventRecordFailure {
   }
 }
 
-/// This is a JSON template for an event period update resource.
+/// An event period update resource.
 class EventRecordRequest {
   /// The current time when this update was sent, in milliseconds, since 1970
   /// UTC (Unix Epoch).
   core.String currentTimeMillis;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventRecordRequest.
+  /// string `games#eventRecordRequest`.
   core.String kind;
 
   /// The request ID used to identify this attempt to record events.
@@ -4439,13 +3109,13 @@ class EventRecordRequest {
   }
 }
 
-/// This is a JSON template for an event period update resource.
+/// An event period update resource.
 class EventUpdateRequest {
   /// The ID of the event being modified in this update.
   core.String definitionId;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventUpdateRequest.
+  /// string `games#eventUpdateRequest`.
   core.String kind;
 
   /// The number of times this event occurred in this time period.
@@ -4481,7 +3151,7 @@ class EventUpdateRequest {
   }
 }
 
-/// This is a JSON template for an event period update resource.
+/// An event period update resource.
 class EventUpdateResponse {
   /// Any batch-wide failures which occurred applying updates.
   core.List<EventBatchRecordFailure> batchFailures;
@@ -4490,7 +3160,7 @@ class EventUpdateResponse {
   core.List<EventRecordFailure> eventFailures;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#eventUpdateResponse.
+  /// string `games#eventUpdateResponse`.
   core.String kind;
 
   /// The current status of any updated events
@@ -4543,11 +3213,10 @@ class EventUpdateResponse {
   }
 }
 
-/// This is a JSON template for the payload to request to increment an
-/// achievement.
+/// The payload to request to increment an achievement.
 class GamesAchievementIncrement {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#GamesAchievementIncrement.
+  /// string `games#GamesAchievementIncrement`.
   core.String kind;
 
   /// The requestId associated with an increment to an achievement.
@@ -4586,11 +3255,10 @@ class GamesAchievementIncrement {
   }
 }
 
-/// This is a JSON template for the payload to request to increment an
-/// achievement.
+/// The payload to request to increment an achievement.
 class GamesAchievementSetStepsAtLeast {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#GamesAchievementSetStepsAtLeast.
+  /// string `games#GamesAchievementSetStepsAtLeast`.
   core.String kind;
 
   /// The minimum number of steps for the achievement to be set to.
@@ -4620,13 +3288,13 @@ class GamesAchievementSetStepsAtLeast {
   }
 }
 
-/// This is a JSON template for an image asset object.
+/// An image asset object.
 class ImageAsset {
   /// The height of the asset.
   core.int height;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#imageAsset.
+  /// string `games#imageAsset`.
   core.String kind;
 
   /// The name of the asset.
@@ -4680,7 +3348,7 @@ class ImageAsset {
   }
 }
 
-/// This is a JSON template for the Instance resource.
+/// The Instance resource.
 class Instance {
   /// URI which shows where a user can acquire this instance.
   core.String acquisitionUri;
@@ -4692,17 +3360,18 @@ class Instance {
   InstanceIosDetails iosInstance;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#instance.
+  /// string `games#instance`.
   core.String kind;
 
   /// Localized display name.
   core.String name;
 
   /// The platform type.
-  /// Possible values are:
-  /// - "ANDROID" - Instance is for Android.
-  /// - "IOS" - Instance is for iOS
-  /// - "WEB_APP" - Instance is for Web App.
+  /// Possible string values are:
+  /// - "PLATFORM_TYPE_UNSPECIFIED" : Default value. Should be unused.
+  /// - "ANDROID" : Instance is for Android.
+  /// - "IOS" : Instance is for iOS.
+  /// - "WEB_APP" : Instance is for Web App.
   core.String platformType;
 
   /// Flag to show if this game instance supports realtime play.
@@ -4781,13 +3450,13 @@ class Instance {
   }
 }
 
-/// This is a JSON template for the Android instance details resource.
+/// The Android instance details resource.
 class InstanceAndroidDetails {
   /// Flag indicating whether the anti-piracy check is enabled.
   core.bool enablePiracyCheck;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#instanceAndroidDetails.
+  /// string `games#instanceAndroidDetails`.
   core.String kind;
 
   /// Android package name which maps to Google Play URL.
@@ -4832,7 +3501,7 @@ class InstanceAndroidDetails {
   }
 }
 
-/// This is a JSON template for the iOS details resource.
+/// The iOS details resource.
 class InstanceIosDetails {
   /// Bundle identifier.
   core.String bundleIdentifier;
@@ -4841,7 +3510,7 @@ class InstanceIosDetails {
   core.String itunesAppId;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#instanceIosDetails.
+  /// string `games#instanceIosDetails`.
   core.String kind;
 
   /// Indicates that this instance is the default for new installations on iPad
@@ -4912,10 +3581,10 @@ class InstanceIosDetails {
   }
 }
 
-/// This is a JSON template for the Web details resource.
+/// The Web details resource.
 class InstanceWebDetails {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#instanceWebDetails.
+  /// string `games#instanceWebDetails`.
   core.String kind;
 
   /// Launch URL for the game.
@@ -4954,7 +3623,7 @@ class InstanceWebDetails {
   }
 }
 
-/// This is a JSON template for the Leaderboard resource.
+/// The Leaderboard resource.
 class Leaderboard {
   /// The icon for the leaderboard.
   core.String iconUrl;
@@ -4967,18 +3636,19 @@ class Leaderboard {
   core.bool isIconUrlDefault;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#leaderboard.
+  /// string `games#leaderboard`.
   core.String kind;
 
   /// The name of the leaderboard.
   core.String name;
 
   /// How scores are ordered.
-  /// Possible values are:
-  /// - "LARGER_IS_BETTER" - Larger values are better; scores are sorted in
-  /// descending order.
-  /// - "SMALLER_IS_BETTER" - Smaller values are better; scores are sorted in
-  /// ascending order.
+  /// Possible string values are:
+  /// - "SCORE_ORDER_UNSPECIFIED" : Default value. This value is unused.
+  /// - "LARGER_IS_BETTER" : Larger values are better; scores are sorted in
+  /// descending order
+  /// - "SMALLER_IS_BETTER" : Smaller values are better; scores are sorted in
+  /// ascending order
   core.String order;
 
   Leaderboard();
@@ -5029,7 +3699,7 @@ class Leaderboard {
   }
 }
 
-/// This is a JSON template for the Leaderboard Entry resource.
+/// The Leaderboard Entry resource.
 class LeaderboardEntry {
   /// The localized string for the numerical value of this score.
   core.String formattedScore;
@@ -5038,7 +3708,7 @@ class LeaderboardEntry {
   core.String formattedScoreRank;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#leaderboardEntry.
+  /// string `games#leaderboardEntry`.
   core.String kind;
 
   /// The player who holds this score.
@@ -5055,10 +3725,11 @@ class LeaderboardEntry {
   core.String scoreValue;
 
   /// The time span of this high score.
-  /// Possible values are:
-  /// - "ALL_TIME" - The score is an all-time high score.
-  /// - "WEEKLY" - The score is a weekly high score.
-  /// - "DAILY" - The score is a daily high score.
+  /// Possible string values are:
+  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ALL_TIME" : The score is an all-time score.
+  /// - "WEEKLY" : The score is a weekly score.
+  /// - "DAILY" : The score is a daily score.
   core.String timeSpan;
 
   /// The timestamp at which this score was recorded, in milliseconds since the
@@ -5131,13 +3802,13 @@ class LeaderboardEntry {
   }
 }
 
-/// This is a JSON template for a list of leaderboard objects.
+/// A list of leaderboard objects.
 class LeaderboardListResponse {
   /// The leaderboards.
   core.List<Leaderboard> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#leaderboardListResponse.
+  /// string `games#leaderboardListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -5175,7 +3846,7 @@ class LeaderboardListResponse {
   }
 }
 
-/// This is a JSON template for a score rank in a leaderboard.
+/// A score rank in a leaderboard.
 class LeaderboardScoreRank {
   /// The number of scores in the leaderboard as a string.
   core.String formattedNumScores;
@@ -5184,7 +3855,7 @@ class LeaderboardScoreRank {
   core.String formattedRank;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#leaderboardScoreRank.
+  /// string `games#leaderboardScoreRank`.
   core.String kind;
 
   /// The number of scores in the leaderboard.
@@ -5235,13 +3906,13 @@ class LeaderboardScoreRank {
   }
 }
 
-/// This is a JSON template for a ListScores response.
+/// A ListScores response.
 class LeaderboardScores {
   /// The scores in the leaderboard.
   core.List<LeaderboardEntry> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#leaderboardScores.
+  /// string `games#leaderboardScores`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -5253,8 +3924,8 @@ class LeaderboardScores {
   /// The score of the requesting player on the leaderboard. The player's score
   /// may appear both here and in the list of scores above. If you are viewing a
   /// public leaderboard and the player is not sharing their gameplay
-  /// information publicly, the scoreRank and formattedScoreRank values will not
-  /// be present.
+  /// information publicly, the `scoreRank`and `formattedScoreRank` values will
+  /// not be present.
   LeaderboardEntry playerScore;
 
   /// The pagination token for the previous page of results.
@@ -5311,14 +3982,14 @@ class LeaderboardScores {
   }
 }
 
-/// This is a JSON template for the metagame config resource
+/// The metagame config resource
 class MetagameConfig {
   /// Current version of the metagame configuration data. When this data is
   /// updated, the version number will be increased by one.
   core.int currentVersion;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#metagameConfig.
+  /// string `games#metagameConfig`.
   core.String kind;
 
   /// The list of player levels.
@@ -5357,350 +4028,7 @@ class MetagameConfig {
   }
 }
 
-/// This is a JSON template for network diagnostics reported for a client.
-class NetworkDiagnostics {
-  /// The Android network subtype.
-  core.int androidNetworkSubtype;
-
-  /// The Android network type.
-  core.int androidNetworkType;
-
-  /// iOS network type as defined in Reachability.h.
-  core.int iosNetworkType;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#networkDiagnostics.
-  core.String kind;
-
-  /// The MCC+MNC code for the client's network connection. On Android:
-  /// http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperator()
-  /// On iOS, see:
-  /// https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html
-  core.String networkOperatorCode;
-
-  /// The name of the carrier of the client's network connection. On Android:
-  /// http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperatorName()
-  /// On iOS:
-  /// https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html#//apple_ref/occ/instp/CTCarrier/carrierName
-  core.String networkOperatorName;
-
-  /// The amount of time in milliseconds it took for the client to establish a
-  /// connection with the XMPP server.
-  core.int registrationLatencyMillis;
-
-  NetworkDiagnostics();
-
-  NetworkDiagnostics.fromJson(core.Map _json) {
-    if (_json.containsKey("androidNetworkSubtype")) {
-      androidNetworkSubtype = _json["androidNetworkSubtype"];
-    }
-    if (_json.containsKey("androidNetworkType")) {
-      androidNetworkType = _json["androidNetworkType"];
-    }
-    if (_json.containsKey("iosNetworkType")) {
-      iosNetworkType = _json["iosNetworkType"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("networkOperatorCode")) {
-      networkOperatorCode = _json["networkOperatorCode"];
-    }
-    if (_json.containsKey("networkOperatorName")) {
-      networkOperatorName = _json["networkOperatorName"];
-    }
-    if (_json.containsKey("registrationLatencyMillis")) {
-      registrationLatencyMillis = _json["registrationLatencyMillis"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (androidNetworkSubtype != null) {
-      _json["androidNetworkSubtype"] = androidNetworkSubtype;
-    }
-    if (androidNetworkType != null) {
-      _json["androidNetworkType"] = androidNetworkType;
-    }
-    if (iosNetworkType != null) {
-      _json["iosNetworkType"] = iosNetworkType;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (networkOperatorCode != null) {
-      _json["networkOperatorCode"] = networkOperatorCode;
-    }
-    if (networkOperatorName != null) {
-      _json["networkOperatorName"] = networkOperatorName;
-    }
-    if (registrationLatencyMillis != null) {
-      _json["registrationLatencyMillis"] = registrationLatencyMillis;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a result for a match participant.
-class ParticipantResult {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#participantResult.
-  core.String kind;
-
-  /// The ID of the participant.
-  core.String participantId;
-
-  /// The placement or ranking of the participant in the match results; a number
-  /// from one to the number of participants in the match. Multiple participants
-  /// may have the same placing value in case of a type.
-  core.int placing;
-
-  /// The result of the participant for this match.
-  /// Possible values are:
-  /// - "MATCH_RESULT_WIN" - The participant won the match.
-  /// - "MATCH_RESULT_LOSS" - The participant lost the match.
-  /// - "MATCH_RESULT_TIE" - The participant tied the match.
-  /// - "MATCH_RESULT_NONE" - There was no winner for the match (nobody wins or
-  /// loses this kind of game.)
-  /// - "MATCH_RESULT_DISCONNECT" - The participant disconnected / left during
-  /// the match.
-  /// - "MATCH_RESULT_DISAGREED" - Different clients reported different results
-  /// for this participant.
-  core.String result;
-
-  ParticipantResult();
-
-  ParticipantResult.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("participantId")) {
-      participantId = _json["participantId"];
-    }
-    if (_json.containsKey("placing")) {
-      placing = _json["placing"];
-    }
-    if (_json.containsKey("result")) {
-      result = _json["result"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (participantId != null) {
-      _json["participantId"] = participantId;
-    }
-    if (placing != null) {
-      _json["placing"] = placing;
-    }
-    if (result != null) {
-      _json["result"] = result;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for peer channel diagnostics.
-class PeerChannelDiagnostics {
-  /// Number of bytes received.
-  AggregateStats bytesReceived;
-
-  /// Number of bytes sent.
-  AggregateStats bytesSent;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#peerChannelDiagnostics.
-  core.String kind;
-
-  /// Number of messages lost.
-  core.int numMessagesLost;
-
-  /// Number of messages received.
-  core.int numMessagesReceived;
-
-  /// Number of messages sent.
-  core.int numMessagesSent;
-
-  /// Number of send failures.
-  core.int numSendFailures;
-
-  /// Roundtrip latency stats in milliseconds.
-  AggregateStats roundtripLatencyMillis;
-
-  PeerChannelDiagnostics();
-
-  PeerChannelDiagnostics.fromJson(core.Map _json) {
-    if (_json.containsKey("bytesReceived")) {
-      bytesReceived = new AggregateStats.fromJson(_json["bytesReceived"]);
-    }
-    if (_json.containsKey("bytesSent")) {
-      bytesSent = new AggregateStats.fromJson(_json["bytesSent"]);
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("numMessagesLost")) {
-      numMessagesLost = _json["numMessagesLost"];
-    }
-    if (_json.containsKey("numMessagesReceived")) {
-      numMessagesReceived = _json["numMessagesReceived"];
-    }
-    if (_json.containsKey("numMessagesSent")) {
-      numMessagesSent = _json["numMessagesSent"];
-    }
-    if (_json.containsKey("numSendFailures")) {
-      numSendFailures = _json["numSendFailures"];
-    }
-    if (_json.containsKey("roundtripLatencyMillis")) {
-      roundtripLatencyMillis =
-          new AggregateStats.fromJson(_json["roundtripLatencyMillis"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (bytesReceived != null) {
-      _json["bytesReceived"] = (bytesReceived).toJson();
-    }
-    if (bytesSent != null) {
-      _json["bytesSent"] = (bytesSent).toJson();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (numMessagesLost != null) {
-      _json["numMessagesLost"] = numMessagesLost;
-    }
-    if (numMessagesReceived != null) {
-      _json["numMessagesReceived"] = numMessagesReceived;
-    }
-    if (numMessagesSent != null) {
-      _json["numMessagesSent"] = numMessagesSent;
-    }
-    if (numSendFailures != null) {
-      _json["numSendFailures"] = numSendFailures;
-    }
-    if (roundtripLatencyMillis != null) {
-      _json["roundtripLatencyMillis"] = (roundtripLatencyMillis).toJson();
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for peer session diagnostics.
-class PeerSessionDiagnostics {
-  /// Connected time in milliseconds.
-  core.String connectedTimestampMillis;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#peerSessionDiagnostics.
-  core.String kind;
-
-  /// The participant ID of the peer.
-  core.String participantId;
-
-  /// Reliable channel diagnostics.
-  PeerChannelDiagnostics reliableChannel;
-
-  /// Unreliable channel diagnostics.
-  PeerChannelDiagnostics unreliableChannel;
-
-  PeerSessionDiagnostics();
-
-  PeerSessionDiagnostics.fromJson(core.Map _json) {
-    if (_json.containsKey("connectedTimestampMillis")) {
-      connectedTimestampMillis = _json["connectedTimestampMillis"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("participantId")) {
-      participantId = _json["participantId"];
-    }
-    if (_json.containsKey("reliableChannel")) {
-      reliableChannel =
-          new PeerChannelDiagnostics.fromJson(_json["reliableChannel"]);
-    }
-    if (_json.containsKey("unreliableChannel")) {
-      unreliableChannel =
-          new PeerChannelDiagnostics.fromJson(_json["unreliableChannel"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (connectedTimestampMillis != null) {
-      _json["connectedTimestampMillis"] = connectedTimestampMillis;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (participantId != null) {
-      _json["participantId"] = participantId;
-    }
-    if (reliableChannel != null) {
-      _json["reliableChannel"] = (reliableChannel).toJson();
-    }
-    if (unreliableChannel != null) {
-      _json["unreliableChannel"] = (unreliableChannel).toJson();
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for metadata about a player playing a game with the
-/// currently authenticated user.
-class Played {
-  /// True if the player was auto-matched with the currently authenticated user.
-  core.bool autoMatched;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#played.
-  core.String kind;
-
-  /// The last time the player played the game in milliseconds since the epoch
-  /// in UTC.
-  core.String timeMillis;
-
-  Played();
-
-  Played.fromJson(core.Map _json) {
-    if (_json.containsKey("autoMatched")) {
-      autoMatched = _json["autoMatched"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("timeMillis")) {
-      timeMillis = _json["timeMillis"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (autoMatched != null) {
-      _json["autoMatched"] = autoMatched;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (timeMillis != null) {
-      _json["timeMillis"] = timeMillis;
-    }
-    return _json;
-  }
-}
-
-/// An object representation of the individual components of the player's name.
-/// For some players, these fields may not be present.
+/// A representation of the individual components of the name.
 class PlayerName {
   /// The family name of this player. In some places, this is known as the last
   /// name.
@@ -5734,7 +4062,7 @@ class PlayerName {
   }
 }
 
-/// This is a JSON template for a Player resource.
+/// A Player resource.
 class Player {
   /// The base URL for the image that represents the player.
   core.String avatarImageUrl;
@@ -5753,19 +4081,17 @@ class Player {
 
   /// The friend status of the given player, relative to the requester. This is
   /// unset if the player is not sharing their friends list with the game.
+  /// Possible string values are:
+  /// - "FRIEND_STATUS_UNSPECIFIED" : Default value. This value is unused.
+  /// - "NO_RELATIONSHIP" : There is no relationship between the players.
+  /// - "FRIEND" : The player and requester are friends.
   core.String friendStatus;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#player.
+  /// string `games#player`
   core.String kind;
 
-  /// Details about the last time this player played a multiplayer game with the
-  /// currently authenticated player. Populated for PLAYED_WITH player
-  /// collection members.
-  Played lastPlayedWith;
-
-  /// An object representation of the individual components of the player's
-  /// name. For some players, these fields may not be present.
+  /// A representation of the individual components of the name.
   PlayerName name;
 
   /// The player ID that was used for this player the first time they signed
@@ -5809,9 +4135,6 @@ class Player {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
-    if (_json.containsKey("lastPlayedWith")) {
-      lastPlayedWith = new Played.fromJson(_json["lastPlayedWith"]);
-    }
     if (_json.containsKey("name")) {
       name = new PlayerName.fromJson(_json["name"]);
     }
@@ -5853,9 +4176,6 @@ class Player {
     if (kind != null) {
       _json["kind"] = kind;
     }
-    if (lastPlayedWith != null) {
-      _json["lastPlayedWith"] = (lastPlayedWith).toJson();
-    }
     if (name != null) {
       _json["name"] = (name).toJson();
     }
@@ -5875,13 +4195,14 @@ class Player {
   }
 }
 
-/// This is a JSON template for an achievement object.
+/// An achievement object.
 class PlayerAchievement {
   /// The state of the achievement.
-  /// Possible values are:
-  /// - "HIDDEN" - Achievement is hidden.
-  /// - "REVEALED" - Achievement is revealed.
-  /// - "UNLOCKED" - Achievement is unlocked.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "HIDDEN" : Achievement is hidden.
+  /// - "REVEALED" : Achievement is revealed.
+  /// - "UNLOCKED" : Achievement is unlocked.
   core.String achievementState;
 
   /// The current steps for an incremental achievement.
@@ -5899,7 +4220,7 @@ class PlayerAchievement {
   core.String id;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerAchievement.
+  /// string `games#playerAchievement`.
   core.String kind;
 
   /// The timestamp of the last modification to this achievement's state.
@@ -5959,13 +4280,13 @@ class PlayerAchievement {
   }
 }
 
-/// This is a JSON template for a list of achievement objects.
+/// A list of achievement objects.
 class PlayerAchievementListResponse {
   /// The achievements.
   core.List<PlayerAchievement> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerAchievementListResponse.
+  /// string `games#playerAchievementListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -6004,7 +4325,7 @@ class PlayerAchievementListResponse {
   }
 }
 
-/// This is a JSON template for an event status resource.
+/// An event status resource.
 class PlayerEvent {
   /// The ID of the event definition.
   core.String definitionId;
@@ -6015,7 +4336,7 @@ class PlayerEvent {
   core.String formattedNumEvents;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerEvent.
+  /// string `games#playerEvent`.
   core.String kind;
 
   /// The current number of times this event has occurred.
@@ -6066,13 +4387,13 @@ class PlayerEvent {
   }
 }
 
-/// This is a JSON template for a ListByPlayer response.
+/// A ListByPlayer response.
 class PlayerEventListResponse {
   /// The player events.
   core.List<PlayerEvent> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerEventListResponse.
+  /// string `games#playerEventListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -6110,7 +4431,7 @@ class PlayerEventListResponse {
   }
 }
 
-/// This is a JSON template for 1P/3P metadata about the player's experience.
+/// 1P/3P metadata about the player's experience.
 class PlayerExperienceInfo {
   /// The current number of experience points for the player.
   core.String currentExperiencePoints;
@@ -6119,7 +4440,7 @@ class PlayerExperienceInfo {
   PlayerLevel currentLevel;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerExperienceInfo.
+  /// string `games#playerExperienceInfo`.
   core.String kind;
 
   /// The timestamp when the player was leveled up, in millis since Unix epoch
@@ -6172,10 +4493,13 @@ class PlayerExperienceInfo {
   }
 }
 
-/// This is a JSON template for a player leaderboard score object.
+/// A player leaderboard score object.
 class PlayerLeaderboardScore {
+  /// The rank of the score in the friends collection for this leaderboard.
+  LeaderboardScoreRank friendsRank;
+
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerLeaderboardScore.
+  /// string `games#playerLeaderboardScore`.
   core.String kind;
 
   /// The ID of the leaderboard this score is in.
@@ -6199,10 +4523,11 @@ class PlayerLeaderboardScore {
   LeaderboardScoreRank socialRank;
 
   /// The time span of this score.
-  /// Possible values are:
-  /// - "ALL_TIME" - The score is an all-time score.
-  /// - "WEEKLY" - The score is a weekly score.
-  /// - "DAILY" - The score is a daily score.
+  /// Possible string values are:
+  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ALL_TIME" : The score is an all-time score.
+  /// - "WEEKLY" : The score is a weekly score.
+  /// - "DAILY" : The score is a daily score.
   core.String timeSpan;
 
   /// The timestamp at which this score was recorded, in milliseconds since the
@@ -6212,6 +4537,9 @@ class PlayerLeaderboardScore {
   PlayerLeaderboardScore();
 
   PlayerLeaderboardScore.fromJson(core.Map _json) {
+    if (_json.containsKey("friendsRank")) {
+      friendsRank = new LeaderboardScoreRank.fromJson(_json["friendsRank"]);
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -6244,6 +4572,9 @@ class PlayerLeaderboardScore {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (friendsRank != null) {
+      _json["friendsRank"] = (friendsRank).toJson();
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -6275,13 +4606,13 @@ class PlayerLeaderboardScore {
   }
 }
 
-/// This is a JSON template for a list of player leaderboard scores.
+/// A list of player leaderboard scores.
 class PlayerLeaderboardScoreListResponse {
   /// The leaderboard scores.
   core.List<PlayerLeaderboardScore> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerLeaderboardScoreListResponse.
+  /// string `games#playerLeaderboardScoreListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -6329,10 +4660,10 @@ class PlayerLeaderboardScoreListResponse {
   }
 }
 
-/// This is a JSON template for 1P/3P metadata about a user's level.
+/// 1P/3P metadata about a user's level.
 class PlayerLevel {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerLevel.
+  /// string `games#playerLevel`.
   core.String kind;
 
   /// The level for the user.
@@ -6380,13 +4711,13 @@ class PlayerLevel {
   }
 }
 
-/// This is a JSON template for a third party player list response.
+/// A third party player list response.
 class PlayerListResponse {
   /// The players.
   core.List<Player> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerListResponse.
+  /// string `games#playerListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -6424,13 +4755,13 @@ class PlayerListResponse {
   }
 }
 
-/// This is a JSON template for a player score.
+/// A player score.
 class PlayerScore {
   /// The formatted score for this player score.
   core.String formattedScore;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerScore.
+  /// string `games#playerScore`.
   core.String kind;
 
   /// The numerical value for this player score.
@@ -6441,10 +4772,11 @@ class PlayerScore {
   core.String scoreTag;
 
   /// The time span for this player score.
-  /// Possible values are:
-  /// - "ALL_TIME" - The score is an all-time score.
-  /// - "WEEKLY" - The score is a weekly score.
-  /// - "DAILY" - The score is a daily score.
+  /// Possible string values are:
+  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ALL_TIME" : The score is an all-time score.
+  /// - "WEEKLY" : The score is a weekly score.
+  /// - "DAILY" : The score is a daily score.
   core.String timeSpan;
 
   PlayerScore();
@@ -6489,10 +4821,10 @@ class PlayerScore {
   }
 }
 
-/// This is a JSON template for a list of score submission statuses.
+/// A list of score submission statuses.
 class PlayerScoreListResponse {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerScoreListResponse.
+  /// string `games#playerScoreListResponse`.
   core.String kind;
 
   /// The score submissions statuses.
@@ -6526,21 +4858,17 @@ class PlayerScoreListResponse {
   }
 }
 
-/// This is a JSON template for a list of leaderboard entry resources.
+/// A list of leaderboard entry resources.
 class PlayerScoreResponse {
   /// The time spans where the submitted score is better than the existing score
   /// for that time span.
-  /// Possible values are:
-  /// - "ALL_TIME" - The score is an all-time score.
-  /// - "WEEKLY" - The score is a weekly score.
-  /// - "DAILY" - The score is a daily score.
   core.List<core.String> beatenScoreTimeSpans;
 
   /// The formatted value of the submitted score.
   core.String formattedScore;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerScoreResponse.
+  /// string `games#playerScoreResponse`.
   core.String kind;
 
   /// The leaderboard ID that this score was submitted to.
@@ -6551,8 +4879,8 @@ class PlayerScoreResponse {
   core.String scoreTag;
 
   /// The scores in time spans that have not been beaten. As an example, the
-  /// submitted score may be better than the player's DAILY score, but not
-  /// better than the player's scores for the WEEKLY or ALL_TIME time spans.
+  /// submitted score may be better than the player's `DAILY` score, but not
+  /// better than the player's scores for the `WEEKLY` or `ALL_TIME` time spans.
   core.List<PlayerScore> unbeatenScores;
 
   PlayerScoreResponse();
@@ -6607,10 +4935,10 @@ class PlayerScoreResponse {
   }
 }
 
-/// This is a JSON template for a list of score submission requests
+/// A list of score submission requests.
 class PlayerScoreSubmissionList {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#playerScoreSubmissionList.
+  /// string `games#playerScoreSubmissionList`.
   core.String kind;
 
   /// The score submissions.
@@ -6642,14 +4970,26 @@ class PlayerScoreSubmissionList {
   }
 }
 
-/// This is a JSON template for profile settings
+/// Profile settings
 class ProfileSettings {
-  /// Whether the player's friends list is visible to the game.
+  ///
+  /// Possible string values are:
+  /// - "FRIENDS_LIST_VISIBILITY_UNSPECIFIED" : Unused.
+  /// - "VISIBLE" : The friends list is currently visible to the game.
+  /// - "REQUEST_REQUIRED" : The developer does not have access to the friends
+  /// list, but can call the Android API to show a consent dialog.
+  /// - "UNAVAILABLE" : The friends list is currently unavailable for this user,
+  /// and it is not possible to request access at this time, either because the
+  /// user has permanently declined or the friends feature is not available to
+  /// them. In this state, any attempts to request access to the friends list
+  /// will be unsuccessful.
   core.String friendsListVisibility;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#profileSettings.
+  /// string `games#profileSettings`.
   core.String kind;
+
+  /// Whether the player's profile is visible to the currently signed in player.
   core.bool profileVisible;
 
   ProfileSettings();
@@ -6682,152 +5022,23 @@ class ProfileSettings {
   }
 }
 
-/// This is a JSON template for a push token resource.
-class PushToken {
-  /// The revision of the client SDK used by your application, in the same
-  /// format that's used by revisions.check. Used to send backward compatible
-  /// messages. Format: [PLATFORM_TYPE]:[VERSION_NUMBER]. Possible values of
-  /// PLATFORM_TYPE are:
-  /// - IOS - Push token is for iOS
-  core.String clientRevision;
-
-  /// Unique identifier for this push token.
-  PushTokenId id;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#pushToken.
-  core.String kind;
-
-  /// The preferred language for notifications that are sent using this token.
-  core.String language;
-
-  PushToken();
-
-  PushToken.fromJson(core.Map _json) {
-    if (_json.containsKey("clientRevision")) {
-      clientRevision = _json["clientRevision"];
-    }
-    if (_json.containsKey("id")) {
-      id = new PushTokenId.fromJson(_json["id"]);
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("language")) {
-      language = _json["language"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (clientRevision != null) {
-      _json["clientRevision"] = clientRevision;
-    }
-    if (id != null) {
-      _json["id"] = (id).toJson();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (language != null) {
-      _json["language"] = language;
-    }
-    return _json;
-  }
-}
-
-/// A push token ID for iOS devices.
-class PushTokenIdIos {
-  /// Device token supplied by an iOS system call to register for remote
-  /// notifications. Encode this field as web-safe base64.
-  core.String apnsDeviceToken;
-  core.List<core.int> get apnsDeviceTokenAsBytes {
-    return convert.base64.decode(apnsDeviceToken);
-  }
-
-  set apnsDeviceTokenAsBytes(core.List<core.int> _bytes) {
-    apnsDeviceToken =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// Indicates whether this token should be used for the production or sandbox
-  /// APNS server.
-  core.String apnsEnvironment;
-
-  PushTokenIdIos();
-
-  PushTokenIdIos.fromJson(core.Map _json) {
-    if (_json.containsKey("apns_device_token")) {
-      apnsDeviceToken = _json["apns_device_token"];
-    }
-    if (_json.containsKey("apns_environment")) {
-      apnsEnvironment = _json["apns_environment"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (apnsDeviceToken != null) {
-      _json["apns_device_token"] = apnsDeviceToken;
-    }
-    if (apnsEnvironment != null) {
-      _json["apns_environment"] = apnsEnvironment;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a push token ID resource.
-class PushTokenId {
-  /// A push token ID for iOS devices.
-  PushTokenIdIos ios;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#pushTokenId.
-  core.String kind;
-
-  PushTokenId();
-
-  PushTokenId.fromJson(core.Map _json) {
-    if (_json.containsKey("ios")) {
-      ios = new PushTokenIdIos.fromJson(_json["ios"]);
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (ios != null) {
-      _json["ios"] = (ios).toJson();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for the result of checking a revision.
+/// A third party checking a revision response.
 class RevisionCheckResponse {
   /// The version of the API this client revision should use when calling API
   /// methods.
   core.String apiVersion;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#revisionCheckResponse.
+  /// string `games#revisionCheckResponse`.
   core.String kind;
 
   /// The result of the revision check.
-  /// Possible values are:
-  /// - "OK" - The revision being used is current.
-  /// - "DEPRECATED" - There is currently a newer version available, but the
+  /// Possible string values are:
+  /// - "REVISION_STATUS_UNSPECIFIED" : Default value. This value is unused.
+  /// - "OK" : The revision being used is current.
+  /// - "DEPRECATED" : There is currently a newer version available, but the
   /// revision being used still works.
-  /// - "INVALID" - The revision being used is not supported in any released
+  /// - "INVALID" : The revision being used is not supported in any released
   /// version.
   core.String revisionStatus;
 
@@ -6861,1030 +5072,10 @@ class RevisionCheckResponse {
   }
 }
 
-/// This is a JSON template for a room resource object.
-class Room {
-  /// The ID of the application being played.
-  core.String applicationId;
-
-  /// Criteria for auto-matching players into this room.
-  RoomAutoMatchingCriteria autoMatchingCriteria;
-
-  /// Auto-matching status for this room. Not set if the room is not currently
-  /// in the auto-matching queue.
-  RoomAutoMatchStatus autoMatchingStatus;
-
-  /// Details about the room creation.
-  RoomModification creationDetails;
-
-  /// This short description is generated by our servers and worded relative to
-  /// the player requesting the room. It is intended to be displayed when the
-  /// room is shown in a list (that is, an invitation to a room.)
-  core.String description;
-
-  /// The ID of the participant that invited the user to the room. Not set if
-  /// the user was not invited to the room.
-  core.String inviterId;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#room.
-  core.String kind;
-
-  /// Details about the last update to the room.
-  RoomModification lastUpdateDetails;
-
-  /// The participants involved in the room, along with their statuses. Includes
-  /// participants who have left or declined invitations.
-  core.List<RoomParticipant> participants;
-
-  /// Globally unique ID for a room.
-  core.String roomId;
-
-  /// The version of the room status: an increasing counter, used by the client
-  /// to ignore out-of-order updates to room status.
-  core.int roomStatusVersion;
-
-  /// The status of the room.
-  /// Possible values are:
-  /// - "ROOM_INVITING" - One or more players have been invited and not
-  /// responded.
-  /// - "ROOM_AUTO_MATCHING" - One or more slots need to be filled by
-  /// auto-matching.
-  /// - "ROOM_CONNECTING" - Players have joined and are connecting to each other
-  /// (either before or after auto-matching).
-  /// - "ROOM_ACTIVE" - All players have joined and connected to each other.
-  /// - "ROOM_DELETED" - The room should no longer be shown on the client.
-  /// Returned in sync calls when a player joins a room (as a tombstone), or for
-  /// rooms where all joined participants have left.
-  core.String status;
-
-  /// The variant / mode of the application being played; can be any integer
-  /// value, or left blank.
-  core.int variant;
-
-  Room();
-
-  Room.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationId")) {
-      applicationId = _json["applicationId"];
-    }
-    if (_json.containsKey("autoMatchingCriteria")) {
-      autoMatchingCriteria =
-          new RoomAutoMatchingCriteria.fromJson(_json["autoMatchingCriteria"]);
-    }
-    if (_json.containsKey("autoMatchingStatus")) {
-      autoMatchingStatus =
-          new RoomAutoMatchStatus.fromJson(_json["autoMatchingStatus"]);
-    }
-    if (_json.containsKey("creationDetails")) {
-      creationDetails = new RoomModification.fromJson(_json["creationDetails"]);
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("inviterId")) {
-      inviterId = _json["inviterId"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("lastUpdateDetails")) {
-      lastUpdateDetails =
-          new RoomModification.fromJson(_json["lastUpdateDetails"]);
-    }
-    if (_json.containsKey("participants")) {
-      participants = (_json["participants"] as core.List)
-          .map<RoomParticipant>((value) => new RoomParticipant.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("roomId")) {
-      roomId = _json["roomId"];
-    }
-    if (_json.containsKey("roomStatusVersion")) {
-      roomStatusVersion = _json["roomStatusVersion"];
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-    if (_json.containsKey("variant")) {
-      variant = _json["variant"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (applicationId != null) {
-      _json["applicationId"] = applicationId;
-    }
-    if (autoMatchingCriteria != null) {
-      _json["autoMatchingCriteria"] = (autoMatchingCriteria).toJson();
-    }
-    if (autoMatchingStatus != null) {
-      _json["autoMatchingStatus"] = (autoMatchingStatus).toJson();
-    }
-    if (creationDetails != null) {
-      _json["creationDetails"] = (creationDetails).toJson();
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (inviterId != null) {
-      _json["inviterId"] = inviterId;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (lastUpdateDetails != null) {
-      _json["lastUpdateDetails"] = (lastUpdateDetails).toJson();
-    }
-    if (participants != null) {
-      _json["participants"] =
-          participants.map((value) => (value).toJson()).toList();
-    }
-    if (roomId != null) {
-      _json["roomId"] = roomId;
-    }
-    if (roomStatusVersion != null) {
-      _json["roomStatusVersion"] = roomStatusVersion;
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    if (variant != null) {
-      _json["variant"] = variant;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for status of room automatching that is in progress.
-class RoomAutoMatchStatus {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomAutoMatchStatus.
-  core.String kind;
-
-  /// An estimate for the amount of time (in seconds) that auto-matching is
-  /// expected to take to complete.
-  core.int waitEstimateSeconds;
-
-  RoomAutoMatchStatus();
-
-  RoomAutoMatchStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("waitEstimateSeconds")) {
-      waitEstimateSeconds = _json["waitEstimateSeconds"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (waitEstimateSeconds != null) {
-      _json["waitEstimateSeconds"] = waitEstimateSeconds;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a room auto-match criteria object.
-class RoomAutoMatchingCriteria {
-  /// A bitmask indicating when auto-matches are valid. When ANDed with other
-  /// exclusive bitmasks, the result must be zero. Can be used to support
-  /// exclusive roles within a game.
-  core.String exclusiveBitmask;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomAutoMatchingCriteria.
-  core.String kind;
-
-  /// The maximum number of players that should be added to the room by
-  /// auto-matching.
-  core.int maxAutoMatchingPlayers;
-
-  /// The minimum number of players that should be added to the room by
-  /// auto-matching.
-  core.int minAutoMatchingPlayers;
-
-  RoomAutoMatchingCriteria();
-
-  RoomAutoMatchingCriteria.fromJson(core.Map _json) {
-    if (_json.containsKey("exclusiveBitmask")) {
-      exclusiveBitmask = _json["exclusiveBitmask"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("maxAutoMatchingPlayers")) {
-      maxAutoMatchingPlayers = _json["maxAutoMatchingPlayers"];
-    }
-    if (_json.containsKey("minAutoMatchingPlayers")) {
-      minAutoMatchingPlayers = _json["minAutoMatchingPlayers"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (exclusiveBitmask != null) {
-      _json["exclusiveBitmask"] = exclusiveBitmask;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (maxAutoMatchingPlayers != null) {
-      _json["maxAutoMatchingPlayers"] = maxAutoMatchingPlayers;
-    }
-    if (minAutoMatchingPlayers != null) {
-      _json["minAutoMatchingPlayers"] = minAutoMatchingPlayers;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for the client address when setting up a room.
-class RoomClientAddress {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomClientAddress.
-  core.String kind;
-
-  /// The XMPP address of the client on the Google Games XMPP network.
-  core.String xmppAddress;
-
-  RoomClientAddress();
-
-  RoomClientAddress.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("xmppAddress")) {
-      xmppAddress = _json["xmppAddress"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (xmppAddress != null) {
-      _json["xmppAddress"] = xmppAddress;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a room creation request.
-class RoomCreateRequest {
-  /// Criteria for auto-matching players into this room.
-  RoomAutoMatchingCriteria autoMatchingCriteria;
-
-  /// The capabilities that this client supports for realtime communication.
-  core.List<core.String> capabilities;
-
-  /// Client address for the player creating the room.
-  RoomClientAddress clientAddress;
-
-  /// The player IDs to invite to the room.
-  core.List<core.String> invitedPlayerIds;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomCreateRequest.
-  core.String kind;
-
-  /// Network diagnostics for the client creating the room.
-  NetworkDiagnostics networkDiagnostics;
-
-  /// A randomly generated numeric ID. This number is used at the server to
-  /// ensure that the request is handled correctly across retries.
-  core.String requestId;
-
-  /// The variant / mode of the application to be played. This can be any
-  /// integer value, or left blank. You should use a small number of variants to
-  /// keep the auto-matching pool as large as possible.
-  core.int variant;
-
-  RoomCreateRequest();
-
-  RoomCreateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("autoMatchingCriteria")) {
-      autoMatchingCriteria =
-          new RoomAutoMatchingCriteria.fromJson(_json["autoMatchingCriteria"]);
-    }
-    if (_json.containsKey("capabilities")) {
-      capabilities = (_json["capabilities"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("clientAddress")) {
-      clientAddress = new RoomClientAddress.fromJson(_json["clientAddress"]);
-    }
-    if (_json.containsKey("invitedPlayerIds")) {
-      invitedPlayerIds =
-          (_json["invitedPlayerIds"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("networkDiagnostics")) {
-      networkDiagnostics =
-          new NetworkDiagnostics.fromJson(_json["networkDiagnostics"]);
-    }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
-    }
-    if (_json.containsKey("variant")) {
-      variant = _json["variant"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (autoMatchingCriteria != null) {
-      _json["autoMatchingCriteria"] = (autoMatchingCriteria).toJson();
-    }
-    if (capabilities != null) {
-      _json["capabilities"] = capabilities;
-    }
-    if (clientAddress != null) {
-      _json["clientAddress"] = (clientAddress).toJson();
-    }
-    if (invitedPlayerIds != null) {
-      _json["invitedPlayerIds"] = invitedPlayerIds;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (networkDiagnostics != null) {
-      _json["networkDiagnostics"] = (networkDiagnostics).toJson();
-    }
-    if (requestId != null) {
-      _json["requestId"] = requestId;
-    }
-    if (variant != null) {
-      _json["variant"] = variant;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a join room request.
-class RoomJoinRequest {
-  /// The capabilities that this client supports for realtime communication.
-  core.List<core.String> capabilities;
-
-  /// Client address for the player joining the room.
-  RoomClientAddress clientAddress;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomJoinRequest.
-  core.String kind;
-
-  /// Network diagnostics for the client joining the room.
-  NetworkDiagnostics networkDiagnostics;
-
-  RoomJoinRequest();
-
-  RoomJoinRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("capabilities")) {
-      capabilities = (_json["capabilities"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("clientAddress")) {
-      clientAddress = new RoomClientAddress.fromJson(_json["clientAddress"]);
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("networkDiagnostics")) {
-      networkDiagnostics =
-          new NetworkDiagnostics.fromJson(_json["networkDiagnostics"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (capabilities != null) {
-      _json["capabilities"] = capabilities;
-    }
-    if (clientAddress != null) {
-      _json["clientAddress"] = (clientAddress).toJson();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (networkDiagnostics != null) {
-      _json["networkDiagnostics"] = (networkDiagnostics).toJson();
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for room leave diagnostics.
-class RoomLeaveDiagnostics {
-  /// Android network subtype.
-  /// http://developer.android.com/reference/android/net/NetworkInfo.html#getSubtype()
-  core.int androidNetworkSubtype;
-
-  /// Android network type.
-  /// http://developer.android.com/reference/android/net/NetworkInfo.html#getType()
-  core.int androidNetworkType;
-
-  /// iOS network type as defined in Reachability.h.
-  core.int iosNetworkType;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomLeaveDiagnostics.
-  core.String kind;
-
-  /// The MCC+MNC code for the client's network connection. On Android:
-  /// http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperator()
-  /// On iOS, see:
-  /// https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html
-  core.String networkOperatorCode;
-
-  /// The name of the carrier of the client's network connection. On Android:
-  /// http://developer.android.com/reference/android/telephony/TelephonyManager.html#getNetworkOperatorName()
-  /// On iOS:
-  /// https://developer.apple.com/library/ios/documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html#//apple_ref/occ/instp/CTCarrier/carrierName
-  core.String networkOperatorName;
-
-  /// Diagnostics about all peer sessions.
-  core.List<PeerSessionDiagnostics> peerSession;
-
-  /// Whether or not sockets were used.
-  core.bool socketsUsed;
-
-  RoomLeaveDiagnostics();
-
-  RoomLeaveDiagnostics.fromJson(core.Map _json) {
-    if (_json.containsKey("androidNetworkSubtype")) {
-      androidNetworkSubtype = _json["androidNetworkSubtype"];
-    }
-    if (_json.containsKey("androidNetworkType")) {
-      androidNetworkType = _json["androidNetworkType"];
-    }
-    if (_json.containsKey("iosNetworkType")) {
-      iosNetworkType = _json["iosNetworkType"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("networkOperatorCode")) {
-      networkOperatorCode = _json["networkOperatorCode"];
-    }
-    if (_json.containsKey("networkOperatorName")) {
-      networkOperatorName = _json["networkOperatorName"];
-    }
-    if (_json.containsKey("peerSession")) {
-      peerSession = (_json["peerSession"] as core.List)
-          .map<PeerSessionDiagnostics>(
-              (value) => new PeerSessionDiagnostics.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("socketsUsed")) {
-      socketsUsed = _json["socketsUsed"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (androidNetworkSubtype != null) {
-      _json["androidNetworkSubtype"] = androidNetworkSubtype;
-    }
-    if (androidNetworkType != null) {
-      _json["androidNetworkType"] = androidNetworkType;
-    }
-    if (iosNetworkType != null) {
-      _json["iosNetworkType"] = iosNetworkType;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (networkOperatorCode != null) {
-      _json["networkOperatorCode"] = networkOperatorCode;
-    }
-    if (networkOperatorName != null) {
-      _json["networkOperatorName"] = networkOperatorName;
-    }
-    if (peerSession != null) {
-      _json["peerSession"] =
-          peerSession.map((value) => (value).toJson()).toList();
-    }
-    if (socketsUsed != null) {
-      _json["socketsUsed"] = socketsUsed;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a leave room request.
-class RoomLeaveRequest {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomLeaveRequest.
-  core.String kind;
-
-  /// Diagnostics for a player leaving the room.
-  RoomLeaveDiagnostics leaveDiagnostics;
-
-  /// Reason for leaving the match.
-  /// Possible values are:
-  /// - "PLAYER_LEFT" - The player chose to leave the room..
-  /// - "GAME_LEFT" - The game chose to remove the player from the room.
-  /// - "REALTIME_ABANDONED" - The player switched to another application and
-  /// abandoned the room.
-  /// - "REALTIME_PEER_CONNECTION_FAILURE" - The client was unable to establish
-  /// a connection to other peer(s).
-  /// - "REALTIME_SERVER_CONNECTION_FAILURE" - The client was unable to
-  /// communicate with the server.
-  /// - "REALTIME_SERVER_ERROR" - The client received an error response when it
-  /// tried to communicate with the server.
-  /// - "REALTIME_TIMEOUT" - The client timed out while waiting for a room.
-  /// - "REALTIME_CLIENT_DISCONNECTING" - The client disconnects without first
-  /// calling Leave.
-  /// - "REALTIME_SIGN_OUT" - The user signed out of G+ while in the room.
-  /// - "REALTIME_GAME_CRASHED" - The game crashed.
-  /// - "REALTIME_ROOM_SERVICE_CRASHED" - RoomAndroidService crashed.
-  /// - "REALTIME_DIFFERENT_CLIENT_ROOM_OPERATION" - Another client is trying to
-  /// enter a room.
-  /// - "REALTIME_SAME_CLIENT_ROOM_OPERATION" - The same client is trying to
-  /// enter a new room.
-  core.String reason;
-
-  RoomLeaveRequest();
-
-  RoomLeaveRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("leaveDiagnostics")) {
-      leaveDiagnostics =
-          new RoomLeaveDiagnostics.fromJson(_json["leaveDiagnostics"]);
-    }
-    if (_json.containsKey("reason")) {
-      reason = _json["reason"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (leaveDiagnostics != null) {
-      _json["leaveDiagnostics"] = (leaveDiagnostics).toJson();
-    }
-    if (reason != null) {
-      _json["reason"] = reason;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a list of rooms.
-class RoomList {
-  /// The rooms.
-  core.List<Room> items;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomList.
-  core.String kind;
-
-  /// The pagination token for the next page of results.
-  core.String nextPageToken;
-
-  RoomList();
-
-  RoomList.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<Room>((value) => new Room.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for room modification metadata.
-class RoomModification {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomModification.
-  core.String kind;
-
-  /// The timestamp at which they modified the room, in milliseconds since the
-  /// epoch in UTC.
-  core.String modifiedTimestampMillis;
-
-  /// The ID of the participant that modified the room.
-  core.String participantId;
-
-  RoomModification();
-
-  RoomModification.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("modifiedTimestampMillis")) {
-      modifiedTimestampMillis = _json["modifiedTimestampMillis"];
-    }
-    if (_json.containsKey("participantId")) {
-      participantId = _json["participantId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (modifiedTimestampMillis != null) {
-      _json["modifiedTimestampMillis"] = modifiedTimestampMillis;
-    }
-    if (participantId != null) {
-      _json["participantId"] = participantId;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for an update on the status of a peer in a room.
-class RoomP2PStatus {
-  /// The amount of time in milliseconds it took to establish connections with
-  /// this peer.
-  core.int connectionSetupLatencyMillis;
-
-  /// The error code in event of a failure.
-  /// Possible values are:
-  /// - "P2P_FAILED" - The client failed to establish a P2P connection with the
-  /// peer.
-  /// - "PRESENCE_FAILED" - The client failed to register to receive P2P
-  /// connections.
-  /// - "RELAY_SERVER_FAILED" - The client received an error when trying to use
-  /// the relay server to establish a P2P connection with the peer.
-  core.String error;
-
-  /// More detailed diagnostic message returned in event of a failure.
-  core.String errorReason;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomP2PStatus.
-  core.String kind;
-
-  /// The ID of the participant.
-  core.String participantId;
-
-  /// The status of the peer in the room.
-  /// Possible values are:
-  /// - "CONNECTION_ESTABLISHED" - The client established a P2P connection with
-  /// the peer.
-  /// - "CONNECTION_FAILED" - The client failed to establish directed presence
-  /// with the peer.
-  core.String status;
-
-  /// The amount of time in milliseconds it took to send packets back and forth
-  /// on the unreliable channel with this peer.
-  core.int unreliableRoundtripLatencyMillis;
-
-  RoomP2PStatus();
-
-  RoomP2PStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("connectionSetupLatencyMillis")) {
-      connectionSetupLatencyMillis = _json["connectionSetupLatencyMillis"];
-    }
-    if (_json.containsKey("error")) {
-      error = _json["error"];
-    }
-    if (_json.containsKey("error_reason")) {
-      errorReason = _json["error_reason"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("participantId")) {
-      participantId = _json["participantId"];
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-    if (_json.containsKey("unreliableRoundtripLatencyMillis")) {
-      unreliableRoundtripLatencyMillis =
-          _json["unreliableRoundtripLatencyMillis"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (connectionSetupLatencyMillis != null) {
-      _json["connectionSetupLatencyMillis"] = connectionSetupLatencyMillis;
-    }
-    if (error != null) {
-      _json["error"] = error;
-    }
-    if (errorReason != null) {
-      _json["error_reason"] = errorReason;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (participantId != null) {
-      _json["participantId"] = participantId;
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    if (unreliableRoundtripLatencyMillis != null) {
-      _json["unreliableRoundtripLatencyMillis"] =
-          unreliableRoundtripLatencyMillis;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for an update on the status of peers in a room.
-class RoomP2PStatuses {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomP2PStatuses.
-  core.String kind;
-
-  /// The updates for the peers.
-  core.List<RoomP2PStatus> updates;
-
-  RoomP2PStatuses();
-
-  RoomP2PStatuses.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("updates")) {
-      updates = (_json["updates"] as core.List)
-          .map<RoomP2PStatus>((value) => new RoomP2PStatus.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (updates != null) {
-      _json["updates"] = updates.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a participant in a room.
-class RoomParticipant {
-  /// True if this participant was auto-matched with the requesting player.
-  core.bool autoMatched;
-
-  /// Information about a player that has been anonymously auto-matched against
-  /// the requesting player. (Either player or autoMatchedPlayer will be set.)
-  AnonymousPlayer autoMatchedPlayer;
-
-  /// The capabilities which can be used when communicating with this
-  /// participant.
-  core.List<core.String> capabilities;
-
-  /// Client address for the participant.
-  RoomClientAddress clientAddress;
-
-  /// True if this participant is in the fully connected set of peers in the
-  /// room.
-  core.bool connected;
-
-  /// An identifier for the participant in the scope of the room. Cannot be used
-  /// to identify a player across rooms or in other contexts.
-  core.String id;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomParticipant.
-  core.String kind;
-
-  /// The reason the participant left the room; populated if the participant
-  /// status is PARTICIPANT_LEFT.
-  /// Possible values are:
-  /// - "PLAYER_LEFT" - The player explicitly chose to leave the room.
-  /// - "GAME_LEFT" - The game chose to remove the player from the room.
-  /// - "ABANDONED" - The player switched to another application and abandoned
-  /// the room.
-  /// - "PEER_CONNECTION_FAILURE" - The client was unable to establish or
-  /// maintain a connection to other peer(s) in the room.
-  /// - "SERVER_ERROR" - The client received an error response when it tried to
-  /// communicate with the server.
-  /// - "TIMEOUT" - The client timed out while waiting for players to join and
-  /// connect.
-  /// - "PRESENCE_FAILURE" - The client's XMPP connection ended abruptly.
-  core.String leaveReason;
-
-  /// Information about the player. Not populated if this player was anonymously
-  /// auto-matched against the requesting player. (Either player or
-  /// autoMatchedPlayer will be set.)
-  Player player;
-
-  /// The status of the participant with respect to the room.
-  /// Possible values are:
-  /// - "PARTICIPANT_INVITED" - The participant has been invited to join the
-  /// room, but has not yet responded.
-  /// - "PARTICIPANT_JOINED" - The participant has joined the room (either after
-  /// creating it or accepting an invitation.)
-  /// - "PARTICIPANT_DECLINED" - The participant declined an invitation to join
-  /// the room.
-  /// - "PARTICIPANT_LEFT" - The participant joined the room and then left it.
-  core.String status;
-
-  RoomParticipant();
-
-  RoomParticipant.fromJson(core.Map _json) {
-    if (_json.containsKey("autoMatched")) {
-      autoMatched = _json["autoMatched"];
-    }
-    if (_json.containsKey("autoMatchedPlayer")) {
-      autoMatchedPlayer =
-          new AnonymousPlayer.fromJson(_json["autoMatchedPlayer"]);
-    }
-    if (_json.containsKey("capabilities")) {
-      capabilities = (_json["capabilities"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("clientAddress")) {
-      clientAddress = new RoomClientAddress.fromJson(_json["clientAddress"]);
-    }
-    if (_json.containsKey("connected")) {
-      connected = _json["connected"];
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("leaveReason")) {
-      leaveReason = _json["leaveReason"];
-    }
-    if (_json.containsKey("player")) {
-      player = new Player.fromJson(_json["player"]);
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (autoMatched != null) {
-      _json["autoMatched"] = autoMatched;
-    }
-    if (autoMatchedPlayer != null) {
-      _json["autoMatchedPlayer"] = (autoMatchedPlayer).toJson();
-    }
-    if (capabilities != null) {
-      _json["capabilities"] = capabilities;
-    }
-    if (clientAddress != null) {
-      _json["clientAddress"] = (clientAddress).toJson();
-    }
-    if (connected != null) {
-      _json["connected"] = connected;
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (leaveReason != null) {
-      _json["leaveReason"] = leaveReason;
-    }
-    if (player != null) {
-      _json["player"] = (player).toJson();
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for the status of a room that the player has joined.
-class RoomStatus {
-  /// Auto-matching status for this room. Not set if the room is not currently
-  /// in the automatching queue.
-  RoomAutoMatchStatus autoMatchingStatus;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#roomStatus.
-  core.String kind;
-
-  /// The participants involved in the room, along with their statuses. Includes
-  /// participants who have left or declined invitations.
-  core.List<RoomParticipant> participants;
-
-  /// Globally unique ID for a room.
-  core.String roomId;
-
-  /// The status of the room.
-  /// Possible values are:
-  /// - "ROOM_INVITING" - One or more players have been invited and not
-  /// responded.
-  /// - "ROOM_AUTO_MATCHING" - One or more slots need to be filled by
-  /// auto-matching.
-  /// - "ROOM_CONNECTING" - Players have joined are connecting to each other
-  /// (either before or after auto-matching).
-  /// - "ROOM_ACTIVE" - All players have joined and connected to each other.
-  /// - "ROOM_DELETED" - All joined players have left.
-  core.String status;
-
-  /// The version of the status for the room: an increasing counter, used by the
-  /// client to ignore out-of-order updates to room status.
-  core.int statusVersion;
-
-  RoomStatus();
-
-  RoomStatus.fromJson(core.Map _json) {
-    if (_json.containsKey("autoMatchingStatus")) {
-      autoMatchingStatus =
-          new RoomAutoMatchStatus.fromJson(_json["autoMatchingStatus"]);
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("participants")) {
-      participants = (_json["participants"] as core.List)
-          .map<RoomParticipant>((value) => new RoomParticipant.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("roomId")) {
-      roomId = _json["roomId"];
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-    if (_json.containsKey("statusVersion")) {
-      statusVersion = _json["statusVersion"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (autoMatchingStatus != null) {
-      _json["autoMatchingStatus"] = (autoMatchingStatus).toJson();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (participants != null) {
-      _json["participants"] =
-          participants.map((value) => (value).toJson()).toList();
-    }
-    if (roomId != null) {
-      _json["roomId"] = roomId;
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    if (statusVersion != null) {
-      _json["statusVersion"] = statusVersion;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a request to submit a score to leaderboards.
+/// A request to submit a score to leaderboards.
 class ScoreSubmission {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#scoreSubmission.
+  /// string `games#scoreSubmission`.
   core.String kind;
 
   /// The leaderboard this score is being submitted to.
@@ -7943,7 +5134,7 @@ class ScoreSubmission {
   }
 }
 
-/// This is a JSON template for an snapshot object.
+/// An snapshot object.
 class Snapshot {
   /// The cover image of this snapshot. May be absent if there is no image.
   SnapshotImage coverImage;
@@ -7963,7 +5154,7 @@ class Snapshot {
   core.String id;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#snapshot.
+  /// string `games#snapshot`.
   core.String kind;
 
   /// The timestamp (in millis since Unix epoch) of the last modification to
@@ -7978,8 +5169,9 @@ class Snapshot {
   core.String title;
 
   /// The type of this snapshot.
-  /// Possible values are:
-  /// - "SAVE_GAME" - A snapshot representing a save game.
+  /// Possible string values are:
+  /// - "SNAPSHOT_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "SAVE_GAME" : A snapshot representing a save game.
   core.String type;
 
   /// The unique name provided when the snapshot was created.
@@ -8063,13 +5255,13 @@ class Snapshot {
   }
 }
 
-/// This is a JSON template for an image of a snapshot.
+/// An image of a snapshot.
 class SnapshotImage {
   /// The height of the image.
   core.int height;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#snapshotImage.
+  /// string `games#snapshotImage`.
   core.String kind;
 
   /// The MIME type of the image.
@@ -8124,13 +5316,13 @@ class SnapshotImage {
   }
 }
 
-/// This is a JSON template for a list of snapshot objects.
+/// A third party list snapshots response.
 class SnapshotListResponse {
   /// The snapshots.
   core.List<Snapshot> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#snapshotListResponse.
+  /// string `games#snapshotListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results. If there are no more
@@ -8169,845 +5361,133 @@ class SnapshotListResponse {
   }
 }
 
-/// This is a JSON template for an turn-based auto-match criteria object.
-class TurnBasedAutoMatchingCriteria {
-  /// A bitmask indicating when auto-matches are valid. When ANDed with other
-  /// exclusive bitmasks, the result must be zero. Can be used to support
-  /// exclusive roles within a game.
-  core.String exclusiveBitmask;
+/// A third party stats resource.
+class StatsResponse {
+  /// Average session length in minutes of the player. E.g., 1, 30, 60, ... .
+  /// Not populated if there is not enough information.
+  core.double avgSessionLengthMinutes;
+
+  /// The probability of the player not returning to play the game in the next
+  /// day. E.g., 0, 0.1, 0.5, ..., 1.0. Not populated if there is not enough
+  /// information.
+  core.double churnProbability;
+
+  /// Number of days since the player last played this game. E.g., 0, 1, 5, 10,
+  /// ... . Not populated if there is not enough information.
+  core.int daysSinceLastPlayed;
+
+  /// The probability of the player going to spend beyond a threshold amount of
+  /// money. E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
+  /// information.
+  core.double highSpenderProbability;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedAutoMatchingCriteria.
+  /// string `games#statsResponse`.
   core.String kind;
 
-  /// The maximum number of players that should be added to the match by
-  /// auto-matching.
-  core.int maxAutoMatchingPlayers;
+  /// Number of in-app purchases made by the player in this game. E.g., 0, 1, 5,
+  /// 10, ... . Not populated if there is not enough information.
+  core.int numPurchases;
 
-  /// The minimum number of players that should be added to the match by
-  /// auto-matching.
-  core.int minAutoMatchingPlayers;
+  /// The approximate number of sessions of the player within the last 28 days,
+  /// where a session begins when the player is connected to Play Games Services
+  /// and ends when they are disconnected. E.g., 0, 1, 5, 10, ... . Not
+  /// populated if there is not enough information.
+  core.int numSessions;
 
-  TurnBasedAutoMatchingCriteria();
+  /// The approximation of the sessions percentile of the player within the last
+  /// 30 days, where a session begins when the player is connected to Play Games
+  /// Services and ends when they are disconnected. E.g., 0, 0.25, 0.5, 0.75.
+  /// Not populated if there is not enough information.
+  core.double numSessionsPercentile;
 
-  TurnBasedAutoMatchingCriteria.fromJson(core.Map _json) {
-    if (_json.containsKey("exclusiveBitmask")) {
-      exclusiveBitmask = _json["exclusiveBitmask"];
+  /// The approximate spend percentile of the player in this game. E.g., 0,
+  /// 0.25, 0.5, 0.75. Not populated if there is not enough information.
+  core.double spendPercentile;
+
+  /// The probability of the player going to spend the game in the next seven
+  /// days. E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
+  /// information.
+  core.double spendProbability;
+
+  /// The predicted amount of money that the player going to spend in the next
+  /// 28 days. E.g., 1, 30, 60, ... . Not populated if there is not enough
+  /// information.
+  core.double totalSpendNext28Days;
+
+  StatsResponse();
+
+  StatsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("avg_session_length_minutes")) {
+      avgSessionLengthMinutes = _json["avg_session_length_minutes"].toDouble();
+    }
+    if (_json.containsKey("churn_probability")) {
+      churnProbability = _json["churn_probability"].toDouble();
+    }
+    if (_json.containsKey("days_since_last_played")) {
+      daysSinceLastPlayed = _json["days_since_last_played"];
+    }
+    if (_json.containsKey("high_spender_probability")) {
+      highSpenderProbability = _json["high_spender_probability"].toDouble();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
-    if (_json.containsKey("maxAutoMatchingPlayers")) {
-      maxAutoMatchingPlayers = _json["maxAutoMatchingPlayers"];
+    if (_json.containsKey("num_purchases")) {
+      numPurchases = _json["num_purchases"];
     }
-    if (_json.containsKey("minAutoMatchingPlayers")) {
-      minAutoMatchingPlayers = _json["minAutoMatchingPlayers"];
+    if (_json.containsKey("num_sessions")) {
+      numSessions = _json["num_sessions"];
+    }
+    if (_json.containsKey("num_sessions_percentile")) {
+      numSessionsPercentile = _json["num_sessions_percentile"].toDouble();
+    }
+    if (_json.containsKey("spend_percentile")) {
+      spendPercentile = _json["spend_percentile"].toDouble();
+    }
+    if (_json.containsKey("spend_probability")) {
+      spendProbability = _json["spend_probability"].toDouble();
+    }
+    if (_json.containsKey("total_spend_next_28_days")) {
+      totalSpendNext28Days = _json["total_spend_next_28_days"].toDouble();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (exclusiveBitmask != null) {
-      _json["exclusiveBitmask"] = exclusiveBitmask;
+    if (avgSessionLengthMinutes != null) {
+      _json["avg_session_length_minutes"] = avgSessionLengthMinutes;
+    }
+    if (churnProbability != null) {
+      _json["churn_probability"] = churnProbability;
+    }
+    if (daysSinceLastPlayed != null) {
+      _json["days_since_last_played"] = daysSinceLastPlayed;
+    }
+    if (highSpenderProbability != null) {
+      _json["high_spender_probability"] = highSpenderProbability;
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
-    if (maxAutoMatchingPlayers != null) {
-      _json["maxAutoMatchingPlayers"] = maxAutoMatchingPlayers;
+    if (numPurchases != null) {
+      _json["num_purchases"] = numPurchases;
     }
-    if (minAutoMatchingPlayers != null) {
-      _json["minAutoMatchingPlayers"] = minAutoMatchingPlayers;
+    if (numSessions != null) {
+      _json["num_sessions"] = numSessions;
     }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a turn-based match resource object.
-class TurnBasedMatch {
-  /// The ID of the application being played.
-  core.String applicationId;
-
-  /// Criteria for auto-matching players into this match.
-  TurnBasedAutoMatchingCriteria autoMatchingCriteria;
-
-  /// Details about the match creation.
-  TurnBasedMatchModification creationDetails;
-
-  /// The data / game state for this match.
-  TurnBasedMatchData data;
-
-  /// This short description is generated by our servers based on turn state and
-  /// is localized and worded relative to the player requesting the match. It is
-  /// intended to be displayed when the match is shown in a list.
-  core.String description;
-
-  /// The ID of the participant that invited the user to the match. Not set if
-  /// the user was not invited to the match.
-  core.String inviterId;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatch.
-  core.String kind;
-
-  /// Details about the last update to the match.
-  TurnBasedMatchModification lastUpdateDetails;
-
-  /// Globally unique ID for a turn-based match.
-  core.String matchId;
-
-  /// The number of the match in a chain of rematches. Will be set to 1 for the
-  /// first match and incremented by 1 for each rematch.
-  core.int matchNumber;
-
-  /// The version of this match: an increasing counter, used to avoid
-  /// out-of-date updates to the match.
-  core.int matchVersion;
-
-  /// The participants involved in the match, along with their statuses.
-  /// Includes participants who have left or declined invitations.
-  core.List<TurnBasedMatchParticipant> participants;
-
-  /// The ID of the participant that is taking a turn.
-  core.String pendingParticipantId;
-
-  /// The data / game state for the previous match; set for the first turn of
-  /// rematches only.
-  TurnBasedMatchData previousMatchData;
-
-  /// The ID of a rematch of this match. Only set for completed matches that
-  /// have been rematched.
-  core.String rematchId;
-
-  /// The results reported for this match.
-  core.List<ParticipantResult> results;
-
-  /// The status of the match.
-  /// Possible values are:
-  /// - "MATCH_AUTO_MATCHING" - One or more slots need to be filled by
-  /// auto-matching; the match cannot be established until they are filled.
-  /// - "MATCH_ACTIVE" - The match has started.
-  /// - "MATCH_COMPLETE" - The match has finished.
-  /// - "MATCH_CANCELED" - The match was canceled.
-  /// - "MATCH_EXPIRED" - The match expired due to inactivity.
-  /// - "MATCH_DELETED" - The match should no longer be shown on the client.
-  /// Returned only for tombstones for matches when sync is called.
-  core.String status;
-
-  /// The status of the current user in the match. Derived from the match type,
-  /// match status, the user's participant status, and the pending participant
-  /// for the match.
-  /// Possible values are:
-  /// - "USER_INVITED" - The user has been invited to join the match and has not
-  /// responded yet.
-  /// - "USER_AWAITING_TURN" - The user is waiting for their turn.
-  /// - "USER_TURN" - The user has an action to take in the match.
-  /// - "USER_MATCH_COMPLETED" - The match has ended (it is completed, canceled,
-  /// or expired.)
-  core.String userMatchStatus;
-
-  /// The variant / mode of the application being played; can be any integer
-  /// value, or left blank.
-  core.int variant;
-
-  /// The ID of another participant in the match that can be used when
-  /// describing the participants the user is playing with.
-  core.String withParticipantId;
-
-  TurnBasedMatch();
-
-  TurnBasedMatch.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationId")) {
-      applicationId = _json["applicationId"];
+    if (numSessionsPercentile != null) {
+      _json["num_sessions_percentile"] = numSessionsPercentile;
     }
-    if (_json.containsKey("autoMatchingCriteria")) {
-      autoMatchingCriteria = new TurnBasedAutoMatchingCriteria.fromJson(
-          _json["autoMatchingCriteria"]);
+    if (spendPercentile != null) {
+      _json["spend_percentile"] = spendPercentile;
     }
-    if (_json.containsKey("creationDetails")) {
-      creationDetails =
-          new TurnBasedMatchModification.fromJson(_json["creationDetails"]);
+    if (spendProbability != null) {
+      _json["spend_probability"] = spendProbability;
     }
-    if (_json.containsKey("data")) {
-      data = new TurnBasedMatchData.fromJson(_json["data"]);
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("inviterId")) {
-      inviterId = _json["inviterId"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("lastUpdateDetails")) {
-      lastUpdateDetails =
-          new TurnBasedMatchModification.fromJson(_json["lastUpdateDetails"]);
-    }
-    if (_json.containsKey("matchId")) {
-      matchId = _json["matchId"];
-    }
-    if (_json.containsKey("matchNumber")) {
-      matchNumber = _json["matchNumber"];
-    }
-    if (_json.containsKey("matchVersion")) {
-      matchVersion = _json["matchVersion"];
-    }
-    if (_json.containsKey("participants")) {
-      participants = (_json["participants"] as core.List)
-          .map<TurnBasedMatchParticipant>(
-              (value) => new TurnBasedMatchParticipant.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("pendingParticipantId")) {
-      pendingParticipantId = _json["pendingParticipantId"];
-    }
-    if (_json.containsKey("previousMatchData")) {
-      previousMatchData =
-          new TurnBasedMatchData.fromJson(_json["previousMatchData"]);
-    }
-    if (_json.containsKey("rematchId")) {
-      rematchId = _json["rematchId"];
-    }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
-          .map<ParticipantResult>(
-              (value) => new ParticipantResult.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-    if (_json.containsKey("userMatchStatus")) {
-      userMatchStatus = _json["userMatchStatus"];
-    }
-    if (_json.containsKey("variant")) {
-      variant = _json["variant"];
-    }
-    if (_json.containsKey("withParticipantId")) {
-      withParticipantId = _json["withParticipantId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (applicationId != null) {
-      _json["applicationId"] = applicationId;
-    }
-    if (autoMatchingCriteria != null) {
-      _json["autoMatchingCriteria"] = (autoMatchingCriteria).toJson();
-    }
-    if (creationDetails != null) {
-      _json["creationDetails"] = (creationDetails).toJson();
-    }
-    if (data != null) {
-      _json["data"] = (data).toJson();
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (inviterId != null) {
-      _json["inviterId"] = inviterId;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (lastUpdateDetails != null) {
-      _json["lastUpdateDetails"] = (lastUpdateDetails).toJson();
-    }
-    if (matchId != null) {
-      _json["matchId"] = matchId;
-    }
-    if (matchNumber != null) {
-      _json["matchNumber"] = matchNumber;
-    }
-    if (matchVersion != null) {
-      _json["matchVersion"] = matchVersion;
-    }
-    if (participants != null) {
-      _json["participants"] =
-          participants.map((value) => (value).toJson()).toList();
-    }
-    if (pendingParticipantId != null) {
-      _json["pendingParticipantId"] = pendingParticipantId;
-    }
-    if (previousMatchData != null) {
-      _json["previousMatchData"] = (previousMatchData).toJson();
-    }
-    if (rematchId != null) {
-      _json["rematchId"] = rematchId;
-    }
-    if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    if (userMatchStatus != null) {
-      _json["userMatchStatus"] = userMatchStatus;
-    }
-    if (variant != null) {
-      _json["variant"] = variant;
-    }
-    if (withParticipantId != null) {
-      _json["withParticipantId"] = withParticipantId;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a turn-based match creation request.
-class TurnBasedMatchCreateRequest {
-  /// Criteria for auto-matching players into this match.
-  TurnBasedAutoMatchingCriteria autoMatchingCriteria;
-
-  /// The player ids to invite to the match.
-  core.List<core.String> invitedPlayerIds;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchCreateRequest.
-  core.String kind;
-
-  /// A randomly generated numeric ID. This number is used at the server to
-  /// ensure that the request is handled correctly across retries.
-  core.String requestId;
-
-  /// The variant / mode of the application to be played. This can be any
-  /// integer value, or left blank. You should use a small number of variants to
-  /// keep the auto-matching pool as large as possible.
-  core.int variant;
-
-  TurnBasedMatchCreateRequest();
-
-  TurnBasedMatchCreateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("autoMatchingCriteria")) {
-      autoMatchingCriteria = new TurnBasedAutoMatchingCriteria.fromJson(
-          _json["autoMatchingCriteria"]);
-    }
-    if (_json.containsKey("invitedPlayerIds")) {
-      invitedPlayerIds =
-          (_json["invitedPlayerIds"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("requestId")) {
-      requestId = _json["requestId"];
-    }
-    if (_json.containsKey("variant")) {
-      variant = _json["variant"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (autoMatchingCriteria != null) {
-      _json["autoMatchingCriteria"] = (autoMatchingCriteria).toJson();
-    }
-    if (invitedPlayerIds != null) {
-      _json["invitedPlayerIds"] = invitedPlayerIds;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (requestId != null) {
-      _json["requestId"] = requestId;
-    }
-    if (variant != null) {
-      _json["variant"] = variant;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a turn-based match data object.
-class TurnBasedMatchData {
-  /// The byte representation of the data (limited to 128 kB), as a
-  /// Base64-encoded string with the URL_SAFE encoding option.
-  core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
-
-  set dataAsBytes(core.List<core.int> _bytes) {
-    data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// True if this match has data available but it wasn't returned in a list
-  /// response; fetching the match individually will retrieve this data.
-  core.bool dataAvailable;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchData.
-  core.String kind;
-
-  TurnBasedMatchData();
-
-  TurnBasedMatchData.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = _json["data"];
-    }
-    if (_json.containsKey("dataAvailable")) {
-      dataAvailable = _json["dataAvailable"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (data != null) {
-      _json["data"] = data;
-    }
-    if (dataAvailable != null) {
-      _json["dataAvailable"] = dataAvailable;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for sending a turn-based match data object.
-class TurnBasedMatchDataRequest {
-  /// The byte representation of the data (limited to 128 kB), as a
-  /// Base64-encoded string with the URL_SAFE encoding option.
-  core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
-
-  set dataAsBytes(core.List<core.int> _bytes) {
-    data =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchDataRequest.
-  core.String kind;
-
-  TurnBasedMatchDataRequest();
-
-  TurnBasedMatchDataRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = _json["data"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (data != null) {
-      _json["data"] = data;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a list of turn-based matches.
-class TurnBasedMatchList {
-  /// The matches.
-  core.List<TurnBasedMatch> items;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchList.
-  core.String kind;
-
-  /// The pagination token for the next page of results.
-  core.String nextPageToken;
-
-  TurnBasedMatchList();
-
-  TurnBasedMatchList.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<TurnBasedMatch>((value) => new TurnBasedMatch.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for turn-based match modification metadata.
-class TurnBasedMatchModification {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchModification.
-  core.String kind;
-
-  /// The timestamp at which they modified the match, in milliseconds since the
-  /// epoch in UTC.
-  core.String modifiedTimestampMillis;
-
-  /// The ID of the participant that modified the match.
-  core.String participantId;
-
-  TurnBasedMatchModification();
-
-  TurnBasedMatchModification.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("modifiedTimestampMillis")) {
-      modifiedTimestampMillis = _json["modifiedTimestampMillis"];
-    }
-    if (_json.containsKey("participantId")) {
-      participantId = _json["participantId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (modifiedTimestampMillis != null) {
-      _json["modifiedTimestampMillis"] = modifiedTimestampMillis;
-    }
-    if (participantId != null) {
-      _json["participantId"] = participantId;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a participant in a turn-based match.
-class TurnBasedMatchParticipant {
-  /// True if this participant was auto-matched with the requesting player.
-  core.bool autoMatched;
-
-  /// Information about a player that has been anonymously auto-matched against
-  /// the requesting player. (Either player or autoMatchedPlayer will be set.)
-  AnonymousPlayer autoMatchedPlayer;
-
-  /// An identifier for the participant in the scope of the match. Cannot be
-  /// used to identify a player across matches or in other contexts.
-  core.String id;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchParticipant.
-  core.String kind;
-
-  /// Information about the player. Not populated if this player was anonymously
-  /// auto-matched against the requesting player. (Either player or
-  /// autoMatchedPlayer will be set.)
-  Player player;
-
-  /// The status of the participant with respect to the match.
-  /// Possible values are:
-  /// - "PARTICIPANT_NOT_INVITED_YET" - The participant is slated to be invited
-  /// to the match, but the invitation has not been sent; the invite will be
-  /// sent when it becomes their turn.
-  /// - "PARTICIPANT_INVITED" - The participant has been invited to join the
-  /// match, but has not yet responded.
-  /// - "PARTICIPANT_JOINED" - The participant has joined the match (either
-  /// after creating it or accepting an invitation.)
-  /// - "PARTICIPANT_DECLINED" - The participant declined an invitation to join
-  /// the match.
-  /// - "PARTICIPANT_LEFT" - The participant joined the match and then left it.
-  /// - "PARTICIPANT_FINISHED" - The participant finished playing in the match.
-  /// - "PARTICIPANT_UNRESPONSIVE" - The participant did not take their turn in
-  /// the allotted time.
-  core.String status;
-
-  TurnBasedMatchParticipant();
-
-  TurnBasedMatchParticipant.fromJson(core.Map _json) {
-    if (_json.containsKey("autoMatched")) {
-      autoMatched = _json["autoMatched"];
-    }
-    if (_json.containsKey("autoMatchedPlayer")) {
-      autoMatchedPlayer =
-          new AnonymousPlayer.fromJson(_json["autoMatchedPlayer"]);
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("player")) {
-      player = new Player.fromJson(_json["player"]);
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (autoMatched != null) {
-      _json["autoMatched"] = autoMatched;
-    }
-    if (autoMatchedPlayer != null) {
-      _json["autoMatchedPlayer"] = (autoMatchedPlayer).toJson();
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (player != null) {
-      _json["player"] = (player).toJson();
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a rematch response.
-class TurnBasedMatchRematch {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchRematch.
-  core.String kind;
-
-  /// The old match that the rematch was created from; will be updated such that
-  /// the rematchId field will point at the new match.
-  TurnBasedMatch previousMatch;
-
-  /// The newly created match; a rematch of the old match with the same
-  /// participants.
-  TurnBasedMatch rematch;
-
-  TurnBasedMatchRematch();
-
-  TurnBasedMatchRematch.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("previousMatch")) {
-      previousMatch = new TurnBasedMatch.fromJson(_json["previousMatch"]);
-    }
-    if (_json.containsKey("rematch")) {
-      rematch = new TurnBasedMatch.fromJson(_json["rematch"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (previousMatch != null) {
-      _json["previousMatch"] = (previousMatch).toJson();
-    }
-    if (rematch != null) {
-      _json["rematch"] = (rematch).toJson();
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a turn-based match results object.
-class TurnBasedMatchResults {
-  /// The final match data.
-  TurnBasedMatchDataRequest data;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchResults.
-  core.String kind;
-
-  /// The version of the match being updated.
-  core.int matchVersion;
-
-  /// The match results for the participants in the match.
-  core.List<ParticipantResult> results;
-
-  TurnBasedMatchResults();
-
-  TurnBasedMatchResults.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = new TurnBasedMatchDataRequest.fromJson(_json["data"]);
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("matchVersion")) {
-      matchVersion = _json["matchVersion"];
-    }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
-          .map<ParticipantResult>(
-              (value) => new ParticipantResult.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (data != null) {
-      _json["data"] = (data).toJson();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (matchVersion != null) {
-      _json["matchVersion"] = matchVersion;
-    }
-    if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a list of turn-based matches returned from a
-/// sync.
-class TurnBasedMatchSync {
-  /// The matches.
-  core.List<TurnBasedMatch> items;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchSync.
-  core.String kind;
-
-  /// True if there were more matches available to fetch at the time the
-  /// response was generated (which were not returned due to page size limits.)
-  core.bool moreAvailable;
-
-  /// The pagination token for the next page of results.
-  core.String nextPageToken;
-
-  TurnBasedMatchSync();
-
-  TurnBasedMatchSync.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<TurnBasedMatch>((value) => new TurnBasedMatch.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("moreAvailable")) {
-      moreAvailable = _json["moreAvailable"];
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (moreAvailable != null) {
-      _json["moreAvailable"] = moreAvailable;
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for the object representing a turn.
-class TurnBasedMatchTurn {
-  /// The shared game state data after the turn is over.
-  TurnBasedMatchDataRequest data;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#turnBasedMatchTurn.
-  core.String kind;
-
-  /// The version of this match: an increasing counter, used to avoid
-  /// out-of-date updates to the match.
-  core.int matchVersion;
-
-  /// The ID of the participant who should take their turn next. May be set to
-  /// the current player's participant ID to update match state without changing
-  /// the turn. If not set, the match will wait for other player(s) to join via
-  /// automatching; this is only valid if automatch criteria is set on the match
-  /// with remaining slots for automatched players.
-  core.String pendingParticipantId;
-
-  /// The match results for the participants in the match.
-  core.List<ParticipantResult> results;
-
-  TurnBasedMatchTurn();
-
-  TurnBasedMatchTurn.fromJson(core.Map _json) {
-    if (_json.containsKey("data")) {
-      data = new TurnBasedMatchDataRequest.fromJson(_json["data"]);
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("matchVersion")) {
-      matchVersion = _json["matchVersion"];
-    }
-    if (_json.containsKey("pendingParticipantId")) {
-      pendingParticipantId = _json["pendingParticipantId"];
-    }
-    if (_json.containsKey("results")) {
-      results = (_json["results"] as core.List)
-          .map<ParticipantResult>(
-              (value) => new ParticipantResult.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (data != null) {
-      _json["data"] = (data).toJson();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (matchVersion != null) {
-      _json["matchVersion"] = matchVersion;
-    }
-    if (pendingParticipantId != null) {
-      _json["pendingParticipantId"] = pendingParticipantId;
-    }
-    if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+    if (totalSpendNext28Days != null) {
+      _json["total_spend_next_28_days"] = totalSpendNext28Days;
     }
     return _json;
   }

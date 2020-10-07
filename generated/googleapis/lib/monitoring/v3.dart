@@ -93,15 +93,13 @@ class ProjectsAlertPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project in which to create the alerting policy. The
-  /// format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  /// Note that this field names the parent container in which the alerting
-  /// policy will be written, not the name of the created policy. |name| must be
-  /// a host project of a workspace, otherwise INVALID_ARGUMENT error will
-  /// return. The alerting policy that is returned will have a name that
-  /// contains a normalized representation of this name as a prefix but adds a
-  /// suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the
-  /// policy in the container.
+  /// format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the
+  /// parent container in which the alerting policy will be written, not the
+  /// name of the created policy. |name| must be a host project of a workspace,
+  /// otherwise INVALID_ARGUMENT error will return. The alerting policy that is
+  /// returned will have a name that contains a normalized representation of
+  /// this name as a prefix but adds a suffix of the form
+  /// /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -151,8 +149,8 @@ class ProjectsAlertPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The alerting policy to delete. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-  /// For more information, see AlertPolicy.
+  /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] For more
+  /// information, see AlertPolicy.
   /// Value must have pattern "^projects/[^/]+/alertPolicies/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -197,7 +195,6 @@ class ProjectsAlertPoliciesResourceApi {
   ///
   /// [name] - Required. The alerting policy to retrieve. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-  ///
   /// Value must have pattern "^projects/[^/]+/alertPolicies/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -241,12 +238,21 @@ class ProjectsAlertPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project whose alert policies are to be listed. The
-  /// format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  /// Note that this field names the parent container in which the alerting
-  /// policies to be listed are stored. To retrieve a single alerting policy by
-  /// name, use the GetAlertPolicy operation, instead.
+  /// format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the
+  /// parent container in which the alerting policies to be listed are stored.
+  /// To retrieve a single alerting policy by name, use the GetAlertPolicy
+  /// operation, instead.
   /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return more results from the previous method
+  /// call.
+  ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by alert policies to be included in the response.For more details, see
+  /// sorting and filtering
+  /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
   ///
   /// [orderBy] - A comma-separated list of fields by which to sort the result.
   /// Supports the same set of field references as the filter field. Entries can
@@ -254,17 +260,7 @@ class ProjectsAlertPoliciesResourceApi {
   /// more details, see sorting and filtering
   /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return more results from the previous method
-  /// call.
-  ///
   /// [pageSize] - The maximum number of results to return in a single response.
-  ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by alert policies to be included in the response.For more details, see
-  /// sorting and filtering
-  /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -277,10 +273,10 @@ class ProjectsAlertPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertPoliciesResponse> list(core.String name,
-      {core.String orderBy,
-      core.String pageToken,
-      core.int pageSize,
+      {core.String pageToken,
       core.String filter,
+      core.String orderBy,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -292,17 +288,17 @@ class ProjectsAlertPoliciesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -349,14 +345,12 @@ class ProjectsAlertPoliciesResourceApi {
   /// user_label.nameofkey, enabled, conditions, combiner, etc.If this field is
   /// empty, then the supplied alerting policy replaces the existing policy. It
   /// is the same as deleting the existing policy and adding the supplied
-  /// policy, except for the following:
-  /// The new policy will have the same [ALERT_POLICY_ID] as the former policy.
-  /// This gives you continuity with the former policy in your notifications and
-  /// incidents.
-  /// Conditions in the new policy will keep their former [CONDITION_ID] if the
-  /// supplied condition includes the name field with that [CONDITION_ID]. If
-  /// the supplied condition omits the name field, then a new [CONDITION_ID] is
-  /// created.
+  /// policy, except for the following: The new policy will have the same
+  /// [ALERT_POLICY_ID] as the former policy. This gives you continuity with the
+  /// former policy in your notifications and incidents. Conditions in the new
+  /// policy will keep their former [CONDITION_ID] if the supplied condition
+  /// includes the name field with that [CONDITION_ID]. If the supplied
+  /// condition omits the name field, then a new [CONDITION_ID] is created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -408,9 +402,9 @@ class ProjectsCollectdTimeSeriesResourceApi {
   ProjectsCollectdTimeSeriesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Stackdriver Monitoring Agent only: Creates a new time series.<aside
-  /// class="caution">This method is only for use by the Stackdriver Monitoring
-  /// Agent. Use projects.timeSeries.create instead.</aside>
+  /// Stackdriver Monitoring Agent only: Creates a new time series.This method
+  /// is only for use by the Stackdriver Monitoring Agent. Use
+  /// projects.timeSeries.create instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -418,7 +412,6 @@ class ProjectsCollectdTimeSeriesResourceApi {
   ///
   /// [name] - The project in which to create the time series. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -481,9 +474,7 @@ class ProjectsGroupsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project in which to create the group. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [validateOnly] - If true, validate this request but do not create the
@@ -538,7 +529,6 @@ class ProjectsGroupsResourceApi {
   ///
   /// [name] - Required. The group to delete. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  ///
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
   /// [recursive] - If this field is true, then the request means to delete a
@@ -591,7 +581,6 @@ class ProjectsGroupsResourceApi {
   ///
   /// [name] - Required. The group to retrieve. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  ///
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -635,9 +624,7 @@ class ProjectsGroupsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project whose groups are to be listed. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - If this field is not empty then it must contain the
@@ -645,26 +632,25 @@ class ProjectsGroupsResourceApi {
   /// this field causes the method to return additional results from the
   /// previous method call.
   ///
+  /// [descendantsOfGroup] - A group name. The format is:
+  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns the descendants
+  /// of the specified group. This is a superset of the results returned by the
+  /// children_of_group filter, and includes children-of-children, and so forth.
+  ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
   ///
   /// [ancestorsOfGroup] - A group name. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  /// Returns groups that are ancestors of the specified group. The groups are
-  /// returned in order, starting with the immediate parent and ending with the
-  /// most distant ancestor. If the specified group has no immediate parent, the
-  /// results are empty.
+  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns groups that are
+  /// ancestors of the specified group. The groups are returned in order,
+  /// starting with the immediate parent and ending with the most distant
+  /// ancestor. If the specified group has no immediate parent, the results are
+  /// empty.
   ///
   /// [childrenOfGroup] - A group name. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  /// Returns groups whose parent_name field contains the group name. If no
-  /// groups have this parent, the results are empty.
-  ///
-  /// [descendantsOfGroup] - A group name. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  /// Returns the descendants of the specified group. This is a superset of the
-  /// results returned by the children_of_group filter, and includes
-  /// children-of-children, and so forth.
+  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns groups whose
+  /// parent_name field contains the group name. If no groups have this parent,
+  /// the results are empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -678,10 +664,10 @@ class ProjectsGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(core.String name,
       {core.String pageToken,
+      core.String descendantsOfGroup,
       core.int pageSize,
       core.String ancestorsOfGroup,
       core.String childrenOfGroup,
-      core.String descendantsOfGroup,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -696,6 +682,9 @@ class ProjectsGroupsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (descendantsOfGroup != null) {
+      _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -704,9 +693,6 @@ class ProjectsGroupsResourceApi {
     }
     if (childrenOfGroup != null) {
       _queryParams["childrenOfGroup"] = [childrenOfGroup];
-    }
-    if (descendantsOfGroup != null) {
-      _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -731,10 +717,10 @@ class ProjectsGroupsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Output only. The name of this group. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  /// When creating a group, this field is ignored and a new name is created
-  /// consisting of the project specified in the call to CreateGroup and a
-  /// unique [GROUP_ID] that is generated automatically.
+  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group,
+  /// this field is ignored and a new name is created consisting of the project
+  /// specified in the call to CreateGroup and a unique [GROUP_ID] that is
+  /// generated automatically.
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
   /// [validateOnly] - If true, validate this request but do not update the
@@ -796,18 +782,16 @@ class ProjectsGroupsMembersResourceApi {
   ///
   /// [name] - Required. The group whose members are listed. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  ///
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
-  ///
-  /// [interval_endTime] - Required. The end of the time interval.
   ///
   /// [filter] - An optional list filter
   /// (https://cloud.google.com/monitoring/api/learn_more#filtering) describing
   /// the members to be returned. The filter may reference the type, labels, and
   /// metadata of monitored resources that comprise the group. For example, to
   /// return only resources representing Compute Engine VM instances, use this
-  /// filter:
-  /// `resource.type = "gce_instance"`
+  /// filter: `resource.type = "gce_instance"`
+  ///
+  /// [interval_endTime] - Required. The end of the time interval.
   ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// next_page_token value returned by a previous call to this method. Using
@@ -832,8 +816,8 @@ class ProjectsGroupsMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupMembersResponse> list(core.String name,
-      {core.String interval_endTime,
-      core.String filter,
+      {core.String filter,
+      core.String interval_endTime,
       core.String pageToken,
       core.int pageSize,
       core.String interval_startTime,
@@ -848,11 +832,11 @@ class ProjectsGroupsMembersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -894,9 +878,7 @@ class ProjectsMetricDescriptorsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -949,8 +931,8 @@ class ProjectsMetricDescriptorsResourceApi {
   ///
   /// [name] - Required. The metric descriptor on which to execute the request.
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID]
-  /// An example of [METRIC_ID] is: "custom.googleapis.com/my_test_metric".
+  /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example
+  /// of [METRIC_ID] is: "custom.googleapis.com/my_test_metric".
   /// Value must have pattern "^projects/[^/]+/metricDescriptors/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -995,8 +977,8 @@ class ProjectsMetricDescriptorsResourceApi {
   ///
   /// [name] - Required. The metric descriptor on which to execute the request.
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID]
-  /// An example value of [METRIC_ID] is
+  /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example
+  /// value of [METRIC_ID] is
   /// "compute.googleapis.com/instance/disk/read_bytes_count".
   /// Value must have pattern "^projects/[^/]+/metricDescriptors/.*$".
   ///
@@ -1042,10 +1024,16 @@ class ProjectsMetricDescriptorsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [filter] - If this field is empty, all custom and system-defined metric
+  /// descriptors are returned. Otherwise, the filter
+  /// (https://cloud.google.com/monitoring/api/v3/filters) specifies which
+  /// metric descriptors are to be returned. For example, the following filter
+  /// matches all custom metrics
+  /// (https://cloud.google.com/monitoring/custom-metrics): metric.type =
+  /// starts_with("custom.googleapis.com/")
   ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
@@ -1054,14 +1042,6 @@ class ProjectsMetricDescriptorsResourceApi {
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
-  ///
-  /// [filter] - If this field is empty, all custom and system-defined metric
-  /// descriptors are returned. Otherwise, the filter
-  /// (https://cloud.google.com/monitoring/api/v3/filters) specifies which
-  /// metric descriptors are to be returned. For example, the following filter
-  /// matches all custom metrics
-  /// (https://cloud.google.com/monitoring/custom-metrics):
-  /// metric.type = starts_with("custom.googleapis.com/")
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1074,9 +1054,9 @@ class ProjectsMetricDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMetricDescriptorsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1088,14 +1068,14 @@ class ProjectsMetricDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1178,22 +1158,20 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [filter] - An optional filter
-  /// (https://cloud.google.com/monitoring/api/v3/filters) describing the
-  /// descriptors to be returned. The filter can reference the descriptor's type
-  /// and labels. For example, the following filter returns only Google Compute
-  /// Engine descriptors that have an id label:
-  /// resource.type = starts_with("gce_") AND resource.label:id
   ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
   /// method call.
+  ///
+  /// [filter] - An optional filter
+  /// (https://cloud.google.com/monitoring/api/v3/filters) describing the
+  /// descriptors to be returned. The filter can reference the descriptor's type
+  /// and labels. For example, the following filter returns only Google Compute
+  /// Engine descriptors that have an id label: resource.type =
+  /// starts_with("gce_") AND resource.label:id
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
@@ -1209,8 +1187,8 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -1223,11 +1201,11 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1265,7 +1243,6 @@ class ProjectsNotificationChannelDescriptorsResourceApi {
   /// [name] - Required. The channel type for which to execute the request. The
   /// format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[CHANNEL_TYPE]
-  ///
   /// Value must have pattern
   /// "^projects/[^/]+/notificationChannelDescriptors/[^/]+$".
   ///
@@ -1314,10 +1291,9 @@ class ProjectsNotificationChannelDescriptorsResourceApi {
   ///
   /// [name] - Required. The REST resource name of the parent from which to
   /// retrieve the notification channel descriptors. The expected syntax is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  /// Note that this names the parent container in which to look for the
-  /// descriptors; to retrieve a single descriptor by name, use the
-  /// GetNotificationChannelDescriptor operation, instead.
+  /// projects/[PROJECT_ID_OR_NUMBER] Note that this names the parent container
+  /// in which to look for the descriptors; to retrieve a single descriptor by
+  /// name, use the GetNotificationChannelDescriptor operation, instead.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - If non-empty, page_token must contain a value returned as
@@ -1392,12 +1368,11 @@ class ProjectsNotificationChannelsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  /// This names the container into which the channel will be written, this does
-  /// not name the newly created channel. The resulting channel's name will have
-  /// a normalized version of this field as a prefix, but will add
-  /// /notificationChannels/[CHANNEL_ID] to identify the channel.
+  /// is: projects/[PROJECT_ID_OR_NUMBER] This names the container into which
+  /// the channel will be written, this does not name the newly created channel.
+  /// The resulting channel's name will have a normalized version of this field
+  /// as a prefix, but will add /notificationChannels/[CHANNEL_ID] to identify
+  /// the channel.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1450,7 +1425,6 @@ class ProjectsNotificationChannelsResourceApi {
   /// [name] - Required. The channel for which to execute the request. The
   /// format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
-  ///
   /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
   ///
   /// [force] - If true, the notification channel will be deleted regardless of
@@ -1509,7 +1483,6 @@ class ProjectsNotificationChannelsResourceApi {
   /// [name] - Required. The channel for which to execute the request. The
   /// format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
-  ///
   /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1629,17 +1602,19 @@ class ProjectsNotificationChannelsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  /// This names the container in which to look for the notification channels;
-  /// it does not name a specific channel. To query a specific channel by REST
-  /// resource name, use the GetNotificationChannel operation.
+  /// is: projects/[PROJECT_ID_OR_NUMBER] This names the container in which to
+  /// look for the notification channels; it does not name a specific channel.
+  /// To query a specific channel by REST resource name, use the
+  /// GetNotificationChannel operation.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by notification channels to be included in the response.For more details,
-  /// see sorting and filtering
-  /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// If not set to a positive number, a reasonable value will be chosen by the
+  /// service.
+  ///
+  /// [pageToken] - If non-empty, page_token must contain a value returned as
+  /// the next_page_token in a previous response to request the next set of
+  /// results.
   ///
   /// [orderBy] - A comma-separated list of fields by which to sort the result.
   /// Supports the same set of fields as in filter. Entries can be prefixed with
@@ -1647,13 +1622,10 @@ class ProjectsNotificationChannelsResourceApi {
   /// details, see sorting and filtering
   /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
   ///
-  /// [pageToken] - If non-empty, page_token must contain a value returned as
-  /// the next_page_token in a previous response to request the next set of
-  /// results.
-  ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// If not set to a positive number, a reasonable value will be chosen by the
-  /// service.
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by notification channels to be included in the response.For more details,
+  /// see sorting and filtering
+  /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1666,10 +1638,10 @@ class ProjectsNotificationChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNotificationChannelsResponse> list(core.String name,
-      {core.String filter,
-      core.String orderBy,
+      {core.int pageSize,
       core.String pageToken,
-      core.int pageSize,
+      core.String orderBy,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1681,17 +1653,17 @@ class ProjectsNotificationChannelsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1719,8 +1691,8 @@ class ProjectsNotificationChannelsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The full REST resource name for this channel. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
-  /// The [CHANNEL_ID] is automatically assigned by the server on creation.
+  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The
+  /// [CHANNEL_ID] is automatically assigned by the server on creation.
   /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
   ///
   /// [updateMask] - The fields to update.
@@ -1892,9 +1864,7 @@ class ProjectsTimeSeriesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1944,12 +1914,8 @@ class ProjectsTimeSeriesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [interval_endTime] - Required. The end of the time interval.
   ///
   /// [aggregation_alignmentPeriod] - The alignment_period specifies a time
   /// interval, in seconds, that is used to divide the data in all the time
@@ -1958,17 +1924,8 @@ class ProjectsTimeSeriesResourceApi {
   /// 60 seconds. If a per-series aligner other than ALIGN_NONE is specified,
   /// this field is required or an error is returned. If no per-series aligner
   /// is specified, or the aligner ALIGN_NONE is specified, then this field is
-  /// ignored.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return. If page_size is empty or more than 100,000 results, the effective
-  /// page_size is 100,000 results. If view is set to FULL, this is the maximum
-  /// number of Points returned. If view is set to HEADERS, this is the maximum
-  /// number of TimeSeries returned.
-  ///
-  /// [orderBy] - Unsupported: must be left blank. The points in each time
-  /// series are currently returned in reverse time order (most recent to
-  /// oldest).
+  /// ignored.The maximum value of the alignment_period is 104 weeks (2 years)
+  /// for charts, and 90,000 seconds (25 hours) for alerting policies.
   ///
   /// [aggregation_crossSeriesReducer] - The reduction operation to be used to
   /// combine time series into a single time series, where the value of each
@@ -1983,28 +1940,65 @@ class ProjectsTimeSeriesResourceApi {
   /// ALIGN_NONE. An alignment_period must also be specified; otherwise, an
   /// error is returned.
   /// Possible string values are:
-  /// - "REDUCE_NONE" : A REDUCE_NONE.
-  /// - "REDUCE_MEAN" : A REDUCE_MEAN.
-  /// - "REDUCE_MIN" : A REDUCE_MIN.
-  /// - "REDUCE_MAX" : A REDUCE_MAX.
-  /// - "REDUCE_SUM" : A REDUCE_SUM.
-  /// - "REDUCE_STDDEV" : A REDUCE_STDDEV.
-  /// - "REDUCE_COUNT" : A REDUCE_COUNT.
-  /// - "REDUCE_COUNT_TRUE" : A REDUCE_COUNT_TRUE.
-  /// - "REDUCE_COUNT_FALSE" : A REDUCE_COUNT_FALSE.
-  /// - "REDUCE_FRACTION_TRUE" : A REDUCE_FRACTION_TRUE.
-  /// - "REDUCE_PERCENTILE_99" : A REDUCE_PERCENTILE_99.
-  /// - "REDUCE_PERCENTILE_95" : A REDUCE_PERCENTILE_95.
-  /// - "REDUCE_PERCENTILE_50" : A REDUCE_PERCENTILE_50.
-  /// - "REDUCE_PERCENTILE_05" : A REDUCE_PERCENTILE_05.
-  ///
-  /// [filter] - Required. A monitoring filter
-  /// (https://cloud.google.com/monitoring/api/v3/filters) that specifies which
-  /// time series should be returned. The filter must specify a single metric
-  /// type, and can additionally specify metric labels and other information.
-  /// For example:
-  /// metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-  ///     metric.labels.instance_name = "my-instance-name"
+  /// - "REDUCE_NONE" : No cross-time series reduction. The output of the
+  /// Aligner is returned.
+  /// - "REDUCE_MEAN" : Reduce by computing the mean value across time series
+  /// for each alignment period. This reducer is valid for DELTA and GAUGE
+  /// metrics with numeric or distribution values. The value_type of the output
+  /// is DOUBLE.
+  /// - "REDUCE_MIN" : Reduce by computing the minimum value across time series
+  /// for each alignment period. This reducer is valid for DELTA and GAUGE
+  /// metrics with numeric values. The value_type of the output is the same as
+  /// the value_type of the input.
+  /// - "REDUCE_MAX" : Reduce by computing the maximum value across time series
+  /// for each alignment period. This reducer is valid for DELTA and GAUGE
+  /// metrics with numeric values. The value_type of the output is the same as
+  /// the value_type of the input.
+  /// - "REDUCE_SUM" : Reduce by computing the sum across time series for each
+  /// alignment period. This reducer is valid for DELTA and GAUGE metrics with
+  /// numeric and distribution values. The value_type of the output is the same
+  /// as the value_type of the input.
+  /// - "REDUCE_STDDEV" : Reduce by computing the standard deviation across time
+  /// series for each alignment period. This reducer is valid for DELTA and
+  /// GAUGE metrics with numeric or distribution values. The value_type of the
+  /// output is DOUBLE.
+  /// - "REDUCE_COUNT" : Reduce by computing the number of data points across
+  /// time series for each alignment period. This reducer is valid for DELTA and
+  /// GAUGE metrics of numeric, Boolean, distribution, and string value_type.
+  /// The value_type of the output is INT64.
+  /// - "REDUCE_COUNT_TRUE" : Reduce by computing the number of True-valued data
+  /// points across time series for each alignment period. This reducer is valid
+  /// for DELTA and GAUGE metrics of Boolean value_type. The value_type of the
+  /// output is INT64.
+  /// - "REDUCE_COUNT_FALSE" : Reduce by computing the number of False-valued
+  /// data points across time series for each alignment period. This reducer is
+  /// valid for DELTA and GAUGE metrics of Boolean value_type. The value_type of
+  /// the output is INT64.
+  /// - "REDUCE_FRACTION_TRUE" : Reduce by computing the ratio of the number of
+  /// True-valued data points to the total number of data points for each
+  /// alignment period. This reducer is valid for DELTA and GAUGE metrics of
+  /// Boolean value_type. The output value is in the range 0.0, 1.0 and has
+  /// value_type DOUBLE.
+  /// - "REDUCE_PERCENTILE_99" : Reduce by computing the 99th percentile
+  /// (https://en.wikipedia.org/wiki/Percentile) of data points across time
+  /// series for each alignment period. This reducer is valid for GAUGE and
+  /// DELTA metrics of numeric and distribution type. The value of the output is
+  /// DOUBLE.
+  /// - "REDUCE_PERCENTILE_95" : Reduce by computing the 95th percentile
+  /// (https://en.wikipedia.org/wiki/Percentile) of data points across time
+  /// series for each alignment period. This reducer is valid for GAUGE and
+  /// DELTA metrics of numeric and distribution type. The value of the output is
+  /// DOUBLE.
+  /// - "REDUCE_PERCENTILE_50" : Reduce by computing the 50th percentile
+  /// (https://en.wikipedia.org/wiki/Percentile) of data points across time
+  /// series for each alignment period. This reducer is valid for GAUGE and
+  /// DELTA metrics of numeric and distribution type. The value of the output is
+  /// DOUBLE.
+  /// - "REDUCE_PERCENTILE_05" : Reduce by computing the 5th percentile
+  /// (https://en.wikipedia.org/wiki/Percentile) of data points across time
+  /// series for each alignment period. This reducer is valid for GAUGE and
+  /// DELTA metrics of numeric and distribution type. The value of the output is
+  /// DOUBLE.
   ///
   /// [aggregation_perSeriesAligner] - An Aligner describes how to bring the
   /// data points in a single time series into temporal alignment. Except for
@@ -2019,40 +2013,112 @@ class ProjectsTimeSeriesResourceApi {
   /// then per_series_aligner must be specified and not equal to ALIGN_NONE and
   /// alignment_period must be specified; otherwise, an error is returned.
   /// Possible string values are:
-  /// - "ALIGN_NONE" : A ALIGN_NONE.
-  /// - "ALIGN_DELTA" : A ALIGN_DELTA.
-  /// - "ALIGN_RATE" : A ALIGN_RATE.
-  /// - "ALIGN_INTERPOLATE" : A ALIGN_INTERPOLATE.
-  /// - "ALIGN_NEXT_OLDER" : A ALIGN_NEXT_OLDER.
-  /// - "ALIGN_MIN" : A ALIGN_MIN.
-  /// - "ALIGN_MAX" : A ALIGN_MAX.
-  /// - "ALIGN_MEAN" : A ALIGN_MEAN.
-  /// - "ALIGN_COUNT" : A ALIGN_COUNT.
-  /// - "ALIGN_SUM" : A ALIGN_SUM.
-  /// - "ALIGN_STDDEV" : A ALIGN_STDDEV.
-  /// - "ALIGN_COUNT_TRUE" : A ALIGN_COUNT_TRUE.
-  /// - "ALIGN_COUNT_FALSE" : A ALIGN_COUNT_FALSE.
-  /// - "ALIGN_FRACTION_TRUE" : A ALIGN_FRACTION_TRUE.
-  /// - "ALIGN_PERCENTILE_99" : A ALIGN_PERCENTILE_99.
-  /// - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
-  /// - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
-  /// - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
-  /// - "ALIGN_PERCENT_CHANGE" : A ALIGN_PERCENT_CHANGE.
+  /// - "ALIGN_NONE" : No alignment. Raw data is returned. Not valid if
+  /// cross-series reduction is requested. The value_type of the result is the
+  /// same as the value_type of the input.
+  /// - "ALIGN_DELTA" : Align and convert to DELTA. The output is delta = y1 -
+  /// y0.This alignment is valid for CUMULATIVE and DELTA metrics. If the
+  /// selected alignment period results in periods with no data, then the
+  /// aligned value for such a period is created by interpolation. The
+  /// value_type of the aligned result is the same as the value_type of the
+  /// input.
+  /// - "ALIGN_RATE" : Align and convert to a rate. The result is computed as
+  /// rate = (y1 - y0)/(t1 - t0), or "delta over time". Think of this aligner as
+  /// providing the slope of the line that passes through the value at the start
+  /// and at the end of the alignment_period.This aligner is valid for
+  /// CUMULATIVE and DELTA metrics with numeric values. If the selected
+  /// alignment period results in periods with no data, then the aligned value
+  /// for such a period is created by interpolation. The output is a GAUGE
+  /// metric with value_type DOUBLE.If, by "rate", you mean "percentage change",
+  /// see the ALIGN_PERCENT_CHANGE aligner instead.
+  /// - "ALIGN_INTERPOLATE" : Align by interpolating between adjacent points
+  /// around the alignment period boundary. This aligner is valid for GAUGE
+  /// metrics with numeric values. The value_type of the aligned result is the
+  /// same as the value_type of the input.
+  /// - "ALIGN_NEXT_OLDER" : Align by moving the most recent data point before
+  /// the end of the alignment period to the boundary at the end of the
+  /// alignment period. This aligner is valid for GAUGE metrics. The value_type
+  /// of the aligned result is the same as the value_type of the input.
+  /// - "ALIGN_MIN" : Align the time series by returning the minimum value in
+  /// each alignment period. This aligner is valid for GAUGE and DELTA metrics
+  /// with numeric values. The value_type of the aligned result is the same as
+  /// the value_type of the input.
+  /// - "ALIGN_MAX" : Align the time series by returning the maximum value in
+  /// each alignment period. This aligner is valid for GAUGE and DELTA metrics
+  /// with numeric values. The value_type of the aligned result is the same as
+  /// the value_type of the input.
+  /// - "ALIGN_MEAN" : Align the time series by returning the mean value in each
+  /// alignment period. This aligner is valid for GAUGE and DELTA metrics with
+  /// numeric values. The value_type of the aligned result is DOUBLE.
+  /// - "ALIGN_COUNT" : Align the time series by returning the number of values
+  /// in each alignment period. This aligner is valid for GAUGE and DELTA
+  /// metrics with numeric or Boolean values. The value_type of the aligned
+  /// result is INT64.
+  /// - "ALIGN_SUM" : Align the time series by returning the sum of the values
+  /// in each alignment period. This aligner is valid for GAUGE and DELTA
+  /// metrics with numeric and distribution values. The value_type of the
+  /// aligned result is the same as the value_type of the input.
+  /// - "ALIGN_STDDEV" : Align the time series by returning the standard
+  /// deviation of the values in each alignment period. This aligner is valid
+  /// for GAUGE and DELTA metrics with numeric values. The value_type of the
+  /// output is DOUBLE.
+  /// - "ALIGN_COUNT_TRUE" : Align the time series by returning the number of
+  /// True values in each alignment period. This aligner is valid for GAUGE
+  /// metrics with Boolean values. The value_type of the output is INT64.
+  /// - "ALIGN_COUNT_FALSE" : Align the time series by returning the number of
+  /// False values in each alignment period. This aligner is valid for GAUGE
+  /// metrics with Boolean values. The value_type of the output is INT64.
+  /// - "ALIGN_FRACTION_TRUE" : Align the time series by returning the ratio of
+  /// the number of True values to the total number of values in each alignment
+  /// period. This aligner is valid for GAUGE metrics with Boolean values. The
+  /// output value is in the range 0.0, 1.0 and has value_type DOUBLE.
+  /// - "ALIGN_PERCENTILE_99" : Align the time series by using percentile
+  /// aggregation (https://en.wikipedia.org/wiki/Percentile). The resulting data
+  /// point in each alignment period is the 99th percentile of all data points
+  /// in the period. This aligner is valid for GAUGE and DELTA metrics with
+  /// distribution values. The output is a GAUGE metric with value_type DOUBLE.
+  /// - "ALIGN_PERCENTILE_95" : Align the time series by using percentile
+  /// aggregation (https://en.wikipedia.org/wiki/Percentile). The resulting data
+  /// point in each alignment period is the 95th percentile of all data points
+  /// in the period. This aligner is valid for GAUGE and DELTA metrics with
+  /// distribution values. The output is a GAUGE metric with value_type DOUBLE.
+  /// - "ALIGN_PERCENTILE_50" : Align the time series by using percentile
+  /// aggregation (https://en.wikipedia.org/wiki/Percentile). The resulting data
+  /// point in each alignment period is the 50th percentile of all data points
+  /// in the period. This aligner is valid for GAUGE and DELTA metrics with
+  /// distribution values. The output is a GAUGE metric with value_type DOUBLE.
+  /// - "ALIGN_PERCENTILE_05" : Align the time series by using percentile
+  /// aggregation (https://en.wikipedia.org/wiki/Percentile). The resulting data
+  /// point in each alignment period is the 5th percentile of all data points in
+  /// the period. This aligner is valid for GAUGE and DELTA metrics with
+  /// distribution values. The output is a GAUGE metric with value_type DOUBLE.
+  /// - "ALIGN_PERCENT_CHANGE" : Align and convert to a percentage change. This
+  /// aligner is valid for GAUGE and DELTA metrics with numeric values. This
+  /// alignment returns ((current - previous)/previous) * 100, where the value
+  /// of previous is determined based on the alignment_period.If the values of
+  /// current and previous are both 0, then the returned value is 0. If only
+  /// previous is 0, the returned value is infinity.A 10-minute moving mean is
+  /// computed at each point of the alignment period prior to the above
+  /// calculation to smooth the metric and prevent false positives from very
+  /// short-lived spikes. The moving mean is only applicable for data whose
+  /// values are >= 0. Any values < 0 are treated as a missing datapoint, and
+  /// are ignored. While DELTA metrics are accepted by this alignment, special
+  /// care should be taken that the values for the metric will always be
+  /// positive. The output is a GAUGE metric with value_type DOUBLE.
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
-  ///
-  /// [interval_startTime] - Optional. The beginning of the time interval. The
-  /// default value for the start time is the end time. The start time must not
-  /// be later than the end time.
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return. If page_size is empty or more than 100,000 results, the effective
+  /// page_size is 100,000 results. If view is set to FULL, this is the maximum
+  /// number of Points returned. If view is set to HEADERS, this is the maximum
+  /// number of TimeSeries returned.
   ///
   /// [view] - Required. Specifies which information is returned about the time
   /// series.
   /// Possible string values are:
-  /// - "FULL" : A FULL.
-  /// - "HEADERS" : A HEADERS.
+  /// - "FULL" : Returns the identity of the metric(s), the time series, and the
+  /// time series data.
+  /// - "HEADERS" : Returns the identity of the metric and the time series
+  /// resource, but not the time series data.
   ///
   /// [aggregation_groupByFields] - The set of fields to preserve when
   /// cross_series_reducer is specified. The group_by_fields determine how the
@@ -2067,6 +2133,29 @@ class ProjectsTimeSeriesResourceApi {
   /// are aggregated into a single output time series. If cross_series_reducer
   /// is not defined, this field is ignored.
   ///
+  /// [orderBy] - Unsupported: must be left blank. The points in each time
+  /// series are currently returned in reverse time order (most recent to
+  /// oldest).
+  ///
+  /// [filter] - Required. A monitoring filter
+  /// (https://cloud.google.com/monitoring/api/v3/filters) that specifies which
+  /// time series should be returned. The filter must specify a single metric
+  /// type, and can additionally specify metric labels and other information.
+  /// For example: metric.type =
+  /// "compute.googleapis.com/instance/cpu/usage_time" AND
+  /// metric.labels.instance_name = "my-instance-name"
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
+  /// [interval_endTime] - Required. The end of the time interval.
+  ///
+  /// [interval_startTime] - Optional. The beginning of the time interval. The
+  /// default value for the start time is the end time. The start time must not
+  /// be later than the end time.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2078,17 +2167,17 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.String interval_endTime,
-      core.String aggregation_alignmentPeriod,
-      core.int pageSize,
-      core.String orderBy,
+      {core.String aggregation_alignmentPeriod,
       core.String aggregation_crossSeriesReducer,
-      core.String filter,
       core.String aggregation_perSeriesAligner,
-      core.String pageToken,
-      core.String interval_startTime,
+      core.int pageSize,
       core.String view,
       core.List<core.String> aggregation_groupByFields,
+      core.String orderBy,
+      core.String filter,
+      core.String pageToken,
+      core.String interval_endTime,
+      core.String interval_startTime,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2100,44 +2189,44 @@ class ProjectsTimeSeriesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
-    }
     if (aggregation_alignmentPeriod != null) {
       _queryParams["aggregation.alignmentPeriod"] = [
         aggregation_alignmentPeriod
       ];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
     if (aggregation_crossSeriesReducer != null) {
       _queryParams["aggregation.crossSeriesReducer"] = [
         aggregation_crossSeriesReducer
       ];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (aggregation_perSeriesAligner != null) {
       _queryParams["aggregation.perSeriesAligner"] = [
         aggregation_perSeriesAligner
       ];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
     }
     if (aggregation_groupByFields != null) {
       _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
+    }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2155,17 +2244,15 @@ class ProjectsTimeSeriesResourceApi {
     return _response.then((data) => new ListTimeSeriesResponse.fromJson(data));
   }
 
-  /// Queries time series using the time series query language. This method does
-  /// not require a Workspace.
+  /// Queries time series using Monitoring Query Language. This method does not
+  /// require a Workspace.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2225,9 +2312,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The project in which to create the Uptime check. The
-  /// format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// format is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2280,9 +2365,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The Uptime check configuration to delete. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2326,9 +2409,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The Uptime check configuration to retrieve. The format
-  /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
-  ///
+  /// is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2373,9 +2454,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The project whose Uptime check configurations are
-  /// listed. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
+  /// listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - If this field is not empty then it must contain the
@@ -2445,9 +2524,9 @@ class ProjectsUptimeCheckConfigsResourceApi {
   ///
   /// [name] - A unique resource name for this Uptime check configuration. The
   /// format is:
-  ///  projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
-  /// This field should be omitted when creating the Uptime check configuration;
-  /// on create, the resource name is assigned by the server and included in the
+  /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This
+  /// field should be omitted when creating the Uptime check configuration; on
+  /// create, the resource name is assigned by the server and included in the
   /// response.
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
@@ -2517,7 +2596,6 @@ class ServicesResourceApi {
   ///
   /// [parent] - Required. Resource name of the parent workspace. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]
-  ///
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
   /// [serviceId] - Optional. The Service id to use for this Service. If
@@ -2574,7 +2652,6 @@ class ServicesResourceApi {
   ///
   /// [name] - Required. Resource name of the Service to delete. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  ///
   /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2619,7 +2696,6 @@ class ServicesResourceApi {
   ///
   /// [name] - Required. Resource name of the Service. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  ///
   /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2664,32 +2740,30 @@ class ServicesResourceApi {
   ///
   /// [parent] - Required. Resource name of the parent containing the listed
   /// services, either a project or a Monitoring Workspace. The formats are:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  /// workspaces/[HOST_PROJECT_ID_OR_NUMBER]
-  ///
+  /// projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
   /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [filter] - A filter specifying what Services to return. The filter
+  /// currently supports the following fields: - `identifier_case` -
+  /// `app_engine.module_id` - `cloud_endpoints.service` (reserved for future
+  /// use) - `mesh_istio.mesh_uid` - `mesh_istio.service_namespace` -
+  /// `mesh_istio.service_name` - `cluster_istio.location` (deprecated) -
+  /// `cluster_istio.cluster_name` (deprecated) -
+  /// `cluster_istio.service_namespace` (deprecated) -
+  /// `cluster_istio.service_name` (deprecated) identifier_case refers to which
+  /// option in the identifier oneof is populated. For example, the filter
+  /// identifier_case = "CUSTOM" would match all services with a value for the
+  /// custom field. Valid options are "CUSTOM", "APP_ENGINE", "MESH_ISTIO", plus
+  /// "CLUSTER_ISTIO" (deprecated) and "CLOUD_ENDPOINTS" (reserved for future
+  /// use).
+  ///
+  /// [pageSize] - A non-negative number that is the maximum number of results
+  /// to return. When 0, use default page size.
   ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
   /// method call.
-  ///
-  /// [pageSize] - A non-negative number that is the maximum number of results
-  /// to return. When 0, use default page size.
-  ///
-  /// [filter] - A filter specifying what Services to return. The filter
-  /// currently supports the following fields:
-  /// - `identifier_case`
-  /// - `app_engine.module_id`
-  /// - `cloud_endpoints.service`
-  /// - `cluster_istio.location`
-  /// - `cluster_istio.cluster_name`
-  /// - `cluster_istio.service_namespace`
-  /// - `cluster_istio.service_name`
-  /// identifier_case refers to which option in the identifier oneof is
-  /// populated. For example, the filter identifier_case = "CUSTOM" would match
-  /// all services with a value for the custom field. Valid options are
-  /// "CUSTOM", "APP_ENGINE", "CLOUD_ENDPOINTS", and "CLUSTER_ISTIO".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2702,9 +2776,9 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2716,14 +2790,14 @@ class ServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2749,7 +2823,6 @@ class ServicesResourceApi {
   ///
   /// [name] - Resource name for this Service. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  ///
   /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
   ///
   /// [updateMask] - A set of field paths defining which fields to use for the
@@ -2813,7 +2886,6 @@ class ServicesServiceLevelObjectivesResourceApi {
   ///
   /// [parent] - Required. Resource name of the parent Service. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  ///
   /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
   ///
   /// [serviceLevelObjectiveId] - Optional. The ServiceLevelObjective id to use
@@ -2873,7 +2945,6 @@ class ServicesServiceLevelObjectivesResourceApi {
   /// [name] - Required. Resource name of the ServiceLevelObjective to delete.
   /// The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
-  ///
   /// Value must have pattern
   /// "^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$".
   ///
@@ -2920,7 +2991,6 @@ class ServicesServiceLevelObjectivesResourceApi {
   /// [name] - Required. Resource name of the ServiceLevelObjective to get. The
   /// format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
-  ///
   /// Value must have pattern
   /// "^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$".
   ///
@@ -2929,9 +2999,14 @@ class ServicesServiceLevelObjectivesResourceApi {
   /// ServiceLevelObjective is defined in terms of a BasicSli, replace the
   /// BasicSli with a RequestBasedSli spelling out how the SLI is computed.
   /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
-  /// - "FULL" : A FULL.
-  /// - "EXPLICIT" : A EXPLICIT.
+  /// - "VIEW_UNSPECIFIED" : Same as FULL.
+  /// - "FULL" : Return the embedded ServiceLevelIndicator in the form in which
+  /// it was defined. If it was defined using a BasicSli, return that BasicSli.
+  /// - "EXPLICIT" : For ServiceLevelIndicators using BasicSli articulation,
+  /// instead return the ServiceLevelIndicator with its mode of computation
+  /// fully spelled out as a RequestBasedSli. For ServiceLevelIndicators using
+  /// RequestBasedSli or WindowsBasedSli, return the ServiceLevelIndicator as it
+  /// was provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2981,27 +3056,31 @@ class ServicesServiceLevelObjectivesResourceApi {
   /// SLOs, either a project or a Monitoring Workspace. The formats are:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
   /// workspaces/[HOST_PROJECT_ID_OR_NUMBER]/services/-
-  ///
   /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  ///
+  /// [pageSize] - A non-negative number that is the maximum number of results
+  /// to return. When 0, use default page size.
   ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
   /// method call.
   ///
-  /// [pageSize] - A non-negative number that is the maximum number of results
-  /// to return. When 0, use default page size.
+  /// [filter] - A filter specifying what ServiceLevelObjectives to return.
   ///
   /// [view] - View of the ServiceLevelObjectives to return. If DEFAULT, return
   /// each ServiceLevelObjective as originally defined. If EXPLICIT and the
   /// ServiceLevelObjective is defined in terms of a BasicSli, replace the
   /// BasicSli with a RequestBasedSli spelling out how the SLI is computed.
   /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
-  /// - "FULL" : A FULL.
-  /// - "EXPLICIT" : A EXPLICIT.
-  ///
-  /// [filter] - A filter specifying what ServiceLevelObjectives to return.
+  /// - "VIEW_UNSPECIFIED" : Same as FULL.
+  /// - "FULL" : Return the embedded ServiceLevelIndicator in the form in which
+  /// it was defined. If it was defined using a BasicSli, return that BasicSli.
+  /// - "EXPLICIT" : For ServiceLevelIndicators using BasicSli articulation,
+  /// instead return the ServiceLevelIndicator with its mode of computation
+  /// fully spelled out as a RequestBasedSli. For ServiceLevelIndicators using
+  /// RequestBasedSli or WindowsBasedSli, return the ServiceLevelIndicator as it
+  /// was provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3014,10 +3093,10 @@ class ServicesServiceLevelObjectivesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServiceLevelObjectivesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String view,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
+      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3029,17 +3108,17 @@ class ServicesServiceLevelObjectivesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3067,7 +3146,6 @@ class ServicesServiceLevelObjectivesResourceApi {
   ///
   /// [name] - Resource name for this ServiceLevelObjective. The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
-  ///
   /// Value must have pattern
   /// "^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$".
   ///
@@ -3128,15 +3206,15 @@ class UptimeCheckIpsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return more results from the previous method
-  /// call. NOTE: this field is not yet implemented
-  ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// The server may further constrain the maximum number of results returned in
   /// a single page. If the page_size is <=0, the server will decide the number
   /// of results to be returned. NOTE: this field is not yet implemented
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return more results from the previous method
+  /// call. NOTE: this field is not yet implemented
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3149,7 +3227,7 @@ class UptimeCheckIpsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUptimeCheckIpsResponse> list(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3157,11 +3235,11 @@ class UptimeCheckIpsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3208,7 +3286,9 @@ class Aggregation {
   /// data.The value must be at least 60 seconds. If a per-series aligner other
   /// than ALIGN_NONE is specified, this field is required or an error is
   /// returned. If no per-series aligner is specified, or the aligner ALIGN_NONE
-  /// is specified, then this field is ignored.
+  /// is specified, then this field is ignored.The maximum value of the
+  /// alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25
+  /// hours) for alerting policies.
   core.String alignmentPeriod;
 
   /// The reduction operation to be used to combine time series into a single
@@ -3498,8 +3578,7 @@ class AlertPolicy {
   MutationRecord mutationRecord;
 
   /// Required if the policy exists. The resource name for this policy. The
-  /// format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+  /// format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
   /// [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
   /// created. When calling the alertPolicies.create method, do not include the
   /// name field in the alerting policy passed as part of the request.
@@ -3918,7 +3997,7 @@ class CollectdPayload {
   core.String typeInstance;
 
   /// The measured values during this time interval. Each value must have a
-  /// different dataSourceName.
+  /// different data_source_name.
   core.List<CollectdValue> values;
 
   CollectdPayload();
@@ -4037,7 +4116,7 @@ class CollectdPayloadError {
 
 /// A single data point from a collectd-based plugin.
 class CollectdValue {
-  /// The data source for the collectd value. For example there are two data
+  /// The data source for the collectd value. For example, there are two data
   /// sources for network measurements: "rx" and "tx".
   core.String dataSourceName;
 
@@ -4193,9 +4272,8 @@ class Condition {
 
 /// Optional. Used to perform content matching. This allows matching based on
 /// substrings and regular expressions, together with their negations. Only the
-/// first 4&nbsp;MB of an HTTP or HTTPS check's response (and the first
-/// 1&nbsp;MB of a TCP check's response) are examined for purposes of content
-/// matching.
+/// first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP
+/// check's response) are examined for purposes of content matching.
 class ContentMatcher {
   /// String or regex content to match. Maximum 1024 bytes. An empty content
   /// string indicates no content matching is to be performed.
@@ -4466,11 +4544,10 @@ class Distribution {
   Range range;
 
   /// The sum of squared deviations from the mean of the values in the
-  /// population. For values x_i this is:
-  /// Sum[i=1..n]((x_i - mean)^2)
-  /// Knuth, "The Art of Computer Programming", Vol. 2, page 323, 3rd edition
-  /// describes Welford's method for accumulating this sum in one pass.If count
-  /// is zero then this field must be zero.
+  /// population. For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth,
+  /// "The Art of Computer Programming", Vol. 2, page 232, 3rd edition describes
+  /// Welford's method for accumulating this sum in one pass.If count is zero
+  /// then this field must be zero.
   core.double sumOfSquaredDeviation;
 
   Distribution();
@@ -4604,18 +4681,18 @@ class Documentation {
   }
 }
 
-/// A set of (label, value) pairs which were dropped during aggregation,
-/// attached to google.api.Distribution.Exemplars in google.api.Distribution
-/// values during aggregation.These values are used in combination with the
-/// label values that remain on the aggregated Distribution timeseries to
-/// construct the full label set for the exemplar values. The resulting full
-/// label set may be used to identify the specific task/job/instance (for
-/// example) which may be contributing to a long-tail, while allowing the
-/// storage savings of only storing aggregated distribution values for a large
-/// group.Note that there are no guarantees on ordering of the labels from
-/// exemplar-to-exemplar and from distribution-to-distribution in the same
-/// stream, and there may be duplicates. It is up to clients to resolve any
-/// ambiguities.
+/// A set of (label, value) pairs that were removed from a Distribution time
+/// series during aggregation and then added as an attachment to a
+/// Distribution.Exemplar.The full label set for the exemplars is constructed by
+/// using the dropped pairs in combination with the label values that remain on
+/// the aggregated Distribution time series. The constructed full label set can
+/// be used to identify the specific entity, such as the instance or job, which
+/// might be contributing to a long-tail. However, with dropped labels, the
+/// storage requirements are reduced because only the aggregated distribution
+/// values for a large group of time series are stored.Note that there are no
+/// guarantees on ordering of the labels from exemplar-to-exemplar and from
+/// distribution-to-distribution in the same stream, and there may be
+/// duplicates. It is up to clients to resolve any ambiguities.
 class DroppedLabels {
   /// Map from label to its value, for all labels dropped in any aggregation.
   core.Map<core.String, core.String> label;
@@ -4640,11 +4717,9 @@ class DroppedLabels {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-/// service Foo {
-///   rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-/// }
-/// The JSON representation for Empty is empty JSON object {}.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for Empty is empty JSON object {}.
 class Empty {
   Empty();
 
@@ -4698,7 +4773,7 @@ class Exemplar {
   /// Contextual information about the example value. Examples are:Trace:
   /// type.googleapis.com/google.monitoring.v3.SpanContextLiteral string:
   /// type.googleapis.com/google.protobuf.StringValueLabels dropped during
-  /// aggregation:  type.googleapis.com/google.monitoring.v3.DroppedLabelsThere
+  /// aggregation: type.googleapis.com/google.monitoring.v3.DroppedLabelsThere
   /// may be only a single attachment of any given message type in a single
   /// exemplar, and this is enforced by the system.
   ///
@@ -4748,7 +4823,7 @@ class Exemplar {
 
 /// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1
 /// (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i <
-/// N-1): boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must
+/// N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must
 /// contain at least one element. If bounds has only one element, then there are
 /// no finite buckets, and that single element is the common boundary of the
 /// overflow and underflow buckets.
@@ -4780,7 +4855,7 @@ class Explicit {
 /// proportional to the value of the lower bound. Each bucket represents a
 /// constant relative uncertainty on a specific value in the bucket.There are
 /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following
-/// boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower
+/// boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower
 /// bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
 class Exponential {
   /// Must be greater than 1.
@@ -5091,15 +5166,15 @@ class Group {
   core.bool isCluster;
 
   /// Output only. The name of this group. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  /// When creating a group, this field is ignored and a new name is created
-  /// consisting of the project specified in the call to CreateGroup and a
-  /// unique [GROUP_ID] that is generated automatically.
+  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group,
+  /// this field is ignored and a new name is created consisting of the project
+  /// specified in the call to CreateGroup and a unique [GROUP_ID] that is
+  /// generated automatically.
   core.String name;
 
   /// The name of the group's parent, if it has one. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  /// For groups with no parent, parent_name is the empty string, "".
+  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no
+  /// parent, parent_name is the empty string, "".
   core.String parentName;
 
   Group();
@@ -5150,11 +5225,13 @@ class HttpCheck {
   /// defaults to empty.
   BasicAuthentication authInfo;
 
-  /// The request body associated with the HTTP request. If content_type is
+  /// The request body associated with the HTTP POST request. If content_type is
   /// URL_ENCODED, the body passed in must be URL-encoded. Users can provide a
-  /// Content-Length header via the headers field or the API will do so. The
-  /// maximum byte size is 1 megabyte. Note: As with all bytes fields JSON
-  /// representations are base64 encoded.
+  /// Content-Length header via the headers field or the API will do so. If the
+  /// request_method is GET and body is not empty, the API will return an error.
+  /// The maximum byte size is 1 megabyte. Note: As with all bytes fields JSON
+  /// representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is
+  /// "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
   core.String body;
   core.List<core.int> get bodyAsBytes {
     return convert.base64.decode(body);
@@ -5183,7 +5260,7 @@ class HttpCheck {
   /// 100.
   core.Map<core.String, core.String> headers;
 
-  /// Boolean specifiying whether to encrypt the header information. Encryption
+  /// Boolean specifying whether to encrypt the header information. Encryption
   /// should be specified for any headers related to authentication that you do
   /// not wish to be seen when retrieving the configuration. The server will be
   /// responsible for encrypting the headers. On Get/List calls, if mask_headers
@@ -5387,11 +5464,10 @@ class LabelDescriptor {
   /// A human-readable description for the label.
   core.String description;
 
-  /// The key for this label. The key must meet the following criteria:
-  /// Does not exceed 100 characters.
-  /// Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]*
-  /// The first character must be an upper- or lower-case letter.
-  /// The remaining characters must be letters, digits, or underscores.
+  /// The key for this label. The key must meet the following criteria: Does not
+  /// exceed 100 characters. Matches the following regular expression:
+  /// [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or lower-case
+  /// letter. The remaining characters must be letters, digits, or underscores.
   core.String key;
 
   /// The type of data that can be assigned to the label.
@@ -5501,8 +5577,8 @@ class LatencyCriteria {
 /// overflow and underflow). Each bucket represents a constant absolute
 /// uncertainty on the specific value in the bucket.There are num_finite_buckets
 /// + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i
-/// < N-1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width *
-/// (i - 1)).
+/// < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i
+/// - 1)).
 class Linear {
   /// Must be greater than 0.
   core.int numFiniteBuckets;
@@ -5553,6 +5629,10 @@ class ListAlertPoliciesResponse {
   /// page_token in the next call to this method.
   core.String nextPageToken;
 
+  /// The total number of alert policies in all pages. This number is only an
+  /// estimate, and may change in subsequent pages. https://aip.dev/158
+  core.int totalSize;
+
   ListAlertPoliciesResponse();
 
   ListAlertPoliciesResponse.fromJson(core.Map _json) {
@@ -5563,6 +5643,9 @@ class ListAlertPoliciesResponse {
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
     }
   }
 
@@ -5575,6 +5658,9 @@ class ListAlertPoliciesResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
     }
     return _json;
   }
@@ -5789,6 +5875,10 @@ class ListNotificationChannelsResponse {
   /// The notification channels defined for the specified project.
   core.List<NotificationChannel> notificationChannels;
 
+  /// The total number of notification channels in all pages. This number is
+  /// only an estimate, and may change in subsequent pages. https://aip.dev/158
+  core.int totalSize;
+
   ListNotificationChannelsResponse();
 
   ListNotificationChannelsResponse.fromJson(core.Map _json) {
@@ -5801,6 +5891,9 @@ class ListNotificationChannelsResponse {
               (value) => new NotificationChannel.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5812,6 +5905,9 @@ class ListNotificationChannelsResponse {
     if (notificationChannels != null) {
       _json["notificationChannels"] =
           notificationChannels.map((value) => (value).toJson()).toList();
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
     }
     return _json;
   }
@@ -5905,6 +6001,13 @@ class ListTimeSeriesResponse {
   /// One or more time series that match the filter included in the request.
   core.List<TimeSeries> timeSeries;
 
+  /// The unit in which all time_series point values are reported. unit follows
+  /// the UCUM format for units as seen in https://unitsofmeasure.org/ucum.html.
+  /// If different time_series have different units (for example, because they
+  /// come from different metric types, or a unit is absent), then unit will be
+  /// "{not_a_unit}".
+  core.String unit;
+
   ListTimeSeriesResponse();
 
   ListTimeSeriesResponse.fromJson(core.Map _json) {
@@ -5921,6 +6024,9 @@ class ListTimeSeriesResponse {
           .map<TimeSeries>((value) => new TimeSeries.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("unit")) {
+      unit = _json["unit"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5936,6 +6042,9 @@ class ListTimeSeriesResponse {
     if (timeSeries != null) {
       _json["timeSeries"] =
           timeSeries.map((value) => (value).toJson()).toList();
+    }
+    if (unit != null) {
+      _json["unit"] = unit;
     }
     return _json;
   }
@@ -6293,68 +6402,37 @@ class MetricDescriptor {
   /// metric whose unit is ks{CPU}, and then write the value 12.005 (which is
   /// 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).The
   /// supported units are a subset of The Unified Code for Units of Measure
-  /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)
-  /// bit bit
-  /// By byte
-  /// s second
-  /// min minute
-  /// h hour
-  /// d dayPrefixes (PREFIX)
-  /// k kilo (10^3)
-  /// M mega (10^6)
-  /// G giga (10^9)
-  /// T tera (10^12)
-  /// P peta (10^15)
-  /// E exa (10^18)
-  /// Z zetta (10^21)
-  /// Y yotta (10^24)
-  /// m milli (10^-3)
-  /// u micro (10^-6)
-  /// n nano (10^-9)
-  /// p pico (10^-12)
-  /// f femto (10^-15)
-  /// a atto (10^-18)
-  /// z zepto (10^-21)
-  /// y yocto (10^-24)
-  /// Ki kibi (2^10)
-  /// Mi mebi (2^20)
-  /// Gi gibi (2^30)
-  /// Ti tebi (2^40)
-  /// Pi pebi (2^50)GrammarThe grammar also includes these connectors:
-  /// / division or ratio (as an infix operator). For examples,  kBy/{email} or
-  /// MiBy/10ms (although you should almost never  have /s in a metric unit;
-  /// rates should always be computed at  query time from the underlying
-  /// cumulative or delta value).
-  /// . multiplication or composition (as an infix operator). For  examples,
-  /// GBy.d or k{watt}.h.The grammar for a unit is as follows:
-  /// Expression = Component { "." Component } { "/" Component } ;
-  ///
-  /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
-  ///           | Annotation
-  ///           | "1"
-  ///           ;
-  ///
-  /// Annotation = "{" NAME "}" ;
-  /// Notes:
-  /// Annotation is just a comment if it follows a UNIT. If the annotation  is
-  /// used alone, then the unit is equivalent to 1. For examples,  {request}/s
-  /// == 1/s, By{transmitted}/s == By/s.
-  /// NAME is a sequence of non-blank printable ASCII characters not  containing
-  /// { or }.
-  /// 1 represents a unitary dimensionless  unit
-  /// (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such  as in
-  /// 1/s. It is typically used when none of the basic units are  appropriate.
-  /// For example, "new users per day" can be represented as  1/d or
-  /// {new-users}/d (and a metric value 5 would mean "5 new  users).
-  /// Alternatively, "thousands of page views per day" would be  represented as
-  /// 1000/d or k1/d or k{page_views}/d (and a metric  value of 5.3 would mean
-  /// "5300 page views per day").
-  /// % represents dimensionless value of 1/100, and annotates values giving  a
-  /// percentage (so the metric values are typically in the range of 0..100,
-  /// and a metric value 3 means "3 percent").
-  /// 10^2.% indicates a metric contains a ratio, typically in the range  0..1,
-  /// that will be multiplied by 100 and displayed as a percentage  (so a metric
-  /// value 0.03 means "3 percent").
+  /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit
+  /// By byte s second min minute h hour d day 1 dimensionlessPrefixes (PREFIX)
+  /// k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta (10^15) E
+  /// exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro
+  /// (10^-6) n nano (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z
+  /// zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi gibi
+  /// (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these
+  /// connectors: / division or ratio (as an infix operator). For examples,
+  /// kBy/{email} or MiBy/10ms (although you should almost never have /s in a
+  /// metric unit; rates should always be computed at query time from the
+  /// underlying cumulative or delta value). . multiplication or composition (as
+  /// an infix operator). For examples, GBy.d or k{watt}.h.The grammar for a
+  /// unit is as follows: Expression = Component { "." Component } { "/"
+  /// Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] |
+  /// Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: Annotation is just a
+  /// comment if it follows a UNIT. If the annotation is used alone, then the
+  /// unit is equivalent to 1. For examples, {request}/s == 1/s,
+  /// By{transmitted}/s == By/s. NAME is a sequence of non-blank printable ASCII
+  /// characters not containing { or }. 1 represents a unitary dimensionless
+  /// unit (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as
+  /// in 1/s. It is typically used when none of the basic units are appropriate.
+  /// For example, "new users per day" can be represented as 1/d or
+  /// {new-users}/d (and a metric value 5 would mean "5 new users).
+  /// Alternatively, "thousands of page views per day" would be represented as
+  /// 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean
+  /// "5300 page views per day"). % represents dimensionless value of 1/100, and
+  /// annotates values giving a percentage (so the metric values are typically
+  /// in the range of 0..100, and a metric value 3 means "3 percent"). 10^2.%
+  /// indicates a metric contains a ratio, typically in the range 0..1, that
+  /// will be multiplied by 100 and displayed as a percentage (so a metric value
+  /// 0.03 means "3 percent").
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc. Some
@@ -6725,10 +6803,8 @@ class MetricThreshold {
 /// attributes according to the schema. For example, a particular Compute Engine
 /// VM instance could be represented by the following object, because the
 /// MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and
-/// "zone":
-/// { "type": "gce_instance",
-///   "labels": { "instance_id": "12345678901234",
-///               "zone": "us-central1-a" }}
+/// "zone": { "type": "gce_instance", "labels": { "instance_id":
+/// "12345678901234", "zone": "us-central1-a" }}
 class MonitoredResource {
   /// Required. Values for all of the labels listed in the associated monitored
   /// resource descriptor. For example, Compute Engine VM instances use the
@@ -6832,8 +6908,7 @@ class MonitoredResourceDescriptor {
   core.String name;
 
   /// Required. The monitored resource type. For example, the type
-  /// "cloudsql_database" represents databases in Google Cloud SQL. The maximum
-  /// length of this value is 256 characters.
+  /// "cloudsql_database" represents databases in Google Cloud SQL.
   core.String type;
 
   MonitoredResourceDescriptor();
@@ -6895,10 +6970,9 @@ class MonitoredResourceMetadata {
   /// Output only. Values for predefined system metadata labels. System labels
   /// are a kind of metadata extracted by Google, including "machine_image",
   /// "vpc", "subnet_id", "security_group", "name", etc. System label values can
-  /// be only strings, Boolean values, or a list of strings. For example:
-  /// { "name": "my-test-instance",
-  ///   "security_group": ["a", "b", "c"],
-  ///   "spot_instance": false }
+  /// be only strings, Boolean values, or a list of strings. For example: {
+  /// "name": "my-test-instance", "security_group": ["a", "b", "c"],
+  /// "spot_instance": false }
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6997,8 +7071,8 @@ class NotificationChannel {
   core.Map<core.String, core.String> labels;
 
   /// The full REST resource name for this channel. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
-  /// The [CHANNEL_ID] is automatically assigned by the server on creation.
+  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The
+  /// [CHANNEL_ID] is automatically assigned by the server on creation.
   core.String name;
 
   /// The type of the notification channel. This field matches the value of the
@@ -7156,11 +7230,13 @@ class NotificationChannelDescriptor {
   core.String launchStage;
 
   /// The full REST resource name for this descriptor. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE]
-  /// In the above, [TYPE] is the value of the type field.
+  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE] In
+  /// the above, [TYPE] is the value of the type field.
   core.String name;
 
-  /// The type of notification channel, such as "email", "sms", etc.
+  /// The type of notification channel, such as "email" and "sms". To view the
+  /// full list of channels, see Channel descriptors
+  /// (https://cloud.google.com/monitoring/alerts/using-channels-api#ncd).
   /// Notification channel types are globally unique.
   core.String type;
 
@@ -7384,7 +7460,8 @@ class QueryTimeSeriesRequest {
   /// method to return additional results from the previous method call.
   core.String pageToken;
 
-  /// Required. The query in the monitoring query language format. The default
+  /// Required. The query in the Monitoring Query Language
+  /// (https://cloud.google.com/monitoring/mql/reference) format. The default
   /// time zone is in UTC.
   core.String query;
 
@@ -7750,9 +7827,8 @@ class ServiceLevelIndicator {
 /// milliseconds" or "99.5% of requests in each calendar month return
 /// successfully."
 class ServiceLevelObjective {
-  /// A calendar period, semantically "since the start of the current
-  /// <calendar_period>". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are
-  /// supported.
+  /// A calendar period, semantically "since the start of the current ". At this
+  /// time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
   /// Possible string values are:
   /// - "CALENDAR_PERIOD_UNSPECIFIED" : Undefined period, raises an error.
   /// - "DAY" : A day.
@@ -7779,8 +7855,8 @@ class ServiceLevelObjective {
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
   core.String name;
 
-  /// A rolling time period, semantically "in the past <rolling_period>". Must
-  /// be an integer multiple of 1 day no larger than 30 days.
+  /// A rolling time period, semantically "in the past ". Must be an integer
+  /// multiple of 1 day no larger than 30 days.
   core.String rollingPeriod;
 
   /// The definition of good service, used to measure and calculate the quality
@@ -7998,20 +8074,29 @@ class Telemetry {
 
 /// A closed time interval. It extends from the start time to the end time, and
 /// includes both: [startTime, endTime]. Valid time intervals depend on the
-/// MetricKind of the metric value. In no case can the end time be earlier than
-/// the start time.
-/// For a GAUGE metric, the startTime value is technically optional; if  no
-/// value is specified, the start time defaults to the value of the  end time,
-/// and the interval represents a single point in time. If both  start and end
-/// times are specified, they must be identical. Such an  interval is valid only
-/// for GAUGE metrics, which are point-in-time  measurements.
-/// For DELTA and CUMULATIVE metrics, the start time must be earlier  than the
-/// end time.
-/// In all cases, the start time of the next interval must be  at least a
-/// millisecond after the end time of the previous interval.  Because the
-/// interval is closed, if the start time of a new interval  is the same as the
-/// end time of the previous interval, data written  at the new start time could
-/// overwrite data written at the previous  end time.
+/// MetricKind of the metric value. The end time must not be earlier than the
+/// start time. When writing data points, the start time must not be more than
+/// 25 hours in the past and the end time must not be more than five minutes in
+/// the future. For GAUGE metrics, the startTime value is technically optional;
+/// if no value is specified, the start time defaults to the value of the end
+/// time, and the interval represents a single point in time. If both start and
+/// end times are specified, they must be identical. Such an interval is valid
+/// only for GAUGE metrics, which are point-in-time measurements. The end time
+/// of a new interval must be at least a millisecond after the end time of the
+/// previous interval. For DELTA metrics, the start time and end time must
+/// specify a non-zero interval, with subsequent points specifying contiguous
+/// and non-overlapping intervals. For DELTA metrics, the start time of the next
+/// interval must be at least a millisecond after the end time of the previous
+/// interval. For CUMULATIVE metrics, the start time and end time must specify a
+/// a non-zero interval, with subsequent points specifying the same start time
+/// and increasing end times, until an event resets the cumulative value to zero
+/// and sets a new start time for the following points. The new start time must
+/// be at least a millisecond after the end time of the previous interval. The
+/// start time of a new interval must be at least a millisecond after the end
+/// time of the previous interval because intervals are closed. If the start
+/// time of a new interval is the same as the end time of the previous interval,
+/// then data written at the new start time could overwrite data written at the
+/// previous end time.
 class TimeInterval {
   /// Required. The end of the time interval.
   core.String endTime;
@@ -8050,9 +8135,10 @@ class TimeInterval {
 /// monitored resource and a fully-specified metric. This type is used for both
 /// listing and creating time series.
 class TimeSeries {
-  /// Output only. The associated monitored resource metadata. When reading a a
-  /// timeseries, this field will include metadata labels that are explicitly
-  /// named in the reduction. When creating a timeseries, this field is ignored.
+  /// Output only. The associated monitored resource metadata. When reading a
+  /// time series, this field will include metadata labels that are explicitly
+  /// named in the reduction. When creating a time series, this field is
+  /// ignored.
   MonitoredResourceMetadata metadata;
 
   /// The associated metric. A fully-specified metric used to identify the time
@@ -8089,6 +8175,11 @@ class TimeSeries {
   /// The associated monitored resource. Custom metrics can use only certain
   /// monitored resource types in their time series data.
   MonitoredResource resource;
+
+  /// The units in which the metric value is reported. It is only applicable if
+  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the
+  /// representation of the stored metric values.
+  core.String unit;
 
   /// The value type of the time series. When listing time series, this value
   /// type might be different from the value type of the associated metric if
@@ -8127,6 +8218,9 @@ class TimeSeries {
     if (_json.containsKey("resource")) {
       resource = new MonitoredResource.fromJson(_json["resource"]);
     }
+    if (_json.containsKey("unit")) {
+      unit = _json["unit"];
+    }
     if (_json.containsKey("valueType")) {
       valueType = _json["valueType"];
     }
@@ -8149,6 +8243,9 @@ class TimeSeries {
     }
     if (resource != null) {
       _json["resource"] = (resource).toJson();
+    }
+    if (unit != null) {
+      _json["unit"] = unit;
     }
     if (valueType != null) {
       _json["valueType"] = valueType;
@@ -8198,7 +8295,7 @@ class TimeSeriesData {
   }
 }
 
-/// A descriptor for the labels and points in a timeseries.
+/// A descriptor for the labels and points in a time series.
 class TimeSeriesDescriptor {
   /// Descriptors for the labels.
   core.List<LabelDescriptor> labelDescriptors;
@@ -8238,10 +8335,10 @@ class TimeSeriesDescriptor {
 
 /// A TimeSeriesRatio specifies two TimeSeries to use for computing the
 /// good_service / total_service ratio. The specified TimeSeries must have
-/// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
-/// DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly
-/// two of good, bad, and total, and the relationship good_service +
-/// bad_service = total_service will be assumed.
+/// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or
+/// MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of
+/// good, bad, and total, and the relationship good_service + bad_service =
+/// total_service will be assumed.
 class TimeSeriesRatio {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying a TimeSeries quantifying bad service, either demanded service
@@ -8252,14 +8349,14 @@ class TimeSeriesRatio {
 
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying a TimeSeries quantifying good service provided. Must have
-  /// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
-  /// DELTA or MetricKind = CUMULATIVE.
+  /// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA
+  /// or MetricKind = CUMULATIVE.
   core.String goodServiceFilter;
 
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying a TimeSeries quantifying total demanded service. Must have
-  /// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
-  /// DELTA or MetricKind = CUMULATIVE.
+  /// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA
+  /// or MetricKind = CUMULATIVE.
   core.String totalServiceFilter;
 
   TimeSeriesRatio();
@@ -8411,11 +8508,10 @@ class TypedValue {
   Distribution distributionValue;
 
   /// A 64-bit double-precision floating-point number. Its magnitude is
-  /// approximately &plusmn;10<sup>&plusmn;300</sup> and it has 16 significant
-  /// digits of precision.
+  /// approximately ±10±300 and it has 16 significant digits of precision.
   core.double doubleValue;
 
-  /// A 64-bit integer. Its range is approximately &plusmn;9.2x10<sup>18</sup>.
+  /// A 64-bit integer. Its range is approximately ±9.2x1018.
   core.String int64Value;
 
   /// A variable-length string value.
@@ -8495,14 +8591,14 @@ class UptimeCheckConfig {
 
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
   /// associated with the configuration. The following monitored resource types
-  /// are supported for Uptime checks:  uptime_url,  gce_instance,  gae_app,
-  /// aws_ec2_instance,  aws_elb_load_balancer
+  /// are supported for Uptime checks: uptime_url, gce_instance, gae_app,
+  /// aws_ec2_instance, aws_elb_load_balancer
   MonitoredResource monitoredResource;
 
   /// A unique resource name for this Uptime check configuration. The format is:
-  ///  projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
-  /// This field should be omitted when creating the Uptime check configuration;
-  /// on create, the resource name is assigned by the server and included in the
+  /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This
+  /// field should be omitted when creating the Uptime check configuration; on
+  /// create, the resource name is assigned by the server and included in the
   /// response.
   core.String name;
 
@@ -8695,6 +8791,11 @@ class ValueDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
+  /// The unit in which time_series point values are reported. unit follows the
+  /// UCUM format for units as seen in https://unitsofmeasure.org/ucum.html.
+  /// unit is only valid if value_type is INTEGER, DOUBLE, DISTRIBUTION.
+  core.String unit;
+
   /// The value type.
   /// Possible string values are:
   /// - "VALUE_TYPE_UNSPECIFIED" : Do not use this default value.
@@ -8717,6 +8818,9 @@ class ValueDescriptor {
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
+    if (_json.containsKey("unit")) {
+      unit = _json["unit"];
+    }
     if (_json.containsKey("valueType")) {
       valueType = _json["valueType"];
     }
@@ -8730,6 +8834,9 @@ class ValueDescriptor {
     }
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
+    }
+    if (unit != null) {
+      _json["unit"] = unit;
     }
     if (valueType != null) {
       _json["valueType"] = valueType;

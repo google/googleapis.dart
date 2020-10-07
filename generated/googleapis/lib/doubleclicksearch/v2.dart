@@ -25,8 +25,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client doubleclicksearch/v2';
 
-/// Reports and modifies your advertising data in DoubleClick Search (for
-/// example, campaigns, ad groups, keywords, and conversions).
+/// The Search Ads 360 API allows developers to automate uploading conversions
+/// and downloading reports from Search Ads 360.
 class DoubleclicksearchApi {
   /// View and manage your advertising data in DoubleClick Search
   static const DoubleclicksearchScope =
@@ -40,8 +40,8 @@ class DoubleclicksearchApi {
       new SavedColumnsResourceApi(_requester);
 
   DoubleclicksearchApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "doubleclicksearch/v2/"})
+      {core.String rootUrl = "https://doubleclicksearch.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -75,13 +75,13 @@ class ConversionResourceApi {
   /// [startRow] - The 0-based starting index for retrieving conversions
   /// results.
   ///
-  /// [adGroupId] - Numeric ID of the ad group.
-  ///
   /// [adId] - Numeric ID of the ad.
   ///
-  /// [campaignId] - Numeric ID of the campaign.
-  ///
   /// [criterionId] - Numeric ID of the criterion.
+  ///
+  /// [adGroupId] - Numeric ID of the ad group.
+  ///
+  /// [campaignId] - Numeric ID of the campaign.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -101,10 +101,10 @@ class ConversionResourceApi {
       core.int rowCount,
       core.int startDate,
       core.int startRow,
-      {core.String adGroupId,
-      core.String adId,
-      core.String campaignId,
+      {core.String adId,
       core.String criterionId,
+      core.String adGroupId,
+      core.String campaignId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -138,23 +138,23 @@ class ConversionResourceApi {
       throw new core.ArgumentError("Parameter startRow is required.");
     }
     _queryParams["startRow"] = ["${startRow}"];
-    if (adGroupId != null) {
-      _queryParams["adGroupId"] = [adGroupId];
-    }
     if (adId != null) {
       _queryParams["adId"] = [adId];
     }
-    if (campaignId != null) {
-      _queryParams["campaignId"] = [campaignId];
-    }
     if (criterionId != null) {
       _queryParams["criterionId"] = [criterionId];
+    }
+    if (adGroupId != null) {
+      _queryParams["adGroupId"] = [adGroupId];
+    }
+    if (campaignId != null) {
+      _queryParams["campaignId"] = [campaignId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'agency/' +
+    _url = 'doubleclicksearch/v2/agency/' +
         commons.Escaper.ecapeVariable('$agencyId') +
         '/advertiser/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
@@ -203,7 +203,7 @@ class ConversionResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'conversion';
+    _url = 'doubleclicksearch/v2/conversion';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -246,7 +246,7 @@ class ConversionResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'conversion';
+    _url = 'doubleclicksearch/v2/conversion';
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -291,7 +291,7 @@ class ConversionResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'conversion/updateAvailability';
+    _url = 'doubleclicksearch/v2/conversion/updateAvailability';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -341,7 +341,7 @@ class ReportsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'reports/generate';
+    _url = 'doubleclicksearch/v2/reports/generate';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -383,7 +383,8 @@ class ReportsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'reports/' + commons.Escaper.ecapeVariable('$reportId');
+    _url = 'doubleclicksearch/v2/reports/' +
+        commons.Escaper.ecapeVariable('$reportId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -437,7 +438,7 @@ class ReportsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'reports/' +
+    _url = 'doubleclicksearch/v2/reports/' +
         commons.Escaper.ecapeVariable('$reportId') +
         '/files/' +
         commons.Escaper.ecapeVariable('$reportFragment');
@@ -487,7 +488,7 @@ class ReportsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'reports';
+    _url = 'doubleclicksearch/v2/reports';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -542,7 +543,7 @@ class SavedColumnsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'agency/' +
+    _url = 'doubleclicksearch/v2/agency/' +
         commons.Escaper.ecapeVariable('$agencyId') +
         '/advertiser/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
@@ -578,7 +579,7 @@ class Availability {
   core.String segmentationName;
 
   /// The segmentation type that this availability is for (its default value is
-  /// FLOODLIGHT).
+  /// `FLOODLIGHT`).
   core.String segmentationType;
 
   Availability();
@@ -650,9 +651,8 @@ class Conversion {
   /// DS campaign ID.
   core.String campaignId;
 
-  /// Sales channel for the product. Acceptable values are:
-  /// - "local": a physical store
-  /// - "online": an online store
+  /// Sales channel for the product. Acceptable values are: - "`local`": a
+  /// physical store - "`online`": an online store
   core.String channel;
 
   /// DS click ID for the conversion.
@@ -661,9 +661,9 @@ class Conversion {
   /// For offline conversions, advertisers provide this ID. Advertisers can
   /// specify any ID that is meaningful to them. Each conversion in a request
   /// must specify a unique ID, and the combination of ID and timestamp must be
-  /// unique amongst all conversions within the advertiser.
-  /// For online conversions, DS copies the dsConversionId or floodlightOrderId
-  /// into this property depending on the advertiser's Floodlight instructions.
+  /// unique amongst all conversions within the advertiser. For online
+  /// conversions, DS copies the `dsConversionId` or `floodlightOrderId` into
+  /// this property depending on the advertiser's Floodlight instructions.
   core.String conversionId;
 
   /// The time at which the conversion was last modified, in epoch millis UTC.
@@ -723,7 +723,7 @@ class Conversion {
   /// The quantity of this conversion, in millis.
   core.String quantityMillis;
 
-  /// The revenue amount of this TRANSACTION conversion, in micros (value
+  /// The revenue amount of this `TRANSACTION` conversion, in micros (value
   /// multiplied by 1000000, no decimal). For example, to specify a revenue
   /// value of "10" enter "10000000" (10 million) in your request.
   core.String revenueMicros;
@@ -736,22 +736,22 @@ class Conversion {
   /// Floodlight activity name).
   core.String segmentationName;
 
-  /// The segmentation type of this conversion (for example, FLOODLIGHT).
+  /// The segmentation type of this conversion (for example, `FLOODLIGHT`).
   core.String segmentationType;
 
-  /// The state of the conversion, that is, either ACTIVE or REMOVED. Note:
+  /// The state of the conversion, that is, either `ACTIVE` or `REMOVED`. Note:
   /// state DELETED is deprecated.
   core.String state;
 
   /// The ID of the local store for which the product was advertised. Applicable
-  /// only when the channel is "local".
+  /// only when the channel is "`local`".
   core.String storeId;
 
-  /// The type of the conversion, that is, either ACTION or TRANSACTION. An
-  /// ACTION conversion is an action by the user that has no monetarily
-  /// quantifiable value, while a TRANSACTION conversion is an action that does
-  /// have a monetarily quantifiable value. Examples are email list signups
-  /// (ACTION) versus ecommerce purchases (TRANSACTION).
+  /// The type of the conversion, that is, either `ACTION` or `TRANSACTION`. An
+  /// `ACTION` conversion is an action by the user that has no monetarily
+  /// quantifiable value, while a `TRANSACTION` conversion is an action that
+  /// does have a monetarily quantifiable value. Examples are email list signups
+  /// (`ACTION`) versus ecommerce purchases (`TRANSACTION`).
   core.String type;
 
   Conversion();
@@ -1006,7 +1006,7 @@ class ConversionList {
   }
 }
 
-/// A message containing the custome dimension.
+/// A message containing the custom dimension.
 class CustomDimension {
   /// Custom dimension name.
   core.String name;
@@ -1038,7 +1038,7 @@ class CustomDimension {
   }
 }
 
-/// A message containing the custome metric.
+/// A message containing the custom metric.
 class CustomMetric {
   /// Custom metric name.
   core.String name;
@@ -1117,7 +1117,7 @@ class Report {
   core.bool isReportReady;
 
   /// Identifies this as a Report resource. Value: the fixed string
-  /// doubleclicksearch#report.
+  /// `doubleclicksearch#report`.
   core.String kind;
 
   /// The request that created the report. Optional fields not specified in the
@@ -1133,7 +1133,7 @@ class Report {
   /// The currency code of all monetary values produced in the report, including
   /// values that are set by users (e.g., keyword bid settings) and metrics
   /// (e.g., cost and revenue). The currency code of a report is determined by
-  /// the statisticsCurrency field of the report request.
+  /// the `statisticsCurrency` field of the report request.
   core.String statisticsCurrencyCode;
 
   /// If all statistics of the report are sourced from the same time zone, this
@@ -1218,10 +1218,9 @@ class ReportApiColumnSpec {
   /// Segments a report by a custom dimension. The report must be scoped to an
   /// advertiser or lower, and the custom dimension must already be set up in
   /// DoubleClick Search. The custom dimension name, which appears in
-  /// DoubleClick Search, is case sensitive.
-  /// If used in a conversion report, returns the value of the specified custom
-  /// dimension for the given conversion, if set. This column does not segment
-  /// the conversion report.
+  /// DoubleClick Search, is case sensitive.\ If used in a conversion report,
+  /// returns the value of the specified custom dimension for the given
+  /// conversion, if set. This column does not segment the conversion report.
   core.String customDimensionName;
 
   /// Name of a custom metric to include in the report. The report must be
@@ -1232,15 +1231,15 @@ class ReportApiColumnSpec {
 
   /// Inclusive day in YYYY-MM-DD format. When provided, this overrides the
   /// overall time range of the report for this column only. Must be provided
-  /// together with startDate.
+  /// together with `startDate`.
   core.String endDate;
 
-  /// Synchronous report only. Set to true to group by this column. Defaults to
-  /// false.
+  /// Synchronous report only. Set to `true` to group by this column. Defaults
+  /// to `false`.
   core.bool groupByColumn;
 
   /// Text used to identify this column in the report output; defaults to
-  /// columnName or savedColumnName when not specified. This can be used to
+  /// `columnName` or `savedColumnName` when not specified. This can be used to
   /// prevent collisions between DoubleClick Search columns and saved columns
   /// with the same name.
   core.String headerText;
@@ -1250,9 +1249,8 @@ class ReportApiColumnSpec {
   core.String platformSource;
 
   /// Returns metrics only for a specific type of product activity. Accepted
-  /// values are:
-  /// - "sold": returns metrics only for products that were sold
-  /// - "advertised": returns metrics only for products that were advertised in
+  /// values are: - "`sold`": returns metrics only for products that were sold -
+  /// "`advertised`": returns metrics only for products that were advertised in
   /// a Shopping campaign, and that might or might not have been sold
   core.String productReportPerspective;
 
@@ -1263,7 +1261,7 @@ class ReportApiColumnSpec {
 
   /// Inclusive date in YYYY-MM-DD format. When provided, this overrides the
   /// overall time range of the report for this column only. Must be provided
-  /// together with endDate.
+  /// together with `endDate`.
   core.String startDate;
 
   ReportApiColumnSpec();
@@ -1347,8 +1345,8 @@ class ReportRequestFilters {
   /// available operators.
   core.String operator;
 
-  /// A list of values to filter the column value against.
-  /// The maximum number of filter values per request is 300.
+  /// A list of values to filter the column value against.\ The maximum number
+  /// of filter values per request is 300.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1389,7 +1387,7 @@ class ReportRequestOrderBy {
   /// column or a saved column.
   ReportApiColumnSpec column;
 
-  /// The sort direction, which is either ascending or descending.
+  /// The sort direction, which is either `ascending` or `descending`.
   core.String sortOrder;
 
   ReportRequestOrderBy();
@@ -1498,13 +1496,13 @@ class ReportRequestReportScope {
 /// If metrics are requested in a report, this argument will be used to restrict
 /// the metrics to a specific time range.
 class ReportRequestTimeRange {
-  /// Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See
-  /// additional references on how changed attribute reports work.
-  core.DateTime changedAttributesSinceTimestamp;
+  /// Inclusive UTC timestamp in RFC format, e.g., `2013-07-16T10:16:23.555Z`.
+  /// See additional references on how changed attribute reports work.
+  core.String changedAttributesSinceTimestamp;
 
-  /// Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See
-  /// additional references on how changed metrics reports work.
-  core.DateTime changedMetricsSinceTimestamp;
+  /// Inclusive UTC timestamp in RFC format, e.g., `2013-07-16T10:16:23.555Z`.
+  /// See additional references on how changed metrics reports work.
+  core.String changedMetricsSinceTimestamp;
 
   /// Inclusive date in YYYY-MM-DD format.
   core.String endDate;
@@ -1517,11 +1515,10 @@ class ReportRequestTimeRange {
   ReportRequestTimeRange.fromJson(core.Map _json) {
     if (_json.containsKey("changedAttributesSinceTimestamp")) {
       changedAttributesSinceTimestamp =
-          core.DateTime.parse(_json["changedAttributesSinceTimestamp"]);
+          _json["changedAttributesSinceTimestamp"];
     }
     if (_json.containsKey("changedMetricsSinceTimestamp")) {
-      changedMetricsSinceTimestamp =
-          core.DateTime.parse(_json["changedMetricsSinceTimestamp"]);
+      changedMetricsSinceTimestamp = _json["changedMetricsSinceTimestamp"];
     }
     if (_json.containsKey("endDate")) {
       endDate = _json["endDate"];
@@ -1536,11 +1533,10 @@ class ReportRequestTimeRange {
         new core.Map<core.String, core.Object>();
     if (changedAttributesSinceTimestamp != null) {
       _json["changedAttributesSinceTimestamp"] =
-          (changedAttributesSinceTimestamp).toIso8601String();
+          changedAttributesSinceTimestamp;
     }
     if (changedMetricsSinceTimestamp != null) {
-      _json["changedMetricsSinceTimestamp"] =
-          (changedMetricsSinceTimestamp).toIso8601String();
+      _json["changedMetricsSinceTimestamp"] = changedMetricsSinceTimestamp;
     }
     if (endDate != null) {
       _json["endDate"] = endDate;
@@ -1556,36 +1552,36 @@ class ReportRequestTimeRange {
 class ReportRequest {
   /// The columns to include in the report. This includes both DoubleClick
   /// Search columns and saved columns. For DoubleClick Search columns, only the
-  /// columnName parameter is required. For saved columns only the
-  /// savedColumnName parameter is required. Both columnName and savedColumnName
-  /// cannot be set in the same stanza.
-  /// The maximum number of columns per request is 300.
+  /// `columnName` parameter is required. For saved columns only the
+  /// `savedColumnName` parameter is required. Both `columnName` and
+  /// `savedColumnName` cannot be set in the same stanza.\ The maximum number of
+  /// columns per request is 300.
   core.List<ReportApiColumnSpec> columns;
 
-  /// Format that the report should be returned in. Currently csv or tsv is
+  /// Format that the report should be returned in. Currently `csv` or `tsv` is
   /// supported.
   core.String downloadFormat;
 
-  /// A list of filters to be applied to the report.
-  /// The maximum number of filters per request is 300.
+  /// A list of filters to be applied to the report.\ The maximum number of
+  /// filters per request is 300.
   core.List<ReportRequestFilters> filters;
 
   /// Determines if removed entities should be included in the report. Defaults
-  /// to false. Deprecated, please use includeRemovedEntities instead.
+  /// to `false`. Deprecated, please use `includeRemovedEntities` instead.
   core.bool includeDeletedEntities;
 
   /// Determines if removed entities should be included in the report. Defaults
-  /// to false.
+  /// to `false`.
   core.bool includeRemovedEntities;
 
   /// Asynchronous report only. The maximum number of rows per report file. A
   /// large report is split into many files based on this field. Acceptable
-  /// values are 1000000 to 100000000, inclusive.
+  /// values are `1000000` to `100000000`, inclusive.
   core.int maxRowsPerFile;
 
   /// Synchronous report only. A list of columns and directions defining sorting
-  /// to be performed on the report rows.
-  /// The maximum number of orderings per request is 300.
+  /// to be performed on the report rows.\ The maximum number of orderings per
+  /// request is 300.
   core.List<ReportRequestOrderBy> orderBy;
 
   /// The reportScope is a set of IDs that are used to determine which subset of
@@ -1594,32 +1590,33 @@ class ReportRequest {
   ReportRequestReportScope reportScope;
 
   /// Determines the type of rows that are returned in the report. For example,
-  /// if you specify reportType: keyword, each row in the report will contain
-  /// data about a keyword. See the Types of Reports reference for the columns
-  /// that are available for each type.
+  /// if you specify `reportType: keyword`, each row in the report will contain
+  /// data about a keyword. See the [Types of
+  /// Reports](/search-ads/v2/report-types/) reference for the columns that are
+  /// available for each type.
   core.String reportType;
 
   /// Synchronous report only. The maximum number of rows to return; additional
-  /// rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to
-  /// 10000.
+  /// rows are dropped. Acceptable values are `0` to `10000`, inclusive.
+  /// Defaults to `10000`.
   core.int rowCount;
 
   /// Synchronous report only. Zero-based index of the first row to return.
-  /// Acceptable values are 0 to 50000, inclusive. Defaults to 0.
+  /// Acceptable values are `0` to `50000`, inclusive. Defaults to `0`.
   core.int startRow;
 
   /// Specifies the currency in which monetary will be returned. Possible values
-  /// are: usd, agency (valid if the report is scoped to agency or lower),
-  /// advertiser (valid if the report is scoped to * advertiser or lower), or
-  /// account (valid if the report is scoped to engine account or lower).
+  /// are: `usd`, `agency` (valid if the report is scoped to agency or lower),
+  /// `advertiser` (valid if the report is scoped to * advertiser or lower), or
+  /// `account` (valid if the report is scoped to engine account or lower).
   core.String statisticsCurrency;
 
   /// If metrics are requested in a report, this argument will be used to
   /// restrict the metrics to a specific time range.
   ReportRequestTimeRange timeRange;
 
-  /// If true, the report would only be created if all the requested stat data
-  /// are sourced from a single timezone. Defaults to false.
+  /// If `true`, the report would only be created if all the requested stat data
+  /// are sourced from a single timezone. Defaults to `false`.
   core.bool verifySingleTimeZone;
 
   ReportRequest();

@@ -50,17 +50,53 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed221() {
+buildUnnamed220() {
   var o = new core.List<api.AuditLogConfig>();
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-checkUnnamed221(core.List<api.AuditLogConfig> o) {
+checkUnnamed220(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
+}
+
+buildUnnamed221() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed221(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterAuditConfig = 0;
+buildAuditConfig() {
+  var o = new api.AuditConfig();
+  buildCounterAuditConfig++;
+  if (buildCounterAuditConfig < 3) {
+    o.auditLogConfigs = buildUnnamed220();
+    o.exemptedMembers = buildUnnamed221();
+    o.service = "foo";
+  }
+  buildCounterAuditConfig--;
+  return o;
+}
+
+checkAuditConfig(api.AuditConfig o) {
+  buildCounterAuditConfig++;
+  if (buildCounterAuditConfig < 3) {
+    checkUnnamed220(o.auditLogConfigs);
+    checkUnnamed221(o.exemptedMembers);
+    unittest.expect(o.service, unittest.equals('foo'));
+  }
+  buildCounterAuditConfig--;
 }
 
 buildUnnamed222() {
@@ -76,48 +112,13 @@ checkUnnamed222(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.int buildCounterAuditConfig = 0;
-buildAuditConfig() {
-  var o = new api.AuditConfig();
-  buildCounterAuditConfig++;
-  if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed221();
-    o.exemptedMembers = buildUnnamed222();
-    o.service = "foo";
-  }
-  buildCounterAuditConfig--;
-  return o;
-}
-
-checkAuditConfig(api.AuditConfig o) {
-  buildCounterAuditConfig++;
-  if (buildCounterAuditConfig < 3) {
-    checkUnnamed221(o.auditLogConfigs);
-    checkUnnamed222(o.exemptedMembers);
-    unittest.expect(o.service, unittest.equals('foo'));
-  }
-  buildCounterAuditConfig--;
-}
-
-buildUnnamed223() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed223(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 core.int buildCounterAuditLogConfig = 0;
 buildAuditLogConfig() {
   var o = new api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed223();
+    o.exemptedMembers = buildUnnamed222();
+    o.ignoreChildExemptions = true;
     o.logType = "foo";
   }
   buildCounterAuditLogConfig--;
@@ -127,7 +128,8 @@ buildAuditLogConfig() {
 checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed223(o.exemptedMembers);
+    checkUnnamed222(o.exemptedMembers);
+    unittest.expect(o.ignoreChildExemptions, unittest.isTrue);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
@@ -152,14 +154,14 @@ checkAuthorizationLoggingOptions(api.AuthorizationLoggingOptions o) {
   buildCounterAuthorizationLoggingOptions--;
 }
 
-buildUnnamed224() {
+buildUnnamed223() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed224(core.List<core.String> o) {
+checkUnnamed223(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -171,7 +173,7 @@ buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed224();
+    o.members = buildUnnamed223();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -182,20 +184,20 @@ checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition);
-    checkUnnamed224(o.members);
+    checkUnnamed223(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
 }
 
-buildUnnamed225() {
+buildUnnamed224() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed225(core.List<core.String> o) {
+checkUnnamed224(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -210,8 +212,7 @@ buildCondition() {
     o.op = "foo";
     o.svc = "foo";
     o.sys = "foo";
-    o.value = "foo";
-    o.values = buildUnnamed225();
+    o.values = buildUnnamed224();
   }
   buildCounterCondition--;
   return o;
@@ -224,8 +225,7 @@ checkCondition(api.Condition o) {
     unittest.expect(o.op, unittest.equals('foo'));
     unittest.expect(o.svc, unittest.equals('foo'));
     unittest.expect(o.sys, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
-    checkUnnamed225(o.values);
+    checkUnnamed224(o.values);
   }
   buildCounterCondition--;
 }
@@ -249,14 +249,14 @@ checkConfigFile(api.ConfigFile o) {
   buildCounterConfigFile--;
 }
 
-buildUnnamed226() {
+buildUnnamed225() {
   var o = new core.List<api.DeploymentLabelEntry>();
   o.add(buildDeploymentLabelEntry());
   o.add(buildDeploymentLabelEntry());
   return o;
 }
 
-checkUnnamed226(core.List<api.DeploymentLabelEntry> o) {
+checkUnnamed225(core.List<api.DeploymentLabelEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeploymentLabelEntry(o[0]);
   checkDeploymentLabelEntry(o[1]);
@@ -271,7 +271,7 @@ buildDeployment() {
     o.fingerprint = "foo";
     o.id = "foo";
     o.insertTime = "foo";
-    o.labels = buildUnnamed226();
+    o.labels = buildUnnamed225();
     o.manifest = "foo";
     o.name = "foo";
     o.operation = buildOperation();
@@ -291,7 +291,7 @@ checkDeployment(api.Deployment o) {
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.insertTime, unittest.equals('foo'));
-    checkUnnamed226(o.labels);
+    checkUnnamed225(o.labels);
     unittest.expect(o.manifest, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkOperation(o.operation);
@@ -324,14 +324,14 @@ checkDeploymentLabelEntry(api.DeploymentLabelEntry o) {
   buildCounterDeploymentLabelEntry--;
 }
 
-buildUnnamed227() {
+buildUnnamed226() {
   var o = new core.List<api.DeploymentUpdateLabelEntry>();
   o.add(buildDeploymentUpdateLabelEntry());
   o.add(buildDeploymentUpdateLabelEntry());
   return o;
 }
 
-checkUnnamed227(core.List<api.DeploymentUpdateLabelEntry> o) {
+checkUnnamed226(core.List<api.DeploymentUpdateLabelEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeploymentUpdateLabelEntry(o[0]);
   checkDeploymentUpdateLabelEntry(o[1]);
@@ -343,7 +343,7 @@ buildDeploymentUpdate() {
   buildCounterDeploymentUpdate++;
   if (buildCounterDeploymentUpdate < 3) {
     o.description = "foo";
-    o.labels = buildUnnamed227();
+    o.labels = buildUnnamed226();
     o.manifest = "foo";
   }
   buildCounterDeploymentUpdate--;
@@ -354,7 +354,7 @@ checkDeploymentUpdate(api.DeploymentUpdate o) {
   buildCounterDeploymentUpdate++;
   if (buildCounterDeploymentUpdate < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed227(o.labels);
+    checkUnnamed226(o.labels);
     unittest.expect(o.manifest, unittest.equals('foo'));
   }
   buildCounterDeploymentUpdate--;
@@ -400,14 +400,14 @@ checkDeploymentsCancelPreviewRequest(api.DeploymentsCancelPreviewRequest o) {
   buildCounterDeploymentsCancelPreviewRequest--;
 }
 
-buildUnnamed228() {
+buildUnnamed227() {
   var o = new core.List<api.Deployment>();
   o.add(buildDeployment());
   o.add(buildDeployment());
   return o;
 }
 
-checkUnnamed228(core.List<api.Deployment> o) {
+checkUnnamed227(core.List<api.Deployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeployment(o[0]);
   checkDeployment(o[1]);
@@ -418,7 +418,7 @@ buildDeploymentsListResponse() {
   var o = new api.DeploymentsListResponse();
   buildCounterDeploymentsListResponse++;
   if (buildCounterDeploymentsListResponse < 3) {
-    o.deployments = buildUnnamed228();
+    o.deployments = buildUnnamed227();
     o.nextPageToken = "foo";
   }
   buildCounterDeploymentsListResponse--;
@@ -428,7 +428,7 @@ buildDeploymentsListResponse() {
 checkDeploymentsListResponse(api.DeploymentsListResponse o) {
   buildCounterDeploymentsListResponse++;
   if (buildCounterDeploymentsListResponse < 3) {
-    checkUnnamed228(o.deployments);
+    checkUnnamed227(o.deployments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterDeploymentsListResponse--;
@@ -478,14 +478,14 @@ checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-buildUnnamed229() {
+buildUnnamed228() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed229(core.List<api.Binding> o) {
+checkUnnamed228(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -496,7 +496,7 @@ buildGlobalSetPolicyRequest() {
   var o = new api.GlobalSetPolicyRequest();
   buildCounterGlobalSetPolicyRequest++;
   if (buildCounterGlobalSetPolicyRequest < 3) {
-    o.bindings = buildUnnamed229();
+    o.bindings = buildUnnamed228();
     o.etag = "foo";
     o.policy = buildPolicy();
   }
@@ -507,7 +507,7 @@ buildGlobalSetPolicyRequest() {
 checkGlobalSetPolicyRequest(api.GlobalSetPolicyRequest o) {
   buildCounterGlobalSetPolicyRequest++;
   if (buildCounterGlobalSetPolicyRequest < 3) {
-    checkUnnamed229(o.bindings);
+    checkUnnamed228(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     checkPolicy(o.policy);
   }
@@ -579,11 +579,25 @@ checkLogConfigCloudAuditOptions(api.LogConfigCloudAuditOptions o) {
   buildCounterLogConfigCloudAuditOptions--;
 }
 
+buildUnnamed229() {
+  var o = new core.List<api.LogConfigCounterOptionsCustomField>();
+  o.add(buildLogConfigCounterOptionsCustomField());
+  o.add(buildLogConfigCounterOptionsCustomField());
+  return o;
+}
+
+checkUnnamed229(core.List<api.LogConfigCounterOptionsCustomField> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLogConfigCounterOptionsCustomField(o[0]);
+  checkLogConfigCounterOptionsCustomField(o[1]);
+}
+
 core.int buildCounterLogConfigCounterOptions = 0;
 buildLogConfigCounterOptions() {
   var o = new api.LogConfigCounterOptions();
   buildCounterLogConfigCounterOptions++;
   if (buildCounterLogConfigCounterOptions < 3) {
+    o.customFields = buildUnnamed229();
     o.field = "foo";
     o.metric = "foo";
   }
@@ -594,10 +608,33 @@ buildLogConfigCounterOptions() {
 checkLogConfigCounterOptions(api.LogConfigCounterOptions o) {
   buildCounterLogConfigCounterOptions++;
   if (buildCounterLogConfigCounterOptions < 3) {
+    checkUnnamed229(o.customFields);
     unittest.expect(o.field, unittest.equals('foo'));
     unittest.expect(o.metric, unittest.equals('foo'));
   }
   buildCounterLogConfigCounterOptions--;
+}
+
+core.int buildCounterLogConfigCounterOptionsCustomField = 0;
+buildLogConfigCounterOptionsCustomField() {
+  var o = new api.LogConfigCounterOptionsCustomField();
+  buildCounterLogConfigCounterOptionsCustomField++;
+  if (buildCounterLogConfigCounterOptionsCustomField < 3) {
+    o.name = "foo";
+    o.value = "foo";
+  }
+  buildCounterLogConfigCounterOptionsCustomField--;
+  return o;
+}
+
+checkLogConfigCounterOptionsCustomField(
+    api.LogConfigCounterOptionsCustomField o) {
+  buildCounterLogConfigCounterOptionsCustomField++;
+  if (buildCounterLogConfigCounterOptionsCustomField < 3) {
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.value, unittest.equals('foo'));
+  }
+  buildCounterLogConfigCounterOptionsCustomField--;
 }
 
 core.int buildCounterLogConfigDataAccessOptions = 0;
@@ -1719,6 +1756,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-LogConfigCounterOptionsCustomField", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildLogConfigCounterOptionsCustomField();
+      var od = new api.LogConfigCounterOptionsCustomField.fromJson(o.toJson());
+      checkLogConfigCounterOptionsCustomField(od);
+    });
+  });
+
   unittest.group("obj-schema-LogConfigDataAccessOptions", () {
     unittest.test("to-json--from-json", () {
       var o = buildLogConfigDataAccessOptions();
@@ -2139,8 +2184,8 @@ main() {
           new api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeployment();
       var arg_project = "foo";
-      var arg_createPolicy = "foo";
       var arg_preview = true;
+      var arg_createPolicy = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Deployment.fromJson(json);
@@ -2173,9 +2218,9 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
-        unittest.expect(
             queryMap["preview"].first, unittest.equals("$arg_preview"));
+        unittest.expect(
+            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2186,8 +2231,8 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_project,
-              createPolicy: arg_createPolicy,
               preview: arg_preview,
+              createPolicy: arg_createPolicy,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperation(response);
@@ -2200,9 +2245,9 @@ main() {
           new api.DeploymentmanagerApi(mock).deployments;
       var arg_project = "foo";
       var arg_filter = "foo";
+      var arg_pageToken = "foo";
       var arg_maxResults = 42;
       var arg_orderBy = "foo";
-      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2232,12 +2277,12 @@ main() {
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2249,9 +2294,9 @@ main() {
       res
           .list(arg_project,
               filter: arg_filter,
+              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
               orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDeploymentsListResponse(response);
@@ -2265,8 +2310,8 @@ main() {
       var arg_request = buildDeployment();
       var arg_project = "foo";
       var arg_deployment = "foo";
-      var arg_createPolicy = "foo";
       var arg_deletePolicy = "foo";
+      var arg_createPolicy = "foo";
       var arg_preview = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2300,9 +2345,9 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
-        unittest.expect(
             queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
+        unittest.expect(
+            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
         unittest.expect(
             queryMap["preview"].first, unittest.equals("$arg_preview"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2315,8 +2360,8 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_project, arg_deployment,
-              createPolicy: arg_createPolicy,
               deletePolicy: arg_deletePolicy,
+              createPolicy: arg_createPolicy,
               preview: arg_preview,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2492,8 +2537,8 @@ main() {
       var arg_request = buildDeployment();
       var arg_project = "foo";
       var arg_deployment = "foo";
-      var arg_createPolicy = "foo";
       var arg_deletePolicy = "foo";
+      var arg_createPolicy = "foo";
       var arg_preview = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2527,9 +2572,9 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
-        unittest.expect(
             queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
+        unittest.expect(
+            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
         unittest.expect(
             queryMap["preview"].first, unittest.equals("$arg_preview"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2542,8 +2587,8 @@ main() {
       }), true);
       res
           .update(arg_request, arg_project, arg_deployment,
-              createPolicy: arg_createPolicy,
               deletePolicy: arg_deletePolicy,
+              createPolicy: arg_createPolicy,
               preview: arg_preview,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2609,10 +2654,10 @@ main() {
           new api.DeploymentmanagerApi(mock).manifests;
       var arg_project = "foo";
       var arg_deployment = "foo";
-      var arg_filter = "foo";
       var arg_maxResults = 42;
-      var arg_orderBy = "foo";
       var arg_pageToken = "foo";
+      var arg_filter = "foo";
+      var arg_orderBy = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2641,13 +2686,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2658,10 +2703,10 @@ main() {
       }), true);
       res
           .list(arg_project, arg_deployment,
-              filter: arg_filter,
               maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
               pageToken: arg_pageToken,
+              filter: arg_filter,
+              orderBy: arg_orderBy,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkManifestsListResponse(response);
@@ -2724,10 +2769,10 @@ main() {
       api.OperationsResourceApi res =
           new api.DeploymentmanagerApi(mock).operations;
       var arg_project = "foo";
+      var arg_pageToken = "foo";
+      var arg_orderBy = "foo";
       var arg_filter = "foo";
       var arg_maxResults = 42;
-      var arg_orderBy = "foo";
-      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2756,13 +2801,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2773,10 +2818,10 @@ main() {
       }), true);
       res
           .list(arg_project,
+              pageToken: arg_pageToken,
+              orderBy: arg_orderBy,
               filter: arg_filter,
               maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperationsListResponse(response);
@@ -2841,10 +2886,10 @@ main() {
           new api.DeploymentmanagerApi(mock).resources;
       var arg_project = "foo";
       var arg_deployment = "foo";
-      var arg_filter = "foo";
-      var arg_maxResults = 42;
-      var arg_orderBy = "foo";
       var arg_pageToken = "foo";
+      var arg_filter = "foo";
+      var arg_orderBy = "foo";
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2873,13 +2918,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2890,10 +2935,10 @@ main() {
       }), true);
       res
           .list(arg_project, arg_deployment,
-              filter: arg_filter,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
               pageToken: arg_pageToken,
+              filter: arg_filter,
+              orderBy: arg_orderBy,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkResourcesListResponse(response);
@@ -2906,10 +2951,10 @@ main() {
       var mock = new HttpServerMock();
       api.TypesResourceApi res = new api.DeploymentmanagerApi(mock).types;
       var arg_project = "foo";
-      var arg_filter = "foo";
-      var arg_maxResults = 42;
       var arg_orderBy = "foo";
       var arg_pageToken = "foo";
+      var arg_maxResults = 42;
+      var arg_filter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2938,13 +2983,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2955,10 +3000,10 @@ main() {
       }), true);
       res
           .list(arg_project,
-              filter: arg_filter,
-              maxResults: arg_maxResults,
               orderBy: arg_orderBy,
               pageToken: arg_pageToken,
+              maxResults: arg_maxResults,
+              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTypesListResponse(response);

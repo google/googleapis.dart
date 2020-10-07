@@ -16,7 +16,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client admin/datatransfer_v1';
 
-/// Transfers user data from one user to another.
+/// Admin SDK lets administrators of enterprise domains to view and manage
+/// resources like user, groups etc. It also provides audit and usage reports of
+/// domain.
 class AdminApi {
   /// View and manage data transfers between users in your organization
   static const AdminDatatransferScope =
@@ -34,7 +36,7 @@ class AdminApi {
 
   AdminApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "admin/datatransfer/v1/"})
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -76,7 +78,8 @@ class ApplicationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId');
+    _url = 'admin/datatransfer/v1/applications/' +
+        commons.Escaper.ecapeVariable('$applicationId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -91,12 +94,12 @@ class ApplicationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account.
-  ///
   /// [maxResults] - Maximum number of results to return. Default is 100.
   /// Value must be between "1" and "500".
   ///
   /// [pageToken] - Token to specify next page in the list.
+  ///
+  /// [customerId] - Immutable ID of the Google Apps account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -109,9 +112,9 @@ class ApplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApplicationsListResponse> list(
-      {core.String customerId,
-      core.int maxResults,
+      {core.int maxResults,
       core.String pageToken,
+      core.String customerId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -120,20 +123,20 @@ class ApplicationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'applications';
+    _url = 'admin/datatransfer/v1/applications';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -184,7 +187,8 @@ class TransfersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'transfers/' + commons.Escaper.ecapeVariable('$dataTransferId');
+    _url = 'admin/datatransfer/v1/transfers/' +
+        commons.Escaper.ecapeVariable('$dataTransferId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -227,7 +231,7 @@ class TransfersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'transfers';
+    _url = 'admin/datatransfer/v1/transfers';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -243,18 +247,18 @@ class TransfersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account.
-  ///
-  /// [maxResults] - Maximum number of results to return. Default is 100.
-  /// Value must be between "1" and "500".
+  /// [status] - Status of the transfer.
   ///
   /// [newOwnerUserId] - Destination user's profile ID.
   ///
-  /// [oldOwnerUserId] - Source user's profile ID.
-  ///
   /// [pageToken] - Token to specify the next page in the list.
   ///
-  /// [status] - Status of the transfer.
+  /// [oldOwnerUserId] - Source user's profile ID.
+  ///
+  /// [customerId] - Immutable ID of the Google Apps account.
+  ///
+  /// [maxResults] - Maximum number of results to return. Default is 100.
+  /// Value must be between "1" and "500".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -267,12 +271,12 @@ class TransfersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DataTransfersListResponse> list(
-      {core.String customerId,
-      core.int maxResults,
+      {core.String status,
       core.String newOwnerUserId,
-      core.String oldOwnerUserId,
       core.String pageToken,
-      core.String status,
+      core.String oldOwnerUserId,
+      core.String customerId,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -281,29 +285,29 @@ class TransfersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (status != null) {
+      _queryParams["status"] = [status];
+    }
+    if (newOwnerUserId != null) {
+      _queryParams["newOwnerUserId"] = [newOwnerUserId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (oldOwnerUserId != null) {
+      _queryParams["oldOwnerUserId"] = [oldOwnerUserId];
+    }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (newOwnerUserId != null) {
-      _queryParams["newOwnerUserId"] = [newOwnerUserId];
-    }
-    if (oldOwnerUserId != null) {
-      _queryParams["oldOwnerUserId"] = [oldOwnerUserId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (status != null) {
-      _queryParams["status"] = [status];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'transfers';
+    _url = 'admin/datatransfer/v1/transfers';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -316,7 +320,10 @@ class TransfersResourceApi {
   }
 }
 
-/// The JSON template for an Application resource.
+/// The JSON template for an Application resource. STEPLADDER: Generated
+/// unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Application {
   /// Etag of the resource.
   core.String etag;
@@ -461,7 +468,10 @@ class ApplicationTransferParam {
   }
 }
 
-/// Template for a collection of Applications.
+/// Template for a collection of Applications. STEPLADDER: Generated unstable
+/// field number for field 'kind'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'etag'. (See
+/// http://go/stepladder-help#fieldNumber)
 class ApplicationsListResponse {
   /// List of applications that support data transfer and are also installed for
   /// the customer.
@@ -515,7 +525,10 @@ class ApplicationsListResponse {
   }
 }
 
-/// The JSON template for a DataTransfer resource.
+/// The JSON template for a DataTransfer resource. STEPLADDER: Generated
+/// unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class DataTransfer {
   /// List of per application data transfer resources. It contains data transfer
   /// details of the applications associated with this transfer resource. Note
@@ -609,7 +622,10 @@ class DataTransfer {
   }
 }
 
-/// Template for a collection of DataTransfer resources.
+/// Template for a collection of DataTransfer resources. STEPLADDER: Generated
+/// unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class DataTransfersListResponse {
   /// List of data transfer requests.
   core.List<DataTransfer> dataTransfers;

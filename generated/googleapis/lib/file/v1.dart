@@ -104,15 +104,14 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
-  /// [includeUnrevealedLocations] - If true, the returned list will include
-  /// locations which are not yet
-  /// revealed.
-  ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [includeUnrevealedLocations] - If true, the returned list will include
+  /// locations which are not yet revealed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -125,10 +124,10 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
-      core.bool includeUnrevealedLocations,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
+      core.bool includeUnrevealedLocations,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -140,19 +139,19 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (includeUnrevealedLocations != null) {
       _queryParams["includeUnrevealedLocations"] = [
         "${includeUnrevealedLocations}"
       ];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -184,12 +183,12 @@ class ProjectsLocationsInstancesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The instance's project and location, in the format
-  /// projects/{project_id}/locations/{location}. In Cloud Filestore,
-  /// locations map to GCP zones, for example **us-west1-b**.
+  /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations
+  /// map to GCP zones, for example **us-west1-b**.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [instanceId] - Required. The name of the instance to create.
-  /// The name must be unique for the specified project and location.
+  /// [instanceId] - Required. The name of the instance to create. The name must
+  /// be unique for the specified project and location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -325,29 +324,27 @@ class ProjectsLocationsInstancesResourceApi {
     return _response.then((data) => new Instance.fromJson(data));
   }
 
-  /// Lists all instances in a project for either a specified location
-  /// or for all locations.
+  /// Lists all instances in a project for either a specified location or for
+  /// all locations.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The project and location for which to retrieve
-  /// instance information,
-  /// in the format projects/{project_id}/locations/{location}. In Cloud
-  /// Filestore, locations map to GCP zones, for example **us-west1-b**. To
-  /// retrieve instance information for all locations, use "-" for the
-  /// {location}
-  /// value.
+  /// instance information, in the format
+  /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations
+  /// map to GCP zones, for example **us-west1-b**. To retrieve instance
+  /// information for all locations, use "-" for the {location} value.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [pageToken] - The next_page_token value to use if there are additional
   /// results to retrieve for this list request.
   ///
-  /// [orderBy] - Sort results. Supported values are "name", "name desc" or ""
-  /// (unsorted).
+  /// [filter] - List filter.
   ///
   /// [pageSize] - The maximum number of items to return.
   ///
-  /// [filter] - List filter.
+  /// [orderBy] - Sort results. Supported values are "name", "name desc" or ""
+  /// (unsorted).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -361,9 +358,9 @@ class ProjectsLocationsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
       {core.String pageToken,
-      core.String orderBy,
-      core.int pageSize,
       core.String filter,
+      core.int pageSize,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -378,14 +375,14 @@ class ProjectsLocationsInstancesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -414,14 +411,9 @@ class ProjectsLocationsInstancesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
   ///
-  /// [updateMask] - Mask of fields to update.  At least one path must be
-  /// supplied in this
-  /// field.  The elements of the repeated paths field may only include these
-  /// fields:
-  ///
-  /// * "description"
-  /// * "file_shares"
-  /// * "labels"
+  /// [updateMask] - Mask of fields to update. At least one path must be
+  /// supplied in this field. The elements of the repeated paths field may only
+  /// include these fields: * "description" * "file_shares" * "labels"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -473,16 +465,15 @@ class ProjectsLocationsOperationsResourceApi {
   ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -579,7 +570,7 @@ class ProjectsLocationsOperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -626,27 +617,25 @@ class ProjectsLocationsOperationsResourceApi {
   }
 
   /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
+  /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -659,9 +648,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
       core.String pageToken,
-      core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -673,14 +662,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -714,13 +703,9 @@ class CancelOperationRequest {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -735,8 +720,8 @@ class Empty {
 
 /// File share configuration for the instance.
 class FileShareConfig {
-  /// File share capacity in gigabytes (GB).
-  /// Cloud Filestore defines 1 GB as 1024^3 bytes.
+  /// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as
+  /// 1024^3 bytes.
   core.String capacityGb;
 
   /// The name of the file share (must be 16 characters or less).
@@ -768,11 +753,9 @@ class FileShareConfig {
 
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// consumer_defined_name is the name that is set by the consumer. On the
-  /// other
-  /// hand Name field represents system-assigned id of an instance so consumers
-  /// are not necessarily aware of it.
-  /// consumer_defined_name is used for notification/UI purposes for consumer to
-  /// recognize their instances.
+  /// other hand Name field represents system-assigned id of an instance so
+  /// consumers are not necessarily aware of it. consumer_defined_name is used
+  /// for notification/UI purposes for consumer to recognize their instances.
   core.String consumerDefinedName;
 
   /// Output only. Timestamp when the resource was created.
@@ -780,30 +763,33 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 
   /// Optional. Resource labels to represent user provided metadata. Each label
   /// is a key-value pair, where both the key and the value are arbitrary
-  /// strings
-  /// provided by the user.
+  /// strings provided by the user.
   core.Map<core.String, core.String> labels;
 
-  /// The MaintenancePolicies that have been attached to the instance.
-  /// The key must be of the type name of the oneof policy name defined in
+  /// The MaintenancePolicies that have been attached to the instance. The key
+  /// must be of the type name of the oneof policy name defined in
   /// MaintenancePolicy, and the referenced policy must define the same policy
   /// type. For complete details of MaintenancePolicy, please refer to
   /// go/cloud-saas-mw-ug.
   core.Map<core.String, core.String> maintenancePolicyNames;
 
   /// The MaintenanceSchedule contains the scheduling information of published
-  /// maintenance schedule.
+  /// maintenance schedule with same key as software_versions.
   core.Map<core.String,
           GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>
       maintenanceSchedules;
 
+  /// Optional. The MaintenanceSettings associated with instance.
+  GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
+      maintenanceSettings;
+
   /// Unique name of the resource. It uses the form:
-  ///  `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
   core.String name;
 
   /// Output only. Custom string attributes used primarily to expose
-  /// producer-specific information in monitoring dashboards.
-  /// See go/get-instance-metadata.
+  /// producer-specific information in monitoring dashboards. See
+  /// go/get-instance-metadata.
   core.Map<core.String, core.String> producerMetadata;
 
   /// Output only. The list of data plane resources provisioned for this
@@ -812,14 +798,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
       provisionedResources;
 
   /// Link to the SLM instance template. Only populated when updating SLM
-  /// instances via SSA's Actuation service adaptor.
-  /// Service producers with custom control plane (e.g. Cloud SQL) doesn't
-  /// need to populate this field. Instead they should use software_versions.
+  /// instances via SSA's Actuation service adaptor. Service producers with
+  /// custom control plane (e.g. Cloud SQL) doesn't need to populate this field.
+  /// Instead they should use software_versions.
   core.String slmInstanceTemplate;
 
-  /// Output only. SLO metadata for instance classification in the
-  /// Standardized dataplane SLO platform.
-  /// See go/cloud-ssa-standard-slo for feature description.
+  /// Output only. SLO metadata for instance classification in the Standardized
+  /// dataplane SLO platform. See go/cloud-ssa-standard-slo for feature
+  /// description.
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata sloMetadata;
 
   /// Software versions that are used to deploy this instance. This can be
@@ -838,8 +824,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// - "ERROR" : Instance encountered an error and is in indeterministic state.
   core.String state;
 
-  /// Output only. ID of the associated GCP tenant project.
-  /// See go/get-instance-metadata.
+  /// Output only. ID of the associated GCP tenant project. See
+  /// go/get-instance-metadata.
   core.String tenantProjectId;
 
   /// Output only. Timestamp when the resource was last modified.
@@ -869,6 +855,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
           (core.Map item) =>
               new GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
                   .fromJson(item));
+    }
+    if (_json.containsKey("maintenanceSettings")) {
+      maintenanceSettings =
+          new GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
+              .fromJson(_json["maintenanceSettings"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -932,6 +923,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
                   item) =>
               (item).toJson());
     }
+    if (maintenanceSettings != null) {
+      _json["maintenanceSettings"] = (maintenanceSettings).toJson();
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -967,9 +961,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 /// Maintenance schedule which is exposed to customer and potentially end user,
 /// indicating published upcoming future maintenance schedule
 class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
-  /// Can this scheduled update be rescheduled?
-  /// By default, it's true and API needs to do explicitly check whether it's
-  /// set, if it's set as false explicitly, it's false
+  /// Can this scheduled update be rescheduled? By default, it's true and API
+  /// needs to do explicitly check whether it's set, if it's set as false
+  /// explicitly, it's false
   core.bool canReschedule;
 
   /// The scheduled end time for the maintenance.
@@ -1020,25 +1014,50 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   }
 }
 
-/// Node information for custom per-node SLO implementations.
-/// SSA does not support per-node SLO, but producers can populate per-node
-/// information in SloMetadata for custom precomputations.
-/// SSA Eligibility Exporter will emit per-node metric based on this
-/// information.
+/// Maintenance settings associated with instance. Allows service producers and
+/// end users to assign settings that controls maintenance on this instance.
+class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
+  /// Optional. Exclude instance from maintenance. When true, rollout service
+  /// will not attempt maintenance on the instance. Rollout service will include
+  /// the instance in reported rollout progress as not attempted.
+  core.bool exclude;
+
+  GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings();
+
+  GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("exclude")) {
+      exclude = _json["exclude"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exclude != null) {
+      _json["exclude"] = exclude;
+    }
+    return _json;
+  }
+}
+
+/// Node information for custom per-node SLO implementations. SSA does not
+/// support per-node SLO, but producers can populate per-node information in
+/// SloMetadata for custom precomputations. SSA Eligibility Exporter will emit
+/// per-node metric based on this information.
 class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
-  /// By default node is eligible if instance is eligible.
-  /// But individual node might be excluded from SLO by adding entry here.
-  /// For semantic see SloMetadata.exclusions.
-  /// If both instance and node level exclusions are present for time period,
-  /// the node level's reason will be reported by Eligibility Exporter.
+  /// By default node is eligible if instance is eligible. But individual node
+  /// might be excluded from SLO by adding entry here. For semantic see
+  /// SloMetadata.exclusions. If both instance and node level exclusions are
+  /// present for time period, the node level's reason will be reported by
+  /// Eligibility Exporter.
   core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
       exclusions;
 
   /// The location of the node, if different from instance location.
   core.String location;
 
-  /// The id of the node.
-  /// This should be equal to SaasInstanceNode.node_id.
+  /// The id of the node. This should be equal to SaasInstanceNode.node_id.
   core.String nodeId;
 
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata();
@@ -1125,9 +1144,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
   core.bool eligible;
 
   /// User-defined reason for the current value of instance eligibility.
-  /// Usually,
-  /// this can be directly mapped to the internal state. An empty reason is
-  /// allowed.
+  /// Usually, this can be directly mapped to the internal state. An empty
+  /// reason is allowed.
   core.String reason;
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
@@ -1157,25 +1175,23 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
 
 /// SloExclusion represents an exclusion in SLI calculation applies to all SLOs.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
-  /// Exclusion duration. No restrictions on the possible values.
-  ///
-  /// When an ongoing operation is taking longer than initially expected,
-  /// an existing entry in the exclusion list can be updated by extending the
-  /// duration. This is supported by the subsystem exporting eligibility data
-  /// as long as such extension is committed at least 10 minutes before the
-  /// original exclusion expiration - otherwise it is possible that there will
-  /// be "gaps" in the exclusion application in the exported timeseries.
+  /// Exclusion duration. No restrictions on the possible values. When an
+  /// ongoing operation is taking longer than initially expected, an existing
+  /// entry in the exclusion list can be updated by extending the duration. This
+  /// is supported by the subsystem exporting eligibility data as long as such
+  /// extension is committed at least 10 minutes before the original exclusion
+  /// expiration - otherwise it is possible that there will be "gaps" in the
+  /// exclusion application in the exported timeseries.
   core.String duration;
 
-  /// Human-readable reason for the exclusion.
-  /// This should be a static string (e.g. "Disruptive update in progress")
-  /// and should not contain dynamically generated data (e.g. instance name).
-  /// Can be left empty.
+  /// Human-readable reason for the exclusion. This should be a static string
+  /// (e.g. "Disruptive update in progress") and should not contain dynamically
+  /// generated data (e.g. instance name). Can be left empty.
   core.String reason;
 
   /// Name of an SLI that this exclusion applies to. Can be left empty,
-  /// signaling that the instance should be excluded from all SLIs defined
-  /// in the service SLO configuration.
+  /// signaling that the instance should be excluded from all SLIs defined in
+  /// the service SLO configuration.
   core.String sliName;
 
   /// Start time of the exclusion. No alignment (e.g. to a full minute) needed.
@@ -1225,34 +1241,29 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility eligibility;
 
   /// List of SLO exclusion windows. When multiple entries in the list match
-  /// (matching the exclusion time-window against current time point)
-  /// the exclusion reason used in the first matching entry will be published.
-  ///
-  /// It is not needed to include expired exclusion in this list, as only the
+  /// (matching the exclusion time-window against current time point) the
+  /// exclusion reason used in the first matching entry will be published. It is
+  /// not needed to include expired exclusion in this list, as only the
   /// currently applicable exclusions are taken into account by the eligibility
   /// exporting subsystem (the historical state of exclusions will be reflected
   /// in the historically produced timeseries regardless of the current state).
-  ///
-  /// This field can be used to mark the instance as temporary ineligible
-  /// for the purpose of SLO calculation. For permanent instance SLO exclusion,
-  /// use of custom instance eligibility is recommended. See 'eligibility' field
+  /// This field can be used to mark the instance as temporary ineligible for
+  /// the purpose of SLO calculation. For permanent instance SLO exclusion, use
+  /// of custom instance eligibility is recommended. See 'eligibility' field
   /// below.
   core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
       exclusions;
 
-  /// Optional. List of nodes.
-  /// Some producers need to use per-node metadata to calculate SLO.
-  /// This field allows such producers to publish per-node SLO meta data,
-  /// which will be consumed by SSA Eligibility Exporter and published in the
-  /// form of per node metric to Monarch.
+  /// Optional. List of nodes. Some producers need to use per-node metadata to
+  /// calculate SLO. This field allows such producers to publish per-node SLO
+  /// meta data, which will be consumed by SSA Eligibility Exporter and
+  /// published in the form of per node metric to Monarch.
   core.List<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
       nodes;
 
   /// Name of the SLO tier the Instance belongs to. This name will be expected
-  /// to
-  /// match the tiers specified in the service SLO configuration.
-  ///
-  /// Field is mandatory and must not be empty.
+  /// to match the tiers specified in the service SLO configuration. Field is
+  /// mandatory and must not be empty.
   core.String tier;
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata();
@@ -1317,8 +1328,8 @@ class Instance {
   /// updates from overwriting each other.
   core.String etag;
 
-  /// File system shares on the instance.
-  /// For this version, only a single file share is supported.
+  /// File system shares on the instance. For this version, only a single file
+  /// share is supported.
   core.List<FileShareConfig> fileShares;
 
   /// Resource labels to represent user provided metadata.
@@ -1328,8 +1339,8 @@ class Instance {
   /// projects/{project}/locations/{location}/instances/{instance}.
   core.String name;
 
-  /// VPC networks to which the instance is connected.
-  /// For this version, only a single network is supported.
+  /// VPC networks to which the instance is connected. For this version, only a
+  /// single network is supported.
   core.List<NetworkConfig> networks;
 
   /// Output only. The instance state.
@@ -1338,13 +1349,11 @@ class Instance {
   /// - "CREATING" : The instance is being created.
   /// - "READY" : The instance is available for use.
   /// - "REPAIRING" : Work is being done on the instance. You can get further
-  /// details from the
-  /// `statusMessage` field of the `Instance` resource.
+  /// details from the `statusMessage` field of the `Instance` resource.
   /// - "DELETING" : The instance is shutting down.
   /// - "ERROR" : The instance is experiencing an issue and might be unusable.
-  /// You can get
-  /// further details from the `statusMessage` field of the `Instance`
-  /// resource.
+  /// You can get further details from the `statusMessage` field of the
+  /// `Instance` resource.
   core.String state;
 
   /// Output only. Additional information about the instance state, if
@@ -1354,18 +1363,16 @@ class Instance {
   /// The service tier of the instance.
   /// Possible string values are:
   /// - "TIER_UNSPECIFIED" : Not set.
-  /// - "STANDARD" : STANDARD tier. BASIC_HDD is the preferred term for this
-  /// tier.
-  /// - "PREMIUM" : PREMIUM tier. BASIC_SSD is the preferred term for this tier.
+  /// - "STANDARD" : STANDARD tier.
+  /// - "PREMIUM" : PREMIUM tier.
   /// - "BASIC_HDD" : BASIC instances offer a maximum capacity of 63.9 TB.
-  /// BASIC_HDD is an alias for STANDARD Tier, offering economical
-  /// performance backed by HDD.
+  /// BASIC_HDD is an alias for STANDARD Tier, offering economical performance
+  /// backed by HDD.
   /// - "BASIC_SSD" : BASIC instances offer a maximum capacity of 63.9 TB.
-  /// BASIC_SSD is an alias for PREMIUM Tier, and offers improved
-  /// performance backed by SSD.
+  /// BASIC_SSD is an alias for PREMIUM Tier, and offers improved performance
+  /// backed by SSD.
   /// - "HIGH_SCALE_SSD" : HIGH_SCALE instances offer expanded capacity and
-  /// performance scaling
-  /// capabilities.
+  /// performance scaling capabilities.
   core.String tier;
 
   Instance();
@@ -1447,14 +1454,11 @@ class Instance {
 
 /// ListInstancesResponse is the result of ListInstancesRequest.
 class ListInstancesResponse {
-  /// A list of instances in the project for the specified location.
-  ///
-  /// If the {location} value in the request is "-", the response contains a
-  /// list
-  /// of instances from all locations. If any location is unreachable, the
-  /// response will only return instances in reachable locations and the
-  /// "unreachable" field will be populated with a list of unreachable
-  /// locations.
+  /// A list of instances in the project for the specified location. If the
+  /// {location} value in the request is "-", the response contains a list of
+  /// instances from all locations. If any location is unreachable, the response
+  /// will only return instances in reachable locations and the "unreachable"
+  /// field will be populated with a list of unreachable locations.
   core.List<Instance> instances;
 
   /// The token you can use to retrieve the next page of results. Not returned
@@ -1567,13 +1571,12 @@ class ListOperationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  /// For example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
   core.String displayName;
 
   /// Cross-service attributes for the location. For example
-  ///
-  ///     {"cloud.googleapis.com/region": "us-east1"}
+  /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
   /// The canonical id for this location. For example: `"us-east1"`.
@@ -1635,29 +1638,26 @@ class Location {
 
 /// Network configuration for the instance.
 class NetworkConfig {
-  /// Output only. IPv4 addresses in the format
-  /// {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format
-  /// {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block
-  /// 7}:{block 8}.
+  /// Output only. IPv4 addresses in the format {octet 1}.{octet 2}.{octet
+  /// 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block
+  /// 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
   core.List<core.String> ipAddresses;
 
   /// Internet protocol versions for which the instance has IP addresses
   /// assigned. For this version, only MODE_IPV4 is supported.
   core.List<core.String> modes;
 
-  /// The name of the Google Compute Engine
-  /// [VPC network](/compute/docs/networks-and-firewalls#networks) to which the
+  /// The name of the Google Compute Engine [VPC
+  /// network](/compute/docs/networks-and-firewalls#networks) to which the
   /// instance is connected.
   core.String network;
 
-  /// A /29 CIDR block in one of the
-  /// [internal IP address
+  /// A /29 CIDR block in one of the [internal IP address
   /// ranges](https://www.arin.net/knowledge/address_filters.html) that
   /// identifies the range of IP addresses reserved for this instance. For
   /// example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't
-  /// overlap
-  /// with either existing subnets or assigned IP address ranges for other Cloud
-  /// Filestore instances in the selected VPC network.
+  /// overlap with either existing subnets or assigned IP address ranges for
+  /// other Cloud Filestore instances in the selected VPC network.
   core.String reservedIpRange;
 
   NetworkConfig();
@@ -1699,17 +1699,17 @@ class NetworkConfig {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -1717,19 +1717,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1784,10 +1782,10 @@ class OperationMetadata {
   /// [Output only] API version used to start the operation.
   core.String apiVersion;
 
-  /// [Output only] Identifies whether the user has requested cancellation
-  /// of the operation. Operations that have successfully been cancelled
-  /// have Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// [Output only] Identifies whether the user has requested cancellation of
+  /// the operation. Operations that have successfully been cancelled have
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   core.bool cancelRequested;
 
   /// [Output only] The time the operation was created.
@@ -1863,15 +1861,14 @@ class OperationMetadata {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,

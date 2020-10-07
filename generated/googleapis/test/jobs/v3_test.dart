@@ -50,27 +50,27 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3090() {
+buildUnnamed3229() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3090(core.List<core.String> o) {
+checkUnnamed3229(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3091() {
+buildUnnamed3230() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3091(core.List<core.String> o) {
+checkUnnamed3230(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -81,9 +81,9 @@ buildApplicationInfo() {
   var o = new api.ApplicationInfo();
   buildCounterApplicationInfo++;
   if (buildCounterApplicationInfo < 3) {
-    o.emails = buildUnnamed3090();
+    o.emails = buildUnnamed3229();
     o.instruction = "foo";
-    o.uris = buildUnnamed3091();
+    o.uris = buildUnnamed3230();
   }
   buildCounterApplicationInfo--;
   return o;
@@ -92,9 +92,9 @@ buildApplicationInfo() {
 checkApplicationInfo(api.ApplicationInfo o) {
   buildCounterApplicationInfo++;
   if (buildCounterApplicationInfo < 3) {
-    checkUnnamed3090(o.emails);
+    checkUnnamed3229(o.emails);
     unittest.expect(o.instruction, unittest.equals('foo'));
-    checkUnnamed3091(o.uris);
+    checkUnnamed3230(o.uris);
   }
   buildCounterApplicationInfo--;
 }
@@ -160,14 +160,14 @@ checkBucketizedCount(api.BucketizedCount o) {
   buildCounterBucketizedCount--;
 }
 
-buildUnnamed3092() {
+buildUnnamed3231() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3092(core.Map<core.String, core.String> o) {
+checkUnnamed3231(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -180,7 +180,7 @@ buildClientEvent() {
   if (buildCounterClientEvent < 3) {
     o.createTime = "foo";
     o.eventId = "foo";
-    o.extraInfo = buildUnnamed3092();
+    o.extraInfo = buildUnnamed3231();
     o.jobEvent = buildJobEvent();
     o.parentEventId = "foo";
     o.requestId = "foo";
@@ -194,7 +194,7 @@ checkClientEvent(api.ClientEvent o) {
   if (buildCounterClientEvent < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.eventId, unittest.equals('foo'));
-    checkUnnamed3092(o.extraInfo);
+    checkUnnamed3231(o.extraInfo);
     checkJobEvent(o.jobEvent);
     unittest.expect(o.parentEventId, unittest.equals('foo'));
     unittest.expect(o.requestId, unittest.equals('foo'));
@@ -252,14 +252,14 @@ checkCommuteInfo(api.CommuteInfo o) {
   buildCounterCommuteInfo--;
 }
 
-buildUnnamed3093() {
+buildUnnamed3232() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3093(core.List<core.String> o) {
+checkUnnamed3232(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -278,7 +278,7 @@ buildCompany() {
     o.headquartersAddress = "foo";
     o.hiringAgency = true;
     o.imageUri = "foo";
-    o.keywordSearchableJobCustomAttributes = buildUnnamed3093();
+    o.keywordSearchableJobCustomAttributes = buildUnnamed3232();
     o.name = "foo";
     o.size = "foo";
     o.suspended = true;
@@ -299,7 +299,7 @@ checkCompany(api.Company o) {
     unittest.expect(o.headquartersAddress, unittest.equals('foo'));
     unittest.expect(o.hiringAgency, unittest.isTrue);
     unittest.expect(o.imageUri, unittest.equals('foo'));
-    checkUnnamed3093(o.keywordSearchableJobCustomAttributes);
+    checkUnnamed3232(o.keywordSearchableJobCustomAttributes);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.size, unittest.equals('foo'));
     unittest.expect(o.suspended, unittest.isTrue);
@@ -356,14 +356,14 @@ checkCompensationEntry(api.CompensationEntry o) {
   buildCounterCompensationEntry--;
 }
 
-buildUnnamed3094() {
+buildUnnamed3233() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3094(core.List<core.String> o) {
+checkUnnamed3233(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -377,7 +377,7 @@ buildCompensationFilter() {
     o.includeJobsWithUnspecifiedCompensationRange = true;
     o.range = buildCompensationRange();
     o.type = "foo";
-    o.units = buildUnnamed3094();
+    o.units = buildUnnamed3233();
   }
   buildCounterCompensationFilter--;
   return o;
@@ -390,7 +390,7 @@ checkCompensationFilter(api.CompensationFilter o) {
         o.includeJobsWithUnspecifiedCompensationRange, unittest.isTrue);
     checkCompensationRange(o.range);
     unittest.expect(o.type, unittest.equals('foo'));
-    checkUnnamed3094(o.units);
+    checkUnnamed3233(o.units);
   }
   buildCounterCompensationFilter--;
 }
@@ -437,14 +437,14 @@ checkCompensationHistogramResult(api.CompensationHistogramResult o) {
   buildCounterCompensationHistogramResult--;
 }
 
-buildUnnamed3095() {
+buildUnnamed3234() {
   var o = new core.List<api.CompensationEntry>();
   o.add(buildCompensationEntry());
   o.add(buildCompensationEntry());
   return o;
 }
 
-checkUnnamed3095(core.List<api.CompensationEntry> o) {
+checkUnnamed3234(core.List<api.CompensationEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCompensationEntry(o[0]);
   checkCompensationEntry(o[1]);
@@ -457,7 +457,7 @@ buildCompensationInfo() {
   if (buildCounterCompensationInfo < 3) {
     o.annualizedBaseCompensationRange = buildCompensationRange();
     o.annualizedTotalCompensationRange = buildCompensationRange();
-    o.entries = buildUnnamed3095();
+    o.entries = buildUnnamed3234();
   }
   buildCounterCompensationInfo--;
   return o;
@@ -468,7 +468,7 @@ checkCompensationInfo(api.CompensationInfo o) {
   if (buildCounterCompensationInfo < 3) {
     checkCompensationRange(o.annualizedBaseCompensationRange);
     checkCompensationRange(o.annualizedTotalCompensationRange);
-    checkUnnamed3095(o.entries);
+    checkUnnamed3234(o.entries);
   }
   buildCounterCompensationInfo--;
 }
@@ -494,14 +494,14 @@ checkCompensationRange(api.CompensationRange o) {
   buildCounterCompensationRange--;
 }
 
-buildUnnamed3096() {
+buildUnnamed3235() {
   var o = new core.List<api.CompletionResult>();
   o.add(buildCompletionResult());
   o.add(buildCompletionResult());
   return o;
 }
 
-checkUnnamed3096(core.List<api.CompletionResult> o) {
+checkUnnamed3235(core.List<api.CompletionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCompletionResult(o[0]);
   checkCompletionResult(o[1]);
@@ -512,7 +512,7 @@ buildCompleteQueryResponse() {
   var o = new api.CompleteQueryResponse();
   buildCounterCompleteQueryResponse++;
   if (buildCounterCompleteQueryResponse < 3) {
-    o.completionResults = buildUnnamed3096();
+    o.completionResults = buildUnnamed3235();
     o.metadata = buildResponseMetadata();
   }
   buildCounterCompleteQueryResponse--;
@@ -522,7 +522,7 @@ buildCompleteQueryResponse() {
 checkCompleteQueryResponse(api.CompleteQueryResponse o) {
   buildCounterCompleteQueryResponse++;
   if (buildCounterCompleteQueryResponse < 3) {
-    checkUnnamed3096(o.completionResults);
+    checkUnnamed3235(o.completionResults);
     checkResponseMetadata(o.metadata);
   }
   buildCounterCompleteQueryResponse--;
@@ -608,27 +608,27 @@ checkCreateJobRequest(api.CreateJobRequest o) {
   buildCounterCreateJobRequest--;
 }
 
-buildUnnamed3097() {
+buildUnnamed3236() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3097(core.List<core.String> o) {
+checkUnnamed3236(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3098() {
+buildUnnamed3237() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3098(core.List<core.String> o) {
+checkUnnamed3237(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -640,8 +640,8 @@ buildCustomAttribute() {
   buildCounterCustomAttribute++;
   if (buildCounterCustomAttribute < 3) {
     o.filterable = true;
-    o.longValues = buildUnnamed3097();
-    o.stringValues = buildUnnamed3098();
+    o.longValues = buildUnnamed3236();
+    o.stringValues = buildUnnamed3237();
   }
   buildCounterCustomAttribute--;
   return o;
@@ -651,8 +651,8 @@ checkCustomAttribute(api.CustomAttribute o) {
   buildCounterCustomAttribute++;
   if (buildCounterCustomAttribute < 3) {
     unittest.expect(o.filterable, unittest.isTrue);
-    checkUnnamed3097(o.longValues);
-    checkUnnamed3098(o.stringValues);
+    checkUnnamed3236(o.longValues);
+    checkUnnamed3237(o.stringValues);
   }
   buildCounterCustomAttribute--;
 }
@@ -680,14 +680,14 @@ checkCustomAttributeHistogramRequest(api.CustomAttributeHistogramRequest o) {
   buildCounterCustomAttributeHistogramRequest--;
 }
 
-buildUnnamed3099() {
+buildUnnamed3238() {
   var o = new core.Map<core.String, core.int>();
   o["x"] = 42;
   o["y"] = 42;
   return o;
 }
 
-checkUnnamed3099(core.Map<core.String, core.int> o) {
+checkUnnamed3238(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals(42));
   unittest.expect(o["y"], unittest.equals(42));
@@ -700,7 +700,7 @@ buildCustomAttributeHistogramResult() {
   if (buildCounterCustomAttributeHistogramResult < 3) {
     o.key = "foo";
     o.longValueHistogramResult = buildNumericBucketingResult();
-    o.stringValueHistogramResult = buildUnnamed3099();
+    o.stringValueHistogramResult = buildUnnamed3238();
   }
   buildCounterCustomAttributeHistogramResult--;
   return o;
@@ -711,7 +711,7 @@ checkCustomAttributeHistogramResult(api.CustomAttributeHistogramResult o) {
   if (buildCounterCustomAttributeHistogramResult < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
     checkNumericBucketingResult(o.longValueHistogramResult);
-    checkUnnamed3099(o.stringValueHistogramResult);
+    checkUnnamed3238(o.stringValueHistogramResult);
   }
   buildCounterCustomAttributeHistogramResult--;
 }
@@ -752,40 +752,629 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed3100() {
-  var o = new core.List<api.CompensationHistogramRequest>();
-  o.add(buildCompensationHistogramRequest());
-  o.add(buildCompensationHistogramRequest());
+buildUnnamed3239() {
+  var o = new core.List<api.GoogleCloudTalentV4JobResult>();
+  o.add(buildGoogleCloudTalentV4JobResult());
+  o.add(buildGoogleCloudTalentV4JobResult());
   return o;
 }
 
-checkUnnamed3100(core.List<api.CompensationHistogramRequest> o) {
+checkUnnamed3239(core.List<api.GoogleCloudTalentV4JobResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCompensationHistogramRequest(o[0]);
-  checkCompensationHistogramRequest(o[1]);
+  checkGoogleCloudTalentV4JobResult(o[0]);
+  checkGoogleCloudTalentV4JobResult(o[1]);
 }
 
-buildUnnamed3101() {
-  var o = new core.List<api.CustomAttributeHistogramRequest>();
-  o.add(buildCustomAttributeHistogramRequest());
-  o.add(buildCustomAttributeHistogramRequest());
+core.int buildCounterGoogleCloudTalentV4BatchCreateJobsResponse = 0;
+buildGoogleCloudTalentV4BatchCreateJobsResponse() {
+  var o = new api.GoogleCloudTalentV4BatchCreateJobsResponse();
+  buildCounterGoogleCloudTalentV4BatchCreateJobsResponse++;
+  if (buildCounterGoogleCloudTalentV4BatchCreateJobsResponse < 3) {
+    o.jobResults = buildUnnamed3239();
+  }
+  buildCounterGoogleCloudTalentV4BatchCreateJobsResponse--;
   return o;
 }
 
-checkUnnamed3101(core.List<api.CustomAttributeHistogramRequest> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkCustomAttributeHistogramRequest(o[0]);
-  checkCustomAttributeHistogramRequest(o[1]);
+checkGoogleCloudTalentV4BatchCreateJobsResponse(
+    api.GoogleCloudTalentV4BatchCreateJobsResponse o) {
+  buildCounterGoogleCloudTalentV4BatchCreateJobsResponse++;
+  if (buildCounterGoogleCloudTalentV4BatchCreateJobsResponse < 3) {
+    checkUnnamed3239(o.jobResults);
+  }
+  buildCounterGoogleCloudTalentV4BatchCreateJobsResponse--;
 }
 
-buildUnnamed3102() {
+buildUnnamed3240() {
+  var o = new core.List<api.GoogleCloudTalentV4JobResult>();
+  o.add(buildGoogleCloudTalentV4JobResult());
+  o.add(buildGoogleCloudTalentV4JobResult());
+  return o;
+}
+
+checkUnnamed3240(core.List<api.GoogleCloudTalentV4JobResult> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudTalentV4JobResult(o[0]);
+  checkGoogleCloudTalentV4JobResult(o[1]);
+}
+
+core.int buildCounterGoogleCloudTalentV4BatchDeleteJobsResponse = 0;
+buildGoogleCloudTalentV4BatchDeleteJobsResponse() {
+  var o = new api.GoogleCloudTalentV4BatchDeleteJobsResponse();
+  buildCounterGoogleCloudTalentV4BatchDeleteJobsResponse++;
+  if (buildCounterGoogleCloudTalentV4BatchDeleteJobsResponse < 3) {
+    o.jobResults = buildUnnamed3240();
+  }
+  buildCounterGoogleCloudTalentV4BatchDeleteJobsResponse--;
+  return o;
+}
+
+checkGoogleCloudTalentV4BatchDeleteJobsResponse(
+    api.GoogleCloudTalentV4BatchDeleteJobsResponse o) {
+  buildCounterGoogleCloudTalentV4BatchDeleteJobsResponse++;
+  if (buildCounterGoogleCloudTalentV4BatchDeleteJobsResponse < 3) {
+    checkUnnamed3240(o.jobResults);
+  }
+  buildCounterGoogleCloudTalentV4BatchDeleteJobsResponse--;
+}
+
+core.int buildCounterGoogleCloudTalentV4BatchOperationMetadata = 0;
+buildGoogleCloudTalentV4BatchOperationMetadata() {
+  var o = new api.GoogleCloudTalentV4BatchOperationMetadata();
+  buildCounterGoogleCloudTalentV4BatchOperationMetadata++;
+  if (buildCounterGoogleCloudTalentV4BatchOperationMetadata < 3) {
+    o.createTime = "foo";
+    o.endTime = "foo";
+    o.failureCount = 42;
+    o.state = "foo";
+    o.stateDescription = "foo";
+    o.successCount = 42;
+    o.totalCount = 42;
+    o.updateTime = "foo";
+  }
+  buildCounterGoogleCloudTalentV4BatchOperationMetadata--;
+  return o;
+}
+
+checkGoogleCloudTalentV4BatchOperationMetadata(
+    api.GoogleCloudTalentV4BatchOperationMetadata o) {
+  buildCounterGoogleCloudTalentV4BatchOperationMetadata++;
+  if (buildCounterGoogleCloudTalentV4BatchOperationMetadata < 3) {
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    unittest.expect(o.endTime, unittest.equals('foo'));
+    unittest.expect(o.failureCount, unittest.equals(42));
+    unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(o.stateDescription, unittest.equals('foo'));
+    unittest.expect(o.successCount, unittest.equals(42));
+    unittest.expect(o.totalCount, unittest.equals(42));
+    unittest.expect(o.updateTime, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudTalentV4BatchOperationMetadata--;
+}
+
+buildUnnamed3241() {
+  var o = new core.List<api.GoogleCloudTalentV4JobResult>();
+  o.add(buildGoogleCloudTalentV4JobResult());
+  o.add(buildGoogleCloudTalentV4JobResult());
+  return o;
+}
+
+checkUnnamed3241(core.List<api.GoogleCloudTalentV4JobResult> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudTalentV4JobResult(o[0]);
+  checkGoogleCloudTalentV4JobResult(o[1]);
+}
+
+core.int buildCounterGoogleCloudTalentV4BatchUpdateJobsResponse = 0;
+buildGoogleCloudTalentV4BatchUpdateJobsResponse() {
+  var o = new api.GoogleCloudTalentV4BatchUpdateJobsResponse();
+  buildCounterGoogleCloudTalentV4BatchUpdateJobsResponse++;
+  if (buildCounterGoogleCloudTalentV4BatchUpdateJobsResponse < 3) {
+    o.jobResults = buildUnnamed3241();
+  }
+  buildCounterGoogleCloudTalentV4BatchUpdateJobsResponse--;
+  return o;
+}
+
+checkGoogleCloudTalentV4BatchUpdateJobsResponse(
+    api.GoogleCloudTalentV4BatchUpdateJobsResponse o) {
+  buildCounterGoogleCloudTalentV4BatchUpdateJobsResponse++;
+  if (buildCounterGoogleCloudTalentV4BatchUpdateJobsResponse < 3) {
+    checkUnnamed3241(o.jobResults);
+  }
+  buildCounterGoogleCloudTalentV4BatchUpdateJobsResponse--;
+}
+
+buildUnnamed3242() {
+  var o =
+      new core.List<api.GoogleCloudTalentV4CompensationInfoCompensationEntry>();
+  o.add(buildGoogleCloudTalentV4CompensationInfoCompensationEntry());
+  o.add(buildGoogleCloudTalentV4CompensationInfoCompensationEntry());
+  return o;
+}
+
+checkUnnamed3242(
+    core.List<api.GoogleCloudTalentV4CompensationInfoCompensationEntry> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudTalentV4CompensationInfoCompensationEntry(o[0]);
+  checkGoogleCloudTalentV4CompensationInfoCompensationEntry(o[1]);
+}
+
+core.int buildCounterGoogleCloudTalentV4CompensationInfo = 0;
+buildGoogleCloudTalentV4CompensationInfo() {
+  var o = new api.GoogleCloudTalentV4CompensationInfo();
+  buildCounterGoogleCloudTalentV4CompensationInfo++;
+  if (buildCounterGoogleCloudTalentV4CompensationInfo < 3) {
+    o.annualizedBaseCompensationRange =
+        buildGoogleCloudTalentV4CompensationInfoCompensationRange();
+    o.annualizedTotalCompensationRange =
+        buildGoogleCloudTalentV4CompensationInfoCompensationRange();
+    o.entries = buildUnnamed3242();
+  }
+  buildCounterGoogleCloudTalentV4CompensationInfo--;
+  return o;
+}
+
+checkGoogleCloudTalentV4CompensationInfo(
+    api.GoogleCloudTalentV4CompensationInfo o) {
+  buildCounterGoogleCloudTalentV4CompensationInfo++;
+  if (buildCounterGoogleCloudTalentV4CompensationInfo < 3) {
+    checkGoogleCloudTalentV4CompensationInfoCompensationRange(
+        o.annualizedBaseCompensationRange);
+    checkGoogleCloudTalentV4CompensationInfoCompensationRange(
+        o.annualizedTotalCompensationRange);
+    checkUnnamed3242(o.entries);
+  }
+  buildCounterGoogleCloudTalentV4CompensationInfo--;
+}
+
+core.int buildCounterGoogleCloudTalentV4CompensationInfoCompensationEntry = 0;
+buildGoogleCloudTalentV4CompensationInfoCompensationEntry() {
+  var o = new api.GoogleCloudTalentV4CompensationInfoCompensationEntry();
+  buildCounterGoogleCloudTalentV4CompensationInfoCompensationEntry++;
+  if (buildCounterGoogleCloudTalentV4CompensationInfoCompensationEntry < 3) {
+    o.amount = buildMoney();
+    o.description = "foo";
+    o.expectedUnitsPerYear = 42.0;
+    o.range = buildGoogleCloudTalentV4CompensationInfoCompensationRange();
+    o.type = "foo";
+    o.unit = "foo";
+  }
+  buildCounterGoogleCloudTalentV4CompensationInfoCompensationEntry--;
+  return o;
+}
+
+checkGoogleCloudTalentV4CompensationInfoCompensationEntry(
+    api.GoogleCloudTalentV4CompensationInfoCompensationEntry o) {
+  buildCounterGoogleCloudTalentV4CompensationInfoCompensationEntry++;
+  if (buildCounterGoogleCloudTalentV4CompensationInfoCompensationEntry < 3) {
+    checkMoney(o.amount);
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.expectedUnitsPerYear, unittest.equals(42.0));
+    checkGoogleCloudTalentV4CompensationInfoCompensationRange(o.range);
+    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(o.unit, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudTalentV4CompensationInfoCompensationEntry--;
+}
+
+core.int buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange = 0;
+buildGoogleCloudTalentV4CompensationInfoCompensationRange() {
+  var o = new api.GoogleCloudTalentV4CompensationInfoCompensationRange();
+  buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange++;
+  if (buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange < 3) {
+    o.maxCompensation = buildMoney();
+    o.minCompensation = buildMoney();
+  }
+  buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange--;
+  return o;
+}
+
+checkGoogleCloudTalentV4CompensationInfoCompensationRange(
+    api.GoogleCloudTalentV4CompensationInfoCompensationRange o) {
+  buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange++;
+  if (buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange < 3) {
+    checkMoney(o.maxCompensation);
+    checkMoney(o.minCompensation);
+  }
+  buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange--;
+}
+
+buildUnnamed3243() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3102(core.List<core.String> o) {
+checkUnnamed3243(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3244() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3244(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterGoogleCloudTalentV4CustomAttribute = 0;
+buildGoogleCloudTalentV4CustomAttribute() {
+  var o = new api.GoogleCloudTalentV4CustomAttribute();
+  buildCounterGoogleCloudTalentV4CustomAttribute++;
+  if (buildCounterGoogleCloudTalentV4CustomAttribute < 3) {
+    o.filterable = true;
+    o.keywordSearchable = true;
+    o.longValues = buildUnnamed3243();
+    o.stringValues = buildUnnamed3244();
+  }
+  buildCounterGoogleCloudTalentV4CustomAttribute--;
+  return o;
+}
+
+checkGoogleCloudTalentV4CustomAttribute(
+    api.GoogleCloudTalentV4CustomAttribute o) {
+  buildCounterGoogleCloudTalentV4CustomAttribute++;
+  if (buildCounterGoogleCloudTalentV4CustomAttribute < 3) {
+    unittest.expect(o.filterable, unittest.isTrue);
+    unittest.expect(o.keywordSearchable, unittest.isTrue);
+    checkUnnamed3243(o.longValues);
+    checkUnnamed3244(o.stringValues);
+  }
+  buildCounterGoogleCloudTalentV4CustomAttribute--;
+}
+
+buildUnnamed3245() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3245(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3246() {
+  var o = new core.Map<core.String, api.GoogleCloudTalentV4CustomAttribute>();
+  o["x"] = buildGoogleCloudTalentV4CustomAttribute();
+  o["y"] = buildGoogleCloudTalentV4CustomAttribute();
+  return o;
+}
+
+checkUnnamed3246(
+    core.Map<core.String, api.GoogleCloudTalentV4CustomAttribute> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudTalentV4CustomAttribute(o["x"]);
+  checkGoogleCloudTalentV4CustomAttribute(o["y"]);
+}
+
+buildUnnamed3247() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3247(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3248() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3248(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3249() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3249(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterGoogleCloudTalentV4Job = 0;
+buildGoogleCloudTalentV4Job() {
+  var o = new api.GoogleCloudTalentV4Job();
+  buildCounterGoogleCloudTalentV4Job++;
+  if (buildCounterGoogleCloudTalentV4Job < 3) {
+    o.addresses = buildUnnamed3245();
+    o.applicationInfo = buildGoogleCloudTalentV4JobApplicationInfo();
+    o.company = "foo";
+    o.companyDisplayName = "foo";
+    o.compensationInfo = buildGoogleCloudTalentV4CompensationInfo();
+    o.customAttributes = buildUnnamed3246();
+    o.degreeTypes = buildUnnamed3247();
+    o.department = "foo";
+    o.derivedInfo = buildGoogleCloudTalentV4JobDerivedInfo();
+    o.description = "foo";
+    o.employmentTypes = buildUnnamed3248();
+    o.incentives = "foo";
+    o.jobBenefits = buildUnnamed3249();
+    o.jobEndTime = "foo";
+    o.jobLevel = "foo";
+    o.jobStartTime = "foo";
+    o.languageCode = "foo";
+    o.name = "foo";
+    o.postingCreateTime = "foo";
+    o.postingExpireTime = "foo";
+    o.postingPublishTime = "foo";
+    o.postingRegion = "foo";
+    o.postingUpdateTime = "foo";
+    o.processingOptions = buildGoogleCloudTalentV4JobProcessingOptions();
+    o.promotionValue = 42;
+    o.qualifications = "foo";
+    o.requisitionId = "foo";
+    o.responsibilities = "foo";
+    o.title = "foo";
+    o.visibility = "foo";
+  }
+  buildCounterGoogleCloudTalentV4Job--;
+  return o;
+}
+
+checkGoogleCloudTalentV4Job(api.GoogleCloudTalentV4Job o) {
+  buildCounterGoogleCloudTalentV4Job++;
+  if (buildCounterGoogleCloudTalentV4Job < 3) {
+    checkUnnamed3245(o.addresses);
+    checkGoogleCloudTalentV4JobApplicationInfo(o.applicationInfo);
+    unittest.expect(o.company, unittest.equals('foo'));
+    unittest.expect(o.companyDisplayName, unittest.equals('foo'));
+    checkGoogleCloudTalentV4CompensationInfo(o.compensationInfo);
+    checkUnnamed3246(o.customAttributes);
+    checkUnnamed3247(o.degreeTypes);
+    unittest.expect(o.department, unittest.equals('foo'));
+    checkGoogleCloudTalentV4JobDerivedInfo(o.derivedInfo);
+    unittest.expect(o.description, unittest.equals('foo'));
+    checkUnnamed3248(o.employmentTypes);
+    unittest.expect(o.incentives, unittest.equals('foo'));
+    checkUnnamed3249(o.jobBenefits);
+    unittest.expect(o.jobEndTime, unittest.equals('foo'));
+    unittest.expect(o.jobLevel, unittest.equals('foo'));
+    unittest.expect(o.jobStartTime, unittest.equals('foo'));
+    unittest.expect(o.languageCode, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.postingCreateTime, unittest.equals('foo'));
+    unittest.expect(o.postingExpireTime, unittest.equals('foo'));
+    unittest.expect(o.postingPublishTime, unittest.equals('foo'));
+    unittest.expect(o.postingRegion, unittest.equals('foo'));
+    unittest.expect(o.postingUpdateTime, unittest.equals('foo'));
+    checkGoogleCloudTalentV4JobProcessingOptions(o.processingOptions);
+    unittest.expect(o.promotionValue, unittest.equals(42));
+    unittest.expect(o.qualifications, unittest.equals('foo'));
+    unittest.expect(o.requisitionId, unittest.equals('foo'));
+    unittest.expect(o.responsibilities, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(o.visibility, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudTalentV4Job--;
+}
+
+buildUnnamed3250() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3250(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3251() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3251(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterGoogleCloudTalentV4JobApplicationInfo = 0;
+buildGoogleCloudTalentV4JobApplicationInfo() {
+  var o = new api.GoogleCloudTalentV4JobApplicationInfo();
+  buildCounterGoogleCloudTalentV4JobApplicationInfo++;
+  if (buildCounterGoogleCloudTalentV4JobApplicationInfo < 3) {
+    o.emails = buildUnnamed3250();
+    o.instruction = "foo";
+    o.uris = buildUnnamed3251();
+  }
+  buildCounterGoogleCloudTalentV4JobApplicationInfo--;
+  return o;
+}
+
+checkGoogleCloudTalentV4JobApplicationInfo(
+    api.GoogleCloudTalentV4JobApplicationInfo o) {
+  buildCounterGoogleCloudTalentV4JobApplicationInfo++;
+  if (buildCounterGoogleCloudTalentV4JobApplicationInfo < 3) {
+    checkUnnamed3250(o.emails);
+    unittest.expect(o.instruction, unittest.equals('foo'));
+    checkUnnamed3251(o.uris);
+  }
+  buildCounterGoogleCloudTalentV4JobApplicationInfo--;
+}
+
+buildUnnamed3252() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3252(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3253() {
+  var o = new core.List<api.GoogleCloudTalentV4Location>();
+  o.add(buildGoogleCloudTalentV4Location());
+  o.add(buildGoogleCloudTalentV4Location());
+  return o;
+}
+
+checkUnnamed3253(core.List<api.GoogleCloudTalentV4Location> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudTalentV4Location(o[0]);
+  checkGoogleCloudTalentV4Location(o[1]);
+}
+
+core.int buildCounterGoogleCloudTalentV4JobDerivedInfo = 0;
+buildGoogleCloudTalentV4JobDerivedInfo() {
+  var o = new api.GoogleCloudTalentV4JobDerivedInfo();
+  buildCounterGoogleCloudTalentV4JobDerivedInfo++;
+  if (buildCounterGoogleCloudTalentV4JobDerivedInfo < 3) {
+    o.jobCategories = buildUnnamed3252();
+    o.locations = buildUnnamed3253();
+  }
+  buildCounterGoogleCloudTalentV4JobDerivedInfo--;
+  return o;
+}
+
+checkGoogleCloudTalentV4JobDerivedInfo(
+    api.GoogleCloudTalentV4JobDerivedInfo o) {
+  buildCounterGoogleCloudTalentV4JobDerivedInfo++;
+  if (buildCounterGoogleCloudTalentV4JobDerivedInfo < 3) {
+    checkUnnamed3252(o.jobCategories);
+    checkUnnamed3253(o.locations);
+  }
+  buildCounterGoogleCloudTalentV4JobDerivedInfo--;
+}
+
+core.int buildCounterGoogleCloudTalentV4JobProcessingOptions = 0;
+buildGoogleCloudTalentV4JobProcessingOptions() {
+  var o = new api.GoogleCloudTalentV4JobProcessingOptions();
+  buildCounterGoogleCloudTalentV4JobProcessingOptions++;
+  if (buildCounterGoogleCloudTalentV4JobProcessingOptions < 3) {
+    o.disableStreetAddressResolution = true;
+    o.htmlSanitization = "foo";
+  }
+  buildCounterGoogleCloudTalentV4JobProcessingOptions--;
+  return o;
+}
+
+checkGoogleCloudTalentV4JobProcessingOptions(
+    api.GoogleCloudTalentV4JobProcessingOptions o) {
+  buildCounterGoogleCloudTalentV4JobProcessingOptions++;
+  if (buildCounterGoogleCloudTalentV4JobProcessingOptions < 3) {
+    unittest.expect(o.disableStreetAddressResolution, unittest.isTrue);
+    unittest.expect(o.htmlSanitization, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudTalentV4JobProcessingOptions--;
+}
+
+core.int buildCounterGoogleCloudTalentV4JobResult = 0;
+buildGoogleCloudTalentV4JobResult() {
+  var o = new api.GoogleCloudTalentV4JobResult();
+  buildCounterGoogleCloudTalentV4JobResult++;
+  if (buildCounterGoogleCloudTalentV4JobResult < 3) {
+    o.job = buildGoogleCloudTalentV4Job();
+    o.status = buildStatus();
+  }
+  buildCounterGoogleCloudTalentV4JobResult--;
+  return o;
+}
+
+checkGoogleCloudTalentV4JobResult(api.GoogleCloudTalentV4JobResult o) {
+  buildCounterGoogleCloudTalentV4JobResult++;
+  if (buildCounterGoogleCloudTalentV4JobResult < 3) {
+    checkGoogleCloudTalentV4Job(o.job);
+    checkStatus(o.status);
+  }
+  buildCounterGoogleCloudTalentV4JobResult--;
+}
+
+core.int buildCounterGoogleCloudTalentV4Location = 0;
+buildGoogleCloudTalentV4Location() {
+  var o = new api.GoogleCloudTalentV4Location();
+  buildCounterGoogleCloudTalentV4Location++;
+  if (buildCounterGoogleCloudTalentV4Location < 3) {
+    o.latLng = buildLatLng();
+    o.locationType = "foo";
+    o.postalAddress = buildPostalAddress();
+    o.radiusMiles = 42.0;
+  }
+  buildCounterGoogleCloudTalentV4Location--;
+  return o;
+}
+
+checkGoogleCloudTalentV4Location(api.GoogleCloudTalentV4Location o) {
+  buildCounterGoogleCloudTalentV4Location++;
+  if (buildCounterGoogleCloudTalentV4Location < 3) {
+    checkLatLng(o.latLng);
+    unittest.expect(o.locationType, unittest.equals('foo'));
+    checkPostalAddress(o.postalAddress);
+    unittest.expect(o.radiusMiles, unittest.equals(42.0));
+  }
+  buildCounterGoogleCloudTalentV4Location--;
+}
+
+buildUnnamed3254() {
+  var o = new core.List<api.CompensationHistogramRequest>();
+  o.add(buildCompensationHistogramRequest());
+  o.add(buildCompensationHistogramRequest());
+  return o;
+}
+
+checkUnnamed3254(core.List<api.CompensationHistogramRequest> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCompensationHistogramRequest(o[0]);
+  checkCompensationHistogramRequest(o[1]);
+}
+
+buildUnnamed3255() {
+  var o = new core.List<api.CustomAttributeHistogramRequest>();
+  o.add(buildCustomAttributeHistogramRequest());
+  o.add(buildCustomAttributeHistogramRequest());
+  return o;
+}
+
+checkUnnamed3255(core.List<api.CustomAttributeHistogramRequest> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCustomAttributeHistogramRequest(o[0]);
+  checkCustomAttributeHistogramRequest(o[1]);
+}
+
+buildUnnamed3256() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3256(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -796,9 +1385,9 @@ buildHistogramFacets() {
   var o = new api.HistogramFacets();
   buildCounterHistogramFacets++;
   if (buildCounterHistogramFacets < 3) {
-    o.compensationHistogramFacets = buildUnnamed3100();
-    o.customAttributeHistogramFacets = buildUnnamed3101();
-    o.simpleHistogramFacets = buildUnnamed3102();
+    o.compensationHistogramFacets = buildUnnamed3254();
+    o.customAttributeHistogramFacets = buildUnnamed3255();
+    o.simpleHistogramFacets = buildUnnamed3256();
   }
   buildCounterHistogramFacets--;
   return o;
@@ -807,21 +1396,21 @@ buildHistogramFacets() {
 checkHistogramFacets(api.HistogramFacets o) {
   buildCounterHistogramFacets++;
   if (buildCounterHistogramFacets < 3) {
-    checkUnnamed3100(o.compensationHistogramFacets);
-    checkUnnamed3101(o.customAttributeHistogramFacets);
-    checkUnnamed3102(o.simpleHistogramFacets);
+    checkUnnamed3254(o.compensationHistogramFacets);
+    checkUnnamed3255(o.customAttributeHistogramFacets);
+    checkUnnamed3256(o.simpleHistogramFacets);
   }
   buildCounterHistogramFacets--;
 }
 
-buildUnnamed3103() {
+buildUnnamed3257() {
   var o = new core.Map<core.String, core.int>();
   o["x"] = 42;
   o["y"] = 42;
   return o;
 }
 
-checkUnnamed3103(core.Map<core.String, core.int> o) {
+checkUnnamed3257(core.Map<core.String, core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals(42));
   unittest.expect(o["y"], unittest.equals(42));
@@ -833,7 +1422,7 @@ buildHistogramResult() {
   buildCounterHistogramResult++;
   if (buildCounterHistogramResult < 3) {
     o.searchType = "foo";
-    o.values = buildUnnamed3103();
+    o.values = buildUnnamed3257();
   }
   buildCounterHistogramResult--;
   return o;
@@ -843,45 +1432,45 @@ checkHistogramResult(api.HistogramResult o) {
   buildCounterHistogramResult++;
   if (buildCounterHistogramResult < 3) {
     unittest.expect(o.searchType, unittest.equals('foo'));
-    checkUnnamed3103(o.values);
+    checkUnnamed3257(o.values);
   }
   buildCounterHistogramResult--;
 }
 
-buildUnnamed3104() {
+buildUnnamed3258() {
   var o = new core.List<api.CompensationHistogramResult>();
   o.add(buildCompensationHistogramResult());
   o.add(buildCompensationHistogramResult());
   return o;
 }
 
-checkUnnamed3104(core.List<api.CompensationHistogramResult> o) {
+checkUnnamed3258(core.List<api.CompensationHistogramResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCompensationHistogramResult(o[0]);
   checkCompensationHistogramResult(o[1]);
 }
 
-buildUnnamed3105() {
+buildUnnamed3259() {
   var o = new core.List<api.CustomAttributeHistogramResult>();
   o.add(buildCustomAttributeHistogramResult());
   o.add(buildCustomAttributeHistogramResult());
   return o;
 }
 
-checkUnnamed3105(core.List<api.CustomAttributeHistogramResult> o) {
+checkUnnamed3259(core.List<api.CustomAttributeHistogramResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomAttributeHistogramResult(o[0]);
   checkCustomAttributeHistogramResult(o[1]);
 }
 
-buildUnnamed3106() {
+buildUnnamed3260() {
   var o = new core.List<api.HistogramResult>();
   o.add(buildHistogramResult());
   o.add(buildHistogramResult());
   return o;
 }
 
-checkUnnamed3106(core.List<api.HistogramResult> o) {
+checkUnnamed3260(core.List<api.HistogramResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistogramResult(o[0]);
   checkHistogramResult(o[1]);
@@ -892,9 +1481,9 @@ buildHistogramResults() {
   var o = new api.HistogramResults();
   buildCounterHistogramResults++;
   if (buildCounterHistogramResults < 3) {
-    o.compensationHistogramResults = buildUnnamed3104();
-    o.customAttributeHistogramResults = buildUnnamed3105();
-    o.simpleHistogramResults = buildUnnamed3106();
+    o.compensationHistogramResults = buildUnnamed3258();
+    o.customAttributeHistogramResults = buildUnnamed3259();
+    o.simpleHistogramResults = buildUnnamed3260();
   }
   buildCounterHistogramResults--;
   return o;
@@ -903,73 +1492,73 @@ buildHistogramResults() {
 checkHistogramResults(api.HistogramResults o) {
   buildCounterHistogramResults++;
   if (buildCounterHistogramResults < 3) {
-    checkUnnamed3104(o.compensationHistogramResults);
-    checkUnnamed3105(o.customAttributeHistogramResults);
-    checkUnnamed3106(o.simpleHistogramResults);
+    checkUnnamed3258(o.compensationHistogramResults);
+    checkUnnamed3259(o.customAttributeHistogramResults);
+    checkUnnamed3260(o.simpleHistogramResults);
   }
   buildCounterHistogramResults--;
 }
 
-buildUnnamed3107() {
+buildUnnamed3261() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3107(core.List<core.String> o) {
+checkUnnamed3261(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3108() {
+buildUnnamed3262() {
   var o = new core.Map<core.String, api.CustomAttribute>();
   o["x"] = buildCustomAttribute();
   o["y"] = buildCustomAttribute();
   return o;
 }
 
-checkUnnamed3108(core.Map<core.String, api.CustomAttribute> o) {
+checkUnnamed3262(core.Map<core.String, api.CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomAttribute(o["x"]);
   checkCustomAttribute(o["y"]);
 }
 
-buildUnnamed3109() {
+buildUnnamed3263() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3109(core.List<core.String> o) {
+checkUnnamed3263(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3110() {
+buildUnnamed3264() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3110(core.List<core.String> o) {
+checkUnnamed3264(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3111() {
+buildUnnamed3265() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3111(core.List<core.String> o) {
+checkUnnamed3265(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -980,19 +1569,19 @@ buildJob() {
   var o = new api.Job();
   buildCounterJob++;
   if (buildCounterJob < 3) {
-    o.addresses = buildUnnamed3107();
+    o.addresses = buildUnnamed3261();
     o.applicationInfo = buildApplicationInfo();
     o.companyDisplayName = "foo";
     o.companyName = "foo";
     o.compensationInfo = buildCompensationInfo();
-    o.customAttributes = buildUnnamed3108();
-    o.degreeTypes = buildUnnamed3109();
+    o.customAttributes = buildUnnamed3262();
+    o.degreeTypes = buildUnnamed3263();
     o.department = "foo";
     o.derivedInfo = buildJobDerivedInfo();
     o.description = "foo";
-    o.employmentTypes = buildUnnamed3110();
+    o.employmentTypes = buildUnnamed3264();
     o.incentives = "foo";
-    o.jobBenefits = buildUnnamed3111();
+    o.jobBenefits = buildUnnamed3265();
     o.jobEndTime = "foo";
     o.jobLevel = "foo";
     o.jobStartTime = "foo";
@@ -1018,19 +1607,19 @@ buildJob() {
 checkJob(api.Job o) {
   buildCounterJob++;
   if (buildCounterJob < 3) {
-    checkUnnamed3107(o.addresses);
+    checkUnnamed3261(o.addresses);
     checkApplicationInfo(o.applicationInfo);
     unittest.expect(o.companyDisplayName, unittest.equals('foo'));
     unittest.expect(o.companyName, unittest.equals('foo'));
     checkCompensationInfo(o.compensationInfo);
-    checkUnnamed3108(o.customAttributes);
-    checkUnnamed3109(o.degreeTypes);
+    checkUnnamed3262(o.customAttributes);
+    checkUnnamed3263(o.degreeTypes);
     unittest.expect(o.department, unittest.equals('foo'));
     checkJobDerivedInfo(o.derivedInfo);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed3110(o.employmentTypes);
+    checkUnnamed3264(o.employmentTypes);
     unittest.expect(o.incentives, unittest.equals('foo'));
-    checkUnnamed3111(o.jobBenefits);
+    checkUnnamed3265(o.jobBenefits);
     unittest.expect(o.jobEndTime, unittest.equals('foo'));
     unittest.expect(o.jobLevel, unittest.equals('foo'));
     unittest.expect(o.jobStartTime, unittest.equals('foo'));
@@ -1052,27 +1641,27 @@ checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-buildUnnamed3112() {
+buildUnnamed3266() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3112(core.List<core.String> o) {
+checkUnnamed3266(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3113() {
+buildUnnamed3267() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed3113(core.List<api.Location> o) {
+checkUnnamed3267(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -1083,8 +1672,8 @@ buildJobDerivedInfo() {
   var o = new api.JobDerivedInfo();
   buildCounterJobDerivedInfo++;
   if (buildCounterJobDerivedInfo < 3) {
-    o.jobCategories = buildUnnamed3112();
-    o.locations = buildUnnamed3113();
+    o.jobCategories = buildUnnamed3266();
+    o.locations = buildUnnamed3267();
   }
   buildCounterJobDerivedInfo--;
   return o;
@@ -1093,20 +1682,20 @@ buildJobDerivedInfo() {
 checkJobDerivedInfo(api.JobDerivedInfo o) {
   buildCounterJobDerivedInfo++;
   if (buildCounterJobDerivedInfo < 3) {
-    checkUnnamed3112(o.jobCategories);
-    checkUnnamed3113(o.locations);
+    checkUnnamed3266(o.jobCategories);
+    checkUnnamed3267(o.locations);
   }
   buildCounterJobDerivedInfo--;
 }
 
-buildUnnamed3114() {
+buildUnnamed3268() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3114(core.List<core.String> o) {
+checkUnnamed3268(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1117,7 +1706,7 @@ buildJobEvent() {
   var o = new api.JobEvent();
   buildCounterJobEvent++;
   if (buildCounterJobEvent < 3) {
-    o.jobs = buildUnnamed3114();
+    o.jobs = buildUnnamed3268();
     o.type = "foo";
   }
   buildCounterJobEvent--;
@@ -1127,85 +1716,85 @@ buildJobEvent() {
 checkJobEvent(api.JobEvent o) {
   buildCounterJobEvent++;
   if (buildCounterJobEvent < 3) {
-    checkUnnamed3114(o.jobs);
+    checkUnnamed3268(o.jobs);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterJobEvent--;
 }
 
-buildUnnamed3115() {
+buildUnnamed3269() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3115(core.List<core.String> o) {
+checkUnnamed3269(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3116() {
+buildUnnamed3270() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3116(core.List<core.String> o) {
+checkUnnamed3270(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3117() {
+buildUnnamed3271() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3117(core.List<core.String> o) {
+checkUnnamed3271(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3118() {
+buildUnnamed3272() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3118(core.List<core.String> o) {
+checkUnnamed3272(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3119() {
+buildUnnamed3273() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3119(core.List<core.String> o) {
+checkUnnamed3273(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3120() {
+buildUnnamed3274() {
   var o = new core.List<api.LocationFilter>();
   o.add(buildLocationFilter());
   o.add(buildLocationFilter());
   return o;
 }
 
-checkUnnamed3120(core.List<api.LocationFilter> o) {
+checkUnnamed3274(core.List<api.LocationFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocationFilter(o[0]);
   checkLocationFilter(o[1]);
@@ -1217,15 +1806,15 @@ buildJobQuery() {
   buildCounterJobQuery++;
   if (buildCounterJobQuery < 3) {
     o.commuteFilter = buildCommuteFilter();
-    o.companyDisplayNames = buildUnnamed3115();
-    o.companyNames = buildUnnamed3116();
+    o.companyDisplayNames = buildUnnamed3269();
+    o.companyNames = buildUnnamed3270();
     o.compensationFilter = buildCompensationFilter();
     o.customAttributeFilter = "foo";
     o.disableSpellCheck = true;
-    o.employmentTypes = buildUnnamed3117();
-    o.jobCategories = buildUnnamed3118();
-    o.languageCodes = buildUnnamed3119();
-    o.locationFilters = buildUnnamed3120();
+    o.employmentTypes = buildUnnamed3271();
+    o.jobCategories = buildUnnamed3272();
+    o.languageCodes = buildUnnamed3273();
+    o.locationFilters = buildUnnamed3274();
     o.publishTimeRange = buildTimestampRange();
     o.query = "foo";
     o.queryLanguageCode = "foo";
@@ -1238,15 +1827,15 @@ checkJobQuery(api.JobQuery o) {
   buildCounterJobQuery++;
   if (buildCounterJobQuery < 3) {
     checkCommuteFilter(o.commuteFilter);
-    checkUnnamed3115(o.companyDisplayNames);
-    checkUnnamed3116(o.companyNames);
+    checkUnnamed3269(o.companyDisplayNames);
+    checkUnnamed3270(o.companyNames);
     checkCompensationFilter(o.compensationFilter);
     unittest.expect(o.customAttributeFilter, unittest.equals('foo'));
     unittest.expect(o.disableSpellCheck, unittest.isTrue);
-    checkUnnamed3117(o.employmentTypes);
-    checkUnnamed3118(o.jobCategories);
-    checkUnnamed3119(o.languageCodes);
-    checkUnnamed3120(o.locationFilters);
+    checkUnnamed3271(o.employmentTypes);
+    checkUnnamed3272(o.jobCategories);
+    checkUnnamed3273(o.languageCodes);
+    checkUnnamed3274(o.locationFilters);
     checkTimestampRange(o.publishTimeRange);
     unittest.expect(o.query, unittest.equals('foo'));
     unittest.expect(o.queryLanguageCode, unittest.equals('foo'));
@@ -1275,14 +1864,14 @@ checkLatLng(api.LatLng o) {
   buildCounterLatLng--;
 }
 
-buildUnnamed3121() {
+buildUnnamed3275() {
   var o = new core.List<api.Company>();
   o.add(buildCompany());
   o.add(buildCompany());
   return o;
 }
 
-checkUnnamed3121(core.List<api.Company> o) {
+checkUnnamed3275(core.List<api.Company> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCompany(o[0]);
   checkCompany(o[1]);
@@ -1293,7 +1882,7 @@ buildListCompaniesResponse() {
   var o = new api.ListCompaniesResponse();
   buildCounterListCompaniesResponse++;
   if (buildCounterListCompaniesResponse < 3) {
-    o.companies = buildUnnamed3121();
+    o.companies = buildUnnamed3275();
     o.metadata = buildResponseMetadata();
     o.nextPageToken = "foo";
   }
@@ -1304,21 +1893,21 @@ buildListCompaniesResponse() {
 checkListCompaniesResponse(api.ListCompaniesResponse o) {
   buildCounterListCompaniesResponse++;
   if (buildCounterListCompaniesResponse < 3) {
-    checkUnnamed3121(o.companies);
+    checkUnnamed3275(o.companies);
     checkResponseMetadata(o.metadata);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCompaniesResponse--;
 }
 
-buildUnnamed3122() {
+buildUnnamed3276() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed3122(core.List<api.Job> o) {
+checkUnnamed3276(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -1329,7 +1918,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed3122();
+    o.jobs = buildUnnamed3276();
     o.metadata = buildResponseMetadata();
     o.nextPageToken = "foo";
   }
@@ -1340,7 +1929,7 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed3122(o.jobs);
+    checkUnnamed3276(o.jobs);
     checkResponseMetadata(o.metadata);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1426,14 +2015,14 @@ checkMatchingJob(api.MatchingJob o) {
   buildCounterMatchingJob--;
 }
 
-buildUnnamed3123() {
+buildUnnamed3277() {
   var o = new core.Map<core.String, api.NamespacedDebugInput>();
   o["x"] = buildNamespacedDebugInput();
   o["y"] = buildNamespacedDebugInput();
   return o;
 }
 
-checkUnnamed3123(core.Map<core.String, api.NamespacedDebugInput> o) {
+checkUnnamed3277(core.Map<core.String, api.NamespacedDebugInput> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamespacedDebugInput(o["x"]);
   checkNamespacedDebugInput(o["y"]);
@@ -1444,7 +2033,7 @@ buildMendelDebugInput() {
   var o = new api.MendelDebugInput();
   buildCounterMendelDebugInput++;
   if (buildCounterMendelDebugInput < 3) {
-    o.namespacedDebugInput = buildUnnamed3123();
+    o.namespacedDebugInput = buildUnnamed3277();
   }
   buildCounterMendelDebugInput--;
   return o;
@@ -1453,7 +2042,7 @@ buildMendelDebugInput() {
 checkMendelDebugInput(api.MendelDebugInput o) {
   buildCounterMendelDebugInput++;
   if (buildCounterMendelDebugInput < 3) {
-    checkUnnamed3123(o.namespacedDebugInput);
+    checkUnnamed3277(o.namespacedDebugInput);
   }
   buildCounterMendelDebugInput--;
 }
@@ -1481,144 +2070,144 @@ checkMoney(api.Money o) {
   buildCounterMoney--;
 }
 
-buildUnnamed3124() {
+buildUnnamed3278() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3124(core.List<core.String> o) {
+checkUnnamed3278(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3125() {
+buildUnnamed3279() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3125(core.List<core.String> o) {
+checkUnnamed3279(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3126() {
+buildUnnamed3280() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed3126(core.List<core.int> o) {
+checkUnnamed3280(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed3127() {
+buildUnnamed3281() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3127(core.List<core.String> o) {
+checkUnnamed3281(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3128() {
+buildUnnamed3282() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3128(core.List<core.String> o) {
+checkUnnamed3282(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3129() {
+buildUnnamed3283() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed3129(core.List<core.int> o) {
+checkUnnamed3283(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed3130() {
+buildUnnamed3284() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3130(core.List<core.String> o) {
+checkUnnamed3284(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3131() {
+buildUnnamed3285() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3131(core.List<core.String> o) {
+checkUnnamed3285(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3132() {
+buildUnnamed3286() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed3132(core.List<core.int> o) {
+checkUnnamed3286(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed3133() {
+buildUnnamed3287() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3133(core.Map<core.String, core.String> o) {
+checkUnnamed3287(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3134() {
+buildUnnamed3288() {
   var o = new core.Map<core.String, core.bool>();
   o["x"] = true;
   o["y"] = true;
   return o;
 }
 
-checkUnnamed3134(core.Map<core.String, core.bool> o) {
+checkUnnamed3288(core.Map<core.String, core.bool> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.isTrue);
   unittest.expect(o["y"], unittest.isTrue);
@@ -1629,20 +2218,20 @@ buildNamespacedDebugInput() {
   var o = new api.NamespacedDebugInput();
   buildCounterNamespacedDebugInput++;
   if (buildCounterNamespacedDebugInput < 3) {
-    o.absolutelyForcedExpNames = buildUnnamed3124();
-    o.absolutelyForcedExpTags = buildUnnamed3125();
-    o.absolutelyForcedExps = buildUnnamed3126();
-    o.conditionallyForcedExpNames = buildUnnamed3127();
-    o.conditionallyForcedExpTags = buildUnnamed3128();
-    o.conditionallyForcedExps = buildUnnamed3129();
+    o.absolutelyForcedExpNames = buildUnnamed3278();
+    o.absolutelyForcedExpTags = buildUnnamed3279();
+    o.absolutelyForcedExps = buildUnnamed3280();
+    o.conditionallyForcedExpNames = buildUnnamed3281();
+    o.conditionallyForcedExpTags = buildUnnamed3282();
+    o.conditionallyForcedExps = buildUnnamed3283();
     o.disableAutomaticEnrollmentSelection = true;
-    o.disableExpNames = buildUnnamed3130();
-    o.disableExpTags = buildUnnamed3131();
-    o.disableExps = buildUnnamed3132();
+    o.disableExpNames = buildUnnamed3284();
+    o.disableExpTags = buildUnnamed3285();
+    o.disableExps = buildUnnamed3286();
     o.disableManualEnrollmentSelection = true;
     o.disableOrganicSelection = true;
-    o.forcedFlags = buildUnnamed3133();
-    o.forcedRollouts = buildUnnamed3134();
+    o.forcedFlags = buildUnnamed3287();
+    o.forcedRollouts = buildUnnamed3288();
   }
   buildCounterNamespacedDebugInput--;
   return o;
@@ -1651,32 +2240,32 @@ buildNamespacedDebugInput() {
 checkNamespacedDebugInput(api.NamespacedDebugInput o) {
   buildCounterNamespacedDebugInput++;
   if (buildCounterNamespacedDebugInput < 3) {
-    checkUnnamed3124(o.absolutelyForcedExpNames);
-    checkUnnamed3125(o.absolutelyForcedExpTags);
-    checkUnnamed3126(o.absolutelyForcedExps);
-    checkUnnamed3127(o.conditionallyForcedExpNames);
-    checkUnnamed3128(o.conditionallyForcedExpTags);
-    checkUnnamed3129(o.conditionallyForcedExps);
+    checkUnnamed3278(o.absolutelyForcedExpNames);
+    checkUnnamed3279(o.absolutelyForcedExpTags);
+    checkUnnamed3280(o.absolutelyForcedExps);
+    checkUnnamed3281(o.conditionallyForcedExpNames);
+    checkUnnamed3282(o.conditionallyForcedExpTags);
+    checkUnnamed3283(o.conditionallyForcedExps);
     unittest.expect(o.disableAutomaticEnrollmentSelection, unittest.isTrue);
-    checkUnnamed3130(o.disableExpNames);
-    checkUnnamed3131(o.disableExpTags);
-    checkUnnamed3132(o.disableExps);
+    checkUnnamed3284(o.disableExpNames);
+    checkUnnamed3285(o.disableExpTags);
+    checkUnnamed3286(o.disableExps);
     unittest.expect(o.disableManualEnrollmentSelection, unittest.isTrue);
     unittest.expect(o.disableOrganicSelection, unittest.isTrue);
-    checkUnnamed3133(o.forcedFlags);
-    checkUnnamed3134(o.forcedRollouts);
+    checkUnnamed3287(o.forcedFlags);
+    checkUnnamed3288(o.forcedRollouts);
   }
   buildCounterNamespacedDebugInput--;
 }
 
-buildUnnamed3135() {
+buildUnnamed3289() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed3135(core.List<core.double> o) {
+checkUnnamed3289(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1687,7 +2276,7 @@ buildNumericBucketingOption() {
   var o = new api.NumericBucketingOption();
   buildCounterNumericBucketingOption++;
   if (buildCounterNumericBucketingOption < 3) {
-    o.bucketBounds = buildUnnamed3135();
+    o.bucketBounds = buildUnnamed3289();
     o.requiresMinMax = true;
   }
   buildCounterNumericBucketingOption--;
@@ -1697,20 +2286,20 @@ buildNumericBucketingOption() {
 checkNumericBucketingOption(api.NumericBucketingOption o) {
   buildCounterNumericBucketingOption++;
   if (buildCounterNumericBucketingOption < 3) {
-    checkUnnamed3135(o.bucketBounds);
+    checkUnnamed3289(o.bucketBounds);
     unittest.expect(o.requiresMinMax, unittest.isTrue);
   }
   buildCounterNumericBucketingOption--;
 }
 
-buildUnnamed3136() {
+buildUnnamed3290() {
   var o = new core.List<api.BucketizedCount>();
   o.add(buildBucketizedCount());
   o.add(buildBucketizedCount());
   return o;
 }
 
-checkUnnamed3136(core.List<api.BucketizedCount> o) {
+checkUnnamed3290(core.List<api.BucketizedCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketizedCount(o[0]);
   checkBucketizedCount(o[1]);
@@ -1721,7 +2310,7 @@ buildNumericBucketingResult() {
   var o = new api.NumericBucketingResult();
   buildCounterNumericBucketingResult++;
   if (buildCounterNumericBucketingResult < 3) {
-    o.counts = buildUnnamed3136();
+    o.counts = buildUnnamed3290();
     o.maxValue = 42.0;
     o.minValue = 42.0;
   }
@@ -1732,34 +2321,34 @@ buildNumericBucketingResult() {
 checkNumericBucketingResult(api.NumericBucketingResult o) {
   buildCounterNumericBucketingResult++;
   if (buildCounterNumericBucketingResult < 3) {
-    checkUnnamed3136(o.counts);
+    checkUnnamed3290(o.counts);
     unittest.expect(o.maxValue, unittest.equals(42.0));
     unittest.expect(o.minValue, unittest.equals(42.0));
   }
   buildCounterNumericBucketingResult--;
 }
 
-buildUnnamed3137() {
+buildUnnamed3291() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3137(core.List<core.String> o) {
+checkUnnamed3291(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3138() {
+buildUnnamed3292() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3138(core.List<core.String> o) {
+checkUnnamed3292(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1770,13 +2359,13 @@ buildPostalAddress() {
   var o = new api.PostalAddress();
   buildCounterPostalAddress++;
   if (buildCounterPostalAddress < 3) {
-    o.addressLines = buildUnnamed3137();
+    o.addressLines = buildUnnamed3291();
     o.administrativeArea = "foo";
     o.languageCode = "foo";
     o.locality = "foo";
     o.organization = "foo";
     o.postalCode = "foo";
-    o.recipients = buildUnnamed3138();
+    o.recipients = buildUnnamed3292();
     o.regionCode = "foo";
     o.revision = 42;
     o.sortingCode = "foo";
@@ -1789,13 +2378,13 @@ buildPostalAddress() {
 checkPostalAddress(api.PostalAddress o) {
   buildCounterPostalAddress++;
   if (buildCounterPostalAddress < 3) {
-    checkUnnamed3137(o.addressLines);
+    checkUnnamed3291(o.addressLines);
     unittest.expect(o.administrativeArea, unittest.equals('foo'));
     unittest.expect(o.languageCode, unittest.equals('foo'));
     unittest.expect(o.locality, unittest.equals('foo'));
     unittest.expect(o.organization, unittest.equals('foo'));
     unittest.expect(o.postalCode, unittest.equals('foo'));
-    checkUnnamed3138(o.recipients);
+    checkUnnamed3292(o.recipients);
     unittest.expect(o.regionCode, unittest.equals('foo'));
     unittest.expect(o.revision, unittest.equals(42));
     unittest.expect(o.sortingCode, unittest.equals('foo'));
@@ -1912,27 +2501,27 @@ checkSearchJobsRequest(api.SearchJobsRequest o) {
   buildCounterSearchJobsRequest--;
 }
 
-buildUnnamed3139() {
+buildUnnamed3293() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed3139(core.List<api.Location> o) {
+checkUnnamed3293(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
 }
 
-buildUnnamed3140() {
+buildUnnamed3294() {
   var o = new core.List<api.MatchingJob>();
   o.add(buildMatchingJob());
   o.add(buildMatchingJob());
   return o;
 }
 
-checkUnnamed3140(core.List<api.MatchingJob> o) {
+checkUnnamed3294(core.List<api.MatchingJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMatchingJob(o[0]);
   checkMatchingJob(o[1]);
@@ -1946,8 +2535,8 @@ buildSearchJobsResponse() {
     o.broadenedQueryJobsCount = 42;
     o.estimatedTotalSize = 42;
     o.histogramResults = buildHistogramResults();
-    o.locationFilters = buildUnnamed3139();
-    o.matchingJobs = buildUnnamed3140();
+    o.locationFilters = buildUnnamed3293();
+    o.matchingJobs = buildUnnamed3294();
     o.metadata = buildResponseMetadata();
     o.nextPageToken = "foo";
     o.spellCorrection = buildSpellingCorrection();
@@ -1963,8 +2552,8 @@ checkSearchJobsResponse(api.SearchJobsResponse o) {
     unittest.expect(o.broadenedQueryJobsCount, unittest.equals(42));
     unittest.expect(o.estimatedTotalSize, unittest.equals(42));
     checkHistogramResults(o.histogramResults);
-    checkUnnamed3139(o.locationFilters);
-    checkUnnamed3140(o.matchingJobs);
+    checkUnnamed3293(o.locationFilters);
+    checkUnnamed3294(o.matchingJobs);
     checkResponseMetadata(o.metadata);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkSpellingCorrection(o.spellCorrection);
@@ -1992,6 +2581,71 @@ checkSpellingCorrection(api.SpellingCorrection o) {
     unittest.expect(o.correctedText, unittest.equals('foo'));
   }
   buildCounterSpellingCorrection--;
+}
+
+buildUnnamed3295() {
+  var o = new core.Map<core.String, core.Object>();
+  o["x"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  o["y"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  return o;
+}
+
+checkUnnamed3295(core.Map<core.String, core.Object> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o["x"]) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1["bool"], unittest.equals(true));
+  unittest.expect(casted1["string"], unittest.equals('foo'));
+  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2["bool"], unittest.equals(true));
+  unittest.expect(casted2["string"], unittest.equals('foo'));
+}
+
+buildUnnamed3296() {
+  var o = new core.List<core.Map<core.String, core.Object>>();
+  o.add(buildUnnamed3295());
+  o.add(buildUnnamed3295());
+  return o;
+}
+
+checkUnnamed3296(core.List<core.Map<core.String, core.Object>> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUnnamed3295(o[0]);
+  checkUnnamed3295(o[1]);
+}
+
+core.int buildCounterStatus = 0;
+buildStatus() {
+  var o = new api.Status();
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    o.code = 42;
+    o.details = buildUnnamed3296();
+    o.message = "foo";
+  }
+  buildCounterStatus--;
+  return o;
+}
+
+checkStatus(api.Status o) {
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    unittest.expect(o.code, unittest.equals(42));
+    checkUnnamed3296(o.details);
+    unittest.expect(o.message, unittest.equals('foo'));
+  }
+  buildCounterStatus--;
 }
 
 core.int buildCounterTimeOfDay = 0;
@@ -2082,14 +2736,14 @@ checkUpdateJobRequest(api.UpdateJobRequest o) {
   buildCounterUpdateJobRequest--;
 }
 
-buildUnnamed3141() {
+buildUnnamed3297() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3141(core.List<core.String> o) {
+checkUnnamed3297(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2296,6 +2950,130 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GoogleCloudTalentV4BatchCreateJobsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4BatchCreateJobsResponse();
+      var od = new api.GoogleCloudTalentV4BatchCreateJobsResponse.fromJson(
+          o.toJson());
+      checkGoogleCloudTalentV4BatchCreateJobsResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4BatchDeleteJobsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4BatchDeleteJobsResponse();
+      var od = new api.GoogleCloudTalentV4BatchDeleteJobsResponse.fromJson(
+          o.toJson());
+      checkGoogleCloudTalentV4BatchDeleteJobsResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4BatchOperationMetadata", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4BatchOperationMetadata();
+      var od = new api.GoogleCloudTalentV4BatchOperationMetadata.fromJson(
+          o.toJson());
+      checkGoogleCloudTalentV4BatchOperationMetadata(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4BatchUpdateJobsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4BatchUpdateJobsResponse();
+      var od = new api.GoogleCloudTalentV4BatchUpdateJobsResponse.fromJson(
+          o.toJson());
+      checkGoogleCloudTalentV4BatchUpdateJobsResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4CompensationInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4CompensationInfo();
+      var od = new api.GoogleCloudTalentV4CompensationInfo.fromJson(o.toJson());
+      checkGoogleCloudTalentV4CompensationInfo(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudTalentV4CompensationInfoCompensationEntry", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4CompensationInfoCompensationEntry();
+      var od =
+          new api.GoogleCloudTalentV4CompensationInfoCompensationEntry.fromJson(
+              o.toJson());
+      checkGoogleCloudTalentV4CompensationInfoCompensationEntry(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudTalentV4CompensationInfoCompensationRange", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4CompensationInfoCompensationRange();
+      var od =
+          new api.GoogleCloudTalentV4CompensationInfoCompensationRange.fromJson(
+              o.toJson());
+      checkGoogleCloudTalentV4CompensationInfoCompensationRange(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4CustomAttribute", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4CustomAttribute();
+      var od = new api.GoogleCloudTalentV4CustomAttribute.fromJson(o.toJson());
+      checkGoogleCloudTalentV4CustomAttribute(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4Job", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4Job();
+      var od = new api.GoogleCloudTalentV4Job.fromJson(o.toJson());
+      checkGoogleCloudTalentV4Job(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4JobApplicationInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4JobApplicationInfo();
+      var od =
+          new api.GoogleCloudTalentV4JobApplicationInfo.fromJson(o.toJson());
+      checkGoogleCloudTalentV4JobApplicationInfo(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4JobDerivedInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4JobDerivedInfo();
+      var od = new api.GoogleCloudTalentV4JobDerivedInfo.fromJson(o.toJson());
+      checkGoogleCloudTalentV4JobDerivedInfo(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4JobProcessingOptions", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4JobProcessingOptions();
+      var od =
+          new api.GoogleCloudTalentV4JobProcessingOptions.fromJson(o.toJson());
+      checkGoogleCloudTalentV4JobProcessingOptions(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4JobResult", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4JobResult();
+      var od = new api.GoogleCloudTalentV4JobResult.fromJson(o.toJson());
+      checkGoogleCloudTalentV4JobResult(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudTalentV4Location", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudTalentV4Location();
+      var od = new api.GoogleCloudTalentV4Location.fromJson(o.toJson());
+      checkGoogleCloudTalentV4Location(od);
+    });
+  });
+
   unittest.group("obj-schema-HistogramFacets", () {
     unittest.test("to-json--from-json", () {
       var o = buildHistogramFacets();
@@ -2496,6 +3274,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-Status", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildStatus();
+      var od = new api.Status.fromJson(o.toJson());
+      checkStatus(od);
+    });
+  });
+
   unittest.group("obj-schema-TimeOfDay", () {
     unittest.test("to-json--from-json", () {
       var o = buildTimeOfDay();
@@ -2533,13 +3319,13 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.JobsApi(mock).projects;
       var arg_name = "foo";
-      var arg_languageCodes = buildUnnamed3141();
       var arg_scope = "foo";
       var arg_companyName = "foo";
-      var arg_pageSize = 42;
-      var arg_query = "foo";
       var arg_languageCode = "foo";
+      var arg_query = "foo";
+      var arg_pageSize = 42;
       var arg_type = "foo";
+      var arg_languageCodes = buildUnnamed3297();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2572,17 +3358,17 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["languageCodes"], unittest.equals(arg_languageCodes));
         unittest.expect(queryMap["scope"].first, unittest.equals(arg_scope));
         unittest.expect(
             queryMap["companyName"].first, unittest.equals(arg_companyName));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
+        unittest.expect(
+            queryMap["languageCodes"], unittest.equals(arg_languageCodes));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2593,13 +3379,13 @@ main() {
       }), true);
       res
           .complete(arg_name,
-              languageCodes: arg_languageCodes,
               scope: arg_scope,
               companyName: arg_companyName,
-              pageSize: arg_pageSize,
-              query: arg_query,
               languageCode: arg_languageCode,
+              query: arg_query,
+              pageSize: arg_pageSize,
               type: arg_type,
+              languageCodes: arg_languageCodes,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCompleteQueryResponse(response);
@@ -2831,9 +3617,9 @@ main() {
       api.ProjectsCompaniesResourceApi res =
           new api.JobsApi(mock).projects.companies;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_requireOpenJobs = true;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2866,12 +3652,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["requireOpenJobs"].first,
             unittest.equals("$arg_requireOpenJobs"));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2882,9 +3668,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               requireOpenJobs: arg_requireOpenJobs,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCompaniesResponse(response);
@@ -3166,9 +3952,9 @@ main() {
       api.ProjectsJobsResourceApi res = new api.JobsApi(mock).projects.jobs;
       var arg_parent = "foo";
       var arg_filter = "foo";
-      var arg_jobView = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_jobView = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3203,11 +3989,11 @@ main() {
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["jobView"].first, unittest.equals(arg_jobView));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["jobView"].first, unittest.equals(arg_jobView));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3219,9 +4005,9 @@ main() {
       res
           .list(arg_parent,
               filter: arg_filter,
-              jobView: arg_jobView,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              jobView: arg_jobView,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListJobsResponse(response);

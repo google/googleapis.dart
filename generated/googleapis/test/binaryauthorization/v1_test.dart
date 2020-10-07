@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2271() {
+buildUnnamed2379() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2271(core.List<core.String> o) {
+checkUnnamed2379(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -70,7 +70,7 @@ buildAdmissionRule() {
   if (buildCounterAdmissionRule < 3) {
     o.enforcementMode = "foo";
     o.evaluationMode = "foo";
-    o.requireAttestationsBy = buildUnnamed2271();
+    o.requireAttestationsBy = buildUnnamed2379();
   }
   buildCounterAdmissionRule--;
   return o;
@@ -81,7 +81,7 @@ checkAdmissionRule(api.AdmissionRule o) {
   if (buildCounterAdmissionRule < 3) {
     unittest.expect(o.enforcementMode, unittest.equals('foo'));
     unittest.expect(o.evaluationMode, unittest.equals('foo'));
-    checkUnnamed2271(o.requireAttestationsBy);
+    checkUnnamed2379(o.requireAttestationsBy);
   }
   buildCounterAdmissionRule--;
 }
@@ -103,6 +103,55 @@ checkAdmissionWhitelistPattern(api.AdmissionWhitelistPattern o) {
     unittest.expect(o.namePattern, unittest.equals('foo'));
   }
   buildCounterAdmissionWhitelistPattern--;
+}
+
+buildUnnamed2380() {
+  var o = new core.List<api.Jwt>();
+  o.add(buildJwt());
+  o.add(buildJwt());
+  return o;
+}
+
+checkUnnamed2380(core.List<api.Jwt> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkJwt(o[0]);
+  checkJwt(o[1]);
+}
+
+buildUnnamed2381() {
+  var o = new core.List<api.Signature>();
+  o.add(buildSignature());
+  o.add(buildSignature());
+  return o;
+}
+
+checkUnnamed2381(core.List<api.Signature> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSignature(o[0]);
+  checkSignature(o[1]);
+}
+
+core.int buildCounterAttestationOccurrence = 0;
+buildAttestationOccurrence() {
+  var o = new api.AttestationOccurrence();
+  buildCounterAttestationOccurrence++;
+  if (buildCounterAttestationOccurrence < 3) {
+    o.jwts = buildUnnamed2380();
+    o.serializedPayload = "foo";
+    o.signatures = buildUnnamed2381();
+  }
+  buildCounterAttestationOccurrence--;
+  return o;
+}
+
+checkAttestationOccurrence(api.AttestationOccurrence o) {
+  buildCounterAttestationOccurrence++;
+  if (buildCounterAttestationOccurrence < 3) {
+    checkUnnamed2380(o.jwts);
+    unittest.expect(o.serializedPayload, unittest.equals('foo'));
+    checkUnnamed2381(o.signatures);
+  }
+  buildCounterAttestationOccurrence--;
 }
 
 core.int buildCounterAttestor = 0;
@@ -155,14 +204,14 @@ checkAttestorPublicKey(api.AttestorPublicKey o) {
   buildCounterAttestorPublicKey--;
 }
 
-buildUnnamed2272() {
+buildUnnamed2382() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2272(core.List<core.String> o) {
+checkUnnamed2382(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -173,8 +222,9 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
+    o.bindingId = "foo";
     o.condition = buildExpr();
-    o.members = buildUnnamed2272();
+    o.members = buildUnnamed2382();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -184,8 +234,9 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
+    unittest.expect(o.bindingId, unittest.equals('foo'));
     checkExpr(o.condition);
-    checkUnnamed2272(o.members);
+    checkUnnamed2382(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -231,14 +282,14 @@ checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-buildUnnamed2273() {
+buildUnnamed2383() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed2273(core.List<api.Binding> o) {
+checkUnnamed2383(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -249,7 +300,7 @@ buildIamPolicy() {
   var o = new api.IamPolicy();
   buildCounterIamPolicy++;
   if (buildCounterIamPolicy < 3) {
-    o.bindings = buildUnnamed2273();
+    o.bindings = buildUnnamed2383();
     o.etag = "foo";
     o.version = 42;
   }
@@ -260,21 +311,40 @@ buildIamPolicy() {
 checkIamPolicy(api.IamPolicy o) {
   buildCounterIamPolicy++;
   if (buildCounterIamPolicy < 3) {
-    checkUnnamed2273(o.bindings);
+    checkUnnamed2383(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterIamPolicy--;
 }
 
-buildUnnamed2274() {
+core.int buildCounterJwt = 0;
+buildJwt() {
+  var o = new api.Jwt();
+  buildCounterJwt++;
+  if (buildCounterJwt < 3) {
+    o.compactJwt = "foo";
+  }
+  buildCounterJwt--;
+  return o;
+}
+
+checkJwt(api.Jwt o) {
+  buildCounterJwt++;
+  if (buildCounterJwt < 3) {
+    unittest.expect(o.compactJwt, unittest.equals('foo'));
+  }
+  buildCounterJwt--;
+}
+
+buildUnnamed2384() {
   var o = new core.List<api.Attestor>();
   o.add(buildAttestor());
   o.add(buildAttestor());
   return o;
 }
 
-checkUnnamed2274(core.List<api.Attestor> o) {
+checkUnnamed2384(core.List<api.Attestor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttestor(o[0]);
   checkAttestor(o[1]);
@@ -285,7 +355,7 @@ buildListAttestorsResponse() {
   var o = new api.ListAttestorsResponse();
   buildCounterListAttestorsResponse++;
   if (buildCounterListAttestorsResponse < 3) {
-    o.attestors = buildUnnamed2274();
+    o.attestors = buildUnnamed2384();
     o.nextPageToken = "foo";
   }
   buildCounterListAttestorsResponse--;
@@ -295,7 +365,7 @@ buildListAttestorsResponse() {
 checkListAttestorsResponse(api.ListAttestorsResponse o) {
   buildCounterListAttestorsResponse++;
   if (buildCounterListAttestorsResponse < 3) {
-    checkUnnamed2274(o.attestors);
+    checkUnnamed2384(o.attestors);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAttestorsResponse--;
@@ -322,27 +392,27 @@ checkPkixPublicKey(api.PkixPublicKey o) {
   buildCounterPkixPublicKey--;
 }
 
-buildUnnamed2275() {
+buildUnnamed2385() {
   var o = new core.List<api.AdmissionWhitelistPattern>();
   o.add(buildAdmissionWhitelistPattern());
   o.add(buildAdmissionWhitelistPattern());
   return o;
 }
 
-checkUnnamed2275(core.List<api.AdmissionWhitelistPattern> o) {
+checkUnnamed2385(core.List<api.AdmissionWhitelistPattern> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmissionWhitelistPattern(o[0]);
   checkAdmissionWhitelistPattern(o[1]);
 }
 
-buildUnnamed2276() {
+buildUnnamed2386() {
   var o = new core.Map<core.String, api.AdmissionRule>();
   o["x"] = buildAdmissionRule();
   o["y"] = buildAdmissionRule();
   return o;
 }
 
-checkUnnamed2276(core.Map<core.String, api.AdmissionRule> o) {
+checkUnnamed2386(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmissionRule(o["x"]);
   checkAdmissionRule(o["y"]);
@@ -353,8 +423,8 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.admissionWhitelistPatterns = buildUnnamed2275();
-    o.clusterAdmissionRules = buildUnnamed2276();
+    o.admissionWhitelistPatterns = buildUnnamed2385();
+    o.clusterAdmissionRules = buildUnnamed2386();
     o.defaultAdmissionRule = buildAdmissionRule();
     o.description = "foo";
     o.globalPolicyEvaluationMode = "foo";
@@ -368,8 +438,8 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed2275(o.admissionWhitelistPatterns);
-    checkUnnamed2276(o.clusterAdmissionRules);
+    checkUnnamed2385(o.admissionWhitelistPatterns);
+    checkUnnamed2386(o.clusterAdmissionRules);
     checkAdmissionRule(o.defaultAdmissionRule);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.globalPolicyEvaluationMode, unittest.equals('foo'));
@@ -398,14 +468,35 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed2277() {
+core.int buildCounterSignature = 0;
+buildSignature() {
+  var o = new api.Signature();
+  buildCounterSignature++;
+  if (buildCounterSignature < 3) {
+    o.publicKeyId = "foo";
+    o.signature = "foo";
+  }
+  buildCounterSignature--;
+  return o;
+}
+
+checkSignature(api.Signature o) {
+  buildCounterSignature++;
+  if (buildCounterSignature < 3) {
+    unittest.expect(o.publicKeyId, unittest.equals('foo'));
+    unittest.expect(o.signature, unittest.equals('foo'));
+  }
+  buildCounterSignature--;
+}
+
+buildUnnamed2387() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2277(core.List<core.String> o) {
+checkUnnamed2387(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -416,7 +507,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed2277();
+    o.permissions = buildUnnamed2387();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -425,19 +516,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed2277(o.permissions);
+    checkUnnamed2387(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed2278() {
+buildUnnamed2388() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2278(core.List<core.String> o) {
+checkUnnamed2388(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -448,7 +539,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed2278();
+    o.permissions = buildUnnamed2388();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -457,19 +548,19 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed2278(o.permissions);
+    checkUnnamed2388(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-buildUnnamed2279() {
+buildUnnamed2389() {
   var o = new core.List<api.AttestorPublicKey>();
   o.add(buildAttestorPublicKey());
   o.add(buildAttestorPublicKey());
   return o;
 }
 
-checkUnnamed2279(core.List<api.AttestorPublicKey> o) {
+checkUnnamed2389(core.List<api.AttestorPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttestorPublicKey(o[0]);
   checkAttestorPublicKey(o[1]);
@@ -482,7 +573,7 @@ buildUserOwnedGrafeasNote() {
   if (buildCounterUserOwnedGrafeasNote < 3) {
     o.delegationServiceAccountEmail = "foo";
     o.noteReference = "foo";
-    o.publicKeys = buildUnnamed2279();
+    o.publicKeys = buildUnnamed2389();
   }
   buildCounterUserOwnedGrafeasNote--;
   return o;
@@ -493,9 +584,55 @@ checkUserOwnedGrafeasNote(api.UserOwnedGrafeasNote o) {
   if (buildCounterUserOwnedGrafeasNote < 3) {
     unittest.expect(o.delegationServiceAccountEmail, unittest.equals('foo'));
     unittest.expect(o.noteReference, unittest.equals('foo'));
-    checkUnnamed2279(o.publicKeys);
+    checkUnnamed2389(o.publicKeys);
   }
   buildCounterUserOwnedGrafeasNote--;
+}
+
+core.int buildCounterValidateAttestationOccurrenceRequest = 0;
+buildValidateAttestationOccurrenceRequest() {
+  var o = new api.ValidateAttestationOccurrenceRequest();
+  buildCounterValidateAttestationOccurrenceRequest++;
+  if (buildCounterValidateAttestationOccurrenceRequest < 3) {
+    o.attestation = buildAttestationOccurrence();
+    o.occurrenceNote = "foo";
+    o.occurrenceResourceUri = "foo";
+  }
+  buildCounterValidateAttestationOccurrenceRequest--;
+  return o;
+}
+
+checkValidateAttestationOccurrenceRequest(
+    api.ValidateAttestationOccurrenceRequest o) {
+  buildCounterValidateAttestationOccurrenceRequest++;
+  if (buildCounterValidateAttestationOccurrenceRequest < 3) {
+    checkAttestationOccurrence(o.attestation);
+    unittest.expect(o.occurrenceNote, unittest.equals('foo'));
+    unittest.expect(o.occurrenceResourceUri, unittest.equals('foo'));
+  }
+  buildCounterValidateAttestationOccurrenceRequest--;
+}
+
+core.int buildCounterValidateAttestationOccurrenceResponse = 0;
+buildValidateAttestationOccurrenceResponse() {
+  var o = new api.ValidateAttestationOccurrenceResponse();
+  buildCounterValidateAttestationOccurrenceResponse++;
+  if (buildCounterValidateAttestationOccurrenceResponse < 3) {
+    o.denialReason = "foo";
+    o.result = "foo";
+  }
+  buildCounterValidateAttestationOccurrenceResponse--;
+  return o;
+}
+
+checkValidateAttestationOccurrenceResponse(
+    api.ValidateAttestationOccurrenceResponse o) {
+  buildCounterValidateAttestationOccurrenceResponse++;
+  if (buildCounterValidateAttestationOccurrenceResponse < 3) {
+    unittest.expect(o.denialReason, unittest.equals('foo'));
+    unittest.expect(o.result, unittest.equals('foo'));
+  }
+  buildCounterValidateAttestationOccurrenceResponse--;
 }
 
 main() {
@@ -512,6 +649,14 @@ main() {
       var o = buildAdmissionWhitelistPattern();
       var od = new api.AdmissionWhitelistPattern.fromJson(o.toJson());
       checkAdmissionWhitelistPattern(od);
+    });
+  });
+
+  unittest.group("obj-schema-AttestationOccurrence", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAttestationOccurrence();
+      var od = new api.AttestationOccurrence.fromJson(o.toJson());
+      checkAttestationOccurrence(od);
     });
   });
 
@@ -563,6 +708,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-Jwt", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildJwt();
+      var od = new api.Jwt.fromJson(o.toJson());
+      checkJwt(od);
+    });
+  });
+
   unittest.group("obj-schema-ListAttestorsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListAttestorsResponse();
@@ -595,6 +748,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-Signature", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSignature();
+      var od = new api.Signature.fromJson(o.toJson());
+      checkSignature(od);
+    });
+  });
+
   unittest.group("obj-schema-TestIamPermissionsRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildTestIamPermissionsRequest();
@@ -616,6 +777,24 @@ main() {
       var o = buildUserOwnedGrafeasNote();
       var od = new api.UserOwnedGrafeasNote.fromJson(o.toJson());
       checkUserOwnedGrafeasNote(od);
+    });
+  });
+
+  unittest.group("obj-schema-ValidateAttestationOccurrenceRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildValidateAttestationOccurrenceRequest();
+      var od =
+          new api.ValidateAttestationOccurrenceRequest.fromJson(o.toJson());
+      checkValidateAttestationOccurrenceRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-ValidateAttestationOccurrenceResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildValidateAttestationOccurrenceResponse();
+      var od =
+          new api.ValidateAttestationOccurrenceResponse.fromJson(o.toJson());
+      checkValidateAttestationOccurrenceResponse(od);
     });
   });
 
@@ -1179,6 +1358,64 @@ main() {
           .update(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAttestor(response);
+      })));
+    });
+
+    unittest.test("method--validateAttestationOccurrence", () {
+      var mock = new HttpServerMock();
+      api.ProjectsAttestorsResourceApi res =
+          new api.BinaryauthorizationApi(mock).projects.attestors;
+      var arg_request = buildValidateAttestationOccurrenceRequest();
+      var arg_attestor = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.ValidateAttestationOccurrenceRequest.fromJson(json);
+        checkValidateAttestationOccurrenceRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildValidateAttestationOccurrenceResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .validateAttestationOccurrence(arg_request, arg_attestor,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkValidateAttestationOccurrenceResponse(response);
       })));
     });
   });

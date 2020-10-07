@@ -56,7 +56,6 @@ buildApk() {
   buildCounterApk++;
   if (buildCounterApk < 3) {
     o.binary = buildApkBinary();
-    o.testBinary = buildApkBinary();
     o.versionCode = 42;
   }
   buildCounterApk--;
@@ -67,7 +66,6 @@ checkApk(api.Apk o) {
   buildCounterApk++;
   if (buildCounterApk < 3) {
     checkApkBinary(o.binary);
-    checkApkBinary(o.testBinary);
     unittest.expect(o.versionCode, unittest.equals(42));
   }
   buildCounterApk--;
@@ -132,14 +130,14 @@ checkApksAddExternallyHostedResponse(api.ApksAddExternallyHostedResponse o) {
   buildCounterApksAddExternallyHostedResponse--;
 }
 
-buildUnnamed1033() {
+buildUnnamed1058() {
   var o = new core.List<api.Apk>();
   o.add(buildApk());
   o.add(buildApk());
   return o;
 }
 
-checkUnnamed1033(core.List<api.Apk> o) {
+checkUnnamed1058(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApk(o[0]);
   checkApk(o[1]);
@@ -150,7 +148,7 @@ buildApksListResponse() {
   var o = new api.ApksListResponse();
   buildCounterApksListResponse++;
   if (buildCounterApksListResponse < 3) {
-    o.apks = buildUnnamed1033();
+    o.apks = buildUnnamed1058();
     o.kind = "foo";
   }
   buildCounterApksListResponse--;
@@ -160,7 +158,7 @@ buildApksListResponse() {
 checkApksListResponse(api.ApksListResponse o) {
   buildCounterApksListResponse++;
   if (buildCounterApksListResponse < 3) {
-    checkUnnamed1033(o.apks);
+    checkUnnamed1058(o.apks);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterApksListResponse--;
@@ -235,14 +233,14 @@ checkBundle(api.Bundle o) {
   buildCounterBundle--;
 }
 
-buildUnnamed1034() {
+buildUnnamed1059() {
   var o = new core.List<api.Bundle>();
   o.add(buildBundle());
   o.add(buildBundle());
   return o;
 }
 
-checkUnnamed1034(core.List<api.Bundle> o) {
+checkUnnamed1059(core.List<api.Bundle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBundle(o[0]);
   checkBundle(o[1]);
@@ -253,7 +251,7 @@ buildBundlesListResponse() {
   var o = new api.BundlesListResponse();
   buildCounterBundlesListResponse++;
   if (buildCounterBundlesListResponse < 3) {
-    o.bundles = buildUnnamed1034();
+    o.bundles = buildUnnamed1059();
     o.kind = "foo";
   }
   buildCounterBundlesListResponse--;
@@ -263,7 +261,7 @@ buildBundlesListResponse() {
 checkBundlesListResponse(api.BundlesListResponse o) {
   buildCounterBundlesListResponse++;
   if (buildCounterBundlesListResponse < 3) {
-    checkUnnamed1034(o.bundles);
+    checkUnnamed1059(o.bundles);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBundlesListResponse--;
@@ -290,76 +288,14 @@ checkComment(api.Comment o) {
   buildCounterComment--;
 }
 
-buildUnnamed1035() {
-  var o = new core.List<api.ModRange>();
-  o.add(buildModRange());
-  o.add(buildModRange());
-  return o;
-}
-
-checkUnnamed1035(core.List<api.ModRange> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkModRange(o[0]);
-  checkModRange(o[1]);
-}
-
-buildUnnamed1036() {
-  var o = new core.List<api.StratifiedSampling>();
-  o.add(buildStratifiedSampling());
-  o.add(buildStratifiedSampling());
-  return o;
-}
-
-checkUnnamed1036(core.List<api.StratifiedSampling> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkStratifiedSampling(o[0]);
-  checkStratifiedSampling(o[1]);
-}
-
-buildUnnamed1037() {
+buildUnnamed1060() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1037(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterControl = 0;
-buildControl() {
-  var o = new api.Control();
-  buildCounterControl++;
-  if (buildCounterControl < 3) {
-    o.modRanges = buildUnnamed1035();
-    o.stratifiedSamplings = buildUnnamed1036();
-    o.versionCodes = buildUnnamed1037();
-  }
-  buildCounterControl--;
-  return o;
-}
-
-checkControl(api.Control o) {
-  buildCounterControl++;
-  if (buildCounterControl < 3) {
-    checkUnnamed1035(o.modRanges);
-    checkUnnamed1036(o.stratifiedSamplings);
-    checkUnnamed1037(o.versionCodes);
-  }
-  buildCounterControl--;
-}
-
-buildUnnamed1038() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1038(core.List<core.String> o) {
+checkUnnamed1060(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -370,7 +306,7 @@ buildCountryTargeting() {
   var o = new api.CountryTargeting();
   buildCounterCountryTargeting++;
   if (buildCounterCountryTargeting < 3) {
-    o.countries = buildUnnamed1038();
+    o.countries = buildUnnamed1060();
     o.includeRestOfWorld = true;
   }
   buildCounterCountryTargeting--;
@@ -380,7 +316,7 @@ buildCountryTargeting() {
 checkCountryTargeting(api.CountryTargeting o) {
   buildCounterCountryTargeting++;
   if (buildCounterCountryTargeting < 3) {
-    checkUnnamed1038(o.countries);
+    checkUnnamed1060(o.countries);
     unittest.expect(o.includeRestOfWorld, unittest.isTrue);
   }
   buildCounterCountryTargeting--;
@@ -484,27 +420,27 @@ checkDeviceMetadata(api.DeviceMetadata o) {
   buildCounterDeviceMetadata--;
 }
 
-buildUnnamed1039() {
+buildUnnamed1061() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1039(core.List<core.String> o) {
+checkUnnamed1061(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1040() {
+buildUnnamed1062() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1040(core.List<core.String> o) {
+checkUnnamed1062(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -516,8 +452,8 @@ buildDeviceSpec() {
   buildCounterDeviceSpec++;
   if (buildCounterDeviceSpec < 3) {
     o.screenDensity = 42;
-    o.supportedAbis = buildUnnamed1039();
-    o.supportedLocales = buildUnnamed1040();
+    o.supportedAbis = buildUnnamed1061();
+    o.supportedLocales = buildUnnamed1062();
   }
   buildCounterDeviceSpec--;
   return o;
@@ -527,8 +463,8 @@ checkDeviceSpec(api.DeviceSpec o) {
   buildCounterDeviceSpec++;
   if (buildCounterDeviceSpec < 3) {
     unittest.expect(o.screenDensity, unittest.equals(42));
-    checkUnnamed1039(o.supportedAbis);
-    checkUnnamed1040(o.supportedLocales);
+    checkUnnamed1061(o.supportedAbis);
+    checkUnnamed1062(o.supportedLocales);
   }
   buildCounterDeviceSpec--;
 }
@@ -573,56 +509,56 @@ checkExpansionFilesUploadResponse(api.ExpansionFilesUploadResponse o) {
   buildCounterExpansionFilesUploadResponse--;
 }
 
-buildUnnamed1041() {
+buildUnnamed1063() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1041(core.List<core.String> o) {
+checkUnnamed1063(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1042() {
+buildUnnamed1064() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1042(core.List<core.String> o) {
+checkUnnamed1064(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1043() {
+buildUnnamed1065() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1043(core.List<core.String> o) {
+checkUnnamed1065(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1044() {
-  var o = new core.List<api.ExternallyHostedApkUsesPermission>();
-  o.add(buildExternallyHostedApkUsesPermission());
-  o.add(buildExternallyHostedApkUsesPermission());
+buildUnnamed1066() {
+  var o = new core.List<api.UsesPermission>();
+  o.add(buildUsesPermission());
+  o.add(buildUsesPermission());
   return o;
 }
 
-checkUnnamed1044(core.List<api.ExternallyHostedApkUsesPermission> o) {
+checkUnnamed1066(core.List<api.UsesPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExternallyHostedApkUsesPermission(o[0]);
-  checkExternallyHostedApkUsesPermission(o[1]);
+  checkUsesPermission(o[0]);
+  checkUsesPermission(o[1]);
 }
 
 core.int buildCounterExternallyHostedApk = 0;
@@ -631,7 +567,7 @@ buildExternallyHostedApk() {
   buildCounterExternallyHostedApk++;
   if (buildCounterExternallyHostedApk < 3) {
     o.applicationLabel = "foo";
-    o.certificateBase64s = buildUnnamed1041();
+    o.certificateBase64s = buildUnnamed1063();
     o.externallyHostedUrl = "foo";
     o.fileSha1Base64 = "foo";
     o.fileSha256Base64 = "foo";
@@ -639,10 +575,10 @@ buildExternallyHostedApk() {
     o.iconBase64 = "foo";
     o.maximumSdk = 42;
     o.minimumSdk = 42;
-    o.nativeCodes = buildUnnamed1042();
+    o.nativeCodes = buildUnnamed1064();
     o.packageName = "foo";
-    o.usesFeatures = buildUnnamed1043();
-    o.usesPermissions = buildUnnamed1044();
+    o.usesFeatures = buildUnnamed1065();
+    o.usesPermissions = buildUnnamed1066();
     o.versionCode = 42;
     o.versionName = "foo";
   }
@@ -654,7 +590,7 @@ checkExternallyHostedApk(api.ExternallyHostedApk o) {
   buildCounterExternallyHostedApk++;
   if (buildCounterExternallyHostedApk < 3) {
     unittest.expect(o.applicationLabel, unittest.equals('foo'));
-    checkUnnamed1041(o.certificateBase64s);
+    checkUnnamed1063(o.certificateBase64s);
     unittest.expect(o.externallyHostedUrl, unittest.equals('foo'));
     unittest.expect(o.fileSha1Base64, unittest.equals('foo'));
     unittest.expect(o.fileSha256Base64, unittest.equals('foo'));
@@ -662,36 +598,14 @@ checkExternallyHostedApk(api.ExternallyHostedApk o) {
     unittest.expect(o.iconBase64, unittest.equals('foo'));
     unittest.expect(o.maximumSdk, unittest.equals(42));
     unittest.expect(o.minimumSdk, unittest.equals(42));
-    checkUnnamed1042(o.nativeCodes);
+    checkUnnamed1064(o.nativeCodes);
     unittest.expect(o.packageName, unittest.equals('foo'));
-    checkUnnamed1043(o.usesFeatures);
-    checkUnnamed1044(o.usesPermissions);
+    checkUnnamed1065(o.usesFeatures);
+    checkUnnamed1066(o.usesPermissions);
     unittest.expect(o.versionCode, unittest.equals(42));
     unittest.expect(o.versionName, unittest.equals('foo'));
   }
   buildCounterExternallyHostedApk--;
-}
-
-core.int buildCounterExternallyHostedApkUsesPermission = 0;
-buildExternallyHostedApkUsesPermission() {
-  var o = new api.ExternallyHostedApkUsesPermission();
-  buildCounterExternallyHostedApkUsesPermission++;
-  if (buildCounterExternallyHostedApkUsesPermission < 3) {
-    o.maxSdkVersion = 42;
-    o.name = "foo";
-  }
-  buildCounterExternallyHostedApkUsesPermission--;
-  return o;
-}
-
-checkExternallyHostedApkUsesPermission(
-    api.ExternallyHostedApkUsesPermission o) {
-  buildCounterExternallyHostedApkUsesPermission++;
-  if (buildCounterExternallyHostedApkUsesPermission < 3) {
-    unittest.expect(o.maxSdkVersion, unittest.equals(42));
-    unittest.expect(o.name, unittest.equals('foo'));
-  }
-  buildCounterExternallyHostedApkUsesPermission--;
 }
 
 core.int buildCounterImage = 0;
@@ -719,14 +633,14 @@ checkImage(api.Image o) {
   buildCounterImage--;
 }
 
-buildUnnamed1045() {
+buildUnnamed1067() {
   var o = new core.List<api.Image>();
   o.add(buildImage());
   o.add(buildImage());
   return o;
 }
 
-checkUnnamed1045(core.List<api.Image> o) {
+checkUnnamed1067(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImage(o[0]);
   checkImage(o[1]);
@@ -737,7 +651,7 @@ buildImagesDeleteAllResponse() {
   var o = new api.ImagesDeleteAllResponse();
   buildCounterImagesDeleteAllResponse++;
   if (buildCounterImagesDeleteAllResponse < 3) {
-    o.deleted = buildUnnamed1045();
+    o.deleted = buildUnnamed1067();
   }
   buildCounterImagesDeleteAllResponse--;
   return o;
@@ -746,19 +660,19 @@ buildImagesDeleteAllResponse() {
 checkImagesDeleteAllResponse(api.ImagesDeleteAllResponse o) {
   buildCounterImagesDeleteAllResponse++;
   if (buildCounterImagesDeleteAllResponse < 3) {
-    checkUnnamed1045(o.deleted);
+    checkUnnamed1067(o.deleted);
   }
   buildCounterImagesDeleteAllResponse--;
 }
 
-buildUnnamed1046() {
+buildUnnamed1068() {
   var o = new core.List<api.Image>();
   o.add(buildImage());
   o.add(buildImage());
   return o;
 }
 
-checkUnnamed1046(core.List<api.Image> o) {
+checkUnnamed1068(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImage(o[0]);
   checkImage(o[1]);
@@ -769,7 +683,7 @@ buildImagesListResponse() {
   var o = new api.ImagesListResponse();
   buildCounterImagesListResponse++;
   if (buildCounterImagesListResponse < 3) {
-    o.images = buildUnnamed1046();
+    o.images = buildUnnamed1068();
   }
   buildCounterImagesListResponse--;
   return o;
@@ -778,7 +692,7 @@ buildImagesListResponse() {
 checkImagesListResponse(api.ImagesListResponse o) {
   buildCounterImagesListResponse++;
   if (buildCounterImagesListResponse < 3) {
-    checkUnnamed1046(o.images);
+    checkUnnamed1068(o.images);
   }
   buildCounterImagesListResponse--;
 }
@@ -802,27 +716,27 @@ checkImagesUploadResponse(api.ImagesUploadResponse o) {
   buildCounterImagesUploadResponse--;
 }
 
-buildUnnamed1047() {
+buildUnnamed1069() {
   var o = new core.Map<core.String, api.InAppProductListing>();
   o["x"] = buildInAppProductListing();
   o["y"] = buildInAppProductListing();
   return o;
 }
 
-checkUnnamed1047(core.Map<core.String, api.InAppProductListing> o) {
+checkUnnamed1069(core.Map<core.String, api.InAppProductListing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInAppProductListing(o["x"]);
   checkInAppProductListing(o["y"]);
 }
 
-buildUnnamed1048() {
+buildUnnamed1070() {
   var o = new core.Map<core.String, api.Price>();
   o["x"] = buildPrice();
   o["y"] = buildPrice();
   return o;
 }
 
-checkUnnamed1048(core.Map<core.String, api.Price> o) {
+checkUnnamed1070(core.Map<core.String, api.Price> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPrice(o["x"]);
   checkPrice(o["y"]);
@@ -836,9 +750,9 @@ buildInAppProduct() {
     o.defaultLanguage = "foo";
     o.defaultPrice = buildPrice();
     o.gracePeriod = "foo";
-    o.listings = buildUnnamed1047();
+    o.listings = buildUnnamed1069();
     o.packageName = "foo";
-    o.prices = buildUnnamed1048();
+    o.prices = buildUnnamed1070();
     o.purchaseType = "foo";
     o.sku = "foo";
     o.status = "foo";
@@ -855,9 +769,9 @@ checkInAppProduct(api.InAppProduct o) {
     unittest.expect(o.defaultLanguage, unittest.equals('foo'));
     checkPrice(o.defaultPrice);
     unittest.expect(o.gracePeriod, unittest.equals('foo'));
-    checkUnnamed1047(o.listings);
+    checkUnnamed1069(o.listings);
     unittest.expect(o.packageName, unittest.equals('foo'));
-    checkUnnamed1048(o.prices);
+    checkUnnamed1070(o.prices);
     unittest.expect(o.purchaseType, unittest.equals('foo'));
     unittest.expect(o.sku, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -867,11 +781,25 @@ checkInAppProduct(api.InAppProduct o) {
   buildCounterInAppProduct--;
 }
 
+buildUnnamed1071() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1071(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterInAppProductListing = 0;
 buildInAppProductListing() {
   var o = new api.InAppProductListing();
   buildCounterInAppProductListing++;
   if (buildCounterInAppProductListing < 3) {
+    o.benefits = buildUnnamed1071();
     o.description = "foo";
     o.title = "foo";
   }
@@ -882,20 +810,21 @@ buildInAppProductListing() {
 checkInAppProductListing(api.InAppProductListing o) {
   buildCounterInAppProductListing++;
   if (buildCounterInAppProductListing < 3) {
+    checkUnnamed1071(o.benefits);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterInAppProductListing--;
 }
 
-buildUnnamed1049() {
+buildUnnamed1072() {
   var o = new core.List<api.InAppProduct>();
   o.add(buildInAppProduct());
   o.add(buildInAppProduct());
   return o;
 }
 
-checkUnnamed1049(core.List<api.InAppProduct> o) {
+checkUnnamed1072(core.List<api.InAppProduct> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInAppProduct(o[0]);
   checkInAppProduct(o[1]);
@@ -906,7 +835,7 @@ buildInappproductsListResponse() {
   var o = new api.InappproductsListResponse();
   buildCounterInappproductsListResponse++;
   if (buildCounterInappproductsListResponse < 3) {
-    o.inappproduct = buildUnnamed1049();
+    o.inappproduct = buildUnnamed1072();
     o.kind = "foo";
     o.pageInfo = buildPageInfo();
     o.tokenPagination = buildTokenPagination();
@@ -918,7 +847,7 @@ buildInappproductsListResponse() {
 checkInappproductsListResponse(api.InappproductsListResponse o) {
   buildCounterInappproductsListResponse++;
   if (buildCounterInappproductsListResponse < 3) {
-    checkUnnamed1049(o.inappproduct);
+    checkUnnamed1072(o.inappproduct);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkPageInfo(o.pageInfo);
     checkTokenPagination(o.tokenPagination);
@@ -1001,14 +930,14 @@ checkListing(api.Listing o) {
   buildCounterListing--;
 }
 
-buildUnnamed1050() {
+buildUnnamed1073() {
   var o = new core.List<api.Listing>();
   o.add(buildListing());
   o.add(buildListing());
   return o;
 }
 
-checkUnnamed1050(core.List<api.Listing> o) {
+checkUnnamed1073(core.List<api.Listing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkListing(o[0]);
   checkListing(o[1]);
@@ -1020,7 +949,7 @@ buildListingsListResponse() {
   buildCounterListingsListResponse++;
   if (buildCounterListingsListResponse < 3) {
     o.kind = "foo";
-    o.listings = buildUnnamed1050();
+    o.listings = buildUnnamed1073();
   }
   buildCounterListingsListResponse--;
   return o;
@@ -1030,7 +959,7 @@ checkListingsListResponse(api.ListingsListResponse o) {
   buildCounterListingsListResponse++;
   if (buildCounterListingsListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1050(o.listings);
+    checkUnnamed1073(o.listings);
   }
   buildCounterListingsListResponse--;
 }
@@ -1054,27 +983,6 @@ checkLocalizedText(api.LocalizedText o) {
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterLocalizedText--;
-}
-
-core.int buildCounterModRange = 0;
-buildModRange() {
-  var o = new api.ModRange();
-  buildCounterModRange++;
-  if (buildCounterModRange < 3) {
-    o.end = "foo";
-    o.start = "foo";
-  }
-  buildCounterModRange--;
-  return o;
-}
-
-checkModRange(api.ModRange o) {
-  buildCounterModRange++;
-  if (buildCounterModRange < 3) {
-    unittest.expect(o.end, unittest.equals('foo'));
-    unittest.expect(o.start, unittest.equals('foo'));
-  }
-  buildCounterModRange--;
 }
 
 core.int buildCounterPageInfo = 0;
@@ -1130,6 +1038,8 @@ buildProductPurchase() {
     o.consumptionState = 42;
     o.developerPayload = "foo";
     o.kind = "foo";
+    o.obfuscatedExternalAccountId = "foo";
+    o.obfuscatedExternalProfileId = "foo";
     o.orderId = "foo";
     o.productId = "foo";
     o.purchaseState = 42;
@@ -1137,6 +1047,7 @@ buildProductPurchase() {
     o.purchaseToken = "foo";
     o.purchaseType = 42;
     o.quantity = 42;
+    o.regionCode = "foo";
   }
   buildCounterProductPurchase--;
   return o;
@@ -1149,6 +1060,8 @@ checkProductPurchase(api.ProductPurchase o) {
     unittest.expect(o.consumptionState, unittest.equals(42));
     unittest.expect(o.developerPayload, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.obfuscatedExternalAccountId, unittest.equals('foo'));
+    unittest.expect(o.obfuscatedExternalProfileId, unittest.equals('foo'));
     unittest.expect(o.orderId, unittest.equals('foo'));
     unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.purchaseState, unittest.equals(42));
@@ -1156,6 +1069,7 @@ checkProductPurchase(api.ProductPurchase o) {
     unittest.expect(o.purchaseToken, unittest.equals('foo'));
     unittest.expect(o.purchaseType, unittest.equals(42));
     unittest.expect(o.quantity, unittest.equals(42));
+    unittest.expect(o.regionCode, unittest.equals('foo'));
   }
   buildCounterProductPurchase--;
 }
@@ -1180,14 +1094,14 @@ checkProductPurchasesAcknowledgeRequest(
   buildCounterProductPurchasesAcknowledgeRequest--;
 }
 
-buildUnnamed1051() {
+buildUnnamed1074() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed1051(core.List<api.Comment> o) {
+checkUnnamed1074(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -1199,7 +1113,7 @@ buildReview() {
   buildCounterReview++;
   if (buildCounterReview < 3) {
     o.authorName = "foo";
-    o.comments = buildUnnamed1051();
+    o.comments = buildUnnamed1074();
     o.reviewId = "foo";
   }
   buildCounterReview--;
@@ -1210,7 +1124,7 @@ checkReview(api.Review o) {
   buildCounterReview++;
   if (buildCounterReview < 3) {
     unittest.expect(o.authorName, unittest.equals('foo'));
-    checkUnnamed1051(o.comments);
+    checkUnnamed1074(o.comments);
     unittest.expect(o.reviewId, unittest.equals('foo'));
   }
   buildCounterReview--;
@@ -1237,14 +1151,14 @@ checkReviewReplyResult(api.ReviewReplyResult o) {
   buildCounterReviewReplyResult--;
 }
 
-buildUnnamed1052() {
+buildUnnamed1075() {
   var o = new core.List<api.Review>();
   o.add(buildReview());
   o.add(buildReview());
   return o;
 }
 
-checkUnnamed1052(core.List<api.Review> o) {
+checkUnnamed1075(core.List<api.Review> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReview(o[0]);
   checkReview(o[1]);
@@ -1256,7 +1170,7 @@ buildReviewsListResponse() {
   buildCounterReviewsListResponse++;
   if (buildCounterReviewsListResponse < 3) {
     o.pageInfo = buildPageInfo();
-    o.reviews = buildUnnamed1052();
+    o.reviews = buildUnnamed1075();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterReviewsListResponse--;
@@ -1267,7 +1181,7 @@ checkReviewsListResponse(api.ReviewsListResponse o) {
   buildCounterReviewsListResponse++;
   if (buildCounterReviewsListResponse < 3) {
     checkPageInfo(o.pageInfo);
-    checkUnnamed1052(o.reviews);
+    checkUnnamed1075(o.reviews);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterReviewsListResponse--;
@@ -1309,112 +1223,6 @@ checkReviewsReplyResponse(api.ReviewsReplyResponse o) {
     checkReviewReplyResult(o.result);
   }
   buildCounterReviewsReplyResponse--;
-}
-
-buildUnnamed1053() {
-  var o = new core.List<api.ModRange>();
-  o.add(buildModRange());
-  o.add(buildModRange());
-  return o;
-}
-
-checkUnnamed1053(core.List<api.ModRange> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkModRange(o[0]);
-  checkModRange(o[1]);
-}
-
-buildUnnamed1054() {
-  var o = new core.List<api.StratifiedSampling>();
-  o.add(buildStratifiedSampling());
-  o.add(buildStratifiedSampling());
-  return o;
-}
-
-checkUnnamed1054(core.List<api.StratifiedSampling> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkStratifiedSampling(o[0]);
-  checkStratifiedSampling(o[1]);
-}
-
-core.int buildCounterSampling = 0;
-buildSampling() {
-  var o = new api.Sampling();
-  buildCounterSampling++;
-  if (buildCounterSampling < 3) {
-    o.modRanges = buildUnnamed1053();
-    o.modulus = "foo";
-    o.salt = 42;
-    o.stratifiedSamplings = buildUnnamed1054();
-    o.useAndroidId = true;
-  }
-  buildCounterSampling--;
-  return o;
-}
-
-checkSampling(api.Sampling o) {
-  buildCounterSampling++;
-  if (buildCounterSampling < 3) {
-    checkUnnamed1053(o.modRanges);
-    unittest.expect(o.modulus, unittest.equals('foo'));
-    unittest.expect(o.salt, unittest.equals(42));
-    checkUnnamed1054(o.stratifiedSamplings);
-    unittest.expect(o.useAndroidId, unittest.isTrue);
-  }
-  buildCounterSampling--;
-}
-
-buildUnnamed1055() {
-  var o = new core.List<api.ModRange>();
-  o.add(buildModRange());
-  o.add(buildModRange());
-  return o;
-}
-
-checkUnnamed1055(core.List<api.ModRange> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkModRange(o[0]);
-  checkModRange(o[1]);
-}
-
-core.int buildCounterStratifiedSampling = 0;
-buildStratifiedSampling() {
-  var o = new api.StratifiedSampling();
-  buildCounterStratifiedSampling++;
-  if (buildCounterStratifiedSampling < 3) {
-    o.modRanges = buildUnnamed1055();
-    o.stratum = buildStratum();
-  }
-  buildCounterStratifiedSampling--;
-  return o;
-}
-
-checkStratifiedSampling(api.StratifiedSampling o) {
-  buildCounterStratifiedSampling++;
-  if (buildCounterStratifiedSampling < 3) {
-    checkUnnamed1055(o.modRanges);
-    checkStratum(o.stratum);
-  }
-  buildCounterStratifiedSampling--;
-}
-
-core.int buildCounterStratum = 0;
-buildStratum() {
-  var o = new api.Stratum();
-  buildCounterStratum++;
-  if (buildCounterStratum < 3) {
-    o.brand = "foo";
-  }
-  buildCounterStratum--;
-  return o;
-}
-
-checkStratum(api.Stratum o) {
-  buildCounterStratum++;
-  if (buildCounterStratum < 3) {
-    unittest.expect(o.brand, unittest.equals('foo'));
-  }
-  buildCounterStratum--;
 }
 
 core.int buildCounterSubscriptionCancelSurveyResult = 0;
@@ -1500,6 +1308,8 @@ buildSubscriptionPurchase() {
     o.introductoryPriceInfo = buildIntroductoryPriceInfo();
     o.kind = "foo";
     o.linkedPurchaseToken = "foo";
+    o.obfuscatedExternalAccountId = "foo";
+    o.obfuscatedExternalProfileId = "foo";
     o.orderId = "foo";
     o.paymentState = 42;
     o.priceAmountMicros = "foo";
@@ -1535,6 +1345,8 @@ checkSubscriptionPurchase(api.SubscriptionPurchase o) {
     checkIntroductoryPriceInfo(o.introductoryPriceInfo);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.linkedPurchaseToken, unittest.equals('foo'));
+    unittest.expect(o.obfuscatedExternalAccountId, unittest.equals('foo'));
+    unittest.expect(o.obfuscatedExternalProfileId, unittest.equals('foo'));
     unittest.expect(o.orderId, unittest.equals('foo'));
     unittest.expect(o.paymentState, unittest.equals(42));
     unittest.expect(o.priceAmountMicros, unittest.equals('foo'));
@@ -1611,104 +1423,46 @@ checkSubscriptionPurchasesDeferResponse(
   buildCounterSubscriptionPurchasesDeferResponse--;
 }
 
-core.int buildCounterSystemApkVariantsCreateRequest = 0;
-buildSystemApkVariantsCreateRequest() {
-  var o = new api.SystemApkVariantsCreateRequest();
-  buildCounterSystemApkVariantsCreateRequest++;
-  if (buildCounterSystemApkVariantsCreateRequest < 3) {
-    o.deviceSpec = buildDeviceSpec();
-  }
-  buildCounterSystemApkVariantsCreateRequest--;
-  return o;
-}
-
-checkSystemApkVariantsCreateRequest(api.SystemApkVariantsCreateRequest o) {
-  buildCounterSystemApkVariantsCreateRequest++;
-  if (buildCounterSystemApkVariantsCreateRequest < 3) {
-    checkDeviceSpec(o.deviceSpec);
-  }
-  buildCounterSystemApkVariantsCreateRequest--;
-}
-
-buildUnnamed1056() {
+buildUnnamed1076() {
   var o = new core.List<api.Variant>();
   o.add(buildVariant());
   o.add(buildVariant());
   return o;
 }
 
-checkUnnamed1056(core.List<api.Variant> o) {
+checkUnnamed1076(core.List<api.Variant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariant(o[0]);
   checkVariant(o[1]);
 }
 
-core.int buildCounterSystemApkVariantsListResponse = 0;
-buildSystemApkVariantsListResponse() {
-  var o = new api.SystemApkVariantsListResponse();
-  buildCounterSystemApkVariantsListResponse++;
-  if (buildCounterSystemApkVariantsListResponse < 3) {
-    o.variants = buildUnnamed1056();
+core.int buildCounterSystemApksListResponse = 0;
+buildSystemApksListResponse() {
+  var o = new api.SystemApksListResponse();
+  buildCounterSystemApksListResponse++;
+  if (buildCounterSystemApksListResponse < 3) {
+    o.variants = buildUnnamed1076();
   }
-  buildCounterSystemApkVariantsListResponse--;
+  buildCounterSystemApksListResponse--;
   return o;
 }
 
-checkSystemApkVariantsListResponse(api.SystemApkVariantsListResponse o) {
-  buildCounterSystemApkVariantsListResponse++;
-  if (buildCounterSystemApkVariantsListResponse < 3) {
-    checkUnnamed1056(o.variants);
+checkSystemApksListResponse(api.SystemApksListResponse o) {
+  buildCounterSystemApksListResponse++;
+  if (buildCounterSystemApksListResponse < 3) {
+    checkUnnamed1076(o.variants);
   }
-  buildCounterSystemApkVariantsListResponse--;
+  buildCounterSystemApksListResponse--;
 }
 
-buildUnnamed1057() {
+buildUnnamed1077() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1057(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed1058() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1058(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed1059() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1059(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed1060() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1060(core.List<core.String> o) {
+checkUnnamed1077(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1719,10 +1473,7 @@ buildTesters() {
   var o = new api.Testers();
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    o.autoEnrolledAndroidGroups = buildUnnamed1057();
-    o.autoEnrolledGoogleGroups = buildUnnamed1058();
-    o.excludedGoogleGroups = buildUnnamed1059();
-    o.googleGroups = buildUnnamed1060();
+    o.googleGroups = buildUnnamed1077();
   }
   buildCounterTesters--;
   return o;
@@ -1731,10 +1482,7 @@ buildTesters() {
 checkTesters(api.Testers o) {
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    checkUnnamed1057(o.autoEnrolledAndroidGroups);
-    checkUnnamed1058(o.autoEnrolledGoogleGroups);
-    checkUnnamed1059(o.excludedGoogleGroups);
-    checkUnnamed1060(o.googleGroups);
+    checkUnnamed1077(o.googleGroups);
   }
   buildCounterTesters--;
 }
@@ -1781,14 +1529,14 @@ checkTokenPagination(api.TokenPagination o) {
   buildCounterTokenPagination--;
 }
 
-buildUnnamed1061() {
+buildUnnamed1078() {
   var o = new core.List<api.TrackRelease>();
   o.add(buildTrackRelease());
   o.add(buildTrackRelease());
   return o;
 }
 
-checkUnnamed1061(core.List<api.TrackRelease> o) {
+checkUnnamed1078(core.List<api.TrackRelease> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrackRelease(o[0]);
   checkTrackRelease(o[1]);
@@ -1799,7 +1547,7 @@ buildTrack() {
   var o = new api.Track();
   buildCounterTrack++;
   if (buildCounterTrack < 3) {
-    o.releases = buildUnnamed1061();
+    o.releases = buildUnnamed1078();
     o.track = "foo";
   }
   buildCounterTrack--;
@@ -1809,59 +1557,33 @@ buildTrack() {
 checkTrack(api.Track o) {
   buildCounterTrack++;
   if (buildCounterTrack < 3) {
-    checkUnnamed1061(o.releases);
+    checkUnnamed1078(o.releases);
     unittest.expect(o.track, unittest.equals('foo'));
   }
   buildCounterTrack--;
 }
 
-buildUnnamed1062() {
-  var o = new core.List<api.Control>();
-  o.add(buildControl());
-  o.add(buildControl());
-  return o;
-}
-
-checkUnnamed1062(core.List<api.Control> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkControl(o[0]);
-  checkControl(o[1]);
-}
-
-buildUnnamed1063() {
-  var o = new core.List<api.TrackReleasePin>();
-  o.add(buildTrackReleasePin());
-  o.add(buildTrackReleasePin());
-  return o;
-}
-
-checkUnnamed1063(core.List<api.TrackReleasePin> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkTrackReleasePin(o[0]);
-  checkTrackReleasePin(o[1]);
-}
-
-buildUnnamed1064() {
+buildUnnamed1079() {
   var o = new core.List<api.LocalizedText>();
   o.add(buildLocalizedText());
   o.add(buildLocalizedText());
   return o;
 }
 
-checkUnnamed1064(core.List<api.LocalizedText> o) {
+checkUnnamed1079(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedText(o[0]);
   checkLocalizedText(o[1]);
 }
 
-buildUnnamed1065() {
+buildUnnamed1080() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1065(core.List<core.String> o) {
+checkUnnamed1080(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1872,17 +1594,13 @@ buildTrackRelease() {
   var o = new api.TrackRelease();
   buildCounterTrackRelease++;
   if (buildCounterTrackRelease < 3) {
-    o.controls = buildUnnamed1062();
     o.countryTargeting = buildCountryTargeting();
     o.inAppUpdatePriority = 42;
     o.name = "foo";
-    o.pinnedVersions = buildUnnamed1063();
-    o.releaseNotes = buildUnnamed1064();
-    o.rollbackEnabled = true;
-    o.sampling = buildSampling();
+    o.releaseNotes = buildUnnamed1079();
     o.status = "foo";
     o.userFraction = 42.0;
-    o.versionCodes = buildUnnamed1065();
+    o.versionCodes = buildUnnamed1080();
   }
   buildCounterTrackRelease--;
   return o;
@@ -1891,177 +1609,25 @@ buildTrackRelease() {
 checkTrackRelease(api.TrackRelease o) {
   buildCounterTrackRelease++;
   if (buildCounterTrackRelease < 3) {
-    checkUnnamed1062(o.controls);
     checkCountryTargeting(o.countryTargeting);
     unittest.expect(o.inAppUpdatePriority, unittest.equals(42));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1063(o.pinnedVersions);
-    checkUnnamed1064(o.releaseNotes);
-    unittest.expect(o.rollbackEnabled, unittest.isTrue);
-    checkSampling(o.sampling);
+    checkUnnamed1079(o.releaseNotes);
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.userFraction, unittest.equals(42.0));
-    checkUnnamed1065(o.versionCodes);
+    checkUnnamed1080(o.versionCodes);
   }
   buildCounterTrackRelease--;
 }
 
-buildUnnamed1066() {
-  var o = new core.List<api.TrackReleasePinPinTargeting>();
-  o.add(buildTrackReleasePinPinTargeting());
-  o.add(buildTrackReleasePinPinTargeting());
-  return o;
-}
-
-checkUnnamed1066(core.List<api.TrackReleasePinPinTargeting> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkTrackReleasePinPinTargeting(o[0]);
-  checkTrackReleasePinPinTargeting(o[1]);
-}
-
-buildUnnamed1067() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1067(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterTrackReleasePin = 0;
-buildTrackReleasePin() {
-  var o = new api.TrackReleasePin();
-  buildCounterTrackReleasePin++;
-  if (buildCounterTrackReleasePin < 3) {
-    o.targetings = buildUnnamed1066();
-    o.versionCodes = buildUnnamed1067();
-  }
-  buildCounterTrackReleasePin--;
-  return o;
-}
-
-checkTrackReleasePin(api.TrackReleasePin o) {
-  buildCounterTrackReleasePin++;
-  if (buildCounterTrackReleasePin < 3) {
-    checkUnnamed1066(o.targetings);
-    checkUnnamed1067(o.versionCodes);
-  }
-  buildCounterTrackReleasePin--;
-}
-
-buildUnnamed1068() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1068(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed1069() {
-  var o = new core.List<api.TrackReleasePinPinTargetingDevicePin>();
-  o.add(buildTrackReleasePinPinTargetingDevicePin());
-  o.add(buildTrackReleasePinPinTargetingDevicePin());
-  return o;
-}
-
-checkUnnamed1069(core.List<api.TrackReleasePinPinTargetingDevicePin> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkTrackReleasePinPinTargetingDevicePin(o[0]);
-  checkTrackReleasePinPinTargetingDevicePin(o[1]);
-}
-
-buildUnnamed1070() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1070(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed1071() {
-  var o = new core.List<core.int>();
-  o.add(42);
-  o.add(42);
-  return o;
-}
-
-checkUnnamed1071(core.List<core.int> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
-}
-
-core.int buildCounterTrackReleasePinPinTargeting = 0;
-buildTrackReleasePinPinTargeting() {
-  var o = new api.TrackReleasePinPinTargeting();
-  buildCounterTrackReleasePinPinTargeting++;
-  if (buildCounterTrackReleasePinPinTargeting < 3) {
-    o.countryCodes = buildUnnamed1068();
-    o.devices = buildUnnamed1069();
-    o.phoneskyVersions = buildUnnamed1070();
-    o.sdkVersions = buildUnnamed1071();
-  }
-  buildCounterTrackReleasePinPinTargeting--;
-  return o;
-}
-
-checkTrackReleasePinPinTargeting(api.TrackReleasePinPinTargeting o) {
-  buildCounterTrackReleasePinPinTargeting++;
-  if (buildCounterTrackReleasePinPinTargeting < 3) {
-    checkUnnamed1068(o.countryCodes);
-    checkUnnamed1069(o.devices);
-    checkUnnamed1070(o.phoneskyVersions);
-    checkUnnamed1071(o.sdkVersions);
-  }
-  buildCounterTrackReleasePinPinTargeting--;
-}
-
-core.int buildCounterTrackReleasePinPinTargetingDevicePin = 0;
-buildTrackReleasePinPinTargetingDevicePin() {
-  var o = new api.TrackReleasePinPinTargetingDevicePin();
-  buildCounterTrackReleasePinPinTargetingDevicePin++;
-  if (buildCounterTrackReleasePinPinTargetingDevicePin < 3) {
-    o.brand = "foo";
-    o.device = "foo";
-    o.product = "foo";
-  }
-  buildCounterTrackReleasePinPinTargetingDevicePin--;
-  return o;
-}
-
-checkTrackReleasePinPinTargetingDevicePin(
-    api.TrackReleasePinPinTargetingDevicePin o) {
-  buildCounterTrackReleasePinPinTargetingDevicePin++;
-  if (buildCounterTrackReleasePinPinTargetingDevicePin < 3) {
-    unittest.expect(o.brand, unittest.equals('foo'));
-    unittest.expect(o.device, unittest.equals('foo'));
-    unittest.expect(o.product, unittest.equals('foo'));
-  }
-  buildCounterTrackReleasePinPinTargetingDevicePin--;
-}
-
-buildUnnamed1072() {
+buildUnnamed1081() {
   var o = new core.List<api.Track>();
   o.add(buildTrack());
   o.add(buildTrack());
   return o;
 }
 
-checkUnnamed1072(core.List<api.Track> o) {
+checkUnnamed1081(core.List<api.Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrack(o[0]);
   checkTrack(o[1]);
@@ -2073,7 +1639,7 @@ buildTracksListResponse() {
   buildCounterTracksListResponse++;
   if (buildCounterTracksListResponse < 3) {
     o.kind = "foo";
-    o.tracks = buildUnnamed1072();
+    o.tracks = buildUnnamed1081();
   }
   buildCounterTracksListResponse--;
   return o;
@@ -2083,7 +1649,7 @@ checkTracksListResponse(api.TracksListResponse o) {
   buildCounterTracksListResponse++;
   if (buildCounterTracksListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1072(o.tracks);
+    checkUnnamed1081(o.tracks);
   }
   buildCounterTracksListResponse--;
 }
@@ -2127,6 +1693,27 @@ checkUserComment(api.UserComment o) {
     unittest.expect(o.thumbsUpCount, unittest.equals(42));
   }
   buildCounterUserComment--;
+}
+
+core.int buildCounterUsesPermission = 0;
+buildUsesPermission() {
+  var o = new api.UsesPermission();
+  buildCounterUsesPermission++;
+  if (buildCounterUsesPermission < 3) {
+    o.maxSdkVersion = 42;
+    o.name = "foo";
+  }
+  buildCounterUsesPermission--;
+  return o;
+}
+
+checkUsesPermission(api.UsesPermission o) {
+  buildCounterUsesPermission++;
+  if (buildCounterUsesPermission < 3) {
+    unittest.expect(o.maxSdkVersion, unittest.equals(42));
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterUsesPermission--;
 }
 
 core.int buildCounterVariant = 0;
@@ -2181,14 +1768,14 @@ checkVoidedPurchase(api.VoidedPurchase o) {
   buildCounterVoidedPurchase--;
 }
 
-buildUnnamed1073() {
+buildUnnamed1082() {
   var o = new core.List<api.VoidedPurchase>();
   o.add(buildVoidedPurchase());
   o.add(buildVoidedPurchase());
   return o;
 }
 
-checkUnnamed1073(core.List<api.VoidedPurchase> o) {
+checkUnnamed1082(core.List<api.VoidedPurchase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoidedPurchase(o[0]);
   checkVoidedPurchase(o[1]);
@@ -2201,7 +1788,7 @@ buildVoidedPurchasesListResponse() {
   if (buildCounterVoidedPurchasesListResponse < 3) {
     o.pageInfo = buildPageInfo();
     o.tokenPagination = buildTokenPagination();
-    o.voidedPurchases = buildUnnamed1073();
+    o.voidedPurchases = buildUnnamed1082();
   }
   buildCounterVoidedPurchasesListResponse--;
   return o;
@@ -2212,7 +1799,7 @@ checkVoidedPurchasesListResponse(api.VoidedPurchasesListResponse o) {
   if (buildCounterVoidedPurchasesListResponse < 3) {
     checkPageInfo(o.pageInfo);
     checkTokenPagination(o.tokenPagination);
-    checkUnnamed1073(o.voidedPurchases);
+    checkUnnamed1082(o.voidedPurchases);
   }
   buildCounterVoidedPurchasesListResponse--;
 }
@@ -2298,14 +1885,6 @@ main() {
     });
   });
 
-  unittest.group("obj-schema-Control", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildControl();
-      var od = new api.Control.fromJson(o.toJson());
-      checkControl(od);
-    });
-  });
-
   unittest.group("obj-schema-CountryTargeting", () {
     unittest.test("to-json--from-json", () {
       var o = buildCountryTargeting();
@@ -2375,14 +1954,6 @@ main() {
       var o = buildExternallyHostedApk();
       var od = new api.ExternallyHostedApk.fromJson(o.toJson());
       checkExternallyHostedApk(od);
-    });
-  });
-
-  unittest.group("obj-schema-ExternallyHostedApkUsesPermission", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildExternallyHostedApkUsesPermission();
-      var od = new api.ExternallyHostedApkUsesPermission.fromJson(o.toJson());
-      checkExternallyHostedApkUsesPermission(od);
     });
   });
 
@@ -2482,14 +2053,6 @@ main() {
     });
   });
 
-  unittest.group("obj-schema-ModRange", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildModRange();
-      var od = new api.ModRange.fromJson(o.toJson());
-      checkModRange(od);
-    });
-  });
-
   unittest.group("obj-schema-PageInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildPageInfo();
@@ -2562,30 +2125,6 @@ main() {
     });
   });
 
-  unittest.group("obj-schema-Sampling", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildSampling();
-      var od = new api.Sampling.fromJson(o.toJson());
-      checkSampling(od);
-    });
-  });
-
-  unittest.group("obj-schema-StratifiedSampling", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildStratifiedSampling();
-      var od = new api.StratifiedSampling.fromJson(o.toJson());
-      checkStratifiedSampling(od);
-    });
-  });
-
-  unittest.group("obj-schema-Stratum", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildStratum();
-      var od = new api.Stratum.fromJson(o.toJson());
-      checkStratum(od);
-    });
-  });
-
   unittest.group("obj-schema-SubscriptionCancelSurveyResult", () {
     unittest.test("to-json--from-json", () {
       var o = buildSubscriptionCancelSurveyResult();
@@ -2643,19 +2182,11 @@ main() {
     });
   });
 
-  unittest.group("obj-schema-SystemApkVariantsCreateRequest", () {
+  unittest.group("obj-schema-SystemApksListResponse", () {
     unittest.test("to-json--from-json", () {
-      var o = buildSystemApkVariantsCreateRequest();
-      var od = new api.SystemApkVariantsCreateRequest.fromJson(o.toJson());
-      checkSystemApkVariantsCreateRequest(od);
-    });
-  });
-
-  unittest.group("obj-schema-SystemApkVariantsListResponse", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildSystemApkVariantsListResponse();
-      var od = new api.SystemApkVariantsListResponse.fromJson(o.toJson());
-      checkSystemApkVariantsListResponse(od);
+      var o = buildSystemApksListResponse();
+      var od = new api.SystemApksListResponse.fromJson(o.toJson());
+      checkSystemApksListResponse(od);
     });
   });
 
@@ -2699,31 +2230,6 @@ main() {
     });
   });
 
-  unittest.group("obj-schema-TrackReleasePin", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildTrackReleasePin();
-      var od = new api.TrackReleasePin.fromJson(o.toJson());
-      checkTrackReleasePin(od);
-    });
-  });
-
-  unittest.group("obj-schema-TrackReleasePinPinTargeting", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildTrackReleasePinPinTargeting();
-      var od = new api.TrackReleasePinPinTargeting.fromJson(o.toJson());
-      checkTrackReleasePinPinTargeting(od);
-    });
-  });
-
-  unittest.group("obj-schema-TrackReleasePinPinTargetingDevicePin", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildTrackReleasePinPinTargetingDevicePin();
-      var od =
-          new api.TrackReleasePinPinTargetingDevicePin.fromJson(o.toJson());
-      checkTrackReleasePinPinTargetingDevicePin(od);
-    });
-  });
-
   unittest.group("obj-schema-TracksListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildTracksListResponse();
@@ -2737,6 +2243,14 @@ main() {
       var o = buildUserComment();
       var od = new api.UserComment.fromJson(o.toJson());
       checkUserComment(od);
+    });
+  });
+
+  unittest.group("obj-schema-UsesPermission", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUsesPermission();
+      var od = new api.UsesPermission.fromJson(o.toJson());
+      checkUsesPermission(od);
     });
   });
 
@@ -2779,6 +2293,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf(":commit", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(":commit"));
+        pathOffset += 7;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2827,6 +2362,21 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2873,6 +2423,21 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2924,6 +2489,18 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/edits"));
+        pathOffset += 6;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2972,6 +2549,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf(":validate", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals(":validate"));
+        pathOffset += 9;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3027,6 +2625,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/apks/externallyHosted", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("/apks/externallyHosted"));
+        pathOffset += 22;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3077,6 +2696,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/apks", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/apks"));
+        pathOffset += 5;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3129,6 +2769,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/apks", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/apks"));
+        pathOffset += 5;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3180,6 +2841,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/bundles", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/bundles"));
+        pathOffset += 8;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3233,6 +2915,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/bundles", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/bundles"));
+        pathOffset += 8;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3293,6 +2996,39 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/apks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/apks/"));
+        pathOffset += 6;
+        index = path.indexOf("/deobfuscationFiles/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_apkVersionCode"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20),
+            unittest.equals("/deobfuscationFiles/"));
+        pathOffset += 20;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_deobfuscationFileType"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3346,6 +3082,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/details", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/details"));
+        pathOffset += 8;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3399,6 +3156,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/details", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/details"));
+        pathOffset += 8;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3452,6 +3230,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/details", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/details"));
+        pathOffset += 8;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3506,6 +3305,39 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/apks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/apks/"));
+        pathOffset += 6;
+        index = path.indexOf("/expansionFiles/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_apkVersionCode"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("/expansionFiles/"));
+        pathOffset += 16;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_expansionFileType"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3563,6 +3395,39 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/apks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/apks/"));
+        pathOffset += 6;
+        index = path.indexOf("/expansionFiles/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_apkVersionCode"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("/expansionFiles/"));
+        pathOffset += 16;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_expansionFileType"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3620,6 +3485,39 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/apks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/apks/"));
+        pathOffset += 6;
+        index = path.indexOf("/expansionFiles/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_apkVersionCode"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("/expansionFiles/"));
+        pathOffset += 16;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_expansionFileType"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3676,6 +3574,39 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/apks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/apks/"));
+        pathOffset += 6;
+        index = path.indexOf("/expansionFiles/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_apkVersionCode"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("/expansionFiles/"));
+        pathOffset += 16;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_expansionFileType"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3732,6 +3663,48 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/listings/"));
+        pathOffset += 10;
+        index = path.indexOf("/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_language"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        index = path.indexOf("/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_imageType"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_imageId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3783,6 +3756,39 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/listings/"));
+        pathOffset += 10;
+        index = path.indexOf("/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_language"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_imageType"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3835,6 +3841,39 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/listings/"));
+        pathOffset += 10;
+        index = path.indexOf("/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_language"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_imageType"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3890,6 +3929,39 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/listings/"));
+        pathOffset += 10;
+        index = path.indexOf("/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_language"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_imageType"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3943,6 +4015,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/listings/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_language"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3991,6 +4087,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/listings"));
+        pathOffset += 9;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4039,6 +4156,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/listings/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_language"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4088,6 +4229,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/listings"));
+        pathOffset += 9;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4142,6 +4304,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/listings/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_language"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4197,6 +4383,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/listings/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/listings/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_language"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4250,6 +4460,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/testers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/testers/"));
+        pathOffset += 9;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_track"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4304,6 +4538,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/testers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/testers/"));
+        pathOffset += 9;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_track"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4359,6 +4617,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/testers/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/testers/"));
+        pathOffset += 9;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_track"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4412,6 +4694,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/tracks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tracks/"));
+        pathOffset += 8;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_track"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4461,6 +4767,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/tracks", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/tracks"));
+        pathOffset += 7;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4515,6 +4842,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/tracks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tracks/"));
+        pathOffset += 8;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_track"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4570,6 +4921,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/edits/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/edits/"));
+        pathOffset += 7;
+        index = path.indexOf("/tracks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_editId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tracks/"));
+        pathOffset += 8;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_track"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4622,6 +4997,21 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/inappproducts/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("/inappproducts/"));
+        pathOffset += 15;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_sku"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4669,6 +5059,21 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/inappproducts/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("/inappproducts/"));
+        pathOffset += 15;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_sku"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4722,6 +5127,18 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/inappproducts", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("/inappproducts"));
+        pathOffset += 14;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4777,6 +5194,18 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/inappproducts", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("/inappproducts"));
+        pathOffset += 14;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4840,6 +5269,21 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/inappproducts/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("/inappproducts/"));
+        pathOffset += 15;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_sku"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4898,6 +5342,21 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/inappproducts/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("/inappproducts/"));
+        pathOffset += 15;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_sku"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4955,12 +5414,11 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 33),
-            unittest.equals("androidpublisher/v3/applications/"));
-        pathOffset += 33;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("internalappsharing/"));
-        pathOffset += 19;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 52),
+            unittest.equals(
+                "androidpublisher/v3/applications/internalappsharing/"));
+        pathOffset += 52;
         index = path.indexOf("/artifacts/apk", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5021,12 +5479,11 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 33),
-            unittest.equals("androidpublisher/v3/applications/"));
-        pathOffset += 33;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("internalappsharing/"));
-        pathOffset += 19;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 52),
+            unittest.equals(
+                "androidpublisher/v3/applications/internalappsharing/"));
+        pathOffset += 52;
         index = path.indexOf("/artifacts/bundle", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5087,6 +5544,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/orders/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/orders/"));
+        pathOffset += 8;
+        index = path.indexOf(":refund", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_orderId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(":refund"));
+        pathOffset += 7;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5144,6 +5622,36 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/purchases/products/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20),
+            unittest.equals("/purchases/products/"));
+        pathOffset += 20;
+        index = path.indexOf("/tokens/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tokens/"));
+        pathOffset += 8;
+        index = path.indexOf(":acknowledge", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_token"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals(":acknowledge"));
+        pathOffset += 12;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5193,6 +5701,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/purchases/products/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20),
+            unittest.equals("/purchases/products/"));
+        pathOffset += 20;
+        index = path.indexOf("/tokens/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tokens/"));
+        pathOffset += 8;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_token"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5250,6 +5782,36 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/purchases/subscriptions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("/purchases/subscriptions/"));
+        pathOffset += 25;
+        index = path.indexOf("/tokens/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tokens/"));
+        pathOffset += 8;
+        index = path.indexOf(":acknowledge", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_token"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals(":acknowledge"));
+        pathOffset += 12;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5289,7 +5851,6 @@ main() {
       api.PurchasesSubscriptionsResourceApi res =
           new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_packageName = "foo";
-      var arg_subscriptionId = "foo";
       var arg_token = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5300,6 +5861,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/purchases/subscriptions/tokens/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("/purchases/subscriptions/tokens/"));
+        pathOffset += 32;
+        index = path.indexOf(":cancel", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_token"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(":cancel"));
+        pathOffset += 7;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5328,8 +5910,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .cancel(arg_packageName, arg_subscriptionId, arg_token,
-              $fields: arg_$fields)
+          .cancel(arg_packageName, arg_token, $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -5353,6 +5934,36 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/purchases/subscriptions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("/purchases/subscriptions/"));
+        pathOffset += 25;
+        index = path.indexOf("/tokens/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tokens/"));
+        pathOffset += 8;
+        index = path.indexOf(":defer", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_token"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals(":defer"));
+        pathOffset += 6;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5405,6 +6016,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/purchases/subscriptions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("/purchases/subscriptions/"));
+        pathOffset += 25;
+        index = path.indexOf("/tokens/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tokens/"));
+        pathOffset += 8;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_token"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5456,6 +6091,36 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/purchases/subscriptions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("/purchases/subscriptions/"));
+        pathOffset += 25;
+        index = path.indexOf("/tokens/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tokens/"));
+        pathOffset += 8;
+        index = path.indexOf(":refund", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_token"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(":refund"));
+        pathOffset += 7;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5505,6 +6170,36 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/purchases/subscriptions/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("/purchases/subscriptions/"));
+        pathOffset += 25;
+        index = path.indexOf("/tokens/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_subscriptionId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/tokens/"));
+        pathOffset += 8;
+        index = path.indexOf(":revoke", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_token"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(":revoke"));
+        pathOffset += 7;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5545,12 +6240,12 @@ main() {
       api.PurchasesVoidedpurchasesResourceApi res =
           new api.AndroidpublisherApi(mock).purchases.voidedpurchases;
       var arg_packageName = "foo";
-      var arg_endTime = "foo";
       var arg_maxResults = 42;
-      var arg_startIndex = 42;
-      var arg_startTime = "foo";
-      var arg_token = "foo";
       var arg_type = 42;
+      var arg_startTime = "foo";
+      var arg_endTime = "foo";
+      var arg_startIndex = 42;
+      var arg_token = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5560,6 +6255,18 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/purchases/voidedpurchases", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("/purchases/voidedpurchases"));
+        pathOffset += 26;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5579,17 +6286,17 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first),
-            unittest.equals(arg_startIndex));
-        unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
-        unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
         unittest.expect(
             core.int.parse(queryMap["type"].first), unittest.equals(arg_type));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
+        unittest.expect(
+            queryMap["endTime"].first, unittest.equals(arg_endTime));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
+        unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5600,12 +6307,12 @@ main() {
       }), true);
       res
           .list(arg_packageName,
-              endTime: arg_endTime,
               maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              startTime: arg_startTime,
-              token: arg_token,
               type: arg_type,
+              startTime: arg_startTime,
+              endTime: arg_endTime,
+              startIndex: arg_startIndex,
+              token: arg_token,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVoidedPurchasesListResponse(response);
@@ -5629,6 +6336,21 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/reviews/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/reviews/"));
+        pathOffset += 9;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_reviewId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5671,10 +6393,10 @@ main() {
       var mock = new HttpServerMock();
       api.ReviewsResourceApi res = new api.AndroidpublisherApi(mock).reviews;
       var arg_packageName = "foo";
-      var arg_maxResults = 42;
+      var arg_translationLanguage = "foo";
       var arg_startIndex = 42;
       var arg_token = "foo";
-      var arg_translationLanguage = "foo";
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5684,6 +6406,18 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/reviews", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/reviews"));
+        pathOffset += 8;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5703,13 +6437,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["translationLanguage"].first,
+            unittest.equals(arg_translationLanguage));
         unittest.expect(core.int.parse(queryMap["startIndex"].first),
             unittest.equals(arg_startIndex));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
-        unittest.expect(queryMap["translationLanguage"].first,
-            unittest.equals(arg_translationLanguage));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5720,10 +6454,10 @@ main() {
       }), true);
       res
           .list(arg_packageName,
-              maxResults: arg_maxResults,
+              translationLanguage: arg_translationLanguage,
               startIndex: arg_startIndex,
               token: arg_token,
-              translationLanguage: arg_translationLanguage,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkReviewsListResponse(response);
@@ -5748,6 +6482,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/reviews/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/reviews/"));
+        pathOffset += 9;
+        index = path.indexOf(":reply", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_reviewId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals(":reply"));
+        pathOffset += 6;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5789,13 +6544,13 @@ main() {
       var mock = new HttpServerMock();
       api.SystemapksVariantsResourceApi res =
           new api.AndroidpublisherApi(mock).systemapks.variants;
-      var arg_request = buildSystemApkVariantsCreateRequest();
+      var arg_request = buildVariant();
       var arg_packageName = "foo";
       var arg_versionCode = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SystemApkVariantsCreateRequest.fromJson(json);
-        checkSystemApkVariantsCreateRequest(obj);
+        var obj = new api.Variant.fromJson(json);
+        checkVariant(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5804,6 +6559,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/systemApks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("/systemApks/"));
+        pathOffset += 12;
+        index = path.indexOf("/variants", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_versionCode"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/variants"));
+        pathOffset += 9;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5858,6 +6634,36 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/systemApks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("/systemApks/"));
+        pathOffset += 12;
+        index = path.indexOf("/variants/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_versionCode"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/variants/"));
+        pathOffset += 10;
+        index = path.indexOf(":download", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_variantId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals(":download"));
+        pathOffset += 9;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5907,6 +6713,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/systemApks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("/systemApks/"));
+        pathOffset += 12;
+        index = path.indexOf("/variants/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_versionCode"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/variants/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_variantId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5957,6 +6787,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v3/applications/"));
+        pathOffset += 33;
+        index = path.indexOf("/systemApks/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_packageName"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("/systemApks/"));
+        pathOffset += 12;
+        index = path.indexOf("/variants", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_versionCode"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/variants"));
+        pathOffset += 9;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5981,13 +6832,13 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.json.encode(buildSystemApkVariantsListResponse());
+        var resp = convert.json.encode(buildSystemApksListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_packageName, arg_versionCode, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSystemApkVariantsListResponse(response);
+        checkSystemApksListResponse(response);
       })));
     });
   });

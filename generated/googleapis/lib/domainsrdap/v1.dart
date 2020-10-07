@@ -40,8 +40,8 @@ class AutnumResourceApi {
 
   AutnumResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// The RDAP API recognizes this command from the RDAP specification but
-  /// does not support it. The response is a formatted 501 error.
+  /// The RDAP API recognizes this command from the RDAP specification but does
+  /// not support it. The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -138,8 +138,8 @@ class EntityResourceApi {
 
   EntityResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// The RDAP API recognizes this command from the RDAP specification but
-  /// does not support it. The response is a formatted 501 error.
+  /// The RDAP API recognizes this command from the RDAP specification but does
+  /// not support it. The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -187,8 +187,8 @@ class IpResourceApi {
 
   IpResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// The RDAP API recognizes this command from the RDAP specification but
-  /// does not support it. The response is a formatted 501 error.
+  /// The RDAP API recognizes this command from the RDAP specification but does
+  /// not support it. The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -245,8 +245,8 @@ class NameserverResourceApi {
 
   NameserverResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// The RDAP API recognizes this command from the RDAP specification but
-  /// does not support it. The response is a formatted 501 error.
+  /// The RDAP API recognizes this command from the RDAP specification but does
+  /// not support it. The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -295,8 +295,8 @@ class V1ResourceApi {
 
   V1ResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// The RDAP API recognizes this command from the RDAP specification but
-  /// does not support it. The response is a formatted 501 error.
+  /// The RDAP API recognizes this command from the RDAP specification but does
+  /// not support it. The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -333,8 +333,8 @@ class V1ResourceApi {
     return _response.then((data) => new RdapResponse.fromJson(data));
   }
 
-  /// The RDAP API recognizes this command from the RDAP specification but
-  /// does not support it. The response is a formatted 501 error.
+  /// The RDAP API recognizes this command from the RDAP specification but does
+  /// not support it. The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -408,8 +408,8 @@ class V1ResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// The RDAP API recognizes this command from the RDAP specification but
-  /// does not support it. The response is a formatted 501 error.
+  /// The RDAP API recognizes this command from the RDAP specification but does
+  /// not support it. The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -446,8 +446,8 @@ class V1ResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// The RDAP API recognizes this command from the RDAP specification but
-  /// does not support it. The response is a formatted 501 error.
+  /// The RDAP API recognizes this command from the RDAP specification but does
+  /// not support it. The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -486,44 +486,22 @@ class V1ResourceApi {
 }
 
 /// Message that represents an arbitrary HTTP body. It should only be used for
-/// payload formats that can't be represented as JSON, such as raw binary or
-/// an HTML page.
-///
-///
-/// This message can be used both in streaming and non-streaming API methods in
-/// the request as well as the response.
-///
-/// It can be used as a top-level request field, which is convenient if one
-/// wants to extract parameters from either the URL or HTTP template into the
-/// request fields and also want access to the raw HTTP body.
-///
-/// Example:
-///
-///     message GetResourceRequest {
-///       // A unique request id.
-///       string request_id = 1;
-///
-///       // The raw HTTP body is bound to this field.
-///       google.api.HttpBody http_body = 2;
-///     }
-///
-///     service ResourceService {
-///       rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);
-///       rpc UpdateResource(google.api.HttpBody) returns
-///       (google.protobuf.Empty);
-///     }
-///
-/// Example with streaming methods:
-///
-///     service CaldavService {
-///       rpc GetCalendar(stream google.api.HttpBody)
-///         returns (stream google.api.HttpBody);
-///       rpc UpdateCalendar(stream google.api.HttpBody)
-///         returns (stream google.api.HttpBody);
-///     }
-///
-/// Use of this type only changes how the request and response bodies are
-/// handled, all other features will continue to work unchanged.
+/// payload formats that can't be represented as JSON, such as raw binary or an
+/// HTML page. This message can be used both in streaming and non-streaming API
+/// methods in the request as well as the response. It can be used as a
+/// top-level request field, which is convenient if one wants to extract
+/// parameters from either the URL or HTTP template into the request fields and
+/// also want access to the raw HTTP body. Example: message GetResourceRequest {
+/// // A unique request id. string request_id = 1; // The raw HTTP body is bound
+/// to this field. google.api.HttpBody http_body = 2; } service ResourceService
+/// { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+/// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); }
+/// Example with streaming methods: service CaldavService { rpc
+/// GetCalendar(stream google.api.HttpBody) returns (stream
+/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
+/// (stream google.api.HttpBody); } Use of this type only changes how the
+/// request and response bodies are handled, all other features will continue to
+/// work unchanged.
 class HttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.

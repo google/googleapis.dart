@@ -16,7 +16,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client dns/v1';
 
-/// Configures and serves authoritative DNS records.
 class DnsApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -49,7 +48,7 @@ class DnsApi {
 
   DnsApi(http.Client client,
       {core.String rootUrl = "https://dns.googleapis.com/",
-      core.String servicePath = "dns/v1/projects/"})
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -110,7 +109,8 @@ class ChangesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
         '/changes';
@@ -176,7 +176,8 @@ class ChangesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
         '/changes/' +
@@ -200,9 +201,6 @@ class ChangesResourceApi {
   /// [managedZone] - Identifies the managed zone addressed by this request. Can
   /// be the managed zone name or id.
   ///
-  /// [maxResults] - Optional. Maximum number of results to be returned. If
-  /// unspecified, the server will decide how many results to return.
-  ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
   ///
@@ -211,6 +209,9 @@ class ChangesResourceApi {
   /// - "changeSequence"
   ///
   /// [sortOrder] - Sorting order direction: 'ascending' or 'descending'.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server will decide how many results to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -224,10 +225,10 @@ class ChangesResourceApi {
   /// this method will complete with the same error.
   async.Future<ChangesListResponse> list(
       core.String project, core.String managedZone,
-      {core.int maxResults,
-      core.String pageToken,
+      {core.String pageToken,
       core.String sortBy,
       core.String sortOrder,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -242,9 +243,6 @@ class ChangesResourceApi {
     if (managedZone == null) {
       throw new core.ArgumentError("Parameter managedZone is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -254,11 +252,15 @@ class ChangesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
         '/changes';
@@ -338,7 +340,8 @@ class DnsKeysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
         '/dnsKeys/' +
@@ -362,12 +365,12 @@ class DnsKeysResourceApi {
   /// [managedZone] - Identifies the managed zone addressed by this request. Can
   /// be the managed zone name or id.
   ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server will decide how many results to return.
+  ///
   /// [digestType] - An optional comma-separated list of digest types to compute
   /// and display for key signing keys. If omitted, the recommended digest type
   /// will be computed and displayed.
-  ///
-  /// [maxResults] - Optional. Maximum number of results to be returned. If
-  /// unspecified, the server will decide how many results to return.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
@@ -384,8 +387,8 @@ class DnsKeysResourceApi {
   /// this method will complete with the same error.
   async.Future<DnsKeysListResponse> list(
       core.String project, core.String managedZone,
-      {core.String digestType,
-      core.int maxResults,
+      {core.int maxResults,
+      core.String digestType,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -401,11 +404,11 @@ class DnsKeysResourceApi {
     if (managedZone == null) {
       throw new core.ArgumentError("Parameter managedZone is required.");
     }
-    if (digestType != null) {
-      _queryParams["digestType"] = [digestType];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (digestType != null) {
+      _queryParams["digestType"] = [digestType];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -414,7 +417,8 @@ class DnsKeysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
         '/dnsKeys';
@@ -485,7 +489,8 @@ class ManagedZoneOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
         '/operations/' +
@@ -517,8 +522,8 @@ class ManagedZoneOperationsResourceApi {
   /// [sortBy] - Sorting criterion. The only supported values are START_TIME and
   /// ID.
   /// Possible string values are:
-  /// - "id"
   /// - "startTime"
+  /// - "id"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -562,7 +567,8 @@ class ManagedZoneOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
         '/operations';
@@ -627,7 +633,9 @@ class ManagedZonesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/managedZones';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -683,7 +691,8 @@ class ManagedZonesResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
@@ -741,7 +750,8 @@ class ManagedZonesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
@@ -760,13 +770,13 @@ class ManagedZonesResourceApi {
   ///
   /// [project] - Identifies the project addressed by this request.
   ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
+  ///
   /// [dnsName] - Restricts the list to return only zones with this domain name.
   ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
   /// unspecified, the server will decide how many results to return.
-  ///
-  /// [pageToken] - Optional. A tag returned by a previous list request that was
-  /// truncated. Use this parameter to continue a previous list request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -779,9 +789,9 @@ class ManagedZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ManagedZonesListResponse> list(core.String project,
-      {core.String dnsName,
+      {core.String pageToken,
+      core.String dnsName,
       core.int maxResults,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -793,20 +803,22 @@ class ManagedZonesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (dnsName != null) {
       _queryParams["dnsName"] = [dnsName];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/managedZones';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -869,7 +881,8 @@ class ManagedZonesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
@@ -933,7 +946,8 @@ class ManagedZonesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
@@ -996,7 +1010,9 @@ class PoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/policies';
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/policies';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1053,7 +1069,8 @@ class PoliciesResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
@@ -1111,7 +1128,8 @@ class PoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
@@ -1168,7 +1186,9 @@ class PoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/policies';
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/policies';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1230,7 +1250,8 @@ class PoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
@@ -1294,7 +1315,8 @@ class PoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
@@ -1352,7 +1374,7 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project');
+    _url = 'dns/v1/projects/' + commons.Escaper.ecapeVariable('$project');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1382,14 +1404,14 @@ class ResourceRecordSetsResourceApi {
   /// [maxResults] - Optional. Maximum number of results to be returned. If
   /// unspecified, the server will decide how many results to return.
   ///
-  /// [name] - Restricts the list to return only records with this fully
-  /// qualified domain name.
-  ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
   ///
   /// [type] - Restricts the list to return only records of this type. If
   /// present, the "name" parameter must also be present.
+  ///
+  /// [name] - Restricts the list to return only records with this fully
+  /// qualified domain name.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1404,9 +1426,9 @@ class ResourceRecordSetsResourceApi {
   async.Future<ResourceRecordSetsListResponse> list(
       core.String project, core.String managedZone,
       {core.int maxResults,
-      core.String name,
       core.String pageToken,
       core.String type,
+      core.String name,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1424,20 +1446,21 @@ class ResourceRecordSetsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (name != null) {
-      _queryParams["name"] = [name];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (type != null) {
       _queryParams["type"] = [type];
     }
+    if (name != null) {
+      _queryParams["name"] = [name];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'dns/v1/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
         '/rrsets';
@@ -1472,9 +1495,6 @@ class Change {
 
   /// If the DNS queries for the zone will be served.
   core.bool isServing;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#change".
   core.String kind;
 
   /// The time that this operation was started by the server (output only). This
@@ -1482,11 +1502,11 @@ class Change {
   core.String startTime;
 
   /// Status of the operation (output only). A status of "done" means that the
-  /// request to update the authoritative servers has been sent, but the servers
+  /// request to update the authoritative servers has been sent but the servers
   /// might not be updated yet.
   /// Possible string values are:
-  /// - "done"
   /// - "pending"
+  /// - "done"
   core.String status;
 
   Change();
@@ -1561,9 +1581,8 @@ class ChangesListResponse {
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your pagination token.
-  ///
-  /// In this way you can retrieve the complete contents of even very large
+  /// make another list request using this value as your pagination token. In
+  /// this way you can retrieve the complete contents of even very large
   /// collections one page at a time. However, if the contents of the collection
   /// change between the first and last paginated list request, the set of all
   /// elements returned will be an inconsistent view of the collection. There is
@@ -1614,11 +1633,11 @@ class DnsKey {
   /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable
   /// after creation time.
   /// Possible string values are:
-  /// - "ecdsap256sha256"
-  /// - "ecdsap384sha384"
   /// - "rsasha1"
   /// - "rsasha256"
   /// - "rsasha512"
+  /// - "ecdsap256sha256"
+  /// - "ecdsap384sha384"
   core.String algorithm;
 
   /// The time that this resource was created in the control plane. This is in
@@ -1652,9 +1671,6 @@ class DnsKey {
   /// child ManagedZone. The key tag is a number in the range [0, 65535] and the
   /// algorithm to calculate it is specified in RFC4034 Appendix B. Output only.
   core.int keyTag;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#dnsKey".
   core.String kind;
 
   /// Base64 encoded public half of this key. Output only.
@@ -1791,11 +1807,11 @@ class DnsKeyDigest {
 class DnsKeySpec {
   /// String mnemonic specifying the DNSSEC algorithm of this key.
   /// Possible string values are:
-  /// - "ecdsap256sha256"
-  /// - "ecdsap384sha384"
   /// - "rsasha1"
   /// - "rsasha256"
   /// - "rsasha512"
+  /// - "ecdsap256sha256"
+  /// - "ecdsap384sha384"
   core.String algorithm;
 
   /// Length of the keys in bits.
@@ -1810,9 +1826,6 @@ class DnsKeySpec {
   /// - "keySigning"
   /// - "zoneSigning"
   core.String keyType;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#dnsKeySpec".
   core.String kind;
 
   DnsKeySpec();
@@ -1862,9 +1875,8 @@ class DnsKeysListResponse {
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your pagination token.
-  ///
-  /// In this way you can retrieve the complete contents of even very large
+  /// make another list request using this value as your pagination token. In
+  /// this way you can retrieve the complete contents of even very large
   /// collections one page at a time. However, if the contents of the collection
   /// change between the first and last paginated list request, the set of all
   /// elements returned will be an inconsistent view of the collection. There is
@@ -1935,9 +1947,6 @@ class ManagedZone {
 
   /// Unique identifier for the resource; defined by the server (output only)
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#managedZone".
   core.String kind;
 
   /// User labels.
@@ -1965,11 +1974,17 @@ class ManagedZone {
   /// that the zone is visible from.
   ManagedZonePrivateVisibilityConfig privateVisibilityConfig;
 
+  /// The presence of this field indicates that this is a managed reverse lookup
+  /// zone and Cloud DNS will resolve reverse lookup queries using automatically
+  /// configured records for VPC resources. This only applies to networks listed
+  /// under private_visibility_config.
+  ManagedZoneReverseLookupConfig reverseLookupConfig;
+
   /// The zone's visibility: public zones are exposed to the Internet, while
   /// private zones are visible only to Virtual Private Cloud resources.
   /// Possible string values are:
-  /// - "private"
   /// - "public"
+  /// - "private"
   core.String visibility;
 
   ManagedZone();
@@ -2018,6 +2033,10 @@ class ManagedZone {
       privateVisibilityConfig = new ManagedZonePrivateVisibilityConfig.fromJson(
           _json["privateVisibilityConfig"]);
     }
+    if (_json.containsKey("reverseLookupConfig")) {
+      reverseLookupConfig = new ManagedZoneReverseLookupConfig.fromJson(
+          _json["reverseLookupConfig"]);
+    }
     if (_json.containsKey("visibility")) {
       visibility = _json["visibility"];
     }
@@ -2065,6 +2084,9 @@ class ManagedZone {
     if (privateVisibilityConfig != null) {
       _json["privateVisibilityConfig"] = (privateVisibilityConfig).toJson();
     }
+    if (reverseLookupConfig != null) {
+      _json["reverseLookupConfig"] = (reverseLookupConfig).toJson();
+    }
     if (visibility != null) {
       _json["visibility"] = visibility;
     }
@@ -2076,9 +2098,6 @@ class ManagedZoneDnsSecConfig {
   /// Specifies parameters for generating initial DnsKeys for this ManagedZone.
   /// Can only be changed while the state is OFF.
   core.List<DnsKeySpec> defaultKeySpecs;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#managedZoneDnsSecConfig".
   core.String kind;
 
   /// Specifies the mechanism for authenticated denial-of-existence responses.
@@ -2090,9 +2109,9 @@ class ManagedZoneDnsSecConfig {
 
   /// Specifies whether DNSSEC is enabled, and what mode it is in.
   /// Possible string values are:
-  /// - "off"
-  /// - "on"
-  /// - "transfer"
+  /// - "off" : DNSSEC is disabled; the zone is not signed.
+  /// - "on" : DNSSEC is enabled; the zone is signed and fully managed.
+  /// - "transfer" : DNSSEC is enabled, but in a "transfer" mode.
   core.String state;
 
   ManagedZoneDnsSecConfig();
@@ -2135,8 +2154,6 @@ class ManagedZoneDnsSecConfig {
 }
 
 class ManagedZoneForwardingConfig {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#managedZoneForwardingConfig".
   core.String kind;
 
   /// List of target name servers to forward to. Cloud DNS will select the best
@@ -2172,16 +2189,29 @@ class ManagedZoneForwardingConfig {
 }
 
 class ManagedZoneForwardingConfigNameServerTarget {
+  /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT,
+  /// Cloud DNS will make forwarding decision based on address ranges, i.e.
+  /// RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet.
+  /// When set to PRIVATE, Cloud DNS will always send queries through VPC for
+  /// this target.
+  /// Possible string values are:
+  /// - "default" : Cloud DNS will make forwarding decision based on address
+  /// ranges, i.e. RFC1918 addresses forward to the target through the VPC and
+  /// non-RFC1918 addresses will forward to the target through the Internet
+  /// - "private" : Cloud DNS will always forward to this target through the
+  /// VPC.
+  core.String forwardingPath;
+
   /// IPv4 address of a target name server.
   core.String ipv4Address;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#managedZoneForwardingConfigNameServerTarget".
   core.String kind;
 
   ManagedZoneForwardingConfigNameServerTarget();
 
   ManagedZoneForwardingConfigNameServerTarget.fromJson(core.Map _json) {
+    if (_json.containsKey("forwardingPath")) {
+      forwardingPath = _json["forwardingPath"];
+    }
     if (_json.containsKey("ipv4Address")) {
       ipv4Address = _json["ipv4Address"];
     }
@@ -2193,6 +2223,9 @@ class ManagedZoneForwardingConfigNameServerTarget {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (forwardingPath != null) {
+      _json["forwardingPath"] = forwardingPath;
+    }
     if (ipv4Address != null) {
       _json["ipv4Address"] = ipv4Address;
     }
@@ -2205,20 +2238,17 @@ class ManagedZoneForwardingConfigNameServerTarget {
 
 class ManagedZoneOperationsListResponse {
   ResponseHeader header;
-
-  /// Type of resource.
   core.String kind;
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your page token.
-  ///
-  /// In this way you can retrieve the complete contents of even very large
-  /// collections one page at a time. However, if the contents of the collection
-  /// change between the first and last paginated list request, the set of all
-  /// elements returned will be an inconsistent view of the collection. There is
-  /// no way to retrieve a consistent snapshot of a collection larger than the
-  /// maximum page size.
+  /// make another list request using this value as your page token. In this way
+  /// you can retrieve the complete contents of even very large collections one
+  /// page at a time. However, if the contents of the collection change between
+  /// the first and last paginated list request, the set of all elements
+  /// returned will be an inconsistent view of the collection. There is no way
+  /// to retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String nextPageToken;
 
   /// The operation resources.
@@ -2264,8 +2294,6 @@ class ManagedZoneOperationsListResponse {
 }
 
 class ManagedZonePeeringConfig {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#managedZonePeeringConfig".
   core.String kind;
 
   /// The network with which to peer.
@@ -2303,9 +2331,6 @@ class ManagedZonePeeringConfigTargetNetwork {
   /// deactivated if the producer network that the zone targeted is deleted.
   /// Output only.
   core.String deactivateTime;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#managedZonePeeringConfigTargetNetwork".
   core.String kind;
 
   /// The fully qualified URL of the VPC network to forward queries to. This
@@ -2344,8 +2369,6 @@ class ManagedZonePeeringConfigTargetNetwork {
 }
 
 class ManagedZonePrivateVisibilityConfig {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#managedZonePrivateVisibilityConfig".
   core.String kind;
 
   /// The list of VPC networks that can see this zone.
@@ -2379,8 +2402,6 @@ class ManagedZonePrivateVisibilityConfig {
 }
 
 class ManagedZonePrivateVisibilityConfigNetwork {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#managedZonePrivateVisibilityConfigNetwork".
   core.String kind;
 
   /// The fully qualified URL of the VPC network to bind to. This should be
@@ -2412,6 +2433,27 @@ class ManagedZonePrivateVisibilityConfigNetwork {
   }
 }
 
+class ManagedZoneReverseLookupConfig {
+  core.String kind;
+
+  ManagedZoneReverseLookupConfig();
+
+  ManagedZoneReverseLookupConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
 class ManagedZonesListResponse {
   ResponseHeader header;
 
@@ -2423,14 +2465,13 @@ class ManagedZonesListResponse {
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your page token.
-  ///
-  /// In this way you can retrieve the complete contents of even very large
-  /// collections one page at a time. However, if the contents of the collection
-  /// change between the first and last paginated list request, the set of all
-  /// elements returned will be an inconsistent view of the collection. There is
-  /// no way to retrieve a consistent snapshot of a collection larger than the
-  /// maximum page size.
+  /// make another list request using this value as your page token. In this way
+  /// you can retrieve the complete contents of even very large collections one
+  /// page at a time. However, if the contents of the collection change between
+  /// the first and last paginated list request, the set of all elements
+  /// returned will be an inconsistent view of the collection. There is no way
+  /// to retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String nextPageToken;
 
   ManagedZonesListResponse();
@@ -2485,9 +2526,6 @@ class Operation {
   /// generated by the server. The name must be 1-63 characters long and match
   /// the regular expression [-a-z0-9]? (output only)
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#operation".
   core.String kind;
 
   /// The time that this operation was started by the server. This is in RFC3339
@@ -2499,8 +2537,8 @@ class Operation {
   /// authoritative servers has been sent, but the servers might not be updated
   /// yet.
   /// Possible string values are:
-  /// - "done"
   /// - "pending"
+  /// - "done"
   core.String status;
 
   /// Type of the operation. Operations include insert, update, and delete
@@ -2647,14 +2685,13 @@ class PoliciesListResponse {
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your page token.
-  ///
-  /// In this way you can retrieve the complete contents of even very large
-  /// collections one page at a time. However, if the contents of the collection
-  /// change between the first and last paginated list request, the set of all
-  /// elements returned will be an inconsistent view of the collection. There is
-  /// no way to retrieve a consistent snapshot of a collection larger than the
-  /// maximum page size.
+  /// make another list request using this value as your page token. In this way
+  /// you can retrieve the complete contents of even very large collections one
+  /// page at a time. However, if the contents of the collection change between
+  /// the first and last paginated list request, the set of all elements
+  /// returned will be an inconsistent view of the collection. There is no way
+  /// to retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String nextPageToken;
 
   /// The policy resources.
@@ -2778,9 +2815,6 @@ class Policy {
 
   /// Unique identifier for the resource; defined by the server (output only).
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#policy".
   core.String kind;
 
   /// User assigned name for this policy.
@@ -2855,8 +2889,6 @@ class Policy {
 }
 
 class PolicyAlternativeNameServerConfig {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#policyAlternativeNameServerConfig".
   core.String kind;
 
   /// Sets an alternative name server for the associated networks. When
@@ -2896,16 +2928,29 @@ class PolicyAlternativeNameServerConfig {
 }
 
 class PolicyAlternativeNameServerConfigTargetNameServer {
+  /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT,
+  /// Cloud DNS will make forwarding decision based on address ranges, i.e.
+  /// RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet.
+  /// When set to PRIVATE, Cloud DNS will always send queries through VPC for
+  /// this target.
+  /// Possible string values are:
+  /// - "default" : Cloud DNS will make forwarding decision based on address
+  /// ranges, i.e. RFC1918 addresses forward to the target through the VPC and
+  /// non-RFC1918 addresses will forward to the target through the Internet
+  /// - "private" : Cloud DNS will always forward to this target through the
+  /// VPC.
+  core.String forwardingPath;
+
   /// IPv4 address to forward to.
   core.String ipv4Address;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#policyAlternativeNameServerConfigTargetNameServer".
   core.String kind;
 
   PolicyAlternativeNameServerConfigTargetNameServer();
 
   PolicyAlternativeNameServerConfigTargetNameServer.fromJson(core.Map _json) {
+    if (_json.containsKey("forwardingPath")) {
+      forwardingPath = _json["forwardingPath"];
+    }
     if (_json.containsKey("ipv4Address")) {
       ipv4Address = _json["ipv4Address"];
     }
@@ -2917,6 +2962,9 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (forwardingPath != null) {
+      _json["forwardingPath"] = forwardingPath;
+    }
     if (ipv4Address != null) {
       _json["ipv4Address"] = ipv4Address;
     }
@@ -2928,8 +2976,6 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
 }
 
 class PolicyNetwork {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#policyNetwork".
   core.String kind;
 
   /// The fully qualified URL of the VPC network to bind to. This should be
@@ -2967,9 +3013,6 @@ class PolicyNetwork {
 class Project {
   /// User assigned unique identifier for the resource (output only).
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#project".
   core.String kind;
 
   /// Unique numeric identifier for the resource; defined by the server (output
@@ -3019,9 +3062,6 @@ class Project {
 class Quota {
   /// Maximum allowed number of DnsKeys per ManagedZone.
   core.int dnsKeysPerManagedZone;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#quota".
   core.String kind;
 
   /// Maximum allowed number of managed zones in the project.
@@ -3177,8 +3217,6 @@ class Quota {
 
 /// A unit of data that will be returned by the DNS servers.
 class ResourceRecordSet {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dns#resourceRecordSet".
   core.String kind;
 
   /// For example, www.example.com.
@@ -3255,9 +3293,8 @@ class ResourceRecordSetsListResponse {
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your pagination token.
-  ///
-  /// In this way you can retrieve the complete contents of even very large
+  /// make another list request using this value as your pagination token. In
+  /// this way you can retrieve the complete contents of even very large
   /// collections one page at a time. However, if the contents of the collection
   /// change between the first and last paginated list request, the set of all
   /// elements returned will be an inconsistent view of the collection. There is

@@ -16,13 +16,8 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -31,8 +26,8 @@
             "location": "query",
             "type": "string"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -65,18 +60,24 @@
             "location": "query",
             "type": "string"
         },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
         "access_token": {
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -85,30 +86,14 @@
             "location": "query",
             "type": "string"
         },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
-            "type": "boolean"
+            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
-        "violatingSites": {
-            "methods": {
-                "list": {
-                    "description": "Lists sites that are failing in the Ad Experience Report on at least one\nplatform.",
-                    "httpMethod": "GET",
-                    "id": "adexperiencereport.violatingSites.list",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/violatingSites",
-                    "response": {
-                        "$ref": "ViolatingSitesResponse"
-                    }
-                }
-            }
-        },
         "sites": {
             "methods": {
                 "get": {
@@ -120,7 +105,7 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Required. The name of the site whose summary to get, e.g.\n`sites/http%3A%2F%2Fwww.google.com%2F`.\n\nFormat: `sites/{site}`",
+                            "description": "Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}`",
                             "location": "path",
                             "pattern": "^sites/[^/]+$",
                             "required": true,
@@ -133,17 +118,55 @@
                     }
                 }
             }
+        },
+        "violatingSites": {
+            "methods": {
+                "list": {
+                    "description": "Lists sites that are failing in the Ad Experience Report on at least one platform.",
+                    "httpMethod": "GET",
+                    "id": "adexperiencereport.violatingSites.list",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/violatingSites",
+                    "response": {
+                        "$ref": "ViolatingSitesResponse"
+                    }
+                }
+            }
         }
     },
-    "revision": "20200504",
+    "revision": "20201003",
     "rootUrl": "https://adexperiencereport.googleapis.com/",
     "schemas": {
         "PlatformSummary": {
             "description": "A site's Ad Experience Report summary on a single platform.",
             "id": "PlatformSummary",
             "properties": {
+                "underReview": {
+                    "description": "Whether the site is currently under review on this platform.",
+                    "type": "boolean"
+                },
+                "region": {
+                    "description": "The site's regions on this platform. No longer populated, because there is no longer any semantic difference between sites in different regions.",
+                    "items": {
+                        "enum": [
+                            "REGION_UNKNOWN",
+                            "REGION_A",
+                            "REGION_B",
+                            "REGION_C"
+                        ],
+                        "enumDescriptions": [
+                            "Ad standard not yet defined for your region.",
+                            "Region A.",
+                            "Region B.",
+                            "Region C."
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "filterStatus": {
-                    "description": "The site's [enforcement\nstatus](https://support.google.com/webtools/answer/7308033) on this\nplatform.",
+                    "description": "The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this platform.",
                     "enum": [
                         "UNKNOWN",
                         "ON",
@@ -160,16 +183,17 @@
                     ],
                     "type": "string"
                 },
-                "underReview": {
-                    "description": "Whether the site is currently under review on this platform.",
-                    "type": "boolean"
-                },
-                "reportUrl": {
-                    "description": "A link to the full Ad Experience Report for the site on this platform..\n\nNot set in\nViolatingSitesResponse.\n\nNote that you must complete the [Search Console verification\nprocess](https://support.google.com/webmasters/answer/9008080) for the site\nbefore you can access the full report.",
-                    "type": "string"
-                },
                 "lastChangeTime": {
                     "description": "The time at which the site's status last changed on this platform.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "reportUrl": {
+                    "description": "A link to the full Ad Experience Report for the site on this platform.. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report.",
+                    "type": "string"
+                },
+                "enforcementTime": {
+                    "description": "The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the site began or will begin on this platform. Not set when the filter_status is OFF.",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -188,30 +212,6 @@
                         "Failing."
                     ],
                     "type": "string"
-                },
-                "enforcementTime": {
-                    "description": "The time at which\n[enforcement](https://support.google.com/webtools/answer/7308033) against\nthe site began or will begin on this platform.\n\nNot set when the\nfilter_status\nis OFF.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "region": {
-                    "description": "The site's regions on this platform.\n\nNo longer populated, because there is no longer any semantic difference\nbetween sites in different regions.",
-                    "enumDescriptions": [
-                        "Ad standard not yet defined for your region.",
-                        "Region A.",
-                        "Region B.",
-                        "Region C."
-                    ],
-                    "items": {
-                        "enum": [
-                            "REGION_UNKNOWN",
-                            "REGION_A",
-                            "REGION_B",
-                            "REGION_C"
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -238,13 +238,13 @@
                     "$ref": "PlatformSummary",
                     "description": "The site's Ad Experience Report summary on mobile."
                 },
-                "reviewedSite": {
-                    "description": "The name of the reviewed site, e.g. `google.com`.",
-                    "type": "string"
-                },
                 "desktopSummary": {
                     "$ref": "PlatformSummary",
                     "description": "The site's Ad Experience Report summary on desktop."
+                },
+                "reviewedSite": {
+                    "description": "The name of the reviewed site, e.g. `google.com`.",
+                    "type": "string"
                 }
             },
             "type": "object"

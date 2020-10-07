@@ -6,7 +6,6 @@ library googleapis.civicinfo.v2;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
-import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
@@ -27,8 +26,8 @@ class CivicinfoApi {
       new RepresentativesResourceApi(_requester);
 
   CivicinfoApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "civicinfo/v2/"})
+      {core.String rootUrl = "https://civicinfo.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -39,8 +38,6 @@ class DivisionsResourceApi {
   DivisionsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Searches for political divisions by their natural name or OCD ID.
-  ///
-  /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
@@ -60,7 +57,7 @@ class DivisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DivisionSearchResponse> search(DivisionSearchRequest request,
+  async.Future<DivisionSearchResponse> search(
       {core.String query, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -69,9 +66,6 @@ class DivisionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
     if (query != null) {
       _queryParams["query"] = [query];
     }
@@ -79,7 +73,7 @@ class DivisionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'divisions';
+    _url = 'civicinfo/v2/divisions';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -98,8 +92,6 @@ class ElectionsResourceApi {
 
   /// List of available elections to query.
   ///
-  /// [request] - The metadata request object.
-  ///
   /// Request parameters:
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -112,9 +104,7 @@ class ElectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ElectionsQueryResponse> electionQuery(
-      ElectionsQueryRequest request,
-      {core.String $fields}) {
+  async.Future<ElectionsQueryResponse> electionQuery({core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -122,14 +112,11 @@ class ElectionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'elections';
+    _url = 'civicinfo/v2/elections';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -143,26 +130,24 @@ class ElectionsResourceApi {
   /// Looks up information relevant to a voter based on the voter's registered
   /// address.
   ///
-  /// [request] - The metadata request object.
-  ///
   /// Request parameters:
   ///
   /// [address] - The registered address of the voter to look up.
   ///
   /// [electionId] - The unique ID of the election to look up. A list of
   /// election IDs can be obtained at
-  /// https://www.googleapis.com/civicinfo/{version}/electionsIf no election ID
-  /// is specified in the query and there is more than one election with data
+  /// https://www.googleapis.com/civicinfo/{version}/elections. If no election
+  /// ID is specified in the query and there is more than one election with data
   /// for the given voter, the additional elections are provided in the
   /// otherElections response field.
   ///
-  /// [officialOnly] - If set to true, only data from official state sources
-  /// will be returned.
-  ///
   /// [returnAllAvailableData] - If set to true, the query will return the
-  /// success codeand include any partial information when it is unable to
+  /// success code and include any partial information when it is unable to
   /// determine a matching address or unable to determine the election for
   /// electionId=0 queries.
+  ///
+  /// [officialOnly] - If set to true, only data from official state sources
+  /// will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -174,11 +159,10 @@ class ElectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VoterInfoResponse> voterInfoQuery(
-      VoterInfoRequest request, core.String address,
+  async.Future<VoterInfoResponse> voterInfoQuery(core.String address,
       {core.String electionId,
-      core.bool officialOnly,
       core.bool returnAllAvailableData,
+      core.bool officialOnly,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -187,9 +171,6 @@ class ElectionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
     }
@@ -197,17 +178,17 @@ class ElectionsResourceApi {
     if (electionId != null) {
       _queryParams["electionId"] = [electionId];
     }
-    if (officialOnly != null) {
-      _queryParams["officialOnly"] = ["${officialOnly}"];
-    }
     if (returnAllAvailableData != null) {
       _queryParams["returnAllAvailableData"] = ["${returnAllAvailableData}"];
+    }
+    if (officialOnly != null) {
+      _queryParams["officialOnly"] = ["${officialOnly}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'voterinfo';
+    _url = 'civicinfo/v2/voterinfo';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -227,12 +208,14 @@ class RepresentativesResourceApi {
   /// Looks up political geography and representative information for a single
   /// address.
   ///
-  /// [request] - The metadata request object.
-  ///
   /// Request parameters:
   ///
   /// [address] - The address to look up. May only be specified if the field
-  /// ocdId is not given in the URL.
+  /// ocdId is not given in the URL
+  ///
+  /// [roles] - A list of office roles to filter by. Only offices fulfilling one
+  /// of these roles will be returned. Divisions that don't contain a matching
+  /// office will not be returned.
   ///
   /// [includeOffices] - Whether to return information about offices and
   /// officials. If false, only the top-level district information will be
@@ -241,10 +224,6 @@ class RepresentativesResourceApi {
   /// [levels] - A list of office levels to filter by. Only offices that serve
   /// at least one of these levels will be returned. Divisions that don't
   /// contain a matching office will not be returned.
-  ///
-  /// [roles] - A list of office roles to filter by. Only offices fulfilling one
-  /// of these roles will be returned. Divisions that don't contain a matching
-  /// office will not be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -257,11 +236,10 @@ class RepresentativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RepresentativeInfoResponse> representativeInfoByAddress(
-      RepresentativeInfoRequest request,
       {core.String address,
+      core.List<core.String> roles,
       core.bool includeOffices,
       core.List<core.String> levels,
-      core.List<core.String> roles,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -270,11 +248,11 @@ class RepresentativesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
     if (address != null) {
       _queryParams["address"] = [address];
+    }
+    if (roles != null) {
+      _queryParams["roles"] = roles;
     }
     if (includeOffices != null) {
       _queryParams["includeOffices"] = ["${includeOffices}"];
@@ -282,14 +260,11 @@ class RepresentativesResourceApi {
     if (levels != null) {
       _queryParams["levels"] = levels;
     }
-    if (roles != null) {
-      _queryParams["roles"] = roles;
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'representatives';
+    _url = 'civicinfo/v2/representatives';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -303,21 +278,19 @@ class RepresentativesResourceApi {
 
   /// Looks up representative information for a single geographic division.
   ///
-  /// [request] - The metadata request object.
-  ///
   /// Request parameters:
   ///
   /// [ocdId] - The Open Civic Data division identifier of the division to look
   /// up.
   ///
-  /// [levels] - A list of office levels to filter by. Only offices that serve
-  /// at least one of these levels will be returned. Divisions that don't
-  /// contain a matching office will not be returned.
-  ///
   /// [recursive] - If true, information about all divisions contained in the
   /// division requested will be included as well. For example, if querying
   /// ocd-division/country:us/district:dc, this would also return all DC's wards
   /// and ANCs.
+  ///
+  /// [levels] - A list of office levels to filter by. Only offices that serve
+  /// at least one of these levels will be returned. Divisions that don't
+  /// contain a matching office will not be returned.
   ///
   /// [roles] - A list of office roles to filter by. Only offices fulfilling one
   /// of these roles will be returned. Divisions that don't contain a matching
@@ -334,9 +307,9 @@ class RepresentativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RepresentativeInfoData> representativeInfoByDivision(
-      DivisionRepresentativeInfoRequest request, core.String ocdId,
-      {core.List<core.String> levels,
-      core.bool recursive,
+      core.String ocdId,
+      {core.bool recursive,
+      core.List<core.String> levels,
       core.List<core.String> roles,
       core.String $fields}) {
     var _url;
@@ -346,17 +319,14 @@ class RepresentativesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
     if (ocdId == null) {
       throw new core.ArgumentError("Parameter ocdId is required.");
     }
-    if (levels != null) {
-      _queryParams["levels"] = levels;
-    }
     if (recursive != null) {
       _queryParams["recursive"] = ["${recursive}"];
+    }
+    if (levels != null) {
+      _queryParams["levels"] = levels;
     }
     if (roles != null) {
       _queryParams["roles"] = roles;
@@ -365,7 +335,8 @@ class RepresentativesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'representatives/' + commons.Escaper.ecapeVariable('$ocdId');
+    _url = 'civicinfo/v2/representatives/' +
+        commons.Escaper.ecapeVariable('$ocdId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -451,7 +422,6 @@ class AdministrativeBody {
   /// A URL provided by this administrative body for information on absentee
   /// voting.
   core.String absenteeVotingInfoUrl;
-  core.List<core.String> addressLines;
 
   /// A URL provided by this administrative body to give contest information to
   /// the voter.
@@ -463,6 +433,14 @@ class AdministrativeBody {
   /// A URL provided by this administrative body for looking up general election
   /// information.
   core.String electionInfoUrl;
+
+  /// A last minute or emergency notification text provided by this
+  /// administrative body.
+  core.String electionNoticeText;
+
+  /// A URL provided by this administrative body for additional information
+  /// related to the last minute or emergency notification.
+  core.String electionNoticeUrl;
 
   /// The election officials for this election administrative body.
   core.List<ElectionOfficial> electionOfficials;
@@ -500,9 +478,6 @@ class AdministrativeBody {
     if (_json.containsKey("absenteeVotingInfoUrl")) {
       absenteeVotingInfoUrl = _json["absenteeVotingInfoUrl"];
     }
-    if (_json.containsKey("addressLines")) {
-      addressLines = (_json["addressLines"] as core.List).cast<core.String>();
-    }
     if (_json.containsKey("ballotInfoUrl")) {
       ballotInfoUrl = _json["ballotInfoUrl"];
     }
@@ -512,6 +487,12 @@ class AdministrativeBody {
     }
     if (_json.containsKey("electionInfoUrl")) {
       electionInfoUrl = _json["electionInfoUrl"];
+    }
+    if (_json.containsKey("electionNoticeText")) {
+      electionNoticeText = _json["electionNoticeText"];
+    }
+    if (_json.containsKey("electionNoticeUrl")) {
+      electionNoticeUrl = _json["electionNoticeUrl"];
     }
     if (_json.containsKey("electionOfficials")) {
       electionOfficials = (_json["electionOfficials"] as core.List)
@@ -554,9 +535,6 @@ class AdministrativeBody {
     if (absenteeVotingInfoUrl != null) {
       _json["absenteeVotingInfoUrl"] = absenteeVotingInfoUrl;
     }
-    if (addressLines != null) {
-      _json["addressLines"] = addressLines;
-    }
     if (ballotInfoUrl != null) {
       _json["ballotInfoUrl"] = ballotInfoUrl;
     }
@@ -565,6 +543,12 @@ class AdministrativeBody {
     }
     if (electionInfoUrl != null) {
       _json["electionInfoUrl"] = electionInfoUrl;
+    }
+    if (electionNoticeText != null) {
+      _json["electionNoticeText"] = electionNoticeText;
+    }
+    if (electionNoticeUrl != null) {
+      _json["electionNoticeUrl"] = electionNoticeUrl;
     }
     if (electionOfficials != null) {
       _json["electionOfficials"] =
@@ -762,7 +746,12 @@ class Contest {
   /// The name of the office for this contest.
   core.String office;
 
-  /// If this is a partisan election, the name of the party it is for.
+  /// If this is a partisan election, the name of the party/parties it is for.
+  core.List<core.String> primaryParties;
+
+  /// [DEPRECATED] If this is a partisan election, the name of the party it is
+  /// for. This field as deprecated in favor of the array "primaryParties", as
+  /// contests may contain more than one party.
   core.String primaryParty;
 
   /// The set of ballot responses for the referendum. A ballot response
@@ -863,6 +852,10 @@ class Contest {
     if (_json.containsKey("office")) {
       office = _json["office"];
     }
+    if (_json.containsKey("primaryParties")) {
+      primaryParties =
+          (_json["primaryParties"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("primaryParty")) {
       primaryParty = _json["primaryParty"];
     }
@@ -947,6 +940,9 @@ class Contest {
     if (office != null) {
       _json["office"] = office;
     }
+    if (primaryParties != null) {
+      _json["primaryParties"] = primaryParties;
+    }
     if (primaryParty != null) {
       _json["primaryParty"] = primaryParty;
     }
@@ -991,71 +987,6 @@ class Contest {
     }
     if (type != null) {
       _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-class ContextParams {
-  core.String clientProfile;
-
-  ContextParams();
-
-  ContextParams.fromJson(core.Map _json) {
-    if (_json.containsKey("clientProfile")) {
-      clientProfile = _json["clientProfile"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (clientProfile != null) {
-      _json["clientProfile"] = clientProfile;
-    }
-    return _json;
-  }
-}
-
-/// A request to look up representative information for a single division.
-class DivisionRepresentativeInfoRequest {
-  ContextParams contextParams;
-
-  DivisionRepresentativeInfoRequest();
-
-  DivisionRepresentativeInfoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("contextParams")) {
-      contextParams = new ContextParams.fromJson(_json["contextParams"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (contextParams != null) {
-      _json["contextParams"] = (contextParams).toJson();
-    }
-    return _json;
-  }
-}
-
-/// A search request for political geographies.
-class DivisionSearchRequest {
-  ContextParams contextParams;
-
-  DivisionSearchRequest();
-
-  DivisionSearchRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("contextParams")) {
-      contextParams = new ContextParams.fromJson(_json["contextParams"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (contextParams != null) {
-      _json["contextParams"] = (contextParams).toJson();
     }
     return _json;
   }
@@ -1108,7 +1039,7 @@ class DivisionSearchResult {
   /// The name of the division.
   core.String name;
 
-  /// The unique Open Civic Data identifier for this division.
+  /// The unique Open Civic Data identifier for this division
   core.String ocdId;
 
   DivisionSearchResult();
@@ -1254,27 +1185,6 @@ class ElectionOfficial {
   }
 }
 
-class ElectionsQueryRequest {
-  ContextParams contextParams;
-
-  ElectionsQueryRequest();
-
-  ElectionsQueryRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("contextParams")) {
-      contextParams = new ContextParams.fromJson(_json["contextParams"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (contextParams != null) {
-      _json["contextParams"] = (contextParams).toJson();
-    }
-    return _json;
-  }
-}
-
 /// The list of elections available for this version of the API.
 class ElectionsQueryResponse {
   /// A list of available elections
@@ -1315,7 +1225,6 @@ class ElectoralDistrict {
   /// An identifier for this district, relative to its scope. For example, the
   /// 34th State Senate district would have id "34" and a scope of stateUpper.
   core.String id;
-  core.String kgForeignKey;
 
   /// The name of the district.
   core.String name;
@@ -1324,6 +1233,21 @@ class ElectoralDistrict {
   /// geography is not known. One of: national, statewide, congressional,
   /// stateUpper, stateLower, countywide, judicial, schoolBoard, cityWide,
   /// township, countyCouncil, cityCouncil, ward, special
+  /// Possible string values are:
+  /// - "statewide"
+  /// - "congressional"
+  /// - "stateUpper"
+  /// - "stateLower"
+  /// - "countywide"
+  /// - "judicial"
+  /// - "schoolBoard"
+  /// - "citywide"
+  /// - "special"
+  /// - "countyCouncil"
+  /// - "township"
+  /// - "ward"
+  /// - "cityCouncil"
+  /// - "national"
   core.String scope;
 
   ElectoralDistrict();
@@ -1331,9 +1255,6 @@ class ElectoralDistrict {
   ElectoralDistrict.fromJson(core.Map _json) {
     if (_json.containsKey("id")) {
       id = _json["id"];
-    }
-    if (_json.containsKey("kgForeignKey")) {
-      kgForeignKey = _json["kgForeignKey"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1349,9 +1270,6 @@ class ElectoralDistrict {
     if (id != null) {
       _json["id"] = id;
     }
-    if (kgForeignKey != null) {
-      _json["kgForeignKey"] = kgForeignKey;
-    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -1362,39 +1280,15 @@ class ElectoralDistrict {
   }
 }
 
-class FieldMetadataProto {
-  InternalFieldMetadataProto internal;
-
-  FieldMetadataProto();
-
-  FieldMetadataProto.fromJson(core.Map _json) {
-    if (_json.containsKey("internal")) {
-      internal = new InternalFieldMetadataProto.fromJson(_json["internal"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (internal != null) {
-      _json["internal"] = (internal).toJson();
-    }
-    return _json;
-  }
-}
-
 /// Describes a political geography.
 class GeographicDivision {
-  /// Any other valid OCD IDs that refer to the same division.
-  ///
-  /// Because OCD IDs are meant to be human-readable and at least somewhat
-  /// predictable, there are occasionally several identifiers for a single
-  /// division. These identifiers are defined to be equivalent to one another,
-  /// and one is always indicated as the primary identifier. The primary
-  /// identifier will be returned in ocd_id above, and any other equivalent
-  /// valid identifiers will be returned in this list.
-  ///
-  /// For example, if this division's OCD ID is
+  /// Any other valid OCD IDs that refer to the same division.\n\nBecause OCD
+  /// IDs are meant to be human-readable and at least somewhat predictable,
+  /// there are occasionally several identifiers for a single division. These
+  /// identifiers are defined to be equivalent to one another, and one is always
+  /// indicated as the primary identifier. The primary identifier will be
+  /// returned in ocd_id above, and any other equivalent valid identifiers will
+  /// be returned in this list.\n\nFor example, if this division's OCD ID is
   /// ocd-division/country:us/district:dc, this will contain
   /// ocd-division/country:us/state:dc.
   core.List<core.String> alsoKnownAs;
@@ -1432,63 +1326,6 @@ class GeographicDivision {
     }
     if (officeIndices != null) {
       _json["officeIndices"] = officeIndices;
-    }
-    return _json;
-  }
-}
-
-class InternalFieldMetadataProto {
-  core.bool isAuto;
-  InternalSourceSummaryProto sourceSummary;
-
-  InternalFieldMetadataProto();
-
-  InternalFieldMetadataProto.fromJson(core.Map _json) {
-    if (_json.containsKey("isAuto")) {
-      isAuto = _json["isAuto"];
-    }
-    if (_json.containsKey("sourceSummary")) {
-      sourceSummary =
-          new InternalSourceSummaryProto.fromJson(_json["sourceSummary"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (isAuto != null) {
-      _json["isAuto"] = isAuto;
-    }
-    if (sourceSummary != null) {
-      _json["sourceSummary"] = (sourceSummary).toJson();
-    }
-    return _json;
-  }
-}
-
-class InternalSourceSummaryProto {
-  core.String dataset;
-  core.String provider;
-
-  InternalSourceSummaryProto();
-
-  InternalSourceSummaryProto.fromJson(core.Map _json) {
-    if (_json.containsKey("dataset")) {
-      dataset = _json["dataset"];
-    }
-    if (_json.containsKey("provider")) {
-      provider = _json["provider"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (dataset != null) {
-      _json["dataset"] = dataset;
-    }
-    if (provider != null) {
-      _json["provider"] = provider;
     }
     return _json;
   }
@@ -1665,41 +1502,6 @@ class Official {
   }
 }
 
-class PointProto {
-  core.int latE7;
-  core.int lngE7;
-  FieldMetadataProto metadata;
-
-  PointProto();
-
-  PointProto.fromJson(core.Map _json) {
-    if (_json.containsKey("latE7")) {
-      latE7 = _json["latE7"];
-    }
-    if (_json.containsKey("lngE7")) {
-      lngE7 = _json["lngE7"];
-    }
-    if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadataProto.fromJson(_json["metadata"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (latE7 != null) {
-      _json["latE7"] = latE7;
-    }
-    if (lngE7 != null) {
-      _json["lngE7"] = lngE7;
-    }
-    if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
-    }
-    return _json;
-  }
-}
-
 /// A location where a voter can vote. This may be an early vote site, an
 /// election day voting location, or a drop off location for a completed ballot.
 class PollingLocation {
@@ -1715,16 +1517,12 @@ class PollingLocation {
   /// from the Request more link on the Quotas page.
   core.String id;
 
-  /// Latitude of the location, in degrees north of the equator. Only some
-  /// locations -- generally, ballot drop boxes for vote-by-mail elections --
-  /// will have this set; for others, use a geocoding service like the Google
-  /// Maps API to resolve the address to a geographic point.
+  /// Latitude of the location, in degrees north of the equator. Note this field
+  /// may not be available for some locations.
   core.double latitude;
 
-  /// Longitude of the location, in degrees east of the Prime Meridian. Only
-  /// some locations -- generally, ballot drop boxes for vote-by-mail elections
-  /// -- will have this set; for others, use a geocoding service like the Google
-  /// Maps API to resolve the address to a geographic point.
+  /// Longitude of the location, in degrees east of the Prime Meridian. Note
+  /// this field may not be available for some locations.
   core.double longitude;
 
   /// The name of the early vote site or drop off location. This field is not
@@ -1829,247 +1627,9 @@ class PollingLocation {
   }
 }
 
-class PostalAddress {
-  core.List<core.String> addressLines;
-  core.String administrativeAreaName;
-  core.String countryName;
-  core.String countryNameCode;
-  core.String dependentLocalityName;
-  core.String dependentThoroughfareName;
-  core.String firmName;
-  core.bool isDisputed;
-  core.String languageCode;
-  core.String localityName;
-  core.String postBoxNumber;
-  core.String postalCodeNumber;
-  core.String postalCodeNumberExtension;
-  core.String premiseName;
-  core.String recipientName;
-  core.String sortingCode;
-  core.String subAdministrativeAreaName;
-  core.String subPremiseName;
-  core.String thoroughfareName;
-  core.String thoroughfareNumber;
-
-  PostalAddress();
-
-  PostalAddress.fromJson(core.Map _json) {
-    if (_json.containsKey("addressLines")) {
-      addressLines = (_json["addressLines"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("administrativeAreaName")) {
-      administrativeAreaName = _json["administrativeAreaName"];
-    }
-    if (_json.containsKey("countryName")) {
-      countryName = _json["countryName"];
-    }
-    if (_json.containsKey("countryNameCode")) {
-      countryNameCode = _json["countryNameCode"];
-    }
-    if (_json.containsKey("dependentLocalityName")) {
-      dependentLocalityName = _json["dependentLocalityName"];
-    }
-    if (_json.containsKey("dependentThoroughfareName")) {
-      dependentThoroughfareName = _json["dependentThoroughfareName"];
-    }
-    if (_json.containsKey("firmName")) {
-      firmName = _json["firmName"];
-    }
-    if (_json.containsKey("isDisputed")) {
-      isDisputed = _json["isDisputed"];
-    }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
-    }
-    if (_json.containsKey("localityName")) {
-      localityName = _json["localityName"];
-    }
-    if (_json.containsKey("postBoxNumber")) {
-      postBoxNumber = _json["postBoxNumber"];
-    }
-    if (_json.containsKey("postalCodeNumber")) {
-      postalCodeNumber = _json["postalCodeNumber"];
-    }
-    if (_json.containsKey("postalCodeNumberExtension")) {
-      postalCodeNumberExtension = _json["postalCodeNumberExtension"];
-    }
-    if (_json.containsKey("premiseName")) {
-      premiseName = _json["premiseName"];
-    }
-    if (_json.containsKey("recipientName")) {
-      recipientName = _json["recipientName"];
-    }
-    if (_json.containsKey("sortingCode")) {
-      sortingCode = _json["sortingCode"];
-    }
-    if (_json.containsKey("subAdministrativeAreaName")) {
-      subAdministrativeAreaName = _json["subAdministrativeAreaName"];
-    }
-    if (_json.containsKey("subPremiseName")) {
-      subPremiseName = _json["subPremiseName"];
-    }
-    if (_json.containsKey("thoroughfareName")) {
-      thoroughfareName = _json["thoroughfareName"];
-    }
-    if (_json.containsKey("thoroughfareNumber")) {
-      thoroughfareNumber = _json["thoroughfareNumber"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (addressLines != null) {
-      _json["addressLines"] = addressLines;
-    }
-    if (administrativeAreaName != null) {
-      _json["administrativeAreaName"] = administrativeAreaName;
-    }
-    if (countryName != null) {
-      _json["countryName"] = countryName;
-    }
-    if (countryNameCode != null) {
-      _json["countryNameCode"] = countryNameCode;
-    }
-    if (dependentLocalityName != null) {
-      _json["dependentLocalityName"] = dependentLocalityName;
-    }
-    if (dependentThoroughfareName != null) {
-      _json["dependentThoroughfareName"] = dependentThoroughfareName;
-    }
-    if (firmName != null) {
-      _json["firmName"] = firmName;
-    }
-    if (isDisputed != null) {
-      _json["isDisputed"] = isDisputed;
-    }
-    if (languageCode != null) {
-      _json["languageCode"] = languageCode;
-    }
-    if (localityName != null) {
-      _json["localityName"] = localityName;
-    }
-    if (postBoxNumber != null) {
-      _json["postBoxNumber"] = postBoxNumber;
-    }
-    if (postalCodeNumber != null) {
-      _json["postalCodeNumber"] = postalCodeNumber;
-    }
-    if (postalCodeNumberExtension != null) {
-      _json["postalCodeNumberExtension"] = postalCodeNumberExtension;
-    }
-    if (premiseName != null) {
-      _json["premiseName"] = premiseName;
-    }
-    if (recipientName != null) {
-      _json["recipientName"] = recipientName;
-    }
-    if (sortingCode != null) {
-      _json["sortingCode"] = sortingCode;
-    }
-    if (subAdministrativeAreaName != null) {
-      _json["subAdministrativeAreaName"] = subAdministrativeAreaName;
-    }
-    if (subPremiseName != null) {
-      _json["subPremiseName"] = subPremiseName;
-    }
-    if (thoroughfareName != null) {
-      _json["thoroughfareName"] = thoroughfareName;
-    }
-    if (thoroughfareNumber != null) {
-      _json["thoroughfareNumber"] = thoroughfareNumber;
-    }
-    return _json;
-  }
-}
-
-class Provenance {
-  StreetSegmentList collidedSegmentSource;
-  core.String ctclContestUuid;
-  core.String ctclOfficeUuid;
-  core.String datasetId;
-  core.String precinctId;
-  core.String precinctSplitId;
-  core.String tsStreetSegmentId;
-  core.String vip5PrecinctId;
-  core.String vip5StreetSegmentId;
-  core.String vipStreetSegmentId;
-
-  Provenance();
-
-  Provenance.fromJson(core.Map _json) {
-    if (_json.containsKey("collidedSegmentSource")) {
-      collidedSegmentSource =
-          new StreetSegmentList.fromJson(_json["collidedSegmentSource"]);
-    }
-    if (_json.containsKey("ctclContestUuid")) {
-      ctclContestUuid = _json["ctclContestUuid"];
-    }
-    if (_json.containsKey("ctclOfficeUuid")) {
-      ctclOfficeUuid = _json["ctclOfficeUuid"];
-    }
-    if (_json.containsKey("datasetId")) {
-      datasetId = _json["datasetId"];
-    }
-    if (_json.containsKey("precinctId")) {
-      precinctId = _json["precinctId"];
-    }
-    if (_json.containsKey("precinctSplitId")) {
-      precinctSplitId = _json["precinctSplitId"];
-    }
-    if (_json.containsKey("tsStreetSegmentId")) {
-      tsStreetSegmentId = _json["tsStreetSegmentId"];
-    }
-    if (_json.containsKey("vip5PrecinctId")) {
-      vip5PrecinctId = _json["vip5PrecinctId"];
-    }
-    if (_json.containsKey("vip5StreetSegmentId")) {
-      vip5StreetSegmentId = _json["vip5StreetSegmentId"];
-    }
-    if (_json.containsKey("vipStreetSegmentId")) {
-      vipStreetSegmentId = _json["vipStreetSegmentId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (collidedSegmentSource != null) {
-      _json["collidedSegmentSource"] = (collidedSegmentSource).toJson();
-    }
-    if (ctclContestUuid != null) {
-      _json["ctclContestUuid"] = ctclContestUuid;
-    }
-    if (ctclOfficeUuid != null) {
-      _json["ctclOfficeUuid"] = ctclOfficeUuid;
-    }
-    if (datasetId != null) {
-      _json["datasetId"] = datasetId;
-    }
-    if (precinctId != null) {
-      _json["precinctId"] = precinctId;
-    }
-    if (precinctSplitId != null) {
-      _json["precinctSplitId"] = precinctSplitId;
-    }
-    if (tsStreetSegmentId != null) {
-      _json["tsStreetSegmentId"] = tsStreetSegmentId;
-    }
-    if (vip5PrecinctId != null) {
-      _json["vip5PrecinctId"] = vip5PrecinctId;
-    }
-    if (vip5StreetSegmentId != null) {
-      _json["vip5StreetSegmentId"] = vip5StreetSegmentId;
-    }
-    if (vipStreetSegmentId != null) {
-      _json["vipStreetSegmentId"] = vipStreetSegmentId;
-    }
-    return _json;
-  }
-}
-
 class RepresentativeInfoData {
-  /// Political geographic divisions that contain the requested address.
+  /// A map of political geographic divisions that contain the requested
+  /// address, keyed by the unique Open Civic Data identifier for this division.
   core.Map<core.String, GeographicDivision> divisions;
 
   /// Elected offices referenced by the divisions listed above. Will only be
@@ -2118,32 +1678,10 @@ class RepresentativeInfoData {
   }
 }
 
-/// A request for political geography and representative information for an
-/// address.
-class RepresentativeInfoRequest {
-  ContextParams contextParams;
-
-  RepresentativeInfoRequest();
-
-  RepresentativeInfoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("contextParams")) {
-      contextParams = new ContextParams.fromJson(_json["contextParams"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (contextParams != null) {
-      _json["contextParams"] = (contextParams).toJson();
-    }
-    return _json;
-  }
-}
-
 /// The result of a representative info lookup query.
 class RepresentativeInfoResponse {
-  /// Political geographic divisions that contain the requested address.
+  /// A map of political geographic divisions that contain the requested
+  /// address, keyed by the unique Open Civic Data identifier for this division.
   core.Map<core.String, GeographicDivision> divisions;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -2321,397 +1859,6 @@ class Source {
   }
 }
 
-class StreetSegment {
-  core.List<core.String> administrationRegionIds;
-  core.String beforeGeocodeId;
-  core.String catalistUniquePrecinctCode;
-  core.String city;
-  core.String cityCouncilDistrict;
-  core.String congressionalDistrict;
-  core.List<core.String> contestIds;
-  core.String countyCouncilDistrict;
-  core.String countyFips;
-  core.String datasetId;
-  core.List<core.String> earlyVoteSiteByIds;
-  core.String endHouseNumber;
-  PointProto geocodedPoint;
-  core.List<core.String> geographicDivisionOcdIds;
-  core.String id;
-  core.String judicialDistrict;
-  core.bool mailOnly;
-  core.String municipalDistrict;
-  core.String ncoaAddress;
-  core.List<core.String> oddOrEvens;
-  core.String originalId;
-  core.List<core.String> pollinglocationByIds;
-  core.String precinctName;
-  core.String precinctOcdId;
-  core.List<Provenance> provenances;
-  core.bool published;
-  core.String schoolDistrict;
-  core.String startHouseNumber;
-  core.int startLatE7;
-  core.int startLngE7;
-  core.String state;
-  core.String stateHouseDistrict;
-  core.String stateSenateDistrict;
-  core.String streetName;
-  core.String subAdministrativeAreaName;
-  core.String surrogateId;
-  core.String targetsmartUniquePrecinctCode;
-  core.String townshipDistrict;
-  core.String unitNumber;
-  core.String unitType;
-  core.String vanPrecinctCode;
-  core.List<core.String> voterGeographicDivisionOcdIds;
-  core.String wardDistrict;
-  core.bool wildcard;
-  core.String zip;
-
-  StreetSegment();
-
-  StreetSegment.fromJson(core.Map _json) {
-    if (_json.containsKey("administrationRegionIds")) {
-      administrationRegionIds =
-          (_json["administrationRegionIds"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("beforeGeocodeId")) {
-      beforeGeocodeId = _json["beforeGeocodeId"];
-    }
-    if (_json.containsKey("catalistUniquePrecinctCode")) {
-      catalistUniquePrecinctCode = _json["catalistUniquePrecinctCode"];
-    }
-    if (_json.containsKey("city")) {
-      city = _json["city"];
-    }
-    if (_json.containsKey("cityCouncilDistrict")) {
-      cityCouncilDistrict = _json["cityCouncilDistrict"];
-    }
-    if (_json.containsKey("congressionalDistrict")) {
-      congressionalDistrict = _json["congressionalDistrict"];
-    }
-    if (_json.containsKey("contestIds")) {
-      contestIds = (_json["contestIds"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("countyCouncilDistrict")) {
-      countyCouncilDistrict = _json["countyCouncilDistrict"];
-    }
-    if (_json.containsKey("countyFips")) {
-      countyFips = _json["countyFips"];
-    }
-    if (_json.containsKey("datasetId")) {
-      datasetId = _json["datasetId"];
-    }
-    if (_json.containsKey("earlyVoteSiteByIds")) {
-      earlyVoteSiteByIds =
-          (_json["earlyVoteSiteByIds"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("endHouseNumber")) {
-      endHouseNumber = _json["endHouseNumber"];
-    }
-    if (_json.containsKey("geocodedPoint")) {
-      geocodedPoint = new PointProto.fromJson(_json["geocodedPoint"]);
-    }
-    if (_json.containsKey("geographicDivisionOcdIds")) {
-      geographicDivisionOcdIds =
-          (_json["geographicDivisionOcdIds"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("judicialDistrict")) {
-      judicialDistrict = _json["judicialDistrict"];
-    }
-    if (_json.containsKey("mailOnly")) {
-      mailOnly = _json["mailOnly"];
-    }
-    if (_json.containsKey("municipalDistrict")) {
-      municipalDistrict = _json["municipalDistrict"];
-    }
-    if (_json.containsKey("ncoaAddress")) {
-      ncoaAddress = _json["ncoaAddress"];
-    }
-    if (_json.containsKey("oddOrEvens")) {
-      oddOrEvens = (_json["oddOrEvens"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("originalId")) {
-      originalId = _json["originalId"];
-    }
-    if (_json.containsKey("pollinglocationByIds")) {
-      pollinglocationByIds =
-          (_json["pollinglocationByIds"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("precinctName")) {
-      precinctName = _json["precinctName"];
-    }
-    if (_json.containsKey("precinctOcdId")) {
-      precinctOcdId = _json["precinctOcdId"];
-    }
-    if (_json.containsKey("provenances")) {
-      provenances = (_json["provenances"] as core.List)
-          .map<Provenance>((value) => new Provenance.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("published")) {
-      published = _json["published"];
-    }
-    if (_json.containsKey("schoolDistrict")) {
-      schoolDistrict = _json["schoolDistrict"];
-    }
-    if (_json.containsKey("startHouseNumber")) {
-      startHouseNumber = _json["startHouseNumber"];
-    }
-    if (_json.containsKey("startLatE7")) {
-      startLatE7 = _json["startLatE7"];
-    }
-    if (_json.containsKey("startLngE7")) {
-      startLngE7 = _json["startLngE7"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-    if (_json.containsKey("stateHouseDistrict")) {
-      stateHouseDistrict = _json["stateHouseDistrict"];
-    }
-    if (_json.containsKey("stateSenateDistrict")) {
-      stateSenateDistrict = _json["stateSenateDistrict"];
-    }
-    if (_json.containsKey("streetName")) {
-      streetName = _json["streetName"];
-    }
-    if (_json.containsKey("subAdministrativeAreaName")) {
-      subAdministrativeAreaName = _json["subAdministrativeAreaName"];
-    }
-    if (_json.containsKey("surrogateId")) {
-      surrogateId = _json["surrogateId"];
-    }
-    if (_json.containsKey("targetsmartUniquePrecinctCode")) {
-      targetsmartUniquePrecinctCode = _json["targetsmartUniquePrecinctCode"];
-    }
-    if (_json.containsKey("townshipDistrict")) {
-      townshipDistrict = _json["townshipDistrict"];
-    }
-    if (_json.containsKey("unitNumber")) {
-      unitNumber = _json["unitNumber"];
-    }
-    if (_json.containsKey("unitType")) {
-      unitType = _json["unitType"];
-    }
-    if (_json.containsKey("vanPrecinctCode")) {
-      vanPrecinctCode = _json["vanPrecinctCode"];
-    }
-    if (_json.containsKey("voterGeographicDivisionOcdIds")) {
-      voterGeographicDivisionOcdIds =
-          (_json["voterGeographicDivisionOcdIds"] as core.List)
-              .cast<core.String>();
-    }
-    if (_json.containsKey("wardDistrict")) {
-      wardDistrict = _json["wardDistrict"];
-    }
-    if (_json.containsKey("wildcard")) {
-      wildcard = _json["wildcard"];
-    }
-    if (_json.containsKey("zip")) {
-      zip = _json["zip"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (administrationRegionIds != null) {
-      _json["administrationRegionIds"] = administrationRegionIds;
-    }
-    if (beforeGeocodeId != null) {
-      _json["beforeGeocodeId"] = beforeGeocodeId;
-    }
-    if (catalistUniquePrecinctCode != null) {
-      _json["catalistUniquePrecinctCode"] = catalistUniquePrecinctCode;
-    }
-    if (city != null) {
-      _json["city"] = city;
-    }
-    if (cityCouncilDistrict != null) {
-      _json["cityCouncilDistrict"] = cityCouncilDistrict;
-    }
-    if (congressionalDistrict != null) {
-      _json["congressionalDistrict"] = congressionalDistrict;
-    }
-    if (contestIds != null) {
-      _json["contestIds"] = contestIds;
-    }
-    if (countyCouncilDistrict != null) {
-      _json["countyCouncilDistrict"] = countyCouncilDistrict;
-    }
-    if (countyFips != null) {
-      _json["countyFips"] = countyFips;
-    }
-    if (datasetId != null) {
-      _json["datasetId"] = datasetId;
-    }
-    if (earlyVoteSiteByIds != null) {
-      _json["earlyVoteSiteByIds"] = earlyVoteSiteByIds;
-    }
-    if (endHouseNumber != null) {
-      _json["endHouseNumber"] = endHouseNumber;
-    }
-    if (geocodedPoint != null) {
-      _json["geocodedPoint"] = (geocodedPoint).toJson();
-    }
-    if (geographicDivisionOcdIds != null) {
-      _json["geographicDivisionOcdIds"] = geographicDivisionOcdIds;
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (judicialDistrict != null) {
-      _json["judicialDistrict"] = judicialDistrict;
-    }
-    if (mailOnly != null) {
-      _json["mailOnly"] = mailOnly;
-    }
-    if (municipalDistrict != null) {
-      _json["municipalDistrict"] = municipalDistrict;
-    }
-    if (ncoaAddress != null) {
-      _json["ncoaAddress"] = ncoaAddress;
-    }
-    if (oddOrEvens != null) {
-      _json["oddOrEvens"] = oddOrEvens;
-    }
-    if (originalId != null) {
-      _json["originalId"] = originalId;
-    }
-    if (pollinglocationByIds != null) {
-      _json["pollinglocationByIds"] = pollinglocationByIds;
-    }
-    if (precinctName != null) {
-      _json["precinctName"] = precinctName;
-    }
-    if (precinctOcdId != null) {
-      _json["precinctOcdId"] = precinctOcdId;
-    }
-    if (provenances != null) {
-      _json["provenances"] =
-          provenances.map((value) => (value).toJson()).toList();
-    }
-    if (published != null) {
-      _json["published"] = published;
-    }
-    if (schoolDistrict != null) {
-      _json["schoolDistrict"] = schoolDistrict;
-    }
-    if (startHouseNumber != null) {
-      _json["startHouseNumber"] = startHouseNumber;
-    }
-    if (startLatE7 != null) {
-      _json["startLatE7"] = startLatE7;
-    }
-    if (startLngE7 != null) {
-      _json["startLngE7"] = startLngE7;
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    if (stateHouseDistrict != null) {
-      _json["stateHouseDistrict"] = stateHouseDistrict;
-    }
-    if (stateSenateDistrict != null) {
-      _json["stateSenateDistrict"] = stateSenateDistrict;
-    }
-    if (streetName != null) {
-      _json["streetName"] = streetName;
-    }
-    if (subAdministrativeAreaName != null) {
-      _json["subAdministrativeAreaName"] = subAdministrativeAreaName;
-    }
-    if (surrogateId != null) {
-      _json["surrogateId"] = surrogateId;
-    }
-    if (targetsmartUniquePrecinctCode != null) {
-      _json["targetsmartUniquePrecinctCode"] = targetsmartUniquePrecinctCode;
-    }
-    if (townshipDistrict != null) {
-      _json["townshipDistrict"] = townshipDistrict;
-    }
-    if (unitNumber != null) {
-      _json["unitNumber"] = unitNumber;
-    }
-    if (unitType != null) {
-      _json["unitType"] = unitType;
-    }
-    if (vanPrecinctCode != null) {
-      _json["vanPrecinctCode"] = vanPrecinctCode;
-    }
-    if (voterGeographicDivisionOcdIds != null) {
-      _json["voterGeographicDivisionOcdIds"] = voterGeographicDivisionOcdIds;
-    }
-    if (wardDistrict != null) {
-      _json["wardDistrict"] = wardDistrict;
-    }
-    if (wildcard != null) {
-      _json["wildcard"] = wildcard;
-    }
-    if (zip != null) {
-      _json["zip"] = zip;
-    }
-    return _json;
-  }
-}
-
-class StreetSegmentList {
-  core.List<StreetSegment> segments;
-
-  StreetSegmentList();
-
-  StreetSegmentList.fromJson(core.Map _json) {
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
-          .map<StreetSegment>((value) => new StreetSegment.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (segments != null) {
-      _json["segments"] = segments.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// A request for information about a voter.
-class VoterInfoRequest {
-  ContextParams contextParams;
-  VoterInfoSegmentResult voterInfoSegmentResult;
-
-  VoterInfoRequest();
-
-  VoterInfoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("contextParams")) {
-      contextParams = new ContextParams.fromJson(_json["contextParams"]);
-    }
-    if (_json.containsKey("voterInfoSegmentResult")) {
-      voterInfoSegmentResult =
-          new VoterInfoSegmentResult.fromJson(_json["voterInfoSegmentResult"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (contextParams != null) {
-      _json["contextParams"] = (contextParams).toJson();
-    }
-    if (voterInfoSegmentResult != null) {
-      _json["voterInfoSegmentResult"] = (voterInfoSegmentResult).toJson();
-    }
-    return _json;
-  }
-}
-
 /// The result of a voter info lookup query.
 class VoterInfoResponse {
   /// Contests that will appear on the voter's ballot.
@@ -2757,7 +1904,6 @@ class VoterInfoResponse {
   /// Locations where the voter is eligible to vote on election day.
   core.List<PollingLocation> pollingLocations;
   core.String precinctId;
-  core.List<StreetSegment> segments;
 
   /// Local Election Information for the state that the voter votes in. For the
   /// US, there will only be one element in this array.
@@ -2807,11 +1953,6 @@ class VoterInfoResponse {
     if (_json.containsKey("precinctId")) {
       precinctId = _json["precinctId"];
     }
-    if (_json.containsKey("segments")) {
-      segments = (_json["segments"] as core.List)
-          .map<StreetSegment>((value) => new StreetSegment.fromJson(value))
-          .toList();
-    }
     if (_json.containsKey("state")) {
       state = (_json["state"] as core.List)
           .map<AdministrationRegion>(
@@ -2857,53 +1998,8 @@ class VoterInfoResponse {
     if (precinctId != null) {
       _json["precinctId"] = precinctId;
     }
-    if (segments != null) {
-      _json["segments"] = segments.map((value) => (value).toJson()).toList();
-    }
     if (state != null) {
       _json["state"] = state.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-class VoterInfoSegmentResult {
-  core.String generatedMillis;
-  PostalAddress postalAddress;
-  VoterInfoRequest request;
-  VoterInfoResponse response;
-
-  VoterInfoSegmentResult();
-
-  VoterInfoSegmentResult.fromJson(core.Map _json) {
-    if (_json.containsKey("generatedMillis")) {
-      generatedMillis = _json["generatedMillis"];
-    }
-    if (_json.containsKey("postalAddress")) {
-      postalAddress = new PostalAddress.fromJson(_json["postalAddress"]);
-    }
-    if (_json.containsKey("request")) {
-      request = new VoterInfoRequest.fromJson(_json["request"]);
-    }
-    if (_json.containsKey("response")) {
-      response = new VoterInfoResponse.fromJson(_json["response"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (generatedMillis != null) {
-      _json["generatedMillis"] = generatedMillis;
-    }
-    if (postalAddress != null) {
-      _json["postalAddress"] = (postalAddress).toJson();
-    }
-    if (request != null) {
-      _json["request"] = (request).toJson();
-    }
-    if (response != null) {
-      _json["response"] = (response).toJson();
     }
     return _json;
   }

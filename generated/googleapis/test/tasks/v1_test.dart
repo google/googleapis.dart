@@ -73,14 +73,14 @@ checkTaskLinks(api.TaskLinks o) {
   buildCounterTaskLinks--;
 }
 
-buildUnnamed545() {
+buildUnnamed564() {
   var o = new core.List<api.TaskLinks>();
   o.add(buildTaskLinks());
   o.add(buildTaskLinks());
   return o;
 }
 
-checkUnnamed545(core.List<api.TaskLinks> o) {
+checkUnnamed564(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskLinks(o[0]);
   checkTaskLinks(o[1]);
@@ -91,21 +91,21 @@ buildTask() {
   var o = new api.Task();
   buildCounterTask++;
   if (buildCounterTask < 3) {
-    o.completed = core.DateTime.parse("2002-02-27T14:01:02");
+    o.completed = "foo";
     o.deleted = true;
-    o.due = core.DateTime.parse("2002-02-27T14:01:02");
+    o.due = "foo";
     o.etag = "foo";
     o.hidden = true;
     o.id = "foo";
     o.kind = "foo";
-    o.links = buildUnnamed545();
+    o.links = buildUnnamed564();
     o.notes = "foo";
     o.parent = "foo";
     o.position = "foo";
     o.selfLink = "foo";
     o.status = "foo";
     o.title = "foo";
-    o.updated = core.DateTime.parse("2002-02-27T14:01:02");
+    o.updated = "foo";
   }
   buildCounterTask--;
   return o;
@@ -114,24 +114,21 @@ buildTask() {
 checkTask(api.Task o) {
   buildCounterTask++;
   if (buildCounterTask < 3) {
-    unittest.expect(o.completed,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.completed, unittest.equals('foo'));
     unittest.expect(o.deleted, unittest.isTrue);
-    unittest.expect(
-        o.due, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.due, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.hidden, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed545(o.links);
+    checkUnnamed564(o.links);
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.position, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(
-        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.updated, unittest.equals('foo'));
   }
   buildCounterTask--;
 }
@@ -146,7 +143,7 @@ buildTaskList() {
     o.kind = "foo";
     o.selfLink = "foo";
     o.title = "foo";
-    o.updated = core.DateTime.parse("2002-02-27T14:01:02");
+    o.updated = "foo";
   }
   buildCounterTaskList--;
   return o;
@@ -160,20 +157,19 @@ checkTaskList(api.TaskList o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(
-        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.updated, unittest.equals('foo'));
   }
   buildCounterTaskList--;
 }
 
-buildUnnamed546() {
+buildUnnamed565() {
   var o = new core.List<api.TaskList>();
   o.add(buildTaskList());
   o.add(buildTaskList());
   return o;
 }
 
-checkUnnamed546(core.List<api.TaskList> o) {
+checkUnnamed565(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskList(o[0]);
   checkTaskList(o[1]);
@@ -185,7 +181,7 @@ buildTaskLists() {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed546();
+    o.items = buildUnnamed565();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -197,21 +193,21 @@ checkTaskLists(api.TaskLists o) {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed546(o.items);
+    checkUnnamed565(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterTaskLists--;
 }
 
-buildUnnamed547() {
+buildUnnamed566() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed547(core.List<api.Task> o) {
+checkUnnamed566(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -223,7 +219,7 @@ buildTasks() {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed547();
+    o.items = buildUnnamed566();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -235,7 +231,7 @@ checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed547(o.items);
+    checkUnnamed566(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -297,12 +293,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("users/@me/lists/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("tasks/v1/users/@me/lists/"));
+        pathOffset += 25;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals("$arg_tasklist"));
@@ -351,12 +344,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("users/@me/lists/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("tasks/v1/users/@me/lists/"));
+        pathOffset += 25;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals("$arg_tasklist"));
@@ -410,12 +400,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("users/@me/lists"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 24),
+            unittest.equals("tasks/v1/users/@me/lists"));
+        pathOffset += 24;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -453,7 +440,7 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
-      var arg_maxResults = "foo";
+      var arg_maxResults = 42;
       var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -464,12 +451,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("users/@me/lists"));
-        pathOffset += 15;
+        unittest.expect(path.substring(pathOffset, pathOffset + 24),
+            unittest.equals("tasks/v1/users/@me/lists"));
+        pathOffset += 24;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -489,8 +473,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["maxResults"].first, unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -528,12 +512,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("users/@me/lists/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("tasks/v1/users/@me/lists/"));
+        pathOffset += 25;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals("$arg_tasklist"));
@@ -588,12 +569,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("users/@me/lists/"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("tasks/v1/users/@me/lists/"));
+        pathOffset += 25;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals("$arg_tasklist"));
@@ -646,12 +624,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("lists/"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("tasks/v1/lists/"));
+        pathOffset += 15;
         index = path.indexOf("/clear", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -707,12 +682,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("lists/"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("tasks/v1/lists/"));
+        pathOffset += 15;
         index = path.indexOf("/tasks/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -771,12 +743,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("lists/"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("tasks/v1/lists/"));
+        pathOffset += 15;
         index = path.indexOf("/tasks/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -842,12 +811,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("lists/"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("tasks/v1/lists/"));
+        pathOffset += 15;
         index = path.indexOf("/tasks", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -899,16 +865,16 @@ main() {
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
-      var arg_completedMax = "foo";
-      var arg_completedMin = "foo";
-      var arg_dueMax = "foo";
-      var arg_dueMin = "foo";
-      var arg_maxResults = "foo";
       var arg_pageToken = "foo";
-      var arg_showCompleted = true;
-      var arg_showDeleted = true;
+      var arg_maxResults = 42;
       var arg_showHidden = true;
+      var arg_completedMin = "foo";
+      var arg_showDeleted = true;
+      var arg_showCompleted = true;
+      var arg_completedMax = "foo";
       var arg_updatedMin = "foo";
+      var arg_dueMin = "foo";
+      var arg_dueMax = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -918,12 +884,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("lists/"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("tasks/v1/lists/"));
+        pathOffset += 15;
         index = path.indexOf("/tasks", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -953,23 +916,23 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["completedMax"].first, unittest.equals(arg_completedMax));
-        unittest.expect(
-            queryMap["completedMin"].first, unittest.equals(arg_completedMin));
-        unittest.expect(queryMap["dueMax"].first, unittest.equals(arg_dueMax));
-        unittest.expect(queryMap["dueMin"].first, unittest.equals(arg_dueMin));
-        unittest.expect(
-            queryMap["maxResults"].first, unittest.equals(arg_maxResults));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["showCompleted"].first,
-            unittest.equals("$arg_showCompleted"));
-        unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
         unittest.expect(
+            queryMap["completedMin"].first, unittest.equals(arg_completedMin));
+        unittest.expect(
+            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+        unittest.expect(queryMap["showCompleted"].first,
+            unittest.equals("$arg_showCompleted"));
+        unittest.expect(
+            queryMap["completedMax"].first, unittest.equals(arg_completedMax));
+        unittest.expect(
             queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
+        unittest.expect(queryMap["dueMin"].first, unittest.equals(arg_dueMin));
+        unittest.expect(queryMap["dueMax"].first, unittest.equals(arg_dueMax));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -980,16 +943,16 @@ main() {
       }), true);
       res
           .list(arg_tasklist,
-              completedMax: arg_completedMax,
-              completedMin: arg_completedMin,
-              dueMax: arg_dueMax,
-              dueMin: arg_dueMin,
-              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
-              showCompleted: arg_showCompleted,
-              showDeleted: arg_showDeleted,
+              maxResults: arg_maxResults,
               showHidden: arg_showHidden,
+              completedMin: arg_completedMin,
+              showDeleted: arg_showDeleted,
+              showCompleted: arg_showCompleted,
+              completedMax: arg_completedMax,
               updatedMin: arg_updatedMin,
+              dueMin: arg_dueMin,
+              dueMax: arg_dueMax,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTasks(response);
@@ -1001,8 +964,8 @@ main() {
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
       var arg_task = "foo";
-      var arg_parent = "foo";
       var arg_previous = "foo";
+      var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1012,12 +975,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("lists/"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("tasks/v1/lists/"));
+        pathOffset += 15;
         index = path.indexOf("/tasks/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1055,9 +1015,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(
             queryMap["previous"].first, unittest.equals(arg_previous));
+        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1068,7 +1028,7 @@ main() {
       }), true);
       res
           .move(arg_tasklist, arg_task,
-              parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
+              previous: arg_previous, parent: arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
@@ -1092,12 +1052,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("lists/"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("tasks/v1/lists/"));
+        pathOffset += 15;
         index = path.indexOf("/tasks/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1162,12 +1119,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("tasks/v1/"));
-        pathOffset += 9;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("lists/"));
-        pathOffset += 6;
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("tasks/v1/lists/"));
+        pathOffset += 15;
         index = path.indexOf("/tasks/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =

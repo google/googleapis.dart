@@ -65,11 +65,10 @@ class ProjectsDataSourcesResourceApi {
       : _requester = client;
 
   /// Returns true if valid credentials exist for the given data source and
-  /// requesting user.
-  /// Some data sources doesn't support service account, so we need to talk to
-  /// them on behalf of the end user. This API just checks whether we have OAuth
-  /// token for the particular user, which is a pre-requisite before user can
-  /// create a transfer config.
+  /// requesting user. Some data sources doesn't support service account, so we
+  /// need to talk to them on behalf of the end user. This API just checks
+  /// whether we have OAuth token for the particular user, which is a
+  /// pre-requisite before user can create a transfer config.
   ///
   /// [request] - The metadata request object.
   ///
@@ -123,14 +122,13 @@ class ProjectsDataSourcesResourceApi {
     return _response.then((data) => new CheckValidCredsResponse.fromJson(data));
   }
 
-  /// Retrieves a supported data source and returns its settings,
-  /// which can be used for UI rendering.
+  /// Retrieves a supported data source and returns its settings, which can be
+  /// used for UI rendering.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/dataSources/{data_source_id}` or
+  /// for example: `projects/{project_id}/dataSources/{data_source_id}` or
   /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
   /// Value must have pattern "^projects/[^/]+/dataSources/[^/]+$".
   ///
@@ -170,23 +168,20 @@ class ProjectsDataSourcesResourceApi {
     return _response.then((data) => new DataSource.fromJson(data));
   }
 
-  /// Lists supported data sources and returns their settings,
-  /// which can be used for UI rendering.
+  /// Lists supported data sources and returns their settings, which can be used
+  /// for UI rendering.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned.
-  /// Must be in the form: `projects/{project_id}` or
+  /// be returned. Must be in the form: `projects/{project_id}` or
   /// `projects/{project_id}/locations/{location_id}
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListDataSourcesRequest` list results. For multiple-page
-  /// results, `ListDataSourcesResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
+  /// page of `ListDataSourcesRequest` list results. For multiple-page results,
+  /// `ListDataSourcesResponse` outputs a `next_page` token, which can be used
+  /// as the `page_token` value to request the next page of list results.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
@@ -362,11 +357,10 @@ class ProjectsLocationsDataSourcesResourceApi {
       : _requester = client;
 
   /// Returns true if valid credentials exist for the given data source and
-  /// requesting user.
-  /// Some data sources doesn't support service account, so we need to talk to
-  /// them on behalf of the end user. This API just checks whether we have OAuth
-  /// token for the particular user, which is a pre-requisite before user can
-  /// create a transfer config.
+  /// requesting user. Some data sources doesn't support service account, so we
+  /// need to talk to them on behalf of the end user. This API just checks
+  /// whether we have OAuth token for the particular user, which is a
+  /// pre-requisite before user can create a transfer config.
   ///
   /// [request] - The metadata request object.
   ///
@@ -421,14 +415,13 @@ class ProjectsLocationsDataSourcesResourceApi {
     return _response.then((data) => new CheckValidCredsResponse.fromJson(data));
   }
 
-  /// Retrieves a supported data source and returns its settings,
-  /// which can be used for UI rendering.
+  /// Retrieves a supported data source and returns its settings, which can be
+  /// used for UI rendering.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/dataSources/{data_source_id}` or
+  /// for example: `projects/{project_id}/dataSources/{data_source_id}` or
   /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$".
@@ -469,26 +462,23 @@ class ProjectsLocationsDataSourcesResourceApi {
     return _response.then((data) => new DataSource.fromJson(data));
   }
 
-  /// Lists supported data sources and returns their settings,
-  /// which can be used for UI rendering.
+  /// Lists supported data sources and returns their settings, which can be used
+  /// for UI rendering.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned.
-  /// Must be in the form: `projects/{project_id}` or
+  /// be returned. Must be in the form: `projects/{project_id}` or
   /// `projects/{project_id}/locations/{location_id}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListDataSourcesRequest` list results. For multiple-page
-  /// results, `ListDataSourcesResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
-  ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
+  ///
+  /// [pageToken] - Pagination token, which can be used to request a specific
+  /// page of `ListDataSourcesRequest` list results. For multiple-page results,
+  /// `ListDataSourcesResponse` outputs a `next_page` token, which can be used
+  /// as the `page_token` value to request the next page of list results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -501,7 +491,7 @@ class ProjectsLocationsDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -512,11 +502,11 @@ class ProjectsLocationsDataSourcesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -552,43 +542,38 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id where the transfer
-  /// configuration should be created.
-  /// Must be in the format projects/{project_id}/locations/{location_id} or
-  /// projects/{project_id}. If specified location and location of the
-  /// destination bigquery dataset do not match - the request will fail.
+  /// configuration should be created. Must be in the format
+  /// projects/{project_id}/locations/{location_id} or projects/{project_id}. If
+  /// specified location and location of the destination bigquery dataset do not
+  /// match - the request will fail.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [versionInfo] - Optional version info. If users want to find a very recent
-  /// access token,
-  /// that is, immediately after approving access, users have to set the
-  /// version_info claim in the token request. To obtain the version_info, users
-  /// must use the "none+gsession" response type. which be return a
-  /// version_info back in the authorization response which be be put in a JWT
-  /// claim in the token request.
-  ///
-  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
-  /// transfer configuration.
-  /// This is required if new credentials are needed, as indicated by
-  /// `CheckValidCreds`.
-  /// In order to obtain authorization_code, please make a
-  /// request to
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
-  ///
-  /// * client_id should be OAuth client_id of BigQuery DTS API for the given
-  ///   data source returned by ListDataSources method.
-  /// * data_source_scopes are the scopes returned by ListDataSources method.
-  /// * redirect_uri is an optional parameter. If not specified, then
-  /// authorization code is posted to the opener of authorization flow window.
-  ///   Otherwise it will be sent to the redirect uri. A special value of
-  ///   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
-  ///   returned in the title bar of the browser, with the page text prompting
-  ///   the user to copy the code and paste it in the application.
+  /// access token, that is, immediately after approving access, users have to
+  /// set the version_info claim in the token request. To obtain the
+  /// version_info, users must use the "none+gsession" response type. which be
+  /// return a version_info back in the authorization response which be be put
+  /// in a JWT claim in the token request.
   ///
   /// [serviceAccountName] - Optional service account name. If this field is
-  /// set, transfer config will
-  /// be created with this service account credentials. It requires that
-  /// requesting user calling this API has permissions to act as this service
-  /// account.
+  /// set, transfer config will be created with this service account
+  /// credentials. It requires that requesting user calling this API has
+  /// permissions to act as this service account.
+  ///
+  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
+  /// transfer configuration. This is required if new credentials are needed, as
+  /// indicated by `CheckValidCreds`. In order to obtain authorization_code,
+  /// please make a request to
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=
+  /// * client_id should be OAuth client_id of BigQuery DTS API for the given
+  /// data source returned by ListDataSources method. * data_source_scopes are
+  /// the scopes returned by ListDataSources method. * redirect_uri is an
+  /// optional parameter. If not specified, then authorization code is posted to
+  /// the opener of authorization flow window. Otherwise it will be sent to the
+  /// redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob means that
+  /// authorization code should be returned in the title bar of the browser,
+  /// with the page text prompting the user to copy the code and paste it in the
+  /// application.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -603,8 +588,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   async.Future<TransferConfig> create(
       TransferConfig request, core.String parent,
       {core.String versionInfo,
-      core.String authorizationCode,
       core.String serviceAccountName,
+      core.String authorizationCode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -622,11 +607,11 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (versionInfo != null) {
       _queryParams["versionInfo"] = [versionInfo];
     }
-    if (authorizationCode != null) {
-      _queryParams["authorizationCode"] = [authorizationCode];
-    }
     if (serviceAccountName != null) {
       _queryParams["serviceAccountName"] = [serviceAccountName];
+    }
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -645,14 +630,13 @@ class ProjectsLocationsTransferConfigsResourceApi {
     return _response.then((data) => new TransferConfig.fromJson(data));
   }
 
-  /// Deletes a data transfer configuration,
-  /// including any associated transfer runs and logs.
+  /// Deletes a data transfer configuration, including any associated transfer
+  /// runs and logs.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
@@ -698,8 +682,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
@@ -744,17 +727,15 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The BigQuery project id for which data sources
-  /// should be returned: `projects/{project_id}` or
+  /// [parent] - Required. The BigQuery project id for which data sources should
+  /// be returned: `projects/{project_id}` or
   /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransfersRequest` list results. For multiple-page
-  /// results, `ListTransfersResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
+  /// page of `ListTransfersRequest` list results. For multiple-page results,
+  /// `ListTransfersResponse` outputs a `next_page` token, which can be used as
+  /// the `page_token` value to request the next page of list results.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
@@ -814,15 +795,15 @@ class ProjectsLocationsTransferConfigsResourceApi {
         .then((data) => new ListTransferConfigsResponse.fromJson(data));
   }
 
-  /// Updates a data transfer configuration.
-  /// All fields must be set, even if they are not updated.
+  /// Updates a data transfer configuration. All fields must be set, even if
+  /// they are not updated.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the transfer config.
-  /// Transfer config names have the form of
+  /// [name] - The resource name of the transfer config. Transfer config names
+  /// have the form of
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
   /// The name is automatically generated based on the config_id specified in
   /// CreateTransferConfigRequest along with project_id and region. If config_id
@@ -831,41 +812,36 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
-  /// transfer configuration.
-  /// If it is provided, the transfer configuration will be associated with the
-  /// authorizing user.
-  /// In order to obtain authorization_code, please make a
-  /// request to
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
-  ///
-  /// * client_id should be OAuth client_id of BigQuery DTS API for the given
-  ///   data source returned by ListDataSources method.
-  /// * data_source_scopes are the scopes returned by ListDataSources method.
-  /// * redirect_uri is an optional parameter. If not specified, then
-  /// authorization code is posted to the opener of authorization flow window.
-  ///   Otherwise it will be sent to the redirect uri. A special value of
-  ///   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
-  ///   returned in the title bar of the browser, with the page text prompting
-  ///   the user to copy the code and paste it in the application.
-  ///
   /// [updateMask] - Required. Required list of fields to be updated in this
   /// request.
   ///
+  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
+  /// transfer configuration. If it is provided, the transfer configuration will
+  /// be associated with the authorizing user. In order to obtain
+  /// authorization_code, please make a request to
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=
+  /// * client_id should be OAuth client_id of BigQuery DTS API for the given
+  /// data source returned by ListDataSources method. * data_source_scopes are
+  /// the scopes returned by ListDataSources method. * redirect_uri is an
+  /// optional parameter. If not specified, then authorization code is posted to
+  /// the opener of authorization flow window. Otherwise it will be sent to the
+  /// redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob means that
+  /// authorization code should be returned in the title bar of the browser,
+  /// with the page text prompting the user to copy the code and paste it in the
+  /// application.
+  ///
   /// [serviceAccountName] - Optional service account name. If this field is set
-  /// and
-  /// "service_account_name" is set in update_mask, transfer config will be
+  /// and "service_account_name" is set in update_mask, transfer config will be
   /// updated to use this service account credentials. It requires that
   /// requesting user calling this API has permissions to act as this service
   /// account.
   ///
   /// [versionInfo] - Optional version info. If users want to find a very recent
-  /// access token,
-  /// that is, immediately after approving access, users have to set the
-  /// version_info claim in the token request. To obtain the version_info, users
-  /// must use the "none+gsession" response type. which be return a
-  /// version_info back in the authorization response which be be put in a JWT
-  /// claim in the token request.
+  /// access token, that is, immediately after approving access, users have to
+  /// set the version_info claim in the token request. To obtain the
+  /// version_info, users must use the "none+gsession" response type. which be
+  /// return a version_info back in the authorization response which be be put
+  /// in a JWT claim in the token request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -878,8 +854,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String authorizationCode,
-      core.String updateMask,
+      {core.String updateMask,
+      core.String authorizationCode,
       core.String serviceAccountName,
       core.String versionInfo,
       core.String $fields}) {
@@ -896,11 +872,11 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (authorizationCode != null) {
-      _queryParams["authorizationCode"] = [authorizationCode];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
     }
     if (serviceAccountName != null) {
       _queryParams["serviceAccountName"] = [serviceAccountName];
@@ -923,11 +899,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
     return _response.then((data) => new TransferConfig.fromJson(data));
   }
 
-  /// Creates transfer runs for a time range [start_time, end_time].
-  /// For each date - or whatever granularity the data source supports - in the
-  /// range, one transfer run is created.
-  /// Note that runs are created per UTC time in the time range.
-  /// DEPRECATED: use StartManualTransferRuns instead.
+  /// Creates transfer runs for a time range [start_time, end_time]. For each
+  /// date - or whatever granularity the data source supports - in the range,
+  /// one transfer run is created. Note that runs are created per UTC time in
+  /// the time range. DEPRECATED: use StartManualTransferRuns instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -986,8 +961,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Start manual transfer runs to be executed now with schedule_time equal to
   /// current time. The transfer runs can be created for a time range where the
   /// run_time is between start_time (inclusive) and end_time (exclusive), or
-  /// for
-  /// a specific run_time.
+  /// for a specific run_time.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1154,30 +1128,27 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of transfer configuration for which transfer
-  /// runs should be retrieved.
-  /// Format of transfer configuration resource name is:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// runs should be retrieved. Format of transfer configuration resource name
+  /// is: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
   /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransferRunsRequest` list results. For multiple-page
-  /// results, `ListTransferRunsResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
+  /// page of `ListTransferRunsRequest` list results. For multiple-page results,
+  /// `ListTransferRunsResponse` outputs a `next_page` token, which can be used
+  /// as the `page_token` value to request the next page of list results.
   ///
-  /// [states] - When specified, only transfer runs with requested states are
-  /// returned.
+  /// [runAttempt] - Indicates how run attempts are to be pulled.
+  /// Possible string values are:
+  /// - "RUN_ATTEMPT_UNSPECIFIED" : All runs should be returned.
+  /// - "LATEST" : Only latest run per day should be returned.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
   ///
-  /// [runAttempt] - Indicates how run attempts are to be pulled.
-  /// Possible string values are:
-  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
-  /// - "LATEST" : A LATEST.
+  /// [states] - When specified, only transfer runs with requested states are
+  /// returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1191,9 +1162,9 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
       {core.String pageToken,
-      core.List<core.String> states,
-      core.int pageSize,
       core.String runAttempt,
+      core.int pageSize,
+      core.List<core.String> states,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1208,14 +1179,14 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (states != null) {
-      _queryParams["states"] = states;
+    if (runAttempt != null) {
+      _queryParams["runAttempt"] = [runAttempt];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (runAttempt != null) {
-      _queryParams["runAttempt"] = [runAttempt];
+    if (states != null) {
+      _queryParams["states"] = states;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1251,19 +1222,16 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
-  /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransferLogsRequest` list results. For multiple-page
-  /// results, `ListTransferLogsResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
-  ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
   ///
   /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
-  /// and ERROR
-  /// messages are returned.
+  /// and ERROR messages are returned.
+  ///
+  /// [pageToken] - Pagination token, which can be used to request a specific
+  /// page of `ListTransferLogsRequest` list results. For multiple-page results,
+  /// `ListTransferLogsResponse` outputs a `next_page` token, which can be used
+  /// as the `page_token` value to request the next page of list results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1276,9 +1244,9 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferLogsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.List<core.String> messageTypes,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1290,14 +1258,14 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (messageTypes != null) {
       _queryParams["messageTypes"] = messageTypes;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1334,43 +1302,38 @@ class ProjectsTransferConfigsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id where the transfer
-  /// configuration should be created.
-  /// Must be in the format projects/{project_id}/locations/{location_id} or
-  /// projects/{project_id}. If specified location and location of the
-  /// destination bigquery dataset do not match - the request will fail.
+  /// configuration should be created. Must be in the format
+  /// projects/{project_id}/locations/{location_id} or projects/{project_id}. If
+  /// specified location and location of the destination bigquery dataset do not
+  /// match - the request will fail.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [versionInfo] - Optional version info. If users want to find a very recent
-  /// access token,
-  /// that is, immediately after approving access, users have to set the
-  /// version_info claim in the token request. To obtain the version_info, users
-  /// must use the "none+gsession" response type. which be return a
-  /// version_info back in the authorization response which be be put in a JWT
-  /// claim in the token request.
-  ///
-  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
-  /// transfer configuration.
-  /// This is required if new credentials are needed, as indicated by
-  /// `CheckValidCreds`.
-  /// In order to obtain authorization_code, please make a
-  /// request to
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
-  ///
-  /// * client_id should be OAuth client_id of BigQuery DTS API for the given
-  ///   data source returned by ListDataSources method.
-  /// * data_source_scopes are the scopes returned by ListDataSources method.
-  /// * redirect_uri is an optional parameter. If not specified, then
-  /// authorization code is posted to the opener of authorization flow window.
-  ///   Otherwise it will be sent to the redirect uri. A special value of
-  ///   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
-  ///   returned in the title bar of the browser, with the page text prompting
-  ///   the user to copy the code and paste it in the application.
+  /// access token, that is, immediately after approving access, users have to
+  /// set the version_info claim in the token request. To obtain the
+  /// version_info, users must use the "none+gsession" response type. which be
+  /// return a version_info back in the authorization response which be be put
+  /// in a JWT claim in the token request.
   ///
   /// [serviceAccountName] - Optional service account name. If this field is
-  /// set, transfer config will
-  /// be created with this service account credentials. It requires that
-  /// requesting user calling this API has permissions to act as this service
-  /// account.
+  /// set, transfer config will be created with this service account
+  /// credentials. It requires that requesting user calling this API has
+  /// permissions to act as this service account.
+  ///
+  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
+  /// transfer configuration. This is required if new credentials are needed, as
+  /// indicated by `CheckValidCreds`. In order to obtain authorization_code,
+  /// please make a request to
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=
+  /// * client_id should be OAuth client_id of BigQuery DTS API for the given
+  /// data source returned by ListDataSources method. * data_source_scopes are
+  /// the scopes returned by ListDataSources method. * redirect_uri is an
+  /// optional parameter. If not specified, then authorization code is posted to
+  /// the opener of authorization flow window. Otherwise it will be sent to the
+  /// redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob means that
+  /// authorization code should be returned in the title bar of the browser,
+  /// with the page text prompting the user to copy the code and paste it in the
+  /// application.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1385,8 +1348,8 @@ class ProjectsTransferConfigsResourceApi {
   async.Future<TransferConfig> create(
       TransferConfig request, core.String parent,
       {core.String versionInfo,
-      core.String authorizationCode,
       core.String serviceAccountName,
+      core.String authorizationCode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1404,11 +1367,11 @@ class ProjectsTransferConfigsResourceApi {
     if (versionInfo != null) {
       _queryParams["versionInfo"] = [versionInfo];
     }
-    if (authorizationCode != null) {
-      _queryParams["authorizationCode"] = [authorizationCode];
-    }
     if (serviceAccountName != null) {
       _queryParams["serviceAccountName"] = [serviceAccountName];
+    }
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1427,14 +1390,13 @@ class ProjectsTransferConfigsResourceApi {
     return _response.then((data) => new TransferConfig.fromJson(data));
   }
 
-  /// Deletes a data transfer configuration,
-  /// including any associated transfer runs and logs.
+  /// Deletes a data transfer configuration, including any associated transfer
+  /// runs and logs.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
@@ -1479,8 +1441,7 @@ class ProjectsTransferConfigsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The field will contain name of the resource requested,
-  /// for example:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
@@ -1524,23 +1485,21 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The BigQuery project id for which data sources
-  /// should be returned: `projects/{project_id}` or
+  /// [parent] - Required. The BigQuery project id for which data sources should
+  /// be returned: `projects/{project_id}` or
   /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
-  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransfersRequest` list results. For multiple-page
-  /// results, `ListTransfersResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
+  /// page of `ListTransfersRequest` list results. For multiple-page results,
+  /// `ListTransfersResponse` outputs a `next_page` token, which can be used as
+  /// the `page_token` value to request the next page of list results.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
+  ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1553,9 +1512,9 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.List<core.String> dataSourceIds,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.List<core.String> dataSourceIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1567,14 +1526,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1594,15 +1553,15 @@ class ProjectsTransferConfigsResourceApi {
         .then((data) => new ListTransferConfigsResponse.fromJson(data));
   }
 
-  /// Updates a data transfer configuration.
-  /// All fields must be set, even if they are not updated.
+  /// Updates a data transfer configuration. All fields must be set, even if
+  /// they are not updated.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the transfer config.
-  /// Transfer config names have the form of
+  /// [name] - The resource name of the transfer config. Transfer config names
+  /// have the form of
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
   /// The name is automatically generated based on the config_id specified in
   /// CreateTransferConfigRequest along with project_id and region. If config_id
@@ -1610,41 +1569,36 @@ class ProjectsTransferConfigsResourceApi {
   /// required, will be generated for config_id.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [versionInfo] - Optional version info. If users want to find a very recent
-  /// access token,
-  /// that is, immediately after approving access, users have to set the
-  /// version_info claim in the token request. To obtain the version_info, users
-  /// must use the "none+gsession" response type. which be return a
-  /// version_info back in the authorization response which be be put in a JWT
-  /// claim in the token request.
-  ///
-  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
-  /// transfer configuration.
-  /// If it is provided, the transfer configuration will be associated with the
-  /// authorizing user.
-  /// In order to obtain authorization_code, please make a
-  /// request to
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
-  ///
-  /// * client_id should be OAuth client_id of BigQuery DTS API for the given
-  ///   data source returned by ListDataSources method.
-  /// * data_source_scopes are the scopes returned by ListDataSources method.
-  /// * redirect_uri is an optional parameter. If not specified, then
-  /// authorization code is posted to the opener of authorization flow window.
-  ///   Otherwise it will be sent to the redirect uri. A special value of
-  ///   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
-  ///   returned in the title bar of the browser, with the page text prompting
-  ///   the user to copy the code and paste it in the application.
+  /// [serviceAccountName] - Optional service account name. If this field is set
+  /// and "service_account_name" is set in update_mask, transfer config will be
+  /// updated to use this service account credentials. It requires that
+  /// requesting user calling this API has permissions to act as this service
+  /// account.
   ///
   /// [updateMask] - Required. Required list of fields to be updated in this
   /// request.
   ///
-  /// [serviceAccountName] - Optional service account name. If this field is set
-  /// and
-  /// "service_account_name" is set in update_mask, transfer config will be
-  /// updated to use this service account credentials. It requires that
-  /// requesting user calling this API has permissions to act as this service
-  /// account.
+  /// [authorizationCode] - Optional OAuth2 authorization code to use with this
+  /// transfer configuration. If it is provided, the transfer configuration will
+  /// be associated with the authorizing user. In order to obtain
+  /// authorization_code, please make a request to
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=
+  /// * client_id should be OAuth client_id of BigQuery DTS API for the given
+  /// data source returned by ListDataSources method. * data_source_scopes are
+  /// the scopes returned by ListDataSources method. * redirect_uri is an
+  /// optional parameter. If not specified, then authorization code is posted to
+  /// the opener of authorization flow window. Otherwise it will be sent to the
+  /// redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob means that
+  /// authorization code should be returned in the title bar of the browser,
+  /// with the page text prompting the user to copy the code and paste it in the
+  /// application.
+  ///
+  /// [versionInfo] - Optional version info. If users want to find a very recent
+  /// access token, that is, immediately after approving access, users have to
+  /// set the version_info claim in the token request. To obtain the
+  /// version_info, users must use the "none+gsession" response type. which be
+  /// return a version_info back in the authorization response which be be put
+  /// in a JWT claim in the token request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1657,10 +1611,10 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String versionInfo,
-      core.String authorizationCode,
+      {core.String serviceAccountName,
       core.String updateMask,
-      core.String serviceAccountName,
+      core.String authorizationCode,
+      core.String versionInfo,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1675,17 +1629,17 @@ class ProjectsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (versionInfo != null) {
-      _queryParams["versionInfo"] = [versionInfo];
-    }
-    if (authorizationCode != null) {
-      _queryParams["authorizationCode"] = [authorizationCode];
+    if (serviceAccountName != null) {
+      _queryParams["serviceAccountName"] = [serviceAccountName];
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (serviceAccountName != null) {
-      _queryParams["serviceAccountName"] = [serviceAccountName];
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (versionInfo != null) {
+      _queryParams["versionInfo"] = [versionInfo];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1702,11 +1656,10 @@ class ProjectsTransferConfigsResourceApi {
     return _response.then((data) => new TransferConfig.fromJson(data));
   }
 
-  /// Creates transfer runs for a time range [start_time, end_time].
-  /// For each date - or whatever granularity the data source supports - in the
-  /// range, one transfer run is created.
-  /// Note that runs are created per UTC time in the time range.
-  /// DEPRECATED: use StartManualTransferRuns instead.
+  /// Creates transfer runs for a time range [start_time, end_time]. For each
+  /// date - or whatever granularity the data source supports - in the range,
+  /// one transfer run is created. Note that runs are created per UTC time in
+  /// the time range. DEPRECATED: use StartManualTransferRuns instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1764,8 +1717,7 @@ class ProjectsTransferConfigsResourceApi {
   /// Start manual transfer runs to be executed now with schedule_time equal to
   /// current time. The transfer runs can be created for a time range where the
   /// run_time is between start_time (inclusive) and end_time (exclusive), or
-  /// for
-  /// a specific run_time.
+  /// for a specific run_time.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1929,29 +1881,26 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of transfer configuration for which transfer
-  /// runs should be retrieved.
-  /// Format of transfer configuration resource name is:
-  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// runs should be retrieved. Format of transfer configuration resource name
+  /// is: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [runAttempt] - Indicates how run attempts are to be pulled.
+  /// Possible string values are:
+  /// - "RUN_ATTEMPT_UNSPECIFIED" : All runs should be returned.
+  /// - "LATEST" : Only latest run per day should be returned.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransferRunsRequest` list results. For multiple-page
-  /// results, `ListTransferRunsResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
+  /// page of `ListTransferRunsRequest` list results. For multiple-page results,
+  /// `ListTransferRunsResponse` outputs a `next_page` token, which can be used
+  /// as the `page_token` value to request the next page of list results.
   ///
   /// [states] - When specified, only transfer runs with requested states are
   /// returned.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
-  ///
-  /// [runAttempt] - Indicates how run attempts are to be pulled.
-  /// Possible string values are:
-  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
-  /// - "LATEST" : A LATEST.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1964,10 +1913,10 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String runAttempt,
+      core.String pageToken,
       core.List<core.String> states,
       core.int pageSize,
-      core.String runAttempt,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1979,6 +1928,9 @@ class ProjectsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (runAttempt != null) {
+      _queryParams["runAttempt"] = [runAttempt];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1987,9 +1939,6 @@ class ProjectsTransferConfigsRunsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (runAttempt != null) {
-      _queryParams["runAttempt"] = [runAttempt];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2025,19 +1974,16 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
-  /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransferLogsRequest` list results. For multiple-page
-  /// results, `ListTransferLogsResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
+  /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
+  /// and ERROR messages are returned.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
   ///
-  /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
-  /// and ERROR
-  /// messages are returned.
+  /// [pageToken] - Pagination token, which can be used to request a specific
+  /// page of `ListTransferLogsRequest` list results. For multiple-page results,
+  /// `ListTransferLogsResponse` outputs a `next_page` token, which can be used
+  /// as the `page_token` value to request the next page of list results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2050,9 +1996,9 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferLogsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.List<core.String> messageTypes,
       core.int pageSize,
-      core.List<core.String> messageTypes,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2064,14 +2010,14 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (messageTypes != null) {
+      _queryParams["messageTypes"] = messageTypes;
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (messageTypes != null) {
-      _queryParams["messageTypes"] = messageTypes;
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2093,11 +2039,10 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
 }
 
 /// A request to determine whether the user has valid credentials. This method
-/// is used to limit the number of OAuth popups in the user interface. The
-/// user id is inferred from the API call context.
-/// If the data source has the Google+ authorization type, this method
-/// returns false, as it cannot be determined whether the credentials are
-/// already valid merely based on the user id.
+/// is used to limit the number of OAuth popups in the user interface. The user
+/// id is inferred from the API call context. If the data source has the Google+
+/// authorization type, this method returns false, as it cannot be determined
+/// whether the credentials are already valid merely based on the user id.
 class CheckValidCredsRequest {
   CheckValidCredsRequest();
 
@@ -2133,55 +2078,50 @@ class CheckValidCredsResponse {
   }
 }
 
-/// Represents data source metadata. Metadata is sufficient to
-/// render UI and request proper OAuth tokens.
+/// Represents data source metadata. Metadata is sufficient to render UI and
+/// request proper OAuth tokens.
 class DataSource {
   /// Indicates the type of authorization.
   /// Possible string values are:
   /// - "AUTHORIZATION_TYPE_UNSPECIFIED" : Type unspecified.
   /// - "AUTHORIZATION_CODE" : Use OAuth 2 authorization codes that can be
-  /// exchanged
-  /// for a refresh token on the backend.
-  /// - "GOOGLE_PLUS_AUTHORIZATION_CODE" : Return an authorization code for a
-  /// given Google+ page that can then be
   /// exchanged for a refresh token on the backend.
+  /// - "GOOGLE_PLUS_AUTHORIZATION_CODE" : Return an authorization code for a
+  /// given Google+ page that can then be exchanged for a refresh token on the
+  /// backend.
   /// - "FIRST_PARTY_OAUTH" : Use First Party OAuth based on Loas Owned Clients.
-  /// First Party OAuth
-  /// doesn't require a refresh token to get an offline access token. Instead,
-  /// it uses a client-signed JWT assertion to retrieve an access token.
+  /// First Party OAuth doesn't require a refresh token to get an offline access
+  /// token. Instead, it uses a client-signed JWT assertion to retrieve an
+  /// access token.
   core.String authorizationType;
 
   /// Data source client id which should be used to receive refresh token.
   core.String clientId;
 
   /// Specifies whether the data source supports automatic data refresh for the
-  /// past few days, and how it's supported.
-  /// For some data sources, data might not be complete until a few days later,
-  /// so it's useful to refresh data automatically.
+  /// past few days, and how it's supported. For some data sources, data might
+  /// not be complete until a few days later, so it's useful to refresh data
+  /// automatically.
   /// Possible string values are:
   /// - "DATA_REFRESH_TYPE_UNSPECIFIED" : The data source won't support data
   /// auto refresh, which is default value.
   /// - "SLIDING_WINDOW" : The data source supports data auto refresh, and runs
-  /// will be scheduled
-  /// for the past few days. Does not allow custom values to be set for each
-  /// transfer config.
+  /// will be scheduled for the past few days. Does not allow custom values to
+  /// be set for each transfer config.
   /// - "CUSTOM_SLIDING_WINDOW" : The data source supports data auto refresh,
-  /// and runs will be scheduled
-  /// for the past few days. Allows custom values to be set for each transfer
-  /// config.
+  /// and runs will be scheduled for the past few days. Allows custom values to
+  /// be set for each transfer config.
   core.String dataRefreshType;
 
   /// Data source id.
   core.String dataSourceId;
 
-  /// Default data refresh window on days.
-  /// Only meaningful when `data_refresh_type` = `SLIDING_WINDOW`.
+  /// Default data refresh window on days. Only meaningful when
+  /// `data_refresh_type` = `SLIDING_WINDOW`.
   core.int defaultDataRefreshWindowDays;
 
-  /// Default data transfer schedule.
-  /// Examples of valid schedules include:
-  /// `1st,3rd monday of month 15:30`,
-  /// `every wed,fri of jan,jun 13:15`, and
+  /// Default data transfer schedule. Examples of valid schedules include:
+  /// `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and
   /// `first sunday of quarter 00:00`.
   core.String defaultSchedule;
 
@@ -2194,8 +2134,7 @@ class DataSource {
   /// Url for the help document for this data source.
   core.String helpUrl;
 
-  /// Disables backfilling and manual run scheduling
-  /// for the data source.
+  /// Disables backfilling and manual run scheduling for the data source.
   core.bool manualRunsDisabled;
 
   /// The minimum interval for scheduler to schedule runs.
@@ -2213,8 +2152,8 @@ class DataSource {
   core.List<core.String> scopes;
 
   /// Specifies whether the data source supports a user defined schedule, or
-  /// operates on the default schedule.
-  /// When set to `true`, user can override default schedule.
+  /// operates on the default schedule. When set to `true`, user can override
+  /// default schedule.
   core.bool supportsCustomSchedule;
 
   /// Deprecated. This field has no effect.
@@ -2226,12 +2165,11 @@ class DataSource {
   /// placeholder.
   /// - "BATCH" : Batch data transfer.
   /// - "STREAMING" : Streaming data transfer. Streaming data source currently
-  /// doesn't
-  /// support multiple transfer configs per project.
+  /// doesn't support multiple transfer configs per project.
   core.String transferType;
 
-  /// The number of seconds to wait for an update from the data source
-  /// before the Data Transfer Service marks the transfer as FAILED.
+  /// The number of seconds to wait for an update from the data source before
+  /// the Data Transfer Service marks the transfer as FAILED.
   core.int updateDeadlineSeconds;
 
   DataSource();
@@ -2358,12 +2296,11 @@ class DataSource {
   }
 }
 
-/// Represents a data source parameter with validation rules, so that
-/// parameters can be rendered in the UI. These parameters are given to us by
-/// supported data sources, and include all needed information for rendering
-/// and validation.
-/// Thus, whoever uses this api can decide to generate either generic ui,
-/// or custom data source specific forms.
+/// Represents a data source parameter with validation rules, so that parameters
+/// can be rendered in the UI. These parameters are given to us by supported
+/// data sources, and include all needed information for rendering and
+/// validation. Thus, whoever uses this api can decide to generate either
+/// generic ui, or custom data source specific forms.
 class DataSourceParameter {
   /// All possible values for the parameter.
   core.List<core.String> allowedValues;
@@ -2406,8 +2343,8 @@ class DataSourceParameter {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Type unspecified.
   /// - "STRING" : String parameter.
-  /// - "INTEGER" : Integer parameter (64-bits).
-  /// Will be serialized to json as string.
+  /// - "INTEGER" : Integer parameter (64-bits). Will be serialized to json as
+  /// string.
   /// - "DOUBLE" : Double precision floating point parameter.
   /// - "BOOLEAN" : Boolean parameter.
   /// - "RECORD" : Deprecated. This field has no effect.
@@ -2415,8 +2352,7 @@ class DataSourceParameter {
   core.String type;
 
   /// Description of the requirements for this field, in case the user input
-  /// does
-  /// not fulfill the regex pattern or min/max values.
+  /// does not fulfill the regex pattern or min/max values.
   core.String validationDescription;
 
   /// URL to a help document to further explain the naming requirements.
@@ -2562,13 +2498,9 @@ class EmailPreferences {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -2587,9 +2519,8 @@ class ListDataSourcesResponse {
   core.List<DataSource> dataSources;
 
   /// Output only. The next-pagination token. For multiple-page list results,
-  /// this token can be used as the
-  /// `ListDataSourcesRequest.page_token`
-  /// to request the next page of list results.
+  /// this token can be used as the `ListDataSourcesRequest.page_token` to
+  /// request the next page of list results.
   core.String nextPageToken;
 
   ListDataSourcesResponse();
@@ -2656,9 +2587,8 @@ class ListLocationsResponse {
 /// The returned list of pipelines in the project.
 class ListTransferConfigsResponse {
   /// Output only. The next-pagination token. For multiple-page list results,
-  /// this token can be used as the
-  /// `ListTransferConfigsRequest.page_token`
-  /// to request the next page of list results.
+  /// this token can be used as the `ListTransferConfigsRequest.page_token` to
+  /// request the next page of list results.
   core.String nextPageToken;
 
   /// Output only. The stored pipeline transfer configurations.
@@ -2694,9 +2624,8 @@ class ListTransferConfigsResponse {
 /// The returned list transfer run messages.
 class ListTransferLogsResponse {
   /// Output only. The next-pagination token. For multiple-page list results,
-  /// this token can be used as the
-  /// `GetTransferRunLogRequest.page_token`
-  /// to request the next page of list results.
+  /// this token can be used as the `GetTransferRunLogRequest.page_token` to
+  /// request the next page of list results.
   core.String nextPageToken;
 
   /// Output only. The stored pipeline transfer messages.
@@ -2732,9 +2661,8 @@ class ListTransferLogsResponse {
 /// The returned list of pipelines in the project.
 class ListTransferRunsResponse {
   /// Output only. The next-pagination token. For multiple-page list results,
-  /// this token can be used as the
-  /// `ListTransferRunsRequest.page_token`
-  /// to request the next page of list results.
+  /// this token can be used as the `ListTransferRunsRequest.page_token` to
+  /// request the next page of list results.
   core.String nextPageToken;
 
   /// Output only. The stored pipeline transfer runs.
@@ -2769,13 +2697,12 @@ class ListTransferRunsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  /// For example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
   core.String displayName;
 
   /// Cross-service attributes for the location. For example
-  ///
-  ///     {"cloud.googleapis.com/region": "us-east1"}
+  /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
   /// The canonical id for this location. For example: `"us-east1"`.
@@ -2947,8 +2874,8 @@ class ScheduleTransferRunsResponse {
 
 /// A request to start manual transfer runs.
 class StartManualTransferRunsRequest {
-  /// Specific run_time for a transfer run to be started. The
-  /// requested_run_time must not be in the future.
+  /// Specific run_time for a transfer run to be started. The requested_run_time
+  /// must not be in the future.
   core.String requestedRunTime;
 
   /// Time range for the transfer runs that should be started.
@@ -3006,15 +2933,14 @@ class StartManualTransferRunsResponse {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -3064,14 +2990,14 @@ class Status {
 class TimeRange {
   /// End time of the range of transfer runs. For example,
   /// `"2017-05-30T00:00:00+00:00"`. The end_time must not be in the future.
-  /// Creates transfer runs where run_time is in the range betwen start_time
-  /// (inclusive) and end_time (exlusive).
+  /// Creates transfer runs where run_time is in the range between start_time
+  /// (inclusive) and end_time (exclusive).
   core.String endTime;
 
   /// Start time of the range of transfer runs. For example,
   /// `"2017-05-25T00:00:00+00:00"`. The start_time must be strictly less than
-  /// the end_time. Creates transfer runs where run_time is in the range betwen
-  /// start_time (inclusive) and end_time (exlusive).
+  /// the end_time. Creates transfer runs where run_time is in the range between
+  /// start_time (inclusive) and end_time (exclusive).
   core.String startTime;
 
   TimeRange();
@@ -3098,20 +3024,18 @@ class TimeRange {
   }
 }
 
-/// Represents a data transfer configuration. A transfer configuration
-/// contains all metadata needed to perform a data transfer. For example,
-/// `destination_dataset_id` specifies where data should be stored.
-/// When a new transfer configuration is created, the specified
-/// `destination_dataset_id` is created when needed and shared with the
-/// appropriate data source service account.
+/// Represents a data transfer configuration. A transfer configuration contains
+/// all metadata needed to perform a data transfer. For example,
+/// `destination_dataset_id` specifies where data should be stored. When a new
+/// transfer configuration is created, the specified `destination_dataset_id` is
+/// created when needed and shared with the appropriate data source service
+/// account.
 class TransferConfig {
-  /// The number of days to look back to automatically refresh the data.
-  /// For example, if `data_refresh_window_days = 10`, then every day
-  /// BigQuery reingests data for [today-10, today-1], rather than ingesting
-  /// data
-  /// for just [today-1].
-  /// Only valid if the data source supports the feature. Set the value to  0
-  /// to use the default value.
+  /// The number of days to look back to automatically refresh the data. For
+  /// example, if `data_refresh_window_days = 10`, then every day BigQuery
+  /// reingests data for [today-10, today-1], rather than ingesting data for
+  /// just [today-1]. Only valid if the data source supports the feature. Set
+  /// the value to 0 to use the default value.
   core.int dataRefreshWindowDays;
 
   /// Data source id. Cannot be changed once data transfer is created.
@@ -3123,19 +3047,19 @@ class TransferConfig {
   /// The BigQuery target dataset id.
   core.String destinationDatasetId;
 
-  /// Is this config disabled. When set to true, no runs are scheduled
-  /// for a given transfer.
+  /// Is this config disabled. When set to true, no runs are scheduled for a
+  /// given transfer.
   core.bool disabled;
 
   /// User specified display name for the data transfer.
   core.String displayName;
 
-  /// Email notifications will be sent according to these preferences
-  /// to the email address of the user who owns this transfer config.
+  /// Email notifications will be sent according to these preferences to the
+  /// email address of the user who owns this transfer config.
   EmailPreferences emailPreferences;
 
-  /// The resource name of the transfer config.
-  /// Transfer config names have the form of
+  /// The resource name of the transfer config. Transfer config names have the
+  /// form of
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
   /// The name is automatically generated based on the config_id specified in
   /// CreateTransferConfigRequest along with project_id and region. If config_id
@@ -3156,16 +3080,12 @@ class TransferConfig {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> params;
 
-  /// Data transfer schedule.
-  /// If the data source does not support a custom schedule, this should be
-  /// empty. If it is empty, the default value for the data source will be
-  /// used.
-  /// The specified times are in UTC.
-  /// Examples of valid format:
-  /// `1st,3rd monday of month 15:30`,
-  /// `every wed,fri of jan,jun 13:15`, and
-  /// `first sunday of quarter 00:00`.
-  /// See more explanation about the format here:
+  /// Data transfer schedule. If the data source does not support a custom
+  /// schedule, this should be empty. If it is empty, the default value for the
+  /// data source will be used. The specified times are in UTC. Examples of
+  /// valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun
+  /// 13:15`, and `first sunday of quarter 00:00`. See more explanation about
+  /// the format here:
   /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
   /// NOTE: the granularity should be at least 8 hours, or less frequent.
   core.String schedule;
@@ -3358,15 +3278,14 @@ class TransferRun {
   /// this run was derived from.
   EmailPreferences emailPreferences;
 
-  /// Output only. Time when transfer run ended.
-  /// Parameter ignored by server for input requests.
+  /// Output only. Time when transfer run ended. Parameter ignored by server for
+  /// input requests.
   core.String endTime;
 
   /// Status of the transfer run.
   Status errorStatus;
 
-  /// The resource name of the transfer run.
-  /// Transfer run names have the form
+  /// The resource name of the transfer run. Transfer run names have the form
   /// `projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.
   /// The name is ignored when creating a transfer run.
   core.String name;
@@ -3385,18 +3304,18 @@ class TransferRun {
   /// ingested.
   core.String runTime;
 
-  /// Output only. Describes the schedule of this transfer run if it was
-  /// created as part of a regular schedule. For batch transfer runs that are
-  /// scheduled manually, this is empty.
-  /// NOTE: the system might choose to delay the schedule depending on the
-  /// current load, so `schedule_time` doesn't always match this.
+  /// Output only. Describes the schedule of this transfer run if it was created
+  /// as part of a regular schedule. For batch transfer runs that are scheduled
+  /// manually, this is empty. NOTE: the system might choose to delay the
+  /// schedule depending on the current load, so `schedule_time` doesn't always
+  /// match this.
   core.String schedule;
 
   /// Minimum time after which a transfer run can be started.
   core.String scheduleTime;
 
-  /// Output only. Time when transfer run was started.
-  /// Parameter ignored by server for input requests.
+  /// Output only. Time when transfer run was started. Parameter ignored by
+  /// server for input requests.
   core.String startTime;
 
   /// Data transfer run state. Ignored for input requests.

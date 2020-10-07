@@ -64,11 +64,11 @@ class ProjectsDatabasesResourceApi {
   /// Exports a copy of all or a subset of documents from Google Cloud Firestore
   /// to another storage system, such as Google Cloud Storage. Recent updates to
   /// documents may not be reflected in the export. The export occurs in the
-  /// background and its progress can be monitored and managed via the
-  /// Operation resource that is created. The output of an export may only be
-  /// used once the associated operation is done. If an export operation is
-  /// cancelled before completion it may leave partial data behind in Google
-  /// Cloud Storage.
+  /// background and its progress can be monitored and managed via the Operation
+  /// resource that is created. The output of an export may only be used once
+  /// the associated operation is done. If an export operation is cancelled
+  /// before completion it may leave partial data behind in Google Cloud
+  /// Storage.
   ///
   /// [request] - The metadata request object.
   ///
@@ -125,8 +125,8 @@ class ProjectsDatabasesResourceApi {
   /// Imports documents into Google Cloud Firestore. Existing documents with the
   /// same name are overwritten. The import occurs in the background and its
   /// progress can be monitored and managed via the Operation resource that is
-  /// created. If an ImportDocuments operation is cancelled, it is possible
-  /// that a subset of the data has already been imported to Cloud Firestore.
+  /// created. If an ImportDocuments operation is cancelled, it is possible that
+  /// a subset of the data has already been imported to Cloud Firestore.
   ///
   /// [request] - The metadata request object.
   ///
@@ -247,12 +247,10 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
         .then((data) => new GoogleFirestoreAdminV1Field.fromJson(data));
   }
 
-  /// Lists the field configuration and metadata for this database.
-  ///
-  /// Currently, FirestoreAdmin.ListFields only supports listing fields
-  /// that have been explicitly overridden. To issue this query, call
-  /// FirestoreAdmin.ListFields with the filter set to
-  /// `indexConfig.usesAncestorConfig:false`.
+  /// Lists the field configuration and metadata for this database. Currently,
+  /// FirestoreAdmin.ListFields only supports listing fields that have been
+  /// explicitly overridden. To issue this query, call FirestoreAdmin.ListFields
+  /// with the filter set to `indexConfig.usesAncestorConfig:false`.
   ///
   /// Request parameters:
   ///
@@ -262,16 +260,15 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
   /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$".
   ///
   /// [pageToken] - A page token, returned from a previous call to
-  /// FirestoreAdmin.ListFields, that may be used to get the next
-  /// page of results.
+  /// FirestoreAdmin.ListFields, that may be used to get the next page of
+  /// results.
   ///
   /// [pageSize] - The number of results to return.
   ///
   /// [filter] - The filter to apply to list results. Currently,
-  /// FirestoreAdmin.ListFields only supports listing fields
-  /// that have been explicitly overridden. To issue this query, call
-  /// FirestoreAdmin.ListFields with the filter set to
-  /// `indexConfig.usesAncestorConfig:false`.
+  /// FirestoreAdmin.ListFields only supports listing fields that have been
+  /// explicitly overridden. To issue this query, call FirestoreAdmin.ListFields
+  /// with the filter set to `indexConfig.usesAncestorConfig:false`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -326,16 +323,13 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
 
   /// Updates a field configuration. Currently, field updates apply only to
   /// single field index configuration. However, calls to
-  /// FirestoreAdmin.UpdateField should provide a field mask to avoid
-  /// changing any configuration that the caller isn't aware of. The field mask
-  /// should be specified as: `{ paths: "index_config" }`.
-  ///
-  /// This call returns a google.longrunning.Operation which may be used to
-  /// track the status of the field update. The metadata for
-  /// the operation will be the type FieldOperationMetadata.
-  ///
-  /// To configure the default field settings for the database, use
-  /// the special `Field` with resource name:
+  /// FirestoreAdmin.UpdateField should provide a field mask to avoid changing
+  /// any configuration that the caller isn't aware of. The field mask should be
+  /// specified as: `{ paths: "index_config" }`. This call returns a
+  /// google.longrunning.Operation which may be used to track the status of the
+  /// field update. The metadata for the operation will be the type
+  /// FieldOperationMetadata. To configure the default field settings for the
+  /// database, use the special `Field` with resource name:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields
   /// / * `.
   ///
@@ -345,40 +339,27 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
   ///
   /// [name] - A field name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
-  ///
   /// A field path may be a simple field name, e.g. `address` or a path to
-  /// fields
-  /// within map_value , e.g. `address.city`,
-  /// or a special field path. The only valid special field is `*`, which
-  /// represents any field.
-  ///
-  /// Field paths may be quoted using ` (backtick). The only character that
-  /// needs
-  /// to be escaped within a quoted field path is the backtick character itself,
-  /// escaped using a backslash. Special characters in field paths that
-  /// must be quoted include: `*`, `.`,
-  /// ``` (backtick), `[`, `]`, as well as any ascii symbolic characters.
-  ///
-  /// Examples:
-  /// (Note: Comments here are written in markdown syntax, so there is an
-  ///  additional layer of backticks to represent a code block)
-  /// `\`address.city\`` represents a field named `address.city`, not the map
-  /// key
-  /// `city` in the field `address`.
-  /// `\`*\`` represents a field named `*`, not any field.
-  ///
-  /// A special `Field` contains the default indexing settings for all fields.
-  /// This field's resource name is:
+  /// fields within map_value , e.g. `address.city`, or a special field path.
+  /// The only valid special field is `*`, which represents any field. Field
+  /// paths may be quoted using ` (backtick). The only character that needs to
+  /// be escaped within a quoted field path is the backtick character itself,
+  /// escaped using a backslash. Special characters in field paths that must be
+  /// quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii
+  /// symbolic characters. Examples: (Note: Comments here are written in
+  /// markdown syntax, so there is an additional layer of backticks to represent
+  /// a code block) `\`address.city\`` represents a field named `address.city`,
+  /// not the map key `city` in the field `address`. `\`*\`` represents a field
+  /// named `*`, not any field. A special `Field` contains the default indexing
+  /// settings for all fields. This field's resource name is:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields
-  /// / * `
-  /// Indexes defined on this `Field` will be applied to all fields which do not
-  /// have their own `Field` index configuration.
+  /// / * ` Indexes defined on this `Field` will be applied to all fields which
+  /// do not have their own `Field` index configuration.
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$".
   ///
   /// [updateMask] - A mask, relative to the field. If specified, only
-  /// configuration specified
-  /// by this field_mask will be updated in the field.
+  /// configuration specified by this field_mask will be updated in the field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -591,8 +572,8 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
   /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$".
   ///
   /// [pageToken] - A page token, returned from a previous call to
-  /// FirestoreAdmin.ListIndexes, that may be used to get the next
-  /// page of results.
+  /// FirestoreAdmin.ListIndexes, that may be used to get the next page of
+  /// results.
   ///
   /// [pageSize] - The number of results to return.
   ///
@@ -657,10 +638,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   ProjectsDatabasesDocumentsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets multiple documents.
-  ///
-  /// Documents returned by this method are not guaranteed to be returned in the
-  /// same order that they were requested.
+  /// Gets multiple documents. Documents returned by this method are not
+  /// guaranteed to be returned in the same order that they were requested.
   ///
   /// [request] - The metadata request object.
   ///
@@ -712,6 +691,64 @@ class ProjectsDatabasesDocumentsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new BatchGetDocumentsResponse.fromJson(data));
+  }
+
+  /// Applies a batch of write operations. The BatchWrite method does not apply
+  /// the write operations atomically and can apply them out of order. Method
+  /// does not allow more than one write per document. Each write succeeds or
+  /// fails independently. See the BatchWriteResponse for the success status of
+  /// each write. If you require an atomically applied set of writes, use Commit
+  /// instead.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [database] - Required. The database name. In the format:
+  /// `projects/{project_id}/databases/{database_id}`.
+  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchWriteResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchWriteResponse> batchWrite(
+      BatchWriteRequest request, core.String database,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (database == null) {
+      throw new core.ArgumentError("Parameter database is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$database') +
+        '/documents:batchWrite';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new BatchWriteResponse.fromJson(data));
   }
 
   /// Starts a new transaction.
@@ -835,13 +872,11 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// [collectionId] - Required. The collection ID, relative to `parent`, to
   /// list. For example: `chatrooms`.
   ///
-  /// [documentId] - The client-assigned document ID to use for this document.
-  ///
-  /// Optional. If not specified, an ID will be assigned by the service.
-  ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
-  /// Document.fields for a field
-  /// path syntax reference.
+  /// Document.fields for a field path syntax reference.
+  ///
+  /// [documentId] - The client-assigned document ID to use for this document.
+  /// Optional. If not specified, an ID will be assigned by the service.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -855,8 +890,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Document> createDocument(
       Document request, core.String parent, core.String collectionId,
-      {core.String documentId,
-      core.List<core.String> mask_fieldPaths,
+      {core.List<core.String> mask_fieldPaths,
+      core.String documentId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -874,11 +909,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
     }
-    if (documentId != null) {
-      _queryParams["documentId"] = [documentId];
-    }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
+    }
+    if (documentId != null) {
+      _queryParams["documentId"] = [documentId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -908,13 +943,11 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
   ///
-  /// [currentDocument_updateTime] - When set, the target document must exist
-  /// and have been last updated at
-  /// that time.
-  ///
   /// [currentDocument_exists] - When set to `true`, the target document must
-  /// exist.
-  /// When set to `false`, the target document must not exist.
+  /// exist. When set to `false`, the target document must not exist.
+  ///
+  /// [currentDocument_updateTime] - When set, the target document must exist
+  /// and have been last updated at that time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -927,8 +960,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name,
-      {core.String currentDocument_updateTime,
-      core.bool currentDocument_exists,
+      {core.bool currentDocument_exists,
+      core.String currentDocument_updateTime,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -940,11 +973,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (currentDocument_updateTime != null) {
-      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
-    }
     if (currentDocument_exists != null) {
       _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
+    }
+    if (currentDocument_updateTime != null) {
+      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -971,12 +1004,11 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
   ///
-  /// [mask_fieldPaths] - The list of field paths in the mask. See
-  /// Document.fields for a field
-  /// path syntax reference.
+  /// [readTime] - Reads the version of the document at the given time. This may
+  /// not be older than 270 seconds.
   ///
-  /// [readTime] - Reads the version of the document at the given time.
-  /// This may not be older than 270 seconds.
+  /// [mask_fieldPaths] - The list of field paths in the mask. See
+  /// Document.fields for a field path syntax reference.
   ///
   /// [transaction] - Reads the document in a transaction.
   ///
@@ -991,8 +1023,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Document> get(core.String name,
-      {core.List<core.String> mask_fieldPaths,
-      core.String readTime,
+      {core.String readTime,
+      core.List<core.String> mask_fieldPaths,
       core.String transaction,
       core.String $fields}) {
     var _url;
@@ -1005,11 +1037,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (mask_fieldPaths != null) {
-      _queryParams["mask.fieldPaths"] = mask_fieldPaths;
-    }
     if (readTime != null) {
       _queryParams["readTime"] = [readTime];
+    }
+    if (mask_fieldPaths != null) {
+      _queryParams["mask.fieldPaths"] = mask_fieldPaths;
     }
     if (transaction != null) {
       _queryParams["transaction"] = [transaction];
@@ -1036,41 +1068,35 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// [parent] - Required. The parent resource name. In the format:
   /// `projects/{project_id}/databases/{database_id}/documents` or
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-  /// For example:
-  /// `projects/my-project/databases/my-database/documents` or
+  /// For example: `projects/my-project/databases/my-database/documents` or
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
   ///
   /// [collectionId] - Required. The collection ID, relative to `parent`, to
-  /// list. For example: `chatrooms`
-  /// or `messages`.
-  ///
-  /// [mask_fieldPaths] - The list of field paths in the mask. See
-  /// Document.fields for a field
-  /// path syntax reference.
-  ///
-  /// [pageToken] - The `next_page_token` value returned from a previous List
-  /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of documents to return.
-  ///
-  /// [transaction] - Reads documents in a transaction.
-  ///
-  /// [readTime] - Reads documents as they were at the given time.
-  /// This may not be older than 270 seconds.
+  /// list. For example: `chatrooms` or `messages`.
   ///
   /// [orderBy] - The order to sort results by. For example: `priority desc,
   /// name`.
   ///
-  /// [showMissing] - If the list should show missing documents. A missing
-  /// document is a
-  /// document that does not exist but has sub-documents. These documents will
-  /// be returned with a key but will not have fields, Document.create_time,
-  /// or Document.update_time set.
+  /// [readTime] - Reads documents as they were at the given time. This may not
+  /// be older than 270 seconds.
   ///
-  /// Requests with `show_missing` may not specify `where` or
-  /// `order_by`.
+  /// [showMissing] - If the list should show missing documents. A missing
+  /// document is a document that does not exist but has sub-documents. These
+  /// documents will be returned with a key but will not have fields,
+  /// Document.create_time, or Document.update_time set. Requests with
+  /// `show_missing` may not specify `where` or `order_by`.
+  ///
+  /// [pageSize] - The maximum number of documents to return.
+  ///
+  /// [mask_fieldPaths] - The list of field paths in the mask. See
+  /// Document.fields for a field path syntax reference.
+  ///
+  /// [pageToken] - The `next_page_token` value returned from a previous List
+  /// request, if any.
+  ///
+  /// [transaction] - Reads documents in a transaction.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1084,13 +1110,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDocumentsResponse> list(
       core.String parent, core.String collectionId,
-      {core.List<core.String> mask_fieldPaths,
-      core.String pageToken,
-      core.int pageSize,
-      core.String transaction,
+      {core.String orderBy,
       core.String readTime,
-      core.String orderBy,
       core.bool showMissing,
+      core.int pageSize,
+      core.List<core.String> mask_fieldPaths,
+      core.String pageToken,
+      core.String transaction,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1105,26 +1131,26 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (readTime != null) {
+      _queryParams["readTime"] = [readTime];
+    }
+    if (showMissing != null) {
+      _queryParams["showMissing"] = ["${showMissing}"];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (transaction != null) {
       _queryParams["transaction"] = [transaction];
-    }
-    if (readTime != null) {
-      _queryParams["readTime"] = [readTime];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (showMissing != null) {
-      _queryParams["showMissing"] = ["${showMissing}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1254,6 +1280,64 @@ class ProjectsDatabasesDocumentsResourceApi {
     return _response.then((data) => new ListenResponse.fromJson(data));
   }
 
+  /// Partitions a query by returning partition cursors that can be used to run
+  /// the query in parallel. The returned partition cursors are split points
+  /// that can be used by RunQuery as starting/end points for the query results.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. In the format:
+  /// `projects/{project_id}/databases/{database_id}/documents`. Document
+  /// resource names are not supported; only database resource names can be
+  /// specified.
+  /// Value must have pattern
+  /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PartitionQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PartitionQueryResponse> partitionQuery(
+      PartitionQueryRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':partitionQuery';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PartitionQueryResponse.fromJson(data));
+  }
+
   /// Updates or inserts a document.
   ///
   /// [request] - The metadata request object.
@@ -1265,21 +1349,17 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
   ///
-  /// [currentDocument_exists] - When set to `true`, the target document must
-  /// exist.
-  /// When set to `false`, the target document must not exist.
-  ///
   /// [updateMask_fieldPaths] - The list of field paths in the mask. See
-  /// Document.fields for a field
-  /// path syntax reference.
+  /// Document.fields for a field path syntax reference.
+  ///
+  /// [currentDocument_exists] - When set to `true`, the target document must
+  /// exist. When set to `false`, the target document must not exist.
   ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
-  /// Document.fields for a field
-  /// path syntax reference.
+  /// Document.fields for a field path syntax reference.
   ///
   /// [currentDocument_updateTime] - When set, the target document must exist
-  /// and have been last updated at
-  /// that time.
+  /// and have been last updated at that time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1292,8 +1372,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Document> patch(Document request, core.String name,
-      {core.bool currentDocument_exists,
-      core.List<core.String> updateMask_fieldPaths,
+      {core.List<core.String> updateMask_fieldPaths,
+      core.bool currentDocument_exists,
       core.List<core.String> mask_fieldPaths,
       core.String currentDocument_updateTime,
       core.String $fields}) {
@@ -1310,11 +1390,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (currentDocument_exists != null) {
-      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
-    }
     if (updateMask_fieldPaths != null) {
       _queryParams["updateMask.fieldPaths"] = updateMask_fieldPaths;
+    }
+    if (currentDocument_exists != null) {
+      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
     }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
@@ -1398,8 +1478,7 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// [parent] - Required. The parent resource name. In the format:
   /// `projects/{project_id}/databases/{database_id}/documents` or
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-  /// For example:
-  /// `projects/my-project/databases/my-database/documents` or
+  /// For example: `projects/my-project/databases/my-database/documents` or
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
@@ -1453,8 +1532,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Request parameters:
   ///
   /// [database] - Required. The database name. In the format:
-  /// `projects/{project_id}/databases/{database_id}`.
-  /// This is only required in the first message.
+  /// `projects/{project_id}/databases/{database_id}`. This is only required in
+  /// the first message.
   /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1506,16 +1585,15 @@ class ProjectsDatabasesOperationsResourceApi {
   ProjectsDatabasesOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1613,7 +1691,7 @@ class ProjectsDatabasesOperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -1662,16 +1740,14 @@ class ProjectsDatabasesOperationsResourceApi {
   }
 
   /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1680,9 +1756,9 @@ class ProjectsDatabasesOperationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1696,8 +1772,8 @@ class ProjectsDatabasesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
       {core.String filter,
-      core.String pageToken,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1712,11 +1788,11 @@ class ProjectsDatabasesOperationsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1792,9 +1868,9 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
@@ -1809,8 +1885,8 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -1823,11 +1899,11 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1879,25 +1955,21 @@ class BatchGetDocumentsRequest {
   /// The names of the documents to retrieve. In the format:
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   /// The request will fail if any of the document is not a child resource of
-  /// the
-  /// given `database`. Duplicate names will be elided.
+  /// the given `database`. Duplicate names will be elided.
   core.List<core.String> documents;
 
-  /// The fields to return. If not set, returns all fields.
-  ///
-  /// If a document has a field that is not present in this mask, that field
-  /// will
-  /// not be returned in the response.
+  /// The fields to return. If not set, returns all fields. If a document has a
+  /// field that is not present in this mask, that field will not be returned in
+  /// the response.
   DocumentMask mask;
 
-  /// Starts a new transaction and reads the documents.
-  /// Defaults to a read-only transaction.
-  /// The new transaction ID will be returned as the first response in the
-  /// stream.
+  /// Starts a new transaction and reads the documents. Defaults to a read-only
+  /// transaction. The new transaction ID will be returned as the first response
+  /// in the stream.
   TransactionOptions newTransaction;
 
-  /// Reads documents as they were at the given time.
-  /// This may not be older than 270 seconds.
+  /// Reads documents as they were at the given time. This may not be older than
+  /// 270 seconds.
   core.String readTime;
 
   /// Reads documents in a transaction.
@@ -1962,14 +2034,13 @@ class BatchGetDocumentsResponse {
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   core.String missing;
 
-  /// The time at which the document was read.
-  /// This may be monotically increasing, in this case the previous documents in
-  /// the result stream are guaranteed not to have changed between their
-  /// read_time and this one.
+  /// The time at which the document was read. This may be monotically
+  /// increasing, in this case the previous documents in the result stream are
+  /// guaranteed not to have changed between their read_time and this one.
   core.String readTime;
 
-  /// The transaction that was started as part of this request.
-  /// Will only be set in the first response, and only if
+  /// The transaction that was started as part of this request. Will only be set
+  /// in the first response, and only if
   /// BatchGetDocumentsRequest.new_transaction was set in the request.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
@@ -2017,10 +2088,84 @@ class BatchGetDocumentsResponse {
   }
 }
 
+/// The request for Firestore.BatchWrite.
+class BatchWriteRequest {
+  /// Labels associated with this batch write.
+  core.Map<core.String, core.String> labels;
+
+  /// The writes to apply. Method does not apply writes atomically and does not
+  /// guarantee ordering. Each write succeeds or fails independently. You cannot
+  /// write to the same document more than once per request.
+  core.List<Write> writes;
+
+  BatchWriteRequest();
+
+  BatchWriteRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("writes")) {
+      writes = (_json["writes"] as core.List)
+          .map<Write>((value) => new Write.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (writes != null) {
+      _json["writes"] = writes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The response from Firestore.BatchWrite.
+class BatchWriteResponse {
+  /// The status of applying the writes. This i-th write status corresponds to
+  /// the i-th write in the request.
+  core.List<Status> status;
+
+  /// The result of applying the writes. This i-th write result corresponds to
+  /// the i-th write in the request.
+  core.List<WriteResult> writeResults;
+
+  BatchWriteResponse();
+
+  BatchWriteResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("status")) {
+      status = (_json["status"] as core.List)
+          .map<Status>((value) => new Status.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("writeResults")) {
+      writeResults = (_json["writeResults"] as core.List)
+          .map<WriteResult>((value) => new WriteResult.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (status != null) {
+      _json["status"] = status.map((value) => (value).toJson()).toList();
+    }
+    if (writeResults != null) {
+      _json["writeResults"] =
+          writeResults.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// The request for Firestore.BeginTransaction.
 class BeginTransactionRequest {
-  /// The options for the transaction.
-  /// Defaults to a read-write transaction.
+  /// The options for the transaction. Defaults to a read-write transaction.
   TransactionOptions options;
 
   BeginTransactionRequest();
@@ -2074,13 +2219,12 @@ class BeginTransactionResponse {
 
 /// A selection of a collection, such as `messages as m1`.
 class CollectionSelector {
-  /// When false, selects only collections that are immediate children of
-  /// the `parent` specified in the containing `RunQueryRequest`.
-  /// When true, selects all descendant collections.
+  /// When false, selects only collections that are immediate children of the
+  /// `parent` specified in the containing `RunQueryRequest`. When true, selects
+  /// all descendant collections.
   core.bool allDescendants;
 
-  /// The collection ID.
-  /// When set, selects only collections with this ID.
+  /// The collection ID. When set, selects only collections with this ID.
   core.String collectionId;
 
   CollectionSelector();
@@ -2120,9 +2264,7 @@ class CommitRequest {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// The writes to apply.
-  ///
-  /// Always executed atomically and in order.
+  /// The writes to apply. Always executed atomically and in order.
   core.List<Write> writes;
 
   CommitRequest();
@@ -2157,10 +2299,8 @@ class CommitResponse {
   /// `read_time` is guaranteed to see the effects of the commit.
   core.String commitTime;
 
-  /// The result of applying the writes.
-  ///
-  /// This i-th write result corresponds to the i-th write in the
-  /// request.
+  /// The result of applying the writes. This i-th write result corresponds to
+  /// the i-th write in the request.
   core.List<WriteResult> writeResults;
 
   CommitResponse();
@@ -2192,8 +2332,7 @@ class CommitResponse {
 
 /// A filter that merges multiple other filters using the given operator.
 class CompositeFilter {
-  /// The list of filters to combine.
-  /// Must contain at least one filter.
+  /// The list of filters to combine. Must contain at least one filter.
   core.List<Filter> filters;
 
   /// The operator for combining multiple filters.
@@ -2231,14 +2370,13 @@ class CompositeFilter {
 
 /// A position in a query result set.
 class Cursor {
-  /// If the position is just before or just after the given values, relative
-  /// to the sort order defined by the query.
+  /// If the position is just before or just after the given values, relative to
+  /// the sort order defined by the query.
   core.bool before;
 
-  /// The values that represent a position, in the order they appear in
-  /// the order by clause of a query.
-  ///
-  /// Can contain fewer values than specified in the order by clause.
+  /// The values that represent a position, in the order they appear in the
+  /// order by clause of a query. Can contain fewer values than specified in the
+  /// order by clause.
   core.List<Value> values;
 
   Cursor();
@@ -2267,41 +2405,28 @@ class Cursor {
   }
 }
 
-/// A Firestore document.
-///
-/// Must not exceed 1 MiB - 4 bytes.
+/// A Firestore document. Must not exceed 1 MiB - 4 bytes.
 class Document {
-  /// Output only. The time at which the document was created.
-  ///
-  /// This value increases monotonically when a document is deleted then
-  /// recreated. It can also be compared to values from other documents and
-  /// the `read_time` of a query.
+  /// Output only. The time at which the document was created. This value
+  /// increases monotonically when a document is deleted then recreated. It can
+  /// also be compared to values from other documents and the `read_time` of a
+  /// query.
   core.String createTime;
 
-  /// The document's fields.
-  ///
-  /// The map keys represent field names.
-  ///
-  /// A simple field name contains only characters `a` to `z`, `A` to `Z`,
-  /// `0` to `9`, or `_`, and must not start with `0` to `9`. For example,
-  /// `foo_bar_17`.
-  ///
-  /// Field names matching the regular expression `__.*__` are reserved.
-  /// Reserved
-  /// field names are forbidden except in certain documented contexts. The map
-  /// keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be
-  /// empty.
-  ///
+  /// The document's fields. The map keys represent field names. A simple field
+  /// name contains only characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`,
+  /// and must not start with `0` to `9`. For example, `foo_bar_17`. Field names
+  /// matching the regular expression `__.*__` are reserved. Reserved field
+  /// names are forbidden except in certain documented contexts. The map keys,
+  /// represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.
   /// Field paths may be used in other contexts to refer to structured fields
   /// defined here. For `map_value`, the field path is represented by the simple
   /// or quoted field names of the containing fields, delimited by `.`. For
-  /// example, the structured field
-  /// `"foo" : { map_value: { "x&y" : { string_value: "hello" }}}` would be
-  /// represented by the field path `foo.x&y`.
-  ///
-  /// Within a field path, a quoted field name starts and ends with `` ` `` and
-  /// may contain any character. Some characters, including `` ` ``, must be
-  /// escaped using a `\`. For example, `` `x&y` `` represents `x&y` and
+  /// example, the structured field `"foo" : { map_value: { "x&y" : {
+  /// string_value: "hello" }}}` would be represented by the field path
+  /// `foo.x&y`. Within a field path, a quoted field name starts and ends with
+  /// `` ` `` and may contain any character. Some characters, including `` ` ``,
+  /// must be escaped using a `\`. For example, `` `x&y` `` represents `x&y` and
   /// `` `bak\`tik` `` represents `` bak`tik ``.
   core.Map<core.String, Value> fields;
 
@@ -2309,11 +2434,10 @@ class Document {
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   core.String name;
 
-  /// Output only. The time at which the document was last changed.
-  ///
-  /// This value is initially set to the `create_time` then increases
-  /// monotonically with each change to the document. It can also be
-  /// compared to values from other documents and the `read_time` of a query.
+  /// Output only. The time at which the document was last changed. This value
+  /// is initially set to the `create_time` then increases monotonically with
+  /// each change to the document. It can also be compared to values from other
+  /// documents and the `read_time` of a query.
   core.String updateTime;
 
   Document();
@@ -2356,17 +2480,13 @@ class Document {
   }
 }
 
-/// A Document has changed.
-///
-/// May be the result of multiple writes, including deletes, that
-/// ultimately resulted in a new value for the Document.
-///
-/// Multiple DocumentChange messages may be returned for the same logical
-/// change, if multiple targets are affected.
+/// A Document has changed. May be the result of multiple writes, including
+/// deletes, that ultimately resulted in a new value for the Document. Multiple
+/// DocumentChange messages may be returned for the same logical change, if
+/// multiple targets are affected.
 class DocumentChange {
-  /// The new state of the Document.
-  ///
-  /// If `mask` is set, contains only fields that were updated or added.
+  /// The new state of the Document. If `mask` is set, contains only fields that
+  /// were updated or added.
   Document document;
 
   /// A set of target IDs for targets that no longer match this document.
@@ -2406,20 +2526,16 @@ class DocumentChange {
   }
 }
 
-/// A Document has been deleted.
-///
-/// May be the result of multiple writes, including updates, the
-/// last of which deleted the Document.
-///
-/// Multiple DocumentDelete messages may be returned for the same logical
-/// delete, if multiple targets are affected.
+/// A Document has been deleted. May be the result of multiple writes, including
+/// updates, the last of which deleted the Document. Multiple DocumentDelete
+/// messages may be returned for the same logical delete, if multiple targets
+/// are affected.
 class DocumentDelete {
   /// The resource name of the Document that was deleted.
   core.String document;
 
-  /// The read timestamp at which the delete was observed.
-  ///
-  /// Greater or equal to the `commit_time` of the delete.
+  /// The read timestamp at which the delete was observed. Greater or equal to
+  /// the `commit_time` of the delete.
   core.String readTime;
 
   /// A set of target IDs for targets that previously matched this entity.
@@ -2456,14 +2572,13 @@ class DocumentDelete {
   }
 }
 
-/// A set of field paths on a document.
-/// Used to restrict a get or update operation on a document to a subset of its
-/// fields.
-/// This is different from standard field masks, as this is always scoped to a
-/// Document, and takes in account the dynamic nature of Value.
+/// A set of field paths on a document. Used to restrict a get or update
+/// operation on a document to a subset of its fields. This is different from
+/// standard field masks, as this is always scoped to a Document, and takes in
+/// account the dynamic nature of Value.
 class DocumentMask {
-  /// The list of field paths in the mask. See Document.fields for a field
-  /// path syntax reference.
+  /// The list of field paths in the mask. See Document.fields for a field path
+  /// syntax reference.
   core.List<core.String> fieldPaths;
 
   DocumentMask();
@@ -2484,21 +2599,18 @@ class DocumentMask {
   }
 }
 
-/// A Document has been removed from the view of the targets.
-///
-/// Sent if the document is no longer relevant to a target and is out of view.
-/// Can be sent instead of a DocumentDelete or a DocumentChange if the server
-/// can not send the new value of the document.
-///
-/// Multiple DocumentRemove messages may be returned for the same logical
-/// write or delete, if multiple targets are affected.
+/// A Document has been removed from the view of the targets. Sent if the
+/// document is no longer relevant to a target and is out of view. Can be sent
+/// instead of a DocumentDelete or a DocumentChange if the server can not send
+/// the new value of the document. Multiple DocumentRemove messages may be
+/// returned for the same logical write or delete, if multiple targets are
+/// affected.
 class DocumentRemove {
   /// The resource name of the Document that has gone out of view.
   core.String document;
 
-  /// The read timestamp at which the remove was observed.
-  ///
-  /// Greater or equal to the `commit_time` of the change/delete/remove.
+  /// The read timestamp at which the remove was observed. Greater or equal to
+  /// the `commit_time` of the change/delete/remove.
   core.String readTime;
 
   /// A set of target IDs for targets that previously matched this document.
@@ -2541,8 +2653,7 @@ class DocumentTransform {
   core.String document;
 
   /// The list of transformations to apply to the fields of the document, in
-  /// order.
-  /// This must not be empty.
+  /// order. This must not be empty.
   core.List<FieldTransform> fieldTransforms;
 
   DocumentTransform();
@@ -2600,13 +2711,9 @@ class DocumentsTarget {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -2621,10 +2728,9 @@ class Empty {
 
 /// A digest of all the documents that match a given target.
 class ExistenceFilter {
-  /// The total count of documents that match target_id.
-  ///
-  /// If different from the count of documents in the client that match, the
-  /// client must manually determine which documents no longer match the target.
+  /// The total count of documents that match target_id. If different from the
+  /// count of documents in the client that match, the client must manually
+  /// determine which documents no longer match the target.
   core.int count;
 
   /// The target ID to which this filter applies.
@@ -2662,23 +2768,31 @@ class FieldFilter {
   /// The operator to filter by.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
-  /// - "LESS_THAN" : Less than. Requires that the field come first in
-  /// `order_by`.
-  /// - "LESS_THAN_OR_EQUAL" : Less than or equal. Requires that the field come
-  /// first in `order_by`.
-  /// - "GREATER_THAN" : Greater than. Requires that the field come first in
-  /// `order_by`.
-  /// - "GREATER_THAN_OR_EQUAL" : Greater than or equal. Requires that the field
-  /// come first in
-  /// `order_by`.
-  /// - "EQUAL" : Equal.
-  /// - "ARRAY_CONTAINS" : Contains. Requires that the field is an array.
-  /// - "IN" : In. Requires that `value` is a non-empty ArrayValue with at most
-  /// 10
-  /// values.
-  /// - "ARRAY_CONTAINS_ANY" : Contains any. Requires that the field is an array
-  /// and
-  /// `value` is a non-empty ArrayValue with at most 10 values.
+  /// - "LESS_THAN" : The given `field` is less than the given `value`.
+  /// Requires: * That `field` come first in `order_by`.
+  /// - "LESS_THAN_OR_EQUAL" : The given `field` is less than or equal to the
+  /// given `value`. Requires: * That `field` come first in `order_by`.
+  /// - "GREATER_THAN" : The given `field` is greater than the given `value`.
+  /// Requires: * That `field` come first in `order_by`.
+  /// - "GREATER_THAN_OR_EQUAL" : The given `field` is greater than or equal to
+  /// the given `value`. Requires: * That `field` come first in `order_by`.
+  /// - "EQUAL" : The given `field` is equal to the given `value`.
+  /// - "NOT_EQUAL" : The given `field` is not equal to the given `value`.
+  /// Requires: * No other `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or
+  /// `IS_NOT_NAN`. * That `field` comes first in the `order_by`.
+  /// - "ARRAY_CONTAINS" : The given `field` is an array that contains the given
+  /// `value`.
+  /// - "IN" : The given `field` is equal to at least one value in the given
+  /// array. Requires: * That `value` is a non-empty `ArrayValue` with at most
+  /// 10 values. * No other `IN` or `ARRAY_CONTAINS_ANY` or `NOT_IN`.
+  /// - "ARRAY_CONTAINS_ANY" : The given `field` is an array that contains any
+  /// of the values in the given array. Requires: * That `value` is a non-empty
+  /// `ArrayValue` with at most 10 values. * No other `IN` or
+  /// `ARRAY_CONTAINS_ANY` or `NOT_IN`.
+  /// - "NOT_IN" : The value of the `field` is not in the given array. Requires:
+  /// * That `value` is a non-empty `ArrayValue` with at most 10 values. * No
+  /// other `IN`, `ARRAY_CONTAINS_ANY`, `NOT_IN`, `NOT_EQUAL`, `IS_NOT_NULL`, or
+  /// `IS_NOT_NAN`. * That `field` comes first in the `order_by`.
   core.String op;
 
   /// The value to compare to.
@@ -2738,82 +2852,69 @@ class FieldReference {
 
 /// A transformation of a field of the document.
 class FieldTransform {
-  /// Append the given elements in order if they are not already present in
-  /// the current field value.
-  /// If the field is not an array, or if the field does not yet exist, it is
-  /// first set to the empty array.
-  ///
-  /// Equivalent numbers of different types (e.g. 3L and 3.0) are
-  /// considered equal when checking if a value is missing.
-  /// NaN is equal to NaN, and Null is equal to Null.
-  /// If the input contains multiple equivalent values, only the first will
-  /// be considered.
-  ///
-  /// The corresponding transform_result will be the null value.
+  /// Append the given elements in order if they are not already present in the
+  /// current field value. If the field is not an array, or if the field does
+  /// not yet exist, it is first set to the empty array. Equivalent numbers of
+  /// different types (e.g. 3L and 3.0) are considered equal when checking if a
+  /// value is missing. NaN is equal to NaN, and Null is equal to Null. If the
+  /// input contains multiple equivalent values, only the first will be
+  /// considered. The corresponding transform_result will be the null value.
   ArrayValue appendMissingElements;
 
   /// The path of the field. See Document.fields for the field path syntax
   /// reference.
   core.String fieldPath;
 
-  /// Adds the given value to the field's current value.
-  ///
-  /// This must be an integer or a double value.
-  /// If the field is not an integer or double, or if the field does not yet
-  /// exist, the transformation will set the field to the given value.
-  /// If either of the given value or the current field value are doubles,
-  /// both values will be interpreted as doubles. Double arithmetic and
-  /// representation of double values follow IEEE 754 semantics.
-  /// If there is positive/negative integer overflow, the field is resolved
-  /// to the largest magnitude positive/negative integer.
+  /// Adds the given value to the field's current value. This must be an integer
+  /// or a double value. If the field is not an integer or double, or if the
+  /// field does not yet exist, the transformation will set the field to the
+  /// given value. If either of the given value or the current field value are
+  /// doubles, both values will be interpreted as doubles. Double arithmetic and
+  /// representation of double values follow IEEE 754 semantics. If there is
+  /// positive/negative integer overflow, the field is resolved to the largest
+  /// magnitude positive/negative integer.
   Value increment;
 
   /// Sets the field to the maximum of its current value and the given value.
-  ///
-  /// This must be an integer or a double value.
-  /// If the field is not an integer or double, or if the field does not yet
-  /// exist, the transformation will set the field to the given value.
-  /// If a maximum operation is applied where the field and the input value
-  /// are of mixed types (that is - one is an integer and one is a double)
-  /// the field takes on the type of the larger operand. If the operands are
-  /// equivalent (e.g. 3 and 3.0), the field does not change.
-  /// 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and
-  /// zero input value is always the stored value.
-  /// The maximum of any numeric value x and NaN is NaN.
+  /// This must be an integer or a double value. If the field is not an integer
+  /// or double, or if the field does not yet exist, the transformation will set
+  /// the field to the given value. If a maximum operation is applied where the
+  /// field and the input value are of mixed types (that is - one is an integer
+  /// and one is a double) the field takes on the type of the larger operand. If
+  /// the operands are equivalent (e.g. 3 and 3.0), the field does not change.
+  /// 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero
+  /// input value is always the stored value. The maximum of any numeric value x
+  /// and NaN is NaN.
   Value maximum;
 
   /// Sets the field to the minimum of its current value and the given value.
-  ///
-  /// This must be an integer or a double value.
-  /// If the field is not an integer or double, or if the field does not yet
-  /// exist, the transformation will set the field to the input value.
-  /// If a minimum operation is applied where the field and the input value
-  /// are of mixed types (that is - one is an integer and one is a double)
-  /// the field takes on the type of the smaller operand. If the operands are
-  /// equivalent (e.g. 3 and 3.0), the field does not change.
-  /// 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and
-  /// zero input value is always the stored value.
-  /// The minimum of any numeric value x and NaN is NaN.
+  /// This must be an integer or a double value. If the field is not an integer
+  /// or double, or if the field does not yet exist, the transformation will set
+  /// the field to the input value. If a minimum operation is applied where the
+  /// field and the input value are of mixed types (that is - one is an integer
+  /// and one is a double) the field takes on the type of the smaller operand.
+  /// If the operands are equivalent (e.g. 3 and 3.0), the field does not
+  /// change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value
+  /// and zero input value is always the stored value. The minimum of any
+  /// numeric value x and NaN is NaN.
   Value minimum;
 
-  /// Remove all of the given elements from the array in the field.
-  /// If the field is not an array, or if the field does not yet exist, it is
-  /// set to the empty array.
-  ///
-  /// Equivalent numbers of the different types (e.g. 3L and 3.0) are
-  /// considered equal when deciding whether an element should be removed.
-  /// NaN is equal to NaN, and Null is equal to Null.
-  /// This will remove all equivalent values if there are duplicates.
-  ///
-  /// The corresponding transform_result will be the null value.
+  /// Remove all of the given elements from the array in the field. If the field
+  /// is not an array, or if the field does not yet exist, it is set to the
+  /// empty array. Equivalent numbers of the different types (e.g. 3L and 3.0)
+  /// are considered equal when deciding whether an element should be removed.
+  /// NaN is equal to NaN, and Null is equal to Null. This will remove all
+  /// equivalent values if there are duplicates. The corresponding
+  /// transform_result will be the null value.
   ArrayValue removeAllFromArray;
 
   /// Sets the field to the given server value.
   /// Possible string values are:
   /// - "SERVER_VALUE_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "REQUEST_TIME" : The time at which the server processed the request,
-  /// with millisecond
-  /// precision.
+  /// with millisecond precision. If used on multiple fields (same or different
+  /// documents) in a transaction, all the fields will get the same server
+  /// timestamp.
   core.String setToServerValue;
 
   FieldTransform();
@@ -2928,8 +3029,7 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
   /// - "INITIALIZING" : Request is being prepared for processing.
   /// - "PROCESSING" : Request is actively being processed.
   /// - "CANCELLING" : Request is in the process of being cancelled after user
-  /// called
-  /// google.longrunning.Operations.CancelOperation on the operation.
+  /// called google.longrunning.Operations.CancelOperation on the operation.
   /// - "FINALIZING" : Request has been processed and is in its finalization
   /// stage.
   /// - "SUCCESSFUL" : Request has completed successfully.
@@ -3015,11 +3115,11 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// The output URI. Currently only supports Google Cloud Storage URIs of the
   /// form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name
   /// of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional
-  /// Google Cloud Storage namespace path. When
-  /// choosing a name, be sure to consider Google Cloud Storage naming
-  /// guidelines: https://cloud.google.com/storage/docs/naming.
-  /// If the URI is a bucket (without a namespace path), a prefix will be
-  /// generated based on the start time.
+  /// Google Cloud Storage namespace path. When choosing a name, be sure to
+  /// consider Google Cloud Storage naming guidelines:
+  /// https://cloud.google.com/storage/docs/naming. If the URI is a bucket
+  /// (without a namespace path), a prefix will be generated based on the start
+  /// time.
   core.String outputUriPrefix;
 
   GoogleFirestoreAdminV1ExportDocumentsRequest();
@@ -3048,8 +3148,8 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
 
 /// Returned in the google.longrunning.Operation response field.
 class GoogleFirestoreAdminV1ExportDocumentsResponse {
-  /// Location of the output files. This can be used to begin an import
-  /// into Cloud Firestore (this project or another project) after the operation
+  /// Location of the output files. This can be used to begin an import into
+  /// Cloud Firestore (this project or another project) after the operation
   /// completes successfully.
   core.String outputUriPrefix;
 
@@ -3071,47 +3171,34 @@ class GoogleFirestoreAdminV1ExportDocumentsResponse {
   }
 }
 
-/// Represents a single field in the database.
-///
-/// Fields are grouped by their "Collection Group", which represent all
-/// collections in the database with the same id.
+/// Represents a single field in the database. Fields are grouped by their
+/// "Collection Group", which represent all collections in the database with the
+/// same id.
 class GoogleFirestoreAdminV1Field {
   /// The index configuration for this field. If unset, field indexing will
-  /// revert to the configuration defined by the `ancestor_field`. To
-  /// explicitly remove all indexes for this field, specify an index config
-  /// with an empty list of indexes.
+  /// revert to the configuration defined by the `ancestor_field`. To explicitly
+  /// remove all indexes for this field, specify an index config with an empty
+  /// list of indexes.
   GoogleFirestoreAdminV1IndexConfig indexConfig;
 
   /// A field name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
-  ///
   /// A field path may be a simple field name, e.g. `address` or a path to
-  /// fields
-  /// within map_value , e.g. `address.city`,
-  /// or a special field path. The only valid special field is `*`, which
-  /// represents any field.
-  ///
-  /// Field paths may be quoted using ` (backtick). The only character that
-  /// needs
-  /// to be escaped within a quoted field path is the backtick character itself,
-  /// escaped using a backslash. Special characters in field paths that
-  /// must be quoted include: `*`, `.`,
-  /// ``` (backtick), `[`, `]`, as well as any ascii symbolic characters.
-  ///
-  /// Examples:
-  /// (Note: Comments here are written in markdown syntax, so there is an
-  ///  additional layer of backticks to represent a code block)
-  /// `\`address.city\`` represents a field named `address.city`, not the map
-  /// key
-  /// `city` in the field `address`.
-  /// `\`*\`` represents a field named `*`, not any field.
-  ///
-  /// A special `Field` contains the default indexing settings for all fields.
-  /// This field's resource name is:
+  /// fields within map_value , e.g. `address.city`, or a special field path.
+  /// The only valid special field is `*`, which represents any field. Field
+  /// paths may be quoted using ` (backtick). The only character that needs to
+  /// be escaped within a quoted field path is the backtick character itself,
+  /// escaped using a backslash. Special characters in field paths that must be
+  /// quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii
+  /// symbolic characters. Examples: (Note: Comments here are written in
+  /// markdown syntax, so there is an additional layer of backticks to represent
+  /// a code block) `\`address.city\`` represents a field named `address.city`,
+  /// not the map key `city` in the field `address`. `\`*\`` represents a field
+  /// named `*`, not any field. A special `Field` contains the default indexing
+  /// settings for all fields. This field's resource name is:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields
-  /// / * `
-  /// Indexes defined on this `Field` will be applied to all fields which do not
-  /// have their own `Field` index configuration.
+  /// / * ` Indexes defined on this `Field` will be applied to all fields which
+  /// do not have their own `Field` index configuration.
   core.String name;
 
   GoogleFirestoreAdminV1Field();
@@ -3150,8 +3237,7 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
   core.String field;
 
-  /// A list of IndexConfigDelta, which describe the intent of this
-  /// operation.
+  /// A list of IndexConfigDelta, which describe the intent of this operation.
   core.List<GoogleFirestoreAdminV1IndexConfigDelta> indexConfigDeltas;
 
   /// The progress, in bytes, of this operation.
@@ -3169,8 +3255,7 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
   /// - "INITIALIZING" : Request is being prepared for processing.
   /// - "PROCESSING" : Request is actively being processed.
   /// - "CANCELLING" : Request is in the process of being cancelled after user
-  /// called
-  /// google.longrunning.Operations.CancelOperation on the operation.
+  /// called google.longrunning.Operations.CancelOperation on the operation.
   /// - "FINALIZING" : Request has been processed and is in its finalization
   /// stage.
   /// - "SUCCESSFUL" : Request has completed successfully.
@@ -3259,8 +3344,7 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
   /// - "INITIALIZING" : Request is being prepared for processing.
   /// - "PROCESSING" : Request is actively being processed.
   /// - "CANCELLING" : Request is in the process of being cancelled after user
-  /// called
-  /// google.longrunning.Operations.CancelOperation on the operation.
+  /// called google.longrunning.Operations.CancelOperation on the operation.
   /// - "FINALIZING" : Request has been processed and is in its finalization
   /// stage.
   /// - "SUCCESSFUL" : Request has completed successfully.
@@ -3341,11 +3425,9 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
   /// in the import.
   core.List<core.String> collectionIds;
 
-  /// Location of the exported files.
-  /// This must match the output_uri_prefix of an ExportDocumentsResponse from
-  /// an export that has completed successfully.
-  /// See:
-  /// google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix.
+  /// Location of the exported files. This must match the output_uri_prefix of
+  /// an ExportDocumentsResponse from an export that has completed successfully.
+  /// See: google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix.
   core.String inputUriPrefix;
 
   GoogleFirestoreAdminV1ImportDocumentsRequest();
@@ -3372,69 +3454,58 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
   }
 }
 
-/// Cloud Firestore indexes enable simple and complex queries against
-/// documents in a database.
+/// Cloud Firestore indexes enable simple and complex queries against documents
+/// in a database.
 class GoogleFirestoreAdminV1Index {
-  /// The fields supported by this index.
-  ///
-  /// For composite indexes, this is always 2 or more fields.
-  /// The last field entry is always for the field path `__name__`. If, on
-  /// creation, `__name__` was not specified as the last field, it will be added
-  /// automatically with the same direction as that of the last field defined.
-  /// If
-  /// the final field in a composite index is not directional, the `__name__`
-  /// will be ordered ASCENDING (unless explicitly specified).
-  ///
-  /// For single field indexes, this will always be exactly one entry with a
-  /// field path equal to the field path of the associated field.
+  /// The fields supported by this index. For composite indexes, this is always
+  /// 2 or more fields. The last field entry is always for the field path
+  /// `__name__`. If, on creation, `__name__` was not specified as the last
+  /// field, it will be added automatically with the same direction as that of
+  /// the last field defined. If the final field in a composite index is not
+  /// directional, the `__name__` will be ordered ASCENDING (unless explicitly
+  /// specified). For single field indexes, this will always be exactly one
+  /// entry with a field path equal to the field path of the associated field.
   core.List<GoogleFirestoreAdminV1IndexField> fields;
 
-  /// Output only. A server defined name for this index.
-  /// The form of this name for composite indexes will be:
+  /// Output only. A server defined name for this index. The form of this name
+  /// for composite indexes will be:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`
   /// For single field indexes, this field will be empty.
   core.String name;
 
-  /// Indexes with a collection query scope specified allow queries
-  /// against a collection that is the child of a specific document, specified
-  /// at
-  /// query time, and that has the same collection id.
-  ///
-  /// Indexes with a collection group query scope specified allow queries
-  /// against
-  /// all collections descended from a specific document, specified at query
-  /// time, and that have the same collection id as this index.
+  /// Indexes with a collection query scope specified allow queries against a
+  /// collection that is the child of a specific document, specified at query
+  /// time, and that has the same collection id. Indexes with a collection group
+  /// query scope specified allow queries against all collections descended from
+  /// a specific document, specified at query time, and that have the same
+  /// collection id as this index.
   /// Possible string values are:
   /// - "QUERY_SCOPE_UNSPECIFIED" : The query scope is unspecified. Not a valid
   /// option.
   /// - "COLLECTION" : Indexes with a collection query scope specified allow
-  /// queries
-  /// against a collection that is the child of a specific document, specified
-  /// at query time, and that has the collection id specified by the index.
-  /// - "COLLECTION_GROUP" : Indexes with a collection group query scope
-  /// specified allow queries
-  /// against all collections that has the collection id specified by the
+  /// queries against a collection that is the child of a specific document,
+  /// specified at query time, and that has the collection id specified by the
   /// index.
+  /// - "COLLECTION_GROUP" : Indexes with a collection group query scope
+  /// specified allow queries against all collections that has the collection id
+  /// specified by the index.
   core.String queryScope;
 
   /// Output only. The serving state of the index.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The state is unspecified.
-  /// - "CREATING" : The index is being created.
-  /// There is an active long-running operation for the index.
-  /// The index is updated when writing a document.
+  /// - "CREATING" : The index is being created. There is an active long-running
+  /// operation for the index. The index is updated when writing a document.
   /// Some index data may exist.
-  /// - "READY" : The index is ready to be used.
-  /// The index is updated when writing a document.
-  /// The index is fully populated from all stored documents it applies to.
+  /// - "READY" : The index is ready to be used. The index is updated when
+  /// writing a document. The index is fully populated from all stored documents
+  /// it applies to.
   /// - "NEEDS_REPAIR" : The index was being created, but something went wrong.
-  /// There is no active long-running operation for the index,
-  /// and the most recently finished long-running operation failed.
-  /// The index is not updated when writing a document.
-  /// Some index data may exist.
-  /// Use the google.longrunning.Operations API to determine why the operation
-  /// that last attempted to create this index failed, then re-create the
-  /// index.
+  /// There is no active long-running operation for the index, and the most
+  /// recently finished long-running operation failed. The index is not updated
+  /// when writing a document. Some index data may exist. Use the
+  /// google.longrunning.Operations API to determine why the operation that last
+  /// attempted to create this index failed, then re-create the index.
   core.String state;
 
   GoogleFirestoreAdminV1Index();
@@ -3479,8 +3550,7 @@ class GoogleFirestoreAdminV1Index {
 /// The index configuration for this field.
 class GoogleFirestoreAdminV1IndexConfig {
   /// Output only. Specifies the resource name of the `Field` from which this
-  /// field's
-  /// index configuration is set (when `uses_ancestor_config` is true),
+  /// field's index configuration is set (when `uses_ancestor_config` is true),
   /// or from which it *would* be set if this field had no index configuration
   /// (when `uses_ancestor_config` is false).
   core.String ancestorField;
@@ -3488,16 +3558,15 @@ class GoogleFirestoreAdminV1IndexConfig {
   /// The indexes supported for this field.
   core.List<GoogleFirestoreAdminV1Index> indexes;
 
-  /// Output only
-  /// When true, the `Field`'s index configuration is in the process of being
-  /// reverted. Once complete, the index config will transition to the same
-  /// state as the field specified by `ancestor_field`, at which point
+  /// Output only When true, the `Field`'s index configuration is in the process
+  /// of being reverted. Once complete, the index config will transition to the
+  /// same state as the field specified by `ancestor_field`, at which point
   /// `uses_ancestor_config` will be `true` and `reverting` will be `false`.
   core.bool reverting;
 
   /// Output only. When true, the `Field`'s index configuration is set from the
-  /// configuration specified by the `ancestor_field`.
-  /// When false, the `Field`'s index configuration is defined explicitly.
+  /// configuration specified by the `ancestor_field`. When false, the `Field`'s
+  /// index configuration is defined explicitly.
   core.bool usesAncestorConfig;
 
   GoogleFirestoreAdminV1IndexConfig();
@@ -3576,9 +3645,8 @@ class GoogleFirestoreAdminV1IndexConfigDelta {
   }
 }
 
-/// A field in an index.
-/// The field_path describes which field is indexed, the value_mode describes
-/// how the field value is indexed.
+/// A field in an index. The field_path describes which field is indexed, the
+/// value_mode describes how the field value is indexed.
 class GoogleFirestoreAdminV1IndexField {
   /// Indicates that this field supports operations on `array_value`s.
   /// Possible string values are:
@@ -3587,9 +3655,8 @@ class GoogleFirestoreAdminV1IndexField {
   /// - "CONTAINS" : The index supports array containment queries.
   core.String arrayConfig;
 
-  /// Can be __name__.
-  /// For single field indexes, this must match the name of the field or may
-  /// be omitted.
+  /// Can be __name__. For single field indexes, this must match the name of the
+  /// field or may be omitted.
   core.String fieldPath;
 
   /// Indicates that this field supports ordering by the specified order or
@@ -3656,8 +3723,7 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
   /// - "INITIALIZING" : Request is being prepared for processing.
   /// - "PROCESSING" : Request is actively being processed.
   /// - "CANCELLING" : Request is in the process of being cancelled after user
-  /// called
-  /// google.longrunning.Operations.CancelOperation on the operation.
+  /// called google.longrunning.Operations.CancelOperation on the operation.
   /// - "FINALIZING" : Request has been processed and is in its finalization
   /// stage.
   /// - "SUCCESSFUL" : Request has completed successfully.
@@ -3723,8 +3789,7 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
   core.List<GoogleFirestoreAdminV1Field> fields;
 
   /// A page token that may be used to request another page of results. If
-  /// blank,
-  /// this is the last page.
+  /// blank, this is the last page.
   core.String nextPageToken;
 
   GoogleFirestoreAdminV1ListFieldsResponse();
@@ -3760,8 +3825,7 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
   core.List<GoogleFirestoreAdminV1Index> indexes;
 
   /// A page token that may be used to request another page of results. If
-  /// blank,
-  /// this is the last page.
+  /// blank, this is the last page.
   core.String nextPageToken;
 
   GoogleFirestoreAdminV1ListIndexesResponse();
@@ -3804,9 +3868,8 @@ class GoogleFirestoreAdminV1LocationMetadata {
   }
 }
 
-/// Describes the progress of the operation.
-/// Unit of work is generic and must be interpreted based on where Progress
-/// is used.
+/// Describes the progress of the operation. Unit of work is generic and must be
+/// interpreted based on where Progress is used.
 class GoogleFirestoreAdminV1Progress {
   /// The amount of work completed.
   core.String completedWork;
@@ -3890,17 +3953,17 @@ class GoogleLongrunningListOperationsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class GoogleLongrunningOperation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -3908,19 +3971,17 @@ class GoogleLongrunningOperation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3971,11 +4032,9 @@ class GoogleLongrunningOperation {
 }
 
 /// An object representing a latitude/longitude pair. This is expressed as a
-/// pair
-/// of doubles representing degrees latitude and degrees longitude. Unless
-/// specified otherwise, this must conform to the
-/// <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-/// standard</a>. Values must be within normalized ranges.
+/// pair of doubles representing degrees latitude and degrees longitude. Unless
+/// specified otherwise, this must conform to the WGS84 standard. Values must be
+/// within normalized ranges.
 class LatLng {
   /// The latitude in degrees. It must be in the range [-90.0, +90.0].
   core.double latitude;
@@ -4012,8 +4071,7 @@ class ListCollectionIdsRequest {
   /// The maximum number of results to return.
   core.int pageSize;
 
-  /// A page token. Must be a value from
-  /// ListCollectionIdsResponse.
+  /// A page token. Must be a value from ListCollectionIdsResponse.
   core.String pageToken;
 
   ListCollectionIdsRequest();
@@ -4194,10 +4252,8 @@ class ListenResponse {
   DocumentRemove documentRemove;
 
   /// A filter to apply to the set of documents previously returned for the
-  /// given target.
-  ///
-  /// Returned when documents may have been removed from the given target, but
-  /// the exact documents are unknown.
+  /// given target. Returned when documents may have been removed from the given
+  /// target, but the exact documents are unknown.
   ExistenceFilter filter;
 
   /// Targets have changed.
@@ -4247,13 +4303,12 @@ class ListenResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  /// For example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
   core.String displayName;
 
   /// Cross-service attributes for the location. For example
-  ///
-  ///     {"cloud.googleapis.com/region": "us-east1"}
+  /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
   /// The canonical id for this location. For example: `"us-east1"`.
@@ -4315,13 +4370,10 @@ class Location {
 
 /// A map value.
 class MapValue {
-  /// The map's fields.
-  ///
-  /// The map keys represent field names. Field names matching the regular
-  /// expression `__.*__` are reserved. Reserved field names are forbidden
-  /// except
-  /// in certain documented contexts. The map keys, represented as UTF-8, must
-  /// not exceed 1,500 bytes and cannot be empty.
+  /// The map's fields. The map keys represent field names. Field names matching
+  /// the regular expression `__.*__` are reserved. Reserved field names are
+  /// forbidden except in certain documented contexts. The map keys, represented
+  /// as UTF-8, must not exceed 1,500 bytes and cannot be empty.
   core.Map<core.String, Value> fields;
 
   MapValue();
@@ -4382,10 +4434,126 @@ class Order {
   }
 }
 
+/// The request for Firestore.PartitionQuery.
+class PartitionQueryRequest {
+  /// The maximum number of partitions to return in this call, subject to
+  /// `partition_count`. For example, if `partition_count` = 10 and `page_size`
+  /// = 8, the first call to PartitionQuery will return up to 8 partitions and a
+  /// `next_page_token` if more results exist. A second call to PartitionQuery
+  /// will return up to 2 partitions, to complete the total of 10 specified in
+  /// `partition_count`.
+  core.int pageSize;
+
+  /// The `next_page_token` value returned from a previous call to
+  /// PartitionQuery that may be used to get an additional set of results. There
+  /// are no ordering guarantees between sets of results. Thus, using multiple
+  /// sets of results will require merging the different result sets. For
+  /// example, two subsequent calls using a page_token may return: * cursor B,
+  /// cursor M, cursor Q * cursor A, cursor U, cursor W To obtain a complete
+  /// result set ordered with respect to the results of the query supplied to
+  /// PartitionQuery, the results sets should be merged: cursor A, cursor B,
+  /// cursor M, cursor Q, cursor U, cursor W
+  core.String pageToken;
+
+  /// The desired maximum number of partition points. The partitions may be
+  /// returned across multiple pages of results. The number must be positive.
+  /// The actual number of partitions returned may be fewer. For example, this
+  /// may be set to one fewer than the number of parallel queries to be run, or
+  /// in running a data pipeline job, one fewer than the number of workers or
+  /// compute instances available.
+  core.String partitionCount;
+
+  /// A structured query. Query must specify collection with all descendants and
+  /// be ordered by name ascending. Other filters, order bys, limits, offsets,
+  /// and start/end cursors are not supported.
+  StructuredQuery structuredQuery;
+
+  PartitionQueryRequest();
+
+  PartitionQueryRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
+    }
+    if (_json.containsKey("pageToken")) {
+      pageToken = _json["pageToken"];
+    }
+    if (_json.containsKey("partitionCount")) {
+      partitionCount = _json["partitionCount"];
+    }
+    if (_json.containsKey("structuredQuery")) {
+      structuredQuery = new StructuredQuery.fromJson(_json["structuredQuery"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
+    }
+    if (pageToken != null) {
+      _json["pageToken"] = pageToken;
+    }
+    if (partitionCount != null) {
+      _json["partitionCount"] = partitionCount;
+    }
+    if (structuredQuery != null) {
+      _json["structuredQuery"] = (structuredQuery).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The response for Firestore.PartitionQuery.
+class PartitionQueryResponse {
+  /// A page token that may be used to request an additional set of results, up
+  /// to the number specified by `partition_count` in the PartitionQuery
+  /// request. If blank, there are no more results.
+  core.String nextPageToken;
+
+  /// Partition results. Each partition is a split point that can be used by
+  /// RunQuery as a starting or end point for the query results. The RunQuery
+  /// requests must be made with the same query supplied to this PartitionQuery
+  /// request. The partition cursors will be ordered according to same ordering
+  /// as the results of the query supplied to PartitionQuery. For example, if a
+  /// PartitionQuery request returns partition cursors A and B, running the
+  /// following three queries will return the entire result set of the original
+  /// query: * query, end_at A * query, start_at A, end_at B * query, start_at B
+  /// An empty result may indicate that the query has too few results to be
+  /// partitioned.
+  core.List<Cursor> partitions;
+
+  PartitionQueryResponse();
+
+  PartitionQueryResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("partitions")) {
+      partitions = (_json["partitions"] as core.List)
+          .map<Cursor>((value) => new Cursor.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (partitions != null) {
+      _json["partitions"] =
+          partitions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// A precondition on a document, used for conditional operations.
 class Precondition {
-  /// When set to `true`, the target document must exist.
-  /// When set to `false`, the target document must not exist.
+  /// When set to `true`, the target document must exist. When set to `false`,
+  /// the target document must not exist.
   core.bool exists;
 
   /// When set, the target document must exist and have been last updated at
@@ -4418,10 +4586,8 @@ class Precondition {
 
 /// The projection of document's fields to return.
 class Projection {
-  /// The fields to return.
-  ///
-  /// If empty, all fields are returned. To only return the name
-  /// of the document, use `['__name__']`.
+  /// The fields to return. If empty, all fields are returned. To only return
+  /// the name of the document, use `['__name__']`.
   core.List<FieldReference> fields;
 
   Projection();
@@ -4449,8 +4615,7 @@ class QueryTarget {
   /// The parent resource name. In the format:
   /// `projects/{project_id}/databases/{database_id}/documents` or
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-  /// For example:
-  /// `projects/my-project/databases/my-database/documents` or
+  /// For example: `projects/my-project/databases/my-database/documents` or
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
   core.String parent;
 
@@ -4483,8 +4648,7 @@ class QueryTarget {
 
 /// Options for a transaction that can only be used to read documents.
 class ReadOnly {
-  /// Reads documents at the given time.
-  /// This may not be older than 60 seconds.
+  /// Reads documents at the given time. This may not be older than 60 seconds.
   core.String readTime;
 
   ReadOnly();
@@ -4569,14 +4733,13 @@ class RollbackRequest {
 
 /// The request for Firestore.RunQuery.
 class RunQueryRequest {
-  /// Starts a new transaction and reads the documents.
-  /// Defaults to a read-only transaction.
-  /// The new transaction ID will be returned as the first response in the
-  /// stream.
+  /// Starts a new transaction and reads the documents. Defaults to a read-only
+  /// transaction. The new transaction ID will be returned as the first response
+  /// in the stream.
   TransactionOptions newTransaction;
 
-  /// Reads documents as they were at the given time.
-  /// This may not be older than 270 seconds.
+  /// Reads documents as they were at the given time. This may not be older than
+  /// 270 seconds.
   core.String readTime;
 
   /// A structured query.
@@ -4631,27 +4794,24 @@ class RunQueryRequest {
 
 /// The response for Firestore.RunQuery.
 class RunQueryResponse {
-  /// A query result.
-  /// Not set when reporting partial progress.
+  /// A query result. Not set when reporting partial progress.
   Document document;
 
   /// The time at which the document was read. This may be monotonically
   /// increasing; in this case, the previous documents in the result stream are
-  /// guaranteed not to have changed between their `read_time` and this one.
-  ///
-  /// If the query returns no results, a response with `read_time` and no
+  /// guaranteed not to have changed between their `read_time` and this one. If
+  /// the query returns no results, a response with `read_time` and no
   /// `document` will be sent, and this represents the time at which the query
   /// was run.
   core.String readTime;
 
-  /// The number of results that have been skipped due to an offset between
-  /// the last response and the current response.
+  /// The number of results that have been skipped due to an offset between the
+  /// last response and the current response.
   core.int skippedResults;
 
-  /// The transaction that was started as part of this request.
-  /// Can only be set in the first response, and only if
-  /// RunQueryRequest.new_transaction was set in the request.
-  /// If set, no other fields will be set in this response.
+  /// The transaction that was started as part of this request. Can only be set
+  /// in the first response, and only if RunQueryRequest.new_transaction was set
+  /// in the request. If set, no other fields will be set in this response.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
     return convert.base64.decode(transaction);
@@ -4701,15 +4861,14 @@ class RunQueryResponse {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -4762,36 +4921,25 @@ class StructuredQuery {
   /// The collections to query.
   core.List<CollectionSelector> from;
 
-  /// The maximum number of results to return.
-  ///
-  /// Applies after all other constraints.
-  /// Must be >= 0 if specified.
+  /// The maximum number of results to return. Applies after all other
+  /// constraints. Must be >= 0 if specified.
   core.int limit;
 
-  /// The number of results to skip.
-  ///
-  /// Applies before limit, but after all other constraints. Must be >= 0 if
-  /// specified.
+  /// The number of results to skip. Applies before limit, but after all other
+  /// constraints. Must be >= 0 if specified.
   core.int offset;
 
-  /// The order to apply to the query results.
-  ///
-  /// Firestore guarantees a stable ordering through the following rules:
-  ///
-  ///  * Any field required to appear in `order_by`, that is not already
-  ///    specified in `order_by`, is appended to the order in field name order
-  ///    by default.
-  ///  * If an order on `__name__` is not specified, it is appended by default.
-  ///
-  /// Fields are appended with the same sort direction as the last order
-  /// specified, or 'ASCENDING' if no order was specified. For example:
-  ///
-  ///  * `SELECT * FROM Foo ORDER BY A` becomes
-  ///    `SELECT * FROM Foo ORDER BY A, __name__`
-  ///  * `SELECT * FROM Foo ORDER BY A DESC` becomes
-  ///    `SELECT * FROM Foo ORDER BY A DESC, __name__ DESC`
-  ///  * `SELECT * FROM Foo WHERE A > 1` becomes
-  ///    `SELECT * FROM Foo WHERE A > 1 ORDER BY A, __name__`
+  /// The order to apply to the query results. Firestore guarantees a stable
+  /// ordering through the following rules: * Any field required to appear in
+  /// `order_by`, that is not already specified in `order_by`, is appended to
+  /// the order in field name order by default. * If an order on `__name__` is
+  /// not specified, it is appended by default. Fields are appended with the
+  /// same sort direction as the last order specified, or 'ASCENDING' if no
+  /// order was specified. For example: * `SELECT * FROM Foo ORDER BY A` becomes
+  /// `SELECT * FROM Foo ORDER BY A, __name__` * `SELECT * FROM Foo ORDER BY A
+  /// DESC` becomes `SELECT * FROM Foo ORDER BY A DESC, __name__ DESC` * `SELECT
+  /// * FROM Foo WHERE A > 1` becomes `SELECT * FROM Foo WHERE A > 1 ORDER BY A,
+  /// __name__`
   core.List<Order> orderBy;
 
   /// The projection to return.
@@ -4879,14 +5027,12 @@ class Target {
   /// A target specified by a query.
   QueryTarget query;
 
-  /// Start listening after a specific `read_time`.
-  ///
-  /// The client must know the state of matching documents at this time.
+  /// Start listening after a specific `read_time`. The client must know the
+  /// state of matching documents at this time.
   core.String readTime;
 
-  /// A resume token from a prior TargetChange for an identical target.
-  ///
-  /// Using a resume token with a different target is unsupported and may fail.
+  /// A resume token from a prior TargetChange for an identical target. Using a
+  /// resume token with a different target is unsupported and may fail.
   core.String resumeToken;
   core.List<core.int> get resumeTokenAsBytes {
     return convert.base64.decode(resumeToken);
@@ -4955,21 +5101,16 @@ class TargetChange {
   Status cause;
 
   /// The consistent `read_time` for the given `target_ids` (omitted when the
-  /// target_ids are not at a consistent snapshot).
-  ///
-  /// The stream is guaranteed to send a `read_time` with `target_ids` empty
-  /// whenever the entire stream reaches a new consistent snapshot. ADD,
-  /// CURRENT, and RESET messages are guaranteed to (eventually) result in a
-  /// new consistent snapshot (while NO_CHANGE and REMOVE messages are not).
-  ///
-  /// For a given stream, `read_time` is guaranteed to be monotonically
-  /// increasing.
+  /// target_ids are not at a consistent snapshot). The stream is guaranteed to
+  /// send a `read_time` with `target_ids` empty whenever the entire stream
+  /// reaches a new consistent snapshot. ADD, CURRENT, and RESET messages are
+  /// guaranteed to (eventually) result in a new consistent snapshot (while
+  /// NO_CHANGE and REMOVE messages are not). For a given stream, `read_time` is
+  /// guaranteed to be monotonically increasing.
   core.String readTime;
 
   /// A token that can be used to resume the stream for the given `target_ids`,
-  /// or all targets if `target_ids` is empty.
-  ///
-  /// Not set on every target change.
+  /// or all targets if `target_ids` is empty. Not set on every target change.
   core.String resumeToken;
   core.List<core.int> get resumeTokenAsBytes {
     return convert.base64.decode(resumeToken);
@@ -4987,27 +5128,18 @@ class TargetChange {
   /// - "ADD" : The targets have been added.
   /// - "REMOVE" : The targets have been removed.
   /// - "CURRENT" : The targets reflect all changes committed before the targets
-  /// were added
-  /// to the stream.
-  ///
-  /// This will be sent after or with a `read_time` that is greater than or
-  /// equal to the time at which the targets were added.
-  ///
-  /// Listeners can wait for this change if read-after-write semantics
-  /// are desired.
+  /// were added to the stream. This will be sent after or with a `read_time`
+  /// that is greater than or equal to the time at which the targets were added.
+  /// Listeners can wait for this change if read-after-write semantics are
+  /// desired.
   /// - "RESET" : The targets have been reset, and a new initial state for the
-  /// targets
-  /// will be returned in subsequent changes.
-  ///
-  /// After the initial state is complete, `CURRENT` will be returned even
-  /// if the target was previously indicated to be `CURRENT`.
+  /// targets will be returned in subsequent changes. After the initial state is
+  /// complete, `CURRENT` will be returned even if the target was previously
+  /// indicated to be `CURRENT`.
   core.String targetChangeType;
 
-  /// The target IDs of targets that have changed.
-  ///
-  /// If empty, the change applies to all targets.
-  ///
-  /// The order of the target IDs is not defined.
+  /// The target IDs of targets that have changed. If empty, the change applies
+  /// to all targets. The order of the target IDs is not defined.
   core.List<core.int> targetIds;
 
   TargetChange();
@@ -5092,8 +5224,14 @@ class UnaryFilter {
   /// The unary operator to apply.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
-  /// - "IS_NAN" : Test if a field is equal to NaN.
-  /// - "IS_NULL" : Test if an expression evaluates to Null.
+  /// - "IS_NAN" : The given `field` is equal to `NaN`.
+  /// - "IS_NULL" : The given `field` is equal to `NULL`.
+  /// - "IS_NOT_NAN" : The given `field` is not equal to `NaN`. Requires: * No
+  /// other `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That
+  /// `field` comes first in the `order_by`.
+  /// - "IS_NOT_NULL" : The given `field` is not equal to `NULL`. Requires: * A
+  /// single `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That
+  /// `field` comes first in the `order_by`.
   core.String op;
 
   UnaryFilter();
@@ -5122,19 +5260,15 @@ class UnaryFilter {
 
 /// A message that can hold any of the supported value types.
 class Value {
-  /// An array value.
-  ///
-  /// Cannot directly contain another array value, though can contain an
-  /// map which contains another array.
+  /// An array value. Cannot directly contain another array value, though can
+  /// contain an map which contains another array.
   ArrayValue arrayValue;
 
   /// A boolean value.
   core.bool booleanValue;
 
-  /// A bytes value.
-  ///
-  /// Must not exceed 1 MiB - 89 bytes.
-  /// Only the first 1,500 bytes are considered by queries.
+  /// A bytes value. Must not exceed 1 MiB - 89 bytes. Only the first 1,500
+  /// bytes are considered by queries.
   core.String bytesValue;
   core.List<core.int> get bytesValueAsBytes {
     return convert.base64.decode(bytesValue);
@@ -5166,17 +5300,13 @@ class Value {
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   core.String referenceValue;
 
-  /// A string value.
-  ///
-  /// The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes.
-  /// Only the first 1,500 bytes of the UTF-8 representation are considered by
-  /// queries.
+  /// A string value. The string, represented as UTF-8, must not exceed 1 MiB -
+  /// 89 bytes. Only the first 1,500 bytes of the UTF-8 representation are
+  /// considered by queries.
   core.String stringValue;
 
-  /// A timestamp value.
-  ///
-  /// Precise only to microseconds. When stored, any additional precision is
-  /// rounded down.
+  /// A timestamp value. Precise only to microseconds. When stored, any
+  /// additional precision is rounded down.
   core.String timestampValue;
 
   Value();
@@ -5259,9 +5389,8 @@ class Value {
 
 /// A write on a document.
 class Write {
-  /// An optional precondition on the document.
-  ///
-  /// The write will fail if this is set and not met by the target document.
+  /// An optional precondition on the document. The write will fail if this is
+  /// set and not met by the target document.
   Precondition currentDocument;
 
   /// A document name to delete. In the format:
@@ -5274,25 +5403,19 @@ class Write {
   /// A document to write.
   Document update;
 
-  /// The fields to update in this write.
-  ///
-  /// This field can be set only when the operation is `update`.
-  /// If the mask is not set for an `update` and the document exists, any
-  /// existing data will be overwritten.
-  /// If the mask is set and the document on the server has fields not covered
-  /// by
-  /// the mask, they are left unchanged.
-  /// Fields referenced in the mask, but not present in the input document, are
-  /// deleted from the document on the server.
-  /// The field paths in this mask must not contain a reserved field name.
+  /// The fields to update in this write. This field can be set only when the
+  /// operation is `update`. If the mask is not set for an `update` and the
+  /// document exists, any existing data will be overwritten. If the mask is set
+  /// and the document on the server has fields not covered by the mask, they
+  /// are left unchanged. Fields referenced in the mask, but not present in the
+  /// input document, are deleted from the document on the server. The field
+  /// paths in this mask must not contain a reserved field name.
   DocumentMask updateMask;
 
-  /// The transforms to perform after update.
-  ///
-  /// This field can be set only when the operation is `update`. If present,
-  /// this
-  /// write is equivalent to performing `update` and `transform` to the same
-  /// document atomically and in order.
+  /// The transforms to perform after update. This field can be set only when
+  /// the operation is `update`. If present, this write is equivalent to
+  /// performing `update` and `transform` to the same document atomically and in
+  /// order.
   core.List<FieldTransform> updateTransforms;
 
   Write();
@@ -5346,40 +5469,28 @@ class Write {
   }
 }
 
-/// The request for Firestore.Write.
-///
-/// The first request creates a stream, or resumes an existing one from a token.
-///
-/// When creating a new stream, the server replies with a response containing
-/// only an ID and a token, to use in the next request.
-///
-/// When resuming a stream, the server first streams any responses later than
-/// the
-/// given token, then a response containing only an up-to-date token, to use in
-/// the next request.
+/// The request for Firestore.Write. The first request creates a stream, or
+/// resumes an existing one from a token. When creating a new stream, the server
+/// replies with a response containing only an ID and a token, to use in the
+/// next request. When resuming a stream, the server first streams any responses
+/// later than the given token, then a response containing only an up-to-date
+/// token, to use in the next request.
 class WriteRequest {
   /// Labels associated with this write request.
   core.Map<core.String, core.String> labels;
 
-  /// The ID of the write stream to resume.
-  /// This may only be set in the first message. When left empty, a new write
-  /// stream will be created.
+  /// The ID of the write stream to resume. This may only be set in the first
+  /// message. When left empty, a new write stream will be created.
   core.String streamId;
 
-  /// A stream token that was previously sent by the server.
-  ///
-  /// The client should set this field to the token from the most recent
-  /// WriteResponse it has received. This acknowledges that the client has
-  /// received responses up to this token. After sending this token, earlier
-  /// tokens may not be used anymore.
-  ///
-  /// The server may close the stream if there are too many unacknowledged
-  /// responses.
-  ///
-  /// Leave this field unset when creating a new stream. To resume a stream at
-  /// a specific point, set this field and the `stream_id` field.
-  ///
-  /// Leave this field unset when creating a new stream.
+  /// A stream token that was previously sent by the server. The client should
+  /// set this field to the token from the most recent WriteResponse it has
+  /// received. This acknowledges that the client has received responses up to
+  /// this token. After sending this token, earlier tokens may not be used
+  /// anymore. The server may close the stream if there are too many
+  /// unacknowledged responses. Leave this field unset when creating a new
+  /// stream. To resume a stream at a specific point, set this field and the
+  /// `stream_id` field. Leave this field unset when creating a new stream.
   core.String streamToken;
   core.List<core.int> get streamTokenAsBytes {
     return convert.base64.decode(streamToken);
@@ -5390,12 +5501,9 @@ class WriteRequest {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// The writes to apply.
-  ///
-  /// Always executed atomically and in order.
-  /// This must be empty on the first request.
-  /// This may be empty on the last request.
-  /// This must not be empty on all other requests.
+  /// The writes to apply. Always executed atomically and in order. This must be
+  /// empty on the first request. This may be empty on the last request. This
+  /// must not be empty on all other requests.
   core.List<Write> writes;
 
   WriteRequest();
@@ -5442,14 +5550,13 @@ class WriteResponse {
   /// `read_time` is guaranteed to see the effects of the write.
   core.String commitTime;
 
-  /// The ID of the stream.
-  /// Only set on the first message, when a new stream was created.
+  /// The ID of the stream. Only set on the first message, when a new stream was
+  /// created.
   core.String streamId;
 
-  /// A token that represents the position of this response in the stream.
-  /// This can be used by a client to resume the stream at this point.
-  ///
-  /// This field is always set.
+  /// A token that represents the position of this response in the stream. This
+  /// can be used by a client to resume the stream at this point. This field is
+  /// always set.
   core.String streamToken;
   core.List<core.int> get streamTokenAsBytes {
     return convert.base64.decode(streamToken);
@@ -5460,10 +5567,8 @@ class WriteResponse {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// The result of applying the writes.
-  ///
-  /// This i-th write result corresponds to the i-th write in the
-  /// request.
+  /// The result of applying the writes. This i-th write result corresponds to
+  /// the i-th write in the request.
   core.List<WriteResult> writeResults;
 
   WriteResponse();
@@ -5507,15 +5612,13 @@ class WriteResponse {
 
 /// The result of applying a write.
 class WriteResult {
-  /// The results of applying each DocumentTransform.FieldTransform, in the
-  /// same order.
+  /// The results of applying each DocumentTransform.FieldTransform, in the same
+  /// order.
   core.List<Value> transformResults;
 
   /// The last update time of the document after applying the write. Not set
-  /// after a `delete`.
-  ///
-  /// If the write did not actually change the document, this will be the
-  /// previous update_time.
+  /// after a `delete`. If the write did not actually change the document, this
+  /// will be the previous update_time.
   core.String updateTime;
 
   WriteResult();

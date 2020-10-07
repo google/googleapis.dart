@@ -17,7 +17,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 const core.String USER_AGENT = 'dart-api-client tagmanager/v1';
 
 /// This API allows clients to access and modify container and tag
-///      configuration.
+/// configuration.
 class TagmanagerApi {
   /// Delete your Google Tag Manager containers
   static const TagmanagerDeleteContainersScope =
@@ -53,7 +53,7 @@ class TagmanagerApi {
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
   TagmanagerApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
+      {core.String rootUrl = "https://tagmanager.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -158,8 +158,7 @@ class AccountsResourceApi {
   /// [accountId] - The GTM Account ID.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the account
-  /// in storage.
+  /// of the account in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -438,8 +437,7 @@ class AccountsContainersResourceApi {
   /// [containerId] - The GTM Container ID.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// container in storage.
+  /// of the container in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -741,8 +739,7 @@ class AccountsContainersEnvironmentsResourceApi {
   /// [environmentId] - The GTM Environment ID.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// environment in storage.
+  /// of the environment in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1051,8 +1048,7 @@ class AccountsContainersFoldersResourceApi {
   /// [folderId] - The GTM Folder ID.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the folder in
-  /// storage.
+  /// of the folder in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1195,11 +1191,11 @@ class AccountsContainersMoveFoldersResourceApi {
   ///
   /// [folderId] - The GTM Folder ID.
   ///
-  /// [variableId] - The variables to be moved to the folder.
-  ///
   /// [tagId] - The tags to be moved to the folder.
   ///
   /// [triggerId] - The triggers to be moved to the folder.
+  ///
+  /// [variableId] - The variables to be moved to the folder.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1211,9 +1207,9 @@ class AccountsContainersMoveFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future update(Folder request, core.String accountId,
       core.String containerId, core.String folderId,
-      {core.List<core.String> variableId,
-      core.List<core.String> tagId,
+      {core.List<core.String> tagId,
       core.List<core.String> triggerId,
+      core.List<core.String> variableId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1234,14 +1230,14 @@ class AccountsContainersMoveFoldersResourceApi {
     if (folderId == null) {
       throw new core.ArgumentError("Parameter folderId is required.");
     }
-    if (variableId != null) {
-      _queryParams["variableId"] = variableId;
-    }
     if (tagId != null) {
       _queryParams["tagId"] = tagId;
     }
     if (triggerId != null) {
       _queryParams["triggerId"] = triggerId;
+    }
+    if (variableId != null) {
+      _queryParams["variableId"] = variableId;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1586,8 +1582,7 @@ class AccountsContainersTagsResourceApi {
   /// [tagId] - The GTM Tag ID.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the tag in
-  /// storage.
+  /// of the tag in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1893,8 +1888,7 @@ class AccountsContainersTriggersResourceApi {
   /// [triggerId] - The GTM Trigger ID.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the trigger
-  /// in storage.
+  /// of the trigger in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2200,8 +2194,7 @@ class AccountsContainersVariablesResourceApi {
   /// [variableId] - The GTM Variable ID.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the variable
-  /// in storage.
+  /// of the variable in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2393,9 +2386,8 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
-  /// [containerVersionId] - The GTM Container Version ID. Specify
-  /// <code>published</code> to retrieve
-  /// the currently published version.
+  /// [containerVersionId] - The GTM Container Version ID. Specify published to
+  /// retrieve the currently published version.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2521,8 +2513,7 @@ class AccountsContainersVersionsResourceApi {
   /// [containerVersionId] - The GTM Container Version ID.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// container version in storage.
+  /// of the container version in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2714,8 +2705,7 @@ class AccountsContainersVersionsResourceApi {
   /// [containerVersionId] - The GTM Container Version ID.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// container version in storage.
+  /// of the container version in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3046,18 +3036,16 @@ class Account {
   /// The Account ID uniquely identifies the GTM Account.
   core.String accountId;
 
-  /// The fingerprint of the GTM Account as computed at storage time.
-  /// This value is recomputed whenever the account is modified.
+  /// The fingerprint of the GTM Account as computed at storage time. This value
+  /// is recomputed whenever the account is modified.
   core.String fingerprint;
 
-  /// Account display name.
-  /// @mutable tagmanager.accounts.create
-  /// @mutable tagmanager.accounts.update
+  /// Account display name. @mutable tagmanager.accounts.create @mutable
+  /// tagmanager.accounts.update
   core.String name;
 
   /// Whether the account shares data anonymously with Google and others.
-  /// @mutable tagmanager.accounts.create
-  /// @mutable tagmanager.accounts.update
+  /// @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
   core.bool shareData;
 
   Account();
@@ -3098,10 +3086,9 @@ class Account {
 
 /// Defines the Google Tag Manager Account access permissions.
 class AccountAccess {
-  /// List of Account permissions.
-  /// Valid account permissions are <code>read</code> and <code>manage</code>.
-  /// @mutable tagmanager.accounts.permissions.create
-  /// @mutable tagmanager.accounts.permissions.update
+  /// List of Account permissions. Valid account permissions are read and
+  /// manage. @mutable tagmanager.accounts.permissions.create @mutable
+  /// tagmanager.accounts.permissions.update
   core.List<core.String> permission;
 
   AccountAccess();
@@ -3125,27 +3112,20 @@ class AccountAccess {
 /// Represents a predicate.
 class Condition {
   /// A list of named parameters (key/value), depending on the condition's type.
-  /// Notes:<ul>
-  /// <li>For binary operators, include parameters named <code>arg0</code> and
-  ///    <code>arg1</code> for specifying the left and right operands,
-  ///    respectively.</li>
-  /// <li>At this time, the left operand (<code>arg0</code>) must be a reference
-  ///     to a variable.</li>
-  /// <li>For case-insensitive Regex matching, include a boolean parameter named
-  ///     <code>ignore_case</code> that is set to <code>true</code>.
-  ///     If not specified or set to any other value, the matching will be case
-  ///     sensitive.</li>
-  /// <li>To negate an operator, include a boolean parameter named
-  /// <code>negate</code> boolean parameter that is set to <code>true</code>.
-  ///     </li>
-  /// </ul>
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// Notes: - For binary operators, include parameters named arg0 and arg1 for
+  /// specifying the left and right operands, respectively. - At this time, the
+  /// left operand (arg0) must be a reference to a variable. - For
+  /// case-insensitive Regex matching, include a boolean parameter named
+  /// ignore_case that is set to true. If not specified or set to any other
+  /// value, the matching will be case sensitive. - To negate an operator,
+  /// include a boolean parameter named negate boolean parameter that is set to
+  /// true. @mutable tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   core.List<Parameter> parameter;
 
-  /// The type of operator for this condition.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// The type of operator for this condition. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   /// Possible string values are:
   /// - "equals"
   /// - "contains"
@@ -3194,53 +3174,47 @@ class Container {
   /// The Container ID uniquely identifies the GTM Container.
   core.String containerId;
 
-  /// Optional list of domain names associated with the Container.
-  /// @mutable tagmanager.accounts.containers.create
-  /// @mutable tagmanager.accounts.containers.update
+  /// Optional list of domain names associated with the Container. @mutable
+  /// tagmanager.accounts.containers.create @mutable
+  /// tagmanager.accounts.containers.update
   core.List<core.String> domainName;
 
-  /// List of enabled built-in variables. Valid values include: <code>pageUrl,
+  /// List of enabled built-in variables. Valid values include: pageUrl,
   /// pageHostname, pagePath, referrer, event, clickElement, clickClasses,
   /// clickId, clickTarget, clickUrl, clickText, formElement, formClasses,
   /// formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine,
   /// newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState,
-  /// historySource, containerVersion, debugMode, randomNumber,
-  /// containerId</code>.
-  /// @mutable tagmanager.accounts.containers.create
-  /// @mutable tagmanager.accounts.containers.update
+  /// historySource, containerVersion, debugMode, randomNumber, containerId.
+  /// @mutable tagmanager.accounts.containers.create @mutable
+  /// tagmanager.accounts.containers.update
   core.List<core.String> enabledBuiltInVariable;
 
-  /// The fingerprint of the GTM Container as computed at storage time.  This
+  /// The fingerprint of the GTM Container as computed at storage time. This
   /// value is recomputed whenever the account is modified.
   core.String fingerprint;
 
-  /// Container display name.
-  /// @mutable tagmanager.accounts.containers.create
+  /// Container display name. @mutable tagmanager.accounts.containers.create
   /// @mutable tagmanager.accounts.containers.update
   core.String name;
 
-  /// Container Notes.
-  /// @mutable tagmanager.accounts.containers.create
-  /// @mutable tagmanager.accounts.containers.update
+  /// Container Notes. @mutable tagmanager.accounts.containers.create @mutable
+  /// tagmanager.accounts.containers.update
   core.String notes;
 
   /// Container Public ID.
   core.String publicId;
 
-  /// Container Country ID.
-  /// @mutable tagmanager.accounts.containers.create
+  /// Container Country ID. @mutable tagmanager.accounts.containers.create
   /// @mutable tagmanager.accounts.containers.update
   core.String timeZoneCountryId;
 
-  /// Container Time Zone ID.
-  /// @mutable tagmanager.accounts.containers.create
+  /// Container Time Zone ID. @mutable tagmanager.accounts.containers.create
   /// @mutable tagmanager.accounts.containers.update
   core.String timeZoneId;
 
-  /// List of Usage Contexts for the Container. Valid values include: <code>web,
-  /// android, ios</code>.
-  /// @mutable tagmanager.accounts.containers.create
-  /// @mutable tagmanager.accounts.containers.update
+  /// List of Usage Contexts for the Container. Valid values include: web,
+  /// android, ios. @mutable tagmanager.accounts.containers.create @mutable
+  /// tagmanager.accounts.containers.update
   core.List<core.String> usageContext;
 
   Container();
@@ -3324,14 +3298,12 @@ class Container {
 
 /// Defines the Google Tag Manager Container access permissions.
 class ContainerAccess {
-  /// GTM Container ID.
-  /// @mutable tagmanager.accounts.permissions.create
-  /// @mutable tagmanager.accounts.permissions.update
+  /// GTM Container ID. @mutable tagmanager.accounts.permissions.create @mutable
+  /// tagmanager.accounts.permissions.update
   core.String containerId;
 
-  /// List of Container permissions.
-  /// Valid container permissions are: <code>read, edit, delete, publish</code>.
-  /// @mutable tagmanager.accounts.permissions.create
+  /// List of Container permissions. Valid container permissions are: read,
+  /// edit, delete, publish. @mutable tagmanager.accounts.permissions.create
   /// @mutable tagmanager.accounts.permissions.update
   core.List<core.String> permission;
 
@@ -3376,9 +3348,8 @@ class ContainerVersion {
   /// A value of true indicates this container version has been deleted.
   core.bool deleted;
 
-  /// The fingerprint of the GTM Container Version as computed at
-  /// storage time. This value is recomputed whenever the container version is
-  /// modified.
+  /// The fingerprint of the GTM Container Version as computed at storage time.
+  /// This value is recomputed whenever the container version is modified.
   core.String fingerprint;
 
   /// The folders in the container that this version was taken from.
@@ -3387,12 +3358,11 @@ class ContainerVersion {
   /// The macros in the container that this version was taken from.
   core.List<Macro> macro;
 
-  /// Container version display name.
-  /// @mutable tagmanager.accounts.containers.versions.update
+  /// Container version display name. @mutable
+  /// tagmanager.accounts.containers.versions.update
   core.String name;
 
-  /// User notes on how to apply this container version in the
-  /// container.
+  /// User notes on how to apply this container version in the container.
   /// @mutable tagmanager.accounts.containers.versions.update
   core.String notes;
 
@@ -3628,8 +3598,8 @@ class CreateContainerVersionRequestVersionOptions {
   /// The notes of the container version to be created.
   core.String notes;
 
-  /// The creation of this version may be for quick preview and
-  /// shouldn't be saved.
+  /// The creation of this version may be for quick preview and shouldn't be
+  /// saved.
   core.bool quickPreview;
 
   CreateContainerVersionRequestVersionOptions();
@@ -3713,26 +3683,24 @@ class Environment {
   core.String containerVersionId;
 
   /// The environment description. Can be set or changed only on USER type
-  /// environments.
-  /// @mutable tagmanager.accounts.containers.environments.create
+  /// environments. @mutable tagmanager.accounts.containers.environments.create
   /// @mutable tagmanager.accounts.containers.environments.update
   core.String description;
 
-  /// Whether or not to enable debug by default on for the environment.
-  /// @mutable tagmanager.accounts.containers.environments.create
-  /// @mutable tagmanager.accounts.containers.environments.update
+  /// Whether or not to enable debug by default on for the environment. @mutable
+  /// tagmanager.accounts.containers.environments.create @mutable
+  /// tagmanager.accounts.containers.environments.update
   core.bool enableDebug;
 
   /// GTM Environment ID uniquely identifies the GTM Environment.
   core.String environmentId;
 
-  /// The fingerprint of the GTM environment as computed at storage time.
-  /// This value is recomputed whenever the environment is modified.
+  /// The fingerprint of the GTM environment as computed at storage time. This
+  /// value is recomputed whenever the environment is modified.
   core.String fingerprint;
 
   /// The environment display name. Can be set or changed only on USER type
-  /// environments.
-  /// @mutable tagmanager.accounts.containers.environments.create
+  /// environments. @mutable tagmanager.accounts.containers.environments.create
   /// @mutable tagmanager.accounts.containers.environments.update
   core.String name;
 
@@ -3740,19 +3708,16 @@ class Environment {
   /// Possible string values are:
   /// - "user" : Used for user defined environments.
   /// - "live" : Used for Live environment, which points to the live published
-  /// container
-  /// version.
+  /// container version.
   /// - "latest" : Used for Latest environment, which points to the latest
-  /// created container
-  /// version.
+  /// created container version.
   /// - "draft" : Used for Draft environment, which points to the single draft
-  /// in
-  /// the container.
+  /// in the container.
   core.String type;
 
-  /// Default preview page url for the environment.
-  /// @mutable tagmanager.accounts.containers.environments.create
-  /// @mutable tagmanager.accounts.containers.environments.update
+  /// Default preview page url for the environment. @mutable
+  /// tagmanager.accounts.containers.environments.create @mutable
+  /// tagmanager.accounts.containers.environments.update
   core.String url;
 
   Environment();
@@ -3847,16 +3812,16 @@ class Folder {
   /// GTM Container ID.
   core.String containerId;
 
-  /// The fingerprint of the GTM Folder as computed at storage time.
-  /// This value is recomputed whenever the folder is modified.
+  /// The fingerprint of the GTM Folder as computed at storage time. This value
+  /// is recomputed whenever the folder is modified.
   core.String fingerprint;
 
   /// The Folder ID uniquely identifies the GTM Folder.
   core.String folderId;
 
-  /// Folder display name.
-  /// @mutable tagmanager.accounts.containers.folders.create
-  /// @mutable tagmanager.accounts.containers.folders.update
+  /// Folder display name. @mutable
+  /// tagmanager.accounts.containers.folders.create @mutable
+  /// tagmanager.accounts.containers.folders.update
   core.String name;
 
   Folder();
@@ -4201,57 +4166,53 @@ class Macro {
 
   /// For mobile containers only: A list of rule IDs for disabling conditional
   /// macros; the macro is enabled if one of the enabling rules is true while
-  /// all
-  /// the disabling rules are false. Treated as an unordered set.
-  /// @mutable tagmanager.accounts.containers.macros.create
-  /// @mutable tagmanager.accounts.containers.macros.update
+  /// all the disabling rules are false. Treated as an unordered set. @mutable
+  /// tagmanager.accounts.containers.macros.create @mutable
+  /// tagmanager.accounts.containers.macros.update
   core.List<core.String> disablingRuleId;
 
   /// For mobile containers only: A list of rule IDs for enabling conditional
   /// macros; the macro is enabled if one of the enabling rules is true while
-  /// all
-  /// the disabling rules are false. Treated as an unordered set.
-  /// @mutable tagmanager.accounts.containers.macros.create
-  /// @mutable tagmanager.accounts.containers.macros.update
+  /// all the disabling rules are false. Treated as an unordered set. @mutable
+  /// tagmanager.accounts.containers.macros.create @mutable
+  /// tagmanager.accounts.containers.macros.update
   core.List<core.String> enablingRuleId;
 
-  /// The fingerprint of the GTM Macro as computed at storage time.
-  /// This value is recomputed whenever the macro is modified.
+  /// The fingerprint of the GTM Macro as computed at storage time. This value
+  /// is recomputed whenever the macro is modified.
   core.String fingerprint;
 
   /// The Macro ID uniquely identifies the GTM Macro.
   core.String macroId;
 
-  /// Macro display name.
-  /// @mutable tagmanager.accounts.containers.macros.create
+  /// Macro display name. @mutable tagmanager.accounts.containers.macros.create
   /// @mutable tagmanager.accounts.containers.macros.update
   core.String name;
 
-  /// User notes on how to apply this macro in the container.
-  /// @mutable tagmanager.accounts.containers.macros.create
-  /// @mutable tagmanager.accounts.containers.macros.update
+  /// User notes on how to apply this macro in the container. @mutable
+  /// tagmanager.accounts.containers.macros.create @mutable
+  /// tagmanager.accounts.containers.macros.update
   core.String notes;
 
-  /// The macro's parameters.
-  /// @mutable tagmanager.accounts.containers.macros.create
-  /// @mutable tagmanager.accounts.containers.macros.update
+  /// The macro's parameters. @mutable
+  /// tagmanager.accounts.containers.macros.create @mutable
+  /// tagmanager.accounts.containers.macros.update
   core.List<Parameter> parameter;
 
   /// Parent folder id.
   core.String parentFolderId;
 
-  /// The end timestamp in milliseconds to schedule a macro.
-  /// @mutable tagmanager.accounts.containers.macros.create
-  /// @mutable tagmanager.accounts.containers.macros.update
+  /// The end timestamp in milliseconds to schedule a macro. @mutable
+  /// tagmanager.accounts.containers.macros.create @mutable
+  /// tagmanager.accounts.containers.macros.update
   core.String scheduleEndMs;
 
-  /// The start timestamp in milliseconds to schedule a macro.
-  /// @mutable tagmanager.accounts.containers.macros.create
-  /// @mutable tagmanager.accounts.containers.macros.update
+  /// The start timestamp in milliseconds to schedule a macro. @mutable
+  /// tagmanager.accounts.containers.macros.create @mutable
+  /// tagmanager.accounts.containers.macros.update
   core.String scheduleStartMs;
 
-  /// GTM Macro Type.
-  /// @mutable tagmanager.accounts.containers.macros.create
+  /// GTM Macro Type. @mutable tagmanager.accounts.containers.macros.create
   /// @mutable tagmanager.accounts.containers.macros.update
   core.String type;
 
@@ -4351,56 +4312,48 @@ class Macro {
 
 /// Represents a Google Tag Manager Parameter.
 class Parameter {
-  /// The named key that uniquely identifies a parameter.  Required for
-  /// top-level
-  /// parameters, as well as map values.  Ignored for list values.
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// The named key that uniquely identifies a parameter. Required for top-level
+  /// parameters, as well as map values. Ignored for list values. @mutable
+  /// tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.String key;
 
-  /// This list parameter's parameters (keys will be ignored).
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// This list parameter's parameters (keys will be ignored). @mutable
+  /// tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.List<Parameter> list;
 
   /// This map parameter's parameters (must have keys; keys must be unique).
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// @mutable tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.List<Parameter> map;
 
-  /// The parameter type.  Valid values are:<ul>
-  /// <li><code>boolean</code>: The value represents a boolean, represented as
-  ///     'true' or 'false'</li>
-  /// <li><code>integer</code>: The value represents a 64-bit signed integer
-  ///     value, in base 10</li>
-  /// <li><code>list</code>: A list of parameters should be specified</li>
-  /// <li><code>map</code>: A map of parameters should be specified</li>
-  /// <li><code>template</code>: The value represents any text; this can include
-  ///     variable references (even variable references that might return
-  ///     non-string types)</li>
-  /// <li><code>trigger_reference</code>: The value represents a trigger,
-  ///     represented as the trigger id</li>
-  /// <li><code>tag_reference</code>: The value represents a tag, represented as
-  ///     the tag name</li>
-  /// </ul>
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// The parameter type. Valid values are: - boolean: The value represents a
+  /// boolean, represented as 'true' or 'false' - integer: The value represents
+  /// a 64-bit signed integer value, in base 10 - list: A list of parameters
+  /// should be specified - map: A map of parameters should be specified -
+  /// template: The value represents any text; this can include variable
+  /// references (even variable references that might return non-string types) -
+  /// trigger_reference: The value represents a trigger, represented as the
+  /// trigger id - tag_reference: The value represents a tag, represented as the
+  /// tag name @mutable tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   /// Possible string values are:
   /// - "template" : May include variable references (such as "{{myVariable}}").
   /// - "integer"
@@ -4412,14 +4365,13 @@ class Parameter {
   core.String type;
 
   /// A parameter's value (may contain variable references such as
-  /// "{{myVariable}}")
-  /// as appropriate to the specified type.
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// "{{myVariable}}") as appropriate to the specified type. @mutable
+  /// tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.String value;
 
   Parameter();
@@ -4507,25 +4459,24 @@ class Rule {
   core.String accountId;
 
   /// The list of conditions that make up this rule (implicit AND between them).
-  /// @mutable tagmanager.accounts.containers.rules.create
-  /// @mutable tagmanager.accounts.containers.rules.update
+  /// @mutable tagmanager.accounts.containers.rules.create @mutable
+  /// tagmanager.accounts.containers.rules.update
   core.List<Condition> condition;
 
   /// GTM Container ID.
   core.String containerId;
 
-  /// The fingerprint of the GTM Rule as computed at storage time.
-  /// This value is recomputed whenever the rule is modified.
+  /// The fingerprint of the GTM Rule as computed at storage time. This value is
+  /// recomputed whenever the rule is modified.
   core.String fingerprint;
 
-  /// Rule display name.
-  /// @mutable tagmanager.accounts.containers.rules.create
+  /// Rule display name. @mutable tagmanager.accounts.containers.rules.create
   /// @mutable tagmanager.accounts.containers.rules.update
   core.String name;
 
-  /// User notes on how to apply this rule in the container.
-  /// @mutable tagmanager.accounts.containers.rules.create
-  /// @mutable tagmanager.accounts.containers.rules.update
+  /// User notes on how to apply this rule in the container. @mutable
+  /// tagmanager.accounts.containers.rules.create @mutable
+  /// tagmanager.accounts.containers.rules.update
   core.String notes;
 
   /// The Rule ID uniquely identifies the GTM Rule.
@@ -4589,8 +4540,8 @@ class Rule {
 
 class SetupTag {
   /// If true, fire the main tag if and only if the setup tag fires
-  /// successfully.
-  /// If false, fire the main tag regardless of setup tag firing status.
+  /// successfully. If false, fire the main tag regardless of setup tag firing
+  /// status.
   core.bool stopOnSetupFailure;
 
   /// The name of the setup tag.
@@ -4626,82 +4577,76 @@ class Tag {
   core.String accountId;
 
   /// Blocking rule IDs. If any of the listed rules evaluate to true, the tag
-  ///     will not fire.
-  /// @mutable tagmanager.accounts.containers.tags.create
+  /// will not fire. @mutable tagmanager.accounts.containers.tags.create
   /// @mutable tagmanager.accounts.containers.tags.update
   core.List<core.String> blockingRuleId;
 
   /// Blocking trigger IDs. If any of the listed triggers evaluate to true, the
-  /// tag
-  ///     will not fire.
-  /// @mutable tagmanager.accounts.containers.tags.create
+  /// tag will not fire. @mutable tagmanager.accounts.containers.tags.create
   /// @mutable tagmanager.accounts.containers.tags.update
   core.List<core.String> blockingTriggerId;
 
   /// GTM Container ID.
   core.String containerId;
 
-  /// The fingerprint of the GTM Tag as computed at storage time.
-  /// This value is recomputed whenever the tag is modified.
+  /// The fingerprint of the GTM Tag as computed at storage time. This value is
+  /// recomputed whenever the tag is modified.
   core.String fingerprint;
 
   /// Firing rule IDs. A tag will fire when any of the listed rules are true and
-  ///     all of its <code>blockingRuleIds</code> (if any specified) are false.
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// all of its blockingRuleIds (if any specified) are false. @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.List<core.String> firingRuleId;
 
   /// Firing trigger IDs. A tag will fire when any of the listed triggers are
-  /// true and all of its <code>blockingTriggerIds</code> (if any specified) are
-  /// false.
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// true and all of its blockingTriggerIds (if any specified) are false.
+  /// @mutable tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.List<core.String> firingTriggerId;
 
   /// If set to true, this tag will only fire in the live environment (e.g. not
-  /// in preview or debug mode).
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// in preview or debug mode). @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.bool liveOnly;
 
-  /// Tag display name.
-  /// @mutable tagmanager.accounts.containers.tags.create
+  /// Tag display name. @mutable tagmanager.accounts.containers.tags.create
   /// @mutable tagmanager.accounts.containers.tags.update
   core.String name;
 
-  /// User notes on how to apply this tag in the container.
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// User notes on how to apply this tag in the container. @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.String notes;
 
-  /// The tag's parameters.
-  /// @mutable tagmanager.accounts.containers.tags.create
+  /// The tag's parameters. @mutable tagmanager.accounts.containers.tags.create
   /// @mutable tagmanager.accounts.containers.tags.update
   core.List<Parameter> parameter;
 
   /// Parent folder id.
   core.String parentFolderId;
 
-  /// True if the tag is paused.
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// True if the tag is paused. @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.bool paused;
 
   /// User defined numeric priority of the tag. Tags are fired asynchronously in
   /// order of priority. Tags with higher numeric value fire first. A tag's
   /// priority can be a positive or negative value. The default value is 0.
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// @mutable tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   Parameter priority;
 
-  /// The end timestamp in milliseconds to schedule a tag.
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// The end timestamp in milliseconds to schedule a tag. @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.String scheduleEndMs;
 
-  /// The start timestamp in milliseconds to schedule a tag.
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// The start timestamp in milliseconds to schedule a tag. @mutable
+  /// tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.String scheduleStartMs;
 
   /// The list of setup tags. Currently we only allow one.
@@ -4711,8 +4656,7 @@ class Tag {
   /// Possible string values are:
   /// - "unlimited" : Tag can be fired multiple times per event.
   /// - "oncePerEvent" : Tag can only be fired per event but can be fired
-  /// multiple times per load
-  /// (e.g., app load or page load).
+  /// multiple times per load (e.g., app load or page load).
   /// - "oncePerLoad" : Tag can only be fired per load (e.g., app load or page
   /// load).
   core.String tagFiringOption;
@@ -4723,9 +4667,8 @@ class Tag {
   /// The list of teardown tags. Currently we only allow one.
   core.List<TeardownTag> teardownTag;
 
-  /// GTM Tag Type.
-  /// @mutable tagmanager.accounts.containers.tags.create
-  /// @mutable tagmanager.accounts.containers.tags.update
+  /// GTM Tag Type. @mutable tagmanager.accounts.containers.tags.create @mutable
+  /// tagmanager.accounts.containers.tags.update
   core.String type;
 
   Tag();
@@ -4878,8 +4821,8 @@ class Tag {
 
 class TeardownTag {
   /// If true, fire the teardown tag if and only if the main tag fires
-  /// successfully.
-  /// If false, fire the teardown tag regardless of main tag firing status.
+  /// successfully. If false, fire the teardown tag regardless of main tag
+  /// firing status.
   core.bool stopTeardownOnFailure;
 
   /// The name of the teardown tag.
@@ -4914,112 +4857,106 @@ class Trigger {
   /// GTM Account ID.
   core.String accountId;
 
-  /// Used in the case of auto event tracking.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// Used in the case of auto event tracking. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   core.List<Condition> autoEventFilter;
 
   /// Whether or not we should only fire tags if the form submit or link click
   /// event is not cancelled by some other event handler (e.g. because of
   /// validation). Only valid for Form Submission and Link Click triggers.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// @mutable tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter checkValidation;
 
   /// GTM Container ID.
   core.String containerId;
 
   /// A visibility trigger minimum continuous visible time (in milliseconds).
-  /// Only valid for AMP Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// Only valid for AMP Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter continuousTimeMinMilliseconds;
 
   /// Used in the case of custom event, which is fired iff all Conditions are
-  /// true.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// true. @mutable tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   core.List<Condition> customEventFilter;
 
   /// Name of the GTM event that is fired. Only valid for Timer triggers.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// @mutable tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter eventName;
 
-  /// The trigger will only fire iff all Conditions are true.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// The trigger will only fire iff all Conditions are true. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   core.List<Condition> filter;
 
-  /// The fingerprint of the GTM Trigger as computed at storage time.
-  /// This value is recomputed whenever the trigger is modified.
+  /// The fingerprint of the GTM Trigger as computed at storage time. This value
+  /// is recomputed whenever the trigger is modified.
   core.String fingerprint;
 
   /// List of integer percentage values for scroll triggers. The trigger will
   /// fire when each percentage is reached when the view is scrolled
-  /// horizontally. Only valid for AMP scroll triggers.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// horizontally. Only valid for AMP scroll triggers. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter horizontalScrollPercentageList;
 
   /// Time between triggering recurring Timer Events (in milliseconds). Only
-  /// valid for Timer triggers.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// valid for Timer triggers. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter interval;
 
   /// Time between Timer Events to fire (in seconds). Only valid for AMP Timer
-  /// trigger.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter intervalSeconds;
 
   /// Limit of the number of GTM events this Timer Trigger will fire. If no
-  /// limit
-  /// is set, we will continue to fire GTM events until the user leaves the
-  /// page.
-  /// Only valid for Timer triggers.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// limit is set, we will continue to fire GTM events until the user leaves
+  /// the page. Only valid for Timer triggers. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter limit;
 
   /// Max time to fire Timer Events (in seconds). Only valid for AMP Timer
-  /// trigger.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter maxTimerLengthSeconds;
 
-  /// Trigger display name.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// Trigger display name. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   core.String name;
 
-  /// Additional parameters.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Additional parameters. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   core.List<Parameter> parameter;
 
   /// Parent folder id.
   core.String parentFolderId;
 
   /// A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP
-  /// Click trigger.
-  /// @mutable tagmanager.accounts.containers.triggers.create
+  /// Click trigger. @mutable tagmanager.accounts.containers.triggers.create
   /// @mutable tagmanager.accounts.containers.triggers.update
   Parameter selector;
 
-  /// A visibility trigger minimum total visible time (in milliseconds).
-  /// Only valid for AMP Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// A visibility trigger minimum total visible time (in milliseconds). Only
+  /// valid for AMP Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter totalTimeMinMilliseconds;
 
   /// The Trigger ID uniquely identifies the GTM Trigger.
   core.String triggerId;
 
-  /// Defines the data layer event that causes this trigger.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// Defines the data layer event that causes this trigger. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   /// Possible string values are:
   /// - "pageview"
   /// - "domReady"
@@ -5044,54 +4981,50 @@ class Trigger {
 
   /// Globally unique id of the trigger that auto-generates this (a Form Submit,
   /// Link Click or Timer listener) if any. Used to make incompatible
-  /// auto-events
-  /// work together with trigger filtering based on trigger ids. This value is
-  /// populated during output generation since the tags implied by triggers
-  /// don't
-  /// exist until then. Only valid for Form Submit, Link Click and Timer
-  /// triggers.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// auto-events work together with trigger filtering based on trigger ids.
+  /// This value is populated during output generation since the tags implied by
+  /// triggers don't exist until then. Only valid for Form Submit, Link Click
+  /// and Timer triggers. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter uniqueTriggerId;
 
   /// List of integer percentage values for scroll triggers. The trigger will
   /// fire when each percentage is reached when the view is scrolled vertically.
-  /// Only valid for AMP scroll triggers.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// Only valid for AMP scroll triggers. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter verticalScrollPercentageList;
 
   /// A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP
-  /// Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter visibilitySelector;
 
   /// A visibility trigger maximum percent visibility. Only valid for AMP
-  /// Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter visiblePercentageMax;
 
   /// A visibility trigger minimum percent visibility. Only valid for AMP
-  /// Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter visiblePercentageMin;
 
-  /// Whether or not we should delay the form submissions or link opening
-  /// until all of the tags have fired (by preventing the default
-  /// action and later simulating the default action). Only valid for
-  /// Form Submission and Link Click triggers.
-  /// @mutable tagmanager.accounts.containers.triggers.create
+  /// Whether or not we should delay the form submissions or link opening until
+  /// all of the tags have fired (by preventing the default action and later
+  /// simulating the default action). Only valid for Form Submission and Link
+  /// Click triggers. @mutable tagmanager.accounts.containers.triggers.create
   /// @mutable tagmanager.accounts.containers.triggers.update
   Parameter waitForTags;
 
   /// How long to wait (in milliseconds) for tags to fire when 'waits_for_tags'
-  /// above evaluates to <code>true</code>.  Only valid for Form Submission and
-  /// Link Click triggers.
-  /// @mutable tagmanager.accounts.containers.triggers.create
-  /// @mutable tagmanager.accounts.containers.triggers.update
+  /// above evaluates to true. Only valid for Form Submission and Link Click
+  /// triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable
+  /// tagmanager.accounts.containers.triggers.update
   Parameter waitForTagsTimeout;
 
   Trigger();
@@ -5296,21 +5229,20 @@ class Trigger {
 
 /// Represents a user's permissions to an account and its container.
 class UserAccess {
-  /// GTM Account access permissions.
-  /// @mutable tagmanager.accounts.permissions.create
-  /// @mutable tagmanager.accounts.permissions.update
+  /// GTM Account access permissions. @mutable
+  /// tagmanager.accounts.permissions.create @mutable
+  /// tagmanager.accounts.permissions.update
   AccountAccess accountAccess;
 
   /// GTM Account ID.
   core.String accountId;
 
-  /// GTM Container access permissions.
-  /// @mutable tagmanager.accounts.permissions.create
-  /// @mutable tagmanager.accounts.permissions.update
+  /// GTM Container access permissions. @mutable
+  /// tagmanager.accounts.permissions.create @mutable
+  /// tagmanager.accounts.permissions.update
   core.List<ContainerAccess> containerAccess;
 
-  /// User's email address.
-  /// @mutable tagmanager.accounts.permissions.create
+  /// User's email address. @mutable tagmanager.accounts.permissions.create
   core.String emailAddress;
 
   /// Account Permission ID.
@@ -5370,55 +5302,54 @@ class Variable {
   core.String containerId;
 
   /// For mobile containers only: A list of trigger IDs for disabling
-  /// conditional
-  /// variables; the variable is enabled if one of the enabling trigger is true
-  /// while all the disabling trigger are false. Treated as an unordered set.
-  /// @mutable tagmanager.accounts.containers.variables.create
+  /// conditional variables; the variable is enabled if one of the enabling
+  /// trigger is true while all the disabling trigger are false. Treated as an
+  /// unordered set. @mutable tagmanager.accounts.containers.variables.create
   /// @mutable tagmanager.accounts.containers.variables.update
   core.List<core.String> disablingTriggerId;
 
   /// For mobile containers only: A list of trigger IDs for enabling conditional
   /// variables; the variable is enabled if one of the enabling triggers is true
   /// while all the disabling triggers are false. Treated as an unordered set.
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
+  /// @mutable tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update
   core.List<core.String> enablingTriggerId;
 
-  /// The fingerprint of the GTM Variable as computed at storage time.
-  /// This value is recomputed whenever the variable is modified.
+  /// The fingerprint of the GTM Variable as computed at storage time. This
+  /// value is recomputed whenever the variable is modified.
   core.String fingerprint;
 
-  /// Variable display name.
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
+  /// Variable display name. @mutable
+  /// tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update
   core.String name;
 
-  /// User notes on how to apply this variable in the container.
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
+  /// User notes on how to apply this variable in the container. @mutable
+  /// tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update
   core.String notes;
 
-  /// The variable's parameters.
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
+  /// The variable's parameters. @mutable
+  /// tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update
   core.List<Parameter> parameter;
 
   /// Parent folder id.
   core.String parentFolderId;
 
-  /// The end timestamp in milliseconds to schedule a variable.
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
+  /// The end timestamp in milliseconds to schedule a variable. @mutable
+  /// tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update
   core.String scheduleEndMs;
 
-  /// The start timestamp in milliseconds to schedule a variable.
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
+  /// The start timestamp in milliseconds to schedule a variable. @mutable
+  /// tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update
   core.String scheduleStartMs;
 
-  /// GTM Variable Type.
-  /// @mutable tagmanager.accounts.containers.variables.create
-  /// @mutable tagmanager.accounts.containers.variables.update
+  /// GTM Variable Type. @mutable
+  /// tagmanager.accounts.containers.variables.create @mutable
+  /// tagmanager.accounts.containers.variables.update
   core.String type;
 
   /// The Variable ID uniquely identifies the GTM Variable.

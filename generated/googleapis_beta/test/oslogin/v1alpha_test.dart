@@ -70,6 +70,7 @@ buildImportSshPublicKeyResponse() {
   var o = new api.ImportSshPublicKeyResponse();
   buildCounterImportSshPublicKeyResponse++;
   if (buildCounterImportSshPublicKeyResponse < 3) {
+    o.details = "foo";
     o.loginProfile = buildLoginProfile();
   }
   buildCounterImportSshPublicKeyResponse--;
@@ -79,32 +80,33 @@ buildImportSshPublicKeyResponse() {
 checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse++;
   if (buildCounterImportSshPublicKeyResponse < 3) {
+    unittest.expect(o.details, unittest.equals('foo'));
     checkLoginProfile(o.loginProfile);
   }
   buildCounterImportSshPublicKeyResponse--;
 }
 
-buildUnnamed6153() {
+buildUnnamed6612() {
   var o = new core.List<api.PosixAccount>();
   o.add(buildPosixAccount());
   o.add(buildPosixAccount());
   return o;
 }
 
-checkUnnamed6153(core.List<api.PosixAccount> o) {
+checkUnnamed6612(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPosixAccount(o[0]);
   checkPosixAccount(o[1]);
 }
 
-buildUnnamed6154() {
+buildUnnamed6613() {
   var o = new core.Map<core.String, api.SshPublicKey>();
   o["x"] = buildSshPublicKey();
   o["y"] = buildSshPublicKey();
   return o;
 }
 
-checkUnnamed6154(core.Map<core.String, api.SshPublicKey> o) {
+checkUnnamed6613(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSshPublicKey(o["x"]);
   checkSshPublicKey(o["y"]);
@@ -116,8 +118,8 @@ buildLoginProfile() {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     o.name = "foo";
-    o.posixAccounts = buildUnnamed6153();
-    o.sshPublicKeys = buildUnnamed6154();
+    o.posixAccounts = buildUnnamed6612();
+    o.sshPublicKeys = buildUnnamed6613();
   }
   buildCounterLoginProfile--;
   return o;
@@ -127,8 +129,8 @@ checkLoginProfile(api.LoginProfile o) {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed6153(o.posixAccounts);
-    checkUnnamed6154(o.sshPublicKeys);
+    checkUnnamed6612(o.posixAccounts);
+    checkUnnamed6613(o.sshPublicKeys);
   }
   buildCounterLoginProfile--;
 }
@@ -243,8 +245,8 @@ main() {
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.OsloginApi(mock).users;
       var arg_name = "foo";
-      var arg_operatingSystemType = "foo";
       var arg_projectId = "foo";
+      var arg_operatingSystemType = "foo";
       var arg_systemId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -278,10 +280,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["operatingSystemType"].first,
-            unittest.equals(arg_operatingSystemType));
         unittest.expect(
             queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(queryMap["operatingSystemType"].first,
+            unittest.equals(arg_operatingSystemType));
         unittest.expect(
             queryMap["systemId"].first, unittest.equals(arg_systemId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -294,8 +296,8 @@ main() {
       }), true);
       res
           .getLoginProfile(arg_name,
-              operatingSystemType: arg_operatingSystemType,
               projectId: arg_projectId,
+              operatingSystemType: arg_operatingSystemType,
               systemId: arg_systemId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

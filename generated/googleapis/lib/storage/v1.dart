@@ -4987,8 +4987,9 @@ class BucketLifecycleRuleCondition {
   /// before midnight of the specified date in UTC.
   core.DateTime createdBefore;
 
-  /// A timestamp in RFC 3339 format. This condition is satisfied when the
-  /// custom time on an object is before this timestamp.
+  /// A date in RFC 3339 format with only the date part (for instance,
+  /// "2013-01-15"). This condition is satisfied when the custom time on an
+  /// object is before this date in UTC.
   core.DateTime customTimeBefore;
 
   /// Number of days elapsed since the user-specified timestamp set on an
@@ -4996,6 +4997,13 @@ class BucketLifecycleRuleCondition {
   /// number. If no custom timestamp is specified on an object, the condition
   /// does not apply.
   core.int daysSinceCustomTime;
+
+  /// Number of days elapsed since the noncurrent timestamp of an object. The
+  /// condition is satisfied if the days elapsed is at least this number. This
+  /// condition is relevant only for versioned objects. The value of the field
+  /// must be a nonnegative integer. If it's zero, the object version will
+  /// become eligible for Lifecycle action as soon as it becomes noncurrent.
+  core.int daysSinceNoncurrentTime;
 
   /// Relevant only for versioned objects. If the value is true, this condition
   /// matches live objects; if the value is false, it matches archived objects.
@@ -5013,6 +5021,12 @@ class BucketLifecycleRuleCondition {
   /// be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE,
   /// ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
   core.List<core.String> matchesStorageClass;
+
+  /// A date in RFC 3339 format with only the date part (for instance,
+  /// "2013-01-15"). This condition is satisfied when the noncurrent time on an
+  /// object is before this date in UTC. This condition is relevant only for
+  /// versioned objects.
+  core.DateTime noncurrentTimeBefore;
 
   /// Relevant only for versioned objects. If the value is N, this condition is
   /// satisfied when there are at least N versions (including the live version)
@@ -5034,6 +5048,9 @@ class BucketLifecycleRuleCondition {
     if (_json.containsKey("daysSinceCustomTime")) {
       daysSinceCustomTime = _json["daysSinceCustomTime"];
     }
+    if (_json.containsKey("daysSinceNoncurrentTime")) {
+      daysSinceNoncurrentTime = _json["daysSinceNoncurrentTime"];
+    }
     if (_json.containsKey("isLive")) {
       isLive = _json["isLive"];
     }
@@ -5043,6 +5060,9 @@ class BucketLifecycleRuleCondition {
     if (_json.containsKey("matchesStorageClass")) {
       matchesStorageClass =
           (_json["matchesStorageClass"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("noncurrentTimeBefore")) {
+      noncurrentTimeBefore = core.DateTime.parse(_json["noncurrentTimeBefore"]);
     }
     if (_json.containsKey("numNewerVersions")) {
       numNewerVersions = _json["numNewerVersions"];
@@ -5060,10 +5080,14 @@ class BucketLifecycleRuleCondition {
           "${(createdBefore).year.toString().padLeft(4, '0')}-${(createdBefore).month.toString().padLeft(2, '0')}-${(createdBefore).day.toString().padLeft(2, '0')}";
     }
     if (customTimeBefore != null) {
-      _json["customTimeBefore"] = (customTimeBefore).toIso8601String();
+      _json["customTimeBefore"] =
+          "${(customTimeBefore).year.toString().padLeft(4, '0')}-${(customTimeBefore).month.toString().padLeft(2, '0')}-${(customTimeBefore).day.toString().padLeft(2, '0')}";
     }
     if (daysSinceCustomTime != null) {
       _json["daysSinceCustomTime"] = daysSinceCustomTime;
+    }
+    if (daysSinceNoncurrentTime != null) {
+      _json["daysSinceNoncurrentTime"] = daysSinceNoncurrentTime;
     }
     if (isLive != null) {
       _json["isLive"] = isLive;
@@ -5073,6 +5097,10 @@ class BucketLifecycleRuleCondition {
     }
     if (matchesStorageClass != null) {
       _json["matchesStorageClass"] = matchesStorageClass;
+    }
+    if (noncurrentTimeBefore != null) {
+      _json["noncurrentTimeBefore"] =
+          "${(noncurrentTimeBefore).year.toString().padLeft(4, '0')}-${(noncurrentTimeBefore).month.toString().padLeft(2, '0')}-${(noncurrentTimeBefore).day.toString().padLeft(2, '0')}";
     }
     if (numNewerVersions != null) {
       _json["numNewerVersions"] = numNewerVersions;
@@ -5440,10 +5468,6 @@ class Bucket {
   /// Request response.
   core.List<core.String> zoneAffinity;
 
-  /// If set, objects placed in this bucket are required to be separated by
-  /// disaster domain.
-  core.bool zoneSeparation;
-
   Bucket();
 
   Bucket.fromJson(core.Map _json) {
@@ -5538,9 +5562,6 @@ class Bucket {
     if (_json.containsKey("zoneAffinity")) {
       zoneAffinity = (_json["zoneAffinity"] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("zoneSeparation")) {
-      zoneSeparation = _json["zoneSeparation"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5627,9 +5648,6 @@ class Bucket {
     }
     if (zoneAffinity != null) {
       _json["zoneAffinity"] = zoneAffinity;
-    }
-    if (zoneSeparation != null) {
-      _json["zoneSeparation"] = zoneSeparation;
     }
     return _json;
   }
@@ -6615,8 +6633,8 @@ class Object {
   /// The kind of item this is. For objects, this is always storage#object.
   core.String kind;
 
-  /// Cloud KMS Key used to encrypt this object, if the object is encrypted by
-  /// such a key.
+  /// Not currently supported. Specifying the parameter causes the request to
+  /// fail with status code 400 - Bad Request.
   core.String kmsKeyName;
 
   /// MD5 hash of the data; encoded using base64. For more information about

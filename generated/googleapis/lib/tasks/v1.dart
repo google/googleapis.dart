@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client tasks/v1';
 
-/// Manages your tasks and task lists.
+/// The Google Tasks API lets you manage your tasks and task lists.
 class TasksApi {
   /// Create, edit, organize, and delete all your tasks
   static const TasksScope = "https://www.googleapis.com/auth/tasks";
@@ -31,8 +31,8 @@ class TasksApi {
   TasksResourceApi get tasks => new TasksResourceApi(_requester);
 
   TasksApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "tasks/v1/"})
+      {core.String rootUrl = "https://tasks.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -73,7 +73,8 @@ class TasklistsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
+    _url = 'tasks/v1/users/@me/lists/' +
+        commons.Escaper.ecapeVariable('$tasklist');
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -115,7 +116,8 @@ class TasklistsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
+    _url = 'tasks/v1/users/@me/lists/' +
+        commons.Escaper.ecapeVariable('$tasklist');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -127,8 +129,7 @@ class TasklistsResourceApi {
   }
 
   /// Creates a new task list and adds it to the authenticated user's task
-  /// lists. Fails with HTTP code 403 or 429 after reaching the storage limit of
-  /// 2,000 lists.
+  /// lists.
   ///
   /// [request] - The metadata request object.
   ///
@@ -159,7 +160,7 @@ class TasklistsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/@me/lists';
+    _url = 'tasks/v1/users/@me/lists';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -190,7 +191,7 @@ class TasklistsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TaskLists> list(
-      {core.String maxResults, core.String pageToken, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -199,7 +200,7 @@ class TasklistsResourceApi {
     var _body;
 
     if (maxResults != null) {
-      _queryParams["maxResults"] = [maxResults];
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -208,7 +209,7 @@ class TasklistsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/@me/lists';
+    _url = 'tasks/v1/users/@me/lists';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -257,7 +258,8 @@ class TasklistsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
+    _url = 'tasks/v1/users/@me/lists/' +
+        commons.Escaper.ecapeVariable('$tasklist');
 
     var _response = _requester.request(_url, "PATCH",
         body: _body,
@@ -305,7 +307,8 @@ class TasklistsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
+    _url = 'tasks/v1/users/@me/lists/' +
+        commons.Escaper.ecapeVariable('$tasklist');
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -355,7 +358,9 @@ class TasksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/clear';
+    _url = 'tasks/v1/lists/' +
+        commons.Escaper.ecapeVariable('$tasklist') +
+        '/clear';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -403,7 +408,7 @@ class TasksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'lists/' +
+    _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
@@ -454,7 +459,7 @@ class TasksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'lists/' +
+    _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
@@ -468,8 +473,7 @@ class TasksResourceApi {
     return _response.then((data) => new Task.fromJson(data));
   }
 
-  /// Creates a new task on the specified task list. Fails with HTTP code 403 or
-  /// 429 after reaching the storage limit of 100,000 tasks per account.
+  /// Creates a new task on the specified task list.
   ///
   /// [request] - The metadata request object.
   ///
@@ -519,7 +523,9 @@ class TasksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
+    _url = 'tasks/v1/lists/' +
+        commons.Escaper.ecapeVariable('$tasklist') +
+        '/tasks';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -536,37 +542,39 @@ class TasksResourceApi {
   ///
   /// [tasklist] - Task list identifier.
   ///
-  /// [completedMax] - Upper bound for a task's completion date (as a RFC 3339
-  /// timestamp) to filter by. Optional. The default is not to filter by
-  /// completion date.
+  /// [pageToken] - Token specifying the result page to return. Optional.
+  ///
+  /// [maxResults] - Maximum number of task lists returned on one page.
+  /// Optional. The default is 20 (max allowed: 100).
+  ///
+  /// [showHidden] - Flag indicating whether hidden tasks are returned in the
+  /// result. Optional. The default is False.
   ///
   /// [completedMin] - Lower bound for a task's completion date (as a RFC 3339
   /// timestamp) to filter by. Optional. The default is not to filter by
   /// completion date.
   ///
-  /// [dueMax] - Upper bound for a task's due date (as a RFC 3339 timestamp) to
-  /// filter by. Optional. The default is not to filter by due date.
-  ///
-  /// [dueMin] - Lower bound for a task's due date (as a RFC 3339 timestamp) to
-  /// filter by. Optional. The default is not to filter by due date.
-  ///
-  /// [maxResults] - Maximum number of task lists returned on one page.
-  /// Optional. The default is 20 (max allowed: 100).
-  ///
-  /// [pageToken] - Token specifying the result page to return. Optional.
-  ///
-  /// [showCompleted] - Flag indicating whether completed tasks are returned in
-  /// the result. Optional. The default is True.
-  ///
   /// [showDeleted] - Flag indicating whether deleted tasks are returned in the
   /// result. Optional. The default is False.
   ///
-  /// [showHidden] - Flag indicating whether hidden tasks are returned in the
-  /// result. Optional. The default is False.
+  /// [showCompleted] - Flag indicating whether completed tasks are returned in
+  /// the result. Optional. The default is True. Note that showHidden must also
+  /// be True to show tasks completed in first party clients, such as the web UI
+  /// and Google's mobile apps.
+  ///
+  /// [completedMax] - Upper bound for a task's completion date (as a RFC 3339
+  /// timestamp) to filter by. Optional. The default is not to filter by
+  /// completion date.
   ///
   /// [updatedMin] - Lower bound for a task's last modification time (as a RFC
   /// 3339 timestamp) to filter by. Optional. The default is not to filter by
   /// last modification time.
+  ///
+  /// [dueMin] - Lower bound for a task's due date (as a RFC 3339 timestamp) to
+  /// filter by. Optional. The default is not to filter by due date.
+  ///
+  /// [dueMax] - Upper bound for a task's due date (as a RFC 3339 timestamp) to
+  /// filter by. Optional. The default is not to filter by due date.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -579,16 +587,16 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Tasks> list(core.String tasklist,
-      {core.String completedMax,
-      core.String completedMin,
-      core.String dueMax,
-      core.String dueMin,
-      core.String maxResults,
-      core.String pageToken,
-      core.bool showCompleted,
-      core.bool showDeleted,
+      {core.String pageToken,
+      core.int maxResults,
       core.bool showHidden,
+      core.String completedMin,
+      core.bool showDeleted,
+      core.bool showCompleted,
+      core.String completedMax,
       core.String updatedMin,
+      core.String dueMin,
+      core.String dueMax,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -600,41 +608,43 @@ class TasksResourceApi {
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
     }
-    if (completedMax != null) {
-      _queryParams["completedMax"] = [completedMax];
-    }
-    if (completedMin != null) {
-      _queryParams["completedMin"] = [completedMin];
-    }
-    if (dueMax != null) {
-      _queryParams["dueMax"] = [dueMax];
-    }
-    if (dueMin != null) {
-      _queryParams["dueMin"] = [dueMin];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = [maxResults];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (showCompleted != null) {
-      _queryParams["showCompleted"] = ["${showCompleted}"];
-    }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (showHidden != null) {
       _queryParams["showHidden"] = ["${showHidden}"];
     }
+    if (completedMin != null) {
+      _queryParams["completedMin"] = [completedMin];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (showCompleted != null) {
+      _queryParams["showCompleted"] = ["${showCompleted}"];
+    }
+    if (completedMax != null) {
+      _queryParams["completedMax"] = [completedMax];
+    }
     if (updatedMin != null) {
       _queryParams["updatedMin"] = [updatedMin];
+    }
+    if (dueMin != null) {
+      _queryParams["dueMin"] = [dueMin];
+    }
+    if (dueMax != null) {
+      _queryParams["dueMax"] = [dueMax];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
+    _url = 'tasks/v1/lists/' +
+        commons.Escaper.ecapeVariable('$tasklist') +
+        '/tasks';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -655,12 +665,12 @@ class TasksResourceApi {
   ///
   /// [task] - Task identifier.
   ///
-  /// [parent] - New parent task identifier. If the task is moved to the top
-  /// level, this parameter is omitted. Optional.
-  ///
   /// [previous] - New previous sibling task identifier. If the task is moved to
   /// the first position among its siblings, this parameter is omitted.
   /// Optional.
+  ///
+  /// [parent] - New parent task identifier. If the task is moved to the top
+  /// level, this parameter is omitted. Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -673,7 +683,7 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Task> move(core.String tasklist, core.String task,
-      {core.String parent, core.String previous, core.String $fields}) {
+      {core.String previous, core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -687,17 +697,17 @@ class TasksResourceApi {
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
     }
-    if (parent != null) {
-      _queryParams["parent"] = [parent];
-    }
     if (previous != null) {
       _queryParams["previous"] = [previous];
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'lists/' +
+    _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task') +
@@ -754,7 +764,7 @@ class TasksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'lists/' +
+    _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
@@ -811,7 +821,7 @@ class TasksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'lists/' +
+    _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
@@ -866,19 +876,20 @@ class TaskLinks {
   }
 }
 
+/// LINT.IfChange
 class Task {
   /// Completion date of the task (as a RFC 3339 timestamp). This field is
   /// omitted if the task has not been completed.
-  core.DateTime completed;
+  core.String completed;
 
-  /// Flag indicating whether the task has been deleted. The default if False.
+  /// Flag indicating whether the task has been deleted. The default is False.
   core.bool deleted;
 
   /// Due date of the task (as a RFC 3339 timestamp). Optional. The due date
   /// only records date information; the time portion of the timestamp is
   /// discarded when setting the due date. It isn't possible to read or write
   /// the time that a task is due via the API.
-  core.DateTime due;
+  core.String due;
 
   /// ETag of the resource.
   core.String etag;
@@ -923,19 +934,19 @@ class Task {
   core.String title;
 
   /// Last modification time of the task (as a RFC 3339 timestamp).
-  core.DateTime updated;
+  core.String updated;
 
   Task();
 
   Task.fromJson(core.Map _json) {
     if (_json.containsKey("completed")) {
-      completed = core.DateTime.parse(_json["completed"]);
+      completed = _json["completed"];
     }
     if (_json.containsKey("deleted")) {
       deleted = _json["deleted"];
     }
     if (_json.containsKey("due")) {
-      due = core.DateTime.parse(_json["due"]);
+      due = _json["due"];
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -973,7 +984,7 @@ class Task {
       title = _json["title"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
   }
 
@@ -981,13 +992,13 @@ class Task {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
     if (completed != null) {
-      _json["completed"] = (completed).toIso8601String();
+      _json["completed"] = completed;
     }
     if (deleted != null) {
       _json["deleted"] = deleted;
     }
     if (due != null) {
-      _json["due"] = (due).toIso8601String();
+      _json["due"] = due;
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -1023,7 +1034,7 @@ class Task {
       _json["title"] = title;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     return _json;
   }
@@ -1047,7 +1058,7 @@ class TaskList {
   core.String title;
 
   /// Last modification time of the task list (as a RFC 3339 timestamp).
-  core.DateTime updated;
+  core.String updated;
 
   TaskList();
 
@@ -1068,7 +1079,7 @@ class TaskList {
       title = _json["title"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
   }
 
@@ -1091,7 +1102,7 @@ class TaskList {
       _json["title"] = title;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     return _json;
   }

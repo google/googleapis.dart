@@ -102,14 +102,14 @@ checkAccessPolicy(api.AccessPolicy o) {
   buildCounterAccessPolicy--;
 }
 
-buildUnnamed3658() {
+buildUnnamed3842() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed3658(core.List<api.Condition> o) {
+checkUnnamed3842(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
@@ -121,7 +121,7 @@ buildBasicLevel() {
   buildCounterBasicLevel++;
   if (buildCounterBasicLevel < 3) {
     o.combiningFunction = "foo";
-    o.conditions = buildUnnamed3658();
+    o.conditions = buildUnnamed3842();
   }
   buildCounterBasicLevel--;
   return o;
@@ -131,7 +131,7 @@ checkBasicLevel(api.BasicLevel o) {
   buildCounterBasicLevel++;
   if (buildCounterBasicLevel < 3) {
     unittest.expect(o.combiningFunction, unittest.equals('foo'));
-    checkUnnamed3658(o.conditions);
+    checkUnnamed3842(o.conditions);
   }
   buildCounterBasicLevel--;
 }
@@ -170,14 +170,14 @@ checkCommitServicePerimetersRequest(api.CommitServicePerimetersRequest o) {
   buildCounterCommitServicePerimetersRequest--;
 }
 
-buildUnnamed3659() {
+buildUnnamed3843() {
   var o = new core.List<api.ServicePerimeter>();
   o.add(buildServicePerimeter());
   o.add(buildServicePerimeter());
   return o;
 }
 
-checkUnnamed3659(core.List<api.ServicePerimeter> o) {
+checkUnnamed3843(core.List<api.ServicePerimeter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServicePerimeter(o[0]);
   checkServicePerimeter(o[1]);
@@ -188,7 +188,7 @@ buildCommitServicePerimetersResponse() {
   var o = new api.CommitServicePerimetersResponse();
   buildCounterCommitServicePerimetersResponse++;
   if (buildCounterCommitServicePerimetersResponse < 3) {
-    o.servicePerimeters = buildUnnamed3659();
+    o.servicePerimeters = buildUnnamed3843();
   }
   buildCounterCommitServicePerimetersResponse--;
   return o;
@@ -197,58 +197,58 @@ buildCommitServicePerimetersResponse() {
 checkCommitServicePerimetersResponse(api.CommitServicePerimetersResponse o) {
   buildCounterCommitServicePerimetersResponse++;
   if (buildCounterCommitServicePerimetersResponse < 3) {
-    checkUnnamed3659(o.servicePerimeters);
+    checkUnnamed3843(o.servicePerimeters);
   }
   buildCounterCommitServicePerimetersResponse--;
 }
 
-buildUnnamed3660() {
+buildUnnamed3844() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3660(core.List<core.String> o) {
+checkUnnamed3844(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3661() {
+buildUnnamed3845() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3661(core.List<core.String> o) {
+checkUnnamed3845(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3662() {
+buildUnnamed3846() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3662(core.List<core.String> o) {
+checkUnnamed3846(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3663() {
+buildUnnamed3847() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3663(core.List<core.String> o) {
+checkUnnamed3847(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -260,11 +260,11 @@ buildCondition() {
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
     o.devicePolicy = buildDevicePolicy();
-    o.ipSubnetworks = buildUnnamed3660();
-    o.members = buildUnnamed3661();
+    o.ipSubnetworks = buildUnnamed3844();
+    o.members = buildUnnamed3845();
     o.negate = true;
-    o.regions = buildUnnamed3662();
-    o.requiredAccessLevels = buildUnnamed3663();
+    o.regions = buildUnnamed3846();
+    o.requiredAccessLevels = buildUnnamed3847();
   }
   buildCounterCondition--;
   return o;
@@ -274,11 +274,11 @@ checkCondition(api.Condition o) {
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
     checkDevicePolicy(o.devicePolicy);
-    checkUnnamed3660(o.ipSubnetworks);
-    checkUnnamed3661(o.members);
+    checkUnnamed3844(o.ipSubnetworks);
+    checkUnnamed3845(o.members);
     unittest.expect(o.negate, unittest.isTrue);
-    checkUnnamed3662(o.regions);
-    checkUnnamed3663(o.requiredAccessLevels);
+    checkUnnamed3846(o.regions);
+    checkUnnamed3847(o.requiredAccessLevels);
   }
   buildCounterCondition--;
 }
@@ -302,40 +302,40 @@ checkCustomLevel(api.CustomLevel o) {
   buildCounterCustomLevel--;
 }
 
-buildUnnamed3664() {
+buildUnnamed3848() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3664(core.List<core.String> o) {
+checkUnnamed3848(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3665() {
+buildUnnamed3849() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3665(core.List<core.String> o) {
+checkUnnamed3849(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3666() {
+buildUnnamed3850() {
   var o = new core.List<api.OsConstraint>();
   o.add(buildOsConstraint());
   o.add(buildOsConstraint());
   return o;
 }
 
-checkUnnamed3666(core.List<api.OsConstraint> o) {
+checkUnnamed3850(core.List<api.OsConstraint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOsConstraint(o[0]);
   checkOsConstraint(o[1]);
@@ -346,9 +346,9 @@ buildDevicePolicy() {
   var o = new api.DevicePolicy();
   buildCounterDevicePolicy++;
   if (buildCounterDevicePolicy < 3) {
-    o.allowedDeviceManagementLevels = buildUnnamed3664();
-    o.allowedEncryptionStatuses = buildUnnamed3665();
-    o.osConstraints = buildUnnamed3666();
+    o.allowedDeviceManagementLevels = buildUnnamed3848();
+    o.allowedEncryptionStatuses = buildUnnamed3849();
+    o.osConstraints = buildUnnamed3850();
     o.requireAdminApproval = true;
     o.requireCorpOwned = true;
     o.requireScreenlock = true;
@@ -360,9 +360,9 @@ buildDevicePolicy() {
 checkDevicePolicy(api.DevicePolicy o) {
   buildCounterDevicePolicy++;
   if (buildCounterDevicePolicy < 3) {
-    checkUnnamed3664(o.allowedDeviceManagementLevels);
-    checkUnnamed3665(o.allowedEncryptionStatuses);
-    checkUnnamed3666(o.osConstraints);
+    checkUnnamed3848(o.allowedDeviceManagementLevels);
+    checkUnnamed3849(o.allowedEncryptionStatuses);
+    checkUnnamed3850(o.osConstraints);
     unittest.expect(o.requireAdminApproval, unittest.isTrue);
     unittest.expect(o.requireCorpOwned, unittest.isTrue);
     unittest.expect(o.requireScreenlock, unittest.isTrue);
@@ -410,14 +410,50 @@ checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-buildUnnamed3667() {
+buildUnnamed3851() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3851(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterGcpUserAccessBinding = 0;
+buildGcpUserAccessBinding() {
+  var o = new api.GcpUserAccessBinding();
+  buildCounterGcpUserAccessBinding++;
+  if (buildCounterGcpUserAccessBinding < 3) {
+    o.accessLevels = buildUnnamed3851();
+    o.groupKey = "foo";
+    o.name = "foo";
+  }
+  buildCounterGcpUserAccessBinding--;
+  return o;
+}
+
+checkGcpUserAccessBinding(api.GcpUserAccessBinding o) {
+  buildCounterGcpUserAccessBinding++;
+  if (buildCounterGcpUserAccessBinding < 3) {
+    checkUnnamed3851(o.accessLevels);
+    unittest.expect(o.groupKey, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGcpUserAccessBinding--;
+}
+
+buildUnnamed3852() {
   var o = new core.List<api.AccessLevel>();
   o.add(buildAccessLevel());
   o.add(buildAccessLevel());
   return o;
 }
 
-checkUnnamed3667(core.List<api.AccessLevel> o) {
+checkUnnamed3852(core.List<api.AccessLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccessLevel(o[0]);
   checkAccessLevel(o[1]);
@@ -428,7 +464,7 @@ buildListAccessLevelsResponse() {
   var o = new api.ListAccessLevelsResponse();
   buildCounterListAccessLevelsResponse++;
   if (buildCounterListAccessLevelsResponse < 3) {
-    o.accessLevels = buildUnnamed3667();
+    o.accessLevels = buildUnnamed3852();
     o.nextPageToken = "foo";
   }
   buildCounterListAccessLevelsResponse--;
@@ -438,20 +474,20 @@ buildListAccessLevelsResponse() {
 checkListAccessLevelsResponse(api.ListAccessLevelsResponse o) {
   buildCounterListAccessLevelsResponse++;
   if (buildCounterListAccessLevelsResponse < 3) {
-    checkUnnamed3667(o.accessLevels);
+    checkUnnamed3852(o.accessLevels);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAccessLevelsResponse--;
 }
 
-buildUnnamed3668() {
+buildUnnamed3853() {
   var o = new core.List<api.AccessPolicy>();
   o.add(buildAccessPolicy());
   o.add(buildAccessPolicy());
   return o;
 }
 
-checkUnnamed3668(core.List<api.AccessPolicy> o) {
+checkUnnamed3853(core.List<api.AccessPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccessPolicy(o[0]);
   checkAccessPolicy(o[1]);
@@ -462,7 +498,7 @@ buildListAccessPoliciesResponse() {
   var o = new api.ListAccessPoliciesResponse();
   buildCounterListAccessPoliciesResponse++;
   if (buildCounterListAccessPoliciesResponse < 3) {
-    o.accessPolicies = buildUnnamed3668();
+    o.accessPolicies = buildUnnamed3853();
     o.nextPageToken = "foo";
   }
   buildCounterListAccessPoliciesResponse--;
@@ -472,20 +508,55 @@ buildListAccessPoliciesResponse() {
 checkListAccessPoliciesResponse(api.ListAccessPoliciesResponse o) {
   buildCounterListAccessPoliciesResponse++;
   if (buildCounterListAccessPoliciesResponse < 3) {
-    checkUnnamed3668(o.accessPolicies);
+    checkUnnamed3853(o.accessPolicies);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAccessPoliciesResponse--;
 }
 
-buildUnnamed3669() {
+buildUnnamed3854() {
+  var o = new core.List<api.GcpUserAccessBinding>();
+  o.add(buildGcpUserAccessBinding());
+  o.add(buildGcpUserAccessBinding());
+  return o;
+}
+
+checkUnnamed3854(core.List<api.GcpUserAccessBinding> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGcpUserAccessBinding(o[0]);
+  checkGcpUserAccessBinding(o[1]);
+}
+
+core.int buildCounterListGcpUserAccessBindingsResponse = 0;
+buildListGcpUserAccessBindingsResponse() {
+  var o = new api.ListGcpUserAccessBindingsResponse();
+  buildCounterListGcpUserAccessBindingsResponse++;
+  if (buildCounterListGcpUserAccessBindingsResponse < 3) {
+    o.gcpUserAccessBindings = buildUnnamed3854();
+    o.nextPageToken = "foo";
+  }
+  buildCounterListGcpUserAccessBindingsResponse--;
+  return o;
+}
+
+checkListGcpUserAccessBindingsResponse(
+    api.ListGcpUserAccessBindingsResponse o) {
+  buildCounterListGcpUserAccessBindingsResponse++;
+  if (buildCounterListGcpUserAccessBindingsResponse < 3) {
+    checkUnnamed3854(o.gcpUserAccessBindings);
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+  }
+  buildCounterListGcpUserAccessBindingsResponse--;
+}
+
+buildUnnamed3855() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed3669(core.List<api.Operation> o) {
+checkUnnamed3855(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -497,7 +568,7 @@ buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed3669();
+    o.operations = buildUnnamed3855();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -507,19 +578,19 @@ checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3669(o.operations);
+    checkUnnamed3855(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
 
-buildUnnamed3670() {
+buildUnnamed3856() {
   var o = new core.List<api.ServicePerimeter>();
   o.add(buildServicePerimeter());
   o.add(buildServicePerimeter());
   return o;
 }
 
-checkUnnamed3670(core.List<api.ServicePerimeter> o) {
+checkUnnamed3856(core.List<api.ServicePerimeter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServicePerimeter(o[0]);
   checkServicePerimeter(o[1]);
@@ -531,7 +602,7 @@ buildListServicePerimetersResponse() {
   buildCounterListServicePerimetersResponse++;
   if (buildCounterListServicePerimetersResponse < 3) {
     o.nextPageToken = "foo";
-    o.servicePerimeters = buildUnnamed3670();
+    o.servicePerimeters = buildUnnamed3856();
   }
   buildCounterListServicePerimetersResponse--;
   return o;
@@ -541,12 +612,12 @@ checkListServicePerimetersResponse(api.ListServicePerimetersResponse o) {
   buildCounterListServicePerimetersResponse++;
   if (buildCounterListServicePerimetersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3670(o.servicePerimeters);
+    checkUnnamed3856(o.servicePerimeters);
   }
   buildCounterListServicePerimetersResponse--;
 }
 
-buildUnnamed3671() {
+buildUnnamed3857() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -561,7 +632,7 @@ buildUnnamed3671() {
   return o;
 }
 
-checkUnnamed3671(core.Map<core.String, core.Object> o) {
+checkUnnamed3857(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -575,7 +646,7 @@ checkUnnamed3671(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed3672() {
+buildUnnamed3858() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -590,7 +661,7 @@ buildUnnamed3672() {
   return o;
 }
 
-checkUnnamed3672(core.Map<core.String, core.Object> o) {
+checkUnnamed3858(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -611,9 +682,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed3671();
+    o.metadata = buildUnnamed3857();
     o.name = "foo";
-    o.response = buildUnnamed3672();
+    o.response = buildUnnamed3858();
   }
   buildCounterOperation--;
   return o;
@@ -624,9 +695,9 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed3671(o.metadata);
+    checkUnnamed3857(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3672(o.response);
+    checkUnnamed3858(o.response);
   }
   buildCounterOperation--;
 }
@@ -654,14 +725,14 @@ checkOsConstraint(api.OsConstraint o) {
   buildCounterOsConstraint--;
 }
 
-buildUnnamed3673() {
+buildUnnamed3859() {
   var o = new core.List<api.AccessLevel>();
   o.add(buildAccessLevel());
   o.add(buildAccessLevel());
   return o;
 }
 
-checkUnnamed3673(core.List<api.AccessLevel> o) {
+checkUnnamed3859(core.List<api.AccessLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccessLevel(o[0]);
   checkAccessLevel(o[1]);
@@ -672,7 +743,7 @@ buildReplaceAccessLevelsRequest() {
   var o = new api.ReplaceAccessLevelsRequest();
   buildCounterReplaceAccessLevelsRequest++;
   if (buildCounterReplaceAccessLevelsRequest < 3) {
-    o.accessLevels = buildUnnamed3673();
+    o.accessLevels = buildUnnamed3859();
     o.etag = "foo";
   }
   buildCounterReplaceAccessLevelsRequest--;
@@ -682,20 +753,20 @@ buildReplaceAccessLevelsRequest() {
 checkReplaceAccessLevelsRequest(api.ReplaceAccessLevelsRequest o) {
   buildCounterReplaceAccessLevelsRequest++;
   if (buildCounterReplaceAccessLevelsRequest < 3) {
-    checkUnnamed3673(o.accessLevels);
+    checkUnnamed3859(o.accessLevels);
     unittest.expect(o.etag, unittest.equals('foo'));
   }
   buildCounterReplaceAccessLevelsRequest--;
 }
 
-buildUnnamed3674() {
+buildUnnamed3860() {
   var o = new core.List<api.AccessLevel>();
   o.add(buildAccessLevel());
   o.add(buildAccessLevel());
   return o;
 }
 
-checkUnnamed3674(core.List<api.AccessLevel> o) {
+checkUnnamed3860(core.List<api.AccessLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccessLevel(o[0]);
   checkAccessLevel(o[1]);
@@ -706,7 +777,7 @@ buildReplaceAccessLevelsResponse() {
   var o = new api.ReplaceAccessLevelsResponse();
   buildCounterReplaceAccessLevelsResponse++;
   if (buildCounterReplaceAccessLevelsResponse < 3) {
-    o.accessLevels = buildUnnamed3674();
+    o.accessLevels = buildUnnamed3860();
   }
   buildCounterReplaceAccessLevelsResponse--;
   return o;
@@ -715,19 +786,19 @@ buildReplaceAccessLevelsResponse() {
 checkReplaceAccessLevelsResponse(api.ReplaceAccessLevelsResponse o) {
   buildCounterReplaceAccessLevelsResponse++;
   if (buildCounterReplaceAccessLevelsResponse < 3) {
-    checkUnnamed3674(o.accessLevels);
+    checkUnnamed3860(o.accessLevels);
   }
   buildCounterReplaceAccessLevelsResponse--;
 }
 
-buildUnnamed3675() {
+buildUnnamed3861() {
   var o = new core.List<api.ServicePerimeter>();
   o.add(buildServicePerimeter());
   o.add(buildServicePerimeter());
   return o;
 }
 
-checkUnnamed3675(core.List<api.ServicePerimeter> o) {
+checkUnnamed3861(core.List<api.ServicePerimeter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServicePerimeter(o[0]);
   checkServicePerimeter(o[1]);
@@ -739,7 +810,7 @@ buildReplaceServicePerimetersRequest() {
   buildCounterReplaceServicePerimetersRequest++;
   if (buildCounterReplaceServicePerimetersRequest < 3) {
     o.etag = "foo";
-    o.servicePerimeters = buildUnnamed3675();
+    o.servicePerimeters = buildUnnamed3861();
   }
   buildCounterReplaceServicePerimetersRequest--;
   return o;
@@ -749,19 +820,19 @@ checkReplaceServicePerimetersRequest(api.ReplaceServicePerimetersRequest o) {
   buildCounterReplaceServicePerimetersRequest++;
   if (buildCounterReplaceServicePerimetersRequest < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3675(o.servicePerimeters);
+    checkUnnamed3861(o.servicePerimeters);
   }
   buildCounterReplaceServicePerimetersRequest--;
 }
 
-buildUnnamed3676() {
+buildUnnamed3862() {
   var o = new core.List<api.ServicePerimeter>();
   o.add(buildServicePerimeter());
   o.add(buildServicePerimeter());
   return o;
 }
 
-checkUnnamed3676(core.List<api.ServicePerimeter> o) {
+checkUnnamed3862(core.List<api.ServicePerimeter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServicePerimeter(o[0]);
   checkServicePerimeter(o[1]);
@@ -772,7 +843,7 @@ buildReplaceServicePerimetersResponse() {
   var o = new api.ReplaceServicePerimetersResponse();
   buildCounterReplaceServicePerimetersResponse++;
   if (buildCounterReplaceServicePerimetersResponse < 3) {
-    o.servicePerimeters = buildUnnamed3676();
+    o.servicePerimeters = buildUnnamed3862();
   }
   buildCounterReplaceServicePerimetersResponse--;
   return o;
@@ -781,7 +852,7 @@ buildReplaceServicePerimetersResponse() {
 checkReplaceServicePerimetersResponse(api.ReplaceServicePerimetersResponse o) {
   buildCounterReplaceServicePerimetersResponse++;
   if (buildCounterReplaceServicePerimetersResponse < 3) {
-    checkUnnamed3676(o.servicePerimeters);
+    checkUnnamed3862(o.servicePerimeters);
   }
   buildCounterReplaceServicePerimetersResponse--;
 }
@@ -817,40 +888,40 @@ checkServicePerimeter(api.ServicePerimeter o) {
   buildCounterServicePerimeter--;
 }
 
-buildUnnamed3677() {
+buildUnnamed3863() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3677(core.List<core.String> o) {
+checkUnnamed3863(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3678() {
+buildUnnamed3864() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3678(core.List<core.String> o) {
+checkUnnamed3864(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3679() {
+buildUnnamed3865() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3679(core.List<core.String> o) {
+checkUnnamed3865(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -861,9 +932,9 @@ buildServicePerimeterConfig() {
   var o = new api.ServicePerimeterConfig();
   buildCounterServicePerimeterConfig++;
   if (buildCounterServicePerimeterConfig < 3) {
-    o.accessLevels = buildUnnamed3677();
-    o.resources = buildUnnamed3678();
-    o.restrictedServices = buildUnnamed3679();
+    o.accessLevels = buildUnnamed3863();
+    o.resources = buildUnnamed3864();
+    o.restrictedServices = buildUnnamed3865();
     o.vpcAccessibleServices = buildVpcAccessibleServices();
   }
   buildCounterServicePerimeterConfig--;
@@ -873,15 +944,15 @@ buildServicePerimeterConfig() {
 checkServicePerimeterConfig(api.ServicePerimeterConfig o) {
   buildCounterServicePerimeterConfig++;
   if (buildCounterServicePerimeterConfig < 3) {
-    checkUnnamed3677(o.accessLevels);
-    checkUnnamed3678(o.resources);
-    checkUnnamed3679(o.restrictedServices);
+    checkUnnamed3863(o.accessLevels);
+    checkUnnamed3864(o.resources);
+    checkUnnamed3865(o.restrictedServices);
     checkVpcAccessibleServices(o.vpcAccessibleServices);
   }
   buildCounterServicePerimeterConfig--;
 }
 
-buildUnnamed3680() {
+buildUnnamed3866() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -896,7 +967,7 @@ buildUnnamed3680() {
   return o;
 }
 
-checkUnnamed3680(core.Map<core.String, core.Object> o) {
+checkUnnamed3866(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -910,17 +981,17 @@ checkUnnamed3680(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed3681() {
+buildUnnamed3867() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3680());
-  o.add(buildUnnamed3680());
+  o.add(buildUnnamed3866());
+  o.add(buildUnnamed3866());
   return o;
 }
 
-checkUnnamed3681(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3867(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3680(o[0]);
-  checkUnnamed3680(o[1]);
+  checkUnnamed3866(o[0]);
+  checkUnnamed3866(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -929,7 +1000,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3681();
+    o.details = buildUnnamed3867();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -940,20 +1011,20 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3681(o.details);
+    checkUnnamed3867(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-buildUnnamed3682() {
+buildUnnamed3868() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3682(core.List<core.String> o) {
+checkUnnamed3868(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -964,7 +1035,7 @@ buildVpcAccessibleServices() {
   var o = new api.VpcAccessibleServices();
   buildCounterVpcAccessibleServices++;
   if (buildCounterVpcAccessibleServices < 3) {
-    o.allowedServices = buildUnnamed3682();
+    o.allowedServices = buildUnnamed3868();
     o.enableRestriction = true;
   }
   buildCounterVpcAccessibleServices--;
@@ -974,7 +1045,7 @@ buildVpcAccessibleServices() {
 checkVpcAccessibleServices(api.VpcAccessibleServices o) {
   buildCounterVpcAccessibleServices++;
   if (buildCounterVpcAccessibleServices < 3) {
-    checkUnnamed3682(o.allowedServices);
+    checkUnnamed3868(o.allowedServices);
     unittest.expect(o.enableRestriction, unittest.isTrue);
   }
   buildCounterVpcAccessibleServices--;
@@ -1069,6 +1140,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GcpUserAccessBinding", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGcpUserAccessBinding();
+      var od = new api.GcpUserAccessBinding.fromJson(o.toJson());
+      checkGcpUserAccessBinding(od);
+    });
+  });
+
   unittest.group("obj-schema-ListAccessLevelsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListAccessLevelsResponse();
@@ -1082,6 +1161,14 @@ main() {
       var o = buildListAccessPoliciesResponse();
       var od = new api.ListAccessPoliciesResponse.fromJson(o.toJson());
       checkListAccessPoliciesResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-ListGcpUserAccessBindingsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListGcpUserAccessBindingsResponse();
+      var od = new api.ListGcpUserAccessBindingsResponse.fromJson(o.toJson());
+      checkListGcpUserAccessBindingsResponse(od);
     });
   });
 
@@ -1345,8 +1432,8 @@ main() {
       api.AccessPoliciesResourceApi res =
           new api.AccesscontextmanagerApi(mock).accessPolicies;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1379,10 +1466,10 @@ main() {
           }
         }
         unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1394,8 +1481,8 @@ main() {
       res
           .list(
               parent: arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAccessPoliciesResponse(response);
@@ -1633,8 +1720,8 @@ main() {
       api.AccessPoliciesAccessLevelsResourceApi res =
           new api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_accessLevelFormat = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1668,10 +1755,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["accessLevelFormat"].first,
             unittest.equals(arg_accessLevelFormat));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1684,8 +1771,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               accessLevelFormat: arg_accessLevelFormat,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2042,8 +2129,8 @@ main() {
               .accessPolicies
               .servicePerimeters;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2076,10 +2163,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2090,8 +2177,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListServicePerimetersResponse(response);
@@ -2385,9 +2472,9 @@ main() {
       api.OperationsResourceApi res =
           new api.AccesscontextmanagerApi(mock).operations;
       var arg_name = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_filter = "foo";
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2420,11 +2507,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2435,12 +2522,306 @@ main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               filter: arg_filter,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-OrganizationsGcpUserAccessBindingsResourceApi", () {
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.OrganizationsGcpUserAccessBindingsResourceApi res =
+          new api.AccesscontextmanagerApi(mock)
+              .organizations
+              .gcpUserAccessBindings;
+      var arg_request = buildGcpUserAccessBinding();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GcpUserAccessBinding.fromJson(json);
+        checkGcpUserAccessBinding(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkOperation(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.OrganizationsGcpUserAccessBindingsResourceApi res =
+          new api.AccesscontextmanagerApi(mock)
+              .organizations
+              .gcpUserAccessBindings;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkOperation(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.OrganizationsGcpUserAccessBindingsResourceApi res =
+          new api.AccesscontextmanagerApi(mock)
+              .organizations
+              .gcpUserAccessBindings;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGcpUserAccessBinding());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGcpUserAccessBinding(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.OrganizationsGcpUserAccessBindingsResourceApi res =
+          new api.AccesscontextmanagerApi(mock)
+              .organizations
+              .gcpUserAccessBindings;
+      var arg_parent = "foo";
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildListGcpUserAccessBindingsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkListGcpUserAccessBindingsResponse(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+      var mock = new HttpServerMock();
+      api.OrganizationsGcpUserAccessBindingsResourceApi res =
+          new api.AccesscontextmanagerApi(mock)
+              .organizations
+              .gcpUserAccessBindings;
+      var arg_request = buildGcpUserAccessBinding();
+      var arg_name = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GcpUserAccessBinding.fromJson(json);
+        checkGcpUserAccessBinding(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .patch(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkOperation(response);
       })));
     });
   });

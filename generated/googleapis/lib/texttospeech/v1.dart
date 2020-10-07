@@ -40,8 +40,8 @@ class TextResourceApi {
 
   TextResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Synthesizes speech synchronously: receive results after all text input
-  /// has been processed.
+  /// Synthesizes speech synchronously: receive results after all text input has
+  /// been processed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -100,10 +100,10 @@ class VoicesResourceApi {
   /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If
   /// specified, the ListVoices call will only return voices that can be used to
   /// synthesize this language_code. E.g. when specifying "en-NZ", you will get
-  /// supported "en-*" voices; when specifying "no", you will get supported
-  /// "no-*" (Norwegian) and "nb-*" (Norwegian Bokmal) voices; specifying "zh"
-  /// will also get supported "cmn-*" voices; specifying "zh-hk" will also get
-  /// supported "yue-*" voices.
+  /// supported "en-\*" voices; when specifying "no", you will get supported
+  /// "no-\*" (Norwegian) and "nb-\*" (Norwegian Bokmal) voices; specifying "zh"
+  /// will also get supported "cmn-\*" voices; specifying "zh-hk" will also get
+  /// supported "yue-\*" voices.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -150,20 +150,17 @@ class AudioConfig {
   /// - "AUDIO_ENCODING_UNSPECIFIED" : Not specified. Will return result
   /// google.rpc.Code.INVALID_ARGUMENT.
   /// - "LINEAR16" : Uncompressed 16-bit signed little-endian samples (Linear
-  /// PCM).
-  /// Audio content returned as LINEAR16 also contains a WAV header.
+  /// PCM). Audio content returned as LINEAR16 also contains a WAV header.
   /// - "MP3" : MP3 audio at 32kbps.
   /// - "OGG_OPUS" : Opus encoded audio wrapped in an ogg container. The result
-  /// will be a
-  /// file which can be played natively on Android, and in browsers (at least
-  /// Chrome and Firefox). The quality of the encoding is considerably higher
-  /// than MP3 while using approximately the same bitrate.
+  /// will be a file which can be played natively on Android, and in browsers
+  /// (at least Chrome and Firefox). The quality of the encoding is considerably
+  /// higher than MP3 while using approximately the same bitrate.
   core.String audioEncoding;
 
   /// Optional. Input only. An identifier which selects 'audio effects' profiles
   /// that are applied on (post synthesized) text to speech. Effects are applied
-  /// on top of each other in the order they are given. See
-  /// [audio
+  /// on top of each other in the order they are given. See [audio
   /// profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for
   /// current supported profile ids.
   core.List<core.String> effectsProfileId;
@@ -174,21 +171,18 @@ class AudioConfig {
   core.double pitch;
 
   /// Optional. The synthesis sample rate (in hertz) for this audio. When this
-  /// is
-  /// specified in SynthesizeSpeechRequest, if this is different from the
-  /// voice's
-  /// natural sample rate, then the synthesizer will honor this request by
-  /// converting to the desired sample rate (which might result in worse audio
-  /// quality), unless the specified sample rate is not supported for the
+  /// is specified in SynthesizeSpeechRequest, if this is different from the
+  /// voice's natural sample rate, then the synthesizer will honor this request
+  /// by converting to the desired sample rate (which might result in worse
+  /// audio quality), unless the specified sample rate is not supported for the
   /// encoding chosen, in which case it will fail the request and return
   /// google.rpc.Code.INVALID_ARGUMENT.
   core.int sampleRateHertz;
 
   /// Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0
-  /// is
-  /// the normal native speed supported by the specific voice. 2.0 is twice as
-  /// fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0
-  /// speed. Any other values < 0.25 or > 4.0 will return an error.
+  /// is the normal native speed supported by the specific voice. 2.0 is twice
+  /// as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native
+  /// 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
   core.double speakingRate;
 
   /// Optional. Input only. Volume gain (in dB) of the normal native volume
@@ -280,10 +274,10 @@ class ListVoicesResponse {
 /// google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000
 /// characters.
 class SynthesisInput {
-  /// The SSML document to be synthesized. The SSML document must be valid
-  /// and well-formed. Otherwise the RPC will fail and return
+  /// The SSML document to be synthesized. The SSML document must be valid and
+  /// well-formed. Otherwise the RPC will fail and return
   /// google.rpc.Code.INVALID_ARGUMENT. For more information, see
-  /// [SSML](/speech/text-to-speech/docs/ssml).
+  /// [SSML](https://cloud.google.com/text-to-speech/docs/ssml).
   core.String ssml;
 
   /// The raw text to be synthesized.
@@ -358,9 +352,9 @@ class SynthesizeSpeechRequest {
 class SynthesizeSpeechResponse {
   /// The audio data bytes encoded as specified in the request, including the
   /// header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS).
-  /// For LINEAR16 audio, we include the WAV header. Note: as
-  /// with all bytes fields, protobuffers use a pure binary representation,
-  /// whereas JSON representations use base64.
+  /// For LINEAR16 audio, we include the WAV header. Note: as with all bytes
+  /// fields, protobuffers use a pure binary representation, whereas JSON
+  /// representations use base64.
   core.String audioContent;
   core.List<core.int> get audioContentAsBytes {
     return convert.base64.decode(audioContent);
@@ -396,7 +390,7 @@ class Voice {
   /// "en-US", "es-419", "cmn-tw").
   core.List<core.String> languageCodes;
 
-  /// The name of this voice.  Each distinct voice has a unique name.
+  /// The name of this voice. Each distinct voice has a unique name.
   core.String name;
 
   /// The natural sample rate (in hertz) for this voice.
@@ -404,15 +398,14 @@ class Voice {
 
   /// The gender of this voice.
   /// Possible string values are:
-  /// - "SSML_VOICE_GENDER_UNSPECIFIED" : An unspecified gender.
-  /// In VoiceSelectionParams, this means that the client doesn't care which
-  /// gender the selected voice will have. In the Voice field of
-  /// ListVoicesResponse, this may mean that the voice doesn't fit any of the
-  /// other categories in this enum, or that the gender of the voice isn't
-  /// known.
+  /// - "SSML_VOICE_GENDER_UNSPECIFIED" : An unspecified gender. In
+  /// VoiceSelectionParams, this means that the client doesn't care which gender
+  /// the selected voice will have. In the Voice field of ListVoicesResponse,
+  /// this may mean that the voice doesn't fit any of the other categories in
+  /// this enum, or that the gender of the voice isn't known.
   /// - "MALE" : A male voice.
   /// - "FEMALE" : A female voice.
-  /// - "NEUTRAL" : A gender-neutral voice.
+  /// - "NEUTRAL" : A gender-neutral voice. This voice is not yet supported.
   core.String ssmlGender;
 
   Voice();
@@ -454,39 +447,36 @@ class Voice {
 /// Description of which voice to use for a synthesis request.
 class VoiceSelectionParams {
   /// Required. The language (and potentially also the region) of the voice
-  /// expressed as a
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.
-  /// "en-US". This should not include a script tag (e.g. use
+  /// expressed as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// language tag, e.g. "en-US". This should not include a script tag (e.g. use
   /// "cmn-cn" rather than "cmn-Hant-cn"), because the script will be inferred
-  /// from the input provided in the SynthesisInput.  The TTS service
-  /// will use this parameter to help choose an appropriate voice.  Note that
-  /// the TTS service may choose a voice with a slightly different language code
-  /// than the one selected; it may substitute a different region
-  /// (e.g. using en-US rather than en-CA if there isn't a Canadian voice
-  /// available), or even a different language, e.g. using "nb" (Norwegian
-  /// Bokmal) instead of "no" (Norwegian)".
+  /// from the input provided in the SynthesisInput. The TTS service will use
+  /// this parameter to help choose an appropriate voice. Note that the TTS
+  /// service may choose a voice with a slightly different language code than
+  /// the one selected; it may substitute a different region (e.g. using en-US
+  /// rather than en-CA if there isn't a Canadian voice available), or even a
+  /// different language, e.g. using "nb" (Norwegian Bokmal) instead of "no"
+  /// (Norwegian)".
   core.String languageCode;
 
-  /// The name of the voice. If not set, the service will choose a
-  /// voice based on the other parameters such as language_code and gender.
+  /// The name of the voice. If not set, the service will choose a voice based
+  /// on the other parameters such as language_code and gender.
   core.String name;
 
-  /// The preferred gender of the voice. If not set, the service will
-  /// choose a voice based on the other parameters such as language_code and
-  /// name. Note that this is only a preference, not requirement; if a
-  /// voice of the appropriate gender is not available, the synthesizer should
-  /// substitute a voice with a different gender rather than failing the
-  /// request.
+  /// The preferred gender of the voice. If not set, the service will choose a
+  /// voice based on the other parameters such as language_code and name. Note
+  /// that this is only a preference, not requirement; if a voice of the
+  /// appropriate gender is not available, the synthesizer should substitute a
+  /// voice with a different gender rather than failing the request.
   /// Possible string values are:
-  /// - "SSML_VOICE_GENDER_UNSPECIFIED" : An unspecified gender.
-  /// In VoiceSelectionParams, this means that the client doesn't care which
-  /// gender the selected voice will have. In the Voice field of
-  /// ListVoicesResponse, this may mean that the voice doesn't fit any of the
-  /// other categories in this enum, or that the gender of the voice isn't
-  /// known.
+  /// - "SSML_VOICE_GENDER_UNSPECIFIED" : An unspecified gender. In
+  /// VoiceSelectionParams, this means that the client doesn't care which gender
+  /// the selected voice will have. In the Voice field of ListVoicesResponse,
+  /// this may mean that the voice doesn't fit any of the other categories in
+  /// this enum, or that the gender of the voice isn't known.
   /// - "MALE" : A male voice.
   /// - "FEMALE" : A female voice.
-  /// - "NEUTRAL" : A gender-neutral voice.
+  /// - "NEUTRAL" : A gender-neutral voice. This voice is not yet supported.
   core.String ssmlGender;
 
   VoiceSelectionParams();

@@ -62,13 +62,10 @@ class ProjectsPatchDeploymentsResourceApi {
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [patchDeploymentId] - Required. A name for the patch deployment in the
-  /// project. When creating a name
-  /// the following rules apply:
-  /// * Must contain only lowercase letters, numbers, and hyphens.
-  /// * Must start with a letter.
-  /// * Must be between 1-63 characters.
-  /// * Must end with a number or a letter.
-  /// * Must be unique within the project.
+  /// project. When creating a name the following rules apply: * Must contain
+  /// only lowercase letters, numbers, and hyphens. * Must start with a letter.
+  /// * Must be between 1-63 characters. * Must end with a number or a letter. *
+  /// Must be unique within the project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -212,12 +209,12 @@ class ProjectsPatchDeploymentsResourceApi {
   /// / * `.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional. A pagination token returned from a previous call
-  /// to ListPatchDeployments
-  /// that indicates where this listing should continue from.
-  ///
   /// [pageSize] - Optional. The maximum number of patch deployments to return.
   /// Default is 100.
+  ///
+  /// [pageToken] - Optional. A pagination token returned from a previous call
+  /// to ListPatchDeployments that indicates where this listing should continue
+  /// from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -230,7 +227,7 @@ class ProjectsPatchDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPatchDeploymentsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -241,11 +238,11 @@ class ProjectsPatchDeploymentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -379,8 +376,8 @@ class ProjectsPatchJobsResourceApi {
     return _response.then((data) => new PatchJob.fromJson(data));
   }
 
-  /// Get the patch job. This can be used to track the progress of an
-  /// ongoing patch job or review the details of completed jobs.
+  /// Get the patch job. This can be used to track the progress of an ongoing
+  /// patch job or review the details of completed jobs.
   ///
   /// Request parameters:
   ///
@@ -431,15 +428,14 @@ class ProjectsPatchJobsResourceApi {
   /// [parent] - Required. In the form of `projects / * `
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - A pagination token returned from a previous call
-  /// that indicates where this listing should continue from.
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by patch jobs to be included in the response. Currently, filtering is only
+  /// available on the patch_deployment field.
   ///
   /// [pageSize] - The maximum number of instance status to return.
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by patch
-  /// jobs to be included in the response.
-  /// Currently, filtering is only available on the patch_deployment field.
+  /// [pageToken] - A pagination token returned from a previous call that
+  /// indicates where this listing should continue from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -452,9 +448,9 @@ class ProjectsPatchJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPatchJobsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -466,14 +462,14 @@ class ProjectsPatchJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -506,16 +502,15 @@ class ProjectsPatchJobsInstanceDetailsResourceApi {
   /// `projects / * /patchJobs / * `.
   /// Value must have pattern "^projects/[^/]+/patchJobs/[^/]+$".
   ///
-  /// [pageToken] - A pagination token returned from a previous call
-  /// that indicates where this listing should continue from.
+  /// [pageToken] - A pagination token returned from a previous call that
+  /// indicates where this listing should continue from.
   ///
   /// [pageSize] - The maximum number of instance details records to return.
   /// Default is 100.
   ///
   /// [filter] - A filter expression that filters results listed in the
-  /// response. This
-  /// field supports filtering results by instance zone, name, state, or
-  /// `failure_reason`.
+  /// response. This field supports filtering results by instance zone, name,
+  /// state, or `failure_reason`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -570,8 +565,8 @@ class ProjectsPatchJobsInstanceDetailsResourceApi {
   }
 }
 
-/// Apt patching is completed by executing `apt-get update && apt-get
-/// upgrade`. Additional options can be set to control how this is executed.
+/// Apt patching is completed by executing `apt-get update && apt-get upgrade`.
+/// Additional options can be set to control how this is executed.
 class AptSettings {
   /// List of packages to exclude from update. These packages will be excluded
   core.List<core.String> excludes;
@@ -582,8 +577,8 @@ class AptSettings {
   /// fields.
   core.List<core.String> exclusivePackages;
 
-  /// By changing the type to DIST, the patching is performed
-  /// using `apt-get dist-upgrade` instead.
+  /// By changing the type to DIST, the patching is performed using `apt-get
+  /// dist-upgrade` instead.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : By default, upgrade will be performed.
   /// - "DIST" : Runs `apt-get dist-upgrade`.
@@ -636,13 +631,9 @@ class CancelPatchJobRequest {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -691,25 +682,23 @@ class ExecStep {
 
 /// Common configurations for an ExecStep.
 class ExecStepConfig {
-  /// Defaults to [0]. A list of possible return values that the
-  /// execution can return to indicate a success.
+  /// Defaults to [0]. A list of possible return values that the execution can
+  /// return to indicate a success.
   core.List<core.int> allowedSuccessCodes;
 
-  /// A Google Cloud Storage object containing the executable.
+  /// A Cloud Storage object containing the executable.
   GcsObject gcsObject;
 
   /// The script interpreter to use to run the script. If no interpreter is
-  /// specified the script will be executed directly, which will likely
-  /// only succeed for scripts with [shebang lines]
+  /// specified the script will be executed directly, which will likely only
+  /// succeed for scripts with [shebang lines]
   /// (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
   /// Possible string values are:
   /// - "INTERPRETER_UNSPECIFIED" : Invalid for a Windows ExecStepConfig. For a
-  /// Linux ExecStepConfig, the
-  /// interpreter will be parsed from the shebang line of the script if
-  /// unspecified.
+  /// Linux ExecStepConfig, the interpreter will be parsed from the shebang line
+  /// of the script if unspecified.
   /// - "SHELL" : Indicates that the script is run with `/bin/sh` on Linux and
-  /// `cmd`
-  /// on Windows.
+  /// `cmd` on Windows.
   /// - "POWERSHELL" : Indicates that the file is run with PowerShell flags
   /// `-NonInteractive`, `-NoProfile`, and `-ExecutionPolicy Bypass`.
   core.String interpreter;
@@ -754,32 +743,33 @@ class ExecStepConfig {
   }
 }
 
-/// A request message to initiate patching across Google Compute Engine
-/// instances.
+/// A request message to initiate patching across Compute Engine instances.
 class ExecutePatchJobRequest {
-  /// Description of the patch job. Length of the description is limited
-  /// to 1024 characters.
+  /// Description of the patch job. Length of the description is limited to 1024
+  /// characters.
   core.String description;
 
   /// Display name for this patch job. This does not have to be unique.
   core.String displayName;
 
-  /// If this patch is a dry-run only, instances are contacted but
-  /// will do nothing.
+  /// If this patch is a dry-run only, instances are contacted but will do
+  /// nothing.
   core.bool dryRun;
 
-  /// Duration of the patch job. After the duration ends, the patch job
-  /// times out.
+  /// Duration of the patch job. After the duration ends, the patch job times
+  /// out.
   core.String duration;
 
   /// Required. Instances to patch, either explicitly or filtered by some
-  /// criteria such
-  /// as zone or labels.
+  /// criteria such as zone or labels.
   PatchInstanceFilter instanceFilter;
 
-  /// Patch configuration being applied. If omitted, instances are
-  /// patched using the default configurations.
+  /// Patch configuration being applied. If omitted, instances are patched using
+  /// the default configurations.
   PatchConfig patchConfig;
+
+  /// Rollout strategy of the patch job.
+  PatchRollout rollout;
 
   ExecutePatchJobRequest();
 
@@ -802,6 +792,9 @@ class ExecutePatchJobRequest {
     }
     if (_json.containsKey("patchConfig")) {
       patchConfig = new PatchConfig.fromJson(_json["patchConfig"]);
+    }
+    if (_json.containsKey("rollout")) {
+      rollout = new PatchRollout.fromJson(_json["rollout"]);
     }
   }
 
@@ -826,21 +819,57 @@ class ExecutePatchJobRequest {
     if (patchConfig != null) {
       _json["patchConfig"] = (patchConfig).toJson();
     }
+    if (rollout != null) {
+      _json["rollout"] = (rollout).toJson();
+    }
     return _json;
   }
 }
 
-/// Google Cloud Storage object representation.
+/// Message encapsulating a value that can be either absolute ("fixed") or
+/// relative ("percent") to a value.
+class FixedOrPercent {
+  /// Specifies a fixed value.
+  core.int fixed;
+
+  /// Specifies the relative value defined as a percentage, which will be
+  /// multiplied by a reference value.
+  core.int percent;
+
+  FixedOrPercent();
+
+  FixedOrPercent.fromJson(core.Map _json) {
+    if (_json.containsKey("fixed")) {
+      fixed = _json["fixed"];
+    }
+    if (_json.containsKey("percent")) {
+      percent = _json["percent"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fixed != null) {
+      _json["fixed"] = fixed;
+    }
+    if (percent != null) {
+      _json["percent"] = percent;
+    }
+    return _json;
+  }
+}
+
+/// Cloud Storage object representation.
 class GcsObject {
-  /// Required. Bucket of the Google Cloud Storage object.
+  /// Required. Bucket of the Cloud Storage object.
   core.String bucket;
 
-  /// Required. Generation number of the Google Cloud Storage object. This is
-  /// used to
+  /// Required. Generation number of the Cloud Storage object. This is used to
   /// ensure that the ExecStep specified by this PatchJob does not change.
   core.String generationNumber;
 
-  /// Required. Name of the Google Cloud Storage object.
+  /// Required. Name of the Cloud Storage object.
   core.String object;
 
   GcsObject();
@@ -992,13 +1021,13 @@ class ListPatchJobsResponse {
   }
 }
 
-/// Represents a monthly schedule. An example of a valid monthly schedule is
-/// "on the third Tuesday of the month" or "on the 15th of the month".
+/// Represents a monthly schedule. An example of a valid monthly schedule is "on
+/// the third Tuesday of the month" or "on the 15th of the month".
 class MonthlySchedule {
   /// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1
-  /// indicates the last day of the month.
-  /// Months without the target day will be skipped. For example, a schedule to
-  /// run "every month on the 31st" will not run in February, April, June, etc.
+  /// indicates the last day of the month. Months without the target day will be
+  /// skipped. For example, a schedule to run "every month on the 31st" will not
+  /// run in February, April, June, etc.
   core.int monthDay;
 
   /// Required. Week day in a month.
@@ -1029,8 +1058,7 @@ class MonthlySchedule {
 }
 
 /// Sets the time for a one time patch deployment. Timestamp is in
-/// <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-/// text format.
+/// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 class OneTimeSchedule {
   /// Required. The desired patch job execution time.
   core.String executeTime;
@@ -1074,10 +1102,9 @@ class PatchConfig {
   /// Possible string values are:
   /// - "REBOOT_CONFIG_UNSPECIFIED" : The default behavior is DEFAULT.
   /// - "DEFAULT" : The agent decides if a reboot is necessary by checking
-  /// signals such as
-  /// registry keys on Windows or `/var/run/reboot-required` on APT based
-  /// systems. On RPM based systems, a set of core system package install times
-  /// are compared with system boot time.
+  /// signals such as registry keys on Windows or `/var/run/reboot-required` on
+  /// APT based systems. On RPM based systems, a set of core system package
+  /// install times are compared with system boot time.
   /// - "ALWAYS" : Always reboot the machine after the update completes.
   /// - "NEVER" : Never reboot the machine after the update completes.
   core.String rebootConfig;
@@ -1159,16 +1186,14 @@ class PatchConfig {
 /// complete a patch. These configurations include instance filter, package
 /// repository settings, and a schedule. For more information about creating and
 /// managing patch deployments, see [Scheduling patch
-/// jobs](/compute/docs/os-patch-management/schedule-patch-jobs).
+/// jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-jobs).
 class PatchDeployment {
   /// Output only. Time the patch deployment was created. Timestamp is in
-  /// <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-  /// text format.
+  /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   core.String createTime;
 
   /// Optional. Description of the patch deployment. Length of the description
-  /// is limited
-  /// to 1024 characters.
+  /// is limited to 1024 characters.
   core.String description;
 
   /// Optional. Duration of the patch. After the duration ends, the patch times
@@ -1179,15 +1204,14 @@ class PatchDeployment {
   PatchInstanceFilter instanceFilter;
 
   /// Output only. The last time a patch job was started by this deployment.
-  /// Timestamp is in
-  /// <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-  /// text format.
+  /// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
+  /// format.
   core.String lastExecuteTime;
 
   /// Unique name for the patch deployment resource in a project. The patch
   /// deployment name is in the form:
-  /// `projects/{project_id}/patchDeployments/{patch_deployment_id}`.
-  /// This field is ignored when you create a new patch deployment.
+  /// `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field
+  /// is ignored when you create a new patch deployment.
   core.String name;
 
   /// Required. Schedule a one-time execution.
@@ -1199,9 +1223,11 @@ class PatchDeployment {
   /// Required. Schedule recurring executions.
   RecurringSchedule recurringSchedule;
 
+  /// Optional. Rollout strategy of the patch job.
+  PatchRollout rollout;
+
   /// Output only. Time the patch deployment was last updated. Timestamp is in
-  /// <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-  /// text format.
+  /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   core.String updateTime;
 
   PatchDeployment();
@@ -1235,6 +1261,9 @@ class PatchDeployment {
     if (_json.containsKey("recurringSchedule")) {
       recurringSchedule =
           new RecurringSchedule.fromJson(_json["recurringSchedule"]);
+    }
+    if (_json.containsKey("rollout")) {
+      rollout = new PatchRollout.fromJson(_json["rollout"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -1271,6 +1300,9 @@ class PatchDeployment {
     if (recurringSchedule != null) {
       _json["recurringSchedule"] = (recurringSchedule).toJson();
     }
+    if (rollout != null) {
+      _json["rollout"] = (rollout).toJson();
+    }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
     }
@@ -1278,18 +1310,16 @@ class PatchDeployment {
   }
 }
 
-/// A filter to target VM instances for patching. The targeted
-/// VMs must meet all criteria specified. So if both labels and zones are
-/// specified, the patch job targets only VMs with those labels and in those
-/// zones.
+/// A filter to target VM instances for patching. The targeted VMs must meet all
+/// criteria specified. So if both labels and zones are specified, the patch job
+/// targets only VMs with those labels and in those zones.
 class PatchInstanceFilter {
   /// Target all VM instances in the project. If true, no other criteria is
   /// permitted.
   core.bool all;
 
-  /// Targets VM instances matching at least one of these label sets. This
-  /// allows
-  /// targeting of disparate groups, for example "env=prod or env=staging".
+  /// Targets VM instances matching ANY of these GroupLabels. This allows
+  /// targeting of disparate groups of VM instances.
   core.List<PatchInstanceFilterGroupLabel> groupLabels;
 
   /// Targets VMs whose name starts with one of these prefixes. Similar to
@@ -1298,8 +1328,7 @@ class PatchInstanceFilter {
   core.List<core.String> instanceNamePrefixes;
 
   /// Targets any of the VM instances specified. Instances are specified by
-  /// their
-  /// URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME],
+  /// their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`,
   /// `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
   /// `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
   core.List<core.String> instances;
@@ -1355,11 +1384,16 @@ class PatchInstanceFilter {
   }
 }
 
-/// Represents a group of VMs that can be identified as having all these
-/// labels, for example "env=prod and app=web".
+/// Targets a group of VM instances by using their [assigned
+/// labels](https://cloud.google.com/compute/docs/labeling-resources). Labels
+/// are key-value pairs. A `GroupLabel` is a combination of labels that is used
+/// to target VMs for a patch job. For example, a patch job can target VMs that
+/// have the following `GroupLabel`: `{"env":"test", "app":"web"}`. This means
+/// that the patch job is applied to VMs that have both the labels `env=test`
+/// and `app=web`.
 class PatchInstanceFilterGroupLabel {
-  /// Google Compute Engine instance labels that must be present for a VM
-  /// instance to be targeted by this filter.
+  /// Compute Engine instance labels that must be present for a VM instance to
+  /// be targeted by this filter.
   core.Map<core.String, core.String> labels;
 
   PatchInstanceFilterGroupLabel();
@@ -1380,31 +1414,28 @@ class PatchInstanceFilterGroupLabel {
   }
 }
 
-/// A high level representation of a patch job that is either in progress
-/// or has completed.
-///
-/// Instances details are not included in the job. To paginate through instance
-/// details, use ListPatchJobInstanceDetails.
-///
-/// For more information about patch jobs, see
-/// [Creating patch jobs](/compute/docs/os-patch-management/create-patch-job).
+/// A high level representation of a patch job that is either in progress or has
+/// completed. Instance details are not included in the job. To paginate through
+/// instance details, use ListPatchJobInstanceDetails. For more information
+/// about patch jobs, see [Creating patch
+/// jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).
 class PatchJob {
   /// Time this patch job was created.
   core.String createTime;
 
-  /// Description of the patch job. Length of the description is limited
-  /// to 1024 characters.
+  /// Description of the patch job. Length of the description is limited to 1024
+  /// characters.
   core.String description;
 
   /// Display name for this patch job. This is not a unique identifier.
   core.String displayName;
 
-  /// If this patch job is a dry run, the agent reports that it has
-  /// finished without running any updates on the VM instance.
+  /// If this patch job is a dry run, the agent reports that it has finished
+  /// without running any updates on the VM instance.
   core.bool dryRun;
 
-  /// Duration of the patch job. After the duration ends, the
-  /// patch job times out.
+  /// Duration of the patch job. After the duration ends, the patch job times
+  /// out.
   core.String duration;
 
   /// If this patch job failed, this message provides information about the
@@ -1417,8 +1448,8 @@ class PatchJob {
   /// Instances to patch.
   PatchInstanceFilter instanceFilter;
 
-  /// Unique identifier for this patch job in the form
-  /// `projects / * /patchJobs / * `
+  /// Unique identifier for this patch job in the form `projects / * /patchJobs
+  /// / * `
   core.String name;
 
   /// Patch configuration being applied.
@@ -1427,11 +1458,14 @@ class PatchJob {
   /// Output only. Name of the patch deployment that created this patch job.
   core.String patchDeployment;
 
-  /// Reflects the overall progress of the patch job in the range of
-  /// 0.0 being no progress to 100.0 being complete.
+  /// Reflects the overall progress of the patch job in the range of 0.0 being
+  /// no progress to 100.0 being complete.
   core.double percentComplete;
 
-  /// The current state of the PatchJob .
+  /// Rollout strategy being applied.
+  PatchRollout rollout;
+
+  /// The current state of the PatchJob.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State must be specified.
   /// - "STARTED" : The patch job was successfully initiated.
@@ -1488,6 +1522,9 @@ class PatchJob {
     if (_json.containsKey("percentComplete")) {
       percentComplete = _json["percentComplete"].toDouble();
     }
+    if (_json.containsKey("rollout")) {
+      rollout = new PatchRollout.fromJson(_json["rollout"]);
+    }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
@@ -1535,6 +1572,9 @@ class PatchJob {
     if (percentComplete != null) {
       _json["percentComplete"] = percentComplete;
     }
+    if (rollout != null) {
+      _json["rollout"] = (rollout).toJson();
+    }
     if (state != null) {
       _json["state"] = state;
     }
@@ -1546,9 +1586,8 @@ class PatchJob {
 }
 
 /// Patch details for a VM instance. For more information about reviewing VM
-/// instance details, see
-/// [Listing all VM instance details for a specific patch
-/// job](/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
+/// instance details, see [Listing all VM instance details for a specific patch
+/// job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
 class PatchJobInstanceDetails {
   /// The number of times the agent that the agent attempts to apply the patch.
   core.String attemptCount;
@@ -1556,8 +1595,8 @@ class PatchJobInstanceDetails {
   /// If the patch fails, this field provides the reason.
   core.String failureReason;
 
-  /// The unique identifier for the instance. This identifier is
-  /// defined by the server.
+  /// The unique identifier for the instance. This identifier is defined by the
+  /// server.
   core.String instanceSystemId;
 
   /// The instance name in the form `projects / * /zones / * /instances / * `
@@ -1583,9 +1622,8 @@ class PatchJobInstanceDetails {
   /// - "RUNNING_PRE_PATCH_STEP" : The instance is running the pre-patch step.
   /// - "RUNNING_POST_PATCH_STEP" : The instance is running the post-patch step.
   /// - "NO_AGENT_DETECTED" : The service could not detect the presence of the
-  /// agent. Check to ensure
-  /// that the agent is installed, running, and able to communicate with the
-  /// service.
+  /// agent. Check to ensure that the agent is installed, running, and able to
+  /// communicate with the service.
   core.String state;
 
   PatchJobInstanceDetails();
@@ -1788,11 +1826,70 @@ class PatchJobInstanceDetailsSummary {
   }
 }
 
+/// Patch rollout configuration specifications. Contains details on the
+/// concurrency control when applying patch(es) to all targeted VMs.
+class PatchRollout {
+  /// The maximum number (or percentage) of VMs per zone to disrupt at any given
+  /// moment. The number of VMs calculated from multiplying the percentage by
+  /// the total number of VMs in a zone is rounded up. During patching, a VM is
+  /// considered disrupted from the time the agent is notified to begin until
+  /// patching has completed. This disruption time includes the time to complete
+  /// reboot and any post-patch steps. A VM contributes to the disruption budget
+  /// if its patching operation fails either when applying the patches, running
+  /// pre or post patch steps, or if it fails to respond with a success
+  /// notification before timing out. VMs that are not running or do not have an
+  /// active agent do not count toward this disruption budget. For zone-by-zone
+  /// rollouts, if the disruption budget in a zone is exceeded, the patch job
+  /// stops, because continuing to the next zone requires completion of the
+  /// patch process in the previous zone. For example, if the disruption budget
+  /// has a fixed value of `10`, and 8 VMs fail to patch in the current zone,
+  /// the patch job continues to patch 2 VMs at a time until the zone is
+  /// completed. When that zone is completed successfully, patching begins with
+  /// 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to
+  /// patch, the patch job stops.
+  FixedOrPercent disruptionBudget;
+
+  /// Mode of the patch rollout.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Mode must be specified.
+  /// - "ZONE_BY_ZONE" : Patches are applied one zone at a time. The patch job
+  /// begins in the region with the lowest number of targeted VMs. Within the
+  /// region, patching begins in the zone with the lowest number of targeted
+  /// VMs. If multiple regions (or zones within a region) have the same number
+  /// of targeted VMs, a tie-breaker is achieved by sorting the regions or zones
+  /// in alphabetical order.
+  /// - "CONCURRENT_ZONES" : Patches are applied to VMs in all zones at the same
+  /// time.
+  core.String mode;
+
+  PatchRollout();
+
+  PatchRollout.fromJson(core.Map _json) {
+    if (_json.containsKey("disruptionBudget")) {
+      disruptionBudget = new FixedOrPercent.fromJson(_json["disruptionBudget"]);
+    }
+    if (_json.containsKey("mode")) {
+      mode = _json["mode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (disruptionBudget != null) {
+      _json["disruptionBudget"] = (disruptionBudget).toJson();
+    }
+    if (mode != null) {
+      _json["mode"] = mode;
+    }
+    return _json;
+  }
+}
+
 /// Sets the time for recurring patch deployments.
 class RecurringSchedule {
   /// Optional. The end time at which a recurring patch deployment schedule is
-  /// no longer
-  /// active.
+  /// no longer active.
   core.String endTime;
 
   /// Required. The frequency unit of this recurring schedule.
@@ -1813,15 +1910,15 @@ class RecurringSchedule {
   /// Output only. The time the next patch job is scheduled to run.
   core.String nextExecuteTime;
 
-  /// Optional. The time that the recurring schedule becomes effective.
-  /// Defaults to `create_time` of the patch deployment.
+  /// Optional. The time that the recurring schedule becomes effective. Defaults
+  /// to `create_time` of the patch deployment.
   core.String startTime;
 
   /// Required. Time of the day to run a recurring deployment.
   TimeOfDay timeOfDay;
 
-  /// Required. Defines the time zone that `time_of_day` is relative to.
-  /// The rules for daylight saving time are determined by the chosen time zone.
+  /// Required. Defines the time zone that `time_of_day` is relative to. The
+  /// rules for daylight saving time are determined by the chosen time zone.
   TimeZone timeZone;
 
   /// Required. Schedule with weekly executions.
@@ -1947,8 +2044,8 @@ class TimeOfDay {
   }
 }
 
-/// Represents a time zone from the
-/// [IANA Time Zone Database](https://www.iana.org/time-zones).
+/// Represents a time zone from the [IANA Time Zone
+/// Database](https://www.iana.org/time-zones).
 class TimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
   core.String id;
@@ -1995,8 +2092,7 @@ class WeekDayOfMonth {
   core.String dayOfWeek;
 
   /// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the
-  /// month. -1
-  /// indicates the last week of the month.
+  /// month. -1 indicates the last week of the month.
   core.int weekOrdinal;
 
   WeekDayOfMonth();
@@ -2064,9 +2160,9 @@ class WindowsUpdateSettings {
   /// List of KBs to exclude from update.
   core.List<core.String> excludes;
 
-  /// An exclusive list of kbs to be updated. These are the only patches
-  /// that will be updated. This field must not be used with other
-  /// patch configurations.
+  /// An exclusive list of kbs to be updated. These are the only patches that
+  /// will be updated. This field must not be used with other patch
+  /// configurations.
   core.List<core.String> exclusivePatches;
 
   WindowsUpdateSettings();
@@ -2101,10 +2197,9 @@ class WindowsUpdateSettings {
   }
 }
 
-/// Yum patching is performed by executing `yum update`. Additional options
-/// can be set to control how this is executed.
-///
-/// Note that not all settings are supported on all platforms.
+/// Yum patching is performed by executing `yum update`. Additional options can
+/// be set to control how this is executed. Note that not all settings are
+/// supported on all platforms.
 class YumSettings {
   /// List of packages to exclude from update. These packages are excluded by
   /// using the yum `--exclude` flag.
@@ -2119,8 +2214,8 @@ class YumSettings {
   /// Will cause patch to run `yum update-minimal` instead.
   core.bool minimal;
 
-  /// Adds the `--security` flag to `yum update`. Not supported on
-  /// all platforms.
+  /// Adds the `--security` flag to `yum update`. Not supported on all
+  /// platforms.
   core.bool security;
 
   YumSettings();
@@ -2160,23 +2255,23 @@ class YumSettings {
   }
 }
 
-/// Zypper patching is performed by running `zypper patch`.
-/// See also https://en.opensuse.org/SDB:Zypper_manual.
+/// Zypper patching is performed by running `zypper patch`. See also
+/// https://en.opensuse.org/SDB:Zypper_manual.
 class ZypperSettings {
-  /// Install only patches with these categories.
-  /// Common categories include security, recommended, and feature.
+  /// Install only patches with these categories. Common categories include
+  /// security, recommended, and feature.
   core.List<core.String> categories;
 
   /// List of patches to exclude from update.
   core.List<core.String> excludes;
 
   /// An exclusive list of patches to be updated. These are the only patches
-  /// that will be installed using 'zypper patch patch:<patch_name>' command.
-  /// This field must not be used with any other patch configuration fields.
+  /// that will be installed using 'zypper patch patch:' command. This field
+  /// must not be used with any other patch configuration fields.
   core.List<core.String> exclusivePatches;
 
-  /// Install only patches with these severities.
-  /// Common severities include critical, important, moderate, and low.
+  /// Install only patches with these severities. Common severities include
+  /// critical, important, moderate, and low.
   core.List<core.String> severities;
 
   /// Adds the `--with-optional` flag to `zypper patch`.

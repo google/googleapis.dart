@@ -24,6 +24,8 @@ class SasportalApi {
   final commons.ApiRequester _requester;
 
   CustomersResourceApi get customers => new CustomersResourceApi(_requester);
+  DeploymentsResourceApi get deployments =>
+      new DeploymentsResourceApi(_requester);
   InstallerResourceApi get installer => new InstallerResourceApi(_requester);
   NodesResourceApi get nodes => new NodesResourceApi(_requester);
   PoliciesResourceApi get policies => new PoliciesResourceApi(_requester);
@@ -38,6 +40,8 @@ class SasportalApi {
 class CustomersResourceApi {
   final commons.ApiRequester _requester;
 
+  CustomersDeploymentsResourceApi get deployments =>
+      new CustomersDeploymentsResourceApi(_requester);
   CustomersDevicesResourceApi get devices =>
       new CustomersDevicesResourceApi(_requester);
   CustomersNodesResourceApi get nodes =>
@@ -92,12 +96,11 @@ class CustomersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of customers
-  /// to return in the response.
+  /// [pageSize] - The maximum number of customers to return in the response.
   ///
   /// [pageToken] - A pagination token returned from a previous call to
-  /// ListCustomers method that indicates where
-  /// this listing should continue from.
+  /// ListCustomers method that indicates where this listing should continue
+  /// from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -193,6 +196,247 @@ class CustomersResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new SasPortalCustomer.fromJson(data));
+  }
+}
+
+class CustomersDeploymentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  CustomersDeploymentsDevicesResourceApi get devices =>
+      new CustomersDeploymentsDevicesResourceApi(_requester);
+
+  CustomersDeploymentsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Moves a deployment under another node or customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment to move.
+  /// Value must have pattern "^customers/[^/]+/deployments/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalOperation> move(
+      SasPortalMoveDeploymentRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalOperation.fromJson(data));
+  }
+}
+
+class CustomersDeploymentsDevicesResourceApi {
+  final commons.ApiRequester _requester;
+
+  CustomersDeploymentsDevicesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a device under a node or customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern "^customers/[^/]+/deployments/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalDevice].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalDevice> create(
+      SasPortalDevice request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/devices';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalDevice.fromJson(data));
+  }
+
+  /// Creates a signed device under a node or customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern "^customers/[^/]+/deployments/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalDevice].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalDevice> createSigned(
+      SasPortalCreateSignedDeviceRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/devices:createSigned';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalDevice.fromJson(data));
+  }
+
+  /// Lists devices under a node or customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern "^customers/[^/]+/deployments/[^/]+$".
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListDevices that indicates where this listing should continue from.
+  ///
+  /// [filter] - The filter expression. The filter should have one of the
+  /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
+  /// to serial_number of the device. The filter is case insensitive.
+  ///
+  /// [pageSize] - The maximum number of devices to return in the response. If
+  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalListDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalListDevicesResponse> list(core.String parent,
+      {core.String pageToken,
+      core.String filter,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/devices';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SasPortalListDevicesResponse.fromJson(data));
   }
 }
 
@@ -307,8 +551,7 @@ class CustomersDevicesResourceApi {
     return _response.then((data) => new SasPortalDevice.fromJson(data));
   }
 
-  /// Creates a signed device under a
-  /// node or customer.
+  /// Creates a signed device under a node or customer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -454,18 +697,14 @@ class CustomersDevicesResourceApi {
   /// Value must have pattern "^customers/[^/]+$".
   ///
   /// [pageToken] - A pagination token returned from a previous call to
-  /// ListDevices
-  /// that indicates where this listing should continue from.
+  /// ListDevices that indicates where this listing should continue from.
   ///
   /// [filter] - The filter expression. The filter should have one of the
-  /// following
-  /// formats: "sn=123454" or "display_name=MyDevice". sn
-  /// corresponds to serial_number of the device. The filter is case
-  /// insensitive.
+  /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
+  /// to serial_number of the device. The filter is case insensitive.
   ///
-  /// [pageSize] - The maximum number of devices to return in the response.
-  /// If empty or zero, all devices will be listed.
-  /// Must be in the range [0, 1000].
+  /// [pageSize] - The maximum number of devices to return in the response. If
+  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -882,11 +1121,10 @@ class CustomersNodesResourceApi {
   /// [parent] - Required. The parent resource name, for example, "nodes/1".
   /// Value must have pattern "^customers/[^/]+$".
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListNodes method
-  /// that indicates where this listing should continue from.
-  ///
   /// [pageSize] - The maximum number of nodes to return in the response.
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListNodes method that indicates where this listing should continue from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -899,7 +1137,7 @@ class CustomersNodesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListNodesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -910,11 +1148,11 @@ class CustomersNodesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -940,8 +1178,7 @@ class CustomersNodesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the node to
-  /// move.
+  /// [name] - Required. The name of the node to move.
   /// Value must have pattern "^customers/[^/]+/nodes/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1109,8 +1346,7 @@ class CustomersNodesNodesResourceApi {
   /// [pageSize] - The maximum number of nodes to return in the response.
   ///
   /// [pageToken] - A pagination token returned from a previous call to
-  /// ListNodes method
-  /// that indicates where this listing should continue from.
+  /// ListNodes method that indicates where this listing should continue from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1156,6 +1392,317 @@ class CustomersNodesNodesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new SasPortalListNodesResponse.fromJson(data));
+  }
+}
+
+class DeploymentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  DeploymentsDevicesResourceApi get devices =>
+      new DeploymentsDevicesResourceApi(_requester);
+
+  DeploymentsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class DeploymentsDevicesResourceApi {
+  final commons.ApiRequester _requester;
+
+  DeploymentsDevicesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a device.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the device.
+  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalEmpty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalEmpty.fromJson(data));
+  }
+
+  /// Gets details about a device.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the device.
+  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalDevice].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalDevice> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalDevice.fromJson(data));
+  }
+
+  /// Moves a device under another node or customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the device to move.
+  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalOperation> move(
+      SasPortalMoveDeviceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalOperation.fromJson(data));
+  }
+
+  /// Updates a device.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource path name.
+  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  ///
+  /// [updateMask] - Fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalDevice].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalDevice> patch(SasPortalDevice request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalDevice.fromJson(data));
+  }
+
+  /// Signs a device.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource path name.
+  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalEmpty> signDevice(
+      SasPortalSignDeviceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':signDevice';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalEmpty.fromJson(data));
+  }
+
+  /// Updates a signed device.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the device to update.
+  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalDevice].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalDevice> updateSigned(
+      SasPortalUpdateSignedDeviceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':updateSigned';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalDevice.fromJson(data));
   }
 }
 
@@ -1258,11 +1805,297 @@ class InstallerResourceApi {
 class NodesResourceApi {
   final commons.ApiRequester _requester;
 
+  NodesDeploymentsResourceApi get deployments =>
+      new NodesDeploymentsResourceApi(_requester);
   NodesDevicesResourceApi get devices =>
       new NodesDevicesResourceApi(_requester);
   NodesNodesResourceApi get nodes => new NodesNodesResourceApi(_requester);
 
   NodesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Returns a requested node.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the node.
+  /// Value must have pattern "^nodes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalNode].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalNode> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalNode.fromJson(data));
+  }
+}
+
+class NodesDeploymentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  NodesDeploymentsDevicesResourceApi get devices =>
+      new NodesDeploymentsDevicesResourceApi(_requester);
+
+  NodesDeploymentsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Moves a deployment under another node or customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment to move.
+  /// Value must have pattern "^nodes/[^/]+/deployments/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalOperation> move(
+      SasPortalMoveDeploymentRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalOperation.fromJson(data));
+  }
+}
+
+class NodesDeploymentsDevicesResourceApi {
+  final commons.ApiRequester _requester;
+
+  NodesDeploymentsDevicesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a device under a node or customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern "^nodes/[^/]+/deployments/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalDevice].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalDevice> create(
+      SasPortalDevice request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/devices';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalDevice.fromJson(data));
+  }
+
+  /// Creates a signed device under a node or customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern "^nodes/[^/]+/deployments/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalDevice].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalDevice> createSigned(
+      SasPortalCreateSignedDeviceRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/devices:createSigned';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SasPortalDevice.fromJson(data));
+  }
+
+  /// Lists devices under a node or customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern "^nodes/[^/]+/deployments/[^/]+$".
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListDevices that indicates where this listing should continue from.
+  ///
+  /// [filter] - The filter expression. The filter should have one of the
+  /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
+  /// to serial_number of the device. The filter is case insensitive.
+  ///
+  /// [pageSize] - The maximum number of devices to return in the response. If
+  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalListDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalListDevicesResponse> list(core.String parent,
+      {core.String pageToken,
+      core.String filter,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/devices';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SasPortalListDevicesResponse.fromJson(data));
+  }
 }
 
 class NodesDevicesResourceApi {
@@ -1375,8 +2208,7 @@ class NodesDevicesResourceApi {
     return _response.then((data) => new SasPortalDevice.fromJson(data));
   }
 
-  /// Creates a signed device under a
-  /// node or customer.
+  /// Creates a signed device under a node or customer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1521,19 +2353,15 @@ class NodesDevicesResourceApi {
   /// [parent] - Required. The name of the parent resource.
   /// Value must have pattern "^nodes/[^/]+$".
   ///
-  /// [filter] - The filter expression. The filter should have one of the
-  /// following
-  /// formats: "sn=123454" or "display_name=MyDevice". sn
-  /// corresponds to serial_number of the device. The filter is case
-  /// insensitive.
-  ///
-  /// [pageSize] - The maximum number of devices to return in the response.
-  /// If empty or zero, all devices will be listed.
-  /// Must be in the range [0, 1000].
-  ///
   /// [pageToken] - A pagination token returned from a previous call to
-  /// ListDevices
-  /// that indicates where this listing should continue from.
+  /// ListDevices that indicates where this listing should continue from.
+  ///
+  /// [filter] - The filter expression. The filter should have one of the
+  /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
+  /// to serial_number of the device. The filter is case insensitive.
+  ///
+  /// [pageSize] - The maximum number of devices to return in the response. If
+  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1546,9 +2374,9 @@ class NodesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(core.String parent,
-      {core.String filter,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1560,14 +2388,14 @@ class NodesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1955,8 +2783,7 @@ class NodesNodesResourceApi {
   /// [pageSize] - The maximum number of nodes to return in the response.
   ///
   /// [pageToken] - A pagination token returned from a previous call to
-  /// ListNodes method
-  /// that indicates where this listing should continue from.
+  /// ListNodes method that indicates where this listing should continue from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2010,8 +2837,7 @@ class NodesNodesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the node to
-  /// move.
+  /// [name] - Required. The name of the node to move.
   /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2222,8 +3048,7 @@ class NodesNodesDevicesResourceApi {
     return _response.then((data) => new SasPortalDevice.fromJson(data));
   }
 
-  /// Creates a signed device under a
-  /// node or customer.
+  /// Creates a signed device under a node or customer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2282,19 +3107,15 @@ class NodesNodesDevicesResourceApi {
   /// [parent] - Required. The name of the parent resource.
   /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of devices to return in the response. If
+  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  ///
   /// [pageToken] - A pagination token returned from a previous call to
-  /// ListDevices
-  /// that indicates where this listing should continue from.
+  /// ListDevices that indicates where this listing should continue from.
   ///
   /// [filter] - The filter expression. The filter should have one of the
-  /// following
-  /// formats: "sn=123454" or "display_name=MyDevice". sn
-  /// corresponds to serial_number of the device. The filter is case
-  /// insensitive.
-  ///
-  /// [pageSize] - The maximum number of devices to return in the response.
-  /// If empty or zero, all devices will be listed.
-  /// Must be in the range [0, 1000].
+  /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
+  /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2307,9 +3128,9 @@ class NodesNodesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2321,14 +3142,14 @@ class NodesNodesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2414,8 +3235,7 @@ class NodesNodesNodesResourceApi {
   /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
   ///
   /// [pageToken] - A pagination token returned from a previous call to
-  /// ListNodes method
-  /// that indicates where this listing should continue from.
+  /// ListNodes method that indicates where this listing should continue from.
   ///
   /// [pageSize] - The maximum number of nodes to return in the response.
   ///
@@ -2471,9 +3291,8 @@ class PoliciesResourceApi {
 
   PoliciesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2608,14 +3427,10 @@ class PoliciesResourceApi {
 
 /// Associates `members` with a `role`.
 class SasPortalAssignment {
-  /// The identities the role is assigned to. It can have the following
-  /// values:
-  ///
-  /// * `{user_email}`: An email address that represents a specific
-  ///    Google account. For example: `alice@gmail.com`.
-  ///
-  /// * `{group_email}`: An email address that represents a Google
-  ///    group.  For example, `viewers@gmail.com`.
+  /// The identities the role is assigned to. It can have the following values:
+  /// * `{user_email}`: An email address that represents a specific Google
+  /// account. For example: `alice@gmail.com`. * `{group_email}`: An email
+  /// address that represents a Google group. For example, `viewers@gmail.com`.
   core.List<core.String> members;
 
   /// Required. Role that is assigned to `members`.
@@ -2697,8 +3512,8 @@ class SasPortalBulkCreateDeviceResponse {
 
 /// Request for CreateSignedDevice method.
 class SasPortalCreateSignedDeviceRequest {
-  /// Required. JSON Web Token signed using a CPI private key. Payload
-  /// must be the JSON encoding of the [Device]. The user_id field must be set.
+  /// Required. JSON Web Token signed using a CPI private key. Payload must be
+  /// the JSON encoding of the [Device]. The user_id field must be set.
   core.String encodedDevice;
   core.List<core.int> get encodedDeviceAsBytes {
     return convert.base64.decode(encodedDevice);
@@ -2782,6 +3597,10 @@ class SasPortalDevice {
   /// Output only. Current configuration of the device as registered to the SAS.
   SasPortalDeviceConfig activeConfig;
 
+  /// Device parameters that can be overridden by both SAS Portal and SAS
+  /// registration requests.
+  SasPortalDeviceMetadata deviceMetadata;
+
   /// Device display name.
   core.String displayName;
 
@@ -2797,16 +3616,14 @@ class SasPortalDevice {
   /// Configuration of the device, as specified via SAS Portal API.
   SasPortalDeviceConfig preloadedConfig;
 
-  /// A serial number assigned to the device by the device
-  /// manufacturer.
+  /// A serial number assigned to the device by the device manufacturer.
   core.String serialNumber;
 
   /// Output only. Device state.
   /// Possible string values are:
   /// - "DEVICE_STATE_UNSPECIFIED" : Unspecified state.
   /// - "RESERVED" : Device created in the SAS Portal, however, not yet
-  /// registered
-  /// with SAS.
+  /// registered with SAS.
   /// - "REGISTERED" : Device registered with SAS.
   /// - "DEREGISTERED" : Device de-registered with SAS.
   core.String state;
@@ -2816,6 +3633,10 @@ class SasPortalDevice {
   SasPortalDevice.fromJson(core.Map _json) {
     if (_json.containsKey("activeConfig")) {
       activeConfig = new SasPortalDeviceConfig.fromJson(_json["activeConfig"]);
+    }
+    if (_json.containsKey("deviceMetadata")) {
+      deviceMetadata =
+          new SasPortalDeviceMetadata.fromJson(_json["deviceMetadata"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -2850,6 +3671,9 @@ class SasPortalDevice {
     if (activeConfig != null) {
       _json["activeConfig"] = (activeConfig).toJson();
     }
+    if (deviceMetadata != null) {
+      _json["deviceMetadata"] = (deviceMetadata).toJson();
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2878,9 +3702,7 @@ class SasPortalDevice {
 /// Information about the device's air interface.
 class SasPortalDeviceAirInterface {
   /// This field specifies the radio access technology that is used for the
-  /// CBSD.
-  ///
-  /// Conditional
+  /// CBSD. Conditional
   /// Possible string values are:
   /// - "RADIO_TECHNOLOGY_UNSPECIFIED"
   /// - "E_UTRA"
@@ -2895,9 +3717,7 @@ class SasPortalDeviceAirInterface {
 
   /// This field is related to the radioTechnology field and provides the air
   /// interface specification that the CBSD is compliant with at the time of
-  /// registration.
-  ///
-  /// Optional
+  /// registration. Optional
   core.String supportedSpec;
 
   SasPortalDeviceAirInterface();
@@ -3039,9 +3859,9 @@ class SasPortalDeviceConfig {
   }
 }
 
-/// Device grant. It is an authorization provided by the Spectrum
-/// Access System to a device to transmit using specified operating
-/// parameters after a successful heartbeat by the device.
+/// Device grant. It is an authorization provided by the Spectrum Access System
+/// to a device to transmit using specified operating parameters after a
+/// successful heartbeat by the device.
 class SasPortalDeviceGrant {
   /// Type of channel used.
   /// Possible string values are:
@@ -3056,10 +3876,13 @@ class SasPortalDeviceGrant {
   /// The transmission frequency range.
   SasPortalFrequencyRange frequencyRange;
 
-  /// Maximum Equivalent Isotropically Radiated Power (EIRP) permitted
-  /// by the grant. The maximum EIRP is in units of dBm/MHz. The
-  /// value of maxEirp represents the average (RMS) EIRP that would be
-  /// measured by the procedure defined in FCC part 96.41(e)(3).
+  /// Grant Id.
+  core.String grantId;
+
+  /// Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the
+  /// grant. The maximum EIRP is in units of dBm/MHz. The value of maxEirp
+  /// represents the average (RMS) EIRP that would be measured by the procedure
+  /// defined in FCC part 96.41(e)(3).
   core.double maxEirp;
 
   /// The DPA move lists on which this grant appears.
@@ -3092,6 +3915,9 @@ class SasPortalDeviceGrant {
       frequencyRange =
           new SasPortalFrequencyRange.fromJson(_json["frequencyRange"]);
     }
+    if (_json.containsKey("grantId")) {
+      grantId = _json["grantId"];
+    }
     if (_json.containsKey("maxEirp")) {
       maxEirp = _json["maxEirp"].toDouble();
     }
@@ -3122,6 +3948,9 @@ class SasPortalDeviceGrant {
     if (frequencyRange != null) {
       _json["frequencyRange"] = (frequencyRange).toJson();
     }
+    if (grantId != null) {
+      _json["grantId"] = grantId;
+    }
     if (maxEirp != null) {
       _json["maxEirp"] = maxEirp;
     }
@@ -3134,6 +3963,19 @@ class SasPortalDeviceGrant {
     if (suspensionReason != null) {
       _json["suspensionReason"] = suspensionReason;
     }
+    return _json;
+  }
+}
+
+/// Device data overridable by both SAS Portal and registration requests.
+class SasPortalDeviceMetadata {
+  SasPortalDeviceMetadata();
+
+  SasPortalDeviceMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3232,13 +4074,9 @@ class SasPortalDpaMoveList {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class SasPortalEmpty {
   SasPortalEmpty();
 
@@ -3299,8 +4137,7 @@ class SasPortalGenerateSecretRequest {
 
 /// Response for GenerateSecret method.
 class SasPortalGenerateSecretResponse {
-  /// The secret generated by the string and used by
-  /// [ValidateInstaller] method.
+  /// The secret generated by the string and used by [ValidateInstaller] method.
   core.String secret;
 
   SasPortalGenerateSecretResponse();
@@ -3346,49 +4183,47 @@ class SasPortalGetPolicyRequest {
 
 /// Information about the device installation parameters.
 class SasPortalInstallationParams {
-  /// Boresight direction of the horizontal plane of the antenna in
-  /// degrees with respect to true north. The value of this parameter
-  /// is an integer with a value between 0 and 359 inclusive. A value
-  /// of 0 degrees means true north; a value of 90 degrees means
-  /// east. This parameter is optional for Category A devices and
-  /// conditional for Category B devices.
+  /// Boresight direction of the horizontal plane of the antenna in degrees with
+  /// respect to true north. The value of this parameter is an integer with a
+  /// value between 0 and 359 inclusive. A value of 0 degrees means true north;
+  /// a value of 90 degrees means east. This parameter is optional for Category
+  /// A devices and conditional for Category B devices.
   core.int antennaAzimuth;
 
-  /// 3-dB antenna beamwidth of the antenna in the horizontal-plane in
-  /// degrees.  This parameter is an unsigned integer having a value
-  /// between 0 and 360 (degrees) inclusive; it is optional for
-  /// Category A devices and conditional for Category B devices.
+  /// 3-dB antenna beamwidth of the antenna in the horizontal-plane in degrees.
+  /// This parameter is an unsigned integer having a value between 0 and 360
+  /// (degrees) inclusive; it is optional for Category A devices and conditional
+  /// for Category B devices.
   core.int antennaBeamwidth;
 
-  /// Antenna downtilt in degrees and is an integer with a value
-  /// between -90 and +90 inclusive; a negative value means the antenna
-  /// is tilted up (above horizontal). This parameter is optional for
-  /// Category A devices and conditional for Category B devices.
+  /// Antenna downtilt in degrees and is an integer with a value between -90 and
+  /// +90 inclusive; a negative value means the antenna is tilted up (above
+  /// horizontal). This parameter is optional for Category A devices and
+  /// conditional for Category B devices.
   core.int antennaDowntilt;
 
-  /// Peak antenna gain in dBi. This parameter is an integer with a
-  /// value between -127 and +128 (dBi) inclusive.
+  /// Peak antenna gain in dBi. This parameter is an integer with a value
+  /// between -127 and +128 (dBi) inclusive.
   core.int antennaGain;
 
-  /// If an external antenna is used, the antenna model is optionally
-  /// provided in this field. The string has a maximum length of 128
-  /// octets.
+  /// If an external antenna is used, the antenna model is optionally provided
+  /// in this field. The string has a maximum length of 128 octets.
   core.String antennaModel;
 
   /// If present, this parameter specifies whether the CBSD is a CPE-CBSD or
   /// not.
   core.bool cpeCbsdIndication;
 
-  /// This parameter is the maximum device EIRP in units of dBm/10MHz
-  /// and is an integer with a value between -127 and +47 (dBm/10 MHz)
-  /// inclusive. If not included, SAS interprets it as maximum
-  /// allowable EIRP in units of dBm/10MHz for device category.
+  /// This parameter is the maximum device EIRP in units of dBm/10MHz and is an
+  /// integer with a value between -127 and +47 (dBm/10 MHz) inclusive. If not
+  /// included, SAS interprets it as maximum allowable EIRP in units of
+  /// dBm/10MHz for device category.
   core.int eirpCapability;
 
-  /// Device antenna height in meters. When the heightType parameter
-  /// value is "AGL", the antenna height should be given relative to
-  /// ground level. When the heightType parameter value is "AMSL", it
-  /// is given with respect to WGS84 datum.
+  /// Device antenna height in meters. When the heightType parameter value is
+  /// "AGL", the antenna height should be given relative to ground level. When
+  /// the heightType parameter value is "AMSL", it is given with respect to
+  /// WGS84 datum.
   core.double height;
 
   /// Specifies how the height is measured.
@@ -3399,33 +4234,29 @@ class SasPortalInstallationParams {
   /// level.
   core.String heightType;
 
-  /// A positive number in meters to indicate accuracy of the device
-  /// antenna horizontal location. This optional parameter should only
-  /// be present if its value is less than the FCC requirement of 50
-  /// meters.
+  /// A positive number in meters to indicate accuracy of the device antenna
+  /// horizontal location. This optional parameter should only be present if its
+  /// value is less than the FCC requirement of 50 meters.
   core.double horizontalAccuracy;
 
-  /// Whether the device antenna is indoor or not. True: indoor. False:
-  /// outdoor.
+  /// Whether the device antenna is indoor or not. True: indoor. False: outdoor.
   core.bool indoorDeployment;
 
-  /// Latitude of the device antenna location in degrees relative to
-  /// the WGS 84 datum. The allowed range is from -90.000000 to
-  /// +90.000000. Positive values represent latitudes north of the
-  /// equator; negative values south of the equator.
+  /// Latitude of the device antenna location in degrees relative to the WGS 84
+  /// datum. The allowed range is from -90.000000 to +90.000000. Positive values
+  /// represent latitudes north of the equator; negative values south of the
+  /// equator.
   core.double latitude;
 
-  /// Longitude of the device antenna location. in degrees relative to
-  /// the WGS 84 datum. The allowed range is from -180.000000 to
-  /// +180.000000. Positive values represent longitudes east of the
-  /// prime meridian; negative values west of the prime
-  /// meridian.
+  /// Longitude of the device antenna location. in degrees relative to the WGS
+  /// 84 datum. The allowed range is from -180.000000 to +180.000000. Positive
+  /// values represent longitudes east of the prime meridian; negative values
+  /// west of the prime meridian.
   core.double longitude;
 
-  /// A positive number in meters to indicate accuracy of the device
-  /// antenna vertical location. This optional parameter should only be
-  /// present if its value is less than the FCC requirement of 3
-  /// meters.
+  /// A positive number in meters to indicate accuracy of the device antenna
+  /// vertical location. This optional parameter should only be present if its
+  /// value is less than the FCC requirement of 3 meters.
   core.double verticalAccuracy;
 
   SasPortalInstallationParams();
@@ -3526,14 +4357,12 @@ class SasPortalInstallationParams {
 
 /// Response for `ListCustomers`.
 class SasPortalListCustomersResponse {
-  /// The list of customers that
-  /// match the request.
+  /// The list of customers that match the request.
   core.List<SasPortalCustomer> customers;
 
   /// A pagination token returned from a previous call to ListCustomers method
-  /// that indicates from
-  /// where listing should continue. If the field is missing or empty, it means
-  /// there are no more customers.
+  /// that indicates from where listing should continue. If the field is missing
+  /// or empty, it means there are no more customers.
   core.String nextPageToken;
 
   SasPortalListCustomersResponse();
@@ -3569,8 +4398,8 @@ class SasPortalListDevicesResponse {
   core.List<SasPortalDevice> devices;
 
   /// A pagination token returned from a previous call to ListDevices method
-  /// that indicates from where listing should continue. If the field
-  /// is missing or empty, it means there is no more devices.
+  /// that indicates from where listing should continue. If the field is missing
+  /// or empty, it means there is no more devices.
   core.String nextPageToken;
 
   SasPortalListDevicesResponse();
@@ -3601,10 +4430,9 @@ class SasPortalListDevicesResponse {
 
 /// Response for ListNodes method.
 class SasPortalListNodesResponse {
-  /// A pagination token returned from a previous call to
-  /// ListNodes method
-  /// that indicates from where listing should continue. If the field is missing
-  /// or empty, it means there is no more nodes.
+  /// A pagination token returned from a previous call to ListNodes method that
+  /// indicates from where listing should continue. If the field is missing or
+  /// empty, it means there is no more nodes.
   core.String nextPageToken;
 
   /// The nodes that match the request.
@@ -3631,6 +4459,30 @@ class SasPortalListNodesResponse {
     }
     if (nodes != null) {
       _json["nodes"] = nodes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Request for MoveDeployment method.
+class SasPortalMoveDeploymentRequest {
+  /// Required. The name of the new parent resource Node or Customer to reparent
+  /// the deployment under.
+  core.String destination;
+
+  SasPortalMoveDeploymentRequest();
+
+  SasPortalMoveDeploymentRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("destination")) {
+      destination = _json["destination"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (destination != null) {
+      _json["destination"] = destination;
     }
     return _json;
   }
@@ -3728,17 +4580,17 @@ class SasPortalNode {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class SasPortalOperation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   SasPortalStatus error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -3746,19 +4598,17 @@ class SasPortalOperation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3812,16 +4662,14 @@ class SasPortalOperation {
 class SasPortalPolicy {
   core.List<SasPortalAssignment> assignments;
 
-  /// The [etag] is used for optimistic concurrency control as a way to
-  /// help prevent simultaneous updates of a policy from overwriting
-  /// each other.  It is strongly suggested that systems make use of
-  /// the [etag] in the read-modify-write cycle to perform policy
-  /// updates in order to avoid race conditions: An [etag] is returned
-  /// in the response to [GetPolicy], and systems are expected to put
-  /// that etag in the request to [SetPolicy] to ensure that their
-  /// change will be applied to the same version of the policy.
-  ///
-  /// If no [etag] is provided in the call to [SetPolicy], then the
+  /// The [etag] is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a policy from overwriting each other. It
+  /// is strongly suggested that systems make use of the [etag] in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An [etag] is returned in the response to [GetPolicy], and
+  /// systems are expected to put that etag in the request to [SetPolicy] to
+  /// ensure that their change will be applied to the same version of the
+  /// policy. If no [etag] is provided in the call to [SetPolicy], then the
   /// existing policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes {
@@ -3867,8 +4715,7 @@ class SasPortalSetPolicyRequest {
   SasPortalPolicy policy;
 
   /// Required. The resource for which the policy is being specified. This
-  /// policy
-  /// replaces any existing policy.
+  /// policy replaces any existing policy.
   core.String resource;
 
   SasPortalSetPolicyRequest();
@@ -3897,9 +4744,8 @@ class SasPortalSetPolicyRequest {
 
 /// Request for SignDevice method.
 class SasPortalSignDeviceRequest {
-  /// Required. The device to sign.
-  /// The device fields name, fcc_id and serial_number must be set.
-  /// The user_id field must be set.
+  /// Required. The device to sign. The device fields name, fcc_id and
+  /// serial_number must be set. The user_id field must be set.
   SasPortalDevice device;
 
   SasPortalSignDeviceRequest();
@@ -3923,15 +4769,14 @@ class SasPortalSignDeviceRequest {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class SasPortalStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -4033,9 +4878,8 @@ class SasPortalTestPermissionsResponse {
 
 /// Request for UpdateSignedDevice method.
 class SasPortalUpdateSignedDeviceRequest {
-  /// Required. The JSON Web Token signed using a CPI private key. Payload
-  /// must be the JSON encoding
-  /// of the device. The user_id field must be set.
+  /// Required. The JSON Web Token signed using a CPI private key. Payload must
+  /// be the JSON encoding of the device. The user_id field must be set.
   core.String encodedDevice;
   core.List<core.int> get encodedDeviceAsBytes {
     return convert.base64.decode(encodedDevice);
@@ -4076,12 +4920,12 @@ class SasPortalUpdateSignedDeviceRequest {
 
 /// Request for ValidateInstaller method.
 class SasPortalValidateInstallerRequest {
-  /// Required. JSON Web Token signed using a CPI private key. Payload
-  /// must include a "secret" claim whose value is the secret.
+  /// Required. JSON Web Token signed using a CPI private key. Payload must
+  /// include a "secret" claim whose value is the secret.
   core.String encodedSecret;
 
-  /// Required. Unique installer id (cpiId) from the Certified
-  /// Professional Installers database.
+  /// Required. Unique installer id (cpiId) from the Certified Professional
+  /// Installers database.
   core.String installerId;
 
   /// Required. Secret returned by the GenerateSecret method.

@@ -12,7 +12,15 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    show ApiRequestError, DetailedApiRequestError;
+    show
+        ApiRequestError,
+        DetailedApiRequestError,
+        Media,
+        UploadOptions,
+        ResumableUploadOptions,
+        DownloadOptions,
+        PartialDownloadOptions,
+        ByteRange;
 
 const core.String USER_AGENT = 'dart-api-client chat/v1';
 
@@ -20,6 +28,7 @@ const core.String USER_AGENT = 'dart-api-client chat/v1';
 class ChatApi {
   final commons.ApiRequester _requester;
 
+  MediaResourceApi get media => new MediaResourceApi(_requester);
   SpacesResourceApi get spaces => new SpacesResourceApi(_requester);
 
   ChatApi(http.Client client,
@@ -27,6 +36,75 @@ class ChatApi {
       core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+class MediaResourceApi {
+  final commons.ApiRequester _requester;
+
+  MediaResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Downloads media. Download is supported on the URI
+  /// `/v1/media/{+name}?alt=media`.
+  ///
+  /// Request parameters:
+  ///
+  /// [resourceName] - Name of the media that is being downloaded. See
+  /// ReadRequest.resource_name.
+  /// Value must have pattern "^.*$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [Media] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future download(core.String resourceName,
+      {core.String $fields,
+      commons.DownloadOptions downloadOptions =
+          commons.DownloadOptions.Metadata}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = downloadOptions;
+
+    _url = 'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    if (_downloadOptions == null ||
+        _downloadOptions == commons.DownloadOptions.Metadata) {
+      return _response.then((data) => new Media.fromJson(data));
+    } else {
+      return _response;
+    }
+  }
 }
 
 class SpacesResourceApi {
@@ -44,7 +122,6 @@ class SpacesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the space, in the form "spaces / * ".
-  ///
   /// Example: spaces/AAAAMpdlehY
   /// Value must have pattern "^spaces/[^/]+$".
   ///
@@ -91,9 +168,9 @@ class SpacesResourceApi {
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   ///
-  /// [pageSize] - Requested page size. The value is capped at 1000.
-  /// Server may return fewer results than requested.
-  /// If unspecified, server will default to 100.
+  /// [pageSize] - Requested page size. The value is capped at 1000. Server may
+  /// return fewer results than requested. If unspecified, server will default
+  /// to 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -146,10 +223,8 @@ class SpacesMembersResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the membership to be retrieved, in the
-  /// form
-  /// "spaces / * /members / * ".
-  ///
-  /// Example: spaces/AAAAMpdlehY/members/105115627578887013105
+  /// form "spaces / * /members / * ". Example:
+  /// spaces/AAAAMpdlehY/members/105115627578887013105
   /// Value must have pattern "^spaces/[^/]+/members/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -193,18 +268,16 @@ class SpacesMembersResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the space for which membership
-  /// list is to be
-  /// fetched, in the form "spaces / * ".
-  ///
-  /// Example: spaces/AAAAMpdlehY
+  /// list is to be fetched, in the form "spaces / * ". Example:
+  /// spaces/AAAAMpdlehY
   /// Value must have pattern "^spaces/[^/]+$".
+  ///
+  /// [pageSize] - Requested page size. The value is capped at 1000. Server may
+  /// return fewer results than requested. If unspecified, server will default
+  /// to 100.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
-  ///
-  /// [pageSize] - Requested page size. The value is capped at 1000.
-  /// Server may return fewer results than requested.
-  /// If unspecified, server will default to 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -217,7 +290,7 @@ class SpacesMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMembershipsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -228,11 +301,11 @@ class SpacesMembersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -254,6 +327,9 @@ class SpacesMembersResourceApi {
 class SpacesMessagesResourceApi {
   final commons.ApiRequester _requester;
 
+  SpacesMessagesAttachmentsResourceApi get attachments =>
+      new SpacesMessagesAttachmentsResourceApi(_requester);
+
   SpacesMessagesResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Creates a message.
@@ -267,16 +343,13 @@ class SpacesMessagesResourceApi {
   /// Value must have pattern "^spaces/[^/]+$".
   ///
   /// [threadKey] - Opaque thread identifier string that can be specified to
-  /// group messages
-  /// into a single thread. If this is the first message with a given thread
-  /// identifier, a new thread is created. Subsequent messages with the same
-  /// thread identifier will be posted into the same thread. This relieves bots
-  /// and webhooks from having to store the Hangouts Chat thread ID of a thread
-  /// (created earlier by them) to post
-  /// further updates to it.
-  ///
-  /// Has no effect if thread field,
-  /// corresponding to an existing thread, is set in message.
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -327,9 +400,8 @@ class SpacesMessagesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the message to be deleted, in the form
-  /// "spaces / * /messages / * "
-  ///
-  /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+  /// "spaces / * /messages / * " Example:
+  /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
   /// Value must have pattern "^spaces/[^/]+/messages/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -373,10 +445,8 @@ class SpacesMessagesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the message to be retrieved, in the
-  /// form
-  /// "spaces / * /messages / * ".
-  ///
-  /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+  /// form "spaces / * /messages / * ". Example:
+  /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
   /// Value must have pattern "^spaces/[^/]+/messages/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -421,18 +491,12 @@ class SpacesMessagesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name, in the form "spaces / * /messages / * ".
-  ///
-  /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+  /// [name] - Resource name, in the form "spaces / * /messages / * ". Example:
+  /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
   /// Value must have pattern "^spaces/[^/]+/messages/[^/]+$".
   ///
   /// [updateMask] - Required. The field paths to be updated, comma separated if
-  /// there are
-  /// multiple.
-  ///
-  /// Currently supported field paths:
-  /// * text
-  /// * cards
+  /// there are multiple. Currently supported field paths: * text * cards
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -478,10 +542,62 @@ class SpacesMessagesResourceApi {
   }
 }
 
-/// List of string parameters to supply when the action method is invoked.
-/// For example, consider three snooze buttons: snooze now, snooze 1 day,
-/// snooze next week. You might use action method = snooze(), passing the
-/// snooze type and snooze time in the list of string parameters.
+class SpacesMessagesAttachmentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  SpacesMessagesAttachmentsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the metadata of a message attachment. The attachment data is fetched
+  /// using the media API.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the attachment, in the form "spaces / *
+  /// /messages / * /attachments / * ".
+  /// Value must have pattern "^spaces/[^/]+/messages/[^/]+/attachments/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Attachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Attachment> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Attachment.fromJson(data));
+  }
+}
+
+/// List of string parameters to supply when the action method is invoked. For
+/// example, consider three snooze buttons: snooze now, snooze 1 day, snooze
+/// next week. You might use action method = snooze(), passing the snooze type
+/// and snooze time in the list of string parameters.
 class ActionParameter {
   /// The name of the parameter for the action script.
   core.String key;
@@ -551,34 +667,20 @@ class ActionResponse {
   }
 }
 
-/// Annotations associated with the plain-text body of the message.
-///
-/// Example plain-text message body:
-/// ```
-/// Hello @FooBot how are you!"
-/// ```
-///
-/// The corresponding annotations metadata:
-/// ```
-/// "annotations":[{
-///   "type":"USER_MENTION",
-///   "startIndex":6,
-///   "length":7,
-///   "userMention": {
-///     "user": {
-///       "name":"users/107946847022116401880",
-///       "displayName":"FooBot",
-///       "avatarUrl":"https://goo.gl/aeDtrS",
-///       "type":"BOT"
-///     },
-///     "type":"MENTION"
-///    }
-/// }]
+/// Annotations associated with the plain-text body of the message. Example
+/// plain-text message body: ``` Hello @FooBot how are you!" ``` The
+/// corresponding annotations metadata: ``` "annotations":[{
+/// "type":"USER_MENTION", "startIndex":6, "length":7, "userMention": { "user":
+/// { "name":"users/107946847022116401880", "displayName":"FooBot",
+/// "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }]
 /// ```
 class Annotation {
   /// Length of the substring in the plain-text message body this annotation
   /// corresponds to.
   core.int length;
+
+  /// The metadata for a slash command.
+  SlashCommandMetadata slashCommand;
 
   /// Start index (0-based, inclusive) in the plain-text message body this
   /// annotation corresponds to.
@@ -588,6 +690,7 @@ class Annotation {
   /// Possible string values are:
   /// - "ANNOTATION_TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
   /// - "USER_MENTION" : A user is mentioned.
+  /// - "SLASH_COMMAND" : A slash command is invoked.
   core.String type;
 
   /// The metadata of user mention.
@@ -598,6 +701,9 @@ class Annotation {
   Annotation.fromJson(core.Map _json) {
     if (_json.containsKey("length")) {
       length = _json["length"];
+    }
+    if (_json.containsKey("slashCommand")) {
+      slashCommand = new SlashCommandMetadata.fromJson(_json["slashCommand"]);
     }
     if (_json.containsKey("startIndex")) {
       startIndex = _json["startIndex"];
@@ -616,6 +722,9 @@ class Annotation {
     if (length != null) {
       _json["length"] = length;
     }
+    if (slashCommand != null) {
+      _json["slashCommand"] = (slashCommand).toJson();
+    }
     if (startIndex != null) {
       _json["startIndex"] = startIndex;
     }
@@ -624,6 +733,127 @@ class Annotation {
     }
     if (userMention != null) {
       _json["userMention"] = (userMention).toJson();
+    }
+    return _json;
+  }
+}
+
+/// An attachment in Hangouts Chat.
+class Attachment {
+  /// A reference to the attachment data. This is used with the media API to
+  /// download the attachment data.
+  AttachmentDataRef attachmentDataRef;
+
+  /// The original file name for the content, not the full path.
+  core.String contentName;
+
+  /// The content type (MIME type) of the file.
+  core.String contentType;
+
+  /// Output only. The download URL which should be used to allow a human user
+  /// to download the attachment. Bots should not use this URL to download
+  /// attachment content.
+  core.String downloadUri;
+
+  /// A reference to the drive attachment. This is used with the Drive API.
+  DriveDataRef driveDataRef;
+
+  /// Resource name of the attachment, in the form "spaces / * /messages / *
+  /// /attachments / * ".
+  core.String name;
+
+  /// The source of the attachment.
+  /// Possible string values are:
+  /// - "SOURCE_UNSPECIFIED"
+  /// - "DRIVE_FILE"
+  /// - "UPLOADED_CONTENT"
+  core.String source;
+
+  /// Output only. The thumbnail URL which should be used to preview the
+  /// attachment to a human user. Bots should not use this URL to download
+  /// attachment content.
+  core.String thumbnailUri;
+
+  Attachment();
+
+  Attachment.fromJson(core.Map _json) {
+    if (_json.containsKey("attachmentDataRef")) {
+      attachmentDataRef =
+          new AttachmentDataRef.fromJson(_json["attachmentDataRef"]);
+    }
+    if (_json.containsKey("contentName")) {
+      contentName = _json["contentName"];
+    }
+    if (_json.containsKey("contentType")) {
+      contentType = _json["contentType"];
+    }
+    if (_json.containsKey("downloadUri")) {
+      downloadUri = _json["downloadUri"];
+    }
+    if (_json.containsKey("driveDataRef")) {
+      driveDataRef = new DriveDataRef.fromJson(_json["driveDataRef"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("source")) {
+      source = _json["source"];
+    }
+    if (_json.containsKey("thumbnailUri")) {
+      thumbnailUri = _json["thumbnailUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attachmentDataRef != null) {
+      _json["attachmentDataRef"] = (attachmentDataRef).toJson();
+    }
+    if (contentName != null) {
+      _json["contentName"] = contentName;
+    }
+    if (contentType != null) {
+      _json["contentType"] = contentType;
+    }
+    if (downloadUri != null) {
+      _json["downloadUri"] = downloadUri;
+    }
+    if (driveDataRef != null) {
+      _json["driveDataRef"] = (driveDataRef).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (source != null) {
+      _json["source"] = source;
+    }
+    if (thumbnailUri != null) {
+      _json["thumbnailUri"] = thumbnailUri;
+    }
+    return _json;
+  }
+}
+
+/// A reference to the data of an attachment.
+class AttachmentDataRef {
+  /// The resource name of the attachment data. This is used with the media API
+  /// to download the attachment data.
+  core.String resourceName;
+
+  AttachmentDataRef();
+
+  AttachmentDataRef.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
     }
     return _json;
   }
@@ -716,10 +946,9 @@ class Card {
   }
 }
 
-/// A card action is
-/// the action associated with the card. For an invoice card, a
-/// typical action would be: delete invoice, email invoice or open the
-/// invoice in browser.
+/// A card action is the action associated with the card. For an invoice card, a
+/// typical action would be: delete invoice, email invoice or open the invoice
+/// in browser.
 class CardAction {
   /// The label used to be displayed in the action menu item.
   core.String actionLabel;
@@ -806,18 +1035,15 @@ class CardHeader {
   }
 }
 
-/// Hangouts Chat events.
+/// Google Chat events.
 class DeprecatedEvent {
   /// The form action data associated with an interactive card that was clicked.
-  /// Only populated for
-  /// CARD_CLICKED events.
-  /// See the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick)
-  /// for
-  /// more information.
+  /// Only populated for CARD_CLICKED events. See the [Interactive Cards
+  /// guide](/hangouts/chat/how-tos/cards-onclick) for more information.
   FormAction action;
 
   /// The URL the bot should redirect the user to after they have completed an
-  /// authorization or configuration flow outside of Hangouts Chat. See the
+  /// authorization or configuration flow outside of Google Chat. See the
   /// [Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p)
   /// for more information.
   core.String configCompleteRedirectUrl;
@@ -832,14 +1058,13 @@ class DeprecatedEvent {
   Space space;
 
   /// The bot-defined key for the thread related to the event. See the
-  /// thread_key field of the
-  /// `spaces.message.create` request for more information.
+  /// thread_key field of the `spaces.message.create` request for more
+  /// information.
   core.String threadKey;
 
   /// A secret value that bots can use to verify if a request is from Google.
-  /// The
-  /// token is randomly generated by Google, remains static, and can be obtained
-  /// from the Hangouts Chat API configuration page in the Cloud Console.
+  /// The token is randomly generated by Google, remains static, and can be
+  /// obtained from the Google Chat API configuration page in the Cloud Console.
   /// Developers can revoke/regenerate it if needed from the same page.
   core.String token;
 
@@ -921,15 +1146,34 @@ class DeprecatedEvent {
   }
 }
 
+/// A reference to the data of a drive attachment.
+class DriveDataRef {
+  /// The id for the drive file, for use with the Drive API.
+  core.String driveFileId;
+
+  DriveDataRef();
+
+  DriveDataRef.fromJson(core.Map _json) {
+    if (_json.containsKey("driveFileId")) {
+      driveFileId = _json["driveFileId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (driveFileId != null) {
+      _json["driveFileId"] = driveFileId;
+    }
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -942,13 +1186,13 @@ class Empty {
   }
 }
 
-/// A form action describes the behavior when the form is submitted.
-/// For example, an Apps Script can be invoked to handle the form.
+/// A form action describes the behavior when the form is submitted. For
+/// example, an Apps Script can be invoked to handle the form.
 class FormAction {
   /// The method name is used to identify which part of the form triggered the
-  /// form submission. This information is echoed back to the bot as part of
-  /// the card click event. The same method name can be used for several
-  /// elements that trigger a common behavior if desired.
+  /// form submission. This information is echoed back to the bot as part of the
+  /// card click event. The same method name can be used for several elements
+  /// that trigger a common behavior if desired.
   core.String actionMethodName;
 
   /// List of action parameters.
@@ -985,8 +1229,8 @@ class FormAction {
 class Image {
   /// The aspect ratio of this image (width/height). This field allows clients
   /// to reserve the right height for the image while waiting for it to load.
-  /// It's not meant to override the native aspect ratio of the image.
-  /// If unset, the server fills it by prefetching the image.
+  /// It's not meant to override the native aspect ratio of the image. If unset,
+  /// the server fills it by prefetching the image.
   core.double aspectRatio;
 
   /// The URL of the image.
@@ -1109,8 +1353,8 @@ class ImageButton {
   }
 }
 
-/// A UI element contains a key (label) and a value (content). And this
-/// element may also contain some actions such as onclick button.
+/// A UI element contains a key (label) and a value (content). And this element
+/// may also contain some actions such as onclick button.
 class KeyValue {
   /// The text of the bottom label. Formatted text supported.
   core.String bottomLabel;
@@ -1124,8 +1368,8 @@ class KeyValue {
   /// If the content should be multiline.
   core.bool contentMultiline;
 
-  /// An enum value that will be replaced by the Chat API with the
-  /// corresponding icon image.
+  /// An enum value that will be replaced by the Chat API with the corresponding
+  /// icon image.
   /// Possible string values are:
   /// - "ICON_UNSPECIFIED"
   /// - "AIRPLANE"
@@ -1300,18 +1544,37 @@ class ListSpacesResponse {
   }
 }
 
+/// Media resource.
+class Media {
+  /// Name of the media resource.
+  core.String resourceName;
+
+  Media();
+
+  Media.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    return _json;
+  }
+}
+
 /// Represents a membership relation in Hangouts Chat.
 class Membership {
   /// The creation time of the membership a.k.a the time at which the member
   /// joined the space, if applicable.
   core.String createTime;
 
-  /// Member details.
+  /// A User in Hangout Chat
   User member;
-
-  /// Resource name of the membership, in the form "spaces / * /members / * ".
-  ///
-  /// Example: spaces/AAAAMpdlehY/members/105115627578887013105
   core.String name;
 
   /// State of the membership.
@@ -1319,11 +1582,9 @@ class Membership {
   /// - "MEMBERSHIP_STATE_UNSPECIFIED" : Default, do not use.
   /// - "JOINED" : The user has joined the space.
   /// - "INVITED" : The user has been invited, is able to join the space, but
-  /// currently has
-  /// not joined.
+  /// currently has not joined.
   /// - "NOT_A_MEMBER" : The user is not a member of the space, has not been
-  /// invited and is not
-  /// able to join the space.
+  /// invited and is not able to join the space.
   core.String state;
 
   Membership();
@@ -1374,6 +1635,9 @@ class Message {
   /// Plain-text body of the message with all bot mentions stripped out.
   core.String argumentText;
 
+  /// User uploaded attachment.
+  core.List<Attachment> attachment;
+
   /// Rich, formatted and interactive cards that can be used to display UI
   /// elements such as: formatted texts, buttons, clickable images. Cards are
   /// normally displayed below the plain-text body of the message.
@@ -1384,13 +1648,11 @@ class Message {
   core.String createTime;
 
   /// A plain-text description of the message's cards, used when the actual
-  /// cards
-  /// cannot be displayed (e.g. mobile notifications).
+  /// cards cannot be displayed (e.g. mobile notifications).
   core.String fallbackText;
 
-  /// Resource name, in the form "spaces / * /messages / * ".
-  ///
-  /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+  /// Resource name, in the form "spaces / * /messages / * ". Example:
+  /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
   core.String name;
 
   /// Text for generating preview chips. This text will not be displayed to the
@@ -1400,6 +1662,9 @@ class Message {
 
   /// The user who created the message.
   User sender;
+
+  /// Slash command information, if applicable.
+  SlashCommand slashCommand;
 
   /// The space the message belongs to.
   Space space;
@@ -1424,6 +1689,11 @@ class Message {
     if (_json.containsKey("argumentText")) {
       argumentText = _json["argumentText"];
     }
+    if (_json.containsKey("attachment")) {
+      attachment = (_json["attachment"] as core.List)
+          .map<Attachment>((value) => new Attachment.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("cards")) {
       cards = (_json["cards"] as core.List)
           .map<Card>((value) => new Card.fromJson(value))
@@ -1443,6 +1713,9 @@ class Message {
     }
     if (_json.containsKey("sender")) {
       sender = new User.fromJson(_json["sender"]);
+    }
+    if (_json.containsKey("slashCommand")) {
+      slashCommand = new SlashCommand.fromJson(_json["slashCommand"]);
     }
     if (_json.containsKey("space")) {
       space = new Space.fromJson(_json["space"]);
@@ -1468,6 +1741,10 @@ class Message {
     if (argumentText != null) {
       _json["argumentText"] = argumentText;
     }
+    if (attachment != null) {
+      _json["attachment"] =
+          attachment.map((value) => (value).toJson()).toList();
+    }
     if (cards != null) {
       _json["cards"] = cards.map((value) => (value).toJson()).toList();
     }
@@ -1486,6 +1763,9 @@ class Message {
     if (sender != null) {
       _json["sender"] = (sender).toJson();
     }
+    if (slashCommand != null) {
+      _json["slashCommand"] = (slashCommand).toJson();
+    }
     if (space != null) {
       _json["space"] = (space).toJson();
     }
@@ -1501,7 +1781,7 @@ class Message {
 
 /// An onclick action (e.g. open a link).
 class OnClick {
-  /// A form action will be trigger by this onclick if specified.
+  /// A form action will be triggered by this onclick if specified.
   FormAction action;
 
   /// This onclick triggers an open link action if specified.
@@ -1554,10 +1834,10 @@ class OpenLink {
   }
 }
 
-/// A section contains a collection of widgets that are rendered
-/// (vertically) in the order that they are specified. Across all platforms,
-/// cards have a narrow fixed width, so
-/// there is currently no need for layout properties (e.g. float).
+/// A section contains a collection of widgets that are rendered (vertically) in
+/// the order that they are specified. Across all platforms, cards have a narrow
+/// fixed width, so there is currently no need for layout properties (e.g.
+/// float).
 class Section {
   /// The header of the section, text formatted supported.
   core.String header;
@@ -1591,25 +1871,115 @@ class Section {
   }
 }
 
+/// A Slash Command in Hangouts Chat.
+class SlashCommand {
+  /// The id of the slash command invoked.
+  core.String commandId;
+
+  SlashCommand();
+
+  SlashCommand.fromJson(core.Map _json) {
+    if (_json.containsKey("commandId")) {
+      commandId = _json["commandId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (commandId != null) {
+      _json["commandId"] = commandId;
+    }
+    return _json;
+  }
+}
+
+/// Annotation metadata for slash commands (/).
+class SlashCommandMetadata {
+  /// The bot whose command was invoked.
+  User bot;
+
+  /// The command id of the invoked slash command.
+  core.String commandId;
+
+  /// The name of the invoked slash command.
+  core.String commandName;
+
+  /// Indicating whether the slash command is for a dialog.
+  core.bool triggersDialog;
+
+  /// The type of slash command.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
+  /// - "ADD" : Add bot to space.
+  /// - "INVOKE" : Invoke slash command in space.
+  core.String type;
+
+  SlashCommandMetadata();
+
+  SlashCommandMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("bot")) {
+      bot = new User.fromJson(_json["bot"]);
+    }
+    if (_json.containsKey("commandId")) {
+      commandId = _json["commandId"];
+    }
+    if (_json.containsKey("commandName")) {
+      commandName = _json["commandName"];
+    }
+    if (_json.containsKey("triggersDialog")) {
+      triggersDialog = _json["triggersDialog"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bot != null) {
+      _json["bot"] = (bot).toJson();
+    }
+    if (commandId != null) {
+      _json["commandId"] = commandId;
+    }
+    if (commandName != null) {
+      _json["commandName"] = commandName;
+    }
+    if (triggersDialog != null) {
+      _json["triggersDialog"] = triggersDialog;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// A room or DM in Hangouts Chat.
 class Space {
-  /// Output only. The display name (only if the space is a room).
+  /// Output only. The display name (only if the space is a room). Please note
+  /// that this field might not be populated in direct messages between humans.
   core.String displayName;
 
-  /// Resource name of the space, in the form "spaces / * ".
-  ///
-  /// Example: spaces/AAAAMpdlehYs
+  /// Resource name of the space, in the form "spaces / * ". Example:
+  /// spaces/AAAAMpdlehYs
   core.String name;
 
-  /// Output only. The type of a space.
+  /// Whether the space is a DM between a bot and a single human.
+  core.bool singleUserBotDm;
+
+  /// Whether the messages are threaded in this space.
+  core.bool threaded;
+
+  /// Output only. The type of a space. This is deprecated. Use
+  /// `single_user_bot_dm` instead.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED"
-  /// - "ROOM" : A chat space where memberships are free to change. Messages in
-  /// rooms are
-  /// threaded.
+  /// - "ROOM" : Multi-user spaces such as rooms and DMs between humans.
   /// - "DM" : 1:1 Direct Message between a human and a bot, where all messages
-  /// are
-  /// flat.
+  /// are flat.
   core.String type;
 
   Space();
@@ -1620,6 +1990,12 @@ class Space {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("singleUserBotDm")) {
+      singleUserBotDm = _json["singleUserBotDm"];
+    }
+    if (_json.containsKey("threaded")) {
+      threaded = _json["threaded"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -1634,6 +2010,12 @@ class Space {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (singleUserBotDm != null) {
+      _json["singleUserBotDm"] = singleUserBotDm;
+    }
+    if (threaded != null) {
+      _json["threaded"] = threaded;
     }
     if (type != null) {
       _json["type"] = type;
@@ -1698,9 +2080,8 @@ class TextParagraph {
 
 /// A thread in Hangouts Chat.
 class Thread {
-  /// Resource name, in the form "spaces / * /threads / * ".
-  ///
-  /// Example: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
+  /// Resource name, in the form "spaces / * /threads / * ". Example:
+  /// spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
   core.String name;
 
   Thread();
@@ -1813,8 +2194,8 @@ class UserMentionMetadata {
 
 /// A widget is a UI element that presents texts, images, etc.
 class WidgetMarkup {
-  /// A list of buttons. Buttons is also oneof data and only one of these
-  /// fields should be set.
+  /// A list of buttons. Buttons is also oneof data and only one of these fields
+  /// should be set.
   core.List<Button> buttons;
 
   /// Display an image in this widget.

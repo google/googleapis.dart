@@ -52,21 +52,16 @@ class AccountsProductsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Parent ID in the format `accounts/{account_id}`.
-  ///
-  /// `account_id` - The ID of the Manufacturer Center account.
+  /// [parent] - Parent ID in the format `accounts/{account_id}`. `account_id` -
+  /// The ID of the Manufacturer Center account.
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [name] - Name in the format
-  /// `{target_country}:{content_language}:{product_id}`.
-  ///
-  /// `target_country`   - The target country of the product as a CLDR territory
-  ///                      code (for example, US).
-  ///
+  /// `{target_country}:{content_language}:{product_id}`. `target_country` - The
+  /// target country of the product as a CLDR territory code (for example, US).
   /// `content_language` - The content language of the product as a two-letter
-  ///                      ISO 639-1 language code (for example, en).
-  ///
-  /// `product_id`     -   The ID of the product. For more information, see
+  /// ISO 639-1 language code (for example, en). `product_id` - The ID of the
+  /// product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
   /// Value must have pattern "^[^/]+$".
   ///
@@ -114,36 +109,28 @@ class AccountsProductsResourceApi {
   }
 
   /// Gets the product from a Manufacturer Center account, including product
-  /// issues.
-  ///
-  /// A recently updated product takes around 15 minutes to process. Changes are
-  /// only visible after it has been processed. While some issues may be
-  /// available once the product has been processed, other issues may take days
-  /// to appear.
+  /// issues. A recently updated product takes around 15 minutes to process.
+  /// Changes are only visible after it has been processed. While some issues
+  /// may be available once the product has been processed, other issues may
+  /// take days to appear.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Parent ID in the format `accounts/{account_id}`.
-  ///
-  /// `account_id` - The ID of the Manufacturer Center account.
+  /// [parent] - Parent ID in the format `accounts/{account_id}`. `account_id` -
+  /// The ID of the Manufacturer Center account.
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [name] - Name in the format
-  /// `{target_country}:{content_language}:{product_id}`.
-  ///
-  /// `target_country`   - The target country of the product as a CLDR territory
-  ///                      code (for example, US).
-  ///
+  /// `{target_country}:{content_language}:{product_id}`. `target_country` - The
+  /// target country of the product as a CLDR territory code (for example, US).
   /// `content_language` - The content language of the product as a two-letter
-  ///                      ISO 639-1 language code (for example, en).
-  ///
-  /// `product_id`     -   The ID of the product. For more information, see
+  /// ISO 639-1 language code (for example, en). `product_id` - The ID of the
+  /// product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [include] - The information to be included in the response. Only sections
-  /// listed here
-  /// will be returned.
+  /// listed here will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -195,20 +182,17 @@ class AccountsProductsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Parent ID in the format `accounts/{account_id}`.
-  ///
-  /// `account_id` - The ID of the Manufacturer Center account.
+  /// [parent] - Parent ID in the format `accounts/{account_id}`. `account_id` -
+  /// The ID of the Manufacturer Center account.
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [include] - The information to be included in the response. Only sections
-  /// listed here
-  /// will be returned.
+  /// listed here will be returned.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
   /// [pageSize] - Maximum number of product statuses to return in the response,
-  /// used for
-  /// paging.
+  /// used for paging.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -261,18 +245,15 @@ class AccountsProductsResourceApi {
   }
 
   /// Inserts or updates the attributes of the product in a Manufacturer Center
-  /// account.
-  ///
-  /// Creates a product with the provided attributes. If the product already
-  /// exists, then all attributes are replaced with the new ones. The checks at
-  /// upload time are minimal. All required attributes need to be present for a
-  /// product to be valid. Issues may show up later after the API has accepted a
-  /// new upload for a product and it is possible to overwrite an existing valid
-  /// product with an invalid product. To detect this, you should retrieve the
-  /// product and check it for issues once the new version is available.
-  ///
-  /// Uploaded attributes first need to be processed before they can be
-  /// retrieved. Until then, new products will be unavailable, and retrieval
+  /// account. Creates a product with the provided attributes. If the product
+  /// already exists, then all attributes are replaced with the new ones. The
+  /// checks at upload time are minimal. All required attributes need to be
+  /// present for a product to be valid. Issues may show up later after the API
+  /// has accepted a new upload for a product and it is possible to overwrite an
+  /// existing valid product with an invalid product. To detect this, you should
+  /// retrieve the product and check it for issues once the new version is
+  /// available. Uploaded attributes first need to be processed before they can
+  /// be retrieved. Until then, new products will be unavailable, and retrieval
   /// of previously uploaded products will return the original state of the
   /// product.
   ///
@@ -280,21 +261,16 @@ class AccountsProductsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Parent ID in the format `accounts/{account_id}`.
-  ///
-  /// `account_id` - The ID of the Manufacturer Center account.
+  /// [parent] - Parent ID in the format `accounts/{account_id}`. `account_id` -
+  /// The ID of the Manufacturer Center account.
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [name] - Name in the format
-  /// `{target_country}:{content_language}:{product_id}`.
-  ///
-  /// `target_country`   - The target country of the product as a CLDR territory
-  ///                      code (for example, US).
-  ///
+  /// `{target_country}:{content_language}:{product_id}`. `target_country` - The
+  /// target country of the product as a CLDR territory code (for example, US).
   /// `content_language` - The content language of the product as a two-letter
-  ///                      ISO 639-1 language code (for example, en).
-  ///
-  /// `product_id`     -   The ID of the product. For more information, see
+  /// ISO 639-1 language code (for example, en). `product_id` - The ID of the
+  /// product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
   /// Value must have pattern "^[^/]+$".
   ///
@@ -457,7 +433,7 @@ class Attributes {
   core.List<core.String> richProductContent;
 
   /// The scent of the product. For more information, see
-  ///  https://support.google.com/manufacturers/answer/6124116#scent.
+  /// https://support.google.com/manufacturers/answer/6124116#scent.
   core.String scent;
 
   /// The size of the product. For more information, see
@@ -838,13 +814,9 @@ class DestinationStatus {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -906,8 +878,7 @@ class Image {
   /// processed successfully.
   core.String imageUrl;
 
-  /// The status of the image.
-  /// @OutputOnly
+  /// The status of the image. @OutputOnly
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : The image status is unspecified. Should not be
   /// used.
@@ -929,8 +900,7 @@ class Image {
   /// - "HTTP_404" : The image URL returned a "404 Not Found" error.
   core.String status;
 
-  /// The type of the image, i.e., crawled or uploaded.
-  /// @OutputOnly
+  /// The type of the image, i.e., crawled or uploaded. @OutputOnly
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Type is unspecified. Should not be used.
   /// - "CRAWLED" : The image was crawled from a provided URL.
@@ -984,12 +954,10 @@ class Issue {
   /// Possible string values are:
   /// - "RESOLUTION_UNSPECIFIED" : Unspecified resolution, never used.
   /// - "USER_ACTION" : The user who provided the data must act in order to
-  /// resolve the issue
-  /// (for example by correcting some data).
+  /// resolve the issue (for example by correcting some data).
   /// - "PENDING_PROCESSING" : The issue will be resolved automatically (for
-  /// example image crawl or
-  /// Google review). No action is required now. Resolution might lead to
-  /// another issue (for example if crawl fails).
+  /// example image crawl or Google review). No action is required now.
+  /// Resolution might lead to another issue (for example if crawl fails).
   core.String resolution;
 
   /// The severity of the issue.
@@ -998,13 +966,11 @@ class Issue {
   /// - "ERROR" : Error severity. The issue prevents the usage of the whole
   /// item.
   /// - "WARNING" : Warning severity. The issue is either one that prevents the
-  /// usage of the
-  /// attribute that triggered it or one that will soon prevent the usage of
-  /// the whole item.
+  /// usage of the attribute that triggered it or one that will soon prevent the
+  /// usage of the whole item.
   /// - "INFO" : Info severity. The issue is one that doesn't require immediate
-  /// attention.
-  /// It is, for example, used to communicate which attributes are still
-  /// pending review.
+  /// attention. It is, for example, used to communicate which attributes are
+  /// still pending review.
   core.String severity;
 
   /// The timestamp when this issue appeared.
@@ -1149,8 +1115,7 @@ class Product {
   Attributes attributes;
 
   /// The content language of the product as a two-letter ISO 639-1 language
-  /// code
-  /// (for example, en).
+  /// code (for example, en).
   core.String contentLanguage;
 
   /// The status of the destinations.
@@ -1160,20 +1125,15 @@ class Product {
   core.List<Issue> issues;
 
   /// Name in the format `{target_country}:{content_language}:{product_id}`.
-  ///
-  /// `target_country`   - The target country of the product as a CLDR territory
-  ///                      code (for example, US).
-  ///
-  /// `content_language` - The content language of the product as a two-letter
-  ///                      ISO 639-1 language code (for example, en).
-  ///
-  /// `product_id`     -   The ID of the product. For more information, see
+  /// `target_country` - The target country of the product as a CLDR territory
+  /// code (for example, US). `content_language` - The content language of the
+  /// product as a two-letter ISO 639-1 language code (for example, en).
+  /// `product_id` - The ID of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
   core.String name;
 
-  /// Parent ID in the format `accounts/{account_id}`.
-  ///
-  /// `account_id` - The ID of the Manufacturer Center account.
+  /// Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of
+  /// the Manufacturer Center account.
   core.String parent;
 
   /// The ID of the product. For more information, see

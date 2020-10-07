@@ -56,6 +56,7 @@ buildCustomApp() {
   buildCounterCustomApp++;
   if (buildCounterCustomApp < 3) {
     o.languageCode = "foo";
+    o.packageName = "foo";
     o.title = "foo";
   }
   buildCounterCustomApp--;
@@ -66,6 +67,7 @@ checkCustomApp(api.CustomApp o) {
   buildCounterCustomApp++;
   if (buildCounterCustomApp < 3) {
     unittest.expect(o.languageCode, unittest.equals('foo'));
+    unittest.expect(o.packageName, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterCustomApp--;
@@ -102,6 +104,18 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("playcustomapp/v1/accounts/"));
+        pathOffset += 26;
+        index = path.indexOf("/customApps", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_account"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/customApps"));
+        pathOffset += 11;
 
         var query = (req.url).query;
         var queryOffset = 0;

@@ -12,7 +12,7 @@
     "baseUrl": "https://pagespeedonline.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Pagespeed Insights",
-    "description": "The PageSpeed Insights API lets you analyze the performance of your website with a simple API.  It offers tailored suggestions for how you can optimize your site, and lets you easily integrate PageSpeed Insights analysis into your development tools and workflow.\n",
+    "description": "The PageSpeed Insights API lets you analyze the performance of your website with a simple API. It offers tailored suggestions for how you can optimize your site, and lets you easily integrate PageSpeed Insights analysis into your development tools and workflow. ",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/speed/docs/insights/v5/about",
     "icons": {
@@ -25,34 +25,8 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -66,6 +40,32 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -85,18 +85,18 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         }
@@ -106,33 +106,18 @@
         "pagespeedapi": {
             "methods": {
                 "runpagespeed": {
-                    "description": "Runs PageSpeed analysis on the page at the specified URL, and returns\nPageSpeed scores, a list of suggestions to make that page faster, and other\ninformation.",
+                    "description": "Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information.",
                     "httpMethod": "GET",
                     "id": "pagespeedonline.pagespeedapi.runpagespeed",
                     "parameterOrder": [],
                     "parameters": {
-                        "utm_campaign": {
-                            "description": "Campaign name for analytics.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "url": {
-                            "description": "The URL to fetch and analyze",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "captchaToken": {
                             "description": "The captcha token passed when filling out a captcha.",
                             "location": "query",
                             "type": "string"
                         },
-                        "strategy": {
-                            "description": "The analysis strategy (desktop or mobile) to use, and desktop is the\ndefault",
-                            "enum": [
-                                "STRATEGY_UNSPECIFIED",
-                                "DESKTOP",
-                                "MOBILE"
-                            ],
+                        "locale": {
+                            "description": "The locale used to localize formatted results",
                             "location": "query",
                             "type": "string"
                         },
@@ -141,8 +126,33 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "strategy": {
+                            "description": "The analysis strategy (desktop or mobile) to use, and desktop is the default",
+                            "enum": [
+                                "STRATEGY_UNSPECIFIED",
+                                "DESKTOP",
+                                "MOBILE"
+                            ],
+                            "enumDescriptions": [
+                                "UNDEFINED.",
+                                "Fetch and analyze the URL for desktop browsers.",
+                                "Fetch and analyze the URL for mobile devices."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "url": {
+                            "description": "Required. The URL to fetch and analyze",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "utm_campaign": {
+                            "description": "Campaign name for analytics.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "category": {
-                            "description": "A Lighthouse category to run; if none are given, only Performance category\nwill be run",
+                            "description": "A Lighthouse category to run; if none are given, only Performance category will be run",
                             "enum": [
                                 "CATEGORY_UNSPECIFIED",
                                 "ACCESSIBILITY",
@@ -151,13 +161,16 @@
                                 "PWA",
                                 "SEO"
                             ],
+                            "enumDescriptions": [
+                                "Default UNDEFINED category.",
+                                "Accessibility (a11y), category pertaining to a website's capacity to be accessible to all users.",
+                                "Best Practices, category pertaining to a website's conformance to web best practice.",
+                                "Performance, category pertaining to a website's performance.",
+                                "Progressive Web App (PWA), category pertaining to a website's ability to be run as a PWA.",
+                                "Search Engine Optimization (SEO), category pertaining to a website's ability to be indexed by search engines."
+                            ],
                             "location": "query",
                             "repeated": true,
-                            "type": "string"
-                        },
-                        "locale": {
-                            "description": "The locale used to localize formatted results",
-                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -172,51 +185,172 @@
             }
         }
     },
-    "revision": "20200318",
+    "revision": "20201001",
     "rootUrl": "https://pagespeedonline.googleapis.com/",
     "schemas": {
-        "StackPack": {
-            "description": "Message containing Stack Pack information.",
-            "id": "StackPack",
+        "Categories": {
+            "description": "The categories in a Lighthouse run.",
+            "id": "Categories",
             "properties": {
-                "iconDataURL": {
-                    "description": "The stack pack icon data uri.",
-                    "type": "string"
+                "best-practices": {
+                    "$ref": "LighthouseCategoryV5",
+                    "description": "The best practices category, containing all best practices related audits."
                 },
-                "id": {
-                    "description": "The stack pack id.",
-                    "type": "string"
+                "pwa": {
+                    "$ref": "LighthouseCategoryV5",
+                    "description": "The Progressive-Web-App (PWA) category, containing all pwa related audits."
                 },
-                "title": {
-                    "description": "The stack pack title.",
-                    "type": "string"
+                "performance": {
+                    "$ref": "LighthouseCategoryV5",
+                    "description": "The performance category, containing all performance related audits."
                 },
-                "descriptions": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "The stack pack advice strings.",
-                    "type": "object"
+                "seo": {
+                    "$ref": "LighthouseCategoryV5",
+                    "description": "The Search-Engine-Optimization (SEO) category, containing all seo related audits."
+                },
+                "accessibility": {
+                    "$ref": "LighthouseCategoryV5",
+                    "description": "The accessibility category, containing all accessibility related audits."
                 }
             },
             "type": "object"
         },
-        "Bucket": {
-            "description": "A proportion of data in the total distribution, bucketed by a min/max\npercentage. Each bucket's range is bounded by min <= x < max, In\nmillisecond.",
-            "id": "Bucket",
+        "RendererFormattedStrings": {
+            "description": "Message holding the formatted strings used in the renderer.",
+            "id": "RendererFormattedStrings",
             "properties": {
-                "min": {
-                    "description": "Lower bound for a bucket's range.",
-                    "format": "int32",
-                    "type": "integer"
+                "auditGroupExpandTooltip": {
+                    "description": "The tooltip text on an expandable chevron icon.",
+                    "type": "string"
                 },
-                "max": {
-                    "description": "Upper bound for a bucket's range.",
-                    "format": "int32",
-                    "type": "integer"
+                "errorMissingAuditInfo": {
+                    "description": "The error string shown next to an erroring audit.",
+                    "type": "string"
                 },
-                "proportion": {
-                    "description": "The proportion of data in this bucket.",
+                "toplevelWarningsMessage": {
+                    "description": "The label shown preceding important warnings that may have invalidated an entire report.",
+                    "type": "string"
+                },
+                "crcLongestDurationLabel": {
+                    "description": "The label for values shown in the summary of critical request chains.",
+                    "type": "string"
+                },
+                "manualAuditsGroupTitle": {
+                    "description": "The heading shown above a list of audits that were not computerd in the run.",
+                    "type": "string"
+                },
+                "scorescaleLabel": {
+                    "description": "The label that explains the score gauges scale (0-49, 50-89, 90-100).",
+                    "type": "string"
+                },
+                "opportunityResourceColumnLabel": {
+                    "description": "The heading for the estimated page load savings opportunity of an audit.",
+                    "type": "string"
+                },
+                "passedAuditsGroupTitle": {
+                    "description": "The heading that is shown above a list of audits that are passing.",
+                    "type": "string"
+                },
+                "lsPerformanceCategoryDescription": {
+                    "description": "The disclaimer shown under performance explaning that the network can vary.",
+                    "type": "string"
+                },
+                "varianceDisclaimer": {
+                    "description": "The disclaimer shown below a performance metric value.",
+                    "type": "string"
+                },
+                "notApplicableAuditsGroupTitle": {
+                    "description": "The heading shown above a list of audits that do not apply to a page.",
+                    "type": "string"
+                },
+                "errorLabel": {
+                    "description": "The label shown next to an audit or metric that has had an error.",
+                    "type": "string"
+                },
+                "crcInitialNavigation": {
+                    "description": "The label for the initial request in a critical request chain.",
+                    "type": "string"
+                },
+                "warningHeader": {
+                    "description": "The label shown above a bulleted list of warnings.",
+                    "type": "string"
+                },
+                "labDataTitle": {
+                    "description": "The title of the lab data performance category.",
+                    "type": "string"
+                },
+                "opportunitySavingsColumnLabel": {
+                    "description": "The heading for the estimated page load savings of opportunity audits.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CategoryGroupV5": {
+            "description": "Message containing a category",
+            "id": "CategoryGroupV5",
+            "properties": {
+                "title": {
+                    "description": "The human readable title of the group",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "The description of what the category is grouping",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LighthouseAuditResultV5": {
+            "description": "An audit's result object in a Lighthouse result.",
+            "id": "LighthouseAuditResultV5",
+            "properties": {
+                "id": {
+                    "description": "The audit's id.",
+                    "type": "string"
+                },
+                "warnings": {
+                    "description": "Possible warnings that occurred in the audit, can be null.",
+                    "type": "any"
+                },
+                "scoreDisplayMode": {
+                    "description": "The enumerated score display mode.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "The human readable title.",
+                    "type": "string"
+                },
+                "explanation": {
+                    "description": "An explanation of the errors in the audit.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "The description of the audit.",
+                    "type": "string"
+                },
+                "errorMessage": {
+                    "description": "An error message from a thrown error inside the audit.",
+                    "type": "string"
+                },
+                "displayValue": {
+                    "description": "The value that should be displayed on the UI for this audit.",
+                    "type": "string"
+                },
+                "score": {
+                    "description": "The score of the audit, can be null.",
+                    "type": "any"
+                },
+                "details": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Freeform details section of the audit.",
+                    "type": "object"
+                },
+                "numericValue": {
+                    "description": "A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or the timestamp of a specific load event. More information can be found in the audit details, if present.",
                     "format": "double",
                     "type": "number"
                 }
@@ -227,17 +361,47 @@
             "description": "Message containing environment configuration for a Lighthouse run.",
             "id": "Environment",
             "properties": {
-                "benchmarkIndex": {
-                    "description": "The benchmark index number that indicates rough device class.",
-                    "format": "double",
-                    "type": "number"
+                "networkUserAgent": {
+                    "description": "The user agent string that was sent over the network.",
+                    "type": "string"
                 },
                 "hostUserAgent": {
                     "description": "The user agent string of the version of Chrome used.",
                     "type": "string"
                 },
-                "networkUserAgent": {
-                    "description": "The user agent string that was sent over the network.",
+                "benchmarkIndex": {
+                    "description": "The benchmark index number that indicates rough device class.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "PagespeedApiLoadingExperienceV5": {
+            "description": "The CrUX loading experience object that contains CrUX data breakdowns.",
+            "id": "PagespeedApiLoadingExperienceV5",
+            "properties": {
+                "overall_category": {
+                    "description": "The human readable speed \"category\" of the id.",
+                    "type": "string"
+                },
+                "origin_fallback": {
+                    "description": "True if the result is an origin fallback from a page, false otherwise.",
+                    "type": "boolean"
+                },
+                "metrics": {
+                    "additionalProperties": {
+                        "$ref": "UserPageLoadMetricV5"
+                    },
+                    "description": "The map of .",
+                    "type": "object"
+                },
+                "id": {
+                    "description": "The url, pattern or origin which the metrics are on.",
+                    "type": "string"
+                },
+                "initial_url": {
+                    "description": "The requested URL, which may differ from the resolved \"id\".",
                     "type": "string"
                 }
             },
@@ -247,17 +411,39 @@
             "description": "The Lighthouse result object.",
             "id": "LighthouseResultV5",
             "properties": {
-                "runtimeError": {
-                    "$ref": "RuntimeError",
-                    "description": "A top-level error message that, if present, indicates a serious enough\nproblem that this Lighthouse result may need to be discarded."
-                },
-                "fetchTime": {
-                    "description": "The time that this run was fetched.",
-                    "type": "string"
-                },
                 "requestedUrl": {
                     "description": "The original requested url.",
                     "type": "string"
+                },
+                "categories": {
+                    "$ref": "Categories",
+                    "description": "Map of categories in the LHR."
+                },
+                "timing": {
+                    "$ref": "Timing",
+                    "description": "Timing information for this LHR."
+                },
+                "audits": {
+                    "additionalProperties": {
+                        "$ref": "LighthouseAuditResultV5"
+                    },
+                    "description": "Map of audits in the LHR.",
+                    "type": "object"
+                },
+                "runWarnings": {
+                    "description": "List of all run warnings in the LHR. Will always output to at least `[]`.",
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
+                "runtimeError": {
+                    "$ref": "RuntimeError",
+                    "description": "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded."
+                },
+                "environment": {
+                    "$ref": "Environment",
+                    "description": "Environment settings that were used when making this LHR."
                 },
                 "userAgent": {
                     "description": "The user agent that was used to run this LHR.",
@@ -267,43 +453,17 @@
                     "$ref": "ConfigSettings",
                     "description": "The configuration settings for this LHR."
                 },
-                "timing": {
-                    "$ref": "Timing",
-                    "description": "Timing information for this LHR."
-                },
-                "runWarnings": {
-                    "description": "List of all run warnings in the LHR.  Will always output to at least `[]`.",
-                    "items": {
-                        "type": "any"
-                    },
-                    "type": "array"
-                },
-                "audits": {
-                    "additionalProperties": {
-                        "$ref": "LighthouseAuditResultV5"
-                    },
-                    "description": "Map of audits in the LHR.",
-                    "type": "object"
-                },
-                "environment": {
-                    "$ref": "Environment",
-                    "description": "Environment settings that were used when making this LHR."
-                },
-                "finalUrl": {
-                    "description": "The final resolved url that was audited.",
+                "lighthouseVersion": {
+                    "description": "The lighthouse version that was used to generate this LHR.",
                     "type": "string"
                 },
                 "i18n": {
                     "$ref": "I18n",
                     "description": "The internationalization strings that are required to render the LHR."
                 },
-                "lighthouseVersion": {
-                    "description": "The lighthouse version that was used to generate this LHR.",
+                "finalUrl": {
+                    "description": "The final resolved url that was audited.",
                     "type": "string"
-                },
-                "categories": {
-                    "$ref": "Categories",
-                    "description": "Map of categories in the LHR."
                 },
                 "stackPacks": {
                     "description": "The Stack Pack advice strings.",
@@ -318,6 +478,49 @@
                     },
                     "description": "Map of category groups in the LHR.",
                     "type": "object"
+                },
+                "fetchTime": {
+                    "description": "The time that this run was fetched.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PagespeedApiPagespeedResponseV5": {
+            "description": "The Pagespeed API response object.",
+            "id": "PagespeedApiPagespeedResponseV5",
+            "properties": {
+                "kind": {
+                    "description": "Kind of result.",
+                    "type": "string"
+                },
+                "version": {
+                    "$ref": "PagespeedVersion",
+                    "description": "The version of PageSpeed used to generate these results."
+                },
+                "lighthouseResult": {
+                    "$ref": "LighthouseResultV5",
+                    "description": "Lighthouse response for the audit url as an object."
+                },
+                "id": {
+                    "description": "Canonicalized and final URL for the document, after following page redirects (if any).",
+                    "type": "string"
+                },
+                "originLoadingExperience": {
+                    "$ref": "PagespeedApiLoadingExperienceV5",
+                    "description": "Metrics of the aggregated page loading experience of the origin"
+                },
+                "captchaResult": {
+                    "description": "The captcha verify result",
+                    "type": "string"
+                },
+                "loadingExperience": {
+                    "$ref": "PagespeedApiLoadingExperienceV5",
+                    "description": "Metrics of end users' page loading experience."
+                },
+                "analysisUTCTimestamp": {
+                    "description": "The UTC timestamp of this analysis.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -330,10 +533,6 @@
                     "description": "The locale setting.",
                     "type": "string"
                 },
-                "channel": {
-                    "description": "How Lighthouse was run, e.g. from the Chrome extension or from the npm\nmodule.",
-                    "type": "string"
-                },
                 "onlyCategories": {
                     "description": "List of categories of audits the run should conduct.",
                     "type": "any"
@@ -341,62 +540,72 @@
                 "emulatedFormFactor": {
                     "description": "The form factor the emulation should use.",
                     "type": "string"
+                },
+                "channel": {
+                    "description": "How Lighthouse was run, e.g. from the Chrome extension or from the npm module.",
+                    "type": "string"
                 }
             },
             "type": "object"
         },
-        "LighthouseAuditResultV5": {
-            "description": "An audit's result object in a Lighthouse result.",
-            "id": "LighthouseAuditResultV5",
+        "StackPack": {
+            "description": "Message containing Stack Pack information.",
+            "id": "StackPack",
             "properties": {
-                "score": {
-                    "description": "The score of the audit, can be null.",
-                    "type": "any"
-                },
-                "errorMessage": {
-                    "description": "An error message from a thrown error inside the audit.",
+                "iconDataURL": {
+                    "description": "The stack pack icon data uri.",
                     "type": "string"
-                },
-                "displayValue": {
-                    "description": "The value that should be displayed on the UI for this audit.",
-                    "type": "string"
-                },
-                "numericValue": {
-                    "description": "A numeric value that has a meaning specific to the audit, e.g. the number\nof nodes in the DOM or the timestamp of a specific load event. More\ninformation can be found in the audit details, if present.",
-                    "format": "double",
-                    "type": "number"
                 },
                 "id": {
-                    "description": "The audit's id.",
+                    "description": "The stack pack id.",
                     "type": "string"
+                },
+                "descriptions": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The stack pack advice strings.",
+                    "type": "object"
                 },
                 "title": {
-                    "description": "The human readable title.",
+                    "description": "The stack pack title.",
                     "type": "string"
-                },
-                "description": {
-                    "description": "The description of the audit.",
-                    "type": "string"
-                },
-                "warnings": {
-                    "description": "Possible warnings that occurred in the audit, can be null.",
-                    "type": "any"
-                },
-                "scoreDisplayMode": {
-                    "description": "The enumerated score display mode.",
-                    "type": "string"
-                },
-                "explanation": {
-                    "description": "An explanation of the errors in the audit.",
-                    "type": "string"
-                },
-                "details": {
-                    "additionalProperties": {
-                        "description": "Properties of the object.",
-                        "type": "any"
+                }
+            },
+            "type": "object"
+        },
+        "UserPageLoadMetricV5": {
+            "description": "A CrUX metric object for a single metric and form factor.",
+            "id": "UserPageLoadMetricV5",
+            "properties": {
+                "distributions": {
+                    "description": "Metric distributions. Proportions should sum up to 1.",
+                    "items": {
+                        "$ref": "Bucket"
                     },
-                    "description": "Freeform details section of the audit.",
-                    "type": "object"
+                    "type": "array"
+                },
+                "percentile": {
+                    "description": "We use this field to store certain percentile value for this metric. For v4, this field contains pc50. For v5, this field contains pc90.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "median": {
+                    "description": "The median number of the metric, in millisecond.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "formFactor": {
+                    "description": "Identifies the form factor of the metric being collected.",
+                    "type": "string"
+                },
+                "category": {
+                    "description": "The category of the specific time metric.",
+                    "type": "string"
+                },
+                "metricId": {
+                    "description": "Identifies the type of the metric.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -407,89 +616,23 @@
             "properties": {
                 "rendererFormattedStrings": {
                     "$ref": "RendererFormattedStrings",
-                    "description": "Internationalized strings that are formatted to the locale in\nconfigSettings."
-                }
-            },
-            "type": "object"
-        },
-        "PagespeedApiPagespeedResponseV5": {
-            "description": "The Pagespeed API response object.",
-            "id": "PagespeedApiPagespeedResponseV5",
-            "properties": {
-                "analysisUTCTimestamp": {
-                    "description": "The UTC timestamp of this analysis.",
-                    "type": "string"
-                },
-                "loadingExperience": {
-                    "$ref": "PagespeedApiLoadingExperienceV5",
-                    "description": "Metrics of end users' page loading experience."
-                },
-                "id": {
-                    "description": "Canonicalized and final URL for the document, after following page\nredirects (if any).",
-                    "type": "string"
-                },
-                "version": {
-                    "$ref": "PagespeedVersion",
-                    "description": "The version of PageSpeed used to generate these results."
-                },
-                "originLoadingExperience": {
-                    "$ref": "PagespeedApiLoadingExperienceV5",
-                    "description": "Metrics of the aggregated page loading experience of the origin"
-                },
-                "kind": {
-                    "description": "Kind of result.",
-                    "type": "string"
-                },
-                "captchaResult": {
-                    "description": "The captcha verify result",
-                    "type": "string"
-                },
-                "lighthouseResult": {
-                    "$ref": "LighthouseResultV5",
-                    "description": "Lighthouse response for the audit url as an object."
-                }
-            },
-            "type": "object"
-        },
-        "Categories": {
-            "description": "The categories in a Lighthouse run.",
-            "id": "Categories",
-            "properties": {
-                "performance": {
-                    "$ref": "LighthouseCategoryV5",
-                    "description": "The performance category, containing all performance related audits."
-                },
-                "best-practices": {
-                    "$ref": "LighthouseCategoryV5",
-                    "description": "The best practices category, containing all best practices related\naudits."
-                },
-                "pwa": {
-                    "$ref": "LighthouseCategoryV5",
-                    "description": "The Progressive-Web-App (PWA) category, containing all pwa related\naudits."
-                },
-                "accessibility": {
-                    "$ref": "LighthouseCategoryV5",
-                    "description": "The accessibility category, containing all accessibility related audits."
-                },
-                "seo": {
-                    "$ref": "LighthouseCategoryV5",
-                    "description": "The Search-Engine-Optimization (SEO) category, containing all seo related\naudits."
+                    "description": "Internationalized strings that are formatted to the locale in configSettings."
                 }
             },
             "type": "object"
         },
         "AuditRefs": {
-            "description": "A light reference to an audit by id, used to group and weight audits in a\ngiven category.",
+            "description": "A light reference to an audit by id, used to group and weight audits in a given category.",
             "id": "AuditRefs",
             "properties": {
+                "id": {
+                    "description": "The audit ref id.",
+                    "type": "string"
+                },
                 "weight": {
                     "description": "The weight this audit's score has on the overall category score.",
                     "format": "double",
                     "type": "number"
-                },
-                "id": {
-                    "description": "The audit ref id.",
-                    "type": "string"
                 },
                 "group": {
                     "description": "The category group that the audit belongs to (optional).",
@@ -498,16 +641,16 @@
             },
             "type": "object"
         },
-        "CategoryGroupV5": {
-            "description": "Message containing a category",
-            "id": "CategoryGroupV5",
+        "RuntimeError": {
+            "description": "Message containing a runtime error config.",
+            "id": "RuntimeError",
             "properties": {
-                "description": {
-                    "description": "The description of what the category is grouping",
+                "message": {
+                    "description": "A human readable message explaining the error code.",
                     "type": "string"
                 },
-                "title": {
-                    "description": "The human readable title of the group",
+                "code": {
+                    "description": "The enumerated Lighthouse Error code.",
                     "type": "string"
                 }
             },
@@ -528,16 +671,35 @@
             },
             "type": "object"
         },
-        "RuntimeError": {
-            "description": "Message containing a runtime error config.",
-            "id": "RuntimeError",
+        "LighthouseCategoryV5": {
+            "description": "A Lighthouse category.",
+            "id": "LighthouseCategoryV5",
             "properties": {
-                "code": {
-                    "description": "The enumerated Lighthouse Error code.",
+                "manualDescription": {
+                    "description": "A description for the manual audits in the category.",
                     "type": "string"
                 },
-                "message": {
-                    "description": "A human readable message explaining the error code.",
+                "id": {
+                    "description": "The string identifier of the category.",
+                    "type": "string"
+                },
+                "score": {
+                    "description": "The overall score of the category, the weighted average of all its audits. (The category's score, can be null.)",
+                    "type": "any"
+                },
+                "auditRefs": {
+                    "description": "An array of references to all the audit members of this category.",
+                    "items": {
+                        "$ref": "AuditRefs"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "A more detailed description of the category and its importance.",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "The human-friendly name of the category.",
                     "type": "string"
                 }
             },
@@ -555,169 +717,24 @@
             },
             "type": "object"
         },
-        "PagespeedApiLoadingExperienceV5": {
-            "description": "The CrUX loading experience object that contains CrUX data breakdowns.",
-            "id": "PagespeedApiLoadingExperienceV5",
+        "Bucket": {
+            "description": "A proportion of data in the total distribution, bucketed by a min/max percentage. Each bucket's range is bounded by min <= x < max, In millisecond.",
+            "id": "Bucket",
             "properties": {
-                "metrics": {
-                    "additionalProperties": {
-                        "$ref": "UserPageLoadMetricV5"
-                    },
-                    "description": "The map of <metrics, data>.",
-                    "type": "object"
-                },
-                "overall_category": {
-                    "description": "The human readable speed \"category\" of the id.",
-                    "type": "string"
-                },
-                "initial_url": {
-                    "description": "The requested URL, which may differ from the resolved \"id\".",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "The url, pattern or origin which the metrics are on.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LighthouseCategoryV5": {
-            "description": "A Lighthouse category.",
-            "id": "LighthouseCategoryV5",
-            "properties": {
-                "title": {
-                    "description": "The human-friendly name of the category.",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A more detailed description of the category and its importance.",
-                    "type": "string"
-                },
-                "auditRefs": {
-                    "description": "An array of references to all the audit members of this category.",
-                    "items": {
-                        "$ref": "AuditRefs"
-                    },
-                    "type": "array"
-                },
-                "score": {
-                    "description": "The overall score of the category, the weighted average of all its audits.\n(The category's score, can be null.)",
-                    "type": "any"
-                },
-                "id": {
-                    "description": "The string identifier of the category.",
-                    "type": "string"
-                },
-                "manualDescription": {
-                    "description": "A description for the manual audits in the category.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RendererFormattedStrings": {
-            "description": "Message holding the formatted strings used in the renderer.",
-            "id": "RendererFormattedStrings",
-            "properties": {
-                "opportunitySavingsColumnLabel": {
-                    "description": "The heading for the estimated page load savings of opportunity audits.",
-                    "type": "string"
-                },
-                "crcInitialNavigation": {
-                    "description": "The label for the initial request in a critical request chain.",
-                    "type": "string"
-                },
-                "crcLongestDurationLabel": {
-                    "description": "The label for values shown in the summary of critical request chains.",
-                    "type": "string"
-                },
-                "warningHeader": {
-                    "description": "The label shown above a bulleted list of warnings.",
-                    "type": "string"
-                },
-                "scorescaleLabel": {
-                    "description": "The label that explains the score gauges scale (0-49, 50-89, 90-100).",
-                    "type": "string"
-                },
-                "manualAuditsGroupTitle": {
-                    "description": "The heading shown above a list of audits that were not computerd in the\nrun.",
-                    "type": "string"
-                },
-                "lsPerformanceCategoryDescription": {
-                    "description": "The disclaimer shown under performance explaning that the network can\nvary.",
-                    "type": "string"
-                },
-                "errorLabel": {
-                    "description": "The label shown next to an audit or metric that has had an error.",
-                    "type": "string"
-                },
-                "notApplicableAuditsGroupTitle": {
-                    "description": "The heading shown above a list of audits that do not apply to a page.",
-                    "type": "string"
-                },
-                "labDataTitle": {
-                    "description": "The title of the lab data performance category.",
-                    "type": "string"
-                },
-                "passedAuditsGroupTitle": {
-                    "description": "The heading that is shown above a list of audits that are passing.",
-                    "type": "string"
-                },
-                "auditGroupExpandTooltip": {
-                    "description": "The tooltip text on an expandable chevron icon.",
-                    "type": "string"
-                },
-                "errorMissingAuditInfo": {
-                    "description": "The error string shown next to an erroring audit.",
-                    "type": "string"
-                },
-                "toplevelWarningsMessage": {
-                    "description": "The label shown preceding important warnings that may have invalidated\nan entire report.",
-                    "type": "string"
-                },
-                "opportunityResourceColumnLabel": {
-                    "description": "The heading for the estimated page load savings opportunity of an\naudit.",
-                    "type": "string"
-                },
-                "varianceDisclaimer": {
-                    "description": "The disclaimer shown below a performance metric value.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "UserPageLoadMetricV5": {
-            "description": "A CrUX metric object for a single metric and form factor.",
-            "id": "UserPageLoadMetricV5",
-            "properties": {
-                "formFactor": {
-                    "description": "Identifies the form factor of the metric being collected.",
-                    "type": "string"
-                },
-                "metricId": {
-                    "description": "Identifies the type of the metric.",
-                    "type": "string"
-                },
-                "median": {
-                    "description": "The median number of the metric, in millisecond.",
+                "min": {
+                    "description": "Lower bound for a bucket's range.",
                     "format": "int32",
                     "type": "integer"
                 },
-                "percentile": {
-                    "description": "We use this field to store certain percentile value for this metric.\nFor v4, this field contains pc50.\nFor v5, this field contains pc90.",
+                "max": {
+                    "description": "Upper bound for a bucket's range.",
                     "format": "int32",
                     "type": "integer"
                 },
-                "category": {
-                    "description": "The category of the specific time metric.",
-                    "type": "string"
-                },
-                "distributions": {
-                    "description": "Metric distributions. Proportions should sum up to 1.",
-                    "items": {
-                        "$ref": "Bucket"
-                    },
-                    "type": "array"
+                "proportion": {
+                    "description": "The proportion of data in this bucket.",
+                    "format": "double",
+                    "type": "number"
                 }
             },
             "type": "object"

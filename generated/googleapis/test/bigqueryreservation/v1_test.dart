@@ -104,6 +104,7 @@ buildCapacityCommitment() {
   buildCounterCapacityCommitment++;
   if (buildCounterCapacityCommitment < 3) {
     o.commitmentEndTime = "foo";
+    o.commitmentStartTime = "foo";
     o.failureStatus = buildStatus();
     o.name = "foo";
     o.plan = "foo";
@@ -119,6 +120,7 @@ checkCapacityCommitment(api.CapacityCommitment o) {
   buildCounterCapacityCommitment++;
   if (buildCounterCapacityCommitment < 3) {
     unittest.expect(o.commitmentEndTime, unittest.equals('foo'));
+    unittest.expect(o.commitmentStartTime, unittest.equals('foo'));
     checkStatus(o.failureStatus);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.plan, unittest.equals('foo'));
@@ -163,14 +165,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed5429() {
+buildUnnamed5828() {
   var o = new core.List<api.Assignment>();
   o.add(buildAssignment());
   o.add(buildAssignment());
   return o;
 }
 
-checkUnnamed5429(core.List<api.Assignment> o) {
+checkUnnamed5828(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
@@ -181,7 +183,7 @@ buildListAssignmentsResponse() {
   var o = new api.ListAssignmentsResponse();
   buildCounterListAssignmentsResponse++;
   if (buildCounterListAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed5429();
+    o.assignments = buildUnnamed5828();
     o.nextPageToken = "foo";
   }
   buildCounterListAssignmentsResponse--;
@@ -191,20 +193,20 @@ buildListAssignmentsResponse() {
 checkListAssignmentsResponse(api.ListAssignmentsResponse o) {
   buildCounterListAssignmentsResponse++;
   if (buildCounterListAssignmentsResponse < 3) {
-    checkUnnamed5429(o.assignments);
+    checkUnnamed5828(o.assignments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAssignmentsResponse--;
 }
 
-buildUnnamed5430() {
+buildUnnamed5829() {
   var o = new core.List<api.CapacityCommitment>();
   o.add(buildCapacityCommitment());
   o.add(buildCapacityCommitment());
   return o;
 }
 
-checkUnnamed5430(core.List<api.CapacityCommitment> o) {
+checkUnnamed5829(core.List<api.CapacityCommitment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCapacityCommitment(o[0]);
   checkCapacityCommitment(o[1]);
@@ -215,7 +217,7 @@ buildListCapacityCommitmentsResponse() {
   var o = new api.ListCapacityCommitmentsResponse();
   buildCounterListCapacityCommitmentsResponse++;
   if (buildCounterListCapacityCommitmentsResponse < 3) {
-    o.capacityCommitments = buildUnnamed5430();
+    o.capacityCommitments = buildUnnamed5829();
     o.nextPageToken = "foo";
   }
   buildCounterListCapacityCommitmentsResponse--;
@@ -225,20 +227,20 @@ buildListCapacityCommitmentsResponse() {
 checkListCapacityCommitmentsResponse(api.ListCapacityCommitmentsResponse o) {
   buildCounterListCapacityCommitmentsResponse++;
   if (buildCounterListCapacityCommitmentsResponse < 3) {
-    checkUnnamed5430(o.capacityCommitments);
+    checkUnnamed5829(o.capacityCommitments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCapacityCommitmentsResponse--;
 }
 
-buildUnnamed5431() {
+buildUnnamed5830() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed5431(core.List<api.Operation> o) {
+checkUnnamed5830(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -250,7 +252,7 @@ buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed5431();
+    o.operations = buildUnnamed5830();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -260,19 +262,19 @@ checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed5431(o.operations);
+    checkUnnamed5830(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
 
-buildUnnamed5432() {
+buildUnnamed5831() {
   var o = new core.List<api.Reservation>();
   o.add(buildReservation());
   o.add(buildReservation());
   return o;
 }
 
-checkUnnamed5432(core.List<api.Reservation> o) {
+checkUnnamed5831(core.List<api.Reservation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReservation(o[0]);
   checkReservation(o[1]);
@@ -284,7 +286,7 @@ buildListReservationsResponse() {
   buildCounterListReservationsResponse++;
   if (buildCounterListReservationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reservations = buildUnnamed5432();
+    o.reservations = buildUnnamed5831();
   }
   buildCounterListReservationsResponse--;
   return o;
@@ -294,19 +296,19 @@ checkListReservationsResponse(api.ListReservationsResponse o) {
   buildCounterListReservationsResponse++;
   if (buildCounterListReservationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed5432(o.reservations);
+    checkUnnamed5831(o.reservations);
   }
   buildCounterListReservationsResponse--;
 }
 
-buildUnnamed5433() {
+buildUnnamed5832() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5433(core.List<core.String> o) {
+checkUnnamed5832(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -317,7 +319,7 @@ buildMergeCapacityCommitmentsRequest() {
   var o = new api.MergeCapacityCommitmentsRequest();
   buildCounterMergeCapacityCommitmentsRequest++;
   if (buildCounterMergeCapacityCommitmentsRequest < 3) {
-    o.capacityCommitmentIds = buildUnnamed5433();
+    o.capacityCommitmentIds = buildUnnamed5832();
   }
   buildCounterMergeCapacityCommitmentsRequest--;
   return o;
@@ -326,7 +328,7 @@ buildMergeCapacityCommitmentsRequest() {
 checkMergeCapacityCommitmentsRequest(api.MergeCapacityCommitmentsRequest o) {
   buildCounterMergeCapacityCommitmentsRequest++;
   if (buildCounterMergeCapacityCommitmentsRequest < 3) {
-    checkUnnamed5433(o.capacityCommitmentIds);
+    checkUnnamed5832(o.capacityCommitmentIds);
   }
   buildCounterMergeCapacityCommitmentsRequest--;
 }
@@ -350,7 +352,7 @@ checkMoveAssignmentRequest(api.MoveAssignmentRequest o) {
   buildCounterMoveAssignmentRequest--;
 }
 
-buildUnnamed5434() {
+buildUnnamed5833() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -365,7 +367,7 @@ buildUnnamed5434() {
   return o;
 }
 
-checkUnnamed5434(core.Map<core.String, core.Object> o) {
+checkUnnamed5833(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -379,7 +381,7 @@ checkUnnamed5434(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5435() {
+buildUnnamed5834() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -394,7 +396,7 @@ buildUnnamed5435() {
   return o;
 }
 
-checkUnnamed5435(core.Map<core.String, core.Object> o) {
+checkUnnamed5834(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -415,9 +417,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed5434();
+    o.metadata = buildUnnamed5833();
     o.name = "foo";
-    o.response = buildUnnamed5435();
+    o.response = buildUnnamed5834();
   }
   buildCounterOperation--;
   return o;
@@ -428,9 +430,9 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed5434(o.metadata);
+    checkUnnamed5833(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5435(o.response);
+    checkUnnamed5834(o.response);
   }
   buildCounterOperation--;
 }
@@ -440,9 +442,11 @@ buildReservation() {
   var o = new api.Reservation();
   buildCounterReservation++;
   if (buildCounterReservation < 3) {
+    o.creationTime = "foo";
     o.ignoreIdleSlots = true;
     o.name = "foo";
     o.slotCapacity = "foo";
+    o.updateTime = "foo";
   }
   buildCounterReservation--;
   return o;
@@ -451,21 +455,57 @@ buildReservation() {
 checkReservation(api.Reservation o) {
   buildCounterReservation++;
   if (buildCounterReservation < 3) {
+    unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.ignoreIdleSlots, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.slotCapacity, unittest.equals('foo'));
+    unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterReservation--;
 }
 
-buildUnnamed5436() {
+buildUnnamed5835() {
   var o = new core.List<api.Assignment>();
   o.add(buildAssignment());
   o.add(buildAssignment());
   return o;
 }
 
-checkUnnamed5436(core.List<api.Assignment> o) {
+checkUnnamed5835(core.List<api.Assignment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAssignment(o[0]);
+  checkAssignment(o[1]);
+}
+
+core.int buildCounterSearchAllAssignmentsResponse = 0;
+buildSearchAllAssignmentsResponse() {
+  var o = new api.SearchAllAssignmentsResponse();
+  buildCounterSearchAllAssignmentsResponse++;
+  if (buildCounterSearchAllAssignmentsResponse < 3) {
+    o.assignments = buildUnnamed5835();
+    o.nextPageToken = "foo";
+  }
+  buildCounterSearchAllAssignmentsResponse--;
+  return o;
+}
+
+checkSearchAllAssignmentsResponse(api.SearchAllAssignmentsResponse o) {
+  buildCounterSearchAllAssignmentsResponse++;
+  if (buildCounterSearchAllAssignmentsResponse < 3) {
+    checkUnnamed5835(o.assignments);
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+  }
+  buildCounterSearchAllAssignmentsResponse--;
+}
+
+buildUnnamed5836() {
+  var o = new core.List<api.Assignment>();
+  o.add(buildAssignment());
+  o.add(buildAssignment());
+  return o;
+}
+
+checkUnnamed5836(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
@@ -476,7 +516,7 @@ buildSearchAssignmentsResponse() {
   var o = new api.SearchAssignmentsResponse();
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed5436();
+    o.assignments = buildUnnamed5836();
     o.nextPageToken = "foo";
   }
   buildCounterSearchAssignmentsResponse--;
@@ -486,7 +526,7 @@ buildSearchAssignmentsResponse() {
 checkSearchAssignmentsResponse(api.SearchAssignmentsResponse o) {
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    checkUnnamed5436(o.assignments);
+    checkUnnamed5836(o.assignments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSearchAssignmentsResponse--;
@@ -532,7 +572,7 @@ checkSplitCapacityCommitmentResponse(api.SplitCapacityCommitmentResponse o) {
   buildCounterSplitCapacityCommitmentResponse--;
 }
 
-buildUnnamed5437() {
+buildUnnamed5837() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -547,7 +587,7 @@ buildUnnamed5437() {
   return o;
 }
 
-checkUnnamed5437(core.Map<core.String, core.Object> o) {
+checkUnnamed5837(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -561,17 +601,17 @@ checkUnnamed5437(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5438() {
+buildUnnamed5838() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed5437());
-  o.add(buildUnnamed5437());
+  o.add(buildUnnamed5837());
+  o.add(buildUnnamed5837());
   return o;
 }
 
-checkUnnamed5438(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed5838(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed5437(o[0]);
-  checkUnnamed5437(o[1]);
+  checkUnnamed5837(o[0]);
+  checkUnnamed5837(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -580,7 +620,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed5438();
+    o.details = buildUnnamed5838();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -591,7 +631,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed5438(o.details);
+    checkUnnamed5838(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -702,6 +742,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-SearchAllAssignmentsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSearchAllAssignmentsResponse();
+      var od = new api.SearchAllAssignmentsResponse.fromJson(o.toJson());
+      checkSearchAllAssignmentsResponse(od);
+    });
+  });
+
   unittest.group("obj-schema-SearchAssignmentsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSearchAssignmentsResponse();
@@ -792,9 +840,9 @@ main() {
       api.OperationsResourceApi res =
           new api.BigqueryreservationApi(mock).operations;
       var arg_name = "foo";
-      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_filter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -827,11 +875,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -842,9 +890,9 @@ main() {
       }), true);
       res
           .list(arg_name,
-              filter: arg_filter,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);
@@ -905,13 +953,77 @@ main() {
       })));
     });
 
+    unittest.test("method--searchAllAssignments", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsResourceApi res =
+          new api.BigqueryreservationApi(mock).projects.locations;
+      var arg_parent = "foo";
+      var arg_pageSize = 42;
+      var arg_query = "foo";
+      var arg_pageToken = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildSearchAllAssignmentsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .searchAllAssignments(arg_parent,
+              pageSize: arg_pageSize,
+              query: arg_query,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkSearchAllAssignmentsResponse(response);
+      })));
+    });
+
     unittest.test("method--searchAssignments", () {
       var mock = new HttpServerMock();
       api.ProjectsLocationsResourceApi res =
           new api.BigqueryreservationApi(mock).projects.locations;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_query = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -945,10 +1057,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -960,8 +1072,8 @@ main() {
       }), true);
       res
           .searchAssignments(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               query: arg_query,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -1623,8 +1735,8 @@ main() {
       api.ProjectsLocationsReservationsResourceApi res =
           new api.BigqueryreservationApi(mock).projects.locations.reservations;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1657,10 +1769,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1671,8 +1783,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListReservationsResponse(response);

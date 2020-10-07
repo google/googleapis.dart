@@ -90,14 +90,14 @@ checkAddSecretVersionRequest(api.AddSecretVersionRequest o) {
   buildCounterAddSecretVersionRequest--;
 }
 
-buildUnnamed3644() {
+buildUnnamed3827() {
   var o = new core.List<api.AuditLogConfig>();
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-checkUnnamed3644(core.List<api.AuditLogConfig> o) {
+checkUnnamed3827(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
@@ -108,7 +108,7 @@ buildAuditConfig() {
   var o = new api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed3644();
+    o.auditLogConfigs = buildUnnamed3827();
     o.service = "foo";
   }
   buildCounterAuditConfig--;
@@ -118,20 +118,20 @@ buildAuditConfig() {
 checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed3644(o.auditLogConfigs);
+    checkUnnamed3827(o.auditLogConfigs);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-buildUnnamed3645() {
+buildUnnamed3828() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3645(core.List<core.String> o) {
+checkUnnamed3828(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -142,7 +142,7 @@ buildAuditLogConfig() {
   var o = new api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed3645();
+    o.exemptedMembers = buildUnnamed3828();
     o.logType = "foo";
   }
   buildCounterAuditLogConfig--;
@@ -152,7 +152,7 @@ buildAuditLogConfig() {
 checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed3645(o.exemptedMembers);
+    checkUnnamed3828(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
@@ -162,25 +162,48 @@ core.int buildCounterAutomatic = 0;
 buildAutomatic() {
   var o = new api.Automatic();
   buildCounterAutomatic++;
-  if (buildCounterAutomatic < 3) {}
+  if (buildCounterAutomatic < 3) {
+    o.customerManagedEncryption = buildCustomerManagedEncryption();
+  }
   buildCounterAutomatic--;
   return o;
 }
 
 checkAutomatic(api.Automatic o) {
   buildCounterAutomatic++;
-  if (buildCounterAutomatic < 3) {}
+  if (buildCounterAutomatic < 3) {
+    checkCustomerManagedEncryption(o.customerManagedEncryption);
+  }
   buildCounterAutomatic--;
 }
 
-buildUnnamed3646() {
+core.int buildCounterAutomaticStatus = 0;
+buildAutomaticStatus() {
+  var o = new api.AutomaticStatus();
+  buildCounterAutomaticStatus++;
+  if (buildCounterAutomaticStatus < 3) {
+    o.customerManagedEncryption = buildCustomerManagedEncryptionStatus();
+  }
+  buildCounterAutomaticStatus--;
+  return o;
+}
+
+checkAutomaticStatus(api.AutomaticStatus o) {
+  buildCounterAutomaticStatus++;
+  if (buildCounterAutomaticStatus < 3) {
+    checkCustomerManagedEncryptionStatus(o.customerManagedEncryption);
+  }
+  buildCounterAutomaticStatus--;
+}
+
+buildUnnamed3829() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3646(core.List<core.String> o) {
+checkUnnamed3829(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -191,8 +214,9 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
+    o.bindingId = "foo";
     o.condition = buildExpr();
-    o.members = buildUnnamed3646();
+    o.members = buildUnnamed3829();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -202,11 +226,50 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
+    unittest.expect(o.bindingId, unittest.equals('foo'));
     checkExpr(o.condition);
-    checkUnnamed3646(o.members);
+    checkUnnamed3829(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
+}
+
+core.int buildCounterCustomerManagedEncryption = 0;
+buildCustomerManagedEncryption() {
+  var o = new api.CustomerManagedEncryption();
+  buildCounterCustomerManagedEncryption++;
+  if (buildCounterCustomerManagedEncryption < 3) {
+    o.kmsKeyName = "foo";
+  }
+  buildCounterCustomerManagedEncryption--;
+  return o;
+}
+
+checkCustomerManagedEncryption(api.CustomerManagedEncryption o) {
+  buildCounterCustomerManagedEncryption++;
+  if (buildCounterCustomerManagedEncryption < 3) {
+    unittest.expect(o.kmsKeyName, unittest.equals('foo'));
+  }
+  buildCounterCustomerManagedEncryption--;
+}
+
+core.int buildCounterCustomerManagedEncryptionStatus = 0;
+buildCustomerManagedEncryptionStatus() {
+  var o = new api.CustomerManagedEncryptionStatus();
+  buildCounterCustomerManagedEncryptionStatus++;
+  if (buildCounterCustomerManagedEncryptionStatus < 3) {
+    o.kmsKeyVersionName = "foo";
+  }
+  buildCounterCustomerManagedEncryptionStatus--;
+  return o;
+}
+
+checkCustomerManagedEncryptionStatus(api.CustomerManagedEncryptionStatus o) {
+  buildCounterCustomerManagedEncryptionStatus++;
+  if (buildCounterCustomerManagedEncryptionStatus < 3) {
+    unittest.expect(o.kmsKeyVersionName, unittest.equals('foo'));
+  }
+  buildCounterCustomerManagedEncryptionStatus--;
 }
 
 core.int buildCounterDestroySecretVersionRequest = 0;
@@ -294,14 +357,14 @@ checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-buildUnnamed3647() {
+buildUnnamed3830() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed3647(core.List<api.Location> o) {
+checkUnnamed3830(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -312,7 +375,7 @@ buildListLocationsResponse() {
   var o = new api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed3647();
+    o.locations = buildUnnamed3830();
     o.nextPageToken = "foo";
   }
   buildCounterListLocationsResponse--;
@@ -322,20 +385,20 @@ buildListLocationsResponse() {
 checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed3647(o.locations);
+    checkUnnamed3830(o.locations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
-buildUnnamed3648() {
+buildUnnamed3831() {
   var o = new core.List<api.SecretVersion>();
   o.add(buildSecretVersion());
   o.add(buildSecretVersion());
   return o;
 }
 
-checkUnnamed3648(core.List<api.SecretVersion> o) {
+checkUnnamed3831(core.List<api.SecretVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSecretVersion(o[0]);
   checkSecretVersion(o[1]);
@@ -348,7 +411,7 @@ buildListSecretVersionsResponse() {
   if (buildCounterListSecretVersionsResponse < 3) {
     o.nextPageToken = "foo";
     o.totalSize = 42;
-    o.versions = buildUnnamed3648();
+    o.versions = buildUnnamed3831();
   }
   buildCounterListSecretVersionsResponse--;
   return o;
@@ -359,19 +422,19 @@ checkListSecretVersionsResponse(api.ListSecretVersionsResponse o) {
   if (buildCounterListSecretVersionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
-    checkUnnamed3648(o.versions);
+    checkUnnamed3831(o.versions);
   }
   buildCounterListSecretVersionsResponse--;
 }
 
-buildUnnamed3649() {
+buildUnnamed3832() {
   var o = new core.List<api.Secret>();
   o.add(buildSecret());
   o.add(buildSecret());
   return o;
 }
 
-checkUnnamed3649(core.List<api.Secret> o) {
+checkUnnamed3832(core.List<api.Secret> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSecret(o[0]);
   checkSecret(o[1]);
@@ -383,7 +446,7 @@ buildListSecretsResponse() {
   buildCounterListSecretsResponse++;
   if (buildCounterListSecretsResponse < 3) {
     o.nextPageToken = "foo";
-    o.secrets = buildUnnamed3649();
+    o.secrets = buildUnnamed3832();
     o.totalSize = 42;
   }
   buildCounterListSecretsResponse--;
@@ -394,26 +457,26 @@ checkListSecretsResponse(api.ListSecretsResponse o) {
   buildCounterListSecretsResponse++;
   if (buildCounterListSecretsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3649(o.secrets);
+    checkUnnamed3832(o.secrets);
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListSecretsResponse--;
 }
 
-buildUnnamed3650() {
+buildUnnamed3833() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3650(core.Map<core.String, core.String> o) {
+checkUnnamed3833(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed3651() {
+buildUnnamed3834() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -428,7 +491,7 @@ buildUnnamed3651() {
   return o;
 }
 
-checkUnnamed3651(core.Map<core.String, core.Object> o) {
+checkUnnamed3834(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -448,9 +511,9 @@ buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = "foo";
-    o.labels = buildUnnamed3650();
+    o.labels = buildUnnamed3833();
     o.locationId = "foo";
-    o.metadata = buildUnnamed3651();
+    o.metadata = buildUnnamed3834();
     o.name = "foo";
   }
   buildCounterLocation--;
@@ -461,35 +524,35 @@ checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed3650(o.labels);
+    checkUnnamed3833(o.labels);
     unittest.expect(o.locationId, unittest.equals('foo'));
-    checkUnnamed3651(o.metadata);
+    checkUnnamed3834(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterLocation--;
 }
 
-buildUnnamed3652() {
+buildUnnamed3835() {
   var o = new core.List<api.AuditConfig>();
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-checkUnnamed3652(core.List<api.AuditConfig> o) {
+checkUnnamed3835(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-buildUnnamed3653() {
+buildUnnamed3836() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed3653(core.List<api.Binding> o) {
+checkUnnamed3836(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -500,8 +563,8 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed3652();
-    o.bindings = buildUnnamed3653();
+    o.auditConfigs = buildUnnamed3835();
+    o.bindings = buildUnnamed3836();
     o.etag = "foo";
     o.version = 42;
   }
@@ -512,8 +575,8 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3652(o.auditConfigs);
-    checkUnnamed3653(o.bindings);
+    checkUnnamed3835(o.auditConfigs);
+    checkUnnamed3836(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -525,6 +588,7 @@ buildReplica() {
   var o = new api.Replica();
   buildCounterReplica++;
   if (buildCounterReplica < 3) {
+    o.customerManagedEncryption = buildCustomerManagedEncryption();
     o.location = "foo";
   }
   buildCounterReplica--;
@@ -534,9 +598,31 @@ buildReplica() {
 checkReplica(api.Replica o) {
   buildCounterReplica++;
   if (buildCounterReplica < 3) {
+    checkCustomerManagedEncryption(o.customerManagedEncryption);
     unittest.expect(o.location, unittest.equals('foo'));
   }
   buildCounterReplica--;
+}
+
+core.int buildCounterReplicaStatus = 0;
+buildReplicaStatus() {
+  var o = new api.ReplicaStatus();
+  buildCounterReplicaStatus++;
+  if (buildCounterReplicaStatus < 3) {
+    o.customerManagedEncryption = buildCustomerManagedEncryptionStatus();
+    o.location = "foo";
+  }
+  buildCounterReplicaStatus--;
+  return o;
+}
+
+checkReplicaStatus(api.ReplicaStatus o) {
+  buildCounterReplicaStatus++;
+  if (buildCounterReplicaStatus < 3) {
+    checkCustomerManagedEncryptionStatus(o.customerManagedEncryption);
+    unittest.expect(o.location, unittest.equals('foo'));
+  }
+  buildCounterReplicaStatus--;
 }
 
 core.int buildCounterReplication = 0;
@@ -560,14 +646,35 @@ checkReplication(api.Replication o) {
   buildCounterReplication--;
 }
 
-buildUnnamed3654() {
+core.int buildCounterReplicationStatus = 0;
+buildReplicationStatus() {
+  var o = new api.ReplicationStatus();
+  buildCounterReplicationStatus++;
+  if (buildCounterReplicationStatus < 3) {
+    o.automatic = buildAutomaticStatus();
+    o.userManaged = buildUserManagedStatus();
+  }
+  buildCounterReplicationStatus--;
+  return o;
+}
+
+checkReplicationStatus(api.ReplicationStatus o) {
+  buildCounterReplicationStatus++;
+  if (buildCounterReplicationStatus < 3) {
+    checkAutomaticStatus(o.automatic);
+    checkUserManagedStatus(o.userManaged);
+  }
+  buildCounterReplicationStatus--;
+}
+
+buildUnnamed3837() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3654(core.Map<core.String, core.String> o) {
+checkUnnamed3837(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -579,7 +686,7 @@ buildSecret() {
   buildCounterSecret++;
   if (buildCounterSecret < 3) {
     o.createTime = "foo";
-    o.labels = buildUnnamed3654();
+    o.labels = buildUnnamed3837();
     o.name = "foo";
     o.replication = buildReplication();
   }
@@ -591,7 +698,7 @@ checkSecret(api.Secret o) {
   buildCounterSecret++;
   if (buildCounterSecret < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed3654(o.labels);
+    checkUnnamed3837(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     checkReplication(o.replication);
   }
@@ -625,6 +732,7 @@ buildSecretVersion() {
     o.createTime = "foo";
     o.destroyTime = "foo";
     o.name = "foo";
+    o.replicationStatus = buildReplicationStatus();
     o.state = "foo";
   }
   buildCounterSecretVersion--;
@@ -637,6 +745,7 @@ checkSecretVersion(api.SecretVersion o) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.destroyTime, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
+    checkReplicationStatus(o.replicationStatus);
     unittest.expect(o.state, unittest.equals('foo'));
   }
   buildCounterSecretVersion--;
@@ -663,14 +772,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed3655() {
+buildUnnamed3838() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3655(core.List<core.String> o) {
+checkUnnamed3838(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -681,7 +790,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3655();
+    o.permissions = buildUnnamed3838();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -690,19 +799,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3655(o.permissions);
+    checkUnnamed3838(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed3656() {
+buildUnnamed3839() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3656(core.List<core.String> o) {
+checkUnnamed3839(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -713,7 +822,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3656();
+    o.permissions = buildUnnamed3839();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -722,19 +831,19 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3656(o.permissions);
+    checkUnnamed3839(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-buildUnnamed3657() {
+buildUnnamed3840() {
   var o = new core.List<api.Replica>();
   o.add(buildReplica());
   o.add(buildReplica());
   return o;
 }
 
-checkUnnamed3657(core.List<api.Replica> o) {
+checkUnnamed3840(core.List<api.Replica> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReplica(o[0]);
   checkReplica(o[1]);
@@ -745,7 +854,7 @@ buildUserManaged() {
   var o = new api.UserManaged();
   buildCounterUserManaged++;
   if (buildCounterUserManaged < 3) {
-    o.replicas = buildUnnamed3657();
+    o.replicas = buildUnnamed3840();
   }
   buildCounterUserManaged--;
   return o;
@@ -754,9 +863,41 @@ buildUserManaged() {
 checkUserManaged(api.UserManaged o) {
   buildCounterUserManaged++;
   if (buildCounterUserManaged < 3) {
-    checkUnnamed3657(o.replicas);
+    checkUnnamed3840(o.replicas);
   }
   buildCounterUserManaged--;
+}
+
+buildUnnamed3841() {
+  var o = new core.List<api.ReplicaStatus>();
+  o.add(buildReplicaStatus());
+  o.add(buildReplicaStatus());
+  return o;
+}
+
+checkUnnamed3841(core.List<api.ReplicaStatus> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkReplicaStatus(o[0]);
+  checkReplicaStatus(o[1]);
+}
+
+core.int buildCounterUserManagedStatus = 0;
+buildUserManagedStatus() {
+  var o = new api.UserManagedStatus();
+  buildCounterUserManagedStatus++;
+  if (buildCounterUserManagedStatus < 3) {
+    o.replicas = buildUnnamed3841();
+  }
+  buildCounterUserManagedStatus--;
+  return o;
+}
+
+checkUserManagedStatus(api.UserManagedStatus o) {
+  buildCounterUserManagedStatus++;
+  if (buildCounterUserManagedStatus < 3) {
+    checkUnnamed3841(o.replicas);
+  }
+  buildCounterUserManagedStatus--;
 }
 
 main() {
@@ -800,11 +941,35 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-AutomaticStatus", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAutomaticStatus();
+      var od = new api.AutomaticStatus.fromJson(o.toJson());
+      checkAutomaticStatus(od);
+    });
+  });
+
   unittest.group("obj-schema-Binding", () {
     unittest.test("to-json--from-json", () {
       var o = buildBinding();
       var od = new api.Binding.fromJson(o.toJson());
       checkBinding(od);
+    });
+  });
+
+  unittest.group("obj-schema-CustomerManagedEncryption", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCustomerManagedEncryption();
+      var od = new api.CustomerManagedEncryption.fromJson(o.toJson());
+      checkCustomerManagedEncryption(od);
+    });
+  });
+
+  unittest.group("obj-schema-CustomerManagedEncryptionStatus", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCustomerManagedEncryptionStatus();
+      var od = new api.CustomerManagedEncryptionStatus.fromJson(o.toJson());
+      checkCustomerManagedEncryptionStatus(od);
     });
   });
 
@@ -896,11 +1061,27 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-ReplicaStatus", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildReplicaStatus();
+      var od = new api.ReplicaStatus.fromJson(o.toJson());
+      checkReplicaStatus(od);
+    });
+  });
+
   unittest.group("obj-schema-Replication", () {
     unittest.test("to-json--from-json", () {
       var o = buildReplication();
       var od = new api.Replication.fromJson(o.toJson());
       checkReplication(od);
+    });
+  });
+
+  unittest.group("obj-schema-ReplicationStatus", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildReplicationStatus();
+      var od = new api.ReplicationStatus.fromJson(o.toJson());
+      checkReplicationStatus(od);
     });
   });
 
@@ -957,6 +1138,14 @@ main() {
       var o = buildUserManaged();
       var od = new api.UserManaged.fromJson(o.toJson());
       checkUserManaged(od);
+    });
+  });
+
+  unittest.group("obj-schema-UserManagedStatus", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUserManagedStatus();
+      var od = new api.UserManagedStatus.fromJson(o.toJson());
+      checkUserManagedStatus(od);
     });
   });
 
@@ -1018,9 +1207,9 @@ main() {
       api.ProjectsLocationsResourceApi res =
           new api.SecretmanagerApi(mock).projects.locations;
       var arg_name = "foo";
-      var arg_pageToken = "foo";
-      var arg_pageSize = 42;
       var arg_filter = "foo";
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1053,11 +1242,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1068,9 +1257,9 @@ main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLocationsResponse(response);
@@ -1870,8 +2059,8 @@ main() {
       api.ProjectsSecretsVersionsResourceApi res =
           new api.SecretmanagerApi(mock).projects.secrets.versions;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1904,10 +2093,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1918,8 +2107,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListSecretVersionsResponse(response);

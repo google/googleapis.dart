@@ -86,6 +86,12 @@ Provisions and manages developers' App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
+#### Artifact Registry API - artifactregistry v1beta1
+
+Store and manage build artifacts in a scalable and integrated service built on Google infrastructure.
+
+Official API documentation: https://cloud.google.com/artifacts/docs/
+
 #### BigQuery Connection API - bigqueryconnection v1beta1
 
 Allows users to manage BigQuery connections to external data sources.
@@ -100,8 +106,7 @@ Official API documentation: https://cloud.google.com/billing/docs/how-to/budget-
 
 #### Error Reporting API - clouderrorreporting v1beta1
 
-Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.
-
+Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors. 
 
 Official API documentation: https://cloud.google.com/error-reporting/
 
@@ -111,12 +116,6 @@ Creates, reads, and updates metadata for Google Cloud Platform resource containe
 
 Official API documentation: https://cloud.google.com/resource-manager
 
-#### Perspective Comment Analyzer API - commentanalyzer v1alpha1
-
-The Perspective Comment Analyzer API provides information about the potential impact of a comment on a conversation (e.g. it can provide a score for the "toxicity" of a comment). Users can leverage the "SuggestCommentScore" method to submit corrections to improve Perspective over time. Users can set the "doNotStore" flag to ensure that all submitted comments are automatically deleted after scores are returned.
-
-Official API documentation: https://github.com/conversationai/perspectiveapi/blob/master/README.md
-
 #### Container Analysis API - containeranalysis v1beta1
 
 An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.
@@ -125,8 +124,7 @@ Official API documentation: https://cloud.google.com/container-analysis/api/refe
 
 #### Google Cloud Data Catalog API - datacatalog v1beta1
 
-A fully managed and highly scalable data discovery and metadata management service.
-
+A fully managed and highly scalable data discovery and metadata management service. 
 
 Official API documentation: https://cloud.google.com/data-catalog/docs/
 
@@ -138,11 +136,7 @@ Official API documentation: https://cloud.google.com/dataflow
 
 #### Cloud Data Fusion API - datafusion v1beta1
 
-Cloud Data Fusion is a fully-managed, cloud native, enterprise data integration service for
-    quickly building and managing data pipelines. It provides a graphical interface to increase
-    time efficiency and reduce complexity, and allows business users, developers, and data
-    scientists to easily and reliably build scalable data integration solutions to cleanse,
-    prepare, blend, transfer and transform data without having to wrestle with infrastructure.
+Cloud Data Fusion is a fully-managed, cloud native, enterprise data integration service for quickly building and managing data pipelines. It provides a graphical interface to increase time efficiency and reduce complexity, and allows business users, developers, and data scientists to easily and reliably build scalable data integration solutions to cleanse, prepare, blend, transfer and transform data without having to wrestle with infrastructure.
 
 Official API documentation: https://cloud.google.com/data-fusion/docs
 
@@ -152,11 +146,11 @@ Builds conversational interfaces (for example, chatbots, and voice-powered apps 
 
 Official API documentation: https://cloud.google.com/dialogflow/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud DNS API - dns v2beta1
+#### Cloud Document AI API - documentai v1beta2
 
-Configures and serves authoritative DNS records.
+Service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.
 
-Official API documentation: https://developers.google.com/cloud-dns
+Official API documentation: https://cloud.google.com/document-ai/docs/
 
 #### Fact Check Tools API - factchecktools v1alpha1
 
@@ -212,12 +206,6 @@ Google Cloud Memorystore for Memcached API is used for creating and managing Mem
 
 Official API documentation: https://cloud.google.com/memorystore/
 
-#### Network Management API - networkmanagement v1beta1
-
-The Network Management API provides a collection of network performance monitoring and diagnostic capabilities.
-
-Official API documentation: https://cloud.google.com/
-
 #### Cloud OS Login API - oslogin v1alpha
 
 You can use OS Login to manage access to your VM instances using IAM roles.
@@ -238,16 +226,9 @@ Official API documentation: https://developers.google.com/spectrum-access-system
 
 #### Cloud Pub/Sub API - pubsub v1beta2
 
-Provides reliable, many-to-many, asynchronous messaging between applications.
-
+Provides reliable, many-to-many, asynchronous messaging between applications. 
 
 Official API documentation: https://cloud.google.com/pubsub/docs
-
-#### Recommender API - recommender v1beta1
-
-
-
-Official API documentation: https://cloud.google.com/recommender/docs/
 
 #### Cloud Runtime Configuration API - runtimeconfig v1beta1
 
@@ -263,8 +244,7 @@ Official API documentation: https://developers.google.com/spectrum-access-system
 
 #### Service Directory API - servicedirectory v1beta1
 
-Service Directory is a platform for discovering, publishing, and connecting services.
-
+Service Directory is a platform for discovering, publishing, and connecting services. 
 
 Official API documentation: https://cloud.google.com/service-directory
 
@@ -274,7 +254,7 @@ Converts audio to text by applying powerful neural network models.
 
 Official API documentation: https://cloud.google.com/speech-to-text/docs/quickstart-protocol
 
-#### Cloud SQL Admin API - sql v1beta4
+#### Cloud SQL Admin API - sqladmin v1beta4
 
 API for Cloud SQL database instance management
 

@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client blogger/v3';
 
-/// The Blogger API provides access to posts, comments and pages of a
-///     Blogger blog.
+/// The Blogger API provides access to posts, comments and pages of a Blogger
+/// blog.
 class BloggerApi {
   /// Manage your Blogger account
   static const BloggerScope = "https://www.googleapis.com/auth/blogger";
@@ -121,10 +121,10 @@ class BlogsResourceApi {
   ///
   /// [view] - null
   /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
   ///
   /// [maxPosts] - null
   ///
@@ -179,10 +179,10 @@ class BlogsResourceApi {
   ///
   /// [view] - null
   /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -231,16 +231,16 @@ class BlogsResourceApi {
   ///
   /// [userId] - null
   ///
-  /// [view] - null
-  /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
-  ///
   /// [role] - null
   ///
   /// [status] - Default value of status is LIVE.
+  ///
+  /// [view] - null
+  /// Possible string values are:
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
   ///
   /// [fetchUserInfo] - null
   ///
@@ -255,9 +255,9 @@ class BlogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BlogList> listByUser(core.String userId,
-      {core.String view,
-      core.List<core.String> role,
+      {core.List<core.String> role,
       core.List<core.String> status,
+      core.String view,
       core.bool fetchUserInfo,
       core.String $fields}) {
     var _url;
@@ -270,14 +270,14 @@ class BlogsResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (role != null) {
       _queryParams["role"] = role;
     }
     if (status != null) {
       _queryParams["status"] = status;
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (fetchUserInfo != null) {
       _queryParams["fetchUserInfo"] = ["${fetchUserInfo}"];
@@ -434,10 +434,10 @@ class CommentsResourceApi {
   ///
   /// [view] - null
   /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -499,29 +499,29 @@ class CommentsResourceApi {
   ///
   /// [postId] - null
   ///
-  /// [fetchBodies] - null
-  ///
-  /// [maxResults] - null
+  /// [status] - null
+  /// Possible string values are:
+  /// - "LIVE"
+  /// - "EMPTIED"
+  /// - "PENDING"
+  /// - "SPAM"
   ///
   /// [view] - null
   /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
-  ///
-  /// [endDate] - null
-  ///
-  /// [startDate] - null
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
   ///
   /// [pageToken] - null
   ///
-  /// [status] - null
-  /// Possible string values are:
-  /// - "LIVE" : A LIVE.
-  /// - "EMPTIED" : A EMPTIED.
-  /// - "PENDING" : A PENDING.
-  /// - "SPAM" : A SPAM.
+  /// [maxResults] - null
+  ///
+  /// [startDate] - null
+  ///
+  /// [endDate] - null
+  ///
+  /// [fetchBodies] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -534,13 +534,13 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentList> list(core.String blogId, core.String postId,
-      {core.bool fetchBodies,
-      core.int maxResults,
+      {core.String status,
       core.String view,
-      core.String endDate,
-      core.String startDate,
       core.String pageToken,
-      core.String status,
+      core.int maxResults,
+      core.String startDate,
+      core.String endDate,
+      core.bool fetchBodies,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -555,26 +555,26 @@ class CommentsResourceApi {
     if (postId == null) {
       throw new core.ArgumentError("Parameter postId is required.");
     }
-    if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (status != null) {
+      _queryParams["status"] = [status];
     }
     if (view != null) {
       _queryParams["view"] = [view];
     }
-    if (endDate != null) {
-      _queryParams["endDate"] = [endDate];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (startDate != null) {
       _queryParams["startDate"] = [startDate];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (endDate != null) {
+      _queryParams["endDate"] = [endDate];
     }
-    if (status != null) {
-      _queryParams["status"] = [status];
+    if (fetchBodies != null) {
+      _queryParams["fetchBodies"] = ["${fetchBodies}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -603,15 +603,15 @@ class CommentsResourceApi {
   ///
   /// [endDate] - null
   ///
-  /// [startDate] - null
-  ///
   /// [pageToken] - null
   ///
   /// [status] - null
   ///
+  /// [maxResults] - null
+  ///
   /// [fetchBodies] - null
   ///
-  /// [maxResults] - null
+  /// [startDate] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -625,11 +625,11 @@ class CommentsResourceApi {
   /// this method will complete with the same error.
   async.Future<CommentList> listByBlog(core.String blogId,
       {core.String endDate,
-      core.String startDate,
       core.String pageToken,
       core.List<core.String> status,
-      core.bool fetchBodies,
       core.int maxResults,
+      core.bool fetchBodies,
+      core.String startDate,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -644,20 +644,20 @@ class CommentsResourceApi {
     if (endDate != null) {
       _queryParams["endDate"] = [endDate];
     }
-    if (startDate != null) {
-      _queryParams["startDate"] = [startDate];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (status != null) {
       _queryParams["status"] = status;
     }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (fetchBodies != null) {
       _queryParams["fetchBodies"] = ["${fetchBodies}"];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (startDate != null) {
+      _queryParams["startDate"] = [startDate];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -916,10 +916,10 @@ class PagesResourceApi {
   ///
   /// [view] - null
   /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1028,18 +1028,18 @@ class PagesResourceApi {
   ///
   /// [status] - null
   ///
-  /// [fetchBodies] - null
-  ///
-  /// [maxResults] - null
-  ///
   /// [view] - null
   /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
+  ///
+  /// [fetchBodies] - null
   ///
   /// [pageToken] - null
+  ///
+  /// [maxResults] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1053,10 +1053,10 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<PageList> list(core.String blogId,
       {core.List<core.String> status,
-      core.bool fetchBodies,
-      core.int maxResults,
       core.String view,
+      core.bool fetchBodies,
       core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1071,17 +1071,17 @@ class PagesResourceApi {
     if (status != null) {
       _queryParams["status"] = status;
     }
-    if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
+    if (fetchBodies != null) {
+      _queryParams["fetchBodies"] = ["${fetchBodies}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1108,9 +1108,9 @@ class PagesResourceApi {
   ///
   /// [pageId] - null
   ///
-  /// [revert_1] - null
-  ///
   /// [publish_1] - null
+  ///
+  /// [revert_1] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1123,7 +1123,7 @@ class PagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Page> patch(Page request, core.String blogId, core.String pageId,
-      {core.bool revert_1, core.bool publish_1, core.String $fields}) {
+      {core.bool publish_1, core.bool revert_1, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1140,11 +1140,11 @@ class PagesResourceApi {
     if (pageId == null) {
       throw new core.ArgumentError("Parameter pageId is required.");
     }
-    if (revert_1 != null) {
-      _queryParams["revert"] = ["${revert_1}"];
-    }
     if (publish_1 != null) {
       _queryParams["publish"] = ["${publish_1}"];
+    }
+    if (revert_1 != null) {
+      _queryParams["revert"] = ["${revert_1}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1278,9 +1278,9 @@ class PagesResourceApi {
   ///
   /// [pageId] - null
   ///
-  /// [revert_1] - null
-  ///
   /// [publish_1] - null
+  ///
+  /// [revert_1] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1294,7 +1294,7 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Page> update(
       Page request, core.String blogId, core.String pageId,
-      {core.bool revert_1, core.bool publish_1, core.String $fields}) {
+      {core.bool publish_1, core.bool revert_1, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1311,11 +1311,11 @@ class PagesResourceApi {
     if (pageId == null) {
       throw new core.ArgumentError("Parameter pageId is required.");
     }
-    if (revert_1 != null) {
-      _queryParams["revert"] = ["${revert_1}"];
-    }
     if (publish_1 != null) {
       _queryParams["publish"] = ["${publish_1}"];
+    }
+    if (revert_1 != null) {
+      _queryParams["revert"] = ["${revert_1}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1413,32 +1413,32 @@ class PostUserInfosResourceApi {
   ///
   /// [blogId] - null
   ///
-  /// [status] - null
-  ///
-  /// [fetchBodies] - null
-  ///
-  /// [maxResults] - null
-  ///
   /// [view] - null
   /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
+  ///
+  /// [orderBy] - null
+  /// Possible string values are:
+  /// - "ORDER_BY_UNSPECIFIED"
+  /// - "PUBLISHED"
+  /// - "UPDATED"
   ///
   /// [labels] - null
   ///
   /// [endDate] - null
   ///
-  /// [orderBy] - null
-  /// Possible string values are:
-  /// - "ORDER_BY_UNSPECIFIED" : A ORDER_BY_UNSPECIFIED.
-  /// - "PUBLISHED" : A PUBLISHED.
-  /// - "UPDATED" : A UPDATED.
+  /// [pageToken] - null
+  ///
+  /// [maxResults] - null
   ///
   /// [startDate] - null
   ///
-  /// [pageToken] - null
+  /// [fetchBodies] - null
+  ///
+  /// [status] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1451,15 +1451,15 @@ class PostUserInfosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PostUserInfosList> list(core.String userId, core.String blogId,
-      {core.List<core.String> status,
-      core.bool fetchBodies,
-      core.int maxResults,
-      core.String view,
+      {core.String view,
+      core.String orderBy,
       core.String labels,
       core.String endDate,
-      core.String orderBy,
-      core.String startDate,
       core.String pageToken,
+      core.int maxResults,
+      core.String startDate,
+      core.bool fetchBodies,
+      core.List<core.String> status,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1474,17 +1474,11 @@ class PostUserInfosResourceApi {
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
     }
-    if (status != null) {
-      _queryParams["status"] = status;
-    }
-    if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (labels != null) {
       _queryParams["labels"] = [labels];
@@ -1492,14 +1486,20 @@ class PostUserInfosResourceApi {
     if (endDate != null) {
       _queryParams["endDate"] = [endDate];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (startDate != null) {
       _queryParams["startDate"] = [startDate];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (fetchBodies != null) {
+      _queryParams["fetchBodies"] = ["${fetchBodies}"];
+    }
+    if (status != null) {
+      _queryParams["status"] = status;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1585,18 +1585,18 @@ class PostsResourceApi {
   ///
   /// [postId] - null
   ///
-  /// [view] - null
-  /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
-  ///
-  /// [fetchImages] - null
-  ///
   /// [maxComments] - null
   ///
   /// [fetchBody] - null
+  ///
+  /// [view] - null
+  /// Possible string values are:
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
+  ///
+  /// [fetchImages] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1609,10 +1609,10 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> get(core.String blogId, core.String postId,
-      {core.String view,
-      core.bool fetchImages,
-      core.int maxComments,
+      {core.int maxComments,
       core.bool fetchBody,
+      core.String view,
+      core.bool fetchImages,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1627,17 +1627,17 @@ class PostsResourceApi {
     if (postId == null) {
       throw new core.ArgumentError("Parameter postId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
-    }
     if (maxComments != null) {
       _queryParams["maxComments"] = ["${maxComments}"];
     }
     if (fetchBody != null) {
       _queryParams["fetchBody"] = ["${fetchBody}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (fetchImages != null) {
+      _queryParams["fetchImages"] = ["${fetchImages}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1665,14 +1665,14 @@ class PostsResourceApi {
   ///
   /// [path] - null
   ///
-  /// [maxComments] - null
-  ///
   /// [view] - null
   /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
+  ///
+  /// [maxComments] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1685,7 +1685,7 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> getByPath(core.String blogId, core.String path,
-      {core.int maxComments, core.String view, core.String $fields}) {
+      {core.String view, core.int maxComments, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1700,11 +1700,11 @@ class PostsResourceApi {
       throw new core.ArgumentError("Parameter path is required.");
     }
     _queryParams["path"] = [path];
-    if (maxComments != null) {
-      _queryParams["maxComments"] = ["${maxComments}"];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (maxComments != null) {
+      _queryParams["maxComments"] = ["${maxComments}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1731,11 +1731,11 @@ class PostsResourceApi {
   ///
   /// [blogId] - null
   ///
-  /// [fetchImages] - null
+  /// [isDraft] - null
   ///
   /// [fetchBody] - null
   ///
-  /// [isDraft] - null
+  /// [fetchImages] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1748,9 +1748,9 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> insert(Post request, core.String blogId,
-      {core.bool fetchImages,
+      {core.bool isDraft,
       core.bool fetchBody,
-      core.bool isDraft,
+      core.bool fetchImages,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1765,14 +1765,14 @@ class PostsResourceApi {
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
     }
-    if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
+    if (isDraft != null) {
+      _queryParams["isDraft"] = ["${isDraft}"];
     }
     if (fetchBody != null) {
       _queryParams["fetchBody"] = ["${fetchBody}"];
     }
-    if (isDraft != null) {
-      _queryParams["isDraft"] = ["${isDraft}"];
+    if (fetchImages != null) {
+      _queryParams["fetchImages"] = ["${fetchImages}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1795,34 +1795,34 @@ class PostsResourceApi {
   ///
   /// [blogId] - null
   ///
-  /// [pageToken] - null
-  ///
-  /// [status] - null
-  ///
   /// [fetchBodies] - null
   ///
-  /// [maxResults] - null
-  ///
-  /// [fetchImages] - null
+  /// [pageToken] - null
   ///
   /// [view] - null
   /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "READER" : A READER.
-  /// - "AUTHOR" : A AUTHOR.
-  /// - "ADMIN" : A ADMIN.
-  ///
-  /// [labels] - null
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
   ///
   /// [endDate] - null
   ///
-  /// [orderBy] - null
-  /// Possible string values are:
-  /// - "ORDER_BY_UNSPECIFIED" : A ORDER_BY_UNSPECIFIED.
-  /// - "PUBLISHED" : A PUBLISHED.
-  /// - "UPDATED" : A UPDATED.
+  /// [fetchImages] - null
+  ///
+  /// [status] - null
+  ///
+  /// [labels] - null
+  ///
+  /// [maxResults] - null
   ///
   /// [startDate] - null
+  ///
+  /// [orderBy] - null
+  /// Possible string values are:
+  /// - "ORDER_BY_UNSPECIFIED"
+  /// - "PUBLISHED"
+  /// - "UPDATED"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1835,16 +1835,16 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PostList> list(core.String blogId,
-      {core.String pageToken,
-      core.List<core.String> status,
-      core.bool fetchBodies,
-      core.int maxResults,
-      core.bool fetchImages,
+      {core.bool fetchBodies,
+      core.String pageToken,
       core.String view,
-      core.String labels,
       core.String endDate,
-      core.String orderBy,
+      core.bool fetchImages,
+      core.List<core.String> status,
+      core.String labels,
+      core.int maxResults,
       core.String startDate,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1856,35 +1856,35 @@ class PostsResourceApi {
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (status != null) {
-      _queryParams["status"] = status;
-    }
     if (fetchBodies != null) {
       _queryParams["fetchBodies"] = ["${fetchBodies}"];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (view != null) {
       _queryParams["view"] = [view];
     }
-    if (labels != null) {
-      _queryParams["labels"] = [labels];
-    }
     if (endDate != null) {
       _queryParams["endDate"] = [endDate];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (fetchImages != null) {
+      _queryParams["fetchImages"] = ["${fetchImages}"];
+    }
+    if (status != null) {
+      _queryParams["status"] = status;
+    }
+    if (labels != null) {
+      _queryParams["labels"] = [labels];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (startDate != null) {
       _queryParams["startDate"] = [startDate];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1911,15 +1911,15 @@ class PostsResourceApi {
   ///
   /// [postId] - null
   ///
-  /// [fetchBody] - null
-  ///
   /// [publish_1] - null
-  ///
-  /// [revert_1] - null
   ///
   /// [fetchImages] - null
   ///
+  /// [fetchBody] - null
+  ///
   /// [maxComments] - null
+  ///
+  /// [revert_1] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1932,11 +1932,11 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> patch(Post request, core.String blogId, core.String postId,
-      {core.bool fetchBody,
-      core.bool publish_1,
-      core.bool revert_1,
+      {core.bool publish_1,
       core.bool fetchImages,
+      core.bool fetchBody,
       core.int maxComments,
+      core.bool revert_1,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1954,20 +1954,20 @@ class PostsResourceApi {
     if (postId == null) {
       throw new core.ArgumentError("Parameter postId is required.");
     }
-    if (fetchBody != null) {
-      _queryParams["fetchBody"] = ["${fetchBody}"];
-    }
     if (publish_1 != null) {
       _queryParams["publish"] = ["${publish_1}"];
-    }
-    if (revert_1 != null) {
-      _queryParams["revert"] = ["${revert_1}"];
     }
     if (fetchImages != null) {
       _queryParams["fetchImages"] = ["${fetchImages}"];
     }
+    if (fetchBody != null) {
+      _queryParams["fetchBody"] = ["${fetchBody}"];
+    }
     if (maxComments != null) {
       _queryParams["maxComments"] = ["${maxComments}"];
+    }
+    if (revert_1 != null) {
+      _queryParams["revert"] = ["${revert_1}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2106,9 +2106,9 @@ class PostsResourceApi {
   ///
   /// [orderBy] - null
   /// Possible string values are:
-  /// - "ORDER_BY_UNSPECIFIED" : A ORDER_BY_UNSPECIFIED.
-  /// - "PUBLISHED" : A PUBLISHED.
-  /// - "UPDATED" : A UPDATED.
+  /// - "ORDER_BY_UNSPECIFIED"
+  /// - "PUBLISHED"
+  /// - "UPDATED"
   ///
   /// [fetchBodies] - null
   ///
@@ -2173,13 +2173,13 @@ class PostsResourceApi {
   ///
   /// [fetchBody] - null
   ///
-  /// [publish_1] - null
-  ///
-  /// [revert_1] - null
-  ///
   /// [fetchImages] - null
   ///
+  /// [publish_1] - null
+  ///
   /// [maxComments] - null
+  ///
+  /// [revert_1] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2194,10 +2194,10 @@ class PostsResourceApi {
   async.Future<Post> update(
       Post request, core.String blogId, core.String postId,
       {core.bool fetchBody,
-      core.bool publish_1,
-      core.bool revert_1,
       core.bool fetchImages,
+      core.bool publish_1,
       core.int maxComments,
+      core.bool revert_1,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2218,17 +2218,17 @@ class PostsResourceApi {
     if (fetchBody != null) {
       _queryParams["fetchBody"] = ["${fetchBody}"];
     }
-    if (publish_1 != null) {
-      _queryParams["publish"] = ["${publish_1}"];
-    }
-    if (revert_1 != null) {
-      _queryParams["revert"] = ["${revert_1}"];
-    }
     if (fetchImages != null) {
       _queryParams["fetchImages"] = ["${fetchImages}"];
     }
+    if (publish_1 != null) {
+      _queryParams["publish"] = ["${publish_1}"];
+    }
     if (maxComments != null) {
       _queryParams["maxComments"] = ["${maxComments}"];
+    }
+    if (revert_1 != null) {
+      _queryParams["revert"] = ["${revert_1}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

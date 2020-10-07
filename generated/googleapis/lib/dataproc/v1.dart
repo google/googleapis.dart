@@ -69,10 +69,10 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The "resource name" of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies.create, the resource name  of the
-  /// region has the following format:  projects/{project_id}/regions/{region}
-  /// For projects.locations.autoscalingPolicies.create, the resource name  of
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies.create, the resource name of the
+  /// region has the following format: projects/{project_id}/regions/{region}
+  /// For projects.locations.autoscalingPolicies.create, the resource name of
   /// the location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
@@ -126,12 +126,12 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The "resource name" of the autoscaling policy, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies.delete, the resource name  of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies.delete, the resource name of the
   /// policy has the following format:
-  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
-  /// For projects.locations.autoscalingPolicies.delete, the resource name  of
-  /// the policy has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+  /// projects.locations.autoscalingPolicies.delete, the resource name of the
+  /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
@@ -177,11 +177,11 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The "resource name" of the autoscaling policy, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies.get, the resource name  of the
-  /// policy has the following format:
-  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
-  /// For projects.locations.autoscalingPolicies.get, the resource name  of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies.get, the resource name of the policy
+  /// has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+  /// projects.locations.autoscalingPolicies.get, the resource name of the
   /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
@@ -284,10 +284,10 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The "resource name" of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies.list, the resource name  of the
-  /// region has the following format:  projects/{project_id}/regions/{region}
-  /// For projects.locations.autoscalingPolicies.list, the resource name  of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies.list, the resource name of the region
+  /// has the following format: projects/{project_id}/regions/{region} For
+  /// projects.locations.autoscalingPolicies.list, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
@@ -345,8 +345,8 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -469,12 +469,12 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Output only. The "resource name" of the autoscaling policy, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies, the resource name of the  policy
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies, the resource name of the policy has
+  /// the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+  /// projects.locations.autoscalingPolicies, the resource name of the policy
   /// has the following format:
-  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
-  /// For projects.locations.autoscalingPolicies, the resource name of the
-  /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
@@ -534,10 +534,10 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates,create, the resource name of the
-  /// region has the following format:  projects/{project_id}/regions/{region}
-  /// For projects.locations.workflowTemplates.create, the resource name of  the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates,create, the resource name of the region
+  /// has the following format: projects/{project_id}/regions/{region} For
+  /// projects.locations.workflowTemplates.create, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
@@ -590,12 +590,12 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates.delete, the resource name of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates.delete, the resource name of the
   /// template has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates.instantiate, the resource name
-  /// of the template has the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates.instantiate, the resource name of the
+  /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
@@ -650,11 +650,11 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates.get, the resource name of the
-  /// template has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates.get, the resource name of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates.get, the resource name of the template
+  /// has the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates.get, the resource name of the
   /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
@@ -776,12 +776,12 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates.instantiate, the resource name of
-  /// the template has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates.instantiate, the resource name
-  /// of the template has the following format:
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates.instantiate, the resource name of the
+  /// template has the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates.instantiate, the resource name of the
+  /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
@@ -846,12 +846,12 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates,instantiateinline, the resource
-  /// name of the region has the following format:
-  /// projects/{project_id}/regions/{region}
-  /// For projects.locations.workflowTemplates.instantiateinline, the  resource
-  /// name of the location has the following format:
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates,instantiateinline, the resource name of
+  /// the region has the following format:
+  /// projects/{project_id}/regions/{region} For
+  /// projects.locations.workflowTemplates.instantiateinline, the resource name
+  /// of the location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
@@ -914,10 +914,10 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates,list, the resource  name of the
-  /// region has the following format:  projects/{project_id}/regions/{region}
-  /// For projects.locations.workflowTemplates.list, the  resource name of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates,list, the resource name of the region
+  /// has the following format: projects/{project_id}/regions/{region} For
+  /// projects.locations.workflowTemplates.list, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
@@ -975,8 +975,8 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1099,12 +1099,12 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource name of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates, the resource name of the  template
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates, the resource name of the template has
+  /// the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates, the resource name of the template
   /// has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates, the resource name of the
-  /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
@@ -1181,10 +1181,10 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The "resource name" of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies.create, the resource name  of the
-  /// region has the following format:  projects/{project_id}/regions/{region}
-  /// For projects.locations.autoscalingPolicies.create, the resource name  of
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies.create, the resource name of the
+  /// region has the following format: projects/{project_id}/regions/{region}
+  /// For projects.locations.autoscalingPolicies.create, the resource name of
   /// the location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
@@ -1238,12 +1238,12 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The "resource name" of the autoscaling policy, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies.delete, the resource name  of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies.delete, the resource name of the
   /// policy has the following format:
-  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
-  /// For projects.locations.autoscalingPolicies.delete, the resource name  of
-  /// the policy has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+  /// projects.locations.autoscalingPolicies.delete, the resource name of the
+  /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
   /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
@@ -1289,11 +1289,11 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The "resource name" of the autoscaling policy, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies.get, the resource name  of the
-  /// policy has the following format:
-  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
-  /// For projects.locations.autoscalingPolicies.get, the resource name  of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies.get, the resource name of the policy
+  /// has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+  /// projects.locations.autoscalingPolicies.get, the resource name of the
   /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
@@ -1396,10 +1396,10 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The "resource name" of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies.list, the resource name  of the
-  /// region has the following format:  projects/{project_id}/regions/{region}
-  /// For projects.locations.autoscalingPolicies.list, the resource name  of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies.list, the resource name of the region
+  /// has the following format: projects/{project_id}/regions/{region} For
+  /// projects.locations.autoscalingPolicies.list, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
@@ -1457,8 +1457,8 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1581,12 +1581,12 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Output only. The "resource name" of the autoscaling policy, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies, the resource name of the  policy
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies, the resource name of the policy has
+  /// the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+  /// projects.locations.autoscalingPolicies, the resource name of the policy
   /// has the following format:
-  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
-  /// For projects.locations.autoscalingPolicies, the resource name of the
-  /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
   /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
@@ -1987,6 +1987,8 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [region] - Required. The Dataproc region in which to handle the request.
   ///
+  /// [pageSize] - Optional. The standard List page size.
+  ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is one of status.state, clusterName, or labels.[KEY],
@@ -2001,8 +2003,6 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [pageToken] - Optional. The standard List page token.
   ///
-  /// [pageSize] - Optional. The standard List page size.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2015,9 +2015,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2032,14 +2032,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2075,6 +2075,16 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [clusterName] - Required. The cluster name.
   ///
+  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
+  /// decomissioning. Graceful decommissioning allows removing nodes from the
+  /// cluster without interrupting jobs in progress. Timeout specifies how long
+  /// to wait for jobs in progress to finish before forcefully removing nodes
+  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
+  /// decommission), and the maximum allowed timeout is 1 day. (see JSON
+  /// representation of Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only
+  /// supported on Dataproc image versions 1.2 and higher.
+  ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
   /// server receives two UpdateClusterRequest requests with the same id, then
   /// the second request will be ignored and the first
@@ -2088,46 +2098,17 @@ class ProjectsRegionsClustersResourceApi {
   /// field to update. For example, to change the number of workers in a cluster
   /// to 5, the update_mask parameter would be specified as
   /// config.worker_config.num_instances, and the PATCH request body would
-  /// specify the new value, as follows:
-  /// {
-  ///   "config":{
-  ///     "workerConfig":{
-  ///       "numInstances":"5"
-  ///     }
-  ///   }
-  /// }
-  /// Similarly, to change the number of preemptible workers in a cluster to 5,
-  /// the update_mask parameter would be
+  /// specify the new value, as follows: { "config":{ "workerConfig":{
+  /// "numInstances":"5" } } } Similarly, to change the number of preemptible
+  /// workers in a cluster to 5, the update_mask parameter would be
   /// config.secondary_worker_config.num_instances, and the PATCH request body
-  /// would be set as follows:
-  /// {
-  ///   "config":{
-  ///     "secondaryWorkerConfig":{
-  ///       "numInstances":"5"
-  ///     }
-  ///   }
-  /// }
-  /// <strong>Note:</strong> Currently, only the following fields can be
-  /// updated:<table>  <tbody>  <tr>  <td><strong>Mask</strong></td>
-  /// <td><strong>Purpose</strong></td>  </tr>  <tr>
-  /// <td><strong><em>labels</em></strong></td>  <td>Update labels</td>  </tr>
-  /// <tr>
-  /// <td><strong><em>config.worker_config.num_instances</em></strong></td>
-  /// <td>Resize primary worker group</td>  </tr>  <tr>
-  /// <td><strong><em>config.secondary_worker_config.num_instances</em></strong></td>
-  /// <td>Resize secondary worker group</td>  </tr>  <tr>
-  /// <td>config.autoscaling_config.policy_uri</td><td>Use, stop using, or
-  /// change autoscaling policies</td>  </tr>  </tbody>  </table>
-  ///
-  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
-  /// decomissioning. Graceful decommissioning allows removing nodes from the
-  /// cluster without interrupting jobs in progress. Timeout specifies how long
-  /// to wait for jobs in progress to finish before forcefully removing nodes
-  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
-  /// decommission), and the maximum allowed timeout is 1 day. (see JSON
-  /// representation of Duration
-  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only
-  /// supported on Dataproc image versions 1.2 and higher.
+  /// would be set as follows: { "config":{ "secondaryWorkerConfig":{
+  /// "numInstances":"5" } } } *Note:* Currently, only the following fields can
+  /// be updated: *Mask* *Purpose* *labels* Update labels
+  /// *config.worker_config.num_instances* Resize primary worker group
+  /// *config.secondary_worker_config.num_instances* Resize secondary worker
+  /// group config.autoscaling_config.policy_uri Use, stop using, or change
+  /// autoscaling policies
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2141,9 +2122,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Cluster request, core.String projectId,
       core.String region, core.String clusterName,
-      {core.String requestId,
+      {core.String gracefulDecommissionTimeout,
+      core.String requestId,
       core.String updateMask,
-      core.String gracefulDecommissionTimeout,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2164,16 +2145,16 @@ class ProjectsRegionsClustersResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
+    if (gracefulDecommissionTimeout != null) {
+      _queryParams["gracefulDecommissionTimeout"] = [
+        gracefulDecommissionTimeout
+      ];
+    }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
-    }
-    if (gracefulDecommissionTimeout != null) {
-      _queryParams["gracefulDecommissionTimeout"] = [
-        gracefulDecommissionTimeout
-      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2196,8 +2177,8 @@ class ProjectsRegionsClustersResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2574,8 +2555,8 @@ class ProjectsRegionsJobsResourceApi {
   ///
   /// [pageSize] - Optional. The number of results to return in each response.
   ///
-  /// [clusterName] - Optional. If set, the returned jobs list includes only
-  /// jobs that were submitted to the named cluster.
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
   ///
   /// [filter] - Optional. A filter constraining the jobs to list. Filters are
   /// case-sensitive and have the following syntax:field = value AND field =
@@ -2586,16 +2567,18 @@ class ProjectsRegionsJobsResourceApi {
   /// filter:status.state = ACTIVE AND labels.env = staging AND labels.starred =
   /// *
   ///
+  /// [clusterName] - Optional. If set, the returned jobs list includes only
+  /// jobs that were submitted to the named cluster.
+  ///
   /// [jobStateMatcher] - Optional. Specifies enumerated categories of jobs to
   /// list. (default = match ALL jobs).If filter is provided, jobStateMatcher
   /// will be ignored.
   /// Possible string values are:
-  /// - "ALL" : A ALL.
-  /// - "ACTIVE" : A ACTIVE.
-  /// - "NON_ACTIVE" : A NON_ACTIVE.
-  ///
-  /// [pageToken] - Optional. The page token, returned by a previous call, to
-  /// request the next page of results.
+  /// - "ALL" : Match all jobs, regardless of state.
+  /// - "ACTIVE" : Only match jobs in non-terminal states: PENDING, RUNNING, or
+  /// CANCEL_PENDING.
+  /// - "NON_ACTIVE" : Only match jobs in terminal states: CANCELLED, DONE, or
+  /// ERROR.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2609,10 +2592,10 @@ class ProjectsRegionsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
       {core.int pageSize,
-      core.String clusterName,
-      core.String filter,
-      core.String jobStateMatcher,
       core.String pageToken,
+      core.String filter,
+      core.String clusterName,
+      core.String jobStateMatcher,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2630,17 +2613,17 @@ class ProjectsRegionsJobsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (clusterName != null) {
-      _queryParams["clusterName"] = [clusterName];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
+    if (clusterName != null) {
+      _queryParams["clusterName"] = [clusterName];
+    }
     if (jobStateMatcher != null) {
       _queryParams["jobStateMatcher"] = [jobStateMatcher];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2674,12 +2657,11 @@ class ProjectsRegionsJobsResourceApi {
   ///
   /// [jobId] - Required. The job ID.
   ///
-  /// [updateMask] - Required. Specifies the path, relative to <code>Job</code>,
-  /// of the field to update. For example, to update the labels of a Job the
-  /// <code>update_mask</code> parameter would be specified as
-  /// <code>labels</code>, and the PATCH request body would specify the new
-  /// value. <strong>Note:</strong> Currently, <code>labels</code> is the only
-  /// field that can be updated.
+  /// [updateMask] - Required. Specifies the path, relative to Job, of the field
+  /// to update. For example, to update the labels of a Job the update_mask
+  /// parameter would be specified as labels, and the PATCH request body would
+  /// specify the new value. *Note:* Currently, labels is the only field that
+  /// can be updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2737,8 +2719,8 @@ class ProjectsRegionsJobsResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3188,11 +3170,11 @@ class ProjectsRegionsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3205,9 +3187,9 @@ class ProjectsRegionsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3219,14 +3201,14 @@ class ProjectsRegionsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3244,8 +3226,8 @@ class ProjectsRegionsOperationsResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3372,10 +3354,10 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates,create, the resource name of the
-  /// region has the following format:  projects/{project_id}/regions/{region}
-  /// For projects.locations.workflowTemplates.create, the resource name of  the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates,create, the resource name of the region
+  /// has the following format: projects/{project_id}/regions/{region} For
+  /// projects.locations.workflowTemplates.create, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
@@ -3428,12 +3410,12 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates.delete, the resource name of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates.delete, the resource name of the
   /// template has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates.instantiate, the resource name
-  /// of the template has the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates.instantiate, the resource name of the
+  /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
@@ -3488,11 +3470,11 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates.get, the resource name of the
-  /// template has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates.get, the resource name of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates.get, the resource name of the template
+  /// has the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates.get, the resource name of the
   /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
@@ -3614,12 +3596,12 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates.instantiate, the resource name of
-  /// the template has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates.instantiate, the resource name
-  /// of the template has the following format:
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates.instantiate, the resource name of the
+  /// template has the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates.instantiate, the resource name of the
+  /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
@@ -3684,12 +3666,12 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates,instantiateinline, the resource
-  /// name of the region has the following format:
-  /// projects/{project_id}/regions/{region}
-  /// For projects.locations.workflowTemplates.instantiateinline, the  resource
-  /// name of the location has the following format:
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates,instantiateinline, the resource name of
+  /// the region has the following format:
+  /// projects/{project_id}/regions/{region} For
+  /// projects.locations.workflowTemplates.instantiateinline, the resource name
+  /// of the location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
   ///
@@ -3752,10 +3734,10 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the region or location, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates,list, the resource  name of the
-  /// region has the following format:  projects/{project_id}/regions/{region}
-  /// For projects.locations.workflowTemplates.list, the  resource name of the
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates,list, the resource name of the region
+  /// has the following format: projects/{project_id}/regions/{region} For
+  /// projects.locations.workflowTemplates.list, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
@@ -3813,8 +3795,8 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3937,12 +3919,12 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource name of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates, the resource name of the  template
+  /// described in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates, the resource name of the template has
+  /// the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates, the resource name of the template
   /// has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates, the resource name of the
-  /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
@@ -4069,12 +4051,12 @@ class AutoscalingPolicy {
   core.String id;
 
   /// Output only. The "resource name" of the autoscaling policy, as described
-  /// in https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.autoscalingPolicies, the resource name of the  policy
+  /// in https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.autoscalingPolicies, the resource name of the policy has
+  /// the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+  /// projects.locations.autoscalingPolicies, the resource name of the policy
   /// has the following format:
-  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
-  /// For projects.locations.autoscalingPolicies, the resource name of the
-  /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   core.String name;
 
@@ -4171,12 +4153,14 @@ class BasicYarnAutoscalingConfig {
   /// downscaling operations.Bounds: 0s, 1d.
   core.String gracefulDecommissionTimeout;
 
-  /// Required. Fraction of average pending memory in the last cooldown period
-  /// for which to remove workers. A scale-down factor of 1 will result in
-  /// scaling down so that there is no available memory remaining after the
+  /// Required. Fraction of average YARN pending memory in the last cooldown
+  /// period for which to remove workers. A scale-down factor of 1 will result
+  /// in scaling down so that there is no available memory remaining after the
   /// update (more aggressive scaling). A scale-down factor of 0 disables
-  /// removing workers, which can be beneficial for autoscaling a single
-  /// job.Bounds: 0.0, 1.0.
+  /// removing workers, which can be beneficial for autoscaling a single job.
+  /// See How autoscaling works
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
+  /// for more information.Bounds: 0.0, 1.0.
   core.double scaleDownFactor;
 
   /// Optional. Minimum scale-down threshold as a fraction of total cluster size
@@ -4186,12 +4170,14 @@ class BasicYarnAutoscalingConfig {
   /// down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
   core.double scaleDownMinWorkerFraction;
 
-  /// Required. Fraction of average pending memory in the last cooldown period
-  /// for which to add workers. A scale-up factor of 1.0 will result in scaling
-  /// up so that there is no pending memory remaining after the update (more
-  /// aggressive scaling). A scale-up factor closer to 0 will result in a
-  /// smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0,
-  /// 1.0.
+  /// Required. Fraction of average YARN pending memory in the last cooldown
+  /// period for which to add workers. A scale-up factor of 1.0 will result in
+  /// scaling up so that there is no pending memory remaining after the update
+  /// (more aggressive scaling). A scale-up factor closer to 0 will result in a
+  /// smaller magnitude of scaling up (less aggressive scaling). See How
+  /// autoscaling works
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
+  /// for more information.Bounds: 0.0, 1.0.
   core.double scaleUpFactor;
 
   /// Optional. Minimum scale-up threshold as a fraction of total cluster size
@@ -4246,23 +4232,30 @@ class BasicYarnAutoscalingConfig {
 
 /// Associates members with a role.
 class Binding {
-  /// The condition that is associated with this binding. NOTE: An unsatisfied
-  /// condition will not allow user access via current binding. Different
-  /// bindings, including their conditions, are examined independently.
+  /// A client-specified ID for this binding. Expected to be globally unique to
+  /// support the internal bindings-by-ID API.
+  core.String bindingId;
+
+  /// The condition that is associated with this binding.If the condition
+  /// evaluates to true, then this binding applies to the current request.If the
+  /// condition evaluates to false, then this binding does not apply to the
+  /// current request. However, a different role binding might grant the same
+  /// role to one or more of the members in this binding.To learn which
+  /// resources support conditions in their IAM policies, see the IAM
+  /// documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
-  /// members can have the following values:
-  /// allUsers: A special identifier that represents anyone who is  on the
-  /// internet; with or without a Google account.
-  /// allAuthenticatedUsers: A special identifier that represents anyone  who is
-  /// authenticated with a Google account or a service account.
+  /// members can have the following values: allUsers: A special identifier that
+  /// represents anyone who is on the internet; with or without a Google
+  /// account. allAuthenticatedUsers: A special identifier that represents
+  /// anyone who is authenticated with a Google account or a service account.
   /// user:{emailid}: An email address that represents a specific Google
-  /// account. For example, alice@example.com .
-  /// serviceAccount:{emailid}: An email address that represents a service
-  /// account. For example, my-other-app@appspot.gserviceaccount.com.
-  /// group:{emailid}: An email address that represents a Google group.  For
-  /// example, admins@example.com.
+  /// account. For example, alice@example.com . serviceAccount:{emailid}: An
+  /// email address that represents a service account. For example,
+  /// my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email
+  /// address that represents a Google group. For example, admins@example.com.
   /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique
   /// identifier) representing a user that has been recently deleted. For
   /// example, alice@example.com?uid=123456789012345678901. If the user is
@@ -4271,17 +4264,17 @@ class Binding {
   /// deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus
   /// unique identifier) representing a service account that has been recently
   /// deleted. For example,
-  /// my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901.  If
-  /// the service account is undeleted, this value reverts to
+  /// my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the
+  /// service account is undeleted, this value reverts to
   /// serviceAccount:{emailid} and the undeleted service account retains the
-  /// role in the binding.
-  /// deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique
-  /// identifier) representing a Google group that has been recently  deleted.
-  /// For example, admins@example.com?uid=123456789012345678901. If  the group
-  /// is recovered, this value reverts to group:{emailid} and the  recovered
-  /// group retains the role in the binding.
-  /// domain:{domain}: The G Suite domain (primary) that represents all the
-  /// users of that domain. For example, google.com or example.com.
+  /// role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// admins@example.com?uid=123456789012345678901. If the group is recovered,
+  /// this value reverts to group:{emailid} and the recovered group retains the
+  /// role in the binding. domain:{domain}: The G Suite domain (primary) that
+  /// represents all the users of that domain. For example, google.com or
+  /// example.com.
   core.List<core.String> members;
 
   /// Role that is assigned to members. For example, roles/viewer, roles/editor,
@@ -4291,6 +4284,9 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingId")) {
+      bindingId = _json["bindingId"];
+    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -4305,6 +4301,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bindingId != null) {
+      _json["bindingId"] = bindingId;
+    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -4450,6 +4449,9 @@ class ClusterConfig {
   /// Optional. Encryption settings for the cluster.
   EncryptionConfig encryptionConfig;
 
+  /// Optional. Port/endpoint configuration for this cluster
+  EndpointConfig endpointConfig;
+
   /// Optional. The shared Compute Engine config settings for all instances in a
   /// cluster.
   GceClusterConfig gceClusterConfig;
@@ -4457,14 +4459,11 @@ class ClusterConfig {
   /// Optional. Commands to execute on each node after config is completed. By
   /// default, executables are run on master and all worker nodes. You can test
   /// a node's role metadata to run an executable on a master or worker node, as
-  /// shown below using curl (you can also use wget):
-  /// ROLE=$(curl -H Metadata-Flavor:Google
-  /// http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)
-  /// if [[ "${ROLE}" == 'Master' ]]; then
-  ///   ... master specific actions ...
-  /// else
-  ///   ... worker specific actions ...
-  /// fi
+  /// shown below using curl (you can also use wget): ROLE=$(curl -H
+  /// Metadata-Flavor:Google
+  /// http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if
+  /// [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ...
+  /// worker specific actions ... fi
   core.List<NodeInitializationAction> initializationActions;
 
   /// Optional. Lifecycle setting for the cluster.
@@ -4484,6 +4483,15 @@ class ClusterConfig {
   /// Optional. The config settings for software inside the cluster.
   SoftwareConfig softwareConfig;
 
+  /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs
+  /// data, such as Spark and MapReduce history files. If you do not specify a
+  /// temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA,
+  /// or EU) for your cluster's temp bucket according to the Compute Engine zone
+  /// where your cluster is deployed, and then create and manage this
+  /// project-level, per-location bucket. The default bucket has a TTL of 90
+  /// days, but you can use any TTL (or none) if you specify a bucket.
+  core.String tempBucket;
+
   /// Optional. The Compute Engine config settings for worker instances in a
   /// cluster.
   InstanceGroupConfig workerConfig;
@@ -4501,6 +4509,9 @@ class ClusterConfig {
     if (_json.containsKey("encryptionConfig")) {
       encryptionConfig =
           new EncryptionConfig.fromJson(_json["encryptionConfig"]);
+    }
+    if (_json.containsKey("endpointConfig")) {
+      endpointConfig = new EndpointConfig.fromJson(_json["endpointConfig"]);
     }
     if (_json.containsKey("gceClusterConfig")) {
       gceClusterConfig =
@@ -4528,6 +4539,9 @@ class ClusterConfig {
     if (_json.containsKey("softwareConfig")) {
       softwareConfig = new SoftwareConfig.fromJson(_json["softwareConfig"]);
     }
+    if (_json.containsKey("tempBucket")) {
+      tempBucket = _json["tempBucket"];
+    }
     if (_json.containsKey("workerConfig")) {
       workerConfig = new InstanceGroupConfig.fromJson(_json["workerConfig"]);
     }
@@ -4544,6 +4558,9 @@ class ClusterConfig {
     }
     if (encryptionConfig != null) {
       _json["encryptionConfig"] = (encryptionConfig).toJson();
+    }
+    if (endpointConfig != null) {
+      _json["endpointConfig"] = (endpointConfig).toJson();
     }
     if (gceClusterConfig != null) {
       _json["gceClusterConfig"] = (gceClusterConfig).toJson();
@@ -4566,6 +4583,9 @@ class ClusterConfig {
     }
     if (softwareConfig != null) {
       _json["softwareConfig"] = (softwareConfig).toJson();
+    }
+    if (tempBucket != null) {
+      _json["tempBucket"] = tempBucket;
     }
     if (workerConfig != null) {
       _json["workerConfig"] = (workerConfig).toJson();
@@ -4987,11 +5007,9 @@ class DiskConfig {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-/// service Foo {
-///   rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-/// }
-/// The JSON representation for Empty is empty JSON object {}.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for Empty is empty JSON object {}.
 class Empty {
   Empty();
 
@@ -5028,27 +5046,57 @@ class EncryptionConfig {
   }
 }
 
+/// Endpoint config for this cluster
+class EndpointConfig {
+  /// Optional. If true, enable http access to specific ports on the cluster
+  /// from external sources. Defaults to false.
+  core.bool enableHttpPortAccess;
+
+  /// Output only. The map of port descriptions to URLs. Will only be populated
+  /// if enable_http_port_access is true.
+  core.Map<core.String, core.String> httpPorts;
+
+  EndpointConfig();
+
+  EndpointConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableHttpPortAccess")) {
+      enableHttpPortAccess = _json["enableHttpPortAccess"];
+    }
+    if (_json.containsKey("httpPorts")) {
+      httpPorts =
+          (_json["httpPorts"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enableHttpPortAccess != null) {
+      _json["enableHttpPortAccess"] = enableHttpPortAccess;
+    }
+    if (httpPorts != null) {
+      _json["httpPorts"] = httpPorts;
+    }
+    return _json;
+  }
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
 /// are documented at https://github.com/google/cel-spec.Example (Comparison):
-/// title: "Summary size limit"
-/// description: "Determines if a summary is less than 100 chars"
-/// expression: "document.summary.size() < 100"
-/// Example (Equality):
-/// title: "Requestor is owner"
-/// description: "Determines if requestor is the document owner"
-/// expression: "document.owner == request.auth.claims.email"
-/// Example (Logic):
-/// title: "Public documents"
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
 /// description: "Determine whether the document should be publicly visible"
 /// expression: "document.type != 'private' && document.type != 'internal'"
-/// Example (Data Manipulation):
-/// title: "Notification string"
-/// description: "Create a notification string with a timestamp."
-/// expression: "'New message received at ' + string(document.create_time)"
-/// The exact variables and functions that may be referenced within an
-/// expression are determined by the service that evaluates it. See the service
-/// documentation for additional information.
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
 class Expr {
   /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
@@ -5126,15 +5174,31 @@ class GceClusterConfig {
   /// more information).A full URL, partial URI, or short name are valid.
   /// Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
-  /// projects/[project_id]/regions/global/default
-  /// default
+  /// projects/[project_id]/regions/global/default default
   core.String networkUri;
+
+  /// Optional. Node Group Affinity for sole-tenant clusters.
+  NodeGroupAffinity nodeGroupAffinity;
+
+  /// Optional. The type of IPv6 access for a cluster.
+  /// Possible string values are:
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED" : If unspecified, Compute
+  /// Engine default behavior will apply, which is the same as
+  /// INHERIT_FROM_SUBNETWORK.
+  /// - "INHERIT_FROM_SUBNETWORK" : Private access to and from Google Services
+  /// configuration inherited from the subnetwork configuration. This is the
+  /// default Compute Engine behavior.
+  /// - "OUTBOUND" : Enables outbound private IPv6 access to Google Services
+  /// from the Dataproc cluster.
+  /// - "BIDIRECTIONAL" : Enables bidirectional private IPv6 access between
+  /// Google Services and the Dataproc cluster.
+  core.String privateIpv6GoogleAccess;
 
   /// Optional. Reservation Affinity for consuming Zonal reservation.
   ReservationAffinity reservationAffinity;
 
   /// Optional. The Dataproc service account
-  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_cloud_dataproc)
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc)
   /// (also see VM Data Plane identity
   /// (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity))
   /// used by Dataproc cluster VM instances to access Google Cloud Platform
@@ -5159,8 +5223,7 @@ class GceClusterConfig {
   /// communications. Cannot be specified with network_uri.A full URL, partial
   /// URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0
-  /// projects/[project_id]/regions/us-east1/subnetworks/sub0
-  /// sub0
+  /// projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
   core.String subnetworkUri;
 
   /// The Compute Engine tags to add to all instances (see Tagging instances
@@ -5173,8 +5236,7 @@ class GceClusterConfig {
   /// corresponding Compute Engine region. On a get request, zone will always be
   /// present.A full URL, partial URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
-  /// projects/[project_id]/zones/[zone]
-  /// us-central1-f
+  /// projects/[project_id]/zones/[zone] us-central1-f
   core.String zoneUri;
 
   GceClusterConfig();
@@ -5189,6 +5251,13 @@ class GceClusterConfig {
     }
     if (_json.containsKey("networkUri")) {
       networkUri = _json["networkUri"];
+    }
+    if (_json.containsKey("nodeGroupAffinity")) {
+      nodeGroupAffinity =
+          new NodeGroupAffinity.fromJson(_json["nodeGroupAffinity"]);
+    }
+    if (_json.containsKey("privateIpv6GoogleAccess")) {
+      privateIpv6GoogleAccess = _json["privateIpv6GoogleAccess"];
     }
     if (_json.containsKey("reservationAffinity")) {
       reservationAffinity =
@@ -5224,6 +5293,12 @@ class GceClusterConfig {
     if (networkUri != null) {
       _json["networkUri"] = networkUri;
     }
+    if (nodeGroupAffinity != null) {
+      _json["nodeGroupAffinity"] = (nodeGroupAffinity).toJson();
+    }
+    if (privateIpv6GoogleAccess != null) {
+      _json["privateIpv6GoogleAccess"] = privateIpv6GoogleAccess;
+    }
     if (reservationAffinity != null) {
       _json["reservationAffinity"] = (reservationAffinity).toJson();
     }
@@ -5249,7 +5324,7 @@ class GceClusterConfig {
 /// Request message for GetIamPolicy method.
 class GetIamPolicyRequest {
   /// OPTIONAL: A GetPolicyOptions object for specifying options to
-  /// GetIamPolicy. This field is only used by Cloud IAM.
+  /// GetIamPolicy.
   GetPolicyOptions options;
 
   GetIamPolicyRequest();
@@ -5276,7 +5351,9 @@ class GetPolicyOptions {
   /// and 3. Requests specifying an invalid value will be rejected.Requests for
   /// policies with any conditional bindings must specify version 3. Policies
   /// without any conditional bindings may specify any valid value or leave the
-  /// field unset.
+  /// field unset.To learn which resources support conditions in their IAM
+  /// policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -5554,9 +5631,8 @@ class InstanceGroupConfig {
   /// Optional. The Compute Engine image resource used for cluster instances.The
   /// URI can represent an image or image family.Image examples:
   /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]
-  /// projects/[project_id]/global/images/[image-id]
-  /// image-idImage family examples. Dataproc will use the most recent image
-  /// from the family:
+  /// projects/[project_id]/global/images/[image-id] image-idImage family
+  /// examples. Dataproc will use the most recent image from the family:
   /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]
   /// projects/[project_id]/global/images/family/[custom-image-family-name]If
   /// the URI is unspecified, it will be inferred from
@@ -5566,6 +5642,9 @@ class InstanceGroupConfig {
   /// Output only. The list of instance names. Dataproc derives the names from
   /// cluster_name, num_instances, and the instance group.
   core.List<core.String> instanceNames;
+
+  /// Output only. List of references to Compute Engine instances.
+  core.List<InstanceReference> instanceReferences;
 
   /// Output only. Specifies that this instance group contains preemptible
   /// instances.
@@ -5587,7 +5666,7 @@ class InstanceGroupConfig {
   ManagedGroupConfig managedGroupConfig;
 
   /// Optional. Specifies the minimum cpu platform for the Instance Group. See
-  /// Dataproc -&gt; Minimum CPU Platform
+  /// Dataproc -> Minimum CPU Platform
   /// (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
   core.String minCpuPlatform;
 
@@ -5626,6 +5705,12 @@ class InstanceGroupConfig {
     if (_json.containsKey("instanceNames")) {
       instanceNames = (_json["instanceNames"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("instanceReferences")) {
+      instanceReferences = (_json["instanceReferences"] as core.List)
+          .map<InstanceReference>(
+              (value) => new InstanceReference.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("isPreemptible")) {
       isPreemptible = _json["isPreemptible"];
     }
@@ -5663,6 +5748,10 @@ class InstanceGroupConfig {
     if (instanceNames != null) {
       _json["instanceNames"] = instanceNames;
     }
+    if (instanceReferences != null) {
+      _json["instanceReferences"] =
+          instanceReferences.map((value) => (value).toJson()).toList();
+    }
     if (isPreemptible != null) {
       _json["isPreemptible"] = isPreemptible;
     }
@@ -5685,10 +5774,42 @@ class InstanceGroupConfig {
   }
 }
 
+/// A reference to a Compute Engine instance.
+class InstanceReference {
+  /// The unique identifier of the Compute Engine instance.
+  core.String instanceId;
+
+  /// The user-friendly name of the Compute Engine instance.
+  core.String instanceName;
+
+  InstanceReference();
+
+  InstanceReference.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceId")) {
+      instanceId = _json["instanceId"];
+    }
+    if (_json.containsKey("instanceName")) {
+      instanceName = _json["instanceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (instanceId != null) {
+      _json["instanceId"] = instanceId;
+    }
+    if (instanceName != null) {
+      _json["instanceName"] = instanceName;
+    }
+    return _json;
+  }
+}
+
 /// A request to instantiate a workflow template.
 class InstantiateWorkflowTemplateRequest {
   /// Optional. Map from parameter names to values that should be used for those
-  /// parameters. Values may not exceed 100 characters.
+  /// parameters. Values may not exceed 1000 characters.
   core.Map<core.String, core.String> parameters;
 
   /// Optional. A tag that prevents multiple concurrent workflow instances with
@@ -5786,8 +5907,7 @@ class Job {
 
   /// Optional. The fully qualified reference to the job, which can be used to
   /// obtain the equivalent REST path of the job resource. If this property is
-  /// not specified when a job is created, the server generates a
-  /// <code>job_id</code>.
+  /// not specified when a job is created, the server generates a job_id.
   JobReference reference;
 
   /// Optional. Job scheduling configuration.
@@ -5803,8 +5923,7 @@ class Job {
   SparkSqlJob sparkSqlJob;
 
   /// Output only. The job status. Additional application-specific status
-  /// information may be contained in the <code>type_job</code> and
-  /// <code>yarn_applications</code> fields.
+  /// information may be contained in the type_job and yarn_applications fields.
   JobStatus status;
 
   /// Output only. The previous job status.
@@ -6038,8 +6157,8 @@ class JobReference {
   /// caller, the job ID will be provided by the server.
   core.String jobId;
 
-  /// Required. The ID of the Google Cloud Platform project that the job belongs
-  /// to.
+  /// Optional. The ID of the Google Cloud Platform project that the job belongs
+  /// to. If specified, must match the request project ID.
   core.String projectId;
 
   JobReference();
@@ -6069,7 +6188,7 @@ class JobReference {
 /// Job scheduling options.
 class JobScheduling {
   /// Optional. Maximum number of times per hour a driver may be restarted as a
-  /// result of driver terminating with non-zero code before job is reported
+  /// result of driver exiting with non-zero code before job is reported
   /// failed.A job may be reported as thrashing if driver exits with non-zero
   /// code 4 times within 10 minute window.Maximum value is 10.
   core.int maxFailuresPerHour;
@@ -6095,7 +6214,7 @@ class JobScheduling {
 /// Dataproc job status.
 class JobStatus {
   /// Optional. Output only. Job state details, such as an error description if
-  /// the state is <code>ERROR</code>.
+  /// the state is ERROR.
   core.String details;
 
   /// Output only. A state message specifying the overall job state.
@@ -6483,7 +6602,7 @@ class ListJobsResponse {
 
   /// Optional. This token is included in the response if there are more results
   /// to fetch. To fetch additional results, provide this value as the
-  /// page_token in a subsequent <code>ListJobsRequest</code>.
+  /// page_token in a subsequent ListJobsRequest.
   core.String nextPageToken;
 
   ListJobsResponse();
@@ -6551,7 +6670,7 @@ class ListOperationsResponse {
 class ListWorkflowTemplatesResponse {
   /// Output only. This token is included in the response if there are more
   /// results to fetch. To fetch additional results, provide this value as the
-  /// page_token in a subsequent <code>ListWorkflowTemplatesRequest</code>.
+  /// page_token in a subsequent ListWorkflowTemplatesRequest.
   core.String nextPageToken;
 
   /// Output only. WorkflowTemplates list.
@@ -6587,7 +6706,7 @@ class ListWorkflowTemplatesResponse {
 /// The runtime logging config of the job.
 class LoggingConfig {
   /// The per-package log levels for the driver. This may include "root" package
-  /// name to configure rootLogger. Examples:  'com.google = FATAL', 'root =
+  /// name to configure rootLogger. Examples: 'com.google = FATAL', 'root =
   /// INFO', 'org.apache = DEBUG'
   core.Map<core.String, core.String> driverLogLevels;
 
@@ -6687,6 +6806,31 @@ class ManagedGroupConfig {
     }
     if (instanceTemplateName != null) {
       _json["instanceTemplateName"] = instanceTemplateName;
+    }
+    return _json;
+  }
+}
+
+/// Node Group Affinity for clusters using sole-tenant node groups.
+class NodeGroupAffinity {
+  /// Required. The name of a single node group
+  /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) a
+  /// cluster will be created on.
+  core.String nodeGroupUri;
+
+  NodeGroupAffinity();
+
+  NodeGroupAffinity.fromJson(core.Map _json) {
+    if (_json.containsKey("nodeGroupUri")) {
+      nodeGroupUri = _json["nodeGroupUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nodeGroupUri != null) {
+      _json["nodeGroupUri"] = nodeGroupUri;
     }
     return _json;
   }
@@ -7069,53 +7213,30 @@ class PigJob {
 /// binding binds one or more members to a single role. Members can be user
 /// accounts, service accounts, Google groups, and domains (such as G Suite). A
 /// role is a named list of permissions; each role can be an IAM predefined role
-/// or a user-created custom role.Optionally, a binding can specify a condition,
-/// which is a logical expression that allows access to a resource only if the
-/// expression evaluates to true. A condition can add constraints based on
-/// attributes of the request, the resource, or both.JSON example:
-/// {
-///   "bindings": [
-///     {
-///       "role": "roles/resourcemanager.organizationAdmin",
-///       "members": [
-///         "user:mike@example.com",
-///         "group:admins@example.com",
-///         "domain:google.com",
-///         "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-///       ]
-///     },
-///     {
-///       "role": "roles/resourcemanager.organizationViewer",
-///       "members": ["user:eve@example.com"],
-///       "condition": {
-///         "title": "expirable access",
-///         "description": "Does not grant access after Sep 2020",
-/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-///       }
-///     }
-///   ],
-///   "etag": "BwWWja0YfJA=",
-///   "version": 3
-/// }
-/// YAML example:
-/// bindings:
-/// - members:
-///   - user:mike@example.com
-///   - group:admins@example.com
-///   - domain:google.com
-///   - serviceAccount:my-project-id@appspot.gserviceaccount.com
-///   role: roles/resourcemanager.organizationAdmin
-/// - members:
-///   - user:eve@example.com
-///   role: roles/resourcemanager.organizationViewer
-///   condition:
-///     title: expirable access
-///     description: Does not grant access after Sep 2020
-///     expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-/// - etag: BwWWja0YfJA=
-/// - version: 3
-/// For a description of IAM and its features, see the IAM documentation
-/// (https://cloud.google.com/iam/docs/).
+/// or a user-created custom role.For some types of Google Cloud resources, a
+/// binding can also specify a condition, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to true. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the IAM documentation
+/// (https://cloud.google.com/iam/help/conditions/resource-policies).JSON
+/// example: { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } YAML example: bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// version: 3 For a description of IAM and its features, see the IAM
+/// documentation (https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of members to a role. Optionally, may specify a
   /// condition that determines how and when the bindings are applied. Each of
@@ -7146,17 +7267,18 @@ class Policy {
   /// Specifies the format of the policy.Valid values are 0, 1, and 3. Requests
   /// that specify an invalid value are rejected.Any operation that affects
   /// conditional role bindings must specify version 3. This requirement applies
-  /// to the following operations:
-  /// Getting a policy that includes a conditional role binding
-  /// Adding a conditional role binding to a policy
-  /// Changing a conditional role binding in a policy
-  /// Removing any role binding, with or without a condition, from a policy
-  /// that includes conditionsImportant: If you use IAM Conditions, you must
-  /// include the etag field whenever you call setIamPolicy. If you omit this
-  /// field, then IAM allows you to overwrite a version 3 policy with a version
-  /// 1 policy, and all of the conditions in the version 3 policy are lost.If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset.
+  /// to the following operations: Getting a policy that includes a conditional
+  /// role binding Adding a conditional role binding to a policy Changing a
+  /// conditional role binding in a policy Removing any role binding, with or
+  /// without a condition, from a policy that includes conditionsImportant: If
+  /// you use IAM Conditions, you must include the etag field whenever you call
+  /// setIamPolicy. If you omit this field, then IAM allows you to overwrite a
+  /// version 3 policy with a version 1 policy, and all of the conditions in the
+  /// version 3 policy are lost.If a policy does not include any conditions,
+  /// operations on that policy may specify any valid version or leave the field
+  /// unset.To learn which resources support conditions in their IAM policies,
+  /// see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -7281,8 +7403,9 @@ class PrestoJob {
 /// (https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
 /// applications on YARN.
 class PySparkJob {
-  /// Optional. HCFS URIs of archives to be extracted in the working directory
-  /// of .jar, .tar, .tar.gz, .tgz, and .zip.
+  /// Optional. HCFS URIs of archives to be extracted into the working directory
+  /// of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and
+  /// .zip.
   core.List<core.String> archiveUris;
 
   /// Optional. The arguments to pass to the driver. Do not include arguments,
@@ -7290,8 +7413,8 @@ class PySparkJob {
   /// occur that causes an incorrect job submission.
   core.List<core.String> args;
 
-  /// Optional. HCFS URIs of files to be copied to the working directory of
-  /// Python drivers and distributed tasks. Useful for naively parallel tasks.
+  /// Optional. HCFS URIs of files to be placed in the working directory of each
+  /// executor. Useful for naively parallel tasks.
   core.List<core.String> fileUris;
 
   /// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python
@@ -7379,19 +7502,12 @@ class PySparkJob {
 
 /// A list of queries to run on a cluster.
 class QueryList {
-  /// Required. The queries to execute. You do not need to terminate a query
-  /// with a semicolon. Multiple queries can be specified in one string by
-  /// separating each with a semicolon. Here is an example of an Cloud Dataproc
-  /// API snippet that uses a QueryList to specify a HiveJob:
-  /// "hiveJob": {
-  ///   "queryList": {
-  ///     "queries": [
-  ///       "query1",
-  ///       "query2",
-  ///       "query3;query4",
-  ///     ]
-  ///   }
-  /// }
+  /// Required. The queries to execute. You do not need to end a query
+  /// expression with a semicolon. Multiple queries can be specified in one
+  /// string by separating each with a semicolon. Here is an example of a
+  /// Dataproc API snippet that uses a QueryList to specify a HiveJob:
+  /// "hiveJob": { "queryList": { "queries": [ "query1", "query2",
+  /// "query3;query4", ] } }
   core.List<core.String> queries;
 
   QueryList();
@@ -7537,7 +7653,7 @@ class SetIamPolicyRequest {
 class SoftwareConfig {
   /// Optional. The version of software inside the cluster. It must be one of
   /// the supported Dataproc Versions
-  /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions),
+  /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions),
   /// such as "1.2" (including a subminor version, such as "1.2.29"), or the
   /// "preview" version
   /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
@@ -7549,16 +7665,11 @@ class SoftwareConfig {
 
   /// Optional. The properties to set on daemon config files.Property keys are
   /// specified in prefix:property format, for example core:hadoop.tmp.dir. The
-  /// following are supported prefixes and their mappings:
-  /// capacity-scheduler: capacity-scheduler.xml
-  /// core: core-site.xml
-  /// distcp: distcp-default.xml
-  /// hdfs: hdfs-site.xml
-  /// hive: hive-site.xml
-  /// mapred: mapred-site.xml
-  /// pig: pig.properties
-  /// spark: spark-defaults.conf
-  /// yarn: yarn-site.xmlFor more information, see Cluster properties
+  /// following are supported prefixes and their mappings: capacity-scheduler:
+  /// capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml
+  /// hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig:
+  /// pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more
+  /// information, see Cluster properties
   /// (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
   core.Map<core.String, core.String> properties;
 
@@ -7597,9 +7708,9 @@ class SoftwareConfig {
 /// A Dataproc job for running Apache Spark (http://spark.apache.org/)
 /// applications on YARN.
 class SparkJob {
-  /// Optional. HCFS URIs of archives to be extracted in the working directory
-  /// of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz,
-  /// .tgz, and .zip.
+  /// Optional. HCFS URIs of archives to be extracted into the working directory
+  /// of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and
+  /// .zip.
   core.List<core.String> archiveUris;
 
   /// Optional. The arguments to pass to the driver. Do not include arguments,
@@ -7607,8 +7718,8 @@ class SparkJob {
   /// occur that causes an incorrect job submission.
   core.List<core.String> args;
 
-  /// Optional. HCFS URIs of files to be copied to the working directory of
-  /// Spark drivers and distributed tasks. Useful for naively parallel tasks.
+  /// Optional. HCFS URIs of files to be placed in the working directory of each
+  /// executor. Useful for naively parallel tasks.
   core.List<core.String> fileUris;
 
   /// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark
@@ -7695,9 +7806,9 @@ class SparkJob {
 /// A Dataproc job for running Apache SparkR
 /// (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
 class SparkRJob {
-  /// Optional. HCFS URIs of archives to be extracted in the working directory
-  /// of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz,
-  /// .tgz, and .zip.
+  /// Optional. HCFS URIs of archives to be extracted into the working directory
+  /// of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and
+  /// .zip.
   core.List<core.String> archiveUris;
 
   /// Optional. The arguments to pass to the driver. Do not include arguments,
@@ -7705,8 +7816,8 @@ class SparkRJob {
   /// occur that causes an incorrect job submission.
   core.List<core.String> args;
 
-  /// Optional. HCFS URIs of files to be copied to the working directory of R
-  /// drivers and distributed tasks. Useful for naively parallel tasks.
+  /// Optional. HCFS URIs of files to be placed in the working directory of each
+  /// executor. Useful for naively parallel tasks.
   core.List<core.String> fileUris;
 
   /// Optional. The runtime log config for job execution.
@@ -7952,33 +8063,25 @@ class TemplateParameter {
   /// path is similar in syntax to a google.protobuf.FieldMask. For example, a
   /// field path that references the zone field of a workflow template's cluster
   /// selector would be specified as placement.clusterSelector.zone.Also, field
-  /// paths can reference fields using the following syntax:
-  /// Values in maps can be referenced by key:
-  /// labels'key'
+  /// paths can reference fields using the following syntax: Values in maps can
+  /// be referenced by key: labels'key'
   /// placement.clusterSelector.clusterLabels'key'
   /// placement.managedCluster.labels'key'
-  /// placement.clusterSelector.clusterLabels'key'
-  /// jobs'step-id'.labels'key'
+  /// placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key'
   /// Jobs in the jobs list can be referenced by step-id:
-  /// jobs'step-id'.hadoopJob.mainJarFileUri
-  /// jobs'step-id'.hiveJob.queryFileUri
+  /// jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri
   /// jobs'step-id'.pySparkJob.mainPythonFileUri
-  /// jobs'step-id'.hadoopJob.jarFileUris0
-  /// jobs'step-id'.hadoopJob.archiveUris0
-  /// jobs'step-id'.hadoopJob.fileUris0
-  /// jobs'step-id'.pySparkJob.pythonFileUris0
+  /// jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0
+  /// jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0
   /// Items in repeated fields can be referenced by a zero-based index:
-  /// jobs'step-id'.sparkJob.args0
-  /// Other examples:
-  /// jobs'step-id'.hadoopJob.properties'key'
-  /// jobs'step-id'.hadoopJob.args0
+  /// jobs'step-id'.sparkJob.args0 Other examples:
+  /// jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0
   /// jobs'step-id'.hiveJob.scriptVariables'key'
-  /// jobs'step-id'.hadoopJob.mainJarFileUri
-  /// placement.clusterSelector.zoneIt may not be possible to parameterize maps
-  /// and repeated fields in their entirety since only individual map values and
-  /// individual items in repeated fields can be referenced. For example, the
-  /// following field paths are invalid:
-  /// placement.clusterSelector.clusterLabels
+  /// jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt
+  /// may not be possible to parameterize maps and repeated fields in their
+  /// entirety since only individual map values and individual items in repeated
+  /// fields can be referenced. For example, the following field paths are
+  /// invalid: placement.clusterSelector.clusterLabels
   /// jobs'step-id'.sparkJob.args
   core.List<core.String> fields;
 
@@ -8160,12 +8263,12 @@ class WorkflowMetadata {
   core.String state;
 
   /// Output only. The resource name of the workflow template as described in
-  /// https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates, the resource name of the  template
+  /// https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates, the resource name of the template has
+  /// the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates, the resource name of the template
   /// has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates, the resource name of the
-  /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   core.String template;
 
@@ -8339,16 +8442,16 @@ class WorkflowTemplate {
   core.Map<core.String, core.String> labels;
 
   /// Output only. The resource name of the workflow template, as described in
-  /// https://cloud.google.com/apis/design/resource_names.
-  /// For projects.regions.workflowTemplates, the resource name of the  template
+  /// https://cloud.google.com/apis/design/resource_names. For
+  /// projects.regions.workflowTemplates, the resource name of the template has
+  /// the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+  /// projects.locations.workflowTemplates, the resource name of the template
   /// has the following format:
-  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
-  /// For projects.locations.workflowTemplates, the resource name of the
-  /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   core.String name;
 
-  /// Optional. emplate parameters whose values are substituted into the
+  /// Optional. Template parameters whose values are substituted into the
   /// template. Values for parameters must be provided when the template is
   /// instantiated.
   core.List<TemplateParameter> parameters;
@@ -8476,9 +8579,9 @@ class WorkflowTemplatePlacement {
 }
 
 /// A YARN application created by a job. Application information is a subset of
-/// <code>org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto</code>.Beta
-/// Feature: This report is available for testing purposes only. It may be
-/// changed before final release.
+/// org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature:
+/// This report is available for testing purposes only. It may be changed before
+/// final release.
 class YarnApplication {
   /// Required. The application name.
   core.String name;

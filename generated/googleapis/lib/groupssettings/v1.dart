@@ -326,7 +326,7 @@ class Groups {
   /// API Email Language Tags.
   core.String primaryLanguage;
 
-  /// Specifies who should the default reply go to. Possible values are:
+  /// Specifies who receives the default reply. Possible values are:
   /// - REPLY_TO_CUSTOM: For replies to messages, use the group's custom email
   /// address.
   /// When the group's ReplyTo property is set to REPLY_TO_CUSTOM, the

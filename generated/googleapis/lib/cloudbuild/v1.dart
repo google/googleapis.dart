@@ -39,16 +39,15 @@ class OperationsResourceApi {
 
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -97,7 +96,7 @@ class OperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -141,78 +140,6 @@ class OperationsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
-
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations$".
-  ///
-  /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListOperationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
-  }
 }
 
 class ProjectsResourceApi {
@@ -220,6 +147,8 @@ class ProjectsResourceApi {
 
   ProjectsBuildsResourceApi get builds =>
       new ProjectsBuildsResourceApi(_requester);
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
   ProjectsTriggersResourceApi get triggers =>
       new ProjectsTriggersResourceApi(_requester);
 
@@ -289,17 +218,19 @@ class ProjectsBuildsResourceApi {
     return _response.then((data) => new Build.fromJson(data));
   }
 
-  /// Starts a build with the specified configuration.
-  ///
-  /// This method returns a long-running `Operation`, which includes the build
-  /// ID. Pass the build ID to `GetBuild` to determine the build status (such as
-  /// `SUCCESS` or `FAILURE`).
+  /// Starts a build with the specified configuration. This method returns a
+  /// long-running `Operation`, which includes the build ID. Pass the build ID
+  /// to `GetBuild` to determine the build status (such as `SUCCESS` or
+  /// `FAILURE`).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [projectId] - Required. ID of the project.
+  ///
+  /// [parent] - The parent resource where this build will be created. Format:
+  /// `projects/{project}/locations/{location}`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -312,7 +243,7 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(Build request, core.String projectId,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -325,6 +256,9 @@ class ProjectsBuildsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -343,16 +277,18 @@ class ProjectsBuildsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns information about a previously requested build.
-  ///
-  /// The `Build` that is returned includes its status (such as `SUCCESS`,
-  /// `FAILURE`, or `WORKING`), and timing information.
+  /// Returns information about a previously requested build. The `Build` that
+  /// is returned includes its status (such as `SUCCESS`, `FAILURE`, or
+  /// `WORKING`), and timing information.
   ///
   /// Request parameters:
   ///
   /// [projectId] - Required. ID of the project.
   ///
   /// [id] - Required. ID of the build.
+  ///
+  /// [name] - The name of the `Build` to retrieve. Format:
+  /// `projects/{project}/locations/{location}/builds/{build}`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -365,7 +301,7 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Build> get(core.String projectId, core.String id,
-      {core.String $fields}) {
+      {core.String name, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -378,6 +314,9 @@ class ProjectsBuildsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -397,20 +336,21 @@ class ProjectsBuildsResourceApi {
     return _response.then((data) => new Build.fromJson(data));
   }
 
-  /// Lists previously requested builds.
-  ///
-  /// Previously requested builds may still be in-progress, or may have finished
-  /// successfully or unsuccessfully.
+  /// Lists previously requested builds. Previously requested builds may still
+  /// be in-progress, or may have finished successfully or unsuccessfully.
   ///
   /// Request parameters:
   ///
   /// [projectId] - Required. ID of the project.
   ///
+  /// [pageSize] - Number of results to return in the list.
+  ///
   /// [filter] - The raw filter text to constrain the results.
   ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  /// [parent] - The parent of the collection of `Builds`. Format:
+  /// `projects/{project}/locations/location`
   ///
-  /// [pageSize] - Number of results to return in the list.
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -423,9 +363,10 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
+      core.String parent,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -437,14 +378,17 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -463,35 +407,22 @@ class ProjectsBuildsResourceApi {
     return _response.then((data) => new ListBuildsResponse.fromJson(data));
   }
 
-  /// Creates a new build based on the specified build.
-  ///
-  /// This method creates a new build using the original build request, which
-  /// may
-  /// or may not result in an identical build.
-  ///
-  /// For triggered builds:
-  ///
-  /// * Triggered builds resolve to a precise revision; therefore a retry of a
-  /// triggered build will result in a build that uses the same revision.
-  ///
-  /// For non-triggered builds that specify `RepoSource`:
-  ///
-  /// * If the original build built from the tip of a branch, the retried build
-  /// will build from the tip of that branch, which may not be the same revision
-  /// as the original build.
-  /// * If the original build specified a commit sha or revision ID, the retried
-  /// build will use the identical source.
-  ///
-  /// For builds that specify `StorageSource`:
-  ///
-  /// * If the original build pulled source from Google Cloud Storage without
-  /// specifying the generation of the object, the new build will use the
-  /// current
-  /// object, which may be different from the original build source.
-  /// * If the original build pulled source from Cloud Storage and specified the
-  /// generation of the object, the new build will attempt to use the same
-  /// object, which may or may not be available depending on the bucket's
-  /// lifecycle management settings.
+  /// Creates a new build based on the specified build. This method creates a
+  /// new build using the original build request, which may or may not result in
+  /// an identical build. For triggered builds: * Triggered builds resolve to a
+  /// precise revision; therefore a retry of a triggered build will result in a
+  /// build that uses the same revision. For non-triggered builds that specify
+  /// `RepoSource`: * If the original build built from the tip of a branch, the
+  /// retried build will build from the tip of that branch, which may not be the
+  /// same revision as the original build. * If the original build specified a
+  /// commit sha or revision ID, the retried build will use the identical
+  /// source. For builds that specify `StorageSource`: * If the original build
+  /// pulled source from Google Cloud Storage without specifying the generation
+  /// of the object, the new build will use the current object, which may be
+  /// different from the original build source. * If the original build pulled
+  /// source from Cloud Storage and specified the generation of the object, the
+  /// new build will attempt to use the same object, which may or may not be
+  /// available depending on the bucket's lifecycle management settings.
   ///
   /// [request] - The metadata request object.
   ///
@@ -550,15 +481,443 @@ class ProjectsBuildsResourceApi {
   }
 }
 
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBuildsResourceApi get builds =>
+      new ProjectsLocationsBuildsResourceApi(_requester);
+  ProjectsLocationsOperationsResourceApi get operations =>
+      new ProjectsLocationsOperationsResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsBuildsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBuildsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Cancels a build in progress.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the `Build` to retrieve. Format:
+  /// `projects/{project}/locations/{location}/builds/{build}`
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/builds/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Build].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Build> cancel(CancelBuildRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Build.fromJson(data));
+  }
+
+  /// Starts a build with the specified configuration. This method returns a
+  /// long-running `Operation`, which includes the build ID. Pass the build ID
+  /// to `GetBuild` to determine the build status (such as `SUCCESS` or
+  /// `FAILURE`).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource where this build will be created. Format:
+  /// `projects/{project}/locations/{location}`
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [projectId] - Required. ID of the project.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(Build request, core.String parent,
+      {core.String projectId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns information about a previously requested build. The `Build` that
+  /// is returned includes its status (such as `SUCCESS`, `FAILURE`, or
+  /// `WORKING`), and timing information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the `Build` to retrieve. Format:
+  /// `projects/{project}/locations/{location}/builds/{build}`
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/builds/[^/]+$".
+  ///
+  /// [projectId] - Required. ID of the project.
+  ///
+  /// [id] - Required. ID of the build.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Build].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Build> get(core.String name,
+      {core.String projectId, core.String id, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if (id != null) {
+      _queryParams["id"] = [id];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Build.fromJson(data));
+  }
+
+  /// Lists previously requested builds. Previously requested builds may still
+  /// be in-progress, or may have finished successfully or unsuccessfully.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent of the collection of `Builds`. Format:
+  /// `projects/{project}/locations/location`
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageSize] - Number of results to return in the list.
+  ///
+  /// [filter] - The raw filter text to constrain the results.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [projectId] - Required. ID of the project.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBuildsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBuildsResponse> list(core.String parent,
+      {core.int pageSize,
+      core.String filter,
+      core.String pageToken,
+      core.String projectId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBuildsResponse.fromJson(data));
+  }
+
+  /// Creates a new build based on the specified build. This method creates a
+  /// new build using the original build request, which may or may not result in
+  /// an identical build. For triggered builds: * Triggered builds resolve to a
+  /// precise revision; therefore a retry of a triggered build will result in a
+  /// build that uses the same revision. For non-triggered builds that specify
+  /// `RepoSource`: * If the original build built from the tip of a branch, the
+  /// retried build will build from the tip of that branch, which may not be the
+  /// same revision as the original build. * If the original build specified a
+  /// commit sha or revision ID, the retried build will use the identical
+  /// source. For builds that specify `StorageSource`: * If the original build
+  /// pulled source from Google Cloud Storage without specifying the generation
+  /// of the object, the new build will use the current object, which may be
+  /// different from the original build source. * If the original build pulled
+  /// source from Cloud Storage and specified the generation of the object, the
+  /// new build will attempt to use the same object, which may or may not be
+  /// available depending on the bucket's lifecycle management settings.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the `Build` to retry. Format:
+  /// `projects/{project}/locations/{location}/builds/{build}`
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/builds/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> retry(RetryBuildRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':retry';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class ProjectsLocationsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation. The server
+  /// makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets the latest state of a long-running operation. Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
 class ProjectsTriggersResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsTriggersResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new `BuildTrigger`.
-  ///
-  /// This API is experimental.
+  /// Creates a new `BuildTrigger`. This API is experimental.
   ///
   /// [request] - The metadata request object.
   ///
@@ -609,9 +968,8 @@ class ProjectsTriggersResourceApi {
     return _response.then((data) => new BuildTrigger.fromJson(data));
   }
 
-  /// Deletes a `BuildTrigger` by its project ID and trigger ID.
-  ///
-  /// This API is experimental.
+  /// Deletes a `BuildTrigger` by its project ID and trigger ID. This API is
+  /// experimental.
   ///
   /// Request parameters:
   ///
@@ -662,9 +1020,7 @@ class ProjectsTriggersResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Returns information about a `BuildTrigger`.
-  ///
-  /// This API is experimental.
+  /// Returns information about a `BuildTrigger`. This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -716,9 +1072,7 @@ class ProjectsTriggersResourceApi {
     return _response.then((data) => new BuildTrigger.fromJson(data));
   }
 
-  /// Lists existing `BuildTrigger`s.
-  ///
-  /// This API is experimental.
+  /// Lists existing `BuildTrigger`s. This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -774,9 +1128,8 @@ class ProjectsTriggersResourceApi {
         .then((data) => new ListBuildTriggersResponse.fromJson(data));
   }
 
-  /// Updates a `BuildTrigger` by its project ID and trigger ID.
-  ///
-  /// This API is experimental.
+  /// Updates a `BuildTrigger` by its project ID and trigger ID. This API is
+  /// experimental.
   ///
   /// [request] - The metadata request object.
   ///
@@ -892,15 +1245,14 @@ class ProjectsTriggersResourceApi {
   }
 }
 
-/// Files in the workspace to upload to Cloud Storage upon successful
-/// completion of all build steps.
+/// Files in the workspace to upload to Cloud Storage upon successful completion
+/// of all build steps.
 class ArtifactObjects {
   /// Cloud Storage bucket and optional object path, in the form
   /// "gs://bucket/path/to/somewhere/". (see [Bucket Name
   /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-  ///
-  /// Files in the workspace matching any path pattern will be uploaded to
-  /// Cloud Storage with this location as a prefix.
+  /// Files in the workspace matching any path pattern will be uploaded to Cloud
+  /// Storage with this location as a prefix.
   core.String location;
 
   /// Path globs used to match files in the build's workspace.
@@ -939,8 +1291,8 @@ class ArtifactObjects {
   }
 }
 
-/// An artifact that was uploaded during a build. This
-/// is a single record in the artifact manifest JSON file.
+/// An artifact that was uploaded during a build. This is a single record in the
+/// artifact manifest JSON file.
 class ArtifactResult {
   /// The file hash of the artifact.
   core.List<FileHashes> fileHash;
@@ -976,30 +1328,21 @@ class ArtifactResult {
   }
 }
 
-/// Artifacts produced by a build that should be uploaded upon
-/// successful completion of all build steps.
+/// Artifacts produced by a build that should be uploaded upon successful
+/// completion of all build steps.
 class Artifacts {
   /// A list of images to be pushed upon the successful completion of all build
-  /// steps.
-  ///
-  /// The images will be pushed using the builder service account's credentials.
-  ///
-  /// The digests of the pushed images will be stored in the Build resource's
-  /// results field.
-  ///
-  /// If any of the images fail to be pushed, the build is marked FAILURE.
+  /// steps. The images will be pushed using the builder service account's
+  /// credentials. The digests of the pushed images will be stored in the Build
+  /// resource's results field. If any of the images fail to be pushed, the
+  /// build is marked FAILURE.
   core.List<core.String> images;
 
   /// A list of objects to be uploaded to Cloud Storage upon successful
-  /// completion of all build steps.
-  ///
-  /// Files in the workspace matching specified paths globs will be uploaded to
-  /// the specified Cloud Storage location using the builder service account's
-  /// credentials.
-  ///
-  /// The location and generation of the uploaded objects will be stored in the
-  /// Build resource's results field.
-  ///
+  /// completion of all build steps. Files in the workspace matching specified
+  /// paths globs will be uploaded to the specified Cloud Storage location using
+  /// the builder service account's credentials. The location and generation of
+  /// the uploaded objects will be stored in the Build resource's results field.
   /// If any objects fail to be pushed, the build is marked FAILURE.
   ArtifactObjects objects;
 
@@ -1027,26 +1370,20 @@ class Artifacts {
   }
 }
 
-/// A build resource in the Cloud Build API.
-///
-/// At a high level, a `Build` describes where to find source code, how to build
-/// it (for example, the builder image to run on the source), and where to store
-/// the built artifacts.
-///
+/// A build resource in the Cloud Build API. At a high level, a `Build`
+/// describes where to find source code, how to build it (for example, the
+/// builder image to run on the source), and where to store the built artifacts.
 /// Fields can include the following variables, which will be expanded when the
-/// build is created:
-///
-/// - $PROJECT_ID: the project ID of the build.
-/// - $BUILD_ID: the autogenerated ID of the build.
-/// - $REPO_NAME: the source repository name specified by RepoSource.
-/// - $BRANCH_NAME: the branch name specified by RepoSource.
-/// - $TAG_NAME: the tag name specified by RepoSource.
-/// - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or
-///   resolved from the specified branch or tag.
-/// - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+/// build is created: - $PROJECT_ID: the project ID of the build. - $BUILD_ID:
+/// the autogenerated ID of the build. - $REPO_NAME: the source repository name
+/// specified by RepoSource. - $BRANCH_NAME: the branch name specified by
+/// RepoSource. - $TAG_NAME: the tag name specified by RepoSource. -
+/// $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or
+/// resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters
+/// of $REVISION_ID or $COMMIT_SHA.
 class Build {
-  /// Artifacts produced by the build that should be uploaded upon
-  /// successful completion of all build steps.
+  /// Artifacts produced by the build that should be uploaded upon successful
+  /// completion of all build steps.
   Artifacts artifacts;
 
   /// Output only. The ID of the `BuildTrigger` that triggered this build, if it
@@ -1056,9 +1393,8 @@ class Build {
   /// Output only. Time at which the request to create the build was received.
   core.String createTime;
 
-  /// Output only. Time at which execution of the build was finished.
-  ///
-  /// The difference between finish_time and start_time is the duration of the
+  /// Output only. Time at which execution of the build was finished. The
+  /// difference between finish_time and start_time is the duration of the
   /// build's execution.
   core.String finishTime;
 
@@ -1066,26 +1402,25 @@ class Build {
   core.String id;
 
   /// A list of images to be pushed upon the successful completion of all build
-  /// steps.
-  ///
-  /// The images are pushed using the builder service account's credentials.
-  ///
-  /// The digests of the pushed images will be stored in the `Build` resource's
-  /// results field.
-  ///
-  /// If any of the images fail to be pushed, the build status is marked
-  /// `FAILURE`.
+  /// steps. The images are pushed using the builder service account's
+  /// credentials. The digests of the pushed images will be stored in the
+  /// `Build` resource's results field. If any of the images fail to be pushed,
+  /// the build status is marked `FAILURE`.
   core.List<core.String> images;
 
   /// Output only. URL to logs for this build in Google Cloud Console.
   core.String logUrl;
 
-  /// Google Cloud Storage bucket where logs should be written (see
-  /// [Bucket Name
+  /// Google Cloud Storage bucket where logs should be written (see [Bucket Name
   /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   /// Logs file names will be of the format
   /// `${logs_bucket}/log-${build_id}.txt`.
   core.String logsBucket;
+
+  /// Output only. The 'Build' name with format:
+  /// `projects/{project}/locations/{location}/builds/{build}`, where {build} is
+  /// a unique identifier generated by the service.
+  core.String name;
 
   /// Special options for this build.
   BuildOptions options;
@@ -1095,9 +1430,7 @@ class Build {
 
   /// TTL in queue for this build. If provided and the build is enqueued longer
   /// than this value, the build will expire and the build status will be
-  /// `EXPIRED`.
-  ///
-  /// The TTL starts ticking from create_time.
+  /// `EXPIRED`. The TTL starts ticking from create_time.
   core.String queueTtl;
 
   /// Output only. Results of the build.
@@ -1105,6 +1438,12 @@ class Build {
 
   /// Secrets to decrypt using Cloud Key Management Service.
   core.List<Secret> secrets;
+
+  /// IAM service account whose credentials will be used at build runtime. Must
+  /// be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  /// ACCOUNT can be email address or uniqueId of the service account. This
+  /// field is in alpha and is not publicly available.
+  core.String serviceAccount;
 
   /// The location of the source files to build.
   Source source;
@@ -1142,20 +1481,14 @@ class Build {
 
   /// Amount of time that this build should be allowed to run, to second
   /// granularity. If this amount of time elapses, work on the build will cease
-  /// and the build status will be `TIMEOUT`.
-  ///
-  /// Default time is ten minutes.
+  /// and the build status will be `TIMEOUT`. `timeout` starts ticking from
+  /// `startTime`. Default time is ten minutes.
   core.String timeout;
 
   /// Output only. Stores timing information for phases of the build. Valid keys
-  /// are:
-  ///
-  /// * BUILD: time to execute all build steps
-  /// * PUSH: time to push all specified images.
-  /// * FETCHSOURCE: time to fetch source.
-  ///
-  /// If the build does not specify source or images,
-  /// these keys will not be included.
+  /// are: * BUILD: time to execute all build steps * PUSH: time to push all
+  /// specified images. * FETCHSOURCE: time to fetch source. If the build does
+  /// not specify source or images, these keys will not be included.
   core.Map<core.String, TimeSpan> timing;
 
   Build();
@@ -1185,6 +1518,9 @@ class Build {
     if (_json.containsKey("logsBucket")) {
       logsBucket = _json["logsBucket"];
     }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("options")) {
       options = new BuildOptions.fromJson(_json["options"]);
     }
@@ -1201,6 +1537,9 @@ class Build {
       secrets = (_json["secrets"] as core.List)
           .map<Secret>((value) => new Secret.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("serviceAccount")) {
+      serviceAccount = _json["serviceAccount"];
     }
     if (_json.containsKey("source")) {
       source = new Source.fromJson(_json["source"]);
@@ -1267,6 +1606,9 @@ class Build {
     if (logsBucket != null) {
       _json["logsBucket"] = logsBucket;
     }
+    if (name != null) {
+      _json["name"] = name;
+    }
     if (options != null) {
       _json["options"] = (options).toJson();
     }
@@ -1281,6 +1623,9 @@ class Build {
     }
     if (secrets != null) {
       _json["secrets"] = secrets.map((value) => (value).toJson()).toList();
+    }
+    if (serviceAccount != null) {
+      _json["serviceAccount"] = serviceAccount;
     }
     if (source != null) {
       _json["source"] = (source).toJson();
@@ -1344,44 +1689,48 @@ class BuildOperationMetadata {
 /// Optional arguments to enable specific features of builds.
 class BuildOptions {
   /// Requested disk size for the VM that runs the build. Note that this is
-  /// *NOT*
-  /// "disk free"; some of the space will be used by the operating system and
-  /// build utilities. Also note that this is the minimum disk size that will be
-  /// allocated for the build -- the build may run with a larger disk than
-  /// requested. At present, the maximum disk size is 1000GB; builds that
-  /// request
-  /// more than the maximum are rejected with an error.
+  /// *NOT* "disk free"; some of the space will be used by the operating system
+  /// and build utilities. Also note that this is the minimum disk size that
+  /// will be allocated for the build -- the build may run with a larger disk
+  /// than requested. At present, the maximum disk size is 1000GB; builds that
+  /// request more than the maximum are rejected with an error.
   core.String diskSizeGb;
+
+  /// Option to specify whether or not to apply bash style string operations to
+  /// the substitutions. NOTE: this is always enabled for triggered builds and
+  /// cannot be overridden in the build configuration file.
+  core.bool dynamicSubstitutions;
 
   /// A list of global environment variable definitions that will exist for all
   /// build steps in this build. If a variable is defined in both globally and
-  /// in
-  /// a build step, the variable will use the build step value.
-  ///
-  /// The elements are of the form "KEY=VALUE" for the environment variable
-  /// "KEY"
-  /// being given the value "VALUE".
+  /// in a build step, the variable will use the build step value. The elements
+  /// are of the form "KEY=VALUE" for the environment variable "KEY" being given
+  /// the value "VALUE".
   core.List<core.String> env;
 
-  /// Option to define build log streaming behavior to Google Cloud
-  /// Storage.
+  /// Option to define build log streaming behavior to Google Cloud Storage.
   /// Possible string values are:
   /// - "STREAM_DEFAULT" : Service may automatically determine build log
   /// streaming behavior.
   /// - "STREAM_ON" : Build logs should be streamed to Google Cloud Storage.
   /// - "STREAM_OFF" : Build logs should not be streamed to Google Cloud
-  /// Storage; they will be
-  /// written when the build is completed.
+  /// Storage; they will be written when the build is completed.
   core.String logStreamingOption;
 
-  /// Option to specify the logging mode, which determines where the logs are
-  /// stored.
+  /// Option to specify the logging mode, which determines if and where build
+  /// logs are stored.
   /// Possible string values are:
   /// - "LOGGING_UNSPECIFIED" : The service determines the logging mode. The
-  /// default is `LEGACY`. Do not
-  /// rely on the default logging behavior as it may change in the future.
-  /// - "LEGACY" : Stackdriver logging and Cloud Storage logging are enabled.
+  /// default is `LEGACY`. Do not rely on the default logging behavior as it may
+  /// change in the future.
+  /// - "LEGACY" : Cloud Logging and Cloud Storage logging are enabled.
   /// - "GCS_ONLY" : Only Cloud Storage logging is enabled.
+  /// - "STACKDRIVER_ONLY" : This option is the same as CLOUD_LOGGING_ONLY.
+  /// - "CLOUD_LOGGING_ONLY" : Only Cloud Logging is enabled. Note that logs for
+  /// both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs,
+  /// so neither will provide logs if this option is chosen.
+  /// - "NONE" : Turn off all logging. No build logs will be captured. Next ID:
+  /// 6
   core.String logging;
 
   /// Compute Engine machine type on which to run the build.
@@ -1399,37 +1748,33 @@ class BuildOptions {
 
   /// A list of global environment variables, which are encrypted using a Cloud
   /// Key Management Service crypto key. These values must be specified in the
-  /// build's `Secret`. These variables will be available to all build steps
-  /// in this build.
+  /// build's `Secret`. These variables will be available to all build steps in
+  /// this build.
   core.List<core.String> secretEnv;
 
   /// Requested hash for SourceProvenance.
   core.List<core.String> sourceProvenanceHash;
 
   /// Option to specify behavior when there is an error in the substitution
-  /// checks.
+  /// checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and
+  /// cannot be overridden in the build configuration file.
   /// Possible string values are:
   /// - "MUST_MATCH" : Fails the build if error in substitutions checks, like
-  /// missing
-  /// a substitution in the template or in the map.
+  /// missing a substitution in the template or in the map.
   /// - "ALLOW_LOOSE" : Do not fail the build if error in substitutions checks.
   core.String substitutionOption;
 
-  /// Global list of volumes to mount for ALL build steps
-  ///
-  /// Each volume is created as an empty volume prior to starting the build
-  /// process. Upon completion of the build, volumes and their contents are
-  /// discarded. Global volume names and paths cannot conflict with the volumes
-  /// defined a build step.
-  ///
-  /// Using a global volume in a build with only one step is not valid as
-  /// it is indicative of a build request with an incorrect configuration.
+  /// Global list of volumes to mount for ALL build steps Each volume is created
+  /// as an empty volume prior to starting the build process. Upon completion of
+  /// the build, volumes and their contents are discarded. Global volume names
+  /// and paths cannot conflict with the volumes defined a build step. Using a
+  /// global volume in a build with only one step is not valid as it is
+  /// indicative of a build request with an incorrect configuration.
   core.List<Volume> volumes;
 
-  /// Option to specify a `WorkerPool` for the build.
-  /// Format: projects/{project}/workerPools/{workerPool}
-  ///
-  /// This field is experimental.
+  /// Option to specify a `WorkerPool` for the build. Format:
+  /// projects/{project}/locations/{location}/workerPools/{workerPool} This
+  /// field is experimental.
   core.String workerPool;
 
   BuildOptions();
@@ -1437,6 +1782,9 @@ class BuildOptions {
   BuildOptions.fromJson(core.Map _json) {
     if (_json.containsKey("diskSizeGb")) {
       diskSizeGb = _json["diskSizeGb"];
+    }
+    if (_json.containsKey("dynamicSubstitutions")) {
+      dynamicSubstitutions = _json["dynamicSubstitutions"];
     }
     if (_json.containsKey("env")) {
       env = (_json["env"] as core.List).cast<core.String>();
@@ -1479,6 +1827,9 @@ class BuildOptions {
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
     }
+    if (dynamicSubstitutions != null) {
+      _json["dynamicSubstitutions"] = dynamicSubstitutions;
+    }
     if (env != null) {
       _json["env"] = env;
     }
@@ -1516,63 +1867,47 @@ class BuildOptions {
 /// A step in the build pipeline.
 class BuildStep {
   /// A list of arguments that will be presented to the step when it is started.
-  ///
   /// If the image used to run the step's container has an entrypoint, the
-  /// `args`
-  /// are used as arguments to that entrypoint. If the image does not define
-  /// an entrypoint, the first element in args is used as the entrypoint,
+  /// `args` are used as arguments to that entrypoint. If the image does not
+  /// define an entrypoint, the first element in args is used as the entrypoint,
   /// and the remainder will be used as arguments.
   core.List<core.String> args;
 
-  /// Working directory to use when running this step's container.
-  ///
-  /// If this value is a relative path, it is relative to the build's working
-  /// directory. If this value is absolute, it may be outside the build's
-  /// working
-  /// directory, in which case the contents of the path may not be persisted
-  /// across build step executions, unless a `volume` for that path is
-  /// specified.
-  ///
-  /// If the build specifies a `RepoSource` with `dir` and a step with a `dir`,
-  /// which specifies an absolute path, the `RepoSource` `dir` is ignored for
-  /// the step's execution.
+  /// Working directory to use when running this step's container. If this value
+  /// is a relative path, it is relative to the build's working directory. If
+  /// this value is absolute, it may be outside the build's working directory,
+  /// in which case the contents of the path may not be persisted across build
+  /// step executions, unless a `volume` for that path is specified. If the
+  /// build specifies a `RepoSource` with `dir` and a step with a `dir`, which
+  /// specifies an absolute path, the `RepoSource` `dir` is ignored for the
+  /// step's execution.
   core.String dir;
 
   /// Entrypoint to be used instead of the build step image's default
-  /// entrypoint.
-  /// If unset, the image's default entrypoint is used.
+  /// entrypoint. If unset, the image's default entrypoint is used.
   core.String entrypoint;
 
   /// A list of environment variable definitions to be used when running a step.
-  ///
   /// The elements are of the form "KEY=VALUE" for the environment variable
-  /// "KEY"
-  /// being given the value "VALUE".
+  /// "KEY" being given the value "VALUE".
   core.List<core.String> env;
 
-  /// Unique identifier for this build step, used in `wait_for` to
-  /// reference this build step as a dependency.
+  /// Unique identifier for this build step, used in `wait_for` to reference
+  /// this build step as a dependency.
   core.String id;
 
   /// Required. The name of the container image that will run this particular
-  /// build step.
-  ///
-  /// If the image is available in the host's Docker daemon's cache, it
-  /// will be run directly. If not, the host will attempt to pull the image
-  /// first, using the builder service account's credentials if necessary.
-  ///
-  /// The Docker daemon's cache will already have the latest versions of all of
-  /// the officially supported build steps
+  /// build step. If the image is available in the host's Docker daemon's cache,
+  /// it will be run directly. If not, the host will attempt to pull the image
+  /// first, using the builder service account's credentials if necessary. The
+  /// Docker daemon's cache will already have the latest versions of all of the
+  /// officially supported build steps
   /// ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)).
   /// The Docker daemon will also have cached many of the layers for some
-  /// popular
-  /// images, like "ubuntu", "debian", but they will be refreshed at the time
-  /// you
-  /// attempt to use them.
-  ///
-  /// If you built an image in a previous build step, it will be stored in the
-  /// host's Docker daemon's cache and is available to use as the name for a
-  /// later build step.
+  /// popular images, like "ubuntu", "debian", but they will be refreshed at the
+  /// time you attempt to use them. If you built an image in a previous build
+  /// step, it will be stored in the host's Docker daemon's cache and is
+  /// available to use as the name for a later build step.
   core.String name;
 
   /// Output only. Stores timing information for pulling this build step's
@@ -1601,28 +1936,24 @@ class BuildStep {
 
   /// Time limit for executing this build step. If not defined, the step has no
   /// time limit and will be allowed to continue to run until either it
-  /// completes
-  /// or the build itself times out.
+  /// completes or the build itself times out.
   core.String timeout;
 
   /// Output only. Stores timing information for executing this build step.
   TimeSpan timing;
 
-  /// List of volumes to mount into the build step.
-  ///
-  /// Each volume is created as an empty volume prior to execution of the
-  /// build step. Upon completion of the build, volumes and their contents are
-  /// discarded.
-  ///
-  /// Using a named volume in only one step is not valid as it is indicative
-  /// of a build request with an incorrect configuration.
+  /// List of volumes to mount into the build step. Each volume is created as an
+  /// empty volume prior to execution of the build step. Upon completion of the
+  /// build, volumes and their contents are discarded. Using a named volume in
+  /// only one step is not valid as it is indicative of a build request with an
+  /// incorrect configuration.
   core.List<Volume> volumes;
 
-  /// The ID(s) of the step(s) that this build step depends on.
-  /// This build step will not start until all the build steps in `wait_for`
-  /// have completed successfully. If `wait_for` is empty, this build step will
-  /// start when all previous build steps in the `Build.Steps` list have
-  /// completed successfully.
+  /// The ID(s) of the step(s) that this build step depends on. This build step
+  /// will not start until all the build steps in `wait_for` have completed
+  /// successfully. If `wait_for` is empty, this build step will start when all
+  /// previous build steps in the `Build.Steps` list have completed
+  /// successfully.
   core.List<core.String> waitFor;
 
   BuildStep();
@@ -1729,17 +2060,16 @@ class BuildTrigger {
   /// Human-readable description of this trigger.
   core.String description;
 
-  /// If true, the trigger will never result in a build.
+  /// If true, the trigger will never automatically execute a build.
   core.bool disabled;
 
   /// Path, from the source root, to a file whose contents is used for the
   /// template.
   core.String filename;
 
-  /// GitHubEventsConfig describes the configuration of a trigger that creates
-  /// a build whenever a GitHub event is received.
-  ///
-  /// Mutually exclusive with `trigger_template`.
+  /// GitHubEventsConfig describes the configuration of a trigger that creates a
+  /// build whenever a GitHub event is received. Mutually exclusive with
+  /// `trigger_template`.
   GitHubEventsConfig github;
 
   /// Output only. Unique identifier of the trigger.
@@ -1747,49 +2077,38 @@ class BuildTrigger {
 
   /// ignored_files and included_files are file glob matches using
   /// https://golang.org/pkg/path/filepath/#Match extended with support for
-  /// "**".
-  ///
-  /// If ignored_files and changed files are both empty, then they are
-  /// not used to determine whether or not to trigger a build.
-  ///
-  /// If ignored_files is not empty, then we ignore any files that match
-  /// any of the ignored_file globs. If the change has no files that are
-  /// outside of the ignored_files globs, then we do not trigger a build.
+  /// "**". If ignored_files and changed files are both empty, then they are not
+  /// used to determine whether or not to trigger a build. If ignored_files is
+  /// not empty, then we ignore any files that match any of the ignored_file
+  /// globs. If the change has no files that are outside of the ignored_files
+  /// globs, then we do not trigger a build.
   core.List<core.String> ignoredFiles;
 
-  /// If any of the files altered in the commit pass the ignored_files
-  /// filter and included_files is empty, then as far as this filter is
-  /// concerned, we should trigger the build.
-  ///
-  /// If any of the files altered in the commit pass the ignored_files
-  /// filter and included_files is not empty, then we make sure that at
-  /// least one of those files matches a included_files glob. If not,
-  /// then we do not trigger a build.
+  /// If any of the files altered in the commit pass the ignored_files filter
+  /// and included_files is empty, then as far as this filter is concerned, we
+  /// should trigger the build. If any of the files altered in the commit pass
+  /// the ignored_files filter and included_files is not empty, then we make
+  /// sure that at least one of those files matches a included_files glob. If
+  /// not, then we do not trigger a build.
   core.List<core.String> includedFiles;
 
   /// User-assigned name of the trigger. Must be unique within the project.
-  /// Trigger names must meet the following requirements:
-  ///
-  /// + They must contain only alphanumeric characters and dashes.
-  /// + They can be 1-64 characters long.
-  /// + They must begin and end with an alphanumeric character.
+  /// Trigger names must meet the following requirements: + They must contain
+  /// only alphanumeric characters and dashes. + They can be 1-64 characters
+  /// long. + They must begin and end with an alphanumeric character.
   core.String name;
 
   /// Substitutions for Build resource. The keys must match the following
-  /// regular expression: `^_[A-Z0-9_]+$`.The keys cannot conflict with the
-  /// keys in bindings.
+  /// regular expression: `^_[A-Z0-9_]+$`.
   core.Map<core.String, core.String> substitutions;
 
   /// Tags for annotation of a `BuildTrigger`
   core.List<core.String> tags;
 
-  /// Template describing the types of source changes to trigger a build.
-  ///
-  /// Branch and tag names in trigger templates are interpreted as regular
-  /// expressions. Any branch or tag change that matches that regular expression
-  /// will trigger a build.
-  ///
-  /// Mutually exclusive with `github`.
+  /// Template describing the types of source changes to trigger a build. Branch
+  /// and tag names in trigger templates are interpreted as regular expressions.
+  /// Any branch or tag change that matches that regular expression will trigger
+  /// a build. Mutually exclusive with `github`.
   RepoSource triggerTemplate;
 
   BuildTrigger();
@@ -1927,13 +2246,42 @@ class BuiltImage {
 
 /// Request to cancel an ongoing build.
 class CancelBuildRequest {
+  /// Required. ID of the build.
+  core.String id;
+
+  /// The name of the `Build` to retrieve. Format:
+  /// `projects/{project}/locations/{location}/builds/{build}`
+  core.String name;
+
+  /// Required. ID of the project.
+  core.String projectId;
+
   CancelBuildRequest();
 
-  CancelBuildRequest.fromJson(core.Map _json) {}
+  CancelBuildRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
     return _json;
   }
 }
@@ -1953,13 +2301,9 @@ class CancelOperationRequest {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -1999,9 +2343,7 @@ class FileHashes {
 }
 
 /// GitHubEventsConfig describes the configuration of a trigger that creates a
-/// build whenever a GitHub event is received.
-///
-/// This message is experimental.
+/// build whenever a GitHub event is received. This message is experimental.
 class GitHubEventsConfig {
   /// The installationID that emits the GitHub event.
   core.String installationId;
@@ -2058,6 +2400,29 @@ class GitHubEventsConfig {
     }
     if (push != null) {
       _json["push"] = (push).toJson();
+    }
+    return _json;
+  }
+}
+
+/// HTTPDelivery is the delivery configuration for an HTTP notification.
+class HTTPDelivery {
+  /// The URI to which JSON-containing HTTP POST requests should be sent.
+  core.String uri;
+
+  HTTPDelivery();
+
+  HTTPDelivery.fromJson(core.Map _json) {
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (uri != null) {
+      _json["uri"] = uri;
     }
     return _json;
   }
@@ -2175,23 +2540,237 @@ class ListBuildsResponse {
   }
 }
 
-/// The response message for Operations.ListOperations.
-class ListOperationsResponse {
-  /// The standard List next-page token.
-  core.String nextPageToken;
+/// Notification is the container which holds the data that is relevant to this
+/// particular notification.
+class Notification {
+  /// The filter string to use for notification filtering. Currently, this is
+  /// assumed to be a CEL program. See https://opensource.google/projects/cel
+  /// for more.
+  core.String filter;
 
-  /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  /// Configuration for HTTP delivery.
+  HTTPDelivery httpDelivery;
 
-  ListOperationsResponse();
+  /// Configuration for Slack delivery.
+  SlackDelivery slackDelivery;
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
+  /// Configuration for SMTP (email) delivery.
+  SMTPDelivery smtpDelivery;
+
+  /// Escape hatch for users to supply custom delivery configs.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> structDelivery;
+
+  Notification();
+
+  Notification.fromJson(core.Map _json) {
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
     }
-    if (_json.containsKey("operations")) {
-      operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+    if (_json.containsKey("httpDelivery")) {
+      httpDelivery = new HTTPDelivery.fromJson(_json["httpDelivery"]);
+    }
+    if (_json.containsKey("slackDelivery")) {
+      slackDelivery = new SlackDelivery.fromJson(_json["slackDelivery"]);
+    }
+    if (_json.containsKey("smtpDelivery")) {
+      smtpDelivery = new SMTPDelivery.fromJson(_json["smtpDelivery"]);
+    }
+    if (_json.containsKey("structDelivery")) {
+      structDelivery = (_json["structDelivery"] as core.Map)
+          .cast<core.String, core.Object>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (httpDelivery != null) {
+      _json["httpDelivery"] = (httpDelivery).toJson();
+    }
+    if (slackDelivery != null) {
+      _json["slackDelivery"] = (slackDelivery).toJson();
+    }
+    if (smtpDelivery != null) {
+      _json["smtpDelivery"] = (smtpDelivery).toJson();
+    }
+    if (structDelivery != null) {
+      _json["structDelivery"] = structDelivery;
+    }
+    return _json;
+  }
+}
+
+/// NotifierConfig is the top-level configuration message.
+class NotifierConfig {
+  /// The API version of this configuration format.
+  core.String apiVersion;
+
+  /// The type of notifier to use (e.g. SMTPNotifier).
+  core.String kind;
+
+  /// Metadata for referring to/handling/deploying this notifier.
+  NotifierMetadata metadata;
+
+  /// The actual configuration for this notifier.
+  NotifierSpec spec;
+
+  NotifierConfig();
+
+  NotifierConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("apiVersion")) {
+      apiVersion = _json["apiVersion"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new NotifierMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("spec")) {
+      spec = new NotifierSpec.fromJson(_json["spec"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (apiVersion != null) {
+      _json["apiVersion"] = apiVersion;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (spec != null) {
+      _json["spec"] = (spec).toJson();
+    }
+    return _json;
+  }
+}
+
+/// NotifierMetadata contains the data which can be used to reference or
+/// describe this notifier.
+class NotifierMetadata {
+  /// The human-readable and user-given name for the notifier. For example:
+  /// "repo-merge-email-notifier".
+  core.String name;
+
+  /// The string representing the name and version of notifier to deploy.
+  /// Expected to be of the form of "/:". For example:
+  /// "gcr.io/my-project/notifiers/smtp:1.2.34".
+  core.String notifier;
+
+  NotifierMetadata();
+
+  NotifierMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("notifier")) {
+      notifier = _json["notifier"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (notifier != null) {
+      _json["notifier"] = notifier;
+    }
+    return _json;
+  }
+}
+
+/// NotifierSecret is the container that maps a secret name (reference) to its
+/// Google Cloud Secret Manager resource path.
+class NotifierSecret {
+  /// Name is the local name of the secret, such as the verbatim string
+  /// "my-smtp-password".
+  core.String name;
+
+  /// Value is interpreted to be a resource path for fetching the actual
+  /// (versioned) secret data for this secret. For example, this would be a
+  /// Google Cloud Secret Manager secret version resource path like:
+  /// "projects/my-project/secrets/my-secret/versions/latest".
+  core.String value;
+
+  NotifierSecret();
+
+  NotifierSecret.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// NotifierSecretRef contains the reference to a secret stored in the
+/// corresponding NotifierSpec.
+class NotifierSecretRef {
+  /// The value of `secret_ref` should be a `name` that is registered in a
+  /// `Secret` in the `secrets` list of the `Spec`.
+  core.String secretRef;
+
+  NotifierSecretRef();
+
+  NotifierSecretRef.fromJson(core.Map _json) {
+    if (_json.containsKey("secretRef")) {
+      secretRef = _json["secretRef"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (secretRef != null) {
+      _json["secretRef"] = secretRef;
+    }
+    return _json;
+  }
+}
+
+/// NotifierSpec is the configuration container for notifications.
+class NotifierSpec {
+  /// The configuration of this particular notifier.
+  Notification notification;
+
+  /// Configurations for secret resources used by this particular notifier.
+  core.List<NotifierSecret> secrets;
+
+  NotifierSpec();
+
+  NotifierSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("notification")) {
+      notification = new Notification.fromJson(_json["notification"]);
+    }
+    if (_json.containsKey("secrets")) {
+      secrets = (_json["secrets"] as core.List)
+          .map<NotifierSecret>((value) => new NotifierSecret.fromJson(value))
           .toList();
     }
   }
@@ -2199,12 +2778,11 @@ class ListOperationsResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
+    if (notification != null) {
+      _json["notification"] = (notification).toJson();
     }
-    if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+    if (secrets != null) {
+      _json["secrets"] = secrets.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2213,17 +2791,17 @@ class ListOperationsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -2231,19 +2809,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2296,20 +2872,21 @@ class Operation {
 /// PullRequestFilter contains filter properties for matching GitHub Pull
 /// Requests.
 class PullRequestFilter {
-  /// Regex of branches to match.
-  ///
-  /// The syntax of the regular expressions accepted is the syntax accepted by
-  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  /// Regex of branches to match. The syntax of the regular expressions accepted
+  /// is the syntax accepted by RE2 and described at
+  /// https://github.com/google/re2/wiki/Syntax
   core.String branch;
 
-  /// Whether to block builds on a "/gcbrun" comment from a repository admin or
-  /// collaborator.
+  /// Configure builds to run whether a repository owner or collaborator need to
+  /// comment `/gcbrun`.
   /// Possible string values are:
   /// - "COMMENTS_DISABLED" : Do not require comments on Pull Requests before
   /// builds are triggered.
   /// - "COMMENTS_ENABLED" : Enforce that repository owners or collaborators
-  /// must comment on Pull
-  /// Requests before builds are triggered.
+  /// must comment on Pull Requests before builds are triggered.
+  /// - "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY" : Enforce that
+  /// repository owners or collaborators must comment on external contributors'
+  /// Pull Requests before builds are triggered.
   core.String commentControl;
 
   /// If true, branches that do NOT match the git_ref will trigger a build.
@@ -2347,20 +2924,18 @@ class PullRequestFilter {
 
 /// Push contains filter properties for matching GitHub git pushes.
 class PushFilter {
-  /// Regexes matching branches to build.
-  ///
-  /// The syntax of the regular expressions accepted is the syntax accepted by
-  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  /// Regexes matching branches to build. The syntax of the regular expressions
+  /// accepted is the syntax accepted by RE2 and described at
+  /// https://github.com/google/re2/wiki/Syntax
   core.String branch;
 
   /// When true, only trigger a build if the revision regex does NOT match the
   /// git_ref regex.
   core.bool invertRegex;
 
-  /// Regexes matching tags to build.
-  ///
-  /// The syntax of the regular expressions accepted is the syntax accepted by
-  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  /// Regexes matching tags to build. The syntax of the regular expressions
+  /// accepted is the syntax accepted by RE2 and described at
+  /// https://github.com/google/re2/wiki/Syntax
   core.String tag;
 
   PushFilter();
@@ -2395,19 +2970,17 @@ class PushFilter {
 
 /// Location of the source in a Google Cloud Source Repository.
 class RepoSource {
-  /// Regex matching branches to build.
-  ///
-  /// The syntax of the regular expressions accepted is the syntax accepted by
-  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  /// Regex matching branches to build. The syntax of the regular expressions
+  /// accepted is the syntax accepted by RE2 and described at
+  /// https://github.com/google/re2/wiki/Syntax
   core.String branchName;
 
   /// Explicit commit SHA to build.
   core.String commitSha;
 
-  /// Directory, relative to the source root, in which to run the build.
-  ///
-  /// This must be a relative path. If a step's `dir` is specified and is an
-  /// absolute path, this value is ignored for that step's execution.
+  /// Directory, relative to the source root, in which to run the build. This
+  /// must be a relative path. If a step's `dir` is specified and is an absolute
+  /// path, this value is ignored for that step's execution.
   core.String dir;
 
   /// Only trigger a build if the revision regex does NOT match the revision
@@ -2421,14 +2994,13 @@ class RepoSource {
   /// Required. Name of the Cloud Source Repository.
   core.String repoName;
 
-  /// Substitutions to use in a triggered build.
-  /// Should only be used with RunBuildTrigger
+  /// Substitutions to use in a triggered build. Should only be used with
+  /// RunBuildTrigger
   core.Map<core.String, core.String> substitutions;
 
-  /// Regex matching tags to build.
-  ///
-  /// The syntax of the regular expressions accepted is the syntax accepted by
-  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  /// Regex matching tags to build. The syntax of the regular expressions
+  /// accepted is the syntax accepted by RE2 and described at
+  /// https://github.com/google/re2/wiki/Syntax
   core.String tagName;
 
   RepoSource();
@@ -2505,11 +3077,10 @@ class Results {
   core.List<core.String> buildStepImages;
 
   /// List of build step outputs, produced by builder images, in the order
-  /// corresponding to build step indices.
-  ///
-  /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders)
-  /// can produce this output by writing to `$BUILDER_OUTPUT/output`.
-  /// Only the first 4KB of data is stored.
+  /// corresponding to build step indices. [Cloud
+  /// Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can
+  /// produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first
+  /// 4KB of data is stored.
   core.List<core.String> buildStepOutputs;
 
   /// Container images that were built as a part of the build.
@@ -2572,30 +3143,128 @@ class Results {
 
 /// Specifies a build to retry.
 class RetryBuildRequest {
+  /// Required. Build ID of the original build.
+  core.String id;
+
+  /// The name of the `Build` to retry. Format:
+  /// `projects/{project}/locations/{location}/builds/{build}`
+  core.String name;
+
+  /// Required. ID of the project.
+  core.String projectId;
+
   RetryBuildRequest();
 
-  RetryBuildRequest.fromJson(core.Map _json) {}
+  RetryBuildRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
     return _json;
   }
 }
 
-/// Pairs a set of secret environment variables containing encrypted
-/// values with the Cloud KMS key to use to decrypt the value.
+/// SMTPDelivery is the delivery configuration for an SMTP (email) notification.
+class SMTPDelivery {
+  /// This is the SMTP account/email that appears in the `From:` of the email.
+  /// If empty, it is assumed to be sender.
+  core.String fromAddress;
+
+  /// The SMTP sender's password.
+  NotifierSecretRef password;
+
+  /// The SMTP port of the server.
+  core.String port;
+
+  /// This is the list of addresses to which we send the email (i.e. in the
+  /// `To:` of the email).
+  core.List<core.String> recipientAddresses;
+
+  /// This is the SMTP account/email that is used to send the message.
+  core.String senderAddress;
+
+  /// The address of the SMTP server.
+  core.String server;
+
+  SMTPDelivery();
+
+  SMTPDelivery.fromJson(core.Map _json) {
+    if (_json.containsKey("fromAddress")) {
+      fromAddress = _json["fromAddress"];
+    }
+    if (_json.containsKey("password")) {
+      password = new NotifierSecretRef.fromJson(_json["password"]);
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("recipientAddresses")) {
+      recipientAddresses =
+          (_json["recipientAddresses"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("senderAddress")) {
+      senderAddress = _json["senderAddress"];
+    }
+    if (_json.containsKey("server")) {
+      server = _json["server"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fromAddress != null) {
+      _json["fromAddress"] = fromAddress;
+    }
+    if (password != null) {
+      _json["password"] = (password).toJson();
+    }
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (recipientAddresses != null) {
+      _json["recipientAddresses"] = recipientAddresses;
+    }
+    if (senderAddress != null) {
+      _json["senderAddress"] = senderAddress;
+    }
+    if (server != null) {
+      _json["server"] = server;
+    }
+    return _json;
+  }
+}
+
+/// Pairs a set of secret environment variables containing encrypted values with
+/// the Cloud KMS key to use to decrypt the value.
 class Secret {
   /// Cloud KMS key name to use to decrypt these envs.
   core.String kmsKeyName;
 
-  /// Map of environment variable name to its encrypted value.
-  ///
-  /// Secret environment variables must be unique across all of a build's
-  /// secrets, and must be used by at least one build step. Values can be at
-  /// most
-  /// 64 KB in size. There can be at most 100 secret values across all of a
-  /// build's secrets.
+  /// Map of environment variable name to its encrypted value. Secret
+  /// environment variables must be unique across all of a build's secrets, and
+  /// must be used by at least one build step. Values can be at most 64 KB in
+  /// size. There can be at most 100 secret values across all of a build's
+  /// secrets.
   core.Map<core.String, core.String> secretEnv;
 
   Secret();
@@ -2618,6 +3287,32 @@ class Secret {
     }
     if (secretEnv != null) {
       _json["secretEnv"] = secretEnv;
+    }
+    return _json;
+  }
+}
+
+/// SlackDelivery is the delivery configuration for delivering Slack messages
+/// via webhooks. See Slack webhook documentation at:
+/// https://api.slack.com/messaging/webhooks.
+class SlackDelivery {
+  /// The secret reference for the Slack webhook URI for sending messages to a
+  /// channel.
+  NotifierSecretRef webhookUri;
+
+  SlackDelivery();
+
+  SlackDelivery.fromJson(core.Map _json) {
+    if (_json.containsKey("webhookUri")) {
+      webhookUri = new NotifierSecretRef.fromJson(_json["webhookUri"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (webhookUri != null) {
+      _json["webhookUri"] = (webhookUri).toJson();
     }
     return _json;
   }
@@ -2660,20 +3355,16 @@ class Source {
 /// some source was used for this build.
 class SourceProvenance {
   /// Output only. Hash(es) of the build source, which can be used to verify
-  /// that
-  /// the original source integrity was maintained in the build. Note that
+  /// that the original source integrity was maintained in the build. Note that
   /// `FileHashes` will only be populated if `BuildOptions` has requested a
-  /// `SourceProvenanceHash`.
-  ///
-  /// The keys to this map are file paths used as build source and the values
-  /// contain the hash values for those files.
-  ///
-  /// If the build source came in a single package such as a gzipped tarfile
+  /// `SourceProvenanceHash`. The keys to this map are file paths used as build
+  /// source and the values contain the hash values for those files. If the
+  /// build source came in a single package such as a gzipped tarfile
   /// (`.tar.gz`), the `FileHash` will be for the single path to that file.
   core.Map<core.String, FileHashes> fileHashes;
 
-  /// A copy of the build's `source.repo_source`, if exists, with any
-  /// revisions resolved.
+  /// A copy of the build's `source.repo_source`, if exists, with any revisions
+  /// resolved.
   RepoSource resolvedRepoSource;
 
   /// A copy of the build's `source.storage_source`, if exists, with any
@@ -2718,15 +3409,14 @@ class SourceProvenance {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -2773,8 +3463,7 @@ class Status {
 
 /// Location of the source in an archive file in Google Cloud Storage.
 class StorageSource {
-  /// Google Cloud Storage bucket containing the source (see
-  /// [Bucket Name
+  /// Google Cloud Storage bucket containing the source (see [Bucket Name
   /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   core.String bucket;
 
@@ -2782,11 +3471,8 @@ class StorageSource {
   /// omitted, the latest generation will be used.
   core.String generation;
 
-  /// Google Cloud Storage object containing the source.
-  ///
-  /// This object must be a gzipped archive file (`.tar.gz`) containing source
-  /// to
-  /// build.
+  /// Google Cloud Storage object containing the source. This object must be a
+  /// gzipped archive file (`.tar.gz`) containing source to build.
   core.String object;
 
   StorageSource();
@@ -2854,17 +3540,14 @@ class TimeSpan {
 /// Volume describes a Docker container volume which is mounted into build steps
 /// in order to persist files across build step execution.
 class Volume {
-  /// Name of the volume to mount.
-  ///
-  /// Volume names must be unique per build step and must be valid names for
-  /// Docker volumes. Each named volume must be used by at least two build
-  /// steps.
+  /// Name of the volume to mount. Volume names must be unique per build step
+  /// and must be valid names for Docker volumes. Each named volume must be used
+  /// by at least two build steps.
   core.String name;
 
-  /// Path at which to mount the volume.
-  ///
-  /// Paths must be absolute and cannot conflict with other volume paths on the
-  /// same build step or with certain reserved volume paths.
+  /// Path at which to mount the volume. Paths must be absolute and cannot
+  /// conflict with other volume paths on the same build step or with certain
+  /// reserved volume paths.
   core.String path;
 
   Volume();

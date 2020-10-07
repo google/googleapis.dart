@@ -135,10 +135,8 @@ class ChangesResourceApi {
   /// [driveId] - The ID of the shared drive for which the starting pageToken
   /// for listing future changes from that shared drive is returned.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -211,10 +209,11 @@ class ChangesResourceApi {
   /// even when a file was removed from the list of changes and there will be no
   /// further change entries for this file.
   ///
-  /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
-  /// shared drive items should be included in results. This parameter will only
-  /// be effective until June 1, 2020. Afterwards shared drive items are
-  /// included in the results.
+  /// [includeItemsFromAllDrives] - Whether both My Drive and shared drive items
+  /// should be included in results.
+  ///
+  /// [includePermissionsForView] - Specifies which additional view's
+  /// permissions to include in the response. Only 'published' is supported.
   ///
   /// [includeRemoved] - Whether to include changes indicating that items have
   /// been removed from the list of changes, for example by deletion or loss of
@@ -234,10 +233,8 @@ class ChangesResourceApi {
   /// [spaces] - A comma-separated list of spaces to query within the user
   /// corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -257,6 +254,7 @@ class ChangesResourceApi {
       {core.String driveId,
       core.bool includeCorpusRemovals,
       core.bool includeItemsFromAllDrives,
+      core.String includePermissionsForView,
       core.bool includeRemoved,
       core.bool includeTeamDriveItems,
       core.int pageSize,
@@ -287,6 +285,9 @@ class ChangesResourceApi {
       _queryParams["includeItemsFromAllDrives"] = [
         "${includeItemsFromAllDrives}"
       ];
+    }
+    if (includePermissionsForView != null) {
+      _queryParams["includePermissionsForView"] = [includePermissionsForView];
     }
     if (includeRemoved != null) {
       _queryParams["includeRemoved"] = ["${includeRemoved}"];
@@ -346,10 +347,11 @@ class ChangesResourceApi {
   /// even when a file was removed from the list of changes and there will be no
   /// further change entries for this file.
   ///
-  /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
-  /// shared drive items should be included in results. This parameter will only
-  /// be effective until June 1, 2020. Afterwards shared drive items are
-  /// included in the results.
+  /// [includeItemsFromAllDrives] - Whether both My Drive and shared drive items
+  /// should be included in results.
+  ///
+  /// [includePermissionsForView] - Specifies which additional view's
+  /// permissions to include in the response. Only 'published' is supported.
   ///
   /// [includeRemoved] - Whether to include changes indicating that items have
   /// been removed from the list of changes, for example by deletion or loss of
@@ -369,10 +371,8 @@ class ChangesResourceApi {
   /// [spaces] - A comma-separated list of spaces to query within the user
   /// corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -392,6 +392,7 @@ class ChangesResourceApi {
       {core.String driveId,
       core.bool includeCorpusRemovals,
       core.bool includeItemsFromAllDrives,
+      core.String includePermissionsForView,
       core.bool includeRemoved,
       core.bool includeTeamDriveItems,
       core.int pageSize,
@@ -425,6 +426,9 @@ class ChangesResourceApi {
       _queryParams["includeItemsFromAllDrives"] = [
         "${includeItemsFromAllDrives}"
       ];
+    }
+    if (includePermissionsForView != null) {
+      _queryParams["includePermissionsForView"] = [includePermissionsForView];
     }
     if (includeRemoved != null) {
       _queryParams["includeRemoved"] = ["${includeRemoved}"];
@@ -1167,7 +1171,7 @@ class FilesResourceApi {
   FilesResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Creates a copy of a file and applies any requested updates with patch
-  /// semantics.
+  /// semantics. Folders cannot be copied.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1186,6 +1190,9 @@ class FilesResourceApi {
   /// parameter bypasses that behavior for the request. Permissions are still
   /// inherited from parent folders.
   ///
+  /// [includePermissionsForView] - Specifies which additional view's
+  /// permissions to include in the response. Only 'published' is supported.
+  ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
   /// Google Drive. Only 200 revisions for the file can be kept forever. If the
@@ -1194,10 +1201,8 @@ class FilesResourceApi {
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -1214,6 +1219,7 @@ class FilesResourceApi {
   async.Future<File> copy(File request, core.String fileId,
       {core.bool enforceSingleParent,
       core.bool ignoreDefaultVisibility,
+      core.String includePermissionsForView,
       core.bool keepRevisionForever,
       core.String ocrLanguage,
       core.bool supportsAllDrives,
@@ -1237,6 +1243,9 @@ class FilesResourceApi {
     }
     if (ignoreDefaultVisibility != null) {
       _queryParams["ignoreDefaultVisibility"] = ["${ignoreDefaultVisibility}"];
+    }
+    if (includePermissionsForView != null) {
+      _queryParams["includePermissionsForView"] = [includePermissionsForView];
     }
     if (keepRevisionForever != null) {
       _queryParams["keepRevisionForever"] = ["${keepRevisionForever}"];
@@ -1282,6 +1291,9 @@ class FilesResourceApi {
   /// parameter bypasses that behavior for the request. Permissions are still
   /// inherited from parent folders.
   ///
+  /// [includePermissionsForView] - Specifies which additional view's
+  /// permissions to include in the response. Only 'published' is supported.
+  ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
   /// Google Drive. Only 200 revisions for the file can be kept forever. If the
@@ -1290,10 +1302,8 @@ class FilesResourceApi {
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -1319,6 +1329,7 @@ class FilesResourceApi {
   async.Future<File> create(File request,
       {core.bool enforceSingleParent,
       core.bool ignoreDefaultVisibility,
+      core.String includePermissionsForView,
       core.bool keepRevisionForever,
       core.String ocrLanguage,
       core.bool supportsAllDrives,
@@ -1342,6 +1353,9 @@ class FilesResourceApi {
     }
     if (ignoreDefaultVisibility != null) {
       _queryParams["ignoreDefaultVisibility"] = ["${ignoreDefaultVisibility}"];
+    }
+    if (includePermissionsForView != null) {
+      _queryParams["includePermissionsForView"] = [includePermissionsForView];
     }
     if (keepRevisionForever != null) {
       _queryParams["keepRevisionForever"] = ["${keepRevisionForever}"];
@@ -1393,10 +1407,14 @@ class FilesResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter will only take
+  /// effect if the item is not in a shared drive. If an item's last parent is
+  /// deleted but the item itself is not, the item will be placed under its
+  /// owner's root.
+  ///
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -1409,7 +1427,8 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String fileId,
-      {core.bool supportsAllDrives,
+      {core.bool enforceSingleParent,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String $fields}) {
     var _url;
@@ -1421,6 +1440,9 @@ class FilesResourceApi {
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (supportsAllDrives != null) {
       _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
@@ -1449,6 +1471,12 @@ class FilesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter will only take
+  /// effect if the item is not in a shared drive. If an item's last parent is
+  /// deleted but the item itself is not, the item will be placed under its
+  /// owner's root.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1457,7 +1485,8 @@ class FilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future emptyTrash({core.String $fields}) {
+  async.Future emptyTrash(
+      {core.bool enforceSingleParent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1465,6 +1494,9 @@ class FilesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -1604,10 +1636,11 @@ class FilesResourceApi {
   /// downloading known malware or other abusive files. This is only applicable
   /// when alt=media.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [includePermissionsForView] - Specifies which additional view's
+  /// permissions to include in the response. Only 'published' is supported.
+  ///
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -1631,6 +1664,7 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future get(core.String fileId,
       {core.bool acknowledgeAbuse,
+      core.String includePermissionsForView,
       core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String $fields,
@@ -1648,6 +1682,9 @@ class FilesResourceApi {
     }
     if (acknowledgeAbuse != null) {
       _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+    }
+    if (includePermissionsForView != null) {
+      _queryParams["includePermissionsForView"] = [includePermissionsForView];
     }
     if (supportsAllDrives != null) {
       _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
@@ -1681,21 +1718,28 @@ class FilesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [corpora] - Bodies of items (files/documents) to which the query applies.
-  /// Supported bodies are 'user', 'domain', 'drive' and 'allDrives'. Prefer
-  /// 'user' or 'drive' to 'allDrives' for efficiency.
+  /// [corpora] - Groupings of files to which the query applies. Supported
+  /// groupings are: 'user' (files created by, opened by, or shared directly
+  /// with the user), 'drive' (files in the specified shared drive as indicated
+  /// by the 'driveId'), 'domain' (files shared to the user's domain), and
+  /// 'allDrives' (A combination of 'user' and 'drive' for all drives where the
+  /// user is a member). When able, use 'user' or 'drive', instead of
+  /// 'allDrives', for efficiency.
   ///
   /// [corpus] - The source of files to list. Deprecated: use 'corpora' instead.
   /// Possible string values are:
   /// - "domain" : Files shared to the user's domain.
-  /// - "user" : Files owned by or shared to the user.
+  /// - "user" : Files owned by or shared to the user. If a user has permissions
+  /// on a Shared Drive, the files inside it won't be retrieved unless the user
+  /// has created, opened, or shared the file.
   ///
   /// [driveId] - ID of the shared drive to search.
   ///
-  /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
-  /// shared drive items should be included in results. This parameter will only
-  /// be effective until June 1, 2020. Afterwards shared drive items are
-  /// included in the results.
+  /// [includeItemsFromAllDrives] - Whether both My Drive and shared drive items
+  /// should be included in results.
+  ///
+  /// [includePermissionsForView] - Specifies which additional view's
+  /// permissions to include in the response. Only 'published' is supported.
   ///
   /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
   /// instead.
@@ -1724,10 +1768,8 @@ class FilesResourceApi {
   /// [spaces] - A comma-separated list of spaces to query within the corpus.
   /// Supported values are 'drive', 'appDataFolder' and 'photos'.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -1748,6 +1790,7 @@ class FilesResourceApi {
       core.String corpus,
       core.String driveId,
       core.bool includeItemsFromAllDrives,
+      core.String includePermissionsForView,
       core.bool includeTeamDriveItems,
       core.String orderBy,
       core.int pageSize,
@@ -1778,6 +1821,9 @@ class FilesResourceApi {
       _queryParams["includeItemsFromAllDrives"] = [
         "${includeItemsFromAllDrives}"
       ];
+    }
+    if (includePermissionsForView != null) {
+      _queryParams["includePermissionsForView"] = [includePermissionsForView];
     }
     if (includeTeamDriveItems != null) {
       _queryParams["includeTeamDriveItems"] = ["${includeTeamDriveItems}"];
@@ -1821,7 +1867,8 @@ class FilesResourceApi {
     return _response.then((data) => new FileList.fromJson(data));
   }
 
-  /// Updates a file's metadata and/or content with patch semantics.
+  /// Updates a file's metadata and/or content. This method supports patch
+  /// semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1839,6 +1886,9 @@ class FilesResourceApi {
   /// parents fail, except when the canAddMyDriveParent file capability is true
   /// and a single parent is being added.
   ///
+  /// [includePermissionsForView] - Specifies which additional view's
+  /// permissions to include in the response. Only 'published' is supported.
+  ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
   /// Google Drive. Only 200 revisions for the file can be kept forever. If the
@@ -1849,10 +1899,8 @@ class FilesResourceApi {
   ///
   /// [removeParents] - A comma-separated list of parent IDs to remove.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -1878,6 +1926,7 @@ class FilesResourceApi {
   async.Future<File> update(File request, core.String fileId,
       {core.String addParents,
       core.bool enforceSingleParent,
+      core.String includePermissionsForView,
       core.bool keepRevisionForever,
       core.String ocrLanguage,
       core.String removeParents,
@@ -1905,6 +1954,9 @@ class FilesResourceApi {
     }
     if (enforceSingleParent != null) {
       _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+    }
+    if (includePermissionsForView != null) {
+      _queryParams["includePermissionsForView"] = [includePermissionsForView];
     }
     if (keepRevisionForever != null) {
       _queryParams["keepRevisionForever"] = ["${keepRevisionForever}"];
@@ -1964,10 +2016,11 @@ class FilesResourceApi {
   /// downloading known malware or other abusive files. This is only applicable
   /// when alt=media.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [includePermissionsForView] - Specifies which additional view's
+  /// permissions to include in the response. Only 'published' is supported.
+  ///
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -1991,6 +2044,7 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future watch(Channel request, core.String fileId,
       {core.bool acknowledgeAbuse,
+      core.String includePermissionsForView,
       core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String $fields,
@@ -2011,6 +2065,9 @@ class FilesResourceApi {
     }
     if (acknowledgeAbuse != null) {
       _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+    }
+    if (includePermissionsForView != null) {
+      _queryParams["includePermissionsForView"] = [includePermissionsForView];
     }
     if (supportsAllDrives != null) {
       _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
@@ -2075,10 +2132,8 @@ class PermissionsResourceApi {
   /// and is not allowed for other requests. It must not be disabled for
   /// ownership transfers.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -2171,10 +2226,8 @@ class PermissionsResourceApi {
   ///
   /// [permissionId] - The ID of the permission.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -2246,10 +2299,8 @@ class PermissionsResourceApi {
   ///
   /// [permissionId] - The ID of the permission.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -2319,6 +2370,9 @@ class PermissionsResourceApi {
   ///
   /// [fileId] - The ID of the file or shared drive.
   ///
+  /// [includePermissionsForView] - Specifies which additional view's
+  /// permissions to include in the response. Only 'published' is supported.
+  ///
   /// [pageSize] - The maximum number of permissions to return per page. When
   /// not set for files in a shared drive, at most 100 results will be returned.
   /// When not set for files that are not in a shared drive, the entire list
@@ -2329,10 +2383,8 @@ class PermissionsResourceApi {
   /// page. This should be set to the value of 'nextPageToken' from the previous
   /// response.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -2352,7 +2404,8 @@ class PermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PermissionList> list(core.String fileId,
-      {core.int pageSize,
+      {core.String includePermissionsForView,
+      core.int pageSize,
       core.String pageToken,
       core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
@@ -2367,6 +2420,9 @@ class PermissionsResourceApi {
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (includePermissionsForView != null) {
+      _queryParams["includePermissionsForView"] = [includePermissionsForView];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -2410,10 +2466,8 @@ class PermissionsResourceApi {
   ///
   /// [removeExpiration] - Whether to remove the expiration date.
   ///
-  /// [supportsAllDrives] - Deprecated - Whether the requesting application
-  /// supports both My Drives and shared drives. This parameter will only be
-  /// effective until June 1, 2020. Afterwards all applications are assumed to
-  /// support shared drives.
+  /// [supportsAllDrives] - Whether the requesting application supports both My
+  /// Drives and shared drives.
   ///
   /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
@@ -4118,6 +4172,71 @@ class CommentList {
   }
 }
 
+/// A restriction for accessing the content of the file.
+class ContentRestriction {
+  /// Whether the content of the file is read-only. If a file is read-only, a
+  /// new revision of the file may not be added, comments may not be added or
+  /// modified, and the title of the file may not be modified.
+  core.bool readOnly;
+
+  /// Reason for why the content of the file is restricted. This is only mutable
+  /// on requests that also set readOnly=true.
+  core.String reason;
+
+  /// The user who set the content restriction. Only populated if readOnly is
+  /// true.
+  User restrictingUser;
+
+  /// The time at which the content restriction was set (formatted RFC 3339
+  /// timestamp). Only populated if readOnly is true.
+  core.DateTime restrictionTime;
+
+  /// The type of the content restriction. Currently the only possible value is
+  /// globalContentRestriction.
+  core.String type;
+
+  ContentRestriction();
+
+  ContentRestriction.fromJson(core.Map _json) {
+    if (_json.containsKey("readOnly")) {
+      readOnly = _json["readOnly"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+    if (_json.containsKey("restrictingUser")) {
+      restrictingUser = new User.fromJson(_json["restrictingUser"]);
+    }
+    if (_json.containsKey("restrictionTime")) {
+      restrictionTime = core.DateTime.parse(_json["restrictionTime"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (readOnly != null) {
+      _json["readOnly"] = readOnly;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    if (restrictingUser != null) {
+      _json["restrictingUser"] = (restrictingUser).toJson();
+    }
+    if (restrictionTime != null) {
+      _json["restrictionTime"] = (restrictionTime).toIso8601String();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// An image file and cropping parameters from which a background image for this
 /// shared drive is set. This is a write only field; it can only be set on
 /// drive.drives.update requests that don't set themeId. When specified, all
@@ -4615,6 +4734,11 @@ class FileCapabilities {
   /// false when the item is not a folder.
   core.bool canAddChildren;
 
+  /// Whether the current user can add a folder from another drive (different
+  /// shared drive or My Drive) to this folder. This is false when the item is
+  /// not a folder. Only populated for items in shared drives.
+  core.bool canAddFolderFromAnotherDrive;
+
   /// Whether the current user can add a parent for the item without removing an
   /// existing parent in the same request. Not populated for shared drive files.
   core.bool canAddMyDriveParent;
@@ -4656,6 +4780,9 @@ class FileCapabilities {
   /// Whether the current user can modify the content of this file.
   core.bool canModifyContent;
 
+  /// Whether the current user can modify restrictions on content of this file.
+  core.bool canModifyContentRestriction;
+
   /// Whether the current user can move children of this folder outside of the
   /// shared drive. This is false when the item is not a folder. Only populated
   /// for items in shared drives.
@@ -4664,9 +4791,10 @@ class FileCapabilities {
   /// Deprecated - use canMoveChildrenOutOfDrive instead.
   core.bool canMoveChildrenOutOfTeamDrive;
 
-  /// Whether the current user can move children of this folder within the
-  /// shared drive. This is false when the item is not a folder. Only populated
-  /// for items in shared drives.
+  /// Whether the current user can move children of this folder within this
+  /// drive. This is false when the item is not a folder. Note that a request to
+  /// move the child may still fail depending on the current user's access to
+  /// the child and to the destination folder.
   core.bool canMoveChildrenWithinDrive;
 
   /// Deprecated - use canMoveChildrenWithinDrive instead.
@@ -4683,10 +4811,9 @@ class FileCapabilities {
   /// Deprecated - use canMoveItemOutOfDrive instead.
   core.bool canMoveItemOutOfTeamDrive;
 
-  /// Whether the current user can move this item within this shared drive. Note
-  /// that a request to change the parent of the item may still fail depending
-  /// on the new parent that is being added. Only populated for items in shared
-  /// drives.
+  /// Whether the current user can move this item within this drive. Note that a
+  /// request to change the parent of the item may still fail depending on the
+  /// new parent that is being added and the parent that is being removed.
   core.bool canMoveItemWithinDrive;
 
   /// Deprecated - use canMoveItemWithinDrive instead.
@@ -4738,6 +4865,9 @@ class FileCapabilities {
     if (_json.containsKey("canAddChildren")) {
       canAddChildren = _json["canAddChildren"];
     }
+    if (_json.containsKey("canAddFolderFromAnotherDrive")) {
+      canAddFolderFromAnotherDrive = _json["canAddFolderFromAnotherDrive"];
+    }
     if (_json.containsKey("canAddMyDriveParent")) {
       canAddMyDriveParent = _json["canAddMyDriveParent"];
     }
@@ -4771,6 +4901,9 @@ class FileCapabilities {
     }
     if (_json.containsKey("canModifyContent")) {
       canModifyContent = _json["canModifyContent"];
+    }
+    if (_json.containsKey("canModifyContentRestriction")) {
+      canModifyContentRestriction = _json["canModifyContentRestriction"];
     }
     if (_json.containsKey("canMoveChildrenOutOfDrive")) {
       canMoveChildrenOutOfDrive = _json["canMoveChildrenOutOfDrive"];
@@ -4840,6 +4973,9 @@ class FileCapabilities {
     if (canAddChildren != null) {
       _json["canAddChildren"] = canAddChildren;
     }
+    if (canAddFolderFromAnotherDrive != null) {
+      _json["canAddFolderFromAnotherDrive"] = canAddFolderFromAnotherDrive;
+    }
     if (canAddMyDriveParent != null) {
       _json["canAddMyDriveParent"] = canAddMyDriveParent;
     }
@@ -4873,6 +5009,9 @@ class FileCapabilities {
     }
     if (canModifyContent != null) {
       _json["canModifyContent"] = canModifyContent;
+    }
+    if (canModifyContentRestriction != null) {
+      _json["canModifyContentRestriction"] = canModifyContentRestriction;
     }
     if (canMoveChildrenOutOfDrive != null) {
       _json["canMoveChildrenOutOfDrive"] = canMoveChildrenOutOfDrive;
@@ -5352,6 +5491,10 @@ class File {
   /// never populated in responses.
   FileContentHints contentHints;
 
+  /// Restrictions for accessing the content of the file. Only populated if such
+  /// a restriction exists.
+  core.List<ContentRestriction> contentRestrictions;
+
   /// Whether the options to copy, print, or download this file, should be
   /// disabled for readers and commenters.
   core.bool copyRequiresWriterPermission;
@@ -5525,8 +5668,11 @@ class File {
   core.String thumbnailVersion;
 
   /// Whether the file has been trashed, either explicitly or from a trashed
-  /// parent folder. Only the owner may trash a file, and other users cannot see
-  /// files in the owner's trash.
+  /// parent folder. Only the owner may trash a file. The trashed item is
+  /// excluded from all files.list responses returned for any user who does not
+  /// own the file. However, all users with access to the file can see the
+  /// trashed item metadata in an API response. All users with access can copy,
+  /// download, export, and share the file.
   core.bool trashed;
 
   /// The time that the item was trashed (RFC 3339 date-time). Only populated
@@ -5579,6 +5725,12 @@ class File {
     }
     if (_json.containsKey("contentHints")) {
       contentHints = new FileContentHints.fromJson(_json["contentHints"]);
+    }
+    if (_json.containsKey("contentRestrictions")) {
+      contentRestrictions = (_json["contentRestrictions"] as core.List)
+          .map<ContentRestriction>(
+              (value) => new ContentRestriction.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("copyRequiresWriterPermission")) {
       copyRequiresWriterPermission = _json["copyRequiresWriterPermission"];
@@ -5761,6 +5913,10 @@ class File {
     }
     if (contentHints != null) {
       _json["contentHints"] = (contentHints).toJson();
+    }
+    if (contentRestrictions != null) {
+      _json["contentRestrictions"] =
+          contentRestrictions.map((value) => (value).toJson()).toList();
     }
     if (copyRequiresWriterPermission != null) {
       _json["copyRequiresWriterPermission"] = copyRequiresWriterPermission;
@@ -6212,6 +6368,10 @@ class Permission {
   /// type.
   core.String type;
 
+  /// Indicates the view for this permission. Only populated for permissions
+  /// that belong to a view. published is the only supported value.
+  core.String view;
+
   Permission();
 
   Permission.fromJson(core.Map _json) {
@@ -6261,6 +6421,9 @@ class Permission {
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
+    if (_json.containsKey("view")) {
+      view = _json["view"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6306,6 +6469,9 @@ class Permission {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (view != null) {
+      _json["view"] = view;
     }
     return _json;
   }
@@ -6553,6 +6719,9 @@ class Revision {
   /// Docs.
   core.bool published;
 
+  /// A link to the published revision.
+  core.String publishedLink;
+
   /// Whether this revision is published outside the domain. This is only
   /// applicable to Google Docs.
   core.bool publishedOutsideDomain;
@@ -6598,6 +6767,9 @@ class Revision {
     if (_json.containsKey("published")) {
       published = _json["published"];
     }
+    if (_json.containsKey("publishedLink")) {
+      publishedLink = _json["publishedLink"];
+    }
     if (_json.containsKey("publishedOutsideDomain")) {
       publishedOutsideDomain = _json["publishedOutsideDomain"];
     }
@@ -6641,6 +6813,9 @@ class Revision {
     }
     if (published != null) {
       _json["published"] = published;
+    }
+    if (publishedLink != null) {
+      _json["publishedLink"] = publishedLink;
     }
     if (publishedOutsideDomain != null) {
       _json["publishedOutsideDomain"] = publishedOutsideDomain;

@@ -286,6 +286,12 @@ class AccountsResourceApi {
   ///
   /// [accountId] - The ID of the account.
   ///
+  /// [view] - Controls which fields will be populated. Acceptable values are:
+  /// "merchant" and "css". The default value is "merchant".
+  /// Possible string values are:
+  /// - "css"
+  /// - "merchant"
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -297,7 +303,7 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> get(core.String merchantId, core.String accountId,
-      {core.String $fields}) {
+      {core.String view, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -310,6 +316,9 @@ class AccountsResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -444,10 +453,19 @@ class AccountsResourceApi {
   /// [merchantId] - The ID of the managing account. This must be a multi-client
   /// account.
   ///
+  /// [label] - If view is set to "css", only return accounts that are assigned
+  /// label with given ID.
+  ///
   /// [maxResults] - The maximum number of accounts to return in the response,
   /// used for paging.
   ///
   /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [view] - Controls which fields will be populated. Acceptable values are:
+  /// "merchant" and "css". The default value is "merchant".
+  /// Possible string values are:
+  /// - "css"
+  /// - "merchant"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -460,7 +478,11 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountsListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String label,
+      core.int maxResults,
+      core.String pageToken,
+      core.String view,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -471,11 +493,17 @@ class AccountsResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
+    if (label != null) {
+      _queryParams["label"] = [label];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -558,7 +586,8 @@ class AccountsResourceApi {
         .then((data) => new AccountsListLinksResponse.fromJson(data));
   }
 
-  /// Updates a Merchant Center account.
+  /// Updates a Merchant Center account. Any fields that are not provided are
+  /// deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -614,6 +643,67 @@ class AccountsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Account.fromJson(data));
+  }
+
+  /// Updates labels that are assigned to the Merchant Center account by CSS
+  /// user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the managing account.
+  ///
+  /// [accountId] - The ID of the account whose labels are updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccountsUpdateLabelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccountsUpdateLabelsResponse> updatelabels(
+      AccountsUpdateLabelsRequest request,
+      core.String merchantId,
+      core.String accountId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/updatelabels';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new AccountsUpdateLabelsResponse.fromJson(data));
   }
 }
 
@@ -952,7 +1042,8 @@ class AccounttaxResourceApi {
     return _response.then((data) => new AccounttaxListResponse.fromJson(data));
   }
 
-  /// Updates the tax settings of the account.
+  /// Updates the tax settings of the account. Any fields that are not provided
+  /// are deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1323,7 +1414,8 @@ class DatafeedsResourceApi {
     return _response.then((data) => new DatafeedsListResponse.fromJson(data));
   }
 
-  /// Updates a datafeed configuration of your Merchant Center account.
+  /// Updates a datafeed configuration of your Merchant Center account. Any
+  /// fields that are not provided are deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2098,7 +2190,8 @@ class LiasettingsResourceApi {
         (data) => new LiasettingsSetPosDataProviderResponse.fromJson(data));
   }
 
-  /// Updates the LIA settings of the account.
+  /// Updates the LIA settings of the account. Any fields that are not provided
+  /// are deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2209,7 +2302,7 @@ class LocalinventoryResourceApi {
         .then((data) => new LocalinventoryCustomBatchResponse.fromJson(data));
   }
 
-  /// Update the local inventory of a product in your Merchant Center account.
+  /// Updates the local inventory of a product in your Merchant Center account.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3423,6 +3516,7 @@ class OrdersResourceApi {
   /// - "template1b"
   /// - "template2"
   /// - "template3"
+  /// - "template4"
   ///
   /// [country] - The country of the template to retrieve. Defaults to `US`.
   ///
@@ -3645,6 +3739,128 @@ class OrdersResourceApi {
     return _response.then((data) => new OrdersListResponse.fromJson(data));
   }
 
+  /// Issues a partial or total refund for items and shipment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order to refund.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrdersRefundItemResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrdersRefundItemResponse> refunditem(
+      OrdersRefundItemRequest request,
+      core.String merchantId,
+      core.String orderId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orders/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/refunditem';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new OrdersRefundItemResponse.fromJson(data));
+  }
+
+  /// Issues a partial or total refund for an order.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [orderId] - The ID of the order to refund.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrdersRefundOrderResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrdersRefundOrderResponse> refundorder(
+      OrdersRefundOrderRequest request,
+      core.String merchantId,
+      core.String orderId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (orderId == null) {
+      throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orders/' +
+        commons.Escaper.ecapeVariable('$orderId') +
+        '/refundorder';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new OrdersRefundOrderResponse.fromJson(data));
+  }
+
   /// Rejects return on an line item.
   ///
   /// [request] - The metadata request object.
@@ -3707,7 +3923,12 @@ class OrdersResourceApi {
   }
 
   /// Returns and refunds a line item. Note that this method can only be called
-  /// on fully shipped orders.
+  /// on fully shipped orders. Please also note that the Orderreturns API is the
+  /// preferred way to handle returns after you receive a return from a
+  /// customer. You can use Orderreturns.list or Orderreturns.get to search for
+  /// the return, and then use Orderreturns.processreturn to issue the refund.
+  /// If the return cannot be found, then we recommend using this API to issue a
+  /// refund.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6154,7 +6375,8 @@ class ShippingsettingsResourceApi {
         .then((data) => new ShippingsettingsListResponse.fromJson(data));
   }
 
-  /// Updates the shipping settings of the account.
+  /// Updates the shipping settings of the account. Any fields that are not
+  /// provided are deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6231,6 +6453,9 @@ class Account {
   /// The business information of the account.
   AccountBusinessInformation businessInformation;
 
+  /// ID of CSS the account belongs to.
+  core.String cssId;
+
   /// The GMB account which is linked or in the process of being linked with the
   /// Merchant Center account.
   AccountGoogleMyBusinessLink googleMyBusinessLink;
@@ -6241,6 +6466,9 @@ class Account {
   /// Identifies what kind of resource this is. Value: the fixed string
   /// "`content#account`"
   core.String kind;
+
+  /// List of label IDs that are assigned to the account by CSS.
+  core.List<core.String> labelIds;
 
   /// Required. Display name for the account.
   core.String name;
@@ -6277,6 +6505,9 @@ class Account {
       businessInformation =
           new AccountBusinessInformation.fromJson(_json["businessInformation"]);
     }
+    if (_json.containsKey("cssId")) {
+      cssId = _json["cssId"];
+    }
     if (_json.containsKey("googleMyBusinessLink")) {
       googleMyBusinessLink = new AccountGoogleMyBusinessLink.fromJson(
           _json["googleMyBusinessLink"]);
@@ -6286,6 +6517,9 @@ class Account {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("labelIds")) {
+      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -6321,6 +6555,9 @@ class Account {
     if (businessInformation != null) {
       _json["businessInformation"] = (businessInformation).toJson();
     }
+    if (cssId != null) {
+      _json["cssId"] = cssId;
+    }
     if (googleMyBusinessLink != null) {
       _json["googleMyBusinessLink"] = (googleMyBusinessLink).toJson();
     }
@@ -6329,6 +6566,9 @@ class Account {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (labelIds != null) {
+      _json["labelIds"] = labelIds;
     }
     if (name != null) {
       _json["name"] = name;
@@ -6351,7 +6591,8 @@ class Account {
 }
 
 class AccountAddress {
-  /// CLDR country code (e.g. "US").
+  /// CLDR country code (e.g. "US"). This value cannot be set for a sub-account
+  /// of an MCA. All MCA sub-accounts inherit the country of their parent MCA.
   core.String country;
 
   /// City, town or commune. May also include dependent localities or
@@ -6689,7 +6930,8 @@ class AccountStatusAccountLevelIssue {
   /// Country for which this issue is reported.
   core.String country;
 
-  /// The destination the issue applies to.
+  /// The destination the issue applies to. If this field is empty then the
+  /// issue applies to all available destinations.
   core.String destination;
 
   /// Additional details about the issue.
@@ -7278,6 +7520,9 @@ class AccountsCustomBatchRequestEntry {
   /// applicable if the method is `delete`.
   core.bool force;
 
+  /// Label IDs for the 'updatelabels' request.
+  core.List<core.String> labelIds;
+
   /// Details about the `link` request.
   AccountsCustomBatchRequestEntryLinkRequest linkRequest;
 
@@ -7299,6 +7544,9 @@ class AccountsCustomBatchRequestEntry {
   /// to take the claim from another account in case there is a conflict.
   core.bool overwrite;
 
+  /// Controls which fields are visible. Only applicable if the method is 'get'.
+  core.String view;
+
   AccountsCustomBatchRequestEntry();
 
   AccountsCustomBatchRequestEntry.fromJson(core.Map _json) {
@@ -7314,6 +7562,9 @@ class AccountsCustomBatchRequestEntry {
     if (_json.containsKey("force")) {
       force = _json["force"];
     }
+    if (_json.containsKey("labelIds")) {
+      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("linkRequest")) {
       linkRequest = new AccountsCustomBatchRequestEntryLinkRequest.fromJson(
           _json["linkRequest"]);
@@ -7326,6 +7577,9 @@ class AccountsCustomBatchRequestEntry {
     }
     if (_json.containsKey("overwrite")) {
       overwrite = _json["overwrite"];
+    }
+    if (_json.containsKey("view")) {
+      view = _json["view"];
     }
   }
 
@@ -7344,6 +7598,9 @@ class AccountsCustomBatchRequestEntry {
     if (force != null) {
       _json["force"] = force;
     }
+    if (labelIds != null) {
+      _json["labelIds"] = labelIds;
+    }
     if (linkRequest != null) {
       _json["linkRequest"] = (linkRequest).toJson();
     }
@@ -7355,6 +7612,9 @@ class AccountsCustomBatchRequestEntry {
     }
     if (overwrite != null) {
       _json["overwrite"] = overwrite;
+    }
+    if (view != null) {
+      _json["view"] = view;
     }
     return _json;
   }
@@ -7667,6 +7927,51 @@ class AccountsListResponse {
     }
     if (resources != null) {
       _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class AccountsUpdateLabelsRequest {
+  /// The IDs of labels that should be assigned to the account.
+  core.List<core.String> labelIds;
+
+  AccountsUpdateLabelsRequest();
+
+  AccountsUpdateLabelsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("labelIds")) {
+      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (labelIds != null) {
+      _json["labelIds"] = labelIds;
+    }
+    return _json;
+  }
+}
+
+class AccountsUpdateLabelsResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#accountsUpdateLabelsResponse".
+  core.String kind;
+
+  AccountsUpdateLabelsResponse();
+
+  AccountsUpdateLabelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -11541,6 +11846,9 @@ class Order {
   /// Whether the order was acknowledged.
   core.bool acknowledged;
 
+  /// List of key-value pairs that are attached to a given order.
+  core.List<OrderOrderAnnotation> annotations;
+
   /// The billing address.
   OrderAddress billingAddress;
 
@@ -11654,6 +11962,12 @@ class Order {
     if (_json.containsKey("acknowledged")) {
       acknowledged = _json["acknowledged"];
     }
+    if (_json.containsKey("annotations")) {
+      annotations = (_json["annotations"] as core.List)
+          .map<OrderOrderAnnotation>(
+              (value) => new OrderOrderAnnotation.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("billingAddress")) {
       billingAddress = new OrderAddress.fromJson(_json["billingAddress"]);
     }
@@ -11730,6 +12044,10 @@ class Order {
         new core.Map<core.String, core.Object>();
     if (acknowledged != null) {
       _json["acknowledged"] = acknowledged;
+    }
+    if (annotations != null) {
+      _json["annotations"] =
+          annotations.map((value) => (value).toJson()).toList();
     }
     if (billingAddress != null) {
       _json["billingAddress"] = (billingAddress).toJson();
@@ -12665,6 +12983,10 @@ class OrderLineItemShippingDetails {
   /// Required. Details of the shipping method.
   OrderLineItemShippingDetailsMethod method;
 
+  /// The promised time in minutes in which the order will be ready for pickup.
+  /// This only applies to buy-online-pickup-in-store same-day order.
+  core.int pickupPromiseInMinutes;
+
   /// Required. The ship by date, in ISO 8601 format.
   core.String shipByDate;
 
@@ -12685,6 +13007,9 @@ class OrderLineItemShippingDetails {
     if (_json.containsKey("method")) {
       method = new OrderLineItemShippingDetailsMethod.fromJson(_json["method"]);
     }
+    if (_json.containsKey("pickupPromiseInMinutes")) {
+      pickupPromiseInMinutes = _json["pickupPromiseInMinutes"];
+    }
     if (_json.containsKey("shipByDate")) {
       shipByDate = _json["shipByDate"];
     }
@@ -12701,6 +13026,9 @@ class OrderLineItemShippingDetails {
     }
     if (method != null) {
       _json["method"] = (method).toJson();
+    }
+    if (pickupPromiseInMinutes != null) {
+      _json["pickupPromiseInMinutes"] = pickupPromiseInMinutes;
     }
     if (shipByDate != null) {
       _json["shipByDate"] = shipByDate;
@@ -12795,6 +13123,37 @@ class OrderMerchantProvidedAnnotation {
   }
 }
 
+class OrderOrderAnnotation {
+  /// Key for additional google provided (as key-value pairs) annotation.
+  core.String key;
+
+  /// Value for additional google provided (as key-value pairs) annotation.
+  core.String value;
+
+  OrderOrderAnnotation();
+
+  OrderOrderAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 class OrderPickupDetails {
   /// Address of the pickup location where the shipment should be sent. Note
   /// that `recipientName` in the address is the name of the business at the
@@ -12806,6 +13165,16 @@ class OrderPickupDetails {
 
   /// ID of the pickup location.
   core.String locationId;
+
+  /// The pickup type of this order.
+  ///
+  /// Acceptable values are:
+  /// - "`merchantStore`"
+  /// - "`merchantStoreCurbside`"
+  /// - "`merchantStoreLocker`"
+  /// - "`thirdPartyPickupPoint`"
+  /// - "`thirdPartyLocker`"
+  core.String pickupType;
 
   OrderPickupDetails();
 
@@ -12822,6 +13191,9 @@ class OrderPickupDetails {
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
     }
+    if (_json.containsKey("pickupType")) {
+      pickupType = _json["pickupType"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -12836,6 +13208,9 @@ class OrderPickupDetails {
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
+    }
+    if (pickupType != null) {
+      _json["pickupType"] = pickupType;
     }
     return _json;
   }
@@ -12873,12 +13248,15 @@ class OrderPickupDetailsCollector {
 }
 
 class OrderPromotion {
-  /// Items which this promotion may be applied to. If empty, there are no
-  /// restrictions on applicable items and quantity.
+  /// Items that this promotion may be applied to. If empty, there are no
+  /// restrictions on applicable items and quantity. This field will also be
+  /// empty for shipping promotions because shipping is not tied to any specific
+  /// item.
   core.List<OrderPromotionItem> applicableItems;
 
-  /// Items which this promotion have been applied to. Do not provide for
-  /// `orders.createtestorder`.
+  /// Items that this promotion have been applied to. Do not provide for
+  /// `orders.createtestorder`. This field will be empty for shipping promotions
+  /// because shipping is not tied to any specific item.
   core.List<OrderPromotionItem> appliedItems;
 
   /// Promotion end time in ISO 8601 format. Date, time, and offset required,
@@ -13466,6 +13844,15 @@ class OrderShipment {
   /// - "`ptt`" (PTT Turkish Post)
   /// - "`eub`" (ePacket)
   /// - "`chukou1`" (Chukou1 Logistics)
+  /// - "`bestex`" (Best Express)
+  /// - "`canada post`" (Canada Post)
+  /// - "`purolator`" (Purolator)
+  /// - "`canpar`" (Canpar)
+  /// - "`india post`" (India Post)
+  /// - "`blue dart`" (Blue Dart)
+  /// - "`delhivery`" (Delhivery)
+  /// - "`dtdc`" (DTDC)
+  /// - "`tpc india`" (TPC India)
   /// Supported carriers for FR are:
   /// - "`la poste`" (La Poste) automatic status updates
   /// - "`colissimo`" (Colissimo by La Poste) automatic status updates
@@ -13494,6 +13881,9 @@ class OrderShipment {
 
   /// The line items that are shipped.
   core.List<OrderShipmentLineItemShipment> lineItems;
+
+  /// Delivery details of the shipment if scheduling is needed.
+  OrderShipmentScheduledDeliveryDetails scheduledDeliveryDetails;
 
   /// The shipment group ID of the shipment. This is set in shiplineitems
   /// request.
@@ -13532,6 +13922,11 @@ class OrderShipment {
               (value) => new OrderShipmentLineItemShipment.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("scheduledDeliveryDetails")) {
+      scheduledDeliveryDetails =
+          new OrderShipmentScheduledDeliveryDetails.fromJson(
+              _json["scheduledDeliveryDetails"]);
+    }
     if (_json.containsKey("shipmentGroupId")) {
       shipmentGroupId = _json["shipmentGroupId"];
     }
@@ -13560,6 +13955,9 @@ class OrderShipment {
     }
     if (lineItems != null) {
       _json["lineItems"] = lineItems.map((value) => (value).toJson()).toList();
+    }
+    if (scheduledDeliveryDetails != null) {
+      _json["scheduledDeliveryDetails"] = (scheduledDeliveryDetails).toJson();
     }
     if (shipmentGroupId != null) {
       _json["shipmentGroupId"] = shipmentGroupId;
@@ -13611,6 +14009,39 @@ class OrderShipmentLineItemShipment {
     }
     if (quantity != null) {
       _json["quantity"] = quantity;
+    }
+    return _json;
+  }
+}
+
+class OrderShipmentScheduledDeliveryDetails {
+  /// The phone number of the carrier fulfilling the delivery. The phone number
+  /// is formatted as the international notation in ITU-T Recommendation E.123
+  /// (e.g., "+41 44 668 1800").
+  core.String carrierPhoneNumber;
+
+  /// The date a shipment is scheduled for delivery, in ISO 8601 format.
+  core.String scheduledDate;
+
+  OrderShipmentScheduledDeliveryDetails();
+
+  OrderShipmentScheduledDeliveryDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("carrierPhoneNumber")) {
+      carrierPhoneNumber = _json["carrierPhoneNumber"];
+    }
+    if (_json.containsKey("scheduledDate")) {
+      scheduledDate = _json["scheduledDate"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (carrierPhoneNumber != null) {
+      _json["carrierPhoneNumber"] = carrierPhoneNumber;
+    }
+    if (scheduledDate != null) {
+      _json["scheduledDate"] = scheduledDate;
     }
     return _json;
   }
@@ -14265,11 +14696,20 @@ class OrderreturnsProcessResponse {
 }
 
 class OrderreturnsRefundOperation {
-  /// If true, the item will be fully refunded.
+  /// If true, the item will be fully refunded. Allowed only when payment_type
+  /// is FOP. Merchant can choose this refund option to indicate the full
+  /// remaining amount of corresponding object to be refunded to the customer
+  /// via FOP.
   core.bool fullRefund;
 
-  /// If this is set, the item will be partially refunded.
+  /// If this is set, the item will be partially refunded. Merchant can choose
+  /// this refund option to specify the customized amount that to be refunded to
+  /// the customer.
   OrderreturnsPartialRefund partialRefund;
+
+  /// The payment way of issuing refund. Default value is ORIGINAL_FOP if not
+  /// set.
+  core.String paymentType;
 
   /// The explanation of the reason.
   core.String reasonText;
@@ -14287,6 +14727,9 @@ class OrderreturnsRefundOperation {
       partialRefund =
           new OrderreturnsPartialRefund.fromJson(_json["partialRefund"]);
     }
+    if (_json.containsKey("paymentType")) {
+      paymentType = _json["paymentType"];
+    }
     if (_json.containsKey("reasonText")) {
       reasonText = _json["reasonText"];
     }
@@ -14303,6 +14746,9 @@ class OrderreturnsRefundOperation {
     }
     if (partialRefund != null) {
       _json["partialRefund"] = (partialRefund).toJson();
+    }
+    if (paymentType != null) {
+      _json["paymentType"] = paymentType;
     }
     if (reasonText != null) {
       _json["reasonText"] = reasonText;
@@ -14900,6 +15346,102 @@ class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem {
   }
 }
 
+class OrdersCustomBatchRequestEntryRefundItemItem {
+  /// The total amount that is refunded. (e.g. refunding $5 each for 2 products
+  /// should be done by setting quantity to 2 and amount to 10$) In case of
+  /// multiple refunds, this should be the amount you currently want to refund
+  /// to the customer.
+  MonetaryAmount amount;
+
+  /// If true, the full item will be refunded. If this is true, amount should
+  /// not be provided and will be ignored.
+  core.bool fullRefund;
+
+  /// The ID of the line item. Either lineItemId or productId is required.
+  core.String lineItemId;
+
+  /// The ID of the product. This is the REST ID used in the products service.
+  /// Either lineItemId or productId is required.
+  core.String productId;
+
+  /// The number of products that are refunded.
+  core.int quantity;
+
+  OrdersCustomBatchRequestEntryRefundItemItem();
+
+  OrdersCustomBatchRequestEntryRefundItemItem.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = new MonetaryAmount.fromJson(_json["amount"]);
+    }
+    if (_json.containsKey("fullRefund")) {
+      fullRefund = _json["fullRefund"];
+    }
+    if (_json.containsKey("lineItemId")) {
+      lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amount != null) {
+      _json["amount"] = (amount).toJson();
+    }
+    if (fullRefund != null) {
+      _json["fullRefund"] = fullRefund;
+    }
+    if (lineItemId != null) {
+      _json["lineItemId"] = lineItemId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
+    }
+    return _json;
+  }
+}
+
+class OrdersCustomBatchRequestEntryRefundItemShipping {
+  /// The amount that is refunded. If this is not the first refund for the
+  /// shipment, this should be the newly refunded amount.
+  Price amount;
+
+  /// If set to true, all shipping costs for the order will be refunded. If this
+  /// is true, amount should not be provided and will be ignored.
+  core.bool fullRefund;
+
+  OrdersCustomBatchRequestEntryRefundItemShipping();
+
+  OrdersCustomBatchRequestEntryRefundItemShipping.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = new Price.fromJson(_json["amount"]);
+    }
+    if (_json.containsKey("fullRefund")) {
+      fullRefund = _json["fullRefund"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amount != null) {
+      _json["amount"] = (amount).toJson();
+    }
+    if (fullRefund != null) {
+      _json["fullRefund"] = fullRefund;
+    }
+    return _json;
+  }
+}
+
 class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
   /// The carrier handling the shipment. See `shipments[].carrier` in the
   /// Orders resource representation for a list of acceptable values.
@@ -15182,6 +15724,222 @@ class OrdersListResponse {
     }
     if (resources != null) {
       _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class OrdersRefundItemRequest {
+  /// The items that are refunded. Either Item or Shipping must be provided in
+  /// the request.
+  core.List<OrdersCustomBatchRequestEntryRefundItemItem> items;
+
+  /// The ID of the operation. Unique across all operations for a given order.
+  core.String operationId;
+
+  /// The reason for the refund.
+  ///
+  /// Acceptable values are:
+  /// - "`shippingCostAdjustment`"
+  /// - "`priceAdjustment`"
+  /// - "`taxAdjustment`"
+  /// - "`feeAdjustment`"
+  /// - "`courtesyAdjustment`"
+  /// - "`adjustment`"
+  /// - "`customerCancelled`"
+  /// - "`noInventory`"
+  /// - "`productNotAsDescribed`"
+  /// - "`undeliverableShippingAddress`"
+  /// - "`wrongProductShipped`"
+  /// - "`lateShipmentCredit`"
+  /// - "`deliveredLateByCarrier`"
+  /// - "`productArrivedDamaged`"
+  core.String reason;
+
+  /// The explanation of the reason.
+  core.String reasonText;
+
+  /// The refund on shipping. Optional, but either Item or Shipping must be
+  /// provided in the request.
+  OrdersCustomBatchRequestEntryRefundItemShipping shipping;
+
+  OrdersRefundItemRequest();
+
+  OrdersRefundItemRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<OrdersCustomBatchRequestEntryRefundItemItem>((value) =>
+              new OrdersCustomBatchRequestEntryRefundItemItem.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("operationId")) {
+      operationId = _json["operationId"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+    if (_json.containsKey("reasonText")) {
+      reasonText = _json["reasonText"];
+    }
+    if (_json.containsKey("shipping")) {
+      shipping = new OrdersCustomBatchRequestEntryRefundItemShipping.fromJson(
+          _json["shipping"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (operationId != null) {
+      _json["operationId"] = operationId;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    if (reasonText != null) {
+      _json["reasonText"] = reasonText;
+    }
+    if (shipping != null) {
+      _json["shipping"] = (shipping).toJson();
+    }
+    return _json;
+  }
+}
+
+class OrdersRefundItemResponse {
+  /// The status of the execution.
+  ///
+  /// Acceptable values are:
+  /// - "`duplicate`"
+  /// - "`executed`"
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#ordersRefundItemResponse".
+  core.String kind;
+
+  OrdersRefundItemResponse();
+
+  OrdersRefundItemResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class OrdersRefundOrderRequest {
+  /// The amount that is refunded. If this is not the first refund for the
+  /// order, this should be the newly refunded amount.
+  MonetaryAmount amount;
+
+  /// If true, the full order will be refunded, including shipping. If this is
+  /// true, amount should not be provided and will be ignored.
+  core.bool fullRefund;
+
+  /// The ID of the operation. Unique across all operations for a given order.
+  core.String operationId;
+
+  /// The reason for the refund.
+  ///
+  /// Acceptable values are:
+  /// - "`courtesyAdjustment`"
+  /// - "`other`"
+  core.String reason;
+
+  /// The explanation of the reason.
+  core.String reasonText;
+
+  OrdersRefundOrderRequest();
+
+  OrdersRefundOrderRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = new MonetaryAmount.fromJson(_json["amount"]);
+    }
+    if (_json.containsKey("fullRefund")) {
+      fullRefund = _json["fullRefund"];
+    }
+    if (_json.containsKey("operationId")) {
+      operationId = _json["operationId"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+    if (_json.containsKey("reasonText")) {
+      reasonText = _json["reasonText"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amount != null) {
+      _json["amount"] = (amount).toJson();
+    }
+    if (fullRefund != null) {
+      _json["fullRefund"] = fullRefund;
+    }
+    if (operationId != null) {
+      _json["operationId"] = operationId;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    if (reasonText != null) {
+      _json["reasonText"] = reasonText;
+    }
+    return _json;
+  }
+}
+
+class OrdersRefundOrderResponse {
+  /// The status of the execution.
+  ///
+  /// Acceptable values are:
+  /// - "`duplicate`"
+  /// - "`executed`"
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#ordersRefundOrderResponse".
+  core.String kind;
+
+  OrdersRefundOrderResponse();
+
+  OrdersRefundOrderResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -15808,8 +16566,17 @@ class OrdersUpdateShipmentRequest {
   /// Optional and can be provided only if `status` is `delivered`.
   core.String deliveryDate;
 
+  /// Date after which the pickup will expire, in ISO 8601 format. Required only
+  /// when order is buy-online-pickup-in-store(BOPIS) and `status` is `ready for
+  /// pickup`.
+  core.String lastPickupDate;
+
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
+
+  /// Date on which the shipment has been ready for pickup, in ISO 8601 format.
+  /// Optional and can be provided only if `status` is `ready for pickup`.
+  core.String readyPickupDate;
 
   /// The ID of the shipment.
   core.String shipmentId;
@@ -15819,10 +16586,15 @@ class OrdersUpdateShipmentRequest {
   /// Acceptable values are:
   /// - "`delivered`"
   /// - "`undeliverable`"
+  /// - "`readyForPickup`"
   core.String status;
 
   /// The tracking ID for the shipment. Not updated if missing.
   core.String trackingId;
+
+  /// Date on which the shipment has been undeliverable, in ISO 8601 format.
+  /// Optional and can be provided only if `status` is `undeliverable`.
+  core.String undeliveredDate;
 
   OrdersUpdateShipmentRequest();
 
@@ -15833,8 +16605,14 @@ class OrdersUpdateShipmentRequest {
     if (_json.containsKey("deliveryDate")) {
       deliveryDate = _json["deliveryDate"];
     }
+    if (_json.containsKey("lastPickupDate")) {
+      lastPickupDate = _json["lastPickupDate"];
+    }
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
+    }
+    if (_json.containsKey("readyPickupDate")) {
+      readyPickupDate = _json["readyPickupDate"];
     }
     if (_json.containsKey("shipmentId")) {
       shipmentId = _json["shipmentId"];
@@ -15844,6 +16622,9 @@ class OrdersUpdateShipmentRequest {
     }
     if (_json.containsKey("trackingId")) {
       trackingId = _json["trackingId"];
+    }
+    if (_json.containsKey("undeliveredDate")) {
+      undeliveredDate = _json["undeliveredDate"];
     }
   }
 
@@ -15856,8 +16637,14 @@ class OrdersUpdateShipmentRequest {
     if (deliveryDate != null) {
       _json["deliveryDate"] = deliveryDate;
     }
+    if (lastPickupDate != null) {
+      _json["lastPickupDate"] = lastPickupDate;
+    }
     if (operationId != null) {
       _json["operationId"] = operationId;
+    }
+    if (readyPickupDate != null) {
+      _json["readyPickupDate"] = readyPickupDate;
     }
     if (shipmentId != null) {
       _json["shipmentId"] = shipmentId;
@@ -15867,6 +16654,9 @@ class OrdersUpdateShipmentRequest {
     }
     if (trackingId != null) {
       _json["trackingId"] = trackingId;
+    }
+    if (undeliveredDate != null) {
+      _json["undeliveredDate"] = undeliveredDate;
     }
     return _json;
   }
@@ -17090,6 +17880,9 @@ class Product {
   /// Brand of the item.
   core.String brand;
 
+  /// URL for the canonical version of your item's landing page.
+  core.String canonicalLink;
+
   /// Required. The item's channel (online or local).
   ///
   /// Acceptable values are:
@@ -17192,7 +17985,7 @@ class Product {
   /// included unless provided in `excludedDestinations`.
   core.List<core.String> includedDestinations;
 
-  /// Number and amount of installments to pay for an item. Brazil only.
+  /// Number and amount of installments to pay for an item.
   Installment installment;
 
   /// Whether the item is a merchant-defined bundle. A bundle is a custom
@@ -17227,7 +18020,7 @@ class Product {
   /// Minimal product handling time (in business days).
   core.String minHandlingTime;
 
-  /// Link to a mobile-optimized version of the landing page.
+  /// URL for the mobile-optimized version of your item's landing page.
   core.String mobileLink;
 
   /// Manufacturer Part Number (MPN) of the item.
@@ -17249,6 +18042,12 @@ class Product {
 
   /// Price of the item.
   Price price;
+
+  /// Technical specification or additional product details.
+  core.List<ProductProductDetail> productDetails;
+
+  /// Bullet points describing the most relevant highlights of a product.
+  core.List<core.String> productHighlights;
 
   /// Categories of the item (formatted as in products data specification).
   core.List<core.String> productTypes;
@@ -17286,6 +18085,11 @@ class Product {
   /// Width of the item for shipping.
   ProductShippingDimension shippingWidth;
 
+  /// List of country codes (ISO 3166-1 alpha-2) to exclude the offer from
+  /// Shopping Ads destination. Countries from this list are removed from
+  /// countries configured in MC feed settings.
+  core.List<core.String> shoppingAdsExcludedCountries;
+
   /// System in which the size is specified. Recommended for apparel items.
   core.String sizeSystem;
 
@@ -17304,6 +18108,10 @@ class Product {
   /// - "`crawl`"
   /// - "`feed`"
   core.String source;
+
+  /// Number of periods (months or years) and amount of payment per period for
+  /// an item with an associated subscription contract.
+  ProductSubscriptionCost subscriptionCost;
 
   /// Required. The CLDR territory code for the item.
   core.String targetCountry;
@@ -17358,6 +18166,9 @@ class Product {
     }
     if (_json.containsKey("brand")) {
       brand = _json["brand"];
+    }
+    if (_json.containsKey("canonicalLink")) {
+      canonicalLink = _json["canonicalLink"];
     }
     if (_json.containsKey("channel")) {
       channel = _json["channel"];
@@ -17496,6 +18307,16 @@ class Product {
     if (_json.containsKey("price")) {
       price = new Price.fromJson(_json["price"]);
     }
+    if (_json.containsKey("productDetails")) {
+      productDetails = (_json["productDetails"] as core.List)
+          .map<ProductProductDetail>(
+              (value) => new ProductProductDetail.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("productHighlights")) {
+      productHighlights =
+          (_json["productHighlights"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("productTypes")) {
       productTypes = (_json["productTypes"] as core.List).cast<core.String>();
     }
@@ -17535,6 +18356,11 @@ class Product {
       shippingWidth =
           new ProductShippingDimension.fromJson(_json["shippingWidth"]);
     }
+    if (_json.containsKey("shoppingAdsExcludedCountries")) {
+      shoppingAdsExcludedCountries =
+          (_json["shoppingAdsExcludedCountries"] as core.List)
+              .cast<core.String>();
+    }
     if (_json.containsKey("sizeSystem")) {
       sizeSystem = _json["sizeSystem"];
     }
@@ -17546,6 +18372,10 @@ class Product {
     }
     if (_json.containsKey("source")) {
       source = _json["source"];
+    }
+    if (_json.containsKey("subscriptionCost")) {
+      subscriptionCost =
+          new ProductSubscriptionCost.fromJson(_json["subscriptionCost"]);
     }
     if (_json.containsKey("targetCountry")) {
       targetCountry = _json["targetCountry"];
@@ -17603,6 +18433,9 @@ class Product {
     }
     if (brand != null) {
       _json["brand"] = brand;
+    }
+    if (canonicalLink != null) {
+      _json["canonicalLink"] = canonicalLink;
     }
     if (channel != null) {
       _json["channel"] = channel;
@@ -17737,6 +18570,13 @@ class Product {
     if (price != null) {
       _json["price"] = (price).toJson();
     }
+    if (productDetails != null) {
+      _json["productDetails"] =
+          productDetails.map((value) => (value).toJson()).toList();
+    }
+    if (productHighlights != null) {
+      _json["productHighlights"] = productHighlights;
+    }
     if (productTypes != null) {
       _json["productTypes"] = productTypes;
     }
@@ -17770,6 +18610,9 @@ class Product {
     if (shippingWidth != null) {
       _json["shippingWidth"] = (shippingWidth).toJson();
     }
+    if (shoppingAdsExcludedCountries != null) {
+      _json["shoppingAdsExcludedCountries"] = shoppingAdsExcludedCountries;
+    }
     if (sizeSystem != null) {
       _json["sizeSystem"] = sizeSystem;
     }
@@ -17781,6 +18624,9 @@ class Product {
     }
     if (source != null) {
       _json["source"] = source;
+    }
+    if (subscriptionCost != null) {
+      _json["subscriptionCost"] = (subscriptionCost).toJson();
     }
     if (targetCountry != null) {
       _json["targetCountry"] = targetCountry;
@@ -17842,6 +18688,46 @@ class ProductAmount {
     }
     if (taxAmount != null) {
       _json["taxAmount"] = (taxAmount).toJson();
+    }
+    return _json;
+  }
+}
+
+class ProductProductDetail {
+  /// The name of the product detail.
+  core.String attributeName;
+
+  /// The value of the product detail.
+  core.String attributeValue;
+
+  /// The section header used to group a set of product details.
+  core.String sectionName;
+
+  ProductProductDetail();
+
+  ProductProductDetail.fromJson(core.Map _json) {
+    if (_json.containsKey("attributeName")) {
+      attributeName = _json["attributeName"];
+    }
+    if (_json.containsKey("attributeValue")) {
+      attributeValue = _json["attributeValue"];
+    }
+    if (_json.containsKey("sectionName")) {
+      sectionName = _json["sectionName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attributeName != null) {
+      _json["attributeName"] = attributeName;
+    }
+    if (attributeValue != null) {
+      _json["attributeValue"] = attributeValue;
+    }
+    if (sectionName != null) {
+      _json["sectionName"] = sectionName;
     }
     return _json;
   }
@@ -18096,15 +18982,39 @@ class ProductStatus {
 }
 
 class ProductStatusDestinationStatus {
+  /// List of country codes (ISO 3166-1 alpha-2) where the offer is approved.
+  core.List<core.String> approvedCountries;
+
   /// The name of the destination
   core.String destination;
+
+  /// List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.
+  core.List<core.String> disapprovedCountries;
+
+  /// List of country codes (ISO 3166-1 alpha-2) where the offer is pending
+  /// approval.
+  core.List<core.String> pendingCountries;
+
+  /// Destination approval status in `targetCountry` of the offer.
   core.String status;
 
   ProductStatusDestinationStatus();
 
   ProductStatusDestinationStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("approvedCountries")) {
+      approvedCountries =
+          (_json["approvedCountries"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("destination")) {
       destination = _json["destination"];
+    }
+    if (_json.containsKey("disapprovedCountries")) {
+      disapprovedCountries =
+          (_json["disapprovedCountries"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("pendingCountries")) {
+      pendingCountries =
+          (_json["pendingCountries"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -18114,8 +19024,17 @@ class ProductStatusDestinationStatus {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (approvedCountries != null) {
+      _json["approvedCountries"] = approvedCountries;
+    }
     if (destination != null) {
       _json["destination"] = destination;
+    }
+    if (disapprovedCountries != null) {
+      _json["disapprovedCountries"] = disapprovedCountries;
+    }
+    if (pendingCountries != null) {
+      _json["pendingCountries"] = pendingCountries;
     }
     if (status != null) {
       _json["status"] = status;
@@ -18125,6 +19044,10 @@ class ProductStatusDestinationStatus {
 }
 
 class ProductStatusItemLevelIssue {
+  /// List of country codes (ISO 3166-1 alpha-2) where issue applies to the
+  /// offer.
+  core.List<core.String> applicableCountries;
+
   /// The attribute's name, if the issue is caused by a single attribute.
   core.String attributeName;
 
@@ -18152,6 +19075,10 @@ class ProductStatusItemLevelIssue {
   ProductStatusItemLevelIssue();
 
   ProductStatusItemLevelIssue.fromJson(core.Map _json) {
+    if (_json.containsKey("applicableCountries")) {
+      applicableCountries =
+          (_json["applicableCountries"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("attributeName")) {
       attributeName = _json["attributeName"];
     }
@@ -18181,6 +19108,9 @@ class ProductStatusItemLevelIssue {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (applicableCountries != null) {
+      _json["applicableCountries"] = applicableCountries;
+    }
     if (attributeName != null) {
       _json["attributeName"] = attributeName;
     }
@@ -18204,6 +19134,46 @@ class ProductStatusItemLevelIssue {
     }
     if (servability != null) {
       _json["servability"] = servability;
+    }
+    return _json;
+  }
+}
+
+class ProductSubscriptionCost {
+  /// The amount the buyer has to pay per subscription period.
+  Price amount;
+
+  /// The type of subscription period.
+  core.String period;
+
+  /// The number of subscription periods the buyer has to pay.
+  core.String periodLength;
+
+  ProductSubscriptionCost();
+
+  ProductSubscriptionCost.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = new Price.fromJson(_json["amount"]);
+    }
+    if (_json.containsKey("period")) {
+      period = _json["period"];
+    }
+    if (_json.containsKey("periodLength")) {
+      periodLength = _json["periodLength"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amount != null) {
+      _json["amount"] = (amount).toJson();
+    }
+    if (period != null) {
+      _json["period"] = period;
+    }
+    if (periodLength != null) {
+      _json["periodLength"] = periodLength;
     }
     return _json;
   }
@@ -19015,7 +19985,7 @@ class RegionalInventory {
   /// The price of the product.
   Price price;
 
-  /// The ID (name) of the region.
+  /// The ID uniquely identifying each region.
   core.String regionId;
 
   /// The sale price of the product. Mandatory if `sale_price_effective_date` is
@@ -19702,6 +20672,7 @@ class ReturnShipment {
   /// - "`new`"
   /// - "`shipped`"
   /// - "`undeliverable`"
+  /// - "`pending`"
   core.String state;
 
   ReturnShipment();
@@ -20678,6 +21649,9 @@ class SettlementTransactionIdentifiers {
   /// The merchant provided order ID.
   core.String merchantOrderId;
 
+  /// The identifier of the item.
+  core.String orderItemId;
+
   /// The unique ID of the settlement transaction entry.
   core.String settlementEntryId;
 
@@ -20695,6 +21669,9 @@ class SettlementTransactionIdentifiers {
     }
     if (_json.containsKey("merchantOrderId")) {
       merchantOrderId = _json["merchantOrderId"];
+    }
+    if (_json.containsKey("orderItemId")) {
+      orderItemId = _json["orderItemId"];
     }
     if (_json.containsKey("settlementEntryId")) {
       settlementEntryId = _json["settlementEntryId"];
@@ -20715,6 +21692,9 @@ class SettlementTransactionIdentifiers {
     }
     if (merchantOrderId != null) {
       _json["merchantOrderId"] = merchantOrderId;
+    }
+    if (orderItemId != null) {
+      _json["orderItemId"] = orderItemId;
     }
     if (settlementEntryId != null) {
       _json["settlementEntryId"] = settlementEntryId;
@@ -21443,6 +22423,9 @@ class Table {
 }
 
 class TestOrder {
+  /// Overrides the predefined delivery details if provided.
+  TestOrderDeliveryDetails deliveryDetails;
+
   /// Whether the orderinvoices service should support this order.
   core.bool enableOrderinvoices;
 
@@ -21456,6 +22439,9 @@ class TestOrder {
 
   /// Restricted. Do not use.
   core.String notificationMode;
+
+  /// Overrides the predefined pickup details if provided.
+  TestOrderPickupDetails pickupDetails;
 
   /// Required. The billing address.
   ///
@@ -21514,6 +22500,10 @@ class TestOrder {
   TestOrder();
 
   TestOrder.fromJson(core.Map _json) {
+    if (_json.containsKey("deliveryDetails")) {
+      deliveryDetails =
+          new TestOrderDeliveryDetails.fromJson(_json["deliveryDetails"]);
+    }
     if (_json.containsKey("enableOrderinvoices")) {
       enableOrderinvoices = _json["enableOrderinvoices"];
     }
@@ -21528,6 +22518,10 @@ class TestOrder {
     }
     if (_json.containsKey("notificationMode")) {
       notificationMode = _json["notificationMode"];
+    }
+    if (_json.containsKey("pickupDetails")) {
+      pickupDetails =
+          new TestOrderPickupDetails.fromJson(_json["pickupDetails"]);
     }
     if (_json.containsKey("predefinedBillingAddress")) {
       predefinedBillingAddress = _json["predefinedBillingAddress"];
@@ -21557,6 +22551,9 @@ class TestOrder {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (deliveryDetails != null) {
+      _json["deliveryDetails"] = (deliveryDetails).toJson();
+    }
     if (enableOrderinvoices != null) {
       _json["enableOrderinvoices"] = enableOrderinvoices;
     }
@@ -21568,6 +22565,9 @@ class TestOrder {
     }
     if (notificationMode != null) {
       _json["notificationMode"] = notificationMode;
+    }
+    if (pickupDetails != null) {
+      _json["pickupDetails"] = (pickupDetails).toJson();
     }
     if (predefinedBillingAddress != null) {
       _json["predefinedBillingAddress"] = predefinedBillingAddress;
@@ -21590,6 +22590,129 @@ class TestOrder {
     }
     if (shippingOption != null) {
       _json["shippingOption"] = shippingOption;
+    }
+    return _json;
+  }
+}
+
+class TestOrderAddress {
+  /// CLDR country code (e.g. "US").
+  core.String country;
+
+  /// Strings representing the lines of the printed label for mailing the order,
+  /// for example:
+  /// John Smith
+  /// 1600 Amphitheatre Parkway
+  /// Mountain View, CA, 94043
+  /// United States
+  core.List<core.String> fullAddress;
+
+  /// Whether the address is a post office box.
+  core.bool isPostOfficeBox;
+
+  /// City, town or commune. May also include dependent localities or
+  /// sublocalities (e.g. neighborhoods or suburbs).
+  core.String locality;
+
+  /// Postal Code or ZIP (e.g. "94043").
+  core.String postalCode;
+
+  /// Name of the recipient.
+  core.String recipientName;
+
+  /// Top-level administrative subdivision of the country. For example, a state
+  /// like California ("CA") or a province like Quebec ("QC").
+  core.String region;
+
+  /// Street-level part of the address.
+  core.List<core.String> streetAddress;
+
+  TestOrderAddress();
+
+  TestOrderAddress.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
+    if (_json.containsKey("fullAddress")) {
+      fullAddress = (_json["fullAddress"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("isPostOfficeBox")) {
+      isPostOfficeBox = _json["isPostOfficeBox"];
+    }
+    if (_json.containsKey("locality")) {
+      locality = _json["locality"];
+    }
+    if (_json.containsKey("postalCode")) {
+      postalCode = _json["postalCode"];
+    }
+    if (_json.containsKey("recipientName")) {
+      recipientName = _json["recipientName"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("streetAddress")) {
+      streetAddress = (_json["streetAddress"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (country != null) {
+      _json["country"] = country;
+    }
+    if (fullAddress != null) {
+      _json["fullAddress"] = fullAddress;
+    }
+    if (isPostOfficeBox != null) {
+      _json["isPostOfficeBox"] = isPostOfficeBox;
+    }
+    if (locality != null) {
+      _json["locality"] = locality;
+    }
+    if (postalCode != null) {
+      _json["postalCode"] = postalCode;
+    }
+    if (recipientName != null) {
+      _json["recipientName"] = recipientName;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (streetAddress != null) {
+      _json["streetAddress"] = streetAddress;
+    }
+    return _json;
+  }
+}
+
+class TestOrderDeliveryDetails {
+  /// The delivery address
+  TestOrderAddress address;
+
+  /// The phone number of the person receiving the delivery.
+  core.String phoneNumber;
+
+  TestOrderDeliveryDetails();
+
+  TestOrderDeliveryDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("address")) {
+      address = new TestOrderAddress.fromJson(_json["address"]);
+    }
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (address != null) {
+      _json["address"] = (address).toJson();
+    }
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
     }
     return _json;
   }
@@ -21786,6 +22909,96 @@ class TestOrderLineItemProduct {
     if (variantAttributes != null) {
       _json["variantAttributes"] =
           variantAttributes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class TestOrderPickupDetails {
+  /// Required. Code of the location defined by provider or merchant.
+  core.String locationCode;
+
+  /// Required. Pickup location address.
+  TestOrderAddress pickupLocationAddress;
+
+  /// Pickup location type.
+  ///
+  /// Acceptable values are:
+  /// - "`locker`"
+  /// - "`store`"
+  /// - "`curbside`"
+  core.String pickupLocationType;
+
+  /// Required. all pickup persons set by users.
+  core.List<TestOrderPickupDetailsPickupPerson> pickupPersons;
+
+  TestOrderPickupDetails();
+
+  TestOrderPickupDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("locationCode")) {
+      locationCode = _json["locationCode"];
+    }
+    if (_json.containsKey("pickupLocationAddress")) {
+      pickupLocationAddress =
+          new TestOrderAddress.fromJson(_json["pickupLocationAddress"]);
+    }
+    if (_json.containsKey("pickupLocationType")) {
+      pickupLocationType = _json["pickupLocationType"];
+    }
+    if (_json.containsKey("pickupPersons")) {
+      pickupPersons = (_json["pickupPersons"] as core.List)
+          .map<TestOrderPickupDetailsPickupPerson>(
+              (value) => new TestOrderPickupDetailsPickupPerson.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (locationCode != null) {
+      _json["locationCode"] = locationCode;
+    }
+    if (pickupLocationAddress != null) {
+      _json["pickupLocationAddress"] = (pickupLocationAddress).toJson();
+    }
+    if (pickupLocationType != null) {
+      _json["pickupLocationType"] = pickupLocationType;
+    }
+    if (pickupPersons != null) {
+      _json["pickupPersons"] =
+          pickupPersons.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class TestOrderPickupDetailsPickupPerson {
+  /// Required. Full name of the pickup person.
+  core.String name;
+
+  /// Required. The phone number of the person picking up the items.
+  core.String phoneNumber;
+
+  TestOrderPickupDetailsPickupPerson();
+
+  TestOrderPickupDetailsPickupPerson.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
     }
     return _json;
   }

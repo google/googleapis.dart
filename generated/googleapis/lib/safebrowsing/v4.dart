@@ -54,11 +54,10 @@ class EncodedFullHashesResourceApi {
   ///
   /// [encodedRequest] - A serialized FindFullHashesRequest proto.
   ///
-  /// [clientId] - A client ID that (hopefully) uniquely identifies the client
-  /// implementation
-  /// of the Safe Browsing API.
-  ///
   /// [clientVersion] - The version of the client implementation.
+  ///
+  /// [clientId] - A client ID that (hopefully) uniquely identifies the client
+  /// implementation of the Safe Browsing API.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -71,7 +70,7 @@ class EncodedFullHashesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FindFullHashesResponse> get(core.String encodedRequest,
-      {core.String clientId, core.String clientVersion, core.String $fields}) {
+      {core.String clientVersion, core.String clientId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -82,11 +81,11 @@ class EncodedFullHashesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
-    if (clientId != null) {
-      _queryParams["clientId"] = [clientId];
-    }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if (clientId != null) {
+      _queryParams["clientId"] = [clientId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -115,8 +114,7 @@ class EncodedUpdatesResourceApi {
   /// [encodedRequest] - A serialized FetchThreatListUpdatesRequest proto.
   ///
   /// [clientId] - A client ID that uniquely identifies the client
-  /// implementation of the Safe
-  /// Browsing API.
+  /// implementation of the Safe Browsing API.
   ///
   /// [clientVersion] - The version of the client implementation.
   ///
@@ -477,22 +475,22 @@ class ClientInfo {
 
 /// The constraints for this update.
 class Constraints {
-  /// A client's physical location, expressed as a ISO 31166-1 alpha-2
-  /// region code.
+  /// A client's physical location, expressed as a ISO 31166-1 alpha-2 region
+  /// code.
   core.String deviceLocation;
 
   /// Requests the lists for a specific language. Expects ISO 639 alpha-2
   /// format.
   core.String language;
 
-  /// Sets the maximum number of entries that the client is willing to have
-  /// in the local database for the specified list. This should be a power of
-  /// 2 between 2**10 and 2**20. If zero, no database size limit is set.
+  /// Sets the maximum number of entries that the client is willing to have in
+  /// the local database for the specified list. This should be a power of 2
+  /// between 2**10 and 2**20. If zero, no database size limit is set.
   core.int maxDatabaseEntries;
 
   /// The maximum size in number of entries. The update will not contain more
-  /// entries than this value.  This should be a power of 2 between 2**10 and
-  /// 2**20.  If zero, no update size limit is set.
+  /// entries than this value. This should be a power of 2 between 2**10 and
+  /// 2**20. If zero, no update size limit is set.
   core.int maxUpdateEntries;
 
   /// Requests the list for a specific geographic location. If not set the
@@ -554,13 +552,9 @@ class Constraints {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -574,10 +568,8 @@ class Empty {
 }
 
 /// Describes a Safe Browsing API update request. Clients can request updates
-/// for
-/// multiple lists in a single request.
-/// NOTE: Field index 2 is unused.
-/// NEXT: 5
+/// for multiple lists in a single request. NOTE: Field index 2 is unused. NEXT:
+/// 5
 class FetchThreatListUpdatesRequest {
   /// The client metadata.
   ClientInfo client;
@@ -885,12 +877,12 @@ class ListUpdateRequest {
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats.
-  /// This enum was never launched and should be re-used for the next list.
+  /// incident threats. This enum was never launched and should be re-used for
+  /// the next list.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial
-  /// will not be shown for patterns from this list.
+  /// subresource filter. Interstitial will not be shown for patterns from this
+  /// list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
@@ -987,9 +979,8 @@ class ListUpdateResponse {
   /// - "PARTIAL_UPDATE" : Partial updates are applied to the client's existing
   /// local database.
   /// - "FULL_UPDATE" : Full updates replace the client's entire local database.
-  /// This means
-  /// that either the client was seriously out-of-date or the client is
-  /// believed to be corrupt.
+  /// This means that either the client was seriously out-of-date or the client
+  /// is believed to be corrupt.
   core.String responseType;
 
   /// The format of the threats.
@@ -1020,12 +1011,12 @@ class ListUpdateResponse {
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats.
-  /// This enum was never launched and should be re-used for the next list.
+  /// incident threats. This enum was never launched and should be re-used for
+  /// the next list.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial
-  /// will not be shown for patterns from this list.
+  /// subresource filter. Interstitial will not be shown for patterns from this
+  /// list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
@@ -1145,21 +1136,18 @@ class MetadataEntry {
 }
 
 /// The uncompressed threat entries in hash format of a particular prefix
-/// length.
-/// Hashes can be anywhere from 4 to 32 bytes in size. A large majority are 4
-/// bytes, but some hashes are lengthened if they collide with the hash of a
-/// popular URL.
-///
-/// Used for sending ThreatEntrySet to clients that do not support compression,
-/// or when sending non-4-byte hashes to clients that do support compression.
+/// length. Hashes can be anywhere from 4 to 32 bytes in size. A large majority
+/// are 4 bytes, but some hashes are lengthened if they collide with the hash of
+/// a popular URL. Used for sending ThreatEntrySet to clients that do not
+/// support compression, or when sending non-4-byte hashes to clients that do
+/// support compression.
 class RawHashes {
-  /// The number of bytes for each prefix encoded below.  This field can be
+  /// The number of bytes for each prefix encoded below. This field can be
   /// anywhere from 4 (shortest prefix) to 32 (full SHA256 hash).
   core.int prefixSize;
 
   /// The hashes, in binary format, concatenated into one long string. Hashes
-  /// are
-  /// sorted in lexicographic order. For JSON API users, hashes are
+  /// are sorted in lexicographic order. For JSON API users, hashes are
   /// base64-encoded.
   core.String rawHashes;
   core.List<core.int> get rawHashesAsBytes {
@@ -1238,9 +1226,8 @@ class RiceDeltaEncoding {
   core.String firstValue;
 
   /// The number of entries that are delta encoded in the encoded data. If only
-  /// a
-  /// single integer was encoded, this will be zero and the single value will be
-  /// stored in `first_value`.
+  /// a single integer was encoded, this will be zero and the single value will
+  /// be stored in `first_value`.
   core.int numEntries;
 
   /// The Golomb-Rice parameter, which is a number between 2 and 28. This field
@@ -1286,8 +1273,8 @@ class RiceDeltaEncoding {
 /// An individual threat; for example, a malicious URL or its hash
 /// representation. Only one of these fields should be set.
 class ThreatEntry {
-  /// The digest of an executable in SHA256 format. The API supports both
-  /// binary and hex digests. For JSON requests, digests are base64-encoded.
+  /// The digest of an executable in SHA256 format. The API supports both binary
+  /// and hex digests. For JSON requests, digests are base64-encoded.
   core.String digest;
   core.List<core.int> get digestAsBytes {
     return convert.base64.decode(digest);
@@ -1480,12 +1467,12 @@ class ThreatHit {
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats.
-  /// This enum was never launched and should be re-used for the next list.
+  /// incident threats. This enum was never launched and should be re-used for
+  /// the next list.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial
-  /// will not be shown for patterns from this list.
+  /// subresource filter. Interstitial will not be shown for patterns from this
+  /// list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
@@ -1645,12 +1632,12 @@ class ThreatListDescriptor {
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats.
-  /// This enum was never launched and should be re-used for the next list.
+  /// incident threats. This enum was never launched and should be re-used for
+  /// the next list.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial
-  /// will not be shown for patterns from this list.
+  /// subresource filter. Interstitial will not be shown for patterns from this
+  /// list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
@@ -1740,12 +1727,12 @@ class ThreatMatch {
   /// threat type.
   /// - "CLIENT_INCIDENT" : Client incident threat type.
   /// - "CLIENT_INCIDENT_WHITELIST" : Whitelist used when detecting client
-  /// incident threats.
-  /// This enum was never launched and should be re-used for the next list.
+  /// incident threats. This enum was never launched and should be re-used for
+  /// the next list.
   /// - "APK_MALWARE_OFFLINE" : List used for offline APK checks in PAM.
   /// - "SUBRESOURCE_FILTER" : Patterns to be used for activating the
-  /// subresource filter. Interstitial
-  /// will not be shown for patterns from this list.
+  /// subresource filter. Interstitial will not be shown for patterns from this
+  /// list.
   /// - "SUSPICIOUS" : Entities that are suspected to present a threat.
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
@@ -1813,11 +1800,9 @@ class ThreatSource {
   /// Possible string values are:
   /// - "THREAT_SOURCE_TYPE_UNSPECIFIED" : Unknown.
   /// - "MATCHING_URL" : The URL that matched the threat list (for which
-  /// GetFullHash returned a
-  /// valid hash).
+  /// GetFullHash returned a valid hash).
   /// - "TAB_URL" : The final top-level URL of the tab that the client was
-  /// browsing when the
-  /// match occurred.
+  /// browsing when the match occurred.
   /// - "TAB_REDIRECT" : A redirect URL that was fetched before hitting the
   /// final TAB_URL.
   /// - "TAB_RESOURCE" : A resource loaded within the final TAB_URL.

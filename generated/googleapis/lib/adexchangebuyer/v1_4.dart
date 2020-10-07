@@ -3333,8 +3333,8 @@ class Creative {
   /// requests.
   core.List<core.String> advertiserId;
 
-  /// The name of the company being advertised in the creative. The value
-  /// provided must exist in the advertisers.txt file.
+  /// The name of the company being advertised in the creative. A list of
+  /// advertisers is provided in the advertisers.txt file.
   core.String advertiserName;
 
   /// The agency id for this creative.
@@ -4711,6 +4711,7 @@ class MarketplaceDeal {
 
   /// The time (ms since epoch) when the deal was last updated. (readonly)
   core.String lastUpdateTimeMs;
+  core.String makegoodRequestedReason;
 
   /// The name of the deal. (updatable)
   core.String name;
@@ -4792,6 +4793,9 @@ class MarketplaceDeal {
     }
     if (_json.containsKey("lastUpdateTimeMs")) {
       lastUpdateTimeMs = _json["lastUpdateTimeMs"];
+    }
+    if (_json.containsKey("makegoodRequestedReason")) {
+      makegoodRequestedReason = _json["makegoodRequestedReason"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -4877,6 +4881,9 @@ class MarketplaceDeal {
     }
     if (lastUpdateTimeMs != null) {
       _json["lastUpdateTimeMs"] = lastUpdateTimeMs;
+    }
+    if (makegoodRequestedReason != null) {
+      _json["makegoodRequestedReason"] = makegoodRequestedReason;
     }
     if (name != null) {
       _json["name"] = name;
@@ -5083,6 +5090,34 @@ class MarketplaceNote {
     }
     if (timestampMs != null) {
       _json["timestampMs"] = timestampMs;
+    }
+    return _json;
+  }
+}
+
+class MobileApplication {
+  core.String appStore;
+  core.String externalAppId;
+
+  MobileApplication();
+
+  MobileApplication.fromJson(core.Map _json) {
+    if (_json.containsKey("appStore")) {
+      appStore = _json["appStore"];
+    }
+    if (_json.containsKey("externalAppId")) {
+      externalAppId = _json["externalAppId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (appStore != null) {
+      _json["appStore"] = appStore;
+    }
+    if (externalAppId != null) {
+      _json["externalAppId"] = externalAppId;
     }
     return _json;
   }
@@ -6574,6 +6609,14 @@ class PublisherProfileApiProto {
   /// Programmatic contact for the publisher profile.
   core.String programmaticContact;
 
+  /// The list of app IDs represented in this pubisher profile. Empty if this is
+  /// a parent profile. Deprecated in favor of publisher_app.
+  core.List<core.String> publisherAppIds;
+
+  /// The list of apps represented in this pubisher profile. Empty if this is a
+  /// parent profile.
+  core.List<MobileApplication> publisherApps;
+
   /// The list of domains represented in this publisher profile. Empty if this
   /// is a parent profile.
   core.List<core.String> publisherDomains;
@@ -6643,6 +6686,16 @@ class PublisherProfileApiProto {
     }
     if (_json.containsKey("programmaticContact")) {
       programmaticContact = _json["programmaticContact"];
+    }
+    if (_json.containsKey("publisherAppIds")) {
+      publisherAppIds =
+          (_json["publisherAppIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("publisherApps")) {
+      publisherApps = (_json["publisherApps"] as core.List)
+          .map<MobileApplication>(
+              (value) => new MobileApplication.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("publisherDomains")) {
       publisherDomains =
@@ -6716,6 +6769,13 @@ class PublisherProfileApiProto {
     }
     if (programmaticContact != null) {
       _json["programmaticContact"] = programmaticContact;
+    }
+    if (publisherAppIds != null) {
+      _json["publisherAppIds"] = publisherAppIds;
+    }
+    if (publisherApps != null) {
+      _json["publisherApps"] =
+          publisherApps.map((value) => (value).toJson()).toList();
     }
     if (publisherDomains != null) {
       _json["publisherDomains"] = publisherDomains;
@@ -6881,6 +6941,7 @@ class TargetingValue {
 
   /// The long value to exclude/include.
   core.String longValue;
+  TargetingValueRequestPlatformTargeting requestPlatformTargetingValue;
 
   /// The string value to exclude/include.
   core.String stringValue;
@@ -6907,6 +6968,11 @@ class TargetingValue {
     if (_json.containsKey("longValue")) {
       longValue = _json["longValue"];
     }
+    if (_json.containsKey("requestPlatformTargetingValue")) {
+      requestPlatformTargetingValue =
+          new TargetingValueRequestPlatformTargeting.fromJson(
+              _json["requestPlatformTargetingValue"]);
+    }
     if (_json.containsKey("stringValue")) {
       stringValue = _json["stringValue"];
     }
@@ -6929,6 +6995,10 @@ class TargetingValue {
     }
     if (longValue != null) {
       _json["longValue"] = longValue;
+    }
+    if (requestPlatformTargetingValue != null) {
+      _json["requestPlatformTargetingValue"] =
+          (requestPlatformTargetingValue).toJson();
     }
     if (stringValue != null) {
       _json["stringValue"] = stringValue;
@@ -7130,6 +7200,28 @@ class TargetingValueDemogGenderCriteria {
         new core.Map<core.String, core.Object>();
     if (demogGenderCriteriaIds != null) {
       _json["demogGenderCriteriaIds"] = demogGenderCriteriaIds;
+    }
+    return _json;
+  }
+}
+
+class TargetingValueRequestPlatformTargeting {
+  core.List<core.String> requestPlatforms;
+
+  TargetingValueRequestPlatformTargeting();
+
+  TargetingValueRequestPlatformTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("requestPlatforms")) {
+      requestPlatforms =
+          (_json["requestPlatforms"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestPlatforms != null) {
+      _json["requestPlatforms"] = requestPlatforms;
     }
     return _json;
   }

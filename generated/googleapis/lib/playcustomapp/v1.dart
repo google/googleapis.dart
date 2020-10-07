@@ -24,7 +24,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client playcustomapp/v1';
 
-/// An API to publish custom Android apps.
+/// API to create and publish custom Android apps
 class PlaycustomappApi {
   /// View and manage your Google Play Developer account
   static const AndroidpublisherScope =
@@ -35,8 +35,8 @@ class PlaycustomappApi {
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
   PlaycustomappApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "playcustomapp/v1/accounts/"})
+      {core.String rootUrl = "https://playcustomapp.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -56,7 +56,7 @@ class AccountsCustomAppsResourceApi {
   AccountsCustomAppsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create and publish a new custom app.
+  /// Creates a new custom app.
   ///
   /// [request] - The metadata request object.
   ///
@@ -69,10 +69,6 @@ class AccountsCustomAppsResourceApi {
   ///
   /// [uploadMedia] - The media to upload.
   ///
-  /// [uploadOptions] - Options for the media upload. Streaming Media without
-  /// the length being known ahead of time is only supported via resumable
-  /// uploads.
-  ///
   /// Completes with a [CustomApp].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -81,9 +77,7 @@ class AccountsCustomAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomApp> create(CustomApp request, core.String account,
-      {core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
+      {core.String $fields, commons.Media uploadMedia}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -102,12 +96,10 @@ class AccountsCustomAppsResourceApi {
     }
 
     _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
 
+    _uploadOptions = commons.UploadOptions.Default;
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$account') + '/customApps';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/playcustomapp/v1/accounts/' +
+      _url = 'playcustomapp/v1/accounts/' +
           commons.Escaper.ecapeVariable('$account') +
           '/customApps';
     } else {
@@ -131,6 +123,10 @@ class CustomApp {
   /// Default listing language in BCP 47 format.
   core.String languageCode;
 
+  /// Output only. Package name of the created Android app. Only present in the
+  /// API response.
+  core.String packageName;
+
   /// Title for the Android app.
   core.String title;
 
@@ -139,6 +135,9 @@ class CustomApp {
   CustomApp.fromJson(core.Map _json) {
     if (_json.containsKey("languageCode")) {
       languageCode = _json["languageCode"];
+    }
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -150,6 +149,9 @@ class CustomApp {
         new core.Map<core.String, core.Object>();
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
+    }
+    if (packageName != null) {
+      _json["packageName"] = packageName;
     }
     if (title != null) {
       _json["title"] = title;

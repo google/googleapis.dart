@@ -17,8 +17,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client admin/directory_v1';
 
-/// Manages enterprise resources such as users and groups, administrative
-/// notifications, security features, and more.
+/// Admin SDK lets administrators of enterprise domains to view and manage
+/// resources like user, groups etc. It also provides audit and usage reports of
+/// domain.
 class AdminApi {
   /// View and manage customer related information
   static const AdminDirectoryCustomerScope =
@@ -71,10 +72,6 @@ class AdminApi {
   /// View groups on your domain
   static const AdminDirectoryGroupReadonlyScope =
       "https://www.googleapis.com/auth/admin.directory.group.readonly";
-
-  /// View and manage notifications received on your domain
-  static const AdminDirectoryNotificationsScope =
-      "https://www.googleapis.com/auth/admin.directory.notifications";
 
   /// View and manage organization units on your domain
   static const AdminDirectoryOrgunitScope =
@@ -146,8 +143,6 @@ class AdminApi {
   MembersResourceApi get members => new MembersResourceApi(_requester);
   MobiledevicesResourceApi get mobiledevices =>
       new MobiledevicesResourceApi(_requester);
-  NotificationsResourceApi get notifications =>
-      new NotificationsResourceApi(_requester);
   OrgunitsResourceApi get orgunits => new OrgunitsResourceApi(_requester);
   PrivilegesResourceApi get privileges => new PrivilegesResourceApi(_requester);
   ResourcesResourceApi get resources => new ResourcesResourceApi(_requester);
@@ -156,13 +151,15 @@ class AdminApi {
   RolesResourceApi get roles => new RolesResourceApi(_requester);
   SchemasResourceApi get schemas => new SchemasResourceApi(_requester);
   TokensResourceApi get tokens => new TokensResourceApi(_requester);
+  TwoStepVerificationResourceApi get twoStepVerification =>
+      new TwoStepVerificationResourceApi(_requester);
   UsersResourceApi get users => new UsersResourceApi(_requester);
   VerificationCodesResourceApi get verificationCodes =>
       new VerificationCodesResourceApi(_requester);
 
   AdminApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "admin/directory/v1/"})
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -210,7 +207,7 @@ class AspsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/asps/' +
         commons.Escaper.ecapeVariable('$codeId');
@@ -262,7 +259,7 @@ class AspsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/asps/' +
         commons.Escaper.ecapeVariable('$codeId');
@@ -308,7 +305,9 @@ class AspsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/asps';
+    _url = 'admin/directory/v1/users/' +
+        commons.Escaper.ecapeVariable('$userKey') +
+        '/asps';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -325,7 +324,7 @@ class ChannelsResourceApi {
 
   ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Stop watching resources through this channel
+  /// Stop watching resources through this channel.
   ///
   /// [request] - The metadata request object.
   ///
@@ -356,7 +355,7 @@ class ChannelsResourceApi {
 
     _downloadOptions = null;
 
-    _url = '/admin/directory_v1/channels/stop';
+    _url = 'admin/directory_v1/channels/stop';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -416,7 +415,7 @@ class ChromeosdevicesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.Escaper.ecapeVariable('$resourceId') +
@@ -441,6 +440,7 @@ class ChromeosdevicesResourceApi {
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
+  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
@@ -477,7 +477,7 @@ class ChromeosdevicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.Escaper.ecapeVariable('$deviceId');
@@ -497,11 +497,25 @@ class ChromeosdevicesResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [maxResults] - Maximum number of results to return. Max allowed value is
-  /// 200.
+  /// [sortOrder] - Whether to return results in ascending or descending order.
+  /// Only of use when orderBy is also used
+  /// Possible string values are:
+  /// - "SORT_ORDER_UNDEFINED"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
+  ///
+  /// [pageToken] - Token to specify next page in the list
+  ///
+  /// [orgUnitPath] - Full path of the organizational unit or its ID
+  ///
+  /// [query] - Search string in the format given at
+  /// http://support.google.com/chromeos/a/bin/answer.py?answer=1698333
+  ///
+  /// [maxResults] - Maximum number of results to return.
   ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
+  /// - "orderByUndefined"
   /// - "annotatedLocation" : Chromebook location as annotated by the
   /// administrator.
   /// - "annotatedUser" : Chromebook user as annotated by administrator.
@@ -511,24 +525,12 @@ class ChromeosdevicesResourceApi {
   /// - "status" : Chromebook status.
   /// - "supportEndDate" : Chromebook support end date.
   ///
-  /// [orgUnitPath] - Full path of the organizational unit or its ID
-  ///
-  /// [pageToken] - Token to specify next page in the list
-  ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
+  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
-  ///
-  /// [query] - Search string in the format given at
-  /// http://support.google.com/chromeos/a/bin/answer.py?answer=1698333
-  ///
-  /// [sortOrder] - Whether to return results in ascending or descending order.
-  /// Only of use when orderBy is also used
-  /// Possible string values are:
-  /// - "ASCENDING" : Ascending order.
-  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -541,13 +543,13 @@ class ChromeosdevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChromeOsDevices> list(core.String customerId,
-      {core.int maxResults,
-      core.String orderBy,
-      core.String orgUnitPath,
+      {core.String sortOrder,
       core.String pageToken,
-      core.String projection,
+      core.String orgUnitPath,
       core.String query,
-      core.String sortOrder,
+      core.int maxResults,
+      core.String orderBy,
+      core.String projection,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -559,32 +561,32 @@ class ChromeosdevicesResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orgUnitPath != null) {
+      _queryParams["orgUnitPath"] = [orgUnitPath];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (orgUnitPath != null) {
-      _queryParams["orgUnitPath"] = [orgUnitPath];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (projection != null) {
       _queryParams["projection"] = [projection];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/chromeos';
 
@@ -641,7 +643,7 @@ class ChromeosdevicesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/chromeos/moveDevicesToOu';
 
@@ -654,7 +656,7 @@ class ChromeosdevicesResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Update Chrome OS Device. This method supports patch semantics.
+  /// Patch Chrome OS Device
   ///
   /// [request] - The metadata request object.
   ///
@@ -666,6 +668,7 @@ class ChromeosdevicesResourceApi {
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
+  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
@@ -706,7 +709,7 @@ class ChromeosdevicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.Escaper.ecapeVariable('$deviceId');
@@ -732,6 +735,7 @@ class ChromeosdevicesResourceApi {
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
+  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
@@ -772,7 +776,7 @@ class ChromeosdevicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.Escaper.ecapeVariable('$deviceId');
@@ -823,7 +827,8 @@ class CustomersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerKey');
+    _url = 'admin/directory/v1/customers/' +
+        commons.Escaper.ecapeVariable('$customerKey');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -834,7 +839,7 @@ class CustomersResourceApi {
     return _response.then((data) => new Customer.fromJson(data));
   }
 
-  /// Updates a customer. This method supports patch semantics.
+  /// Patch Customers via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -871,7 +876,8 @@ class CustomersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerKey');
+    _url = 'admin/directory/v1/customers/' +
+        commons.Escaper.ecapeVariable('$customerKey');
 
     var _response = _requester.request(_url, "PATCH",
         body: _body,
@@ -919,7 +925,8 @@ class CustomersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerKey');
+    _url = 'admin/directory/v1/customers/' +
+        commons.Escaper.ecapeVariable('$customerKey');
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -936,7 +943,7 @@ class DomainAliasesResourceApi {
 
   DomainAliasesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a Domain Alias of the customer.
+  /// Deletes a domain Alias of the customer.
   ///
   /// Request parameters:
   ///
@@ -973,7 +980,7 @@ class DomainAliasesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/domainaliases/' +
         commons.Escaper.ecapeVariable('$domainAliasName');
@@ -1025,7 +1032,7 @@ class DomainAliasesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/domainaliases/' +
         commons.Escaper.ecapeVariable('$domainAliasName');
@@ -1039,7 +1046,7 @@ class DomainAliasesResourceApi {
     return _response.then((data) => new DomainAlias.fromJson(data));
   }
 
-  /// Inserts a Domain alias of the customer.
+  /// Inserts a domain alias of the customer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1076,7 +1083,7 @@ class DomainAliasesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/domainaliases';
 
@@ -1127,7 +1134,7 @@ class DomainAliasesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/domainaliases';
 
@@ -1183,7 +1190,7 @@ class DomainsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/domains/' +
         commons.Escaper.ecapeVariable('$domainName');
@@ -1234,7 +1241,7 @@ class DomainsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/domains/' +
         commons.Escaper.ecapeVariable('$domainName');
@@ -1285,8 +1292,9 @@ class DomainsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domains';
+    _url = 'admin/directory/v1/customer/' +
+        commons.Escaper.ecapeVariable('$customer') +
+        '/domains';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1328,8 +1336,9 @@ class DomainsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'customer/' + commons.Escaper.ecapeVariable('$customer') + '/domains';
+    _url = 'admin/directory/v1/customer/' +
+        commons.Escaper.ecapeVariable('$customer') +
+        '/domains';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1380,7 +1389,8 @@ class GroupsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
+    _url = 'admin/directory/v1/groups/' +
+        commons.Escaper.ecapeVariable('$groupKey');
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -1422,7 +1432,8 @@ class GroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
+    _url = 'admin/directory/v1/groups/' +
+        commons.Escaper.ecapeVariable('$groupKey');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1464,7 +1475,7 @@ class GroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups';
+    _url = 'admin/directory/v1/groups';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1479,8 +1490,10 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
-  /// to fetch all groups for a customer, fill this field instead of domain.
+  /// [orderBy] - Column to use for sorting results
+  /// Possible string values are:
+  /// - "orderByUndefined"
+  /// - "email" : Email of the group.
   ///
   /// [domain] - Name of the domain. Fill this field to get groups from only
   /// this domain. To return all groups in a multi-domain fill customer field
@@ -1489,25 +1502,25 @@ class GroupsResourceApi {
   /// [maxResults] - Maximum number of results to return. Max allowed value is
   /// 200.
   ///
-  /// [orderBy] - Column to use for sorting results
-  /// Possible string values are:
-  /// - "email" : Email of the group.
+  /// [userKey] - Email or immutable ID of the user if only those groups are to
+  /// be listed, the given user is a member of. If it's an ID, it should match
+  /// with the ID of the user object.
+  ///
+  /// [query] - Query string search. Should be of the form "". Complete
+  /// documentation is at https:
+  /// //developers.google.com/admin-sdk/directory/v1/guides/search-groups
   ///
   /// [pageToken] - Token to specify next page in the list
   ///
-  /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at
-  /// https://developers.google.com/admin-sdk/directory/v1/guides/search-groups
+  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
+  /// to fetch all groups for a customer, fill this field instead of domain.
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
   /// Possible string values are:
+  /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
-  ///
-  /// [userKey] - Email or immutable ID of the user if only those groups are to
-  /// be listed, the given user is a member of. If it's an ID, it should match
-  /// with the ID of the user object.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1520,14 +1533,14 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Groups> list(
-      {core.String customer,
+      {core.String orderBy,
       core.String domain,
       core.int maxResults,
-      core.String orderBy,
-      core.String pageToken,
-      core.String query,
-      core.String sortOrder,
       core.String userKey,
+      core.String query,
+      core.String pageToken,
+      core.String customer,
+      core.String sortOrder,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1536,8 +1549,8 @@ class GroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (customer != null) {
-      _queryParams["customer"] = [customer];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (domain != null) {
       _queryParams["domain"] = [domain];
@@ -1545,26 +1558,26 @@ class GroupsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (userKey != null) {
+      _queryParams["userKey"] = [userKey];
     }
     if (query != null) {
       _queryParams["query"] = [query];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (customer != null) {
+      _queryParams["customer"] = [customer];
+    }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (userKey != null) {
-      _queryParams["userKey"] = [userKey];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups';
+    _url = 'admin/directory/v1/groups';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1575,7 +1588,7 @@ class GroupsResourceApi {
     return _response.then((data) => new Groups.fromJson(data));
   }
 
-  /// Update Group. This method supports patch semantics.
+  /// Patch Groups via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -1613,7 +1626,8 @@ class GroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
+    _url = 'admin/directory/v1/groups/' +
+        commons.Escaper.ecapeVariable('$groupKey');
 
     var _response = _requester.request(_url, "PATCH",
         body: _body,
@@ -1662,7 +1676,8 @@ class GroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
+    _url = 'admin/directory/v1/groups/' +
+        commons.Escaper.ecapeVariable('$groupKey');
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -1716,7 +1731,7 @@ class GroupsAliasesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'groups/' +
+    _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
         '/aliases/' +
         commons.Escaper.ecapeVariable('$alias');
@@ -1767,7 +1782,9 @@ class GroupsAliasesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/aliases';
+    _url = 'admin/directory/v1/groups/' +
+        commons.Escaper.ecapeVariable('$groupKey') +
+        '/aliases';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1809,7 +1826,9 @@ class GroupsAliasesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/aliases';
+    _url = 'admin/directory/v1/groups/' +
+        commons.Escaper.ecapeVariable('$groupKey') +
+        '/aliases';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1863,7 +1882,7 @@ class MembersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'groups/' +
+    _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
         '/members/' +
         commons.Escaper.ecapeVariable('$memberKey');
@@ -1914,7 +1933,7 @@ class MembersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' +
+    _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
         '/members/' +
         commons.Escaper.ecapeVariable('$memberKey');
@@ -1969,7 +1988,7 @@ class MembersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' +
+    _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
         '/hasMember/' +
         commons.Escaper.ecapeVariable('$memberKey');
@@ -2020,7 +2039,9 @@ class MembersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/members';
+    _url = 'admin/directory/v1/groups/' +
+        commons.Escaper.ecapeVariable('$groupKey') +
+        '/members';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2037,15 +2058,15 @@ class MembersResourceApi {
   ///
   /// [groupKey] - Email or immutable ID of the group
   ///
-  /// [includeDerivedMembership] - Whether to list indirect memberships.
-  /// Default: false.
-  ///
   /// [maxResults] - Maximum number of results to return. Max allowed value is
   /// 200.
   ///
-  /// [pageToken] - Token to specify next page in the list
+  /// [includeDerivedMembership] - Whether to list indirect memberships.
+  /// Default: false.
   ///
   /// [roles] - Comma separated role values to filter list results on.
+  ///
+  /// [pageToken] - Token to specify next page in the list
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2058,10 +2079,10 @@ class MembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Members> list(core.String groupKey,
-      {core.bool includeDerivedMembership,
-      core.int maxResults,
-      core.String pageToken,
+      {core.int maxResults,
+      core.bool includeDerivedMembership,
       core.String roles,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2073,25 +2094,27 @@ class MembersResourceApi {
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
     }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (includeDerivedMembership != null) {
       _queryParams["includeDerivedMembership"] = [
         "${includeDerivedMembership}"
       ];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (roles != null) {
+      _queryParams["roles"] = [roles];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (roles != null) {
-      _queryParams["roles"] = [roles];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/members';
+    _url = 'admin/directory/v1/groups/' +
+        commons.Escaper.ecapeVariable('$groupKey') +
+        '/members';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2102,8 +2125,7 @@ class MembersResourceApi {
     return _response.then((data) => new Members.fromJson(data));
   }
 
-  /// Update membership of a user in the specified group. This method supports
-  /// patch semantics.
+  /// Patch Member via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -2148,7 +2170,7 @@ class MembersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' +
+    _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
         '/members/' +
         commons.Escaper.ecapeVariable('$memberKey');
@@ -2207,7 +2229,7 @@ class MembersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'groups/' +
+    _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
         '/members/' +
         commons.Escaper.ecapeVariable('$memberKey');
@@ -2270,7 +2292,7 @@ class MobiledevicesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/mobile/' +
         commons.Escaper.ecapeVariable('$resourceId') +
@@ -2322,7 +2344,7 @@ class MobiledevicesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/mobile/' +
         commons.Escaper.ecapeVariable('$resourceId');
@@ -2346,6 +2368,7 @@ class MobiledevicesResourceApi {
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
+  /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
   /// model, status, type, and status)
   /// - "FULL" : Includes all metadata fields
@@ -2382,7 +2405,7 @@ class MobiledevicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/mobile/' +
         commons.Escaper.ecapeVariable('$resourceId');
@@ -2402,11 +2425,32 @@ class MobiledevicesResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
+  /// [sortOrder] - Whether to return results in ascending or descending order.
+  /// Only of use when orderBy is also used
+  /// Possible string values are:
+  /// - "SORT_ORDER_UNDEFINED"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
+  ///
+  /// [pageToken] - Token to specify next page in the list
+  ///
+  /// [query] - Search string in the format given at
+  /// http://support.google.com/a/bin/answer.py?answer=1408863#search
+  ///
   /// [maxResults] - Maximum number of results to return. Max allowed value is
   /// 100.
+  /// Value must be between "1" and "100".
+  ///
+  /// [projection] - Restrict information returned to a set of selected fields.
+  /// Possible string values are:
+  /// - "PROJECTION_UNDEFINED"
+  /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
+  /// model, status, type, and status)
+  /// - "FULL" : Includes all metadata fields
   ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
+  /// - "orderByUndefined"
   /// - "deviceId" : Mobile Device serial number.
   /// - "email" : Owner user email.
   /// - "lastSync" : Last policy settings sync date time of the device.
@@ -2415,23 +2459,6 @@ class MobiledevicesResourceApi {
   /// - "os" : Mobile operating system.
   /// - "status" : Status of the device.
   /// - "type" : Type of the device.
-  ///
-  /// [pageToken] - Token to specify next page in the list
-  ///
-  /// [projection] - Restrict information returned to a set of selected fields.
-  /// Possible string values are:
-  /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
-  /// model, status, type, and status)
-  /// - "FULL" : Includes all metadata fields
-  ///
-  /// [query] - Search string in the format given at
-  /// http://support.google.com/a/bin/answer.py?answer=1408863#search
-  ///
-  /// [sortOrder] - Whether to return results in ascending or descending order.
-  /// Only of use when orderBy is also used
-  /// Possible string values are:
-  /// - "ASCENDING" : Ascending order.
-  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2444,12 +2471,12 @@ class MobiledevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MobileDevices> list(core.String customerId,
-      {core.int maxResults,
-      core.String orderBy,
+      {core.String sortOrder,
       core.String pageToken,
-      core.String projection,
       core.String query,
-      core.String sortOrder,
+      core.int maxResults,
+      core.String projection,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2461,29 +2488,29 @@ class MobiledevicesResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (projection != null) {
-      _queryParams["projection"] = [projection];
-    }
     if (query != null) {
       _queryParams["query"] = [query];
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (projection != null) {
+      _queryParams["projection"] = [projection];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/devices/mobile';
 
@@ -2494,296 +2521,6 @@ class MobiledevicesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new MobileDevices.fromJson(data));
-  }
-}
-
-class NotificationsResourceApi {
-  final commons.ApiRequester _requester;
-
-  NotificationsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Deletes a notification
-  ///
-  /// Request parameters:
-  ///
-  /// [customer] - The unique ID for the customer's G Suite account. The
-  /// customerId is also returned as part of the Users resource.
-  ///
-  /// [notificationId] - The unique ID of the notification.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future delete(core.String customer, core.String notificationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (customer == null) {
-      throw new core.ArgumentError("Parameter customer is required.");
-    }
-    if (notificationId == null) {
-      throw new core.ArgumentError("Parameter notificationId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
-        '/notifications/' +
-        commons.Escaper.ecapeVariable('$notificationId');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Retrieves a notification.
-  ///
-  /// Request parameters:
-  ///
-  /// [customer] - The unique ID for the customer's G Suite account. The
-  /// customerId is also returned as part of the Users resource.
-  ///
-  /// [notificationId] - The unique ID of the notification.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Notification].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Notification> get(
-      core.String customer, core.String notificationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (customer == null) {
-      throw new core.ArgumentError("Parameter customer is required.");
-    }
-    if (notificationId == null) {
-      throw new core.ArgumentError("Parameter notificationId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
-        '/notifications/' +
-        commons.Escaper.ecapeVariable('$notificationId');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Notification.fromJson(data));
-  }
-
-  /// Retrieves a list of notifications.
-  ///
-  /// Request parameters:
-  ///
-  /// [customer] - The unique ID for the customer's G Suite account.
-  ///
-  /// [language] - The ISO 639-1 code of the language notifications are returned
-  /// in. The default is English (en).
-  ///
-  /// [maxResults] - Maximum number of notifications to return per page. The
-  /// default is 100.
-  ///
-  /// [pageToken] - The token to specify the page of results to retrieve.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Notifications].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Notifications> list(core.String customer,
-      {core.String language,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (customer == null) {
-      throw new core.ArgumentError("Parameter customer is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
-        '/notifications';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Notifications.fromJson(data));
-  }
-
-  /// Updates a notification. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [customer] - The unique ID for the customer's G Suite account.
-  ///
-  /// [notificationId] - The unique ID of the notification.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Notification].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Notification> patch(
-      Notification request, core.String customer, core.String notificationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (customer == null) {
-      throw new core.ArgumentError("Parameter customer is required.");
-    }
-    if (notificationId == null) {
-      throw new core.ArgumentError("Parameter notificationId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
-        '/notifications/' +
-        commons.Escaper.ecapeVariable('$notificationId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Notification.fromJson(data));
-  }
-
-  /// Updates a notification.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [customer] - The unique ID for the customer's G Suite account.
-  ///
-  /// [notificationId] - The unique ID of the notification.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Notification].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Notification> update(
-      Notification request, core.String customer, core.String notificationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (customer == null) {
-      throw new core.ArgumentError("Parameter customer is required.");
-    }
-    if (notificationId == null) {
-      throw new core.ArgumentError("Parameter notificationId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'customer/' +
-        commons.Escaper.ecapeVariable('$customer') +
-        '/notifications/' +
-        commons.Escaper.ecapeVariable('$notificationId');
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Notification.fromJson(data));
   }
 }
 
@@ -2799,6 +2536,7 @@ class OrgunitsResourceApi {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2808,8 +2546,7 @@ class OrgunitsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
-      core.String customerId, core.List<core.String> orgUnitPath,
+  async.Future delete(core.String customerId, core.String orgUnitPath,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2821,7 +2558,7 @@ class OrgunitsResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-    if (orgUnitPath == null || orgUnitPath.isEmpty) {
+    if (orgUnitPath == null) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
     }
     if ($fields != null) {
@@ -2830,13 +2567,10 @@ class OrgunitsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
-        '/orgunits' +
-        '/' +
-        (orgUnitPath)
-            .map((item) => commons.Escaper.ecapePathComponent(item))
-            .join('/');
+        '/orgunits/' +
+        commons.Escaper.ecapeVariableReserved('$orgUnitPath');
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -2854,6 +2588,7 @@ class OrgunitsResourceApi {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2865,8 +2600,7 @@ class OrgunitsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OrgUnit> get(
-      core.String customerId, core.List<core.String> orgUnitPath,
+  async.Future<OrgUnit> get(core.String customerId, core.String orgUnitPath,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2878,20 +2612,17 @@ class OrgunitsResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-    if (orgUnitPath == null || orgUnitPath.isEmpty) {
+    if (orgUnitPath == null) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
-        '/orgunits' +
-        '/' +
-        (orgUnitPath)
-            .map((item) => commons.Escaper.ecapePathComponent(item))
-            .join('/');
+        '/orgunits/' +
+        commons.Escaper.ecapeVariableReserved('$orgUnitPath');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2939,7 +2670,7 @@ class OrgunitsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/orgunits';
 
@@ -2963,6 +2694,7 @@ class OrgunitsResourceApi {
   /// [type] - Whether to return all sub-organizations or just immediate
   /// children
   /// Possible string values are:
+  /// - "typeUndefined"
   /// - "all" : All sub-organizational units.
   /// - "children" : Immediate children only (default).
   ///
@@ -2998,7 +2730,7 @@ class OrgunitsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/orgunits';
 
@@ -3011,7 +2743,7 @@ class OrgunitsResourceApi {
     return _response.then((data) => new OrgUnits.fromJson(data));
   }
 
-  /// Update organizational unit. This method supports patch semantics.
+  /// Patch organization unit via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -3020,6 +2752,7 @@ class OrgunitsResourceApi {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3031,8 +2764,8 @@ class OrgunitsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OrgUnit> patch(OrgUnit request, core.String customerId,
-      core.List<core.String> orgUnitPath,
+  async.Future<OrgUnit> patch(
+      OrgUnit request, core.String customerId, core.String orgUnitPath,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3047,20 +2780,17 @@ class OrgunitsResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-    if (orgUnitPath == null || orgUnitPath.isEmpty) {
+    if (orgUnitPath == null) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
-        '/orgunits' +
-        '/' +
-        (orgUnitPath)
-            .map((item) => commons.Escaper.ecapePathComponent(item))
-            .join('/');
+        '/orgunits/' +
+        commons.Escaper.ecapeVariableReserved('$orgUnitPath');
 
     var _response = _requester.request(_url, "PATCH",
         body: _body,
@@ -3080,6 +2810,7 @@ class OrgunitsResourceApi {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3091,8 +2822,8 @@ class OrgunitsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OrgUnit> update(OrgUnit request, core.String customerId,
-      core.List<core.String> orgUnitPath,
+  async.Future<OrgUnit> update(
+      OrgUnit request, core.String customerId, core.String orgUnitPath,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3107,20 +2838,17 @@ class OrgunitsResourceApi {
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
-    if (orgUnitPath == null || orgUnitPath.isEmpty) {
+    if (orgUnitPath == null) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
-        '/orgunits' +
-        '/' +
-        (orgUnitPath)
-            .map((item) => commons.Escaper.ecapePathComponent(item))
-            .join('/');
+        '/orgunits/' +
+        commons.Escaper.ecapeVariableReserved('$orgUnitPath');
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -3168,7 +2896,7 @@ class PrivilegesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/roles/ALL/privileges';
 
@@ -3209,7 +2937,7 @@ class ResourcesBuildingsResourceApi {
   /// account administrator, you can also use the my_customer alias to represent
   /// your account's customer ID.
   ///
-  /// [buildingId] - The ID of the building to delete.
+  /// [buildingId] - The id of the building to delete.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3240,7 +2968,7 @@ class ResourcesBuildingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/buildings/' +
         commons.Escaper.ecapeVariable('$buildingId');
@@ -3293,7 +3021,7 @@ class ResourcesBuildingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/buildings/' +
         commons.Escaper.ecapeVariable('$buildingId');
@@ -3319,6 +3047,7 @@ class ResourcesBuildingsResourceApi {
   ///
   /// [coordinatesSource] - Source from which Building.coordinates are derived.
   /// Possible string values are:
+  /// - "COORDINATES_SOURCE_UNDEFINED"
   /// - "CLIENT_SPECIFIED" : Building.coordinates are set to the coordinates
   /// included in the request.
   /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
@@ -3359,7 +3088,7 @@ class ResourcesBuildingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/buildings';
 
@@ -3417,7 +3146,7 @@ class ResourcesBuildingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/buildings';
 
@@ -3430,7 +3159,7 @@ class ResourcesBuildingsResourceApi {
     return _response.then((data) => new Buildings.fromJson(data));
   }
 
-  /// Updates a building. This method supports patch semantics.
+  /// Patches a building via Apiary Patch Orchestration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3440,10 +3169,11 @@ class ResourcesBuildingsResourceApi {
   /// account administrator, you can also use the my_customer alias to represent
   /// your account's customer ID.
   ///
-  /// [buildingId] - The ID of the building to update.
+  /// [buildingId] - The id of the building to update.
   ///
   /// [coordinatesSource] - Source from which Building.coordinates are derived.
   /// Possible string values are:
+  /// - "COORDINATES_SOURCE_UNDEFINED"
   /// - "CLIENT_SPECIFIED" : Building.coordinates are set to the coordinates
   /// included in the request.
   /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
@@ -3488,7 +3218,7 @@ class ResourcesBuildingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/buildings/' +
         commons.Escaper.ecapeVariable('$buildingId');
@@ -3512,10 +3242,11 @@ class ResourcesBuildingsResourceApi {
   /// account administrator, you can also use the my_customer alias to represent
   /// your account's customer ID.
   ///
-  /// [buildingId] - The ID of the building to update.
+  /// [buildingId] - The id of the building to update.
   ///
   /// [coordinatesSource] - Source from which Building.coordinates are derived.
   /// Possible string values are:
+  /// - "COORDINATES_SOURCE_UNDEFINED"
   /// - "CLIENT_SPECIFIED" : Building.coordinates are set to the coordinates
   /// included in the request.
   /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
@@ -3560,7 +3291,7 @@ class ResourcesBuildingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/buildings/' +
         commons.Escaper.ecapeVariable('$buildingId');
@@ -3620,7 +3351,7 @@ class ResourcesCalendarsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/calendars/' +
         commons.Escaper.ecapeVariable('$calendarResourceId');
@@ -3674,7 +3405,7 @@ class ResourcesCalendarsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/calendars/' +
         commons.Escaper.ecapeVariable('$calendarResourceId');
@@ -3728,7 +3459,7 @@ class ResourcesCalendarsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/calendars';
 
@@ -3749,8 +3480,15 @@ class ResourcesCalendarsResourceApi {
   /// account administrator, you can also use the my_customer alias to represent
   /// your account's customer ID.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "1" and "500".
+  /// [query] - String query used to filter results. Should be of the form
+  /// "field operator value" where field can be any of supported fields and
+  /// operators can be any of supported operations. Operators include '=' for
+  /// exact match, '!=' for mismatch and ':' for prefix match or HAS match where
+  /// applicable. For prefix match, the value should always be followed by a *.
+  /// Logical operators NOT and AND are supported (in this order of precedence).
+  /// Supported fields include generatedResourceName, name, buildingId,
+  /// floor_name, capacity, featureInstances.feature.name. For example
+  /// buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone.
   ///
   /// [orderBy] - Field(s) to sort results by in either ascending or descending
   /// order. Supported fields include resourceId, resourceName, capacity,
@@ -3760,16 +3498,10 @@ class ResourcesCalendarsResourceApi {
   /// first by buildingId in ascending order then by capacity in descending
   /// order.
   ///
-  /// [pageToken] - Token to specify the next page in the list.
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "1" and "500".
   ///
-  /// [query] - String query used to filter results. Should be of the form
-  /// "field operator value" where field can be any of supported fields and
-  /// operators can be any of supported operations. Operators include '=' for
-  /// exact match and ':' for prefix match or HAS match where applicable. For
-  /// prefix match, the value should always be followed by a *. Supported fields
-  /// include generatedResourceName, name, buildingId,
-  /// featureInstances.feature.name. For example buildingId=US-NYC-9TH AND
-  /// featureInstances.feature.name:Phone.
+  /// [pageToken] - Token to specify the next page in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3782,10 +3514,10 @@ class ResourcesCalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarResources> list(core.String customer,
-      {core.int maxResults,
+      {core.String query,
       core.String orderBy,
+      core.int maxResults,
       core.String pageToken,
-      core.String query,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3797,23 +3529,23 @@ class ResourcesCalendarsResourceApi {
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/calendars';
 
@@ -3826,11 +3558,7 @@ class ResourcesCalendarsResourceApi {
     return _response.then((data) => new CalendarResources.fromJson(data));
   }
 
-  /// Updates a calendar resource.
-  ///
-  /// This method supports patch semantics, meaning you only need to include the
-  /// fields you wish to update. Fields that are not present in the request will
-  /// be preserved. This method supports patch semantics.
+  /// Patches a calendar resource via Apiary Patch Orchestration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3875,7 +3603,7 @@ class ResourcesCalendarsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/calendars/' +
         commons.Escaper.ecapeVariable('$calendarResourceId');
@@ -3889,11 +3617,9 @@ class ResourcesCalendarsResourceApi {
     return _response.then((data) => new CalendarResource.fromJson(data));
   }
 
-  /// Updates a calendar resource.
-  ///
-  /// This method supports patch semantics, meaning you only need to include the
-  /// fields you wish to update. Fields that are not present in the request will
-  /// be preserved.
+  /// Updates a calendar resource. This method supports patch semantics, meaning
+  /// you only need to include the fields you wish to update. Fields that are
+  /// not present in the request will be preserved.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3938,7 +3664,7 @@ class ResourcesCalendarsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/calendars/' +
         commons.Escaper.ecapeVariable('$calendarResourceId');
@@ -3998,7 +3724,7 @@ class ResourcesFeaturesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/features/' +
         commons.Escaper.ecapeVariable('$featureKey');
@@ -4051,7 +3777,7 @@ class ResourcesFeaturesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/features/' +
         commons.Escaper.ecapeVariable('$featureKey');
@@ -4104,7 +3830,7 @@ class ResourcesFeaturesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/features';
 
@@ -4162,7 +3888,7 @@ class ResourcesFeaturesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/features';
 
@@ -4175,7 +3901,7 @@ class ResourcesFeaturesResourceApi {
     return _response.then((data) => new Features.fromJson(data));
   }
 
-  /// Updates a feature. This method supports patch semantics.
+  /// Patches a feature via Apiary Patch Orchestration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4220,7 +3946,7 @@ class ResourcesFeaturesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/features/' +
         commons.Escaper.ecapeVariable('$featureKey');
@@ -4279,7 +4005,7 @@ class ResourcesFeaturesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/features/' +
         commons.Escaper.ecapeVariable('$oldName') +
@@ -4339,7 +4065,7 @@ class ResourcesFeaturesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/resources/features/' +
         commons.Escaper.ecapeVariable('$featureKey');
@@ -4396,7 +4122,7 @@ class RoleAssignmentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/roleassignments/' +
         commons.Escaper.ecapeVariable('$roleAssignmentId');
@@ -4448,7 +4174,7 @@ class RoleAssignmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/roleassignments/' +
         commons.Escaper.ecapeVariable('$roleAssignmentId');
@@ -4500,7 +4226,7 @@ class RoleAssignmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/roleassignments';
 
@@ -4519,17 +4245,17 @@ class RoleAssignmentsResourceApi {
   ///
   /// [customer] - Immutable ID of the G Suite account.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "1" and "200".
-  ///
-  /// [pageToken] - Token to specify the next page in the list.
-  ///
   /// [roleId] - Immutable ID of a role. If included in the request, returns
   /// only role assignments containing this role ID.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "1" and "200".
   ///
   /// [userKey] - The user's primary email address, alias email address, or
   /// unique user ID. If included in the request, returns role assignments only
   /// for this user.
+  ///
+  /// [pageToken] - Token to specify the next page in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4542,10 +4268,10 @@ class RoleAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RoleAssignments> list(core.String customer,
-      {core.int maxResults,
-      core.String pageToken,
-      core.String roleId,
+      {core.String roleId,
+      core.int maxResults,
       core.String userKey,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4557,23 +4283,23 @@ class RoleAssignmentsResourceApi {
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (roleId != null) {
       _queryParams["roleId"] = [roleId];
     }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (userKey != null) {
       _queryParams["userKey"] = [userKey];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/roleassignments';
 
@@ -4629,7 +4355,7 @@ class RolesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/roles/' +
         commons.Escaper.ecapeVariable('$roleId');
@@ -4680,7 +4406,7 @@ class RolesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/roles/' +
         commons.Escaper.ecapeVariable('$roleId');
@@ -4731,7 +4457,9 @@ class RolesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles';
+    _url = 'admin/directory/v1/customer/' +
+        commons.Escaper.ecapeVariable('$customer') +
+        '/roles';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -4785,7 +4513,9 @@ class RolesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles';
+    _url = 'admin/directory/v1/customer/' +
+        commons.Escaper.ecapeVariable('$customer') +
+        '/roles';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -4796,7 +4526,7 @@ class RolesResourceApi {
     return _response.then((data) => new Roles.fromJson(data));
   }
 
-  /// Updates a role. This method supports patch semantics.
+  /// Patch role via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -4839,7 +4569,7 @@ class RolesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/roles/' +
         commons.Escaper.ecapeVariable('$roleId');
@@ -4896,7 +4626,7 @@ class RolesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
         '/roles/' +
         commons.Escaper.ecapeVariable('$roleId');
@@ -4953,7 +4683,7 @@ class SchemasResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/schemas/' +
         commons.Escaper.ecapeVariable('$schemaKey');
@@ -5004,7 +4734,7 @@ class SchemasResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/schemas/' +
         commons.Escaper.ecapeVariable('$schemaKey');
@@ -5055,8 +4785,9 @@ class SchemasResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/schemas';
+    _url = 'admin/directory/v1/customer/' +
+        commons.Escaper.ecapeVariable('$customerId') +
+        '/schemas';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5098,8 +4829,9 @@ class SchemasResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'customer/' + commons.Escaper.ecapeVariable('$customerId') + '/schemas';
+    _url = 'admin/directory/v1/customer/' +
+        commons.Escaper.ecapeVariable('$customerId') +
+        '/schemas';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5110,7 +4842,7 @@ class SchemasResourceApi {
     return _response.then((data) => new Schemas.fromJson(data));
   }
 
-  /// Update schema. This method supports patch semantics.
+  /// Patch Schema via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -5153,7 +4885,7 @@ class SchemasResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/schemas/' +
         commons.Escaper.ecapeVariable('$schemaKey');
@@ -5210,7 +4942,7 @@ class SchemasResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customer/' +
+    _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/schemas/' +
         commons.Escaper.ecapeVariable('$schemaKey');
@@ -5268,7 +5000,7 @@ class TokensResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/tokens/' +
         commons.Escaper.ecapeVariable('$clientId');
@@ -5320,7 +5052,7 @@ class TokensResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/tokens/' +
         commons.Escaper.ecapeVariable('$clientId');
@@ -5367,7 +5099,9 @@ class TokensResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/tokens';
+    _url = 'admin/directory/v1/users/' +
+        commons.Escaper.ecapeVariable('$userKey') +
+        '/tokens';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5376,6 +5110,58 @@ class TokensResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Tokens.fromJson(data));
+  }
+}
+
+class TwoStepVerificationResourceApi {
+  final commons.ApiRequester _requester;
+
+  TwoStepVerificationResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Turn off 2-Step Verification for user.
+  ///
+  /// Request parameters:
+  ///
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future turnOff(core.String userKey, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (userKey == null) {
+      throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'admin/directory/v1/users/' +
+        commons.Escaper.ecapeVariable('$userKey') +
+        '/twoStepVerification/turnOff';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 }
 
@@ -5419,7 +5205,8 @@ class UsersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
+    _url =
+        'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -5436,21 +5223,23 @@ class UsersResourceApi {
   ///
   /// [userKey] - Email or immutable ID of the user
   ///
-  /// [customFieldMask] - Comma-separated list of schema names. All fields from
-  /// these schemas are fetched. This should only be set when projection=custom.
+  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
+  /// user.
+  /// Possible string values are:
+  /// - "view_type_undefined"
+  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
+  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
   ///
   /// [projection] - What subset of fields to fetch for this user.
   /// Possible string values are:
+  /// - "projectionUndefined"
   /// - "basic" : Do not include any custom fields for the user.
   /// - "custom" : Include custom fields from schemas mentioned in
   /// customFieldMask.
   /// - "full" : Include all fields associated with this user.
   ///
-  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
-  /// user.
-  /// Possible string values are:
-  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
-  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+  /// [customFieldMask] - Comma-separated list of schema names. All fields from
+  /// these schemas are fetched. This should only be set when projection=custom.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5463,9 +5252,9 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<User> get(core.String userKey,
-      {core.String customFieldMask,
+      {core.String viewType,
       core.String projection,
-      core.String viewType,
+      core.String customFieldMask,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5477,20 +5266,21 @@ class UsersResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-    if (customFieldMask != null) {
-      _queryParams["customFieldMask"] = [customFieldMask];
+    if (viewType != null) {
+      _queryParams["viewType"] = [viewType];
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
-    if (viewType != null) {
-      _queryParams["viewType"] = [viewType];
+    if (customFieldMask != null) {
+      _queryParams["customFieldMask"] = [customFieldMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
+    _url =
+        'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5532,7 +5322,7 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users';
+    _url = 'admin/directory/v1/users';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5550,55 +5340,51 @@ class UsersResourceApi {
   /// [customFieldMask] - Comma-separated list of schema names. All fields from
   /// these schemas are fetched. This should only be set when projection=custom.
   ///
-  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
-  /// to fetch all users for a customer, fill this field instead of domain.
-  ///
-  /// [domain] - Name of the domain. Fill this field to get users from only this
-  /// domain. To return all users in a multi-domain fill customer field instead.
-  ///
-  /// [event] - Event on which subscription is intended (if subscribing)
-  /// Possible string values are:
-  /// - "add" : User Created Event
-  /// - "delete" : User Deleted Event
-  /// - "makeAdmin" : User Admin Status Change Event
-  /// - "undelete" : User Undeleted Event
-  /// - "update" : User Updated Event
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "1" and "500".
-  ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
+  /// - "orderByUndefined"
   /// - "email" : Primary email of the user.
   /// - "familyName" : User's family name.
   /// - "givenName" : User's given name.
   ///
-  /// [pageToken] - Token to specify next page in the list
+  /// [showDeleted] - If set to true, retrieves the list of deleted users.
+  /// (Default: false)
+  ///
+  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
+  /// user.
+  /// Possible string values are:
+  /// - "view_type_undefined"
+  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
+  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "1" and "500".
   ///
   /// [projection] - What subset of fields to fetch for this user.
   /// Possible string values are:
+  /// - "projectionUndefined"
   /// - "basic" : Do not include any custom fields for the user.
   /// - "custom" : Include custom fields from schemas mentioned in
   /// customFieldMask.
   /// - "full" : Include all fields associated with this user.
   ///
-  /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at
-  /// https://developers.google.com/admin-sdk/directory/v1/guides/search-users
+  /// [domain] - Name of the domain. Fill this field to get users from only this
+  /// domain. To return all users in a multi-domain fill customer field instead.
   ///
-  /// [showDeleted] - If set to true, retrieves the list of deleted users.
-  /// (Default: false)
+  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
+  /// to fetch all users for a customer, fill this field instead of domain.
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Possible string values are:
+  /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
-  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
-  /// user.
-  /// Possible string values are:
-  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
-  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+  /// [query] - Query string search. Should be of the form "". Complete
+  /// documentation is at https:
+  /// //developers.google.com/admin-sdk/directory/v1/guides/search-users
+  ///
+  /// [pageToken] - Token to specify next page in the list
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5612,17 +5398,16 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<Users> list(
       {core.String customFieldMask,
-      core.String customer,
-      core.String domain,
-      core.String event,
-      core.int maxResults,
       core.String orderBy,
-      core.String pageToken,
-      core.String projection,
-      core.String query,
       core.String showDeleted,
-      core.String sortOrder,
       core.String viewType,
+      core.int maxResults,
+      core.String projection,
+      core.String domain,
+      core.String customer,
+      core.String sortOrder,
+      core.String query,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5634,44 +5419,41 @@ class UsersResourceApi {
     if (customFieldMask != null) {
       _queryParams["customFieldMask"] = [customFieldMask];
     }
-    if (customer != null) {
-      _queryParams["customer"] = [customer];
-    }
-    if (domain != null) {
-      _queryParams["domain"] = [domain];
-    }
-    if (event != null) {
-      _queryParams["event"] = [event];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (projection != null) {
-      _queryParams["projection"] = [projection];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = [showDeleted];
     }
+    if (viewType != null) {
+      _queryParams["viewType"] = [viewType];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (projection != null) {
+      _queryParams["projection"] = [projection];
+    }
+    if (domain != null) {
+      _queryParams["domain"] = [domain];
+    }
+    if (customer != null) {
+      _queryParams["customer"] = [customer];
+    }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (viewType != null) {
-      _queryParams["viewType"] = [viewType];
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users';
+    _url = 'admin/directory/v1/users';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5719,7 +5501,9 @@ class UsersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/makeAdmin';
+    _url = 'admin/directory/v1/users/' +
+        commons.Escaper.ecapeVariable('$userKey') +
+        '/makeAdmin';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5730,7 +5514,7 @@ class UsersResourceApi {
     return _response.then((data) => null);
   }
 
-  /// update user. This method supports patch semantics.
+  /// Patch Users via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -5768,7 +5552,8 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
+    _url =
+        'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
 
     var _response = _requester.request(_url, "PATCH",
         body: _body,
@@ -5777,6 +5562,53 @@ class UsersResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new User.fromJson(data));
+  }
+
+  /// Sign a user out of all web and device sessions and reset their sign-in
+  /// cookies. User will have to sign in by authenticating again.
+  ///
+  /// Request parameters:
+  ///
+  /// [userKey] - Identifies the target user in the API request. The value can
+  /// be the user's primary email address, alias email address, or unique user
+  /// ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future signOut(core.String userKey, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (userKey == null) {
+      throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'admin/directory/v1/users/' +
+        commons.Escaper.ecapeVariable('$userKey') +
+        '/signOut';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
   }
 
   /// Undelete a deleted user
@@ -5816,7 +5648,9 @@ class UsersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/undelete';
+    _url = 'admin/directory/v1/users/' +
+        commons.Escaper.ecapeVariable('$userKey') +
+        '/undelete';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5865,7 +5699,8 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
+    _url =
+        'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -5882,58 +5717,63 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [customFieldMask] - Comma-separated list of schema names. All fields from
-  /// these schemas are fetched. This should only be set when projection=custom.
-  ///
-  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
-  /// to fetch all users for a customer, fill this field instead of domain.
-  ///
   /// [domain] - Name of the domain. Fill this field to get users from only this
-  /// domain. To return all users in a multi-domain fill customer field instead.
-  ///
-  /// [event] - Event on which subscription is intended (if subscribing)
-  /// Possible string values are:
-  /// - "add" : User Created Event
-  /// - "delete" : User Deleted Event
-  /// - "makeAdmin" : User Admin Status Change Event
-  /// - "undelete" : User Undeleted Event
-  /// - "update" : User Updated Event
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "1" and "500".
-  ///
-  /// [orderBy] - Column to use for sorting results
-  /// Possible string values are:
-  /// - "email" : Primary email of the user.
-  /// - "familyName" : User's family name.
-  /// - "givenName" : User's given name.
-  ///
-  /// [pageToken] - Token to specify next page in the list
-  ///
-  /// [projection] - What subset of fields to fetch for this user.
-  /// Possible string values are:
-  /// - "basic" : Do not include any custom fields for the user.
-  /// - "custom" : Include custom fields from schemas mentioned in
-  /// customFieldMask.
-  /// - "full" : Include all fields associated with this user.
-  ///
-  /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at
-  /// https://developers.google.com/admin-sdk/directory/v1/guides/search-users
-  ///
-  /// [showDeleted] - If set to true, retrieves the list of deleted users.
-  /// (Default: false)
-  ///
-  /// [sortOrder] - Whether to return results in ascending or descending order.
-  /// Possible string values are:
-  /// - "ASCENDING" : Ascending order.
-  /// - "DESCENDING" : Descending order.
+  /// domain. To return all users in a multi-domain fill customer field
+  /// instead."
   ///
   /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
   /// user.
   /// Possible string values are:
   /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
   /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "1" and "500".
+  ///
+  /// [projection] - What subset of fields to fetch for this user.
+  /// Possible string values are:
+  /// - "projectionUnspecified"
+  /// - "basic" : Do not include any custom fields for the user.
+  /// - "custom" : Include custom fields from schemas mentioned in
+  /// customFieldMask.
+  /// - "full" : Include all fields associated with this user.
+  ///
+  /// [query] - Query string search. Should be of the form "". Complete
+  /// documentation is at https:
+  /// //developers.google.com/admin-sdk/directory/v1/guides/search-users
+  ///
+  /// [showDeleted] - If set to true, retrieves the list of deleted users.
+  /// (Default: false)
+  ///
+  /// [orderBy] - Column to use for sorting results
+  /// Possible string values are:
+  /// - "orderByUnspecified"
+  /// - "email" : Primary email of the user.
+  /// - "familyName" : User's family name.
+  /// - "givenName" : User's given name.
+  ///
+  /// [event] - Event on which subscription is intended
+  /// Possible string values are:
+  /// - "eventTypeUnspecified"
+  /// - "add" : User Created Event
+  /// - "delete" : User Deleted Event
+  /// - "makeAdmin" : User Admin Status Change Event
+  /// - "undelete" : User Undeleted Event
+  /// - "update" : User Updated Event
+  ///
+  /// [pageToken] - Token to specify next page in the list
+  ///
+  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
+  /// to fetch all users for a customer, fill this field instead of domain.
+  ///
+  /// [sortOrder] - Whether to return results in ascending or descending order.
+  /// Possible string values are:
+  /// - "sortOrderUnspecified"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
+  ///
+  /// [customFieldMask] - Comma-separated list of schema names. All fields from
+  /// these schemas are fetched. This should only be set when projection=custom.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5946,18 +5786,18 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> watch(Channel request,
-      {core.String customFieldMask,
-      core.String customer,
-      core.String domain,
-      core.String event,
+      {core.String domain,
+      core.String viewType,
       core.int maxResults,
-      core.String orderBy,
-      core.String pageToken,
       core.String projection,
       core.String query,
       core.String showDeleted,
+      core.String orderBy,
+      core.String event,
+      core.String pageToken,
+      core.String customer,
       core.String sortOrder,
-      core.String viewType,
+      core.String customFieldMask,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5969,26 +5809,14 @@ class UsersResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (customFieldMask != null) {
-      _queryParams["customFieldMask"] = [customFieldMask];
-    }
-    if (customer != null) {
-      _queryParams["customer"] = [customer];
-    }
     if (domain != null) {
       _queryParams["domain"] = [domain];
     }
-    if (event != null) {
-      _queryParams["event"] = [event];
+    if (viewType != null) {
+      _queryParams["viewType"] = [viewType];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
@@ -5999,17 +5827,29 @@ class UsersResourceApi {
     if (showDeleted != null) {
       _queryParams["showDeleted"] = [showDeleted];
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (event != null) {
+      _queryParams["event"] = [event];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (customer != null) {
+      _queryParams["customer"] = [customer];
+    }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (viewType != null) {
-      _queryParams["viewType"] = [viewType];
+    if (customFieldMask != null) {
+      _queryParams["customFieldMask"] = [customFieldMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/watch';
+    _url = 'admin/directory/v1/users/watch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -6063,7 +5903,7 @@ class UsersAliasesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/aliases/' +
         commons.Escaper.ecapeVariable('$alias');
@@ -6114,7 +5954,9 @@ class UsersAliasesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/aliases';
+    _url = 'admin/directory/v1/users/' +
+        commons.Escaper.ecapeVariable('$userKey') +
+        '/aliases';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -6131,11 +5973,6 @@ class UsersAliasesResourceApi {
   ///
   /// [userKey] - Email or immutable ID of the user
   ///
-  /// [event] - Event on which subscription is intended (if subscribing)
-  /// Possible string values are:
-  /// - "add" : Alias Created Event
-  /// - "delete" : Alias Deleted Event
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -6146,8 +5983,7 @@ class UsersAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Aliases> list(core.String userKey,
-      {core.String event, core.String $fields}) {
+  async.Future<Aliases> list(core.String userKey, {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -6158,14 +5994,13 @@ class UsersAliasesResourceApi {
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
     }
-    if (event != null) {
-      _queryParams["event"] = [event];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/aliases';
+    _url = 'admin/directory/v1/users/' +
+        commons.Escaper.ecapeVariable('$userKey') +
+        '/aliases';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -6176,7 +6011,7 @@ class UsersAliasesResourceApi {
     return _response.then((data) => new Aliases.fromJson(data));
   }
 
-  /// Watch for changes in user aliases list
+  /// Watch for changes in users list
   ///
   /// [request] - The metadata request object.
   ///
@@ -6186,6 +6021,7 @@ class UsersAliasesResourceApi {
   ///
   /// [event] - Event on which subscription is intended (if subscribing)
   /// Possible string values are:
+  /// - "eventUndefined"
   /// - "add" : Alias Created Event
   /// - "delete" : Alias Deleted Event
   ///
@@ -6221,8 +6057,9 @@ class UsersAliasesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'users/' + commons.Escaper.ecapeVariable('$userKey') + '/aliases/watch';
+    _url = 'admin/directory/v1/users/' +
+        commons.Escaper.ecapeVariable('$userKey') +
+        '/aliases/watch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -6270,7 +6107,7 @@ class UsersPhotosResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/photos/thumbnail';
 
@@ -6314,7 +6151,7 @@ class UsersPhotosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/photos/thumbnail';
 
@@ -6327,7 +6164,7 @@ class UsersPhotosResourceApi {
     return _response.then((data) => new UserPhoto.fromJson(data));
   }
 
-  /// Add a photo for the user. This method supports patch semantics.
+  /// Patch Photo via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -6364,7 +6201,7 @@ class UsersPhotosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/photos/thumbnail';
 
@@ -6414,7 +6251,7 @@ class UsersPhotosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/photos/thumbnail';
 
@@ -6465,7 +6302,7 @@ class VerificationCodesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/verificationCodes/generate';
 
@@ -6509,7 +6346,7 @@ class VerificationCodesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/verificationCodes/invalidate';
 
@@ -6556,7 +6393,7 @@ class VerificationCodesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/verificationCodes';
 
@@ -6572,19 +6409,10 @@ class VerificationCodesResourceApi {
 
 /// JSON template for Alias object in Directory API.
 class Alias {
-  /// A alias email
   core.String alias;
-
-  /// ETag of the resource.
   core.String etag;
-
-  /// Unique id of the group (Read-only) Unique id of the user (Read-only)
   core.String id;
-
-  /// Kind of resource this is.
   core.String kind;
-
-  /// Group's primary email (Read-only) User's primary email (Read-only)
   core.String primaryEmail;
 
   Alias();
@@ -6631,16 +6459,12 @@ class Alias {
 
 /// JSON response template to list aliases in Directory API.
 class Aliases {
-  /// List of alias objects.
+  ///
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object> aliases;
-
-  /// ETag of the resource.
   core.String etag;
-
-  /// Kind of resource this is.
   core.String kind;
 
   Aliases();
@@ -6673,7 +6497,10 @@ class Aliases {
   }
 }
 
-/// The template that returns individual ASP (Access Code) data.
+/// The template that returns individual ASP (Access Code) data. STEPLADDER:
+/// Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Asp {
   /// The unique ID of the ASP.
   core.int codeId;
@@ -6751,6 +6578,9 @@ class Asp {
   }
 }
 
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Asps {
   /// ETag of the resource.
   core.String etag;
@@ -6793,7 +6623,7 @@ class Asps {
   }
 }
 
-/// JSON template for Building object in Directory API.
+/// Public API: Resources.buildings
 class Building {
   /// The postal address of the building. See PostalAddress for details. Note
   /// that only a single address line and region code are required.
@@ -6885,7 +6715,7 @@ class Building {
   }
 }
 
-/// JSON template for the postal address of a building in Directory API.
+/// Public API: Resources.buildings
 class BuildingAddress {
   /// Unstructured address lines describing the lower levels of an address.
   core.List<core.String> addressLines;
@@ -6966,7 +6796,7 @@ class BuildingAddress {
   }
 }
 
-/// JSON template for coordinates of a building in Directory API.
+/// Public API: Resources.buildings
 class BuildingCoordinates {
   /// Latitude in decimal degrees.
   core.double latitude;
@@ -6998,7 +6828,7 @@ class BuildingCoordinates {
   }
 }
 
-/// JSON template for Building List Response object in Directory API.
+/// Public API: Resources.buildings
 class Buildings {
   /// The Buildings in this page of results.
   core.List<Building> buildings;
@@ -7051,7 +6881,7 @@ class Buildings {
   }
 }
 
-/// JSON template for Calendar Resource object in Directory API.
+/// Public API: Resources.calendars
 class CalendarResource {
   /// Unique ID for the building a resource is located in.
   core.String buildingId;
@@ -7062,7 +6892,7 @@ class CalendarResource {
   /// ETag of the resource.
   core.String etags;
 
-  ///
+  /// Instances of features for the calendar resource.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -7208,7 +7038,7 @@ class CalendarResource {
   }
 }
 
-/// JSON template for Calendar Resource List Response object in Directory API.
+/// Public API: Resources.calendars
 class CalendarResources {
   /// ETag of the resource.
   core.String etag;
@@ -7594,6 +7424,38 @@ class ChromeOsDeviceDiskVolumeReports {
   }
 }
 
+/// Information for an ip address.
+class ChromeOsDeviceLastKnownNetwork {
+  /// The IP address.
+  core.String ipAddress;
+
+  /// The WAN IP address.
+  core.String wanIpAddress;
+
+  ChromeOsDeviceLastKnownNetwork();
+
+  ChromeOsDeviceLastKnownNetwork.fromJson(core.Map _json) {
+    if (_json.containsKey("ipAddress")) {
+      ipAddress = _json["ipAddress"];
+    }
+    if (_json.containsKey("wanIpAddress")) {
+      wanIpAddress = _json["wanIpAddress"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipAddress != null) {
+      _json["ipAddress"] = ipAddress;
+    }
+    if (wanIpAddress != null) {
+      _json["wanIpAddress"] = wanIpAddress;
+    }
+    return _json;
+  }
+}
+
 class ChromeOsDeviceRecentUsers {
   /// Email address of the user. Present only if the user type is managed
   core.String email;
@@ -7723,7 +7585,9 @@ class ChromeOsDeviceTpmVersionInfo {
   }
 }
 
-/// JSON template for Chrome Os Device resource in Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class ChromeOsDevice {
   /// List of active time ranges (Read-only)
   core.List<ChromeOsDeviceActiveTimeRanges> activeTimeRanges;
@@ -7758,11 +7622,10 @@ class ChromeOsDevice {
 
   /// (Read-only) Built-in MAC address for the docking station that the device
   /// connected to. Factory sets Media access control address (MAC address)
-  /// assigned for use by a dock. Currently this is only supported on the Dell
-  /// Arcada / Sarien devices and the Dell WD19 / WD19TB Docking Station. It is
-  /// reserved specifically for MAC pass through device policy. The format is
-  /// twelve (12) hexadecimal digits without any delimiter (uppercase letters).
-  /// This is only relevant for Dell devices.
+  /// assigned for use by a dock. It is reserved specifically for MAC pass
+  /// through device policy. The format is twelve (12) hexadecimal digits
+  /// without any delimiter (uppercase letters). This is only relevant for some
+  /// devices.
   core.String dockMacAddress;
 
   /// ETag of the resource.
@@ -7785,6 +7648,9 @@ class ChromeOsDevice {
 
   /// Date and time the device was last enrolled (Read-only)
   core.DateTime lastEnrollmentTime;
+
+  /// Contains last known network (Read-only)
+  core.List<ChromeOsDeviceLastKnownNetwork> lastKnownNetwork;
 
   /// Date and time the device was last synchronized with the policy settings in
   /// the G Suite administrator control panel (Read-only)
@@ -7910,6 +7776,12 @@ class ChromeOsDevice {
     if (_json.containsKey("lastEnrollmentTime")) {
       lastEnrollmentTime = core.DateTime.parse(_json["lastEnrollmentTime"]);
     }
+    if (_json.containsKey("lastKnownNetwork")) {
+      lastKnownNetwork = (_json["lastKnownNetwork"] as core.List)
+          .map<ChromeOsDeviceLastKnownNetwork>(
+              (value) => new ChromeOsDeviceLastKnownNetwork.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("lastSync")) {
       lastSync = core.DateTime.parse(_json["lastSync"]);
     }
@@ -8031,6 +7903,10 @@ class ChromeOsDevice {
     if (lastEnrollmentTime != null) {
       _json["lastEnrollmentTime"] = (lastEnrollmentTime).toIso8601String();
     }
+    if (lastKnownNetwork != null) {
+      _json["lastKnownNetwork"] =
+          lastKnownNetwork.map((value) => (value).toJson()).toList();
+    }
     if (lastSync != null) {
       _json["lastSync"] = (lastSync).toIso8601String();
     }
@@ -8091,8 +7967,6 @@ class ChromeOsDevice {
   }
 }
 
-/// JSON request template for firing actions on ChromeOs Device in Directory
-/// Devices API.
 class ChromeOsDeviceAction {
   /// Action to be taken on the ChromeOs Device
   core.String action;
@@ -8122,8 +7996,9 @@ class ChromeOsDeviceAction {
   }
 }
 
-/// JSON response template for List Chrome OS Devices operation in Directory
-/// API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class ChromeOsDevices {
   /// List of Chrome OS Device objects.
   core.List<ChromeOsDevice> chromeosdevices;
@@ -8176,8 +8051,6 @@ class ChromeOsDevices {
   }
 }
 
-/// JSON request template for moving ChromeOs Device to given OU in Directory
-/// Devices API.
 class ChromeOsMoveDevicesToOu {
   /// ChromeOs Devices to be moved to OU
   core.List<core.String> deviceIds;
@@ -8200,7 +8073,9 @@ class ChromeOsMoveDevicesToOu {
   }
 }
 
-/// JSON template for Customer Resource object in Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Customer {
   /// The customer's secondary contact email address. This email address cannot
   /// be on the same domain as the customerDomain
@@ -8298,7 +8173,10 @@ class Customer {
   }
 }
 
-/// JSON template for postal address of a customer.
+/// STEPLADDER: Generated unstable field number for field 'address_line2' to
+/// avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER:
+/// Generated unstable field number for field 'address_line3' to avoid
+/// collision. (See http://go/stepladder-help#fieldNumber)
 class CustomerPostalAddress {
   /// A customer's physical address. The address can be composed of one to three
   /// lines.
@@ -8325,8 +8203,8 @@ class CustomerPostalAddress {
   core.String organizationName;
 
   /// The postal code. A postalCode example is a postal zip code such as 10009.
-  /// This is in accordance with -
-  /// http://portablecontacts.net/draft-spec.html#address_element.
+  /// This is in accordance with - http:
+  /// //portablecontacts.net/draft-spec.html#address_element.
   core.String postalCode;
 
   /// Name of the region. An example of a region value is NY for the state of
@@ -8399,7 +8277,6 @@ class CustomerPostalAddress {
   }
 }
 
-/// JSON template for Domain Alias object in Directory API.
 class DomainAlias {
   /// The creation time of the domain alias. (Read-only).
   core.String creationTime;
@@ -8468,7 +8345,6 @@ class DomainAlias {
   }
 }
 
-/// JSON response template to list domain aliases in Directory API.
 class DomainAliases {
   /// List of domain alias objects.
   core.List<DomainAlias> domainAliases;
@@ -8512,7 +8388,6 @@ class DomainAliases {
   }
 }
 
-/// JSON template for Domain object in Directory API.
 class Domains {
   /// Creation time of the domain. (Read-only).
   core.String creationTime;
@@ -8592,7 +8467,6 @@ class Domains {
   }
 }
 
-/// JSON response template to list Domains in Directory API.
 class Domains2 {
   /// List of domain objects.
   core.List<Domains> domains;
@@ -8676,7 +8550,7 @@ class Feature {
   }
 }
 
-/// JSON template for a "feature instance".
+/// JSON template for a feature instance.
 class FeatureInstance {
   /// The feature that this is an instance of. A calendar resource may have
   /// multiple instances of a feature.
@@ -8700,7 +8574,6 @@ class FeatureInstance {
   }
 }
 
-/// JSON request template for renaming a feature.
 class FeatureRename {
   /// New name of the feature.
   core.String newName;
@@ -8723,7 +8596,7 @@ class FeatureRename {
   }
 }
 
-/// JSON template for Feature List Response object in Directory API.
+/// Public API: Resources.features
 class Features {
   /// ETag of the resource.
   core.String etag;
@@ -8776,7 +8649,9 @@ class Features {
   }
 }
 
-/// JSON template for Group resource in Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Group {
   /// Is the group created by admin (Read-only) *
   core.bool adminCreated;
@@ -8881,7 +8756,9 @@ class Group {
   }
 }
 
-/// JSON response template for List Groups operation in Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Groups {
   /// ETag of the resource.
   core.String etag;
@@ -8933,7 +8810,6 @@ class Groups {
   }
 }
 
-/// JSON template for Member resource in Directory API.
 class Member {
   /// Delivery settings of member
   core.String deliverySettings;
@@ -8944,9 +8820,9 @@ class Member {
   /// ETag of the resource.
   core.String etag;
 
-  /// The unique ID of the group member. A member id can be used as a member
-  /// request URI's memberKey. Unique identifier of group (Read-only) Unique
-  /// identifier of member (Read-only)
+  /// Unique identifier of group (Read-only) Unique identifier of member
+  /// (Read-only) The unique ID of the group member. A member id can be used as
+  /// a member request URI's memberKey.
   core.String id;
 
   /// Kind of resource this is.
@@ -9021,7 +8897,6 @@ class Member {
   }
 }
 
-/// JSON response template for List Members operation in Directory API.
 class Members {
   /// ETag of the resource.
   core.String etag;
@@ -9075,8 +8950,8 @@ class Members {
 
 /// JSON template for Has Member response in Directory API.
 class MembersHasMember {
-  /// Identifies whether the given user is a member of the group. Membership can
-  /// be direct or nested.
+  /// Output only. Identifies whether the given user is a member of the group.
+  /// Membership can be direct or nested.
   core.bool isMember;
 
   MembersHasMember();
@@ -9155,7 +9030,6 @@ class MobileDeviceApplications {
   }
 }
 
-/// JSON template for Mobile Device resource in Directory API.
 class MobileDevice {
   /// Adb (USB debugging) enabled or disabled on device (Read-only)
   core.bool adbStatus;
@@ -9537,8 +9411,6 @@ class MobileDevice {
   }
 }
 
-/// JSON request template for firing commands on Mobile Device in Directory
-/// Devices API.
 class MobileDeviceAction {
   /// Action to be taken on the Mobile Device
   core.String action;
@@ -9561,7 +9433,6 @@ class MobileDeviceAction {
   }
 }
 
-/// JSON response template for List Mobile Devices operation in Directory API.
 class MobileDevices {
   /// ETag of the resource.
   core.String etag;
@@ -9614,152 +9485,10 @@ class MobileDevices {
   }
 }
 
-/// Template for a notification resource.
-class Notification {
-  /// Body of the notification (Read-only)
-  core.String body;
-
-  /// ETag of the resource.
-  core.String etag;
-
-  /// Address from which the notification is received (Read-only)
-  core.String fromAddress;
-
-  /// Boolean indicating whether the notification is unread or not.
-  core.bool isUnread;
-
-  /// The type of the resource.
-  core.String kind;
-  core.String notificationId;
-
-  /// Time at which notification was sent (Read-only)
-  core.DateTime sendTime;
-
-  /// Subject of the notification (Read-only)
-  core.String subject;
-
-  Notification();
-
-  Notification.fromJson(core.Map _json) {
-    if (_json.containsKey("body")) {
-      body = _json["body"];
-    }
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
-    if (_json.containsKey("fromAddress")) {
-      fromAddress = _json["fromAddress"];
-    }
-    if (_json.containsKey("isUnread")) {
-      isUnread = _json["isUnread"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("notificationId")) {
-      notificationId = _json["notificationId"];
-    }
-    if (_json.containsKey("sendTime")) {
-      sendTime = core.DateTime.parse(_json["sendTime"]);
-    }
-    if (_json.containsKey("subject")) {
-      subject = _json["subject"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (body != null) {
-      _json["body"] = body;
-    }
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
-    if (fromAddress != null) {
-      _json["fromAddress"] = fromAddress;
-    }
-    if (isUnread != null) {
-      _json["isUnread"] = isUnread;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (notificationId != null) {
-      _json["notificationId"] = notificationId;
-    }
-    if (sendTime != null) {
-      _json["sendTime"] = (sendTime).toIso8601String();
-    }
-    if (subject != null) {
-      _json["subject"] = subject;
-    }
-    return _json;
-  }
-}
-
-/// Template for notifications list response.
-class Notifications {
-  /// ETag of the resource.
-  core.String etag;
-
-  /// List of notifications in this page.
-  core.List<Notification> items;
-
-  /// The type of the resource.
-  core.String kind;
-
-  /// Token for fetching the next page of notifications.
-  core.String nextPageToken;
-
-  /// Number of unread notification for the domain.
-  core.int unreadNotificationsCount;
-
-  Notifications();
-
-  Notifications.fromJson(core.Map _json) {
-    if (_json.containsKey("etag")) {
-      etag = _json["etag"];
-    }
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<Notification>((value) => new Notification.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-    if (_json.containsKey("unreadNotificationsCount")) {
-      unreadNotificationsCount = _json["unreadNotificationsCount"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (etag != null) {
-      _json["etag"] = etag;
-    }
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    if (unreadNotificationsCount != null) {
-      _json["unreadNotificationsCount"] = unreadNotificationsCount;
-    }
-    return _json;
-  }
-}
-
-/// JSON template for Org Unit resource in Directory API.
+/// JSON template for Org Unit resource in Directory API. STEPLADDER: Generated
+/// unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class OrgUnit {
   /// Should block inheritance
   core.bool blockInheritance;
@@ -9855,7 +9584,9 @@ class OrgUnit {
 }
 
 /// JSON response template for List Organization Units operation in Directory
-/// API.
+/// API. STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class OrgUnits {
   /// ETag of the resource.
   core.String etag;
@@ -9899,7 +9630,6 @@ class OrgUnits {
   }
 }
 
-/// JSON template for privilege resource in Directory API.
 class Privilege {
   /// A list of child privileges. Privileges for a service form a tree. Each
   /// privilege can have a list of child privileges; this list is empty for a
@@ -9982,7 +9712,6 @@ class Privilege {
   }
 }
 
-/// JSON response template for List privileges operation in Directory API.
 class Privileges {
   /// ETag of the resource.
   core.String etag;
@@ -10057,7 +9786,6 @@ class RoleRolePrivileges {
   }
 }
 
-/// JSON template for role resource in Directory API.
 class Role {
   /// ETag of the resource.
   core.String etag;
@@ -10147,7 +9875,6 @@ class Role {
   }
 }
 
-/// JSON template for roleAssignment resource in Directory API.
 class RoleAssignment {
   /// The unique ID of the user this role is assigned to.
   core.String assignedTo;
@@ -10169,8 +9896,7 @@ class RoleAssignment {
   /// The ID of the role that is assigned.
   core.String roleId;
 
-  /// The scope in which this role is assigned. Possible values are:
-  /// - CUSTOMER
+  /// The scope in which this role is assigned. Possible values are: - CUSTOMER
   /// - ORG_UNIT
   core.String scopeType;
 
@@ -10228,7 +9954,6 @@ class RoleAssignment {
   }
 }
 
-/// JSON response template for List roleAssignments operation in Directory API.
 class RoleAssignments {
   /// ETag of the resource.
   core.String etag;
@@ -10237,7 +9962,7 @@ class RoleAssignments {
   core.List<RoleAssignment> items;
 
   /// The type of the API resource. This is always
-  /// admin#directory#roleAssignments.
+  /// admin#directory#roleAssignments .
   core.String kind;
   core.String nextPageToken;
 
@@ -10279,7 +10004,6 @@ class RoleAssignments {
   }
 }
 
-/// JSON response template for List roles operation in Directory API.
 class Roles {
   /// ETag of the resource.
   core.String etag;
@@ -10329,7 +10053,10 @@ class Roles {
   }
 }
 
-/// JSON template for Schema resource in Directory API.
+/// JSON template for Schema resource in Directory API. STEPLADDER: Generated
+/// unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Schema {
   /// Display name for the schema.
   core.String displayName;
@@ -10438,6 +10165,9 @@ class SchemaFieldSpecNumericIndexingSpec {
 }
 
 /// JSON template for FieldSpec resource for Schemas in Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class SchemaFieldSpec {
   /// Display Name of the field.
   core.String displayName;
@@ -10546,6 +10276,9 @@ class SchemaFieldSpec {
 }
 
 /// JSON response template for List Schema operation in Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Schemas {
   /// ETag of the resource.
   core.String etag;
@@ -10588,7 +10321,10 @@ class Schemas {
   }
 }
 
-/// JSON template for token resource in Directory API.
+/// JSON template for token resource in Directory API. STEPLADDER: Generated
+/// unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Token {
   /// Whether the application is registered with Google. The value is true if
   /// the application has an anonymous Client ID.
@@ -10677,6 +10413,9 @@ class Token {
 }
 
 /// JSON response template for List tokens operation in Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Tokens {
   /// ETag of the resource.
   core.String etag;
@@ -10719,18 +10458,48 @@ class Tokens {
   }
 }
 
-/// JSON template for User object in Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'external_ids' to
+/// avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER:
+/// Generated unstable field number for field 'relations' to avoid collision.
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'addresses' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'organizations' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'phones' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'languages' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'posix_accounts' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'ssh_public_keys' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'notes' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'websites' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'locations' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'keywords' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'gender' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'thumbnail_photo_etag' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber)
 class User {
-  ///
+  /// Addresses of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object addresses;
 
-  /// Indicates if user has agreed to terms (Read-only)
+  /// Output only. Indicates if user has agreed to terms (Read-only)
   core.bool agreedToTerms;
 
-  /// List of aliases (Read-only)
+  /// Output only. List of aliases (Read-only)
   core.List<core.String> aliases;
 
   /// Indicates if user is archived.
@@ -10745,26 +10514,26 @@ class User {
   /// Custom fields of the user.
   core.Map<core.String, UserCustomProperties> customSchemas;
 
-  /// CustomerId of User (Read-only)
+  /// Output only. CustomerId of User (Read-only)
   core.String customerId;
   core.DateTime deletionTime;
 
-  ///
+  /// Emails of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object emails;
 
-  /// ETag of the resource.
+  /// Output only. ETag of the resource.
   core.String etag;
 
-  ///
+  /// The external Ids of User *
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object externalIds;
 
-  ///
+  /// Gender of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10776,7 +10545,7 @@ class User {
   /// Unique identifier of User (Read-only)
   core.String id;
 
-  ///
+  /// User's Instant Messenger
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10788,31 +10557,31 @@ class User {
   /// Boolean indicating if ip is whitelisted
   core.bool ipWhitelisted;
 
-  /// Boolean indicating if the user is admin (Read-only)
+  /// Output only. Boolean indicating if the user is admin (Read-only)
   core.bool isAdmin;
 
-  /// Boolean indicating if the user is delegated admin (Read-only)
+  /// Output only. Boolean indicating if the user is delegated admin (Read-only)
   core.bool isDelegatedAdmin;
 
-  /// Is 2-step verification enforced (Read-only)
+  /// Output only. Is 2-step verification enforced (Read-only)
   core.bool isEnforcedIn2Sv;
 
-  /// Is enrolled in 2-step verification (Read-only)
+  /// Output only. Is enrolled in 2-step verification (Read-only)
   core.bool isEnrolledIn2Sv;
 
-  /// Is mailbox setup (Read-only)
+  /// Output only. Is mailbox setup (Read-only)
   core.bool isMailboxSetup;
 
-  ///
+  /// Keywords of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object keywords;
 
-  /// Kind of resource this is.
+  /// Output only. Kind of resource this is.
   core.String kind;
 
-  ///
+  /// Languages of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10821,7 +10590,7 @@ class User {
   /// User's last login time. (Read-only)
   core.DateTime lastLoginTime;
 
-  ///
+  /// Locations of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10830,10 +10599,10 @@ class User {
   /// User's name
   UserName name;
 
-  /// List of non editable aliases (Read-only)
+  /// Output only. List of non editable aliases (Read-only)
   core.List<core.String> nonEditableAliases;
 
-  ///
+  /// Notes of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10842,7 +10611,7 @@ class User {
   /// OrgUnit of User
   core.String orgUnitPath;
 
-  ///
+  /// Organizations of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10851,13 +10620,13 @@ class User {
   /// User's password
   core.String password;
 
-  ///
+  /// Phone numbers of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object phones;
 
-  ///
+  /// The POSIX accounts of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10870,16 +10639,16 @@ class User {
   core.String recoveryEmail;
 
   /// Recovery phone of the user. The phone number must be in the E.164 format,
-  /// starting with the plus sign (+). Example: +16506661212.
+  /// starting with the plus sign (+). Example: *+16506661212*.
   core.String recoveryPhone;
 
-  ///
+  /// The Relations of User *
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object relations;
 
-  ///
+  /// The SSH public keys of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10888,16 +10657,16 @@ class User {
   /// Indicates if user is suspended.
   core.bool suspended;
 
-  /// Suspension reason if user is suspended (Read-only)
+  /// Output only. Suspension reason if user is suspended (Read-only)
   core.String suspensionReason;
 
-  /// ETag of the user's photo (Read-only)
+  /// Output only. ETag of the user's photo (Read-only)
   core.String thumbnailPhotoEtag;
 
-  /// Photo Url of the user (Read-only)
+  /// Output only. Photo Url of the user (Read-only)
   core.String thumbnailPhotoUrl;
 
-  ///
+  /// Websites of User
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11262,7 +11031,7 @@ class UserAddress {
   core.String region;
 
   /// User supplied address was structured. Structured addresses are NOT
-  /// supported at this time. You might be able to write structured addresses,
+  /// supported at this time. You might be able to write structured addresses
   /// but any values will eventually be clobbered.
   core.bool sourceIsStructured;
 
@@ -11270,10 +11039,9 @@ class UserAddress {
   core.String streetAddress;
 
   /// Each entry can have a type which indicates standard values of that entry.
-  /// For example address could be of home, work etc. In addition to the
-  /// standard type, an entry can have a custom type and can take any value.
-  /// Such type should have the CUSTOM value as type and also have a customType
-  /// value.
+  /// For example address could be of home work etc. In addition to the standard
+  /// type an entry can have a custom type and can take any value. Such type
+  /// should have the CUSTOM value as type and also have a customType value.
   core.String type;
 
   UserAddress();
@@ -11501,8 +11269,7 @@ class UserExternalId {
 
 class UserGender {
   /// AddressMeAs. A human-readable string containing the proper way to refer to
-  /// the profile owner by humans, for example "he/him/his" or
-  /// "they/them/their".
+  /// the profile owner by humans for example he/him/his or they/them/their.
   core.String addressMeAs;
 
   /// Custom gender.
@@ -11556,13 +11323,13 @@ class UserIm {
   core.bool primary;
 
   /// Protocol used in the instant messenger. It should be one of the values
-  /// from ImProtocolTypes map. Similar to type, it can take a CUSTOM value and
+  /// from ImProtocolTypes map. Similar to type it can take a CUSTOM value and
   /// specify the custom name in customProtocol field.
   core.String protocol;
 
   /// Each entry can have a type which indicates standard types of that entry.
-  /// For example instant messengers could be of home, work etc. In addition to
-  /// the standard type, an entry can have a custom type and can take any value.
+  /// For example instant messengers could be of home work etc. In addition to
+  /// the standard type an entry can have a custom type and can take any value.
   /// Such types should have the CUSTOM value as type and also have a customType
   /// value.
   core.String type;
@@ -11621,8 +11388,8 @@ class UserKeyword {
   core.String customType;
 
   /// Each entry can have a type which indicates standard type of that entry.
-  /// For example, keyword could be of type occupation or outlook. In addition
-  /// to the standard type, an entry can have a custom type and can give it any
+  /// For example keyword could be of type occupation or outlook. In addition to
+  /// the standard type an entry can have a custom type and can give it any
   /// name. Such types should have the CUSTOM value as type and also have a
   /// customType value.
   core.String type;
@@ -11698,8 +11465,8 @@ class UserLanguage {
 /// JSON template for a location entry.
 class UserLocation {
   /// Textual location. This is most useful for display purposes to concisely
-  /// describe the location. For example, "Mountain View, CA", "Near Seattle",
-  /// "US-NYC-9TH 9A209A".
+  /// describe the location. For example 'Mountain View, CA', 'Near Seattle',
+  /// 'US-NYC-9TH 9A209A.''
   core.String area;
 
   /// Building Identifier.
@@ -11714,15 +11481,15 @@ class UserLocation {
   /// Floor name/number.
   core.String floorName;
 
-  /// Floor section. More specific location within the floor. For example, if a
-  /// floor is divided into sections "A", "B", and "C", this field would
-  /// identify one of those values.
+  /// Floor section. More specific location within the floor. For example if a
+  /// floor is divided into sections 'A', 'B' and 'C' this field would identify
+  /// one of those values.
   core.String floorSection;
 
   /// Each entry can have a type which indicates standard types of that entry.
   /// For example location could be of types default and desk. In addition to
-  /// standard type, an entry can have a custom type and can give it any name.
-  /// Such types should have "custom" as type and also have a customType value.
+  /// standard type an entry can have a custom type and can give it any name.
+  /// Such types should have 'custom' as type and also have a customType value.
   core.String type;
 
   UserLocation();
@@ -11779,8 +11546,6 @@ class UserLocation {
   }
 }
 
-/// JSON request template for setting/revoking admin status of a user in
-/// Directory API.
 class UserMakeAdmin {
   /// Boolean indicating new admin status of the user
   core.bool status;
@@ -11803,7 +11568,6 @@ class UserMakeAdmin {
   }
 }
 
-/// JSON template for name of a user in Directory API.
 class UserName {
   /// Last Name
   core.String familyName;
@@ -11881,8 +11645,8 @@ class UserOrganization {
   core.String title;
 
   /// Each entry can have a type which indicates standard types of that entry.
-  /// For example organization could be of school, work etc. In addition to the
-  /// standard type, an entry can have a custom type and can give it any name.
+  /// For example organization could be of school work etc. In addition to the
+  /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have the CUSTOM value as type and also have a CustomType
   /// value.
   core.String type;
@@ -11980,10 +11744,10 @@ class UserPhone {
   core.bool primary;
 
   /// Each entry can have a type which indicates standard types of that entry.
-  /// For example phone could be of home_fax, work, mobile etc. In addition to
-  /// the standard type, an entry can have a custom type and can give it any
-  /// name. Such types should have the CUSTOM value as type and also have a
-  /// customType value.
+  /// For example phone could be of home_fax work mobile etc. In addition to the
+  /// standard type an entry can have a custom type and can give it any name.
+  /// Such types should have the CUSTOM value as type and also have a customType
+  /// value.
   core.String type;
 
   /// Phone number.
@@ -12025,7 +11789,9 @@ class UserPhone {
   }
 }
 
-/// JSON template for Photo object in Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class UserPhoto {
   /// ETag of the resource.
   core.String etag;
@@ -12229,8 +11995,8 @@ class UserRelation {
   /// Custom Type.
   core.String customType;
 
-  /// The relation of the user. Some of the possible values are mother, father,
-  /// sister, brother, manager, assistant, partner.
+  /// The relation of the user. Some of the possible values are mother father
+  /// sister brother manager assistant partner.
   core.String type;
 
   /// The name of the relation.
@@ -12307,7 +12073,6 @@ class UserSshPublicKey {
   }
 }
 
-/// JSON request template to undelete a user in Directory API.
 class UserUndelete {
   /// OrgUnit of User
   core.String orgUnitPath;
@@ -12339,8 +12104,8 @@ class UserWebsite {
   core.bool primary;
 
   /// Each entry can have a type which indicates standard types of that entry.
-  /// For example website could be of home, work, blog etc. In addition to the
-  /// standard type, an entry can have a custom type and can give it any name.
+  /// For example website could be of home work blog etc. In addition to the
+  /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have the CUSTOM value as type and also have a customType
   /// value.
   core.String type;
@@ -12384,7 +12149,9 @@ class UserWebsite {
   }
 }
 
-/// JSON response template for List Users operation in Apps Directory API.
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Users {
   /// ETag of the resource.
   core.String etag;
@@ -12445,7 +12212,10 @@ class Users {
   }
 }
 
-/// JSON template for verification codes in Directory API.
+/// JSON template for verification codes in Directory API. STEPLADDER: Generated
+/// unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class VerificationCode {
   /// ETag of the resource.
   core.String etag;
@@ -12497,7 +12267,9 @@ class VerificationCode {
 }
 
 /// JSON response template for List verification codes operation in Directory
-/// API.
+/// API. STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class VerificationCodes {
   /// ETag of the resource.
   core.String etag;

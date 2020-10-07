@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 const core.String USER_AGENT = 'dart-api-client pagespeedonline/v5';
 
 /// The PageSpeed Insights API lets you analyze the performance of your website
-/// with a simple API.  It offers tailored suggestions for how you can optimize
+/// with a simple API. It offers tailored suggestions for how you can optimize
 /// your site, and lets you easily integrate PageSpeed Insights analysis into
 /// your development tools and workflow.
 class PagespeedonlineApi {
@@ -42,32 +42,29 @@ class PagespeedapiResourceApi {
 
   /// Runs PageSpeed analysis on the page at the specified URL, and returns
   /// PageSpeed scores, a list of suggestions to make that page faster, and
-  /// other
-  /// information.
+  /// other information.
   ///
   /// Request parameters:
   ///
-  /// [utmCampaign] - Campaign name for analytics.
-  ///
-  /// [url] - The URL to fetch and analyze
-  ///
   /// [captchaToken] - The captcha token passed when filling out a captcha.
   ///
-  /// [strategy] - The analysis strategy (desktop or mobile) to use, and desktop
-  /// is the
-  /// default
-  /// Possible string values are:
-  /// - "STRATEGY_UNSPECIFIED" : A STRATEGY_UNSPECIFIED.
-  /// - "DESKTOP" : A DESKTOP.
-  /// - "MOBILE" : A MOBILE.
+  /// [locale] - The locale used to localize formatted results
   ///
   /// [utmSource] - Campaign source for analytics.
   ///
-  /// [category] - A Lighthouse category to run; if none are given, only
-  /// Performance category
-  /// will be run
+  /// [strategy] - The analysis strategy (desktop or mobile) to use, and desktop
+  /// is the default
+  /// Possible string values are:
+  /// - "STRATEGY_UNSPECIFIED" : UNDEFINED.
+  /// - "DESKTOP" : Fetch and analyze the URL for desktop browsers.
+  /// - "MOBILE" : Fetch and analyze the URL for mobile devices.
   ///
-  /// [locale] - The locale used to localize formatted results
+  /// [url] - Required. The URL to fetch and analyze
+  ///
+  /// [utmCampaign] - Campaign name for analytics.
+  ///
+  /// [category] - A Lighthouse category to run; if none are given, only
+  /// Performance category will be run
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -80,13 +77,13 @@ class PagespeedapiResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PagespeedApiPagespeedResponseV5> runpagespeed(
-      {core.String utmCampaign,
-      core.String url,
-      core.String captchaToken,
-      core.String strategy,
-      core.String utmSource,
-      core.List<core.String> category,
+      {core.String captchaToken,
       core.String locale,
+      core.String utmSource,
+      core.String strategy,
+      core.String url,
+      core.String utmCampaign,
+      core.List<core.String> category,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -95,26 +92,26 @@ class PagespeedapiResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (utmCampaign != null) {
-      _queryParams["utm_campaign"] = [utmCampaign];
-    }
-    if (url != null) {
-      _queryParams["url"] = [url];
-    }
     if (captchaToken != null) {
       _queryParams["captchaToken"] = [captchaToken];
     }
-    if (strategy != null) {
-      _queryParams["strategy"] = [strategy];
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
     }
     if (utmSource != null) {
       _queryParams["utm_source"] = [utmSource];
     }
+    if (strategy != null) {
+      _queryParams["strategy"] = [strategy];
+    }
+    if (url != null) {
+      _queryParams["url"] = [url];
+    }
+    if (utmCampaign != null) {
+      _queryParams["utm_campaign"] = [utmCampaign];
+    }
     if (category != null) {
       _queryParams["category"] = category;
-    }
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -223,15 +220,13 @@ class Categories {
   /// The accessibility category, containing all accessibility related audits.
   LighthouseCategoryV5 accessibility;
 
-  /// The best practices category, containing all best practices related
-  /// audits.
+  /// The best practices category, containing all best practices related audits.
   LighthouseCategoryV5 best_practices;
 
   /// The performance category, containing all performance related audits.
   LighthouseCategoryV5 performance;
 
-  /// The Progressive-Web-App (PWA) category, containing all pwa related
-  /// audits.
+  /// The Progressive-Web-App (PWA) category, containing all pwa related audits.
   LighthouseCategoryV5 pwa;
 
   /// The Search-Engine-Optimization (SEO) category, containing all seo related
@@ -663,7 +658,7 @@ class LighthouseResultV5 {
   /// The original requested url.
   core.String requestedUrl;
 
-  /// List of all run warnings in the LHR.  Will always output to at least `[]`.
+  /// List of all run warnings in the LHR. Will always output to at least `[]`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -803,8 +798,11 @@ class PagespeedApiLoadingExperienceV5 {
   /// The requested URL, which may differ from the resolved "id".
   core.String initialUrl;
 
-  /// The map of <metrics, data>.
+  /// The map of .
   core.Map<core.String, UserPageLoadMetricV5> metrics;
+
+  /// True if the result is an origin fallback from a page, false otherwise.
+  core.bool originFallback;
 
   /// The human readable speed "category" of the id.
   core.String overallCategory;
@@ -822,6 +820,9 @@ class PagespeedApiLoadingExperienceV5 {
       metrics = commons.mapMap<core.Map, UserPageLoadMetricV5>(
           _json["metrics"].cast<core.String, core.Map>(),
           (core.Map item) => new UserPageLoadMetricV5.fromJson(item));
+    }
+    if (_json.containsKey("origin_fallback")) {
+      originFallback = _json["origin_fallback"];
     }
     if (_json.containsKey("overall_category")) {
       overallCategory = _json["overall_category"];
@@ -841,6 +842,9 @@ class PagespeedApiLoadingExperienceV5 {
       _json["metrics"] = commons
           .mapMap<UserPageLoadMetricV5, core.Map<core.String, core.Object>>(
               metrics, (UserPageLoadMetricV5 item) => (item).toJson());
+    }
+    if (originFallback != null) {
+      _json["origin_fallback"] = originFallback;
     }
     if (overallCategory != null) {
       _json["overall_category"] = overallCategory;
@@ -1002,8 +1006,7 @@ class RendererFormattedStrings {
   /// The heading shown above a list of audits that do not apply to a page.
   core.String notApplicableAuditsGroupTitle;
 
-  /// The heading for the estimated page load savings opportunity of an
-  /// audit.
+  /// The heading for the estimated page load savings opportunity of an audit.
   core.String opportunityResourceColumnLabel;
 
   /// The heading for the estimated page load savings of opportunity audits.
@@ -1015,8 +1018,8 @@ class RendererFormattedStrings {
   /// The label that explains the score gauges scale (0-49, 50-89, 90-100).
   core.String scorescaleLabel;
 
-  /// The label shown preceding important warnings that may have invalidated
-  /// an entire report.
+  /// The label shown preceding important warnings that may have invalidated an
+  /// entire report.
   core.String toplevelWarningsMessage;
 
   /// The disclaimer shown below a performance metric value.
@@ -1258,9 +1261,8 @@ class UserPageLoadMetricV5 {
   /// Identifies the type of the metric.
   core.String metricId;
 
-  /// We use this field to store certain percentile value for this metric.
-  /// For v4, this field contains pc50.
-  /// For v5, this field contains pc90.
+  /// We use this field to store certain percentile value for this metric. For
+  /// v4, this field contains pc50. For v5, this field contains pc90.
   core.int percentile;
 
   UserPageLoadMetricV5();

@@ -17,7 +17,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 const core.String USER_AGENT = 'dart-api-client tagmanager/v2';
 
 /// This API allows clients to access and modify container and tag
-///      configuration.
+/// configuration.
 class TagmanagerApi {
   /// Delete your Google Tag Manager containers
   static const TagmanagerDeleteContainersScope =
@@ -53,7 +53,7 @@ class TagmanagerApi {
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
   TagmanagerApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
+      {core.String rootUrl = "https://tagmanager.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -73,8 +73,7 @@ class AccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Accounts's API relative path.
-  /// Example: accounts/{account_id}
+  /// [path] - GTM Accounts's API relative path. Example: accounts/{account_id}
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -162,13 +161,11 @@ class AccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Accounts's API relative path.
-  /// Example: accounts/{account_id}
+  /// [path] - GTM Accounts's API relative path. Example: accounts/{account_id}
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the account
-  /// in storage.
+  /// of the account in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -235,8 +232,8 @@ class AccountsContainersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Account's API relative path.
-  /// Example: accounts/{account_id}.
+  /// [parent] - GTM Account's API relative path. Example:
+  /// accounts/{account_id}.
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -285,8 +282,8 @@ class AccountsContainersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [path] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -329,8 +326,8 @@ class AccountsContainersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [path] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -373,8 +370,8 @@ class AccountsContainersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Accounts's API relative path.
-  /// Example: accounts/{account_id}.
+  /// [parent] - GTM Accounts's API relative path. Example:
+  /// accounts/{account_id}.
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
@@ -427,13 +424,12 @@ class AccountsContainersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [path] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// container in storage.
+  /// of the container in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -491,8 +487,8 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [parent] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -541,8 +537,7 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Environment's API relative path.
-  /// Example:
+  /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$".
@@ -587,8 +582,7 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Environment's API relative path.
-  /// Example:
+  /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$".
@@ -633,8 +627,8 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [parent] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
@@ -688,8 +682,7 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Environment's API relative path.
-  /// Example:
+  /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$".
@@ -742,15 +735,13 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Environment's API relative path.
-  /// Example:
+  /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// environment in storage.
+  /// of the environment in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -806,8 +797,8 @@ class AccountsContainersVersionHeadersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [parent] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -853,13 +844,13 @@ class AccountsContainersVersionHeadersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [parent] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [includeDeleted] - Also retrieve deleted (archived) versions when true.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -872,7 +863,7 @@ class AccountsContainersVersionHeadersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContainerVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.bool includeDeleted, core.String $fields}) {
+      {core.bool includeDeleted, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -883,11 +874,11 @@ class AccountsContainersVersionHeadersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (includeDeleted != null) {
       _queryParams["includeDeleted"] = ["${includeDeleted}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -918,8 +909,7 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM ContainerVersion's API relative path.
-  /// Example:
+  /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
@@ -964,15 +954,13 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM ContainerVersion's API relative path.
-  /// Example:
+  /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
   ///
-  /// [containerVersionId] - The GTM ContainerVersion ID. Specify
-  /// <code>published</code> to retrieve
-  /// the currently published version.
+  /// [containerVersionId] - The GTM ContainerVersion ID. Specify published to
+  /// retrieve the currently published version.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1018,8 +1006,8 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [parent] - GTM Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1065,15 +1053,13 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM ContainerVersion's API relative path.
-  /// Example:
+  /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// container version in storage.
+  /// of the container version in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1123,8 +1109,7 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM ContainerVersion's API relative path.
-  /// Example:
+  /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
@@ -1172,8 +1157,7 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM ContainerVersion's API relative path.
-  /// Example:
+  /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
@@ -1223,15 +1207,13 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM ContainerVersion's API relative path.
-  /// Example:
+  /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// container version in storage.
+  /// of the container version in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1307,8 +1289,8 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM parent Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [parent] - GTM parent Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1361,8 +1343,7 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Workspace's API relative path.
-  /// Example:
+  /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -1415,8 +1396,7 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Workspace's API relative path.
-  /// Example:
+  /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -1461,8 +1441,7 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Workspace's API relative path.
-  /// Example:
+  /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -1507,8 +1486,7 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Workspace's API relative path.
-  /// Example:
+  /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -1557,8 +1535,8 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM parent Container's API relative path.
-  /// Example: accounts/{account_id}/containers/{container_id}
+  /// [parent] - GTM parent Container's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}
   /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
@@ -1610,8 +1588,7 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Workspace's API relative path.
-  /// Example:
+  /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -1662,15 +1639,13 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Workspace's API relative path.
-  /// Example:
+  /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// entity_in_workspace in the merge conflict.
+  /// of the entity_in_workspace in the merge conflict.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1723,8 +1698,7 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Workspace's API relative path.
-  /// Example:
+  /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -1774,15 +1748,13 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Workspace's API relative path.
-  /// Example:
+  /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the
-  /// workspace in storage.
+  /// of the workspace in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1839,8 +1811,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -1894,8 +1865,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM BuiltInVariable's API relative path.
-  /// Example:
+  /// [path] - GTM BuiltInVariable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/built_in_variables$".
@@ -1946,8 +1916,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -2001,141 +1970,123 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM BuiltInVariable's API relative path.
-  /// Example:
+  /// [path] - GTM BuiltInVariable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
   ///
   /// [type] - The type of built-in variable to revert.
   /// Possible string values are:
-  /// - "builtInVariableTypeUnspecified" : A builtInVariableTypeUnspecified.
-  /// - "pageUrl" : A pageUrl.
-  /// - "pageHostname" : A pageHostname.
-  /// - "pagePath" : A pagePath.
-  /// - "referrer" : A referrer.
-  /// - "event" : A event.
-  /// - "clickElement" : A clickElement.
-  /// - "clickClasses" : A clickClasses.
-  /// - "clickId" : A clickId.
-  /// - "clickTarget" : A clickTarget.
-  /// - "clickUrl" : A clickUrl.
-  /// - "clickText" : A clickText.
-  /// - "firstPartyServingUrl" : A firstPartyServingUrl.
-  /// - "formElement" : A formElement.
-  /// - "formClasses" : A formClasses.
-  /// - "formId" : A formId.
-  /// - "formTarget" : A formTarget.
-  /// - "formUrl" : A formUrl.
-  /// - "formText" : A formText.
-  /// - "errorMessage" : A errorMessage.
-  /// - "errorUrl" : A errorUrl.
-  /// - "errorLine" : A errorLine.
-  /// - "newHistoryUrl" : A newHistoryUrl.
-  /// - "oldHistoryUrl" : A oldHistoryUrl.
-  /// - "newHistoryFragment" : A newHistoryFragment.
-  /// - "oldHistoryFragment" : A oldHistoryFragment.
-  /// - "newHistoryState" : A newHistoryState.
-  /// - "oldHistoryState" : A oldHistoryState.
-  /// - "historySource" : A historySource.
-  /// - "containerVersion" : A containerVersion.
-  /// - "debugMode" : A debugMode.
-  /// - "randomNumber" : A randomNumber.
-  /// - "containerId" : A containerId.
-  /// - "appId" : A appId.
-  /// - "appName" : A appName.
-  /// - "appVersionCode" : A appVersionCode.
-  /// - "appVersionName" : A appVersionName.
-  /// - "language" : A language.
-  /// - "osVersion" : A osVersion.
-  /// - "platform" : A platform.
-  /// - "sdkVersion" : A sdkVersion.
-  /// - "deviceName" : A deviceName.
-  /// - "resolution" : A resolution.
-  /// - "advertiserId" : A advertiserId.
-  /// - "advertisingTrackingEnabled" : A advertisingTrackingEnabled.
-  /// - "htmlId" : A htmlId.
-  /// - "environmentName" : A environmentName.
-  /// - "ampBrowserLanguage" : A ampBrowserLanguage.
-  /// - "ampCanonicalPath" : A ampCanonicalPath.
-  /// - "ampCanonicalUrl" : A ampCanonicalUrl.
-  /// - "ampCanonicalHost" : A ampCanonicalHost.
-  /// - "ampReferrer" : A ampReferrer.
-  /// - "ampTitle" : A ampTitle.
-  /// - "ampClientId" : A ampClientId.
-  /// - "ampClientTimezone" : A ampClientTimezone.
-  /// - "ampClientTimestamp" : A ampClientTimestamp.
-  /// - "ampClientScreenWidth" : A ampClientScreenWidth.
-  /// - "ampClientScreenHeight" : A ampClientScreenHeight.
-  /// - "ampClientScrollX" : A ampClientScrollX.
-  /// - "ampClientScrollY" : A ampClientScrollY.
-  /// - "ampClientMaxScrollX" : A ampClientMaxScrollX.
-  /// - "ampClientMaxScrollY" : A ampClientMaxScrollY.
-  /// - "ampTotalEngagedTime" : A ampTotalEngagedTime.
-  /// - "ampPageViewId" : A ampPageViewId.
-  /// - "ampPageLoadTime" : A ampPageLoadTime.
-  /// - "ampPageDownloadTime" : A ampPageDownloadTime.
-  /// - "ampGtmEvent" : A ampGtmEvent.
-  /// - "eventName" : A eventName.
-  /// - "firebaseEventParameterCampaign" : A firebaseEventParameterCampaign.
-  /// - "firebaseEventParameterCampaignAclid" : A
-  /// firebaseEventParameterCampaignAclid.
-  /// - "firebaseEventParameterCampaignAnid" : A
-  /// firebaseEventParameterCampaignAnid.
-  /// - "firebaseEventParameterCampaignClickTimestamp" : A
-  /// firebaseEventParameterCampaignClickTimestamp.
-  /// - "firebaseEventParameterCampaignContent" : A
-  /// firebaseEventParameterCampaignContent.
-  /// - "firebaseEventParameterCampaignCp1" : A
-  /// firebaseEventParameterCampaignCp1.
-  /// - "firebaseEventParameterCampaignGclid" : A
-  /// firebaseEventParameterCampaignGclid.
-  /// - "firebaseEventParameterCampaignSource" : A
-  /// firebaseEventParameterCampaignSource.
-  /// - "firebaseEventParameterCampaignTerm" : A
-  /// firebaseEventParameterCampaignTerm.
-  /// - "firebaseEventParameterCurrency" : A firebaseEventParameterCurrency.
-  /// - "firebaseEventParameterDynamicLinkAcceptTime" : A
-  /// firebaseEventParameterDynamicLinkAcceptTime.
-  /// - "firebaseEventParameterDynamicLinkLinkid" : A
-  /// firebaseEventParameterDynamicLinkLinkid.
-  /// - "firebaseEventParameterNotificationMessageDeviceTime" : A
-  /// firebaseEventParameterNotificationMessageDeviceTime.
-  /// - "firebaseEventParameterNotificationMessageId" : A
-  /// firebaseEventParameterNotificationMessageId.
-  /// - "firebaseEventParameterNotificationMessageName" : A
-  /// firebaseEventParameterNotificationMessageName.
-  /// - "firebaseEventParameterNotificationMessageTime" : A
-  /// firebaseEventParameterNotificationMessageTime.
-  /// - "firebaseEventParameterNotificationTopic" : A
-  /// firebaseEventParameterNotificationTopic.
-  /// - "firebaseEventParameterPreviousAppVersion" : A
-  /// firebaseEventParameterPreviousAppVersion.
-  /// - "firebaseEventParameterPreviousOsVersion" : A
-  /// firebaseEventParameterPreviousOsVersion.
-  /// - "firebaseEventParameterPrice" : A firebaseEventParameterPrice.
-  /// - "firebaseEventParameterProductId" : A firebaseEventParameterProductId.
-  /// - "firebaseEventParameterQuantity" : A firebaseEventParameterQuantity.
-  /// - "firebaseEventParameterValue" : A firebaseEventParameterValue.
-  /// - "videoProvider" : A videoProvider.
-  /// - "videoUrl" : A videoUrl.
-  /// - "videoTitle" : A videoTitle.
-  /// - "videoDuration" : A videoDuration.
-  /// - "videoPercent" : A videoPercent.
-  /// - "videoVisible" : A videoVisible.
-  /// - "videoStatus" : A videoStatus.
-  /// - "videoCurrentTime" : A videoCurrentTime.
-  /// - "scrollDepthThreshold" : A scrollDepthThreshold.
-  /// - "scrollDepthUnits" : A scrollDepthUnits.
-  /// - "scrollDepthDirection" : A scrollDepthDirection.
-  /// - "elementVisibilityRatio" : A elementVisibilityRatio.
-  /// - "elementVisibilityTime" : A elementVisibilityTime.
-  /// - "elementVisibilityFirstTime" : A elementVisibilityFirstTime.
-  /// - "elementVisibilityRecentTime" : A elementVisibilityRecentTime.
-  /// - "requestPath" : A requestPath.
-  /// - "requestMethod" : A requestMethod.
-  /// - "clientName" : A clientName.
-  /// - "queryString" : A queryString.
+  /// - "builtInVariableTypeUnspecified"
+  /// - "pageUrl"
+  /// - "pageHostname"
+  /// - "pagePath"
+  /// - "referrer"
+  /// - "event" : For web or mobile.
+  /// - "clickElement"
+  /// - "clickClasses"
+  /// - "clickId"
+  /// - "clickTarget"
+  /// - "clickUrl"
+  /// - "clickText"
+  /// - "firstPartyServingUrl"
+  /// - "formElement"
+  /// - "formClasses"
+  /// - "formId"
+  /// - "formTarget"
+  /// - "formUrl"
+  /// - "formText"
+  /// - "errorMessage"
+  /// - "errorUrl"
+  /// - "errorLine"
+  /// - "newHistoryUrl"
+  /// - "oldHistoryUrl"
+  /// - "newHistoryFragment"
+  /// - "oldHistoryFragment"
+  /// - "newHistoryState"
+  /// - "oldHistoryState"
+  /// - "historySource"
+  /// - "containerVersion" : For web or mobile.
+  /// - "debugMode"
+  /// - "randomNumber" : For web or mobile.
+  /// - "containerId" : For web or mobile.
+  /// - "appId"
+  /// - "appName"
+  /// - "appVersionCode"
+  /// - "appVersionName"
+  /// - "language"
+  /// - "osVersion"
+  /// - "platform"
+  /// - "sdkVersion"
+  /// - "deviceName"
+  /// - "resolution"
+  /// - "advertiserId"
+  /// - "advertisingTrackingEnabled"
+  /// - "htmlId"
+  /// - "environmentName"
+  /// - "ampBrowserLanguage"
+  /// - "ampCanonicalPath"
+  /// - "ampCanonicalUrl"
+  /// - "ampCanonicalHost"
+  /// - "ampReferrer"
+  /// - "ampTitle"
+  /// - "ampClientId"
+  /// - "ampClientTimezone"
+  /// - "ampClientTimestamp"
+  /// - "ampClientScreenWidth"
+  /// - "ampClientScreenHeight"
+  /// - "ampClientScrollX"
+  /// - "ampClientScrollY"
+  /// - "ampClientMaxScrollX"
+  /// - "ampClientMaxScrollY"
+  /// - "ampTotalEngagedTime"
+  /// - "ampPageViewId"
+  /// - "ampPageLoadTime"
+  /// - "ampPageDownloadTime"
+  /// - "ampGtmEvent"
+  /// - "eventName"
+  /// - "firebaseEventParameterCampaign"
+  /// - "firebaseEventParameterCampaignAclid"
+  /// - "firebaseEventParameterCampaignAnid"
+  /// - "firebaseEventParameterCampaignClickTimestamp"
+  /// - "firebaseEventParameterCampaignContent"
+  /// - "firebaseEventParameterCampaignCp1"
+  /// - "firebaseEventParameterCampaignGclid"
+  /// - "firebaseEventParameterCampaignSource"
+  /// - "firebaseEventParameterCampaignTerm"
+  /// - "firebaseEventParameterCurrency"
+  /// - "firebaseEventParameterDynamicLinkAcceptTime"
+  /// - "firebaseEventParameterDynamicLinkLinkid"
+  /// - "firebaseEventParameterNotificationMessageDeviceTime"
+  /// - "firebaseEventParameterNotificationMessageId"
+  /// - "firebaseEventParameterNotificationMessageName"
+  /// - "firebaseEventParameterNotificationMessageTime"
+  /// - "firebaseEventParameterNotificationTopic"
+  /// - "firebaseEventParameterPreviousAppVersion"
+  /// - "firebaseEventParameterPreviousOsVersion"
+  /// - "firebaseEventParameterPrice"
+  /// - "firebaseEventParameterProductId"
+  /// - "firebaseEventParameterQuantity"
+  /// - "firebaseEventParameterValue"
+  /// - "videoProvider"
+  /// - "videoUrl"
+  /// - "videoTitle"
+  /// - "videoDuration"
+  /// - "videoPercent"
+  /// - "videoVisible"
+  /// - "videoStatus"
+  /// - "videoCurrentTime"
+  /// - "scrollDepthThreshold"
+  /// - "scrollDepthUnits"
+  /// - "scrollDepthDirection"
+  /// - "elementVisibilityRatio"
+  /// - "elementVisibilityTime"
+  /// - "elementVisibilityFirstTime"
+  /// - "elementVisibilityRecentTime"
+  /// - "requestPath"
+  /// - "requestMethod"
+  /// - "clientName"
+  /// - "queryString"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2193,8 +2144,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -2245,8 +2195,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Folder's API relative path.
-  /// Example:
+  /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
@@ -2291,8 +2240,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Folder's API relative path.
-  /// Example:
+  /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
@@ -2345,8 +2293,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Folder's API relative path.
-  /// Example:
+  /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
@@ -2391,8 +2338,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -2447,17 +2393,16 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Folder's API relative path.
-  /// Example:
+  /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
   ///
   /// [variableId] - The variables to be moved to the folder.
   ///
-  /// [tagId] - The tags to be moved to the folder.
-  ///
   /// [triggerId] - The triggers to be moved to the folder.
+  ///
+  /// [tagId] - The tags to be moved to the folder.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2469,8 +2414,8 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future moveEntitiesToFolder(Folder request, core.String path,
       {core.List<core.String> variableId,
-      core.List<core.String> tagId,
       core.List<core.String> triggerId,
+      core.List<core.String> tagId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2488,11 +2433,11 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     if (variableId != null) {
       _queryParams["variableId"] = variableId;
     }
-    if (tagId != null) {
-      _queryParams["tagId"] = tagId;
-    }
     if (triggerId != null) {
       _queryParams["triggerId"] = triggerId;
+    }
+    if (tagId != null) {
+      _queryParams["tagId"] = tagId;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2517,15 +2462,13 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Folder's API relative path.
-  /// Example:
+  /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the tag
-  /// in storage.
+  /// of the tag in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2575,15 +2518,13 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Folder's API relative path.
-  /// Example:
+  /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the folder in
-  /// storage.
+  /// of the folder in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2641,8 +2582,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -2693,8 +2633,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Tag's API relative path.
-  /// Example:
+  /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$".
@@ -2739,8 +2678,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Tag's API relative path.
-  /// Example:
+  /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$".
@@ -2785,8 +2723,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -2839,15 +2776,13 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Tag's API relative path.
-  /// Example:
+  /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of thetag
-  /// in storage.
+  /// of thetag in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2897,15 +2832,13 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Tag's API relative path.
-  /// Example:
+  /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the tag in
-  /// storage.
+  /// of the tag in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2963,8 +2896,7 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -3016,8 +2948,7 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Custom Template's API relative path.
-  /// Example:
+  /// [path] - GTM Custom Template's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$".
@@ -3062,8 +2993,7 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Custom Template's API relative path.
-  /// Example:
+  /// [path] - GTM Custom Template's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$".
@@ -3108,8 +3038,7 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -3162,15 +3091,13 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Custom Template's API relative path.
-  /// Example:
+  /// [path] - GTM Custom Template's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the template
-  /// in storage.
+  /// of the template in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3220,15 +3147,13 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Custom Template's API relative path.
-  /// Example:
+  /// [path] - GTM Custom Template's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the templates
-  /// in storage.
+  /// of the templates in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3286,8 +3211,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspaces's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspaces's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -3338,8 +3262,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Trigger's API relative path.
-  /// Example:
+  /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$".
@@ -3384,8 +3307,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Trigger's API relative path.
-  /// Example:
+  /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$".
@@ -3430,8 +3352,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspaces's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspaces's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -3484,15 +3405,13 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Trigger's API relative path.
-  /// Example:
+  /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the trigger
-  /// in storage.
+  /// of the trigger in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3542,15 +3461,13 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Trigger's API relative path.
-  /// Example:
+  /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the trigger
-  /// in storage.
+  /// of the trigger in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3608,8 +3525,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -3660,8 +3576,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Variable's API relative path.
-  /// Example:
+  /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$".
@@ -3706,8 +3621,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Variable's API relative path.
-  /// Example:
+  /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$".
@@ -3752,8 +3666,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -3806,15 +3719,13 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Variable's API relative path.
-  /// Example:
+  /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the variable
-  /// in storage.
+  /// of the variable in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3864,15 +3775,13 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Variable's API relative path.
-  /// Example:
+  /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the variable
-  /// in storage.
+  /// of the variable in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3930,8 +3839,7 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -3982,8 +3890,7 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Zone's API relative path.
-  /// Example:
+  /// [path] - GTM Zone's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$".
@@ -4028,8 +3935,7 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Zone's API relative path.
-  /// Example:
+  /// [path] - GTM Zone's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$".
@@ -4074,8 +3980,7 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Workspace's API relative path.
-  /// Example:
+  /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
@@ -4128,15 +4033,13 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Zone's API relative path.
-  /// Example:
+  /// [path] - GTM Zone's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the zone in
-  /// storage.
+  /// of the zone in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4186,15 +4089,13 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM Zone's API relative path.
-  /// Example:
+  /// [path] - GTM Zone's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$".
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the zone in
-  /// storage.
+  /// of the zone in storage.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4252,8 +4153,7 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Account's API relative path.
-  /// Example: accounts/{account_id}
+  /// [parent] - GTM Account's API relative path. Example: accounts/{account_id}
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4304,8 +4204,8 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM UserPermission's API relative path.
-  /// Example: accounts/{account_id}/user_permissions/{user_permission_id}
+  /// [path] - GTM UserPermission's API relative path. Example:
+  /// accounts/{account_id}/user_permissions/{user_permission_id}
   /// Value must have pattern "^accounts/[^/]+/user_permissions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4348,8 +4248,8 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM UserPermission's API relative path.
-  /// Example: accounts/{account_id}/user_permissions/{user_permission_id}
+  /// [path] - GTM UserPermission's API relative path. Example:
+  /// accounts/{account_id}/user_permissions/{user_permission_id}
   /// Value must have pattern "^accounts/[^/]+/user_permissions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4393,8 +4293,8 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - GTM Accounts's API relative path.
-  /// Example: accounts/{account_id}
+  /// [parent] - GTM Accounts's API relative path. Example:
+  /// accounts/{account_id}
   /// Value must have pattern "^accounts/[^/]+$".
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
@@ -4448,8 +4348,8 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [path] - GTM UserPermission's API relative path.
-  /// Example: accounts/{account_id}/user_permissions/{user_permission_id}
+  /// [path] - GTM UserPermission's API relative path. Example:
+  /// accounts/{account_id}/user_permissions/{user_permission_id}
   /// Value must have pattern "^accounts/[^/]+/user_permissions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4498,27 +4398,23 @@ class Account {
   /// The Account ID uniquely identifies the GTM Account.
   core.String accountId;
 
-  /// The fingerprint of the GTM Account as computed at storage time.
-  /// This value is recomputed whenever the account is modified.
+  /// The fingerprint of the GTM Account as computed at storage time. This value
+  /// is recomputed whenever the account is modified.
   core.String fingerprint;
 
-  /// Account display name.
-  /// @mutable tagmanager.accounts.create
-  /// @mutable tagmanager.accounts.update
+  /// Account display name. @mutable tagmanager.accounts.create @mutable
+  /// tagmanager.accounts.update
   core.String name;
 
   /// GTM Account's API relative path.
   core.String path;
 
-  /// Whether the account shares data anonymously with Google and others.
-  /// This flag enables benchmarking by sharing your data in an anonymous form.
+  /// Whether the account shares data anonymously with Google and others. This
+  /// flag enables benchmarking by sharing your data in an anonymous form.
   /// Google will remove all identifiable information about your website,
-  /// combine
-  /// the data with hundreds of other anonymous sites and report aggregate
-  /// trends
-  /// in the benchmarking service.
-  /// @mutable tagmanager.accounts.create
-  /// @mutable tagmanager.accounts.update
+  /// combine the data with hundreds of other anonymous sites and report
+  /// aggregate trends in the benchmarking service. @mutable
+  /// tagmanager.accounts.create @mutable tagmanager.accounts.update
   core.bool shareData;
 
   /// Auto generated link to the tag manager UI
@@ -4575,9 +4471,8 @@ class Account {
 /// Defines the Google Tag Manager Account access permissions.
 class AccountAccess {
   /// Whether the user has no access, user access, or admin access to an
-  /// account.
-  /// @mutable tagmanager.accounts.permissions.create
-  /// @mutable tagmanager.accounts.permissions.update
+  /// account. @mutable tagmanager.accounts.permissions.create @mutable
+  /// tagmanager.accounts.permissions.update
   /// Possible string values are:
   /// - "accountPermissionUnspecified"
   /// - "noAccess"
@@ -4605,8 +4500,8 @@ class AccountAccess {
 
 /// Built-in variables are a special category of variables that are pre-created
 /// and non-customizable. They provide common functionality like accessing
-/// propeties of the gtm data layer, monitoring clicks, or accessing elements
-/// of a page URL.
+/// propeties of the gtm data layer, monitoring clicks, or accessing elements of
+/// a page URL.
 class BuiltInVariable {
   /// GTM Account ID.
   core.String accountId;
@@ -4799,34 +4694,37 @@ class Client {
   /// GTM Container ID.
   core.String containerId;
 
-  /// The fingerprint of the GTM Client as computed at storage time.
-  /// This value is recomputed whenever the client is modified.
+  /// The fingerprint of the GTM Client as computed at storage time. This value
+  /// is recomputed whenever the client is modified.
   core.String fingerprint;
 
-  /// Client display name.
-  /// @mutable tagmanager.accounts.containers.workspaces.clients.create
-  /// @mutable tagmanager.accounts.containers.workspaces.clients.update
+  /// Client display name. @mutable
+  /// tagmanager.accounts.containers.workspaces.clients.create @mutable
+  /// tagmanager.accounts.containers.workspaces.clients.update
   core.String name;
 
-  /// The client's parameters.
-  /// @mutable tagmanager.accounts.containers.workspaces.clients.create
-  /// @mutable tagmanager.accounts.containers.workspaces.clients.update
+  /// The client's parameters. @mutable
+  /// tagmanager.accounts.containers.workspaces.clients.create @mutable
+  /// tagmanager.accounts.containers.workspaces.clients.update
   core.List<Parameter> parameter;
+
+  /// Parent folder id.
+  core.String parentFolderId;
 
   /// GTM client's API relative path.
   core.String path;
 
-  /// Priority determines relative firing order.
-  /// @mutable tagmanager.accounts.containers.workspaces.clients.create
-  /// @mutable tagmanager.accounts.containers.workspaces.clients.update
+  /// Priority determines relative firing order. @mutable
+  /// tagmanager.accounts.containers.workspaces.clients.create @mutable
+  /// tagmanager.accounts.containers.workspaces.clients.update
   core.int priority;
 
   /// Auto generated link to the tag manager UI
   core.String tagManagerUrl;
 
-  /// Client type.
-  /// @mutable tagmanager.accounts.containers.workspaces.clients.create
-  /// @mutable tagmanager.accounts.containers.workspaces.clients.update
+  /// Client type. @mutable
+  /// tagmanager.accounts.containers.workspaces.clients.create @mutable
+  /// tagmanager.accounts.containers.workspaces.clients.update
   core.String type;
 
   /// GTM Workspace ID.
@@ -4854,6 +4752,9 @@ class Client {
       parameter = (_json["parameter"] as core.List)
           .map<Parameter>((value) => new Parameter.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("parentFolderId")) {
+      parentFolderId = _json["parentFolderId"];
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
@@ -4893,6 +4794,9 @@ class Client {
     if (parameter != null) {
       _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
     }
+    if (parentFolderId != null) {
+      _json["parentFolderId"] = parentFolderId;
+    }
     if (path != null) {
       _json["path"] = path;
     }
@@ -4915,27 +4819,20 @@ class Client {
 /// Represents a predicate.
 class Condition {
   /// A list of named parameters (key/value), depending on the condition's type.
-  /// Notes:<ul>
-  /// <li>For binary operators, include parameters named <code>arg0</code> and
-  ///    <code>arg1</code> for specifying the left and right operands,
-  ///    respectively.</li>
-  /// <li>At this time, the left operand (<code>arg0</code>) must be a reference
-  ///     to a variable.</li>
-  /// <li>For case-insensitive Regex matching, include a boolean parameter named
-  ///     <code>ignore_case</code> that is set to <code>true</code>.
-  ///     If not specified or set to any other value, the matching will be case
-  ///     sensitive.</li>
-  /// <li>To negate an operator, include a boolean parameter named
-  /// <code>negate</code> boolean parameter that is set to <code>true</code>.
-  ///     </li>
-  /// </ul>
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
+  /// Notes: - For binary operators, include parameters named arg0 and arg1 for
+  /// specifying the left and right operands, respectively. - At this time, the
+  /// left operand (arg0) must be a reference to a variable. - For
+  /// case-insensitive Regex matching, include a boolean parameter named
+  /// ignore_case that is set to true. If not specified or set to any other
+  /// value, the matching will be case sensitive. - To negate an operator,
+  /// include a boolean parameter named negate boolean parameter that is set to
+  /// true. @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
   core.List<Parameter> parameter;
 
-  /// The type of operator for this condition.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// The type of operator for this condition. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   /// Possible string values are:
   /// - "conditionTypeUnspecified"
   /// - "equals"
@@ -4949,8 +4846,7 @@ class Condition {
   /// - "lessOrEquals"
   /// - "cssSelector"
   /// - "urlMatches" : NOTE(lanzone): When defining a ConditionType here, don't
-  /// forget to also
-  /// define a matching PredicateType (in condition.proto).
+  /// forget to also define a matching PredicateType (in condition.proto).
   core.String type;
 
   Condition();
@@ -4988,23 +4884,21 @@ class Container {
   /// The Container ID uniquely identifies the GTM Container.
   core.String containerId;
 
-  /// List of domain names associated with the Container.
-  /// @mutable tagmanager.accounts.containers.create
-  /// @mutable tagmanager.accounts.containers.update
+  /// List of domain names associated with the Container. @mutable
+  /// tagmanager.accounts.containers.create @mutable
+  /// tagmanager.accounts.containers.update
   core.List<core.String> domainName;
 
-  /// The fingerprint of the GTM Container as computed at storage time.  This
+  /// The fingerprint of the GTM Container as computed at storage time. This
   /// value is recomputed whenever the account is modified.
   core.String fingerprint;
 
-  /// Container display name.
-  /// @mutable tagmanager.accounts.containers.create
+  /// Container display name. @mutable tagmanager.accounts.containers.create
   /// @mutable tagmanager.accounts.containers.update
   core.String name;
 
-  /// Container Notes.
-  /// @mutable tagmanager.accounts.containers.create
-  /// @mutable tagmanager.accounts.containers.update
+  /// Container Notes. @mutable tagmanager.accounts.containers.create @mutable
+  /// tagmanager.accounts.containers.update
   core.String notes;
 
   /// GTM Container's API relative path.
@@ -5016,10 +4910,9 @@ class Container {
   /// Auto generated link to the tag manager UI
   core.String tagManagerUrl;
 
-  /// List of Usage Contexts for the Container. Valid values include: <code>web,
-  /// android, or ios</code>.
-  /// @mutable tagmanager.accounts.containers.create
-  /// @mutable tagmanager.accounts.containers.update
+  /// List of Usage Contexts for the Container. Valid values include: web,
+  /// android, or ios. @mutable tagmanager.accounts.containers.create @mutable
+  /// tagmanager.accounts.containers.update
   core.List<core.String> usageContext;
 
   Container();
@@ -5096,14 +4989,13 @@ class Container {
 
 /// Defines the Google Tag Manager Container access permissions.
 class ContainerAccess {
-  /// GTM Container ID.
-  /// @mutable tagmanager.accounts.permissions.create
-  /// @mutable tagmanager.accounts.permissions.update
+  /// GTM Container ID. @mutable tagmanager.accounts.permissions.create @mutable
+  /// tagmanager.accounts.permissions.update
   core.String containerId;
 
-  /// List of Container permissions.
-  /// @mutable tagmanager.accounts.permissions.create
-  /// @mutable tagmanager.accounts.permissions.update
+  /// List of Container permissions. @mutable
+  /// tagmanager.accounts.permissions.create @mutable
+  /// tagmanager.accounts.permissions.update
   /// Possible string values are:
   /// - "containerPermissionUnspecified"
   /// - "noAccess"
@@ -5163,20 +5055,19 @@ class ContainerVersion {
   /// A value of true indicates this container version has been deleted.
   core.bool deleted;
 
-  /// Container version description.
-  /// @mutable tagmanager.accounts.containers.versions.update
+  /// Container version description. @mutable
+  /// tagmanager.accounts.containers.versions.update
   core.String description;
 
-  /// The fingerprint of the GTM Container Version as computed at
-  /// storage time. This value is recomputed whenever the container version is
-  /// modified.
+  /// The fingerprint of the GTM Container Version as computed at storage time.
+  /// This value is recomputed whenever the container version is modified.
   core.String fingerprint;
 
   /// The folders in the container that this version was taken from.
   core.List<Folder> folder;
 
-  /// Container version display name.
-  /// @mutable tagmanager.accounts.containers.versions.update
+  /// Container version display name. @mutable
+  /// tagmanager.accounts.containers.versions.update
   core.String name;
 
   /// GTM ContainerVersions's API relative path.
@@ -5532,8 +5423,7 @@ class CreateContainerVersionResponse {
   ContainerVersion containerVersion;
 
   /// Auto generated workspace path created as a result of version creation.
-  /// This
-  /// field should only be populated if the created version was not a quick
+  /// This field should only be populated if the created version was not a quick
   /// preview.
   core.String newWorkspacePath;
 
@@ -5770,26 +5660,24 @@ class Environment {
   core.String containerVersionId;
 
   /// The environment description. Can be set or changed only on USER type
-  /// environments.
-  /// @mutable tagmanager.accounts.containers.environments.create
+  /// environments. @mutable tagmanager.accounts.containers.environments.create
   /// @mutable tagmanager.accounts.containers.environments.update
   core.String description;
 
-  /// Whether or not to enable debug by default for the environment.
-  /// @mutable tagmanager.accounts.containers.environments.create
-  /// @mutable tagmanager.accounts.containers.environments.update
+  /// Whether or not to enable debug by default for the environment. @mutable
+  /// tagmanager.accounts.containers.environments.create @mutable
+  /// tagmanager.accounts.containers.environments.update
   core.bool enableDebug;
 
   /// GTM Environment ID uniquely identifies the GTM Environment.
   core.String environmentId;
 
-  /// The fingerprint of the GTM environment as computed at storage time.
-  /// This value is recomputed whenever the environment is modified.
+  /// The fingerprint of the GTM environment as computed at storage time. This
+  /// value is recomputed whenever the environment is modified.
   core.String fingerprint;
 
   /// The environment display name. Can be set or changed only on USER type
-  /// environments.
-  /// @mutable tagmanager.accounts.containers.environments.create
+  /// environments. @mutable tagmanager.accounts.containers.environments.create
   /// @mutable tagmanager.accounts.containers.environments.update
   core.String name;
 
@@ -5805,13 +5693,12 @@ class Environment {
   /// - "live" : Points to the current live container version.
   /// - "latest" : Points to the latest container version.
   /// - "workspace" : Automatically managed environment that points to a
-  /// workspace preview or
-  /// version created by a workspace.
+  /// workspace preview or version created by a workspace.
   core.String type;
 
-  /// Default preview page url for the environment.
-  /// @mutable tagmanager.accounts.containers.environments.create
-  /// @mutable tagmanager.accounts.containers.environments.update
+  /// Default preview page url for the environment. @mutable
+  /// tagmanager.accounts.containers.environments.create @mutable
+  /// tagmanager.accounts.containers.environments.update
   core.String url;
 
   /// Represents a link to a quick preview of a workspace.
@@ -5927,21 +5814,21 @@ class Folder {
   /// GTM Container ID.
   core.String containerId;
 
-  /// The fingerprint of the GTM Folder as computed at storage time.
-  /// This value is recomputed whenever the folder is modified.
+  /// The fingerprint of the GTM Folder as computed at storage time. This value
+  /// is recomputed whenever the folder is modified.
   core.String fingerprint;
 
   /// The Folder ID uniquely identifies the GTM Folder.
   core.String folderId;
 
-  /// Folder display name.
-  /// @mutable tagmanager.accounts.containers.workspaces.folders.create
-  /// @mutable tagmanager.accounts.containers.workspaces.folders.update
+  /// Folder display name. @mutable
+  /// tagmanager.accounts.containers.workspaces.folders.create @mutable
+  /// tagmanager.accounts.containers.workspaces.folders.update
   core.String name;
 
-  /// User notes on how to apply this folder in the container.
-  /// @mutable tagmanager.accounts.containers.workspaces.folders.create
-  /// @mutable tagmanager.accounts.containers.workspaces.folders.update
+  /// User notes on how to apply this folder in the container. @mutable
+  /// tagmanager.accounts.containers.workspaces.folders.create @mutable
+  /// tagmanager.accounts.containers.workspaces.folders.update
   core.String notes;
 
   /// GTM Folder's API relative path.
@@ -6081,7 +5968,7 @@ class GalleryReference {
   /// The name of the host for the community gallery template.
   core.String host;
 
-  /// If a user has manually edited the community  gallery template.
+  /// If a user has manually edited the community gallery template.
   core.bool isModified;
 
   /// The name of the owner for the community gallery template.
@@ -6091,8 +5978,7 @@ class GalleryReference {
   core.String repository;
 
   /// The signature of the community gallery template as computed at import
-  /// time.
-  /// This value is recomputed whenever the template is updated from the
+  /// time. This value is recomputed whenever the template is updated from the
   /// gallery.
   core.String signature;
 
@@ -6638,9 +6524,9 @@ class MergeConflict {
   /// it means the workspace entity is deleted from the base version.
   Entity entityInBaseVersion;
 
-  /// The workspace entity that has conflicting changes compared to the
-  /// base version. If an entity is deleted in a workspace, it will still
-  /// appear with a deleted change status.
+  /// The workspace entity that has conflicting changes compared to the base
+  /// version. If an entity is deleted in a workspace, it will still appear with
+  /// a deleted change status.
   Entity entityInWorkspace;
 
   MergeConflict();
@@ -6669,24 +6555,23 @@ class MergeConflict {
 
 /// Represents a Google Tag Manager Parameter.
 class Parameter {
-  /// The named key that uniquely identifies a parameter.  Required for
-  /// top-level
-  /// parameters, as well as map values.  Ignored for list values.
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// The named key that uniquely identifies a parameter. Required for top-level
+  /// parameters, as well as map values. Ignored for list values. @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.String key;
 
-  /// This list parameter's parameters (keys will be ignored).
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// This list parameter's parameters (keys will be ignored). @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.List<Parameter> list;
 
   /// This map parameter's parameters (must have keys; keys must be unique).
@@ -6694,31 +6579,25 @@ class Parameter {
   /// @mutable tagmanager.accounts.containers.workspaces.variables.update
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.List<Parameter> map;
 
-  /// The parameter type.  Valid values are:<ul>
-  /// <li><code>boolean</code>: The value represents a boolean, represented as
-  ///     'true' or 'false'</li>
-  /// <li><code>integer</code>: The value represents a 64-bit signed integer
-  ///     value, in base 10</li>
-  /// <li><code>list</code>: A list of parameters should be specified</li>
-  /// <li><code>map</code>: A map of parameters should be specified</li>
-  /// <li><code>template</code>: The value represents any text; this can include
-  ///     variable references (even variable references that might return
-  ///     non-string types)</li>
-  /// <li><code>trigger_reference</code>: The value represents a trigger,
-  ///     represented as the trigger id</li>
-  /// <li><code>tag_reference</code>: The value represents a tag, represented as
-  ///     the tag name</li>
-  /// </ul>
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// The parameter type. Valid values are: - boolean: The value represents a
+  /// boolean, represented as 'true' or 'false' - integer: The value represents
+  /// a 64-bit signed integer value, in base 10 - list: A list of parameters
+  /// should be specified - map: A map of parameters should be specified -
+  /// template: The value represents any text; this can include variable
+  /// references (even variable references that might return non-string types) -
+  /// trigger_reference: The value represents a trigger, represented as the
+  /// trigger id - tag_reference: The value represents a tag, represented as the
+  /// tag name @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   /// Possible string values are:
   /// - "typeUnspecified"
   /// - "template" : May include variable references (such as "{{myVariable}}").
@@ -6731,14 +6610,13 @@ class Parameter {
   core.String type;
 
   /// A parameter's value (may contain variable references such as
-  /// "{{myVariable}}")
-  /// as appropriate to the specified type.
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// "{{myVariable}}") as appropriate to the specified type. @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.String value;
 
   Parameter();
@@ -6913,9 +6791,9 @@ class RevertFolderResponse {
 
 /// The result of reverting a tag in a workspace.
 class RevertTagResponse {
-  /// Tag as it appears in the latest container version since the last
-  /// workspace synchronization operation. If no tag is present, that means
-  /// the tag was deleted in the latest container version.
+  /// Tag as it appears in the latest container version since the last workspace
+  /// synchronization operation. If no tag is present, that means the tag was
+  /// deleted in the latest container version.
   Tag tag;
 
   RevertTagResponse();
@@ -7014,8 +6892,8 @@ class RevertVariableResponse {
 /// The result of reverting a zone in a workspace.
 class RevertZoneResponse {
   /// Zone as it appears in the latest container version since the last
-  /// workspace synchronization operation. If no zone is present, that means
-  /// the zone was deleted in the latest container version.
+  /// workspace synchronization operation. If no zone is present, that means the
+  /// zone was deleted in the latest container version.
   Zone zone;
 
   RevertZoneResponse();
@@ -7036,12 +6914,12 @@ class RevertZoneResponse {
   }
 }
 
-/// Represents a reference to atag that fires before another tag in order to
-/// set up dependencies.
+/// Represents a reference to atag that fires before another tag in order to set
+/// up dependencies.
 class SetupTag {
   /// If true, fire the main tag if and only if the setup tag fires
-  /// successfully.
-  /// If false, fire the main tag regardless of setup tag firing status.
+  /// successfully. If false, fire the main tag regardless of setup tag firing
+  /// status.
   core.bool stopOnSetupFailure;
 
   /// The name of the setup tag.
@@ -7106,9 +6984,9 @@ class SyncStatus {
 /// A response after synchronizing the workspace to the latest container
 /// version.
 class SyncWorkspaceResponse {
-  /// The merge conflict after sync.
-  /// If this field is not empty, the sync is still treated as successful.
-  /// But a version cannot be created until all conflicts are resolved.
+  /// The merge conflict after sync. If this field is not empty, the sync is
+  /// still treated as successful. But a version cannot be created until all
+  /// conflicts are resolved.
   core.List<MergeConflict> mergeConflict;
 
   /// Indicates whether synchronization caused a merge conflict or sync error.
@@ -7147,73 +7025,68 @@ class Tag {
   core.String accountId;
 
   /// Blocking rule IDs. If any of the listed rules evaluate to true, the tag
-  ///     will not fire.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// will not fire. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.List<core.String> blockingRuleId;
 
   /// Blocking trigger IDs. If any of the listed triggers evaluate to true, the
-  /// tag will not fire.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// tag will not fire. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.List<core.String> blockingTriggerId;
 
   /// GTM Container ID.
   core.String containerId;
 
-  /// The fingerprint of the GTM Tag as computed at storage time.
-  /// This value is recomputed whenever the tag is modified.
+  /// The fingerprint of the GTM Tag as computed at storage time. This value is
+  /// recomputed whenever the tag is modified.
   core.String fingerprint;
 
   /// Firing rule IDs. A tag will fire when any of the listed rules are true and
-  ///     all of its <code>blockingRuleIds</code> (if any specified) are false.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// all of its blockingRuleIds (if any specified) are false. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.List<core.String> firingRuleId;
 
   /// Firing trigger IDs. A tag will fire when any of the listed triggers are
-  /// true and all of its <code>blockingTriggerIds</code> (if any specified) are
-  /// false.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// true and all of its blockingTriggerIds (if any specified) are false.
+  /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.List<core.String> firingTriggerId;
 
   /// If set to true, this tag will only fire in the live environment (e.g. not
-  /// in preview or debug mode).
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// in preview or debug mode). @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.bool liveOnly;
 
   /// A map of key-value pairs of tag metadata to be included in the event data
-  /// for tag monitoring.
-  /// Notes:<ul>
-  /// <li>This parameter must be type <code>MAP</code>.</li>
-  /// <li>Each parameter in the map are type <code>TEMPLATE</code>, however
-  /// cannot contain variable references.</li>
-  /// </ul>
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
+  /// for tag monitoring. Notes: - This parameter must be type MAP. - Each
+  /// parameter in the map are type TEMPLATE, however cannot contain variable
+  /// references. @mutable tagmanager.accounts.containers.workspaces.tags.create
   /// @mutable tagmanager.accounts.containers.workspaces.tags.update
   Parameter monitoringMetadata;
 
   /// If non-empty, then the tag display name will be included in the monitoring
-  /// metadata map using the key specified.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// metadata map using the key specified. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.String monitoringMetadataTagNameKey;
 
-  /// Tag display name.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// Tag display name. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.String name;
 
-  /// User notes on how to apply this tag in the container.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// User notes on how to apply this tag in the container. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.String notes;
 
-  /// The tag's parameters.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// The tag's parameters. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.List<Parameter> parameter;
 
   /// Parent folder id.
@@ -7223,25 +7096,25 @@ class Tag {
   core.String path;
 
   /// Indicates whether the tag is paused, which prevents the tag from firing.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.bool paused;
 
   /// User defined numeric priority of the tag. Tags are fired asynchronously in
   /// order of priority. Tags with higher numeric value fire first. A tag's
   /// priority can be a positive or negative value. The default value is 0.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   Parameter priority;
 
-  /// The end timestamp in milliseconds to schedule a tag.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// The end timestamp in milliseconds to schedule a tag. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.String scheduleEndMs;
 
-  /// The start timestamp in milliseconds to schedule a tag.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// The start timestamp in milliseconds to schedule a tag. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.String scheduleStartMs;
 
   /// The list of setup tags. Currently we only allow one.
@@ -7252,8 +7125,7 @@ class Tag {
   /// - "tagFiringOptionUnspecified"
   /// - "unlimited" : Tag can be fired multiple times per event.
   /// - "oncePerEvent" : Tag can only be fired per event but can be fired
-  /// multiple times per load
-  /// (e.g., app load or page load).
+  /// multiple times per load (e.g., app load or page load).
   /// - "oncePerLoad" : Tag can only be fired per load (e.g., app load or page
   /// load).
   core.String tagFiringOption;
@@ -7267,9 +7139,9 @@ class Tag {
   /// The list of teardown tags. Currently we only allow one.
   core.List<TeardownTag> teardownTag;
 
-  /// GTM Tag Type.
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.create
-  /// @mutable tagmanager.accounts.containers.workspaces.tags.update
+  /// GTM Tag Type. @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+  /// tagmanager.accounts.containers.workspaces.tags.update
   core.String type;
 
   /// GTM Workspace ID.
@@ -7457,8 +7329,8 @@ class Tag {
 /// dependencies.
 class TeardownTag {
   /// If true, fire the teardown tag if and only if the main tag fires
-  /// successfully.
-  /// If false, fire the teardown tag regardless of main tag firing status.
+  /// successfully. If false, fire the teardown tag regardless of main tag
+  /// firing status.
   core.bool stopTeardownOnFailure;
 
   /// The name of the teardown tag.
@@ -7493,9 +7365,9 @@ class Trigger {
   /// GTM Account ID.
   core.String accountId;
 
-  /// Used in the case of auto event tracking.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Used in the case of auto event tracking. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   core.List<Condition> autoEventFilter;
 
   /// Whether or not we should only fire tags if the form submit or link click
@@ -7509,14 +7381,13 @@ class Trigger {
   core.String containerId;
 
   /// A visibility trigger minimum continuous visible time (in milliseconds).
-  /// Only valid for AMP Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Only valid for AMP Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter continuousTimeMinMilliseconds;
 
   /// Used in the case of custom event, which is fired iff all Conditions are
-  /// true.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
+  /// true. @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
   core.List<Condition> customEventFilter;
 
@@ -7525,62 +7396,60 @@ class Trigger {
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
   Parameter eventName;
 
-  /// The trigger will only fire iff all Conditions are true.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// The trigger will only fire iff all Conditions are true. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   core.List<Condition> filter;
 
-  /// The fingerprint of the GTM Trigger as computed at storage time.
-  /// This value is recomputed whenever the trigger is modified.
+  /// The fingerprint of the GTM Trigger as computed at storage time. This value
+  /// is recomputed whenever the trigger is modified.
   core.String fingerprint;
 
   /// List of integer percentage values for scroll triggers. The trigger will
   /// fire when each percentage is reached when the view is scrolled
-  /// horizontally. Only valid for AMP scroll triggers.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// horizontally. Only valid for AMP scroll triggers. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter horizontalScrollPercentageList;
 
   /// Time between triggering recurring Timer Events (in milliseconds). Only
-  /// valid for Timer triggers.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// valid for Timer triggers. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter interval;
 
   /// Time between Timer Events to fire (in seconds). Only valid for AMP Timer
-  /// trigger.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// trigger. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter intervalSeconds;
 
   /// Limit of the number of GTM events this Timer Trigger will fire. If no
-  /// limit
-  /// is set, we will continue to fire GTM events until the user leaves the
-  /// page.
-  /// Only valid for Timer triggers.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// limit is set, we will continue to fire GTM events until the user leaves
+  /// the page. Only valid for Timer triggers. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter limit;
 
   /// Max time to fire Timer Events (in seconds). Only valid for AMP Timer
-  /// trigger.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// trigger. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter maxTimerLengthSeconds;
 
-  /// Trigger display name.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Trigger display name. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   core.String name;
 
-  /// User notes on how to apply this trigger in the container.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// User notes on how to apply this trigger in the container. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   core.String notes;
 
-  /// Additional parameters.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Additional parameters. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   core.List<Parameter> parameter;
 
   /// Parent folder id.
@@ -7590,26 +7459,26 @@ class Trigger {
   core.String path;
 
   /// A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP
-  /// Click trigger.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Click trigger. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter selector;
 
   /// Auto generated link to the tag manager UI
   core.String tagManagerUrl;
 
-  /// A visibility trigger minimum total visible time (in milliseconds).
-  /// Only valid for AMP Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// A visibility trigger minimum total visible time (in milliseconds). Only
+  /// valid for AMP Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter totalTimeMinMilliseconds;
 
   /// The Trigger ID uniquely identifies the GTM Trigger.
   core.String triggerId;
 
-  /// Defines the data layer event that causes this trigger.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Defines the data layer event that causes this trigger. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   /// Possible string values are:
   /// - "eventTypeUnspecified"
   /// - "pageview"
@@ -7647,54 +7516,52 @@ class Trigger {
 
   /// Globally unique id of the trigger that auto-generates this (a Form Submit,
   /// Link Click or Timer listener) if any. Used to make incompatible
-  /// auto-events
-  /// work together with trigger filtering based on trigger ids. This value is
-  /// populated during output generation since the tags implied by triggers
-  /// don't
-  /// exist until then. Only valid for Form Submit, Link Click and Timer
-  /// triggers.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// auto-events work together with trigger filtering based on trigger ids.
+  /// This value is populated during output generation since the tags implied by
+  /// triggers don't exist until then. Only valid for Form Submit, Link Click
+  /// and Timer triggers. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter uniqueTriggerId;
 
   /// List of integer percentage values for scroll triggers. The trigger will
   /// fire when each percentage is reached when the view is scrolled vertically.
-  /// Only valid for AMP scroll triggers.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Only valid for AMP scroll triggers. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter verticalScrollPercentageList;
 
   /// A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP
-  /// Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter visibilitySelector;
 
   /// A visibility trigger maximum percent visibility. Only valid for AMP
-  /// Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter visiblePercentageMax;
 
   /// A visibility trigger minimum percent visibility. Only valid for AMP
-  /// Visibility trigger.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Visibility trigger. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter visiblePercentageMin;
 
-  /// Whether or not we should delay the form submissions or link opening
-  /// until all of the tags have fired (by preventing the default
-  /// action and later simulating the default action). Only valid for
-  /// Form Submission and Link Click triggers.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// Whether or not we should delay the form submissions or link opening until
+  /// all of the tags have fired (by preventing the default action and later
+  /// simulating the default action). Only valid for Form Submission and Link
+  /// Click triggers. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter waitForTags;
 
   /// How long to wait (in milliseconds) for tags to fire when 'waits_for_tags'
-  /// above evaluates to <code>true</code>.  Only valid for Form Submission and
-  /// Link Click triggers.
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
-  /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
+  /// above evaluates to true. Only valid for Form Submission and Link Click
+  /// triggers. @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+  /// tagmanager.accounts.containers.workspaces.triggers.update
   Parameter waitForTagsTimeout;
 
   /// GTM Workspace ID.
@@ -7926,21 +7793,20 @@ class Trigger {
 
 /// Represents a user's permissions to an account and its container.
 class UserPermission {
-  /// GTM Account access permissions.
-  /// @mutable tagmanager.accounts.permissions.create
-  /// @mutable tagmanager.accounts.permissions.update
+  /// GTM Account access permissions. @mutable
+  /// tagmanager.accounts.permissions.create @mutable
+  /// tagmanager.accounts.permissions.update
   AccountAccess accountAccess;
 
   /// The Account ID uniquely identifies the GTM Account.
   core.String accountId;
 
-  /// GTM Container access permissions.
-  /// @mutable tagmanager.accounts.permissions.create
-  /// @mutable tagmanager.accounts.permissions.update
+  /// GTM Container access permissions. @mutable
+  /// tagmanager.accounts.permissions.create @mutable
+  /// tagmanager.accounts.permissions.update
   core.List<ContainerAccess> containerAccess;
 
-  /// User's email address.
-  /// @mutable tagmanager.accounts.permissions.create
+  /// User's email address. @mutable tagmanager.accounts.permissions.create
   core.String emailAddress;
 
   /// GTM UserPermission's API relative path.
@@ -8000,11 +7866,11 @@ class Variable {
   core.String containerId;
 
   /// For mobile containers only: A list of trigger IDs for disabling
-  /// conditional
-  /// variables; the variable is enabled if one of the enabling trigger is true
-  /// while all the disabling trigger are false. Treated as an unordered set.
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
+  /// conditional variables; the variable is enabled if one of the enabling
+  /// trigger is true while all the disabling trigger are false. Treated as an
+  /// unordered set. @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update
   core.List<core.String> disablingTriggerId;
 
   /// For mobile containers only: A list of trigger IDs for enabling conditional
@@ -8014,26 +7880,26 @@ class Variable {
   /// @mutable tagmanager.accounts.containers.workspaces.variables.update
   core.List<core.String> enablingTriggerId;
 
-  /// The fingerprint of the GTM Variable as computed at storage time.
-  /// This value is recomputed whenever the variable is modified.
+  /// The fingerprint of the GTM Variable as computed at storage time. This
+  /// value is recomputed whenever the variable is modified.
   core.String fingerprint;
 
   /// Option to convert a variable value to other value.
   VariableFormatValue formatValue;
 
-  /// Variable display name.
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
+  /// Variable display name. @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update
   core.String name;
 
-  /// User notes on how to apply this variable in the container.
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
+  /// User notes on how to apply this variable in the container. @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update
   core.String notes;
 
-  /// The variable's parameters.
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
+  /// The variable's parameters. @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update
   core.List<Parameter> parameter;
 
   /// Parent folder id.
@@ -8042,22 +7908,22 @@ class Variable {
   /// GTM Variable's API relative path.
   core.String path;
 
-  /// The end timestamp in milliseconds to schedule a variable.
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
+  /// The end timestamp in milliseconds to schedule a variable. @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update
   core.String scheduleEndMs;
 
-  /// The start timestamp in milliseconds to schedule a variable.
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
+  /// The start timestamp in milliseconds to schedule a variable. @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update
   core.String scheduleStartMs;
 
   /// Auto generated link to the tag manager UI
   core.String tagManagerUrl;
 
-  /// GTM Variable Type.
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.create
-  /// @mutable tagmanager.accounts.containers.workspaces.variables.update
+  /// GTM Variable Type. @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+  /// tagmanager.accounts.containers.workspaces.variables.update
   core.String type;
 
   /// The Variable ID uniquely identifies the GTM Variable.
@@ -8257,18 +8123,18 @@ class Workspace {
   /// GTM Container ID.
   core.String containerId;
 
-  /// Workspace description.
-  /// @mutable tagmanager.accounts.containers.workspaces.create
-  /// @mutable tagmanager.accounts.containers.workspaces.update
+  /// Workspace description. @mutable
+  /// tagmanager.accounts.containers.workspaces.create @mutable
+  /// tagmanager.accounts.containers.workspaces.update
   core.String description;
 
   /// The fingerprint of the GTM Workspace as computed at storage time. This
   /// value is recomputed whenever the workspace is modified.
   core.String fingerprint;
 
-  /// Workspace display name.
-  /// @mutable tagmanager.accounts.containers.workspaces.create
-  /// @mutable tagmanager.accounts.containers.workspaces.update
+  /// Workspace display name. @mutable
+  /// tagmanager.accounts.containers.workspaces.create @mutable
+  /// tagmanager.accounts.containers.workspaces.update
   core.String name;
 
   /// GTM Workspace's API relative path.
@@ -8354,8 +8220,8 @@ class Zone {
   /// GTM Container ID.
   core.String containerId;
 
-  /// The fingerprint of the GTM Zone as computed at storage time.
-  /// This value is recomputed whenever the zone is modified.
+  /// The fingerprint of the GTM Zone as computed at storage time. This value is
+  /// recomputed whenever the zone is modified.
   core.String fingerprint;
 
   /// Zone display name.

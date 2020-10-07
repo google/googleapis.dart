@@ -23,7 +23,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client groupsmigration/v1';
 
-/// Groups Migration Api.
+/// The Groups Migration API allows domain administrators to archive emails into
+/// Google groups.
 class GroupsmigrationApi {
   /// Manage messages in groups on your domain
   static const AppsGroupsMigrationScope =
@@ -34,8 +35,8 @@ class GroupsmigrationApi {
   ArchiveResourceApi get archive => new ArchiveResourceApi(_requester);
 
   GroupsmigrationApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "groups/v1/groups/"})
+      {core.String rootUrl = "https://groupsmigration.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -56,10 +57,6 @@ class ArchiveResourceApi {
   ///
   /// [uploadMedia] - The media to upload.
   ///
-  /// [uploadOptions] - Options for the media upload. Streaming Media without
-  /// the length being known ahead of time is only supported via resumable
-  /// uploads.
-  ///
   /// Completes with a [Groups].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -68,9 +65,7 @@ class ArchiveResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Groups> insert(core.String groupId,
-      {core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
+      {core.String $fields, commons.Media uploadMedia}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -86,12 +81,10 @@ class ArchiveResourceApi {
     }
 
     _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
 
+    _uploadOptions = commons.UploadOptions.Default;
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$groupId') + '/archive';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/groups/v1/groups/' +
+      _url = 'groups/v1/groups/' +
           commons.Escaper.ecapeVariable('$groupId') +
           '/archive';
     } else {

@@ -16,7 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client licensing/v1';
 
-/// Licensing API to view and manage licenses for your domain
+/// The Google Enterprise License Manager API's allows you to license apps for
+/// all the users of a domain managed by you.
 class LicensingApi {
   /// View and manage G Suite licenses for your domain
   static const AppsLicensingScope =
@@ -29,7 +30,7 @@ class LicensingApi {
 
   LicensingApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "apps/licensing/v1/product/"})
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -51,11 +52,10 @@ class LicenseAssignmentsResourceApi {
   /// available SKUs in this version of the API, see Products and SKUs.
   ///
   /// [userId] - The user's current primary email address. If the user's email
-  /// address changes, use the new email address in your API requests.
-  /// Since a userId is subject to change, do not use a userId value as a key
-  /// for persistent data. This key could break if the current user's email
-  /// address changes.
-  /// If the userId is suspended, the license status changes.
+  /// address changes, use the new email address in your API requests. Since a
+  /// userId is subject to change, do not use a userId value as a key for
+  /// persistent data. This key could break if the current user's email address
+  /// changes. If the userId is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -90,7 +90,8 @@ class LicenseAssignmentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$productId') +
+    _url = 'apps/licensing/v1/product/' +
+        commons.Escaper.ecapeVariable('$productId') +
         '/sku/' +
         commons.Escaper.ecapeVariable('$skuId') +
         '/user/' +
@@ -116,11 +117,10 @@ class LicenseAssignmentsResourceApi {
   /// available SKUs in this version of the API, see Products and SKUs.
   ///
   /// [userId] - The user's current primary email address. If the user's email
-  /// address changes, use the new email address in your API requests.
-  /// Since a userId is subject to change, do not use a userId value as a key
-  /// for persistent data. This key could break if the current user's email
-  /// address changes.
-  /// If the userId is suspended, the license status changes.
+  /// address changes, use the new email address in your API requests. Since a
+  /// userId is subject to change, do not use a userId value as a key for
+  /// persistent data. This key could break if the current user's email address
+  /// changes. If the userId is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -155,7 +155,8 @@ class LicenseAssignmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') +
+    _url = 'apps/licensing/v1/product/' +
+        commons.Escaper.ecapeVariable('$productId') +
         '/sku/' +
         commons.Escaper.ecapeVariable('$skuId') +
         '/user/' +
@@ -215,7 +216,8 @@ class LicenseAssignmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') +
+    _url = 'apps/licensing/v1/product/' +
+        commons.Escaper.ecapeVariable('$productId') +
         '/sku/' +
         commons.Escaper.ecapeVariable('$skuId') +
         '/user';
@@ -237,8 +239,8 @@ class LicenseAssignmentsResourceApi {
   /// products in this version of the API, see Products and SKUs.
   ///
   /// [customerId] - Customer's customerId. A previous version of this API
-  /// accepted the primary domain name as a value for this field.
-  /// If the customer is suspended, the server returns an error.
+  /// accepted the primary domain name as a value for this field. If the
+  /// customer is suspended, the server returns an error.
   ///
   /// [maxResults] - The maxResults query string determines how many entries are
   /// returned on each page of a large response. This is an optional parameter.
@@ -287,7 +289,9 @@ class LicenseAssignmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') + '/users';
+    _url = 'apps/licensing/v1/product/' +
+        commons.Escaper.ecapeVariable('$productId') +
+        '/users';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -309,8 +313,8 @@ class LicenseAssignmentsResourceApi {
   /// available SKUs in this version of the API, see Products and SKUs.
   ///
   /// [customerId] - Customer's customerId. A previous version of this API
-  /// accepted the primary domain name as a value for this field.
-  /// If the customer is suspended, the server returns an error.
+  /// accepted the primary domain name as a value for this field. If the
+  /// customer is suspended, the server returns an error.
   ///
   /// [maxResults] - The maxResults query string determines how many entries are
   /// returned on each page of a large response. This is an optional parameter.
@@ -362,7 +366,8 @@ class LicenseAssignmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') +
+    _url = 'apps/licensing/v1/product/' +
+        commons.Escaper.ecapeVariable('$productId') +
         '/sku/' +
         commons.Escaper.ecapeVariable('$skuId') +
         '/users';
@@ -376,8 +381,7 @@ class LicenseAssignmentsResourceApi {
     return _response.then((data) => new LicenseAssignmentList.fromJson(data));
   }
 
-  /// Reassign a user's product SKU with a different SKU in the same product.
-  /// This method supports patch semantics.
+  /// Patch a Licensing info via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -390,11 +394,10 @@ class LicenseAssignmentsResourceApi {
   /// available SKUs in this version of the API, see Products and SKUs.
   ///
   /// [userId] - The user's current primary email address. If the user's email
-  /// address changes, use the new email address in your API requests.
-  /// Since a userId is subject to change, do not use a userId value as a key
-  /// for persistent data. This key could break if the current user's email
-  /// address changes.
-  /// If the userId is suspended, the license status changes.
+  /// address changes, use the new email address in your API requests. Since a
+  /// userId is subject to change, do not use a userId value as a key for
+  /// persistent data. This key could break if the current user's email address
+  /// changes. If the userId is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -432,7 +435,8 @@ class LicenseAssignmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') +
+    _url = 'apps/licensing/v1/product/' +
+        commons.Escaper.ecapeVariable('$productId') +
         '/sku/' +
         commons.Escaper.ecapeVariable('$skuId') +
         '/user/' +
@@ -460,11 +464,10 @@ class LicenseAssignmentsResourceApi {
   /// available SKUs in this version of the API, see Products and SKUs.
   ///
   /// [userId] - The user's current primary email address. If the user's email
-  /// address changes, use the new email address in your API requests.
-  /// Since a userId is subject to change, do not use a userId value as a key
-  /// for persistent data. This key could break if the current user's email
-  /// address changes.
-  /// If the userId is suspended, the license status changes.
+  /// address changes, use the new email address in your API requests. Since a
+  /// userId is subject to change, do not use a userId value as a key for
+  /// persistent data. This key could break if the current user's email address
+  /// changes. If the userId is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -502,7 +505,8 @@ class LicenseAssignmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') +
+    _url = 'apps/licensing/v1/product/' +
+        commons.Escaper.ecapeVariable('$productId') +
         '/sku/' +
         commons.Escaper.ecapeVariable('$skuId') +
         '/user/' +
@@ -633,7 +637,6 @@ class LicenseAssignmentInsert {
   }
 }
 
-/// LicesnseAssignment List for a given product/sku for a customer.
 class LicenseAssignmentList {
   /// ETag of the resource.
   core.String etag;

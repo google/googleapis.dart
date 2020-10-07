@@ -24,8 +24,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client cloudsearch/v1';
 
-/// Cloud Search provides cloud-based search capabilities over G Suite data.
-/// The Cloud Search API allows indexing of non-G Suite data into Cloud Search.
+/// Cloud Search provides cloud-based search capabilities over G Suite data. The
+/// Cloud Search API allows indexing of non-G Suite data into Cloud Search.
 class CloudsearchApi {
   /// Index and serve your organization's data with Cloud Search
   static const CloudSearchScope =
@@ -110,21 +110,18 @@ class DebugDatasourcesItemsResourceApi {
   DebugDatasourcesItemsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Checks whether an item is accessible by specified principal.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Checks whether an item is accessible by specified principal. **Note:**
+  /// This API requires an admin account to execute.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Item name, format:
-  /// datasources/{source_id}/items/{item_id}
+  /// [name] - Item name, format: datasources/{source_id}/items/{item_id}
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -174,17 +171,14 @@ class DebugDatasourcesItemsResourceApi {
     return _response.then((data) => new CheckAccessResponse.fromJson(data));
   }
 
-  /// Fetches the item whose viewUrl exactly matches that of the URL provided
-  /// in the request.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Fetches the item whose viewUrl exactly matches that of the URL provided in
+  /// the request. **Note:** This API requires an admin account to execute.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Source name, format:
-  /// datasources/{source_id}
+  /// [name] - Source name, format: datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -238,9 +232,8 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
   DebugDatasourcesItemsUnmappedidsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// List all unmapped identities for a specific item.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// List all unmapped identities for a specific item. **Note:** This API
+  /// requires an admin account to execute.
   ///
   /// Request parameters:
   ///
@@ -248,15 +241,14 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
   /// datasources/{source_id}/items/{ID}
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
-  ///
-  /// [pageSize] - Maximum number of items to fetch in a request.
-  /// Defaults to 100.
+  /// [pageSize] - Maximum number of items to fetch in a request. Defaults to
+  /// 100.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -269,9 +261,9 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUnmappedIdentitiesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.bool debugOptions_enableDebugging,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -283,9 +275,6 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -293,6 +282,9 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
       _queryParams["debugOptions.enableDebugging"] = [
         "${debugOptions_enableDebugging}"
       ];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -331,9 +323,8 @@ class DebugIdentitysourcesItemsResourceApi {
   DebugIdentitysourcesItemsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists names of items associated with an unmapped identity.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Lists names of items associated with an unmapped identity. **Note:** This
+  /// API requires an admin account to execute.
   ///
   /// Request parameters:
   ///
@@ -341,19 +332,18 @@ class DebugIdentitysourcesItemsResourceApi {
   /// identitysources/{source_id}}
   /// Value must have pattern "^identitysources/[^/]+$".
   ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
   /// [groupResourceName] - null
   ///
   /// [userResourceName] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
-  ///
-  /// [pageSize] - Maximum number of items to fetch in a request.
-  /// Defaults to 100.
-  ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
+  ///
+  /// [pageSize] - Maximum number of items to fetch in a request. Defaults to
+  /// 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -367,11 +357,11 @@ class DebugIdentitysourcesItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListItemNamesForUnmappedIdentityResponse>
       listForunmappedidentity(core.String parent,
-          {core.String groupResourceName,
+          {core.String pageToken,
+          core.String groupResourceName,
           core.String userResourceName,
-          core.String pageToken,
-          core.int pageSize,
           core.bool debugOptions_enableDebugging,
+          core.int pageSize,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -383,22 +373,22 @@ class DebugIdentitysourcesItemsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (groupResourceName != null) {
       _queryParams["groupResourceName"] = [groupResourceName];
     }
     if (userResourceName != null) {
       _queryParams["userResourceName"] = [userResourceName];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (debugOptions_enableDebugging != null) {
       _queryParams["debugOptions.enableDebugging"] = [
         "${debugOptions_enableDebugging}"
       ];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -425,9 +415,8 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
   DebugIdentitysourcesUnmappedidsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists unmapped user identities for an identity source.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Lists unmapped user identities for an identity source. **Note:** This API
+  /// requires an admin account to execute.
   ///
   /// Request parameters:
   ///
@@ -435,24 +424,28 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
   /// identitysources/{source_id}
   /// Value must have pattern "^identitysources/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
-  ///
-  /// [pageSize] - Maximum number of items to fetch in a request.
-  /// Defaults to 100.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [resolutionStatusCode] - Limit users selection to this status.
   /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : A CODE_UNSPECIFIED.
-  /// - "NOT_FOUND" : A NOT_FOUND.
-  /// - "IDENTITY_SOURCE_NOT_FOUND" : A IDENTITY_SOURCE_NOT_FOUND.
-  /// - "IDENTITY_SOURCE_MISCONFIGURED" : A IDENTITY_SOURCE_MISCONFIGURED.
-  /// - "TOO_MANY_MAPPINGS_FOUND" : A TOO_MANY_MAPPINGS_FOUND.
-  /// - "INTERNAL_ERROR" : A INTERNAL_ERROR.
+  /// - "CODE_UNSPECIFIED" : Input-only value. Used to list all unmapped
+  /// identities regardless of status.
+  /// - "NOT_FOUND" : The unmapped identity was not found in IDaaS, and needs to
+  /// be provided by the user.
+  /// - "IDENTITY_SOURCE_NOT_FOUND" : The identity source associated with the
+  /// identity was either not found or deleted.
+  /// - "IDENTITY_SOURCE_MISCONFIGURED" : IDaaS does not understand the identity
+  /// source, probably because the schema was modified in a non compatible way.
+  /// - "TOO_MANY_MAPPINGS_FOUND" : The number of users associated with the
+  /// external identity is too large.
+  /// - "INTERNAL_ERROR" : Internal error.
   ///
-  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [pageSize] - Maximum number of items to fetch in a request. Defaults to
+  /// 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -465,10 +458,10 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUnmappedIdentitiesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.bool debugOptions_enableDebugging,
       core.String resolutionStatusCode,
-      core.bool debugOptions_enableDebugging,
+      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -480,19 +473,19 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (debugOptions_enableDebugging != null) {
+      _queryParams["debugOptions.enableDebugging"] = [
+        "${debugOptions_enableDebugging}"
+      ];
+    }
+    if (resolutionStatusCode != null) {
+      _queryParams["resolutionStatusCode"] = [resolutionStatusCode];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (resolutionStatusCode != null) {
-      _queryParams["resolutionStatusCode"] = [resolutionStatusCode];
-    }
-    if (debugOptions_enableDebugging != null) {
-      _queryParams["debugOptions.enableDebugging"] = [
-        "${debugOptions_enableDebugging}"
-      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -531,19 +524,17 @@ class IndexingDatasourcesResourceApi {
   IndexingDatasourcesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes the schema of a data source.
-  ///
-  /// **Note:** This API requires an admin or service account to execute.
+  /// Deletes the schema of a data source. **Note:** This API requires an admin
+  /// or service account to execute.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the data source to delete Schema.  Format:
+  /// [name] - Name of the data source to delete Schema. Format:
   /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -589,19 +580,17 @@ class IndexingDatasourcesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Gets the schema of a data source.
-  ///
-  /// **Note:** This API requires an admin or service account to execute.
+  /// Gets the schema of a data source. **Note:** This API requires an admin or
+  /// service account to execute.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the data source to get Schema.  Format:
+  /// [name] - Name of the data source to get Schema. Format:
   /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -649,15 +638,14 @@ class IndexingDatasourcesResourceApi {
 
   /// Updates the schema of a data source. This method does not perform
   /// incremental updates to the schema. Instead, this method updates the schema
-  /// by overwriting the entire schema.
-  ///
-  /// **Note:** This API requires an admin or service account to execute.
+  /// by overwriting the entire schema. **Note:** This API requires an admin or
+  /// service account to execute.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the data source to update Schema.  Format:
+  /// [name] - Name of the data source to update Schema. Format:
   /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
@@ -711,40 +699,37 @@ class IndexingDatasourcesItemsResourceApi {
   IndexingDatasourcesItemsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes Item resource for the
-  /// specified resource name. This API requires an admin or service account
-  /// to execute. The service account used is the one whitelisted in the
-  /// corresponding data source.
+  /// Deletes Item resource for the specified resource name. This API requires
+  /// an admin or service account to execute. The service account used is the
+  /// one whitelisted in the corresponding data source.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the item to delete.
-  /// Format: datasources/{source_id}/items/{item_id}
+  /// [name] - Required. Name of the item to delete. Format:
+  /// datasources/{source_id}/items/{item_id}
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
-  /// [connectorName] - Name of connector making this call.
-  /// <br />Format: datasources/{source_id}/connectors/{ID}
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [version] - Required. The incremented version of the item to delete from
-  /// the index.
-  /// The indexing system stores the version from the datasource as a
-  /// byte string and compares the Item version in the index
-  /// to the version of the queued Item using lexical ordering.
-  /// <br /><br />
-  /// Cloud Search Indexing won't delete any queued item with
-  /// a version value that is less than or equal to
-  /// the version of the currently indexed item.
-  /// The maximum length for this field is 1024 bytes.
+  /// the index. The indexing system stores the version from the datasource as a
+  /// byte string and compares the Item version in the index to the version of
+  /// the queued Item using lexical ordering. Cloud Search Indexing won't delete
+  /// any queued item with a version value that is less than or equal to the
+  /// version of the currently indexed item. The maximum length for this field
+  /// is 1024 bytes.
   ///
-  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// [connectorName] - Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
   ///
   /// [mode] - Required. The RequestMode for this request.
   /// Possible string values are:
-  /// - "UNSPECIFIED" : A UNSPECIFIED.
-  /// - "SYNCHRONOUS" : A SYNCHRONOUS.
-  /// - "ASYNCHRONOUS" : A ASYNCHRONOUS.
+  /// - "UNSPECIFIED" : Priority is not specified in the update request. Leaving
+  /// priority unspecified results in an update failure.
+  /// - "SYNCHRONOUS" : For real-time updates.
+  /// - "ASYNCHRONOUS" : For changes that are executed after the response is
+  /// sent back to the caller.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -757,9 +742,9 @@ class IndexingDatasourcesItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String name,
-      {core.String connectorName,
+      {core.bool debugOptions_enableDebugging,
       core.String version,
-      core.bool debugOptions_enableDebugging,
+      core.String connectorName,
       core.String mode,
       core.String $fields}) {
     var _url;
@@ -772,16 +757,16 @@ class IndexingDatasourcesItemsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (connectorName != null) {
-      _queryParams["connectorName"] = [connectorName];
-    }
-    if (version != null) {
-      _queryParams["version"] = [version];
-    }
     if (debugOptions_enableDebugging != null) {
       _queryParams["debugOptions.enableDebugging"] = [
         "${debugOptions_enableDebugging}"
       ];
+    }
+    if (version != null) {
+      _queryParams["version"] = [version];
+    }
+    if (connectorName != null) {
+      _queryParams["connectorName"] = [connectorName];
     }
     if (mode != null) {
       _queryParams["mode"] = [mode];
@@ -802,17 +787,16 @@ class IndexingDatasourcesItemsResourceApi {
   }
 
   /// Deletes all items in a queue. This method is useful for deleting stale
-  /// items.
-  ///
-  /// This API requires an admin or service account to execute. The service
-  /// account used is the one whitelisted in the corresponding data source.
+  /// items. This API requires an admin or service account to execute. The
+  /// service account used is the one whitelisted in the corresponding data
+  /// source.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Source to delete items in a queue.
-  /// Format: datasources/{source_id}
+  /// [name] - Name of the Data Source to delete items in a queue. Format:
+  /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -858,23 +842,21 @@ class IndexingDatasourcesItemsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Gets Item resource by item name.
-  ///
-  /// This API requires an admin or service account to execute.  The service
-  /// account used is the one whitelisted in the corresponding data source.
+  /// Gets Item resource by item name. This API requires an admin or service
+  /// account to execute. The service account used is the one whitelisted in the
+  /// corresponding data source.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the item to get info.
-  /// Format: datasources/{source_id}/items/{item_id}
+  /// [name] - Name of the item to get info. Format:
+  /// datasources/{source_id}/items/{item_id}
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
-  /// [connectorName] - Name of connector making this call.
-  /// <br />Format: datasources/{source_id}/connectors/{ID}
+  /// [connectorName] - Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -923,23 +905,18 @@ class IndexingDatasourcesItemsResourceApi {
     return _response.then((data) => new Item.fromJson(data));
   }
 
-  /// Updates Item ACL, metadata, and
-  /// content. It will insert the Item if it
-  /// does not exist.
-  /// This method does not support partial updates.  Fields with no provided
-  /// values are cleared out in the Cloud Search index.
-  ///
-  /// This API requires an admin or service account to execute. The service
-  /// account used is the one whitelisted in the corresponding data source.
+  /// Updates Item ACL, metadata, and content. It will insert the Item if it
+  /// does not exist. This method does not support partial updates. Fields with
+  /// no provided values are cleared out in the Cloud Search index. This API
+  /// requires an admin or service account to execute. The service account used
+  /// is the one whitelisted in the corresponding data source.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Item. Format:
-  /// datasources/{source_id}/items/{item_id}
-  /// <br />This is a required field.
-  /// The maximum length is 1536 characters.
+  /// [name] - Name of the Item. Format: datasources/{source_id}/items/{item_id}
+  /// This is a required field. The maximum length is 1536 characters.
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -984,52 +961,36 @@ class IndexingDatasourcesItemsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Lists all or a subset of Item resources.
-  ///
-  /// This API requires an admin or service account to execute. The service
-  /// account used is the one whitelisted in the corresponding data source.
+  /// Lists all or a subset of Item resources. This API requires an admin or
+  /// service account to execute. The service account used is the one
+  /// whitelisted in the corresponding data source.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Source to list Items.  Format:
+  /// [name] - Name of the Data Source to list Items. Format:
   /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
+  ///
+  /// [brief] - When set to true, the indexing system only populates the
+  /// following fields: name, version, queue. metadata.hash, metadata.title,
+  /// metadata.sourceRepositoryURL, metadata.objectType, metadata.createTime,
+  /// metadata.updateTime, metadata.contentLanguage, metadata.mimeType,
+  /// structured_data.hash, content.hash, itemType, itemStatus.code,
+  /// itemStatus.processingError.code, itemStatus.repositoryError.type, If this
+  /// value is false, then all the fields are populated in Item.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
-  /// [pageSize] - Maximum number of items to fetch in a request.
-  /// The max value is 1000 when brief is true.  The max value is 10 if brief
-  /// is false.
-  /// <br />The default value is 10
+  /// [pageSize] - Maximum number of items to fetch in a request. The max value
+  /// is 1000 when brief is true. The max value is 10 if brief is false. The
+  /// default value is 10
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
-  /// [connectorName] - Name of connector making this call.
-  /// <br />Format: datasources/{source_id}/connectors/{ID}
-  ///
-  /// [brief] - When set to true, the indexing system only populates the
-  /// following fields:
-  /// name,
-  /// version,
-  /// queue.
-  /// metadata.hash,
-  /// metadata.title,
-  /// metadata.sourceRepositoryURL,
-  /// metadata.objectType,
-  /// metadata.createTime,
-  /// metadata.updateTime,
-  /// metadata.contentLanguage,
-  /// metadata.mimeType,
-  /// structured_data.hash,
-  /// content.hash,
-  /// itemType,
-  /// itemStatus.code,
-  /// itemStatus.processingError.code,
-  /// itemStatus.repositoryError.type,
-  /// <br />If this value is false, then all the fields are populated in Item.
+  /// [connectorName] - Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1042,11 +1003,11 @@ class IndexingDatasourcesItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListItemsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.bool brief,
+      core.String pageToken,
       core.int pageSize,
       core.bool debugOptions_enableDebugging,
       core.String connectorName,
-      core.bool brief,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1057,6 +1018,9 @@ class IndexingDatasourcesItemsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (brief != null) {
+      _queryParams["brief"] = ["${brief}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1071,9 +1035,6 @@ class IndexingDatasourcesItemsResourceApi {
     }
     if (connectorName != null) {
       _queryParams["connectorName"] = [connectorName];
-    }
-    if (brief != null) {
-      _queryParams["brief"] = ["${brief}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1092,41 +1053,24 @@ class IndexingDatasourcesItemsResourceApi {
     return _response.then((data) => new ListItemsResponse.fromJson(data));
   }
 
-  /// Polls for unreserved items from the indexing queue and marks a
-  /// set as reserved, starting with items that have
-  /// the oldest timestamp from the highest priority
-  /// ItemStatus.
-  /// The priority order is as follows: <br />
-  /// ERROR
-  /// <br />
-  /// MODIFIED
-  /// <br />
-  /// NEW_ITEM
-  /// <br />
-  /// ACCEPTED
-  /// <br />
-  /// Reserving items ensures that polling from other threads
-  /// cannot create overlapping sets.
-  ///
-  /// After handling the reserved items, the client should put items back
-  /// into the unreserved state, either by calling
-  /// index,
-  /// or by calling
-  /// push with
-  /// the type REQUEUE.
-  ///
-  /// Items automatically become available (unreserved) after 4 hours even if no
-  /// update or push method is called.
-  ///
-  /// This API requires an admin or service account to execute. The service
-  /// account used is the one whitelisted in the corresponding data source.
+  /// Polls for unreserved items from the indexing queue and marks a set as
+  /// reserved, starting with items that have the oldest timestamp from the
+  /// highest priority ItemStatus. The priority order is as follows: ERROR
+  /// MODIFIED NEW_ITEM ACCEPTED Reserving items ensures that polling from other
+  /// threads cannot create overlapping sets. After handling the reserved items,
+  /// the client should put items back into the unreserved state, either by
+  /// calling index, or by calling push with the type REQUEUE. Items
+  /// automatically become available (unreserved) after 4 hours even if no
+  /// update or push method is called. This API requires an admin or service
+  /// account to execute. The service account used is the one whitelisted in the
+  /// corresponding data source.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Source to poll items.
-  /// Format: datasources/{source_id}
+  /// [name] - Name of the Data Source to poll items. Format:
+  /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1172,20 +1116,17 @@ class IndexingDatasourcesItemsResourceApi {
     return _response.then((data) => new PollItemsResponse.fromJson(data));
   }
 
-  /// Pushes an item onto a queue for later polling and updating.
-  ///
-  /// This API requires an admin or service account to execute. The service
-  /// account used is the one whitelisted in the corresponding data source.
+  /// Pushes an item onto a queue for later polling and updating. This API
+  /// requires an admin or service account to execute. The service account used
+  /// is the one whitelisted in the corresponding data source.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the item to
-  /// push into the indexing queue.<br />
-  /// Format: datasources/{source_id}/items/{ID}
-  /// <br />This is a required field.
-  /// The maximum length is 1536 characters.
+  /// [name] - Name of the item to push into the indexing queue. Format:
+  /// datasources/{source_id}/items/{ID} This is a required field. The maximum
+  /// length is 1536 characters.
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1230,19 +1171,18 @@ class IndexingDatasourcesItemsResourceApi {
     return _response.then((data) => new Item.fromJson(data));
   }
 
-  /// Unreserves all items from a queue, making them all eligible to be
-  /// polled.  This method is useful for resetting the indexing queue
-  /// after a connector has been restarted.
-  ///
-  /// This API requires an admin or service account to execute. The service
-  /// account used is the one whitelisted in the corresponding data source.
+  /// Unreserves all items from a queue, making them all eligible to be polled.
+  /// This method is useful for resetting the indexing queue after a connector
+  /// has been restarted. This API requires an admin or service account to
+  /// execute. The service account used is the one whitelisted in the
+  /// corresponding data source.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Source to unreserve all items.
-  /// Format: datasources/{source_id}
+  /// [name] - Name of the Data Source to unreserve all items. Format:
+  /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1289,20 +1229,17 @@ class IndexingDatasourcesItemsResourceApi {
   }
 
   /// Creates an upload session for uploading item content. For items smaller
-  /// than 100 KB, it's easier to embed the content
-  /// inline within
-  /// an index request.
-  ///
-  /// This API requires an admin or service account to execute. The service
-  /// account used is the one whitelisted in the corresponding data source.
+  /// than 100 KB, it's easier to embed the content inline within an index
+  /// request. This API requires an admin or service account to execute. The
+  /// service account used is the one whitelisted in the corresponding data
+  /// source.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Item to start a resumable upload.
-  /// Format: datasources/{source_id}/items/{item_id}.
-  /// The maximum length is 1536 bytes.
+  /// [name] - Name of the Item to start a resumable upload. Format:
+  /// datasources/{source_id}/items/{item_id}. The maximum length is 1536 bytes.
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1354,37 +1291,26 @@ class MediaResourceApi {
 
   MediaResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Uploads media for indexing.
-  ///
-  /// The upload endpoint supports direct and resumable upload protocols and
-  /// is intended for large items that can not be
+  /// Uploads media for indexing. The upload endpoint supports direct and
+  /// resumable upload protocols and is intended for large items that can not be
   /// [inlined during index
   /// requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
-  /// To index large content:
-  ///
-  /// 1. Call
-  ///    indexing.datasources.items.upload
-  ///    with the resource name to begin an upload session and retrieve the
-  ///    UploadItemRef.
-  /// 1. Call media.upload to upload the content using the same resource name
-  /// from step 1.
-  /// 1. Call indexing.datasources.items.index
-  ///    to index the item. Populate the
+  /// To index large content: 1. Call indexing.datasources.items.upload with the
+  /// item name to begin an upload session and retrieve the UploadItemRef. 1.
+  /// Call media.upload to upload the content, as a streaming request, using the
+  /// same resource name from the UploadItemRef from step 1. 1. Call
+  /// indexing.datasources.items.index to index the item. Populate the
   /// [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
-  ///    with the UploadItemRef from step 1.
-  ///
-  ///
-  /// For additional information, see
+  /// with the UploadItemRef from step 1. For additional information, see
   /// [Create a content connector using the REST
   /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
-  ///
-  ///   **Note:** This API requires a service account to execute.
+  /// **Note:** This API requires a service account to execute.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [resourceName] - Name of the media that is being downloaded.  See
+  /// [resourceName] - Name of the media that is being downloaded. See
   /// ReadRequest.resource_name.
   /// Value must have pattern "^.*$".
   ///
@@ -1443,9 +1369,11 @@ class MediaResourceApi {
 class OperationsResourceApi {
   final commons.ApiRequester _requester;
 
+  OperationsLroResourceApi get lro => new OperationsLroResourceApi(_requester);
+
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -1491,6 +1419,82 @@ class OperationsResourceApi {
   }
 }
 
+class OperationsLroResourceApi {
+  final commons.ApiRequester _requester;
+
+  OperationsLroResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Lists operations that match the specified filter in the request. If the
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern "^operations/.*$".
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(core.String name,
+      {core.String pageToken,
+      core.String filter,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/lro';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+}
+
 class QueryResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1499,15 +1503,13 @@ class QueryResourceApi {
 
   QueryResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// The Cloud Search Query API provides the search method, which returns
-  /// the most relevant results from a user query.  The results can come from
-  /// G Suite Apps, such as Gmail or Google Drive, or they can come from data
-  /// that you have indexed from a third party.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
-  /// A service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up [G Suite domain-wide delegation
-  /// of
+  /// The Cloud Search Query API provides the search method, which returns the
+  /// most relevant results from a user query. The results can come from G Suite
+  /// Apps, such as Gmail or Google Drive, or they can come from data that you
+  /// have indexed from a third party. **Note:** This API requires a standard
+  /// end user account to execute. A service account can't perform Query API
+  /// requests directly; to use a service account to perform queries, set up [G
+  /// Suite domain-wide delegation of
   /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
   /// [request] - The metadata request object.
@@ -1551,12 +1553,10 @@ class QueryResourceApi {
     return _response.then((data) => new SearchResponse.fromJson(data));
   }
 
-  /// Provides suggestions for autocompleting the query.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
-  /// A service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up [G Suite domain-wide delegation
-  /// of
+  /// Provides suggestions for autocompleting the query. **Note:** This API
+  /// requires a standard end user account to execute. A service account can't
+  /// perform Query API requests directly; to use a service account to perform
+  /// queries, set up [G Suite domain-wide delegation of
   /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
   /// [request] - The metadata request object.
@@ -1607,50 +1607,40 @@ class QuerySourcesResourceApi {
   QuerySourcesResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Returns list of sources that user can use for Search and Suggest APIs.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
-  /// A service account can't perform Query API requests directly; to use a
+  /// **Note:** This API requires a standard end user account to execute. A
+  /// service account can't perform Query API requests directly; to use a
   /// service account to perform queries, set up [G Suite domain-wide delegation
   /// of
   /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
   /// Request parameters:
   ///
-  /// [requestOptions_languageCode] - The BCP-47 language code, such as "en-US"
-  /// or "sr-Latn".
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  /// For translations.
-  ///
-  /// Set this field using the language set in browser or for the page. In the
-  /// event that the user's language preference is known, set this field to the
-  /// known user language.
-  ///
-  /// When specified, the documents in search results are biased towards the
-  /// specified language.
-  ///
-  /// The suggest API does not use this parameter. Instead, suggest
-  /// autocompletes
-  /// only based on characters in the query.
-  ///
-  /// [requestOptions_searchApplicationId] - The ID generated when you create a
-  /// search application using the
-  /// [admin console](https://support.google.com/a/answer/9043922).
+  /// [requestOptions_debugOptions_enableDebugging] - If you are asked by Google
+  /// to help with debugging, set this field. Otherwise, ignore this field.
   ///
   /// [requestOptions_timeZone] - Current user's time zone id, such as
-  /// "America/Los_Angeles" or
-  /// "Australia/Sydney". These IDs are defined by
+  /// "America/Los_Angeles" or "Australia/Sydney". These IDs are defined by
   /// [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/)
   /// project, and currently available in the file
   /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
-  /// This field is used to correctly interpret date and time queries.
-  /// If this field is not specified, the default time zone (UTC) is used.
+  /// This field is used to correctly interpret date and time queries. If this
+  /// field is not specified, the default time zone (UTC) is used.
+  ///
+  /// [requestOptions_languageCode] - The BCP-47 language code, such as "en-US"
+  /// or "sr-Latn". For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For
+  /// translations. Set this field using the language set in browser or for the
+  /// page. In the event that the user's language preference is known, set this
+  /// field to the known user language. When specified, the documents in search
+  /// results are biased towards the specified language. The suggest API does
+  /// not use this parameter. Instead, suggest autocompletes only based on
+  /// characters in the query.
   ///
   /// [pageToken] - Number of sources to return in the response.
   ///
-  /// [requestOptions_debugOptions_enableDebugging] - If you are asked by Google
-  /// to help with debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// [requestOptions_searchApplicationId] - The ID generated when you create a
+  /// search application using the [admin
+  /// console](https://support.google.com/a/answer/9043922).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1663,11 +1653,11 @@ class QuerySourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQuerySourcesResponse> list(
-      {core.String requestOptions_languageCode,
-      core.String requestOptions_searchApplicationId,
+      {core.bool requestOptions_debugOptions_enableDebugging,
       core.String requestOptions_timeZone,
+      core.String requestOptions_languageCode,
       core.String pageToken,
-      core.bool requestOptions_debugOptions_enableDebugging,
+      core.String requestOptions_searchApplicationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1676,25 +1666,25 @@ class QuerySourcesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (requestOptions_languageCode != null) {
-      _queryParams["requestOptions.languageCode"] = [
-        requestOptions_languageCode
-      ];
-    }
-    if (requestOptions_searchApplicationId != null) {
-      _queryParams["requestOptions.searchApplicationId"] = [
-        requestOptions_searchApplicationId
+    if (requestOptions_debugOptions_enableDebugging != null) {
+      _queryParams["requestOptions.debugOptions.enableDebugging"] = [
+        "${requestOptions_debugOptions_enableDebugging}"
       ];
     }
     if (requestOptions_timeZone != null) {
       _queryParams["requestOptions.timeZone"] = [requestOptions_timeZone];
     }
+    if (requestOptions_languageCode != null) {
+      _queryParams["requestOptions.languageCode"] = [
+        requestOptions_languageCode
+      ];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (requestOptions_debugOptions_enableDebugging != null) {
-      _queryParams["requestOptions.debugOptions.enableDebugging"] = [
-        "${requestOptions_debugOptions_enableDebugging}"
+    if (requestOptions_searchApplicationId != null) {
+      _queryParams["requestOptions.searchApplicationId"] = [
+        requestOptions_searchApplicationId
       ];
     }
     if ($fields != null) {
@@ -1731,9 +1721,8 @@ class SettingsDatasourcesResourceApi {
   SettingsDatasourcesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a datasource.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Creates a datasource. **Note:** This API requires an admin account to
+  /// execute.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1775,19 +1764,16 @@ class SettingsDatasourcesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Deletes a datasource.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Deletes a datasource. **Note:** This API requires an admin account to
+  /// execute.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the datasource.
-  /// Format: datasources/{source_id}.
+  /// [name] - Name of the datasource. Format: datasources/{source_id}.
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1831,19 +1817,16 @@ class SettingsDatasourcesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Gets a datasource.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Gets a datasource. **Note:** This API requires an admin account to
+  /// execute.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the datasource resource.
-  /// Format: datasources/{source_id}.
+  /// [name] - Name of the datasource resource. Format: datasources/{source_id}.
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1887,21 +1870,18 @@ class SettingsDatasourcesResourceApi {
     return _response.then((data) => new DataSource.fromJson(data));
   }
 
-  /// Lists datasources.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Lists datasources. **Note:** This API requires an admin account to
+  /// execute.
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Starting index of the results.
-  ///
-  /// [pageSize] - Maximum number of datasources to fetch in a request.
-  /// The max value is 100.
-  /// <br />The default value is 10
-  ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
+  ///
+  /// [pageSize] - Maximum number of datasources to fetch in a request. The max
+  /// value is 100. The default value is 10
+  ///
+  /// [pageToken] - Starting index of the results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1914,9 +1894,9 @@ class SettingsDatasourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourceResponse> list(
-      {core.String pageToken,
+      {core.bool debugOptions_enableDebugging,
       core.int pageSize,
-      core.bool debugOptions_enableDebugging,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1925,16 +1905,16 @@ class SettingsDatasourcesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (debugOptions_enableDebugging != null) {
       _queryParams["debugOptions.enableDebugging"] = [
         "${debugOptions_enableDebugging}"
       ];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1951,17 +1931,15 @@ class SettingsDatasourcesResourceApi {
     return _response.then((data) => new ListDataSourceResponse.fromJson(data));
   }
 
-  /// Updates a datasource.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Updates a datasource. **Note:** This API requires an admin account to
+  /// execute.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the datasource resource.
-  /// Format: datasources/{source_id}.
-  /// <br />The name is ignored when creating a datasource.
+  /// [name] - Name of the datasource resource. Format: datasources/{source_id}.
+  /// The name is ignored when creating a datasource.
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2012,9 +1990,8 @@ class SettingsSearchapplicationsResourceApi {
   SettingsSearchapplicationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a search application.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Creates a search application. **Note:** This API requires an admin account
+  /// to execute.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2057,19 +2034,17 @@ class SettingsSearchapplicationsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Deletes a search application.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Deletes a search application. **Note:** This API requires an admin account
+  /// to execute.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the search application to be deleted.
-  /// <br />Format: applications/{application_id}.
+  /// [name] - The name of the search application to be deleted. Format:
+  /// applications/{application_id}.
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2113,19 +2088,17 @@ class SettingsSearchapplicationsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Gets the specified search application.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Gets the specified search application. **Note:** This API requires an
+  /// admin account to execute.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the search application.
-  /// <br />Format: applications/{application_id}.
+  /// [name] - Name of the search application. Format:
+  /// searchapplications/{application_id}.
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2169,21 +2142,18 @@ class SettingsSearchapplicationsResourceApi {
     return _response.then((data) => new SearchApplication.fromJson(data));
   }
 
-  /// Lists all search applications.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Lists all search applications. **Note:** This API requires an admin
+  /// account to execute.
   ///
   /// Request parameters:
   ///
-  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
+  /// [pageSize] - The maximum number of items to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
-  /// <br/> The default value is 10
+  /// request, if any. The default value is 10
   ///
-  /// [pageSize] - The maximum number of items to return.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2196,9 +2166,9 @@ class SettingsSearchapplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSearchApplicationsResponse> list(
-      {core.bool debugOptions_enableDebugging,
+      {core.int pageSize,
       core.String pageToken,
-      core.int pageSize,
+      core.bool debugOptions_enableDebugging,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2207,16 +2177,16 @@ class SettingsSearchapplicationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (debugOptions_enableDebugging != null) {
-      _queryParams["debugOptions.enableDebugging"] = [
-        "${debugOptions_enableDebugging}"
-      ];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (debugOptions_enableDebugging != null) {
+      _queryParams["debugOptions.enableDebugging"] = [
+        "${debugOptions_enableDebugging}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2235,16 +2205,14 @@ class SettingsSearchapplicationsResourceApi {
   }
 
   /// Resets a search application to default settings. This will return an empty
-  /// response.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// response. **Note:** This API requires an admin account to execute.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the search application to be reset.
-  /// <br />Format: applications/{application_id}.
+  /// [name] - The name of the search application to be reset. Format:
+  /// applications/{application_id}.
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2290,16 +2258,15 @@ class SettingsSearchapplicationsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Updates a search application.
-  ///
-  /// **Note:** This API requires an admin account to execute.
+  /// Updates a search application. **Note:** This API requires an admin account
+  /// to execute.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Search Application.
-  /// <br />Format: searchapplications/{application_id}.
+  /// [name] - Name of the Search Application. Format:
+  /// searchapplications/{application_id}.
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2354,27 +2321,26 @@ class StatsResourceApi {
 
   StatsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets indexed item statistics aggreggated across all data sources. This
-  /// API only returns statistics for previous dates; it doesn't return
-  /// statistics for the current day.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
+  /// Gets indexed item statistics aggreggated across all data sources. This API
+  /// only returns statistics for previous dates; it doesn't return statistics
+  /// for the current day. **Note:** This API requires a standard end user
+  /// account to execute.
   ///
   /// Request parameters:
   ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
-  ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
-  ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2387,12 +2353,12 @@ class StatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerIndexStatsResponse> getIndex(
-      {core.int toDate_year,
-      core.int fromDate_month,
-      core.int fromDate_day,
-      core.int fromDate_year,
-      core.int toDate_day,
+      {core.int fromDate_month,
       core.int toDate_month,
+      core.int fromDate_year,
+      core.int fromDate_day,
+      core.int toDate_year,
+      core.int toDate_day,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2401,23 +2367,23 @@ class StatsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (toDate_year != null) {
-      _queryParams["toDate.year"] = ["${toDate_year}"];
-    }
     if (fromDate_month != null) {
       _queryParams["fromDate.month"] = ["${fromDate_month}"];
     }
-    if (fromDate_day != null) {
-      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
     }
     if (fromDate_year != null) {
       _queryParams["fromDate.year"] = ["${fromDate_year}"];
     }
+    if (fromDate_day != null) {
+      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
     if (toDate_day != null) {
       _queryParams["toDate.day"] = ["${toDate_day}"];
-    }
-    if (toDate_month != null) {
-      _queryParams["toDate.month"] = ["${toDate_month}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2435,25 +2401,24 @@ class StatsResourceApi {
         .then((data) => new GetCustomerIndexStatsResponse.fromJson(data));
   }
 
-  /// Get the query statistics for customer.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
+  /// Get the query statistics for customer. **Note:** This API requires a
+  /// standard end user account to execute.
   ///
   /// Request parameters:
   ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
   ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
-  ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
-  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2466,12 +2431,12 @@ class StatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerQueryStatsResponse> getQuery(
-      {core.int fromDate_year,
-      core.int toDate_day,
-      core.int toDate_month,
-      core.int toDate_year,
-      core.int fromDate_month,
+      {core.int toDate_month,
       core.int fromDate_day,
+      core.int toDate_day,
+      core.int fromDate_year,
+      core.int fromDate_month,
+      core.int toDate_year,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2480,23 +2445,23 @@ class StatsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (fromDate_year != null) {
-      _queryParams["fromDate.year"] = ["${fromDate_year}"];
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
+    }
+    if (fromDate_day != null) {
+      _queryParams["fromDate.day"] = ["${fromDate_day}"];
     }
     if (toDate_day != null) {
       _queryParams["toDate.day"] = ["${toDate_day}"];
     }
-    if (toDate_month != null) {
-      _queryParams["toDate.month"] = ["${toDate_month}"];
-    }
-    if (toDate_year != null) {
-      _queryParams["toDate.year"] = ["${toDate_year}"];
+    if (fromDate_year != null) {
+      _queryParams["fromDate.year"] = ["${fromDate_year}"];
     }
     if (fromDate_month != null) {
       _queryParams["fromDate.month"] = ["${fromDate_month}"];
     }
-    if (fromDate_day != null) {
-      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2515,13 +2480,10 @@ class StatsResourceApi {
   }
 
   /// Get the # of search sessions, % of successful sessions with a click query
-  /// statistics for customer.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
+  /// statistics for customer. **Note:** This API requires a standard end user
+  /// account to execute.
   ///
   /// Request parameters:
-  ///
-  /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
@@ -2531,9 +2493,11 @@ class StatsResourceApi {
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
   /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2546,12 +2510,12 @@ class StatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerSessionStatsResponse> getSession(
-      {core.int fromDate_month,
-      core.int fromDate_day,
+      {core.int fromDate_day,
       core.int fromDate_year,
       core.int toDate_day,
-      core.int toDate_month,
       core.int toDate_year,
+      core.int toDate_month,
+      core.int fromDate_month,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2560,9 +2524,6 @@ class StatsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (fromDate_month != null) {
-      _queryParams["fromDate.month"] = ["${fromDate_month}"];
-    }
     if (fromDate_day != null) {
       _queryParams["fromDate.day"] = ["${fromDate_day}"];
     }
@@ -2572,11 +2533,14 @@ class StatsResourceApi {
     if (toDate_day != null) {
       _queryParams["toDate.day"] = ["${toDate_day}"];
     }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
     if (toDate_month != null) {
       _queryParams["toDate.month"] = ["${toDate_month}"];
     }
-    if (toDate_year != null) {
-      _queryParams["toDate.year"] = ["${toDate_year}"];
+    if (fromDate_month != null) {
+      _queryParams["fromDate.month"] = ["${fromDate_month}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2594,18 +2558,10 @@ class StatsResourceApi {
         .then((data) => new GetCustomerSessionStatsResponse.fromJson(data));
   }
 
-  /// Get the users statistics for customer.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
+  /// Get the users statistics for customer. **Note:** This API requires a
+  /// standard end user account to execute.
   ///
   /// Request parameters:
-  ///
-  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
-  ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
-  ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
@@ -2613,6 +2569,13 @@ class StatsResourceApi {
   /// and month.
   ///
   /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2625,12 +2588,12 @@ class StatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerUserStatsResponse> getUser(
-      {core.int toDate_day,
-      core.int toDate_month,
-      core.int toDate_year,
-      core.int fromDate_month,
+      {core.int fromDate_month,
       core.int fromDate_day,
       core.int fromDate_year,
+      core.int toDate_day,
+      core.int toDate_year,
+      core.int toDate_month,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2639,15 +2602,6 @@ class StatsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (toDate_day != null) {
-      _queryParams["toDate.day"] = ["${toDate_day}"];
-    }
-    if (toDate_month != null) {
-      _queryParams["toDate.month"] = ["${toDate_month}"];
-    }
-    if (toDate_year != null) {
-      _queryParams["toDate.year"] = ["${toDate_year}"];
-    }
     if (fromDate_month != null) {
       _queryParams["fromDate.month"] = ["${fromDate_month}"];
     }
@@ -2656,6 +2610,15 @@ class StatsResourceApi {
     }
     if (fromDate_year != null) {
       _queryParams["fromDate.year"] = ["${fromDate_year}"];
+    }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
+    }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2689,29 +2652,28 @@ class StatsIndexDatasourcesResourceApi {
   StatsIndexDatasourcesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets indexed item statistics for a single data source.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
+  /// Gets indexed item statistics for a single data source. **Note:** This API
+  /// requires a standard end user account to execute.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource id of the data source to retrieve statistics for,
-  /// in the following format: "datasources/{source_id}"
+  /// [name] - The resource id of the data source to retrieve statistics for, in
+  /// the following format: "datasources/{source_id}"
   /// Value must have pattern "^datasources/[^/]+$".
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
-  /// [fromDate_month] - Month of date. Must be from 1 to 12.
-  ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
   /// [fromDate_year] - Year of date. Must be from 1 to 9999.
-  ///
-  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2724,12 +2686,12 @@ class StatsIndexDatasourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetDataSourceIndexStatsResponse> get(core.String name,
-      {core.int toDate_month,
-      core.int toDate_year,
+      {core.int toDate_day,
       core.int fromDate_month,
+      core.int toDate_month,
+      core.int toDate_year,
       core.int fromDate_day,
       core.int fromDate_year,
-      core.int toDate_day,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2741,23 +2703,23 @@ class StatsIndexDatasourcesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
+    }
+    if (fromDate_month != null) {
+      _queryParams["fromDate.month"] = ["${fromDate_month}"];
+    }
     if (toDate_month != null) {
       _queryParams["toDate.month"] = ["${toDate_month}"];
     }
     if (toDate_year != null) {
       _queryParams["toDate.year"] = ["${toDate_year}"];
     }
-    if (fromDate_month != null) {
-      _queryParams["fromDate.month"] = ["${fromDate_month}"];
-    }
     if (fromDate_day != null) {
       _queryParams["fromDate.day"] = ["${fromDate_day}"];
     }
     if (fromDate_year != null) {
       _queryParams["fromDate.year"] = ["${fromDate_year}"];
-    }
-    if (toDate_day != null) {
-      _queryParams["toDate.day"] = ["${toDate_day}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2791,28 +2753,26 @@ class StatsQuerySearchapplicationsResourceApi {
   StatsQuerySearchapplicationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get the query statistics for search application.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
+  /// Get the query statistics for search application. **Note:** This API
+  /// requires a standard end user account to execute.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource id of the search application query stats, in the
-  /// following
-  /// format: searchapplications/{application_id}
+  /// following format: searchapplications/{application_id}
   /// Value must have pattern "^searchapplications/[^/]+$".
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
-  ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
-  ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
@@ -2827,11 +2787,11 @@ class StatsQuerySearchapplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetSearchApplicationQueryStatsResponse> get(core.String name,
-      {core.int toDate_day,
-      core.int toDate_month,
-      core.int toDate_year,
+      {core.int toDate_year,
+      core.int toDate_day,
       core.int fromDate_month,
       core.int fromDate_day,
+      core.int toDate_month,
       core.int fromDate_year,
       core.String $fields}) {
     var _url;
@@ -2844,20 +2804,20 @@ class StatsQuerySearchapplicationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (toDate_day != null) {
-      _queryParams["toDate.day"] = ["${toDate_day}"];
-    }
-    if (toDate_month != null) {
-      _queryParams["toDate.month"] = ["${toDate_month}"];
-    }
     if (toDate_year != null) {
       _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
     }
     if (fromDate_month != null) {
       _queryParams["fromDate.month"] = ["${fromDate_month}"];
     }
     if (fromDate_day != null) {
       _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
     }
     if (fromDate_year != null) {
       _queryParams["fromDate.year"] = ["${fromDate_year}"];
@@ -2895,30 +2855,28 @@ class StatsSessionSearchapplicationsResourceApi {
       : _requester = client;
 
   /// Get the # of search sessions, % of successful sessions with a click query
-  /// statistics for search application.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
+  /// statistics for search application. **Note:** This API requires a standard
+  /// end user account to execute.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource id of the search application session stats, in the
-  /// following
-  /// format: searchapplications/{application_id}
+  /// following format: searchapplications/{application_id}
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
-  /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
-  ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
-  ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2931,12 +2889,12 @@ class StatsSessionSearchapplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetSearchApplicationSessionStatsResponse> get(core.String name,
-      {core.int fromDate_month,
-      core.int fromDate_day,
-      core.int fromDate_year,
-      core.int toDate_day,
-      core.int toDate_month,
+      {core.int fromDate_year,
       core.int toDate_year,
+      core.int toDate_month,
+      core.int fromDate_day,
+      core.int toDate_day,
+      core.int fromDate_month,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2948,23 +2906,23 @@ class StatsSessionSearchapplicationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (fromDate_month != null) {
-      _queryParams["fromDate.month"] = ["${fromDate_month}"];
-    }
-    if (fromDate_day != null) {
-      _queryParams["fromDate.day"] = ["${fromDate_day}"];
-    }
     if (fromDate_year != null) {
       _queryParams["fromDate.year"] = ["${fromDate_year}"];
     }
-    if (toDate_day != null) {
-      _queryParams["toDate.day"] = ["${toDate_day}"];
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
     }
     if (toDate_month != null) {
       _queryParams["toDate.month"] = ["${toDate_month}"];
     }
-    if (toDate_year != null) {
-      _queryParams["toDate.year"] = ["${toDate_year}"];
+    if (fromDate_day != null) {
+      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
+    }
+    if (fromDate_month != null) {
+      _queryParams["fromDate.month"] = ["${fromDate_month}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2998,30 +2956,28 @@ class StatsUserSearchapplicationsResourceApi {
   StatsUserSearchapplicationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get the users statistics for search application.
-  ///
-  /// **Note:** This API requires a standard end user account to execute.
+  /// Get the users statistics for search application. **Note:** This API
+  /// requires a standard end user account to execute.
   ///
   /// Request parameters:
   ///
   /// [name] - The resource id of the search application session stats, in the
-  /// following
-  /// format: searchapplications/{application_id}
+  /// following format: searchapplications/{application_id}
   /// Value must have pattern "^searchapplications/[^/]+$".
-  ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
-  ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
-  ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3034,12 +2990,12 @@ class StatsUserSearchapplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetSearchApplicationUserStatsResponse> get(core.String name,
-      {core.int fromDate_year,
-      core.int toDate_day,
-      core.int toDate_month,
-      core.int toDate_year,
+      {core.int toDate_day,
       core.int fromDate_month,
       core.int fromDate_day,
+      core.int fromDate_year,
+      core.int toDate_year,
+      core.int toDate_month,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3051,23 +3007,23 @@ class StatsUserSearchapplicationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (fromDate_year != null) {
-      _queryParams["fromDate.year"] = ["${fromDate_year}"];
-    }
     if (toDate_day != null) {
       _queryParams["toDate.day"] = ["${toDate_day}"];
-    }
-    if (toDate_month != null) {
-      _queryParams["toDate.month"] = ["${toDate_month}"];
-    }
-    if (toDate_year != null) {
-      _queryParams["toDate.year"] = ["${toDate_year}"];
     }
     if (fromDate_month != null) {
       _queryParams["fromDate.month"] = ["${fromDate_month}"];
     }
     if (fromDate_day != null) {
       _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if (fromDate_year != null) {
+      _queryParams["fromDate.year"] = ["${fromDate_year}"];
+    }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3086,20 +3042,19 @@ class StatsUserSearchapplicationsResourceApi {
   }
 }
 
-/// Used to provide a search operator for boolean properties. This is
-/// optional. Search operators let users restrict the query to specific fields
-/// relevant to the type of item being searched.
+/// Used to provide a search operator for boolean properties. This is optional.
+/// Search operators let users restrict the query to specific fields relevant to
+/// the type of item being searched.
 class BooleanOperatorOptions {
   /// Indicates the operator name required in the query in order to isolate the
   /// boolean property. For example, if operatorName is *closed* and the
-  /// property's name is *isClosed*, then queries like
-  /// *closed:&lt;value&gt;* show results only where the value of the
-  /// property named *isClosed* matches *&lt;value&gt;*. By contrast, a
-  /// search that uses the same *&lt;value&gt;* without an operator returns
-  /// all items where *&lt;value&gt;* matches the value of any
-  /// String properties or text within the content field for the item.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// property's name is *isClosed*, then queries like *closed:<value>* show
+  /// results only where the value of the property named *isClosed* matches
+  /// *<value>*. By contrast, a search that uses the same *<value>* without an
+  /// operator returns all items where *<value>* matches the value of any String
+  /// properties or text within the content field for the item. The operator
+  /// name can only contain lowercase letters (a-z). The maximum length is 32
+  /// characters.
   core.String operatorName;
 
   BooleanOperatorOptions();
@@ -3145,7 +3100,7 @@ class BooleanPropertyOptions {
 }
 
 class CheckAccessResponse {
-  /// Returns true if principal has access.  Returns false otherwise.
+  /// Returns true if principal has access. Returns false otherwise.
   core.bool hasAccess;
 
   CheckAccessResponse();
@@ -3356,21 +3311,20 @@ class CustomerUserStats {
   }
 }
 
-/// Datasource is a logical namespace for items to be indexed.
-/// All items must belong to a datasource.  This is the prerequisite before
-/// items can be indexed into Cloud Search.
+/// Datasource is a logical namespace for items to be indexed. All items must
+/// belong to a datasource. This is the prerequisite before items can be indexed
+/// into Cloud Search.
 class DataSource {
   /// If true, Indexing API rejects any modification calls to this datasource
-  /// such as create, update, and delete.
-  /// Disabling this does not imply halting process of previously
-  /// accepted data.
+  /// such as create, update, and delete. Disabling this does not imply halting
+  /// process of previously accepted data.
   core.bool disableModifications;
 
   /// Disable serving any search or assist results.
   core.bool disableServing;
 
-  /// Required. Display name of the datasource
-  /// The maximum length is 300 characters.
+  /// Required. Display name of the datasource The maximum length is 300
+  /// characters.
   core.String displayName;
 
   /// List of service accounts that have indexing access.
@@ -3380,29 +3334,26 @@ class DataSource {
   /// within the datasource are restricted to the union of users and groups
   /// included in this field. Note that, this does not ensure access to a
   /// specific item, as users need to have ACL permissions on the contained
-  /// items. This ensures a high level access on the entire datasource, and
-  /// that the individual items are not shared outside this visibility.
+  /// items. This ensures a high level access on the entire datasource, and that
+  /// the individual items are not shared outside this visibility.
   core.List<GSuitePrincipal> itemsVisibility;
 
-  /// Name of the datasource resource.
-  /// Format: datasources/{source_id}.
-  /// <br />The name is ignored when creating a datasource.
+  /// Name of the datasource resource. Format: datasources/{source_id}. The name
+  /// is ignored when creating a datasource.
   core.String name;
 
   /// IDs of the Long Running Operations (LROs) currently running for this
   /// schema.
   core.List<core.String> operationIds;
 
-  /// A short name or alias for the source.  This value will be used to match
-  /// the
-  /// 'source' operator. For example, if the short name is *&lt;value&gt;* then
-  /// queries like *source:&lt;value&gt;* will only return results for this
-  /// source. The value must be unique across all datasources. The value must
-  /// only contain alphanumeric characters (a-zA-Z0-9). The value cannot start
-  /// with 'google' and cannot be one of the following: mail, gmail, docs,
-  /// drive,
-  /// groups, sites, calendar, hangouts, gplus, keep, people, teams.
-  /// Its maximum length is 32 characters.
+  /// A short name or alias for the source. This value will be used to match the
+  /// 'source' operator. For example, if the short name is *<value>* then
+  /// queries like *source:<value>* will only return results for this source.
+  /// The value must be unique across all datasources. The value must only
+  /// contain alphanumeric characters (a-zA-Z0-9). The value cannot start with
+  /// 'google' and cannot be one of the following: mail, gmail, docs, drive,
+  /// groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum
+  /// length is 32 characters.
   core.String shortName;
 
   DataSource();
@@ -3510,16 +3461,13 @@ class DataSourceIndexStats {
 
 /// Restriction on Datasource.
 class DataSourceRestriction {
-  /// Filter options restricting the results. If multiple filters
-  /// are present, they are grouped by object type before joining.
-  /// Filters with the same object type are joined conjunctively, then
-  /// the resulting expressions are joined disjunctively.
-  ///
-  /// The maximum number of elements is 20.
-  ///
-  /// NOTE: Suggest API supports only few filters at the moment:
-  ///   "objecttype", "type" and "mimetype".
-  /// For now, schema specific filters cannot be used to filter suggestions.
+  /// Filter options restricting the results. If multiple filters are present,
+  /// they are grouped by object type before joining. Filters with the same
+  /// object type are joined conjunctively, then the resulting expressions are
+  /// joined disjunctively. The maximum number of elements is 20. NOTE: Suggest
+  /// API supports only few filters at the moment: "objecttype", "type" and
+  /// "mimetype". For now, schema specific filters cannot be used to filter
+  /// suggestions.
   core.List<FilterOptions> filterOptions;
 
   /// The source of restriction.
@@ -3597,41 +3545,38 @@ class Date {
   }
 }
 
-/// Optional. Provides a search operator for date properties.
-/// Search operators let users restrict the query to specific fields relevant
-/// to the type of item being searched.
+/// Optional. Provides a search operator for date properties. Search operators
+/// let users restrict the query to specific fields relevant to the type of item
+/// being searched.
 class DateOperatorOptions {
   /// Indicates the operator name required in the query in order to isolate the
   /// date property using the greater-than operator. For example, if
   /// greaterThanOperatorName is *closedafter* and the property's name is
-  /// *closeDate*, then queries like *closedafter:&lt;value&gt;*
-  /// show results only where the value of the property named *closeDate* is
-  /// later than *&lt;value&gt;*.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// *closeDate*, then queries like *closedafter:<value>* show results only
+  /// where the value of the property named *closeDate* is later than *<value>*.
+  /// The operator name can only contain lowercase letters (a-z). The maximum
+  /// length is 32 characters.
   core.String greaterThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// date property using the less-than operator. For example, if
   /// lessThanOperatorName is *closedbefore* and the property's name is
-  /// *closeDate*, then queries like *closedbefore:&lt;value&gt;*
-  /// show results only where the value of the property named *closeDate* is
-  /// earlier than *&lt;value&gt;*.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// *closeDate*, then queries like *closedbefore:<value>* show results only
+  /// where the value of the property named *closeDate* is earlier than
+  /// *<value>*. The operator name can only contain lowercase letters (a-z). The
+  /// maximum length is 32 characters.
   core.String lessThanOperatorName;
 
   /// Indicates the actual string required in the query in order to isolate the
-  /// date property. For example, suppose an issue tracking schema object
-  /// has a property named *closeDate* that specifies an operator with an
-  /// operatorName of *closedon*. For searches on that data, queries like
-  /// *closedon:&lt;value&gt;* show results only where the value of the
-  /// *closeDate* property matches *&lt;value&gt;*. By contrast, a
-  /// search that uses the same *&lt;value&gt;* without an operator returns
-  /// all items where *&lt;value&gt;* matches the value of any String
+  /// date property. For example, suppose an issue tracking schema object has a
+  /// property named *closeDate* that specifies an operator with an operatorName
+  /// of *closedon*. For searches on that data, queries like *closedon:<value>*
+  /// show results only where the value of the *closeDate* property matches
+  /// *<value>*. By contrast, a search that uses the same *<value>* without an
+  /// operator returns all items where *<value>* matches the value of any String
   /// properties or text within the content field for the indexed datasource.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// The operator name can only contain lowercase letters (a-z). The maximum
+  /// length is 32 characters.
   core.String operatorName;
 
   DateOperatorOptions();
@@ -3737,8 +3682,8 @@ class DebugOptions {
 }
 
 class DeleteQueueItemsRequest {
-  /// Name of connector making this call.
-  /// <br />Format: datasources/{source_id}/connectors/{ID}
+  /// Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
   core.String connectorName;
 
   /// Common debug options.
@@ -3779,14 +3724,13 @@ class DeleteQueueItemsRequest {
 
 /// A reference to a top-level property within the object that should be
 /// displayed in search results. The values of the chosen properties is
-/// displayed in the search results along with the
-/// display label
-/// for that property if one is specified. If a display label is not specified,
-/// only the values is shown.
+/// displayed in the search results along with the display label for that
+/// property if one is specified. If a display label is not specified, only the
+/// values is shown.
 class DisplayedProperty {
-  /// The name of the top-level property as defined in a property definition
-  /// for the object. If the name is not a defined property in the schema, an
-  /// error is given when attempting to update the schema.
+  /// The name of the top-level property as defined in a property definition for
+  /// the object. If the name is not a defined property in the schema, an error
+  /// is given when attempting to update the schema.
   core.String propertyName;
 
   DisplayedProperty();
@@ -3807,14 +3751,13 @@ class DisplayedProperty {
   }
 }
 
-/// Used to provide a search operator for double properties. This is
-/// optional. Search operators let users restrict the query to specific fields
-/// relevant to the type of item being searched.
+/// Used to provide a search operator for double properties. This is optional.
+/// Search operators let users restrict the query to specific fields relevant to
+/// the type of item being searched.
 class DoubleOperatorOptions {
   /// Indicates the operator name required in the query in order to use the
-  /// double property in sorting or as a facet.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// double property in sorting or as a facet. The operator name can only
+  /// contain lowercase letters (a-z). The maximum length is 32 characters.
   core.String operatorName;
 
   DoubleOperatorOptions();
@@ -4029,27 +3972,26 @@ class EmailAddress {
   }
 }
 
-/// Used to provide a search operator for enum properties. This is
-/// optional. Search operators let users restrict the query to specific fields
-/// relevant to the type of item being searched. For example, if you provide no
-/// operator for a *priority* enum property with possible values *p0* and *p1*,
-/// a query that contains the term *p0* returns items that have *p0* as the
-/// value of the *priority* property, as well as any items that contain the
-/// string *p0* in other fields. If you provide an operator name for the enum,
-/// such as *priority*, then search users can use that operator to refine
-/// results to only items that have *p0* as this property's value, with the
-/// query *priority:p0*.
+/// Used to provide a search operator for enum properties. This is optional.
+/// Search operators let users restrict the query to specific fields relevant to
+/// the type of item being searched. For example, if you provide no operator for
+/// a *priority* enum property with possible values *p0* and *p1*, a query that
+/// contains the term *p0* returns items that have *p0* as the value of the
+/// *priority* property, as well as any items that contain the string *p0* in
+/// other fields. If you provide an operator name for the enum, such as
+/// *priority*, then search users can use that operator to refine results to
+/// only items that have *p0* as this property's value, with the query
+/// *priority:p0*.
 class EnumOperatorOptions {
   /// Indicates the operator name required in the query in order to isolate the
   /// enum property. For example, if operatorName is *priority* and the
-  /// property's name is *priorityVal*, then queries like
-  /// *priority:&lt;value&gt;* show results only where the value of the
-  /// property named *priorityVal* matches *&lt;value&gt;*. By contrast, a
-  /// search that uses the same *&lt;value&gt;* without an operator returns
-  /// all items where *&lt;value&gt;* matches the value of any String
-  /// properties or text within the content field for the item.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// property's name is *priorityVal*, then queries like *priority:<value>*
+  /// show results only where the value of the property named *priorityVal*
+  /// matches *<value>*. By contrast, a search that uses the same *<value>*
+  /// without an operator returns all items where *<value>* matches the value of
+  /// any String properties or text within the content field for the item. The
+  /// operator name can only contain lowercase letters (a-z). The maximum length
+  /// is 32 characters.
   core.String operatorName;
 
   EnumOperatorOptions();
@@ -4074,42 +4016,33 @@ class EnumOperatorOptions {
 /// strings to match user queries, set rankings for those string values, and
 /// define an operator name to be paired with those strings so that users can
 /// narrow results to only items with a specific value. For example, for items
-/// in
-/// a request tracking system with priority information, you could define *p0*
-/// as
-/// an allowable enum value and tie this enum to the operator name *priority* so
-/// that search users could add *priority:p0* to their query to restrict the set
-/// of results to only those items indexed with the value *p0*.
+/// in a request tracking system with priority information, you could define
+/// *p0* as an allowable enum value and tie this enum to the operator name
+/// *priority* so that search users could add *priority:p0* to their query to
+/// restrict the set of results to only those items indexed with the value *p0*.
 class EnumPropertyOptions {
   /// If set, describes how the enum should be used as a search operator.
   EnumOperatorOptions operatorOptions;
 
   /// Used to specify the ordered ranking for the enumeration that determines
-  /// how
-  /// the integer values provided in the possible EnumValuePairs are used to
-  /// rank
-  /// results. If specified, integer values must be provided for all possible
-  /// EnumValuePair values given for this property. Can only be used if
-  /// isRepeatable
-  /// is false.
+  /// how the integer values provided in the possible EnumValuePairs are used to
+  /// rank results. If specified, integer values must be provided for all
+  /// possible EnumValuePair values given for this property. Can only be used if
+  /// isRepeatable is false.
   /// Possible string values are:
   /// - "NO_ORDER" : There is no ranking order for the property. Results aren't
-  /// adjusted
-  /// by this property's value.
+  /// adjusted by this property's value.
   /// - "ASCENDING" : This property is ranked in ascending order. Lower values
-  /// indicate lower
-  /// ranking.
+  /// indicate lower ranking.
   /// - "DESCENDING" : This property is ranked in descending order. Lower values
-  /// indicate
-  /// higher ranking.
+  /// indicate higher ranking.
   core.String orderedRanking;
 
   /// The list of possible values for the enumeration property. All
   /// EnumValuePairs must provide a string value. If you specify an integer
-  /// value
-  /// for one EnumValuePair, then all possible EnumValuePairs must provide an
-  /// integer value. Both the string value and integer value must be unique over
-  /// all possible values. Once set, possible values cannot be removed or
+  /// value for one EnumValuePair, then all possible EnumValuePairs must provide
+  /// an integer value. Both the string value and integer value must be unique
+  /// over all possible values. Once set, possible values cannot be removed or
   /// modified. If you supply an ordered ranking and think you might insert
   /// additional enum values in the future, leave gaps in the initial integer
   /// values to allow adding a value in between previously registered values.
@@ -4151,26 +4084,24 @@ class EnumPropertyOptions {
 }
 
 /// The enumeration value pair defines two things: a required string value and
-/// an optional integer value. The string value defines the necessary query
-/// term required to retrieve that item, such as *p0* for a priority item.
-/// The integer value determines the ranking of that string value relative
-/// to other enumerated values for the same property. For example, you might
-/// associate *p0* with *0* and define another enum pair such as *p1* and *1*.
-/// You must use the integer value in combination with
-/// ordered
-/// ranking to
-/// set the ranking of a given value relative to other enumerated values for
-/// the same property name. Here, a ranking order of DESCENDING for *priority*
-/// properties results in a ranking boost for items indexed with a value of
-/// *p0* compared to items indexed with a value of *p1*. Without a specified
-/// ranking order, the integer value has no effect on item ranking.
+/// an optional integer value. The string value defines the necessary query term
+/// required to retrieve that item, such as *p0* for a priority item. The
+/// integer value determines the ranking of that string value relative to other
+/// enumerated values for the same property. For example, you might associate
+/// *p0* with *0* and define another enum pair such as *p1* and *1*. You must
+/// use the integer value in combination with ordered ranking to set the ranking
+/// of a given value relative to other enumerated values for the same property
+/// name. Here, a ranking order of DESCENDING for *priority* properties results
+/// in a ranking boost for items indexed with a value of *p0* compared to items
+/// indexed with a value of *p1*. Without a specified ranking order, the integer
+/// value has no effect on item ranking.
 class EnumValuePair {
   /// The integer value of the EnumValuePair which must be non-negative.
   /// Optional.
   core.int integerValue;
 
-  /// The string value of the EnumValuePair.
-  /// The maximum length is 32 characters.
+  /// The string value of the EnumValuePair. The maximum length is 32
+  /// characters.
   core.String stringValue;
 
   EnumValuePair();
@@ -4275,18 +4206,20 @@ class ErrorMessage {
 }
 
 /// A bucket in a facet is the basic unit of operation. A bucket can comprise
-/// either a single value OR a contiguous range of values, depending on the
-/// type of the field bucketed.
-/// FacetBucket is currently used only for returning the response object.
+/// either a single value OR a contiguous range of values, depending on the type
+/// of the field bucketed. FacetBucket is currently used only for returning the
+/// response object.
 class FacetBucket {
   /// Number of results that match the bucket value. Counts are only returned
   /// for searches when count accuracy is ensured. Can be empty.
   core.int count;
 
-  /// Percent of results that match the bucket value. This value is between
-  /// (0-100]. Percentages are returned for all searches, but are an estimate.
-  /// Because percentages are always returned, you should render percentages
-  /// instead of counts.
+  /// Percent of results that match the bucket value. The returned value is
+  /// between (0-100], and is rounded down to an integer if fractional. If the
+  /// value is not explicitly returned, it represents a percentage value that
+  /// rounds to 0. Percentages are returned for all searches, but are an
+  /// estimate. Because percentages are always returned, you should render
+  /// percentages instead of counts.
   core.int percentage;
   Value value;
 
@@ -4324,8 +4257,7 @@ class FacetBucket {
 /// FacetResult for every source_name/object_type/operator_name combination.
 class FacetOptions {
   /// Maximum number of facet buckets that should be returned for this facet.
-  /// Defaults to 10.
-  /// Maximum value is 100.
+  /// Defaults to 10. Maximum value is 100.
   core.int numFacetBuckets;
 
   /// If object_type is set, only those objects of that type will be used to
@@ -4336,8 +4268,8 @@ class FacetOptions {
   /// cloudsearch.SchemaPropertyOptions
   core.String operatorName;
 
-  /// Source name to facet on. Format: datasources/{source_id}
-  /// If empty, all data sources will be used.
+  /// Source name to facet on. Format: datasources/{source_id} If empty, all
+  /// data sources will be used.
   core.String sourceName;
 
   FacetOptions();
@@ -4461,17 +4393,11 @@ class FieldViolation {
 }
 
 /// A generic way of expressing filters in a query, which supports two
-/// approaches: <br/><br/>
-/// **1. Setting a ValueFilter.** The name must match an operator_name defined
-/// in
-/// the schema for your data source.
-/// <br/>
-/// **2. Setting a CompositeFilter.** The filters are evaluated
-/// using the logical operator. The top-level operators can only be either an
-/// AND
-/// or a NOT. AND can appear only at the top-most level. OR can appear only
-/// under
-/// a top-level AND.
+/// approaches: **1. Setting a ValueFilter.** The name must match an
+/// operator_name defined in the schema for your data source. **2. Setting a
+/// CompositeFilter.** The filters are evaluated using the logical operator. The
+/// top-level operators can only be either an AND or a NOT. AND can appear only
+/// at the top-most level. OR can appear only under a top-level AND.
 class Filter {
   CompositeFilter compositeFilter;
   ValueFilter valueFilter;
@@ -4537,29 +4463,21 @@ class FilterOptions {
 /// Indicates which freshness property to use when adjusting search ranking for
 /// an item. Fresher, more recent dates indicate higher quality. Use the
 /// freshness option property that best works with your data. For fileshare
-/// documents, last modified time is most relevant. For calendar event data,
-/// the time when the event occurs is a more relevant freshness indicator. In
-/// this way, calendar events that occur closer to the time of the search query
-/// are considered higher quality and ranked accordingly.
+/// documents, last modified time is most relevant. For calendar event data, the
+/// time when the event occurs is a more relevant freshness indicator. In this
+/// way, calendar events that occur closer to the time of the search query are
+/// considered higher quality and ranked accordingly.
 class FreshnessOptions {
-  /// The duration after which an object should be considered
-  /// stale. The default value is 180 days (in seconds).
+  /// The duration after which an object should be considered stale. The default
+  /// value is 180 days (in seconds).
   core.String freshnessDuration;
 
-  /// This property indicates the freshness level of the object in the index.
-  /// If set, this property must be a top-level property within the
-  /// property definitions
-  /// and it must be a
-  /// timestamp type
-  /// or
-  /// date type.
-  /// Otherwise, the Indexing API uses
-  /// updateTime
-  /// as the freshness indicator.
-  /// The maximum length is 256 characters.
-  ///
-  /// When a property is used to calculate freshness, the value defaults
-  /// to 2 years from the current time.
+  /// This property indicates the freshness level of the object in the index. If
+  /// set, this property must be a top-level property within the property
+  /// definitions and it must be a timestamp type or date type. Otherwise, the
+  /// Indexing API uses updateTime as the freshness indicator. The maximum
+  /// length is 256 characters. When a property is used to calculate freshness,
+  /// the value defaults to 2 years from the current time.
   core.String freshnessProperty;
 
   FreshnessOptions();
@@ -4587,8 +4505,7 @@ class FreshnessOptions {
 }
 
 class GSuitePrincipal {
-  /// This principal represents all users of the G Suite domain of the
-  /// customer.
+  /// This principal represents all users of the G Suite domain of the customer.
   core.bool gsuiteDomain;
 
   /// This principal references a G Suite group account
@@ -4822,19 +4739,18 @@ class GetSearchApplicationUserStatsResponse {
 }
 
 /// Used to provide a search operator for html properties. This is optional.
-/// Search operators let users restrict the query to specific fields relevant
-/// to the type of item being searched.
+/// Search operators let users restrict the query to specific fields relevant to
+/// the type of item being searched.
 class HtmlOperatorOptions {
   /// Indicates the operator name required in the query in order to isolate the
   /// html property. For example, if operatorName is *subject* and the
-  /// property's name is *subjectLine*, then queries like
-  /// *subject:&lt;value&gt;* show results only where the value of the
-  /// property named *subjectLine* matches *&lt;value&gt;*. By contrast, a
-  /// search that uses the same *&lt;value&gt;* without an operator return
-  /// all items where *&lt;value&gt;* matches the value of any
-  /// html properties or text within the content field for the item.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// property's name is *subjectLine*, then queries like *subject:<value>* show
+  /// results only where the value of the property named *subjectLine* matches
+  /// *<value>*. By contrast, a search that uses the same *<value>* without an
+  /// operator return all items where *<value>* matches the value of any html
+  /// properties or text within the content field for the item. The operator
+  /// name can only contain lowercase letters (a-z). The maximum length is 32
+  /// characters.
   core.String operatorName;
 
   HtmlOperatorOptions();
@@ -4860,8 +4776,8 @@ class HtmlPropertyOptions {
   /// If set, describes how the property should be used as a search operator.
   HtmlOperatorOptions operatorOptions;
 
-  /// Indicates the search quality importance of the tokens within the
-  /// field when used for retrieval. Can only be set to DEFAULT or NONE.
+  /// Indicates the search quality importance of the tokens within the field
+  /// when used for retrieval. Can only be set to DEFAULT or NONE.
   RetrievalImportance retrievalImportance;
 
   HtmlPropertyOptions();
@@ -4937,26 +4853,24 @@ class IndexItemOptions {
 }
 
 class IndexItemRequest {
-  /// Name of connector making this call.
-  /// <br />Format: datasources/{source_id}/connectors/{ID}
+  /// Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
   core.String connectorName;
 
   /// Common debug options.
   DebugOptions debugOptions;
   IndexItemOptions indexItemOptions;
 
-  /// Name of the item.  Format:
-  /// datasources/{source_id}/items/{item_id}
+  /// Name of the item. Format: datasources/{source_id}/items/{item_id}
   Item item;
 
   /// Required. The RequestMode for this request.
   /// Possible string values are:
-  /// - "UNSPECIFIED" : Priority is not specified in the update request.
-  /// Leaving priority unspecified results in an update failure.
+  /// - "UNSPECIFIED" : Priority is not specified in the update request. Leaving
+  /// priority unspecified results in an update failure.
   /// - "SYNCHRONOUS" : For real-time updates.
   /// - "ASYNCHRONOUS" : For changes that are executed after the response is
-  /// sent back to the
-  /// caller.
+  /// sent back to the caller.
   core.String mode;
 
   IndexItemRequest();
@@ -5002,40 +4916,37 @@ class IndexItemRequest {
   }
 }
 
-/// Used to provide a search operator for integer properties. This is
-/// optional. Search operators let users restrict the query to specific fields
-/// relevant to the type of item being searched.
+/// Used to provide a search operator for integer properties. This is optional.
+/// Search operators let users restrict the query to specific fields relevant to
+/// the type of item being searched.
 class IntegerOperatorOptions {
   /// Indicates the operator name required in the query in order to isolate the
   /// integer property using the greater-than operator. For example, if
   /// greaterThanOperatorName is *priorityabove* and the property's name is
-  /// *priorityVal*, then queries like *priorityabove:&lt;value&gt;*
-  /// show results only where the value of the property named *priorityVal* is
-  /// greater than *&lt;value&gt;*.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// *priorityVal*, then queries like *priorityabove:<value>* show results only
+  /// where the value of the property named *priorityVal* is greater than
+  /// *<value>*. The operator name can only contain lowercase letters (a-z). The
+  /// maximum length is 32 characters.
   core.String greaterThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// integer property using the less-than operator. For example, if
   /// lessThanOperatorName is *prioritybelow* and the property's name is
-  /// *priorityVal*, then queries like *prioritybelow:&lt;value&gt;*
-  /// show results only where the value of the property named *priorityVal* is
-  /// less than *&lt;value&gt;*.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// *priorityVal*, then queries like *prioritybelow:<value>* show results only
+  /// where the value of the property named *priorityVal* is less than
+  /// *<value>*. The operator name can only contain lowercase letters (a-z). The
+  /// maximum length is 32 characters.
   core.String lessThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// integer property. For example, if operatorName is *priority* and the
-  /// property's name is *priorityVal*, then queries like
-  /// *priority:&lt;value&gt;* show results only where the value of the
-  /// property named *priorityVal* matches *&lt;value&gt;*. By contrast, a
-  /// search that uses the same *&lt;value&gt;* without an operator returns
-  /// all items where *&lt;value&gt;* matches the value of any String
-  /// properties or text within the content field for the item.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// property's name is *priorityVal*, then queries like *priority:<value>*
+  /// show results only where the value of the property named *priorityVal*
+  /// matches *<value>*. By contrast, a search that uses the same *<value>*
+  /// without an operator returns all items where *<value>* matches the value of
+  /// any String properties or text within the content field for the item. The
+  /// operator name can only contain lowercase letters (a-z). The maximum length
+  /// is 32 characters.
   core.String operatorName;
 
   IntegerOperatorOptions();
@@ -5071,15 +4982,13 @@ class IntegerOperatorOptions {
 /// Options for integer properties.
 class IntegerPropertyOptions {
   /// The maximum value of the property. The minimum and maximum values for the
-  /// property are used to rank results according to the
-  /// ordered ranking.
+  /// property are used to rank results according to the ordered ranking.
   /// Indexing requests with values greater than the maximum are accepted and
   /// ranked with the same weight as items indexed with the maximum value.
   core.String maximumValue;
 
   /// The minimum value of the property. The minimum and maximum values for the
-  /// property are used to rank results according to the
-  /// ordered ranking.
+  /// property are used to rank results according to the ordered ranking.
   /// Indexing requests with values less than the minimum are accepted and
   /// ranked with the same weight as items indexed with the minimum value.
   core.String minimumValue;
@@ -5088,18 +4997,14 @@ class IntegerPropertyOptions {
   IntegerOperatorOptions operatorOptions;
 
   /// Used to specify the ordered ranking for the integer. Can only be used if
-  /// isRepeatable
-  /// is false.
+  /// isRepeatable is false.
   /// Possible string values are:
   /// - "NO_ORDER" : There is no ranking order for the property. Results are not
-  /// adjusted
-  /// by this property's value.
+  /// adjusted by this property's value.
   /// - "ASCENDING" : This property is ranked in ascending order. Lower values
-  /// indicate lower
-  /// ranking.
+  /// indicate lower ranking.
   /// - "DESCENDING" : This property is ranked in descending order. Lower values
-  /// indicate
-  /// higher ranking.
+  /// indicate higher ranking.
   core.String orderedRanking;
 
   IntegerPropertyOptions();
@@ -5163,7 +5068,7 @@ class IntegerValues {
 
 /// Represents an interaction between a user and an item.
 class Interaction {
-  /// The time when the user acted on the item.  If multiple actions of the same
+  /// The time when the user acted on the item. If multiple actions of the same
   /// type exist for a single user, only the most recent action is recorded.
   core.String interactionTime;
 
@@ -5220,30 +5125,23 @@ class Item {
   /// Possible string values are:
   /// - "UNSPECIFIED"
   /// - "CONTENT_ITEM" : An item that is indexed for the only purpose of serving
-  /// information.
-  /// These items cannot be referred in
-  /// containerName
-  /// or inheritAclFrom
-  /// fields.
+  /// information. These items cannot be referred in containerName or
+  /// inheritAclFrom fields.
   /// - "CONTAINER_ITEM" : An item that gets indexed and whose purpose is to
-  /// supply other items
-  /// with ACLs and/or contain other items.
+  /// supply other items with ACLs and/or contain other items.
   /// - "VIRTUAL_CONTAINER_ITEM" : An item that does not get indexed, but
-  /// otherwise has the same purpose
-  /// as CONTAINER_ITEM.
+  /// otherwise has the same purpose as CONTAINER_ITEM.
   core.String itemType;
 
   /// Metadata information.
   ItemMetadata metadata;
 
-  /// Name of the Item. Format:
-  /// datasources/{source_id}/items/{item_id}
-  /// <br />This is a required field.
-  /// The maximum length is 1536 characters.
+  /// Name of the Item. Format: datasources/{source_id}/items/{item_id} This is
+  /// a required field. The maximum length is 1536 characters.
   core.String name;
 
-  /// Additional state connector can store for this item.
-  /// The maximum length is 10000 bytes.
+  /// Additional state connector can store for this item. The maximum length is
+  /// 10000 bytes.
   core.String payload;
   core.List<core.int> get payloadAsBytes {
     return convert.base64.decode(payload);
@@ -5254,12 +5152,10 @@ class Item {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Queue this item belongs to.
-  /// The maximum length is 100 characters.
+  /// Queue this item belongs to. The maximum length is 100 characters.
   core.String queue;
 
-  /// Status of the item.
-  /// Output only field.
+  /// Status of the item. Output only field.
   ItemStatus status;
 
   /// The structured data for the item that should conform to a registered
@@ -5267,13 +5163,11 @@ class Item {
   ItemStructuredData structuredData;
 
   /// Required. The indexing system stores the version from the datasource as a
-  /// byte string and compares the Item version in the index
-  /// to the version of the queued Item using lexical ordering.
-  /// <br /><br />
-  /// Cloud Search Indexing won't index or delete any queued item with
-  /// a version value that is less than or equal to the version of the
-  /// currently indexed item.
-  /// The maximum length for this field is 1024 bytes.
+  /// byte string and compares the Item version in the index to the version of
+  /// the queued Item using lexical ordering. Cloud Search Indexing won't index
+  /// or delete any queued item with a version value that is less than or equal
+  /// to the version of the currently indexed item. The maximum length for this
+  /// field is 1024 bytes.
   core.String version;
   core.List<core.int> get versionAsBytes {
     return convert.base64.decode(version);
@@ -5356,72 +5250,53 @@ class Item {
   }
 }
 
-/// Access control list information for the item. For more information see
-/// [Map ACLs](/cloud-search/docs/guides/acls).
+/// Access control list information for the item. For more information see [Map
+/// ACLs](/cloud-search/docs/guides/acls).
 class ItemAcl {
   /// Sets the type of access rules to apply when an item inherits its ACL from
-  /// a
-  /// parent. This should always be set in tandem with the
-  /// inheritAclFrom
-  /// field. Also, when the
-  /// inheritAclFrom field
-  /// is set, this field should be set to a valid AclInheritanceType.
+  /// a parent. This should always be set in tandem with the inheritAclFrom
+  /// field. Also, when the inheritAclFrom field is set, this field should be
+  /// set to a valid AclInheritanceType.
   /// Possible string values are:
   /// - "NOT_APPLICABLE" : The default value when this item does not inherit an
-  /// ACL.
-  /// Use NOT_APPLICABLE when
-  /// inheritAclFrom
-  /// is empty.  An item without ACL inheritance can still have ACLs supplied
-  /// by its own readers and
+  /// ACL. Use NOT_APPLICABLE when inheritAclFrom is empty. An item without ACL
+  /// inheritance can still have ACLs supplied by its own readers and
   /// deniedReaders fields.
   /// - "CHILD_OVERRIDE" : During an authorization conflict, the ACL of the
-  /// child item determines
-  /// its read access.
+  /// child item determines its read access.
   /// - "PARENT_OVERRIDE" : During an authorization conflict, the ACL of the
-  /// parent item
-  /// specified in the
-  /// inheritAclFrom
-  /// field determines read access.
+  /// parent item specified in the inheritAclFrom field determines read access.
   /// - "BOTH_PERMIT" : Access is granted only if this item and the parent item
-  /// specified in
-  /// the inheritAclFrom
-  /// field both permit read access.
+  /// specified in the inheritAclFrom field both permit read access.
   core.String aclInheritanceType;
 
   /// List of principals who are explicitly denied access to the item in search
   /// results. While principals are denied access by default, use denied readers
-  /// to handle exceptions and override the list allowed readers.
-  /// The maximum number of elements is 100.
+  /// to handle exceptions and override the list allowed readers. The maximum
+  /// number of elements is 100.
   core.List<Principal> deniedReaders;
 
-  /// Name of the item to inherit the Access Permission List (ACL) from.
-  /// Note: ACL inheritance *only* provides access permissions
-  /// to child items and does not define structural relationships, nor does it
-  /// provide convenient ways to delete large groups of items.
-  /// Deleting an ACL parent from the index only alters the access permissions
-  /// of
-  /// child items that reference the parent in the
-  /// inheritAclFrom
-  /// field. The item is still in the index, but may not
-  /// visible in search results. By contrast, deletion of a container item
-  /// also deletes all items that reference the container via the
-  /// containerName
-  /// field.
-  /// The maximum length for this field is 1536 characters.
+  /// Name of the item to inherit the Access Permission List (ACL) from. Note:
+  /// ACL inheritance *only* provides access permissions to child items and does
+  /// not define structural relationships, nor does it provide convenient ways
+  /// to delete large groups of items. Deleting an ACL parent from the index
+  /// only alters the access permissions of child items that reference the
+  /// parent in the inheritAclFrom field. The item is still in the index, but
+  /// may not visible in search results. By contrast, deletion of a container
+  /// item also deletes all items that reference the container via the
+  /// containerName field. The maximum length for this field is 1536 characters.
   core.String inheritAclFrom;
 
   /// Optional. List of owners for the item. This field has no bearing on
-  /// document access permissions. It does, however, offer
-  /// a slight ranking boosts items where the querying user is an owner.
-  /// The maximum number of elements is 5.
+  /// document access permissions. It does, however, offer a slight ranking
+  /// boosts items where the querying user is an owner. The maximum number of
+  /// elements is 5.
   core.List<Principal> owners;
 
   /// List of principals who are allowed to see the item in search results.
-  /// Optional if inheriting permissions from another item or if the item
-  /// is not intended to be visible, such as
-  /// virtual
-  /// containers.
-  /// The maximum number of elements is 1000.
+  /// Optional if inheriting permissions from another item or if the item is not
+  /// intended to be visible, such as virtual containers. The maximum number of
+  /// elements is 1000.
   core.List<Principal> readers;
 
   ItemAcl();
@@ -5486,13 +5361,13 @@ class ItemContent {
   /// - "RAW" : contentFormat is raw bytes.
   core.String contentFormat;
 
-  /// Hashing info calculated and provided by the API client for content.
-  /// Can be used with the items.push method to calculate modified state.
-  /// The maximum length is 2048 characters.
+  /// Hashing info calculated and provided by the API client for content. Can be
+  /// used with the items.push method to calculate modified state. The maximum
+  /// length is 2048 characters.
   core.String hash;
 
-  /// Content that is supplied inlined within the update method.
-  /// The maximum length is 102400 bytes (100 KiB).
+  /// Content that is supplied inlined within the update method. The maximum
+  /// length is 102400 bytes (100 KiB).
   core.String inlineContent;
   core.List<core.int> get inlineContentAsBytes {
     return convert.base64.decode(inlineContent);
@@ -5545,22 +5420,15 @@ class ItemCountByStatus {
 
   /// Status of the items.
   /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Input-only value.  Used with
-  /// Items.list
-  /// to list all items in the queue, regardless of status.
+  /// - "CODE_UNSPECIFIED" : Input-only value. Used with Items.list to list all
+  /// items in the queue, regardless of status.
   /// - "ERROR" : Error encountered by Cloud Search while processing this item.
-  /// Details of the error are in
-  /// repositoryError.
+  /// Details of the error are in repositoryError.
   /// - "MODIFIED" : Item has been modified in the repository, and is out of
-  /// date with
-  /// the version previously accepted into Cloud Search.
+  /// date with the version previously accepted into Cloud Search.
   /// - "NEW_ITEM" : Item is known to exist in the repository, but is not yet
-  /// accepted by
-  /// Cloud Search.
-  /// An item can be in this state when
-  /// Items.push
-  /// has been called for
-  /// an item of this name that did not exist previously.
+  /// accepted by Cloud Search. An item can be in this state when Items.push has
+  /// been called for an item of this name that did not exist previously.
   /// - "ACCEPTED" : API has accepted the up-to-date data of this item.
   core.String statusCode;
 
@@ -5590,70 +5458,58 @@ class ItemCountByStatus {
 
 /// Available metadata fields for the item.
 class ItemMetadata {
-  /// The name of the container for this item.
-  /// Deletion of the container item leads to automatic deletion of this
-  /// item.  Note: ACLs are not inherited from a container item.
-  /// To provide ACL inheritance for an item, use the
-  /// inheritAclFrom
-  /// field. The maximum length is 1536 characters.
+  /// The name of the container for this item. Deletion of the container item
+  /// leads to automatic deletion of this item. Note: ACLs are not inherited
+  /// from a container item. To provide ACL inheritance for an item, use the
+  /// inheritAclFrom field. The maximum length is 1536 characters.
   core.String containerName;
 
   /// The BCP-47 language code for the item, such as "en-US" or "sr-Latn". For
   /// more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  /// The maximum length is 32 characters.
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. The
+  /// maximum length is 32 characters.
   core.String contentLanguage;
 
   /// The time when the item was created in the source repository.
   core.String createTime;
 
-  /// Hashing value provided by the API caller.
-  /// This can be used with the
-  /// items.push
-  /// method to calculate modified state.
-  /// The maximum length is 2048 characters.
+  /// Hashing value provided by the API caller. This can be used with the
+  /// items.push method to calculate modified state. The maximum length is 2048
+  /// characters.
   core.String hash;
 
-  /// A list of interactions for the item.  Interactions are used to improve
-  /// Search quality, but are not exposed to end users.
-  /// The maximum number of elements is 1000.
+  /// A list of interactions for the item. Interactions are used to improve
+  /// Search quality, but are not exposed to end users. The maximum number of
+  /// elements is 1000.
   core.List<Interaction> interactions;
 
-  /// Additional keywords or phrases that should match the item.
-  /// Used internally for user generated content.
-  /// The maximum number of elements is 100.
-  /// The maximum length is 8192 characters.
+  /// Additional keywords or phrases that should match the item. Used internally
+  /// for user generated content. The maximum number of elements is 100. The
+  /// maximum length is 8192 characters.
   core.List<core.String> keywords;
 
-  /// The original mime-type of
-  /// ItemContent.content
-  /// in the source repository.
+  /// The original mime-type of ItemContent.content in the source repository.
   /// The maximum length is 256 characters.
   core.String mimeType;
 
-  /// The type of the item.  This should correspond to the name of an object
-  /// definition in the schema registered for the data source.  For example, if
+  /// The type of the item. This should correspond to the name of an object
+  /// definition in the schema registered for the data source. For example, if
   /// the schema for the data source contains an object definition with name
   /// 'document', then item indexing requests for objects of that type should
-  /// set
-  /// objectType to 'document'.
-  /// The maximum length is 256 characters.
+  /// set objectType to 'document'. The maximum length is 256 characters.
   core.String objectType;
 
   /// Additional search quality metadata of the item
   SearchQualityMetadata searchQualityMetadata;
 
-  /// Link to the source repository serving the data.  &#83;earch results apply
-  /// this link to the title.
-  /// Whitespace or special characters may cause Cloud &#83;earch result links
-  /// to
-  /// trigger a redirect notice; to avoid this, encode the URL.
+  /// Link to the source repository serving the data. Search results apply this
+  /// link to the title. Whitespace or special characters may cause Cloud Search
+  /// result links to trigger a redirect notice; to avoid this, encode the URL.
   /// The maximum length is 2048 characters.
   core.String sourceRepositoryUrl;
 
-  /// The title of the item.  If given, this will be the displayed title of the
-  /// Search result.
-  /// The maximum length is 2048 characters.
+  /// The title of the item. If given, this will be the displayed title of the
+  /// Search result. The maximum length is 2048 characters.
   core.String title;
 
   /// The time when the item was last modified in the source repository.
@@ -5751,22 +5607,15 @@ class ItemMetadata {
 class ItemStatus {
   /// Status code.
   /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Input-only value.  Used with
-  /// Items.list
-  /// to list all items in the queue, regardless of status.
+  /// - "CODE_UNSPECIFIED" : Input-only value. Used with Items.list to list all
+  /// items in the queue, regardless of status.
   /// - "ERROR" : Error encountered by Cloud Search while processing this item.
-  /// Details of the error are in
-  /// repositoryError.
+  /// Details of the error are in repositoryError.
   /// - "MODIFIED" : Item has been modified in the repository, and is out of
-  /// date with
-  /// the version previously accepted into Cloud Search.
+  /// date with the version previously accepted into Cloud Search.
   /// - "NEW_ITEM" : Item is known to exist in the repository, but is not yet
-  /// accepted by
-  /// Cloud Search.
-  /// An item can be in this state when
-  /// Items.push
-  /// has been called for
-  /// an item of this name that did not exist previously.
+  /// accepted by Cloud Search. An item can be in this state when Items.push has
+  /// been called for an item of this name that did not exist previously.
   /// - "ACCEPTED" : API has accepted the up-to-date data of this item.
   core.String code;
 
@@ -5814,11 +5663,9 @@ class ItemStatus {
 
 /// Available structured data fields for the item.
 class ItemStructuredData {
-  /// Hashing value provided by the API caller.
-  /// This can be used with the
-  /// items.push
-  /// method to calculate modified state.
-  /// The maximum length is 2048 characters.
+  /// Hashing value provided by the API caller. This can be used with the
+  /// items.push method to calculate modified state. The maximum length is 2048
+  /// characters.
   core.String hash;
 
   /// The structured data object that should conform to a registered object
@@ -5850,8 +5697,8 @@ class ItemStructuredData {
 }
 
 class ListDataSourceResponse {
-  /// Token to retrieve the next page of results, or empty if there are no
-  /// more results in the list.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
   core.List<DataSource> sources;
 
@@ -5884,8 +5731,8 @@ class ListDataSourceResponse {
 class ListItemNamesForUnmappedIdentityResponse {
   core.List<core.String> itemNames;
 
-  /// Token to retrieve the next page of results, or empty if there are no
-  /// more results in the list.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
 
   ListItemNamesForUnmappedIdentityResponse();
@@ -5915,8 +5762,8 @@ class ListItemNamesForUnmappedIdentityResponse {
 class ListItemsResponse {
   core.List<Item> items;
 
-  /// Token to retrieve the next page of results, or empty if there are no
-  /// more results in the list.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
 
   ListItemsResponse();
@@ -5940,6 +5787,41 @@ class ListItemsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation> operations;
+
+  ListOperationsResponse();
+
+  ListOperationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("operations")) {
+      operations = (_json["operations"] as core.List)
+          .map<Operation>((value) => new Operation.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (operations != null) {
+      _json["operations"] =
+          operations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5977,8 +5859,8 @@ class ListQuerySourcesResponse {
 }
 
 class ListSearchApplicationsResponse {
-  /// Token to retrieve the next page of results, or empty if there are no
-  /// more results in the list.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
   core.List<SearchApplication> searchApplications;
 
@@ -6011,8 +5893,8 @@ class ListSearchApplicationsResponse {
 }
 
 class ListUnmappedIdentitiesResponse {
-  /// Token to retrieve the next page of results, or empty if there are no
-  /// more results in the list.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
   core.List<UnmappedIdentity> unmappedIdentities;
 
@@ -6122,10 +6004,10 @@ class Metadata {
   /// The named source for the result, such as Gmail.
   Source source;
 
-  /// The last modified date for the object in the search result. If not
-  /// set in the item, the value returned here is empty. When
-  /// `updateTime` is used for calculating freshness and is not set, this
-  /// value defaults to 2 years from the current time.
+  /// The last modified date for the object in the search result. If not set in
+  /// the item, the value returned here is empty. When `updateTime` is used for
+  /// calculating freshness and is not set, this value defaults to 2 years from
+  /// the current time.
   core.String updateTime;
 
   Metadata();
@@ -6223,7 +6105,7 @@ class Metaline {
 /// A person's name.
 class Name {
   /// The read-only display name formatted according to the locale specified by
-  /// the viewer's account or the <code>Accept-Language</code> HTTP header.
+  /// the viewer's account or the Accept-Language HTTP header.
   core.String displayName;
 
   Name();
@@ -6244,8 +6126,8 @@ class Name {
   }
 }
 
-/// A typed name-value pair for structured data.  The type of the value should
-/// be the same as the registered type for the `name` property in the object
+/// A typed name-value pair for structured data. The type of the value should be
+/// the same as the registered type for the `name` property in the object
 /// definition of `objectType`.
 class NamedProperty {
   core.bool booleanValue;
@@ -6255,9 +6137,9 @@ class NamedProperty {
   HtmlValues htmlValues;
   IntegerValues integerValues;
 
-  /// The name of the property.  This name should correspond to the name of the
-  /// property that was registered for object definition in the schema.
-  /// The maximum allowable length for this property is 256 characters.
+  /// The name of the property. This name should correspond to the name of the
+  /// property that was registered for object definition in the schema. The
+  /// maximum allowable length for this property is 256 characters.
   core.String name;
   ObjectValues objectValues;
   TextValues textValues;
@@ -6338,22 +6220,19 @@ class NamedProperty {
 /// The definition for an object within a data source.
 class ObjectDefinition {
   /// Name for the object, which then defines its type. Item indexing requests
-  /// should set the
-  /// objectType field
-  /// equal to this value. For example, if *name* is *Document*, then indexing
-  /// requests for items of type Document should set
-  /// objectType equal to
-  /// *Document*. Each object definition must be uniquely named within a schema.
-  /// The name must start with a letter and can only contain letters (A-Z, a-z)
-  /// or numbers (0-9).
-  /// The maximum length is 256 characters.
+  /// should set the objectType field equal to this value. For example, if
+  /// *name* is *Document*, then indexing requests for items of type Document
+  /// should set objectType equal to *Document*. Each object definition must be
+  /// uniquely named within a schema. The name must start with a letter and can
+  /// only contain letters (A-Z, a-z) or numbers (0-9). The maximum length is
+  /// 256 characters.
   core.String name;
 
   /// The optional object-specific options.
   ObjectOptions options;
 
-  /// The property definitions for the object.
-  /// The maximum number of elements is 1000.
+  /// The property definitions for the object. The maximum number of elements is
+  /// 1000.
   core.List<PropertyDefinition> propertyDefinitions;
 
   ObjectDefinition();
@@ -6392,20 +6271,19 @@ class ObjectDefinition {
 
 /// The display options for an object.
 class ObjectDisplayOptions {
-  /// Defines the properties that are displayed in the metalines of the
-  /// search results. The property values are displayed in the order given
-  /// here. If a property holds multiple values, all of the values are
-  /// displayed before the next properties. For this reason, it is a good
-  /// practice to specify singular properties before repeated properties in this
-  /// list. All of the properties must set
-  /// is_returnable
-  /// to true. The maximum number of metalines is 3.
+  /// Defines the properties that are displayed in the metalines of the search
+  /// results. The property values are displayed in the order given here. If a
+  /// property holds multiple values, all of the values are displayed before the
+  /// next properties. For this reason, it is a good practice to specify
+  /// singular properties before repeated properties in this list. All of the
+  /// properties must set is_returnable to true. The maximum number of metalines
+  /// is 3.
   core.List<Metaline> metalines;
 
   /// The user friendly label to display in the search result to indicate the
   /// type of the item. This is OPTIONAL; if not provided, an object label isn't
-  /// displayed on the context line of the search results. The maximum length
-  /// is 32 characters.
+  /// displayed on the context line of the search results. The maximum length is
+  /// 64 characters.
   core.String objectDisplayLabel;
 
   ObjectDisplayOptions();
@@ -6473,8 +6351,8 @@ class ObjectOptions {
 class ObjectPropertyOptions {
   /// The properties of the sub-object. These properties represent a nested
   /// object. For example, if this property represents a postal address, the
-  /// subobjectProperties might be named *street*, *city*, and *state*.
-  /// The maximum number of elements is 1000.
+  /// subobjectProperties might be named *street*, *city*, and *state*. The
+  /// maximum number of elements is 1000.
   core.List<PropertyDefinition> subobjectProperties;
 
   ObjectPropertyOptions();
@@ -6527,17 +6405,17 @@ class ObjectValues {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -6545,19 +6423,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6635,9 +6511,8 @@ class Person {
   /// The person's email addresses
   core.List<EmailAddress> emailAddresses;
 
-  /// The resource name of the person to provide information about.
-  /// See <a href="https://developers.google.com/people/api/rest/v1/people/get">
-  /// People.get</a> from Google People API.
+  /// The resource name of the person to provide information about. See
+  /// People.get from Google People API.
   core.String name;
 
   /// Obfuscated ID of a person.
@@ -6724,20 +6599,19 @@ class Photo {
 }
 
 class PollItemsRequest {
-  /// Name of connector making this call.
-  /// <br />Format: datasources/{source_id}/connectors/{ID}
+  /// Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
   core.String connectorName;
 
   /// Common debug options.
   DebugOptions debugOptions;
 
-  /// Maximum number of items to return.
-  /// <br />The maximum value is 100 and the default value is 20.
+  /// Maximum number of items to return. The maximum value is 100 and the
+  /// default value is 20.
   core.int limit;
 
-  /// Queue name to fetch items from.  If unspecified, PollItems will
-  /// fetch from 'default' queue.
-  /// The maximum length is 100 characters.
+  /// Queue name to fetch items from. If unspecified, PollItems will fetch from
+  /// 'default' queue. The maximum length is 100 characters.
   core.String queue;
 
   /// Limit the items polled to the ones with these statuses.
@@ -6786,15 +6660,9 @@ class PollItemsRequest {
 }
 
 class PollItemsResponse {
-  /// Set of items from the queue available for connector to process.
-  /// <br />These items have the following subset of fields populated: <br />
-  /// <br />version
-  /// <br />metadata.hash
-  /// <br />structured_data.hash
-  /// <br />content.hash
-  /// <br />payload
-  /// <br />status
-  /// <br />queue
+  /// Set of items from the queue available for connector to process. These
+  /// items have the following subset of fields populated: version metadata.hash
+  /// structured_data.hash content.hash payload status queue
   core.List<Item> items;
 
   PollItemsResponse();
@@ -6819,16 +6687,16 @@ class PollItemsResponse {
 
 /// Reference to a user, group, or domain.
 class Principal {
-  /// This principal is a group identified using an external identity.
-  /// The name field must specify the group resource name with this format:
+  /// This principal is a group identified using an external identity. The name
+  /// field must specify the group resource name with this format:
   /// identitysources/{source_id}/groups/{ID}
   core.String groupResourceName;
 
   /// This principal is a GSuite user, group or domain.
   GSuitePrincipal gsuitePrincipal;
 
-  /// This principal is a user identified using an external identity.
-  /// The name field must specify the user resource name with this format:
+  /// This principal is a user identified using an external identity. The name
+  /// field must specify the user resource name with this format:
   /// identitysources/{source_id}/users/{ID}
   core.String userResourceName;
 
@@ -6865,23 +6733,23 @@ class Principal {
 class ProcessingError {
   /// Error code indicating the nature of the error.
   /// Possible string values are:
-  /// - "PROCESSING_ERROR_CODE_UNSPECIFIED" : Input only value.  Use this value
+  /// - "PROCESSING_ERROR_CODE_UNSPECIFIED" : Input only value. Use this value
   /// in Items.
   /// - "MALFORMED_REQUEST" : Item's ACL, metadata, or content is malformed or
-  /// in invalid state.
-  /// FieldViolations contains more details on where the problem is.
+  /// in invalid state. FieldViolations contains more details on where the
+  /// problem is.
   /// - "UNSUPPORTED_CONTENT_FORMAT" : Countent format is unsupported.
   /// - "INDIRECT_BROKEN_ACL" : Items with incomplete ACL information due to
-  /// inheriting other
-  /// items with broken ACL or having groups with unmapped descendants.
+  /// inheriting other items with broken ACL or having groups with unmapped
+  /// descendants.
   /// - "ACL_CYCLE" : ACL inheritance graph formed a cycle.
   core.String code;
 
   /// Description of the error.
   core.String errorMessage;
 
-  /// In case the item fields are invalid, this field contains the details
-  /// about the validation errors.
+  /// In case the item fields are invalid, this field contains the details about
+  /// the validation errors.
   core.List<FieldViolation> fieldViolations;
 
   ProcessingError();
@@ -6923,9 +6791,8 @@ class PropertyDefinition {
   DatePropertyOptions datePropertyOptions;
 
   /// Options that determine how the property is displayed in the Cloud Search
-  /// results page if it is specified to be displayed in the object's
-  /// display options
-  /// .
+  /// results page if it is specified to be displayed in the object's display
+  /// options .
   PropertyDisplayOptions displayOptions;
   DoublePropertyOptions doublePropertyOptions;
   EnumPropertyOptions enumPropertyOptions;
@@ -6934,17 +6801,14 @@ class PropertyDefinition {
 
   /// Indicates that the property can be used for generating facets. Cannot be
   /// true for properties whose type is object. IsReturnable must be true to set
-  /// this option.
-  /// Only supported for Boolean, Enum, and Text properties.
+  /// this option. Only supported for Boolean, Enum, and Text properties.
   core.bool isFacetable;
 
   /// Indicates that multiple values are allowed for the property. For example,
-  /// a
-  /// document only has one description but can have multiple comments. Cannot
-  /// be
-  /// true for properties whose type is a boolean.
-  /// If set to false, properties that contain more than one value cause the
-  /// indexing request for that item to be rejected.
+  /// a document only has one description but can have multiple comments. Cannot
+  /// be true for properties whose type is a boolean. If set to false,
+  /// properties that contain more than one value cause the indexing request for
+  /// that item to be rejected.
   core.bool isRepeatable;
 
   /// Indicates that the property identifies data that should be returned in
@@ -6959,31 +6823,27 @@ class PropertyDefinition {
   /// Indicates that the property can be used for sorting. Cannot be true for
   /// properties that are repeatable. Cannot be true for properties whose type
   /// is object or user identifier. IsReturnable must be true to set this
-  /// option.
-  /// Only supported for Boolean, Date, Double, Integer, and Timestamp
+  /// option. Only supported for Boolean, Date, Double, Integer, and Timestamp
   /// properties.
   core.bool isSortable;
 
   /// Indicates that the property can be used for generating query suggestions.
   core.bool isSuggestable;
 
-  /// Indicates that users can perform wildcard search for this
-  /// property. Only supported for Text properties. IsReturnable must be true to
-  /// set this option. In a given datasource maximum of 5 properties can be
-  /// marked as is_wildcard_searchable.
+  /// Indicates that users can perform wildcard search for this property. Only
+  /// supported for Text properties. IsReturnable must be true to set this
+  /// option. In a given datasource maximum of 5 properties can be marked as
+  /// is_wildcard_searchable.
   core.bool isWildcardSearchable;
 
   /// The name of the property. Item indexing requests sent to the Indexing API
-  /// should set the property name
-  /// equal to this value. For example, if name is *subject_line*, then indexing
-  /// requests for document items with subject fields should set the
-  /// name for that field equal to
-  /// *subject_line*. Use the name as the identifier for the object property.
-  /// Once registered as a property for an object, you cannot re-use this name
-  /// for another property within that object.
-  /// The name must start with a letter and can only contain letters (A-Z, a-z)
-  /// or numbers (0-9).
-  /// The maximum length is 256 characters.
+  /// should set the property name equal to this value. For example, if name is
+  /// *subject_line*, then indexing requests for document items with subject
+  /// fields should set the name for that field equal to *subject_line*. Use the
+  /// name as the identifier for the object property. Once registered as a
+  /// property for an object, you cannot re-use this name for another property
+  /// within that object. The name must start with a letter and can only contain
+  /// letters (A-Z, a-z) or numbers (0-9). The maximum length is 256 characters.
   core.String name;
   ObjectPropertyOptions objectPropertyOptions;
   TextPropertyOptions textPropertyOptions;
@@ -7115,16 +6975,15 @@ class PropertyDefinition {
 
 /// The display options for a property.
 class PropertyDisplayOptions {
-  /// The user friendly label for the property that is used if the property
-  /// is specified to be displayed in ObjectDisplayOptions. If provided, the
+  /// The user friendly label for the property that is used if the property is
+  /// specified to be displayed in ObjectDisplayOptions. If provided, the
   /// display label is shown in front of the property values when the property
-  /// is
-  /// part of the object display options. For example, if the property value is
-  /// '1', the value by itself may not be useful context for the user. If the
+  /// is part of the object display options. For example, if the property value
+  /// is '1', the value by itself may not be useful context for the user. If the
   /// display name given was 'priority', then the user sees 'priority : 1' in
   /// the search results which provides clear context to search users. This is
-  /// OPTIONAL; if not given, only the property values are displayed.
-  /// The maximum length is 32 characters.
+  /// OPTIONAL; if not given, only the property values are displayed. The
+  /// maximum length is 64 characters.
   core.String displayLabel;
 
   PropertyDisplayOptions();
@@ -7148,25 +7007,20 @@ class PropertyDisplayOptions {
 /// Represents an item to be pushed to the indexing queue.
 class PushItem {
   /// Content hash of the item according to the repository. If specified, this
-  /// is
-  /// used to determine how to modify this
-  /// item's status. Setting this field and the
-  /// type field results in argument
-  /// error.
-  /// The maximum length is 2048 characters.
+  /// is used to determine how to modify this item's status. Setting this field
+  /// and the type field results in argument error. The maximum length is 2048
+  /// characters.
   core.String contentHash;
 
   /// Metadata hash of the item according to the repository. If specified, this
-  /// is used to determine how to modify this
-  /// item's status. Setting this field and the
-  /// type field results in argument
-  /// error.
-  /// The maximum length is 2048 characters.
+  /// is used to determine how to modify this item's status. Setting this field
+  /// and the type field results in argument error. The maximum length is 2048
+  /// characters.
   core.String metadataHash;
 
-  /// Provides additional document state information for the connector,
-  /// such as an alternate repository ID and other metadata.
-  /// The maximum length is 8192 bytes.
+  /// Provides additional document state information for the connector, such as
+  /// an alternate repository ID and other metadata. The maximum length is 8192
+  /// bytes.
   core.String payload;
   core.List<core.int> get payloadAsBytes {
     return convert.base64.decode(payload);
@@ -7177,54 +7031,37 @@ class PushItem {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Queue to which this item belongs to.  The <code>default</code> queue is
-  /// chosen if this field is not specified. The maximum length is
-  /// 512 characters.
+  /// Queue to which this item belongs to. The default queue is chosen if this
+  /// field is not specified. The maximum length is 512 characters.
   core.String queue;
 
-  /// Populate this field to store Connector or repository error details.
-  /// This information is displayed in the Admin Console.
-  /// This field may only be populated when the
-  /// Type is
-  /// REPOSITORY_ERROR.
+  /// Populate this field to store Connector or repository error details. This
+  /// information is displayed in the Admin Console. This field may only be
+  /// populated when the Type is REPOSITORY_ERROR.
   RepositoryError repositoryError;
 
   /// Structured data hash of the item according to the repository. If
-  /// specified,
-  /// this is used to determine how to modify this item's status. Setting this
-  /// field and the type field
-  /// results in argument error.
-  /// The maximum length is 2048 characters.
+  /// specified, this is used to determine how to modify this item's status.
+  /// Setting this field and the type field results in argument error. The
+  /// maximum length is 2048 characters.
   core.String structuredDataHash;
 
   /// The type of the push operation that defines the push behavior.
   /// Possible string values are:
-  /// - "UNSPECIFIED" : Default UNSPECIFIED.  Specifies that the push operation
-  /// should not modify
-  /// ItemStatus
+  /// - "UNSPECIFIED" : Default UNSPECIFIED. Specifies that the push operation
+  /// should not modify ItemStatus
   /// - "MODIFIED" : Indicates that the repository document has been modified or
-  /// updated since
-  /// the previous
-  /// update
-  /// call. This changes status to
-  /// MODIFIED state for
-  /// an existing item. If this is called on a non existing item, the status is
-  /// changed to
-  /// NEW_ITEM.
+  /// updated since the previous update call. This changes status to MODIFIED
+  /// state for an existing item. If this is called on a non existing item, the
+  /// status is changed to NEW_ITEM.
   /// - "NOT_MODIFIED" : Item in the repository has not been modified since the
-  /// last update
-  /// call.  This push operation will set status to
-  /// ACCEPTED state.
+  /// last update call. This push operation will set status to ACCEPTED state.
   /// - "REPOSITORY_ERROR" : Connector is facing a repository error regarding
-  /// this item.  Change
-  /// status to
-  /// REPOSITORY_ERROR
-  /// state. Item is unreserved and rescheduled at a future time determined by
-  /// exponential backoff.
+  /// this item. Change status to REPOSITORY_ERROR state. Item is unreserved and
+  /// rescheduled at a future time determined by exponential backoff.
   /// - "REQUEUE" : Call push with REQUEUE only for items that have been
-  /// reserved.
-  /// This action unreserves the item and resets its available time to the
-  /// wall clock time.
+  /// reserved. This action unreserves the item and resets its available time to
+  /// the wall clock time.
   core.String type;
 
   PushItem();
@@ -7282,8 +7119,8 @@ class PushItem {
 }
 
 class PushItemRequest {
-  /// Name of connector making this call.
-  /// <br />Format: datasources/{source_id}/connectors/{ID}
+  /// Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
   core.String connectorName;
 
   /// Common debug options.
@@ -7356,15 +7193,13 @@ class QueryInterpretation {
   ///
   /// Possible string values are:
   /// - "NONE" : Neither the natural language interpretation, nor a broader
-  /// version of the
-  /// query is used to fetch the search results.
+  /// version of the query is used to fetch the search results.
   /// - "BLEND" : The results from original query are blended with other
-  /// results. The
-  /// reason for blending these other results with the results from original
-  /// query is populated in the 'Reason' field below.
+  /// results. The reason for blending these other results with the results from
+  /// original query is populated in the 'Reason' field below.
   /// - "REPLACE" : The results from original query are replaced. The reason for
-  /// replacing
-  /// the results from original query is populated in the 'Reason' field below.
+  /// replacing the results from original query is populated in the 'Reason'
+  /// field below.
   core.String interpretationType;
 
   /// The interpretation of the query used in search. For example, queries with
@@ -7378,12 +7213,10 @@ class QueryInterpretation {
   /// Possible string values are:
   /// - "UNSPECIFIED"
   /// - "QUERY_HAS_NATURAL_LANGUAGE_INTENT" : Natural language interpretation of
-  /// the query is used to fetch the search
-  /// results.
+  /// the query is used to fetch the search results.
   /// - "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY" : Query and document terms
-  /// similarity is used to selectively broaden the
-  /// query to retrieve additional search results since enough results were not
-  /// found for the user query.
+  /// similarity is used to selectively broaden the query to retrieve additional
+  /// search results since enough results were not found for the user query.
   /// Interpreted query will be empty for this case.
   core.String reason;
 
@@ -7420,15 +7253,14 @@ class QueryInterpretation {
 /// Options to interpret user query.
 class QueryInterpretationOptions {
   /// Flag to disable natural language (NL) interpretation of queries. Default
-  /// is
-  /// false, Set to true to disable natural language interpretation. NL
+  /// is false, Set to true to disable natural language interpretation. NL
   /// interpretation only applies to predefined datasources.
   core.bool disableNlInterpretation;
 
   /// Enable this flag to turn off all internal optimizations like natural
   /// language (NL) interpretation of queries, supplemental result retrieval,
-  /// and usage of synonyms including custom ones.
-  /// Nl interpretation will be disabled if either one of the two flags is true.
+  /// and usage of synonyms including custom ones. Nl interpretation will be
+  /// disabled if either one of the two flags is true.
   core.bool enableVerbatimMode;
 
   QueryInterpretationOptions();
@@ -7487,8 +7319,7 @@ class QueryOperator {
   /// when we can safely enumerate all the possible values of this operator.
   core.List<core.String> enumValues;
 
-  /// Indicates the operator name that can be used to  isolate the property
-  /// using
+  /// Indicates the operator name that can be used to isolate the property using
   /// the greater-than operator.
   core.String greaterThanOperatorName;
 
@@ -7508,14 +7339,12 @@ class QueryOperator {
   /// Can get suggestions for this field.
   core.bool isSuggestable;
 
-  /// Indicates the operator name that can be used to  isolate the property
-  /// using
+  /// Indicates the operator name that can be used to isolate the property using
   /// the less-than operator.
   core.String lessThanOperatorName;
 
   /// Name of the object corresponding to the operator. This field is only
-  /// filled
-  /// for schema-specific operators, and is unset for common operators.
+  /// filled for schema-specific operators, and is unset for common operators.
   core.String objectType;
 
   /// The name of the operator.
@@ -7626,7 +7455,7 @@ class QuerySource {
   /// List of all operators applicable for this source.
   core.List<QueryOperator> operators;
 
-  /// A short name or alias for the source.  This value can be used with the
+  /// A short name or alias for the source. This value can be used with the
   /// 'source' operator.
   core.String shortName;
 
@@ -7687,11 +7516,11 @@ class QuerySuggestion {
 
 /// Errors when the connector is communicating to the source repository.
 class RepositoryError {
-  /// Message that describes the error. The maximum allowable length
-  /// of the message is 8192 characters.
+  /// Message that describes the error. The maximum allowable length of the
+  /// message is 8192 characters.
   core.String errorMessage;
 
-  /// Error codes.  Matches the definition of HTTP status codes.
+  /// Error codes. Matches the definition of HTTP status codes.
   core.int httpStatusCode;
 
   /// Type of error.
@@ -7708,8 +7537,7 @@ class RepositoryError {
   /// - "QUOTA_EXCEEDED" : Quota exceeded.
   /// - "SERVICE_UNAVAILABLE" : Server temporarily unavailable.
   /// - "CLIENT_ERROR" : Client-related error, such as an invalid request from
-  /// the connector to
-  /// the repository server.
+  /// the connector to the repository server.
   core.String type;
 
   RepositoryError();
@@ -7747,34 +7575,28 @@ class RequestOptions {
   /// Debug options of the request
   DebugOptions debugOptions;
 
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  /// For translations.
-  ///
-  /// Set this field using the language set in browser or for the page. In the
-  /// event that the user's language preference is known, set this field to the
-  /// known user language.
-  ///
-  /// When specified, the documents in search results are biased towards the
-  /// specified language.
-  ///
-  /// The suggest API does not use this parameter. Instead, suggest
-  /// autocompletes
-  /// only based on characters in the query.
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+  /// information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For
+  /// translations. Set this field using the language set in browser or for the
+  /// page. In the event that the user's language preference is known, set this
+  /// field to the known user language. When specified, the documents in search
+  /// results are biased towards the specified language. The suggest API does
+  /// not use this parameter. Instead, suggest autocompletes only based on
+  /// characters in the query.
   core.String languageCode;
 
-  /// The ID generated when you create a search application using the
-  /// [admin console](https://support.google.com/a/answer/9043922).
+  /// The ID generated when you create a search application using the [admin
+  /// console](https://support.google.com/a/answer/9043922).
   core.String searchApplicationId;
 
   /// Current user's time zone id, such as "America/Los_Angeles" or
-  /// "Australia/Sydney". These IDs are defined by
-  /// [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/)
-  /// project, and currently available in the file
+  /// "Australia/Sydney". These IDs are defined by [Unicode Common Locale Data
+  /// Repository (CLDR)](http://cldr.unicode.org/) project, and currently
+  /// available in the file
   /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
-  /// This field is used to correctly interpret date and time queries.
-  /// If this field is not specified, the default time zone (UTC) is used.
+  /// This field is used to correctly interpret date and time queries. If this
+  /// field is not specified, the default time zone (UTC) is used.
   core.String timeZone;
 
   RequestOptions();
@@ -7858,15 +7680,13 @@ class ResponseDebugInfo {
   }
 }
 
-/// Information relevant only to a restrict entry.
-/// NextId: 12
+/// Information relevant only to a restrict entry. NextId: 12
 class RestrictItem {
   /// LINT.ThenChange(//depot/google3/java/com/google/apps/search/quality/itemsuggest/utils/SubtypeRerankingUtils.java)
   DriveFollowUpRestrict driveFollowUpRestrict;
   DriveLocationRestrict driveLocationRestrict;
 
-  /// LINT.IfChange
-  /// Drive Types.
+  /// LINT.IfChange Drive Types.
   DriveMimeTypeRestrict driveMimeTypeRestrict;
   DriveTimeSpanRestrict driveTimeSpanRestrict;
 
@@ -8079,9 +7899,7 @@ class RetrievalImportance {
   /// - "HIGH" : Treat the match with higher importance than body text.
   /// - "LOW" : Treat the match with lower importance than body text.
   /// - "NONE" : Do not match against this field during retrieval. The property
-  /// can still
-  /// be used for operator matching, faceting, and suggest if
-  /// desired.
+  /// can still be used for operator matching, faceting, and suggest if desired.
   core.String importance;
 
   RetrievalImportance();
@@ -8104,13 +7922,13 @@ class RetrievalImportance {
 
 /// The schema definition for a data source.
 class Schema {
-  /// The list of top-level objects for the data source.
-  /// The maximum number of elements is 10.
+  /// The list of top-level objects for the data source. The maximum number of
+  /// elements is 10.
   core.List<ObjectDefinition> objectDefinitions;
 
   /// IDs of the Long Running Operations (LROs) currently running for this
-  /// schema. After modifying the schema, wait for operations to complete
-  /// before indexing additional content.
+  /// schema. After modifying the schema, wait for operations to complete before
+  /// indexing additional content.
   core.List<core.String> operationIds;
 
   Schema();
@@ -8141,18 +7959,16 @@ class Schema {
   }
 }
 
-/// Scoring configurations for a source while processing a
-/// Search or
-/// Suggest request.
+/// Scoring configurations for a source while processing a Search or Suggest
+/// request.
 class ScoringConfig {
   /// Whether to use freshness as a ranking signal. By default, freshness is
-  /// used
-  /// as a ranking signal. Note that this setting is not available in the Admin
-  /// UI.
+  /// used as a ranking signal. Note that this setting is not available in the
+  /// Admin UI.
   core.bool disableFreshness;
 
-  /// Whether to personalize the results. By default, personal signals will
-  /// be used to boost results.
+  /// Whether to personalize the results. By default, personal signals will be
+  /// used to boost results.
   core.bool disablePersonalization;
 
   ScoringConfig();
@@ -8181,30 +7997,27 @@ class ScoringConfig {
 
 /// SearchApplication
 class SearchApplication {
-  /// Retrictions applied to the configurations.
-  /// The maximum number of elements is 10.
+  /// Retrictions applied to the configurations. The maximum number of elements
+  /// is 10.
   core.List<DataSourceRestriction> dataSourceRestrictions;
 
-  /// The default fields for returning facet results.
-  /// The sources specified here also have been included in
-  /// data_source_restrictions
-  /// above.
+  /// The default fields for returning facet results. The sources specified here
+  /// also have been included in data_source_restrictions above.
   core.List<FacetOptions> defaultFacetOptions;
 
   /// The default options for sorting the search results
   SortOptions defaultSortOptions;
 
-  /// Display name of the Search Application.
-  /// The maximum length is 300 characters.
+  /// Display name of the Search Application. The maximum length is 300
+  /// characters.
   core.String displayName;
 
-  /// Name of the Search Application.
-  /// <br />Format: searchapplications/{application_id}.
+  /// Name of the Search Application. Format:
+  /// searchapplications/{application_id}.
   core.String name;
 
   /// Output only. IDs of the Long Running Operations (LROs) currently running
-  /// for this
-  /// schema. Output only field.
+  /// for this schema. Output only field.
   core.List<core.String> operationIds;
 
   /// Configuration for ranking results.
@@ -8407,8 +8220,8 @@ class SearchItemsByViewUrlRequest {
   /// The next_page_token value returned from a previous request, if any.
   core.String pageToken;
 
-  /// Specify the full view URL to find the corresponding item.
-  /// The maximum length is 2048 characters.
+  /// Specify the full view URL to find the corresponding item. The maximum
+  /// length is 2048 characters.
   core.String viewUrl;
 
   SearchItemsByViewUrlRequest();
@@ -8444,8 +8257,8 @@ class SearchItemsByViewUrlRequest {
 class SearchItemsByViewUrlResponse {
   core.List<Item> items;
 
-  /// Token to retrieve the next page of results, or empty if there are no
-  /// more results in the list.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
 
   SearchItemsByViewUrlResponse();
@@ -8477,10 +8290,8 @@ class SearchItemsByViewUrlResponse {
 /// Additional search quality metadata of the item.
 class SearchQualityMetadata {
   /// An indication of the quality of the item, used to influence search
-  /// quality.
-  /// Value should be between 0.0 (lowest quality) and 1.0 (highest quality).
-  /// The
-  /// default value is 0.0.
+  /// quality. Value should be between 0.0 (lowest quality) and 1.0 (highest
+  /// quality). The default value is 0.0.
   core.double quality;
 
   SearchQualityMetadata();
@@ -8503,20 +8314,17 @@ class SearchQualityMetadata {
 
 /// The search API request.
 class SearchRequest {
-  /// The sources to use for querying. If not specified, all data sources
-  /// from the current search application are used.
+  /// The sources to use for querying. If not specified, all data sources from
+  /// the current search application are used.
   core.List<DataSourceRestriction> dataSourceRestrictions;
   core.List<FacetOptions> facetOptions;
 
-  /// Maximum number of search results to return in one page.
-  /// Valid values are between 1 and 100, inclusive.
-  /// Default value is 10.
+  /// Maximum number of search results to return in one page. Valid values are
+  /// between 1 and 100, inclusive. Default value is 10.
   core.int pageSize;
 
-  /// The raw query string.
-  /// See supported search operators in the [Cloud search
-  /// Cheat
-  /// Sheet](https://gsuite.google.com/learning-center/products/cloudsearch/cheat-sheet/)
+  /// The raw query string. See supported search operators in the [Cloud search
+  /// Cheat Sheet](https://support.google.com/a/users/answer/9299929)
   core.String query;
 
   /// Options to interpret the user query.
@@ -8808,9 +8616,8 @@ class Snippet {
   /// The matched ranges in the snippet.
   core.List<MatchRange> matchRanges;
 
-  /// The snippet of the document.
-  /// The snippet of the document. May contain escaped HTML character that
-  /// should be unescaped prior to rendering.
+  /// The snippet of the document. The snippet of the document. May contain
+  /// escaped HTML character that should be unescaped prior to rendering.
   core.String snippet;
 
   Snippet();
@@ -8841,9 +8648,8 @@ class Snippet {
 }
 
 class SortOptions {
-  /// Name of the operator corresponding to the field to sort on.
-  /// The corresponding property must be marked as
-  /// sortable.
+  /// Name of the operator corresponding to the field to sort on. The
+  /// corresponding property must be marked as sortable.
   core.String operatorName;
 
   /// Ascending is the default sort order
@@ -8878,16 +8684,14 @@ class SortOptions {
 
 /// Defines sources for the suggest/search APIs.
 class Source {
-  /// Source name for content indexed by the
-  /// Indexing API.
+  /// Source name for content indexed by the Indexing API.
   core.String name;
 
   /// Predefined content source for Google Apps.
   /// Possible string values are:
   /// - "NONE"
   /// - "QUERY_HISTORY" : Suggests queries issued by the user in the past. Only
-  /// valid when used
-  /// with the suggest API. Ignored when used in the query API.
+  /// valid when used with the suggest API. Ignored when used in the query API.
   /// - "PERSON" : Suggests people in the organization. Only valid when used
   /// with the suggest API. Results in an error when used in the query API.
   /// - "GOOGLE_DRIVE"
@@ -8922,9 +8726,7 @@ class Source {
   }
 }
 
-/// Configurations for a source while processing a
-/// Search or
-/// Suggest request.
+/// Configurations for a source while processing a Search or Suggest request.
 class SourceConfig {
   /// The crowding configuration for the source.
   SourceCrowdingConfig crowdingConfig;
@@ -8972,12 +8774,12 @@ class SourceConfig {
 /// and source diversity in search results, you can set a condition to reduce
 /// repetitive results by source.
 class SourceCrowdingConfig {
-  /// Maximum number of results allowed from a source.
-  /// No limits will be set on results if this value is less than or equal to 0.
+  /// Maximum number of results allowed from a source. No limits will be set on
+  /// results if this value is less than or equal to 0.
   core.int numResults;
 
-  /// Maximum number of suggestions allowed from a source.
-  /// No limits will be set on results if this value is less than or equal to 0.
+  /// Maximum number of suggestions allowed from a source. No limits will be set
+  /// on results if this value is less than or equal to 0.
   core.int numSuggestions;
 
   SourceCrowdingConfig();
@@ -9106,8 +8908,8 @@ class SpellResult {
 
 /// Start upload file request.
 class StartUploadItemRequest {
-  /// Name of connector making this call.
-  /// <br />Format: datasources/{source_id}/connectors/{ID}
+  /// Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
   core.String connectorName;
 
   /// Common debug options.
@@ -9140,15 +8942,14 @@ class StartUploadItemRequest {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -9195,8 +8996,7 @@ class Status {
 
 /// A structured data object consisting of named properties.
 class StructuredDataObject {
-  /// The properties for the object.
-  /// The maximum number of elements is 1000.
+  /// The properties for the object. The maximum number of elements is 1000.
   core.List<NamedProperty> properties;
 
   StructuredDataObject();
@@ -9245,16 +9045,15 @@ class StructuredResult {
 
 /// Request of suggest API.
 class SuggestRequest {
-  /// The sources to use for suggestions. If not specified, the data sources
-  /// are taken from the current search application.
-  ///
-  /// NOTE: Suggestions are supported only for third party data sources and
-  /// people (i.e. PredefinedSource.PERSON).
+  /// The sources to use for suggestions. If not specified, the data sources are
+  /// taken from the current search application. NOTE: Suggestions are supported
+  /// only for third party data sources and people (i.e.
+  /// PredefinedSource.PERSON).
   core.List<DataSourceRestriction> dataSourceRestrictions;
 
-  /// Partial query for which autocomplete suggestions will be shown.
-  /// For example, if the query is "sea", then the server might return
-  /// "season", "search", "seagull" and so on.
+  /// Partial query for which autocomplete suggestions will be shown. For
+  /// example, if the query is "sea", then the server might return "season",
+  /// "search", "seagull" and so on.
   core.String query;
 
   /// Request options, such as the search application and user timezone.
@@ -9322,9 +9121,8 @@ class SuggestResponse {
 
 /// One suggestion result.
 class SuggestResult {
-  /// This is present when the suggestion indicates a person. It
-  /// contains more information about the person - like their email ID,
-  /// name etc.
+  /// This is present when the suggestion indicates a person. It contains more
+  /// information about the person - like their email ID, name etc.
   PeopleSuggestion peopleSuggestion;
 
   /// This field will be present if the suggested query is a word/phrase
@@ -9334,8 +9132,8 @@ class SuggestResult {
   /// The source of the suggestion.
   Source source;
 
-  /// The suggested query that will be used for search, when the user
-  /// clicks on the suggestion
+  /// The suggested query that will be used for search, when the user clicks on
+  /// the suggestion
   core.String suggestedQuery;
 
   SuggestResult();
@@ -9376,30 +9174,28 @@ class SuggestResult {
 }
 
 /// Used to provide a search operator for text properties. This is optional.
-/// Search operators let users restrict the query to specific fields relevant
-/// to the type of item being searched.
+/// Search operators let users restrict the query to specific fields relevant to
+/// the type of item being searched.
 class TextOperatorOptions {
-  /// If true, the text value is tokenized as one atomic value in
-  /// operator searches and facet matches. For example, if the operator name is
-  /// "genre" and the value is "science-fiction" the query restrictions
-  /// "genre:science" and "genre:fiction" doesn't match the item;
-  /// "genre:science-fiction" does. Value matching is case-sensitive
-  /// and does not remove special characters.
+  /// If true, the text value is tokenized as one atomic value in operator
+  /// searches and facet matches. For example, if the operator name is "genre"
+  /// and the value is "science-fiction" the query restrictions "genre:science"
+  /// and "genre:fiction" doesn't match the item; "genre:science-fiction" does.
+  /// Value matching is case-sensitive and does not remove special characters.
   /// If false, the text is tokenized. For example, if the value is
-  /// "science-fiction" the queries "genre:science" and "genre:fiction"
-  /// matches the item.
+  /// "science-fiction" the queries "genre:science" and "genre:fiction" matches
+  /// the item.
   core.bool exactMatchWithOperator;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// text property. For example, if operatorName is *subject* and the
-  /// property's name is *subjectLine*, then queries like
-  /// *subject:&lt;value&gt;* show results only where the value of the
-  /// property named *subjectLine* matches *&lt;value&gt;*. By contrast, a
-  /// search that uses the same *&lt;value&gt;* without an operator returns
-  /// all items where *&lt;value&gt;* matches the value of any
-  /// text properties or text within the content field for the item.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// property's name is *subjectLine*, then queries like *subject:<value>* show
+  /// results only where the value of the property named *subjectLine* matches
+  /// *<value>*. By contrast, a search that uses the same *<value>* without an
+  /// operator returns all items where *<value>* matches the value of any text
+  /// properties or text within the content field for the item. The operator
+  /// name can only contain lowercase letters (a-z). The maximum length is 32
+  /// characters.
   core.String operatorName;
 
   TextOperatorOptions();
@@ -9431,8 +9227,8 @@ class TextPropertyOptions {
   /// If set, describes how the property should be used as a search operator.
   TextOperatorOptions operatorOptions;
 
-  /// Indicates the search quality importance of the tokens within the
-  /// field when used for retrieval.
+  /// Indicates the search quality importance of the tokens within the field
+  /// when used for retrieval.
   RetrievalImportance retrievalImportance;
 
   TextPropertyOptions();
@@ -9491,30 +9287,27 @@ class TimestampOperatorOptions {
   /// Indicates the operator name required in the query in order to isolate the
   /// timestamp property using the greater-than operator. For example, if
   /// greaterThanOperatorName is *closedafter* and the property's name is
-  /// *closeDate*, then queries like *closedafter:&lt;value&gt;*
-  /// show results only where the value of the property named *closeDate* is
-  /// later than *&lt;value&gt;*.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// *closeDate*, then queries like *closedafter:<value>* show results only
+  /// where the value of the property named *closeDate* is later than *<value>*.
+  /// The operator name can only contain lowercase letters (a-z). The maximum
+  /// length is 32 characters.
   core.String greaterThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// timestamp property using the less-than operator. For example, if
   /// lessThanOperatorName is *closedbefore* and the property's name is
-  /// *closeDate*, then queries like *closedbefore:&lt;value&gt;*
-  /// show results only where the value of the property named *closeDate* is
-  /// earlier than *&lt;value&gt;*.
-  /// The operator name can only contain lowercase letters (a-z).
-  /// The maximum length is 32 characters.
+  /// *closeDate*, then queries like *closedbefore:<value>* show results only
+  /// where the value of the property named *closeDate* is earlier than
+  /// *<value>*. The operator name can only contain lowercase letters (a-z). The
+  /// maximum length is 32 characters.
   core.String lessThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// timestamp property. For example, if operatorName is *closedon* and the
-  /// property's name is *closeDate*, then queries like
-  /// *closedon:&lt;value&gt;* show results only where the value of the
-  /// property named *closeDate* matches *&lt;value&gt;*. By contrast, a
-  /// search that uses the same *&lt;value&gt;* without an operator returns
-  /// all items where *&lt;value&gt;* matches the value of any String
+  /// property's name is *closeDate*, then queries like *closedon:<value>* show
+  /// results only where the value of the property named *closeDate* matches
+  /// *<value>*. By contrast, a search that uses the same *<value>* without an
+  /// operator returns all items where *<value>* matches the value of any String
   /// properties or text within the content field for the item. The operator
   /// name can only contain lowercase letters (a-z). The maximum length is 32
   /// characters.
@@ -9602,18 +9395,14 @@ class UnmappedIdentity {
 
   /// The resolution status for the external identity.
   /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Input-only value.  Used to list all unmapped
-  /// identities regardless of
-  /// status.
+  /// - "CODE_UNSPECIFIED" : Input-only value. Used to list all unmapped
+  /// identities regardless of status.
   /// - "NOT_FOUND" : The unmapped identity was not found in IDaaS, and needs to
-  /// be provided by
-  /// the user.
+  /// be provided by the user.
   /// - "IDENTITY_SOURCE_NOT_FOUND" : The identity source associated with the
-  /// identity was either not found or
-  /// deleted.
+  /// identity was either not found or deleted.
   /// - "IDENTITY_SOURCE_MISCONFIGURED" : IDaaS does not understand the identity
-  /// source, probably because the
-  /// schema was modified in a non compatible way.
+  /// source, probably because the schema was modified in a non compatible way.
   /// - "TOO_MANY_MAPPINGS_FOUND" : The number of users associated with the
   /// external identity is too large.
   /// - "INTERNAL_ERROR" : Internal error.
@@ -9644,8 +9433,8 @@ class UnmappedIdentity {
 }
 
 class UnreserveItemsRequest {
-  /// Name of connector making this call.
-  /// <br />Format: datasources/{source_id}/connectors/{ID}
+  /// Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
   core.String connectorName;
 
   /// Common debug options.
@@ -9720,8 +9509,8 @@ class UpdateSchemaRequest {
   /// The new schema for the source.
   Schema schema;
 
-  /// If true, the schema will be checked for validity,
-  /// but will not be registered with the data source, even if valid.
+  /// If true, the schema will be checked for validity, but will not be
+  /// registered with the data source, even if valid.
   core.bool validateOnly;
 
   UpdateSchemaRequest();
@@ -9754,14 +9543,11 @@ class UpdateSchemaRequest {
   }
 }
 
-/// Represents an upload session reference.
-/// This reference is created via upload
-/// method.
-/// Updating of item content may refer to this uploaded content via
+/// Represents an upload session reference. This reference is created via upload
+/// method. Updating of item content may refer to this uploaded content via
 /// contentDataRef.
 class UploadItemRef {
-  /// Name of the content reference.
-  /// The maximum length is 2048 characters.
+  /// Name of the content reference. The maximum length is 2048 characters.
   core.String name;
 
   UploadItemRef();
@@ -9842,14 +9628,11 @@ class Value {
 class ValueFilter {
   /// The `operator_name` applied to the query, such as *price_greater_than*.
   /// The filter can work against both types of filters defined in the schema
-  /// for your data source:
-  /// <br/><br/>
-  /// 1. `operator_name`, where the query filters results by the property
-  /// that matches the value.
-  /// <br/>
-  /// 2. `greater_than_operator_name` or `less_than_operator_name` in your
-  /// schema. The query filters the results for the property values that are
-  /// greater than or less than  the supplied value in the query.
+  /// for your data source: 1. `operator_name`, where the query filters results
+  /// by the property that matches the value. 2. `greater_than_operator_name` or
+  /// `less_than_operator_name` in your schema. The query filters the results
+  /// for the property values that are greater than or less than the supplied
+  /// value in the query.
   core.String operatorName;
 
   /// The value to be compared with.

@@ -21,6 +21,10 @@ class PeopleApi {
   /// See, edit, download, and permanently delete your contacts
   static const ContactsScope = "https://www.googleapis.com/auth/contacts";
 
+  /// See and download contact info automatically saved in your "Other contacts"
+  static const ContactsOtherReadonlyScope =
+      "https://www.googleapis.com/auth/contacts.other.readonly";
+
   /// See and download your contacts
   static const ContactsReadonlyScope =
       "https://www.googleapis.com/auth/contacts.readonly";
@@ -66,6 +70,8 @@ class PeopleApi {
 
   ContactGroupsResourceApi get contactGroups =>
       new ContactGroupsResourceApi(_requester);
+  OtherContactsResourceApi get otherContacts =>
+      new OtherContactsResourceApi(_requester);
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
   PeopleApi(http.Client client,
@@ -92,8 +98,7 @@ class ContactGroupsResourceApi {
   /// get.
   ///
   /// [maxMembers] - Optional. Specifies the maximum number of members to return
-  /// for each group. Defaults
-  /// to 0 if not set, which will return zero members.
+  /// for each group. Defaults to 0 if not set, which will return zero members.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -242,8 +247,7 @@ class ContactGroupsResourceApi {
   /// Value must have pattern "^contactGroups/[^/]+$".
   ///
   /// [maxMembers] - Optional. Specifies the maximum number of members to
-  /// return. Defaults to 0 if not
-  /// set, which will return zero members.
+  /// return. Defaults to 0 if not set, which will return zero members.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -291,17 +295,16 @@ class ContactGroupsResourceApi {
   /// Request parameters:
   ///
   /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// call to
-  /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
+  /// call to [ListContactGroups](/people/api/rest/v1/contactgroups/list).
   /// Requests the next page of resources.
   ///
   /// [pageSize] - Optional. The maximum number of resources to return. Valid
-  /// values are between 1 and
-  /// 1000, inclusive. Defaults to 30 if not set or set to 0.
+  /// values are between 1 and 1000, inclusive. Defaults to 30 if not set or set
+  /// to 0.
   ///
   /// [syncToken] - Optional. A sync token, returned by a previous call to
-  /// `contactgroups.list`.
-  /// Only resources changed since the sync token was created will be returned.
+  /// `contactgroups.list`. Only resources changed since the sync token was
+  /// created will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -358,8 +361,8 @@ class ContactGroupsResourceApi {
   /// Request parameters:
   ///
   /// [resourceName] - The resource name for the contact group, assigned by the
-  /// server. An ASCII
-  /// string, in the form of `contactGroups/{contact_group_id}`.
+  /// server. An ASCII string, in the form of
+  /// `contactGroups/{contact_group_id}`.
   /// Value must have pattern "^contactGroups/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -410,9 +413,8 @@ class ContactGroupsMembersResourceApi {
   ContactGroupsMembersResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Modify the members of a contact group owned by the authenticated user.
-  ///
-  /// The only system contact groups that can have members added are
+  /// Modify the members of a contact group owned by the authenticated user. The
+  /// only system contact groups that can have members added are
   /// `contactGroups/myContacts` and `contactGroups/starred`. Other system
   /// contact groups are deprecated and can only have contacts removed.
   ///
@@ -469,19 +471,21 @@ class ContactGroupsMembersResourceApi {
   }
 }
 
-class PeopleResourceApi {
+class OtherContactsResourceApi {
   final commons.ApiRequester _requester;
 
-  PeopleConnectionsResourceApi get connections =>
-      new PeopleConnectionsResourceApi(_requester);
+  OtherContactsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  PeopleResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Create a new contact and return the person resource for that contact.
+  /// Copies an "Other contact" to a new contact in the user's "myContacts"
+  /// group
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
+  ///
+  /// [resourceName] - Required. The resource name of the "Other contact" to
+  /// copy.
+  /// Value must have pattern "^otherContacts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -493,7 +497,10 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Person> createContact(Person request, {core.String $fields}) {
+  async.Future<Person> copyOtherContactToMyContactsGroup(
+      CopyOtherContactToMyContactsGroupRequest request,
+      core.String resourceName,
+      {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -503,6 +510,173 @@ class PeopleResourceApi {
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
+    }
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resourceName') +
+        ':copyOtherContactToMyContactsGroup';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Person.fromJson(data));
+  }
+
+  /// List all "Other contacts", that is contacts that are not in a contact
+  /// group. "Other contacts" are typically auto created contacts from
+  /// interactions.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestSyncToken] - Optional. Whether the response should include
+  /// `next_sync_token`, which can be used to get all changes since the last
+  /// request. For subsequent sync requests use the `sync_token` param instead.
+  /// Initial sync requests that specify `request_sync_token` have an additional
+  /// rate limit.
+  ///
+  /// [pageSize] - Optional. The number of "Other contacts" to include in the
+  /// response. Valid values are between 1 and 1000, inclusive. Defaults to 100
+  /// if not set or set to 0.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListOtherContacts` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListOtherContacts` must
+  /// match the call that provided the page token.
+  ///
+  /// [syncToken] - Optional. A sync token, received from a previous
+  /// `ListOtherContacts` call. Provide this to retrieve only the resources
+  /// changed since the last request. Sync requests that specify `sync_token`
+  /// have an additional rate limit. When syncing, all other parameters provided
+  /// to `ListOtherContacts` must match the call that provided the sync token.
+  ///
+  /// [readMask] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Valid values are: * emailAddresses * names * phoneNumbers
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOtherContactsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOtherContactsResponse> list(
+      {core.bool requestSyncToken,
+      core.int pageSize,
+      core.String pageToken,
+      core.String syncToken,
+      core.String readMask,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (requestSyncToken != null) {
+      _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
+    if (readMask != null) {
+      _queryParams["readMask"] = [readMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/otherContacts';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListOtherContactsResponse.fromJson(data));
+  }
+}
+
+class PeopleResourceApi {
+  final commons.ApiRequester _requester;
+
+  PeopleConnectionsResourceApi get connections =>
+      new PeopleConnectionsResourceApi(_requester);
+
+  PeopleResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Create a new contact and return the person resource for that contact. The
+  /// request throws a 400 error if more than one field is specified on a field
+  /// that is a singleton for contact sources: * biographies * birthdays *
+  /// genders * names
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [personFields] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Defaults to all fields if not set. Valid values are: *
+  /// addresses * ageRanges * biographies * birthdays * calendarUrls *
+  /// clientData * coverPhotos * emailAddresses * events * externalIds * genders
+  /// * imClients * interests * locales * locations * memberships * metadata *
+  /// miscKeywords * names * nicknames * occupations * organizations *
+  /// phoneNumbers * photos * relations * sipAddresses * skills * urls *
+  /// userDefined
+  ///
+  /// [sources] - Optional. A mask of what source types to return. Defaults to
+  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Person].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Person> createContact(Person request,
+      {core.String personFields,
+      core.List<core.String> sources,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
+    }
+    if (sources != null) {
+      _queryParams["sources"] = sources;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -574,35 +748,17 @@ class PeopleResourceApi {
   /// Value must have pattern "^people/[^/]+$".
   ///
   /// [personFields] - Optional. A field mask to restrict which fields on the
-  /// person are returned. Multiple
-  /// fields can be specified by separating them with commas. Defaults to empty
-  /// if not set, which will skip the post mutate get. Valid values are:
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Defaults to empty if not set, which will skip the post mutate
+  /// get. Valid values are: * addresses * ageRanges * biographies * birthdays *
+  /// calendarUrls * clientData * coverPhotos * emailAddresses * events *
+  /// externalIds * genders * imClients * interests * locales * locations *
+  /// memberships * metadata * miscKeywords * names * nicknames * occupations *
+  /// organizations * phoneNumbers * photos * relations * sipAddresses * skills
+  /// * urls * userDefined
   ///
-  /// * addresses
-  /// * ageRanges
-  /// * biographies
-  /// * birthdays
-  /// * coverPhotos
-  /// * emailAddresses
-  /// * events
-  /// * genders
-  /// * imClients
-  /// * interests
-  /// * locales
-  /// * memberships
-  /// * metadata
-  /// * names
-  /// * nicknames
-  /// * occupations
-  /// * organizations
-  /// * phoneNumbers
-  /// * photos
-  /// * relations
-  /// * residences
-  /// * sipAddresses
-  /// * skills
-  /// * urls
-  /// * userDefined
+  /// [sources] - Optional. A mask of what source types to return. Defaults to
+  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -617,6 +773,7 @@ class PeopleResourceApi {
   async.Future<DeleteContactPhotoResponse> deleteContactPhoto(
       core.String resourceName,
       {core.String personFields,
+      core.List<core.String> sources,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -630,6 +787,9 @@ class PeopleResourceApi {
     }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
+    }
+    if (sources != null) {
+      _queryParams["sources"] = sources;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -650,57 +810,34 @@ class PeopleResourceApi {
   }
 
   /// Provides information about a person by specifying a resource name. Use
-  /// `people/me` to indicate the authenticated user.
-  ///
-  /// The request throws a 400 error if 'personFields' is not specified.
+  /// `people/me` to indicate the authenticated user. The request throws a 400
+  /// error if 'personFields' is not specified.
   ///
   /// Request parameters:
   ///
   /// [resourceName] - Required. The resource name of the person to provide
-  /// information about.
-  ///
-  /// - To get information about the authenticated user, specify `people/me`.
-  /// - To get information about a google account, specify
-  ///  `people/{account_id}`.
-  /// - To get information about a contact, specify the resource name that
-  ///   identifies the contact as returned by
+  /// information about. - To get information about the authenticated user,
+  /// specify `people/me`. - To get information about a google account, specify
+  /// `people/{account_id}`. - To get information about a contact, specify the
+  /// resource name that identifies the contact as returned by
   /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
   /// Value must have pattern "^people/[^/]+$".
   ///
-  /// [personFields] - Required. A field mask to restrict which fields on the
-  /// person are returned. Multiple
-  /// fields can be specified by separating them with commas. Valid values are:
-  ///
-  /// * addresses
-  /// * ageRanges
-  /// * biographies
-  /// * birthdays
-  /// * coverPhotos
-  /// * emailAddresses
-  /// * events
-  /// * genders
-  /// * imClients
-  /// * interests
-  /// * locales
-  /// * memberships
-  /// * metadata
-  /// * names
-  /// * nicknames
-  /// * occupations
-  /// * organizations
-  /// * phoneNumbers
-  /// * photos
-  /// * relations
-  /// * residences
-  /// * sipAddresses
-  /// * skills
-  /// * urls
-  /// * userDefined
-  ///
   /// [requestMask_includeField] - Required. Comma-separated list of person
-  /// fields to be included in the response. Each
-  /// path should start with `person.`: for example, `person.names` or
-  /// `person.photos`.
+  /// fields to be included in the response. Each path should start with
+  /// `person.`: for example, `person.names` or `person.photos`.
+  ///
+  /// [sources] - Optional. A mask of what source types to return. Defaults to
+  /// ReadSourceType.PROFILE and ReadSourceType.CONTACT if not set.
+  ///
+  /// [personFields] - Required. A field mask to restrict which fields on the
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Valid values are: * addresses * ageRanges * biographies *
+  /// birthdays * calendarUrls * clientData * coverPhotos * emailAddresses *
+  /// events * externalIds * genders * imClients * interests * locales *
+  /// locations * memberships * metadata * miscKeywords * names * nicknames *
+  /// occupations * organizations * phoneNumbers * photos * relations *
+  /// sipAddresses * skills * urls * userDefined
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -713,8 +850,9 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Person> get(core.String resourceName,
-      {core.String personFields,
-      core.String requestMask_includeField,
+      {core.String requestMask_includeField,
+      core.List<core.String> sources,
+      core.String personFields,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -726,11 +864,14 @@ class PeopleResourceApi {
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
     }
-    if (personFields != null) {
-      _queryParams["personFields"] = [personFields];
-    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (sources != null) {
+      _queryParams["sources"] = sources;
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -749,58 +890,35 @@ class PeopleResourceApi {
 
   /// Provides information about a list of specific people by specifying a list
   /// of requested resource names. Use `people/me` to indicate the authenticated
-  /// user.
-  ///
-  /// The request throws a 400 error if 'personFields' is not specified.
+  /// user. The request throws a 400 error if 'personFields' is not specified.
   ///
   /// Request parameters:
   ///
-  /// [personFields] - Required. A field mask to restrict which fields on each
-  /// person are returned. Multiple
-  /// fields can be specified by separating them with commas. Valid values are:
+  /// [resourceNames] - Required. The resource names of the people to provide
+  /// information about. It's repeatable. The URL query parameter should be
+  /// resourceNames=<name1>&resourceNames=<name2>&... - To get information about
+  /// the authenticated user, specify `people/me`. - To get information about a
+  /// google account, specify `people/{account_id}`. - To get information about
+  /// a contact, specify the resource name that identifies the contact as
+  /// returned by
+  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+  /// You can include up to 50 resource names in one request.
   ///
-  /// * addresses
-  /// * ageRanges
-  /// * biographies
-  /// * birthdays
-  /// * coverPhotos
-  /// * emailAddresses
-  /// * events
-  /// * genders
-  /// * imClients
-  /// * interests
-  /// * locales
-  /// * memberships
-  /// * metadata
-  /// * names
-  /// * nicknames
-  /// * occupations
-  /// * organizations
-  /// * phoneNumbers
-  /// * photos
-  /// * relations
-  /// * residences
-  /// * sipAddresses
-  /// * skills
-  /// * urls
-  /// * userDefined
+  /// [personFields] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Valid values are: * addresses * ageRanges * biographies *
+  /// birthdays * calendarUrls * clientData * coverPhotos * emailAddresses *
+  /// events * externalIds * genders * imClients * interests * locales *
+  /// locations * memberships * metadata * miscKeywords * names * nicknames *
+  /// occupations * organizations * phoneNumbers * photos * relations *
+  /// sipAddresses * skills * urls * userDefined
+  ///
+  /// [sources] - Optional. A mask of what source types to return. Defaults to
+  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
   ///
   /// [requestMask_includeField] - Required. Comma-separated list of person
-  /// fields to be included in the response. Each
-  /// path should start with `person.`: for example, `person.names` or
-  /// `person.photos`.
-  ///
-  /// [resourceNames] - Required. The resource names of the people to provide
-  /// information about.
-  ///
-  /// - To get information about the authenticated user, specify `people/me`.
-  /// - To get information about a google account, specify
-  ///   `people/{account_id}`.
-  /// - To get information about a contact, specify the resource name that
-  ///   identifies the contact as returned by
-  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-  ///
-  /// You can include up to 50 resource names in one request.
+  /// fields to be included in the response. Each path should start with
+  /// `person.`: for example, `person.names` or `person.photos`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -813,9 +931,10 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetPeopleResponse> getBatchGet(
-      {core.String personFields,
+      {core.List<core.String> resourceNames,
+      core.String personFields,
+      core.List<core.String> sources,
       core.String requestMask_includeField,
-      core.List<core.String> resourceNames,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -824,14 +943,17 @@ class PeopleResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
+    }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
     }
+    if (sources != null) {
+      _queryParams["sources"] = sources;
+    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
-    }
-    if (resourceNames != null) {
-      _queryParams["resourceNames"] = resourceNames;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -848,55 +970,244 @@ class PeopleResourceApi {
     return _response.then((data) => new GetPeopleResponse.fromJson(data));
   }
 
+  /// Provides a list of domain profiles and domain contacts in the
+  /// authenticated user's domain directory.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestSyncToken] - Optional. Whether the response should include
+  /// `next_sync_token`, which can be used to get all changes since the last
+  /// request. For subsequent sync requests use the `sync_token` param instead.
+  ///
+  /// [syncToken] - Optional. A sync token, received from a previous
+  /// `ListDirectoryPeople` call. Provide this to retrieve only the resources
+  /// changed since the last request. When syncing, all other parameters
+  /// provided to `ListDirectoryPeople` must match the call that provided the
+  /// sync token.
+  ///
+  /// [readMask] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Valid values are: * addresses * ageRanges * biographies *
+  /// birthdays * calendarUrls * clientData * coverPhotos * emailAddresses *
+  /// events * externalIds * genders * imClients * interests * locales *
+  /// locations * memberships * metadata * miscKeywords * names * nicknames *
+  /// occupations * organizations * phoneNumbers * photos * relations *
+  /// sipAddresses * skills * urls * userDefined
+  ///
+  /// [pageSize] - Optional. The number of people to include in the response.
+  /// Valid values are between 1 and 1000, inclusive. Defaults to 100 if not set
+  /// or set to 0.
+  ///
+  /// [sources] - Required. Directory sources to return.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDirectoryPeople` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListDirectoryPeople`
+  /// must match the call that provided the page token.
+  ///
+  /// [mergeSources] - Optional. Additional data to merge into the directory
+  /// sources if they are connected through verified join keys such as email
+  /// addresses or phone numbers.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDirectoryPeopleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDirectoryPeopleResponse> listDirectoryPeople(
+      {core.bool requestSyncToken,
+      core.String syncToken,
+      core.String readMask,
+      core.int pageSize,
+      core.List<core.String> sources,
+      core.String pageToken,
+      core.List<core.String> mergeSources,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (requestSyncToken != null) {
+      _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
+    if (readMask != null) {
+      _queryParams["readMask"] = [readMask];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (sources != null) {
+      _queryParams["sources"] = sources;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (mergeSources != null) {
+      _queryParams["mergeSources"] = mergeSources;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/people:listDirectoryPeople';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListDirectoryPeopleResponse.fromJson(data));
+  }
+
+  /// Provides a list of domain profiles and domain contacts in the
+  /// authenticated user's domain directory that match the search query.
+  ///
+  /// Request parameters:
+  ///
+  /// [mergeSources] - Optional. Additional data to merge into the directory
+  /// sources if they are connected through verified join keys such as email
+  /// addresses or phone numbers.
+  ///
+  /// [pageSize] - Optional. The number of people to include in the response.
+  /// Valid values are between 1 and 500, inclusive. Defaults to 100 if not set
+  /// or set to 0.
+  ///
+  /// [query] - Required. Prefix query that matches fields in the person. Does
+  /// NOT use the read_mask for determining what fields to match.
+  ///
+  /// [readMask] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Valid values are: * addresses * ageRanges * biographies *
+  /// birthdays * calendarUrls * clientData * coverPhotos * emailAddresses *
+  /// events * externalIds * genders * imClients * interests * locales *
+  /// locations * memberships * metadata * miscKeywords * names * nicknames *
+  /// occupations * organizations * phoneNumbers * photos * relations *
+  /// sipAddresses * skills * urls * userDefined
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `SearchDirectoryPeople` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `SearchDirectoryPeople` must match the call that provided the page token.
+  ///
+  /// [sources] - Required. Directory sources to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchDirectoryPeopleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchDirectoryPeopleResponse> searchDirectoryPeople(
+      {core.List<core.String> mergeSources,
+      core.int pageSize,
+      core.String query,
+      core.String readMask,
+      core.String pageToken,
+      core.List<core.String> sources,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (mergeSources != null) {
+      _queryParams["mergeSources"] = mergeSources;
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
+    if (readMask != null) {
+      _queryParams["readMask"] = [readMask];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (sources != null) {
+      _queryParams["sources"] = sources;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/people:searchDirectoryPeople';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SearchDirectoryPeopleResponse.fromJson(data));
+  }
+
   /// Update contact data for an existing contact person. Any non-contact data
-  /// will not be modified.
-  ///
-  /// The request throws a 400 error if `updatePersonFields` is not specified.
-  ///
-  /// The request throws a 400 error if `person.metadata.sources` is not
-  /// specified for the contact to be updated.
-  ///
-  /// The request throws a 400 error with an error with reason
-  /// `"failedPrecondition"` if `person.metadata.sources.etag` is different than
-  /// the contact's etag, which indicates the contact has changed since its data
-  /// was read. Clients should get the latest person and re-apply their updates
-  /// to the latest person.
+  /// will not be modified. Any non-contact data in the person to update will be
+  /// ignored. All fields specified in the `update_mask` will be replaced. The
+  /// server returns a 400 error if `person.metadata.sources` is not specified
+  /// for the contact to be updated or if there is no contact source. The server
+  /// returns a 400 error with reason `"failedPrecondition"` if
+  /// `person.metadata.sources.etag` is different than the contact's etag, which
+  /// indicates the contact has changed since its data was read. Clients should
+  /// get the latest person and merge their updates into the latest person. The
+  /// server returns a 400 error if `memberships` are being updated and there
+  /// are no contact group memberships specified on the person. The server
+  /// returns a 400 error if more than one field is specified on a field that is
+  /// a singleton for contact sources: * biographies * birthdays * genders *
+  /// names
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resourceName] - The resource name for the person, assigned by the server.
-  /// An ASCII string
-  /// with a max length of 27 characters, in the form of
+  /// An ASCII string with a max length of 27 characters, in the form of
   /// `people/{person_id}`.
   /// Value must have pattern "^people/[^/]+$".
   ///
-  /// [updatePersonFields] - Required. A field mask to restrict which fields on
-  /// the person are updated. Multiple
-  /// fields can be specified by separating them with commas.
-  /// All updated fields will be replaced. Valid values are:
+  /// [personFields] - Optional. A field mask to restrict which fields on each
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Defaults to all fields if not set. Valid values are: *
+  /// addresses * ageRanges * biographies * birthdays * calendarUrls *
+  /// clientData * coverPhotos * emailAddresses * events * externalIds * genders
+  /// * imClients * interests * locales * locations * memberships * metadata *
+  /// miscKeywords * names * nicknames * occupations * organizations *
+  /// phoneNumbers * photos * relations * sipAddresses * skills * urls *
+  /// userDefined
   ///
-  /// * addresses
-  /// * biographies
-  /// * birthdays
-  /// * emailAddresses
-  /// * events
-  /// * genders
-  /// * imClients
-  /// * interests
-  /// * locales
-  /// * memberships
-  /// * names
-  /// * nicknames
-  /// * occupations
-  /// * organizations
-  /// * phoneNumbers
-  /// * relations
-  /// * residences
-  /// * sipAddresses
-  /// * urls
-  /// * userDefined
+  /// [updatePersonFields] - Required. A field mask to restrict which fields on
+  /// the person are updated. Multiple fields can be specified by separating
+  /// them with commas. All updated fields will be replaced. Valid values are: *
+  /// addresses * biographies * birthdays * calendarUrls * clientData *
+  /// emailAddresses * events * externalIds * genders * imClients * interests *
+  /// locales * locations * memberships * miscKeywords * names * nicknames *
+  /// occupations * organizations * phoneNumbers * relations * sipAddresses *
+  /// urls * userDefined
+  ///
+  /// [sources] - Optional. A mask of what source types to return. Defaults to
+  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -909,7 +1220,10 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Person> updateContact(Person request, core.String resourceName,
-      {core.String updatePersonFields, core.String $fields}) {
+      {core.String personFields,
+      core.String updatePersonFields,
+      core.List<core.String> sources,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -923,8 +1237,14 @@ class PeopleResourceApi {
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
     }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
+    }
     if (updatePersonFields != null) {
       _queryParams["updatePersonFields"] = [updatePersonFields];
+    }
+    if (sources != null) {
+      _queryParams["sources"] = sources;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1003,10 +1323,8 @@ class PeopleConnectionsResourceApi {
   PeopleConnectionsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Provides a list of the authenticated user's contacts merged with any
-  /// connected profiles.
-  ///
-  /// The request throws a 400 error if 'personFields' is not specified.
+  /// Provides a list of the authenticated user's contacts. The request throws a
+  /// 400 error if 'personFields' is not specified.
   ///
   /// Request parameters:
   ///
@@ -1014,75 +1332,52 @@ class PeopleConnectionsResourceApi {
   /// Only `people/me` is valid.
   /// Value must have pattern "^people/[^/]+$".
   ///
-  /// [requestSyncToken] - Optional. Whether the response should include
-  /// `next_sync_token`, which can be used to
-  /// get all changes since the last request. For subsequent sync requests use
-  /// the `sync_token` param instead. Initial sync requests that specify
-  /// `request_sync_token` have an additional rate limit.
-  ///
-  /// [pageToken] - Optional. A page token, received from a previous
-  /// `ListConnections` call.
-  /// Provide this to retrieve the subsequent page.
-  ///
-  /// When paginating, all other parameters provided to `ListConnections`
-  /// must match the call that provided the page token.
-  ///
-  /// [pageSize] - Optional. The number of connections to include in the
-  /// response. Valid values are
-  /// between 1 and 2000, inclusive. Defaults to 100 if not set or set to 0.
+  /// [personFields] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Valid values are: * addresses * ageRanges * biographies *
+  /// birthdays * calendarUrls * clientData * coverPhotos * emailAddresses *
+  /// events * externalIds * genders * imClients * interests * locales *
+  /// locations * memberships * metadata * miscKeywords * names * nicknames *
+  /// occupations * organizations * phoneNumbers * photos * relations *
+  /// sipAddresses * skills * urls * userDefined
   ///
   /// [requestMask_includeField] - Required. Comma-separated list of person
-  /// fields to be included in the response. Each
-  /// path should start with `person.`: for example, `person.names` or
-  /// `person.photos`.
-  ///
-  /// [syncToken] - Optional. A sync token, received from a previous
-  /// `ListConnections` call.
-  /// Provide this to retrieve only the resources changed since the last
-  /// request.
-  /// Sync requests that specify `sync_token` have an additional rate limit.
-  ///
-  /// When syncing, all other parameters provided to `ListConnections`
-  /// must match the call that provided the sync token.
-  ///
-  /// [personFields] - Required. A field mask to restrict which fields on each
-  /// person are returned. Multiple
-  /// fields can be specified by separating them with commas. Valid values are:
-  ///
-  /// * addresses
-  /// * ageRanges
-  /// * biographies
-  /// * birthdays
-  /// * coverPhotos
-  /// * emailAddresses
-  /// * events
-  /// * genders
-  /// * imClients
-  /// * interests
-  /// * locales
-  /// * memberships
-  /// * metadata
-  /// * names
-  /// * nicknames
-  /// * occupations
-  /// * organizations
-  /// * phoneNumbers
-  /// * photos
-  /// * relations
-  /// * residences
-  /// * sipAddresses
-  /// * skills
-  /// * urls
-  /// * userDefined
+  /// fields to be included in the response. Each path should start with
+  /// `person.`: for example, `person.names` or `person.photos`.
   ///
   /// [sortOrder] - Optional. The order in which the connections should be
-  /// sorted. Defaults to
-  /// `LAST_MODIFIED_ASCENDING`.
+  /// sorted. Defaults to `LAST_MODIFIED_ASCENDING`.
   /// Possible string values are:
-  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
-  /// - "LAST_MODIFIED_DESCENDING" : A LAST_MODIFIED_DESCENDING.
-  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
-  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
+  /// - "LAST_MODIFIED_ASCENDING" : Sort people by when they were changed; older
+  /// entries first.
+  /// - "LAST_MODIFIED_DESCENDING" : Sort people by when they were changed;
+  /// newer entries first.
+  /// - "FIRST_NAME_ASCENDING" : Sort people by first name.
+  /// - "LAST_NAME_ASCENDING" : Sort people by last name.
+  ///
+  /// [syncToken] - Optional. A sync token, received from a previous
+  /// `ListConnections` call. Provide this to retrieve only the resources
+  /// changed since the last request. Sync requests that specify `sync_token`
+  /// have an additional rate limit. When syncing, all other parameters provided
+  /// to `ListConnections` must match the call that provided the sync token.
+  ///
+  /// [requestSyncToken] - Optional. Whether the response should include
+  /// `next_sync_token` on the last page, which can be used to get all changes
+  /// since the last request. For subsequent sync requests use the `sync_token`
+  /// param instead. Initial sync requests that specify `request_sync_token`
+  /// have an additional rate limit.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListConnections` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListConnections` must match
+  /// the call that provided the page token.
+  ///
+  /// [pageSize] - Optional. The number of connections to include in the
+  /// response. Valid values are between 1 and 1000, inclusive. Defaults to 100
+  /// if not set or set to 0.
+  ///
+  /// [sources] - Optional. A mask of what source types to return. Defaults to
+  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1095,13 +1390,14 @@ class PeopleConnectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(core.String resourceName,
-      {core.bool requestSyncToken,
+      {core.String personFields,
+      core.String requestMask_includeField,
+      core.String sortOrder,
+      core.String syncToken,
+      core.bool requestSyncToken,
       core.String pageToken,
       core.int pageSize,
-      core.String requestMask_includeField,
-      core.String syncToken,
-      core.String personFields,
-      core.String sortOrder,
+      core.List<core.String> sources,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1113,6 +1409,18 @@ class PeopleConnectionsResourceApi {
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
     }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
+    }
+    if (requestMask_includeField != null) {
+      _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
     if (requestSyncToken != null) {
       _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
     }
@@ -1122,17 +1430,8 @@ class PeopleConnectionsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (requestMask_includeField != null) {
-      _queryParams["requestMask.includeField"] = [requestMask_includeField];
-    }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
-    if (personFields != null) {
-      _queryParams["personFields"] = [personFields];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (sources != null) {
+      _queryParams["sources"] = sources;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1169,8 +1468,7 @@ class Address {
   core.String extendedAddress;
 
   /// Output only. The type of the address translated and formatted in the
-  /// viewer's
-  /// account locale or the `Accept-Language` HTTP header locale.
+  /// viewer's account locale or the `Accept-Language` HTTP header locale.
   core.String formattedType;
 
   /// The unstructured value of the address. If this is not set by the user it
@@ -1193,11 +1491,7 @@ class Address {
   core.String streetAddress;
 
   /// The type of the address. The type can be custom or one of these predefined
-  /// values:
-  ///
-  /// * `home`
-  /// * `work`
-  /// * `other`
+  /// values: * `home` * `work` * `other`
   core.String type;
 
   Address();
@@ -1393,8 +1687,8 @@ class Biography {
 }
 
 /// A person's birthday. At least one of the `date` and `text` fields are
-/// specified. The `date` and `text` fields typically represent the same
-/// date, but are not guaranteed to.
+/// specified. The `date` and `text` fields typically represent the same date,
+/// but are not guaranteed to.
 class Birthday {
   /// The date of the birthday.
   Date date;
@@ -1435,8 +1729,7 @@ class Birthday {
   }
 }
 
-/// **DEPRECATED**: No data will be returned
-/// A person's bragging rights.
+/// **DEPRECATED**: No data will be returned A person's bragging rights.
 class BraggingRights {
   /// Metadata about the bragging rights.
   FieldMetadata metadata;
@@ -1468,6 +1761,100 @@ class BraggingRights {
   }
 }
 
+/// A person's calendar URL.
+class CalendarUrl {
+  /// Output only. The type of the calendar URL translated and formatted in the
+  /// viewer's account locale or the `Accept-Language` HTTP header locale.
+  core.String formattedType;
+
+  /// Metadata about the calendar URL.
+  FieldMetadata metadata;
+
+  /// The type of the calendar URL. The type can be custom or one of these
+  /// predefined values: * `home` * `freeBusy` * `work`
+  core.String type;
+
+  /// The calendar URL.
+  core.String url;
+
+  CalendarUrl();
+
+  CalendarUrl.fromJson(core.Map _json) {
+    if (_json.containsKey("formattedType")) {
+      formattedType = _json["formattedType"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (formattedType != null) {
+      _json["formattedType"] = formattedType;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/// Arbitrary client data that is populated by clients. Duplicate keys and
+/// values are allowed.
+class ClientData {
+  /// The client specified key of the client data.
+  core.String key;
+
+  /// Metadata about the client data.
+  FieldMetadata metadata;
+
+  /// The client specified value of the client data.
+  core.String value;
+
+  ClientData();
+
+  ClientData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// A contact group.
 class ContactGroup {
   /// The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
@@ -1475,9 +1862,8 @@ class ContactGroup {
   core.String etag;
 
   /// Output only. The name translated and formatted in the viewer's account
-  /// locale
-  /// or the `Accept-Language` HTTP header locale for system groups names.
-  /// Group names set by the owner are the same as name.
+  /// locale or the `Accept-Language` HTTP header locale for system groups
+  /// names. Group names set by the owner are the same as name.
   core.String formattedName;
 
   /// Output only. The contact group type.
@@ -1488,15 +1874,12 @@ class ContactGroup {
   core.String groupType;
 
   /// Output only. The total number of contacts in the group irrespective of max
-  /// members in
-  /// specified in the request.
+  /// members in specified in the request.
   core.int memberCount;
 
   /// Output only. The list of contact person resource names that are members of
-  /// the contact
-  /// group. The field is not populated for LIST requests and can only be
-  /// updated
-  /// through the
+  /// the contact group. The field is not populated for LIST requests and can
+  /// only be updated through the
   /// [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).
   core.List<core.String> memberResourceNames;
 
@@ -1578,9 +1961,9 @@ class ContactGroupMembership {
   core.String contactGroupId;
 
   /// The resource name for the contact group, assigned by the server. An ASCII
-  /// string, in the form of `contactGroups/{contact_group_id}`.
-  /// Only contact_group_resource_name can be used for modifying memberships.
-  /// Any contact group membership can be removed, but only user group or
+  /// string, in the form of `contactGroups/{contact_group_id}`. Only
+  /// contact_group_resource_name can be used for modifying memberships. Any
+  /// contact group membership can be removed, but only user group or
   /// "myContacts" or "starred" system groups memberships can be added. A
   /// contact must always have at least one contact group membership.
   core.String contactGroupResourceName;
@@ -1685,11 +2068,62 @@ class ContactGroupResponse {
   }
 }
 
-/// A person's cover photo. A large image shown on the person's
-/// profile page that represents who they are or what they care about.
+/// A request to copy an "Other contact" to my contacts group.
+class CopyOtherContactToMyContactsGroupRequest {
+  /// Required. A field mask to restrict which fields are copied into the new
+  /// contact. Valid values are: * emailAddresses * names * phoneNumbers
+  core.String copyMask;
+
+  /// Optional. A field mask to restrict which fields on the person are
+  /// returned. Multiple fields can be specified by separating them with commas.
+  /// Defaults to the copy mask with metadata and membership fields if not set.
+  /// Valid values are: * addresses * ageRanges * biographies * birthdays *
+  /// calendarUrls * clientData * coverPhotos * emailAddresses * events *
+  /// externalIds * genders * imClients * interests * locales * locations *
+  /// memberships * metadata * miscKeywords * names * nicknames * occupations *
+  /// organizations * phoneNumbers * photos * relations * sipAddresses * skills
+  /// * urls * userDefined
+  core.String readMask;
+
+  /// Optional. A mask of what source types to return. Defaults to
+  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  core.List<core.String> sources;
+
+  CopyOtherContactToMyContactsGroupRequest();
+
+  CopyOtherContactToMyContactsGroupRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("copyMask")) {
+      copyMask = _json["copyMask"];
+    }
+    if (_json.containsKey("readMask")) {
+      readMask = _json["readMask"];
+    }
+    if (_json.containsKey("sources")) {
+      sources = (_json["sources"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (copyMask != null) {
+      _json["copyMask"] = copyMask;
+    }
+    if (readMask != null) {
+      _json["readMask"] = readMask;
+    }
+    if (sources != null) {
+      _json["sources"] = sources;
+    }
+    return _json;
+  }
+}
+
+/// A person's cover photo. A large image shown on the person's profile page
+/// that represents who they are or what they care about.
 class CoverPhoto {
-  /// True if the cover photo is the default cover photo;
-  /// false if the cover photo is a user-provided cover photo.
+  /// True if the cover photo is the default cover photo; false if the cover
+  /// photo is a user-provided cover photo.
   core.bool default_;
 
   /// Metadata about the cover photo.
@@ -1752,18 +2186,13 @@ class CreateContactGroupRequest {
 }
 
 /// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day
-/// and time zone are either specified elsewhere or are not significant. The
-/// date
-/// is relative to the Proleptic Gregorian Calendar. This can represent:
-///
-/// * A full date, with non-zero year, month and day values
-/// * A month and day value, with a zero year, e.g. an anniversary
-/// * A year on its own, with zero month and day values
-/// * A year and month value, with a zero day, e.g. a credit card expiration
-/// date
-///
-/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// day and time zone are either specified elsewhere or are not significant. The
+/// date is relative to the Proleptic Gregorian Calendar. This can represent: *
+/// A full date, with non-zero year, month and day values * A month and day
+/// value, with a zero year, e.g. an anniversary * A year on its own, with zero
+/// month and day values * A year and month value, with a zero day, e.g. a
+/// credit card expiration date Related types are google.type.TimeOfDay and
+/// `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
   /// if specifying a year by itself or a year and month where the day is not
@@ -1774,8 +2203,8 @@ class Date {
   /// month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-  /// a year.
+  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
+  /// year.
   core.int year;
 
   Date();
@@ -1868,11 +2297,7 @@ class EmailAddress {
   FieldMetadata metadata;
 
   /// The type of the email address. The type can be custom or one of these
-  /// predefined values:
-  ///
-  /// * `home`
-  /// * `work`
-  /// * `other`
+  /// predefined values: * `home` * `work` * `other`
   core.String type;
 
   /// The email address.
@@ -1922,13 +2347,9 @@ class EmailAddress {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -1954,10 +2375,7 @@ class Event {
   FieldMetadata metadata;
 
   /// The type of the event. The type can be custom or one of these predefined
-  /// values:
-  ///
-  /// * `anniversary`
-  /// * `other`
+  /// values: * `anniversary` * `other`
   core.String type;
 
   Event();
@@ -1996,6 +2414,59 @@ class Event {
   }
 }
 
+/// An identifier from an external entity related to the person.
+class ExternalId {
+  /// Output only. The type of the event translated and formatted in the
+  /// viewer's account locale or the `Accept-Language` HTTP header locale.
+  core.String formattedType;
+
+  /// Metadata about the external ID.
+  FieldMetadata metadata;
+
+  /// The type of the external ID. The type can be custom or one of these
+  /// predefined values: * `account` * `customer` * `loginId` * `network` *
+  /// `organization`
+  core.String type;
+
+  /// The value of the external ID.
+  core.String value;
+
+  ExternalId();
+
+  ExternalId.fromJson(core.Map _json) {
+    if (_json.containsKey("formattedType")) {
+      formattedType = _json["formattedType"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (formattedType != null) {
+      _json["formattedType"] = formattedType;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// Metadata about a field.
 class FieldMetadata {
   /// True if the field is the primary field; false if the field is a secondary
@@ -2006,9 +2477,8 @@ class FieldMetadata {
   Source source;
 
   /// Output only. True if the field is verified; false if the field is
-  /// unverified. A
-  /// verified field is typically a name, email address, phone number, or
-  /// website that has been confirmed to be owned by the person.
+  /// unverified. A verified field is typically a name, email address, phone
+  /// number, or website that has been confirmed to be owned by the person.
   core.bool verified;
 
   FieldMetadata();
@@ -2041,31 +2511,55 @@ class FieldMetadata {
   }
 }
 
+/// The name that should be used to sort the person in a list.
+class FileAs {
+  /// Metadata about the file-as.
+  FieldMetadata metadata;
+
+  /// The file-as value
+  core.String value;
+
+  FileAs();
+
+  FileAs.fromJson(core.Map _json) {
+    if (_json.containsKey("metadata")) {
+      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// A person's gender.
 class Gender {
   /// The type of pronouns that should be used to address the person. The value
-  /// can be custom or one of these predefined values:
-  ///
-  /// * `male`
-  /// * `female`
-  /// * `other`
+  /// can be custom or one of these predefined values: * `male` * `female` *
+  /// `other`
   core.String addressMeAs;
 
   /// Output only. The value of the gender translated and formatted in the
-  /// viewer's account
-  /// locale or the `Accept-Language` HTTP header locale. Unspecified or custom
-  /// value are not localized.
+  /// viewer's account locale or the `Accept-Language` HTTP header locale.
+  /// Unspecified or custom value are not localized.
   core.String formattedValue;
 
   /// Metadata about the gender.
   FieldMetadata metadata;
 
   /// The gender for the person. The gender can be custom or one of these
-  /// predefined values:
-  ///
-  /// * `male`
-  /// * `female`
-  /// * `unspecified`
+  /// predefined values: * `male` * `female` * `unspecified`
   core.String value;
 
   Gender();
@@ -2132,8 +2626,7 @@ class GetPeopleResponse {
 /// A person's instant messaging client.
 class ImClient {
   /// Output only. The protocol of the IM client formatted in the viewer's
-  /// account
-  /// locale or the `Accept-Language` HTTP header locale.
+  /// account locale or the `Accept-Language` HTTP header locale.
   core.String formattedProtocol;
 
   /// Output only. The type of the IM client translated and formatted in the
@@ -2144,25 +2637,12 @@ class ImClient {
   FieldMetadata metadata;
 
   /// The protocol of the IM client. The protocol can be custom or one of these
-  /// predefined values:
-  ///
-  /// * `aim`
-  /// * `msn`
-  /// * `yahoo`
-  /// * `skype`
-  /// * `qq`
-  /// * `googleTalk`
-  /// * `icq`
-  /// * `jabber`
-  /// * `netMeeting`
+  /// predefined values: * `aim` * `msn` * `yahoo` * `skype` * `qq` *
+  /// `googleTalk` * `icq` * `jabber` * `netMeeting`
   core.String protocol;
 
   /// The type of the IM client. The type can be custom or one of these
-  /// predefined values:
-  ///
-  /// * `home`
-  /// * `work`
-  /// * `other`
+  /// predefined values: * `home` * `work` * `other`
   core.String type;
 
   /// The user name used in the IM client.
@@ -2253,20 +2733,21 @@ class ListConnectionsResponse {
   /// The list of people that the requestor is connected to.
   core.List<Person> connections;
 
-  /// A token, which can be sent as `page_token` to retrieve the next page.
-  /// If this field is omitted, there are no subsequent pages.
+  /// A token, which can be sent as `page_token` to retrieve the next page. If
+  /// this field is omitted, there are no subsequent pages.
   core.String nextPageToken;
 
   /// A token, which can be sent as `sync_token` to retrieve changes since the
   /// last request. Request must set `request_sync_token` to return the sync
-  /// token.
+  /// token. When the response is paginated, only the last page will contain
+  /// `nextSyncToken`.
   core.String nextSyncToken;
 
   /// The total number of items in the list without pagination.
   core.int totalItems;
 
-  /// **DEPRECATED** (Please use totalItems)
-  /// The total number of people in the list without pagination.
+  /// **DEPRECATED** (Please use totalItems) The total number of people in the
+  /// list without pagination.
   core.int totalPeople;
 
   ListConnectionsResponse();
@@ -2368,13 +2849,108 @@ class ListContactGroupsResponse {
   }
 }
 
+/// The response to a request for the authenticated user's domain directory.
+class ListDirectoryPeopleResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page. If
+  /// this field is omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  /// A token, which can be sent as `sync_token` to retrieve changes since the
+  /// last request. Request must set `request_sync_token` to return the sync
+  /// token.
+  core.String nextSyncToken;
+
+  /// The list of people in the domain directory.
+  core.List<Person> people;
+
+  ListDirectoryPeopleResponse();
+
+  ListDirectoryPeopleResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("nextSyncToken")) {
+      nextSyncToken = _json["nextSyncToken"];
+    }
+    if (_json.containsKey("people")) {
+      people = (_json["people"] as core.List)
+          .map<Person>((value) => new Person.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (nextSyncToken != null) {
+      _json["nextSyncToken"] = nextSyncToken;
+    }
+    if (people != null) {
+      _json["people"] = people.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The response to a request for the authenticated user's "Other contacts".
+class ListOtherContactsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page. If
+  /// this field is omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  /// A token, which can be sent as `sync_token` to retrieve changes since the
+  /// last request. Request must set `request_sync_token` to return the sync
+  /// token.
+  core.String nextSyncToken;
+
+  /// The list of "Other contacts" returned as Person resources. "Other
+  /// contacts" support a limited subset of fields. See
+  /// ListOtherContactsRequest.request_mask for more detailed information.
+  core.List<Person> otherContacts;
+
+  ListOtherContactsResponse();
+
+  ListOtherContactsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("nextSyncToken")) {
+      nextSyncToken = _json["nextSyncToken"];
+    }
+    if (_json.containsKey("otherContacts")) {
+      otherContacts = (_json["otherContacts"] as core.List)
+          .map<Person>((value) => new Person.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (nextSyncToken != null) {
+      _json["nextSyncToken"] = nextSyncToken;
+    }
+    if (otherContacts != null) {
+      _json["otherContacts"] =
+          otherContacts.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// A person's locale preference.
 class Locale {
   /// Metadata about the locale.
   FieldMetadata metadata;
 
-  /// The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47)
-  /// language tag representing the locale.
+  /// The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47) language
+  /// tag representing the locale.
   core.String value;
 
   Locale();
@@ -2393,6 +2969,93 @@ class Locale {
         new core.Map<core.String, core.Object>();
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// A person's location.
+class Location {
+  /// The building identifier.
+  core.String buildingId;
+
+  /// Whether the location is the current location.
+  core.bool current;
+
+  /// The individual desk location.
+  core.String deskCode;
+
+  /// The floor name or number.
+  core.String floor;
+
+  /// The floor section in `floor_name`.
+  core.String floorSection;
+
+  /// Metadata about the location.
+  FieldMetadata metadata;
+
+  /// The type of the location. The type can be custom or one of these
+  /// predefined values: * `desk` * `grewUp`
+  core.String type;
+
+  /// The free-form value of the location.
+  core.String value;
+
+  Location();
+
+  Location.fromJson(core.Map _json) {
+    if (_json.containsKey("buildingId")) {
+      buildingId = _json["buildingId"];
+    }
+    if (_json.containsKey("current")) {
+      current = _json["current"];
+    }
+    if (_json.containsKey("deskCode")) {
+      deskCode = _json["deskCode"];
+    }
+    if (_json.containsKey("floor")) {
+      floor = _json["floor"];
+    }
+    if (_json.containsKey("floorSection")) {
+      floorSection = _json["floorSection"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (buildingId != null) {
+      _json["buildingId"] = buildingId;
+    }
+    if (current != null) {
+      _json["current"] = current;
+    }
+    if (deskCode != null) {
+      _json["deskCode"] = deskCode;
+    }
+    if (floor != null) {
+      _json["floor"] = floor;
+    }
+    if (floorSection != null) {
+      _json["floorSection"] = floorSection;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     if (value != null) {
       _json["value"] = value;
@@ -2445,6 +3108,71 @@ class Membership {
   }
 }
 
+/// A person's miscellaneous keyword.
+class MiscKeyword {
+  /// Output only. The type of the miscellaneous keyword translated and
+  /// formatted in the viewer's account locale or the `Accept-Language` HTTP
+  /// header locale.
+  core.String formattedType;
+
+  /// Metadata about the miscellaneous keyword.
+  FieldMetadata metadata;
+
+  /// The miscellaneous keyword type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified.
+  /// - "OUTLOOK_BILLING_INFORMATION" : Outlook field for billing information.
+  /// - "OUTLOOK_DIRECTORY_SERVER" : Outlook field for directory server.
+  /// - "OUTLOOK_KEYWORD" : Outlook field for keyword.
+  /// - "OUTLOOK_MILEAGE" : Outlook field for mileage.
+  /// - "OUTLOOK_PRIORITY" : Outlook field for priority.
+  /// - "OUTLOOK_SENSITIVITY" : Outlook field for sensitivity.
+  /// - "OUTLOOK_SUBJECT" : Outlook field for subject.
+  /// - "OUTLOOK_USER" : Outlook field for user.
+  /// - "HOME" : Home.
+  /// - "WORK" : Work.
+  /// - "OTHER" : Other.
+  core.String type;
+
+  /// The value of the miscellaneous keyword.
+  core.String value;
+
+  MiscKeyword();
+
+  MiscKeyword.fromJson(core.Map _json) {
+    if (_json.containsKey("formattedType")) {
+      formattedType = _json["formattedType"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (formattedType != null) {
+      _json["formattedType"] = formattedType;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// A request to modify an existing contact group's members. Contacts can be
 /// removed from any group but they can only be added to a user group or
 /// "myContacts" or "starred" system groups.
@@ -2454,8 +3182,7 @@ class ModifyContactGroupMembersRequest {
   core.List<core.String> resourceNamesToAdd;
 
   /// Optional. The resource names of the contact people to remove in the form
-  /// of
-  /// `people/{person_id}`.
+  /// of `people/{person_id}`.
   core.List<core.String> resourceNamesToRemove;
 
   ModifyContactGroupMembersRequest();
@@ -2486,8 +3213,8 @@ class ModifyContactGroupMembersRequest {
 
 /// The response to a modify contact group members request.
 class ModifyContactGroupMembersResponse {
-  /// The contact people resource names that cannot be removed from their
-  /// last contact group.
+  /// The contact people resource names that cannot be removed from their last
+  /// contact group.
   core.List<core.String> canNotRemoveLastContactGroupResourceNames;
 
   /// The contact people resource names that were not found.
@@ -2524,14 +3251,12 @@ class ModifyContactGroupMembersResponse {
 /// A person's name. If the name is a mononym, the family name is empty.
 class Name {
   /// Output only. The display name formatted according to the locale specified
-  /// by
-  /// the viewer's account or the `Accept-Language` HTTP header.
+  /// by the viewer's account or the `Accept-Language` HTTP header.
   core.String displayName;
 
   /// Output only. The display name with the last name first formatted according
-  /// to
-  /// the locale specified by the viewer's account or the
-  /// `Accept-Language` HTTP header.
+  /// to the locale specified by the viewer's account or the `Accept-Language`
+  /// HTTP header.
   core.String displayNameLastFirst;
 
   /// The family name.
@@ -2569,6 +3294,9 @@ class Name {
 
   /// The middle name(s) spelled as they sound.
   core.String phoneticMiddleName;
+
+  /// The free form name value.
+  core.String unstructuredName;
 
   Name();
 
@@ -2614,6 +3342,9 @@ class Name {
     }
     if (_json.containsKey("phoneticMiddleName")) {
       phoneticMiddleName = _json["phoneticMiddleName"];
+    }
+    if (_json.containsKey("unstructuredName")) {
+      unstructuredName = _json["unstructuredName"];
     }
   }
 
@@ -2662,6 +3393,9 @@ class Name {
     if (phoneticMiddleName != null) {
       _json["phoneticMiddleName"] = phoneticMiddleName;
     }
+    if (unstructuredName != null) {
+      _json["unstructuredName"] = unstructuredName;
+    }
     return _json;
   }
 }
@@ -2675,8 +3409,7 @@ class Nickname {
   /// Possible string values are:
   /// - "DEFAULT" : Generic nickname.
   /// - "MAIDEN_NAME" : Maiden name or birth family name. Used when the person's
-  /// family name has
-  /// changed as a result of marriage.
+  /// family name has changed as a result of marriage.
   /// - "INITIALS" : Initials.
   /// - "GPLUS" : Google+ profile nickname.
   /// - "OTHER_NAME" : A professional affiliation or other name; for example,
@@ -2753,8 +3486,8 @@ class Occupation {
 /// A person's past or current organization. Overlapping date ranges are
 /// permitted.
 class Organization {
-  /// True if the organization is the person's current organization;
-  /// false if the organization is a past organization.
+  /// True if the organization is the person's current organization; false if
+  /// the organization is a past organization.
   core.bool current;
 
   /// The person's department at the organization.
@@ -2796,11 +3529,8 @@ class Organization {
   /// The person's job title at the organization.
   core.String title;
 
-  /// The type of the organization. The type can be custom or  one of these
-  /// predefined values:
-  ///
-  /// * `work`
-  /// * `school`
+  /// The type of the organization. The type can be custom or one of these
+  /// predefined values: * `work` * `school`
   core.String type;
 
   Organization();
@@ -2900,18 +3630,16 @@ class Organization {
 }
 
 /// Information about a person merged from various data sources such as the
-/// authenticated user's contacts and profile data.
-///
-/// Most fields can have multiple items. The items in a field have no guaranteed
-/// order, but each non-empty field is guaranteed to have exactly one field with
+/// authenticated user's contacts and profile data. Most fields can have
+/// multiple items. The items in a field have no guaranteed order, but each
+/// non-empty field is guaranteed to have exactly one field with
 /// `metadata.primary` set to true.
 class Person {
   /// The person's street addresses.
   core.List<Address> addresses;
 
-  /// Output only. **DEPRECATED** (Please use `person.ageRanges` instead)
-  ///
-  /// The person's age range.
+  /// Output only. **DEPRECATED** (Please use `person.ageRanges` instead) The
+  /// person's age range.
   /// Possible string values are:
   /// - "AGE_RANGE_UNSPECIFIED" : Unspecified.
   /// - "LESS_THAN_EIGHTEEN" : Younger than eighteen.
@@ -2922,15 +3650,20 @@ class Person {
   /// Output only. The person's age ranges.
   core.List<AgeRangeType> ageRanges;
 
-  /// The person's biographies.
+  /// The person's biographies. This field is a singleton for contact sources.
   core.List<Biography> biographies;
 
-  /// The person's birthdays.
+  /// The person's birthdays. This field is a singleton for contact sources.
   core.List<Birthday> birthdays;
 
-  /// **DEPRECATED**: No data will be returned
-  /// The person's bragging rights.
+  /// **DEPRECATED**: No data will be returned The person's bragging rights.
   core.List<BraggingRights> braggingRights;
+
+  /// The person's calendar URLs.
+  core.List<CalendarUrl> calendarUrls;
+
+  /// The person's client data.
+  core.List<ClientData> clientData;
 
   /// Output only. The person's cover photos.
   core.List<CoverPhoto> coverPhotos;
@@ -2945,7 +3678,13 @@ class Person {
   /// The person's events.
   core.List<Event> events;
 
-  /// The person's genders.
+  /// The person's external IDs.
+  core.List<ExternalId> externalIds;
+
+  /// The person's file-ases.
+  core.List<FileAs> fileAses;
+
+  /// The person's genders. This field is a singleton for contact sources.
   core.List<Gender> genders;
 
   /// The person's instant messaging clients.
@@ -2957,13 +3696,19 @@ class Person {
   /// The person's locale preferences.
   core.List<Locale> locales;
 
+  /// The person's locations.
+  core.List<Location> locations;
+
   /// The person's group memberships.
   core.List<Membership> memberships;
 
   /// Output only. Metadata about the person.
   PersonMetadata metadata;
 
-  /// The person's names.
+  /// The person's miscellaneous keywords.
+  core.List<MiscKeyword> miscKeywords;
+
+  /// The person's names. This field is a singleton for contact sources.
   core.List<Name> names;
 
   /// The person's nicknames.
@@ -2984,20 +3729,20 @@ class Person {
   /// The person's relations.
   core.List<Relation> relations;
 
-  /// Output only. **DEPRECATED**: No data will be returned
-  /// The person's relationship interests.
+  /// Output only. **DEPRECATED**: No data will be returned The person's
+  /// relationship interests.
   core.List<RelationshipInterest> relationshipInterests;
 
-  /// Output only. **DEPRECATED**: No data will be returned
-  /// The person's relationship statuses.
+  /// Output only. **DEPRECATED**: No data will be returned The person's
+  /// relationship statuses.
   core.List<RelationshipStatus> relationshipStatuses;
 
-  /// The person's residences.
+  /// **DEPRECATED**: (Please use `person.locations` instead) The person's
+  /// residences.
   core.List<Residence> residences;
 
   /// The resource name for the person, assigned by the server. An ASCII string
-  /// with a max length of 27 characters, in the form of
-  /// `people/{person_id}`.
+  /// with a max length of 27 characters, in the form of `people/{person_id}`.
   core.String resourceName;
 
   /// The person's SIP addresses.
@@ -3006,8 +3751,8 @@ class Person {
   /// The person's skills.
   core.List<Skill> skills;
 
-  /// Output only. **DEPRECATED**: No data will be returned
-  /// The person's taglines.
+  /// Output only. **DEPRECATED**: No data will be returned The person's
+  /// taglines.
   core.List<Tagline> taglines;
 
   /// The person's associated URLs.
@@ -3047,6 +3792,16 @@ class Person {
           .map<BraggingRights>((value) => new BraggingRights.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("calendarUrls")) {
+      calendarUrls = (_json["calendarUrls"] as core.List)
+          .map<CalendarUrl>((value) => new CalendarUrl.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("clientData")) {
+      clientData = (_json["clientData"] as core.List)
+          .map<ClientData>((value) => new ClientData.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("coverPhotos")) {
       coverPhotos = (_json["coverPhotos"] as core.List)
           .map<CoverPhoto>((value) => new CoverPhoto.fromJson(value))
@@ -3063,6 +3818,16 @@ class Person {
     if (_json.containsKey("events")) {
       events = (_json["events"] as core.List)
           .map<Event>((value) => new Event.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("externalIds")) {
+      externalIds = (_json["externalIds"] as core.List)
+          .map<ExternalId>((value) => new ExternalId.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("fileAses")) {
+      fileAses = (_json["fileAses"] as core.List)
+          .map<FileAs>((value) => new FileAs.fromJson(value))
           .toList();
     }
     if (_json.containsKey("genders")) {
@@ -3085,6 +3850,11 @@ class Person {
           .map<Locale>((value) => new Locale.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("locations")) {
+      locations = (_json["locations"] as core.List)
+          .map<Location>((value) => new Location.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("memberships")) {
       memberships = (_json["memberships"] as core.List)
           .map<Membership>((value) => new Membership.fromJson(value))
@@ -3092,6 +3862,11 @@ class Person {
     }
     if (_json.containsKey("metadata")) {
       metadata = new PersonMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("miscKeywords")) {
+      miscKeywords = (_json["miscKeywords"] as core.List)
+          .map<MiscKeyword>((value) => new MiscKeyword.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("names")) {
       names = (_json["names"] as core.List)
@@ -3198,6 +3973,14 @@ class Person {
       _json["braggingRights"] =
           braggingRights.map((value) => (value).toJson()).toList();
     }
+    if (calendarUrls != null) {
+      _json["calendarUrls"] =
+          calendarUrls.map((value) => (value).toJson()).toList();
+    }
+    if (clientData != null) {
+      _json["clientData"] =
+          clientData.map((value) => (value).toJson()).toList();
+    }
     if (coverPhotos != null) {
       _json["coverPhotos"] =
           coverPhotos.map((value) => (value).toJson()).toList();
@@ -3212,6 +3995,13 @@ class Person {
     if (events != null) {
       _json["events"] = events.map((value) => (value).toJson()).toList();
     }
+    if (externalIds != null) {
+      _json["externalIds"] =
+          externalIds.map((value) => (value).toJson()).toList();
+    }
+    if (fileAses != null) {
+      _json["fileAses"] = fileAses.map((value) => (value).toJson()).toList();
+    }
     if (genders != null) {
       _json["genders"] = genders.map((value) => (value).toJson()).toList();
     }
@@ -3224,12 +4014,19 @@ class Person {
     if (locales != null) {
       _json["locales"] = locales.map((value) => (value).toJson()).toList();
     }
+    if (locations != null) {
+      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
     if (memberships != null) {
       _json["memberships"] =
           memberships.map((value) => (value).toJson()).toList();
     }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
+    }
+    if (miscKeywords != null) {
+      _json["miscKeywords"] =
+          miscKeywords.map((value) => (value).toJson()).toList();
     }
     if (names != null) {
       _json["names"] = names.map((value) => (value).toJson()).toList();
@@ -3294,18 +4091,16 @@ class Person {
 /// The metadata about a person.
 class PersonMetadata {
   /// Output only. True if the person resource has been deleted. Populated only
-  /// for
-  /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests
-  /// that include a sync token.
+  /// for [`connections.list`](/people/api/rest/v1/people.connections/list)
+  /// requests that include a sync token.
   core.bool deleted;
 
   /// Output only. Resource names of people linked to this resource.
   core.List<core.String> linkedPeopleResourceNames;
 
   /// Output only. **DEPRECATED** (Please use
-  /// `person.metadata.sources.profileMetadata.objectType` instead)
-  ///
-  /// The type of the person object.
+  /// `person.metadata.sources.profileMetadata.objectType` instead) The type of
+  /// the person object.
   /// Possible string values are:
   /// - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
   /// - "PERSON" : Person.
@@ -3313,13 +4108,10 @@ class PersonMetadata {
   core.String objectType;
 
   /// Output only. Any former resource names this person has had. Populated only
-  /// for
-  /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests
-  /// that include a sync token.
-  ///
-  /// The resource name may change when adding or removing fields that link a
-  /// contact and profile such as a verified email, verified phone number, or
-  /// profile URL.
+  /// for [`connections.list`](/people/api/rest/v1/people.connections/list)
+  /// requests that include a sync token. The resource name may change when
+  /// adding or removing fields that link a contact and profile such as a
+  /// verified email, verified phone number, or profile URL.
   core.List<core.String> previousResourceNames;
 
   /// The sources of data for the person.
@@ -3373,9 +4165,7 @@ class PersonMetadata {
 
 /// The response for a single person
 class PersonResponse {
-  /// **DEPRECATED** (Please use status instead)
-  ///
-  /// [HTTP 1.1 status code]
+  /// **DEPRECATED** (Please use status instead) [HTTP 1.1 status code]
   /// (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
   core.int httpStatusCode;
 
@@ -3383,11 +4173,9 @@ class PersonResponse {
   Person person;
 
   /// The original requested resource name. May be different than the resource
-  /// name on the returned person.
-  ///
-  /// The resource name can change when adding or removing fields that link a
-  /// contact and profile such as a verified email, verified phone number, or a
-  /// profile URL.
+  /// name on the returned person. The resource name can change when adding or
+  /// removing fields that link a contact and profile such as a verified email,
+  /// verified phone number, or a profile URL.
   core.String requestedResourceName;
 
   /// The status of the response.
@@ -3444,19 +4232,8 @@ class PhoneNumber {
   FieldMetadata metadata;
 
   /// The type of the phone number. The type can be custom or one of these
-  /// predefined values:
-  ///
-  /// * `home`
-  /// * `work`
-  /// * `mobile`
-  /// * `homeFax`
-  /// * `workFax`
-  /// * `otherFax`
-  /// * `pager`
-  /// * `workMobile`
-  /// * `workPager`
-  /// * `main`
-  /// * `googleVoice`
+  /// predefined values: * `home` * `work` * `mobile` * `homeFax` * `workFax` *
+  /// `otherFax` * `pager` * `workMobile` * `workPager` * `main` * `googleVoice`
   /// * `other`
   core.String type;
 
@@ -3505,11 +4282,11 @@ class PhoneNumber {
   }
 }
 
-/// A person's photo. A picture shown next to the person's name to
-/// help others recognize the person.
+/// A person's photo. A picture shown next to the person's name to help others
+/// recognize the person.
 class Photo {
-  /// True if the photo is a default photo;
-  /// false if the photo is a user-provided photo.
+  /// True if the photo is a default photo; false if the photo is a
+  /// user-provided photo.
   core.bool default_;
 
   /// Metadata about the photo.
@@ -3590,8 +4367,8 @@ class ProfileMetadata {
 /// A person's relation to another person.
 class Relation {
   /// Output only. The type of the relation translated and formatted in the
-  /// viewer's
-  /// account locale or the locale specified in the Accept-Language HTTP header.
+  /// viewer's account locale or the locale specified in the Accept-Language
+  /// HTTP header.
   core.String formattedType;
 
   /// Metadata about the relation.
@@ -3601,23 +4378,9 @@ class Relation {
   core.String person;
 
   /// The person's relation to the other person. The type can be custom or one
-  /// of
-  /// these predefined values:
-  ///
-  /// * `spouse`
-  /// * `child`
-  /// * `mother`
-  /// * `father`
-  /// * `parent`
-  /// * `brother`
-  /// * `sister`
-  /// * `friend`
-  /// * `relative`
-  /// * `domesticPartner`
-  /// * `manager`
-  /// * `assistant`
-  /// * `referredBy`
-  /// * `partner`
+  /// of these predefined values: * `spouse` * `child` * `mother` * `father` *
+  /// `parent` * `brother` * `sister` * `friend` * `relative` *
+  /// `domesticPartner` * `manager` * `assistant` * `referredBy` * `partner`
   core.String type;
 
   Relation();
@@ -3656,12 +4419,10 @@ class Relation {
   }
 }
 
-/// **DEPRECATED**: No data will be returned
-/// A person's relationship interest .
+/// **DEPRECATED**: No data will be returned A person's relationship interest .
 class RelationshipInterest {
   /// Output only. The value of the relationship interest translated and
-  /// formatted
-  /// in the viewer's account locale or the locale specified in the
+  /// formatted in the viewer's account locale or the locale specified in the
   /// Accept-Language HTTP header.
   core.String formattedValue;
 
@@ -3669,13 +4430,8 @@ class RelationshipInterest {
   FieldMetadata metadata;
 
   /// The kind of relationship the person is looking for. The value can be
-  /// custom
-  /// or one of these predefined values:
-  ///
-  /// * `friend`
-  /// * `date`
-  /// * `relationship`
-  /// * `networking`
+  /// custom or one of these predefined values: * `friend` * `date` *
+  /// `relationship` * `networking`
   core.String value;
 
   RelationshipInterest();
@@ -3708,29 +4464,20 @@ class RelationshipInterest {
   }
 }
 
-/// **DEPRECATED**: No data will be returned
-/// A person's relationship status.
+/// **DEPRECATED**: No data will be returned A person's relationship status.
 class RelationshipStatus {
   /// Output only. The value of the relationship status translated and formatted
-  /// in
-  /// the viewer's account locale or the `Accept-Language` HTTP header locale.
+  /// in the viewer's account locale or the `Accept-Language` HTTP header
+  /// locale.
   core.String formattedValue;
 
   /// Metadata about the relationship status.
   FieldMetadata metadata;
 
   /// The relationship status. The value can be custom or one of these
-  /// predefined values:
-  ///
-  /// * `single`
-  /// * `inARelationship`
-  /// * `engaged`
-  /// * `married`
-  /// * `itsComplicated`
-  /// * `openRelationship`
-  /// * `widowed`
-  /// * `inDomesticPartnership`
-  /// * `inCivilUnion`
+  /// predefined values: * `single` * `inARelationship` * `engaged` * `married`
+  /// * `itsComplicated` * `openRelationship` * `widowed` *
+  /// `inDomesticPartnership` * `inCivilUnion`
   core.String value;
 
   RelationshipStatus();
@@ -3763,10 +4510,11 @@ class RelationshipStatus {
   }
 }
 
-/// A person's past or current residence.
+/// **DEPRECATED**: Please use `person.locations` instead. A person's past or
+/// current residence.
 class Residence {
-  /// True if the residence is the person's current residence;
-  /// false if the residence is a past residence.
+  /// True if the residence is the person's current residence; false if the
+  /// residence is a past residence.
   core.bool current;
 
   /// Metadata about the residence.
@@ -3805,6 +4553,51 @@ class Residence {
   }
 }
 
+/// The response to a request for people in the authenticated user's domain
+/// directory that match the specified query.
+class SearchDirectoryPeopleResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page. If
+  /// this field is omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  /// The list of people in the domain directory that match the query.
+  core.List<Person> people;
+
+  /// The total number of items in the list without pagination.
+  core.int totalSize;
+
+  SearchDirectoryPeopleResponse();
+
+  SearchDirectoryPeopleResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("people")) {
+      people = (_json["people"] as core.List)
+          .map<Person>((value) => new Person.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (people != null) {
+      _json["people"] = people.map((value) => (value).toJson()).toList();
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
+    }
+    return _json;
+  }
+}
+
 /// A person's SIP address. Session Initial Protocol addresses are used for VoIP
 /// communications to make voice or video calls over the internet.
 class SipAddress {
@@ -3816,17 +4609,11 @@ class SipAddress {
   FieldMetadata metadata;
 
   /// The type of the SIP address. The type can be custom or or one of these
-  /// predefined values:
-  ///
-  /// * `home`
-  /// * `work`
-  /// * `mobile`
-  /// * `other`
+  /// predefined values: * `home` * `work` * `mobile` * `other`
   core.String type;
 
-  /// The SIP address in the
-  /// [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI
-  /// format.
+  /// The SIP address in the [RFC 3261
+  /// 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI format.
   core.String value;
 
   SipAddress();
@@ -3899,18 +4686,16 @@ class Skill {
 
 /// The source of a field.
 class Source {
-  /// **Only populated in `person.metadata.sources`.**
-  ///
-  /// The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
-  /// source. Used for web cache validation.
+  /// **Only populated in `person.metadata.sources`.** The [HTTP entity
+  /// tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source. Used for web
+  /// cache validation.
   core.String etag;
 
   /// The unique identifier within the source type generated by the server.
   core.String id;
 
-  /// Output only. **Only populated in `person.metadata.sources`.**
-  ///
-  /// Metadata about a source of type PROFILE.
+  /// Output only. **Only populated in `person.metadata.sources`.** Metadata
+  /// about a source of type PROFILE.
   ProfileMetadata profileMetadata;
 
   /// The source type.
@@ -3918,22 +4703,23 @@ class Source {
   /// - "SOURCE_TYPE_UNSPECIFIED" : Unspecified.
   /// - "ACCOUNT" : [Google Account](https://accounts.google.com).
   /// - "PROFILE" : [Google profile](https://profiles.google.com). You can view
-  /// the
-  /// profile at
+  /// the profile at
   /// [https://profiles.google.com/](https://profiles.google.com/){id}, where
   /// {id} is the source id.
   /// - "DOMAIN_PROFILE" : [G Suite domain
   /// profile](https://support.google.com/a/answer/1628008).
   /// - "CONTACT" : [Google contact](https://contacts.google.com). You can view
-  /// the
-  /// contact at
-  /// [https://contact.google.com/](https://contact.google.com/){id}, where
-  /// {id} is the source id.
+  /// the contact at
+  /// [https://contact.google.com/](https://contact.google.com/){id}, where {id}
+  /// is the source id.
+  /// - "OTHER_CONTACT" : [Google "Other
+  /// contact"](https://contacts.google.com/other).
+  /// - "DOMAIN_CONTACT" : [G Suite domain shared
+  /// contact](https://support.google.com/a/answer/9281635).
   core.String type;
 
-  /// Output only. **Only populated in `person.metadata.sources`.**
-  ///
-  /// Last update timestamp of this source.
+  /// Output only. **Only populated in `person.metadata.sources`.** Last update
+  /// timestamp of this source.
   core.String updateTime;
 
   Source();
@@ -3981,15 +4767,14 @@ class Source {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -4034,8 +4819,8 @@ class Status {
   }
 }
 
-/// **DEPRECATED**: No data will be returned
-/// A brief one-line description of the person.
+/// **DEPRECATED**: No data will be returned A brief one-line description of the
+/// person.
 class Tagline {
   /// Metadata about the tagline.
   FieldMetadata metadata;
@@ -4091,39 +4876,18 @@ class UpdateContactGroupRequest {
   }
 }
 
-/// A request to update an existing contact's photo.
-/// All requests must have a valid photo format: JPEG or PNG.
+/// A request to update an existing contact's photo. All requests must have a
+/// valid photo format: JPEG or PNG.
 class UpdateContactPhotoRequest {
   /// Optional. A field mask to restrict which fields on the person are
-  /// returned. Multiple
-  /// fields can be specified by separating them with commas. Defaults to empty
-  /// if not set, which will skip the post mutate get. Valid values are:
-  ///
-  /// * addresses
-  /// * ageRanges
-  /// * biographies
-  /// * birthdays
-  /// * coverPhotos
-  /// * emailAddresses
-  /// * events
-  /// * genders
-  /// * imClients
-  /// * interests
-  /// * locales
-  /// * memberships
-  /// * metadata
-  /// * names
-  /// * nicknames
-  /// * occupations
-  /// * organizations
-  /// * phoneNumbers
-  /// * photos
-  /// * relations
-  /// * residences
-  /// * sipAddresses
-  /// * skills
-  /// * urls
-  /// * userDefined
+  /// returned. Multiple fields can be specified by separating them with commas.
+  /// Defaults to empty if not set, which will skip the post mutate get. Valid
+  /// values are: * addresses * ageRanges * biographies * birthdays *
+  /// calendarUrls * clientData * coverPhotos * emailAddresses * events *
+  /// externalIds * genders * imClients * interests * locales * locations *
+  /// memberships * metadata * miscKeywords * names * nicknames * occupations *
+  /// organizations * phoneNumbers * photos * relations * sipAddresses * skills
+  /// * urls * userDefined
   core.String personFields;
 
   /// Required. Raw photo bytes
@@ -4137,6 +4901,10 @@ class UpdateContactPhotoRequest {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
+  /// Optional. A mask of what source types to return. Defaults to
+  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  core.List<core.String> sources;
+
   UpdateContactPhotoRequest();
 
   UpdateContactPhotoRequest.fromJson(core.Map _json) {
@@ -4145,6 +4913,9 @@ class UpdateContactPhotoRequest {
     }
     if (_json.containsKey("photoBytes")) {
       photoBytes = _json["photoBytes"];
+    }
+    if (_json.containsKey("sources")) {
+      sources = (_json["sources"] as core.List).cast<core.String>();
     }
   }
 
@@ -4156,6 +4927,9 @@ class UpdateContactPhotoRequest {
     }
     if (photoBytes != null) {
       _json["photoBytes"] = photoBytes;
+    }
+    if (sources != null) {
+      _json["sources"] = sources;
     }
     return _json;
   }
@@ -4195,17 +4969,9 @@ class Url {
   FieldMetadata metadata;
 
   /// The type of the URL. The type can be custom or one of these predefined
-  /// values:
-  ///
-  /// * `home`
-  /// * `work`
-  /// * `blog`
-  /// * `profile`
-  /// * `homePage`
-  /// * `ftp`
-  /// * `reservations`
-  /// * `appInstallPage`: website for a Google+ application.
-  /// * `other`
+  /// values: * `home` * `work` * `blog` * `profile` * `homePage` * `ftp` *
+  /// `reservations` * `appInstallPage`: website for a Google+ application. *
+  /// `other`
   core.String type;
 
   /// The URL.
