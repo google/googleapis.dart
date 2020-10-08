@@ -62,8 +62,7 @@ class ProjectsNotesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project in the form of
-  /// `projects/[PROJECT_ID]`, under which
-  /// the notes are to be created.
+  /// `projects/[PROJECT_ID]`, under which the notes are to be created.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -117,8 +116,7 @@ class ProjectsNotesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project in the form of
-  /// `projects/[PROJECT_ID]`, under which
-  /// the note is to be created.
+  /// `projects/[PROJECT_ID]`, under which the note is to be created.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [noteId] - Required. The ID to use for this note.
@@ -259,19 +257,17 @@ class ProjectsNotesResourceApi {
   /// Gets the access control policy for a note or an occurrence resource.
   /// Requires `containeranalysis.notes.setIamPolicy` or
   /// `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-  /// a note or occurrence, respectively.
-  ///
-  /// The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for
-  /// notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for
-  /// occurrences.
+  /// a note or occurrence, respectively. The resource takes the format
+  /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -322,17 +318,15 @@ class ProjectsNotesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project to list notes for in the form
-  /// of
-  /// `projects/[PROJECT_ID]`.
+  /// of `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageSize] - Number of notes to return in the list. Must be positive. Max
-  /// allowed page
-  /// size is 1000. If not specified, page size defaults to 20.
-  ///
-  /// [filter] - The filter expression.
+  /// allowed page size is 1000. If not specified, page size defaults to 20.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [filter] - The filter expression.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -346,8 +340,8 @@ class ProjectsNotesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListNotesResponse> list(core.String parent,
       {core.int pageSize,
-      core.String filter,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -362,11 +356,11 @@ class ProjectsNotesResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -443,19 +437,17 @@ class ProjectsNotesResourceApi {
   /// Sets the access control policy on the specified note or occurrence.
   /// Requires `containeranalysis.notes.setIamPolicy` or
   /// `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-  /// a note or an occurrence, respectively.
-  ///
-  /// The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for
-  /// notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for
-  /// occurrences.
+  /// a note or an occurrence, respectively. The resource takes the format
+  /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -503,19 +495,17 @@ class ProjectsNotesResourceApi {
 
   /// Returns the permissions that a caller has on the specified note or
   /// occurrence. Requires list permission on the project (for example,
-  /// `containeranalysis.notes.list`).
-  ///
-  /// The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for
-  /// notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for
-  /// occurrences.
+  /// `containeranalysis.notes.list`). The resource takes the format
+  /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -570,23 +560,20 @@ class ProjectsNotesOccurrencesResourceApi {
       : _requester = client;
 
   /// Lists occurrences referencing the specified note. Provider projects can
-  /// use
-  /// this method to get all occurrences across consumer projects referencing
-  /// the
-  /// specified note.
+  /// use this method to get all occurrences across consumer projects
+  /// referencing the specified note.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the note to list occurrences for in the
-  /// form of
-  /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+  /// form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
+  ///
+  /// [pageSize] - Number of occurrences to return in the list.
   ///
   /// [filter] - The filter expression.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
-  ///
-  /// [pageSize] - Number of occurrences to return in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -599,9 +586,9 @@ class ProjectsNotesOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNoteOccurrencesResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -613,14 +600,14 @@ class ProjectsNotesOccurrencesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -654,8 +641,7 @@ class ProjectsOccurrencesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project in the form of
-  /// `projects/[PROJECT_ID]`, under which
-  /// the occurrences are to be created.
+  /// `projects/[PROJECT_ID]`, under which the occurrences are to be created.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -709,8 +695,7 @@ class ProjectsOccurrencesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project in the form of
-  /// `projects/[PROJECT_ID]`, under which
-  /// the occurrence is to be created.
+  /// `projects/[PROJECT_ID]`, under which the occurrence is to be created.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -756,8 +741,7 @@ class ProjectsOccurrencesResourceApi {
   }
 
   /// Deletes the specified occurrence. For example, use this method to delete
-  /// an
-  /// occurrence when the occurrence is no longer applicable for the given
+  /// an occurrence when the occurrence is no longer applicable for the given
   /// resource.
   ///
   /// Request parameters:
@@ -849,19 +833,17 @@ class ProjectsOccurrencesResourceApi {
   /// Gets the access control policy for a note or an occurrence resource.
   /// Requires `containeranalysis.notes.setIamPolicy` or
   /// `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-  /// a note or occurrence, respectively.
-  ///
-  /// The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for
-  /// notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for
-  /// occurrences.
+  /// a note or occurrence, respectively. The resource takes the format
+  /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -958,8 +940,7 @@ class ProjectsOccurrencesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project to get a vulnerability
-  /// summary for in the form of
-  /// `projects/[PROJECT_ID]`.
+  /// summary for in the form of `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [filter] - The filter expression.
@@ -1014,8 +995,7 @@ class ProjectsOccurrencesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project to list occurrences for in
-  /// the form of
-  /// `projects/[PROJECT_ID]`.
+  /// the form of `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [filter] - The filter expression.
@@ -1023,8 +1003,8 @@ class ProjectsOccurrencesResourceApi {
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - Number of occurrences to return in the list. Must be
-  /// positive. Max allowed
-  /// page size is 1000. If not specified, page size defaults to 20.
+  /// positive. Max allowed page size is 1000. If not specified, page size
+  /// defaults to 20.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1135,19 +1115,17 @@ class ProjectsOccurrencesResourceApi {
   /// Sets the access control policy on the specified note or occurrence.
   /// Requires `containeranalysis.notes.setIamPolicy` or
   /// `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-  /// a note or an occurrence, respectively.
-  ///
-  /// The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for
-  /// notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for
-  /// occurrences.
+  /// a note or an occurrence, respectively. The resource takes the format
+  /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1195,19 +1173,17 @@ class ProjectsOccurrencesResourceApi {
 
   /// Returns the permissions that a caller has on the specified note or
   /// occurrence. Requires list permission on the project (for example,
-  /// `containeranalysis.notes.list`).
-  ///
-  /// The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for
-  /// notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for
-  /// occurrences.
+  /// `containeranalysis.notes.list`). The resource takes the format
+  /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1310,8 +1286,7 @@ class ProjectsScanConfigsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project to list scan configurations
-  /// for in the form of
-  /// `projects/[PROJECT_ID]`.
+  /// for in the form of `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageSize] - The number of scan configs to return in the list.
@@ -1430,8 +1405,7 @@ class AliasContext {
   /// - "FIXED" : Git tag.
   /// - "MOVABLE" : Git branch.
   /// - "OTHER" : Used to specify non-standard aliases. For example, if a Git
-  /// repo has a
-  /// ref named "refs/foo/bar".
+  /// repo has a ref named "refs/foo/bar".
   core.String kind;
 
   /// The alias name.
@@ -1472,12 +1446,10 @@ class Artifact {
   core.String id;
 
   /// Related artifact names. This may be the path to a binary or jar file, or
-  /// in
-  /// the case of a container build, the name used to push the container image
-  /// to
-  /// Google Container Registry, as presented to `docker push`. Note that a
-  /// single Artifact ID can have multiple names, for example if two tags are
-  /// applied to one image.
+  /// in the case of a container build, the name used to push the container
+  /// image to Google Container Registry, as presented to `docker push`. Note
+  /// that a single Artifact ID can have multiple names, for example if two tags
+  /// are applied to one image.
   core.List<core.String> names;
 
   Artifact();
@@ -1599,10 +1571,9 @@ class Attestation {
 /// "build". This note is intended to act strictly as a grouping mechanism for
 /// the attached occurrences (Attestations). This grouping mechanism also
 /// provides a security boundary, since IAM ACLs gate the ability for a
-/// principle
-/// to attach an occurrence to a given note. It also provides a single point of
-/// lookup to find all attached attestation occurrences, even if they don't all
-/// live in the same project.
+/// principle to attach an occurrence to a given note. It also provides a single
+/// point of lookup to find all attached attestation occurrences, even if they
+/// don't all live in the same project.
 class Authority {
   /// Hint hints at the purpose of the attestation authority.
   Hint hint;
@@ -1626,10 +1597,8 @@ class Authority {
 }
 
 /// Basis describes the base image portion (Note) of the DockerImage
-/// relationship. Linked occurrences are derived from this or an
-/// equivalent image via:
-///   FROM <Basis.resource_url>
-/// Or an equivalent reference, e.g. a tag of the resource_url.
+/// relationship. Linked occurrences are derived from this or an equivalent
+/// image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
 class Basis {
   /// Required. Immutable. The fingerprint of the base image.
   Fingerprint fingerprint;
@@ -1767,64 +1736,60 @@ class BatchCreateOccurrencesResponse {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  /// NOTE: An unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
+  /// A client-specified ID for this binding. Expected to be globally unique to
+  /// support the internal bindings-by-ID API.
+  core.String bindingId;
+
+  /// The condition that is associated with this binding. If the condition
+  /// evaluates to `true`, then this binding applies to the current request. If
+  /// the condition evaluates to `false`, then this binding does not apply to
+  /// the current request. However, a different role binding might grant the
+  /// same role to one or more of the members in this binding. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
-  /// `members` can have the following values:
-  ///
-  /// * `allUsers`: A special identifier that represents anyone who is
-  ///    on the internet; with or without a Google account.
-  ///
-  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
-  ///    who is authenticated with a Google account or a service account.
-  ///
-  /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@example.com` .
-  ///
-  ///
-  /// * `serviceAccount:{emailid}`: An email address that represents a service
-  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  ///
-  /// * `group:{emailid}`: An email address that represents a Google group.
-  ///    For example, `admins@example.com`.
-  ///
-  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a user that has been recently deleted. For
-  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
-  /// recovered, this value reverts to `user:{emailid}` and the recovered user
-  ///    retains the role in the binding.
-  ///
-  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
-  /// (plus
-  /// unique identifier) representing a service account that has been recently
-  ///    deleted. For example,
-  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-  ///    If the service account is undeleted, this value reverts to
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
-  ///    role in the binding.
-  ///
-  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a Google group that has been recently
-  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-  /// the group is recovered, this value reverts to `group:{emailid}` and the
-  ///    recovered group retains the role in the binding.
-  ///
-  ///
-  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
-  ///    users of that domain. For example, `google.com` or `example.com`.
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`.
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`. For example, `roles/viewer`,
+  /// `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingId")) {
+      bindingId = _json["bindingId"];
+    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1839,6 +1804,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bindingId != null) {
+      _json["bindingId"] = bindingId;
+    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -1906,10 +1874,8 @@ class BuildProvenance {
   core.String createTime;
 
   /// E-mail address of the user who initiated this build. Note that this was
-  /// the
-  /// user's e-mail address at the time the build was initiated; this address
-  /// may
-  /// not represent the same end-user for all time.
+  /// the user's e-mail address at the time the build was initiated; this
+  /// address may not represent the same end-user for all time.
   core.String creator;
 
   /// Time at which execution of the build was finished.
@@ -2033,10 +1999,8 @@ class BuildProvenance {
 class BuildSignature {
   /// An ID for the key used to sign. This could be either an ID for the key
   /// stored in `public_key` (such as the ID or fingerprint for a PGP key, or
-  /// the
-  /// CN for a cert), or a reference to an external key (such as a reference to
-  /// a
-  /// key in Cloud Key Management Service).
+  /// the CN for a cert), or a reference to an external key (such as a reference
+  /// to a key in Cloud Key Management Service).
   core.String keyId;
 
   /// The type of the key, either stored in `public_key` or referenced in
@@ -2048,18 +2012,15 @@ class BuildSignature {
   core.String keyType;
 
   /// Public key of the builder which can be used to verify that the related
-  /// findings are valid and unchanged. If `key_type` is empty, this defaults
-  /// to PEM encoded public keys.
-  ///
-  /// This field may be empty if `key_id` references an external key.
-  ///
-  /// For Cloud Build based signatures, this is a PEM encoded public
-  /// key. To verify the Cloud Build signature, place the contents of
+  /// findings are valid and unchanged. If `key_type` is empty, this defaults to
+  /// PEM encoded public keys. This field may be empty if `key_id` references an
+  /// external key. For Cloud Build based signatures, this is a PEM encoded
+  /// public key. To verify the Cloud Build signature, place the contents of
   /// this field into a file (public.pem). The signature field is base64-decoded
   /// into its binary representation in signature.bin, and the provenance bytes
   /// from `BuildDetails` are base64-decoded into a binary representation in
-  /// signed.bin. OpenSSL can then verify the signature:
-  /// `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
+  /// signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify
+  /// public.pem -signature signature.bin signed.bin`
   core.String publicKey;
 
   /// Required. Signature of the related `BuildProvenance`. In JSON, this is
@@ -2134,8 +2095,8 @@ class ByProducts {
   }
 }
 
-/// Common Vulnerability Scoring System version 3.
-/// For details, see https://www.first.org/cvss/specification-document
+/// Common Vulnerability Scoring System version 3. For details, see
+/// https://www.first.org/cvss/specification-document
 class CVSSv3 {
   ///
   /// Possible string values are:
@@ -2144,9 +2105,8 @@ class CVSSv3 {
   /// - "ATTACK_COMPLEXITY_HIGH"
   core.String attackComplexity;
 
-  /// Base Metrics
-  /// Represents the intrinsic characteristics of a vulnerability that are
-  /// constant over time and across user environments.
+  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
+  /// that are constant over time and across user environments.
   /// Possible string values are:
   /// - "ATTACK_VECTOR_UNSPECIFIED"
   /// - "ATTACK_VECTOR_NETWORK"
@@ -2439,8 +2399,8 @@ class Deployment {
   /// - "CUSTOM" : Custom user-defined platform.
   core.String platform;
 
-  /// Output only. Resource URI for the artifact being deployed taken from
-  /// the deployable field with the same name.
+  /// Output only. Resource URI for the artifact being deployed taken from the
+  /// deployable field with the same name.
   core.List<core.String> resourceUri;
 
   /// End of the lifetime of this deployment.
@@ -2504,8 +2464,7 @@ class Deployment {
 }
 
 /// Derived describes the derived image portion (Occurrence) of the DockerImage
-/// relationship. This image would be produced from a Dockerfile with FROM
-/// <DockerImage.Basis in attached Note>.
+/// relationship. This image would be produced from a Dockerfile with FROM .
 class Derived {
   /// Output only. This contains the base image URL for the derived image
   /// occurrence.
@@ -2562,13 +2521,12 @@ class Derived {
 }
 
 /// Identifies all appearances of this vulnerability in the package for a
-/// specific distro/location. For example: glibc in
-/// cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
+/// specific distro/location. For example: glibc in cpe:/o:debian:debian_linux:8
+/// for versions 2.1 - 2.2
 class Detail {
-  /// Required. The CPE URI in
-  /// [cpe format](https://cpe.mitre.org/specification/) in which the
-  /// vulnerability manifests. Examples include distro or storage location for
-  /// vulnerable jar.
+  /// Required. The CPE URI in [cpe
+  /// format](https://cpe.mitre.org/specification/) in which the vulnerability
+  /// manifests. Examples include distro or storage location for vulnerable jar.
   core.String cpeUri;
 
   /// A vendor-specific description of this note.
@@ -2707,8 +2665,7 @@ class Discovered {
   /// - "SCANNING" : Resource is being analyzed.
   /// - "FINISHED_SUCCESS" : Analysis has finished successfully.
   /// - "FINISHED_FAILED" : Analysis has finished unsuccessfully, the analysis
-  /// itself is in a bad
-  /// state.
+  /// itself is in a bad state.
   /// - "FINISHED_UNSUPPORTED" : The resource is known not to be supported
   core.String analysisStatus;
 
@@ -2724,8 +2681,8 @@ class Discovered {
   /// - "INACTIVE" : The resource is ignored for continuous analysis.
   core.String continuousAnalysis;
 
-  /// The last time continuous analysis was done for this resource.
-  /// Deprecated, do not use.
+  /// The last time continuous analysis was done for this resource. Deprecated,
+  /// do not use.
   core.String lastAnalysisTime;
 
   Discovered();
@@ -2815,8 +2772,8 @@ class Distribution {
   core.String architecture;
 
   /// Required. The cpe_uri in [CPE
-  /// format](https://cpe.mitre.org/specification/)
-  /// denoting the package manager version distributing a package.
+  /// format](https://cpe.mitre.org/specification/) denoting the package manager
+  /// version distributing a package.
   core.String cpeUri;
 
   /// The distribution channel-specific description of this package.
@@ -2881,13 +2838,9 @@ class Distribution {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -2926,36 +2879,20 @@ class Environment {
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec.
-///
-/// Example (Comparison):
-///
-///     title: "Summary size limit"
-///     description: "Determines if a summary is less than 100 chars"
-///     expression: "document.summary.size() < 100"
-///
-/// Example (Equality):
-///
-///     title: "Requestor is owner"
-///     description: "Determines if requestor is the document owner"
-///     expression: "document.owner == request.auth.claims.email"
-///
-/// Example (Logic):
-///
-///     title: "Public documents"
+/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
 /// description: "Determine whether the document should be publicly visible"
-///     expression: "document.type != 'private' && document.type != 'internal'"
-///
-/// Example (Data Manipulation):
-///
-///     title: "Notification string"
-///     description: "Create a notification string with a timestamp."
-///     expression: "'New message received at ' + string(document.create_time)"
-///
-/// The exact variables and functions that may be referenced within an
-/// expression
-/// are determined by the service that evaluates it. See the service
-/// documentation for additional information.
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
 class Expr {
   /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
@@ -2969,9 +2906,8 @@ class Expr {
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
+  /// Optional. Title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
   Expr();
@@ -3045,9 +2981,9 @@ class Fingerprint {
   /// Required. The ordered list of v2 blobs that represent a given image.
   core.List<core.String> v2Blob;
 
-  /// Output only. The name of the image's v2 blobs computed via:
-  ///   [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1])
-  /// Only the name of the final blob is kept.
+  /// Output only. The name of the image's v2 blobs computed via: [bottom] :=
+  /// v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of
+  /// the final blob is kept.
   core.String v2Name;
 
   Fingerprint();
@@ -3138,16 +3074,15 @@ class FixableTotalByDigest {
   }
 }
 
-/// An attestation wrapper that uses the Grafeas `Signature` message.
-/// This attestation must define the `serialized_payload` that the `signatures`
-/// verify and any metadata necessary to interpret that plaintext.  The
+/// An attestation wrapper that uses the Grafeas `Signature` message. This
+/// attestation must define the `serialized_payload` that the `signatures`
+/// verify and any metadata necessary to interpret that plaintext. The
 /// signatures should always be over the `serialized_payload` bytestring.
 class GenericSignedAttestation {
-  /// Type (for example schema) of the attestation payload that was signed.
-  /// The verifier must ensure that the provided type is one that the verifier
+  /// Type (for example schema) of the attestation payload that was signed. The
+  /// verifier must ensure that the provided type is one that the verifier
   /// supports, and that the attestation payload is a valid instantiation of
-  /// that
-  /// type (for example by validating a JSON schema).
+  /// that type (for example by validating a JSON schema).
   /// Possible string values are:
   /// - "CONTENT_TYPE_UNSPECIFIED" : `ContentType` is not set.
   /// - "SIMPLE_SIGNING_JSON" : Atomic format attestation signature. See
@@ -3156,9 +3091,8 @@ class GenericSignedAttestation {
   /// linked schema.
   core.String contentType;
 
-  /// The serialized payload that is verified by one or more `signatures`.
-  /// The encoding and semantic meaning of this payload must match what is set
-  /// in
+  /// The serialized payload that is verified by one or more `signatures`. The
+  /// encoding and semantic meaning of this payload must match what is set in
   /// `content_type`.
   core.String serializedPayload;
   core.List<core.int> get serializedPayloadAsBytes {
@@ -3170,11 +3104,9 @@ class GenericSignedAttestation {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// One or more signatures over `serialized_payload`.  Verifier
-  /// implementations
+  /// One or more signatures over `serialized_payload`. Verifier implementations
   /// should consider this attestation message verified if at least one
-  /// `signature` verifies `serialized_payload`.  See `Signature` in
-  /// common.proto
+  /// `signature` verifies `serialized_payload`. See `Signature` in common.proto
   /// for more details on signature structure and verification.
   core.List<Signature> signatures;
 
@@ -3289,15 +3221,13 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// Optional. The policy format version to be returned. Valid values are 0, 1,
+  /// and 3. Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional bindings must specify version 3. Policies
+  /// without any conditional bindings may specify any valid value or leave the
+  /// field unset. To learn which resources support conditions in their IAM
+  /// policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -3351,8 +3281,8 @@ class GitSourceContext {
   }
 }
 
-/// Metadata for all operations used and required for all operations
-/// that created by Container Analysis Providers
+/// Metadata for all operations used and required for all operations that
+/// created by Container Analysis Providers
 class GoogleDevtoolsContaineranalysisV1alpha1OperationMetadata {
   /// Output only. The time this operation was created.
   core.String createTime;
@@ -3396,11 +3326,9 @@ class GrafeasV1beta1BuildDetails {
   /// provenance to confirm that it is unchanged. A base64-encoded string
   /// representation of the provenance bytes is used for the signature in order
   /// to interoperate with openssl which expects this format for signature
-  /// verification.
-  ///
-  /// The serialized form is captured both to avoid ambiguity in how the
-  /// provenance is marshalled to json as well to prevent incompatibilities with
-  /// future changes.
+  /// verification. The serialized form is captured both to avoid ambiguity in
+  /// how the provenance is marshalled to json as well to prevent
+  /// incompatibilities with future changes.
   core.String provenanceBytes;
 
   GrafeasV1beta1BuildDetails();
@@ -3618,9 +3546,9 @@ class GrafeasV1beta1VulnerabilityDetails {
   /// severity.
   core.double cvssScore;
 
-  /// The distro assigned severity for this vulnerability when it is
-  /// available, and note provider assigned severity when distro has not yet
-  /// assigned a severity for this vulnerability.
+  /// The distro assigned severity for this vulnerability when it is available,
+  /// and note provider assigned severity when distro has not yet assigned a
+  /// severity for this vulnerability.
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : Unknown.
   /// - "MINIMAL" : Minimal severity.
@@ -3771,8 +3699,7 @@ class Hash {
 /// important to disambiguate the canonical name of the Note (which might be a
 /// UUID for security purposes) from "readable" names more suitable for debug
 /// output. Note that these hints should not be used to look up authorities in
-/// security sensitive contexts, such as when looking up attestations to
-/// verify.
+/// security sensitive contexts, such as when looking up attestations to verify.
 class Hint {
   /// Required. The human readable name of this attestation authority, for
   /// example "qa".
@@ -3797,8 +3724,8 @@ class Hint {
 }
 
 /// This contains the fields corresponding to the definition of a software
-/// supply
-/// chain step in an in-toto layout. This information goes into a Grafeas note.
+/// supply chain step in an in-toto layout. This information goes into a Grafeas
+/// note.
 class InToto {
   /// This field contains the expected command used to perform the step.
   core.List<core.String> expectedCommand;
@@ -4015,30 +3942,15 @@ class Link {
   /// environment. It is suggested for this field to contain information that
   /// details environment variables, filesystem information, and the present
   /// working directory. The recommended structure of this field is:
-  /// "environment": {
-  ///   "custom_values": {
-  ///     "variables": "<ENV>",
-  ///     "filesystem": "<FS>",
-  ///     "workdir": "<CWD>",
-  ///     "<ANY OTHER RELEVANT FIELDS>": "..."
-  ///   }
-  /// }
+  /// "environment": { "custom_values": { "variables": "", "filesystem": "",
+  /// "workdir": "", "": "..." } }
   Environment environment;
 
   /// Materials are the supply chain artifacts that go into the step and are
-  /// used
-  /// for the operation performed. The key of the map is the path of the
-  /// artifact
-  /// and the structure contains the recorded hash information. An example is:
-  /// "materials": [
-  ///   {
-  ///     "resource_uri": "foo/bar",
-  ///     "hashes": {
-  ///       "sha256": "ebebf...",
-  ///       <OTHER HASH ALGORITHMS>: <HASH VALUE>
-  ///     }
-  ///   }
-  /// ]
+  /// used for the operation performed. The key of the map is the path of the
+  /// artifact and the structure contains the recorded hash information. An
+  /// example is: "materials": [ { "resource_uri": "foo/bar", "hashes": {
+  /// "sha256": "ebebf...", : } } ]
   core.List<GrafeasV1beta1IntotoArtifact> materials;
 
   /// Products are the supply chain artifacts generated as a result of the step.
@@ -4242,8 +4154,8 @@ class ListScanConfigsResponse {
 /// filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 class Location {
   /// Required. The CPE URI in [CPE
-  /// format](https://cpe.mitre.org/specification/)
-  /// denoting the package manager version distributing a package.
+  /// format](https://cpe.mitre.org/specification/) denoting the package manager
+  /// version distributing a package.
   core.String cpeUri;
 
   /// The path from which we gathered that this package/version is installed.
@@ -4346,8 +4258,7 @@ class Note {
   core.String shortDescription;
 
   /// Output only. The time this note was last updated. This field can be used
-  /// as
-  /// a filter in list requests.
+  /// as a filter in list requests.
   core.String updateTime;
 
   /// A note describing a package vulnerability.
@@ -4486,8 +4397,7 @@ class Occurrence {
   /// Describes the deployment of an artifact on a runtime.
   GrafeasV1beta1DeploymentDetails deployment;
 
-  /// Describes how this resource derives from the basis in the associated
-  /// note.
+  /// Describes how this resource derives from the basis in the associated note.
   GrafeasV1beta1ImageDetails derivedImage;
 
   /// Describes when a resource was discovered.
@@ -4681,8 +4591,8 @@ class Package {
   }
 }
 
-/// This message wraps a location affected by a vulnerability and its
-/// associated fix (if one is available).
+/// This message wraps a location affected by a vulnerability and its associated
+/// fix (if one is available).
 class PackageIssue {
   /// Required. The location of the vulnerability.
   VulnerabilityLocation affectedLocation;
@@ -4690,8 +4600,8 @@ class PackageIssue {
   /// The location of the available fix for vulnerability.
   VulnerabilityLocation fixedLocation;
 
-  /// Deprecated, use Details.effective_severity instead
-  /// The severity (e.g., distro assigned severity) for this vulnerability.
+  /// Deprecated, use Details.effective_severity instead The severity (e.g.,
+  /// distro assigned severity) for this vulnerability.
   core.String severityName;
 
   PackageIssue();
@@ -4730,11 +4640,10 @@ class PackageIssue {
 /// supports `ATTACHED` signatures, where the payload that is signed is included
 /// alongside the signature itself in the same file.
 class PgpSignedAttestation {
-  /// Type (for example schema) of the attestation payload that was signed.
-  /// The verifier must ensure that the provided type is one that the verifier
+  /// Type (for example schema) of the attestation payload that was signed. The
+  /// verifier must ensure that the provided type is one that the verifier
   /// supports, and that the attestation payload is a valid instantiation of
-  /// that
-  /// type (for example by validating a JSON schema).
+  /// that type (for example by validating a JSON schema).
   /// Possible string values are:
   /// - "CONTENT_TYPE_UNSPECIFIED" : `ContentType` is not set.
   /// - "SIMPLE_SIGNING_JSON" : Atomic format attestation signature. See
@@ -4750,15 +4659,11 @@ class PgpSignedAttestation {
   /// Implementations may choose to acknowledge "LONG", "SHORT", or other
   /// abbreviated key IDs, but only the full fingerprint is guaranteed to work.
   /// In gpg, the full fingerprint can be retrieved from the `fpr` field
-  /// returned when calling --list-keys with --with-colons.  For example:
-  /// ```
-  /// gpg --with-colons --with-fingerprint --force-v4-certs \
-  ///     --list-keys attester@example.com
-  /// tru::1:1513631572:0:3:1:5
-  /// pub:...<SNIP>...
-  /// fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:
-  /// ```
-  /// Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+  /// returned when calling --list-keys with --with-colons. For example: ``` gpg
+  /// --with-colons --with-fingerprint --force-v4-certs \ --list-keys
+  /// attester@example.com tru::1:1513631572:0:3:1:5 pub:......
+  /// fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the
+  /// fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
   core.String pgpKeyId;
 
   /// Required. The raw content of the signature, as output by GNU Privacy Guard
@@ -4803,90 +4708,51 @@ class PgpSignedAttestation {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources.
-///
-///
-/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts,
-/// Google groups, and domains (such as G Suite). A `role` is a named list of
-/// permissions; each `role` can be an IAM predefined role or a user-created
-/// custom role.
-///
-/// Optionally, a `binding` can specify a `condition`, which is a logical
-/// expression that allows access to a resource only if the expression evaluates
-/// to `true`. A condition can add constraints based on attributes of the
-/// request, the resource, or both.
-///
-/// **JSON example:**
-///
-///     {
-///       "bindings": [
-///         {
-///           "role": "roles/resourcemanager.organizationAdmin",
-///           "members": [
-///             "user:mike@example.com",
-///             "group:admins@example.com",
-///             "domain:google.com",
-///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-///           ]
-///         },
-///         {
-///           "role": "roles/resourcemanager.organizationViewer",
-///           "members": ["user:eve@example.com"],
-///           "condition": {
-///             "title": "expirable access",
-///             "description": "Does not grant access after Sep 2020",
-/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-///           }
-///         }
-///       ],
-///       "etag": "BwWWja0YfJA=",
-///       "version": 3
-///     }
-///
-/// **YAML example:**
-///
-///     bindings:
-///     - members:
-///       - user:mike@example.com
-///       - group:admins@example.com
-///       - domain:google.com
-///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
-///       role: roles/resourcemanager.organizationAdmin
-///     - members:
-///       - user:eve@example.com
-///       role: roles/resourcemanager.organizationViewer
-///       condition:
-///         title: expirable access
-///         description: Does not grant access after Sep 2020
-///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-///     - etag: BwWWja0YfJA=
-///     - version: 3
-///
-/// For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// controls for Google Cloud resources. A `Policy` is a collection of
+/// `bindings`. A `binding` binds one or more `members` to a single `role`.
+/// Members can be user accounts, service accounts, Google groups, and domains
+/// (such as G Suite). A `role` is a named list of permissions; each `role` can
+/// be an IAM predefined role or a user-created custom role. For some types of
+/// Google Cloud resources, a `binding` can also specify a `condition`, which is
+/// a logical expression that allows access to a resource only if the expression
+/// evaluates to `true`. A condition can add constraints based on attributes of
+/// the request, the resource, or both. To learn which resources support
+/// conditions in their IAM policies, see the [IAM
+/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// version: 3 For a description of IAM and its features, see the [IAM
+/// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members` to a `role`. Optionally, may specify a
   /// `condition` that determines how and when the `bindings` are applied. Each
   /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a policy from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other. It is
+  /// strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
   /// ensure that their change will be applied to the same version of the
-  /// policy.
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -4897,29 +4763,21 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Specifies the format of the policy.
-  ///
-  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-  /// are rejected.
-  ///
-  /// Any operation that affects conditional role bindings must specify version
-  /// `3`. This requirement applies to the following operations:
-  ///
-  /// * Getting a policy that includes a conditional role binding
-  /// * Adding a conditional role binding to a policy
-  /// * Changing a conditional role binding in a policy
-  /// * Removing any role binding, with or without a condition, from a policy
-  ///   that includes conditions
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
-  ///
-  /// If a policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset.
+  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+  /// Requests that specify an invalid value are rejected. Any operation that
+  /// affects conditional role bindings must specify version `3`. This
+  /// requirement applies to the following operations: * Getting a policy that
+  /// includes a conditional role binding * Adding a conditional role binding to
+  /// a policy * Changing a conditional role binding in a policy * Removing any
+  /// role binding, with or without a condition, from a policy that includes
+  /// conditions **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost. If a
+  /// policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -5053,15 +4911,12 @@ class RepoId {
 
 /// An entity that can have metadata. For example, a Docker image.
 class Resource {
-  /// Deprecated, do not use. Use uri instead.
-  ///
-  /// The hash of the resource content. For example, the Docker digest.
+  /// Deprecated, do not use. Use uri instead. The hash of the resource content.
+  /// For example, the Docker digest.
   Hash contentHash;
 
-  /// Deprecated, do not use. Use uri instead.
-  ///
-  /// The name of the resource. For example, the name of a Docker image -
-  /// "Debian".
+  /// Deprecated, do not use. Use uri instead. The name of the resource. For
+  /// example, the name of a Docker image - "Debian".
   core.String name;
 
   /// Required. The unique URI of the resource. For example,
@@ -5164,9 +5019,9 @@ class ScanConfig {
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects)
-  /// might reject them.
+  /// the policy is limited to a few 10s of KB. An empty policy is a valid
+  /// policy but certain Cloud Platform services (such as Projects) might reject
+  /// them.
   Policy policy;
 
   SetIamPolicyRequest();
@@ -5187,57 +5042,43 @@ class SetIamPolicyRequest {
   }
 }
 
-/// Verifiers (e.g. Kritis implementations) MUST verify signatures
-/// with respect to the trust anchors defined in policy (e.g. a Kritis policy).
-/// Typically this means that the verifier has been configured with a map from
+/// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
+/// to the trust anchors defined in policy (e.g. a Kritis policy). Typically
+/// this means that the verifier has been configured with a map from
 /// `public_key_id` to public key material (and any required parameters, e.g.
-/// signing algorithm).
-///
-/// In particular, verification implementations MUST NOT treat the signature
-/// `public_key_id` as anything more than a key lookup hint. The `public_key_id`
-/// DOES NOT validate or authenticate a public key; it only provides a mechanism
-/// for quickly selecting a public key ALREADY CONFIGURED on the verifier
-/// through
-/// a trusted channel. Verification implementations MUST reject signatures in
-/// any
-/// of the following circumstances:
-///   * The `public_key_id` is not recognized by the verifier.
-///   * The public key that `public_key_id` refers to does not verify the
-///     signature with respect to the payload.
-///
-/// The `signature` contents SHOULD NOT be "attached" (where the payload is
-/// included with the serialized `signature` bytes). Verifiers MUST ignore any
-/// "attached" payload and only verify signatures with respect to explicitly
-/// provided payload (e.g. a `payload` field on the proto message that holds
-/// this Signature, or the canonical serialization of the proto message that
-/// holds this signature).
+/// signing algorithm). In particular, verification implementations MUST NOT
+/// treat the signature `public_key_id` as anything more than a key lookup hint.
+/// The `public_key_id` DOES NOT validate or authenticate a public key; it only
+/// provides a mechanism for quickly selecting a public key ALREADY CONFIGURED
+/// on the verifier through a trusted channel. Verification implementations MUST
+/// reject signatures in any of the following circumstances: * The
+/// `public_key_id` is not recognized by the verifier. * The public key that
+/// `public_key_id` refers to does not verify the signature with respect to the
+/// payload. The `signature` contents SHOULD NOT be "attached" (where the
+/// payload is included with the serialized `signature` bytes). Verifiers MUST
+/// ignore any "attached" payload and only verify signatures with respect to
+/// explicitly provided payload (e.g. a `payload` field on the proto message
+/// that holds this Signature, or the canonical serialization of the proto
+/// message that holds this signature).
 class Signature {
-  /// The identifier for the public key that verifies this signature.
-  ///   * The `public_key_id` is required.
-  ///   * The `public_key_id` MUST be an RFC3986 conformant URI.
-  ///   * When possible, the `public_key_id` SHOULD be an immutable reference,
-  ///     such as a cryptographic digest.
-  ///
-  /// Examples of valid `public_key_id`s:
-  ///
-  /// OpenPGP V4 public key fingerprint:
-  ///   * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA"
-  /// See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more
-  /// details on this scheme.
-  ///
-  /// RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER
-  /// serialization):
-  ///   * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-  /// *
+  /// The identifier for the public key that verifies this signature. * The
+  /// `public_key_id` is required. * The `public_key_id` SHOULD be an RFC3986
+  /// conformant URI. * When possible, the `public_key_id` SHOULD be an
+  /// immutable reference, such as a cryptographic digest. Examples of valid
+  /// `public_key_id`s: OpenPGP V4 public key fingerprint: *
+  /// "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
+  /// https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more
+  /// details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest
+  /// of the DER serialization): *
+  /// "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
   /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
   core.String publicKeyId;
 
-  /// The content of the signature, an opaque bytestring.
-  /// The payload that this signature verifies MUST be unambiguously provided
-  /// with the Signature during verification. A wrapper message might provide
-  /// the payload explicitly. Alternatively, a message might have a canonical
-  /// serialization that can always be unambiguously computed to derive the
-  /// payload.
+  /// The content of the signature, an opaque bytestring. The payload that this
+  /// signature verifies MUST be unambiguously provided with the Signature
+  /// during verification. A wrapper message might provide the payload
+  /// explicitly. Alternatively, a message might have a canonical serialization
+  /// that can always be unambiguously computed to derive the payload.
   core.String signature;
   core.List<core.int> get signatureAsBytes {
     return convert.base64.decode(signature);
@@ -5274,21 +5115,18 @@ class Signature {
 
 /// This defines the format used to record keys used in the software supply
 /// chain. An in-toto link is attested using one or more keys defined in the
-/// in-toto layout. An example of this is:
-/// {
-/// "key_id": "776a00e29f3559e0141b3b096f696abc6cfb0c657ab40f441132b345b0...",
-///   "key_type": "rsa",
-/// "public_key_value": "-----BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0B...",
-///   "key_scheme": "rsassa-pss-sha256"
-/// }
-/// The format for in-toto's key definition can be found in section 4.2 of the
+/// in-toto layout. An example of this is: { "key_id":
+/// "776a00e29f3559e0141b3b096f696abc6cfb0c657ab40f441132b345b0...", "key_type":
+/// "rsa", "public_key_value": "-----BEGIN PUBLIC
+/// KEY-----\nMIIBojANBgkqhkiG9w0B...", "key_scheme": "rsassa-pss-sha256" } The
+/// format for in-toto's key definition can be found in section 4.2 of the
 /// in-toto specification.
 class SigningKey {
   /// key_id is an identifier for the signing key.
   core.String keyId;
 
-  /// This field contains the corresponding signature scheme.
-  /// Eg: "rsassa-pss-sha256".
+  /// This field contains the corresponding signature scheme. Eg:
+  /// "rsassa-pss-sha256".
   core.String keyScheme;
 
   /// This field identifies the specific signing method. Eg: "rsa", "ed25519",
@@ -5350,14 +5188,11 @@ class Source {
   SourceContext context;
 
   /// Hash(es) of the build source, which can be used to verify that the
-  /// original
-  /// source integrity was maintained in the build.
-  ///
-  /// The keys to this map are file paths used as build source and the values
-  /// contain the hash values for those files.
-  ///
-  /// If the build source came in a single package such as a gzipped tarfile
-  /// (.tar.gz), the FileHash will be for the single path to that file.
+  /// original source integrity was maintained in the build. The keys to this
+  /// map are file paths used as build source and the values contain the hash
+  /// values for those files. If the build source came in a single package such
+  /// as a gzipped tarfile (.tar.gz), the FileHash will be for the single path
+  /// to that file.
   core.Map<core.String, FileHashes> fileHashes;
 
   Source();
@@ -5457,15 +5292,14 @@ class SourceContext {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -5514,8 +5348,8 @@ class Status {
 class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`. Permissions with
   /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// information see [IAM
+  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();
@@ -5647,9 +5481,8 @@ class Vulnerability {
 
   /// Windows details get their own format because the information format and
   /// model don't match a normal detail. Specifically Windows updates are done
-  /// as
-  /// patches, thus Windows vulnerabilities really are a missing package, rather
-  /// than a package being at an incorrect version.
+  /// as patches, thus Windows vulnerabilities really are a missing package,
+  /// rather than a package being at an incorrect version.
   core.List<WindowsDetail> windowsDetails;
 
   Vulnerability();
@@ -5708,8 +5541,8 @@ class Vulnerability {
 /// The location of the vulnerability.
 class VulnerabilityLocation {
   /// Required. The CPE URI in [cpe
-  /// format](https://cpe.mitre.org/specification/)
-  /// format. Examples include distro or storage location for vulnerable jar.
+  /// format](https://cpe.mitre.org/specification/) format. Examples include
+  /// distro or storage location for vulnerable jar.
   core.String cpeUri;
 
   /// Required. The package being described.
@@ -5776,19 +5609,18 @@ class VulnerabilityOccurrencesSummary {
 }
 
 class WindowsDetail {
-  /// Required. The CPE URI in
-  /// [cpe format](https://cpe.mitre.org/specification/) in which the
-  /// vulnerability manifests. Examples include distro or storage location for
-  /// vulnerable jar.
+  /// Required. The CPE URI in [cpe
+  /// format](https://cpe.mitre.org/specification/) in which the vulnerability
+  /// manifests. Examples include distro or storage location for vulnerable jar.
   core.String cpeUri;
 
   /// The description of the vulnerability.
   core.String description;
 
   /// Required. The names of the KBs which have hotfixes to mitigate this
-  /// vulnerability. Note that there may be multiple hotfixes (and thus
-  /// multiple KBs) that mitigate a given vulnerability. Currently any listed
-  /// kb's presence is considered a fix.
+  /// vulnerability. Note that there may be multiple hotfixes (and thus multiple
+  /// KBs) that mitigate a given vulnerability. Currently any listed kb's
+  /// presence is considered a fix.
   core.List<KnowledgeBase> fixingKbs;
 
   /// Required. The name of the vulnerability.

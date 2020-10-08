@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed5338() {
+buildUnnamed5737() {
   var o = new core.List<api.AchievementResetResponse>();
   o.add(buildAchievementResetResponse());
   o.add(buildAchievementResetResponse());
   return o;
 }
 
-checkUnnamed5338(core.List<api.AchievementResetResponse> o) {
+checkUnnamed5737(core.List<api.AchievementResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementResetResponse(o[0]);
   checkAchievementResetResponse(o[1]);
@@ -69,7 +69,7 @@ buildAchievementResetAllResponse() {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     o.kind = "foo";
-    o.results = buildUnnamed5338();
+    o.results = buildUnnamed5737();
   }
   buildCounterAchievementResetAllResponse--;
   return o;
@@ -79,19 +79,19 @@ checkAchievementResetAllResponse(api.AchievementResetAllResponse o) {
   buildCounterAchievementResetAllResponse++;
   if (buildCounterAchievementResetAllResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed5338(o.results);
+    checkUnnamed5737(o.results);
   }
   buildCounterAchievementResetAllResponse--;
 }
 
-buildUnnamed5339() {
+buildUnnamed5738() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5339(core.List<core.String> o) {
+checkUnnamed5738(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -102,7 +102,7 @@ buildAchievementResetMultipleForAllRequest() {
   var o = new api.AchievementResetMultipleForAllRequest();
   buildCounterAchievementResetMultipleForAllRequest++;
   if (buildCounterAchievementResetMultipleForAllRequest < 3) {
-    o.achievementIds = buildUnnamed5339();
+    o.achievementIds = buildUnnamed5738();
     o.kind = "foo";
   }
   buildCounterAchievementResetMultipleForAllRequest--;
@@ -113,7 +113,7 @@ checkAchievementResetMultipleForAllRequest(
     api.AchievementResetMultipleForAllRequest o) {
   buildCounterAchievementResetMultipleForAllRequest++;
   if (buildCounterAchievementResetMultipleForAllRequest < 3) {
-    checkUnnamed5339(o.achievementIds);
+    checkUnnamed5738(o.achievementIds);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAchievementResetMultipleForAllRequest--;
@@ -144,14 +144,14 @@ checkAchievementResetResponse(api.AchievementResetResponse o) {
   buildCounterAchievementResetResponse--;
 }
 
-buildUnnamed5340() {
+buildUnnamed5739() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5340(core.List<core.String> o) {
+checkUnnamed5739(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -162,7 +162,7 @@ buildEventsResetMultipleForAllRequest() {
   var o = new api.EventsResetMultipleForAllRequest();
   buildCounterEventsResetMultipleForAllRequest++;
   if (buildCounterEventsResetMultipleForAllRequest < 3) {
-    o.eventIds = buildUnnamed5340();
+    o.eventIds = buildUnnamed5739();
     o.kind = "foo";
   }
   buildCounterEventsResetMultipleForAllRequest--;
@@ -172,31 +172,10 @@ buildEventsResetMultipleForAllRequest() {
 checkEventsResetMultipleForAllRequest(api.EventsResetMultipleForAllRequest o) {
   buildCounterEventsResetMultipleForAllRequest++;
   if (buildCounterEventsResetMultipleForAllRequest < 3) {
-    checkUnnamed5340(o.eventIds);
+    checkUnnamed5739(o.eventIds);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterEventsResetMultipleForAllRequest--;
-}
-
-core.int buildCounterGamesPlayedResource = 0;
-buildGamesPlayedResource() {
-  var o = new api.GamesPlayedResource();
-  buildCounterGamesPlayedResource++;
-  if (buildCounterGamesPlayedResource < 3) {
-    o.autoMatched = true;
-    o.timeMillis = "foo";
-  }
-  buildCounterGamesPlayedResource--;
-  return o;
-}
-
-checkGamesPlayedResource(api.GamesPlayedResource o) {
-  buildCounterGamesPlayedResource++;
-  if (buildCounterGamesPlayedResource < 3) {
-    unittest.expect(o.autoMatched, unittest.isTrue);
-    unittest.expect(o.timeMillis, unittest.equals('foo'));
-  }
-  buildCounterGamesPlayedResource--;
 }
 
 core.int buildCounterGamesPlayerExperienceInfoResource = 0;
@@ -271,14 +250,14 @@ checkHiddenPlayer(api.HiddenPlayer o) {
   buildCounterHiddenPlayer--;
 }
 
-buildUnnamed5341() {
+buildUnnamed5740() {
   var o = new core.List<api.HiddenPlayer>();
   o.add(buildHiddenPlayer());
   o.add(buildHiddenPlayer());
   return o;
 }
 
-checkUnnamed5341(core.List<api.HiddenPlayer> o) {
+checkUnnamed5740(core.List<api.HiddenPlayer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHiddenPlayer(o[0]);
   checkHiddenPlayer(o[1]);
@@ -289,7 +268,7 @@ buildHiddenPlayerList() {
   var o = new api.HiddenPlayerList();
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    o.items = buildUnnamed5341();
+    o.items = buildUnnamed5740();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -300,7 +279,7 @@ buildHiddenPlayerList() {
 checkHiddenPlayerList(api.HiddenPlayerList o) {
   buildCounterHiddenPlayerList++;
   if (buildCounterHiddenPlayerList < 3) {
-    checkUnnamed5341(o.items);
+    checkUnnamed5740(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -338,9 +317,7 @@ buildPlayer() {
     o.bannerUrlPortrait = "foo";
     o.displayName = "foo";
     o.experienceInfo = buildGamesPlayerExperienceInfoResource();
-    o.friendStatus = "foo";
     o.kind = "foo";
-    o.lastPlayedWith = buildGamesPlayedResource();
     o.name = buildPlayerName();
     o.originalPlayerId = "foo";
     o.playerId = "foo";
@@ -359,9 +336,7 @@ checkPlayer(api.Player o) {
     unittest.expect(o.bannerUrlPortrait, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     checkGamesPlayerExperienceInfoResource(o.experienceInfo);
-    unittest.expect(o.friendStatus, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkGamesPlayedResource(o.lastPlayedWith);
     checkPlayerName(o.name);
     unittest.expect(o.originalPlayerId, unittest.equals('foo'));
     unittest.expect(o.playerId, unittest.equals('foo'));
@@ -371,14 +346,14 @@ checkPlayer(api.Player o) {
   buildCounterPlayer--;
 }
 
-buildUnnamed5342() {
+buildUnnamed5741() {
   var o = new core.List<api.PlayerScoreResetResponse>();
   o.add(buildPlayerScoreResetResponse());
   o.add(buildPlayerScoreResetResponse());
   return o;
 }
 
-checkUnnamed5342(core.List<api.PlayerScoreResetResponse> o) {
+checkUnnamed5741(core.List<api.PlayerScoreResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerScoreResetResponse(o[0]);
   checkPlayerScoreResetResponse(o[1]);
@@ -390,7 +365,7 @@ buildPlayerScoreResetAllResponse() {
   buildCounterPlayerScoreResetAllResponse++;
   if (buildCounterPlayerScoreResetAllResponse < 3) {
     o.kind = "foo";
-    o.results = buildUnnamed5342();
+    o.results = buildUnnamed5741();
   }
   buildCounterPlayerScoreResetAllResponse--;
   return o;
@@ -400,19 +375,19 @@ checkPlayerScoreResetAllResponse(api.PlayerScoreResetAllResponse o) {
   buildCounterPlayerScoreResetAllResponse++;
   if (buildCounterPlayerScoreResetAllResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed5342(o.results);
+    checkUnnamed5741(o.results);
   }
   buildCounterPlayerScoreResetAllResponse--;
 }
 
-buildUnnamed5343() {
+buildUnnamed5742() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5343(core.List<core.String> o) {
+checkUnnamed5742(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -425,7 +400,7 @@ buildPlayerScoreResetResponse() {
   if (buildCounterPlayerScoreResetResponse < 3) {
     o.definitionId = "foo";
     o.kind = "foo";
-    o.resetScoreTimeSpans = buildUnnamed5343();
+    o.resetScoreTimeSpans = buildUnnamed5742();
   }
   buildCounterPlayerScoreResetResponse--;
   return o;
@@ -436,7 +411,7 @@ checkPlayerScoreResetResponse(api.PlayerScoreResetResponse o) {
   if (buildCounterPlayerScoreResetResponse < 3) {
     unittest.expect(o.definitionId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed5343(o.resetScoreTimeSpans);
+    checkUnnamed5742(o.resetScoreTimeSpans);
   }
   buildCounterPlayerScoreResetResponse--;
 }
@@ -462,14 +437,14 @@ checkProfileSettings(api.ProfileSettings o) {
   buildCounterProfileSettings--;
 }
 
-buildUnnamed5344() {
+buildUnnamed5743() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5344(core.List<core.String> o) {
+checkUnnamed5743(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -481,7 +456,7 @@ buildScoresResetMultipleForAllRequest() {
   buildCounterScoresResetMultipleForAllRequest++;
   if (buildCounterScoresResetMultipleForAllRequest < 3) {
     o.kind = "foo";
-    o.leaderboardIds = buildUnnamed5344();
+    o.leaderboardIds = buildUnnamed5743();
   }
   buildCounterScoresResetMultipleForAllRequest--;
   return o;
@@ -491,7 +466,7 @@ checkScoresResetMultipleForAllRequest(api.ScoresResetMultipleForAllRequest o) {
   buildCounterScoresResetMultipleForAllRequest++;
   if (buildCounterScoresResetMultipleForAllRequest < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed5344(o.leaderboardIds);
+    checkUnnamed5743(o.leaderboardIds);
   }
   buildCounterScoresResetMultipleForAllRequest--;
 }
@@ -527,14 +502,6 @@ main() {
       var o = buildEventsResetMultipleForAllRequest();
       var od = new api.EventsResetMultipleForAllRequest.fromJson(o.toJson());
       checkEventsResetMultipleForAllRequest(od);
-    });
-  });
-
-  unittest.group("obj-schema-GamesPlayedResource", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGamesPlayedResource();
-      var od = new api.GamesPlayedResource.fromJson(o.toJson());
-      checkGamesPlayedResource(od);
     });
   });
 
@@ -633,12 +600,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("achievements/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("games/v1management/achievements/"));
+        pathOffset += 32;
         index = path.indexOf("/reset", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -695,12 +659,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("achievements/reset"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 37),
+            unittest.equals("games/v1management/achievements/reset"));
+        pathOffset += 37;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -748,12 +709,11 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 34),
-            unittest.equals("achievements/resetAllForAllPlayers"));
-        pathOffset += 34;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 53),
+            unittest.equals(
+                "games/v1management/achievements/resetAllForAllPlayers"));
+        pathOffset += 53;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -800,12 +760,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("achievements/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("games/v1management/achievements/"));
+        pathOffset += 32;
         index = path.indexOf("/resetForAllPlayers", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -864,12 +821,11 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 39),
-            unittest.equals("achievements/resetMultipleForAllPlayers"));
-        pathOffset += 39;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 58),
+            unittest.equals(
+                "games/v1management/achievements/resetMultipleForAllPlayers"));
+        pathOffset += 58;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -920,12 +876,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("applications/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("games/v1management/applications/"));
+        pathOffset += 32;
         index = path.indexOf("/players/hidden", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -991,12 +944,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("events/"));
-        pathOffset += 7;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("games/v1management/events/"));
+        pathOffset += 26;
         index = path.indexOf("/reset", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1050,12 +1000,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("events/reset"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 31),
+            unittest.equals("games/v1management/events/reset"));
+        pathOffset += 31;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1098,12 +1045,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28),
-            unittest.equals("events/resetAllForAllPlayers"));
-        pathOffset += 28;
+        unittest.expect(path.substring(pathOffset, pathOffset + 47),
+            unittest.equals("games/v1management/events/resetAllForAllPlayers"));
+        pathOffset += 47;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1149,12 +1093,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("events/"));
-        pathOffset += 7;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("games/v1management/events/"));
+        pathOffset += 26;
         index = path.indexOf("/resetForAllPlayers", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1212,12 +1153,11 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 33),
-            unittest.equals("events/resetMultipleForAllPlayers"));
-        pathOffset += 33;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 52),
+            unittest.equals(
+                "games/v1management/events/resetMultipleForAllPlayers"));
+        pathOffset += 52;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1266,12 +1206,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("applications/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("games/v1management/applications/"));
+        pathOffset += 32;
         index = path.indexOf("/players/hidden/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1330,12 +1267,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("applications/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("games/v1management/applications/"));
+        pathOffset += 32;
         index = path.indexOf("/players/hidden/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1381,106 +1315,6 @@ main() {
     });
   });
 
-  unittest.group("resource-RoomsResourceApi", () {
-    unittest.test("method--reset", () {
-      var mock = new HttpServerMock();
-      api.RoomsResourceApi res = new api.GamesManagementApi(mock).rooms;
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("rooms/reset"));
-        pathOffset += 11;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res.reset($fields: arg_$fields).then(unittest.expectAsync1((_) {}));
-    });
-
-    unittest.test("method--resetForAllPlayers", () {
-      var mock = new HttpServerMock();
-      api.RoomsResourceApi res = new api.GamesManagementApi(mock).rooms;
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 24),
-            unittest.equals("rooms/resetForAllPlayers"));
-        pathOffset += 24;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res
-          .resetForAllPlayers($fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
-    });
-  });
-
   unittest.group("resource-ScoresResourceApi", () {
     unittest.test("method--reset", () {
       var mock = new HttpServerMock();
@@ -1495,12 +1329,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("leaderboards/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("games/v1management/leaderboards/"));
+        pathOffset += 32;
         index = path.indexOf("/scores/reset", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1556,12 +1387,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("scores/reset"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 31),
+            unittest.equals("games/v1management/scores/reset"));
+        pathOffset += 31;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1608,12 +1436,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28),
-            unittest.equals("scores/resetAllForAllPlayers"));
-        pathOffset += 28;
+        unittest.expect(path.substring(pathOffset, pathOffset + 47),
+            unittest.equals("games/v1management/scores/resetAllForAllPlayers"));
+        pathOffset += 47;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1659,12 +1484,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("leaderboards/"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("games/v1management/leaderboards/"));
+        pathOffset += 32;
         index = path.indexOf("/scores/resetForAllPlayers", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1722,12 +1544,11 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 33),
-            unittest.equals("scores/resetMultipleForAllPlayers"));
-        pathOffset += 33;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 52),
+            unittest.equals(
+                "games/v1management/scores/resetMultipleForAllPlayers"));
+        pathOffset += 52;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1757,108 +1578,6 @@ main() {
       }), true);
       res
           .resetMultipleForAllPlayers(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
-    });
-  });
-
-  unittest.group("resource-TurnBasedMatchesResourceApi", () {
-    unittest.test("method--reset", () {
-      var mock = new HttpServerMock();
-      api.TurnBasedMatchesResourceApi res =
-          new api.GamesManagementApi(mock).turnBasedMatches;
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22),
-            unittest.equals("turnbasedmatches/reset"));
-        pathOffset += 22;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res.reset($fields: arg_$fields).then(unittest.expectAsync1((_) {}));
-    });
-
-    unittest.test("method--resetForAllPlayers", () {
-      var mock = new HttpServerMock();
-      api.TurnBasedMatchesResourceApi res =
-          new api.GamesManagementApi(mock).turnBasedMatches;
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("games/v1management/"));
-        pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 35),
-            unittest.equals("turnbasedmatches/resetForAllPlayers"));
-        pathOffset += 35;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res
-          .resetForAllPlayers($fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
   });

@@ -60,22 +60,19 @@ class GroupItemsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [id] - The `id` parameter specifies the YouTube group item ID of the group
-  /// item
-  /// that is being deleted.
-  ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
-  /// authorized request. **Note:**
-  /// This parameter is intended exclusively for YouTube content partners that
-  /// own and manage many different YouTube channels.
+  /// authorized request. **Note:** This parameter is intended exclusively for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. The `onBehalfOfContentOwner` parameter indicates that the
+  /// request's authorization credentials identify a YouTube user who is acting
+  /// on behalf of the content owner specified in the parameter value. It allows
+  /// content owners to authenticate once and get access to all their video and
+  /// channel data, without having to provide authentication credentials for
+  /// each individual channel. The account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
-  /// The `onBehalfOfContentOwner` parameter indicates that the request's
-  /// authorization credentials identify a YouTube user who is acting on behalf
-  /// of the content owner specified in the parameter value. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The account that the user authenticates with must be
-  /// linked to the specified YouTube content owner.
+  /// [id] - The `id` parameter specifies the YouTube group item ID of the group
+  /// item that is being deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -88,8 +85,8 @@ class GroupItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EmptyResponse> delete(
-      {core.String id,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
+      core.String id,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -98,11 +95,11 @@ class GroupItemsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (id != null) {
+      _queryParams["id"] = [id];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -126,17 +123,15 @@ class GroupItemsResourceApi {
   /// Request parameters:
   ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
-  /// authorized request. **Note:**
-  /// This parameter is intended exclusively for YouTube content partners that
-  /// own and manage many different YouTube channels.
-  ///
-  /// The `onBehalfOfContentOwner` parameter indicates that the request's
-  /// authorization credentials identify a YouTube user who is acting on behalf
-  /// of the content owner specified in the parameter value. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The account that the user authenticates with must be
-  /// linked to the specified YouTube content owner.
+  /// authorized request. **Note:** This parameter is intended exclusively for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. The `onBehalfOfContentOwner` parameter indicates that the
+  /// request's authorization credentials identify a YouTube user who is acting
+  /// on behalf of the content owner specified in the parameter value. It allows
+  /// content owners to authenticate once and get access to all their video and
+  /// channel data, without having to provide authentication credentials for
+  /// each individual channel. The account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -182,22 +177,19 @@ class GroupItemsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupId] - The `groupId` parameter specifies the unique ID of the group
-  /// for which you
-  /// want to retrieve group items.
-  ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
-  /// authorized request. **Note:**
-  /// This parameter is intended exclusively for YouTube content partners that
-  /// own and manage many different YouTube channels.
+  /// authorized request. **Note:** This parameter is intended exclusively for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. The `onBehalfOfContentOwner` parameter indicates that the
+  /// request's authorization credentials identify a YouTube user who is acting
+  /// on behalf of the content owner specified in the parameter value. It allows
+  /// content owners to authenticate once and get access to all their video and
+  /// channel data, without having to provide authentication credentials for
+  /// each individual channel. The account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
-  /// The `onBehalfOfContentOwner` parameter indicates that the request's
-  /// authorization credentials identify a YouTube user who is acting on behalf
-  /// of the content owner specified in the parameter value. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The account that the user authenticates with must be
-  /// linked to the specified YouTube content owner.
+  /// [groupId] - The `groupId` parameter specifies the unique ID of the group
+  /// for which you want to retrieve group items.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -210,8 +202,8 @@ class GroupItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupItemsResponse> list(
-      {core.String groupId,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
+      core.String groupId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -220,11 +212,11 @@ class GroupItemsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (groupId != null) {
-      _queryParams["groupId"] = [groupId];
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (groupId != null) {
+      _queryParams["groupId"] = [groupId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -252,21 +244,18 @@ class GroupsResourceApi {
   /// Request parameters:
   ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
-  /// authorized request. **Note:**
-  /// This parameter is intended exclusively for YouTube content partners that
-  /// own and manage many different YouTube channels.
-  ///
-  /// The `onBehalfOfContentOwner` parameter indicates that the request's
-  /// authorization credentials identify a YouTube user who is acting on behalf
-  /// of the content owner specified in the parameter value. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The account that the user authenticates with must be
-  /// linked to the specified YouTube content owner.
+  /// authorized request. **Note:** This parameter is intended exclusively for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. The `onBehalfOfContentOwner` parameter indicates that the
+  /// request's authorization credentials identify a YouTube user who is acting
+  /// on behalf of the content owner specified in the parameter value. It allows
+  /// content owners to authenticate once and get access to all their video and
+  /// channel data, without having to provide authentication credentials for
+  /// each individual channel. The account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [id] - The `id` parameter specifies the YouTube group ID of the group that
-  /// is
-  /// being deleted.
+  /// is being deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -317,17 +306,15 @@ class GroupsResourceApi {
   /// Request parameters:
   ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
-  /// authorized request. **Note:**
-  /// This parameter is intended exclusively for YouTube content partners that
-  /// own and manage many different YouTube channels.
-  ///
-  /// The `onBehalfOfContentOwner` parameter indicates that the request's
-  /// authorization credentials identify a YouTube user who is acting on behalf
-  /// of the content owner specified in the parameter value. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The account that the user authenticates with must be
-  /// linked to the specified YouTube content owner.
+  /// authorized request. **Note:** This parameter is intended exclusively for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. The `onBehalfOfContentOwner` parameter indicates that the
+  /// request's authorization credentials identify a YouTube user who is acting
+  /// on behalf of the content owner specified in the parameter value. It allows
+  /// content owners to authenticate once and get access to all their video and
+  /// channel data, without having to provide authentication credentials for
+  /// each individual channel. The account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -370,43 +357,36 @@ class GroupsResourceApi {
   }
 
   /// Returns a collection of groups that match the API request parameters. For
-  /// example, you can retrieve all groups that the authenticated user owns,
-  /// or you can retrieve one or more groups by their unique IDs.
+  /// example, you can retrieve all groups that the authenticated user owns, or
+  /// you can retrieve one or more groups by their unique IDs.
   ///
   /// Request parameters:
   ///
+  /// [id] - The `id` parameter specifies a comma-separated list of the YouTube
+  /// group ID(s) for the resource(s) that are being retrieved. Each group must
+  /// be owned by the authenticated user. In a `group` resource, the `id`
+  /// property specifies the group's YouTube group ID. Note that if you do not
+  /// specify a value for the `id` parameter, then you must set the `mine`
+  /// parameter to `true`.
+  ///
   /// [pageToken] - The `pageToken` parameter identifies a specific page in the
-  /// result set that
-  /// should be returned. In an API response, the `nextPageToken` property
-  /// identifies the next page that can be retrieved.
+  /// result set that should be returned. In an API response, the
+  /// `nextPageToken` property identifies the next page that can be retrieved.
   ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
-  /// authorized request. **Note:**
-  /// This parameter is intended exclusively for YouTube content partners that
-  /// own and manage many different YouTube channels.
-  ///
-  /// The `onBehalfOfContentOwner` parameter indicates that the request's
-  /// authorization credentials identify a YouTube user who is acting on behalf
-  /// of the content owner specified in the parameter value. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The account that the user authenticates with must be
-  /// linked to the specified YouTube content owner.
-  ///
-  /// [id] - The `id` parameter specifies a comma-separated list of the YouTube
-  /// group
-  /// ID(s) for the resource(s) that are being retrieved. Each group must be
-  /// owned by the authenticated user. In a `group` resource, the `id` property
-  /// specifies the group's YouTube group ID.
-  ///
-  /// Note that if you do not specify a value for the `id` parameter, then you
-  /// must set the `mine` parameter to `true`.
+  /// authorized request. **Note:** This parameter is intended exclusively for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. The `onBehalfOfContentOwner` parameter indicates that the
+  /// request's authorization credentials identify a YouTube user who is acting
+  /// on behalf of the content owner specified in the parameter value. It allows
+  /// content owners to authenticate once and get access to all their video and
+  /// channel data, without having to provide authentication credentials for
+  /// each individual channel. The account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [mine] - This parameter can only be used in a properly authorized request.
-  /// Set this
-  /// parameter's value to true to retrieve all groups owned by the
-  /// authenticated
-  /// user.
+  /// Set this parameter's value to true to retrieve all groups owned by the
+  /// authenticated user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -419,9 +399,9 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(
-      {core.String pageToken,
+      {core.String id,
+      core.String pageToken,
       core.String onBehalfOfContentOwner,
-      core.String id,
       core.bool mine,
       core.String $fields}) {
     var _url;
@@ -431,14 +411,14 @@ class GroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (id != null) {
+      _queryParams["id"] = [id];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (id != null) {
-      _queryParams["id"] = [id];
     }
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
@@ -465,17 +445,15 @@ class GroupsResourceApi {
   /// Request parameters:
   ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
-  /// authorized request. **Note:**
-  /// This parameter is intended exclusively for YouTube content partners that
-  /// own and manage many different YouTube channels.
-  ///
-  /// The `onBehalfOfContentOwner` parameter indicates that the request's
-  /// authorization credentials identify a YouTube user who is acting on behalf
-  /// of the content owner specified in the parameter value. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The account that the user authenticates with must be
-  /// linked to the specified YouTube content owner.
+  /// authorized request. **Note:** This parameter is intended exclusively for
+  /// YouTube content partners that own and manage many different YouTube
+  /// channels. The `onBehalfOfContentOwner` parameter indicates that the
+  /// request's authorization credentials identify a YouTube user who is acting
+  /// on behalf of the content owner specified in the parameter value. It allows
+  /// content owners to authenticate once and get access to all their video and
+  /// channel data, without having to provide authentication credentials for
+  /// each individual channel. The account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -527,83 +505,67 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [includeHistoricalChannelData] - If set to true historical data (i.e.
-  /// channel data from before the linking
-  /// of the channel to the content owner) will be retrieved.",
-  ///
   /// [sort] - A comma-separated list of dimensions or metrics that determine
-  /// the sort
-  /// order for YouTube Analytics data. By default the sort order is ascending.
-  /// The '`-`' prefix causes descending sort order.",
-  /// pattern: [-0-9a-zA-Z,]+
+  /// the sort order for YouTube Analytics data. By default the sort order is
+  /// ascending. The '`-`' prefix causes descending sort order.", pattern:
+  /// [-0-9a-zA-Z,]+
   ///
-  /// [ids] - Identifies the YouTube channel or content owner for which you are
-  /// retrieving YouTube Analytics data.
-  ///
-  /// - To request data for a YouTube user, set the `ids` parameter value to
-  ///   `channel==CHANNEL_ID`, where `CHANNEL_ID` specifies the unique YouTube
-  ///   channel ID.
-  /// - To request data for a YouTube CMS content owner, set the `ids` parameter
-  ///   value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name
-  ///   of the content owner.
-  /// required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+
+  /// [metrics] - A comma-separated list of YouTube Analytics metrics, such as
+  /// `views` or `likes,dislikes`. See the [Available
+  /// Reports](/youtube/analytics/v2/available_reports) document for a list of
+  /// the reports that you can retrieve and the metrics available in each
+  /// report, and see the [Metrics](/youtube/analytics/v2/dimsmets/mets)
+  /// document for definitions of those metrics. required: true, pattern:
+  /// [0-9a-zA-Z,]+
   ///
   /// [maxResults] - The maximum number of rows to include in the response.",
   /// minValue: 1
   ///
+  /// [endDate] - The end date for fetching YouTube Analytics data. The value
+  /// should be in `YYYY-MM-DD` format. required: true, pattern:
+  /// [0-9]{4}-[0-9]{2}-[0-9]{2}
+  ///
+  /// [currency] - The currency to which financial metrics should be converted.
+  /// The default is US Dollar (USD). If the result contains no financial
+  /// metrics, this flag will be ignored. Responds with an error if the
+  /// specified currency is not recognized.", pattern: [A-Z]{3}
+  ///
+  /// [filters] - A list of filters that should be applied when retrieving
+  /// YouTube Analytics data. The [Available
+  /// Reports](/youtube/analytics/v2/available_reports) document identifies the
+  /// dimensions that can be used to filter each report, and the
+  /// [Dimensions](/youtube/analytics/v2/dimsmets/dims) document defines those
+  /// dimensions. If a request uses multiple filters, join them together with a
+  /// semicolon (`;`), and the returned result table will satisfy both filters.
+  /// For example, a filters parameter value of `video==dMH0bHeiRNg;country==IT`
+  /// restricts the result set to include data for the given video in Italy.",
+  ///
   /// [startIndex] - An index of the first entity to retrieve. Use this
-  /// parameter as a
-  /// pagination mechanism along with the max-results parameter (one-based,
-  /// inclusive).",
-  /// minValue: 1
+  /// parameter as a pagination mechanism along with the max-results parameter
+  /// (one-based, inclusive).", minValue: 1
+  ///
+  /// [startDate] - The start date for fetching YouTube Analytics data. The
+  /// value should be in `YYYY-MM-DD` format. required: true, pattern:
+  /// "[0-9]{4}-[0-9]{2}-[0-9]{2}
+  ///
+  /// [includeHistoricalChannelData] - If set to true historical data (i.e.
+  /// channel data from before the linking of the channel to the content owner)
+  /// will be retrieved.",
+  ///
+  /// [ids] - Identifies the YouTube channel or content owner for which you are
+  /// retrieving YouTube Analytics data. - To request data for a YouTube user,
+  /// set the `ids` parameter value to `channel==CHANNEL_ID`, where `CHANNEL_ID`
+  /// specifies the unique YouTube channel ID. - To request data for a YouTube
+  /// CMS content owner, set the `ids` parameter value to
+  /// `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name of the
+  /// content owner. required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+
   ///
   /// [dimensions] - A comma-separated list of YouTube Analytics dimensions,
-  /// such as `views` or
-  /// `ageGroup,gender`. See the [Available
+  /// such as `views` or `ageGroup,gender`. See the [Available
   /// Reports](/youtube/analytics/v2/available_reports) document for a list of
   /// the reports that you can retrieve and the dimensions used for those
   /// reports. Also see the [Dimensions](/youtube/analytics/v2/dimsmets/dims)
-  /// document for definitions of those dimensions."
-  /// pattern: [0-9a-zA-Z,]+
-  ///
-  /// [filters] - A list of filters that should be applied when retrieving
-  /// YouTube Analytics
-  /// data. The [Available Reports](/youtube/analytics/v2/available_reports)
-  /// document identifies the dimensions that can be used to filter each report,
-  /// and the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document
-  /// defines
-  /// those dimensions. If a request uses multiple filters, join them together
-  /// with a semicolon (`;`), and the returned result table will satisfy both
-  /// filters. For example, a filters parameter value of
-  /// `video==dMH0bHeiRNg;country==IT` restricts the result set to include data
-  /// for the given video in Italy.",
-  ///
-  /// [endDate] - The end date for fetching YouTube Analytics data. The value
-  /// should be in
-  /// `YYYY-MM-DD` format.
-  /// required: true, pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}
-  ///
-  /// [startDate] - The start date for fetching YouTube Analytics data. The
-  /// value should be in
-  /// `YYYY-MM-DD` format.
-  /// required: true, pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}
-  ///
-  /// [currency] - The currency to which financial metrics should be converted.
-  /// The default is
-  /// US Dollar (USD). If the result contains no financial metrics, this flag
-  /// will be ignored. Responds with an error if the specified currency is not
-  /// recognized.",
-  /// pattern: [A-Z]{3}
-  ///
-  /// [metrics] - A comma-separated list of YouTube Analytics metrics, such as
-  /// `views` or
-  /// `likes,dislikes`. See the
-  /// [Available Reports](/youtube/analytics/v2/available_reports)  document for
-  /// a list of the reports that you can retrieve and the metrics
-  /// available in each report, and see the
-  /// [Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of
-  /// those metrics.
-  /// required: true, pattern: [0-9a-zA-Z,]+
+  /// document for definitions of those dimensions." pattern: [0-9a-zA-Z,]+
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -616,17 +578,17 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<QueryResponse> query(
-      {core.bool includeHistoricalChannelData,
-      core.String sort,
-      core.String ids,
-      core.int maxResults,
-      core.int startIndex,
-      core.String dimensions,
-      core.String filters,
-      core.String endDate,
-      core.String startDate,
-      core.String currency,
+      {core.String sort,
       core.String metrics,
+      core.int maxResults,
+      core.String endDate,
+      core.String currency,
+      core.String filters,
+      core.int startIndex,
+      core.String startDate,
+      core.bool includeHistoricalChannelData,
+      core.String ids,
+      core.String dimensions,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -635,40 +597,40 @@ class ReportsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (sort != null) {
+      _queryParams["sort"] = [sort];
+    }
+    if (metrics != null) {
+      _queryParams["metrics"] = [metrics];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (endDate != null) {
+      _queryParams["endDate"] = [endDate];
+    }
+    if (currency != null) {
+      _queryParams["currency"] = [currency];
+    }
+    if (filters != null) {
+      _queryParams["filters"] = [filters];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if (startDate != null) {
+      _queryParams["startDate"] = [startDate];
+    }
     if (includeHistoricalChannelData != null) {
       _queryParams["includeHistoricalChannelData"] = [
         "${includeHistoricalChannelData}"
       ];
     }
-    if (sort != null) {
-      _queryParams["sort"] = [sort];
-    }
     if (ids != null) {
       _queryParams["ids"] = [ids];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
-    }
     if (dimensions != null) {
       _queryParams["dimensions"] = [dimensions];
-    }
-    if (filters != null) {
-      _queryParams["filters"] = [filters];
-    }
-    if (endDate != null) {
-      _queryParams["endDate"] = [endDate];
-    }
-    if (startDate != null) {
-      _queryParams["startDate"] = [startDate];
-    }
-    if (currency != null) {
-      _queryParams["currency"] = [currency];
-    }
-    if (metrics != null) {
-      _queryParams["metrics"] = [metrics];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -712,56 +674,45 @@ class EmptyResponse {
 /// Describes one specific error.
 class ErrorProto {
   /// Error arguments, to be used when building user-friendly error messages
-  /// given the error domain and code.  Different error codes require different
+  /// given the error domain and code. Different error codes require different
   /// arguments.
   core.List<core.String> argument;
 
-  /// Error code in the error domain. This should correspond to
-  /// a value of the enum type whose name is in domain. See
-  /// the core error domain in error_domain.proto.
+  /// Error code in the error domain. This should correspond to a value of the
+  /// enum type whose name is in domain. See the core error domain in
+  /// error_domain.proto.
   core.String code;
 
-  /// Debugging information, which should not be
-  /// shared externally.
+  /// Debugging information, which should not be shared externally.
   core.String debugInfo;
 
-  /// Error domain. RoSy services can define their own
-  /// domain and error codes. This should normally be
-  /// the name of an enum type, such as: gdata.CoreErrorDomain
+  /// Error domain. RoSy services can define their own domain and error codes.
+  /// This should normally be the name of an enum type, such as:
+  /// gdata.CoreErrorDomain
   core.String domain;
 
   /// A short explanation for the error, which can be shared outside Google.
-  ///
   /// Please set domain, code and arguments whenever possible instead of this
   /// error message so that external APIs can build safe error messages
-  /// themselves.
-  ///
-  /// External messages built in a RoSy interface will most likely refer to
-  /// information and concepts that are not available externally and should not
-  /// be exposed. It is safer if external APIs can understand the errors and
-  /// decide what the error message should look like.
+  /// themselves. External messages built in a RoSy interface will most likely
+  /// refer to information and concepts that are not available externally and
+  /// should not be exposed. It is safer if external APIs can understand the
+  /// errors and decide what the error message should look like.
   core.String externalErrorMessage;
 
-  /// Location of the error, as specified by the location type.
-  ///
-  /// If location_type is PATH, this should be a path to a field that's
-  /// relative to the request, using FieldPath notation
-  /// (net/proto2/util/public/field_path.h).
-  ///
-  /// Examples:
-  ///   authenticated_user.gaia_id
-  ///   resource.address[2].country
+  /// Location of the error, as specified by the location type. If location_type
+  /// is PATH, this should be a path to a field that's relative to the request,
+  /// using FieldPath notation (net/proto2/util/public/field_path.h). Examples:
+  /// authenticated_user.gaia_id resource.address[2].country
   core.String location;
 
   ///
   /// Possible string values are:
-  /// - "PATH" : location is an xpath-like path pointing
-  /// to the request field that caused the error.
-  /// - "OTHER" : other location type which can safely be shared
-  /// externally.
+  /// - "PATH" : location is an xpath-like path pointing to the request field
+  /// that caused the error.
+  /// - "OTHER" : other location type which can safely be shared externally.
   /// - "PARAMETER" : Location is request paramater. This maps to the {@link
-  /// PARAMETERS} in
-  /// {@link MessageLocation}.
+  /// PARAMETERS} in {@link MessageLocation}.
   core.String locationType;
 
   ErrorProto();
@@ -818,14 +769,11 @@ class ErrorProto {
   }
 }
 
-/// Request Error information.
-///
-/// The presence of an error field signals that the operation
-/// has failed.
+/// Request Error information. The presence of an error field signals that the
+/// operation has failed.
 class Errors {
-  /// Global error code. Deprecated and ignored.
-  /// Set custom error codes in ErrorProto.domain and ErrorProto.code
-  /// instead.
+  /// Global error code. Deprecated and ignored. Set custom error codes in
+  /// ErrorProto.domain and ErrorProto.code instead.
   /// Possible string values are:
   /// - "BAD_REQUEST"
   /// - "FORBIDDEN"
@@ -840,8 +788,8 @@ class Errors {
   /// Specific error description and codes
   core.List<ErrorProto> error;
 
-  /// Request identifier generated by the service, which can be
-  /// used to identify the error in the logs
+  /// Request identifier generated by the service, which can be used to identify
+  /// the error in the logs
   core.String requestId;
 
   Errors();
@@ -952,13 +900,9 @@ class GroupContentDetails {
   /// The number of items in the group.
   core.String itemCount;
 
-  /// The type of resources that the group contains.
-  ///
-  /// Valid values for this property are:
-  ///  * `youtube#channel`
-  ///  * `youtube#playlist`
-  ///  * `youtube#video`
-  ///  * `youtubePartner#asset`
+  /// The type of resources that the group contains. Valid values for this
+  /// property are: * `youtube#channel` * `youtube#playlist` * `youtube#video` *
+  /// `youtubePartner#asset`
   core.String itemType;
 
   GroupContentDetails();
@@ -1000,9 +944,9 @@ class GroupItem {
   /// The ID that YouTube uses to uniquely identify the `channel`, `video`,
   /// `playlist`, or `asset` resource that is included in the group. Note that
   /// this ID refers specifically to the inclusion of that resource in a
-  /// particular group and is different than the channel ID, video ID,
-  /// playlist ID, or asset ID that uniquely identifies the resource itself.
-  /// The `resource.id` property's value specifies the unique channel, video,
+  /// particular group and is different than the channel ID, video ID, playlist
+  /// ID, or asset ID that uniquely identifies the resource itself. The
+  /// `resource.id` property's value specifies the unique channel, video,
   /// playlist, or asset ID.
   core.String id;
 
@@ -1066,13 +1010,9 @@ class GroupItemResource {
   /// identify the item that is being added to the group.
   core.String id;
 
-  /// Identifies the type of resource being added to the group.
-  ///
-  /// Valid values for this property are:
-  ///  * `youtube#channel`
-  ///  * `youtube#playlist`
-  ///  * `youtube#video`
-  ///  * `youtubePartner#asset`
+  /// Identifies the type of resource being added to the group. Valid values for
+  /// this property are: * `youtube#channel` * `youtube#playlist` *
+  /// `youtube#video` * `youtubePartner#asset`
   core.String kind;
 
   GroupItemResource();
@@ -1259,31 +1199,26 @@ class QueryResponse {
   /// request, which will be followed by the metrics specified in the API
   /// request. The order of both dimensions and metrics will match the ordering
   /// in the API request. For example, if the API request contains the
-  /// parameters
-  /// `dimensions=ageGroup,gender&metrics=viewerPercentage`, the API response
-  /// will return columns in this order: `ageGroup`, `gender`,
+  /// parameters `dimensions=ageGroup,gender&metrics=viewerPercentage`, the API
+  /// response will return columns in this order: `ageGroup`, `gender`,
   /// `viewerPercentage`.
   core.List<ResultTableColumnHeader> columnHeaders;
 
   /// When set, indicates that the operation failed.
   Errors errors;
 
-  /// This value specifies the type of data included in the API response.
-  /// For the query method, the kind property value will be
+  /// This value specifies the type of data included in the API response. For
+  /// the query method, the kind property value will be
   /// `youtubeAnalytics#resultTable`.
   core.String kind;
 
   /// The list contains all rows of the result table. Each item in the list is
   /// an array that contains comma-delimited data corresponding to a single row
-  /// of data. The order of the comma-delimited data fields will match the
-  /// order of the columns listed in the `columnHeaders` field.
-  ///
-  /// If no data is available for the given query, the `rows` element will be
-  /// omitted from the response.
-  ///
-  /// The response for a query with the `day` dimension will not contain rows
-  /// for
-  /// the most recent days.
+  /// of data. The order of the comma-delimited data fields will match the order
+  /// of the columns listed in the `columnHeaders` field. If no data is
+  /// available for the given query, the `rows` element will be omitted from the
+  /// response. The response for a query with the `day` dimension will not
+  /// contain rows for the most recent days.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

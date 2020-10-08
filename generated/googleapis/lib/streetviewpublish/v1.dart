@@ -41,25 +41,18 @@ class PhotoResourceApi {
 
   PhotoResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// After the client finishes uploading the photo with the returned
-  /// UploadRef,
-  /// CreatePhoto
-  /// publishes the uploaded Photo to
-  /// Street View on Google Maps.
-  ///
+  /// After the client finishes uploading the photo with the returned UploadRef,
+  /// CreatePhoto publishes the uploaded Photo to Street View on Google Maps.
   /// Currently, the only way to set heading, pitch, and roll in CreatePhoto is
   /// through the [Photo Sphere XMP
   /// metadata](https://developers.google.com/streetview/spherical-metadata) in
-  /// the photo bytes. CreatePhoto ignores the  `pose.heading`, `pose.pitch`,
-  /// `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.
-  ///
-  /// This method returns the following error codes:
-  ///
-  /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if
-  /// the uploaded photo is not a 360 photo.
-  /// * google.rpc.Code.NOT_FOUND if the upload reference does not exist.
-  /// * google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the
-  /// storage limit.
+  /// the photo bytes. CreatePhoto ignores the `pose.heading`, `pose.pitch`,
+  /// `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose. This method
+  /// returns the following error codes: * google.rpc.Code.INVALID_ARGUMENT if
+  /// the request is malformed or if the uploaded photo is not a 360 photo. *
+  /// google.rpc.Code.NOT_FOUND if the upload reference does not exist. *
+  /// google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the storage
+  /// limit.
   ///
   /// [request] - The metadata request object.
   ///
@@ -101,13 +94,10 @@ class PhotoResourceApi {
     return _response.then((data) => new Photo.fromJson(data));
   }
 
-  /// Deletes a Photo and its metadata.
-  ///
-  /// This method returns the following error codes:
-  ///
-  /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-  /// create the requested photo.
-  /// * google.rpc.Code.NOT_FOUND if the photo ID does not exist.
+  /// Deletes a Photo and its metadata. This method returns the following error
+  /// codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
+  /// create the requested photo. * google.rpc.Code.NOT_FOUND if the photo ID
+  /// does not exist.
   ///
   /// Request parameters:
   ///
@@ -149,35 +139,29 @@ class PhotoResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the metadata of the specified
-  /// Photo.
-  ///
-  /// This method returns the following error codes:
-  ///
-  /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-  /// create the requested Photo.
-  /// * google.rpc.Code.NOT_FOUND if the requested
-  /// Photo does not exist.
-  /// * google.rpc.Code.UNAVAILABLE if the requested
-  /// Photo is still being indexed.
+  /// Gets the metadata of the specified Photo. This method returns the
+  /// following error codes: * google.rpc.Code.PERMISSION_DENIED if the
+  /// requesting user did not create the requested Photo. *
+  /// google.rpc.Code.NOT_FOUND if the requested Photo does not exist. *
+  /// google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed.
   ///
   /// Request parameters:
   ///
   /// [photoId] - Required. ID of the Photo.
   ///
-  /// [view] - Required. Specifies if a download URL for the photo bytes should
-  /// be returned in the
-  /// Photo response.
-  /// Possible string values are:
-  /// - "BASIC" : A BASIC.
-  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
-  ///
   /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more
-  /// information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  /// If language_code is unspecified, the user's language preference for Google
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
+  /// language_code is unspecified, the user's language preference for Google
   /// services is used.
+  ///
+  /// [view] - Required. Specifies if a download URL for the photo bytes should
+  /// be returned in the Photo response.
+  /// Possible string values are:
+  /// - "BASIC" : Server reponses do not include the download URL for the photo
+  /// bytes. The default value.
+  /// - "INCLUDE_DOWNLOAD_URL" : Server responses include the download URL for
+  /// the photo bytes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -190,7 +174,7 @@ class PhotoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Photo> get(core.String photoId,
-      {core.String view, core.String languageCode, core.String $fields}) {
+      {core.String languageCode, core.String view, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -201,11 +185,11 @@ class PhotoResourceApi {
     if (photoId == null) {
       throw new core.ArgumentError("Parameter photoId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -222,27 +206,19 @@ class PhotoResourceApi {
     return _response.then((data) => new Photo.fromJson(data));
   }
 
-  /// Creates an upload session to start uploading photo bytes.  The method uses
-  /// the upload URL of the returned
-  /// UploadRef to upload the bytes for
-  /// the Photo.
-  ///
-  /// In addition to the photo requirements shown in
+  /// Creates an upload session to start uploading photo bytes. The method uses
+  /// the upload URL of the returned UploadRef to upload the bytes for the
+  /// Photo. In addition to the photo requirements shown in
   /// https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,
-  /// the photo must meet the following requirements:
-  ///
-  /// * Photo Sphere XMP metadata must be included in the photo metadata. See
+  /// the photo must meet the following requirements: * Photo Sphere XMP
+  /// metadata must be included in the photo metadata. See
   /// https://developers.google.com/streetview/spherical-metadata for the
-  /// required fields.
-  /// * The pixel size of the photo must meet the size requirements listed in
+  /// required fields. * The pixel size of the photo must meet the size
+  /// requirements listed in
   /// https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,
-  /// and
-  /// the photo must be a full 360 horizontally.
-  ///
-  /// After the upload completes, the method uses
-  /// UploadRef with
-  /// CreatePhoto
-  /// to create the Photo object entry.
+  /// and the photo must be a full 360 horizontally. After the upload completes,
+  /// the method uses UploadRef with CreatePhoto to create the Photo object
+  /// entry.
   ///
   /// [request] - The metadata request object.
   ///
@@ -284,23 +260,15 @@ class PhotoResourceApi {
     return _response.then((data) => new UploadRef.fromJson(data));
   }
 
-  /// Updates the metadata of a Photo, such
-  /// as pose, place association, connections, etc. Changing the pixels of a
-  /// photo is not supported.
-  ///
-  /// Only the fields specified in the
-  /// updateMask
-  /// field are used. If `updateMask` is not present, the update applies to all
-  /// fields.
-  ///
-  /// This method returns the following error codes:
-  ///
-  /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-  /// create the requested photo.
-  /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
-  /// * google.rpc.Code.NOT_FOUND if the requested photo does not exist.
-  /// * google.rpc.Code.UNAVAILABLE if the requested
-  /// Photo is still being indexed.
+  /// Updates the metadata of a Photo, such as pose, place association,
+  /// connections, etc. Changing the pixels of a photo is not supported. Only
+  /// the fields specified in the updateMask field are used. If `updateMask` is
+  /// not present, the update applies to all fields. This method returns the
+  /// following error codes: * google.rpc.Code.PERMISSION_DENIED if the
+  /// requesting user did not create the requested photo. *
+  /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed. *
+  /// google.rpc.Code.NOT_FOUND if the requested photo does not exist. *
+  /// google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -309,33 +277,16 @@ class PhotoResourceApi {
   /// [id] - Required. A unique identifier for a photo.
   ///
   /// [updateMask] - Required. Mask that identifies fields on the photo metadata
-  /// to update.
-  /// If not present, the old Photo
-  /// metadata is entirely replaced with the
-  /// new Photo metadata in this request.
-  /// The update fails if invalid fields are specified. Multiple fields can be
-  /// specified in a comma-delimited list.
-  ///
-  /// The following fields are valid:
-  ///
-  /// * `pose.heading`
-  /// * `pose.latLngPair`
-  /// * `pose.pitch`
-  /// * `pose.roll`
-  /// * `pose.level`
-  /// * `pose.altitude`
-  /// * `connections`
-  /// * `places`
-  ///
-  ///
-  /// <aside class="note"><b>Note:</b> When
-  /// updateMask
+  /// to update. If not present, the old Photo metadata is entirely replaced
+  /// with the new Photo metadata in this request. The update fails if invalid
+  /// fields are specified. Multiple fields can be specified in a
+  /// comma-delimited list. The following fields are valid: * `pose.heading` *
+  /// `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` *
+  /// `pose.altitude` * `connections` * `places` *Note:* When updateMask
   /// contains repeated fields, the entire set of repeated values get replaced
-  /// with the new contents. For example, if
-  /// updateMask
-  /// contains `connections` and `UpdatePhotoRequest.photo.connections` is
-  /// empty,
-  /// all connections are removed.</aside>
+  /// with the new contents. For example, if updateMask contains `connections`
+  /// and `UpdatePhotoRequest.photo.connections` is empty, all connections are
+  /// removed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -386,22 +337,12 @@ class PhotosResourceApi {
 
   PhotosResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a list of Photos and their
-  /// metadata.
-  ///
-  /// Note that if
-  /// BatchDeletePhotos
-  /// fails, either critical fields are missing or there is an authentication
-  /// error. Even if
-  /// BatchDeletePhotos
-  /// succeeds, individual photos in the batch may have failures.
-  /// These failures are specified in each
-  /// PhotoResponse.status
-  /// in
-  /// BatchDeletePhotosResponse.results.
-  /// See
-  /// DeletePhoto
-  /// for specific failures that can occur per photo.
+  /// Deletes a list of Photos and their metadata. Note that if
+  /// BatchDeletePhotos fails, either critical fields are missing or there is an
+  /// authentication error. Even if BatchDeletePhotos succeeds, individual
+  /// photos in the batch may have failures. These failures are specified in
+  /// each PhotoResponse.status in BatchDeletePhotosResponse.results. See
+  /// DeletePhoto for specific failures that can occur per photo.
   ///
   /// [request] - The metadata request object.
   ///
@@ -446,42 +387,31 @@ class PhotosResourceApi {
         .then((data) => new BatchDeletePhotosResponse.fromJson(data));
   }
 
-  /// Gets the metadata of the specified
-  /// Photo batch.
-  ///
-  /// Note that if
-  /// BatchGetPhotos
-  /// fails, either critical fields are missing or there is an authentication
-  /// error. Even if
-  /// BatchGetPhotos
-  /// succeeds, individual photos in the batch may have failures.
-  /// These failures are specified in each
-  /// PhotoResponse.status
-  /// in
-  /// BatchGetPhotosResponse.results.
-  /// See
-  /// GetPhoto
-  /// for specific failures that can occur per photo.
+  /// Gets the metadata of the specified Photo batch. Note that if
+  /// BatchGetPhotos fails, either critical fields are missing or there is an
+  /// authentication error. Even if BatchGetPhotos succeeds, individual photos
+  /// in the batch may have failures. These failures are specified in each
+  /// PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for
+  /// specific failures that can occur per photo.
   ///
   /// Request parameters:
   ///
-  /// [view] - Required. Specifies if a download URL for the photo bytes should
-  /// be returned in the
-  /// Photo response.
-  /// Possible string values are:
-  /// - "BASIC" : A BASIC.
-  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
-  ///
   /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more
-  /// information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  /// If language_code is unspecified, the user's language preference for Google
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
+  /// language_code is unspecified, the user's language preference for Google
   /// services is used.
   ///
-  /// [photoIds] - Required. IDs of the Photos. For HTTP
-  /// GET requests, the URL query parameter should be
-  /// `photoIds=<id1>&photoIds=<id2>&...`.
+  /// [photoIds] - Required. IDs of the Photos. For HTTP GET requests, the URL
+  /// query parameter should be `photoIds=&photoIds=&...`.
+  ///
+  /// [view] - Required. Specifies if a download URL for the photo bytes should
+  /// be returned in the Photo response.
+  /// Possible string values are:
+  /// - "BASIC" : Server reponses do not include the download URL for the photo
+  /// bytes. The default value.
+  /// - "INCLUDE_DOWNLOAD_URL" : Server responses include the download URL for
+  /// the photo bytes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -494,9 +424,9 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetPhotosResponse> batchGet(
-      {core.String view,
-      core.String languageCode,
+      {core.String languageCode,
       core.List<core.String> photoIds,
+      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -505,14 +435,14 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
     }
     if (photoIds != null) {
       _queryParams["photoIds"] = photoIds;
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -529,40 +459,19 @@ class PhotosResourceApi {
     return _response.then((data) => new BatchGetPhotosResponse.fromJson(data));
   }
 
-  /// Updates the metadata of Photos, such
-  /// as pose, place association, connections, etc. Changing the pixels of
-  /// photos
-  /// is not supported.
-  ///
-  /// Note that if
-  /// BatchUpdatePhotos
-  /// fails, either critical fields are missing or there is an authentication
-  /// error. Even if
-  /// BatchUpdatePhotos
-  /// succeeds, individual photos in the batch may have failures.
-  /// These failures are specified in each
-  /// PhotoResponse.status
-  /// in
-  /// BatchUpdatePhotosResponse.results.
-  /// See
-  /// UpdatePhoto
-  /// for specific failures that can occur per photo.
-  ///
-  /// Only the fields specified in
-  /// updateMask
-  /// field are used. If `updateMask` is not present, the update applies to all
-  /// fields.
-  ///
-  /// The number of
-  /// UpdatePhotoRequest
-  /// messages in a
-  /// BatchUpdatePhotosRequest
-  /// must not exceed 20.
-  ///
-  /// <aside class="note"><b>Note:</b> To update
-  /// Pose.altitude,
-  /// Pose.latLngPair has to be
-  /// filled as well. Otherwise, the request will fail.</aside>
+  /// Updates the metadata of Photos, such as pose, place association,
+  /// connections, etc. Changing the pixels of photos is not supported. Note
+  /// that if BatchUpdatePhotos fails, either critical fields are missing or
+  /// there is an authentication error. Even if BatchUpdatePhotos succeeds,
+  /// individual photos in the batch may have failures. These failures are
+  /// specified in each PhotoResponse.status in
+  /// BatchUpdatePhotosResponse.results. See UpdatePhoto for specific failures
+  /// that can occur per photo. Only the fields specified in updateMask field
+  /// are used. If `updateMask` is not present, the update applies to all
+  /// fields. The number of UpdatePhotoRequest messages in a
+  /// BatchUpdatePhotosRequest must not exceed 20. *Note:* To update
+  /// Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the
+  /// request will fail.
   ///
   /// [request] - The metadata request object.
   ///
@@ -607,44 +516,37 @@ class PhotosResourceApi {
         .then((data) => new BatchUpdatePhotosResponse.fromJson(data));
   }
 
-  /// Lists all the Photos that belong to
-  /// the user.
-  ///
-  /// <aside class="note"><b>Note:</b> Recently created photos that are still
-  /// being indexed are not returned in the response.</aside>
+  /// Lists all the Photos that belong to the user. *Note:* Recently created
+  /// photos that are still being indexed are not returned in the response.
   ///
   /// Request parameters:
   ///
+  /// [filter] - Required. The filter expression. For example:
+  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The only filter supported at the
+  /// moment is `placeId`.
+  ///
+  /// [pageSize] - The maximum number of photos to return. `pageSize` must be
+  /// non-negative. If `pageSize` is zero or is not provided, the default page
+  /// size of 100 is used. The number of photos returned in the response may be
+  /// less than `pageSize` if the number of photos that belong to the user is
+  /// less than `pageSize`.
+  ///
   /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more
-  /// information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  /// If language_code is unspecified, the user's language preference for Google
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
+  /// language_code is unspecified, the user's language preference for Google
   /// services is used.
   ///
-  /// [filter] - Required. The filter expression. For example:
-  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-  ///
-  /// The only filter supported at the moment is `placeId`.
-  ///
-  /// [pageSize] - The maximum number of photos to return.
-  /// `pageSize` must be non-negative. If `pageSize` is zero or is not provided,
-  /// the default page size of 100 is used.
-  /// The number of photos returned in the response may be less than `pageSize`
-  /// if the number of photos that belong to the user is less than `pageSize`.
-  ///
-  /// [pageToken] - The
-  /// nextPageToken
-  /// value returned from a previous
-  /// ListPhotos
+  /// [pageToken] - The nextPageToken value returned from a previous ListPhotos
   /// request, if any.
   ///
   /// [view] - Required. Specifies if a download URL for the photos bytes should
-  /// be returned in the
-  /// Photos response.
+  /// be returned in the Photos response.
   /// Possible string values are:
-  /// - "BASIC" : A BASIC.
-  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
+  /// - "BASIC" : Server reponses do not include the download URL for the photo
+  /// bytes. The default value.
+  /// - "INCLUDE_DOWNLOAD_URL" : Server responses include the download URL for
+  /// the photo bytes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -657,9 +559,9 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPhotosResponse> list(
-      {core.String languageCode,
-      core.String filter,
+      {core.String filter,
       core.int pageSize,
+      core.String languageCode,
       core.String pageToken,
       core.String view,
       core.String $fields}) {
@@ -670,14 +572,14 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -703,9 +605,8 @@ class PhotosResourceApi {
 
 /// Request to delete multiple Photos.
 class BatchDeletePhotosRequest {
-  /// Required. IDs of the Photos. HTTP
-  /// GET requests require the following syntax for the URL query parameter:
-  /// `photoIds=<id1>&photoIds=<id2>&...`.
+  /// Required. IDs of the Photos. HTTP GET requests require the following
+  /// syntax for the URL query parameter: `photoIds=&photoIds=&...`.
   core.List<core.String> photoIds;
 
   BatchDeletePhotosRequest();
@@ -726,11 +627,10 @@ class BatchDeletePhotosRequest {
   }
 }
 
-/// Response to batch delete of one or more
-/// Photos.
+/// Response to batch delete of one or more Photos.
 class BatchDeletePhotosResponse {
-  /// The status for the operation to delete a single
-  /// Photo in the batch request.
+  /// The status for the operation to delete a single Photo in the batch
+  /// request.
   core.List<Status> status;
 
   BatchDeletePhotosResponse();
@@ -755,10 +655,8 @@ class BatchDeletePhotosResponse {
 
 /// Response to batch get of Photos.
 class BatchGetPhotosResponse {
-  /// List of results for each individual
-  /// Photo requested, in the same order as
-  /// the requests in
-  /// BatchGetPhotos.
+  /// List of results for each individual Photo requested, in the same order as
+  /// the requests in BatchGetPhotos.
   core.List<PhotoResponse> results;
 
   BatchGetPhotosResponse();
@@ -781,11 +679,10 @@ class BatchGetPhotosResponse {
   }
 }
 
-/// Request to update the metadata of photos.
-/// Updating the pixels of photos is not supported.
+/// Request to update the metadata of photos. Updating the pixels of photos is
+/// not supported.
 class BatchUpdatePhotosRequest {
-  /// Required. List of
-  /// UpdatePhotoRequests.
+  /// Required. List of UpdatePhotoRequests.
   core.List<UpdatePhotoRequest> updatePhotoRequests;
 
   BatchUpdatePhotosRequest();
@@ -810,11 +707,9 @@ class BatchUpdatePhotosRequest {
   }
 }
 
-/// Response to batch update of metadata of one or more
-/// Photos.
+/// Response to batch update of metadata of one or more Photos.
 class BatchUpdatePhotosResponse {
-  /// List of results for each individual
-  /// Photo updated, in the same order as
+  /// List of results for each individual Photo updated, in the same order as
   /// the request.
   core.List<PhotoResponse> results;
 
@@ -864,13 +759,9 @@ class Connection {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -884,11 +775,9 @@ class Empty {
 }
 
 /// An object representing a latitude/longitude pair. This is expressed as a
-/// pair
-/// of doubles representing degrees latitude and degrees longitude. Unless
-/// specified otherwise, this must conform to the
-/// <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-/// standard</a>. Values must be within normalized ranges.
+/// pair of doubles representing degrees latitude and degrees longitude. Unless
+/// specified otherwise, this must conform to the WGS84 standard. Values must be
+/// within normalized ranges.
 class LatLng {
   /// The latitude in degrees. It must be in the range [-90.0, +90.0].
   core.double latitude;
@@ -962,9 +851,8 @@ class ListPhotosResponse {
   /// results in the list.
   core.String nextPageToken;
 
-  /// List of photos. The
-  /// pageSize field
-  /// in the request determines the number of items returned.
+  /// List of photos. The pageSize field in the request determines the number of
+  /// items returned.
   core.List<Photo> photos;
 
   ListPhotosResponse();
@@ -996,17 +884,17 @@ class ListPhotosResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -1014,19 +902,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1078,9 +964,8 @@ class Operation {
 
 /// Photo is used to store 360 photos along with photo metadata.
 class Photo {
-  /// Absolute time when the photo was captured.
-  /// When the photo has no exif timestamp, this is used to set a timestamp in
-  /// the photo metadata.
+  /// Absolute time when the photo was captured. When the photo has no exif
+  /// timestamp, this is used to set a timestamp in the photo metadata.
   core.String captureTime;
 
   /// Connections to other photos. A connection represents the link from this
@@ -1088,10 +973,7 @@ class Photo {
   core.List<Connection> connections;
 
   /// Output only. The download URL for the photo bytes. This field is set only
-  /// when
-  /// GetPhotoRequest.view
-  /// is set to
-  /// PhotoView.INCLUDE_DOWNLOAD_URL.
+  /// when GetPhotoRequest.view is set to PhotoView.INCLUDE_DOWNLOAD_URL.
   core.String downloadUrl;
 
   /// Output only. Status in Google Maps, whether this photo was published or
@@ -1103,8 +985,7 @@ class Photo {
   core.String mapsPublishStatus;
 
   /// Required when updating a photo. Output only when creating a photo.
-  /// Identifier for the photo, which is unique among all photos in
-  /// Google.
+  /// Identifier for the photo, which is unique among all photos in Google.
   PhotoId photoId;
 
   /// Places where this photo belongs.
@@ -1124,11 +1005,9 @@ class Photo {
   /// - "TRANSFER_STATUS_UNKNOWN" : The status of this transfer is unspecified.
   /// - "NEVER_TRANSFERRED" : This photo has never been in a transfer.
   /// - "PENDING" : This photo transfer has been initiated, but the receiver has
-  /// not yet
-  /// responded.
+  /// not yet responded.
   /// - "COMPLETED" : The photo transfer has been completed, and this photo has
-  /// been
-  /// transferred to the recipient.
+  /// been transferred to the recipient.
   /// - "REJECTED" : The recipient rejected this photo transfer.
   /// - "EXPIRED" : The photo transfer expired before the recipient took any
   /// action.
@@ -1256,15 +1135,10 @@ class PhotoId {
   }
 }
 
-/// Response payload for a single
-/// Photo
-/// in batch operations including
-/// BatchGetPhotos
-/// and
-/// BatchUpdatePhotos.
+/// Response payload for a single Photo in batch operations including
+/// BatchGetPhotos and BatchUpdatePhotos.
 class PhotoResponse {
-  /// The Photo resource, if the request
-  /// was successful.
+  /// The Photo resource, if the request was successful.
   Photo photo;
 
   /// The status for the operation to get or update a single photo in the batch
@@ -1298,8 +1172,8 @@ class PhotoResponse {
 /// Place metadata for an entity.
 class Place {
   /// Output-only. The language_code that the name is localized with. This
-  /// should
-  /// be the language_code specified in the request, but may be a fallback.
+  /// should be the language_code specified in the request, but may be a
+  /// fallback.
   core.String languageCode;
 
   /// Output-only. The name of the place, localized to the language_code.
@@ -1343,28 +1217,27 @@ class Place {
 class Pose {
   /// The estimated horizontal accuracy of this pose in meters with 68%
   /// confidence (one standard deviation). For example, on Android, this value
-  /// is
-  /// available from this method:
+  /// is available from this method:
   /// https://developer.android.com/reference/android/location/Location#getAccuracy().
   /// Other platforms have different methods of obtaining similar accuracy
   /// estimations.
   core.double accuracyMeters;
 
-  /// Altitude of the pose in meters above WGS84 ellipsoid.
-  /// NaN indicates an unmeasured quantity.
+  /// Altitude of the pose in meters above WGS84 ellipsoid. NaN indicates an
+  /// unmeasured quantity.
   core.double altitude;
 
   /// Compass heading, measured at the center of the photo in degrees clockwise
-  /// from North. Value must be >=0 and <360.
-  /// NaN indicates an unmeasured quantity.
+  /// from North. Value must be >=0 and <360. NaN indicates an unmeasured
+  /// quantity.
   core.double heading;
 
   /// Latitude and longitude pair of the pose, as explained here:
   /// https://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng
-  /// When creating a Photo, if the
-  /// latitude and longitude pair are not provided, the geolocation from the
-  /// exif header is used. A latitude and longitude pair not provided in the
-  /// photo or exif header causes the photo process to fail.
+  /// When creating a Photo, if the latitude and longitude pair are not
+  /// provided, the geolocation from the exif header is used. A latitude and
+  /// longitude pair not provided in the photo or exif header causes the photo
+  /// process to fail.
   LatLng latLngPair;
 
   /// Level (the floor in a building) used to configure vertical navigation.
@@ -1372,13 +1245,11 @@ class Pose {
 
   /// Pitch, measured at the center of the photo in degrees. Value must be >=-90
   /// and <= 90. A value of -90 means looking directly down, and a value of 90
-  /// means looking directly up.
-  /// NaN indicates an unmeasured quantity.
+  /// means looking directly up. NaN indicates an unmeasured quantity.
   core.double pitch;
 
-  /// Roll, measured in degrees. Value must be >= 0 and <360. A value of 0
-  /// means level with the horizon.
-  /// NaN indicates an unmeasured quantity.
+  /// Roll, measured in degrees. Value must be >= 0 and <360. A value of 0 means
+  /// level with the horizon. NaN indicates an unmeasured quantity.
   core.double roll;
 
   Pose();
@@ -1438,15 +1309,14 @@ class Pose {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -1491,41 +1361,23 @@ class Status {
   }
 }
 
-/// Request to update the metadata of a
-/// Photo. Updating the pixels of a photo
-/// is not supported.
+/// Request to update the metadata of a Photo. Updating the pixels of a photo is
+/// not supported.
 class UpdatePhotoRequest {
-  /// Required. Photo object containing the
-  /// new metadata.
+  /// Required. Photo object containing the new metadata.
   Photo photo;
 
-  /// Required. Mask that identifies fields on the photo metadata to update.
-  /// If not present, the old Photo
-  /// metadata is entirely replaced with the
-  /// new Photo metadata in this request.
-  /// The update fails if invalid fields are specified. Multiple fields can be
-  /// specified in a comma-delimited list.
-  ///
-  /// The following fields are valid:
-  ///
-  /// * `pose.heading`
-  /// * `pose.latLngPair`
-  /// * `pose.pitch`
-  /// * `pose.roll`
-  /// * `pose.level`
-  /// * `pose.altitude`
-  /// * `connections`
-  /// * `places`
-  ///
-  ///
-  /// <aside class="note"><b>Note:</b> When
-  /// updateMask
-  /// contains repeated fields, the entire set of repeated values get replaced
-  /// with the new contents. For example, if
-  /// updateMask
-  /// contains `connections` and `UpdatePhotoRequest.photo.connections` is
-  /// empty,
-  /// all connections are removed.</aside>
+  /// Required. Mask that identifies fields on the photo metadata to update. If
+  /// not present, the old Photo metadata is entirely replaced with the new
+  /// Photo metadata in this request. The update fails if invalid fields are
+  /// specified. Multiple fields can be specified in a comma-delimited list. The
+  /// following fields are valid: * `pose.heading` * `pose.latLngPair` *
+  /// `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
+  /// `connections` * `places` *Note:* When updateMask contains repeated fields,
+  /// the entire set of repeated values get replaced with the new contents. For
+  /// example, if updateMask contains `connections` and
+  /// `UpdatePhotoRequest.photo.connections` is empty, all connections are
+  /// removed.
   core.String updateMask;
 
   UpdatePhotoRequest();

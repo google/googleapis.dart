@@ -129,8 +129,8 @@ class ChallengeResourceApi {
 
 /// Result message for VerifiedAccess.CreateChallenge.
 class Challenge {
-  /// Challenge generated with the old signing key
-  /// (this will only be present during key rotation)
+  /// Challenge generated with the old signing key (this will only be present
+  /// during key rotation)
   SignedData alternativeChallenge;
 
   /// Generated challenge
@@ -163,13 +163,9 @@ class Challenge {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -235,12 +231,11 @@ class VerifyChallengeResponseRequest {
   /// The generated response to the challenge
   SignedData challengeResponse;
 
-  /// Service can optionally provide identity information about the device
-  /// or user associated with the key.
-  /// For an EMK, this value is the enrolled domain.
-  /// For an EUK, this value is the user's email address.
-  /// If present, this value will be checked against contents
-  /// of the response, and verification will fail if there is no match.
+  /// Service can optionally provide identity information about the device or
+  /// user associated with the key. For an EMK, this value is the enrolled
+  /// domain. For an EUK, this value is the user's email address. If present,
+  /// this value will be checked against contents of the response, and
+  /// verification will fail if there is no match.
   core.String expectedIdentity;
 
   VerifyChallengeResponseRequest();
@@ -279,16 +274,14 @@ class VerifyChallengeResponseResult {
 
   /// Certificate Signing Request (in the SPKAC format, base64 encoded) is
   /// returned in this field. This field will be set only if device has included
-  /// CSR in its challenge response.
-  /// (the option to include CSR is now available for both user and machine
-  /// responses)
+  /// CSR in its challenge response. (the option to include CSR is now available
+  /// for both user and machine responses)
   core.String signedPublicKeyAndChallenge;
 
-  /// For EMCert check, device permanent id is returned here.
-  /// For EUCert check, signed_public_key_and_challenge [base64 encoded]
-  /// is returned if present, otherwise empty string is returned.
-  /// This field is deprecated, please use device_permanent_id or
-  /// signed_public_key_and_challenge fields.
+  /// For EMCert check, device permanent id is returned here. For EUCert check,
+  /// signed_public_key_and_challenge [base64 encoded] is returned if present,
+  /// otherwise empty string is returned. This field is deprecated, please use
+  /// device_permanent_id or signed_public_key_and_challenge fields.
   core.String verificationOutput;
 
   VerifyChallengeResponseResult();

@@ -49,16 +49,15 @@ class ProjectsModelsResourceApi {
 
   ProjectsModelsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a model in Firebase ML.
-  /// The longrunning operation will eventually return a Model
+  /// Creates a model in Firebase ML. The longrunning operation will eventually
+  /// return a Model
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent project resource where the model is to be
-  /// created.
-  /// The parent must have the form `projects/{project_id}`
+  /// created. The parent must have the form `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -107,8 +106,8 @@ class ProjectsModelsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the model to delete.
-  /// The name must have the form `projects/{project_id}/models/{model_id}`
+  /// [name] - Required. The name of the model to delete. The name must have the
+  /// form `projects/{project_id}/models/{model_id}`
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -151,8 +150,8 @@ class ProjectsModelsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the model to get.
-  /// The name must have the form `projects/{project_id}/models/{model_id}`
+  /// [name] - Required. The name of the model to get. The name must have the
+  /// form `projects/{project_id}/models/{model_id}`
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -195,15 +194,15 @@ class ProjectsModelsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the parent to list models for.
-  /// The parent must have the form `projects/{project_id}'
+  /// [parent] - Required. The name of the parent to list models for. The parent
+  /// must have the form `projects/{project_id}'
   /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [filter] - A filter for the list
-  /// e.g. 'tags: abc' to list models which are tagged with "abc"
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
+  ///
+  /// [filter] - A filter for the list e.g. 'tags: abc' to list models which are
+  /// tagged with "abc"
   ///
   /// [pageSize] - The maximum number of items to return
   ///
@@ -218,8 +217,8 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListModelsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -232,11 +231,11 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -264,9 +263,9 @@ class ProjectsModelsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the Model.
-  /// Model names have the form `projects/{project_id}/models/{model_id}`
-  /// The name is ignored when creating a model.
+  /// [name] - The resource name of the Model. Model names have the form
+  /// `projects/{project_id}/models/{model_id}` The name is ignored when
+  /// creating a model.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
   /// [updateMask] - The update mask
@@ -321,7 +320,7 @@ class ProjectsOperationsResourceApi {
   ProjectsOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -369,13 +368,9 @@ class ProjectsOperationsResourceApi {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -393,8 +388,8 @@ class ListModelsResponse {
   /// The list of models
   core.List<Model> models;
 
-  /// Token to retrieve the next page of results, or empty if there are no
-  /// more results in the list.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
 
   ListModelsResponse();
@@ -433,26 +428,24 @@ class Model {
   core.String createTime;
 
   /// Required. The name of the model to create. The name can be up to 32
-  /// characters long
-  /// and can consist only of ASCII Latin letters A-Z and a-z, underscores(_)
-  /// and ASCII digits 0-9. It must start with a letter.
+  /// characters long and can consist only of ASCII Latin letters A-Z and a-z,
+  /// underscores(_) and ASCII digits 0-9. It must start with a letter.
   core.String displayName;
 
-  /// Output only. See RFC7232
-  /// https://tools.ietf.org/html/rfc7232#section-2.3
+  /// Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
   core.String etag;
 
   /// Output only. The model_hash will change if a new file is available for
   /// download.
   core.String modelHash;
 
-  /// The resource name of the Model.
-  /// Model names have the form `projects/{project_id}/models/{model_id}`
-  /// The name is ignored when creating a model.
+  /// The resource name of the Model. Model names have the form
+  /// `projects/{project_id}/models/{model_id}` The name is ignored when
+  /// creating a model.
   core.String name;
 
-  /// State common to all model types.
-  /// Includes publishing and validation information.
+  /// State common to all model types. Includes publishing and validation
+  /// information.
   ModelState state;
 
   /// User defined tags which can be used to group/filter models during listing
@@ -539,8 +532,7 @@ class Model {
   }
 }
 
-/// This is returned in the longrunning operations
-/// for create/update.
+/// This is returned in the longrunning operations for create/update.
 class ModelOperationMetadata {
   ///
   /// Possible string values are:
@@ -549,8 +541,8 @@ class ModelOperationMetadata {
   /// - "BASIC_OPERATION_STATUS_VERIFYING" : The model file is being verified
   core.String basicOperationStatus;
 
-  /// The name of the model we are creating/updating
-  /// The name must have the form `projects/{project_id}/models/{model_id}`
+  /// The name of the model we are creating/updating The name must have the form
+  /// `projects/{project_id}/models/{model_id}`
   core.String name;
 
   ModelOperationMetadata();
@@ -577,18 +569,17 @@ class ModelOperationMetadata {
   }
 }
 
-/// State common to all model types.
-/// Includes publishing and validation information.
+/// State common to all model types. Includes publishing and validation
+/// information.
 class ModelState {
   /// Indicates if this model has been published.
   core.bool published;
 
-  /// Output only. Indicates the latest validation error on the model if any.
-  /// A model may have validation errors if there were problems during
-  /// the model creation/update.
-  /// e.g. in the case of a TfLiteModel, if a tflite model file was
-  /// missing or in the wrong format.
-  /// This field will be empty for valid models.
+  /// Output only. Indicates the latest validation error on the model if any. A
+  /// model may have validation errors if there were problems during the model
+  /// creation/update. e.g. in the case of a TfLiteModel, if a tflite model file
+  /// was missing or in the wrong format. This field will be empty for valid
+  /// models.
   Status validationError;
 
   ModelState();
@@ -618,17 +609,17 @@ class ModelState {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -636,19 +627,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -701,15 +690,14 @@ class Operation {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -756,11 +744,15 @@ class Status {
 
 /// Information that is specific to TfLite models.
 class TfLiteModel {
-  /// The TfLite file containing the model. (Stored in Google Cloud).
-  /// The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite
-  /// Note: If you update the file in the original location, it is
-  /// necessary to call UpdateModel for ML to pick up and validate the
-  /// updated file.
+  /// The AutoML model id referencing a model you created with the AutoML API.
+  /// The name should have format 'projects//locations//models/' (This is the
+  /// model resource name returned from the AutoML API)
+  core.String automlModel;
+
+  /// The TfLite file containing the model. (Stored in Google Cloud). The
+  /// gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note:
+  /// If you update the file in the original location, it is necessary to call
+  /// UpdateModel for ML to pick up and validate the updated file.
   core.String gcsTfliteUri;
 
   /// Output only. The size of the TFLite model
@@ -769,6 +761,9 @@ class TfLiteModel {
   TfLiteModel();
 
   TfLiteModel.fromJson(core.Map _json) {
+    if (_json.containsKey("automlModel")) {
+      automlModel = _json["automlModel"];
+    }
     if (_json.containsKey("gcsTfliteUri")) {
       gcsTfliteUri = _json["gcsTfliteUri"];
     }
@@ -780,6 +775,9 @@ class TfLiteModel {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (automlModel != null) {
+      _json["automlModel"] = automlModel;
+    }
     if (gcsTfliteUri != null) {
       _json["gcsTfliteUri"] = gcsTfliteUri;
     }

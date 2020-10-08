@@ -1,3 +1,14 @@
+## 0.51.0
+ * [api-new] artifactregistry:v1beta1
+ * [api-new] documentai:v1beta2
+ * [api-new] sqladmin:v1beta4
+ * [api-removed] dns:v2beta1
+ * [api-removed] sql:v1beta4
+ * [api-removed] commentanalyzer:v1alpha1
+ * [api-removed] networkmanagement:v1beta1
+ * [api-removed] recommender:v1beta1
+
+
 ## 0.50.0
  * [api-new] bigqueryconnection:v1beta1
  * [api-new] billingbudgets:v1beta1

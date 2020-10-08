@@ -15,17 +15,16 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client webfonts/v1';
 
-/// Accesses the metadata for all families served by Google Fonts, providing a
-/// list of families currently available (including available styles and a list
-/// of supported script subsets).
+/// The Google Web Fonts Developer API lets you retrieve information about web
+/// fonts served by Google.
 class WebfontsApi {
   final commons.ApiRequester _requester;
 
   WebfontsResourceApi get webfonts => new WebfontsResourceApi(_requester);
 
   WebfontsApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "webfonts/v1/"})
+      {core.String rootUrl = "https://webfonts.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -36,17 +35,18 @@ class WebfontsResourceApi {
   WebfontsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the list of fonts currently served by the Google Fonts Developer
-  /// API
+  /// API.
   ///
   /// Request parameters:
   ///
-  /// [sort] - Enables sorting of the list
+  /// [sort] - Enables sorting of the list.
   /// Possible string values are:
-  /// - "alpha" : Sort alphabetically
-  /// - "date" : Sort by date added
-  /// - "popularity" : Sort by popularity
-  /// - "style" : Sort by number of styles
-  /// - "trending" : Sort by trending
+  /// - "SORT_UNDEFINED" : No sorting specified, use the default sorting method.
+  /// - "ALPHA" : Sort alphabetically
+  /// - "DATE" : Sort by date added
+  /// - "POPULARITY" : Sort by popularity
+  /// - "STYLE" : Sort by number of styles
+  /// - "TRENDING" : Sort by trending
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -73,7 +73,7 @@ class WebfontsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'webfonts';
+    _url = 'v1/webfonts';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -85,6 +85,7 @@ class WebfontsResourceApi {
   }
 }
 
+/// Metadata describing a family of fonts.
 class Webfont {
   /// The category of the font.
   core.String category;
@@ -100,7 +101,7 @@ class Webfont {
   core.String kind;
 
   /// The date (format "yyyy-MM-dd") the font was modified for the last time.
-  core.DateTime lastModified;
+  core.String lastModified;
 
   /// The scripts supported by the font.
   core.List<core.String> subsets;
@@ -127,7 +128,7 @@ class Webfont {
       kind = _json["kind"];
     }
     if (_json.containsKey("lastModified")) {
-      lastModified = core.DateTime.parse(_json["lastModified"]);
+      lastModified = _json["lastModified"];
     }
     if (_json.containsKey("subsets")) {
       subsets = (_json["subsets"] as core.List).cast<core.String>();
@@ -156,8 +157,7 @@ class Webfont {
       _json["kind"] = kind;
     }
     if (lastModified != null) {
-      _json["lastModified"] =
-          "${(lastModified).year.toString().padLeft(4, '0')}-${(lastModified).month.toString().padLeft(2, '0')}-${(lastModified).day.toString().padLeft(2, '0')}";
+      _json["lastModified"] = lastModified;
     }
     if (subsets != null) {
       _json["subsets"] = subsets;
@@ -172,6 +172,8 @@ class Webfont {
   }
 }
 
+/// Response containing the list of fonts currently served by the Google Fonts
+/// API.
 class WebfontList {
   /// The list of fonts currently served by the Google Fonts API.
   core.List<Webfont> items;

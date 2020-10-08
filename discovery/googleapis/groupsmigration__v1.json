@@ -8,17 +8,16 @@
             }
         }
     },
-    "basePath": "/groups/v1/groups/",
-    "baseUrl": "https://www.googleapis.com/groups/v1/groups/",
-    "batchPath": "batch/groupsmigration/v1",
+    "basePath": "",
+    "baseUrl": "https://groupsmigration.googleapis.com/",
+    "batchPath": "batch",
     "canonicalName": "Groups Migration",
-    "description": "Groups Migration Api.",
+    "description": "The Groups Migration API allows domain administrators to archive emails into Google groups.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/groups-migration/",
-    "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/qDu5470S_QfnHCP_4GxoX8OU3Kg\"",
     "icons": {
-        "x16": "https://www.google.com/images/icons/product/discussions-16.gif",
-        "x32": "https://www.google.com/images/icons/product/discussions-32.gif"
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
     "id": "groupsmigration:v1",
     "kind": "discovery#restDescription",
@@ -26,30 +25,52 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "alt": {
-            "default": "json",
-            "description": "Data format for the response.",
-            "enum": [
-                "json"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
         "oauth_token": {
             "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -59,13 +80,23 @@
             "location": "query",
             "type": "boolean"
         },
-        "quotaUser": {
-            "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "userIp": {
-            "description": "Deprecated. Please use quotaUser instead.",
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
         }
@@ -82,12 +113,8 @@
                         "accept": [
                             "message/rfc822"
                         ],
-                        "maxSize": "25MB",
+                        "maxSize": "26214400",
                         "protocols": {
-                            "resumable": {
-                                "multipart": true,
-                                "path": "/resumable/upload/groups/v1/groups/{groupId}/archive"
-                            },
                             "simple": {
                                 "multipart": true,
                                 "path": "/upload/groups/v1/groups/{groupId}/archive"
@@ -105,7 +132,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "{groupId}/archive",
+                    "path": "groups/v1/groups/{groupId}/archive",
                     "response": {
                         "$ref": "Groups"
                     },
@@ -117,27 +144,26 @@
             }
         }
     },
-    "revision": "20181126",
-    "rootUrl": "https://www.googleapis.com/",
+    "revision": "20200924",
+    "rootUrl": "https://groupsmigration.googleapis.com/",
     "schemas": {
         "Groups": {
             "description": "JSON response template for groups migration API.",
             "id": "Groups",
             "properties": {
-                "kind": {
-                    "default": "groupsmigration#groups",
-                    "description": "The kind of insert resource this is.",
-                    "type": "string"
-                },
                 "responseCode": {
                     "description": "The status of the insert request.",
+                    "type": "string"
+                },
+                "kind": {
+                    "description": "The kind of insert resource this is.",
                     "type": "string"
                 }
             },
             "type": "object"
         }
     },
-    "servicePath": "groups/v1/groups/",
+    "servicePath": "",
     "title": "Groups Migration API",
     "version": "v1"
 }

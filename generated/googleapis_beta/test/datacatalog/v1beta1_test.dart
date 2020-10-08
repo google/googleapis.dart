@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed6014() {
+buildUnnamed6496() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6014(core.List<core.String> o) {
+checkUnnamed6496(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -68,8 +68,9 @@ buildBinding() {
   var o = new api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
+    o.bindingId = "foo";
     o.condition = buildExpr();
-    o.members = buildUnnamed6014();
+    o.members = buildUnnamed6496();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -79,8 +80,9 @@ buildBinding() {
 checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
+    unittest.expect(o.bindingId, unittest.equals('foo'));
     checkExpr(o.condition);
-    checkUnnamed6014(o.members);
+    checkUnnamed6496(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -212,14 +214,14 @@ checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(
   buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec--;
 }
 
-buildUnnamed6015() {
+buildUnnamed6497() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema>();
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   return o;
 }
 
-checkUnnamed6015(core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
+checkUnnamed6497(core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[0]);
   checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[1]);
@@ -233,7 +235,7 @@ buildGoogleCloudDatacatalogV1beta1ColumnSchema() {
     o.column = "foo";
     o.description = "foo";
     o.mode = "foo";
-    o.subcolumns = buildUnnamed6015();
+    o.subcolumns = buildUnnamed6497();
     o.type = "foo";
   }
   buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema--;
@@ -247,7 +249,7 @@ checkGoogleCloudDatacatalogV1beta1ColumnSchema(
     unittest.expect(o.column, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.mode, unittest.equals('foo'));
-    checkUnnamed6015(o.subcolumns);
+    checkUnnamed6497(o.subcolumns);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema--;
@@ -328,14 +330,14 @@ checkGoogleCloudDatacatalogV1beta1EntryGroup(
   buildCounterGoogleCloudDatacatalogV1beta1EntryGroup--;
 }
 
-buildUnnamed6016() {
+buildUnnamed6498() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>();
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   return o;
 }
 
-checkUnnamed6016(
+checkUnnamed6498(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(o[0]);
@@ -347,7 +349,7 @@ buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse() {
   var o = new api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse < 3) {
-    o.taxonomies = buildUnnamed6016();
+    o.taxonomies = buildUnnamed6498();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse--;
   return o;
@@ -357,7 +359,7 @@ checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(
     api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse < 3) {
-    checkUnnamed6016(o.taxonomies);
+    checkUnnamed6498(o.taxonomies);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse--;
 }
@@ -384,7 +386,7 @@ checkGoogleCloudDatacatalogV1beta1FieldType(
   buildCounterGoogleCloudDatacatalogV1beta1FieldType--;
 }
 
-buildUnnamed6017() {
+buildUnnamed6499() {
   var o = new core
       .List<api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>();
   o.add(buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue());
@@ -392,7 +394,7 @@ buildUnnamed6017() {
   return o;
 }
 
-checkUnnamed6017(
+checkUnnamed6499(
     core.List<api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(o[0]);
@@ -404,7 +406,7 @@ buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType() {
   var o = new api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType();
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType < 3) {
-    o.allowedValues = buildUnnamed6017();
+    o.allowedValues = buildUnnamed6499();
   }
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType--;
   return o;
@@ -414,7 +416,7 @@ checkGoogleCloudDatacatalogV1beta1FieldTypeEnumType(
     api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType o) {
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType < 3) {
-    checkUnnamed6017(o.allowedValues);
+    checkUnnamed6499(o.allowedValues);
   }
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType--;
 }
@@ -464,27 +466,27 @@ checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
   buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec--;
 }
 
-buildUnnamed6018() {
+buildUnnamed6500() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6018(core.List<core.String> o) {
+checkUnnamed6500(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed6019() {
+buildUnnamed6501() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec>();
   o.add(buildGoogleCloudDatacatalogV1beta1GcsFileSpec());
   o.add(buildGoogleCloudDatacatalogV1beta1GcsFileSpec());
   return o;
 }
 
-checkUnnamed6019(core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec> o) {
+checkUnnamed6501(core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1GcsFileSpec(o[0]);
   checkGoogleCloudDatacatalogV1beta1GcsFileSpec(o[1]);
@@ -495,8 +497,8 @@ buildGoogleCloudDatacatalogV1beta1GcsFilesetSpec() {
   var o = new api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec();
   buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec < 3) {
-    o.filePatterns = buildUnnamed6018();
-    o.sampleGcsFileSpecs = buildUnnamed6019();
+    o.filePatterns = buildUnnamed6500();
+    o.sampleGcsFileSpecs = buildUnnamed6501();
   }
   buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec--;
   return o;
@@ -506,8 +508,8 @@ checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(
     api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec o) {
   buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec < 3) {
-    checkUnnamed6018(o.filePatterns);
-    checkUnnamed6019(o.sampleGcsFileSpecs);
+    checkUnnamed6500(o.filePatterns);
+    checkUnnamed6501(o.sampleGcsFileSpecs);
   }
   buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec--;
 }
@@ -532,14 +534,14 @@ checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest--;
 }
 
-buildUnnamed6020() {
+buildUnnamed6502() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy>();
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   return o;
 }
 
-checkUnnamed6020(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
+checkUnnamed6502(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1Taxonomy(o[0]);
   checkGoogleCloudDatacatalogV1beta1Taxonomy(o[1]);
@@ -550,7 +552,7 @@ buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse() {
   var o = new api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse < 3) {
-    o.taxonomies = buildUnnamed6020();
+    o.taxonomies = buildUnnamed6502();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse--;
   return o;
@@ -560,19 +562,19 @@ checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(
     api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse < 3) {
-    checkUnnamed6020(o.taxonomies);
+    checkUnnamed6502(o.taxonomies);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse--;
 }
 
-buildUnnamed6021() {
+buildUnnamed6503() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>();
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   return o;
 }
 
-checkUnnamed6021(
+checkUnnamed6503(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(o[0]);
@@ -584,7 +586,7 @@ buildGoogleCloudDatacatalogV1beta1InlineSource() {
   var o = new api.GoogleCloudDatacatalogV1beta1InlineSource();
   buildCounterGoogleCloudDatacatalogV1beta1InlineSource++;
   if (buildCounterGoogleCloudDatacatalogV1beta1InlineSource < 3) {
-    o.taxonomies = buildUnnamed6021();
+    o.taxonomies = buildUnnamed6503();
   }
   buildCounterGoogleCloudDatacatalogV1beta1InlineSource--;
   return o;
@@ -594,19 +596,19 @@ checkGoogleCloudDatacatalogV1beta1InlineSource(
     api.GoogleCloudDatacatalogV1beta1InlineSource o) {
   buildCounterGoogleCloudDatacatalogV1beta1InlineSource++;
   if (buildCounterGoogleCloudDatacatalogV1beta1InlineSource < 3) {
-    checkUnnamed6021(o.taxonomies);
+    checkUnnamed6503(o.taxonomies);
   }
   buildCounterGoogleCloudDatacatalogV1beta1InlineSource--;
 }
 
-buildUnnamed6022() {
+buildUnnamed6504() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1Entry>();
   o.add(buildGoogleCloudDatacatalogV1beta1Entry());
   o.add(buildGoogleCloudDatacatalogV1beta1Entry());
   return o;
 }
 
-checkUnnamed6022(core.List<api.GoogleCloudDatacatalogV1beta1Entry> o) {
+checkUnnamed6504(core.List<api.GoogleCloudDatacatalogV1beta1Entry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1Entry(o[0]);
   checkGoogleCloudDatacatalogV1beta1Entry(o[1]);
@@ -617,7 +619,7 @@ buildGoogleCloudDatacatalogV1beta1ListEntriesResponse() {
   var o = new api.GoogleCloudDatacatalogV1beta1ListEntriesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse < 3) {
-    o.entries = buildUnnamed6022();
+    o.entries = buildUnnamed6504();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse--;
@@ -628,20 +630,20 @@ checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(
     api.GoogleCloudDatacatalogV1beta1ListEntriesResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse < 3) {
-    checkUnnamed6022(o.entries);
+    checkUnnamed6504(o.entries);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse--;
 }
 
-buildUnnamed6023() {
+buildUnnamed6505() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup>();
   o.add(buildGoogleCloudDatacatalogV1beta1EntryGroup());
   o.add(buildGoogleCloudDatacatalogV1beta1EntryGroup());
   return o;
 }
 
-checkUnnamed6023(core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup> o) {
+checkUnnamed6505(core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1EntryGroup(o[0]);
   checkGoogleCloudDatacatalogV1beta1EntryGroup(o[1]);
@@ -652,7 +654,7 @@ buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse() {
   var o = new api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse < 3) {
-    o.entryGroups = buildUnnamed6023();
+    o.entryGroups = buildUnnamed6505();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse--;
@@ -663,20 +665,20 @@ checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(
     api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse < 3) {
-    checkUnnamed6023(o.entryGroups);
+    checkUnnamed6505(o.entryGroups);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse--;
 }
 
-buildUnnamed6024() {
+buildUnnamed6506() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag>();
   o.add(buildGoogleCloudDatacatalogV1beta1PolicyTag());
   o.add(buildGoogleCloudDatacatalogV1beta1PolicyTag());
   return o;
 }
 
-checkUnnamed6024(core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag> o) {
+checkUnnamed6506(core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1PolicyTag(o[0]);
   checkGoogleCloudDatacatalogV1beta1PolicyTag(o[1]);
@@ -688,7 +690,7 @@ buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse() {
   buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse < 3) {
     o.nextPageToken = "foo";
-    o.policyTags = buildUnnamed6024();
+    o.policyTags = buildUnnamed6506();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse--;
   return o;
@@ -699,19 +701,19 @@ checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(
   buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6024(o.policyTags);
+    checkUnnamed6506(o.policyTags);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse--;
 }
 
-buildUnnamed6025() {
+buildUnnamed6507() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1Tag>();
   o.add(buildGoogleCloudDatacatalogV1beta1Tag());
   o.add(buildGoogleCloudDatacatalogV1beta1Tag());
   return o;
 }
 
-checkUnnamed6025(core.List<api.GoogleCloudDatacatalogV1beta1Tag> o) {
+checkUnnamed6507(core.List<api.GoogleCloudDatacatalogV1beta1Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1Tag(o[0]);
   checkGoogleCloudDatacatalogV1beta1Tag(o[1]);
@@ -723,7 +725,7 @@ buildGoogleCloudDatacatalogV1beta1ListTagsResponse() {
   buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse < 3) {
     o.nextPageToken = "foo";
-    o.tags = buildUnnamed6025();
+    o.tags = buildUnnamed6507();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse--;
   return o;
@@ -734,19 +736,19 @@ checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
   buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6025(o.tags);
+    checkUnnamed6507(o.tags);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse--;
 }
 
-buildUnnamed6026() {
+buildUnnamed6508() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy>();
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   return o;
 }
 
-checkUnnamed6026(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
+checkUnnamed6508(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1Taxonomy(o[0]);
   checkGoogleCloudDatacatalogV1beta1Taxonomy(o[1]);
@@ -758,7 +760,7 @@ buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse() {
   buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse < 3) {
     o.nextPageToken = "foo";
-    o.taxonomies = buildUnnamed6026();
+    o.taxonomies = buildUnnamed6508();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse--;
   return o;
@@ -769,19 +771,19 @@ checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(
   buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6026(o.taxonomies);
+    checkUnnamed6508(o.taxonomies);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse--;
 }
 
-buildUnnamed6027() {
+buildUnnamed6509() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6027(core.List<core.String> o) {
+checkUnnamed6509(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -792,7 +794,7 @@ buildGoogleCloudDatacatalogV1beta1PolicyTag() {
   var o = new api.GoogleCloudDatacatalogV1beta1PolicyTag();
   buildCounterGoogleCloudDatacatalogV1beta1PolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1PolicyTag < 3) {
-    o.childPolicyTags = buildUnnamed6027();
+    o.childPolicyTags = buildUnnamed6509();
     o.description = "foo";
     o.displayName = "foo";
     o.name = "foo";
@@ -806,13 +808,38 @@ checkGoogleCloudDatacatalogV1beta1PolicyTag(
     api.GoogleCloudDatacatalogV1beta1PolicyTag o) {
   buildCounterGoogleCloudDatacatalogV1beta1PolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1PolicyTag < 3) {
-    checkUnnamed6027(o.childPolicyTags);
+    checkUnnamed6509(o.childPolicyTags);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.parentPolicyTag, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1PolicyTag--;
+}
+
+core.int
+    buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest =
+    0;
+buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest() {
+  var o = new api
+      .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
+  buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest++;
+  if (buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest <
+      3) {
+    o.newEnumValueDisplayName = "foo";
+  }
+  buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest--;
+  return o;
+}
+
+checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
+    api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest o) {
+  buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest++;
+  if (buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest <
+      3) {
+    unittest.expect(o.newEnumValueDisplayName, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest--;
 }
 
 core.int
@@ -838,14 +865,14 @@ checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(
   buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest--;
 }
 
-buildUnnamed6028() {
+buildUnnamed6510() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema>();
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   return o;
 }
 
-checkUnnamed6028(core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
+checkUnnamed6510(core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[0]);
   checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[1]);
@@ -856,7 +883,7 @@ buildGoogleCloudDatacatalogV1beta1Schema() {
   var o = new api.GoogleCloudDatacatalogV1beta1Schema();
   buildCounterGoogleCloudDatacatalogV1beta1Schema++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Schema < 3) {
-    o.columns = buildUnnamed6028();
+    o.columns = buildUnnamed6510();
   }
   buildCounterGoogleCloudDatacatalogV1beta1Schema--;
   return o;
@@ -866,7 +893,7 @@ checkGoogleCloudDatacatalogV1beta1Schema(
     api.GoogleCloudDatacatalogV1beta1Schema o) {
   buildCounterGoogleCloudDatacatalogV1beta1Schema++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Schema < 3) {
-    checkUnnamed6028(o.columns);
+    checkUnnamed6510(o.columns);
   }
   buildCounterGoogleCloudDatacatalogV1beta1Schema--;
 }
@@ -899,27 +926,40 @@ checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest--;
 }
 
-buildUnnamed6029() {
+buildUnnamed6511() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6029(core.List<core.String> o) {
+checkUnnamed6511(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed6030() {
+buildUnnamed6512() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6030(core.List<core.String> o) {
+checkUnnamed6512(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed6513() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed6513(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -931,8 +971,9 @@ buildGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope() {
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope < 3) {
     o.includeGcpPublicDatasets = true;
-    o.includeOrgIds = buildUnnamed6029();
-    o.includeProjectIds = buildUnnamed6030();
+    o.includeOrgIds = buildUnnamed6511();
+    o.includeProjectIds = buildUnnamed6512();
+    o.restrictedLocations = buildUnnamed6513();
   }
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope--;
   return o;
@@ -943,24 +984,38 @@ checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope < 3) {
     unittest.expect(o.includeGcpPublicDatasets, unittest.isTrue);
-    checkUnnamed6029(o.includeOrgIds);
-    checkUnnamed6030(o.includeProjectIds);
+    checkUnnamed6511(o.includeOrgIds);
+    checkUnnamed6512(o.includeProjectIds);
+    checkUnnamed6513(o.restrictedLocations);
   }
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope--;
 }
 
-buildUnnamed6031() {
+buildUnnamed6514() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1SearchCatalogResult>();
   o.add(buildGoogleCloudDatacatalogV1beta1SearchCatalogResult());
   o.add(buildGoogleCloudDatacatalogV1beta1SearchCatalogResult());
   return o;
 }
 
-checkUnnamed6031(
+checkUnnamed6514(
     core.List<api.GoogleCloudDatacatalogV1beta1SearchCatalogResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(o[0]);
   checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(o[1]);
+}
+
+buildUnnamed6515() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed6515(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse = 0;
@@ -969,7 +1024,8 @@ buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse() {
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse < 3) {
     o.nextPageToken = "foo";
-    o.results = buildUnnamed6031();
+    o.results = buildUnnamed6514();
+    o.unreachable = buildUnnamed6515();
   }
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse--;
   return o;
@@ -980,7 +1036,8 @@ checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6031(o.results);
+    checkUnnamed6514(o.results);
+    checkUnnamed6515(o.unreachable);
   }
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse--;
 }
@@ -1011,14 +1068,14 @@ checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult--;
 }
 
-buildUnnamed6032() {
+buildUnnamed6516() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>();
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   return o;
 }
 
-checkUnnamed6032(
+checkUnnamed6516(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(o[0]);
@@ -1030,9 +1087,10 @@ buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag() {
   var o = new api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag();
   buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag < 3) {
-    o.childPolicyTags = buildUnnamed6032();
+    o.childPolicyTags = buildUnnamed6516();
     o.description = "foo";
     o.displayName = "foo";
+    o.policyTag = "foo";
   }
   buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag--;
   return o;
@@ -1042,21 +1100,22 @@ checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
     api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag o) {
   buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag < 3) {
-    checkUnnamed6032(o.childPolicyTags);
+    checkUnnamed6516(o.childPolicyTags);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.policyTag, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag--;
 }
 
-buildUnnamed6033() {
+buildUnnamed6517() {
   var o = new core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>();
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   return o;
 }
 
-checkUnnamed6033(
+checkUnnamed6517(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(o[0]);
@@ -1070,7 +1129,7 @@ buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy() {
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy < 3) {
     o.description = "foo";
     o.displayName = "foo";
-    o.policyTags = buildUnnamed6033();
+    o.policyTags = buildUnnamed6517();
   }
   buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy--;
   return o;
@@ -1082,7 +1141,7 @@ checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed6033(o.policyTags);
+    checkUnnamed6517(o.policyTags);
   }
   buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy--;
 }
@@ -1131,7 +1190,7 @@ checkGoogleCloudDatacatalogV1beta1TableSpec(
   buildCounterGoogleCloudDatacatalogV1beta1TableSpec--;
 }
 
-buildUnnamed6034() {
+buildUnnamed6518() {
   var o =
       new core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagField>();
   o["x"] = buildGoogleCloudDatacatalogV1beta1TagField();
@@ -1139,7 +1198,7 @@ buildUnnamed6034() {
   return o;
 }
 
-checkUnnamed6034(
+checkUnnamed6518(
     core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1TagField(o["x"]);
@@ -1152,7 +1211,7 @@ buildGoogleCloudDatacatalogV1beta1Tag() {
   buildCounterGoogleCloudDatacatalogV1beta1Tag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Tag < 3) {
     o.column = "foo";
-    o.fields = buildUnnamed6034();
+    o.fields = buildUnnamed6518();
     o.name = "foo";
     o.template = "foo";
     o.templateDisplayName = "foo";
@@ -1165,7 +1224,7 @@ checkGoogleCloudDatacatalogV1beta1Tag(api.GoogleCloudDatacatalogV1beta1Tag o) {
   buildCounterGoogleCloudDatacatalogV1beta1Tag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Tag < 3) {
     unittest.expect(o.column, unittest.equals('foo'));
-    checkUnnamed6034(o.fields);
+    checkUnnamed6518(o.fields);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.template, unittest.equals('foo'));
     unittest.expect(o.templateDisplayName, unittest.equals('foo'));
@@ -1225,7 +1284,7 @@ checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(
   buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue--;
 }
 
-buildUnnamed6035() {
+buildUnnamed6519() {
   var o = new core
       .Map<core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>();
   o["x"] = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
@@ -1233,7 +1292,7 @@ buildUnnamed6035() {
   return o;
 }
 
-checkUnnamed6035(
+checkUnnamed6519(
     core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1247,7 +1306,7 @@ buildGoogleCloudDatacatalogV1beta1TagTemplate() {
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplate++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagTemplate < 3) {
     o.displayName = "foo";
-    o.fields = buildUnnamed6035();
+    o.fields = buildUnnamed6519();
     o.name = "foo";
   }
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplate--;
@@ -1259,7 +1318,7 @@ checkGoogleCloudDatacatalogV1beta1TagTemplate(
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplate++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagTemplate < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed6035(o.fields);
+    checkUnnamed6519(o.fields);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplate--;
@@ -1293,14 +1352,14 @@ checkGoogleCloudDatacatalogV1beta1TagTemplateField(
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField--;
 }
 
-buildUnnamed6036() {
+buildUnnamed6520() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6036(core.List<core.String> o) {
+checkUnnamed6520(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1311,7 +1370,7 @@ buildGoogleCloudDatacatalogV1beta1Taxonomy() {
   var o = new api.GoogleCloudDatacatalogV1beta1Taxonomy();
   buildCounterGoogleCloudDatacatalogV1beta1Taxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Taxonomy < 3) {
-    o.activatedPolicyTypes = buildUnnamed6036();
+    o.activatedPolicyTypes = buildUnnamed6520();
     o.description = "foo";
     o.displayName = "foo";
     o.name = "foo";
@@ -1324,7 +1383,7 @@ checkGoogleCloudDatacatalogV1beta1Taxonomy(
     api.GoogleCloudDatacatalogV1beta1Taxonomy o) {
   buildCounterGoogleCloudDatacatalogV1beta1Taxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Taxonomy < 3) {
-    checkUnnamed6036(o.activatedPolicyTypes);
+    checkUnnamed6520(o.activatedPolicyTypes);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1352,14 +1411,14 @@ checkGoogleCloudDatacatalogV1beta1ViewSpec(
   buildCounterGoogleCloudDatacatalogV1beta1ViewSpec--;
 }
 
-buildUnnamed6037() {
+buildUnnamed6521() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed6037(core.List<api.Binding> o) {
+checkUnnamed6521(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -1370,7 +1429,7 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed6037();
+    o.bindings = buildUnnamed6521();
     o.etag = "foo";
     o.version = 42;
   }
@@ -1381,7 +1440,7 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed6037(o.bindings);
+    checkUnnamed6521(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -1407,14 +1466,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed6038() {
+buildUnnamed6522() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6038(core.List<core.String> o) {
+checkUnnamed6522(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1425,7 +1484,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed6038();
+    o.permissions = buildUnnamed6522();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1434,19 +1493,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed6038(o.permissions);
+    checkUnnamed6522(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed6039() {
+buildUnnamed6523() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6039(core.List<core.String> o) {
+checkUnnamed6523(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1457,7 +1516,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed6039();
+    o.permissions = buildUnnamed6523();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1466,19 +1525,19 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed6039(o.permissions);
+    checkUnnamed6523(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-buildUnnamed6040() {
+buildUnnamed6524() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6040(core.List<core.String> o) {
+checkUnnamed6524(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1722,6 +1781,20 @@ main() {
       var od =
           new api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1PolicyTag(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o =
+          buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
+      var od = new api
+              .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest.fromJson(
+          o.toJson());
+      checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
+          od);
     });
   });
 
@@ -2739,9 +2812,9 @@ main() {
       api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
           new api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_parent = "foo";
-      var arg_readMask = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      var arg_readMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2774,12 +2847,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["readMask"].first, unittest.equals(arg_readMask));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["readMask"].first, unittest.equals(arg_readMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2791,9 +2864,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              readMask: arg_readMask,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              readMask: arg_readMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(response);
@@ -3048,8 +3121,8 @@ main() {
               .entries
               .tags;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3082,10 +3155,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3097,8 +3170,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1ListTagsResponse(response);
@@ -3285,8 +3358,8 @@ main() {
       api.ProjectsLocationsEntryGroupsTagsResourceApi res =
           new api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3319,10 +3392,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3334,8 +3407,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1ListTagsResponse(response);
@@ -4046,6 +4119,75 @@ main() {
     });
   });
 
+  unittest.group(
+      "resource-ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi", () {
+    unittest.test("method--rename", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi res =
+          new api.DatacatalogApi(mock)
+              .projects
+              .locations
+              .tagTemplates
+              .fields
+              .enumValues;
+      var arg_request =
+          buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api
+                .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest.fromJson(
+            json);
+        checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
+            obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v1beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .rename(arg_request, arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDatacatalogV1beta1TagTemplateField(response);
+      })));
+    });
+  });
+
   unittest.group("resource-ProjectsLocationsTaxonomiesResourceApi", () {
     unittest.test("method--create", () {
       var mock = new HttpServerMock();
@@ -4161,8 +4303,8 @@ main() {
       api.ProjectsLocationsTaxonomiesResourceApi res =
           new api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = "foo";
-      var arg_taxonomies = buildUnnamed6040();
       var arg_serializedTaxonomies = true;
+      var arg_taxonomies = buildUnnamed6524();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4195,10 +4337,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["taxonomies"], unittest.equals(arg_taxonomies));
         unittest.expect(queryMap["serializedTaxonomies"].first,
             unittest.equals("$arg_serializedTaxonomies"));
+        unittest.expect(
+            queryMap["taxonomies"], unittest.equals(arg_taxonomies));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4210,8 +4352,8 @@ main() {
       }), true);
       res
           .export(arg_parent,
-              taxonomies: arg_taxonomies,
               serializedTaxonomies: arg_serializedTaxonomies,
+              taxonomies: arg_taxonomies,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(response);
@@ -4392,8 +4534,8 @@ main() {
       api.ProjectsLocationsTaxonomiesResourceApi res =
           new api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4426,10 +4568,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4441,8 +4583,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(response);

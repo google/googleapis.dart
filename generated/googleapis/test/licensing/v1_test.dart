@@ -102,14 +102,14 @@ checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-buildUnnamed3874() {
+buildUnnamed4073() {
   var o = new core.List<api.LicenseAssignment>();
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-checkUnnamed3874(core.List<api.LicenseAssignment> o) {
+checkUnnamed4073(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -121,7 +121,7 @@ buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed3874();
+    o.items = buildUnnamed4073();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -133,7 +133,7 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3874(o.items);
+    checkUnnamed4073(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -182,6 +182,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("apps/licensing/v1/product/"));
+        pathOffset += 26;
+        index = path.indexOf("/sku/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/sku/"));
+        pathOffset += 5;
+        index = path.indexOf("/user/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/user/"));
+        pathOffset += 6;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_userId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -230,6 +254,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("apps/licensing/v1/product/"));
+        pathOffset += 26;
+        index = path.indexOf("/sku/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/sku/"));
+        pathOffset += 5;
+        index = path.indexOf("/user/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/user/"));
+        pathOffset += 6;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_userId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -283,6 +331,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("apps/licensing/v1/product/"));
+        pathOffset += 26;
+        index = path.indexOf("/sku/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/sku/"));
+        pathOffset += 5;
+        index = path.indexOf("/user", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/user"));
+        pathOffset += 5;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -334,6 +403,18 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("apps/licensing/v1/product/"));
+        pathOffset += 26;
+        index = path.indexOf("/users", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/users"));
+        pathOffset += 6;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -395,6 +476,27 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("apps/licensing/v1/product/"));
+        pathOffset += 26;
+        index = path.indexOf("/sku/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/sku/"));
+        pathOffset += 5;
+        index = path.indexOf("/users", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/users"));
+        pathOffset += 6;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -458,6 +560,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("apps/licensing/v1/product/"));
+        pathOffset += 26;
+        index = path.indexOf("/sku/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/sku/"));
+        pathOffset += 5;
+        index = path.indexOf("/user/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/user/"));
+        pathOffset += 6;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_userId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -513,6 +639,30 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("apps/licensing/v1/product/"));
+        pathOffset += 26;
+        index = path.indexOf("/sku/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/sku/"));
+        pathOffset += 5;
+        index = path.indexOf("/user/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_skuId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/user/"));
+        pathOffset += 6;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_userId"));
 
         var query = (req.url).query;
         var queryOffset = 0;

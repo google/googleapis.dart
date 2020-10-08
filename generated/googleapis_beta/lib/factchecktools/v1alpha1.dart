@@ -42,35 +42,32 @@ class ClaimsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [query] - Textual query string. Required unless
-  /// `review_publisher_site_filter` is
-  /// specified.
+  /// [pageToken] - The pagination token. You may provide the `next_page_token`
+  /// returned from a previous List request, if any, in order to get the next
+  /// page. All other fields must have the same values as in the previous
+  /// request.
   ///
-  /// [pageSize] - The pagination size. We will return up to that many results.
-  /// Defaults to
-  /// 10 if not set.
-  ///
-  /// [maxAgeDays] - The maximum age of the returned search results, in days.
-  /// Age is determined by either claim date or review date, whichever is newer.
-  ///
-  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// Can be used to
-  /// restrict results by language, though we do not currently consider the
-  /// region.
+  /// [offset] - An integer that specifies the current offset (that is, starting
+  /// result location) in search results. This field is only considered if
+  /// `page_token` is unset. For example, 0 means to return results starting
+  /// from the first matching result, and 10 means to return from the 11th
+  /// result.
   ///
   /// [reviewPublisherSiteFilter] - The review publisher site to filter results
   /// by, e.g. nytimes.com.
   ///
-  /// [pageToken] - The pagination token. You may provide the `next_page_token`
-  /// returned from a
-  /// previous List request, if any, in order to get the next page. All other
-  /// fields must have the same values as in the previous request.
+  /// [maxAgeDays] - The maximum age of the returned search results, in days.
+  /// Age is determined by either claim date or review date, whichever is newer.
   ///
-  /// [offset] - An integer that specifies the current offset (that is, starting
-  /// result
-  /// location) in search results. This field is only considered if `page_token`
-  /// is unset. For example, 0 means to return results starting from the first
-  /// matching result, and 10 means to return from the 11th result.
+  /// [pageSize] - The pagination size. We will return up to that many results.
+  /// Defaults to 10 if not set.
+  ///
+  /// [query] - Textual query string. Required unless
+  /// `review_publisher_site_filter` is specified.
+  ///
+  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// Can be used to restrict results by language, though we do not currently
+  /// consider the region.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -86,13 +83,13 @@ class ClaimsResourceApi {
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>
       search(
-          {core.String query,
-          core.int pageSize,
-          core.int maxAgeDays,
-          core.String languageCode,
-          core.String reviewPublisherSiteFilter,
-          core.String pageToken,
+          {core.String pageToken,
           core.int offset,
+          core.String reviewPublisherSiteFilter,
+          core.int maxAgeDays,
+          core.int pageSize,
+          core.String query,
+          core.String languageCode,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -101,26 +98,26 @@ class ClaimsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (maxAgeDays != null) {
-      _queryParams["maxAgeDays"] = ["${maxAgeDays}"];
-    }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
-    }
-    if (reviewPublisherSiteFilter != null) {
-      _queryParams["reviewPublisherSiteFilter"] = [reviewPublisherSiteFilter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (offset != null) {
       _queryParams["offset"] = ["${offset}"];
+    }
+    if (reviewPublisherSiteFilter != null) {
+      _queryParams["reviewPublisherSiteFilter"] = [reviewPublisherSiteFilter];
+    }
+    if (maxAgeDays != null) {
+      _queryParams["maxAgeDays"] = ["${maxAgeDays}"];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -291,31 +288,27 @@ class PagesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The pagination token. You may provide the `next_page_token`
-  /// returned from a
-  /// previous List request, if any, in order to get the next page. All other
-  /// fields must have the same values as in the previous request.
-  ///
-  /// [offset] - An integer that specifies the current offset (that is, starting
-  /// result
-  /// location) in search results. This field is only considered if `page_token`
-  /// is unset, and if the request is not for a specific URL. For example, 0
-  /// means to return results starting from the first matching result, and 10
-  /// means to return from the 11th result.
+  /// [pageSize] - The pagination size. We will return up to that many results.
+  /// Defaults to 10 if not set. Has no effect if a URL is requested.
   ///
   /// [organization] - The organization for which we want to fetch markups for.
-  /// For instance,
-  /// "site.com". Cannot be specified along with an URL.
-  ///
-  /// [pageSize] - The pagination size. We will return up to that many results.
-  /// Defaults to
-  /// 10 if not set. Has no effect if a URL is requested.
+  /// For instance, "site.com". Cannot be specified along with an URL.
   ///
   /// [url] - The URL from which to get `ClaimReview` markup. There will be at
-  /// most one
-  /// result. If markup is associated with a more canonical version of the URL
-  /// provided, we will return that URL instead. Cannot be specified along with
-  /// an organization.
+  /// most one result. If markup is associated with a more canonical version of
+  /// the URL provided, we will return that URL instead. Cannot be specified
+  /// along with an organization.
+  ///
+  /// [pageToken] - The pagination token. You may provide the `next_page_token`
+  /// returned from a previous List request, if any, in order to get the next
+  /// page. All other fields must have the same values as in the previous
+  /// request.
+  ///
+  /// [offset] - An integer that specifies the current offset (that is, starting
+  /// result location) in search results. This field is only considered if
+  /// `page_token` is unset, and if the request is not for a specific URL. For
+  /// example, 0 means to return results starting from the first matching
+  /// result, and 10 means to return from the 11th result.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -331,11 +324,11 @@ class PagesResourceApi {
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>
       list(
-          {core.String pageToken,
-          core.int offset,
+          {core.int pageSize,
           core.String organization,
-          core.int pageSize,
           core.String url,
+          core.String pageToken,
+          core.int offset,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -344,20 +337,20 @@ class PagesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (organization != null) {
+      _queryParams["organization"] = [organization];
+    }
+    if (url != null) {
+      _queryParams["url"] = [url];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (offset != null) {
       _queryParams["offset"] = ["${offset}"];
-    }
-    if (organization != null) {
-      _queryParams["organization"] = [organization];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (url != null) {
-      _queryParams["url"] = [url];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -376,22 +369,18 @@ class PagesResourceApi {
             .fromJson(data));
   }
 
-  /// Update for all `ClaimReview` markup on a page
-  ///
-  /// Note that this is a full update. To retain the existing `ClaimReview`
-  /// markup on a page, first perform a Get operation, then modify the returned
-  /// markup, and finally call Update with the entire `ClaimReview` markup as
-  /// the
-  /// body.
+  /// Update for all `ClaimReview` markup on a page Note that this is a full
+  /// update. To retain the existing `ClaimReview` markup on a page, first
+  /// perform a Get operation, then modify the returned markup, and finally call
+  /// Update with the entire `ClaimReview` markup as the body.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of this `ClaimReview` markup page resource, in the form
-  /// of
-  /// `pages/{page_id}`. Except for update requests, this field is output-only
-  /// and should not be set by the user.
+  /// of `pages/{page_id}`. Except for update requests, this field is
+  /// output-only and should not be set by the user.
   /// Value must have pattern "^pages/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -504,7 +493,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   /// Corresponds to `ClaimReview.itemReviewed.author.jobTitle`.
   core.String jobTitle;
 
-  /// A person or organization stating the claim. For instance, "John Doe".<br>
+  /// A person or organization stating the claim. For instance, "John Doe".
   /// Corresponds to `ClaimReview.itemReviewed.author.name`.
   core.String name;
 
@@ -550,8 +539,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
 /// Information about the claim rating.
 class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   /// For numeric ratings, the best value possible in the scale from worst to
-  /// best.<br>
-  /// Corresponds to `ClaimReview.reviewRating.bestRating`.
+  /// best. Corresponds to `ClaimReview.reviewRating.bestRating`.
   core.int bestRating;
 
   /// Corresponds to `ClaimReview.reviewRating.image`.
@@ -561,17 +549,15 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   core.String ratingExplanation;
 
   /// A numeric rating of this claim, in the range worstRating — bestRating
-  /// inclusive.<br>
-  /// Corresponds to `ClaimReview.reviewRating.ratingValue`.
+  /// inclusive. Corresponds to `ClaimReview.reviewRating.ratingValue`.
   core.int ratingValue;
 
-  /// The truthfulness rating as a human-readible short word or phrase.<br>
+  /// The truthfulness rating as a human-readible short word or phrase.
   /// Corresponds to `ClaimReview.reviewRating.alternateName`.
   core.String textualRating;
 
   /// For numeric ratings, the worst value possible in the scale from worst to
-  /// best.<br>
-  /// Corresponds to `ClaimReview.reviewRating.worstRating`.
+  /// best. Corresponds to `ClaimReview.reviewRating.worstRating`.
   core.int worstRating;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating();
@@ -697,8 +683,8 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   /// Corresponds to `ClaimReview.author.image`.
   core.String imageUrl;
 
-  /// Name of the organization that is publishing the fact check.<br>
-  /// Corresponds to `ClaimReview.author.name`.
+  /// Name of the organization that is publishing the fact check. Corresponds to
+  /// `ClaimReview.author.name`.
   core.String name;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
@@ -726,34 +712,32 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   }
 }
 
-/// Fields for an individual `ClaimReview` element.
-/// Except for sub-messages that group fields together, each of these fields
-/// correspond those in https://schema.org/ClaimReview. We list the precise
-/// mapping for each field.
+/// Fields for an individual `ClaimReview` element. Except for sub-messages that
+/// group fields together, each of these fields correspond those in
+/// https://schema.org/ClaimReview. We list the precise mapping for each field.
 class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   /// A list of links to works in which this claim appears, aside from the one
-  /// specified in `claim_first_appearance`.<br>
-  /// Corresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`.
+  /// specified in `claim_first_appearance`. Corresponds to
+  /// `ClaimReview.itemReviewed[@type=Claim].appearance.url`.
   core.List<core.String> claimAppearances;
 
   /// Info about the author of this claim.
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor claimAuthor;
 
-  /// The date when the claim was made or entered public discourse.<br>
-  /// Corresponds to `ClaimReview.itemReviewed.datePublished`.
+  /// The date when the claim was made or entered public discourse. Corresponds
+  /// to `ClaimReview.itemReviewed.datePublished`.
   core.String claimDate;
 
-  /// A link to a work in which this claim first appears.<br>
-  /// Corresponds to
+  /// A link to a work in which this claim first appears. Corresponds to
   /// `ClaimReview.itemReviewed[@type=Claim].firstAppearance.url`.
   core.String claimFirstAppearance;
 
-  /// The location where this claim was made.<br>
-  /// Corresponds to `ClaimReview.itemReviewed.name`.
+  /// The location where this claim was made. Corresponds to
+  /// `ClaimReview.itemReviewed.name`.
   core.String claimLocation;
 
-  /// A short summary of the claim being evaluated.<br>
-  /// Corresponds to `ClaimReview.claimReviewed`.
+  /// A short summary of the claim being evaluated. Corresponds to
+  /// `ClaimReview.claimReviewed`.
   core.String claimReviewed;
 
   /// Info about the rating of this claim review.
@@ -761,7 +745,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
 
   /// This field is optional, and will default to the page URL. We provide this
   /// field to allow you the override the default value, but the only permitted
-  /// override is the page URL plus an optional anchor link ("page jump").<br>
+  /// override is the page URL plus an optional anchor link ("page jump").
   /// Corresponds to `ClaimReview.url`
   core.String url;
 
@@ -832,13 +816,13 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
 
 /// Holds one or more instances of `ClaimReview` markup for a webpage.
 class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
-  /// Info about the author of this claim review.
-  /// Similar to the above, semantically these are page-level fields, and each
-  /// `ClaimReview` on this page will contain the same values.
+  /// Info about the author of this claim review. Similar to the above,
+  /// semantically these are page-level fields, and each `ClaimReview` on this
+  /// page will contain the same values.
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor claimReviewAuthor;
 
-  /// A list of individual claim reviews for this page.
-  /// Each item in the list corresponds to one `ClaimReview` element.
+  /// A list of individual claim reviews for this page. Each item in the list
+  /// corresponds to one `ClaimReview` element.
   core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>
       claimReviewMarkups;
 
@@ -847,17 +831,16 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   /// and should not be set by the user.
   core.String name;
 
-  /// The URL of the page associated with this `ClaimReview` markup.
-  /// While every individual `ClaimReview` has its own URL field, semantically
-  /// this is a page-level field, and each `ClaimReview` on this page will use
-  /// this value unless individually overridden.<br>
-  /// Corresponds to `ClaimReview.url`
+  /// The URL of the page associated with this `ClaimReview` markup. While every
+  /// individual `ClaimReview` has its own URL field, semantically this is a
+  /// page-level field, and each `ClaimReview` on this page will use this value
+  /// unless individually overridden. Corresponds to `ClaimReview.url`
   core.String pageUrl;
 
-  /// The date when the fact check was published.
-  /// Similar to the URL, semantically this is a page-level field, and each
-  /// `ClaimReview` on this page will contain the same value.<br>
-  /// Corresponds to `ClaimReview.datePublished`
+  /// The date when the fact check was published. Similar to the URL,
+  /// semantically this is a page-level field, and each `ClaimReview` on this
+  /// page will contain the same value. Corresponds to
+  /// `ClaimReview.datePublished`
   core.String publishDate;
 
   /// The version ID for this markup. Except for update requests, this field is
@@ -1037,13 +1020,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class GoogleProtobufEmpty {
   GoogleProtobufEmpty();
 

@@ -64,7 +64,7 @@ class ProjectsOperationsResourceApi {
   ProjectsOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -129,8 +129,7 @@ class ProjectsSitesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The site for which to get the SiteConfig, in the
-  /// format:
-  /// <code>sites/<var>site-name</var>/config</code>
+  /// format: sites/ site-name/config
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+/config$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -176,15 +175,13 @@ class ProjectsSitesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The site for which to update the SiteConfig, in the
-  /// format:
-  /// <code>sites/<var>site-name</var>/config</code>
+  /// format: sites/ site-name/config
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+/config$".
   ///
   /// [updateMask] - A set of field names from your [site
-  /// configuration](../sites.SiteConfig)
-  /// that you want to update.
-  /// <br>A field will be overwritten if, and only if, it's in the mask.
-  /// <br>If a mask is not provided then a default mask of only
+  /// configuration](../sites.SiteConfig) that you want to update. A field will
+  /// be overwritten if, and only if, it's in the mask. If a mask is not
+  /// provided then a default mask of only
   /// [`max_versions`](../sites.SiteConfig.max_versions) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -239,6 +236,265 @@ class ProjectsSitesChannelsResourceApi {
 
   ProjectsSitesChannelsResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a new channel in the specified site.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The site in which this channel should be created.
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [channelId] - Required. Immutable. A unique id within the site to identify
+  /// the channel.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> create(Channel request, core.String parent,
+      {core.String channelId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/channels';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Channel.fromJson(data));
+  }
+
+  /// Deletes a channel of a site. The `live` channel cannot be deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully-qualified identifier for the site.
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Retrieves information for the specified channel of a site.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully-qualified identifier for the channel.
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Channel.fromJson(data));
+  }
+
+  /// Lists the channels for the specified site. All sites have a default "live"
+  /// channel.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The site from which to list channels.
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [pageSize] - The maximum number of versions to return. The service may
+  /// return fewer than this value. If unspecified, at most 25 channels will be
+  /// returned. The maximum value is 100; valuupdateses above 100 will be
+  /// coerced to 100
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListChannelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListChannelsResponse> list(core.String parent,
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/channels';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListChannelsResponse.fromJson(data));
+  }
+
+  /// Updates information for the specified channel of a site. This method will
+  /// implicitly create a channel if it doesn't exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The fully-qualified identifier of the Channel.
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [updateMask] - A comma-separated list of fields to be updated in this
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> patch(Channel request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Channel.fromJson(data));
+  }
 }
 
 class ProjectsSitesChannelsReleasesResourceApi {
@@ -255,16 +511,14 @@ class ProjectsSitesChannelsReleasesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The site that the release belongs to, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/ site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
   ///
   /// [versionName] - The unique identifier for a version, in the format:
-  /// <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
-  /// The <var>site-name</var> in this version identifier must match the
-  /// <var>site-name</var> in the `parent` parameter.
-  /// <br>
-  /// <br>This query parameter must be empty if the `type` field in the
-  /// request body is `SITE_DISABLE`.
+  /// /sites/site-name /versions/versionID The site-name in this version
+  /// identifier must match the site-name in the `parent` parameter. This query
+  /// parameter must be empty if the `type` field in the request body is
+  /// `SITE_DISABLE`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -316,7 +570,7 @@ class ProjectsSitesChannelsReleasesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
   ///
   /// [pageToken] - The next_page_token from a previous request, if provided.
@@ -382,8 +636,7 @@ class ProjectsSitesDomainsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent to create the domain association for, in
-  /// the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// the format: sites/site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -519,7 +772,7 @@ class ProjectsSitesDomainsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent for which to list domains, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/ site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
   ///
   /// [pageToken] - The next_page_token from a previous request, if provided.
@@ -579,8 +832,7 @@ class ProjectsSitesDomainsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the domain association to update or create,
-  /// if an
-  /// association doesn't already exist.
+  /// if an association doesn't already exist.
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+/domains/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -638,16 +890,14 @@ class ProjectsSitesReleasesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The site that the release belongs to, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/ site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
   ///
   /// [versionName] - The unique identifier for a version, in the format:
-  /// <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
-  /// The <var>site-name</var> in this version identifier must match the
-  /// <var>site-name</var> in the `parent` parameter.
-  /// <br>
-  /// <br>This query parameter must be empty if the `type` field in the
-  /// request body is `SITE_DISABLE`.
+  /// /sites/site-name /versions/versionID The site-name in this version
+  /// identifier must match the site-name in the `parent` parameter. This query
+  /// parameter must be empty if the `type` field in the request body is
+  /// `SITE_DISABLE`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -699,7 +949,7 @@ class ProjectsSitesReleasesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
   ///
   /// [pageToken] - The next_page_token from a previous request, if provided.
@@ -761,6 +1011,59 @@ class ProjectsSitesVersionsResourceApi {
   ProjectsSitesVersionsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new version on the target site using the content of the
+  /// specified version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The target site where the cloned version will reside,
+  /// in the format: `sites/{site}`
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> clone(CloneVersionRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/versions:clone';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Creates a new version for a site.
   ///
   /// [request] - The metadata request object.
@@ -768,16 +1071,14 @@ class ProjectsSitesVersionsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent to create the version for, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/ site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
   ///
   /// [sizeBytes] - The self-reported size of the version. This value is used
-  /// for a pre-emptive
-  /// quota check for legacy version uploads.
+  /// for a pre-emptive quota check for legacy version uploads.
   ///
-  /// [versionId] - A unique id for the new version. This is only specified for
-  /// legacy version
-  /// creations.
+  /// [versionId] - A unique id for the new version. This is was only specified
+  /// for legacy version creations, and should be blank.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -832,7 +1133,7 @@ class ProjectsSitesVersionsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the version to be deleted, in the format:
-  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// sites/ site-name/versions/versionID
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -871,28 +1172,26 @@ class ProjectsSitesVersionsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Lists the versions that have been created on the specified site.
-  /// Will include filtering in the future.
+  /// Lists the versions that have been created on the specified site. Will
+  /// include filtering in the future.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [pageSize] - The maximum number of versions to return. The service may
+  /// return fewer than this value. If unspecified, at most 25 versions will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100
   ///
   /// [pageToken] - The next_page_token from a previous request, if provided.
   ///
-  /// [pageSize] - The maximum number of versions to return. The service may
-  /// return fewer than
-  /// this value.
-  /// If unspecified, at most 25 versions will be returned.
-  /// The maximum value is 100; values above 100 will be coerced to 100
-  ///
   /// [filter] - The filter string used to return a subset of versions in the
-  /// response.
-  /// Currently supported fields for filtering are: name, status,
-  /// and create_time. Filter processing will be implemented in accordance
-  /// with go/filtering.
+  /// response. Currently supported fields for filtering are: name, status, and
+  /// create_time. Filter processing will be implemented in accordance with
+  /// go/filtering.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -905,8 +1204,8 @@ class ProjectsSitesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -919,11 +1218,11 @@ class ProjectsSitesVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -948,25 +1247,23 @@ class ProjectsSitesVersionsResourceApi {
   /// Updates the specified metadata for a version. Note that this method will
   /// fail with `FAILED_PRECONDITION` in the event of an invalid state
   /// transition. The only valid transition for a version is currently from a
-  /// `CREATED` status to a `FINALIZED` status.
-  /// Use [`DeleteVersion`](../sites.versions/delete) to set the status of a
-  /// version to `DELETED`.
+  /// `CREATED` status to a `FINALIZED` status. Use
+  /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version
+  /// to `DELETED`.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - The unique identifier for a version, in the format:
-  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
-  /// This name is provided in the response body when you call the
-  /// [`CreateVersion`](../sites.versions/create) endpoint.
+  /// sites/site-name /versions/versionID This name is provided in the response
+  /// body when you call the [`CreateVersion`](../sites.versions/create)
+  /// endpoint.
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
   ///
   /// [updateMask] - A set of field names from your [version](../sites.versions)
-  /// that you want
-  /// to update.
-  /// <br>A field will be overwritten if, and only if, it's in the mask.
-  /// <br>If a mask is not provided then a default mask of only
+  /// that you want to update. A field will be overwritten if, and only if, it's
+  /// in the mask. If a mask is not provided then a default mask of only
   /// [`status`](../sites.versions#Version.FIELDS.status) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1012,14 +1309,14 @@ class ProjectsSitesVersionsResourceApi {
     return _response.then((data) => new Version.fromJson(data));
   }
 
-  /// Adds content files to a version.
+  /// Adds content files to a version. Each file must be under 2 GB.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The version to add files to, in the format:
-  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// sites/site-name /versions/versionID
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1078,20 +1375,22 @@ class ProjectsSitesVersionsFilesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent to list files for, in the format:
-  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// sites/site-name /versions/versionID
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
-  ///
-  /// [pageToken] - The next_page_token from a previous request, if provided.
-  /// This will be the
-  /// encoded version of a firebase.hosting.proto.metadata.ListFilesPageToken.
   ///
   /// [pageSize] - The page size to return. Defaults to 1000.
   ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  /// This will be the encoded version of a
+  /// firebase.hosting.proto.metadata.ListFilesPageToken.
+  ///
   /// [status] - The type of files in the version that should be listed.
   /// Possible string values are:
-  /// - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
-  /// - "EXPECTED" : A EXPECTED.
-  /// - "ACTIVE" : A ACTIVE.
+  /// - "STATUS_UNSPECIFIED" : The default status; should not be intentionally
+  /// used.
+  /// - "EXPECTED" : The file has been included in the version and is expected
+  /// to be uploaded in the near future.
+  /// - "ACTIVE" : The file has already been uploaded to Firebase Hosting.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1104,8 +1403,8 @@ class ProjectsSitesVersionsFilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVersionFilesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String status,
       core.String $fields}) {
     var _url;
@@ -1118,11 +1417,11 @@ class ProjectsSitesVersionsFilesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (status != null) {
       _queryParams["status"] = [status];
@@ -1165,8 +1464,7 @@ class SitesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The site for which to get the SiteConfig, in the
-  /// format:
-  /// <code>sites/<var>site-name</var>/config</code>
+  /// format: sites/ site-name/config
   /// Value must have pattern "^sites/[^/]+/config$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1212,15 +1510,13 @@ class SitesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The site for which to update the SiteConfig, in the
-  /// format:
-  /// <code>sites/<var>site-name</var>/config</code>
+  /// format: sites/ site-name/config
   /// Value must have pattern "^sites/[^/]+/config$".
   ///
   /// [updateMask] - A set of field names from your [site
-  /// configuration](../sites.SiteConfig)
-  /// that you want to update.
-  /// <br>A field will be overwritten if, and only if, it's in the mask.
-  /// <br>If a mask is not provided then a default mask of only
+  /// configuration](../sites.SiteConfig) that you want to update. A field will
+  /// be overwritten if, and only if, it's in the mask. If a mask is not
+  /// provided then a default mask of only
   /// [`max_versions`](../sites.SiteConfig.max_versions) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1274,6 +1570,265 @@ class SitesChannelsResourceApi {
       new SitesChannelsReleasesResourceApi(_requester);
 
   SitesChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new channel in the specified site.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The site in which this channel should be created.
+  /// Value must have pattern "^sites/[^/]+$".
+  ///
+  /// [channelId] - Required. Immutable. A unique id within the site to identify
+  /// the channel.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> create(Channel request, core.String parent,
+      {core.String channelId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/channels';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Channel.fromJson(data));
+  }
+
+  /// Deletes a channel of a site. The `live` channel cannot be deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully-qualified identifier for the site.
+  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Retrieves information for the specified channel of a site.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully-qualified identifier for the channel.
+  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Channel.fromJson(data));
+  }
+
+  /// Lists the channels for the specified site. All sites have a default "live"
+  /// channel.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The site from which to list channels.
+  /// Value must have pattern "^sites/[^/]+$".
+  ///
+  /// [pageSize] - The maximum number of versions to return. The service may
+  /// return fewer than this value. If unspecified, at most 25 channels will be
+  /// returned. The maximum value is 100; valuupdateses above 100 will be
+  /// coerced to 100
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListChannelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListChannelsResponse> list(core.String parent,
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/channels';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListChannelsResponse.fromJson(data));
+  }
+
+  /// Updates information for the specified channel of a site. This method will
+  /// implicitly create a channel if it doesn't exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The fully-qualified identifier of the Channel.
+  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [updateMask] - A comma-separated list of fields to be updated in this
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> patch(Channel request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Channel.fromJson(data));
+  }
 }
 
 class SitesChannelsReleasesResourceApi {
@@ -1290,16 +1845,14 @@ class SitesChannelsReleasesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The site that the release belongs to, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/ site-name
   /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
   ///
   /// [versionName] - The unique identifier for a version, in the format:
-  /// <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
-  /// The <var>site-name</var> in this version identifier must match the
-  /// <var>site-name</var> in the `parent` parameter.
-  /// <br>
-  /// <br>This query parameter must be empty if the `type` field in the
-  /// request body is `SITE_DISABLE`.
+  /// /sites/site-name /versions/versionID The site-name in this version
+  /// identifier must match the site-name in the `parent` parameter. This query
+  /// parameter must be empty if the `type` field in the request body is
+  /// `SITE_DISABLE`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1351,7 +1904,7 @@ class SitesChannelsReleasesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/site-name
   /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
   ///
   /// [pageToken] - The next_page_token from a previous request, if provided.
@@ -1416,8 +1969,7 @@ class SitesDomainsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent to create the domain association for, in
-  /// the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// the format: sites/site-name
   /// Value must have pattern "^sites/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1553,12 +2105,12 @@ class SitesDomainsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent for which to list domains, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/ site-name
   /// Value must have pattern "^sites/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token from a previous request, if provided.
-  ///
   /// [pageSize] - The page size to return. Defaults to 50.
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1571,7 +2123,7 @@ class SitesDomainsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDomainsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1582,11 +2134,11 @@ class SitesDomainsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1613,8 +2165,7 @@ class SitesDomainsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the domain association to update or create,
-  /// if an
-  /// association doesn't already exist.
+  /// if an association doesn't already exist.
   /// Value must have pattern "^sites/[^/]+/domains/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1671,16 +2222,14 @@ class SitesReleasesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The site that the release belongs to, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/ site-name
   /// Value must have pattern "^sites/[^/]+$".
   ///
   /// [versionName] - The unique identifier for a version, in the format:
-  /// <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
-  /// The <var>site-name</var> in this version identifier must match the
-  /// <var>site-name</var> in the `parent` parameter.
-  /// <br>
-  /// <br>This query parameter must be empty if the `type` field in the
-  /// request body is `SITE_DISABLE`.
+  /// /sites/site-name /versions/versionID The site-name in this version
+  /// identifier must match the site-name in the `parent` parameter. This query
+  /// parameter must be empty if the `type` field in the request body is
+  /// `SITE_DISABLE`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1732,7 +2281,7 @@ class SitesReleasesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/site-name
   /// Value must have pattern "^sites/[^/]+$".
   ///
   /// [pageToken] - The next_page_token from a previous request, if provided.
@@ -1793,6 +2342,59 @@ class SitesVersionsResourceApi {
 
   SitesVersionsResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Creates a new version on the target site using the content of the
+  /// specified version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The target site where the cloned version will reside,
+  /// in the format: `sites/{site}`
+  /// Value must have pattern "^sites/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> clone(CloneVersionRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/versions:clone';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Creates a new version for a site.
   ///
   /// [request] - The metadata request object.
@@ -1800,16 +2402,14 @@ class SitesVersionsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent to create the version for, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/ site-name
   /// Value must have pattern "^sites/[^/]+$".
   ///
   /// [sizeBytes] - The self-reported size of the version. This value is used
-  /// for a pre-emptive
-  /// quota check for legacy version uploads.
+  /// for a pre-emptive quota check for legacy version uploads.
   ///
-  /// [versionId] - A unique id for the new version. This is only specified for
-  /// legacy version
-  /// creations.
+  /// [versionId] - A unique id for the new version. This is was only specified
+  /// for legacy version creations, and should be blank.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1864,7 +2464,7 @@ class SitesVersionsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the version to be deleted, in the format:
-  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// sites/ site-name/versions/versionID
   /// Value must have pattern "^sites/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1903,28 +2503,26 @@ class SitesVersionsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Lists the versions that have been created on the specified site.
-  /// Will include filtering in the future.
+  /// Lists the versions that have been created on the specified site. Will
+  /// include filtering in the future.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
-  /// <code>sites/<var>site-name</var></code>
+  /// sites/site-name
   /// Value must have pattern "^sites/[^/]+$".
-  ///
-  /// [filter] - The filter string used to return a subset of versions in the
-  /// response.
-  /// Currently supported fields for filtering are: name, status,
-  /// and create_time. Filter processing will be implemented in accordance
-  /// with go/filtering.
   ///
   /// [pageToken] - The next_page_token from a previous request, if provided.
   ///
+  /// [filter] - The filter string used to return a subset of versions in the
+  /// response. Currently supported fields for filtering are: name, status, and
+  /// create_time. Filter processing will be implemented in accordance with
+  /// go/filtering.
+  ///
   /// [pageSize] - The maximum number of versions to return. The service may
-  /// return fewer than
-  /// this value.
-  /// If unspecified, at most 25 versions will be returned.
-  /// The maximum value is 100; values above 100 will be coerced to 100
+  /// return fewer than this value. If unspecified, at most 25 versions will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1937,8 +2535,8 @@ class SitesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -1951,11 +2549,11 @@ class SitesVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1980,25 +2578,23 @@ class SitesVersionsResourceApi {
   /// Updates the specified metadata for a version. Note that this method will
   /// fail with `FAILED_PRECONDITION` in the event of an invalid state
   /// transition. The only valid transition for a version is currently from a
-  /// `CREATED` status to a `FINALIZED` status.
-  /// Use [`DeleteVersion`](../sites.versions/delete) to set the status of a
-  /// version to `DELETED`.
+  /// `CREATED` status to a `FINALIZED` status. Use
+  /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version
+  /// to `DELETED`.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - The unique identifier for a version, in the format:
-  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
-  /// This name is provided in the response body when you call the
-  /// [`CreateVersion`](../sites.versions/create) endpoint.
+  /// sites/site-name /versions/versionID This name is provided in the response
+  /// body when you call the [`CreateVersion`](../sites.versions/create)
+  /// endpoint.
   /// Value must have pattern "^sites/[^/]+/versions/[^/]+$".
   ///
   /// [updateMask] - A set of field names from your [version](../sites.versions)
-  /// that you want
-  /// to update.
-  /// <br>A field will be overwritten if, and only if, it's in the mask.
-  /// <br>If a mask is not provided then a default mask of only
+  /// that you want to update. A field will be overwritten if, and only if, it's
+  /// in the mask. If a mask is not provided then a default mask of only
   /// [`status`](../sites.versions#Version.FIELDS.status) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2044,14 +2640,14 @@ class SitesVersionsResourceApi {
     return _response.then((data) => new Version.fromJson(data));
   }
 
-  /// Adds content files to a version.
+  /// Adds content files to a version. Each file must be under 2 GB.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The version to add files to, in the format:
-  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// sites/site-name /versions/versionID
   /// Value must have pattern "^sites/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2110,18 +2706,20 @@ class SitesVersionsFilesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent to list files for, in the format:
-  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// sites/site-name /versions/versionID
   /// Value must have pattern "^sites/[^/]+/versions/[^/]+$".
   ///
   /// [status] - The type of files in the version that should be listed.
   /// Possible string values are:
-  /// - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
-  /// - "EXPECTED" : A EXPECTED.
-  /// - "ACTIVE" : A ACTIVE.
+  /// - "STATUS_UNSPECIFIED" : The default status; should not be intentionally
+  /// used.
+  /// - "EXPECTED" : The file has been included in the version and is expected
+  /// to be uploaded in the near future.
+  /// - "ACTIVE" : The file has already been uploaded to Firebase Hosting.
   ///
   /// [pageToken] - The next_page_token from a previous request, if provided.
-  /// This will be the
-  /// encoded version of a firebase.hosting.proto.metadata.ListFilesPageToken.
+  /// This will be the encoded version of a
+  /// firebase.hosting.proto.metadata.ListFilesPageToken.
   ///
   /// [pageSize] - The page size to return. Defaults to 1000.
   ///
@@ -2178,8 +2776,8 @@ class SitesVersionsFilesResourceApi {
   }
 }
 
-/// Contains metadata about the user who performed an action, such as creating
-/// a release or finalizing a version.
+/// Contains metadata about the user who performed an action, such as creating a
+/// release or finalizing a version.
 class ActingUser {
   /// The email address of the user when the user performed the action.
   core.String email;
@@ -2279,14 +2877,170 @@ class CertHttpChallenge {
   }
 }
 
+/// A `Channel` represents a stream of releases for a site. All sites have a
+/// default `live` channel that serves content to the live Firebase-provided
+/// domains and any connected custom domains.
+class Channel {
+  /// Output only. The time at which the channel was created.
+  core.String createTime;
+
+  /// The time at which the channel will be automatically deleted. If null, the
+  /// channel will not be automatically deleted. This field is present in output
+  /// whether set directly or via the `ttl` field.
+  core.String expireTime;
+
+  /// Text labels used for extra metadata and/or filtering.
+  core.Map<core.String, core.String> labels;
+
+  /// The fully-qualified identifier of the Channel.
+  core.String name;
+
+  /// Output only. The current release for the channel, if any.
+  Release release;
+
+  /// The number of previous releases to retain on the channel for rollback or
+  /// other purposes. Must be a number between 1-100. Defaults to 10 for new
+  /// channels.
+  core.int retainedReleaseCount;
+
+  /// Input only. A time-to-live for this channel. Sets `expire_time` to the
+  /// provided duration past the time of the request.
+  core.String ttl;
+
+  /// Output only. The time at which the channel was last updated.
+  core.String updateTime;
+
+  /// Output only. The URL at which the channel can be viewed. For the `live`
+  /// channel, the content of the current release may also be visible at other
+  /// URLs.
+  core.String url;
+
+  Channel();
+
+  Channel.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("release")) {
+      release = new Release.fromJson(_json["release"]);
+    }
+    if (_json.containsKey("retainedReleaseCount")) {
+      retainedReleaseCount = _json["retainedReleaseCount"];
+    }
+    if (_json.containsKey("ttl")) {
+      ttl = _json["ttl"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (release != null) {
+      _json["release"] = (release).toJson();
+    }
+    if (retainedReleaseCount != null) {
+      _json["retainedReleaseCount"] = retainedReleaseCount;
+    }
+    if (ttl != null) {
+      _json["ttl"] = ttl;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/// The request sent to CloneVersion.
+class CloneVersionRequest {
+  /// If provided, only paths that do not match any of the regexes in this list
+  /// will be included in the new version.
+  PathFilter exclude;
+
+  /// If true, immediately finalize the version after cloning is complete.
+  core.bool finalize;
+
+  /// If provided, only paths that match one or more regexes in this list will
+  /// be included in the new version.
+  PathFilter include;
+
+  /// Required. The name of the version to be cloned, in the format:
+  /// `sites/{site}/versions/{version}`
+  core.String sourceVersion;
+
+  CloneVersionRequest();
+
+  CloneVersionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("exclude")) {
+      exclude = new PathFilter.fromJson(_json["exclude"]);
+    }
+    if (_json.containsKey("finalize")) {
+      finalize = _json["finalize"];
+    }
+    if (_json.containsKey("include")) {
+      include = new PathFilter.fromJson(_json["include"]);
+    }
+    if (_json.containsKey("sourceVersion")) {
+      sourceVersion = _json["sourceVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exclude != null) {
+      _json["exclude"] = (exclude).toJson();
+    }
+    if (finalize != null) {
+      _json["finalize"] = finalize;
+    }
+    if (include != null) {
+      _json["include"] = (include).toJson();
+    }
+    if (sourceVersion != null) {
+      _json["sourceVersion"] = sourceVersion;
+    }
+    return _json;
+  }
+}
+
 /// A configured rewrite that directs requests to a Cloud Run service. If the
 /// Cloud Run service does not exist when setting or updating your Firebase
 /// Hosting configuration, then the request fails. Any errors from the Cloud Run
 /// service are passed to the end user (for example, if you delete a service,
-/// any
-/// requests directed to that service receive a `404` error).
+/// any requests directed to that service receive a `404` error).
 class CloudRunRewrite {
-  /// Optional. User-provided region where the Cloud Run service is hosted.<br>
+  /// Optional. User-provided region where the Cloud Run service is hosted.
   /// Defaults to `us-central1` if not supplied.
   core.String region;
 
@@ -2336,18 +3090,16 @@ class Domain {
   /// Possible string values are:
   /// - "DOMAIN_STATUS_UNSPECIFIED" : Unspecified domain association status.
   /// - "DOMAIN_CHANGE_PENDING" : An external operation is in progress on the
-  /// domain association and no
-  /// further operations can be performed until it is complete. Formerly used
-  /// for
-  /// metabase updates.  Not currently used
+  /// domain association and no further operations can be performed until it is
+  /// complete. Formerly used for metabase updates. Not currently used
   /// - "DOMAIN_ACTIVE" : The domain association is active and no additional
   /// action is required.
   /// - "DOMAIN_VERIFICATION_REQUIRED" : The domain was previously verified in
-  /// the legacy system. User must
-  /// reverify the domain through the ownership service.
+  /// the legacy system. User must reverify the domain through the ownership
+  /// service.
   /// - "DOMAIN_VERIFICATION_LOST" : The domain verification has been lost and
-  /// the domain is in the grace period
-  /// before being removed from the Firebase Hosting site.
+  /// the domain is in the grace period before being removed from the Firebase
+  /// Hosting site.
   core.String status;
 
   /// Output only. The time at which the domain was last updated.
@@ -2404,8 +3156,7 @@ class Domain {
 /// The current certificate provisioning status information for a domain.
 class DomainProvisioning {
   /// The TXT records (for the certificate challenge) that were found at the
-  /// last
-  /// DNS fetch.
+  /// last DNS fetch.
   core.List<core.String> certChallengeDiscoveredTxt;
 
   /// The DNS challenge for generating a certificate.
@@ -2441,14 +3192,11 @@ class DomainProvisioning {
   /// - "DNS_MISSING" : None of the required DNS records have been detected on
   /// the domain.
   /// - "DNS_PARTIAL_MATCH" : Some of the required DNS records were detected,
-  /// but not all of them. No
-  /// extra (non-required) DNS records were detected.
+  /// but not all of them. No extra (non-required) DNS records were detected.
   /// - "DNS_MATCH" : All required DNS records were detected. No extra
-  /// (non-required) DNS records
-  /// were detected.
+  /// (non-required) DNS records were detected.
   /// - "DNS_EXTRANEOUS_MATCH" : The domain has at least one of the required DNS
-  /// records, and it has at
-  /// least one extra (non-required) DNS record.
+  /// records, and it has at least one extra (non-required) DNS record.
   core.String dnsStatus;
 
   /// The list of IPs to which the domain is expected to resolve.
@@ -2530,8 +3278,7 @@ class DomainRedirect {
   /// - "REDIRECT_TYPE_UNSPECIFIED" : The default redirect type; should not be
   /// intentionlly used.
   /// - "MOVED_PERMANENTLY" : The redirect will respond with an HTTP status code
-  /// of
-  /// `301 Moved Permanently`.
+  /// of `301 Moved Permanently`.
   core.String type;
 
   DomainRedirect();
@@ -2560,13 +3307,9 @@ class DomainRedirect {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -2579,19 +3322,19 @@ class Empty {
   }
 }
 
-/// A [`header`](/docs/hosting/full-config#headers) defines custom headers to
-/// add to a response should the request URL path match the pattern.
+/// A [`header`](/docs/hosting/full-config#headers) is an object that specifies
+/// a URL pattern that, if matched to the request URL path, triggers Hosting to
+/// apply the specified custom response headers.
 class Header {
-  /// The user-supplied [glob
-  /// pattern](/docs/hosting/full-config#glob_pattern_matching) to match
-  /// against the request URL path.
+  /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
+  /// to match against the request URL path.
   core.String glob;
 
   /// Required. The additional headers to add to the response.
   core.Map<core.String, core.String> headers;
 
-  /// The user-supplied RE2 regular expression to match against the request
-  /// URL path.
+  /// The user-supplied RE2 regular expression to match against the request URL
+  /// path.
   core.String regex;
 
   Header();
@@ -2619,6 +3362,67 @@ class Header {
     }
     if (regex != null) {
       _json["regex"] = regex;
+    }
+    return _json;
+  }
+}
+
+/// If provided, i18n rewrites are enabled.
+class I18nConfig {
+  /// Required. The user-supplied path where country and language specific
+  /// content will be looked for within the public directory.
+  core.String root;
+
+  I18nConfig();
+
+  I18nConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("root")) {
+      root = _json["root"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (root != null) {
+      _json["root"] = root;
+    }
+    return _json;
+  }
+}
+
+/// The response returned by ListChannels.
+class ListChannelsResponse {
+  /// The list of channels.
+  core.List<Channel> channels;
+
+  /// If there are additional releases remaining beyond the ones in this
+  /// response, then supply this token in the next
+  /// [`list`](../sites.channels/list) call to continue with the next set of
+  /// releases.
+  core.String nextPageToken;
+
+  ListChannelsResponse();
+
+  ListChannelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("channels")) {
+      channels = (_json["channels"] as core.List)
+          .map<Channel>((value) => new Channel.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (channels != null) {
+      _json["channels"] = channels.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }
@@ -2658,7 +3462,6 @@ class ListDomainsResponse {
   }
 }
 
-/// The response when listing Releases.
 class ListReleasesResponse {
   /// If there are additional releases remaining beyond the ones in this
   /// response, then supply this token in the next
@@ -2695,7 +3498,6 @@ class ListReleasesResponse {
   }
 }
 
-/// The response when listing a Version's Files..
 class ListVersionFilesResponse {
   /// The list path/hashes in the specified version.
   core.List<VersionFile> files;
@@ -2729,7 +3531,6 @@ class ListVersionFilesResponse {
   }
 }
 
-/// The response when listing Versions.
 class ListVersionsResponse {
   /// The pagination token, if more results exist
   core.String nextPageToken;
@@ -2766,17 +3567,17 @@ class ListVersionsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -2784,19 +3585,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2846,6 +3645,29 @@ class Operation {
   }
 }
 
+/// A representation of filter path.
+class PathFilter {
+  /// An array of regexes to filter by.
+  core.List<core.String> regexes;
+
+  PathFilter();
+
+  PathFilter.fromJson(core.Map _json) {
+    if (_json.containsKey("regexes")) {
+      regexes = (_json["regexes"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (regexes != null) {
+      _json["regexes"] = regexes;
+    }
+    return _json;
+  }
+}
+
 /// The request to populate a Version's Files.
 class PopulateVersionFilesRequest {
   /// A set of file paths to the hashes corresponding to assets that should be
@@ -2872,16 +3694,16 @@ class PopulateVersionFilesRequest {
   }
 }
 
-/// The response to a PopulateVersionFilesRequest.
 class PopulateVersionFilesResponse {
   /// The content hashes of the specified files that need to be uploaded to the
   /// specified endpoint.
   core.List<core.String> uploadRequiredHashes;
 
   /// The URL to which the files should be uploaded, in the format:
-  /// <br>"https://upload-firebasehosting.googleapis.com/upload/sites/<var>site-name</var>/versions/<var>versionID</var>/files".
-  /// <br>Perform a multipart `POST` of the Gzipped file contents to the URL
-  /// using a forward slash and the hash of the file appended to the end.
+  /// "https://upload-firebasehosting.googleapis.com/upload/sites/site-name
+  /// /versions/versionID/files". Perform a multipart `POST` of the Gzipped file
+  /// contents to the URL using a forward slash and the hash of the file
+  /// appended to the end.
   core.String uploadUrl;
 
   PopulateVersionFilesResponse();
@@ -2909,15 +3731,15 @@ class PopulateVersionFilesResponse {
   }
 }
 
-/// Version preview configuration. If active and unexpired,
-/// this version will be accessible via a custom URL even
-/// if it is not the currently released version.
+/// Version preview configuration. If active and unexpired, this version will be
+/// accessible via a custom URL even if it is not the currently released
+/// version.
 class PreviewConfig {
   /// If true, preview URLs are enabled for this version.
   core.bool active;
 
-  /// Indicates the expiration time for previewing this
-  /// version; preview URL requests received after this time will 404.
+  /// Indicates the expiration time for previewing this version; preview URL
+  /// requests received after this time will 404.
   core.String expireTime;
 
   PreviewConfig();
@@ -2944,27 +3766,23 @@ class PreviewConfig {
   }
 }
 
-/// A [`redirect`](/docs/hosting/full-config#redirects) represents the
-/// configuration for returning an HTTP redirect response given a matching
-/// request URL path.
+/// A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL
+/// pattern that, if matched to the request URL path, triggers Hosting to
+/// respond with a redirect to the specified destination path.
 class Redirect {
-  /// The user-supplied [glob
-  /// pattern](/docs/hosting/full-config#glob_pattern_matching) to match
-  /// against the request URL path.
+  /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
+  /// to match against the request URL path.
   core.String glob;
 
   /// Required. The value to put in the HTTP location header of the response.
-  /// <br>The location can contain capture group values from the pattern using
-  /// a `:` prefix to identify the segment and an optional `*` to capture the
-  /// rest of the URL.
-  /// For example:
-  /// <code>"glob": "/:capture*",
-  /// <br>"statusCode": 301,
-  /// <br>"location": "https://example.com/foo/:capture"</code>
+  /// The location can contain capture group values from the pattern using a `:`
+  /// prefix to identify the segment and an optional `*` to capture the rest of
+  /// the URL. For example: "glob": "/:capture*", "statusCode": 301, "location":
+  /// "https://example.com/foo/:capture"
   core.String location;
 
-  /// The user-supplied RE2 regular expression to match against the request
-  /// URL path.
+  /// The user-supplied RE2 regular expression to match against the request URL
+  /// path.
   core.String regex;
 
   /// Required. The status HTTP code to return in the response. It must be a
@@ -3007,19 +3825,16 @@ class Redirect {
   }
 }
 
-/// A `Release` is a particular
-/// [collection of configurations and files](sites.versions)
-/// that is set to be public at a particular time.
+/// A `Release` is a particular [collection of configurations and
+/// files](sites.versions) that is set to be public at a particular time.
 class Release {
   /// The deploy description when the release was created. The value can be up
-  /// to
-  /// 512&nbsp;characters.
+  /// to 512 characters.
   core.String message;
 
-  /// Output only. The unique identifier for the release, in the format:
-  /// <code>sites/<var>site-name</var>/releases/<var>releaseID</var></code>
-  /// This name is provided in the response body when you call the
-  /// [`CreateRelease`](sites.releases/create) endpoint.
+  /// Output only. The unique identifier for the release, in the format: sites/
+  /// site-name/releases/releaseID This name is provided in the response body
+  /// when you call the [`CreateRelease`](sites.releases/create) endpoint.
   core.String name;
 
   /// Output only. The time at which the version is set to be public.
@@ -3028,19 +3843,16 @@ class Release {
   /// Output only. Identifies the user who created the release.
   ActingUser releaseUser;
 
-  /// Explains the reason for the release.
-  /// <br>Specify a value for this field only when creating a `SITE_DISABLE`
-  /// type release.
+  /// Explains the reason for the release. Specify a value for this field only
+  /// when creating a `SITE_DISABLE` type release.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : An unspecified type. Indicates that a version was
-  /// released.
-  /// <br>This is the default value when no other `type` is explicitly
+  /// released. This is the default value when no other `type` is explicitly
   /// specified.
   /// - "DEPLOY" : A version was uploaded to Firebase Hosting and released.
   /// - "ROLLBACK" : The release points back to a previously deployed version.
   /// - "SITE_DISABLE" : The release prevents the site from serving content.
-  /// Firebase Hosting acts
-  /// as if the site never existed.
+  /// Firebase Hosting acts as if the site never existed.
   core.String type;
 
   /// Output only. The configuration and content that was released.
@@ -3094,28 +3906,26 @@ class Release {
   }
 }
 
-/// A [`rewrite`](/docs/hosting/full-config#rewrites) represents an internal
-/// content rewrite on the version. If the pattern matches, the request will be
-/// handled as if it were to the destination path specified in the
-/// configuration.
+/// A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL
+/// pattern that, if matched to the request URL path, triggers Hosting to
+/// respond as if the service were given the specified destination URL.
 class Rewrite {
   /// The request will be forwarded to Firebase Dynamic Links.
   core.bool dynamicLinks;
 
-  /// The function to proxy requests to. Must match the exported function
-  /// name exactly.
+  /// The function to proxy requests to. Must match the exported function name
+  /// exactly.
   core.String function;
 
-  /// The user-supplied [glob
-  /// pattern](/docs/hosting/full-config#glob_pattern_matching) to match
-  /// against the request URL path.
+  /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
+  /// to match against the request URL path.
   core.String glob;
 
   /// The URL path to rewrite the request to.
   core.String path;
 
-  /// The user-supplied RE2 regular expression to match against the request
-  /// URL path.
+  /// The user-supplied RE2 regular expression to match against the request URL
+  /// path.
   core.String regex;
 
   /// The request will be forwarded to Cloud Run.
@@ -3170,46 +3980,49 @@ class Rewrite {
 }
 
 /// The configuration for how incoming requests to a site should be routed and
-/// processed before serving content. The patterns are matched and applied
-/// according to a specific
-/// [priority order](/docs/hosting/full-config#hosting_priority_order).
+/// processed before serving content. The URL request paths are matched against
+/// the specified URL patterns in the configuration, then Hosting applies the
+/// applicable configuration according to a specific [priority
+/// order](/docs/hosting/full-config#hosting_priority_order).
 class ServingConfig {
   /// How to handle well known App Association files.
   /// Possible string values are:
-  /// - "AUTO" : The app association files will be automattically created from
-  /// the apps
-  /// that exist in the Firebase project.
+  /// - "AUTO" : The app association files will be automatically created from
+  /// the apps that exist in the Firebase project.
   /// - "NONE" : No special handling of the app association files will occur,
-  /// these paths
-  /// will result in a 404 unless caught with a Rewrite.
+  /// these paths will result in a 404 unless caught with a Rewrite.
   core.String appAssociation;
 
   /// Defines whether to drop the file extension from uploaded files.
   core.bool cleanUrls;
 
-  /// A list of custom response headers that are added to the content if the
-  /// request URL path matches the glob.
+  /// An array of objects, where each object specifies a URL pattern that, if
+  /// matched to the request URL path, triggers Hosting to apply the specified
+  /// custom response headers.
   core.List<Header> headers;
 
-  /// A list of globs that will cause the response to redirect to another
-  /// location.
+  /// Optional. Defines i18n rewrite behavior.
+  I18nConfig i18n;
+
+  /// An array of objects (called redirect rules), where each rule specifies a
+  /// URL pattern that, if matched to the request URL path, triggers Hosting to
+  /// respond with a redirect to the specified destination path.
   core.List<Redirect> redirects;
 
-  /// A list of rewrites that will act as if the service were given the
-  /// destination URL.
+  /// An array of objects (called rewrite rules), where each rule specifies a
+  /// URL pattern that, if matched to the request URL path, triggers Hosting to
+  /// respond as if the service were given the specified destination URL.
   core.List<Rewrite> rewrites;
 
   /// Defines how to handle a trailing slash in the URL path.
   /// Possible string values are:
-  /// - "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED" : No behavior is specified.
-  /// <br>Files are served at their exact location only, and trailing slashes
-  /// are only added to directory indexes.
+  /// - "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED" : No behavior is specified. Files
+  /// are served at their exact location only, and trailing slashes are only
+  /// added to directory indexes.
   /// - "ADD" : Trailing slashes are _added_ to directory indexes as well as to
-  /// any URL
-  /// path not ending in a file extension.
+  /// any URL path not ending in a file extension.
   /// - "REMOVE" : Trailing slashes are _removed_ from directory indexes as well
-  /// as from any
-  /// URL path not ending in a file extension.
+  /// as from any URL path not ending in a file extension.
   core.String trailingSlashBehavior;
 
   ServingConfig();
@@ -3225,6 +4038,9 @@ class ServingConfig {
       headers = (_json["headers"] as core.List)
           .map<Header>((value) => new Header.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("i18n")) {
+      i18n = new I18nConfig.fromJson(_json["i18n"]);
     }
     if (_json.containsKey("redirects")) {
       redirects = (_json["redirects"] as core.List)
@@ -3252,6 +4068,9 @@ class ServingConfig {
     }
     if (headers != null) {
       _json["headers"] = headers.map((value) => (value).toJson()).toList();
+    }
+    if (i18n != null) {
+      _json["i18n"] = (i18n).toJson();
     }
     if (redirects != null) {
       _json["redirects"] = redirects.map((value) => (value).toJson()).toList();
@@ -3307,15 +4126,14 @@ class SiteConfig {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -3360,8 +4178,8 @@ class Status {
   }
 }
 
-/// A `Version` is the collection of configuration and
-/// [static files](sites.versions.files) that determine how a site is displayed.
+/// A `Version` is the collection of configuration and [static
+/// files](sites.versions.files) that determine how a site is displayed.
 class Version {
   /// The configuration for the behavior of the site. This configuration exists
   /// in the [`firebase.json`](/docs/cli/#the_firebasejson_file) file.
@@ -3379,8 +4197,8 @@ class Version {
   /// Output only. Identifies the user who `DELETED` the version.
   ActingUser deleteUser;
 
-  /// Output only. The total number of files associated with the version.
-  /// <br>This value is calculated after a version is `FINALIZED`.
+  /// Output only. The total number of files associated with the version. This
+  /// value is calculated after a version is `FINALIZED`.
   core.String fileCount;
 
   /// Output only. The time at which the version was `FINALIZED`.
@@ -3392,56 +4210,45 @@ class Version {
   /// The labels used for extra metadata and/or filtering.
   core.Map<core.String, core.String> labels;
 
-  /// The unique identifier for a version, in the format:
-  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
-  /// This name is provided in the response body when you call the
-  /// [`CreateVersion`](../sites.versions/create) endpoint.
+  /// The unique identifier for a version, in the format: sites/site-name
+  /// /versions/versionID This name is provided in the response body when you
+  /// call the [`CreateVersion`](../sites.versions/create) endpoint.
   core.String name;
 
   /// Version preview configuration for the site version. This configuration
   /// specfies whether previewing is enabled for this site version. Version
-  /// previews allow you to preview your site at a custom URL before
-  /// releasing it as the live version.
+  /// previews allow you to preview your site at a custom URL before releasing
+  /// it as the live version.
   PreviewConfig preview;
 
-  /// The deploy status of a version.
-  /// <br>
-  /// <br>For a successful deploy, call the
+  /// The deploy status of a version. For a successful deploy, call the
   /// [`CreateVersion`](sites.versions/create) endpoint to make a new version
-  /// (`CREATED` status),
-  /// [upload all desired files](sites.versions/populateFiles) to the version,
-  /// then [update](sites.versions/patch) the version to the `FINALIZED` status.
-  /// <br>
-  /// <br>Note that if you leave the version in the `CREATED` state for more
-  /// than 12&nbsp;hours, the system will automatically mark the version as
-  /// `ABANDONED`.
-  /// <br>
-  /// <br>You can also change the status of a version to `DELETED` by calling
-  /// the
+  /// (`CREATED` status), [upload all desired
+  /// files](sites.versions/populateFiles) to the version, then
+  /// [update](sites.versions/patch) the version to the `FINALIZED` status. Note
+  /// that if you leave the version in the `CREATED` state for more than 12
+  /// hours, the system will automatically mark the version as `ABANDONED`. You
+  /// can also change the status of a version to `DELETED` by calling the
   /// [`DeleteVersion`](sites.versions/delete) endpoint.
   /// Possible string values are:
   /// - "VERSION_STATUS_UNSPECIFIED" : The default status; should not be
   /// intentionally used.
   /// - "CREATED" : The version has been created, and content is currently being
-  /// added to the
-  /// version.
+  /// added to the version.
   /// - "FINALIZED" : All content has been added to the version, and the version
-  /// can no longer be
-  /// changed.
+  /// can no longer be changed.
   /// - "DELETED" : The version has been deleted.
-  /// - "ABANDONED" : The version was not updated to `FINALIZED` within
-  /// 12&nbsp;hours and was
-  /// automatically deleted.
+  /// - "ABANDONED" : The version was not updated to `FINALIZED` within 12 hours
+  /// and was automatically deleted.
   /// - "EXPIRED" : The version is outside the site-configured limit for the
-  /// number of
-  /// retained versions, so the version's content is scheduled for deletion.
+  /// number of retained versions, so the version's content is scheduled for
+  /// deletion.
   /// - "CLONING" : The version is being cloned from another version. All
-  /// content is still
-  /// being copied over.
+  /// content is still being copied over.
   core.String status;
 
-  /// Output only. The total stored bytesize of the version.
-  /// <br>This value is calculated after a version is `FINALIZED`.
+  /// Output only. The total stored bytesize of the version. This value is
+  /// calculated after a version is `FINALIZED`.
   core.String versionBytes;
 
   Version();
@@ -3543,14 +4350,12 @@ class VersionFile {
   core.String path;
 
   /// Output only. The current status of a particular file in the specified
-  /// version.
-  /// <br>The value will be either `pending upload` or `uploaded`.
+  /// version. The value will be either `pending upload` or `uploaded`.
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : The default status; should not be intentionally
   /// used.
   /// - "EXPECTED" : The file has been included in the version and is expected
-  /// to be uploaded
-  /// in the near future.
+  /// to be uploaded in the near future.
   /// - "ACTIVE" : The file has already been uploaded to Firebase Hosting.
   core.String status;
 

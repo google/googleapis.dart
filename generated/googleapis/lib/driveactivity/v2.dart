@@ -485,10 +485,9 @@ class Comment {
 
 /// How the individual activities are consolidated. A set of activities may be
 /// consolidated into one combined activity if they are related in some way,
-/// such
-/// as one actor performing the same action on multiple targets, or multiple
-/// actors performing the same action on a single target. The strategy defines
-/// the rules for which activities are related.
+/// such as one actor performing the same action on multiple targets, or
+/// multiple actors performing the same action on a single target. The strategy
+/// defines the rules for which activities are related.
 class ConsolidationStrategy {
   /// The individual activities are consolidated using the legacy strategy.
   Legacy legacy;
@@ -553,8 +552,8 @@ class Create {
   /// document), not derived from a Drive object or external object.
   New new_;
 
-  /// If present, indicates the object originated externally and was uploaded
-  /// to Drive.
+  /// If present, indicates the object originated externally and was uploaded to
+  /// Drive.
   Upload upload;
 
   Create();
@@ -731,12 +730,12 @@ class Drive {
   }
 }
 
-/// A single Drive activity comprising one or more Actions by one or more
-/// Actors on one or more Targets. Some Action groupings occur spontaneously,
-/// such as moving an item into a shared folder triggering a permission change.
-/// Other groupings of related Actions, such as multiple Actors editing one item
-/// or moving multiple files into a new folder, are controlled by the selection
-/// of a ConsolidationStrategy in the QueryDriveActivityRequest.
+/// A single Drive activity comprising one or more Actions by one or more Actors
+/// on one or more Targets. Some Action groupings occur spontaneously, such as
+/// moving an item into a shared folder triggering a permission change. Other
+/// groupings of related Actions, such as multiple Actors editing one item or
+/// moving multiple files into a new folder, are controlled by the selection of
+/// a ConsolidationStrategy in the QueryDriveActivityRequest.
 class DriveActivity {
   /// Details on all actions in this activity.
   core.List<Action> actions;
@@ -750,9 +749,8 @@ class DriveActivity {
   ActionDetail primaryActionDetail;
 
   /// All Google Drive objects this activity is about (e.g. file, folder,
-  /// drive).
-  /// This represents the state of the target immediately after the actions
-  /// occurred.
+  /// drive). This represents the state of the target immediately after the
+  /// actions occurred.
   core.List<Target> targets;
 
   /// The activity occurred over this time range.
@@ -862,8 +860,7 @@ class DriveItem {
   /// The Drive item is a file.
   DriveFile driveFile;
 
-  /// The Drive item is a folder. Includes information about the type of
-  /// folder.
+  /// The Drive item is a folder. Includes information about the type of folder.
   DriveFolder driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.
@@ -872,7 +869,7 @@ class DriveItem {
   /// This field is deprecated; please use the `driveFolder` field instead.
   Folder folder;
 
-  /// The MIME type of the Drive item.  See
+  /// The MIME type of the Drive item. See
   /// https://developers.google.com/drive/v3/web/mime-types.
   core.String mimeType;
 
@@ -950,8 +947,7 @@ class DriveItemReference {
   /// The Drive item is a file.
   DriveFile driveFile;
 
-  /// The Drive item is a folder. Includes information about the type of
-  /// folder.
+  /// The Drive item is a folder. Includes information about the type of folder.
   DriveFolder driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.
@@ -1082,8 +1078,7 @@ class FileComment {
   core.String legacyCommentId;
 
   /// The discussion thread to which the comment was added. This identifier is
-  /// an
-  /// opaque string compatible with the Drive API and references the first
+  /// an opaque string compatible with the Drive API and references the first
   /// comment in a discussion; see
   /// https://developers.google.com/drive/v3/reference/comments/get
   core.String legacyDiscussionId;
@@ -1399,10 +1394,8 @@ class Permission {
   /// The group to whom this permission applies.
   Group group;
 
-  /// Indicates the
-  /// <a href="/drive/web/manage-sharing#roles">Google Drive permissions
-  /// role</a>. The role determines a user's ability to read, write, and
-  /// comment on items.
+  /// Indicates the Google Drive permissions role. The role determines a user's
+  /// ability to read, write, and comment on items.
   /// Possible string values are:
   /// - "ROLE_UNSPECIFIED" : The role is not available.
   /// - "OWNER" : A role granting full access.
@@ -1410,18 +1403,15 @@ class Permission {
   /// - "FILE_ORGANIZER" : A role granting the ability to contribute and manage
   /// content.
   /// - "EDITOR" : A role granting the ability to contribute content. This role
-  /// is sometimes
-  /// also known as "writer".
+  /// is sometimes also known as "writer".
   /// - "COMMENTER" : A role granting the ability to view and comment on
   /// content.
   /// - "VIEWER" : A role granting the ability to view content. This role is
-  /// sometimes also
-  /// known as "reader".
+  /// sometimes also known as "reader".
   /// - "PUBLISHED_VIEWER" : A role granting the ability to view content only
-  /// after it has been
-  /// published to the web. This role is sometimes also known as "published
-  /// reader". See https://support.google.com/sites/answer/6372880 for more
-  /// information.
+  /// after it has been published to the web. This role is sometimes also known
+  /// as "published reader". See https://support.google.com/sites/answer/6372880
+  /// for more information.
   core.String role;
 
   /// The user to whom this permission applies.
@@ -1551,42 +1541,28 @@ class QueryDriveActivityRequest {
   core.String ancestorName;
 
   /// Details on how to consolidate related actions that make up the activity.
-  /// If
-  /// not set, then related actions are not consolidated.
+  /// If not set, then related actions are not consolidated.
   ConsolidationStrategy consolidationStrategy;
 
   /// The filtering for items returned from this query request. The format of
-  /// the
-  /// filter string is a sequence of expressions, joined by an optional "AND",
-  /// where each expression is of the form "field operator value".
-  ///
-  /// Supported fields:
-  ///
-  ///   - <tt>time</tt>: Uses numerical operators on date values either in
-  ///     terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.
-  ///     Examples:
-  ///       - <tt>time > 1452409200000 AND time <= 1492812924310</tt>
-  ///       - <tt>time >= "2016-01-10T01:02:03-05:00"</tt>
-  ///
-  ///   - <tt>detail.action_detail_case</tt>: Uses the "has" operator (:) and
-  ///     either a singular value or a list of allowed action types enclosed in
-  ///     parentheses.
-  ///     Examples:
-  ///       - <tt>detail.action_detail_case: RENAME</tt>
-  ///       - <tt>detail.action_detail_case:(CREATE EDIT)</tt>
-  ///       - <tt>-detail.action_detail_case:MOVE</tt>
+  /// the filter string is a sequence of expressions, joined by an optional
+  /// "AND", where each expression is of the form "field operator value".
+  /// Supported fields: - time: Uses numerical operators on date values either
+  /// in terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.
+  /// Examples: - time > 1452409200000 AND time <= 1492812924310 - time >=
+  /// "2016-01-10T01:02:03-05:00" - detail.action_detail_case: Uses the "has"
+  /// operator (:) and either a singular value or a list of allowed action types
+  /// enclosed in parentheses. Examples: - detail.action_detail_case: RENAME -
+  /// detail.action_detail_case:(CREATE EDIT) - -detail.action_detail_case:MOVE
   core.String filter;
 
-  /// Return activities for this Drive item. The format is
-  /// "items/ITEM_ID".
+  /// Return activities for this Drive item. The format is "items/ITEM_ID".
   core.String itemName;
 
   /// The miminum number of activities desired in the response; the server will
   /// attempt to return at least this quanitity. The server may also return
-  /// fewer
-  /// activities if it has a partial response ready before the request times
-  /// out.
-  /// If not set, a default value is used.
+  /// fewer activities if it has a partial response ready before the request
+  /// times out. If not set, a default value is used.
   core.int pageSize;
 
   /// The token identifying which page of results to return. Set this to the
@@ -1649,8 +1625,8 @@ class QueryDriveActivityResponse {
   /// List of activity requested.
   core.List<DriveActivity> activities;
 
-  /// Token to retrieve the next page of results, or
-  /// empty if there are no more results in the list.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
 
   QueryDriveActivityResponse();
@@ -1745,13 +1721,11 @@ class RestrictionChange {
   /// - "FEATURE_UNSPECIFIED" : The feature which changed restriction settings
   /// was not available.
   /// - "SHARING_OUTSIDE_DOMAIN" : When restricted, this prevents items from
-  /// being shared outside the
-  /// domain.
+  /// being shared outside the domain.
   /// - "DIRECT_SHARING" : When restricted, this prevents direct sharing of
   /// individual items.
   /// - "ITEM_DUPLICATION" : When restricted, this prevents actions like copy,
-  /// download, and print
-  /// that might result in uncontrolled duplicates of items.
+  /// download, and print that might result in uncontrolled duplicates of items.
   /// - "DRIVE_FILE_STREAM" : When restricted, this prevents use of Drive File
   /// Stream.
   core.String feature;

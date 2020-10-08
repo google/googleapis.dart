@@ -97,6 +97,18 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("groups/v1/groups/"));
+        pathOffset += 17;
+        index = path.indexOf("/archive", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_groupId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/archive"));
+        pathOffset += 8;
 
         var query = (req.url).query;
         var queryOffset = 0;

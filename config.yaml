@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 0.55.0
+    version: 0.56.0
     author: Dart Team <misc@dartlang.org>
     homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
@@ -25,10 +25,8 @@ packages:
     - androiddeviceprovisioning:v1 # https://developers.google.com/zero-touch/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidmanagement:v1 # https://developers.google.com/android/management
-    - androidpublisher:v2 # https://developers.google.com/android-publisher/
     - androidpublisher:v3 # https://developers.google.com/android-publisher/
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
-    - appsactivity:v1 # https://developers.google.com/google-apps/activity/
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigtableadmin:v2 # https://cloud.google.com/bigtable/
@@ -95,12 +93,10 @@ packages:
     - manufacturers:v1 # https://developers.google.com/manufacturers/
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
-    - oauth2:v2 # https://developers.google.com/accounts/docs/OAuth2UserAgent
     - oslogin:v1 # https://cloud.google.com/compute/docs/oslogin/rest/
     - pagespeedonline:v5 # https://developers.google.com/speed/docs/insights/about
     - people:v1 # https://developers.google.com/people/
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
-    - plus:v1 # https://developers.google.com/+/api/
     - poly:v1 # https://devsite.googleplex.com/poly/
     - pubsub:v1 # https://cloud.google.com/pubsub/
     - redis:v1 # https://cloud.google.com/memorystore/docs/redis/
@@ -176,9 +172,11 @@ packages:
     - managedidentities:v1
     - translate:v3
     - verifiedaccess:v1
+    - networkmanagement:v1
+    - recommender:v1
 
 - googleapis_beta:
-    version: 0.50.0
+    version: 0.51.0
     author: Dart Team <misc@dartlang.org>
     homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
@@ -193,7 +191,6 @@ packages:
     - containeranalysis:v1beta1 # https://cloud.google.com/container-registry/docs/reference/rest/
     - dataflow:v1b3 # https://cloud.google.com/dataflow/
     - dialogflow:v2beta1 # https://cloud.google.com/dialogflow-enterprise/
-    - dns:v2beta1 # https://cloud.google.com/dns/docs/
     - firebasehosting:v1beta1 # https://firebase.google.com/docs/hosting/
     - language:v1beta1 # https://cloud.google.com/natural-language/
     - language:v1beta2 # https://cloud.google.com/natural-language/
@@ -203,7 +200,6 @@ packages:
     - runtimeconfig:v1beta1 # https://cloud.google.com/deployment-manager/docs/
     - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
     - tpu:v1alpha1 # https://cloud.google.com/tpu/
-    - commentanalyzer:v1alpha1
     - datafusion:v1beta1
     - factchecktools:v1alpha1
     - firebase:v1beta1
@@ -214,24 +210,21 @@ packages:
     - gameservices:v1beta
     - lifesciences:v2beta
     - memcache:v1beta2
-    - networkmanagement:v1beta1
     - prod_tt_sasportal:v1alpha1
-    - recommender:v1beta1
     - sasportal:v1alpha1
     - servicedirectory:v1beta1
     - speech:v2beta1
-    - sql:v1beta4
+    - artifactregistry:v1beta1
+    - documentai:v1beta2
+    - sqladmin:v1beta4
     
 
 # APIs that we do not wish to include in this package
 skipped_apis:
 - adexchangebuyer:v1.2 # v1.3 included
-- androidpublisher:v1 # v2 included
-- androidpublisher:v1.1 # v2 included
 - appengine:v1alpha # v1 included
 - blogger:v2 # v3 included
 - cloudbuild:v1alpha1 # v1 included
-- cloudfunctions:v1beta2 # v1 included
 - cloudidentity:v1beta1 # v1 included
 - cloudresourcemanager:v2beta1 # v2 included
 - cloudshell:v1alpha1 # v1 included
@@ -255,16 +248,12 @@ skipped_apis:
 - genomics:v2alpha1
 - iap:v1beta1 # v1 included
 - jobs:v3p1beta1 # v3 included
-- pagespeedonline:v1 # v5 included
-- pagespeedonline:v2 # v5 included
-- pagespeedonline:v4 # v5 included
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
 - redis:v1beta1 # v1 included
 - remotebuildexecution:v1 # v2 included
 - remotebuildexecution:v1alpha # v2 included
 - serviceusage:v1beta1 # v1 included
 - speech:v1p1beta1 # v1 included
-- storage:v1beta2 # v1 included
 - texttospeech:v1beta1 # v1 included
 - videointelligence:v1beta2 # v1 included
 - videointelligence:v1p1beta1 # v1 included
@@ -282,7 +271,6 @@ skipped_apis:
 - videointelligence:v1p2beta1
 - videointelligence:v1p3beta1
 - securitycenter:v1beta1 # v1 included
-- securitycenter:v1p1alpha1 # v1 included
 - run:v1beta1
 - run:v1alpha1
 - dfareporting:v3.3 # v3.4 included
@@ -301,8 +289,9 @@ skipped_apis:
 - osconfig:v1beta # v1 included
 - policytroubleshooter:v1beta # v1 included
 - secretmanager:v1beta1 # v1 included
-- securitycenter:v1p1beta1 # v1 included
 - serviceconsumermanagement:v1beta1 # v1 included
 - translate:v3beta1 # v3 included
-- accessapproval:v1beta1 # v1 included
 - binaryauthorization:v1beta1 # v1 included
+- displayvideo:v1beta # v1 included
+- networkmanagement:v1beta1 # v1 included
+- recommender:v1beta1 # v1 included

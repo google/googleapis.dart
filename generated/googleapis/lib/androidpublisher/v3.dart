@@ -24,7 +24,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client androidpublisher/v3';
 
-/// Accesses Android application developers' Google Play accounts.
+/// Lets Android application developers access their Google Play accounts.
 class AndroidpublisherApi {
   /// View and manage your Google Play Developer account
   static const AndroidpublisherScope =
@@ -43,8 +43,8 @@ class AndroidpublisherApi {
   SystemapksResourceApi get systemapks => new SystemapksResourceApi(_requester);
 
   AndroidpublisherApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "androidpublisher/v3/applications/"})
+      {core.String rootUrl = "https://androidpublisher.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -70,14 +70,13 @@ class EditsResourceApi {
 
   EditsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Commits/applies the changes made in this edit back to the app.
+  /// Commits an app edit.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -108,7 +107,8 @@ class EditsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         ':commit';
@@ -122,16 +122,13 @@ class EditsResourceApi {
     return _response.then((data) => new AppEdit.fromJson(data));
   }
 
-  /// Deletes an edit for an app. Creating a new edit will automatically delete
-  /// any of your previous edits so this method need only be called if you want
-  /// to preemptively abandon an edit.
+  /// Deletes an app edit.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -162,7 +159,8 @@ class EditsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId');
 
@@ -175,15 +173,13 @@ class EditsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Returns information about the edit specified. Calls will fail if the edit
-  /// is no long active (e.g. has been deleted, superseded or expired).
+  /// Gets an app edit.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -214,7 +210,8 @@ class EditsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId');
 
@@ -227,14 +224,13 @@ class EditsResourceApi {
     return _response.then((data) => new AppEdit.fromJson(data));
   }
 
-  /// Creates a new edit for an app, populated with the app's current state.
+  /// Creates a new edit for an app.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -265,7 +261,9 @@ class EditsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits';
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
+        '/edits';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -276,15 +274,13 @@ class EditsResourceApi {
     return _response.then((data) => new AppEdit.fromJson(data));
   }
 
-  /// Checks that the edit can be successfully committed. The edit's changes are
-  /// not applied to the live app.
+  /// Validates an app edit.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -315,7 +311,8 @@ class EditsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         ':validate';
@@ -337,17 +334,16 @@ class EditsApksResourceApi {
 
   /// Creates a new APK without uploading the APK itself to Google Play, instead
   /// hosting the APK at a specified URL. This function is only available to
-  /// enterprises using Google Play for Work whose application is configured to
-  /// restrict distribution to the enterprise domain.
+  /// organizations using Managed Play whose application is configured to
+  /// restrict distribution to the organizations.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -384,7 +380,8 @@ class EditsApksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/apks/externallyHosted';
@@ -399,12 +396,13 @@ class EditsApksResourceApi {
         .then((data) => new ApksAddExternallyHostedResponse.fromJson(data));
   }
 
+  /// Lists all current APKs of the app and edit.
+  ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -436,7 +434,8 @@ class EditsApksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/apks';
@@ -450,12 +449,13 @@ class EditsApksResourceApi {
     return _response.then((data) => new ApksListResponse.fromJson(data));
   }
 
+  /// Uploads an APK and adds to the current edit.
+  ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -498,7 +498,8 @@ class EditsApksResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$packageName') +
+      _url = 'androidpublisher/v3/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
           commons.Escaper.ecapeVariable('$editId') +
           '/apks';
@@ -531,12 +532,13 @@ class EditsBundlesResourceApi {
 
   EditsBundlesResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Lists all current Android App Bundles of the app and edit.
+  ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -568,7 +570,8 @@ class EditsBundlesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/bundles';
@@ -584,16 +587,16 @@ class EditsBundlesResourceApi {
 
   /// Uploads a new Android App Bundle to this edit. If you are using the Google
   /// API client libraries, please increase the timeout of the http request
-  /// before calling this endpoint (a timeout of 2 minutes is recommended). See:
-  /// https://developers.google.com/api-client-library/java/google-api-java-client/errors
+  /// before calling this endpoint (a timeout of 2 minutes is recommended). See
+  /// [Timeouts and
+  /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
   /// for an example in java.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [ackBundleInstallationWarning] - Must be set to true if the bundle
   /// installation may trigger a warning on user devices (for example, if
@@ -646,7 +649,8 @@ class EditsBundlesResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$packageName') +
+      _url = 'androidpublisher/v3/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
           commons.Escaper.ecapeVariable('$editId') +
           '/bundles';
@@ -680,25 +684,23 @@ class EditsDeobfuscationfilesResourceApi {
   EditsDeobfuscationfilesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Uploads the deobfuscation file of the specified APK. If a deobfuscation or
-  /// symbolication file already exists, it will be replaced. See
-  /// https://developer.android.com/studio/build/shrink-code to learn more about
-  /// deobfuscation files.
+  /// Uploads a new deobfuscation file and attaches to the specified APK.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier of the Android app for which the
-  /// deobfuscation files are being uploaded; for example, "com.spiffygame".
+  /// [packageName] - Unique identifier for the Android app.
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [apkVersionCode] - The version code of the APK whose deobfuscation file is
+  /// [apkVersionCode] - The version code of the APK whose Deobfuscation File is
   /// being uploaded.
   ///
-  /// [deobfuscationFileType] - null
+  /// [deobfuscationFileType] - The type of the deobfuscation file.
   /// Possible string values are:
-  /// - "nativeCode"
-  /// - "proguard"
+  /// - "deobfuscationFileTypeUnspecified" : Unspecified deobfuscation file
+  /// type.
+  /// - "proguard" : Proguard deobfuscation file type.
+  /// - "nativeCode" : Native debugging symbols file type.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -752,7 +754,8 @@ class EditsDeobfuscationfilesResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$packageName') +
+      _url = 'androidpublisher/v3/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
           commons.Escaper.ecapeVariable('$editId') +
           '/apks/' +
@@ -795,15 +798,13 @@ class EditsDetailsResourceApi {
 
   EditsDetailsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Fetches app details for this edit. This includes the default language and
-  /// developer support contact information.
+  /// Gets details of an app.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -834,7 +835,8 @@ class EditsDetailsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/details';
@@ -848,16 +850,15 @@ class EditsDetailsResourceApi {
     return _response.then((data) => new AppDetails.fromJson(data));
   }
 
-  /// Updates app details for this edit. This method supports patch semantics.
+  /// Patches details of an app.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -892,7 +893,8 @@ class EditsDetailsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/details';
@@ -906,16 +908,15 @@ class EditsDetailsResourceApi {
     return _response.then((data) => new AppDetails.fromJson(data));
   }
 
-  /// Updates app details for this edit.
+  /// Updates details of an app.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -950,7 +951,8 @@ class EditsDetailsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/details';
@@ -971,22 +973,23 @@ class EditsExpansionfilesResourceApi {
   EditsExpansionfilesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Fetches the Expansion File configuration for the APK specified.
+  /// Fetches the expansion file configuration for the specified APK.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [apkVersionCode] - The version code of the APK whose Expansion File
+  /// [apkVersionCode] - The version code of the APK whose expansion file
   /// configuration is being read or modified.
   ///
-  /// [expansionFileType] - null
+  /// [expansionFileType] - The file type of the file configuration which is
+  /// being read or modified.
   /// Possible string values are:
-  /// - "main"
-  /// - "patch"
+  /// - "expansionFileTypeUnspecified" : Unspecified expansion file type.
+  /// - "main" : Main expansion file.
+  /// - "patch" : Patch expansion file.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1024,7 +1027,8 @@ class EditsExpansionfilesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/apks/' +
@@ -1041,26 +1045,26 @@ class EditsExpansionfilesResourceApi {
     return _response.then((data) => new ExpansionFile.fromJson(data));
   }
 
-  /// Updates the APK's Expansion File configuration to reference another APK's
-  /// Expansion Files. To add a new Expansion File use the Upload method. This
-  /// method supports patch semantics.
+  /// Patches the APK's expansion file configuration to reference another APK's
+  /// expansion file. To add a new expansion file use the Upload method.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [apkVersionCode] - The version code of the APK whose Expansion File
+  /// [apkVersionCode] - The version code of the APK whose expansion file
   /// configuration is being read or modified.
   ///
-  /// [expansionFileType] - null
+  /// [expansionFileType] - The file type of the expansion file configuration
+  /// which is being updated.
   /// Possible string values are:
-  /// - "main"
-  /// - "patch"
+  /// - "expansionFileTypeUnspecified" : Unspecified expansion file type.
+  /// - "main" : Main expansion file.
+  /// - "patch" : Patch expansion file.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1105,7 +1109,8 @@ class EditsExpansionfilesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/apks/' +
@@ -1122,25 +1127,26 @@ class EditsExpansionfilesResourceApi {
     return _response.then((data) => new ExpansionFile.fromJson(data));
   }
 
-  /// Updates the APK's Expansion File configuration to reference another APK's
-  /// Expansion Files. To add a new Expansion File use the Upload method.
+  /// Updates the APK's expansion file configuration to reference another APK's
+  /// expansion file. To add a new expansion file use the Upload method.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [apkVersionCode] - The version code of the APK whose Expansion File
+  /// [apkVersionCode] - The version code of the APK whose expansion file
   /// configuration is being read or modified.
   ///
-  /// [expansionFileType] - null
+  /// [expansionFileType] - The file type of the file configuration which is
+  /// being read or modified.
   /// Possible string values are:
-  /// - "main"
-  /// - "patch"
+  /// - "expansionFileTypeUnspecified" : Unspecified expansion file type.
+  /// - "main" : Main expansion file.
+  /// - "patch" : Patch expansion file.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1185,7 +1191,8 @@ class EditsExpansionfilesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/apks/' +
@@ -1202,22 +1209,23 @@ class EditsExpansionfilesResourceApi {
     return _response.then((data) => new ExpansionFile.fromJson(data));
   }
 
-  /// Uploads and attaches a new Expansion File to the APK specified.
+  /// Uploads a new expansion file and attaches to the specified APK.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [apkVersionCode] - The version code of the APK whose Expansion File
+  /// [apkVersionCode] - The version code of the APK whose expansion file
   /// configuration is being read or modified.
   ///
-  /// [expansionFileType] - null
+  /// [expansionFileType] - The file type of the expansion file configuration
+  /// which is being updated.
   /// Possible string values are:
-  /// - "main"
-  /// - "patch"
+  /// - "expansionFileTypeUnspecified" : Unspecified expansion file type.
+  /// - "main" : Main expansion file.
+  /// - "patch" : Patch expansion file.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1270,7 +1278,8 @@ class EditsExpansionfilesResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$packageName') +
+      _url = 'androidpublisher/v3/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
           commons.Escaper.ecapeVariable('$editId') +
           '/apks/' +
@@ -1317,28 +1326,24 @@ class EditsImagesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [language] - The language code (a BCP-47 language tag) of the localized
-  /// listing whose images are to read or modified. For example, to select
-  /// Austrian German, pass "de-AT".
+  /// [language] - Language localization code (a BCP-47 language tag; for
+  /// example, "de-AT" for Austrian German).
   ///
-  /// [imageType] - null
+  /// [imageType] - Type of the Image.
   /// Possible string values are:
-  /// - "automotiveScreenshots"
-  /// - "daydreamStereoImage"
-  /// - "featureGraphic"
-  /// - "icon"
-  /// - "phoneScreenshots"
-  /// - "promoGraphic"
-  /// - "sevenInchScreenshots"
-  /// - "tenInchScreenshots"
-  /// - "tvBanner"
-  /// - "tvScreenshots"
-  /// - "wearScreenshots"
+  /// - "appImageTypeUnspecified" : Unspecified type. Do not use.
+  /// - "phoneScreenshots" : Phone screenshot.
+  /// - "sevenInchScreenshots" : Seven inch screenshot.
+  /// - "tenInchScreenshots" : Ten inch screenshot.
+  /// - "tvScreenshots" : TV screenshot.
+  /// - "wearScreenshots" : Wear screenshot.
+  /// - "icon" : Icon.
+  /// - "featureGraphic" : Feature graphic.
+  /// - "tvBanner" : TV banner.
   ///
   /// [imageId] - Unique identifier an image within the set of images attached
   /// to this edit.
@@ -1382,7 +1387,8 @@ class EditsImagesResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/listings/' +
@@ -1401,32 +1407,31 @@ class EditsImagesResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Deletes all images for the specified language and image type.
+  /// Deletes all images for the specified language and image type. Returns an
+  /// empty response if no images are found.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [language] - The language code (a BCP-47 language tag) of the localized
-  /// listing whose images are to read or modified. For example, to select
-  /// Austrian German, pass "de-AT".
+  /// [language] - Language localization code (a BCP-47 language tag; for
+  /// example, "de-AT" for Austrian German). Providing a language that is not
+  /// supported by the App is a no-op.
   ///
-  /// [imageType] - null
+  /// [imageType] - Type of the Image. Providing an image type that refers to no
+  /// images is a no-op.
   /// Possible string values are:
-  /// - "automotiveScreenshots"
-  /// - "daydreamStereoImage"
-  /// - "featureGraphic"
-  /// - "icon"
-  /// - "phoneScreenshots"
-  /// - "promoGraphic"
-  /// - "sevenInchScreenshots"
-  /// - "tenInchScreenshots"
-  /// - "tvBanner"
-  /// - "tvScreenshots"
-  /// - "wearScreenshots"
+  /// - "appImageTypeUnspecified" : Unspecified type. Do not use.
+  /// - "phoneScreenshots" : Phone screenshot.
+  /// - "sevenInchScreenshots" : Seven inch screenshot.
+  /// - "tenInchScreenshots" : Ten inch screenshot.
+  /// - "tvScreenshots" : TV screenshot.
+  /// - "wearScreenshots" : Wear screenshot.
+  /// - "icon" : Icon.
+  /// - "featureGraphic" : Feature graphic.
+  /// - "tvBanner" : TV banner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1464,7 +1469,8 @@ class EditsImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/listings/' +
@@ -1481,32 +1487,30 @@ class EditsImagesResourceApi {
     return _response.then((data) => new ImagesDeleteAllResponse.fromJson(data));
   }
 
-  /// Lists all images for the specified language and image type.
+  /// Lists all images. The response may be empty.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [language] - The language code (a BCP-47 language tag) of the localized
-  /// listing whose images are to read or modified. For example, to select
-  /// Austrian German, pass "de-AT".
+  /// [language] - Language localization code (a BCP-47 language tag; for
+  /// example, "de-AT" for Austrian German). There must be a store listing for
+  /// the specified language.
   ///
-  /// [imageType] - null
+  /// [imageType] - Type of the Image. Providing an image type that refers to no
+  /// images will return an empty response.
   /// Possible string values are:
-  /// - "automotiveScreenshots"
-  /// - "daydreamStereoImage"
-  /// - "featureGraphic"
-  /// - "icon"
-  /// - "phoneScreenshots"
-  /// - "promoGraphic"
-  /// - "sevenInchScreenshots"
-  /// - "tenInchScreenshots"
-  /// - "tvBanner"
-  /// - "tvScreenshots"
-  /// - "wearScreenshots"
+  /// - "appImageTypeUnspecified" : Unspecified type. Do not use.
+  /// - "phoneScreenshots" : Phone screenshot.
+  /// - "sevenInchScreenshots" : Seven inch screenshot.
+  /// - "tenInchScreenshots" : Ten inch screenshot.
+  /// - "tvScreenshots" : TV screenshot.
+  /// - "wearScreenshots" : Wear screenshot.
+  /// - "icon" : Icon.
+  /// - "featureGraphic" : Feature graphic.
+  /// - "tvBanner" : TV banner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1544,7 +1548,8 @@ class EditsImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/listings/' +
@@ -1561,33 +1566,30 @@ class EditsImagesResourceApi {
     return _response.then((data) => new ImagesListResponse.fromJson(data));
   }
 
-  /// Uploads a new image and adds it to the list of images for the specified
-  /// language and image type.
+  /// Uploads an image of the specified language and image type, and adds to the
+  /// edit.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [language] - The language code (a BCP-47 language tag) of the localized
-  /// listing whose images are to read or modified. For example, to select
-  /// Austrian German, pass "de-AT".
+  /// [language] - Language localization code (a BCP-47 language tag; for
+  /// example, "de-AT" for Austrian German). Providing a language that is not
+  /// supported by the App is a no-op.
   ///
-  /// [imageType] - null
+  /// [imageType] - Type of the Image.
   /// Possible string values are:
-  /// - "automotiveScreenshots"
-  /// - "daydreamStereoImage"
-  /// - "featureGraphic"
-  /// - "icon"
-  /// - "phoneScreenshots"
-  /// - "promoGraphic"
-  /// - "sevenInchScreenshots"
-  /// - "tenInchScreenshots"
-  /// - "tvBanner"
-  /// - "tvScreenshots"
-  /// - "wearScreenshots"
+  /// - "appImageTypeUnspecified" : Unspecified type. Do not use.
+  /// - "phoneScreenshots" : Phone screenshot.
+  /// - "sevenInchScreenshots" : Seven inch screenshot.
+  /// - "tenInchScreenshots" : Ten inch screenshot.
+  /// - "tvScreenshots" : TV screenshot.
+  /// - "wearScreenshots" : Wear screenshot.
+  /// - "icon" : Icon.
+  /// - "featureGraphic" : Feature graphic.
+  /// - "tvBanner" : TV banner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1637,7 +1639,8 @@ class EditsImagesResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$packageName') +
+      _url = 'androidpublisher/v3/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
           commons.Escaper.ecapeVariable('$editId') +
           '/listings/' +
@@ -1679,18 +1682,16 @@ class EditsListingsResourceApi {
 
   EditsListingsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes the specified localized store listing from an edit.
+  /// Deletes a localized store listing.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [language] - The language code (a BCP-47 language tag) of the localized
-  /// listing to read or modify. For example, to select Austrian German, pass
-  /// "de-AT".
+  /// [language] - Language localization code (a BCP-47 language tag; for
+  /// example, "de-AT" for Austrian German).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1725,7 +1726,8 @@ class EditsListingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/listings/' +
@@ -1740,14 +1742,13 @@ class EditsListingsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Deletes all localized listings from an edit.
+  /// Deletes all store listings.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1778,7 +1779,8 @@ class EditsListingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/listings';
@@ -1792,18 +1794,16 @@ class EditsListingsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Fetches information about a localized store listing.
+  /// Gets a localized store listing.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [language] - The language code (a BCP-47 language tag) of the localized
-  /// listing to read or modify. For example, to select Austrian German, pass
-  /// "de-AT".
+  /// [language] - Language localization code (a BCP-47 language tag; for
+  /// example, "de-AT" for Austrian German).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1838,7 +1838,8 @@ class EditsListingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/listings/' +
@@ -1853,14 +1854,13 @@ class EditsListingsResourceApi {
     return _response.then((data) => new Listing.fromJson(data));
   }
 
-  /// Returns all of the localized store listings attached to this edit.
+  /// Lists all localized store listings.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1892,7 +1892,8 @@ class EditsListingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/listings';
@@ -1906,21 +1907,18 @@ class EditsListingsResourceApi {
     return _response.then((data) => new ListingsListResponse.fromJson(data));
   }
 
-  /// Creates or updates a localized store listing. This method supports patch
-  /// semantics.
+  /// Patches a localized store listing.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [language] - The language code (a BCP-47 language tag) of the localized
-  /// listing to read or modify. For example, to select Austrian German, pass
-  /// "de-AT".
+  /// [language] - Language localization code (a BCP-47 language tag; for
+  /// example, "de-AT" for Austrian German).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1958,7 +1956,8 @@ class EditsListingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/listings/' +
@@ -1979,14 +1978,12 @@ class EditsListingsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [language] - The language code (a BCP-47 language tag) of the localized
-  /// listing to read or modify. For example, to select Austrian German, pass
-  /// "de-AT".
+  /// [language] - Language localization code (a BCP-47 language tag; for
+  /// example, "de-AT" for Austrian German).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2024,7 +2021,8 @@ class EditsListingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/listings/' +
@@ -2045,14 +2043,15 @@ class EditsTestersResourceApi {
 
   EditsTestersResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Gets testers.
+  ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [track] - The track to read or modify.
+  /// [track] - The track to read from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2087,7 +2086,8 @@ class EditsTestersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/testers/' +
@@ -2102,16 +2102,17 @@ class EditsTestersResourceApi {
     return _response.then((data) => new Testers.fromJson(data));
   }
 
+  /// Patches testers.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [track] - The track to read or modify.
+  /// [track] - The track to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2149,7 +2150,8 @@ class EditsTestersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/testers/' +
@@ -2164,16 +2166,17 @@ class EditsTestersResourceApi {
     return _response.then((data) => new Testers.fromJson(data));
   }
 
+  /// Updates testers.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [track] - The track to read or modify.
+  /// [track] - The track to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2211,7 +2214,8 @@ class EditsTestersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/testers/' +
@@ -2232,17 +2236,15 @@ class EditsTracksResourceApi {
 
   EditsTracksResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Fetches the track configuration for the specified track type. Includes the
-  /// APK version codes that are in this track.
+  /// Gets a track.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [track] - The track to read or modify.
+  /// [track] - Identifier of the track.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2277,7 +2279,8 @@ class EditsTracksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/tracks/' +
@@ -2292,14 +2295,13 @@ class EditsTracksResourceApi {
     return _response.then((data) => new Track.fromJson(data));
   }
 
-  /// Lists all the track configurations for this edit.
+  /// Lists all tracks.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2331,7 +2333,8 @@ class EditsTracksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/tracks';
@@ -2345,19 +2348,17 @@ class EditsTracksResourceApi {
     return _response.then((data) => new TracksListResponse.fromJson(data));
   }
 
-  /// Updates the track configuration for the specified track type. This method
-  /// supports patch semantics.
+  /// Patches a track.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [track] - The track to read or modify.
+  /// [track] - Identifier of the track.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2395,7 +2396,8 @@ class EditsTracksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/tracks/' +
@@ -2410,18 +2412,17 @@ class EditsTracksResourceApi {
     return _response.then((data) => new Track.fromJson(data));
   }
 
-  /// Updates the track configuration for the specified track type.
+  /// Updates a track.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app that is being
-  /// updated; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [editId] - Unique identifier for this edit.
+  /// [editId] - Identifier of the edit.
   ///
-  /// [track] - The track to read or modify.
+  /// [track] - Identifier of the track.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2459,7 +2460,8 @@ class EditsTracksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
         commons.Escaper.ecapeVariable('$editId') +
         '/tracks/' +
@@ -2480,12 +2482,11 @@ class InappproductsResourceApi {
 
   InappproductsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Delete an in-app product for an app.
+  /// Deletes an in-app product (i.e. a managed product or a subscriptions).
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app with the in-app
-  /// product; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
   /// [sku] - Unique identifier for the in-app product.
   ///
@@ -2518,7 +2519,8 @@ class InappproductsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/inappproducts/' +
         commons.Escaper.ecapeVariable('$sku');
 
@@ -2531,11 +2533,11 @@ class InappproductsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Returns information about the in-app product specified.
+  /// Gets an in-app product, which can be a managed product or a subscription.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - null
+  /// [packageName] - Package name of the app.
   ///
   /// [sku] - Unique identifier for the in-app product.
   ///
@@ -2568,7 +2570,8 @@ class InappproductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/inappproducts/' +
         commons.Escaper.ecapeVariable('$sku');
 
@@ -2581,14 +2584,13 @@ class InappproductsResourceApi {
     return _response.then((data) => new InAppProduct.fromJson(data));
   }
 
-  /// Creates a new in-app product for an app.
+  /// Creates an in-app product (i.e. a managed product or a subscriptions).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app; for example,
-  /// "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
   /// [autoConvertMissingPrices] - If true the prices for all regions targeted
   /// by the parent app that don't have a price specified for this in-app
@@ -2630,7 +2632,9 @@ class InappproductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
+        '/inappproducts';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2641,19 +2645,17 @@ class InappproductsResourceApi {
     return _response.then((data) => new InAppProduct.fromJson(data));
   }
 
-  /// List all the in-app products for an Android app, both subscriptions and
-  /// managed in-app products..
+  /// Lists all in-app products - both managed products and subscriptions.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app with in-app
-  /// products; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [maxResults] - null
+  /// [maxResults] - How many results the list operation should return.
   ///
-  /// [startIndex] - null
+  /// [startIndex] - The index of the first element to return.
   ///
-  /// [token] - null
+  /// [token] - Pagination token. If empty, list starts at the first product.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2693,7 +2695,9 @@ class InappproductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
+        '/inappproducts';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2705,15 +2709,13 @@ class InappproductsResourceApi {
         .then((data) => new InappproductsListResponse.fromJson(data));
   }
 
-  /// Updates the details of an in-app product. This method supports patch
-  /// semantics.
+  /// Patches an in-app product (i.e. a managed product or a subscriptions).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app with the in-app
-  /// product; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
   /// [sku] - Unique identifier for the in-app product.
   ///
@@ -2760,7 +2762,8 @@ class InappproductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/inappproducts/' +
         commons.Escaper.ecapeVariable('$sku');
 
@@ -2773,14 +2776,13 @@ class InappproductsResourceApi {
     return _response.then((data) => new InAppProduct.fromJson(data));
   }
 
-  /// Updates the details of an in-app product.
+  /// Updates an in-app product (i.e. a managed product or a subscriptions).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app with the in-app
-  /// product; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
   /// [sku] - Unique identifier for the in-app product.
   ///
@@ -2827,7 +2829,8 @@ class InappproductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/inappproducts/' +
         commons.Escaper.ecapeVariable('$sku');
 
@@ -2849,14 +2852,14 @@ class InternalappsharingartifactsResourceApi {
 
   /// Uploads an APK to internal app sharing. If you are using the Google API
   /// client libraries, please increase the timeout of the http request before
-  /// calling this endpoint (a timeout of 2 minutes is recommended). See:
-  /// https://developers.google.com/api-client-library/java/google-api-java-client/errors
+  /// calling this endpoint (a timeout of 2 minutes is recommended). See
+  /// [Timeouts and
+  /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
   /// for an example in java.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app; for example,
-  /// "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2896,7 +2899,7 @@ class InternalappsharingartifactsResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'internalappsharing/' +
+      _url = 'androidpublisher/v3/applications/internalappsharing/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/artifacts/apk';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
@@ -2922,14 +2925,14 @@ class InternalappsharingartifactsResourceApi {
 
   /// Uploads an app bundle to internal app sharing. If you are using the Google
   /// API client libraries, please increase the timeout of the http request
-  /// before calling this endpoint (a timeout of 2 minutes is recommended). See:
-  /// https://developers.google.com/api-client-library/java/google-api-java-client/errors
+  /// before calling this endpoint (a timeout of 2 minutes is recommended). See
+  /// [Timeouts and
+  /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
   /// for an example in java.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app; for example,
-  /// "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2969,7 +2972,7 @@ class InternalappsharingartifactsResourceApi {
     _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = 'internalappsharing/' +
+      _url = 'androidpublisher/v3/applications/internalappsharing/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/artifacts/bundle';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
@@ -3013,7 +3016,7 @@ class OrdersResourceApi {
   /// the subscription or in-app item will be terminated immediately. If the
   /// item is a recurring subscription, all future payments will also be
   /// terminated. Consumed in-app items need to be handled by developer's app.
-  /// (optional)
+  /// (optional).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3047,7 +3050,8 @@ class OrdersResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         ':refund';
@@ -3093,7 +3097,7 @@ class PurchasesProductsResourceApi {
   /// [productId] - The inapp product SKU (for example,
   /// 'com.some.thing.inapp1').
   ///
-  /// [token] - The token provided to the user's device when the subscription
+  /// [token] - The token provided to the user's device when the inapp product
   /// was purchased.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3132,7 +3136,8 @@ class PurchasesProductsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/products/' +
         commons.Escaper.ecapeVariable('$productId') +
         '/tokens/' +
@@ -3194,7 +3199,8 @@ class PurchasesProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/products/' +
         commons.Escaper.ecapeVariable('$productId') +
         '/tokens/' +
@@ -3267,7 +3273,8 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/tokens/' +
@@ -3291,9 +3298,6 @@ class PurchasesSubscriptionsResourceApi {
   /// [packageName] - The package name of the application for which this
   /// subscription was purchased (for example, 'com.some.thing').
   ///
-  /// [subscriptionId] - The purchased subscription ID (for example,
-  /// 'monthly001').
-  ///
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
   ///
@@ -3305,8 +3309,7 @@ class PurchasesSubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future cancel(
-      core.String packageName, core.String subscriptionId, core.String token,
+  async.Future cancel(core.String packageName, core.String token,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3318,9 +3321,6 @@ class PurchasesSubscriptionsResourceApi {
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
-    if (subscriptionId == null) {
-      throw new core.ArgumentError("Parameter subscriptionId is required.");
-    }
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
     }
@@ -3330,10 +3330,9 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
-        '/purchases/subscriptions/' +
-        commons.Escaper.ecapeVariable('$subscriptionId') +
-        '/tokens/' +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/subscriptions/tokens/' +
         commons.Escaper.ecapeVariable('$token') +
         ':cancel';
 
@@ -3401,7 +3400,8 @@ class PurchasesSubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/tokens/' +
@@ -3465,7 +3465,8 @@ class PurchasesSubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/tokens/' +
@@ -3488,7 +3489,7 @@ class PurchasesSubscriptionsResourceApi {
   /// [packageName] - The package name of the application for which this
   /// subscription was purchased (for example, 'com.some.thing').
   ///
-  /// [subscriptionId] - The purchased subscription ID (for example,
+  /// [subscriptionId] - "The purchased subscription ID (for example,
   /// 'monthly001').
   ///
   /// [token] - The token provided to the user's device when the subscription
@@ -3527,7 +3528,8 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/tokens/' +
@@ -3591,7 +3593,8 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/tokens/' +
@@ -3621,16 +3624,18 @@ class PurchasesVoidedpurchasesResourceApi {
   /// [packageName] - The package name of the application for which voided
   /// purchases need to be returned (for example, 'com.some.thing').
   ///
-  /// [endTime] - The time, in milliseconds since the Epoch, of the newest
-  /// voided purchase that you want to see in the response. The value of this
-  /// parameter cannot be greater than the current time and is ignored if a
-  /// pagination token is set. Default value is current time. Note: This filter
-  /// is applied on the time at which the record is seen as voided by our
-  /// systems and not the actual voided time returned in the response.
+  /// [maxResults] - Defines how many results the list operation should return.
+  /// The default number depends on the resource collection.
   ///
-  /// [maxResults] - null
-  ///
-  /// [startIndex] - null
+  /// [type] - The type of voided purchases that you want to see in the
+  /// response. Possible values are: 0. Only voided in-app product purchases
+  /// will be returned in the response. This is the default value. 1. Both
+  /// voided in-app purchases and voided subscription purchases will be returned
+  /// in the response. Note: Before requesting to receive voided subscription
+  /// purchases, you must switch to use orderId in the response which uniquely
+  /// identifies one-time purchases and subscriptions. Otherwise, you will
+  /// receive multiple subscription orders with the same PurchaseToken, because
+  /// subscription renewal orders share the same PurchaseToken.
   ///
   /// [startTime] - The time, in milliseconds since the Epoch, of the oldest
   /// voided purchase that you want to see in the response. The value of this
@@ -3639,18 +3644,18 @@ class PurchasesVoidedpurchasesResourceApi {
   /// filter is applied on the time at which the record is seen as voided by our
   /// systems and not the actual voided time returned in the response.
   ///
-  /// [token] - null
+  /// [endTime] - The time, in milliseconds since the Epoch, of the newest
+  /// voided purchase that you want to see in the response. The value of this
+  /// parameter cannot be greater than the current time and is ignored if a
+  /// pagination token is set. Default value is current time. Note: This filter
+  /// is applied on the time at which the record is seen as voided by our
+  /// systems and not the actual voided time returned in the response.
   ///
-  /// [type] - The type of voided purchases that you want to see in the
-  /// response. Possible values are:
-  /// - 0: Only voided in-app product purchases will be returned in the
-  /// response. This is the default value.
-  /// - 1: Both voided in-app purchases and voided subscription purchases will
-  /// be returned in the response.  Note: Before requesting to receive voided
-  /// subscription purchases, you must switch to use orderId in the response
-  /// which uniquely identifies one-time purchases and subscriptions. Otherwise,
-  /// you will receive multiple subscription orders with the same PurchaseToken,
-  /// because subscription renewal orders share the same PurchaseToken.
+  /// [startIndex] - Defines the index of the first element to return. This can
+  /// only be used if indexed paging is enabled.
+  ///
+  /// [token] - Defines the token of the page to return, usually taken from
+  /// TokenPagination. This can only be used if token paging is enabled.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3663,12 +3668,12 @@ class PurchasesVoidedpurchasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VoidedPurchasesListResponse> list(core.String packageName,
-      {core.String endTime,
-      core.int maxResults,
-      core.int startIndex,
-      core.String startTime,
-      core.String token,
+      {core.int maxResults,
       core.int type,
+      core.String startTime,
+      core.String endTime,
+      core.int startIndex,
+      core.String token,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3680,29 +3685,30 @@ class PurchasesVoidedpurchasesResourceApi {
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+    if (type != null) {
+      _queryParams["type"] = ["${type}"];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
     if (token != null) {
       _queryParams["token"] = [token];
-    }
-    if (type != null) {
-      _queryParams["type"] = ["${type}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/voidedpurchases';
 
     var _response = _requester.request(_url, "GET",
@@ -3721,16 +3727,15 @@ class ReviewsResourceApi {
 
   ReviewsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a single review.
+  /// Gets a single review.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app for which we want
-  /// reviews; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [reviewId] - null
+  /// [reviewId] - Unique identifier for a review.
   ///
-  /// [translationLanguage] - null
+  /// [translationLanguage] - Language localization code.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3764,7 +3769,8 @@ class ReviewsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/reviews/' +
         commons.Escaper.ecapeVariable('$reviewId');
 
@@ -3777,20 +3783,19 @@ class ReviewsResourceApi {
     return _response.then((data) => new Review.fromJson(data));
   }
 
-  /// Returns a list of reviews. Only reviews from last week will be returned.
+  /// Lists all reviews.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app for which we want
-  /// reviews; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [maxResults] - null
+  /// [translationLanguage] - Language localization code.
   ///
-  /// [startIndex] - null
+  /// [startIndex] - The index of the first element to return.
   ///
-  /// [token] - null
+  /// [token] - Pagination token. If empty, list starts at the first review.
   ///
-  /// [translationLanguage] - null
+  /// [maxResults] - How many results the list operation should return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3803,10 +3808,10 @@ class ReviewsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReviewsListResponse> list(core.String packageName,
-      {core.int maxResults,
+      {core.String translationLanguage,
       core.int startIndex,
       core.String token,
-      core.String translationLanguage,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3818,8 +3823,8 @@ class ReviewsResourceApi {
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (translationLanguage != null) {
+      _queryParams["translationLanguage"] = [translationLanguage];
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
@@ -3827,14 +3832,16 @@ class ReviewsResourceApi {
     if (token != null) {
       _queryParams["token"] = [token];
     }
-    if (translationLanguage != null) {
-      _queryParams["translationLanguage"] = [translationLanguage];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews';
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
+        '/reviews';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3845,16 +3852,15 @@ class ReviewsResourceApi {
     return _response.then((data) => new ReviewsListResponse.fromJson(data));
   }
 
-  /// Reply to a single review, or update an existing reply.
+  /// Replies to a single review, or updates an existing reply.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app for which we want
-  /// reviews; for example, "com.spiffygame".
+  /// [packageName] - Package name of the app.
   ///
-  /// [reviewId] - null
+  /// [reviewId] - Unique identifier for a review.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3889,7 +3895,8 @@ class ReviewsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/reviews/' +
         commons.Escaper.ecapeVariable('$reviewId') +
         ':reply';
@@ -3919,15 +3926,14 @@ class SystemapksVariantsResourceApi {
   SystemapksVariantsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new variant of APK which is suitable for inclusion in a system
-  /// image.
+  /// Creates an APK which is suitable for inclusion in a system image from an
+  /// already uploaded Android App Bundle.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app; for example,
-  /// "com.spiffygame".
+  /// [packageName] - Unique identifier of the Android app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
@@ -3941,8 +3947,8 @@ class SystemapksVariantsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Variant> create(SystemApkVariantsCreateRequest request,
-      core.String packageName, core.String versionCode,
+  async.Future<Variant> create(
+      Variant request, core.String packageName, core.String versionCode,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3964,7 +3970,8 @@ class SystemapksVariantsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/systemApks/' +
         commons.Escaper.ecapeVariable('$versionCode') +
         '/variants';
@@ -3978,17 +3985,16 @@ class SystemapksVariantsResourceApi {
     return _response.then((data) => new Variant.fromJson(data));
   }
 
-  /// Download a previously created APK which is suitable for inclusion in a
-  /// system image.
+  /// Downloads a previously created system APK which is suitable for inclusion
+  /// in a system image.
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app; for example,
-  /// "com.spiffygame".
+  /// [packageName] - Unique identifier of the Android app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
-  /// [variantId] - null
+  /// [variantId] - The ID of a previously created system APK variant.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4029,7 +4035,8 @@ class SystemapksVariantsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/systemApks/' +
         commons.Escaper.ecapeVariable('$versionCode') +
         '/variants/' +
@@ -4054,12 +4061,11 @@ class SystemapksVariantsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app; for example,
-  /// "com.spiffygame".
+  /// [packageName] - Unique identifier of the Android app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
-  /// [variantId] - Unique identifier for this variant.
+  /// [variantId] - The ID of a previously created system APK variant.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4094,7 +4100,8 @@ class SystemapksVariantsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/systemApks/' +
         commons.Escaper.ecapeVariable('$versionCode') +
         '/variants/' +
@@ -4113,22 +4120,21 @@ class SystemapksVariantsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier for the Android app; for example,
-  /// "com.spiffygame".
+  /// [packageName] - Unique identifier of the Android app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [SystemApkVariantsListResponse].
+  /// Completes with a [SystemApksListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SystemApkVariantsListResponse> list(
+  async.Future<SystemApksListResponse> list(
       core.String packageName, core.String versionCode,
       {core.String $fields}) {
     var _url;
@@ -4148,7 +4154,8 @@ class SystemapksVariantsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') +
+    _url = 'androidpublisher/v3/applications/' +
+        commons.Escaper.ecapeVariable('$packageName') +
         '/systemApks/' +
         commons.Escaper.ecapeVariable('$versionCode') +
         '/variants';
@@ -4159,17 +4166,16 @@ class SystemapksVariantsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new SystemApkVariantsListResponse.fromJson(data));
+    return _response.then((data) => new SystemApksListResponse.fromJson(data));
   }
 }
 
+/// Information about an APK. The resource for ApksService.
 class Apk {
   /// Information about the binary payload of this APK.
   ApkBinary binary;
-  ApkBinary testBinary;
 
-  /// The version code of the APK, as specified in the APK's manifest file.
+  /// The version code of the APK, as specified in the manifest file.
   core.int versionCode;
 
   Apk();
@@ -4177,9 +4183,6 @@ class Apk {
   Apk.fromJson(core.Map _json) {
     if (_json.containsKey("binary")) {
       binary = new ApkBinary.fromJson(_json["binary"]);
-    }
-    if (_json.containsKey("testBinary")) {
-      testBinary = new ApkBinary.fromJson(_json["testBinary"]);
     }
     if (_json.containsKey("versionCode")) {
       versionCode = _json["versionCode"];
@@ -4191,9 +4194,6 @@ class Apk {
         new core.Map<core.String, core.Object>();
     if (binary != null) {
       _json["binary"] = (binary).toJson();
-    }
-    if (testBinary != null) {
-      _json["testBinary"] = (testBinary).toJson();
     }
     if (versionCode != null) {
       _json["versionCode"] = versionCode;
@@ -4236,6 +4236,7 @@ class ApkBinary {
   }
 }
 
+/// Request to create a new externally hosted APK.
 class ApksAddExternallyHostedRequest {
   /// The definition of the externally-hosted APK and where it is located.
   ExternallyHostedApk externallyHostedApk;
@@ -4259,6 +4260,7 @@ class ApksAddExternallyHostedRequest {
   }
 }
 
+/// Response for creating a new externally hosted APK.
 class ApksAddExternallyHostedResponse {
   /// The definition of the externally-hosted APK and where it is located.
   ExternallyHostedApk externallyHostedApk;
@@ -4282,11 +4284,12 @@ class ApksAddExternallyHostedResponse {
   }
 }
 
+/// Response listing all APKs.
 class ApksListResponse {
+  /// All APKs.
   core.List<Apk> apks;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidpublisher#apksListResponse".
+  /// The kind of this response ("androidpublisher#apksListResponse").
   core.String kind;
 
   ApksListResponse();
@@ -4315,6 +4318,7 @@ class ApksListResponse {
   }
 }
 
+/// The app details. The resource for DetailsService.
 class AppDetails {
   /// The user-visible support email for this app.
   core.String contactEmail;
@@ -4364,14 +4368,13 @@ class AppDetails {
   }
 }
 
-/// Represents an edit of an app. An edit allows clients to make multiple
-/// changes before committing them in one operation.
+/// An app edit. The resource for EditsService.
 class AppEdit {
-  /// The time at which the edit will expire and will be no longer valid for use
-  /// in any subsequent API calls (encoded as seconds since the Epoch).
+  /// Output only. The time (as seconds since Epoch) at which the edit will
+  /// expire and will be no longer valid for use.
   core.String expiryTimeSeconds;
 
-  /// The ID of the edit that can be used in subsequent API calls.
+  /// Output only. Identifier of the edit. Can be used in subsequent API calls.
   core.String id;
 
   AppEdit();
@@ -4398,6 +4401,7 @@ class AppEdit {
   }
 }
 
+/// Information about a bundle. The resource for BundlesService.
 class Bundle {
   /// A sha1 hash of the upload payload, encoded as a hex string and matching
   /// the output of the sha1sum command.
@@ -4407,7 +4411,7 @@ class Bundle {
   /// the output of the sha256sum command.
   core.String sha256;
 
-  /// The version code of the Android App Bundle. As specified in the Android
+  /// The version code of the Android App Bundle, as specified in the Android
   /// App Bundle's base module APK manifest file.
   core.int versionCode;
 
@@ -4441,11 +4445,12 @@ class Bundle {
   }
 }
 
+/// Response listing all bundles.
 class BundlesListResponse {
+  /// All bundles.
   core.List<Bundle> bundles;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidpublisher#bundlesListResponse".
+  /// The kind of this response ("androidpublisher#bundlesListResponse").
   core.String kind;
 
   BundlesListResponse();
@@ -4474,6 +4479,7 @@ class BundlesListResponse {
   }
 }
 
+/// An entry of conversation between user and developer.
 class Comment {
   /// A comment from a developer.
   DeveloperComment developerComment;
@@ -4506,49 +4512,13 @@ class Comment {
   }
 }
 
-class Control {
-  core.List<ModRange> modRanges;
-  core.List<StratifiedSampling> stratifiedSamplings;
-  core.List<core.String> versionCodes;
-
-  Control();
-
-  Control.fromJson(core.Map _json) {
-    if (_json.containsKey("modRanges")) {
-      modRanges = (_json["modRanges"] as core.List)
-          .map<ModRange>((value) => new ModRange.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("stratifiedSamplings")) {
-      stratifiedSamplings = (_json["stratifiedSamplings"] as core.List)
-          .map<StratifiedSampling>(
-              (value) => new StratifiedSampling.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("versionCodes")) {
-      versionCodes = (_json["versionCodes"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (modRanges != null) {
-      _json["modRanges"] = modRanges.map((value) => (value).toJson()).toList();
-    }
-    if (stratifiedSamplings != null) {
-      _json["stratifiedSamplings"] =
-          stratifiedSamplings.map((value) => (value).toJson()).toList();
-    }
-    if (versionCodes != null) {
-      _json["versionCodes"] = versionCodes;
-    }
-    return _json;
-  }
-}
-
+/// Country targeting specification.
 class CountryTargeting {
+  /// Countries to target, specified as two letter [CLDR
+  /// codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html).
   core.List<core.String> countries;
+
+  /// Include "rest of world" as well as explicitly targeted countries.
   core.bool includeRestOfWorld;
 
   CountryTargeting();
@@ -4578,6 +4548,11 @@ class CountryTargeting {
 /// Represents a deobfuscation file.
 class DeobfuscationFile {
   /// The type of the deobfuscation file.
+  /// Possible string values are:
+  /// - "deobfuscationFileTypeUnspecified" : Unspecified deobfuscation file
+  /// type.
+  /// - "proguard" : Proguard deobfuscation file type.
+  /// - "nativeCode" : Native debugging symbols file type.
   core.String symbolType;
 
   DeobfuscationFile();
@@ -4598,7 +4573,9 @@ class DeobfuscationFile {
   }
 }
 
+/// Responses for the upload.
 class DeobfuscationFilesUploadResponse {
+  /// The uploaded Deobfuscation File configuration.
   DeobfuscationFile deobfuscationFile;
 
   DeobfuscationFilesUploadResponse();
@@ -4620,6 +4597,7 @@ class DeobfuscationFilesUploadResponse {
   }
 }
 
+/// Developer entry from conversation between user and developer.
 class DeveloperComment {
   /// The last time at which this comment was updated.
   Timestamp lastModified;
@@ -4651,11 +4629,12 @@ class DeveloperComment {
   }
 }
 
+/// Characteristics of the user's device.
 class DeviceMetadata {
-  /// Device CPU make e.g. "Qualcomm"
+  /// Device CPU make, e.g. "Qualcomm"
   core.String cpuMake;
 
-  /// Device CPU model e.g. "MSM8974"
+  /// Device CPU model, e.g. "MSM8974"
   core.String cpuModel;
 
   /// Device class (e.g. tablet)
@@ -4673,7 +4652,7 @@ class DeviceMetadata {
   /// Device model name (e.g. Droid)
   core.String productName;
 
-  /// Device RAM in Megabytes e.g. "2048"
+  /// Device RAM in Megabytes, e.g. "2048"
   core.int ramMb;
 
   /// Screen density in DPI
@@ -4763,9 +4742,16 @@ class DeviceMetadata {
   }
 }
 
+/// The device spec used to generate a system APK.
 class DeviceSpec {
+  /// Screen dpi.
   core.int screenDensity;
+
+  /// Supported ABI architectures in the order of preference. The values should
+  /// be the string as reported by the platform, e.g. "armeabi-v7a", "x86_64".
   core.List<core.String> supportedAbis;
+
+  /// All installed locales represented as BCP-47 strings, e.g. "en-US".
   core.List<core.String> supportedLocales;
 
   DeviceSpec();
@@ -4799,13 +4785,14 @@ class DeviceSpec {
   }
 }
 
+/// An expansion file. The resource for ExpansionFilesService.
 class ExpansionFile {
-  /// If set this field indicates that this APK has an Expansion File uploaded
-  /// to it: this APK does not reference another APK's Expansion File. The
-  /// field's value is the size of the uploaded Expansion File in bytes.
+  /// If set, this field indicates that this APK has an expansion file uploaded
+  /// to it: this APK does not reference another APK's expansion file. The
+  /// field's value is the size of the uploaded expansion file in bytes.
   core.String fileSize;
 
-  /// If set this APK's Expansion File references another APK's Expansion File.
+  /// If set, this APK's expansion file references another APK's expansion file.
   /// The file_size field will not be set.
   core.int referencesVersion;
 
@@ -4833,7 +4820,9 @@ class ExpansionFile {
   }
 }
 
+/// Response for uploading an expansion file.
 class ExpansionFilesUploadResponse {
+  /// The uploaded expansion file configuration.
   ExpansionFile expansionFile;
 
   ExpansionFilesUploadResponse();
@@ -4855,24 +4844,24 @@ class ExpansionFilesUploadResponse {
 }
 
 /// Defines an APK available for this application that is hosted externally and
-/// not uploaded to Google Play. This function is only available to enterprises
-/// who are using Google Play for Work, and whos application is restricted to
-/// the enterprise private channel
+/// not uploaded to Google Play. This function is only available to
+/// organizations using Managed Play whose application is configured to restrict
+/// distribution to the organizations.
 class ExternallyHostedApk {
   /// The application label.
   core.String applicationLabel;
 
   /// A certificate (or array of certificates if a certificate-chain is used)
-  /// used to signed this APK, represented as a base64 encoded byte array.
+  /// used to sign this APK, represented as a base64 encoded byte array.
   core.List<core.String> certificateBase64s;
 
   /// The URL at which the APK is hosted. This must be an https URL.
   core.String externallyHostedUrl;
 
-  /// The SHA1 checksum of this APK, represented as a base64 encoded byte array.
+  /// The sha1 checksum of this APK, represented as a base64 encoded byte array.
   core.String fileSha1Base64;
 
-  /// The SHA256 checksum of this APK, represented as a base64 encoded byte
+  /// The sha256 checksum of this APK, represented as a base64 encoded byte
   /// array.
   core.String fileSha256Base64;
 
@@ -4898,7 +4887,7 @@ class ExternallyHostedApk {
   core.List<core.String> usesFeatures;
 
   /// The permissions requested by this APK.
-  core.List<ExternallyHostedApkUsesPermission> usesPermissions;
+  core.List<UsesPermission> usesPermissions;
 
   /// The version code of this APK.
   core.int versionCode;
@@ -4948,8 +4937,7 @@ class ExternallyHostedApk {
     }
     if (_json.containsKey("usesPermissions")) {
       usesPermissions = (_json["usesPermissions"] as core.List)
-          .map<ExternallyHostedApkUsesPermission>(
-              (value) => new ExternallyHostedApkUsesPermission.fromJson(value))
+          .map<UsesPermission>((value) => new UsesPermission.fromJson(value))
           .toList();
     }
     if (_json.containsKey("versionCode")) {
@@ -5013,46 +5001,15 @@ class ExternallyHostedApk {
   }
 }
 
-/// A permission used by this APK.
-class ExternallyHostedApkUsesPermission {
-  /// Optionally, the maximum SDK version for which the permission is required.
-  core.int maxSdkVersion;
-
-  /// The name of the permission requested.
-  core.String name;
-
-  ExternallyHostedApkUsesPermission();
-
-  ExternallyHostedApkUsesPermission.fromJson(core.Map _json) {
-    if (_json.containsKey("maxSdkVersion")) {
-      maxSdkVersion = _json["maxSdkVersion"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (maxSdkVersion != null) {
-      _json["maxSdkVersion"] = maxSdkVersion;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    return _json;
-  }
-}
-
+/// An uploaded image. The resource for ImagesService.
 class Image {
   /// A unique id representing this image.
   core.String id;
 
-  /// A sha1 hash of the image that was uploaded.
+  /// A sha1 hash of the image.
   core.String sha1;
 
-  /// A sha256 hash of the image that was uploaded.
+  /// A sha256 hash of the image.
   core.String sha256;
 
   /// A URL that will serve a preview of the image.
@@ -5094,7 +5051,9 @@ class Image {
   }
 }
 
+/// Response for deleting all images.
 class ImagesDeleteAllResponse {
+  /// The deleted images.
   core.List<Image> deleted;
 
   ImagesDeleteAllResponse();
@@ -5117,7 +5076,9 @@ class ImagesDeleteAllResponse {
   }
 }
 
+/// Response listing all images.
 class ImagesListResponse {
+  /// All listed Images.
   core.List<Image> images;
 
   ImagesListResponse();
@@ -5140,7 +5101,9 @@ class ImagesListResponse {
   }
 }
 
+/// Response for uploading an image.
 class ImagesUploadResponse {
+  /// The uploaded image.
   Image image;
 
   ImagesUploadResponse();
@@ -5161,47 +5124,59 @@ class ImagesUploadResponse {
   }
 }
 
+/// An in-app product. The resource for InappproductsService.
 class InAppProduct {
-  /// The default language of the localized data, as defined by BCP 47. e.g.
-  /// "en-US", "en-GB".
+  /// Default language of the localized data, as defined by BCP-47. e.g.
+  /// "en-US".
   core.String defaultLanguage;
 
-  /// Default price cannot be zero. In-app products can never be free. Default
-  /// price is always in the developer's Checkout merchant currency.
+  /// Default price. Cannot be zero, as in-app products are never free. Always
+  /// in the developer's Checkout merchant currency.
   Price defaultPrice;
 
-  /// Grace period of the subscription, specified in ISO 8601 format. It will
-  /// allow developers to give their subscribers a grace period when the payment
-  /// for the new recurrence period is declined. Acceptable values = "P3D"
-  /// (three days), "P7D" (seven days), "P14D" (fourteen days), and "P30D"
-  /// (thirty days)
+  /// Grace period of the subscription, specified in ISO 8601 format. Allows
+  /// developers to give their subscribers a grace period when the payment for
+  /// the new recurrence period is declined. Acceptable values are P0D (zero
+  /// days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30
+  /// days).
   core.String gracePeriod;
 
-  /// List of localized title and description data.
+  /// List of localized title and description data. Map key is the language of
+  /// the localized data, as defined by BCP-47, e.g. "en-US".
   core.Map<core.String, InAppProductListing> listings;
 
-  /// The package name of the parent app.
+  /// Package name of the parent app.
   core.String packageName;
 
-  /// Prices per buyer region. None of these prices should be zero. In-app
-  /// products can never be free.
+  /// Prices per buyer region. None of these can be zero, as in-app products are
+  /// never free. Map key is region code, as defined by ISO 3166-2.
   core.Map<core.String, Price> prices;
 
-  /// Purchase type enum value. Unmodifiable after creation.
+  /// The type of the product, e.g. a recurring subscription.
+  /// Possible string values are:
+  /// - "purchaseTypeUnspecified" : Unspecified purchase type.
+  /// - "managedUser" : The default product type - one time purchase.
+  /// - "subscription" : In-app product with a recurring period.
   core.String purchaseType;
 
-  /// The stock-keeping-unit (SKU) of the product, unique within an app.
+  /// Stock-keeping-unit (SKU) of the product, unique within an app.
   core.String sku;
+
+  /// The status of the product, e.g. whether it's active.
+  /// Possible string values are:
+  /// - "statusUnspecified" : Unspecified status.
+  /// - "active" : The product is published and active in the store.
+  /// - "inactive" : The product is not published and therefore inactive in the
+  /// store.
   core.String status;
 
   /// Subscription period, specified in ISO 8601 format. Acceptable values are
-  /// "P1W" (one week), "P1M" (one month), "P3M" (three months), "P6M" (six
-  /// months), and "P1Y" (one year).
+  /// P1W (one week), P1M (one month), P3M (three months), P6M (six months), and
+  /// P1Y (one year).
   core.String subscriptionPeriod;
 
   /// Trial period, specified in ISO 8601 format. Acceptable values are anything
-  /// between "P7D" (seven days) and "P999D" (999 days). Seasonal subscriptions
-  /// cannot have a trial period.
+  /// between P7D (seven days) and P999D (999 days).
   core.String trialPeriod;
 
   InAppProduct();
@@ -5290,13 +5265,23 @@ class InAppProduct {
   }
 }
 
+/// Store listing of a single in-app product.
 class InAppProductListing {
+  /// Localized entitlement benefits for a subscription.
+  core.List<core.String> benefits;
+
+  /// Description for the store listing.
   core.String description;
+
+  /// Title for the store listing.
   core.String title;
 
   InAppProductListing();
 
   InAppProductListing.fromJson(core.Map _json) {
+    if (_json.containsKey("benefits")) {
+      benefits = (_json["benefits"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -5308,6 +5293,9 @@ class InAppProductListing {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (benefits != null) {
+      _json["benefits"] = benefits;
+    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -5318,13 +5306,18 @@ class InAppProductListing {
   }
 }
 
+/// Response listing all in-app products.
 class InappproductsListResponse {
+  /// All in-app products.
   core.List<InAppProduct> inappproduct;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidpublisher#inappproductsListResponse".
+  /// The kind of this response ("androidpublisher#inappproductsListResponse").
   core.String kind;
+
+  /// Information about the current page.
   PageInfo pageInfo;
+
+  /// Pagination token, to handle a number of products that is over one page.
   TokenPagination tokenPagination;
 
   InappproductsListResponse();
@@ -5369,7 +5362,7 @@ class InappproductsListResponse {
 /// An artifact resource which gets created when uploading an APK or Android App
 /// Bundle through internal app sharing.
 class InternalAppSharingArtifact {
-  /// The SHA256 fingerprint of the certificate used to signed the generated
+  /// The sha256 fingerprint of the certificate used to sign the generated
   /// artifact.
   core.String certificateFingerprint;
 
@@ -5378,7 +5371,7 @@ class InternalAppSharingArtifact {
   /// install it.
   core.String downloadUrl;
 
-  /// The SHA-256 hash of the artifact represented as a lowercase hexadecimal
+  /// The sha256 hash of the artifact represented as a lowercase hexadecimal
   /// number, matching the output of the sha256sum command.
   core.String sha256;
 
@@ -5469,18 +5462,19 @@ class IntroductoryPriceInfo {
   }
 }
 
+/// A localized store listing. The resource for ListingsService.
 class Listing {
-  /// Full description of the app; this may be up to 4000 characters in length.
+  /// Full description of the app.
   core.String fullDescription;
 
-  /// Language localization code (for example, "de-AT" for Austrian German).
+  /// Language localization code (a BCP-47 language tag; for example, "de-AT"
+  /// for Austrian German).
   core.String language;
 
-  /// Short description of the app (previously known as promo text); this may be
-  /// up to 80 characters in length.
+  /// Short description of the app.
   core.String shortDescription;
 
-  /// App's localized title.
+  /// Localized title of the app.
   core.String title;
 
   /// URL of a promotional YouTube video for the app.
@@ -5528,10 +5522,12 @@ class Listing {
   }
 }
 
+/// Response listing all localized listings.
 class ListingsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidpublisher#listingsListResponse".
+  /// The kind of this response ("androidpublisher#listingsListResponse").
   core.String kind;
+
+  /// All localized listings.
   core.List<Listing> listings;
 
   ListingsListResponse();
@@ -5560,11 +5556,13 @@ class ListingsListResponse {
   }
 }
 
+/// Release notes specification, i.e. language and text.
 class LocalizedText {
-  /// The language code, in BCP 47 format (eg "en-US").
+  /// Language localization code (a BCP-47 language tag; for example, "de-AT"
+  /// for Austrian German).
   core.String language;
 
-  /// The text in the given `language`.
+  /// The text in the given language.
   core.String text;
 
   LocalizedText();
@@ -5591,37 +5589,19 @@ class LocalizedText {
   }
 }
 
-class ModRange {
-  core.String end;
-  core.String start;
-
-  ModRange();
-
-  ModRange.fromJson(core.Map _json) {
-    if (_json.containsKey("end")) {
-      end = _json["end"];
-    }
-    if (_json.containsKey("start")) {
-      start = _json["start"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (end != null) {
-      _json["end"] = end;
-    }
-    if (start != null) {
-      _json["start"] = start;
-    }
-    return _json;
-  }
-}
-
+/// Information about the current page. List operations that supports paging
+/// return only one "page" of results. This protocol buffer message describes
+/// the page that has been returned.
 class PageInfo {
+  /// Maximum number of results returned in one page. ! The number of results
+  /// included in the API response.
   core.int resultPerPage;
+
+  /// Index of the first result returned in the current page.
   core.int startIndex;
+
+  /// Total number of results available on the backend ! The total number of
+  /// results in the result set.
   core.int totalResults;
 
   PageInfo();
@@ -5654,11 +5634,13 @@ class PageInfo {
   }
 }
 
+/// Definition of a price, i.e. currency and units.
 class Price {
-  /// 3 letter Currency code, as defined by ISO 4217.
+  /// 3 letter Currency code, as defined by ISO 4217. See
+  /// java/com/google/common/money/CurrencyCode.java
   core.String currency;
 
-  /// The price in millionths of the currency base unit represented as a string.
+  /// Price in 1/million of the currency base unit, represented as a string.
   core.String priceMicros;
 
   Price();
@@ -5688,14 +5670,12 @@ class Price {
 /// A ProductPurchase resource indicates the status of a user's inapp product
 /// purchase.
 class ProductPurchase {
-  /// The acknowledgement state of the inapp product. Possible values are:
-  /// - Yet to be acknowledged
-  /// - Acknowledged
+  /// The acknowledgement state of the inapp product. Possible values are: 0.
+  /// Yet to be acknowledged 1. Acknowledged
   core.int acknowledgementState;
 
-  /// The consumption state of the inapp product. Possible values are:
-  /// - Yet to be consumed
-  /// - Consumed
+  /// The consumption state of the inapp product. Possible values are: 0. Yet to
+  /// be consumed 1. Consumed
   core.int consumptionState;
 
   /// A developer-specified string that contains supplemental information about
@@ -5706,16 +5686,26 @@ class ProductPurchase {
   /// service.
   core.String kind;
 
+  /// An obfuscated version of the id that is uniquely associated with the
+  /// user's account in your app. Only present if specified using
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+  /// when the purchase was made.
+  core.String obfuscatedExternalAccountId;
+
+  /// An obfuscated version of the id that is uniquely associated with the
+  /// user's profile in your app. Only present if specified using
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+  /// when the purchase was made.
+  core.String obfuscatedExternalProfileId;
+
   /// The order id associated with the purchase of the inapp product.
   core.String orderId;
 
   /// The inapp product SKU.
   core.String productId;
 
-  /// The purchase state of the order. Possible values are:
-  /// - Purchased
-  /// - Canceled
-  /// - Pending
+  /// The purchase state of the order. Possible values are: 0. Purchased 1.
+  /// Canceled 2. Pending
   core.int purchaseState;
 
   /// The time the product was purchased, in milliseconds since the epoch (Jan
@@ -5727,14 +5717,17 @@ class ProductPurchase {
 
   /// The type of purchase of the inapp product. This field is only set if this
   /// purchase was not made using the standard in-app billing flow. Possible
-  /// values are:
-  /// - Test (i.e. purchased from a license testing account)
-  /// - Promo (i.e. purchased using a promo code)
-  /// - Rewarded (i.e. from watching a video ad instead of paying)
+  /// values are: 0. Test (i.e. purchased from a license testing account) 1.
+  /// Promo (i.e. purchased using a promo code) 2. Rewarded (i.e. from watching
+  /// a video ad instead of paying)
   core.int purchaseType;
 
   /// The quantity associated with the purchase of the inapp product.
   core.int quantity;
+
+  /// ISO 3166-1 alpha-2 billing region code of the user at the time the product
+  /// was granted.
+  core.String regionCode;
 
   ProductPurchase();
 
@@ -5750,6 +5743,12 @@ class ProductPurchase {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("obfuscatedExternalAccountId")) {
+      obfuscatedExternalAccountId = _json["obfuscatedExternalAccountId"];
+    }
+    if (_json.containsKey("obfuscatedExternalProfileId")) {
+      obfuscatedExternalProfileId = _json["obfuscatedExternalProfileId"];
     }
     if (_json.containsKey("orderId")) {
       orderId = _json["orderId"];
@@ -5772,6 +5771,9 @@ class ProductPurchase {
     if (_json.containsKey("quantity")) {
       quantity = _json["quantity"];
     }
+    if (_json.containsKey("regionCode")) {
+      regionCode = _json["regionCode"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5788,6 +5790,12 @@ class ProductPurchase {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (obfuscatedExternalAccountId != null) {
+      _json["obfuscatedExternalAccountId"] = obfuscatedExternalAccountId;
+    }
+    if (obfuscatedExternalProfileId != null) {
+      _json["obfuscatedExternalProfileId"] = obfuscatedExternalProfileId;
     }
     if (orderId != null) {
       _json["orderId"] = orderId;
@@ -5810,10 +5818,14 @@ class ProductPurchase {
     if (quantity != null) {
       _json["quantity"] = quantity;
     }
+    if (regionCode != null) {
+      _json["regionCode"] = regionCode;
+    }
     return _json;
   }
 }
 
+/// Request for the product.purchases.acknowledge API.
 class ProductPurchasesAcknowledgeRequest {
   /// Payload to attach to the purchase.
   core.String developerPayload;
@@ -5836,6 +5848,7 @@ class ProductPurchasesAcknowledgeRequest {
   }
 }
 
+/// An Android app review.
 class Review {
   /// The name of the user who wrote the review.
   core.String authorName;
@@ -5878,6 +5891,7 @@ class Review {
   }
 }
 
+/// The result of replying/updating a reply to review.
 class ReviewReplyResult {
   /// The time at which the reply took effect.
   Timestamp lastEdited;
@@ -5909,9 +5923,15 @@ class ReviewReplyResult {
   }
 }
 
+/// Response listing reviews.
 class ReviewsListResponse {
+  /// Information about the current page.
   PageInfo pageInfo;
+
+  /// List of reviews.
   core.List<Review> reviews;
+
+  /// Pagination token, to handle a number of products that is over one page.
   TokenPagination tokenPagination;
 
   ReviewsListResponse();
@@ -5946,6 +5966,7 @@ class ReviewsListResponse {
   }
 }
 
+/// Request to reply to review or update existing reply.
 class ReviewsReplyRequest {
   /// The text to set as the reply. Replies of more than approximately 350
   /// characters will be rejected. HTML tags will be stripped.
@@ -5969,7 +5990,9 @@ class ReviewsReplyRequest {
   }
 }
 
+/// Response on status of replying to a review.
 class ReviewsReplyResponse {
+  /// The result of replying/updating a reply to review.
   ReviewReplyResult result;
 
   ReviewsReplyResponse();
@@ -5990,121 +6013,12 @@ class ReviewsReplyResponse {
   }
 }
 
-class Sampling {
-  core.List<ModRange> modRanges;
-  core.String modulus;
-  core.int salt;
-  core.List<StratifiedSampling> stratifiedSamplings;
-  core.bool useAndroidId;
-
-  Sampling();
-
-  Sampling.fromJson(core.Map _json) {
-    if (_json.containsKey("modRanges")) {
-      modRanges = (_json["modRanges"] as core.List)
-          .map<ModRange>((value) => new ModRange.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("modulus")) {
-      modulus = _json["modulus"];
-    }
-    if (_json.containsKey("salt")) {
-      salt = _json["salt"];
-    }
-    if (_json.containsKey("stratifiedSamplings")) {
-      stratifiedSamplings = (_json["stratifiedSamplings"] as core.List)
-          .map<StratifiedSampling>(
-              (value) => new StratifiedSampling.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("useAndroidId")) {
-      useAndroidId = _json["useAndroidId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (modRanges != null) {
-      _json["modRanges"] = modRanges.map((value) => (value).toJson()).toList();
-    }
-    if (modulus != null) {
-      _json["modulus"] = modulus;
-    }
-    if (salt != null) {
-      _json["salt"] = salt;
-    }
-    if (stratifiedSamplings != null) {
-      _json["stratifiedSamplings"] =
-          stratifiedSamplings.map((value) => (value).toJson()).toList();
-    }
-    if (useAndroidId != null) {
-      _json["useAndroidId"] = useAndroidId;
-    }
-    return _json;
-  }
-}
-
-class StratifiedSampling {
-  core.List<ModRange> modRanges;
-  Stratum stratum;
-
-  StratifiedSampling();
-
-  StratifiedSampling.fromJson(core.Map _json) {
-    if (_json.containsKey("modRanges")) {
-      modRanges = (_json["modRanges"] as core.List)
-          .map<ModRange>((value) => new ModRange.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("stratum")) {
-      stratum = new Stratum.fromJson(_json["stratum"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (modRanges != null) {
-      _json["modRanges"] = modRanges.map((value) => (value).toJson()).toList();
-    }
-    if (stratum != null) {
-      _json["stratum"] = (stratum).toJson();
-    }
-    return _json;
-  }
-}
-
-class Stratum {
-  core.String brand;
-
-  Stratum();
-
-  Stratum.fromJson(core.Map _json) {
-    if (_json.containsKey("brand")) {
-      brand = _json["brand"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (brand != null) {
-      _json["brand"] = brand;
-    }
-    return _json;
-  }
-}
-
 /// Information provided by the user when they complete the subscription
 /// cancellation flow (cancellation reason survey).
 class SubscriptionCancelSurveyResult {
   /// The cancellation reason the user chose in the survey. Possible values are:
-  /// - Other
-  /// - I don't use this service enough
-  /// - Technical issues
-  /// - Cost-related reasons
-  /// - I found a better app
+  /// 0. Other 1. I don't use this service enough 2. Technical issues 3.
+  /// Cost-related reasons 4. I found a better app
   core.int cancelSurveyReason;
 
   /// The customized input cancel reason from the user. Only present when
@@ -6181,14 +6095,13 @@ class SubscriptionPriceChange {
   /// accepted by the user.
   Price newPrice;
 
-  /// The current state of the price change. Possible values are:
-  /// - Outstanding: State for a pending price change waiting for the user to
+  /// The current state of the price change. Possible values are: 0.
+  /// Outstanding: State for a pending price change waiting for the user to
   /// agree. In this state, you can optionally seek confirmation from the user
-  /// using the In-App API.
-  /// - Accepted: State for an accepted price change that the subscription will
-  /// renew with unless it's canceled. The price change takes effect on a future
-  /// date when the subscription renews. Note that the change might not occur
-  /// when the subscription is renewed next.
+  /// using the In-App API. 1. Accepted: State for an accepted price change that
+  /// the subscription will renew with unless it's canceled. The price change
+  /// takes effect on a future date when the subscription renews. Note that the
+  /// change might not occur when the subscription is renewed next.
   core.int state;
 
   SubscriptionPriceChange();
@@ -6219,9 +6132,7 @@ class SubscriptionPriceChange {
 /// subscription purchase.
 class SubscriptionPurchase {
   /// The acknowledgement state of the subscription product. Possible values
-  /// are:
-  /// - Yet to be acknowledged
-  /// - Acknowledged
+  /// are: 0. Yet to be acknowledged 1. Acknowledged
   core.int acknowledgementState;
 
   /// Whether the subscription will automatically be renewed when it reaches its
@@ -6234,12 +6145,10 @@ class SubscriptionPurchase {
   core.String autoResumeTimeMillis;
 
   /// The reason why a subscription was canceled or is not auto-renewing.
-  /// Possible values are:
-  /// - User canceled the subscription
-  /// - Subscription was canceled by the system, for example because of a
-  /// billing problem
-  /// - Subscription was replaced with a new subscription
-  /// - Subscription was canceled by the developer
+  /// Possible values are: 0. User canceled the subscription 1. Subscription was
+  /// canceled by the system, for example because of a billing problem 2.
+  /// Subscription was replaced with a new subscription 3. Subscription was
+  /// canceled by the developer
   core.int cancelReason;
 
   /// Information provided by the user when they complete the subscription
@@ -6275,10 +6184,9 @@ class SubscriptionPurchase {
   core.String givenName;
 
   /// Introductory price information of the subscription. This is only present
-  /// when the subscription was purchased with an introductory price.
-  ///
-  /// This field does not indicate the subscription is currently in introductory
-  /// price period.
+  /// when the subscription was purchased with an introductory price. This field
+  /// does not indicate the subscription is currently in introductory price
+  /// period.
   IntroductoryPriceInfo introductoryPriceInfo;
 
   /// This kind represents a subscriptionPurchase object in the androidpublisher
@@ -6286,9 +6194,8 @@ class SubscriptionPurchase {
   core.String kind;
 
   /// The purchase token of the originating purchase if this subscription is one
-  /// of the following:
-  /// - Re-signup of a canceled but non-lapsed subscription
-  /// - Upgrade/downgrade from a previous subscription  For example, suppose a
+  /// of the following: 0. Re-signup of a canceled but non-lapsed subscription
+  /// 1. Upgrade/downgrade from a previous subscription For example, suppose a
   /// user originally signs up and you receive purchase token X, then the user
   /// cancels and goes through the resignup flow (before their subscription
   /// lapses) and you receive purchase token Y, and finally the user upgrades
@@ -6298,15 +6205,27 @@ class SubscriptionPurchase {
   /// with purchase token X, this field will not be set.
   core.String linkedPurchaseToken;
 
+  /// An obfuscated version of the id that is uniquely associated with the
+  /// user's account in your app. Present for the following purchases: * If
+  /// account linking happened as part of the subscription purchase flow. * It
+  /// was specified using
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+  /// when the purchase was made.
+  core.String obfuscatedExternalAccountId;
+
+  /// An obfuscated version of the id that is uniquely associated with the
+  /// user's profile in your app. Only present if specified using
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+  /// when the purchase was made.
+  core.String obfuscatedExternalProfileId;
+
   /// The order id of the latest recurring order associated with the purchase of
   /// the subscription.
   core.String orderId;
 
-  /// The payment state of the subscription. Possible values are:
-  /// - Payment pending
-  /// - Payment received
-  /// - Free trial
-  /// - Pending deferred upgrade/downgrade
+  /// The payment state of the subscription. Possible values are: 0. Payment
+  /// pending 1. Payment received 2. Free trial 3. Pending deferred
+  /// upgrade/downgrade
   core.int paymentState;
 
   /// Price of the subscription, not including tax. Price is expressed in
@@ -6317,7 +6236,6 @@ class SubscriptionPurchase {
 
   /// The latest price change information available. This is present only when
   /// there is an upcoming price change for the subscription yet to be applied.
-  ///
   /// Once the subscription renews with the new price or the subscription is
   /// canceled, no price change information will be returned.
   SubscriptionPriceChange priceChange;
@@ -6341,16 +6259,13 @@ class SubscriptionPurchase {
 
   /// The type of promotion applied on this purchase. This field is only set if
   /// a promotion is applied when the subscription was purchased. Possible
-  /// values are:
-  /// - One time code
-  /// - Vanity code
+  /// values are: 0. One time code 1. Vanity code
   core.int promotionType;
 
   /// The type of purchase of the subscription. This field is only set if this
   /// purchase was not made using the standard in-app billing flow. Possible
-  /// values are:
-  /// - Test (i.e. purchased from a license testing account)
-  /// - Promo (i.e. purchased using a promo code)
+  /// values are: 0. Test (i.e. purchased from a license testing account) 1.
+  /// Promo (i.e. purchased using a promo code)
   core.int purchaseType;
 
   /// Time at which the subscription was granted, in milliseconds since the
@@ -6410,6 +6325,12 @@ class SubscriptionPurchase {
     }
     if (_json.containsKey("linkedPurchaseToken")) {
       linkedPurchaseToken = _json["linkedPurchaseToken"];
+    }
+    if (_json.containsKey("obfuscatedExternalAccountId")) {
+      obfuscatedExternalAccountId = _json["obfuscatedExternalAccountId"];
+    }
+    if (_json.containsKey("obfuscatedExternalProfileId")) {
+      obfuscatedExternalProfileId = _json["obfuscatedExternalProfileId"];
     }
     if (_json.containsKey("orderId")) {
       orderId = _json["orderId"];
@@ -6497,6 +6418,12 @@ class SubscriptionPurchase {
     if (linkedPurchaseToken != null) {
       _json["linkedPurchaseToken"] = linkedPurchaseToken;
     }
+    if (obfuscatedExternalAccountId != null) {
+      _json["obfuscatedExternalAccountId"] = obfuscatedExternalAccountId;
+    }
+    if (obfuscatedExternalProfileId != null) {
+      _json["obfuscatedExternalProfileId"] = obfuscatedExternalProfileId;
+    }
     if (orderId != null) {
       _json["orderId"] = orderId;
     }
@@ -6537,6 +6464,7 @@ class SubscriptionPurchase {
   }
 }
 
+/// Request for the purchases.subscriptions.acknowledge API.
 class SubscriptionPurchasesAcknowledgeRequest {
   /// Payload to attach to the purchase.
   core.String developerPayload;
@@ -6559,6 +6487,7 @@ class SubscriptionPurchasesAcknowledgeRequest {
   }
 }
 
+/// Request for the purchases.subscriptions.defer API.
 class SubscriptionPurchasesDeferRequest {
   /// The information about the new desired expiry time for the subscription.
   SubscriptionDeferralInfo deferralInfo;
@@ -6582,6 +6511,7 @@ class SubscriptionPurchasesDeferRequest {
   }
 }
 
+/// Response for the purchases.subscriptions.defer API.
 class SubscriptionPurchasesDeferResponse {
   /// The new expiry time for the subscription in milliseconds since the Epoch.
   core.String newExpiryTimeMillis;
@@ -6604,33 +6534,14 @@ class SubscriptionPurchasesDeferResponse {
   }
 }
 
-class SystemApkVariantsCreateRequest {
-  DeviceSpec deviceSpec;
-
-  SystemApkVariantsCreateRequest();
-
-  SystemApkVariantsCreateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("deviceSpec")) {
-      deviceSpec = new DeviceSpec.fromJson(_json["deviceSpec"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (deviceSpec != null) {
-      _json["deviceSpec"] = (deviceSpec).toJson();
-    }
-    return _json;
-  }
-}
-
-class SystemApkVariantsListResponse {
+/// Response to list previously created system APK variants.
+class SystemApksListResponse {
+  /// All system APK variants created.
   core.List<Variant> variants;
 
-  SystemApkVariantsListResponse();
+  SystemApksListResponse();
 
-  SystemApkVariantsListResponse.fromJson(core.Map _json) {
+  SystemApksListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("variants")) {
       variants = (_json["variants"] as core.List)
           .map<Variant>((value) => new Variant.fromJson(value))
@@ -6648,30 +6559,14 @@ class SystemApkVariantsListResponse {
   }
 }
 
+/// The testers of an app. The resource for TestersService.
 class Testers {
-  core.List<core.String> autoEnrolledAndroidGroups;
-  core.List<core.String> autoEnrolledGoogleGroups;
-  core.List<core.String> excludedGoogleGroups;
-
-  /// A list of all Google Groups, as email addresses, that define testers for
-  /// this track.
+  /// All testing Google Groups, as email addresses.
   core.List<core.String> googleGroups;
 
   Testers();
 
   Testers.fromJson(core.Map _json) {
-    if (_json.containsKey("autoEnrolledAndroidGroups")) {
-      autoEnrolledAndroidGroups =
-          (_json["autoEnrolledAndroidGroups"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("autoEnrolledGoogleGroups")) {
-      autoEnrolledGoogleGroups =
-          (_json["autoEnrolledGoogleGroups"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("excludedGoogleGroups")) {
-      excludedGoogleGroups =
-          (_json["excludedGoogleGroups"] as core.List).cast<core.String>();
-    }
     if (_json.containsKey("googleGroups")) {
       googleGroups = (_json["googleGroups"] as core.List).cast<core.String>();
     }
@@ -6680,15 +6575,6 @@ class Testers {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (autoEnrolledAndroidGroups != null) {
-      _json["autoEnrolledAndroidGroups"] = autoEnrolledAndroidGroups;
-    }
-    if (autoEnrolledGoogleGroups != null) {
-      _json["autoEnrolledGoogleGroups"] = autoEnrolledGoogleGroups;
-    }
-    if (excludedGoogleGroups != null) {
-      _json["excludedGoogleGroups"] = excludedGoogleGroups;
-    }
     if (googleGroups != null) {
       _json["googleGroups"] = googleGroups;
     }
@@ -6696,8 +6582,16 @@ class Testers {
   }
 }
 
+/// A Timestamp represents a point in time independent of any time zone or local
+/// calendar, encoded as a count of seconds and fractions of seconds at
+/// nanosecond resolution. The count is relative to an epoch at UTC midnight on
+/// January 1, 1970.
 class Timestamp {
+  /// Non-negative fractions of a second at nanosecond resolution. Must be from
+  /// 0 to 999,999,999 inclusive.
   core.int nanos;
+
+  /// Represents seconds of UTC time since Unix epoch.
   core.String seconds;
 
   Timestamp();
@@ -6724,7 +6618,17 @@ class Timestamp {
   }
 }
 
+/// Pagination information returned by a List operation when token pagination is
+/// enabled. List operations that supports paging return only one "page" of
+/// results. This protocol buffer message describes the page that has been
+/// returned. When using token pagination, clients should use the next/previous
+/// token to get another page of the result. The presence or absence of
+/// next/previous token indicates whether a next/previous page is available and
+/// provides a mean of accessing this page. ListRequest.page_token should be set
+/// to either next_page_token or previous_page_token to access another page.
 class TokenPagination {
+  /// Tokens to pass to the standard list field 'page_token'. Whenever
+  /// available, tokens are preferred over manipulating start_index.
   core.String nextPageToken;
   core.String previousPageToken;
 
@@ -6752,12 +6656,13 @@ class TokenPagination {
   }
 }
 
+/// A track configuration. The resource for TracksService.
 class Track {
-  /// A list of all active releases in this track during a read request. On an
-  /// update request, it represents desired changes.
+  /// In a read request, represents all active releases in the track. In an
+  /// update request, represents desired changes.
   core.List<TrackRelease> releases;
 
-  /// Identifier for this track.
+  /// Identifier of the track.
   core.String track;
 
   Track();
@@ -6786,49 +6691,50 @@ class Track {
   }
 }
 
+/// A release within a track.
 class TrackRelease {
-  core.List<Control> controls;
+  /// Restricts a release to a specific set of countries.
   CountryTargeting countryTargeting;
 
   /// In-app update priority of the release. All newly added APKs in the release
-  /// will be considered at this priority. in_app_update_priority can take
-  /// values between [0, 5]. 5 is the highest priority. Default priority is 0.
-  /// in_app_update_priority can not be updated once the release is rolled out.
-  /// See https://developer.android.com/guide/playcore/in-app-updates.
+  /// will be considered at this priority. Can take values in the range [0, 5],
+  /// with 5 the highest priority. Defaults to 0. in_app_update_priority can not
+  /// be updated once the release is rolled out. See
+  /// https://developer.android.com/guide/playcore/in-app-updates.
   core.int inAppUpdatePriority;
 
-  /// The release name, used to identify this release in the Play Console UI.
-  /// Not required to be unique. This is optional, if not set it will be
-  /// generated from the version_name in the APKs.
+  /// The release name. Not required to be unique. If not set, the name is
+  /// generated from the APK's version_name. If the release contains multiple
+  /// APKs, the name is generated from the date.
   core.String name;
-  core.List<TrackReleasePin> pinnedVersions;
 
-  /// The description of what is new in the app in this release.
+  /// A description of what is new in this release.
   core.List<LocalizedText> releaseNotes;
-  core.bool rollbackEnabled;
-  Sampling sampling;
 
-  /// The desired status of this release.
+  /// The status of the release.
+  /// Possible string values are:
+  /// - "statusUnspecified" : Unspecified status.
+  /// - "draft" : The release's APKs are not being served to users.
+  /// - "inProgress" : The release's APKs are being served to a fraction of
+  /// users, determined by 'user_fraction'.
+  /// - "halted" : The release's APKs will no longer be served to users. Users
+  /// who already have these APKs are unaffected.
+  /// - "completed" : The release will have no further changes. Its APKs are
+  /// being served to all users, unless they are eligible to APKs of a more
+  /// recent release.
   core.String status;
 
-  /// Fraction of users who are eligible to receive the release. 0 < fraction <
-  /// 1. To be set, release status must be "inProgress" or "halted".
+  /// Fraction of users who are eligible for a staged release. 0 < fraction < 1.
+  /// Can only be set when status is "inProgress" or "halted".
   core.double userFraction;
 
-  /// A list of all version codes of APKs that will be exposed to the users of
-  /// this track when this release is rolled out. Note that this list should
-  /// contain all versions you wish to be active, including those you wish to
+  /// Version codes of all APKs in the release. Must include version codes to
   /// retain from previous releases.
   core.List<core.String> versionCodes;
 
   TrackRelease();
 
   TrackRelease.fromJson(core.Map _json) {
-    if (_json.containsKey("controls")) {
-      controls = (_json["controls"] as core.List)
-          .map<Control>((value) => new Control.fromJson(value))
-          .toList();
-    }
     if (_json.containsKey("countryTargeting")) {
       countryTargeting =
           new CountryTargeting.fromJson(_json["countryTargeting"]);
@@ -6839,21 +6745,10 @@ class TrackRelease {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
-    if (_json.containsKey("pinnedVersions")) {
-      pinnedVersions = (_json["pinnedVersions"] as core.List)
-          .map<TrackReleasePin>((value) => new TrackReleasePin.fromJson(value))
-          .toList();
-    }
     if (_json.containsKey("releaseNotes")) {
       releaseNotes = (_json["releaseNotes"] as core.List)
           .map<LocalizedText>((value) => new LocalizedText.fromJson(value))
           .toList();
-    }
-    if (_json.containsKey("rollbackEnabled")) {
-      rollbackEnabled = _json["rollbackEnabled"];
-    }
-    if (_json.containsKey("sampling")) {
-      sampling = new Sampling.fromJson(_json["sampling"]);
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -6869,9 +6764,6 @@ class TrackRelease {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (controls != null) {
-      _json["controls"] = controls.map((value) => (value).toJson()).toList();
-    }
     if (countryTargeting != null) {
       _json["countryTargeting"] = (countryTargeting).toJson();
     }
@@ -6881,19 +6773,9 @@ class TrackRelease {
     if (name != null) {
       _json["name"] = name;
     }
-    if (pinnedVersions != null) {
-      _json["pinnedVersions"] =
-          pinnedVersions.map((value) => (value).toJson()).toList();
-    }
     if (releaseNotes != null) {
       _json["releaseNotes"] =
           releaseNotes.map((value) => (value).toJson()).toList();
-    }
-    if (rollbackEnabled != null) {
-      _json["rollbackEnabled"] = rollbackEnabled;
-    }
-    if (sampling != null) {
-      _json["sampling"] = (sampling).toJson();
     }
     if (status != null) {
       _json["status"] = status;
@@ -6908,123 +6790,12 @@ class TrackRelease {
   }
 }
 
-class TrackReleasePin {
-  core.List<TrackReleasePinPinTargeting> targetings;
-  core.List<core.String> versionCodes;
-
-  TrackReleasePin();
-
-  TrackReleasePin.fromJson(core.Map _json) {
-    if (_json.containsKey("targetings")) {
-      targetings = (_json["targetings"] as core.List)
-          .map<TrackReleasePinPinTargeting>(
-              (value) => new TrackReleasePinPinTargeting.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("versionCodes")) {
-      versionCodes = (_json["versionCodes"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (targetings != null) {
-      _json["targetings"] =
-          targetings.map((value) => (value).toJson()).toList();
-    }
-    if (versionCodes != null) {
-      _json["versionCodes"] = versionCodes;
-    }
-    return _json;
-  }
-}
-
-class TrackReleasePinPinTargeting {
-  core.List<core.String> countryCodes;
-  core.List<TrackReleasePinPinTargetingDevicePin> devices;
-  core.List<core.String> phoneskyVersions;
-  core.List<core.int> sdkVersions;
-
-  TrackReleasePinPinTargeting();
-
-  TrackReleasePinPinTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey("countryCodes")) {
-      countryCodes = (_json["countryCodes"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("devices")) {
-      devices = (_json["devices"] as core.List)
-          .map<TrackReleasePinPinTargetingDevicePin>((value) =>
-              new TrackReleasePinPinTargetingDevicePin.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("phoneskyVersions")) {
-      phoneskyVersions =
-          (_json["phoneskyVersions"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("sdkVersions")) {
-      sdkVersions = (_json["sdkVersions"] as core.List).cast<core.int>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (countryCodes != null) {
-      _json["countryCodes"] = countryCodes;
-    }
-    if (devices != null) {
-      _json["devices"] = devices.map((value) => (value).toJson()).toList();
-    }
-    if (phoneskyVersions != null) {
-      _json["phoneskyVersions"] = phoneskyVersions;
-    }
-    if (sdkVersions != null) {
-      _json["sdkVersions"] = sdkVersions;
-    }
-    return _json;
-  }
-}
-
-class TrackReleasePinPinTargetingDevicePin {
-  core.String brand;
-  core.String device;
-  core.String product;
-
-  TrackReleasePinPinTargetingDevicePin();
-
-  TrackReleasePinPinTargetingDevicePin.fromJson(core.Map _json) {
-    if (_json.containsKey("brand")) {
-      brand = _json["brand"];
-    }
-    if (_json.containsKey("device")) {
-      device = _json["device"];
-    }
-    if (_json.containsKey("product")) {
-      product = _json["product"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (brand != null) {
-      _json["brand"] = brand;
-    }
-    if (device != null) {
-      _json["device"] = device;
-    }
-    if (product != null) {
-      _json["product"] = product;
-    }
-    return _json;
-  }
-}
-
+/// Response listing all tracks.
 class TracksListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidpublisher#tracksListResponse".
+  /// The kind of this response ("androidpublisher#tracksListResponse").
   core.String kind;
+
+  /// All tracks.
   core.List<Track> tracks;
 
   TracksListResponse();
@@ -7053,6 +6824,7 @@ class TracksListResponse {
   }
 }
 
+/// User entry from conversation between user and developer.
 class UserComment {
   /// Integer Android SDK version of the user's device at the time the review
   /// was written, e.g. 23 is Marshmallow. May be absent.
@@ -7069,14 +6841,14 @@ class UserComment {
   /// Codename for the reviewer's device, e.g. klte, flounder. May be absent.
   core.String device;
 
-  /// Some information about the characteristics of the user's device
+  /// Information about the characteristics of the user's device.
   DeviceMetadata deviceMetadata;
 
   /// The last time at which this comment was updated.
   Timestamp lastModified;
 
-  /// Untranslated text of the review, in the case where the review has been
-  /// translated. If the review has not been translated this is left blank.
+  /// Untranslated text of the review, where the review was translated. If the
+  /// review was not translated this is left blank.
   core.String originalText;
 
   /// Language code for the reviewer. This is taken from the device settings so
@@ -7092,10 +6864,10 @@ class UserComment {
   /// the title and body are concatenated and separated by a tab character.
   core.String text;
 
-  /// Number of users who have given this review a thumbs down
+  /// Number of users who have given this review a thumbs down.
   core.int thumbsDownCount;
 
-  /// Number of users who have given this review a thumbs up
+  /// Number of users who have given this review a thumbs up.
   core.int thumbsUpCount;
 
   UserComment();
@@ -7182,10 +6954,45 @@ class UserComment {
   }
 }
 
-/// Represents the variant of a generated system APK from an uploaded App
-/// Bundle.
+/// A permission used by this APK.
+class UsesPermission {
+  /// Optionally, the maximum SDK version for which the permission is required.
+  core.int maxSdkVersion;
+
+  /// The name of the permission requested.
+  core.String name;
+
+  UsesPermission();
+
+  UsesPermission.fromJson(core.Map _json) {
+    if (_json.containsKey("maxSdkVersion")) {
+      maxSdkVersion = _json["maxSdkVersion"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxSdkVersion != null) {
+      _json["maxSdkVersion"] = maxSdkVersion;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// APK that is suitable for inclusion in a system image. The resource of
+/// SystemApksService.
 class Variant {
+  /// The device spec used to generate the APK.
   DeviceSpec deviceSpec;
+
+  /// Output only. The ID of a previously created system APK variant.
   core.int variantId;
 
   Variant();
@@ -7232,21 +7039,13 @@ class VoidedPurchase {
   /// starting from version 3 of the API).
   core.String purchaseToken;
 
-  /// The reason why the purchase was voided, possible values are:
-  /// - Other
-  /// - Remorse
-  /// - Not_received
-  /// - Defective
-  /// - Accidental_purchase
-  /// - Fraud
-  /// - Friendly_fraud
-  /// - Chargeback
+  /// The reason why the purchase was voided, possible values are: 0. Other 1.
+  /// Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5. Fraud 6.
+  /// Friendly_fraud 7. Chargeback
   core.int voidedReason;
 
-  /// The initiator of voided purchase, possible values are:
-  /// - User
-  /// - Developer
-  /// - Google
+  /// The initiator of voided purchase, possible values are: 0. User 1.
+  /// Developer 2. Google
   core.int voidedSource;
 
   /// The time at which the purchase was canceled/refunded/charged-back, in
@@ -7307,8 +7106,12 @@ class VoidedPurchase {
   }
 }
 
+/// Response for the voidedpurchases.list API.
 class VoidedPurchasesListResponse {
+  /// General pagination information.
   PageInfo pageInfo;
+
+  /// Pagination information for token pagination.
   TokenPagination tokenPagination;
   core.List<VoidedPurchase> voidedPurchases;
 

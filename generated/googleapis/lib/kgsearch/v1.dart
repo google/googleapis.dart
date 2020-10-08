@@ -33,32 +33,30 @@ class EntitiesResourceApi {
 
   EntitiesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Searches Knowledge Graph for entities that match the constraints.
-  /// A list of matched entities will be returned in response, which will be in
-  /// JSON-LD format and compatible with http://schema.org
+  /// Searches Knowledge Graph for entities that match the constraints. A list
+  /// of matched entities will be returned in response, which will be in JSON-LD
+  /// format and compatible with http://schema.org
   ///
   /// Request parameters:
   ///
-  /// [ids] - The list of entity id to be used for search instead of query
-  /// string.
-  /// To specify multiple ids in the HTTP request, repeat the parameter in the
-  /// URL as in ...?ids=A&ids=B
+  /// [types] - Restricts returned entities with these types, e.g. Person (as
+  /// defined in http://schema.org/Person). If multiple types are specified,
+  /// returned entities will contain one or more of these types.
+  ///
+  /// [languages] - The list of language codes (defined in ISO 693) to run the
+  /// query with, e.g. 'en'.
   ///
   /// [limit] - Limits the number of entities to be returned.
   ///
-  /// [prefix] - Enables prefix match against names and aliases of entities
-  ///
-  /// [query] - The literal query string for search.
-  ///
-  /// [types] - Restricts returned entities with these types, e.g. Person
-  /// (as defined in http://schema.org/Person). If multiple types are specified,
-  /// returned entities will contain one or more of these types.
+  /// [ids] - The list of entity id to be used for search instead of query
+  /// string. To specify multiple ids in the HTTP request, repeat the parameter
+  /// in the URL as in ...?ids=A&ids=B
   ///
   /// [indent] - Enables indenting of json results.
   ///
-  /// [languages] - The list of language codes (defined in ISO 693) to run the
-  /// query with,
-  /// e.g. 'en'.
+  /// [query] - The literal query string for search.
+  ///
+  /// [prefix] - Enables prefix match against names and aliases of entities
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -71,13 +69,13 @@ class EntitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchResponse> search(
-      {core.List<core.String> ids,
-      core.int limit,
-      core.bool prefix,
-      core.String query,
-      core.List<core.String> types,
-      core.bool indent,
+      {core.List<core.String> types,
       core.List<core.String> languages,
+      core.int limit,
+      core.List<core.String> ids,
+      core.bool indent,
+      core.String query,
+      core.bool prefix,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -86,26 +84,26 @@ class EntitiesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (ids != null) {
-      _queryParams["ids"] = ids;
+    if (types != null) {
+      _queryParams["types"] = types;
+    }
+    if (languages != null) {
+      _queryParams["languages"] = languages;
     }
     if (limit != null) {
       _queryParams["limit"] = ["${limit}"];
     }
-    if (prefix != null) {
-      _queryParams["prefix"] = ["${prefix}"];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
-    if (types != null) {
-      _queryParams["types"] = types;
+    if (ids != null) {
+      _queryParams["ids"] = ids;
     }
     if (indent != null) {
       _queryParams["indent"] = ["${indent}"];
     }
-    if (languages != null) {
-      _queryParams["languages"] = languages;
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
+    if (prefix != null) {
+      _queryParams["prefix"] = ["${prefix}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -123,8 +121,8 @@ class EntitiesResourceApi {
   }
 }
 
-/// Response message includes the context and a list of matching results
-/// which contain the detail of associated entities.
+/// Response message includes the context and a list of matching results which
+/// contain the detail of associated entities.
 class SearchResponse {
   /// The local context applicable for the response. See more details at
   /// http://www.w3.org/TR/json-ld/#context-definitions.

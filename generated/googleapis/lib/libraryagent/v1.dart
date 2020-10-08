@@ -90,14 +90,12 @@ class ShelvesResourceApi {
   /// Request parameters:
   ///
   /// [pageSize] - Requested page size. Server may return fewer shelves than
-  /// requested.
-  /// If unspecified, server will pick an appropriate default.
+  /// requested. If unspecified, server will pick an appropriate default.
   ///
   /// [pageToken] - A token identifying a page of results the server should
-  /// return.
-  /// Typically, this is the value of
-  /// ListShelvesResponse.next_page_token
-  /// returned from the previous call to `ListShelves` method.
+  /// return. Typically, this is the value of
+  /// ListShelvesResponse.next_page_token returned from the previous call to
+  /// `ListShelves` method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -249,13 +247,10 @@ class ShelvesBooksResourceApi {
   /// Value must have pattern "^shelves/[^/]+$".
   ///
   /// [pageSize] - Requested page size. Server may return fewer books than
-  /// requested.
-  /// If unspecified, server will pick an appropriate default.
+  /// requested. If unspecified, server will pick an appropriate default.
   ///
   /// [pageToken] - A token identifying a page of results the server should
-  /// return.
-  /// Typically, this is the value of
-  /// ListBooksResponse.next_page_token.
+  /// return. Typically, this is the value of ListBooksResponse.next_page_token.
   /// returned from the previous call to `ListBooks` method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -306,9 +301,8 @@ class ShelvesBooksResourceApi {
   }
 
   /// Return a book to the library. Returns the book if it is returned to the
-  /// library successfully.
-  /// Returns error if the book does not belong to the library
-  /// or the users didn't borrow before.
+  /// library successfully. Returns error if the book does not belong to the
+  /// library or the users didn't borrow before.
   ///
   /// Request parameters:
   ///
@@ -359,9 +353,9 @@ class GoogleExampleLibraryagentV1Book {
   /// The name of the book author.
   core.String author;
 
-  /// The resource name of the book.
-  /// Book names have the form `shelves/{shelf_id}/books/{book_id}`.
-  /// The name is ignored when creating a book.
+  /// The resource name of the book. Book names have the form
+  /// `shelves/{shelf_id}/books/{book_id}`. The name is ignored when creating a
+  /// book.
   core.String name;
 
   /// Value indicating whether the book has been read.
@@ -411,11 +405,9 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
   /// The list of books.
   core.List<GoogleExampleLibraryagentV1Book> books;
 
-  /// A token to retrieve next page of results.
-  /// Pass this value in the
-  /// ListBooksRequest.page_token
-  /// field in the subsequent call to `ListBooks` method to retrieve the next
-  /// page of results.
+  /// A token to retrieve next page of results. Pass this value in the
+  /// ListBooksRequest.page_token field in the subsequent call to `ListBooks`
+  /// method to retrieve the next page of results.
   core.String nextPageToken;
 
   GoogleExampleLibraryagentV1ListBooksResponse();
@@ -447,11 +439,9 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
 
 /// Response message for LibraryAgent.ListShelves.
 class GoogleExampleLibraryagentV1ListShelvesResponse {
-  /// A token to retrieve next page of results.
-  /// Pass this value in the
-  /// ListShelvesRequest.page_token
-  /// field in the subsequent call to `ListShelves` method to retrieve the next
-  /// page of results.
+  /// A token to retrieve next page of results. Pass this value in the
+  /// ListShelvesRequest.page_token field in the subsequent call to
+  /// `ListShelves` method to retrieve the next page of results.
   core.String nextPageToken;
 
   /// The list of shelves.
@@ -486,9 +476,8 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
 
 /// A Shelf contains a collection of books with a theme.
 class GoogleExampleLibraryagentV1Shelf {
-  /// Output only. The resource name of the shelf.
-  /// Shelf names have the form `shelves/{shelf_id}`.
-  /// The name is ignored when creating a shelf.
+  /// Output only. The resource name of the shelf. Shelf names have the form
+  /// `shelves/{shelf_id}`. The name is ignored when creating a shelf.
   core.String name;
 
   /// The theme of the shelf

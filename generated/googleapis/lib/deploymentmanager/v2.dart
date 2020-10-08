@@ -298,19 +298,19 @@ class DeploymentsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [createPolicy] - Sets the policy to use for creating new resources.
-  /// Possible string values are:
-  /// - "ACQUIRE"
-  /// - "CREATE_OR_ACQUIRE"
-  ///
   /// [preview] - If set to true, creates a deployment and creates "shell"
   /// resources but does not actually instantiate these resources. This allows
   /// you to preview what your deployment looks like. After previewing a
   /// deployment, you can deploy your resources by making a request with the
-  /// update() method or you can use the cancelPreview() method to cancel the
-  /// preview altogether. Note that the deployment will still exist after you
-  /// cancel the preview and you must separately delete this deployment if you
-  /// want to remove it.
+  /// `update()` method or you can use the `cancelPreview()` method to cancel
+  /// the preview altogether. Note that the deployment will still exist after
+  /// you cancel the preview and you must separately delete this deployment if
+  /// you want to remove it.
+  ///
+  /// [createPolicy] - Sets the policy to use for creating new resources.
+  /// Possible string values are:
+  /// - "ACQUIRE"
+  /// - "CREATE_OR_ACQUIRE"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -323,7 +323,7 @@ class DeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(Deployment request, core.String project,
-      {core.String createPolicy, core.bool preview, core.String $fields}) {
+      {core.bool preview, core.String createPolicy, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -337,11 +337,11 @@ class DeploymentsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (createPolicy != null) {
-      _queryParams["createPolicy"] = [createPolicy];
-    }
     if (preview != null) {
       _queryParams["preview"] = ["${preview}"];
+    }
+    if (createPolicy != null) {
+      _queryParams["createPolicy"] = [createPolicy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -370,44 +370,46 @@ class DeploymentsResourceApi {
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, >, or <.
+  /// either `=`, `!=`, `>`, or `<`.
   ///
   /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named example-instance by specifying name !=
-  /// example-instance.
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
   ///
   /// You can also filter nested fields. For example, you could specify
-  /// scheduling.automaticRestart = false to include instances only if they are
-  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
   /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart = true)
-  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
-  /// expression. However, you can include AND and OR expressions explicitly.
-  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-  /// Broadwell") AND (scheduling.automaticRestart = true).
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
   ///
   /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than maxResults,
-  /// Compute Engine returns a nextPageToken that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are 0 to
-  /// 500, inclusive. (Default: 500)
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
   /// returned in alphanumerical order based on the resource name.
   ///
   /// You can also sort results in descending order based on the creation
-  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
-  /// on the creationTimestamp field in reverse chronological order (newest
-  /// result first). Use this to sort resources like operations so that the
-  /// newest operation is returned first.
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
   ///
-  /// Currently, only sorting by name or creationTimestamp desc is supported.
-  ///
-  /// [pageToken] - Specifies a page token to use. Set pageToken to the
-  /// nextPageToken returned by a previous list request to get the next page of
-  /// results.
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -421,9 +423,9 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<DeploymentsListResponse> list(core.String project,
       {core.String filter,
+      core.String pageToken,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -438,14 +440,14 @@ class DeploymentsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -462,8 +464,8 @@ class DeploymentsResourceApi {
     return _response.then((data) => new DeploymentsListResponse.fromJson(data));
   }
 
-  /// Updates a deployment and all of the resources described by the deployment
-  /// manifest. This method supports patch semantics.
+  /// Patches a deployment and all of the resources described by the deployment
+  /// manifest.
   ///
   /// [request] - The metadata request object.
   ///
@@ -476,26 +478,26 @@ class DeploymentsResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [createPolicy] - Sets the policy to use for creating new resources.
-  /// Possible string values are:
-  /// - "ACQUIRE"
-  /// - "CREATE_OR_ACQUIRE"
-  ///
   /// [deletePolicy] - Sets the policy to use for deleting resources.
   /// Possible string values are:
   /// - "ABANDON"
   /// - "DELETE"
   ///
+  /// [createPolicy] - Sets the policy to use for creating new resources.
+  /// Possible string values are:
+  /// - "ACQUIRE"
+  /// - "CREATE_OR_ACQUIRE"
+  ///
   /// [preview] - If set to true, updates the deployment and creates and updates
   /// the "shell" resources but does not actually alter or instantiate these
   /// resources. This allows you to preview what your deployment will look like.
   /// You can use this intent to preview how an update would affect your
-  /// deployment. You must provide a target.config with a configuration if this
-  /// is set to true. After previewing a deployment, you can deploy your
-  /// resources by making a request with the update() or you can cancelPreview()
-  /// to remove the preview altogether. Note that the deployment will still
-  /// exist after you cancel the preview and you must separately delete this
-  /// deployment if you want to remove it.
+  /// deployment. You must provide a `target.config` with a configuration if
+  /// this is set to true. After previewing a deployment, you can deploy your
+  /// resources by making a request with the `update()` or you can
+  /// `cancelPreview()` to remove the preview altogether. Note that the
+  /// deployment will still exist after you cancel the preview and you must
+  /// separately delete this deployment if you want to remove it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -509,8 +511,8 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Deployment request, core.String project, core.String deployment,
-      {core.String createPolicy,
-      core.String deletePolicy,
+      {core.String deletePolicy,
+      core.String createPolicy,
       core.bool preview,
       core.String $fields}) {
     var _url;
@@ -529,11 +531,11 @@ class DeploymentsResourceApi {
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
     }
-    if (createPolicy != null) {
-      _queryParams["createPolicy"] = [createPolicy];
-    }
     if (deletePolicy != null) {
       _queryParams["deletePolicy"] = [deletePolicy];
+    }
+    if (createPolicy != null) {
+      _queryParams["createPolicy"] = [createPolicy];
     }
     if (preview != null) {
       _queryParams["preview"] = ["${preview}"];
@@ -753,26 +755,26 @@ class DeploymentsResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [createPolicy] - Sets the policy to use for creating new resources.
-  /// Possible string values are:
-  /// - "ACQUIRE"
-  /// - "CREATE_OR_ACQUIRE"
-  ///
   /// [deletePolicy] - Sets the policy to use for deleting resources.
   /// Possible string values are:
   /// - "ABANDON"
   /// - "DELETE"
   ///
+  /// [createPolicy] - Sets the policy to use for creating new resources.
+  /// Possible string values are:
+  /// - "ACQUIRE"
+  /// - "CREATE_OR_ACQUIRE"
+  ///
   /// [preview] - If set to true, updates the deployment and creates and updates
   /// the "shell" resources but does not actually alter or instantiate these
   /// resources. This allows you to preview what your deployment will look like.
   /// You can use this intent to preview how an update would affect your
-  /// deployment. You must provide a target.config with a configuration if this
-  /// is set to true. After previewing a deployment, you can deploy your
-  /// resources by making a request with the update() or you can cancelPreview()
-  /// to remove the preview altogether. Note that the deployment will still
-  /// exist after you cancel the preview and you must separately delete this
-  /// deployment if you want to remove it.
+  /// deployment. You must provide a `target.config` with a configuration if
+  /// this is set to true. After previewing a deployment, you can deploy your
+  /// resources by making a request with the `update()` or you can
+  /// `cancelPreview()` to remove the preview altogether. Note that the
+  /// deployment will still exist after you cancel the preview and you must
+  /// separately delete this deployment if you want to remove it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -786,8 +788,8 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       Deployment request, core.String project, core.String deployment,
-      {core.String createPolicy,
-      core.String deletePolicy,
+      {core.String deletePolicy,
+      core.String createPolicy,
       core.bool preview,
       core.String $fields}) {
     var _url;
@@ -806,11 +808,11 @@ class DeploymentsResourceApi {
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
     }
-    if (createPolicy != null) {
-      _queryParams["createPolicy"] = [createPolicy];
-    }
     if (deletePolicy != null) {
       _queryParams["deletePolicy"] = [deletePolicy];
+    }
+    if (createPolicy != null) {
+      _queryParams["createPolicy"] = [createPolicy];
     }
     if (preview != null) {
       _queryParams["preview"] = ["${preview}"];
@@ -911,48 +913,50 @@ class ManifestsResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, >, or <.
+  /// either `=`, `!=`, `>`, or `<`.
   ///
   /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named example-instance by specifying name !=
-  /// example-instance.
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
   ///
   /// You can also filter nested fields. For example, you could specify
-  /// scheduling.automaticRestart = false to include instances only if they are
-  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
   /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart = true)
-  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
-  /// expression. However, you can include AND and OR expressions explicitly.
-  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-  /// Broadwell") AND (scheduling.automaticRestart = true).
-  ///
-  /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than maxResults,
-  /// Compute Engine returns a nextPageToken that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are 0 to
-  /// 500, inclusive. (Default: 500)
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
   /// returned in alphanumerical order based on the resource name.
   ///
   /// You can also sort results in descending order based on the creation
-  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
-  /// on the creationTimestamp field in reverse chronological order (newest
-  /// result first). Use this to sort resources like operations so that the
-  /// newest operation is returned first.
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
   ///
-  /// Currently, only sorting by name or creationTimestamp desc is supported.
-  ///
-  /// [pageToken] - Specifies a page token to use. Set pageToken to the
-  /// nextPageToken returned by a previous list request to get the next page of
-  /// results.
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -966,10 +970,10 @@ class ManifestsResourceApi {
   /// this method will complete with the same error.
   async.Future<ManifestsListResponse> list(
       core.String project, core.String deployment,
-      {core.String filter,
-      core.int maxResults,
-      core.String orderBy,
+      {core.int maxResults,
       core.String pageToken,
+      core.String filter,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -984,17 +988,17 @@ class ManifestsResourceApi {
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1080,48 +1084,50 @@ class OperationsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, >, or <.
-  ///
-  /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named example-instance by specifying name !=
-  /// example-instance.
-  ///
-  /// You can also filter nested fields. For example, you could specify
-  /// scheduling.automaticRestart = false to include instances only if they are
-  /// not scheduled for automatic restarts. You can use filtering on nested
-  /// fields to filter based on resource labels.
-  ///
-  /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart = true)
-  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
-  /// expression. However, you can include AND and OR expressions explicitly.
-  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-  /// Broadwell") AND (scheduling.automaticRestart = true).
-  ///
-  /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than maxResults,
-  /// Compute Engine returns a nextPageToken that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are 0 to
-  /// 500, inclusive. (Default: 500)
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
   /// returned in alphanumerical order based on the resource name.
   ///
   /// You can also sort results in descending order based on the creation
-  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
-  /// on the creationTimestamp field in reverse chronological order (newest
-  /// result first). Use this to sort resources like operations so that the
-  /// newest operation is returned first.
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
   ///
-  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
   ///
-  /// [pageToken] - Specifies a page token to use. Set pageToken to the
-  /// nextPageToken returned by a previous list request to get the next page of
-  /// results.
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1134,10 +1140,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OperationsListResponse> list(core.String project,
-      {core.String filter,
-      core.int maxResults,
+      {core.String pageToken,
       core.String orderBy,
-      core.String pageToken,
+      core.String filter,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1149,17 +1155,17 @@ class OperationsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1254,48 +1260,50 @@ class ResourcesResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, >, or <.
+  /// either `=`, `!=`, `>`, or `<`.
   ///
   /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named example-instance by specifying name !=
-  /// example-instance.
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
   ///
   /// You can also filter nested fields. For example, you could specify
-  /// scheduling.automaticRestart = false to include instances only if they are
-  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
   /// fields to filter based on resource labels.
   ///
   /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart = true)
-  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
-  /// expression. However, you can include AND and OR expressions explicitly.
-  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-  /// Broadwell") AND (scheduling.automaticRestart = true).
-  ///
-  /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than maxResults,
-  /// Compute Engine returns a nextPageToken that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are 0 to
-  /// 500, inclusive. (Default: 500)
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
   /// returned in alphanumerical order based on the resource name.
   ///
   /// You can also sort results in descending order based on the creation
-  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
-  /// on the creationTimestamp field in reverse chronological order (newest
-  /// result first). Use this to sort resources like operations so that the
-  /// newest operation is returned first.
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
   ///
-  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
   ///
-  /// [pageToken] - Specifies a page token to use. Set pageToken to the
-  /// nextPageToken returned by a previous list request to get the next page of
-  /// results.
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1309,10 +1317,10 @@ class ResourcesResourceApi {
   /// this method will complete with the same error.
   async.Future<ResourcesListResponse> list(
       core.String project, core.String deployment,
-      {core.String filter,
-      core.int maxResults,
+      {core.String pageToken,
+      core.String filter,
       core.String orderBy,
-      core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1327,17 +1335,17 @@ class ResourcesResourceApi {
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1371,48 +1379,50 @@ class TypesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, >, or <.
-  ///
-  /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named example-instance by specifying name !=
-  /// example-instance.
-  ///
-  /// You can also filter nested fields. For example, you could specify
-  /// scheduling.automaticRestart = false to include instances only if they are
-  /// not scheduled for automatic restarts. You can use filtering on nested
-  /// fields to filter based on resource labels.
-  ///
-  /// To filter on multiple expressions, provide each separate expression within
-  /// parentheses. For example, (scheduling.automaticRestart = true)
-  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
-  /// expression. However, you can include AND and OR expressions explicitly.
-  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-  /// Broadwell") AND (scheduling.automaticRestart = true).
-  ///
-  /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than maxResults,
-  /// Compute Engine returns a nextPageToken that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are 0 to
-  /// 500, inclusive. (Default: 500)
-  ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
   /// returned in alphanumerical order based on the resource name.
   ///
   /// You can also sort results in descending order based on the creation
-  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
-  /// on the creationTimestamp field in reverse chronological order (newest
-  /// result first). Use this to sort resources like operations so that the
-  /// newest operation is returned first.
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
   ///
-  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
   ///
-  /// [pageToken] - Specifies a page token to use. Set pageToken to the
-  /// nextPageToken returned by a previous list request to get the next page of
-  /// results.
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1425,10 +1435,10 @@ class TypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TypesListResponse> list(core.String project,
-      {core.String filter,
-      core.int maxResults,
-      core.String orderBy,
+      {core.String orderBy,
       core.String pageToken,
+      core.int maxResults,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1440,17 +1450,17 @@ class TypesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1481,15 +1491,15 @@ class TypesResourceApi {
 /// Example Policy with multiple AuditConfigs:
 ///
 /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ {
-/// "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
-/// "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, { "service":
-/// "fooservice.googleapis.com" "audit_log_configs": [ { "log_type":
-/// "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members": [
-/// "user:bar@gmail.com" ] } ] } ] }
+/// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] },
+/// { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, {
+/// "service": "sampleservice.googleapis.com" "audit_log_configs": [ {
+/// "log_type": "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members":
+/// [ "user:aliya@example.com" ] } ] } ] }
 ///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts jose@example.com from DATA_READ logging, and
+/// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
@@ -1537,14 +1547,15 @@ class AuditConfig {
 /// Provides the configuration for logging a type of permissions. Example:
 ///
 /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", } ] }
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", } ] }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
+/// jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission. Follows the same format of [Binding.members][].
   core.List<core.String> exemptedMembers;
+  core.bool ignoreChildExemptions;
 
   /// The log type that this config enables.
   core.String logType;
@@ -1556,6 +1567,9 @@ class AuditLogConfig {
       exemptedMembers =
           (_json["exemptedMembers"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("ignoreChildExemptions")) {
+      ignoreChildExemptions = _json["ignoreChildExemptions"];
+    }
     if (_json.containsKey("logType")) {
       logType = _json["logType"];
     }
@@ -1566,6 +1580,9 @@ class AuditLogConfig {
         new core.Map<core.String, core.Object>();
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (ignoreChildExemptions != null) {
+      _json["ignoreChildExemptions"] = ignoreChildExemptions;
     }
     if (logType != null) {
       _json["logType"] = logType;
@@ -1599,10 +1616,18 @@ class AuthorizationLoggingOptions {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding. NOTE:
-  /// an unsatisfied condition will not allow user access via current binding.
-  /// Different bindings, including their conditions, are examined
-  /// independently.
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request.
+  ///
+  /// If the condition evaluates to `false`, then this binding does not apply to
+  /// the current request. However, a different role binding might grant the
+  /// same role to one or more of the members in this binding.
+  ///
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -1615,7 +1640,7 @@ class Binding {
   /// is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  /// account. For example, `alice@gmail.com` .
+  /// account. For example, `alice@example.com` .
   ///
   ///
   ///
@@ -1625,9 +1650,29 @@ class Binding {
   /// * `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`.
   ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus unique identifier) representing a service account that has been
+  /// recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  /// role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a Google group that has been recently deleted.
+  /// For example, `admins@example.com?uid=123456789012345678901`. If the group
+  /// is recovered, this value reverts to `group:{emailid}` and the recovered
+  /// group retains the role in the binding.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  ///
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   /// users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -1680,10 +1725,7 @@ class Condition {
   /// the IAM system for access control.
   core.String sys;
 
-  /// DEPRECATED. Use 'values' instead.
-  core.String value;
-
-  /// The objects of the condition. This is mutually exclusive with 'value'.
+  /// The objects of the condition.
   core.List<core.String> values;
 
   Condition();
@@ -1700,9 +1742,6 @@ class Condition {
     }
     if (_json.containsKey("sys")) {
       sys = _json["sys"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
     }
     if (_json.containsKey("values")) {
       values = (_json["values"] as core.List).cast<core.String>();
@@ -1723,9 +1762,6 @@ class Condition {
     }
     if (sys != null) {
       _json["sys"] = sys;
-    }
-    if (value != null) {
-      _json["value"] = value;
     }
     if (values != null) {
       _json["values"] = values;
@@ -1761,14 +1797,14 @@ class Deployment {
   core.String description;
 
   /// Provides a fingerprint to use in requests to modify a deployment, such as
-  /// update(), stop(), and cancelPreview() requests. A fingerprint is a
-  /// randomly generated value that must be provided with update(), stop(), and
-  /// cancelPreview() requests to perform optimistic locking. This ensures
+  /// `update()`, `stop()`, and `cancelPreview()` requests. A fingerprint is a
+  /// randomly generated value that must be provided with `update()`, `stop()`,
+  /// and `cancelPreview()` requests to perform optimistic locking. This ensures
   /// optimistic concurrency so that only one request happens at a time.
   ///
   /// The fingerprint is initially generated by Deployment Manager and changes
   /// after every request to modify data. To get the latest fingerprint value,
-  /// perform a get() request to a deployment.
+  /// perform a `get()` request to a deployment.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
@@ -1787,20 +1823,21 @@ class Deployment {
   /// Map of labels; provided by the client when the resource is created or
   /// updated. Specifically: Label keys must be between 1 and 63 characters long
   /// and must conform to the following regular expression:
-  /// [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63
+  /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63
   /// characters long and must conform to the regular expression
-  /// ([a-z]([-a-z0-9]*[a-z0-9])?)?
+  /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
   core.List<DeploymentLabelEntry> labels;
 
   /// Output only. URL of the manifest representing the last manifest that was
-  /// successfully deployed.
+  /// successfully deployed. If no manifest has been successfully deployed, this
+  /// field will be absent.
   core.String manifest;
 
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
-  /// be a lowercase letter, and all following characters must be a dash,
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
@@ -1946,9 +1983,9 @@ class DeploymentUpdate {
   /// Output only. Map of labels; provided by the client when the resource is
   /// created or updated. Specifically: Label keys must be between 1 and 63
   /// characters long and must conform to the following regular expression:
-  /// [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63
+  /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63
   /// characters long and must conform to the regular expression
-  /// ([a-z]([-a-z0-9]*[a-z0-9])?)?
+  /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
   core.List<DeploymentUpdateLabelEntry> labels;
 
   /// Output only. URL of the manifest representing the update configuration of
@@ -2017,16 +2054,16 @@ class DeploymentUpdateLabelEntry {
 }
 
 class DeploymentsCancelPreviewRequest {
-  /// Specifies a fingerprint for cancelPreview() requests. A fingerprint is a
-  /// randomly generated value that must be provided in cancelPreview() requests
-  /// to perform optimistic locking. This ensures optimistic concurrency so that
-  /// the deployment does not have conflicting requests (e.g. if someone
-  /// attempts to make a new update request while another user attempts to
-  /// cancel a preview, this would prevent one of the requests).
+  /// Specifies a fingerprint for `cancelPreview()` requests. A fingerprint is a
+  /// randomly generated value that must be provided in `cancelPreview()`
+  /// requests to perform optimistic locking. This ensures optimistic
+  /// concurrency so that the deployment does not have conflicting requests
+  /// (e.g. if someone attempts to make a new update request while another user
+  /// attempts to cancel a preview, this would prevent one of the requests).
   ///
   /// The fingerprint is initially generated by Deployment Manager and changes
   /// after every request to modify a deployment. To get the latest fingerprint
-  /// value, perform a get() request on the deployment.
+  /// value, perform a `get()` request on the deployment.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
@@ -2092,8 +2129,8 @@ class DeploymentsListResponse {
 }
 
 class DeploymentsStopRequest {
-  /// Specifies a fingerprint for stop() requests. A fingerprint is a randomly
-  /// generated value that must be provided in stop() requests to perform
+  /// Specifies a fingerprint for `stop()` requests. A fingerprint is a randomly
+  /// generated value that must be provided in `stop()` requests to perform
   /// optimistic locking. This ensures optimistic concurrency so that the
   /// deployment does not have conflicting requests (e.g. if someone attempts to
   /// make a new update request while another user attempts to stop an ongoing
@@ -2101,7 +2138,7 @@ class DeploymentsStopRequest {
   ///
   /// The fingerprint is initially generated by Deployment Manager and changes
   /// after every request to modify a deployment. To get the latest fingerprint
-  /// value, perform a get() request on the deployment.
+  /// value, perform a `get()` request on the deployment.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
@@ -2130,27 +2167,49 @@ class DeploymentsStopRequest {
   }
 }
 
-/// Represents an expression text. Example:
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
 ///
-/// title: "User account presence" description: "Determines whether the request
-/// has a user account" expression: "size(request.user) > 0"
+/// Example (Comparison):
+///
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+/// title: "Requestor is owner" description: "Determines if requestor is the
+/// document owner" expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+/// title: "Public documents" description: "Determine whether the document
+/// should be publicly visible" expression: "document.type != 'private' &&
+/// document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+/// title: "Notification string" description: "Create a notification string with
+/// a timestamp." expression: "'New message received at ' +
+/// string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing its
+  /// Optional. Title for the expression, i.e. a short string describing its
   /// purpose. This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
@@ -2367,12 +2426,12 @@ class LogConfigCloudAuditOptions {
 /// counter with no fields.
 ///
 /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" }
-/// ==> increment counter /iam/policy/backend_debug_access_count
-/// {iam_principal=[value of IAMContext.principal]}
-///
-/// At this time we do not support multiple field names (though this may be
-/// supported in the future).
+/// ==> increment counter /iam/policy/debug_access_count {iam_principal=[value
+/// of IAMContext.principal]}
 class LogConfigCounterOptions {
+  /// Custom fields.
+  core.List<LogConfigCounterOptionsCustomField> customFields;
+
   /// The field value to attribute.
   core.String field;
 
@@ -2382,6 +2441,12 @@ class LogConfigCounterOptions {
   LogConfigCounterOptions();
 
   LogConfigCounterOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("customFields")) {
+      customFields = (_json["customFields"] as core.List)
+          .map<LogConfigCounterOptionsCustomField>(
+              (value) => new LogConfigCounterOptionsCustomField.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("field")) {
       field = _json["field"];
     }
@@ -2393,6 +2458,10 @@ class LogConfigCounterOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (customFields != null) {
+      _json["customFields"] =
+          customFields.map((value) => (value).toJson()).toList();
+    }
     if (field != null) {
       _json["field"] = field;
     }
@@ -2403,15 +2472,43 @@ class LogConfigCounterOptions {
   }
 }
 
+/// Custom fields. These can be used to create a counter with arbitrary
+/// field/value pairs. See: go/rpcsp-custom-fields.
+class LogConfigCounterOptionsCustomField {
+  /// Name is the field name.
+  core.String name;
+
+  /// Value is the field value. It is important that in contrast to the
+  /// CounterOptions.field, the value here is a constant that is not derived
+  /// from the IAMContext.
+  core.String value;
+
+  LogConfigCounterOptionsCustomField();
+
+  LogConfigCounterOptionsCustomField.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// Write a Data Access (Gin) log
 class LogConfigDataAccessOptions {
-  /// Whether Gin logging should happen in a fail-closed manner at the caller.
-  /// This is relevant only in the LocalIAM implementation, for now.
-  ///
-  /// NOTE: Logging to Gin in a fail-closed manner is currently unsupported
-  /// while work is being done to satisfy the requirements of go/345. Currently,
-  /// setting LOG_FAIL_CLOSED mode will have no effect, but still exists because
-  /// there is active work being done to support it (b/115874152).
   core.String logMode;
 
   LogConfigDataAccessOptions();
@@ -2707,11 +2804,26 @@ class OperationWarnings {
   }
 }
 
-/// An Operation resource, used to manage asynchronous API requests. (==
-/// resource_for v1.globalOperations ==) (== resource_for beta.globalOperations
-/// ==) (== resource_for v1.regionOperations ==) (== resource_for
-/// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (==
-/// resource_for beta.zoneOperations ==)
+/// Represents an Operation resource.
+///
+/// Google Compute Engine has three Operation resources:
+///
+/// * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) *
+/// [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) *
+/// [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations)
+///
+/// You can use an operation resource to manage asynchronous API requests. For
+/// more information, read Handling API responses.
+///
+/// Operations can be global, regional or zonal.
+/// - For global operations, use the `globalOperations` resource.
+/// - For regional operations, use the `regionOperations` resource.
+/// - For zonal operations, use the `zonalOperations` resource.
+///
+/// For more information, read  Global, Regional, and Zonal Resources. (==
+/// resource_for {$api_version}.globalOperations ==) (== resource_for
+/// {$api_version}.regionOperations ==) (== resource_for
+/// {$api_version}.zoneOperations ==)
 class Operation {
   /// [Output Only] The value of `requestId` if you provided it in the request.
   /// Not present otherwise.
@@ -2733,15 +2845,15 @@ class Operation {
   OperationError error;
 
   /// [Output Only] If the operation fails, this field contains the HTTP error
-  /// message that was returned, such as NOT FOUND.
+  /// message that was returned, such as `NOT FOUND`.
   core.String httpErrorMessage;
 
   /// [Output Only] If the operation fails, this field contains the HTTP error
-  /// status code that was returned. For example, a 404 means the resource was
+  /// status code that was returned. For example, a `404` means the resource was
   /// not found.
   core.int httpErrorStatusCode;
 
-  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// [Output Only] The unique identifier for the operation. This identifier is
   /// defined by the server.
   core.String id;
 
@@ -2749,15 +2861,15 @@ class Operation {
   /// RFC3339 text format.
   core.String insertTime;
 
-  /// [Output Only] Type of the resource. Always compute#operation for Operation
-  /// resources.
+  /// [Output Only] Type of the resource. Always `compute#operation` for
+  /// Operation resources.
   core.String kind;
 
-  /// [Output Only] Name of the resource.
+  /// [Output Only] Name of the operation.
   core.String name;
 
-  /// [Output Only] The type of operation, such as insert, update, or delete,
-  /// and so on.
+  /// [Output Only] The type of operation, such as `insert`, `update`, or
+  /// `delete`, and so on.
   core.String operationType;
 
   /// [Output Only] An optional progress indicator that ranges from 0 to 100.
@@ -2768,9 +2880,7 @@ class Operation {
   core.int progress;
 
   /// [Output Only] The URL of the region where the operation resides. Only
-  /// available when performing regional operations. You must specify this field
-  /// as part of the HTTP request URL. It is not settable as a field in the
-  /// request body.
+  /// applicable when performing regional operations.
   core.String region;
 
   /// [Output Only] Server-defined URL for the resource.
@@ -2781,7 +2891,7 @@ class Operation {
   core.String startTime;
 
   /// [Output Only] The status of the operation, which can be one of the
-  /// following: PENDING, RUNNING, or DONE.
+  /// following: `PENDING`, `RUNNING`, or `DONE`.
   core.String status;
 
   /// [Output Only] An optional textual description of the current status of the
@@ -2798,7 +2908,7 @@ class Operation {
   core.String targetLink;
 
   /// [Output Only] User who requested the operation, for example:
-  /// user@example.com.
+  /// `user@example.com`.
   core.String user;
 
   /// [Output Only] If warning messages are generated during processing of the
@@ -2806,9 +2916,7 @@ class Operation {
   core.List<OperationWarnings> warnings;
 
   /// [Output Only] The URL of the zone where the operation resides. Only
-  /// available when performing per-zone operations. You must specify this field
-  /// as part of the HTTP request URL. It is not settable as a field in the
-  /// request body.
+  /// applicable when performing per-zone operations.
   core.String zone;
 
   Operation();
@@ -3000,39 +3108,55 @@ class OperationsListResponse {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups, Google domains, and service accounts. A `role` is a named list of
-/// permissions defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role.
 ///
-/// **JSON Example**
+/// For some types of Google Cloud resources, a `binding` can also specify a
+/// `condition`, which is a logical expression that allows access to a resource
+/// only if the expression evaluates to `true`. A condition can add constraints
+/// based on attributes of the request, the resource, or both. To learn which
+/// resources support conditions in their IAM policies, see the [IAM
+/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 ///
-/// { "bindings": [ { "role": "roles/owner", "members": [
-/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/viewer", "members": ["user:sean@example.com"] } ] }
+/// **JSON example:**
 ///
-/// **YAML Example**
+/// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin",
+/// "members": [ "user:mike@example.com", "group:admins@example.com",
+/// "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 }
+///
+/// **YAML example:**
 ///
 /// bindings: - members: - user:mike@example.com - group:admins@example.com -
-/// domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
-/// role: roles/owner - members: - user:sean@example.com role: roles/viewer
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') -
+/// etag: BwWWja0YfJA= - version: 3
 ///
-///
-///
-/// For a description of IAM and its features, see the [IAM developer's
-/// guide](https://cloud.google.com/iam/docs).
+/// For a description of IAM and its features, see the [IAM
+/// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. `bindings` with no members
-  /// will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -3044,8 +3168,10 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field whenever you call `setIamPolicy`. If you omit this field, then IAM
+  /// allows you to overwrite a version `3` policy with a version `1` policy,
+  /// and all of the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -3067,7 +3193,30 @@ class Policy {
   /// rule applies, permission is denied.
   core.List<Rule> rules;
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field whenever you call `setIamPolicy`. If you omit this field, then IAM
+  /// allows you to overwrite a version `3` policy with a version `1` policy,
+  /// and all of the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
+  ///
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -3231,8 +3380,8 @@ class Resource {
   /// have been filled in. Returned as serialized YAML.
   core.String properties;
 
-  /// Output only. The type of the resource, for example compute.v1.instance, or
-  /// cloudfunctions.v1beta1.function.
+  /// Output only. The type of the resource, for example `compute.v1.instance`,
+  /// or `cloudfunctions.v1beta1.function`.
   core.String type;
 
   /// Output only. If Deployment Manager is currently updating or previewing an
@@ -3525,7 +3674,7 @@ class ResourceUpdate {
   /// expanded. Returned as serialized YAML.
   core.String finalProperties;
 
-  /// Output only. The intent of the resource: PREVIEW, UPDATE, or CANCEL.
+  /// Output only. The intent of the resource: `PREVIEW`, `UPDATE`, or `CANCEL`.
   core.String intent;
 
   /// Output only. URL of the manifest representing the update configuration of

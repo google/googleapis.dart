@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2441() {
+buildUnnamed2555() {
   var o = new core.List<api.Value>();
   o.add(buildValue());
   o.add(buildValue());
   return o;
 }
 
-checkUnnamed2441(core.List<api.Value> o) {
+checkUnnamed2555(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValue(o[0]);
   checkValue(o[1]);
@@ -68,7 +68,7 @@ buildArrayValue() {
   var o = new api.ArrayValue();
   buildCounterArrayValue++;
   if (buildCounterArrayValue < 3) {
-    o.values = buildUnnamed2441();
+    o.values = buildUnnamed2555();
   }
   buildCounterArrayValue--;
   return o;
@@ -77,19 +77,19 @@ buildArrayValue() {
 checkArrayValue(api.ArrayValue o) {
   buildCounterArrayValue++;
   if (buildCounterArrayValue < 3) {
-    checkUnnamed2441(o.values);
+    checkUnnamed2555(o.values);
   }
   buildCounterArrayValue--;
 }
 
-buildUnnamed2442() {
+buildUnnamed2556() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2442(core.List<core.String> o) {
+checkUnnamed2556(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -100,7 +100,7 @@ buildBatchGetDocumentsRequest() {
   var o = new api.BatchGetDocumentsRequest();
   buildCounterBatchGetDocumentsRequest++;
   if (buildCounterBatchGetDocumentsRequest < 3) {
-    o.documents = buildUnnamed2442();
+    o.documents = buildUnnamed2556();
     o.mask = buildDocumentMask();
     o.newTransaction = buildTransactionOptions();
     o.readTime = "foo";
@@ -113,7 +113,7 @@ buildBatchGetDocumentsRequest() {
 checkBatchGetDocumentsRequest(api.BatchGetDocumentsRequest o) {
   buildCounterBatchGetDocumentsRequest++;
   if (buildCounterBatchGetDocumentsRequest < 3) {
-    checkUnnamed2442(o.documents);
+    checkUnnamed2556(o.documents);
     checkDocumentMask(o.mask);
     checkTransactionOptions(o.newTransaction);
     unittest.expect(o.readTime, unittest.equals('foo'));
@@ -145,6 +145,100 @@ checkBatchGetDocumentsResponse(api.BatchGetDocumentsResponse o) {
     unittest.expect(o.transaction, unittest.equals('foo'));
   }
   buildCounterBatchGetDocumentsResponse--;
+}
+
+buildUnnamed2557() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed2557(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
+}
+
+buildUnnamed2558() {
+  var o = new core.List<api.Write>();
+  o.add(buildWrite());
+  o.add(buildWrite());
+  return o;
+}
+
+checkUnnamed2558(core.List<api.Write> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWrite(o[0]);
+  checkWrite(o[1]);
+}
+
+core.int buildCounterBatchWriteRequest = 0;
+buildBatchWriteRequest() {
+  var o = new api.BatchWriteRequest();
+  buildCounterBatchWriteRequest++;
+  if (buildCounterBatchWriteRequest < 3) {
+    o.labels = buildUnnamed2557();
+    o.writes = buildUnnamed2558();
+  }
+  buildCounterBatchWriteRequest--;
+  return o;
+}
+
+checkBatchWriteRequest(api.BatchWriteRequest o) {
+  buildCounterBatchWriteRequest++;
+  if (buildCounterBatchWriteRequest < 3) {
+    checkUnnamed2557(o.labels);
+    checkUnnamed2558(o.writes);
+  }
+  buildCounterBatchWriteRequest--;
+}
+
+buildUnnamed2559() {
+  var o = new core.List<api.Status>();
+  o.add(buildStatus());
+  o.add(buildStatus());
+  return o;
+}
+
+checkUnnamed2559(core.List<api.Status> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStatus(o[0]);
+  checkStatus(o[1]);
+}
+
+buildUnnamed2560() {
+  var o = new core.List<api.WriteResult>();
+  o.add(buildWriteResult());
+  o.add(buildWriteResult());
+  return o;
+}
+
+checkUnnamed2560(core.List<api.WriteResult> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkWriteResult(o[0]);
+  checkWriteResult(o[1]);
+}
+
+core.int buildCounterBatchWriteResponse = 0;
+buildBatchWriteResponse() {
+  var o = new api.BatchWriteResponse();
+  buildCounterBatchWriteResponse++;
+  if (buildCounterBatchWriteResponse < 3) {
+    o.status = buildUnnamed2559();
+    o.writeResults = buildUnnamed2560();
+  }
+  buildCounterBatchWriteResponse--;
+  return o;
+}
+
+checkBatchWriteResponse(api.BatchWriteResponse o) {
+  buildCounterBatchWriteResponse++;
+  if (buildCounterBatchWriteResponse < 3) {
+    checkUnnamed2559(o.status);
+    checkUnnamed2560(o.writeResults);
+  }
+  buildCounterBatchWriteResponse--;
 }
 
 core.int buildCounterBeginTransactionRequest = 0;
@@ -206,14 +300,14 @@ checkCollectionSelector(api.CollectionSelector o) {
   buildCounterCollectionSelector--;
 }
 
-buildUnnamed2443() {
+buildUnnamed2561() {
   var o = new core.List<api.Write>();
   o.add(buildWrite());
   o.add(buildWrite());
   return o;
 }
 
-checkUnnamed2443(core.List<api.Write> o) {
+checkUnnamed2561(core.List<api.Write> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWrite(o[0]);
   checkWrite(o[1]);
@@ -225,7 +319,7 @@ buildCommitRequest() {
   buildCounterCommitRequest++;
   if (buildCounterCommitRequest < 3) {
     o.transaction = "foo";
-    o.writes = buildUnnamed2443();
+    o.writes = buildUnnamed2561();
   }
   buildCounterCommitRequest--;
   return o;
@@ -235,19 +329,19 @@ checkCommitRequest(api.CommitRequest o) {
   buildCounterCommitRequest++;
   if (buildCounterCommitRequest < 3) {
     unittest.expect(o.transaction, unittest.equals('foo'));
-    checkUnnamed2443(o.writes);
+    checkUnnamed2561(o.writes);
   }
   buildCounterCommitRequest--;
 }
 
-buildUnnamed2444() {
+buildUnnamed2562() {
   var o = new core.List<api.WriteResult>();
   o.add(buildWriteResult());
   o.add(buildWriteResult());
   return o;
 }
 
-checkUnnamed2444(core.List<api.WriteResult> o) {
+checkUnnamed2562(core.List<api.WriteResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWriteResult(o[0]);
   checkWriteResult(o[1]);
@@ -259,7 +353,7 @@ buildCommitResponse() {
   buildCounterCommitResponse++;
   if (buildCounterCommitResponse < 3) {
     o.commitTime = "foo";
-    o.writeResults = buildUnnamed2444();
+    o.writeResults = buildUnnamed2562();
   }
   buildCounterCommitResponse--;
   return o;
@@ -269,19 +363,19 @@ checkCommitResponse(api.CommitResponse o) {
   buildCounterCommitResponse++;
   if (buildCounterCommitResponse < 3) {
     unittest.expect(o.commitTime, unittest.equals('foo'));
-    checkUnnamed2444(o.writeResults);
+    checkUnnamed2562(o.writeResults);
   }
   buildCounterCommitResponse--;
 }
 
-buildUnnamed2445() {
+buildUnnamed2563() {
   var o = new core.List<api.Filter>();
   o.add(buildFilter());
   o.add(buildFilter());
   return o;
 }
 
-checkUnnamed2445(core.List<api.Filter> o) {
+checkUnnamed2563(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilter(o[0]);
   checkFilter(o[1]);
@@ -292,7 +386,7 @@ buildCompositeFilter() {
   var o = new api.CompositeFilter();
   buildCounterCompositeFilter++;
   if (buildCounterCompositeFilter < 3) {
-    o.filters = buildUnnamed2445();
+    o.filters = buildUnnamed2563();
     o.op = "foo";
   }
   buildCounterCompositeFilter--;
@@ -302,20 +396,20 @@ buildCompositeFilter() {
 checkCompositeFilter(api.CompositeFilter o) {
   buildCounterCompositeFilter++;
   if (buildCounterCompositeFilter < 3) {
-    checkUnnamed2445(o.filters);
+    checkUnnamed2563(o.filters);
     unittest.expect(o.op, unittest.equals('foo'));
   }
   buildCounterCompositeFilter--;
 }
 
-buildUnnamed2446() {
+buildUnnamed2564() {
   var o = new core.List<api.Value>();
   o.add(buildValue());
   o.add(buildValue());
   return o;
 }
 
-checkUnnamed2446(core.List<api.Value> o) {
+checkUnnamed2564(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValue(o[0]);
   checkValue(o[1]);
@@ -327,7 +421,7 @@ buildCursor() {
   buildCounterCursor++;
   if (buildCounterCursor < 3) {
     o.before = true;
-    o.values = buildUnnamed2446();
+    o.values = buildUnnamed2564();
   }
   buildCounterCursor--;
   return o;
@@ -337,19 +431,19 @@ checkCursor(api.Cursor o) {
   buildCounterCursor++;
   if (buildCounterCursor < 3) {
     unittest.expect(o.before, unittest.isTrue);
-    checkUnnamed2446(o.values);
+    checkUnnamed2564(o.values);
   }
   buildCounterCursor--;
 }
 
-buildUnnamed2447() {
+buildUnnamed2565() {
   var o = new core.Map<core.String, api.Value>();
   o["x"] = buildValue();
   o["y"] = buildValue();
   return o;
 }
 
-checkUnnamed2447(core.Map<core.String, api.Value> o) {
+checkUnnamed2565(core.Map<core.String, api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValue(o["x"]);
   checkValue(o["y"]);
@@ -361,7 +455,7 @@ buildDocument() {
   buildCounterDocument++;
   if (buildCounterDocument < 3) {
     o.createTime = "foo";
-    o.fields = buildUnnamed2447();
+    o.fields = buildUnnamed2565();
     o.name = "foo";
     o.updateTime = "foo";
   }
@@ -373,34 +467,34 @@ checkDocument(api.Document o) {
   buildCounterDocument++;
   if (buildCounterDocument < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed2447(o.fields);
+    checkUnnamed2565(o.fields);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterDocument--;
 }
 
-buildUnnamed2448() {
+buildUnnamed2566() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed2448(core.List<core.int> o) {
+checkUnnamed2566(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed2449() {
+buildUnnamed2567() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed2449(core.List<core.int> o) {
+checkUnnamed2567(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -412,8 +506,8 @@ buildDocumentChange() {
   buildCounterDocumentChange++;
   if (buildCounterDocumentChange < 3) {
     o.document = buildDocument();
-    o.removedTargetIds = buildUnnamed2448();
-    o.targetIds = buildUnnamed2449();
+    o.removedTargetIds = buildUnnamed2566();
+    o.targetIds = buildUnnamed2567();
   }
   buildCounterDocumentChange--;
   return o;
@@ -423,20 +517,20 @@ checkDocumentChange(api.DocumentChange o) {
   buildCounterDocumentChange++;
   if (buildCounterDocumentChange < 3) {
     checkDocument(o.document);
-    checkUnnamed2448(o.removedTargetIds);
-    checkUnnamed2449(o.targetIds);
+    checkUnnamed2566(o.removedTargetIds);
+    checkUnnamed2567(o.targetIds);
   }
   buildCounterDocumentChange--;
 }
 
-buildUnnamed2450() {
+buildUnnamed2568() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed2450(core.List<core.int> o) {
+checkUnnamed2568(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -449,7 +543,7 @@ buildDocumentDelete() {
   if (buildCounterDocumentDelete < 3) {
     o.document = "foo";
     o.readTime = "foo";
-    o.removedTargetIds = buildUnnamed2450();
+    o.removedTargetIds = buildUnnamed2568();
   }
   buildCounterDocumentDelete--;
   return o;
@@ -460,19 +554,19 @@ checkDocumentDelete(api.DocumentDelete o) {
   if (buildCounterDocumentDelete < 3) {
     unittest.expect(o.document, unittest.equals('foo'));
     unittest.expect(o.readTime, unittest.equals('foo'));
-    checkUnnamed2450(o.removedTargetIds);
+    checkUnnamed2568(o.removedTargetIds);
   }
   buildCounterDocumentDelete--;
 }
 
-buildUnnamed2451() {
+buildUnnamed2569() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2451(core.List<core.String> o) {
+checkUnnamed2569(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -483,7 +577,7 @@ buildDocumentMask() {
   var o = new api.DocumentMask();
   buildCounterDocumentMask++;
   if (buildCounterDocumentMask < 3) {
-    o.fieldPaths = buildUnnamed2451();
+    o.fieldPaths = buildUnnamed2569();
   }
   buildCounterDocumentMask--;
   return o;
@@ -492,19 +586,19 @@ buildDocumentMask() {
 checkDocumentMask(api.DocumentMask o) {
   buildCounterDocumentMask++;
   if (buildCounterDocumentMask < 3) {
-    checkUnnamed2451(o.fieldPaths);
+    checkUnnamed2569(o.fieldPaths);
   }
   buildCounterDocumentMask--;
 }
 
-buildUnnamed2452() {
+buildUnnamed2570() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed2452(core.List<core.int> o) {
+checkUnnamed2570(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -517,7 +611,7 @@ buildDocumentRemove() {
   if (buildCounterDocumentRemove < 3) {
     o.document = "foo";
     o.readTime = "foo";
-    o.removedTargetIds = buildUnnamed2452();
+    o.removedTargetIds = buildUnnamed2570();
   }
   buildCounterDocumentRemove--;
   return o;
@@ -528,19 +622,19 @@ checkDocumentRemove(api.DocumentRemove o) {
   if (buildCounterDocumentRemove < 3) {
     unittest.expect(o.document, unittest.equals('foo'));
     unittest.expect(o.readTime, unittest.equals('foo'));
-    checkUnnamed2452(o.removedTargetIds);
+    checkUnnamed2570(o.removedTargetIds);
   }
   buildCounterDocumentRemove--;
 }
 
-buildUnnamed2453() {
+buildUnnamed2571() {
   var o = new core.List<api.FieldTransform>();
   o.add(buildFieldTransform());
   o.add(buildFieldTransform());
   return o;
 }
 
-checkUnnamed2453(core.List<api.FieldTransform> o) {
+checkUnnamed2571(core.List<api.FieldTransform> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldTransform(o[0]);
   checkFieldTransform(o[1]);
@@ -552,7 +646,7 @@ buildDocumentTransform() {
   buildCounterDocumentTransform++;
   if (buildCounterDocumentTransform < 3) {
     o.document = "foo";
-    o.fieldTransforms = buildUnnamed2453();
+    o.fieldTransforms = buildUnnamed2571();
   }
   buildCounterDocumentTransform--;
   return o;
@@ -562,19 +656,19 @@ checkDocumentTransform(api.DocumentTransform o) {
   buildCounterDocumentTransform++;
   if (buildCounterDocumentTransform < 3) {
     unittest.expect(o.document, unittest.equals('foo'));
-    checkUnnamed2453(o.fieldTransforms);
+    checkUnnamed2571(o.fieldTransforms);
   }
   buildCounterDocumentTransform--;
 }
 
-buildUnnamed2454() {
+buildUnnamed2572() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2454(core.List<core.String> o) {
+checkUnnamed2572(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -585,7 +679,7 @@ buildDocumentsTarget() {
   var o = new api.DocumentsTarget();
   buildCounterDocumentsTarget++;
   if (buildCounterDocumentsTarget < 3) {
-    o.documents = buildUnnamed2454();
+    o.documents = buildUnnamed2572();
   }
   buildCounterDocumentsTarget--;
   return o;
@@ -594,7 +688,7 @@ buildDocumentsTarget() {
 checkDocumentsTarget(api.DocumentsTarget o) {
   buildCounterDocumentsTarget++;
   if (buildCounterDocumentsTarget < 3) {
-    checkUnnamed2454(o.documents);
+    checkUnnamed2572(o.documents);
   }
   buildCounterDocumentsTarget--;
 }
@@ -731,14 +825,14 @@ checkFilter(api.Filter o) {
   buildCounterFilter--;
 }
 
-buildUnnamed2455() {
+buildUnnamed2573() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2455(core.List<core.String> o) {
+checkUnnamed2573(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -749,7 +843,7 @@ buildGoogleFirestoreAdminV1ExportDocumentsMetadata() {
   var o = new api.GoogleFirestoreAdminV1ExportDocumentsMetadata();
   buildCounterGoogleFirestoreAdminV1ExportDocumentsMetadata++;
   if (buildCounterGoogleFirestoreAdminV1ExportDocumentsMetadata < 3) {
-    o.collectionIds = buildUnnamed2455();
+    o.collectionIds = buildUnnamed2573();
     o.endTime = "foo";
     o.operationState = "foo";
     o.outputUriPrefix = "foo";
@@ -765,7 +859,7 @@ checkGoogleFirestoreAdminV1ExportDocumentsMetadata(
     api.GoogleFirestoreAdminV1ExportDocumentsMetadata o) {
   buildCounterGoogleFirestoreAdminV1ExportDocumentsMetadata++;
   if (buildCounterGoogleFirestoreAdminV1ExportDocumentsMetadata < 3) {
-    checkUnnamed2455(o.collectionIds);
+    checkUnnamed2573(o.collectionIds);
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.operationState, unittest.equals('foo'));
     unittest.expect(o.outputUriPrefix, unittest.equals('foo'));
@@ -776,14 +870,14 @@ checkGoogleFirestoreAdminV1ExportDocumentsMetadata(
   buildCounterGoogleFirestoreAdminV1ExportDocumentsMetadata--;
 }
 
-buildUnnamed2456() {
+buildUnnamed2574() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2456(core.List<core.String> o) {
+checkUnnamed2574(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -794,7 +888,7 @@ buildGoogleFirestoreAdminV1ExportDocumentsRequest() {
   var o = new api.GoogleFirestoreAdminV1ExportDocumentsRequest();
   buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest++;
   if (buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest < 3) {
-    o.collectionIds = buildUnnamed2456();
+    o.collectionIds = buildUnnamed2574();
     o.outputUriPrefix = "foo";
   }
   buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest--;
@@ -805,7 +899,7 @@ checkGoogleFirestoreAdminV1ExportDocumentsRequest(
     api.GoogleFirestoreAdminV1ExportDocumentsRequest o) {
   buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest++;
   if (buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest < 3) {
-    checkUnnamed2456(o.collectionIds);
+    checkUnnamed2574(o.collectionIds);
     unittest.expect(o.outputUriPrefix, unittest.equals('foo'));
   }
   buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest--;
@@ -852,14 +946,14 @@ checkGoogleFirestoreAdminV1Field(api.GoogleFirestoreAdminV1Field o) {
   buildCounterGoogleFirestoreAdminV1Field--;
 }
 
-buildUnnamed2457() {
+buildUnnamed2575() {
   var o = new core.List<api.GoogleFirestoreAdminV1IndexConfigDelta>();
   o.add(buildGoogleFirestoreAdminV1IndexConfigDelta());
   o.add(buildGoogleFirestoreAdminV1IndexConfigDelta());
   return o;
 }
 
-checkUnnamed2457(core.List<api.GoogleFirestoreAdminV1IndexConfigDelta> o) {
+checkUnnamed2575(core.List<api.GoogleFirestoreAdminV1IndexConfigDelta> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirestoreAdminV1IndexConfigDelta(o[0]);
   checkGoogleFirestoreAdminV1IndexConfigDelta(o[1]);
@@ -872,7 +966,7 @@ buildGoogleFirestoreAdminV1FieldOperationMetadata() {
   if (buildCounterGoogleFirestoreAdminV1FieldOperationMetadata < 3) {
     o.endTime = "foo";
     o.field = "foo";
-    o.indexConfigDeltas = buildUnnamed2457();
+    o.indexConfigDeltas = buildUnnamed2575();
     o.progressBytes = buildGoogleFirestoreAdminV1Progress();
     o.progressDocuments = buildGoogleFirestoreAdminV1Progress();
     o.startTime = "foo";
@@ -888,7 +982,7 @@ checkGoogleFirestoreAdminV1FieldOperationMetadata(
   if (buildCounterGoogleFirestoreAdminV1FieldOperationMetadata < 3) {
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.field, unittest.equals('foo'));
-    checkUnnamed2457(o.indexConfigDeltas);
+    checkUnnamed2575(o.indexConfigDeltas);
     checkGoogleFirestoreAdminV1Progress(o.progressBytes);
     checkGoogleFirestoreAdminV1Progress(o.progressDocuments);
     unittest.expect(o.startTime, unittest.equals('foo'));
@@ -897,14 +991,14 @@ checkGoogleFirestoreAdminV1FieldOperationMetadata(
   buildCounterGoogleFirestoreAdminV1FieldOperationMetadata--;
 }
 
-buildUnnamed2458() {
+buildUnnamed2576() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2458(core.List<core.String> o) {
+checkUnnamed2576(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -915,7 +1009,7 @@ buildGoogleFirestoreAdminV1ImportDocumentsMetadata() {
   var o = new api.GoogleFirestoreAdminV1ImportDocumentsMetadata();
   buildCounterGoogleFirestoreAdminV1ImportDocumentsMetadata++;
   if (buildCounterGoogleFirestoreAdminV1ImportDocumentsMetadata < 3) {
-    o.collectionIds = buildUnnamed2458();
+    o.collectionIds = buildUnnamed2576();
     o.endTime = "foo";
     o.inputUriPrefix = "foo";
     o.operationState = "foo";
@@ -931,7 +1025,7 @@ checkGoogleFirestoreAdminV1ImportDocumentsMetadata(
     api.GoogleFirestoreAdminV1ImportDocumentsMetadata o) {
   buildCounterGoogleFirestoreAdminV1ImportDocumentsMetadata++;
   if (buildCounterGoogleFirestoreAdminV1ImportDocumentsMetadata < 3) {
-    checkUnnamed2458(o.collectionIds);
+    checkUnnamed2576(o.collectionIds);
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.inputUriPrefix, unittest.equals('foo'));
     unittest.expect(o.operationState, unittest.equals('foo'));
@@ -942,14 +1036,14 @@ checkGoogleFirestoreAdminV1ImportDocumentsMetadata(
   buildCounterGoogleFirestoreAdminV1ImportDocumentsMetadata--;
 }
 
-buildUnnamed2459() {
+buildUnnamed2577() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2459(core.List<core.String> o) {
+checkUnnamed2577(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -960,7 +1054,7 @@ buildGoogleFirestoreAdminV1ImportDocumentsRequest() {
   var o = new api.GoogleFirestoreAdminV1ImportDocumentsRequest();
   buildCounterGoogleFirestoreAdminV1ImportDocumentsRequest++;
   if (buildCounterGoogleFirestoreAdminV1ImportDocumentsRequest < 3) {
-    o.collectionIds = buildUnnamed2459();
+    o.collectionIds = buildUnnamed2577();
     o.inputUriPrefix = "foo";
   }
   buildCounterGoogleFirestoreAdminV1ImportDocumentsRequest--;
@@ -971,20 +1065,20 @@ checkGoogleFirestoreAdminV1ImportDocumentsRequest(
     api.GoogleFirestoreAdminV1ImportDocumentsRequest o) {
   buildCounterGoogleFirestoreAdminV1ImportDocumentsRequest++;
   if (buildCounterGoogleFirestoreAdminV1ImportDocumentsRequest < 3) {
-    checkUnnamed2459(o.collectionIds);
+    checkUnnamed2577(o.collectionIds);
     unittest.expect(o.inputUriPrefix, unittest.equals('foo'));
   }
   buildCounterGoogleFirestoreAdminV1ImportDocumentsRequest--;
 }
 
-buildUnnamed2460() {
+buildUnnamed2578() {
   var o = new core.List<api.GoogleFirestoreAdminV1IndexField>();
   o.add(buildGoogleFirestoreAdminV1IndexField());
   o.add(buildGoogleFirestoreAdminV1IndexField());
   return o;
 }
 
-checkUnnamed2460(core.List<api.GoogleFirestoreAdminV1IndexField> o) {
+checkUnnamed2578(core.List<api.GoogleFirestoreAdminV1IndexField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirestoreAdminV1IndexField(o[0]);
   checkGoogleFirestoreAdminV1IndexField(o[1]);
@@ -995,7 +1089,7 @@ buildGoogleFirestoreAdminV1Index() {
   var o = new api.GoogleFirestoreAdminV1Index();
   buildCounterGoogleFirestoreAdminV1Index++;
   if (buildCounterGoogleFirestoreAdminV1Index < 3) {
-    o.fields = buildUnnamed2460();
+    o.fields = buildUnnamed2578();
     o.name = "foo";
     o.queryScope = "foo";
     o.state = "foo";
@@ -1007,7 +1101,7 @@ buildGoogleFirestoreAdminV1Index() {
 checkGoogleFirestoreAdminV1Index(api.GoogleFirestoreAdminV1Index o) {
   buildCounterGoogleFirestoreAdminV1Index++;
   if (buildCounterGoogleFirestoreAdminV1Index < 3) {
-    checkUnnamed2460(o.fields);
+    checkUnnamed2578(o.fields);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.queryScope, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
@@ -1015,14 +1109,14 @@ checkGoogleFirestoreAdminV1Index(api.GoogleFirestoreAdminV1Index o) {
   buildCounterGoogleFirestoreAdminV1Index--;
 }
 
-buildUnnamed2461() {
+buildUnnamed2579() {
   var o = new core.List<api.GoogleFirestoreAdminV1Index>();
   o.add(buildGoogleFirestoreAdminV1Index());
   o.add(buildGoogleFirestoreAdminV1Index());
   return o;
 }
 
-checkUnnamed2461(core.List<api.GoogleFirestoreAdminV1Index> o) {
+checkUnnamed2579(core.List<api.GoogleFirestoreAdminV1Index> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirestoreAdminV1Index(o[0]);
   checkGoogleFirestoreAdminV1Index(o[1]);
@@ -1034,7 +1128,7 @@ buildGoogleFirestoreAdminV1IndexConfig() {
   buildCounterGoogleFirestoreAdminV1IndexConfig++;
   if (buildCounterGoogleFirestoreAdminV1IndexConfig < 3) {
     o.ancestorField = "foo";
-    o.indexes = buildUnnamed2461();
+    o.indexes = buildUnnamed2579();
     o.reverting = true;
     o.usesAncestorConfig = true;
   }
@@ -1047,7 +1141,7 @@ checkGoogleFirestoreAdminV1IndexConfig(
   buildCounterGoogleFirestoreAdminV1IndexConfig++;
   if (buildCounterGoogleFirestoreAdminV1IndexConfig < 3) {
     unittest.expect(o.ancestorField, unittest.equals('foo'));
-    checkUnnamed2461(o.indexes);
+    checkUnnamed2579(o.indexes);
     unittest.expect(o.reverting, unittest.isTrue);
     unittest.expect(o.usesAncestorConfig, unittest.isTrue);
   }
@@ -1129,14 +1223,14 @@ checkGoogleFirestoreAdminV1IndexOperationMetadata(
   buildCounterGoogleFirestoreAdminV1IndexOperationMetadata--;
 }
 
-buildUnnamed2462() {
+buildUnnamed2580() {
   var o = new core.List<api.GoogleFirestoreAdminV1Field>();
   o.add(buildGoogleFirestoreAdminV1Field());
   o.add(buildGoogleFirestoreAdminV1Field());
   return o;
 }
 
-checkUnnamed2462(core.List<api.GoogleFirestoreAdminV1Field> o) {
+checkUnnamed2580(core.List<api.GoogleFirestoreAdminV1Field> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirestoreAdminV1Field(o[0]);
   checkGoogleFirestoreAdminV1Field(o[1]);
@@ -1147,7 +1241,7 @@ buildGoogleFirestoreAdminV1ListFieldsResponse() {
   var o = new api.GoogleFirestoreAdminV1ListFieldsResponse();
   buildCounterGoogleFirestoreAdminV1ListFieldsResponse++;
   if (buildCounterGoogleFirestoreAdminV1ListFieldsResponse < 3) {
-    o.fields = buildUnnamed2462();
+    o.fields = buildUnnamed2580();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleFirestoreAdminV1ListFieldsResponse--;
@@ -1158,20 +1252,20 @@ checkGoogleFirestoreAdminV1ListFieldsResponse(
     api.GoogleFirestoreAdminV1ListFieldsResponse o) {
   buildCounterGoogleFirestoreAdminV1ListFieldsResponse++;
   if (buildCounterGoogleFirestoreAdminV1ListFieldsResponse < 3) {
-    checkUnnamed2462(o.fields);
+    checkUnnamed2580(o.fields);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleFirestoreAdminV1ListFieldsResponse--;
 }
 
-buildUnnamed2463() {
+buildUnnamed2581() {
   var o = new core.List<api.GoogleFirestoreAdminV1Index>();
   o.add(buildGoogleFirestoreAdminV1Index());
   o.add(buildGoogleFirestoreAdminV1Index());
   return o;
 }
 
-checkUnnamed2463(core.List<api.GoogleFirestoreAdminV1Index> o) {
+checkUnnamed2581(core.List<api.GoogleFirestoreAdminV1Index> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFirestoreAdminV1Index(o[0]);
   checkGoogleFirestoreAdminV1Index(o[1]);
@@ -1182,7 +1276,7 @@ buildGoogleFirestoreAdminV1ListIndexesResponse() {
   var o = new api.GoogleFirestoreAdminV1ListIndexesResponse();
   buildCounterGoogleFirestoreAdminV1ListIndexesResponse++;
   if (buildCounterGoogleFirestoreAdminV1ListIndexesResponse < 3) {
-    o.indexes = buildUnnamed2463();
+    o.indexes = buildUnnamed2581();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleFirestoreAdminV1ListIndexesResponse--;
@@ -1193,7 +1287,7 @@ checkGoogleFirestoreAdminV1ListIndexesResponse(
     api.GoogleFirestoreAdminV1ListIndexesResponse o) {
   buildCounterGoogleFirestoreAdminV1ListIndexesResponse++;
   if (buildCounterGoogleFirestoreAdminV1ListIndexesResponse < 3) {
-    checkUnnamed2463(o.indexes);
+    checkUnnamed2581(o.indexes);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleFirestoreAdminV1ListIndexesResponse--;
@@ -1252,14 +1346,14 @@ checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-buildUnnamed2464() {
+buildUnnamed2582() {
   var o = new core.List<api.GoogleLongrunningOperation>();
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-checkUnnamed2464(core.List<api.GoogleLongrunningOperation> o) {
+checkUnnamed2582(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -1271,7 +1365,7 @@ buildGoogleLongrunningListOperationsResponse() {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed2464();
+    o.operations = buildUnnamed2582();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -1282,12 +1376,12 @@ checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2464(o.operations);
+    checkUnnamed2582(o.operations);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-buildUnnamed2465() {
+buildUnnamed2583() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1302,7 +1396,7 @@ buildUnnamed2465() {
   return o;
 }
 
-checkUnnamed2465(core.Map<core.String, core.Object> o) {
+checkUnnamed2583(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1316,7 +1410,7 @@ checkUnnamed2465(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2466() {
+buildUnnamed2584() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1331,7 +1425,7 @@ buildUnnamed2466() {
   return o;
 }
 
-checkUnnamed2466(core.Map<core.String, core.Object> o) {
+checkUnnamed2584(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1352,9 +1446,9 @@ buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed2465();
+    o.metadata = buildUnnamed2583();
     o.name = "foo";
-    o.response = buildUnnamed2466();
+    o.response = buildUnnamed2584();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -1365,9 +1459,9 @@ checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed2465(o.metadata);
+    checkUnnamed2583(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2466(o.response);
+    checkUnnamed2584(o.response);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -1414,14 +1508,14 @@ checkListCollectionIdsRequest(api.ListCollectionIdsRequest o) {
   buildCounterListCollectionIdsRequest--;
 }
 
-buildUnnamed2467() {
+buildUnnamed2585() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2467(core.List<core.String> o) {
+checkUnnamed2585(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1432,7 +1526,7 @@ buildListCollectionIdsResponse() {
   var o = new api.ListCollectionIdsResponse();
   buildCounterListCollectionIdsResponse++;
   if (buildCounterListCollectionIdsResponse < 3) {
-    o.collectionIds = buildUnnamed2467();
+    o.collectionIds = buildUnnamed2585();
     o.nextPageToken = "foo";
   }
   buildCounterListCollectionIdsResponse--;
@@ -1442,20 +1536,20 @@ buildListCollectionIdsResponse() {
 checkListCollectionIdsResponse(api.ListCollectionIdsResponse o) {
   buildCounterListCollectionIdsResponse++;
   if (buildCounterListCollectionIdsResponse < 3) {
-    checkUnnamed2467(o.collectionIds);
+    checkUnnamed2585(o.collectionIds);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCollectionIdsResponse--;
 }
 
-buildUnnamed2468() {
+buildUnnamed2586() {
   var o = new core.List<api.Document>();
   o.add(buildDocument());
   o.add(buildDocument());
   return o;
 }
 
-checkUnnamed2468(core.List<api.Document> o) {
+checkUnnamed2586(core.List<api.Document> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDocument(o[0]);
   checkDocument(o[1]);
@@ -1466,7 +1560,7 @@ buildListDocumentsResponse() {
   var o = new api.ListDocumentsResponse();
   buildCounterListDocumentsResponse++;
   if (buildCounterListDocumentsResponse < 3) {
-    o.documents = buildUnnamed2468();
+    o.documents = buildUnnamed2586();
     o.nextPageToken = "foo";
   }
   buildCounterListDocumentsResponse--;
@@ -1476,20 +1570,20 @@ buildListDocumentsResponse() {
 checkListDocumentsResponse(api.ListDocumentsResponse o) {
   buildCounterListDocumentsResponse++;
   if (buildCounterListDocumentsResponse < 3) {
-    checkUnnamed2468(o.documents);
+    checkUnnamed2586(o.documents);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDocumentsResponse--;
 }
 
-buildUnnamed2469() {
+buildUnnamed2587() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed2469(core.List<api.Location> o) {
+checkUnnamed2587(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -1500,7 +1594,7 @@ buildListLocationsResponse() {
   var o = new api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed2469();
+    o.locations = buildUnnamed2587();
     o.nextPageToken = "foo";
   }
   buildCounterListLocationsResponse--;
@@ -1510,20 +1604,20 @@ buildListLocationsResponse() {
 checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed2469(o.locations);
+    checkUnnamed2587(o.locations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
-buildUnnamed2470() {
+buildUnnamed2588() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2470(core.Map<core.String, core.String> o) {
+checkUnnamed2588(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1535,7 +1629,7 @@ buildListenRequest() {
   buildCounterListenRequest++;
   if (buildCounterListenRequest < 3) {
     o.addTarget = buildTarget();
-    o.labels = buildUnnamed2470();
+    o.labels = buildUnnamed2588();
     o.removeTarget = 42;
   }
   buildCounterListenRequest--;
@@ -1546,7 +1640,7 @@ checkListenRequest(api.ListenRequest o) {
   buildCounterListenRequest++;
   if (buildCounterListenRequest < 3) {
     checkTarget(o.addTarget);
-    checkUnnamed2470(o.labels);
+    checkUnnamed2588(o.labels);
     unittest.expect(o.removeTarget, unittest.equals(42));
   }
   buildCounterListenRequest--;
@@ -1579,20 +1673,20 @@ checkListenResponse(api.ListenResponse o) {
   buildCounterListenResponse--;
 }
 
-buildUnnamed2471() {
+buildUnnamed2589() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2471(core.Map<core.String, core.String> o) {
+checkUnnamed2589(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed2472() {
+buildUnnamed2590() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1607,7 +1701,7 @@ buildUnnamed2472() {
   return o;
 }
 
-checkUnnamed2472(core.Map<core.String, core.Object> o) {
+checkUnnamed2590(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1627,9 +1721,9 @@ buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = "foo";
-    o.labels = buildUnnamed2471();
+    o.labels = buildUnnamed2589();
     o.locationId = "foo";
-    o.metadata = buildUnnamed2472();
+    o.metadata = buildUnnamed2590();
     o.name = "foo";
   }
   buildCounterLocation--;
@@ -1640,22 +1734,22 @@ checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed2471(o.labels);
+    checkUnnamed2589(o.labels);
     unittest.expect(o.locationId, unittest.equals('foo'));
-    checkUnnamed2472(o.metadata);
+    checkUnnamed2590(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterLocation--;
 }
 
-buildUnnamed2473() {
+buildUnnamed2591() {
   var o = new core.Map<core.String, api.Value>();
   o["x"] = buildValue();
   o["y"] = buildValue();
   return o;
 }
 
-checkUnnamed2473(core.Map<core.String, api.Value> o) {
+checkUnnamed2591(core.Map<core.String, api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValue(o["x"]);
   checkValue(o["y"]);
@@ -1666,7 +1760,7 @@ buildMapValue() {
   var o = new api.MapValue();
   buildCounterMapValue++;
   if (buildCounterMapValue < 3) {
-    o.fields = buildUnnamed2473();
+    o.fields = buildUnnamed2591();
   }
   buildCounterMapValue--;
   return o;
@@ -1675,7 +1769,7 @@ buildMapValue() {
 checkMapValue(api.MapValue o) {
   buildCounterMapValue++;
   if (buildCounterMapValue < 3) {
-    checkUnnamed2473(o.fields);
+    checkUnnamed2591(o.fields);
   }
   buildCounterMapValue--;
 }
@@ -1701,6 +1795,65 @@ checkOrder(api.Order o) {
   buildCounterOrder--;
 }
 
+core.int buildCounterPartitionQueryRequest = 0;
+buildPartitionQueryRequest() {
+  var o = new api.PartitionQueryRequest();
+  buildCounterPartitionQueryRequest++;
+  if (buildCounterPartitionQueryRequest < 3) {
+    o.pageSize = 42;
+    o.pageToken = "foo";
+    o.partitionCount = "foo";
+    o.structuredQuery = buildStructuredQuery();
+  }
+  buildCounterPartitionQueryRequest--;
+  return o;
+}
+
+checkPartitionQueryRequest(api.PartitionQueryRequest o) {
+  buildCounterPartitionQueryRequest++;
+  if (buildCounterPartitionQueryRequest < 3) {
+    unittest.expect(o.pageSize, unittest.equals(42));
+    unittest.expect(o.pageToken, unittest.equals('foo'));
+    unittest.expect(o.partitionCount, unittest.equals('foo'));
+    checkStructuredQuery(o.structuredQuery);
+  }
+  buildCounterPartitionQueryRequest--;
+}
+
+buildUnnamed2592() {
+  var o = new core.List<api.Cursor>();
+  o.add(buildCursor());
+  o.add(buildCursor());
+  return o;
+}
+
+checkUnnamed2592(core.List<api.Cursor> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCursor(o[0]);
+  checkCursor(o[1]);
+}
+
+core.int buildCounterPartitionQueryResponse = 0;
+buildPartitionQueryResponse() {
+  var o = new api.PartitionQueryResponse();
+  buildCounterPartitionQueryResponse++;
+  if (buildCounterPartitionQueryResponse < 3) {
+    o.nextPageToken = "foo";
+    o.partitions = buildUnnamed2592();
+  }
+  buildCounterPartitionQueryResponse--;
+  return o;
+}
+
+checkPartitionQueryResponse(api.PartitionQueryResponse o) {
+  buildCounterPartitionQueryResponse++;
+  if (buildCounterPartitionQueryResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed2592(o.partitions);
+  }
+  buildCounterPartitionQueryResponse--;
+}
+
 core.int buildCounterPrecondition = 0;
 buildPrecondition() {
   var o = new api.Precondition();
@@ -1722,14 +1875,14 @@ checkPrecondition(api.Precondition o) {
   buildCounterPrecondition--;
 }
 
-buildUnnamed2474() {
+buildUnnamed2593() {
   var o = new core.List<api.FieldReference>();
   o.add(buildFieldReference());
   o.add(buildFieldReference());
   return o;
 }
 
-checkUnnamed2474(core.List<api.FieldReference> o) {
+checkUnnamed2593(core.List<api.FieldReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldReference(o[0]);
   checkFieldReference(o[1]);
@@ -1740,7 +1893,7 @@ buildProjection() {
   var o = new api.Projection();
   buildCounterProjection++;
   if (buildCounterProjection < 3) {
-    o.fields = buildUnnamed2474();
+    o.fields = buildUnnamed2593();
   }
   buildCounterProjection--;
   return o;
@@ -1749,7 +1902,7 @@ buildProjection() {
 checkProjection(api.Projection o) {
   buildCounterProjection++;
   if (buildCounterProjection < 3) {
-    checkUnnamed2474(o.fields);
+    checkUnnamed2593(o.fields);
   }
   buildCounterProjection--;
 }
@@ -1882,7 +2035,7 @@ checkRunQueryResponse(api.RunQueryResponse o) {
   buildCounterRunQueryResponse--;
 }
 
-buildUnnamed2475() {
+buildUnnamed2594() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1897,7 +2050,7 @@ buildUnnamed2475() {
   return o;
 }
 
-checkUnnamed2475(core.Map<core.String, core.Object> o) {
+checkUnnamed2594(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o["x"]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1911,17 +2064,17 @@ checkUnnamed2475(core.Map<core.String, core.Object> o) {
   unittest.expect(casted8["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2476() {
+buildUnnamed2595() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed2475());
-  o.add(buildUnnamed2475());
+  o.add(buildUnnamed2594());
+  o.add(buildUnnamed2594());
   return o;
 }
 
-checkUnnamed2476(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed2595(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2475(o[0]);
-  checkUnnamed2475(o[1]);
+  checkUnnamed2594(o[0]);
+  checkUnnamed2594(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1930,7 +2083,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2476();
+    o.details = buildUnnamed2595();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -1941,33 +2094,33 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed2476(o.details);
+    checkUnnamed2595(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-buildUnnamed2477() {
+buildUnnamed2596() {
   var o = new core.List<api.CollectionSelector>();
   o.add(buildCollectionSelector());
   o.add(buildCollectionSelector());
   return o;
 }
 
-checkUnnamed2477(core.List<api.CollectionSelector> o) {
+checkUnnamed2596(core.List<api.CollectionSelector> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCollectionSelector(o[0]);
   checkCollectionSelector(o[1]);
 }
 
-buildUnnamed2478() {
+buildUnnamed2597() {
   var o = new core.List<api.Order>();
   o.add(buildOrder());
   o.add(buildOrder());
   return o;
 }
 
-checkUnnamed2478(core.List<api.Order> o) {
+checkUnnamed2597(core.List<api.Order> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrder(o[0]);
   checkOrder(o[1]);
@@ -1979,10 +2132,10 @@ buildStructuredQuery() {
   buildCounterStructuredQuery++;
   if (buildCounterStructuredQuery < 3) {
     o.endAt = buildCursor();
-    o.from = buildUnnamed2477();
+    o.from = buildUnnamed2596();
     o.limit = 42;
     o.offset = 42;
-    o.orderBy = buildUnnamed2478();
+    o.orderBy = buildUnnamed2597();
     o.select = buildProjection();
     o.startAt = buildCursor();
     o.where = buildFilter();
@@ -1995,10 +2148,10 @@ checkStructuredQuery(api.StructuredQuery o) {
   buildCounterStructuredQuery++;
   if (buildCounterStructuredQuery < 3) {
     checkCursor(o.endAt);
-    checkUnnamed2477(o.from);
+    checkUnnamed2596(o.from);
     unittest.expect(o.limit, unittest.equals(42));
     unittest.expect(o.offset, unittest.equals(42));
-    checkUnnamed2478(o.orderBy);
+    checkUnnamed2597(o.orderBy);
     checkProjection(o.select);
     checkCursor(o.startAt);
     checkFilter(o.where);
@@ -2035,14 +2188,14 @@ checkTarget(api.Target o) {
   buildCounterTarget--;
 }
 
-buildUnnamed2479() {
+buildUnnamed2598() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed2479(core.List<core.int> o) {
+checkUnnamed2598(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -2057,7 +2210,7 @@ buildTargetChange() {
     o.readTime = "foo";
     o.resumeToken = "foo";
     o.targetChangeType = "foo";
-    o.targetIds = buildUnnamed2479();
+    o.targetIds = buildUnnamed2598();
   }
   buildCounterTargetChange--;
   return o;
@@ -2070,7 +2223,7 @@ checkTargetChange(api.TargetChange o) {
     unittest.expect(o.readTime, unittest.equals('foo'));
     unittest.expect(o.resumeToken, unittest.equals('foo'));
     unittest.expect(o.targetChangeType, unittest.equals('foo'));
-    checkUnnamed2479(o.targetIds);
+    checkUnnamed2598(o.targetIds);
   }
   buildCounterTargetChange--;
 }
@@ -2156,14 +2309,14 @@ checkValue(api.Value o) {
   buildCounterValue--;
 }
 
-buildUnnamed2480() {
+buildUnnamed2599() {
   var o = new core.List<api.FieldTransform>();
   o.add(buildFieldTransform());
   o.add(buildFieldTransform());
   return o;
 }
 
-checkUnnamed2480(core.List<api.FieldTransform> o) {
+checkUnnamed2599(core.List<api.FieldTransform> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldTransform(o[0]);
   checkFieldTransform(o[1]);
@@ -2179,7 +2332,7 @@ buildWrite() {
     o.transform = buildDocumentTransform();
     o.update = buildDocument();
     o.updateMask = buildDocumentMask();
-    o.updateTransforms = buildUnnamed2480();
+    o.updateTransforms = buildUnnamed2599();
   }
   buildCounterWrite--;
   return o;
@@ -2193,32 +2346,32 @@ checkWrite(api.Write o) {
     checkDocumentTransform(o.transform);
     checkDocument(o.update);
     checkDocumentMask(o.updateMask);
-    checkUnnamed2480(o.updateTransforms);
+    checkUnnamed2599(o.updateTransforms);
   }
   buildCounterWrite--;
 }
 
-buildUnnamed2481() {
+buildUnnamed2600() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2481(core.Map<core.String, core.String> o) {
+checkUnnamed2600(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed2482() {
+buildUnnamed2601() {
   var o = new core.List<api.Write>();
   o.add(buildWrite());
   o.add(buildWrite());
   return o;
 }
 
-checkUnnamed2482(core.List<api.Write> o) {
+checkUnnamed2601(core.List<api.Write> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWrite(o[0]);
   checkWrite(o[1]);
@@ -2229,10 +2382,10 @@ buildWriteRequest() {
   var o = new api.WriteRequest();
   buildCounterWriteRequest++;
   if (buildCounterWriteRequest < 3) {
-    o.labels = buildUnnamed2481();
+    o.labels = buildUnnamed2600();
     o.streamId = "foo";
     o.streamToken = "foo";
-    o.writes = buildUnnamed2482();
+    o.writes = buildUnnamed2601();
   }
   buildCounterWriteRequest--;
   return o;
@@ -2241,22 +2394,22 @@ buildWriteRequest() {
 checkWriteRequest(api.WriteRequest o) {
   buildCounterWriteRequest++;
   if (buildCounterWriteRequest < 3) {
-    checkUnnamed2481(o.labels);
+    checkUnnamed2600(o.labels);
     unittest.expect(o.streamId, unittest.equals('foo'));
     unittest.expect(o.streamToken, unittest.equals('foo'));
-    checkUnnamed2482(o.writes);
+    checkUnnamed2601(o.writes);
   }
   buildCounterWriteRequest--;
 }
 
-buildUnnamed2483() {
+buildUnnamed2602() {
   var o = new core.List<api.WriteResult>();
   o.add(buildWriteResult());
   o.add(buildWriteResult());
   return o;
 }
 
-checkUnnamed2483(core.List<api.WriteResult> o) {
+checkUnnamed2602(core.List<api.WriteResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWriteResult(o[0]);
   checkWriteResult(o[1]);
@@ -2270,7 +2423,7 @@ buildWriteResponse() {
     o.commitTime = "foo";
     o.streamId = "foo";
     o.streamToken = "foo";
-    o.writeResults = buildUnnamed2483();
+    o.writeResults = buildUnnamed2602();
   }
   buildCounterWriteResponse--;
   return o;
@@ -2282,19 +2435,19 @@ checkWriteResponse(api.WriteResponse o) {
     unittest.expect(o.commitTime, unittest.equals('foo'));
     unittest.expect(o.streamId, unittest.equals('foo'));
     unittest.expect(o.streamToken, unittest.equals('foo'));
-    checkUnnamed2483(o.writeResults);
+    checkUnnamed2602(o.writeResults);
   }
   buildCounterWriteResponse--;
 }
 
-buildUnnamed2484() {
+buildUnnamed2603() {
   var o = new core.List<api.Value>();
   o.add(buildValue());
   o.add(buildValue());
   return o;
 }
 
-checkUnnamed2484(core.List<api.Value> o) {
+checkUnnamed2603(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValue(o[0]);
   checkValue(o[1]);
@@ -2305,7 +2458,7 @@ buildWriteResult() {
   var o = new api.WriteResult();
   buildCounterWriteResult++;
   if (buildCounterWriteResult < 3) {
-    o.transformResults = buildUnnamed2484();
+    o.transformResults = buildUnnamed2603();
     o.updateTime = "foo";
   }
   buildCounterWriteResult--;
@@ -2315,72 +2468,72 @@ buildWriteResult() {
 checkWriteResult(api.WriteResult o) {
   buildCounterWriteResult++;
   if (buildCounterWriteResult < 3) {
-    checkUnnamed2484(o.transformResults);
+    checkUnnamed2603(o.transformResults);
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterWriteResult--;
 }
 
-buildUnnamed2485() {
+buildUnnamed2604() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2485(core.List<core.String> o) {
+checkUnnamed2604(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2486() {
+buildUnnamed2605() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2486(core.List<core.String> o) {
+checkUnnamed2605(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2487() {
+buildUnnamed2606() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2487(core.List<core.String> o) {
+checkUnnamed2606(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2488() {
+buildUnnamed2607() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2488(core.List<core.String> o) {
+checkUnnamed2607(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2489() {
+buildUnnamed2608() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2489(core.List<core.String> o) {
+checkUnnamed2608(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2408,6 +2561,22 @@ main() {
       var o = buildBatchGetDocumentsResponse();
       var od = new api.BatchGetDocumentsResponse.fromJson(o.toJson());
       checkBatchGetDocumentsResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-BatchWriteRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBatchWriteRequest();
+      var od = new api.BatchWriteRequest.fromJson(o.toJson());
+      checkBatchWriteRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-BatchWriteResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBatchWriteResponse();
+      var od = new api.BatchWriteResponse.fromJson(o.toJson());
+      checkBatchWriteResponse(od);
     });
   });
 
@@ -2816,6 +2985,22 @@ main() {
       var o = buildOrder();
       var od = new api.Order.fromJson(o.toJson());
       checkOrder(od);
+    });
+  });
+
+  unittest.group("obj-schema-PartitionQueryRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPartitionQueryRequest();
+      var od = new api.PartitionQueryRequest.fromJson(o.toJson());
+      checkPartitionQueryRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-PartitionQueryResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPartitionQueryResponse();
+      var od = new api.PartitionQueryResponse.fromJson(o.toJson());
+      checkPartitionQueryResponse(od);
     });
   });
 
@@ -3568,6 +3753,62 @@ main() {
       })));
     });
 
+    unittest.test("method--batchWrite", () {
+      var mock = new HttpServerMock();
+      api.ProjectsDatabasesDocumentsResourceApi res =
+          new api.FirestoreApi(mock).projects.databases.documents;
+      var arg_request = buildBatchWriteRequest();
+      var arg_database = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.BatchWriteRequest.fromJson(json);
+        checkBatchWriteRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildBatchWriteResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .batchWrite(arg_request, arg_database, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkBatchWriteResponse(response);
+      })));
+    });
+
     unittest.test("method--beginTransaction", () {
       var mock = new HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
@@ -3687,8 +3928,8 @@ main() {
       var arg_request = buildDocument();
       var arg_parent = "foo";
       var arg_collectionId = "foo";
+      var arg_mask_fieldPaths = buildUnnamed2604();
       var arg_documentId = "foo";
-      var arg_mask_fieldPaths = buildUnnamed2485();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Document.fromJson(json);
@@ -3725,9 +3966,9 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["documentId"].first, unittest.equals(arg_documentId));
-        unittest.expect(
             queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
+        unittest.expect(
+            queryMap["documentId"].first, unittest.equals(arg_documentId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3738,8 +3979,8 @@ main() {
       }), true);
       res
           .createDocument(arg_request, arg_parent, arg_collectionId,
-              documentId: arg_documentId,
               mask_fieldPaths: arg_mask_fieldPaths,
+              documentId: arg_documentId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDocument(response);
@@ -3751,8 +3992,8 @@ main() {
       api.ProjectsDatabasesDocumentsResourceApi res =
           new api.FirestoreApi(mock).projects.databases.documents;
       var arg_name = "foo";
-      var arg_currentDocument_updateTime = "foo";
       var arg_currentDocument_exists = true;
+      var arg_currentDocument_updateTime = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3785,10 +4026,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["currentDocument.updateTime"].first,
-            unittest.equals(arg_currentDocument_updateTime));
         unittest.expect(queryMap["currentDocument.exists"].first,
             unittest.equals("$arg_currentDocument_exists"));
+        unittest.expect(queryMap["currentDocument.updateTime"].first,
+            unittest.equals(arg_currentDocument_updateTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3799,8 +4040,8 @@ main() {
       }), true);
       res
           .delete(arg_name,
-              currentDocument_updateTime: arg_currentDocument_updateTime,
               currentDocument_exists: arg_currentDocument_exists,
+              currentDocument_updateTime: arg_currentDocument_updateTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
@@ -3812,8 +4053,8 @@ main() {
       api.ProjectsDatabasesDocumentsResourceApi res =
           new api.FirestoreApi(mock).projects.databases.documents;
       var arg_name = "foo";
-      var arg_mask_fieldPaths = buildUnnamed2486();
       var arg_readTime = "foo";
+      var arg_mask_fieldPaths = buildUnnamed2605();
       var arg_transaction = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3848,9 +4089,9 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
-        unittest.expect(
             queryMap["readTime"].first, unittest.equals(arg_readTime));
+        unittest.expect(
+            queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
         unittest.expect(
             queryMap["transaction"].first, unittest.equals(arg_transaction));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3863,8 +4104,8 @@ main() {
       }), true);
       res
           .get(arg_name,
-              mask_fieldPaths: arg_mask_fieldPaths,
               readTime: arg_readTime,
+              mask_fieldPaths: arg_mask_fieldPaths,
               transaction: arg_transaction,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3878,13 +4119,13 @@ main() {
           new api.FirestoreApi(mock).projects.databases.documents;
       var arg_parent = "foo";
       var arg_collectionId = "foo";
-      var arg_mask_fieldPaths = buildUnnamed2487();
-      var arg_pageToken = "foo";
-      var arg_pageSize = 42;
-      var arg_transaction = "foo";
-      var arg_readTime = "foo";
       var arg_orderBy = "foo";
+      var arg_readTime = "foo";
       var arg_showMissing = true;
+      var arg_pageSize = 42;
+      var arg_mask_fieldPaths = buildUnnamed2606();
+      var arg_pageToken = "foo";
+      var arg_transaction = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3918,19 +4159,19 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["transaction"].first, unittest.equals(arg_transaction));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
             queryMap["readTime"].first, unittest.equals(arg_readTime));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
             queryMap["showMissing"].first, unittest.equals("$arg_showMissing"));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["transaction"].first, unittest.equals(arg_transaction));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3941,13 +4182,13 @@ main() {
       }), true);
       res
           .list(arg_parent, arg_collectionId,
+              orderBy: arg_orderBy,
+              readTime: arg_readTime,
+              showMissing: arg_showMissing,
+              pageSize: arg_pageSize,
               mask_fieldPaths: arg_mask_fieldPaths,
               pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               transaction: arg_transaction,
-              readTime: arg_readTime,
-              orderBy: arg_orderBy,
-              showMissing: arg_showMissing,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDocumentsResponse(response);
@@ -4066,15 +4307,71 @@ main() {
       })));
     });
 
+    unittest.test("method--partitionQuery", () {
+      var mock = new HttpServerMock();
+      api.ProjectsDatabasesDocumentsResourceApi res =
+          new api.FirestoreApi(mock).projects.databases.documents;
+      var arg_request = buildPartitionQueryRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.PartitionQueryRequest.fromJson(json);
+        checkPartitionQueryRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildPartitionQueryResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .partitionQuery(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkPartitionQueryResponse(response);
+      })));
+    });
+
     unittest.test("method--patch", () {
       var mock = new HttpServerMock();
       api.ProjectsDatabasesDocumentsResourceApi res =
           new api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildDocument();
       var arg_name = "foo";
+      var arg_updateMask_fieldPaths = buildUnnamed2607();
       var arg_currentDocument_exists = true;
-      var arg_updateMask_fieldPaths = buildUnnamed2488();
-      var arg_mask_fieldPaths = buildUnnamed2489();
+      var arg_mask_fieldPaths = buildUnnamed2608();
       var arg_currentDocument_updateTime = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4111,10 +4408,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["currentDocument.exists"].first,
-            unittest.equals("$arg_currentDocument_exists"));
         unittest.expect(queryMap["updateMask.fieldPaths"],
             unittest.equals(arg_updateMask_fieldPaths));
+        unittest.expect(queryMap["currentDocument.exists"].first,
+            unittest.equals("$arg_currentDocument_exists"));
         unittest.expect(
             queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
         unittest.expect(queryMap["currentDocument.updateTime"].first,
@@ -4129,8 +4426,8 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_name,
-              currentDocument_exists: arg_currentDocument_exists,
               updateMask_fieldPaths: arg_updateMask_fieldPaths,
+              currentDocument_exists: arg_currentDocument_exists,
               mask_fieldPaths: arg_mask_fieldPaths,
               currentDocument_updateTime: arg_currentDocument_updateTime,
               $fields: arg_$fields)
@@ -4476,8 +4773,8 @@ main() {
           new api.FirestoreApi(mock).projects.databases.operations;
       var arg_name = "foo";
       var arg_filter = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4511,10 +4808,10 @@ main() {
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4527,8 +4824,8 @@ main() {
       res
           .list(arg_name,
               filter: arg_filter,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleLongrunningListOperationsResponse(response);
@@ -4594,8 +4891,8 @@ main() {
       api.ProjectsLocationsResourceApi res =
           new api.FirestoreApi(mock).projects.locations;
       var arg_name = "foo";
-      var arg_filter = "foo";
       var arg_pageToken = "foo";
+      var arg_filter = "foo";
       var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4629,9 +4926,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4644,8 +4941,8 @@ main() {
       }), true);
       res
           .list(arg_name,
-              filter: arg_filter,
               pageToken: arg_pageToken,
+              filter: arg_filter,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

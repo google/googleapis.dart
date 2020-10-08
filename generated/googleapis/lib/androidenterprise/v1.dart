@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client androidenterprise/v1';
 
-/// Manages the deployment of apps to Android for Work users.
+/// Manages the deployment of apps to Android Enterprise devices.
 class AndroidenterpriseApi {
   /// Manage corporate Android devices
   static const AndroidenterpriseScope =
@@ -54,8 +54,8 @@ class AndroidenterpriseApi {
   WebappsResourceApi get webapps => new WebappsResourceApi(_requester);
 
   AndroidenterpriseApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "androidenterprise/v1/"})
+      {core.String rootUrl = "https://androidenterprise.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -67,7 +67,8 @@ class DevicesResourceApi {
 
   /// Uploads a report containing any changes in app states on the device since
   /// the last report was generated. You can call this method up to 3 times
-  /// every 24 hours for a given device.
+  /// every 24 hours for a given device. If you exceed the quota, then the
+  /// Google Play EMM API returns HTTP 429 Too Many Requests.
   ///
   /// Request parameters:
   ///
@@ -110,7 +111,7 @@ class DevicesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -170,7 +171,7 @@ class DevicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -233,7 +234,7 @@ class DevicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -288,7 +289,7 @@ class DevicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -355,7 +356,7 @@ class DevicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -385,10 +386,8 @@ class DevicesResourceApi {
   /// [deviceId] - The ID of the device.
   ///
   /// [updateMask] - Mask that identifies which fields to update. If not set,
-  /// all modifiable fields will be modified.
-  ///
-  /// When set in a query parameter, this field should be specified as
-  /// updateMask=<field1>,<field2>,...
+  /// all modifiable fields will be modified. When set in a query parameter,
+  /// this field should be specified as updateMask=<field1>,<field2>,...
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -429,7 +428,7 @@ class DevicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -486,7 +485,7 @@ class EnterprisesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/acknowledgeNotificationSet';
+    _url = 'androidenterprise/v1/enterprises/acknowledgeNotificationSet';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -503,10 +502,10 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [enterpriseToken] - The Enterprise token appended to the Callback URL.
+  ///
   /// [completionToken] - The Completion token initially returned by
   /// GenerateSignupUrl.
-  ///
-  /// [enterpriseToken] - The Enterprise token appended to the Callback URL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -519,8 +518,8 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> completeSignup(
-      {core.String completionToken,
-      core.String enterpriseToken,
+      {core.String enterpriseToken,
+      core.String completionToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -529,17 +528,17 @@ class EnterprisesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (completionToken != null) {
-      _queryParams["completionToken"] = [completionToken];
-    }
     if (enterpriseToken != null) {
       _queryParams["enterpriseToken"] = [enterpriseToken];
+    }
+    if (completionToken != null) {
+      _queryParams["completionToken"] = [completionToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/completeSignup';
+    _url = 'androidenterprise/v1/enterprises/completeSignup';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -591,7 +590,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/createWebToken';
 
@@ -610,7 +609,8 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [token] - The token provided by the enterprise to register the EMM.
+  /// [token] - Required. The token provided by the enterprise to register the
+  /// EMM.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -642,7 +642,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/enroll';
+    _url = 'androidenterprise/v1/enterprises/enroll';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -661,11 +661,10 @@ class EnterprisesResourceApi {
   /// after successfully creating an enterprise. Before redirecting there the
   /// system will add a single query parameter to this URL named
   /// "enterpriseToken" which will contain an opaque token to be used for the
-  /// CompleteSignup request.
-  /// Beware that this means that the URL will be parsed, the parameter added
-  /// and then a new URL formatted, i.e. there may be some minor formatting
-  /// changes and, more importantly, the URL must be well-formed so that it can
-  /// be parsed.
+  /// CompleteSignup request. Beware that this means that the URL will be
+  /// parsed, the parameter added and then a new URL formatted, i.e. there may
+  /// be some minor formatting changes and, more importantly, the URL must be
+  /// well-formed so that it can be parsed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -693,7 +692,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/signupUrl';
+    _url = 'androidenterprise/v1/enterprises/signupUrl';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -736,7 +735,8 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' + commons.Escaper.ecapeVariable('$enterpriseId');
+    _url = 'androidenterprise/v1/enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -751,17 +751,13 @@ class EnterprisesResourceApi {
   /// bound to the enterprise by calling setAccount. The service account is
   /// unique to this enterprise and EMM, and will be deleted if the enterprise
   /// is unbound. The credentials contain private key data and are not stored
-  /// server-side.
-  ///
-  /// This method can only be called after calling Enterprises.Enroll or
-  /// Enterprises.CompleteSignup, and before Enterprises.SetAccount; at other
-  /// times it will return an error.
-  ///
-  /// Subsequent calls after the first will generate a new, unique set of
-  /// credentials, and invalidate the previously generated credentials.
-  ///
-  /// Once the service account is bound to the enterprise, it can be managed
-  /// using the serviceAccountKeys resource.
+  /// server-side. This method can only be called after calling
+  /// Enterprises.Enroll or Enterprises.CompleteSignup, and before
+  /// Enterprises.SetAccount; at other times it will return an error. Subsequent
+  /// calls after the first will generate a new, unique set of credentials, and
+  /// invalidate the previously generated credentials. Once the service account
+  /// is bound to the enterprise, it can be managed using the serviceAccountKeys
+  /// resource.
   ///
   /// Request parameters:
   ///
@@ -770,8 +766,12 @@ class EnterprisesResourceApi {
   /// [keyType] - The type of credential to return with the service account.
   /// Required.
   /// Possible string values are:
-  /// - "googleCredentials"
-  /// - "pkcs12"
+  /// - "googleCredentials" : Google Credentials File format.
+  /// - "pkcs12" : PKCS12 format. The password for the PKCS12 file is
+  /// 'notasecret'. For more information, see
+  /// https://tools.ietf.org/html/rfc7292. The data for keys of this type are
+  /// base64 encoded according to RFC 4648 Section 4. See
+  /// http://tools.ietf.org/html/rfc4648#section-4.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -802,7 +802,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/serviceAccount';
 
@@ -848,7 +848,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout';
 
@@ -869,7 +869,8 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [domain] - The exact primary domain name of the enterprise to look up.
+  /// [domain] - Required. The exact primary domain name of the enterprise to
+  /// look up.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -898,7 +899,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises';
+    _url = 'androidenterprise/v1/enterprises';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -911,35 +912,33 @@ class EnterprisesResourceApi {
 
   /// Pulls and returns a notification set for the enterprises associated with
   /// the service account authenticated for the request. The notification set
-  /// may be empty if no notification are pending.
-  /// A notification set returned needs to be acknowledged within 20 seconds by
-  /// calling Enterprises.AcknowledgeNotificationSet, unless the notification
-  /// set is empty.
-  /// Notifications that are not acknowledged within the 20 seconds will
+  /// may be empty if no notification are pending. A notification set returned
+  /// needs to be acknowledged within 20 seconds by calling
+  /// Enterprises.AcknowledgeNotificationSet, unless the notification set is
+  /// empty. Notifications that are not acknowledged within the 20 seconds will
   /// eventually be included again in the response to another
   /// PullNotificationSet request, and those that are never acknowledged will
   /// ultimately be deleted according to the Google Cloud Platform Pub/Sub
-  /// system policy.
-  /// Multiple requests might be performed concurrently to retrieve
-  /// notifications, in which case the pending notifications (if any) will be
-  /// split among each caller, if any are pending.
-  /// If no notifications are present, an empty notification list is returned.
-  /// Subsequent requests may return more notifications once they become
-  /// available.
+  /// system policy. Multiple requests might be performed concurrently to
+  /// retrieve notifications, in which case the pending notifications (if any)
+  /// will be split among each caller, if any are pending. If no notifications
+  /// are present, an empty notification list is returned. Subsequent requests
+  /// may return more notifications once they become available.
   ///
   /// Request parameters:
   ///
-  /// [requestMode] - The request mode for pulling notifications.
-  /// Specifying waitForNotifications will cause the request to block and wait
-  /// until one or more notifications are present, or return an empty
-  /// notification list if no notifications are present after some time.
-  /// Speciying returnImmediately will cause the request to immediately return
-  /// the pending notifications, or an empty list if no notifications are
-  /// present.
-  /// If omitted, defaults to waitForNotifications.
+  /// [requestMode] - The request mode for pulling notifications. Specifying
+  /// waitForNotifications will cause the request to block and wait until one or
+  /// more notifications are present, or return an empty notification list if no
+  /// notifications are present after some time. Speciying returnImmediately
+  /// will cause the request to immediately return the pending notifications, or
+  /// an empty list if no notifications are present. If omitted, defaults to
+  /// waitForNotifications.
   /// Possible string values are:
-  /// - "returnImmediately"
-  /// - "waitForNotifications"
+  /// - "waitForNotifications" : Wait until one or more notifications are
+  /// present.
+  /// - "returnImmediately" : Returns immediately whether notifications are
+  /// present or not.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -967,7 +966,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/pullNotificationSet';
+    _url = 'androidenterprise/v1/enterprises/pullNotificationSet';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1012,7 +1011,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/sendTestPushNotification';
 
@@ -1065,7 +1064,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/account';
 
@@ -1081,7 +1080,7 @@ class EnterprisesResourceApi {
   /// Sets the store layout for the enterprise. By default, storeLayoutType is
   /// set to "basic" and the basic store layout is enabled. The basic layout
   /// only contains apps approved by the admin, and that have been added to the
-  /// available product set for a user (using the  setAvailableProductSet call).
+  /// available product set for a user (using the setAvailableProductSet call).
   /// Apps on the page are sorted in order of their product ID value. If you
   /// create a custom store layout (by setting storeLayoutType = "custom" and
   /// setting a homepage), the basic store layout is disabled.
@@ -1122,7 +1121,7 @@ class EnterprisesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout';
 
@@ -1166,7 +1165,7 @@ class EnterprisesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/unenroll';
 
@@ -1229,7 +1228,7 @@ class EntitlementsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1289,7 +1288,7 @@ class EntitlementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1343,7 +1342,7 @@ class EntitlementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1416,7 +1415,7 @@ class EntitlementsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1477,7 +1476,7 @@ class GrouplicensesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/groupLicenses/' +
         commons.Escaper.ecapeVariable('$groupLicenseId');
@@ -1524,7 +1523,7 @@ class GrouplicensesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/groupLicenses';
 
@@ -1585,7 +1584,7 @@ class GrouplicenseusersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/groupLicenses/' +
         commons.Escaper.ecapeVariable('$groupLicenseId') +
@@ -1657,7 +1656,7 @@ class InstallsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1724,7 +1723,7 @@ class InstallsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1785,7 +1784,7 @@ class InstallsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1858,7 +1857,7 @@ class InstallsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1934,7 +1933,7 @@ class ManagedconfigurationsfordeviceResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2005,7 +2004,7 @@ class ManagedconfigurationsfordeviceResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2067,7 +2066,7 @@ class ManagedconfigurationsfordeviceResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2145,7 +2144,7 @@ class ManagedconfigurationsfordeviceResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2216,7 +2215,7 @@ class ManagedconfigurationsforuserResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2278,7 +2277,7 @@ class ManagedconfigurationsforuserResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2333,7 +2332,7 @@ class ManagedconfigurationsforuserResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2407,7 +2406,7 @@ class ManagedconfigurationsforuserResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2469,7 +2468,7 @@ class ManagedconfigurationssettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2530,7 +2529,8 @@ class PermissionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'permissions/' + commons.Escaper.ecapeVariable('$permissionId');
+    _url = 'androidenterprise/v1/permissions/' +
+        commons.Escaper.ecapeVariable('$permissionId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2549,11 +2549,9 @@ class ProductsResourceApi {
 
   /// Approves the specified product and the relevant app permissions, if any.
   /// The maximum number of products that you can approve per enterprise
-  /// customer is 1,000.
-  ///
-  /// To learn how to use managed Google Play to design and create a store
-  /// layout to display approved products to your users, see Store Layout
-  /// Design.
+  /// customer is 1,000. To learn how to use managed Google Play to design and
+  /// create a store layout to display approved products to your users, see
+  /// Store Layout Design.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2596,7 +2594,7 @@ class ProductsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2614,13 +2612,11 @@ class ProductsResourceApi {
   /// Generates a URL that can be rendered in an iframe to display the
   /// permissions (if any) of a product. An enterprise admin must view these
   /// permissions and accept them on behalf of their organization in order to
-  /// approve that product.
-  ///
-  /// Admins should accept the displayed permissions by interacting with a
-  /// separate UI element in the EMM console, which in turn should trigger the
-  /// use of this URL as the approvalUrlInfo.approvalUrl property in a
-  /// Products.approve call to approve the product. This URL can only be used to
-  /// display permissions for up to 1 day.
+  /// approve that product. Admins should accept the displayed permissions by
+  /// interacting with a separate UI element in the EMM console, which in turn
+  /// should trigger the use of this URL as the approvalUrlInfo.approvalUrl
+  /// property in a Products.approve call to approve the product. This URL can
+  /// only be used to display permissions for up to 1 day.
   ///
   /// Request parameters:
   ///
@@ -2664,7 +2660,7 @@ class ProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2723,7 +2719,7 @@ class ProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
@@ -2786,7 +2782,7 @@ class ProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2839,7 +2835,7 @@ class ProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2861,27 +2857,24 @@ class ProductsResourceApi {
   ///
   /// [enterpriseId] - The ID of the enterprise.
   ///
-  /// [approved] - Specifies whether to search among all products (false) or
-  /// among only products that have been approved (true). Only "true" is
-  /// supported, and should be specified.
-  ///
-  /// [language] - The BCP47 tag for the user's preferred language (e.g.
-  /// "en-US", "de"). Results are returned in the language best matching the
-  /// preferred language.
-  ///
-  /// [maxResults] - Specifies the maximum number of products that can be
-  /// returned per request. If not specified, uses a default value of 100, which
-  /// is also the maximum retrievable within a single response.
-  ///
   /// [query] - The search query as typed in the Google Play store search box.
   /// If omitted, all approved apps will be returned (using the pagination
   /// parameters), including apps that are not available in the store (e.g.
   /// unpublished apps).
   ///
-  /// [token] - A pagination token is contained in a request's response when
-  /// there are more products. The token can be used in a subsequent request to
-  /// obtain more products, and so forth. This parameter cannot be used in the
-  /// initial request.
+  /// [language] - The BCP47 tag for the user's preferred language (e.g.
+  /// "en-US", "de"). Results are returned in the language best matching the
+  /// preferred language.
+  ///
+  /// [maxResults] - Defines how many results the list operation should return.
+  /// The default number depends on the resource collection.
+  ///
+  /// [approved] - Specifies whether to search among all products (false) or
+  /// among only products that have been approved (true). Only "true" is
+  /// supported, and should be specified.
+  ///
+  /// [token] - Defines the token of the page to return, usually taken from
+  /// TokenPagination. This can only be used if token paging is enabled.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2894,10 +2887,10 @@ class ProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProductsListResponse> list(core.String enterpriseId,
-      {core.bool approved,
+      {core.String query,
       core.String language,
       core.int maxResults,
-      core.String query,
+      core.bool approved,
       core.String token,
       core.String $fields}) {
     var _url;
@@ -2910,8 +2903,8 @@ class ProductsResourceApi {
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
     }
-    if (approved != null) {
-      _queryParams["approved"] = ["${approved}"];
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -2919,8 +2912,8 @@ class ProductsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (query != null) {
-      _queryParams["query"] = [query];
+    if (approved != null) {
+      _queryParams["approved"] = ["${approved}"];
     }
     if (token != null) {
       _queryParams["token"] = [token];
@@ -2929,7 +2922,7 @@ class ProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products';
 
@@ -2980,7 +2973,7 @@ class ProductsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -3042,7 +3035,7 @@ class ServiceaccountkeysResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/serviceAccountKeys/' +
         commons.Escaper.ecapeVariable('$keyId');
@@ -3059,10 +3052,8 @@ class ServiceaccountkeysResourceApi {
   /// Generates new credentials for the service account associated with this
   /// enterprise. The calling service account must have been retrieved by
   /// calling Enterprises.GetServiceAccount and must have been set as the
-  /// enterprise service account by calling Enterprises.SetAccount.
-  ///
-  /// Only the type of the key should be populated in the resource to be
-  /// inserted.
+  /// enterprise service account by calling Enterprises.SetAccount. Only the
+  /// type of the key should be populated in the resource to be inserted.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3100,7 +3091,7 @@ class ServiceaccountkeysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
@@ -3149,7 +3140,7 @@ class ServiceaccountkeysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
@@ -3213,7 +3204,7 @@ class StorelayoutclustersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3272,7 +3263,7 @@ class StorelayoutclustersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3331,7 +3322,7 @@ class StorelayoutclustersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3384,7 +3375,7 @@ class StorelayoutclustersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3448,7 +3439,7 @@ class StorelayoutclustersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3508,7 +3499,7 @@ class StorelayoutpagesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -3559,7 +3550,7 @@ class StorelayoutpagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -3610,7 +3601,7 @@ class StorelayoutpagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
@@ -3655,7 +3646,7 @@ class StorelayoutpagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
@@ -3712,7 +3703,7 @@ class StorelayoutpagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -3769,7 +3760,7 @@ class UsersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -3785,11 +3776,9 @@ class UsersResourceApi {
 
   /// Generates an authentication token which the device policy client can use
   /// to provision the given EMM-managed user account on a device. The generated
-  /// token is single-use and expires after a few minutes.
-  ///
-  /// You can provision a maximum of 10 devices per user.
-  ///
-  /// This call only works with EMM-managed accounts.
+  /// token is single-use and expires after a few minutes. You can provision a
+  /// maximum of 10 devices per user. This call only works with EMM-managed
+  /// accounts.
   ///
   /// Request parameters:
   ///
@@ -3827,7 +3816,7 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -3840,63 +3829,6 @@ class UsersResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new AuthenticationToken.fromJson(data));
-  }
-
-  /// Generates a token (activation code) to allow this user to configure their
-  /// managed account in the Android Setup Wizard. Revokes any previously
-  /// generated token.
-  ///
-  /// This call only works with Google managed accounts.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [userId] - The ID of the user.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [UserToken].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<UserToken> generateToken(
-      core.String enterpriseId, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/token';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserToken.fromJson(data));
   }
 
   /// Retrieves a user's details.
@@ -3936,7 +3868,7 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -3988,7 +3920,7 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -4003,13 +3935,11 @@ class UsersResourceApi {
     return _response.then((data) => new ProductSet.fromJson(data));
   }
 
-  /// Creates a new EMM-managed user.
-  ///
-  /// The Users resource passed in the body of the request should include an
-  /// accountIdentifier and an accountType.
-  /// If a corresponding user already exists with the same account identifier,
-  /// the user will be updated with the resource. In this case only the
-  /// displayName field can be changed.
+  /// Creates a new EMM-managed user. The Users resource passed in the body of
+  /// the request should include an accountIdentifier and an accountType. If a
+  /// corresponding user already exists with the same account identifier, the
+  /// user will be updated with the resource. In this case only the displayName
+  /// field can be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4046,7 +3976,7 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users';
 
@@ -4067,7 +3997,8 @@ class UsersResourceApi {
   ///
   /// [enterpriseId] - The ID of the enterprise.
   ///
-  /// [email] - The exact primary email address of the user to look up.
+  /// [email] - Required. The exact primary email address of the user to look
+  /// up.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4100,7 +4031,7 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users';
 
@@ -4115,9 +4046,7 @@ class UsersResourceApi {
 
   /// Revokes access to all devices currently provisioned to the user. The user
   /// will no longer be able to use the managed Play store on any of their
-  /// managed devices.
-  ///
-  /// This call only works with EMM-managed accounts.
+  /// managed devices. This call only works with EMM-managed accounts.
   ///
   /// Request parameters:
   ///
@@ -4154,7 +4083,7 @@ class UsersResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -4169,60 +4098,8 @@ class UsersResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Revokes a previously generated token (activation code) for the user.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [userId] - The ID of the user.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future revokeToken(core.String enterpriseId, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/token';
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
   /// Modifies the set of products that a user is entitled to access (referred
-  /// to as whitelisted products). Only products that are approved or products
+  /// to as *whitelisted* products). Only products that are approved or products
   /// that were previously approved (products with revoked approval) can be
   /// whitelisted.
   ///
@@ -4267,7 +4144,7 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -4282,12 +4159,10 @@ class UsersResourceApi {
     return _response.then((data) => new ProductSet.fromJson(data));
   }
 
-  /// Updates the details of an EMM-managed user.
-  ///
-  /// Can be used with EMM-managed users only (not Google managed users). Pass
-  /// the new details in the Users resource in the request body. Only the
-  /// displayName field can be changed. Other fields must either be unset or
-  /// have the currently active value.
+  /// Updates the details of an EMM-managed user. Can be used with EMM-managed
+  /// users only (not Google managed users). Pass the new details in the Users
+  /// resource in the request body. Only the displayName field can be changed.
+  /// Other fields must either be unset or have the currently active value.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4330,7 +4205,7 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -4387,7 +4262,7 @@ class WebappsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.Escaper.ecapeVariable('$webAppId');
@@ -4438,7 +4313,7 @@ class WebappsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.Escaper.ecapeVariable('$webAppId');
@@ -4489,7 +4364,7 @@ class WebappsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps';
 
@@ -4534,7 +4409,7 @@ class WebappsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps';
 
@@ -4590,7 +4465,7 @@ class WebappsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'enterprises/' +
+    _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.Escaper.ecapeVariable('$webAppId');
@@ -4631,17 +4506,12 @@ class Administrator {
 
 /// A token authorizing an admin to access an iframe.
 class AdministratorWebToken {
-  core.String kind;
-
   /// An opaque token to be passed to the Play front-end to generate an iframe.
   core.String token;
 
   AdministratorWebToken();
 
   AdministratorWebToken.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("token")) {
       token = _json["token"];
     }
@@ -4650,9 +4520,6 @@ class AdministratorWebToken {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (token != null) {
       _json["token"] = token;
     }
@@ -4664,8 +4531,6 @@ class AdministratorWebToken {
 /// data the admin is allowed to modify and the URI the iframe is allowed to
 /// communiate with.
 class AdministratorWebTokenSpec {
-  core.String kind;
-
   /// Options for displaying the Managed Configuration page.
   AdministratorWebTokenSpecManagedConfigurations managedConfigurations;
 
@@ -4692,9 +4557,6 @@ class AdministratorWebTokenSpec {
   AdministratorWebTokenSpec();
 
   AdministratorWebTokenSpec.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("managedConfigurations")) {
       managedConfigurations =
           new AdministratorWebTokenSpecManagedConfigurations.fromJson(
@@ -4726,9 +4588,6 @@ class AdministratorWebTokenSpec {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (managedConfigurations != null) {
       _json["managedConfigurations"] = (managedConfigurations).toJson();
     }
@@ -4967,6 +4826,17 @@ class AppRestrictionsSchemaRestriction {
   core.List<AppRestrictionsSchemaRestriction> nestedRestriction;
 
   /// The type of the restriction.
+  /// Possible string values are:
+  /// - "bool" : A restriction of boolean type.
+  /// - "string" : A restriction of string type.
+  /// - "integer" : A restriction of integer type.
+  /// - "choice" : A choice of one item from a set.
+  /// - "multiselect" : A choice of multiple items from a set.
+  /// - "hidden" : A hidden restriction of string type (the default value can be
+  /// used to pass along information that cannot be modified, such as a version
+  /// code).
+  /// - "bundle" : [M+ devices only] A bundle of restrictions
+  /// - "bundleArray" : [M+ devices only] An array of restriction bundles
   core.String restrictionType;
 
   /// The name of the restriction.
@@ -5041,6 +4911,17 @@ class AppRestrictionsSchemaRestriction {
 /// A typed value for the restriction.
 class AppRestrictionsSchemaRestrictionRestrictionValue {
   /// The type of the value being provided.
+  /// Possible string values are:
+  /// - "bool" : A restriction of boolean type.
+  /// - "string" : A restriction of string type.
+  /// - "integer" : A restriction of integer type.
+  /// - "choice" : A choice of one item from a set.
+  /// - "multiselect" : A choice of multiple items from a set.
+  /// - "hidden" : A hidden restriction of string type (the default value can be
+  /// used to pass along information that cannot be modified, such as a version
+  /// code).
+  /// - "bundle" : [M+ devices only] A bundle of restrictions
+  /// - "bundleArray" : [M+ devices only] An array of restriction bundles
   core.String type;
 
   /// The boolean value - this will only be present if type is bool.
@@ -5168,6 +5049,11 @@ class AppVersion {
   core.bool isProduction;
 
   /// Deprecated, use trackId instead.
+  /// Possible string values are:
+  /// - "appTrackUnspecified"
+  /// - "production"
+  /// - "beta"
+  /// - "alpha"
   core.String track;
 
   /// Track ids that the app version is published in. Replaces the track field
@@ -5230,16 +5116,12 @@ class ApprovalUrlInfo {
   /// A URL that displays a product's permissions and that can also be used to
   /// approve the product with the Products.approve call.
   core.String approvalUrl;
-  core.String kind;
 
   ApprovalUrlInfo();
 
   ApprovalUrlInfo.fromJson(core.Map _json) {
     if (_json.containsKey("approvalUrl")) {
       approvalUrl = _json["approvalUrl"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
   }
 
@@ -5249,9 +5131,6 @@ class ApprovalUrlInfo {
     if (approvalUrl != null) {
       _json["approvalUrl"] = approvalUrl;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     return _json;
   }
 }
@@ -5259,8 +5138,6 @@ class ApprovalUrlInfo {
 /// An AuthenticationToken is used by the EMM's device policy client on a device
 /// to provision the given EMM-managed user on that device.
 class AuthenticationToken {
-  core.String kind;
-
   /// The authentication token to be passed to the device policy client on the
   /// device where it can be used to provision the account for which this token
   /// was generated.
@@ -5269,9 +5146,6 @@ class AuthenticationToken {
   AuthenticationToken();
 
   AuthenticationToken.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("token")) {
       token = _json["token"];
     }
@@ -5280,9 +5154,6 @@ class AuthenticationToken {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (token != null) {
       _json["token"] = token;
     }
@@ -5294,12 +5165,25 @@ class AuthenticationToken {
 /// At least one of the fields must be set.
 class AutoInstallConstraint {
   /// Charging state constraint.
+  /// Possible string values are:
+  /// - "chargingStateConstraintUnspecified"
+  /// - "chargingNotRequired" : Device doesn't have to be charging.
+  /// - "chargingRequired" : Device has to be charging.
   core.String chargingStateConstraint;
 
   /// Device idle state constraint.
+  /// Possible string values are:
+  /// - "deviceIdleStateConstraintUnspecified"
+  /// - "deviceIdleNotRequired" : Device doesn't have to be idle, app can be
+  /// installed while the user is interacting with the device.
+  /// - "deviceIdleRequired" : Device has to be idle.
   core.String deviceIdleStateConstraint;
 
   /// Network type constraint.
+  /// Possible string values are:
+  /// - "networkTypeConstraintUnspecified"
+  /// - "anyNetwork" : Any active networks (Wi-Fi, cellular, etc.).
+  /// - "unmeteredNetwork" : Any unmetered network (e.g. Wi-FI).
   core.String networkTypeConstraint;
 
   AutoInstallConstraint();
@@ -5338,6 +5222,15 @@ class AutoInstallPolicy {
   core.List<AutoInstallConstraint> autoInstallConstraint;
 
   /// The auto-install mode. If unset defaults to "doNotAutoInstall".
+  /// Possible string values are:
+  /// - "autoInstallModeUnspecified"
+  /// - "doNotAutoInstall" : The product is not installed automatically, the
+  /// user needs to install it from the Play Store.
+  /// - "autoInstallOnce" : The product is automatically installed once, if the
+  /// user uninstalls the product it will not be installed again.
+  /// - "forceAutoInstall" : The product is automatically installed, if the user
+  /// uninstalls the product it will be installed again. On managed devices the
+  /// DPC should block uninstall.
   core.String autoInstallMode;
 
   /// The priority of the install, as an unsigned integer. A lower number means
@@ -5395,8 +5288,6 @@ class AutoInstallPolicy {
 /// is attributed to the user. The variable set will be used to replace
 /// placeholders in the managed configuration settings.
 class ConfigurationVariables {
-  core.String kind;
-
   /// The ID of the managed configurations settings.
   core.String mcmId;
 
@@ -5406,9 +5297,6 @@ class ConfigurationVariables {
   ConfigurationVariables();
 
   ConfigurationVariables.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("mcmId")) {
       mcmId = _json["mcmId"];
     }
@@ -5422,9 +5310,6 @@ class ConfigurationVariables {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (mcmId != null) {
       _json["mcmId"] = mcmId;
     }
@@ -5442,21 +5327,22 @@ class Device {
   /// The Google Play Services Android ID for the device encoded as a lowercase
   /// hex string. For example, "123456789abcdef0".
   core.String androidId;
-  core.String kind;
 
   /// Identifies the extent to which the device is controlled by a managed
-  /// Google Play EMM in various deployment configurations.
-  ///
-  /// Possible values include:
-  /// - "managedDevice", a device that has the EMM's device policy controller
-  /// (DPC) as the device owner.
-  /// - "managedProfile", a device that has a profile managed by the DPC (DPC is
-  /// profile owner) in addition to a separate, personal profile that is
-  /// unavailable to the DPC.
-  /// - "containerApp", no longer used (deprecated).
-  /// - "unmanagedProfile", a device that has been allowed (by the domain's
-  /// admin, using the Admin Console to enable the privilege) to use managed
-  /// Google Play, but the profile is itself not owned by a DPC.
+  /// Google Play EMM in various deployment configurations. Possible values
+  /// include: - "managedDevice", a device that has the EMM's device policy
+  /// controller (DPC) as the device owner. - "managedProfile", a device that
+  /// has a profile managed by the DPC (DPC is profile owner) in addition to a
+  /// separate, personal profile that is unavailable to the DPC. -
+  /// "containerApp", no longer used (deprecated). - "unmanagedProfile", a
+  /// device that has been allowed (by the domain's admin, using the Admin
+  /// Console to enable the privilege) to use managed Google Play, but the
+  /// profile is itself not owned by a DPC.
+  /// Possible string values are:
+  /// - "managedDevice"
+  /// - "managedProfile"
+  /// - "containerApp"
+  /// - "unmanagedProfile"
   core.String managementType;
 
   /// The policy enforced on the device.
@@ -5470,9 +5356,6 @@ class Device {
   Device.fromJson(core.Map _json) {
     if (_json.containsKey("androidId")) {
       androidId = _json["androidId"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("managementType")) {
       managementType = _json["managementType"];
@@ -5490,9 +5373,6 @@ class Device {
         new core.Map<core.String, core.Object>();
     if (androidId != null) {
       _json["androidId"] = androidId;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
     }
     if (managementType != null) {
       _json["managementType"] = managementType;
@@ -5593,17 +5473,16 @@ class DeviceState {
   /// the Google account on the device can be used to access Google services
   /// (including Google Play), while "disabled" means that it cannot. A new
   /// device is initially in the "disabled" state.
+  /// Possible string values are:
+  /// - "enabled"
+  /// - "disabled"
   core.String accountState;
-  core.String kind;
 
   DeviceState();
 
   DeviceState.fromJson(core.Map _json) {
     if (_json.containsKey("accountState")) {
       accountState = _json["accountState"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
   }
 
@@ -5613,21 +5492,13 @@ class DeviceState {
     if (accountState != null) {
       _json["accountState"] = accountState;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     return _json;
   }
 }
 
-/// The device resources for the user.
 class DevicesListResponse {
   /// A managed device.
   core.List<Device> device;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#devicesListResponse".
-  core.String kind;
 
   DevicesListResponse();
 
@@ -5637,9 +5508,6 @@ class DevicesListResponse {
           .map<Device>((value) => new Device.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5648,20 +5516,16 @@ class DevicesListResponse {
     if (device != null) {
       _json["device"] = device.map((value) => (value).toJson()).toList();
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     return _json;
   }
 }
 
 /// An Enterprises resource represents the binding between an EMM and a specific
 /// organization. That binding can be instantiated in one of two different ways
-/// using this API as follows:
-/// - For Google managed domain customers, the process involves using
-/// Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts
-/// obtained from the Admin console and the Google API Console) and submitted to
-/// the EMM through a more-or-less manual process.
+/// using this API as follows: - For Google managed domain customers, the
+/// process involves using Enterprises.enroll and Enterprises.setAccount (in
+/// conjunction with artifacts obtained from the Admin console and the Google
+/// API Console) and submitted to the EMM through a more-or-less manual process.
 /// - For managed Google Play Accounts customers, the process involves using
 /// Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction
 /// with the managed Google Play sign-up UI (Google-provided mechanism) to
@@ -5675,7 +5539,6 @@ class Enterprise {
 
   /// The unique ID for the enterprise.
   core.String id;
-  core.String kind;
 
   /// The name of the enterprise, for example, "Example, Inc".
   core.String name;
@@ -5693,9 +5556,6 @@ class Enterprise {
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -5715,9 +5575,6 @@ class Enterprise {
     if (id != null) {
       _json["id"] = id;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -5733,16 +5590,12 @@ class Enterprise {
 class EnterpriseAccount {
   /// The email address of the service account.
   core.String accountEmail;
-  core.String kind;
 
   EnterpriseAccount();
 
   EnterpriseAccount.fromJson(core.Map _json) {
     if (_json.containsKey("accountEmail")) {
       accountEmail = _json["accountEmail"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
   }
 
@@ -5752,21 +5605,13 @@ class EnterpriseAccount {
     if (accountEmail != null) {
       _json["accountEmail"] = accountEmail;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     return _json;
   }
 }
 
-/// The matching enterprise resources.
 class EnterprisesListResponse {
   /// An enterprise.
   core.List<Enterprise> enterprise;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#enterprisesListResponse".
-  core.String kind;
 
   EnterprisesListResponse();
 
@@ -5776,9 +5621,6 @@ class EnterprisesListResponse {
           .map<Enterprise>((value) => new Enterprise.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5787,9 +5629,6 @@ class EnterprisesListResponse {
     if (enterprise != null) {
       _json["enterprise"] =
           enterprise.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
     }
     return _json;
   }
@@ -5831,29 +5670,22 @@ class EnterprisesSendTestPushNotificationResponse {
 /// to use a particular app. Entitlements are user specific, not device
 /// specific. This allows a user with an entitlement to an app to install the
 /// app on all their devices. It's also possible for a user to hold an
-/// entitlement to an app without installing the app on any device.
-///
-/// The API can be used to create an entitlement. As an option, you can also use
-/// the API to trigger the installation of an app on all a user's managed
-/// devices at the same time the entitlement is created.
-///
-/// If the app is free, creating the entitlement also creates a group license
-/// for that app. For paid apps, creating the entitlement consumes one license,
-/// and that license remains consumed until the entitlement is removed. If the
-/// enterprise hasn't purchased enough licenses, then no entitlement is created
-/// and the installation fails. An entitlement is also not created for an app if
-/// the app requires permissions that the enterprise hasn't accepted.
-///
-/// If an entitlement is deleted, the app may be uninstalled from a user's
-/// device. As a best practice, uninstall the app by calling  Installs.delete()
-/// before deleting the entitlement.
-///
-/// Entitlements for apps that a user pays for on an unmanaged profile have
-/// "userPurchase" as the entitlement reason. These entitlements cannot be
-/// removed via the API.
+/// entitlement to an app without installing the app on any device. The API can
+/// be used to create an entitlement. As an option, you can also use the API to
+/// trigger the installation of an app on all a user's managed devices at the
+/// same time the entitlement is created. If the app is free, creating the
+/// entitlement also creates a group license for that app. For paid apps,
+/// creating the entitlement consumes one license, and that license remains
+/// consumed until the entitlement is removed. If the enterprise hasn't
+/// purchased enough licenses, then no entitlement is created and the
+/// installation fails. An entitlement is also not created for an app if the app
+/// requires permissions that the enterprise hasn't accepted. If an entitlement
+/// is deleted, the app may be uninstalled from a user's device. As a best
+/// practice, uninstall the app by calling Installs.delete() before deleting the
+/// entitlement. Entitlements for apps that a user pays for on an unmanaged
+/// profile have "userPurchase" as the entitlement reason. These entitlements
+/// cannot be removed via the API.
 class Entitlement {
-  core.String kind;
-
   /// The ID of the product that the entitlement is for. For example,
   /// "app:com.google.android.gm".
   core.String productId;
@@ -5861,14 +5693,15 @@ class Entitlement {
   /// The reason for the entitlement. For example, "free" for free apps. This
   /// property is temporary: it will be replaced by the acquisition kind field
   /// of group licenses.
+  /// Possible string values are:
+  /// - "free"
+  /// - "groupLicense"
+  /// - "userPurchase"
   core.String reason;
 
   Entitlement();
 
   Entitlement.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
     }
@@ -5880,9 +5713,6 @@ class Entitlement {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (productId != null) {
       _json["productId"] = productId;
     }
@@ -5893,16 +5723,11 @@ class Entitlement {
   }
 }
 
-/// The entitlement resources for the user.
 class EntitlementsListResponse {
   /// An entitlement of a user to a product (e.g. an app). For example, a free
   /// app that they have installed, or a paid app that they have been allocated
   /// a license to.
   core.List<Entitlement> entitlement;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#entitlementsListResponse".
-  core.String kind;
 
   EntitlementsListResponse();
 
@@ -5912,9 +5737,6 @@ class EntitlementsListResponse {
           .map<Entitlement>((value) => new Entitlement.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5923,9 +5745,6 @@ class EntitlementsListResponse {
     if (entitlement != null) {
       _json["entitlement"] =
           entitlement.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
     }
     return _json;
   }
@@ -5937,21 +5756,21 @@ class EntitlementsListResponse {
 /// Play or when the first entitlement for the product is created for a user via
 /// the API. For a paid app, a group license object is only created when an
 /// enterprise admin purchases the product in Google Play for the first time.
-///
 /// Use the API to query group licenses. A Grouplicenses resource includes the
 /// total number of licenses purchased (paid apps only) and the total number of
 /// licenses currently in use. In other words, the total number of Entitlements
-/// that exist for the product.
-///
-/// Only one group license object is created per product and group license
-/// objects are never deleted. If a product is unapproved, its group license
-/// remains. This allows enterprise admins to keep track of any remaining
-/// entitlements for the product.
+/// that exist for the product. Only one group license object is created per
+/// product and group license objects are never deleted. If a product is
+/// unapproved, its group license remains. This allows enterprise admins to keep
+/// track of any remaining entitlements for the product.
 class GroupLicense {
   /// How this group license was acquired. "bulkPurchase" means that this
   /// Grouplicenses resource was created because the enterprise purchased
   /// licenses for this product; otherwise, the value is "free" (for free
   /// products).
+  /// Possible string values are:
+  /// - "free"
+  /// - "bulkPurchase"
   core.String acquisitionKind;
 
   /// Whether the product to which this group license relates is currently
@@ -5959,8 +5778,10 @@ class GroupLicense {
   /// first created, but this approval may be revoked by an enterprise admin via
   /// Google Play. Unapproved products will not be visible to end users in
   /// collections, and new entitlements to them should not normally be created.
+  /// Possible string values are:
+  /// - "approved"
+  /// - "unapproved"
   core.String approval;
-  core.String kind;
 
   /// The total number of provisioned licenses for this product. Returned by
   /// read operations, but ignored in write operations.
@@ -5972,16 +5793,19 @@ class GroupLicense {
   core.int numPurchased;
 
   /// The permission approval status of the product. This field is only set if
-  /// the product is approved. Possible states are:
-  /// - "currentApproved", the current set of permissions is approved, but
-  /// additional permissions will require the administrator to reapprove the
-  /// product (If the product was approved without specifying the approved
-  /// permissions setting, then this is the default behavior.),
-  /// - "needsReapproval", the product has unapproved permissions. No additional
-  /// product licenses can be assigned until the product is reapproved,
-  /// - "allCurrentAndFutureApproved", the current permissions are approved and
-  /// any future permission updates will be automatically approved without
-  /// administrator review.
+  /// the product is approved. Possible states are: - "currentApproved", the
+  /// current set of permissions is approved, but additional permissions will
+  /// require the administrator to reapprove the product (If the product was
+  /// approved without specifying the approved permissions setting, then this is
+  /// the default behavior.), - "needsReapproval", the product has unapproved
+  /// permissions. No additional product licenses can be assigned until the
+  /// product is reapproved, - "allCurrentAndFutureApproved", the current
+  /// permissions are approved and any future permission updates will be
+  /// automatically approved without administrator review.
+  /// Possible string values are:
+  /// - "currentApproved"
+  /// - "needsReapproval"
+  /// - "allCurrentAndFutureApproved"
   core.String permissions;
 
   /// The ID of the product that the license is for. For example,
@@ -5996,9 +5820,6 @@ class GroupLicense {
     }
     if (_json.containsKey("approval")) {
       approval = _json["approval"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("numProvisioned")) {
       numProvisioned = _json["numProvisioned"];
@@ -6023,9 +5844,6 @@ class GroupLicense {
     if (approval != null) {
       _json["approval"] = approval;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (numProvisioned != null) {
       _json["numProvisioned"] = numProvisioned;
     }
@@ -6042,21 +5860,13 @@ class GroupLicense {
   }
 }
 
-/// The user resources for the group license.
 class GroupLicenseUsersListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#groupLicenseUsersListResponse".
-  core.String kind;
-
   /// A user of an enterprise.
   core.List<User> user;
 
   GroupLicenseUsersListResponse();
 
   GroupLicenseUsersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("user")) {
       user = (_json["user"] as core.List)
           .map<User>((value) => new User.fromJson(value))
@@ -6067,9 +5877,6 @@ class GroupLicenseUsersListResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (user != null) {
       _json["user"] = user.map((value) => (value).toJson()).toList();
     }
@@ -6077,14 +5884,9 @@ class GroupLicenseUsersListResponse {
   }
 }
 
-/// The grouplicense resources for the enterprise.
 class GroupLicensesListResponse {
   /// A group license for a product approved for use in the enterprise.
   core.List<GroupLicense> groupLicense;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#groupLicensesListResponse".
-  core.String kind;
 
   GroupLicensesListResponse();
 
@@ -6093,9 +5895,6 @@ class GroupLicensesListResponse {
       groupLicense = (_json["groupLicense"] as core.List)
           .map<GroupLicense>((value) => new GroupLicense.fromJson(value))
           .toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
   }
 
@@ -6106,45 +5905,37 @@ class GroupLicensesListResponse {
       _json["groupLicense"] =
           groupLicense.map((value) => (value).toJson()).toList();
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     return _json;
   }
 }
 
 /// The existence of an Installs resource indicates that an app is installed on
-/// a particular device (or that an install is pending).
-///
-/// The API can be used to create an install resource using the update method.
-/// This triggers the actual install of the app on the device. If the user does
-/// not already have an entitlement for the app, then an attempt is made to
-/// create one. If this fails (for example, because the app is not free and
-/// there is no available license), then the creation of the install fails.
-///
-/// The API can also be used to update an installed app. If the update method is
-/// used on an existing install, then the app will be updated to the latest
-/// available version.
-///
-/// Note that it is not possible to force the installation of a specific version
-/// of an app: the version code is read-only.
-///
-/// If a user installs an app themselves (as permitted by the enterprise), then
-/// again an install resource and possibly an entitlement resource are
-/// automatically created.
-///
-/// The API can also be used to delete an install resource, which triggers the
-/// removal of the app from the device. Note that deleting an install does not
-/// automatically remove the corresponding entitlement, even if there are no
-/// remaining installs. The install resource will also be deleted if the user
-/// uninstalls the app themselves.
+/// a particular device (or that an install is pending). The API can be used to
+/// create an install resource using the update method. This triggers the actual
+/// install of the app on the device. If the user does not already have an
+/// entitlement for the app, then an attempt is made to create one. If this
+/// fails (for example, because the app is not free and there is no available
+/// license), then the creation of the install fails. The API can also be used
+/// to update an installed app. If the update method is used on an existing
+/// install, then the app will be updated to the latest available version. Note
+/// that it is not possible to force the installation of a specific version of
+/// an app: the version code is read-only. If a user installs an app themselves
+/// (as permitted by the enterprise), then again an install resource and
+/// possibly an entitlement resource are automatically created. The API can also
+/// be used to delete an install resource, which triggers the removal of the app
+/// from the device. Note that deleting an install does not automatically remove
+/// the corresponding entitlement, even if there are no remaining installs. The
+/// install resource will also be deleted if the user uninstalls the app
+/// themselves.
 class Install {
   /// Install state. The state "installPending" means that an install request
   /// has recently been made and download to the device is in progress. The
   /// state "installed" means that the app has been installed. This field is
   /// read-only.
+  /// Possible string values are:
+  /// - "installed"
+  /// - "installPending"
   core.String installState;
-  core.String kind;
 
   /// The ID of the product that the install is for. For example,
   /// "app:com.google.android.gm".
@@ -6160,9 +5951,6 @@ class Install {
     if (_json.containsKey("installState")) {
       installState = _json["installState"];
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
     }
@@ -6176,9 +5964,6 @@ class Install {
         new core.Map<core.String, core.Object>();
     if (installState != null) {
       _json["installState"] = installState;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
     }
     if (productId != null) {
       _json["productId"] = productId;
@@ -6200,6 +5985,12 @@ class InstallFailureEvent {
 
   /// The reason for the installation failure. This field will always be
   /// present.
+  /// Possible string values are:
+  /// - "unknown" : Used whenever no better reason for failure can be provided.
+  /// - "timeout" : Used when the installation timed out. This can cover a
+  /// number of situations, for example when the device did not have
+  /// connectivity at any point during the retry period, or if the device is
+  /// OOM.
   core.String failureReason;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which the
@@ -6251,15 +6042,10 @@ class InstallFailureEvent {
   }
 }
 
-/// The install resources for the device.
 class InstallsListResponse {
   /// An installation of an app for a user on a specific device. The existence
   /// of an install implies that the user must have an entitlement to the app.
   core.List<Install> install;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#installsListResponse".
-  core.String kind;
 
   InstallsListResponse();
 
@@ -6269,9 +6055,6 @@ class InstallsListResponse {
           .map<Install>((value) => new Install.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6279,9 +6062,6 @@ class InstallsListResponse {
         new core.Map<core.String, core.Object>();
     if (install != null) {
       _json["install"] = install.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
     }
     return _json;
   }
@@ -6307,6 +6087,10 @@ class KeyedAppState {
   core.String message;
 
   /// Severity of the app state. This field will always be present.
+  /// Possible string values are:
+  /// - "severityUnknown"
+  /// - "severityInfo"
+  /// - "severityError"
   core.String severity;
 
   /// Timestamp of when the app set the state in milliseconds since epoch. This
@@ -6480,21 +6264,13 @@ class ManagedConfiguration {
   }
 }
 
-/// The managed configuration resources for the device.
 class ManagedConfigurationsForDeviceListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#managedConfigurationsForDeviceListResponse".
-  core.String kind;
-
   /// A managed configuration for an app on a specific device.
   core.List<ManagedConfiguration> managedConfigurationForDevice;
 
   ManagedConfigurationsForDeviceListResponse();
 
   ManagedConfigurationsForDeviceListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("managedConfigurationForDevice")) {
       managedConfigurationForDevice =
           (_json["managedConfigurationForDevice"] as core.List)
@@ -6507,9 +6283,6 @@ class ManagedConfigurationsForDeviceListResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (managedConfigurationForDevice != null) {
       _json["managedConfigurationForDevice"] = managedConfigurationForDevice
           .map((value) => (value).toJson())
@@ -6519,21 +6292,13 @@ class ManagedConfigurationsForDeviceListResponse {
   }
 }
 
-/// The managed configuration resources for the user.
 class ManagedConfigurationsForUserListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#managedConfigurationsForUserListResponse".
-  core.String kind;
-
   /// A managed configuration for an app for a specific user.
   core.List<ManagedConfiguration> managedConfigurationForUser;
 
   ManagedConfigurationsForUserListResponse();
 
   ManagedConfigurationsForUserListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("managedConfigurationForUser")) {
       managedConfigurationForUser =
           (_json["managedConfigurationForUser"] as core.List)
@@ -6546,9 +6311,6 @@ class ManagedConfigurationsForUserListResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (managedConfigurationForUser != null) {
       _json["managedConfigurationForUser"] =
           managedConfigurationForUser.map((value) => (value).toJson()).toList();
@@ -6562,8 +6324,6 @@ class ManagedConfigurationsForUserListResponse {
 /// set of users. The app's developer would have defined configurable properties
 /// in the managed configurations schema.
 class ManagedConfigurationsSettings {
-  core.String kind;
-
   /// The last updated time of the managed configuration settings in
   /// milliseconds since 1970-01-01T00:00:00Z.
   core.String lastUpdatedTimestampMillis;
@@ -6577,9 +6337,6 @@ class ManagedConfigurationsSettings {
   ManagedConfigurationsSettings();
 
   ManagedConfigurationsSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("lastUpdatedTimestampMillis")) {
       lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
     }
@@ -6594,9 +6351,6 @@ class ManagedConfigurationsSettings {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (lastUpdatedTimestampMillis != null) {
       _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
     }
@@ -6610,12 +6364,7 @@ class ManagedConfigurationsSettings {
   }
 }
 
-/// The managed configurations settings for a product.
 class ManagedConfigurationsSettingsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#managedConfigurationsSettingsListResponse".
-  core.String kind;
-
   /// A managed configurations settings for an app that may be assigned to a
   /// group of users in an enterprise.
   core.List<ManagedConfigurationsSettings> managedConfigurationsSettings;
@@ -6623,9 +6372,6 @@ class ManagedConfigurationsSettingsListResponse {
   ManagedConfigurationsSettingsListResponse();
 
   ManagedConfigurationsSettingsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("managedConfigurationsSettings")) {
       managedConfigurationsSettings =
           (_json["managedConfigurationsSettings"] as core.List)
@@ -6638,9 +6384,6 @@ class ManagedConfigurationsSettingsListResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (managedConfigurationsSettings != null) {
       _json["managedConfigurationsSettings"] = managedConfigurationsSettings
           .map((value) => (value).toJson())
@@ -6776,11 +6519,12 @@ class NewDeviceEvent {
   core.String dpcPackageName;
 
   /// Identifies the extent to which the device is controlled by an Android EMM
-  /// in various deployment configurations.
-  ///
-  /// Possible values include:
-  /// - "managedDevice", a device where the DPC is set as device owner,
-  /// - "managedProfile", a device where the DPC is set as profile owner.
+  /// in various deployment configurations. Possible values include: -
+  /// "managedDevice", a device where the DPC is set as device owner, -
+  /// "managedProfile", a device where the DPC is set as profile owner.
+  /// Possible string values are:
+  /// - "managedDevice"
+  /// - "managedProfile"
   core.String managementType;
 
   /// The ID of the user. This field will always be present.
@@ -6895,6 +6639,20 @@ class Notification {
   NewPermissionsEvent newPermissionsEvent;
 
   /// Type of the notification.
+  /// Possible string values are:
+  /// - "unknown"
+  /// - "testNotification" : A test push notification.
+  /// - "productApproval" : Notification about change to a product's approval
+  /// status.
+  /// - "installFailure" : Notification about an app installation failure.
+  /// - "appUpdate" : Notification about app update.
+  /// - "newPermissions" : Notification about new app permissions.
+  /// - "appRestricionsSchemaChange" : Notification about new app restrictions
+  /// schema change.
+  /// - "productAvailabilityChange" : Notification about product availability
+  /// change.
+  /// - "newDevice" : Notification about a new device.
+  /// - "deviceReportUpdate" : Notification about an updated device report.
   core.String notificationType;
 
   /// Notifications about changes to a product's approval status.
@@ -6999,8 +6757,6 @@ class Notification {
 /// collection of notifications for enterprises associated with the service
 /// account authenticated for the request.
 class NotificationSet {
-  core.String kind;
-
   /// The notifications received, or empty if no notifications are present.
   core.List<Notification> notification;
 
@@ -7012,9 +6768,6 @@ class NotificationSet {
   NotificationSet();
 
   NotificationSet.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("notification")) {
       notification = (_json["notification"] as core.List)
           .map<Notification>((value) => new Notification.fromJson(value))
@@ -7028,9 +6781,6 @@ class NotificationSet {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (notification != null) {
       _json["notification"] =
           notification.map((value) => (value).toJson()).toList();
@@ -7042,9 +6792,19 @@ class NotificationSet {
   }
 }
 
+/// Information about the current page. List operations that supports paging
+/// return only one "page" of results. This protocol buffer message describes
+/// the page that has been returned.
 class PageInfo {
+  /// Maximum number of results returned in one page. ! The number of results
+  /// included in the API response.
   core.int resultPerPage;
+
+  /// Index of the first result returned in the current page.
   core.int startIndex;
+
+  /// Total number of results available on the backend ! The total number of
+  /// results in the result set.
   core.int totalResults;
 
   PageInfo();
@@ -7080,16 +6840,14 @@ class PageInfo {
 /// A Permissions resource represents some extra capability, to be granted to an
 /// Android app, which requires explicit consent. An enterprise admin must
 /// consent to these permissions on behalf of their users before an entitlement
-/// for the app can be created.
-///
-/// The permissions collection is read-only. The information provided for each
-/// permission (localized name and description) is intended to be used in the
-/// MDM user interface when obtaining consent from the enterprise.
+/// for the app can be created. The permissions collection is read-only. The
+/// information provided for each permission (localized name and description) is
+/// intended to be used in the MDM user interface when obtaining consent from
+/// the enterprise.
 class Permission {
   /// A longer description of the Permissions resource, giving more details of
   /// what it affects.
   core.String description;
-  core.String kind;
 
   /// The name of the permission.
   core.String name;
@@ -7102,9 +6860,6 @@ class Permission {
   Permission.fromJson(core.Map _json) {
     if (_json.containsKey("description")) {
       description = _json["description"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -7119,9 +6874,6 @@ class Permission {
         new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
     }
     if (name != null) {
       _json["name"] = name;
@@ -7139,10 +6891,20 @@ class Policy {
   /// allows the device's user to configure the app update policy. "always"
   /// enables auto updates. "never" disables auto updates. "wifiOnly" enables
   /// auto updates only when the device is connected to wifi.
+  /// Possible string values are:
+  /// - "autoUpdatePolicyUnspecified" : The auto update policy is not set.
+  /// - "choiceToTheUser" : The user can control auto-updates.
+  /// - "never" : Apps are never auto-updated.
+  /// - "wifiOnly" : Apps are auto-updated over WiFi only.
+  /// - "always" : Apps are auto-updated at any time. Data charges may apply.
   core.String autoUpdatePolicy;
 
   /// Whether the device reports app states to the EMM. The default value is
   /// "deviceReportDisabled".
+  /// Possible string values are:
+  /// - "deviceReportPolicyUnspecified" : The device report policy is not set.
+  /// - "deviceReportDisabled" : Device reports are disabled.
+  /// - "deviceReportEnabled" : Device reports are enabled.
   core.String deviceReportPolicy;
 
   /// The maintenance window defining when apps running in the foreground should
@@ -7157,6 +6919,13 @@ class Policy {
   /// previously approved (products with revoked approval) by the enterprise can
   /// be whitelisted. If no value is provided, the availability set at the user
   /// level is applied by default.
+  /// Possible string values are:
+  /// - "productAvailabilityPolicyUnspecified" : Unspecified, applies the user
+  /// available product set by default.
+  /// - "whitelist" : The approved products with product availability set to
+  /// AVAILABLE in the product policy are available.
+  /// - "all" : All products are available except those explicitly marked as
+  /// unavailable in the product availability policy.
   core.String productAvailabilityPolicy;
 
   /// The list of product policies. The productAvailabilityPolicy needs to be
@@ -7212,11 +6981,10 @@ class Policy {
 /// A Products resource represents an app in the Google Play store that is
 /// available to at least some users in the enterprise. (Some apps are
 /// restricted to a single enterprise, and no information about them is made
-/// available outside that enterprise.)
-///
-/// The information provided for each product (localized name, icon, link to the
-/// full Google Play details page) is intended to allow a basic representation
-/// of the product within an EMM user interface.
+/// available outside that enterprise.) The information provided for each
+/// product (localized name, icon, link to the full Google Play details page) is
+/// intended to allow a basic representation of the product within an EMM user
+/// interface.
 class Product {
   /// The tracks visible to the enterprise.
   core.List<TrackInfo> appTracks;
@@ -7237,6 +7005,12 @@ class Product {
   core.String category;
 
   /// The content rating for this app.
+  /// Possible string values are:
+  /// - "ratingUnknown"
+  /// - "all"
+  /// - "preTeen"
+  /// - "teen"
+  /// - "mature"
   core.String contentRating;
 
   /// The localized promotional description, if available.
@@ -7252,6 +7026,10 @@ class Product {
   /// an enterprise) but hosted by Google. The value privateSelfHosted means
   /// that the package is a private app (restricted to an enterprise) and is
   /// privately hosted.
+  /// Possible string values are:
+  /// - "publicGoogleHosted"
+  /// - "privateGoogleHosted"
+  /// - "privateSelfHosted"
   core.String distributionChannel;
 
   /// Noteworthy features (if any) of this product.
@@ -7260,7 +7038,6 @@ class Product {
   /// A link to an image that can be used as an icon for the product. This image
   /// is suitable for use at up to 512px x 512px.
   core.String iconUrl;
-  core.String kind;
 
   /// The approximate time (within 7 days) the app was last published, expressed
   /// in milliseconds since epoch.
@@ -7272,13 +7049,20 @@ class Product {
   /// A list of permissions required by the app.
   core.List<ProductPermission> permissions;
 
-  /// A string of the form app:<package name>. For example,
+  /// A string of the form *app:<package name>*. For example,
   /// app:com.google.android.gm represents the Gmail app.
   core.String productId;
 
   /// Whether this product is free, free with in-app purchases, or paid. If the
   /// pricing is unknown, this means the product is not generally available
   /// anymore (even though it might still be available to people who own it).
+  /// Possible string values are:
+  /// - "unknown" : Unknown pricing, used to denote an approved product that is
+  /// not generally available.
+  /// - "free" : The product is free.
+  /// - "freeWithInAppPurchase" : The product is free, but offers in-app
+  /// purchases.
+  /// - "paid" : The product is paid.
   core.String productPricing;
 
   /// A description of the recent changes made to the app.
@@ -7348,9 +7132,6 @@ class Product {
     }
     if (_json.containsKey("iconUrl")) {
       iconUrl = _json["iconUrl"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("lastUpdatedTimestampMillis")) {
       lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
@@ -7435,9 +7216,6 @@ class Product {
     if (iconUrl != null) {
       _json["iconUrl"] = iconUrl;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (lastUpdatedTimestampMillis != null) {
       _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
     }
@@ -7483,6 +7261,10 @@ class Product {
 class ProductApprovalEvent {
   /// Whether the product was approved or unapproved. This field will always be
   /// present.
+  /// Possible string values are:
+  /// - "unknown" : Conveys no information.
+  /// - "approved" : The product was approved.
+  /// - "unapproved" : The product was unapproved.
   core.String approved;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which the
@@ -7516,6 +7298,12 @@ class ProductApprovalEvent {
 /// An event generated whenever a product's availability changes.
 class ProductAvailabilityChangeEvent {
   /// The new state of the product. This field will always be present.
+  /// Possible string values are:
+  /// - "unknown" : Conveys no information.
+  /// - "available" : The previously unavailable product is again available on
+  /// Google Play.
+  /// - "removed" : The product was removed from Google Play.
+  /// - "unpublished" : The product was unpublished by the developer.
   core.String availabilityStatus;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which the
@@ -7548,15 +7336,17 @@ class ProductAvailabilityChangeEvent {
 
 /// A product permissions resource represents the set of permissions required by
 /// a specific app and whether or not they have been accepted by an enterprise
-/// admin.
-///
-/// The API can be used to read the set of permissions, and also to update the
-/// set to indicate that permissions have been accepted.
+/// admin. The API can be used to read the set of permissions, and also to
+/// update the set to indicate that permissions have been accepted.
 class ProductPermission {
   /// An opaque string uniquely identifying the permission.
   core.String permissionId;
 
   /// Whether the permission has been accepted or not.
+  /// Possible string values are:
+  /// - "required" : The permission is required by the app but has not yet been
+  /// accepted by the enterprise.
+  /// - "accepted" : The permission has been accepted by the enterprise.
   core.String state;
 
   ProductPermission();
@@ -7586,8 +7376,6 @@ class ProductPermission {
 /// Information about the permissions required by a specific app and whether
 /// they have been accepted by the enterprise.
 class ProductPermissions {
-  core.String kind;
-
   /// The permissions required by the app.
   core.List<ProductPermission> permission;
 
@@ -7598,9 +7386,6 @@ class ProductPermissions {
   ProductPermissions();
 
   ProductPermissions.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("permission")) {
       permission = (_json["permission"] as core.List)
           .map<ProductPermission>(
@@ -7615,9 +7400,6 @@ class ProductPermissions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (permission != null) {
       _json["permission"] =
           permission.map((value) => (value).toJson()).toList();
@@ -7694,8 +7476,6 @@ class ProductPolicy {
 
 /// A set of products.
 class ProductSet {
-  core.String kind;
-
   /// The list of product IDs making up the set of products.
   core.List<core.String> productId;
 
@@ -7711,6 +7491,15 @@ class ProductSet {
   /// "includeAll" does not enable automatic visibility of "alpha" or "beta"
   /// tracks for Android app. Use ProductVisibility to enable "alpha" or "beta"
   /// tracks per user.
+  /// Possible string values are:
+  /// - "unknown" : This value should never be sent and ignored if received.
+  /// - "whitelist" : This product set constitutes a whitelist.
+  /// - "includeAll" : This product set represents all products. For Android app
+  /// it represents only "production" track. (The value of the productId field
+  /// is therefore ignored).
+  /// - "allApproved" : This product set represents all approved products. For
+  /// Android app it represents only "production" track. (The value of the
+  /// product_id field is therefore ignored).
   core.String productSetBehavior;
 
   /// Additional list of product IDs making up the product set. Unlike the
@@ -7724,9 +7513,6 @@ class ProductSet {
   ProductSet();
 
   ProductSet.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("productId")) {
       productId = (_json["productId"] as core.List).cast<core.String>();
     }
@@ -7744,9 +7530,6 @@ class ProductSet {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (productId != null) {
       _json["productId"] = productId;
     }
@@ -7851,6 +7634,13 @@ class ProductsApproveRequest {
   /// permissions for the product, but any future permissions added through
   /// updates will require manual reapproval. If not specified, only the current
   /// set of permissions will be approved.
+  /// Possible string values are:
+  /// - "currentPermissionsOnly" : Approve only the permissions the product
+  /// requires at approval time. If an update requires additional permissions,
+  /// the app will not be updated on devices associated with enterprise users
+  /// until the additional permissions are approved.
+  /// - "allPermissions" : All current and future permissions the app requires
+  /// are automatically approved.
   core.String approvedPermissions;
 
   ProductsApproveRequest();
@@ -7906,12 +7696,7 @@ class ProductsGenerateApprovalUrlResponse {
   }
 }
 
-/// The matching products.
 class ProductsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#productsListResponse".
-  core.String kind;
-
   /// General pagination information.
   PageInfo pageInfo;
 
@@ -7925,9 +7710,6 @@ class ProductsListResponse {
   ProductsListResponse();
 
   ProductsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("pageInfo")) {
       pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
     }
@@ -7944,9 +7726,6 @@ class ProductsListResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -7965,7 +7744,6 @@ class ProductsListResponse {
 class ServiceAccount {
   /// Credentials that can be used to authenticate as this ServiceAccount.
   ServiceAccountKey key;
-  core.String kind;
 
   /// The account name of the service account, in the form of an email address.
   /// Assigned by the server.
@@ -7977,9 +7755,6 @@ class ServiceAccount {
     if (_json.containsKey("key")) {
       key = new ServiceAccountKey.fromJson(_json["key"]);
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -7990,9 +7765,6 @@ class ServiceAccount {
         new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = (key).toJson();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
     }
     if (name != null) {
       _json["name"] = name;
@@ -8011,7 +7783,6 @@ class ServiceAccountKey {
   /// An opaque, unique identifier for this ServiceAccountKey. Assigned by the
   /// server.
   core.String id;
-  core.String kind;
 
   /// Public key data for the credentials file. This is an X.509 cert. If you
   /// are using the googleCredentials key type, this is identical to the cert
@@ -8020,6 +7791,13 @@ class ServiceAccountKey {
   core.String publicData;
 
   /// The file format of the generated key data.
+  /// Possible string values are:
+  /// - "googleCredentials" : Google Credentials File format.
+  /// - "pkcs12" : PKCS12 format. The password for the PKCS12 file is
+  /// 'notasecret'. For more information, see
+  /// https://tools.ietf.org/html/rfc7292. The data for keys of this type are
+  /// base64 encoded according to RFC 4648 Section 4. See
+  /// http://tools.ietf.org/html/rfc4648#section-4.
   core.String type;
 
   ServiceAccountKey();
@@ -8030,9 +7808,6 @@ class ServiceAccountKey {
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("publicData")) {
       publicData = _json["publicData"];
@@ -8050,9 +7825,6 @@ class ServiceAccountKey {
     }
     if (id != null) {
       _json["id"] = id;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
     }
     if (publicData != null) {
       _json["publicData"] = publicData;
@@ -8140,7 +7912,6 @@ class StoreCluster {
   /// Unique ID of this cluster. Assigned by the server. Immutable once
   /// assigned.
   core.String id;
-  core.String kind;
 
   /// Ordered list of localized strings giving the name of this page. The text
   /// displayed is the one that best matches the user locale, or the first entry
@@ -8150,10 +7921,9 @@ class StoreCluster {
   /// String (US-ASCII only) used to determine order of this cluster within the
   /// parent page's elements. Page elements are sorted in lexicographic order of
   /// this field. Duplicated values are allowed, but ordering between elements
-  /// with duplicate order is undefined.
-  ///
-  /// The value of this field is never visible to a user, it is used solely for
-  /// the purpose of defining an ordering. Maximum length is 256 characters.
+  /// with duplicate order is undefined. The value of this field is never
+  /// visible to a user, it is used solely for the purpose of defining an
+  /// ordering. Maximum length is 256 characters.
   core.String orderInPage;
 
   /// List of products in the order they are displayed in the cluster. There
@@ -8165,9 +7935,6 @@ class StoreCluster {
   StoreCluster.fromJson(core.Map _json) {
     if (_json.containsKey("id")) {
       id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("name")) {
       name = (_json["name"] as core.List)
@@ -8188,9 +7955,6 @@ class StoreCluster {
     if (id != null) {
       _json["id"] = id;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (name != null) {
       _json["name"] = name.map((value) => (value).toJson()).toList();
     }
@@ -8208,17 +7972,18 @@ class StoreCluster {
 /// specifying the page to display the first time the store is opened.
 class StoreLayout {
   /// The ID of the store page to be used as the homepage. The homepage is the
-  /// first page shown in the managed Google Play Store.
-  ///
-  /// Not specifying a homepage is equivalent to setting the store layout type
-  /// to "basic".
+  /// first page shown in the managed Google Play Store. Not specifying a
+  /// homepage is equivalent to setting the store layout type to "basic".
   core.String homepageId;
-  core.String kind;
 
   /// The store layout type. By default, this value is set to "basic" if the
   /// homepageId field is not set, and to "custom" otherwise. If set to "basic",
   /// the layout will consist of all approved apps that have been whitelisted
   /// for the user.
+  /// Possible string values are:
+  /// - "unknown"
+  /// - "basic"
+  /// - "custom"
   core.String storeLayoutType;
 
   StoreLayout();
@@ -8226,9 +7991,6 @@ class StoreLayout {
   StoreLayout.fromJson(core.Map _json) {
     if (_json.containsKey("homepageId")) {
       homepageId = _json["homepageId"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("storeLayoutType")) {
       storeLayoutType = _json["storeLayoutType"];
@@ -8241,9 +8003,6 @@ class StoreLayout {
     if (homepageId != null) {
       _json["homepageId"] = homepageId;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (storeLayoutType != null) {
       _json["storeLayoutType"] = storeLayoutType;
     }
@@ -8251,14 +8010,9 @@ class StoreLayout {
   }
 }
 
-/// The store page resources for the enterprise.
 class StoreLayoutClustersListResponse {
   /// A store cluster of an enterprise.
   core.List<StoreCluster> cluster;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#storeLayoutClustersListResponse".
-  core.String kind;
 
   StoreLayoutClustersListResponse();
 
@@ -8268,9 +8022,6 @@ class StoreLayoutClustersListResponse {
           .map<StoreCluster>((value) => new StoreCluster.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -8279,28 +8030,17 @@ class StoreLayoutClustersListResponse {
     if (cluster != null) {
       _json["cluster"] = cluster.map((value) => (value).toJson()).toList();
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     return _json;
   }
 }
 
-/// The store page resources for the enterprise.
 class StoreLayoutPagesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#storeLayoutPagesListResponse".
-  core.String kind;
-
   /// A store page of an enterprise.
   core.List<StorePage> page;
 
   StoreLayoutPagesListResponse();
 
   StoreLayoutPagesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("page")) {
       page = (_json["page"] as core.List)
           .map<StorePage>((value) => new StorePage.fromJson(value))
@@ -8311,9 +8051,6 @@ class StoreLayoutPagesListResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (page != null) {
       _json["page"] = page.map((value) => (value).toJson()).toList();
     }
@@ -8327,13 +8064,11 @@ class StoreLayoutPagesListResponse {
 class StorePage {
   /// Unique ID of this page. Assigned by the server. Immutable once assigned.
   core.String id;
-  core.String kind;
 
   /// Ordered list of pages a user should be able to reach from this page. The
   /// list can't include this page. It is recommended that the basic pages are
-  /// created first, before adding the links between pages.
-  ///
-  /// The API doesn't verify that the pages exist or the pages are reachable.
+  /// created first, before adding the links between pages. The API doesn't
+  /// verify that the pages exist or the pages are reachable.
   core.List<core.String> link;
 
   /// Ordered list of localized strings giving the name of this page. The text
@@ -8346,9 +8081,6 @@ class StorePage {
   StorePage.fromJson(core.Map _json) {
     if (_json.containsKey("id")) {
       id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("link")) {
       link = (_json["link"] as core.List).cast<core.String>();
@@ -8366,9 +8098,6 @@ class StorePage {
     if (id != null) {
       _json["id"] = id;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (link != null) {
       _json["link"] = link;
     }
@@ -8379,7 +8108,17 @@ class StorePage {
   }
 }
 
+/// Pagination information returned by a List operation when token pagination is
+/// enabled. List operations that supports paging return only one "page" of
+/// results. This protocol buffer message describes the page that has been
+/// returned. When using token pagination, clients should use the next/previous
+/// token to get another page of the result. The presence or absence of
+/// next/previous token indicates whether a next/previous page is available and
+/// provides a mean of accessing this page. ListRequest.page_token should be set
+/// to either next_page_token or previous_page_token to access another page.
 class TokenPagination {
+  /// Tokens to pass to the standard list field 'page_token'. Whenever
+  /// available, tokens are preferred over manipulating start_index.
   core.String nextPageToken;
   core.String previousPageToken;
 
@@ -8446,12 +8185,11 @@ class TrackInfo {
 /// account may be specific to a device or to an individual user (who can then
 /// use the account across multiple devices). The account may provide access to
 /// managed Google Play only, or to other Google services, depending on the
-/// identity model:
-/// - The Google managed domain identity model requires synchronization to
-/// Google account sources (via primaryEmail).
-/// - The managed Google Play Accounts identity model provides a dynamic means
-/// for enterprises to create user or device accounts as needed. These accounts
-/// provide access to managed Google Play.
+/// identity model: - The Google managed domain identity model requires
+/// synchronization to Google account sources (via primaryEmail). - The managed
+/// Google Play Accounts identity model provides a dynamic means for enterprises
+/// to create user or device accounts as needed. These accounts provide access
+/// to managed Google Play.
 class User {
   /// A unique identifier you create for this user, such as "user342" or
   /// "asset#44418". Do not use personally identifiable information (PII) for
@@ -8464,21 +8202,27 @@ class User {
   /// device. An EMM-managed user (emmManaged) can be either type (userAccount,
   /// deviceAccount), but a Google-managed user (googleManaged) is always a
   /// userAccount.
+  /// Possible string values are:
+  /// - "deviceAccount"
+  /// - "userAccount"
   core.String accountType;
 
   /// The name that will appear in user interfaces. Setting this property is
   /// optional when creating EMM-managed users. If you do set this property, use
   /// something generic about the organization (such as "Example, Inc.") or your
-  /// name (as EMM). Not used for Google-managed user accounts.
+  /// name (as EMM). Not used for Google-managed user accounts. @mutable
+  /// androidenterprise.users.update
   core.String displayName;
 
   /// The unique ID for the user.
   core.String id;
-  core.String kind;
 
   /// The entity that manages the user. With googleManaged users, the source of
   /// truth is Google so EMMs have to make sure a Google Account exists for the
   /// user. With emmManaged users, the EMM is in charge.
+  /// Possible string values are:
+  /// - "googleManaged"
+  /// - "emmManaged"
   core.String managementType;
 
   /// The user's primary email address, for example, "jsmith@example.com". Will
@@ -8499,9 +8243,6 @@ class User {
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
     }
     if (_json.containsKey("managementType")) {
       managementType = _json["managementType"];
@@ -8526,9 +8267,6 @@ class User {
     if (id != null) {
       _json["id"] = id;
     }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (managementType != null) {
       _json["managementType"] = managementType;
     }
@@ -8539,65 +8277,13 @@ class User {
   }
 }
 
-/// A UserToken is used by a user when setting up a managed device or profile
-/// with their managed Google Play account on a device. When the user enters
-/// their email address and token (activation code) the appropriate EMM app can
-/// be automatically downloaded.
-class UserToken {
-  core.String kind;
-
-  /// The token (activation code) to be entered by the user. This consists of a
-  /// sequence of decimal digits. Note that the leading digit may be 0.
-  core.String token;
-
-  /// The unique ID for the user.
-  core.String userId;
-
-  UserToken();
-
-  UserToken.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("token")) {
-      token = _json["token"];
-    }
-    if (_json.containsKey("userId")) {
-      userId = _json["userId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (token != null) {
-      _json["token"] = token;
-    }
-    if (userId != null) {
-      _json["userId"] = userId;
-    }
-    return _json;
-  }
-}
-
-/// The matching user resources.
 class UsersListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#usersListResponse".
-  core.String kind;
-
   /// A user of an enterprise.
   core.List<User> user;
 
   UsersListResponse();
 
   UsersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("user")) {
       user = (_json["user"] as core.List)
           .map<User>((value) => new User.fromJson(value))
@@ -8608,9 +8294,6 @@ class UsersListResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (user != null) {
       _json["user"] = user.map((value) => (value).toJson()).toList();
     }
@@ -8623,8 +8306,6 @@ class UsersListResponse {
 /// could be a placeholder, and its value could be Alice. Placeholders should
 /// start with a '$' sign and should be alphanumeric only.
 class VariableSet {
-  core.String kind;
-
   /// The placeholder string; defined by EMM.
   core.String placeholder;
 
@@ -8634,9 +8315,6 @@ class VariableSet {
   VariableSet();
 
   VariableSet.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("placeholder")) {
       placeholder = _json["placeholder"];
     }
@@ -8648,9 +8326,6 @@ class VariableSet {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (placeholder != null) {
       _json["placeholder"] = placeholder;
     }
@@ -8665,18 +8340,26 @@ class VariableSet {
 /// are published to managed Google Play and can be distributed like other
 /// Android apps. On a user's device, a web app opens its specified URL.
 class WebApp {
-  /// The display mode of the web app.
-  ///
-  /// Possible values include:
-  /// - "minimalUi", the device's status bar, navigation bar, the app's URL, and
-  /// a refresh button are visible when the app is open. For HTTP URLs, you can
-  /// only select this option.
-  /// - "standalone", the device's status bar and navigation bar are visible
-  /// when the app is open.
-  /// - "fullScreen", the app opens in full screen mode, hiding the device's
-  /// status and navigation bars. All browser UI elements, page URL, system
-  /// status bar and back button are not visible, and the web app takes up the
-  /// entirety of the available display area.
+  /// The display mode of the web app. Possible values include: - "minimalUi",
+  /// the device's status bar, navigation bar, the app's URL, and a refresh
+  /// button are visible when the app is open. For HTTP URLs, you can only
+  /// select this option. - "standalone", the device's status bar and navigation
+  /// bar are visible when the app is open. - "fullScreen", the app opens in
+  /// full screen mode, hiding the device's status and navigation bars. All
+  /// browser UI elements, page URL, system status bar and back button are not
+  /// visible, and the web app takes up the entirety of the available display
+  /// area.
+  /// Possible string values are:
+  /// - "displayModeUnspecified"
+  /// - "minimalUi" : Opens the web app with a minimal set of browser UI
+  /// elements for controlling navigation and viewing the page URL.
+  /// - "standalone" : Opens the web app to look and feel like a standalone
+  /// native application. The browser UI elements and page URL are not visible,
+  /// however the system status bar and back button are visible.
+  /// - "fullScreen" : Opens the web app in full screen without any visible
+  /// controls. The browser UI elements, page URL, system status bar and back
+  /// button are not visible, and the web app takes up the entirety of the
+  /// available display area.
   core.String displayMode;
 
   /// A list of icons representing this website. If absent, a default icon (for
@@ -8694,12 +8377,9 @@ class WebApp {
   /// other applications, or as a label for an icon).
   core.String title;
 
-  /// The current version of the app.
-  ///
-  ///
-  /// Note that the version can automatically increase during the lifetime of
-  /// the web app, while Google does internal housekeeping to keep the web app
-  /// up-to-date.
+  /// The current version of the app. Note that the version can automatically
+  /// increase during the lifetime of the web app, while Google does internal
+  /// housekeeping to keep the web app up-to-date.
   core.String versionCode;
 
   /// The ID of the application. A string of the form "app:<package name>" where
@@ -8766,10 +8446,9 @@ class WebApp {
 /// Icon for a web app.
 class WebAppIcon {
   /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
-  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
-  /// - The image type can be png or jpg.
-  /// - The image should ideally be square.
-  /// - The image should ideally have a size of 512x512.
+  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). - The
+  /// image type can be png or jpg. - The image should ideally be square. - The
+  /// image should ideally have a size of 512x512.
   core.String imageData;
 
   WebAppIcon();
@@ -8790,21 +8469,13 @@ class WebAppIcon {
   }
 }
 
-/// The web app details for an enterprise.
 class WebAppsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#webAppsListResponse".
-  core.String kind;
-
   /// The manifest describing a web app.
   core.List<WebApp> webApp;
 
   WebAppsListResponse();
 
   WebAppsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
     if (_json.containsKey("webApp")) {
       webApp = (_json["webApp"] as core.List)
           .map<WebApp>((value) => new WebApp.fromJson(value))
@@ -8815,9 +8486,6 @@ class WebAppsListResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
     if (webApp != null) {
       _json["webApp"] = webApp.map((value) => (value).toJson()).toList();
     }

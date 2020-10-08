@@ -1,3 +1,11 @@
+## 0.56.0
+* [api-new] networkmanagement:v1
+* [api-new] recommender:v1
+* [api-removed] androidpublisher:v2
+* [api-removed] appsactivity:v1
+* [api-removed] oauth2:v2
+* [api-removed] plus:v1
+
 ## 0.55.0
  * [api-new] accessapproval:v1
  * [api-new] admob:v1

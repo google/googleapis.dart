@@ -62,9 +62,9 @@ class UsersResourceApi {
   /// [name] - Required. The unique ID for the user in format `users/{user}`.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [projectId] - The project ID of the Google Cloud Platform project.
-  ///
   /// [systemId] - A system ID for filtering the results of the request.
+  ///
+  /// [projectId] - The project ID of the Google Cloud Platform project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -77,7 +77,7 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LoginProfile> getLoginProfile(core.String name,
-      {core.String projectId, core.String systemId, core.String $fields}) {
+      {core.String systemId, core.String projectId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -88,11 +88,11 @@ class UsersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (systemId != null) {
       _queryParams["systemId"] = [systemId];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -182,9 +182,9 @@ class UsersProjectsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. A reference to the POSIX account to update. POSIX
-  /// accounts are identified
-  /// by the project ID they are associated with. A reference to the POSIX
-  /// account is in format `users/{user}/projects/{project}`.
+  /// accounts are identified by the project ID they are associated with. A
+  /// reference to the POSIX account is in format
+  /// `users/{user}/projects/{project}`.
   /// Value must have pattern "^users/[^/]+/projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -235,9 +235,8 @@ class UsersSshPublicKeysResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The fingerprint of the public key to update. Public
-  /// keys are identified by
-  /// their SHA-256 fingerprint. The fingerprint of the public key is in format
-  /// `users/{user}/sshPublicKeys/{fingerprint}`.
+  /// keys are identified by their SHA-256 fingerprint. The fingerprint of the
+  /// public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
   /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -281,9 +280,8 @@ class UsersSshPublicKeysResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The fingerprint of the public key to retrieve. Public
-  /// keys are identified
-  /// by their SHA-256 fingerprint. The fingerprint of the public key is in
-  /// format `users/{user}/sshPublicKeys/{fingerprint}`.
+  /// keys are identified by their SHA-256 fingerprint. The fingerprint of the
+  /// public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
   /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -330,9 +328,8 @@ class UsersSshPublicKeysResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The fingerprint of the public key to update. Public
-  /// keys are identified by
-  /// their SHA-256 fingerprint. The fingerprint of the public key is in format
-  /// `users/{user}/sshPublicKeys/{fingerprint}`.
+  /// keys are identified by their SHA-256 fingerprint. The fingerprint of the
+  /// public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
   /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
   ///
   /// [updateMask] - Mask to control which fields get updated. Updates all if
@@ -384,13 +381,9 @@ class UsersSshPublicKeysResourceApi {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -405,12 +398,18 @@ class Empty {
 
 /// A response message for importing an SSH public key.
 class ImportSshPublicKeyResponse {
+  /// Detailed information about import results.
+  core.String details;
+
   /// The login profile information for the user.
   LoginProfile loginProfile;
 
   ImportSshPublicKeyResponse();
 
   ImportSshPublicKeyResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("details")) {
+      details = _json["details"];
+    }
     if (_json.containsKey("loginProfile")) {
       loginProfile = new LoginProfile.fromJson(_json["loginProfile"]);
     }
@@ -419,6 +418,9 @@ class ImportSshPublicKeyResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (details != null) {
+      _json["details"] = details;
+    }
     if (loginProfile != null) {
       _json["loginProfile"] = (loginProfile).toJson();
     }
@@ -495,8 +497,7 @@ class PosixAccount {
   /// The operating system type where this account applies.
   /// Possible string values are:
   /// - "OPERATING_SYSTEM_TYPE_UNSPECIFIED" : The operating system type
-  /// associated with the user account information is
-  /// unspecified.
+  /// associated with the user account information is unspecified.
   /// - "LINUX" : Linux user account information.
   /// - "WINDOWS" : Windows user account information.
   core.String operatingSystemType;
@@ -507,8 +508,8 @@ class PosixAccount {
   /// The path to the logic shell for this account.
   core.String shell;
 
-  /// System identifier for which account the username or uid applies to.
-  /// By default, the empty value is used.
+  /// System identifier for which account the username or uid applies to. By
+  /// default, the empty value is used.
   core.String systemId;
 
   /// The user ID.
@@ -603,9 +604,7 @@ class SshPublicKey {
   /// Output only. The SHA-256 fingerprint of the SSH public key.
   core.String fingerprint;
 
-  /// Public key text in SSH format, defined by
-  /// <a href="https://www.ietf.org/rfc/rfc4253.txt" target="_blank">RFC4253</a>
-  /// section 6.6.
+  /// Public key text in SSH format, defined by RFC4253 section 6.6.
   core.String key;
 
   /// Output only. The canonical resource name.

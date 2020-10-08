@@ -74,21 +74,20 @@ class OperationsResourceApi {
 
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -134,7 +133,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -172,14 +171,14 @@ class OperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -235,25 +234,23 @@ class OperationsProjectsOperationsResourceApi {
       : _requester = client;
 
   /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations/projects/.+$".
-  ///
-  /// [pageToken] - The standard list page token.
+  /// Value must have pattern "^operations/projects/.*$".
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -268,8 +265,8 @@ class OperationsProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -282,11 +279,11 @@ class OperationsProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -339,8 +336,7 @@ class ProjectsInstancesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The unique name of the project in which to create the
-  /// new instance.
-  /// Values are of the form `projects/{project}`.
+  /// new instance. Values are of the form `projects/{project}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -389,8 +385,8 @@ class ProjectsInstancesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique name of the instance to be deleted.
-  /// Values are of the form `projects/{project}/instances/{instance}`.
+  /// [name] - Required. The unique name of the instance to be deleted. Values
+  /// are of the form `projects/{project}/instances/{instance}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -434,8 +430,7 @@ class ProjectsInstancesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The unique name of the requested instance. Values are
-  /// of the form
-  /// `projects/{project}/instances/{instance}`.
+  /// of the form `projects/{project}/instances/{instance}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -482,8 +477,8 @@ class ProjectsInstancesResourceApi {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -534,8 +529,7 @@ class ProjectsInstancesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The unique name of the project for which a list of
-  /// instances is requested.
-  /// Values are of the form `projects/{project}`.
+  /// instances is requested. Values are of the form `projects/{project}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - DEPRECATED: This field is unused and ignored.
@@ -588,14 +582,12 @@ class ProjectsInstancesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. (`OutputOnly`)
-  /// The unique name of the instance. Values are of the form
+  /// [name] - The unique name of the instance. Values are of the form
   /// `projects/{project}/instances/a-z+[a-z0-9]`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [updateMask] - Required. The subset of Instance fields which should be
-  /// replaced.
-  /// Must be explicitly set.
+  /// replaced. Must be explicitly set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -649,8 +641,8 @@ class ProjectsInstancesResourceApi {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -704,8 +696,8 @@ class ProjectsInstancesResourceApi {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -754,15 +746,13 @@ class ProjectsInstancesResourceApi {
 
   /// Updates an instance within a project. This method updates only the display
   /// name and type for an Instance. To update other Instance properties, such
-  /// as
-  /// labels, use PartialUpdateInstance.
+  /// as labels, use PartialUpdateInstance.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. (`OutputOnly`)
-  /// The unique name of the instance. Values are of the form
+  /// [name] - The unique name of the instance. Values are of the form
   /// `projects/{project}/instances/a-z+[a-z0-9]`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
@@ -820,18 +810,16 @@ class ProjectsInstancesAppProfilesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The unique name of the instance in which to create
-  /// the new app profile.
-  /// Values are of the form
+  /// the new app profile. Values are of the form
   /// `projects/{project}/instances/{instance}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
-  /// [appProfileId] - Required. The ID to be used when referring to the new app
-  /// profile within its
-  /// instance, e.g., just `myprofile` rather than
-  /// `projects/myproject/instances/myinstance/appProfiles/myprofile`.
-  ///
   /// [ignoreWarnings] - If true, ignore safety checks when creating the app
   /// profile.
+  ///
+  /// [appProfileId] - Required. The ID to be used when referring to the new app
+  /// profile within its instance, e.g., just `myprofile` rather than
+  /// `projects/myproject/instances/myinstance/appProfiles/myprofile`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -844,8 +832,8 @@ class ProjectsInstancesAppProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AppProfile> create(AppProfile request, core.String parent,
-      {core.String appProfileId,
-      core.bool ignoreWarnings,
+      {core.bool ignoreWarnings,
+      core.String appProfileId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -860,11 +848,11 @@ class ProjectsInstancesAppProfilesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (appProfileId != null) {
-      _queryParams["appProfileId"] = [appProfileId];
-    }
     if (ignoreWarnings != null) {
       _queryParams["ignoreWarnings"] = ["${ignoreWarnings}"];
+    }
+    if (appProfileId != null) {
+      _queryParams["appProfileId"] = [appProfileId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -987,25 +975,21 @@ class ProjectsInstancesAppProfilesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The unique name of the instance for which a list of
-  /// app profiles is
-  /// requested. Values are of the form
-  /// `projects/{project}/instances/{instance}`.
-  /// Use `{instance} = '-'` to list AppProfiles for all Instances in a project,
-  /// e.g., `projects/myproject/instances/-`.
+  /// app profiles is requested. Values are of the form
+  /// `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list
+  /// AppProfiles for all Instances in a project, e.g.,
+  /// `projects/myproject/instances/-`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
+  /// [pageSize] - Maximum number of results per page. A page_size of zero lets
+  /// the server choose the number of items to return. A page_size which is
+  /// strictly positive will return at most that many items. A negative
+  /// page_size will cause an error. Following the first request, subsequent
+  /// paginated calls are not required to pass a page_size. If a page_size is
+  /// set in subsequent calls, it must match the page_size given in the first
+  /// request.
+  ///
   /// [pageToken] - The value of `next_page_token` returned by a previous call.
-  ///
-  /// [pageSize] - Maximum number of results per page.
-  ///
-  /// A page_size of zero lets the server choose the number of items to return.
-  /// A page_size which is strictly positive will return at most that many
-  /// items.
-  /// A negative page_size will cause an error.
-  ///
-  /// Following the first request, subsequent paginated calls are not required
-  /// to pass a page_size. If a page_size is set in subsequent calls, it must
-  /// match the page_size given in the first request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1018,7 +1002,7 @@ class ProjectsInstancesAppProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAppProfilesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1029,11 +1013,11 @@ class ProjectsInstancesAppProfilesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1058,18 +1042,16 @@ class ProjectsInstancesAppProfilesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - (`OutputOnly`)
-  /// The unique name of the app profile. Values are of the form
-  /// `projects/<project>/instances/<instance>/appProfiles/_a-zA-Z0-9*`.
+  /// [name] - The unique name of the app profile. Values are of the form
+  /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/appProfiles/[^/]+$".
   ///
-  /// [updateMask] - Required. The subset of app profile fields which should be
-  /// replaced.
-  /// If unset, all fields will be replaced.
-  ///
   /// [ignoreWarnings] - If true, ignore safety checks when updating the app
   /// profile.
+  ///
+  /// [updateMask] - Required. The subset of app profile fields which should be
+  /// replaced. If unset, all fields will be replaced.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1082,7 +1064,7 @@ class ProjectsInstancesAppProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(AppProfile request, core.String name,
-      {core.String updateMask, core.bool ignoreWarnings, core.String $fields}) {
+      {core.bool ignoreWarnings, core.String updateMask, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1096,11 +1078,11 @@ class ProjectsInstancesAppProfilesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (ignoreWarnings != null) {
       _queryParams["ignoreWarnings"] = ["${ignoreWarnings}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1134,14 +1116,12 @@ class ProjectsInstancesClustersResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The unique name of the instance in which to create
-  /// the new cluster.
-  /// Values are of the form
+  /// the new cluster. Values are of the form
   /// `projects/{project}/instances/{instance}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [clusterId] - Required. The ID to be used when referring to the new
-  /// cluster within its instance,
-  /// e.g., just `mycluster` rather than
+  /// cluster within its instance, e.g., just `mycluster` rather than
   /// `projects/myproject/instances/myinstance/clusters/mycluster`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1238,8 +1218,7 @@ class ProjectsInstancesClustersResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The unique name of the requested cluster. Values are of
-  /// the form
-  /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+  /// the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1283,10 +1262,10 @@ class ProjectsInstancesClustersResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The unique name of the instance for which a list of
-  /// clusters is requested.
-  /// Values are of the form `projects/{project}/instances/{instance}`.
-  /// Use `{instance} = '-'` to list Clusters for all Instances in a project,
-  /// e.g., `projects/myproject/instances/-`.
+  /// clusters is requested. Values are of the form
+  /// `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list
+  /// Clusters for all Instances in a project, e.g.,
+  /// `projects/myproject/instances/-`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [pageToken] - DEPRECATED: This field is unused and ignored.
@@ -1338,8 +1317,7 @@ class ProjectsInstancesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. (`OutputOnly`)
-  /// The unique name of the cluster. Values are of the form
+  /// [name] - The unique name of the cluster. Values are of the form
   /// `projects/{project}/instances/{instance}/clusters/a-z*`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$".
   ///
@@ -1390,17 +1368,173 @@ class ProjectsInstancesClustersBackupsResourceApi {
   ProjectsInstancesClustersBackupsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the access control policy for a Table or Backup resource.
-  /// Returns an empty policy if the resource exists but does not have a policy
-  /// set.
+  /// Starts creating a new Cloud Bigtable Backup. The returned backup
+  /// long-running operation can be used to track creation of the backup. The
+  /// metadata field type is CreateBackupMetadata. The response field type is
+  /// Backup, if successful. Cancelling the returned operation will stop the
+  /// creation and delete the backup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. This must be one of the clusters in the instance in
+  /// which this table is located. The backup will be stored in this cluster.
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$".
+  ///
+  /// [backupId] - Required. The id of the backup to be created. The `backup_id`
+  /// along with the parent `parent` are combined as
+  /// {parent}/backups/{backup_id} to create the full backup name, of the form:
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`.
+  /// This string must be between 1 and 50 characters in length and match the
+  /// regex _a-zA-Z0-9*.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(Backup request, core.String parent,
+      {core.String backupId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (backupId != null) {
+      _queryParams["backupId"] = [backupId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/backups';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes a pending or completed Cloud Bigtable backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the backup to delete. Values are of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets metadata on a pending or completed Cloud Bigtable Backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the backup. Values are of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Backup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Backup> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Backup.fromJson(data));
+  }
+
+  /// Gets the access control policy for a Table resource. Returns an empty
+  /// policy if the resource exists but does not have a policy set.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
   ///
@@ -1447,16 +1581,186 @@ class ProjectsInstancesClustersBackupsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Sets the access control policy on a Table or Backup resource.
-  /// Replaces any existing policy.
+  /// Lists Cloud Bigtable backups. Returns both completed and pending backups.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The cluster to list backups from. Values are of the
+  /// form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use
+  /// `{cluster} = '-'` to list backups for all clusters in an instance, e.g.,
+  /// `projects/{project}/instances/{instance}/clusters/-`.
+  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$".
+  ///
+  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
+  /// from a previous ListBackupsResponse to the same `parent` and with the same
+  /// `filter`.
+  ///
+  /// [pageSize] - Number of backups to be returned in the response. If 0 or
+  /// less, defaults to the server's maximum allowed page size.
+  ///
+  /// [orderBy] - An expression for specifying the sort order of the results of
+  /// the request. The string value should specify one or more fields in Backup.
+  /// The full syntax is described at https://aip.dev/132#ordering. Fields
+  /// supported are: * name * source_table * expire_time * start_time * end_time
+  /// * size_bytes * state For example, "start_time". The default sorting order
+  /// is ascending. To specify descending order for the field, a suffix " desc"
+  /// should be appended to the field name. For example, "start_time desc".
+  /// Redundant space characters in the syntax are insigificant. If order_by is
+  /// empty, results will be sorted by `start_time` in descending order starting
+  /// from the most recently created backup.
+  ///
+  /// [filter] - A filter expression that filters backups listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be <, >,
+  /// <=, >=, !=, =, or :. Colon ':' represents a HAS operator which is roughly
+  /// synonymous with equality. Filter rules are case insensitive. The fields
+  /// eligible for filtering are: * `name` * `source_table` * `state` *
+  /// `start_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) *
+  /// `end_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) *
+  /// `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) *
+  /// `size_bytes` To filter on multiple expressions, provide each separate
+  /// expression within parentheses. By default, each expression is an AND
+  /// expression. However, you can include AND, OR, and NOT expressions
+  /// explicitly. Some examples of using filters are: * `name:"exact"` --> The
+  /// backup's name is the string "exact". * `name:howl` --> The backup's name
+  /// contains the string "howl". * `source_table:prod` --> The source_table's
+  /// name contains the string "prod". * `state:CREATING` --> The backup is
+  /// pending creation. * `state:READY` --> The backup is fully created and
+  /// ready for use. * `(name:howl) AND (start_time < \"2018-03-28T14:50:00Z\")`
+  /// --> The backup name contains the string "howl" and start_time of the
+  /// backup is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` -->
+  /// The backup's size is greater than 10GB
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupsResponse> list(core.String parent,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String orderBy,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/backups';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBackupsResponse.fromJson(data));
+  }
+
+  /// Updates a pending or completed Cloud Bigtable Backup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - A globally unique identifier for the backup which cannot be
+  /// changed. Values are of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}/
+  /// backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and
+  /// 50 characters in length. The backup is stored in the cluster identified by
+  /// the prefix of the backup name of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
+  ///
+  /// [updateMask] - Required. A mask specifying which fields (e.g.
+  /// `expire_time`) in the Backup resource should be updated. This mask is
+  /// relative to the Backup resource, not to the request message. The field
+  /// mask must always be specified; this prevents any future fields from being
+  /// erased accidentally by clients that do not know about them.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Backup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Backup> patch(Backup request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Backup.fromJson(data));
+  }
+
+  /// Sets the access control policy on a Table resource. Replaces any existing
+  /// policy.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
   ///
@@ -1510,8 +1814,8 @@ class ProjectsInstancesClustersBackupsResourceApi {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
   ///
@@ -1575,8 +1879,7 @@ class ProjectsInstancesTablesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The unique name of the Table for which to check
-  /// replication consistency.
-  /// Values are of the form
+  /// replication consistency. Values are of the form
   /// `projects/{project}/instances/{instance}/tables/{table}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
   ///
@@ -1624,17 +1927,16 @@ class ProjectsInstancesTablesResourceApi {
         .then((data) => new CheckConsistencyResponse.fromJson(data));
   }
 
-  /// Creates a new table in the specified instance.
-  /// The table can be created with a full set of initial column families,
-  /// specified in the request.
+  /// Creates a new table in the specified instance. The table can be created
+  /// with a full set of initial column families, specified in the request.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The unique name of the instance in which to create
-  /// the table.
-  /// Values are of the form `projects/{project}/instances/{instance}`.
+  /// the table. Values are of the form
+  /// `projects/{project}/instances/{instance}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1681,9 +1983,8 @@ class ProjectsInstancesTablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique name of the table to be deleted.
-  /// Values are of the form
-  /// `projects/{project}/instances/{instance}/tables/{table}`.
+  /// [name] - Required. The unique name of the table to be deleted. Values are
+  /// of the form `projects/{project}/instances/{instance}/tables/{table}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1723,17 +2024,15 @@ class ProjectsInstancesTablesResourceApi {
   }
 
   /// Permanently drop/delete a row range from a specified table. The request
-  /// can
-  /// specify whether to delete all rows in a table, or only those that match a
-  /// particular prefix.
+  /// can specify whether to delete all rows in a table, or only those that
+  /// match a particular prefix.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The unique name of the table on which to drop a range
-  /// of rows.
-  /// Values are of the form
+  /// of rows. Values are of the form
   /// `projects/{project}/instances/{instance}/tables/{table}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
   ///
@@ -1783,16 +2082,14 @@ class ProjectsInstancesTablesResourceApi {
   /// Generates a consistency token for a Table, which can be used in
   /// CheckConsistency to check whether mutations to the table that finished
   /// before this call started have been replicated. The tokens will be
-  /// available
-  /// for 90 days.
+  /// available for 90 days.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The unique name of the Table for which to create a
-  /// consistency token.
-  /// Values are of the form
+  /// consistency token. Values are of the form
   /// `projects/{project}/instances/{instance}/tables/{table}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
   ///
@@ -1844,19 +2141,21 @@ class ProjectsInstancesTablesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique name of the requested table.
-  /// Values are of the form
-  /// `projects/{project}/instances/{instance}/tables/{table}`.
+  /// [name] - Required. The unique name of the requested table. Values are of
+  /// the form `projects/{project}/instances/{instance}/tables/{table}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
   ///
-  /// [view] - The view to be applied to the returned table's fields.
-  /// Defaults to `SCHEMA_VIEW` if unspecified.
+  /// [view] - The view to be applied to the returned table's fields. Defaults
+  /// to `SCHEMA_VIEW` if unspecified.
   /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
-  /// - "NAME_ONLY" : A NAME_ONLY.
-  /// - "SCHEMA_VIEW" : A SCHEMA_VIEW.
-  /// - "REPLICATION_VIEW" : A REPLICATION_VIEW.
-  /// - "FULL" : A FULL.
+  /// - "VIEW_UNSPECIFIED" : Uses the default view for each method as documented
+  /// in its request.
+  /// - "NAME_ONLY" : Only populates `name`.
+  /// - "SCHEMA_VIEW" : Only populates `name` and fields related to the table's
+  /// schema.
+  /// - "REPLICATION_VIEW" : Only populates `name` and fields related to the
+  /// table's replication state.
+  /// - "FULL" : Populates all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1898,17 +2197,16 @@ class ProjectsInstancesTablesResourceApi {
     return _response.then((data) => new Table.fromJson(data));
   }
 
-  /// Gets the access control policy for a Table or Backup resource.
-  /// Returns an empty policy if the resource exists but does not have a policy
-  /// set.
+  /// Gets the access control policy for a Table resource. Returns an empty
+  /// policy if the resource exists but does not have a policy set.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1959,31 +2257,31 @@ class ProjectsInstancesTablesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The unique name of the instance for which tables
-  /// should be listed.
-  /// Values are of the form `projects/{project}/instances/{instance}`.
+  /// should be listed. Values are of the form
+  /// `projects/{project}/instances/{instance}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
-  ///
-  /// [view] - The view to be applied to the returned tables' fields.
-  /// Only NAME_ONLY view (default) and REPLICATION_VIEW are supported.
-  /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
-  /// - "NAME_ONLY" : A NAME_ONLY.
-  /// - "SCHEMA_VIEW" : A SCHEMA_VIEW.
-  /// - "REPLICATION_VIEW" : A REPLICATION_VIEW.
-  /// - "FULL" : A FULL.
   ///
   /// [pageToken] - The value of `next_page_token` returned by a previous call.
   ///
-  /// [pageSize] - Maximum number of results per page.
+  /// [view] - The view to be applied to the returned tables' fields. Only
+  /// NAME_ONLY view (default) and REPLICATION_VIEW are supported.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : Uses the default view for each method as documented
+  /// in its request.
+  /// - "NAME_ONLY" : Only populates `name`.
+  /// - "SCHEMA_VIEW" : Only populates `name` and fields related to the table's
+  /// schema.
+  /// - "REPLICATION_VIEW" : Only populates `name` and fields related to the
+  /// table's replication state.
+  /// - "FULL" : Populates all fields.
   ///
-  /// A page_size of zero lets the server choose the number of items to return.
-  /// A page_size which is strictly positive will return at most that many
-  /// items.
-  /// A negative page_size will cause an error.
-  ///
-  /// Following the first request, subsequent paginated calls are not required
-  /// to pass a page_size. If a page_size is set in subsequent calls, it must
-  /// match the page_size given in the first request.
+  /// [pageSize] - Maximum number of results per page. A page_size of zero lets
+  /// the server choose the number of items to return. A page_size which is
+  /// strictly positive will return at most that many items. A negative
+  /// page_size will cause an error. Following the first request, subsequent
+  /// paginated calls are not required to pass a page_size. If a page_size is
+  /// set in subsequent calls, it must match the page_size given in the first
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1996,8 +2294,8 @@ class ProjectsInstancesTablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTablesResponse> list(core.String parent,
-      {core.String view,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String view,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -2010,11 +2308,11 @@ class ProjectsInstancesTablesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -2044,8 +2342,7 @@ class ProjectsInstancesTablesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The unique name of the table whose families should be
-  /// modified.
-  /// Values are of the form
+  /// modified. Values are of the form
   /// `projects/{project}/instances/{instance}/tables/{table}`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
   ///
@@ -2092,16 +2389,74 @@ class ProjectsInstancesTablesResourceApi {
     return _response.then((data) => new Table.fromJson(data));
   }
 
-  /// Sets the access control policy on a Table or Backup resource.
-  /// Replaces any existing policy.
+  /// Create a new table by restoring from a completed backup. The new table
+  /// must be in the same instance as the instance containing the backup. The
+  /// returned table long-running operation can be used to track the progress of
+  /// the operation, and to cancel it. The metadata field type is
+  /// RestoreTableMetadata. The response type is Table, if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the instance in which to create the
+  /// restored table. This instance must be the parent of the source backup.
+  /// Values are of the form `projects//instances/`.
+  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restore(
+      RestoreTableRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/tables:restore';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the access control policy on a Table resource. Replaces any existing
+  /// policy.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2154,8 +2509,8 @@ class ProjectsInstancesTablesResourceApi {
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2259,11 +2614,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2276,9 +2631,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2290,14 +2645,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2319,15 +2674,14 @@ class ProjectsLocationsResourceApi {
 /// A configuration object describing how Cloud Bigtable should treat traffic
 /// from a particular end user application.
 class AppProfile {
-  /// Optional long form description of the use case for this AppProfile.
+  /// Long form description of the use case for this AppProfile.
   core.String description;
 
   /// Strongly validated etag for optimistic concurrency control. Preserve the
   /// value returned from `GetAppProfile` when calling `UpdateAppProfile` to
   /// fail the request if there has been a modification in the mean time. The
   /// `update_mask` of the request need not include `etag` for this protection
-  /// to apply.
-  /// See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and
+  /// to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and
   /// [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more
   /// details.
   core.String etag;
@@ -2335,9 +2689,8 @@ class AppProfile {
   /// Use a multi-cluster routing policy.
   MultiClusterRoutingUseAny multiClusterRoutingUseAny;
 
-  /// (`OutputOnly`)
   /// The unique name of the app profile. Values are of the form
-  /// `projects/<project>/instances/<instance>/appProfiles/_a-zA-Z0-9*`.
+  /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
   core.String name;
 
   /// Use a single-cluster routing policy.
@@ -2387,64 +2740,29 @@ class AppProfile {
   }
 }
 
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditLogConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:jose@example.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "sampleservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:aliya@example.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// Specifies the audit configuration for a service. The configuration
+/// determines which permission types are logged, and what identities, if any,
+/// are exempted from logging. An AuditConfig must have one or more
+/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
+/// specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
+/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging. For example,
+  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
+  /// special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -2474,29 +2792,14 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:jose@example.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// jose@example.com from DATA_READ logging.
+/// Provides the configuration for logging a type of permissions. Example: {
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
+/// DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
+  /// permission. Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -2532,61 +2835,198 @@ class AuditLogConfig {
   }
 }
 
+/// A backup of a Cloud Bigtable table.
+class Backup {
+  /// Output only. `end_time` is the time that the backup was finished. The row
+  /// data in the backup will be no newer than this timestamp.
+  core.String endTime;
+
+  /// Required. The expiration time of the backup, with microseconds granularity
+  /// that must be at least 6 hours and at most 30 days from the time the
+  /// request is received. Once the `expire_time` has passed, Cloud Bigtable
+  /// will delete the backup and free the resources used by the backup.
+  core.String expireTime;
+
+  /// A globally unique identifier for the backup which cannot be changed.
+  /// Values are of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}/
+  /// backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and
+  /// 50 characters in length. The backup is stored in the cluster identified by
+  /// the prefix of the backup name of the form
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+  core.String name;
+
+  /// Output only. Size of the backup in bytes.
+  core.String sizeBytes;
+
+  /// Required. Immutable. Name of the table from which this backup was created.
+  /// This needs to be in the same instance as the backup. Values are of the
+  /// form `projects/{project}/instances/{instance}/tables/{source_table}`.
+  core.String sourceTable;
+
+  /// Output only. `start_time` is the time that the backup was started (i.e.
+  /// approximately the time the CreateBackup request is received). The row data
+  /// in this backup will be no older than this timestamp.
+  core.String startTime;
+
+  /// Output only. The current state of the backup.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not specified.
+  /// - "CREATING" : The pending backup is still being created. Operations on
+  /// the backup may fail with `FAILED_PRECONDITION` in this state.
+  /// - "READY" : The backup is complete and ready for use.
+  core.String state;
+
+  Backup();
+
+  Backup.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("sizeBytes")) {
+      sizeBytes = _json["sizeBytes"];
+    }
+    if (_json.containsKey("sourceTable")) {
+      sourceTable = _json["sourceTable"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (sizeBytes != null) {
+      _json["sizeBytes"] = sizeBytes;
+    }
+    if (sourceTable != null) {
+      _json["sourceTable"] = sourceTable;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/// Information about a backup.
+class BackupInfo {
+  /// Output only. Name of the backup.
+  core.String backup;
+
+  /// Output only. This time that the backup was finished. Row data in the
+  /// backup will be no newer than this timestamp.
+  core.String endTime;
+
+  /// Output only. Name of the table the backup was created from.
+  core.String sourceTable;
+
+  /// Output only. The time that the backup was started. Row data in the backup
+  /// will be no older than this timestamp.
+  core.String startTime;
+
+  BackupInfo();
+
+  BackupInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("backup")) {
+      backup = _json["backup"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("sourceTable")) {
+      sourceTable = _json["sourceTable"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backup != null) {
+      _json["backup"] = backup;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (sourceTable != null) {
+      _json["sourceTable"] = sourceTable;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  /// NOTE: An unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
+  /// The condition that is associated with this binding. If the condition
+  /// evaluates to `true`, then this binding applies to the current request. If
+  /// the condition evaluates to `false`, then this binding does not apply to
+  /// the current request. However, a different role binding might grant the
+  /// same role to one or more of the members in this binding. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
-  /// `members` can have the following values:
-  ///
-  /// * `allUsers`: A special identifier that represents anyone who is
-  ///    on the internet; with or without a Google account.
-  ///
-  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
-  ///    who is authenticated with a Google account or a service account.
-  ///
-  /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@example.com` .
-  ///
-  ///
-  /// * `serviceAccount:{emailid}`: An email address that represents a service
-  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  ///
-  /// * `group:{emailid}`: An email address that represents a Google group.
-  ///    For example, `admins@example.com`.
-  ///
-  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a user that has been recently deleted. For
-  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
-  /// recovered, this value reverts to `user:{emailid}` and the recovered user
-  ///    retains the role in the binding.
-  ///
-  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
-  /// (plus
-  /// unique identifier) representing a service account that has been recently
-  ///    deleted. For example,
-  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-  ///    If the service account is undeleted, this value reverts to
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
-  ///    role in the binding.
-  ///
-  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a Google group that has been recently
-  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-  /// the group is recovered, this value reverts to `group:{emailid}` and the
-  ///    recovered group retains the role in the binding.
-  ///
-  ///
-  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
-  ///    users of that domain. For example, `google.com` or `example.com`.
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`.
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`. For example, `roles/viewer`,
+  /// `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -2668,52 +3108,44 @@ class CheckConsistencyResponse {
   }
 }
 
-/// A resizable group of nodes in a particular cloud location, capable
-/// of serving all Tables in the parent
-/// Instance.
+/// A resizable group of nodes in a particular cloud location, capable of
+/// serving all Tables in the parent Instance.
 class Cluster {
-  /// (`CreationOnly`)
-  /// The type of storage used by this cluster to serve its
-  /// parent instance's tables, unless explicitly overridden.
+  /// Immutable. The type of storage used by this cluster to serve its parent
+  /// instance's tables, unless explicitly overridden.
   /// Possible string values are:
   /// - "STORAGE_TYPE_UNSPECIFIED" : The user did not specify a storage type.
   /// - "SSD" : Flash (SSD) storage should be used.
   /// - "HDD" : Magnetic drive (HDD) storage should be used.
   core.String defaultStorageType;
 
-  /// (`CreationOnly`)
-  /// The location where this cluster's nodes and storage reside. For best
-  /// performance, clients should be located as close as possible to this
+  /// Immutable. The location where this cluster's nodes and storage reside. For
+  /// best performance, clients should be located as close as possible to this
   /// cluster. Currently only zones are supported, so values should be of the
   /// form `projects/{project}/locations/{zone}`.
   core.String location;
 
-  /// Required. (`OutputOnly`)
   /// The unique name of the cluster. Values are of the form
   /// `projects/{project}/instances/{instance}/clusters/a-z*`.
   core.String name;
 
   /// Required. The number of nodes allocated to this cluster. More nodes enable
-  /// higher
-  /// throughput and more consistent performance.
+  /// higher throughput and more consistent performance.
   core.int serveNodes;
 
-  /// (`OutputOnly`)
-  /// The current state of the cluster.
+  /// Output only. The current state of the cluster.
   /// Possible string values are:
   /// - "STATE_NOT_KNOWN" : The state of the cluster could not be determined.
   /// - "READY" : The cluster has been successfully created and is ready to
   /// serve requests.
   /// - "CREATING" : The cluster is currently being created, and may be
-  /// destroyed
-  /// if the creation process encounters an error.
-  /// A cluster may not be able to serve requests while being created.
+  /// destroyed if the creation process encounters an error. A cluster may not
+  /// be able to serve requests while being created.
   /// - "RESIZING" : The cluster is currently being resized, and may revert to
-  /// its previous
-  /// node count if the process encounters an error.
-  /// A cluster is still capable of serving requests while being resized,
-  /// but may exhibit performance as if its number of allocated nodes is
-  /// between the starting and requested states.
+  /// its previous node count if the process encounters an error. A cluster is
+  /// still capable of serving requests while being resized, but may exhibit
+  /// performance as if its number of allocated nodes is between the starting
+  /// and requested states.
   /// - "DISABLED" : The cluster has no backing nodes. The data (tables) still
   /// exist, but no operations can be performed on the cluster.
   core.String state;
@@ -2767,19 +3199,18 @@ class ClusterState {
   /// - "STATE_NOT_KNOWN" : The replication state of the table is unknown in
   /// this cluster.
   /// - "INITIALIZING" : The cluster was recently created, and the table must
-  /// finish copying
-  /// over pre-existing data from other clusters before it can begin
-  /// receiving live replication updates and serving Data API requests.
+  /// finish copying over pre-existing data from other clusters before it can
+  /// begin receiving live replication updates and serving Data API requests.
   /// - "PLANNED_MAINTENANCE" : The table is temporarily unable to serve Data
-  /// API requests from this
-  /// cluster due to planned internal maintenance.
+  /// API requests from this cluster due to planned internal maintenance.
   /// - "UNPLANNED_MAINTENANCE" : The table is temporarily unable to serve Data
-  /// API requests from this
-  /// cluster due to unplanned or emergency maintenance.
+  /// API requests from this cluster due to unplanned or emergency maintenance.
   /// - "READY" : The table can serve Data API requests from this cluster.
-  /// Depending on
-  /// replication delay, reads may not immediately reflect the state of the
-  /// table in other clusters.
+  /// Depending on replication delay, reads may not immediately reflect the
+  /// state of the table in other clusters.
+  /// - "READY_OPTIMIZING" : The table is fully created and ready for use after
+  /// a restore, and is being optimized for performance. When optimizations are
+  /// complete, the table will transition to `READY` state.
   core.String replicationState;
 
   ClusterState();
@@ -2802,12 +3233,10 @@ class ClusterState {
 
 /// A set of columns within a table which share a common configuration.
 class ColumnFamily {
-  /// Garbage collection rule specified as a protobuf.
-  /// Must serialize to at most 500 bytes.
-  ///
-  /// NOTE: Garbage collection executes opportunistically in the background, and
-  /// so it's possible for reads to return a cell even if it matches the active
-  /// GC expression for its family.
+  /// Garbage collection rule specified as a protobuf. Must serialize to at most
+  /// 500 bytes. NOTE: Garbage collection executes opportunistically in the
+  /// background, and so it's possible for reads to return a cell even if it
+  /// matches the active GC expression for its family.
   GcRule gcRule;
 
   ColumnFamily();
@@ -2828,6 +3257,56 @@ class ColumnFamily {
   }
 }
 
+/// Metadata type for the operation returned by CreateBackup.
+class CreateBackupMetadata {
+  /// If set, the time at which this operation finished or was cancelled.
+  core.String endTime;
+
+  /// The name of the backup being created.
+  core.String name;
+
+  /// The name of the table the backup is created from.
+  core.String sourceTable;
+
+  /// The time at which this operation started.
+  core.String startTime;
+
+  CreateBackupMetadata();
+
+  CreateBackupMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("sourceTable")) {
+      sourceTable = _json["sourceTable"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (sourceTable != null) {
+      _json["sourceTable"] = sourceTable;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
 /// The metadata for the Operation returned by CreateCluster.
 class CreateClusterMetadata {
   /// The time at which the operation failed or was completed successfully.
@@ -2840,13 +3319,10 @@ class CreateClusterMetadata {
   core.String requestTime;
 
   /// Keys: the full `name` of each table that existed in the instance when
-  /// CreateCluster was first called, i.e.
-  /// `projects/<project>/instances/<instance>/tables/<table>`. Any table added
-  /// to the instance by a later API call will be created in the new cluster by
-  /// that API call, not this one.
-  ///
-  /// Values: information on how much of a table's data has been copied to the
-  /// newly-created cluster so far.
+  /// CreateCluster was first called, i.e. `projects//instances//tables/`. Any
+  /// table added to the instance by a later API call will be created in the new
+  /// cluster by that API call, not this one. Values: information on how much of
+  /// a table's data has been copied to the newly-created cluster so far.
   core.Map<core.String, TableProgress> tables;
 
   CreateClusterMetadata();
@@ -2892,20 +3368,17 @@ class CreateClusterMetadata {
 
 /// Request message for BigtableInstanceAdmin.CreateCluster.
 class CreateClusterRequest {
-  /// Required. The cluster to be created.
-  /// Fields marked `OutputOnly` must be left blank.
+  /// Required. The cluster to be created. Fields marked `OutputOnly` must be
+  /// left blank.
   Cluster cluster;
 
   /// Required. The ID to be used when referring to the new cluster within its
-  /// instance,
-  /// e.g., just `mycluster` rather than
+  /// instance, e.g., just `mycluster` rather than
   /// `projects/myproject/instances/myinstance/clusters/mycluster`.
   core.String clusterId;
 
   /// Required. The unique name of the instance in which to create the new
-  /// cluster.
-  /// Values are of the form
-  /// `projects/{project}/instances/{instance}`.
+  /// cluster. Values are of the form `projects/{project}/instances/{instance}`.
   core.String parent;
 
   CreateClusterRequest();
@@ -2983,26 +3456,23 @@ class CreateInstanceMetadata {
 /// Request message for BigtableInstanceAdmin.CreateInstance.
 class CreateInstanceRequest {
   /// Required. The clusters to be created within the instance, mapped by
-  /// desired
-  /// cluster ID, e.g., just `mycluster` rather than
-  /// `projects/myproject/instances/myinstance/clusters/mycluster`.
-  /// Fields marked `OutputOnly` must be left blank.
-  /// Currently, at most four clusters can be specified.
+  /// desired cluster ID, e.g., just `mycluster` rather than
+  /// `projects/myproject/instances/myinstance/clusters/mycluster`. Fields
+  /// marked `OutputOnly` must be left blank. Currently, at most four clusters
+  /// can be specified.
   core.Map<core.String, Cluster> clusters;
 
-  /// Required. The instance to create.
-  /// Fields marked `OutputOnly` must be left blank.
+  /// Required. The instance to create. Fields marked `OutputOnly` must be left
+  /// blank.
   Instance instance;
 
   /// Required. The ID to be used when referring to the new instance within its
-  /// project,
-  /// e.g., just `myinstance` rather than
+  /// project, e.g., just `myinstance` rather than
   /// `projects/myproject/instances/myinstance`.
   core.String instanceId;
 
   /// Required. The unique name of the project in which to create the new
-  /// instance.
-  /// Values are of the form `projects/{project}`.
+  /// instance. Values are of the form `projects/{project}`.
   core.String parent;
 
   CreateInstanceRequest();
@@ -3045,33 +3515,25 @@ class CreateInstanceRequest {
   }
 }
 
-/// Request message for
-/// google.bigtable.admin.v2.BigtableTableAdmin.CreateTable
+/// Request message for google.bigtable.admin.v2.BigtableTableAdmin.CreateTable
 class CreateTableRequest {
   /// The optional list of row keys that will be used to initially split the
-  /// table into several tablets (tablets are similar to HBase regions).
-  /// Given two split keys, `s1` and `s2`, three tablets will be created,
-  /// spanning the key ranges: `[, s1), [s1, s2), [s2, )`.
-  ///
-  /// Example:
-  ///
-  /// * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",`
-  ///                `"other", "zz"]`
-  /// * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]`
-  /// * Key assignment:
-  ///     - Tablet 1 `[, apple)                => {"a"}.`
-  ///     - Tablet 2 `[apple, customer_1)      => {"apple", "custom"}.`
-  ///     - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.`
-  ///     - Tablet 4 `[customer_2, other)      => {"customer_2"}.`
-  ///     - Tablet 5 `[other, )                => {"other", "zz"}.`
+  /// table into several tablets (tablets are similar to HBase regions). Given
+  /// two split keys, `s1` and `s2`, three tablets will be created, spanning the
+  /// key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a",
+  /// "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` *
+  /// initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` *
+  /// Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple,
+  /// customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2)
+  /// => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` -
+  /// Tablet 5 `[other, ) => {"other", "zz"}.`
   core.List<Split> initialSplits;
 
   /// Required. The Table to create.
   Table table;
 
   /// Required. The name by which the new table should be referred to within the
-  /// parent
-  /// instance, e.g., `foobar` rather than `{parent}/tables/foobar`.
+  /// parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`.
   /// Maximum 50 characters.
   core.String tableId;
 
@@ -3108,14 +3570,13 @@ class CreateTableRequest {
   }
 }
 
-/// Request message for
-/// google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange
+/// Request message for google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange
 class DropRowRangeRequest {
   /// Delete all rows in the table. Setting this to false is a no-op.
   core.bool deleteAllDataFromTable;
 
-  /// Delete all rows that start with this row key prefix. Prefix cannot be
-  /// zero length.
+  /// Delete all rows that start with this row key prefix. Prefix cannot be zero
+  /// length.
   core.String rowKeyPrefix;
   core.List<core.int> get rowKeyPrefixAsBytes {
     return convert.base64.decode(rowKeyPrefix);
@@ -3152,13 +3613,9 @@ class DropRowRangeRequest {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -3173,36 +3630,20 @@ class Empty {
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec.
-///
-/// Example (Comparison):
-///
-///     title: "Summary size limit"
-///     description: "Determines if a summary is less than 100 chars"
-///     expression: "document.summary.size() < 100"
-///
-/// Example (Equality):
-///
-///     title: "Requestor is owner"
-///     description: "Determines if requestor is the document owner"
-///     expression: "document.owner == request.auth.claims.email"
-///
-/// Example (Logic):
-///
-///     title: "Public documents"
+/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
 /// description: "Determine whether the document should be publicly visible"
-///     expression: "document.type != 'private' && document.type != 'internal'"
-///
-/// Example (Data Manipulation):
-///
-///     title: "Notification string"
-///     description: "Create a notification string with a timestamp."
-///     expression: "'New message received at ' + string(document.create_time)"
-///
-/// The exact variables and functions that may be referenced within an
-/// expression
-/// are determined by the service that evaluates it. See the service
-/// documentation for additional information.
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
 class Expr {
   /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
@@ -3216,9 +3657,8 @@ class Expr {
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
+  /// Optional. Title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
   Expr();
@@ -3257,14 +3697,72 @@ class Expr {
   }
 }
 
+/// Added to the error payload.
+class FailureTrace {
+  core.List<Frame> frames;
+
+  FailureTrace();
+
+  FailureTrace.fromJson(core.Map _json) {
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<Frame>((value) => new Frame.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class Frame {
+  core.String targetName;
+  core.String workflowGuid;
+  core.String zoneId;
+
+  Frame();
+
+  Frame.fromJson(core.Map _json) {
+    if (_json.containsKey("targetName")) {
+      targetName = _json["targetName"];
+    }
+    if (_json.containsKey("workflowGuid")) {
+      workflowGuid = _json["workflowGuid"];
+    }
+    if (_json.containsKey("zoneId")) {
+      zoneId = _json["zoneId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (targetName != null) {
+      _json["targetName"] = targetName;
+    }
+    if (workflowGuid != null) {
+      _json["workflowGuid"] = workflowGuid;
+    }
+    if (zoneId != null) {
+      _json["zoneId"] = zoneId;
+    }
+    return _json;
+  }
+}
+
 /// Rule for determining which cells to delete during garbage collection.
 class GcRule {
   /// Delete cells that would be deleted by every nested rule.
   Intersection intersection;
 
-  /// Delete cells in a column older than the given age.
-  /// Values must be at least one millisecond, and will be truncated to
-  /// microsecond granularity.
+  /// Delete cells in a column older than the given age. Values must be at least
+  /// one millisecond, and will be truncated to microsecond granularity.
   core.String maxAge;
 
   /// Delete all cells in a column except the most recent N.
@@ -3350,7 +3848,7 @@ class GenerateConsistencyTokenResponse {
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
-  /// `GetIamPolicy`. This field is only used by Cloud IAM.
+  /// `GetIamPolicy`.
   GetPolicyOptions options;
 
   GetIamPolicyRequest();
@@ -3373,15 +3871,13 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// Optional. The policy format version to be returned. Valid values are 0, 1,
+  /// and 3. Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional bindings must specify version 3. Policies
+  /// without any conditional bindings may specify any valid value or leave the
+  /// field unset. To learn which resources support conditions in their IAM
+  /// policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -3402,65 +3898,47 @@ class GetPolicyOptions {
   }
 }
 
-/// A collection of Bigtable Tables and
-/// the resources that serve them.
-/// All tables in an instance are served from all
-/// Clusters in the instance.
+/// A collection of Bigtable Tables and the resources that serve them. All
+/// tables in an instance are served from all Clusters in the instance.
 class Instance {
-  /// Required. The descriptive name for this instance as it appears in UIs.
-  /// Can be changed at any time, but should be kept globally unique
-  /// to avoid confusion.
+  /// Required. The descriptive name for this instance as it appears in UIs. Can
+  /// be changed at any time, but should be kept globally unique to avoid
+  /// confusion.
   core.String displayName;
 
   /// Required. Labels are a flexible and lightweight mechanism for organizing
-  /// cloud
-  /// resources into groups that reflect a customer's organizational needs and
-  /// deployment strategies. They can be used to filter resources and aggregate
-  /// metrics.
-  ///
-  /// * Label keys must be between 1 and 63 characters long and must conform to
-  ///   the regular expression: `\p{Ll}\p{Lo}{0,62}`.
-  /// * Label values must be between 0 and 63 characters long and must conform
-  /// to
-  ///   the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`.
-  /// * No more than 64 labels can be associated with a given resource.
-  /// * Keys and values must both be under 128 bytes.
+  /// cloud resources into groups that reflect a customer's organizational needs
+  /// and deployment strategies. They can be used to filter resources and
+  /// aggregate metrics. * Label keys must be between 1 and 63 characters long
+  /// and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label
+  /// values must be between 0 and 63 characters long and must conform to the
+  /// regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64
+  /// labels can be associated with a given resource. * Keys and values must
+  /// both be under 128 bytes.
   core.Map<core.String, core.String> labels;
 
-  /// Required. (`OutputOnly`)
   /// The unique name of the instance. Values are of the form
   /// `projects/{project}/instances/a-z+[a-z0-9]`.
   core.String name;
 
-  /// (`OutputOnly`)
-  /// The current state of the instance.
+  /// Output only. The current state of the instance.
   /// Possible string values are:
   /// - "STATE_NOT_KNOWN" : The state of the instance could not be determined.
   /// - "READY" : The instance has been successfully created and can serve
-  /// requests
-  /// to its tables.
+  /// requests to its tables.
   /// - "CREATING" : The instance is currently being created, and may be
-  /// destroyed
-  /// if the creation process encounters an error.
+  /// destroyed if the creation process encounters an error.
   core.String state;
 
   /// Required. The type of the instance. Defaults to `PRODUCTION`.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The type of the instance is unspecified. If set
-  /// when creating an
-  /// instance, a `PRODUCTION` instance will be created. If set when updating
-  /// an instance, the type will be left unchanged.
+  /// when creating an instance, a `PRODUCTION` instance will be created. If set
+  /// when updating an instance, the type will be left unchanged.
   /// - "PRODUCTION" : An instance meant for production use. `serve_nodes` must
-  /// be set
-  /// on the cluster.
-  /// - "DEVELOPMENT" : The instance is meant for development and testing
-  /// purposes only; it has
-  /// no performance or uptime guarantees and is not covered by SLA.
-  /// After a development instance is created, it can be upgraded by
-  /// updating the instance to type `PRODUCTION`. An instance created
-  /// as a production instance cannot be changed to a development instance.
-  /// When creating a development instance, `serve_nodes` on the cluster must
-  /// not be set.
+  /// be set on the cluster.
+  /// - "DEVELOPMENT" : DEPRECATED: Prefer PRODUCTION for all use cases, as it
+  /// no longer enforces a higher minimum node count than DEVELOPMENT.
   core.String type;
 
   Instance();
@@ -3535,15 +4013,15 @@ class ListAppProfilesResponse {
   /// The list of requested app profiles.
   core.List<AppProfile> appProfiles;
 
-  /// Locations from which AppProfile information could not be retrieved,
-  /// due to an outage or some other transient condition.
-  /// AppProfiles from these locations may be missing from `app_profiles`.
-  /// Values are of the form `projects/<project>/locations/<zone_id>`
+  /// Locations from which AppProfile information could not be retrieved, due to
+  /// an outage or some other transient condition. AppProfiles from these
+  /// locations may be missing from `app_profiles`. Values are of the form
+  /// `projects//locations/`
   core.List<core.String> failedLocations;
 
-  /// Set if not all app profiles could be returned in a single response.
-  /// Pass this value to `page_token` in another request to get the next
-  /// page of results.
+  /// Set if not all app profiles could be returned in a single response. Pass
+  /// this value to `page_token` in another request to get the next page of
+  /// results.
   core.String nextPageToken;
 
   ListAppProfilesResponse();
@@ -3580,16 +4058,50 @@ class ListAppProfilesResponse {
   }
 }
 
+/// The response for ListBackups.
+class ListBackupsResponse {
+  /// The list of matching backups.
+  core.List<Backup> backups;
+
+  /// `next_page_token` can be sent in a subsequent ListBackups call to fetch
+  /// more of the matching backups.
+  core.String nextPageToken;
+
+  ListBackupsResponse();
+
+  ListBackupsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("backups")) {
+      backups = (_json["backups"] as core.List)
+          .map<Backup>((value) => new Backup.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backups != null) {
+      _json["backups"] = backups.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// Response message for BigtableInstanceAdmin.ListClusters.
 class ListClustersResponse {
   /// The list of requested clusters.
   core.List<Cluster> clusters;
 
-  /// Locations from which Cluster information could not be retrieved,
-  /// due to an outage or some other transient condition.
-  /// Clusters from these locations may be missing from `clusters`,
-  /// or may only have partial information returned.
-  /// Values are of the form `projects/<project>/locations/<zone_id>`
+  /// Locations from which Cluster information could not be retrieved, due to an
+  /// outage or some other transient condition. Clusters from these locations
+  /// may be missing from `clusters`, or may only have partial information
+  /// returned. Values are of the form `projects//locations/`
   core.List<core.String> failedLocations;
 
   /// DEPRECATED: This field is unused and ignored.
@@ -3630,12 +4142,12 @@ class ListClustersResponse {
 
 /// Response message for BigtableInstanceAdmin.ListInstances.
 class ListInstancesResponse {
-  /// Locations from which Instance information could not be retrieved,
-  /// due to an outage or some other transient condition.
-  /// Instances whose Clusters are all in one of the failed locations
-  /// may be missing from `instances`, and Instances with at least one
-  /// Cluster in a failed location may only have partial information returned.
-  /// Values are of the form `projects/<project>/locations/<zone_id>`
+  /// Locations from which Instance information could not be retrieved, due to
+  /// an outage or some other transient condition. Instances whose Clusters are
+  /// all in one of the failed locations may be missing from `instances`, and
+  /// Instances with at least one Cluster in a failed location may only have
+  /// partial information returned. Values are of the form
+  /// `projects//locations/`
   core.List<core.String> failedLocations;
 
   /// The list of requested instances.
@@ -3746,12 +4258,10 @@ class ListOperationsResponse {
   }
 }
 
-/// Response message for
-/// google.bigtable.admin.v2.BigtableTableAdmin.ListTables
+/// Response message for google.bigtable.admin.v2.BigtableTableAdmin.ListTables
 class ListTablesResponse {
-  /// Set if not all tables could be returned in a single response.
-  /// Pass this value to `page_token` in another request to get the next
-  /// page of results.
+  /// Set if not all tables could be returned in a single response. Pass this
+  /// value to `page_token` in another request to get the next page of results.
   core.String nextPageToken;
 
   /// The tables present in the requested instance.
@@ -3785,13 +4295,12 @@ class ListTablesResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  /// For example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
   core.String displayName;
 
   /// Cross-service attributes for the location. For example
-  ///
-  ///     {"cloud.googleapis.com/region": "us-east1"}
+  /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
   /// The canonical id for this location. For example: `"us-east1"`.
@@ -3853,8 +4362,8 @@ class Location {
 
 /// A create, update, or delete of a particular column family.
 class Modification {
-  /// Create a new column family with the specified schema, or fail if
-  /// one already exists with the given ID.
+  /// Create a new column family with the specified schema, or fail if one
+  /// already exists with the given ID.
   ColumnFamily create;
 
   /// Drop (delete) the column family with the given ID, or fail if no such
@@ -3864,8 +4373,8 @@ class Modification {
   /// The ID of the column family to be modified.
   core.String id;
 
-  /// Update an existing column family to the specified schema, or fail
-  /// if no column family exists with the given ID.
+  /// Update an existing column family to the specified schema, or fail if no
+  /// column family exists with the given ID.
   ColumnFamily update;
 
   Modification();
@@ -3908,10 +4417,9 @@ class Modification {
 /// google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies
 class ModifyColumnFamiliesRequest {
   /// Required. Modifications to be atomically applied to the specified table's
-  /// families.
-  /// Entries are applied in order, meaning that earlier modifications can be
-  /// masked by later ones (in the case of repeated updates to the same family,
-  /// for example).
+  /// families. Entries are applied in order, meaning that earlier modifications
+  /// can be masked by later ones (in the case of repeated updates to the same
+  /// family, for example).
   core.List<Modification> modifications;
 
   ModifyColumnFamiliesRequest();
@@ -3937,9 +4445,9 @@ class ModifyColumnFamiliesRequest {
 
 /// Read/write requests are routed to the nearest cluster in the instance, and
 /// will fail over to the nearest cluster that is available in the event of
-/// transient errors or delays. Clusters in a region are considered
-/// equidistant. Choosing this option sacrifices read-your-writes consistency
-/// to improve availability.
+/// transient errors or delays. Clusters in a region are considered equidistant.
+/// Choosing this option sacrifices read-your-writes consistency to improve
+/// availability.
 class MultiClusterRoutingUseAny {
   MultiClusterRoutingUseAny();
 
@@ -3955,17 +4463,17 @@ class MultiClusterRoutingUseAny {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -3973,19 +4481,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -4035,13 +4541,92 @@ class Operation {
   }
 }
 
+/// Encapsulates progress related information for a Cloud Bigtable long running
+/// operation.
+class OperationProgress {
+  /// If set, the time at which this operation failed or was completed
+  /// successfully.
+  core.String endTime;
+
+  /// Percent completion of the operation. Values are between 0 and 100
+  /// inclusive.
+  core.int progressPercent;
+
+  /// Time the request was received.
+  core.String startTime;
+
+  OperationProgress();
+
+  OperationProgress.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("progressPercent")) {
+      progressPercent = _json["progressPercent"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (progressPercent != null) {
+      _json["progressPercent"] = progressPercent;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+/// Metadata type for the long-running operation used to track the progress of
+/// optimizations performed on a newly restored table. This long-running
+/// operation is automatically created by the system after the successful
+/// completion of a table restore, and cannot be cancelled.
+class OptimizeRestoredTableMetadata {
+  /// Name of the restored table being optimized.
+  core.String name;
+
+  /// The progress of the post-restore optimizations.
+  OperationProgress progress;
+
+  OptimizeRestoredTableMetadata();
+
+  OptimizeRestoredTableMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("progress")) {
+      progress = new OperationProgress.fromJson(_json["progress"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (progress != null) {
+      _json["progress"] = (progress).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Request message for BigtableInstanceAdmin.PartialUpdateInstance.
 class PartialUpdateInstanceRequest {
   /// Required. The Instance which will (partially) replace the current value.
   Instance instance;
 
-  /// Required. The subset of Instance fields which should be replaced.
-  /// Must be explicitly set.
+  /// Required. The subset of Instance fields which should be replaced. Must be
+  /// explicitly set.
   core.String updateMask;
 
   PartialUpdateInstanceRequest();
@@ -4069,69 +4654,34 @@ class PartialUpdateInstanceRequest {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources.
-///
-///
-/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts,
-/// Google groups, and domains (such as G Suite). A `role` is a named list of
-/// permissions; each `role` can be an IAM predefined role or a user-created
-/// custom role.
-///
-/// Optionally, a `binding` can specify a `condition`, which is a logical
-/// expression that allows access to a resource only if the expression evaluates
-/// to `true`. A condition can add constraints based on attributes of the
-/// request, the resource, or both.
-///
-/// **JSON example:**
-///
-///     {
-///       "bindings": [
-///         {
-///           "role": "roles/resourcemanager.organizationAdmin",
-///           "members": [
-///             "user:mike@example.com",
-///             "group:admins@example.com",
-///             "domain:google.com",
-///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-///           ]
-///         },
-///         {
-///           "role": "roles/resourcemanager.organizationViewer",
-///           "members": ["user:eve@example.com"],
-///           "condition": {
-///             "title": "expirable access",
-///             "description": "Does not grant access after Sep 2020",
-/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-///           }
-///         }
-///       ],
-///       "etag": "BwWWja0YfJA=",
-///       "version": 3
-///     }
-///
-/// **YAML example:**
-///
-///     bindings:
-///     - members:
-///       - user:mike@example.com
-///       - group:admins@example.com
-///       - domain:google.com
-///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
-///       role: roles/resourcemanager.organizationAdmin
-///     - members:
-///       - user:eve@example.com
-///       role: roles/resourcemanager.organizationViewer
-///       condition:
-///         title: expirable access
-///         description: Does not grant access after Sep 2020
-///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-///     - etag: BwWWja0YfJA=
-///     - version: 3
-///
-/// For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// controls for Google Cloud resources. A `Policy` is a collection of
+/// `bindings`. A `binding` binds one or more `members` to a single `role`.
+/// Members can be user accounts, service accounts, Google groups, and domains
+/// (such as G Suite). A `role` is a named list of permissions; each `role` can
+/// be an IAM predefined role or a user-created custom role. For some types of
+/// Google Cloud resources, a `binding` can also specify a `condition`, which is
+/// a logical expression that allows access to a resource only if the expression
+/// evaluates to `true`. A condition can add constraints based on attributes of
+/// the request, the resource, or both. To learn which resources support
+/// conditions in their IAM policies, see the [IAM
+/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// version: 3 For a description of IAM and its features, see the [IAM
+/// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -4141,21 +4691,17 @@ class Policy {
   /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a policy from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other. It is
+  /// strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
   /// ensure that their change will be applied to the same version of the
-  /// policy.
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -4166,29 +4712,21 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Specifies the format of the policy.
-  ///
-  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-  /// are rejected.
-  ///
-  /// Any operation that affects conditional role bindings must specify version
-  /// `3`. This requirement applies to the following operations:
-  ///
-  /// * Getting a policy that includes a conditional role binding
-  /// * Adding a conditional role binding to a policy
-  /// * Changing a conditional role binding in a policy
-  /// * Removing any role binding, with or without a condition, from a policy
-  ///   that includes conditions
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
-  ///
-  /// If a policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset.
+  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+  /// Requests that specify an invalid value are rejected. Any operation that
+  /// affects conditional role bindings must specify version `3`. This
+  /// requirement applies to the following operations: * Getting a policy that
+  /// includes a conditional role binding * Adding a conditional role binding to
+  /// a policy * Changing a conditional role binding in a policy * Removing any
+  /// role binding, with or without a condition, from a policy that includes
+  /// conditions **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost. If a
+  /// policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -4232,20 +4770,156 @@ class Policy {
   }
 }
 
+/// Information about a table restore.
+class RestoreInfo {
+  /// Information about the backup used to restore the table. The backup may no
+  /// longer exist.
+  BackupInfo backupInfo;
+
+  /// The type of the restore source.
+  /// Possible string values are:
+  /// - "RESTORE_SOURCE_TYPE_UNSPECIFIED" : No restore associated.
+  /// - "BACKUP" : A backup was used as the source of the restore.
+  core.String sourceType;
+
+  RestoreInfo();
+
+  RestoreInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("backupInfo")) {
+      backupInfo = new BackupInfo.fromJson(_json["backupInfo"]);
+    }
+    if (_json.containsKey("sourceType")) {
+      sourceType = _json["sourceType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backupInfo != null) {
+      _json["backupInfo"] = (backupInfo).toJson();
+    }
+    if (sourceType != null) {
+      _json["sourceType"] = sourceType;
+    }
+    return _json;
+  }
+}
+
+/// Metadata type for the long-running operation returned by RestoreTable.
+class RestoreTableMetadata {
+  BackupInfo backupInfo;
+
+  /// Name of the table being created and restored to.
+  core.String name;
+
+  /// If exists, the name of the long-running operation that will be used to
+  /// track the post-restore optimization process to optimize the performance of
+  /// the restored table. The metadata type of the long-running operation is
+  /// OptimizeRestoreTableMetadata. The response type is Empty. This
+  /// long-running operation may be automatically created by the system if
+  /// applicable after the RestoreTable long-running operation completes
+  /// successfully. This operation may not be created if the table is already
+  /// optimized or the restore was not successful.
+  core.String optimizeTableOperationName;
+
+  /// The progress of the RestoreTable operation.
+  OperationProgress progress;
+
+  /// The type of the restore source.
+  /// Possible string values are:
+  /// - "RESTORE_SOURCE_TYPE_UNSPECIFIED" : No restore associated.
+  /// - "BACKUP" : A backup was used as the source of the restore.
+  core.String sourceType;
+
+  RestoreTableMetadata();
+
+  RestoreTableMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("backupInfo")) {
+      backupInfo = new BackupInfo.fromJson(_json["backupInfo"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("optimizeTableOperationName")) {
+      optimizeTableOperationName = _json["optimizeTableOperationName"];
+    }
+    if (_json.containsKey("progress")) {
+      progress = new OperationProgress.fromJson(_json["progress"]);
+    }
+    if (_json.containsKey("sourceType")) {
+      sourceType = _json["sourceType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backupInfo != null) {
+      _json["backupInfo"] = (backupInfo).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (optimizeTableOperationName != null) {
+      _json["optimizeTableOperationName"] = optimizeTableOperationName;
+    }
+    if (progress != null) {
+      _json["progress"] = (progress).toJson();
+    }
+    if (sourceType != null) {
+      _json["sourceType"] = sourceType;
+    }
+    return _json;
+  }
+}
+
+/// The request for RestoreTable.
+class RestoreTableRequest {
+  /// Name of the backup from which to restore. Values are of the form
+  /// `projects//instances//clusters//backups/`.
+  core.String backup;
+
+  /// Required. The id of the table to create and restore to. This table must
+  /// not already exist. The `table_id` appended to `parent` forms the full
+  /// table name of the form `projects//instances//tables/`.
+  core.String tableId;
+
+  RestoreTableRequest();
+
+  RestoreTableRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("backup")) {
+      backup = _json["backup"];
+    }
+    if (_json.containsKey("tableId")) {
+      tableId = _json["tableId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backup != null) {
+      _json["backup"] = backup;
+    }
+    if (tableId != null) {
+      _json["tableId"] = tableId;
+    }
+    return _json;
+  }
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects)
-  /// might reject them.
+  /// the policy is limited to a few 10s of KB. An empty policy is a valid
+  /// policy but certain Cloud Platform services (such as Projects) might reject
+  /// them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
-  /// Only
-  /// the fields in the mask will be modified. If no mask is provided, the
-  /// following default mask is used:
-  /// paths: "bindings, etag"
-  /// This field is only used by Cloud IAM.
+  /// Only the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
 
   SetIamPolicyRequest();
@@ -4272,13 +4946,13 @@ class SetIamPolicyRequest {
   }
 }
 
-/// Unconditionally routes all read/write requests to a specific cluster.
-/// This option preserves read-your-writes consistency but does not improve
+/// Unconditionally routes all read/write requests to a specific cluster. This
+/// option preserves read-your-writes consistency but does not improve
 /// availability.
 class SingleClusterRouting {
   /// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are
-  /// allowed by this app profile. It is unsafe to send these requests to
-  /// the same table/row/column in multiple clusters.
+  /// allowed by this app profile. It is unsafe to send these requests to the
+  /// same table/row/column in multiple clusters.
   core.bool allowTransactionalWrites;
 
   /// The cluster to which read/write requests should be routed.
@@ -4342,15 +5016,14 @@ class Split {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -4395,37 +5068,39 @@ class Status {
   }
 }
 
-/// A collection of user data indexed by row, column, and timestamp.
-/// Each table is served using the resources of its parent cluster.
+/// A collection of user data indexed by row, column, and timestamp. Each table
+/// is served using the resources of its parent cluster.
 class Table {
-  /// Output only. Map from cluster ID to per-cluster table state.
-  /// If it could not be determined whether or not the table has data in a
-  /// particular cluster (for example, if its zone is unavailable), then
-  /// there will be an entry for the cluster with UNKNOWN `replication_status`.
-  /// Views: `REPLICATION_VIEW`, `FULL`
+  /// Output only. Map from cluster ID to per-cluster table state. If it could
+  /// not be determined whether or not the table has data in a particular
+  /// cluster (for example, if its zone is unavailable), then there will be an
+  /// entry for the cluster with UNKNOWN `replication_status`. Views:
+  /// `REPLICATION_VIEW`, `FULL`
   core.Map<core.String, ClusterState> clusterStates;
 
-  /// (`CreationOnly`)
   /// The column families configured for this table, mapped by column family ID.
   /// Views: `SCHEMA_VIEW`, `FULL`
   core.Map<core.String, ColumnFamily> columnFamilies;
 
-  /// (`CreationOnly`)
-  /// The granularity (i.e. `MILLIS`) at which timestamps are stored in
-  /// this table. Timestamps not matching the granularity will be rejected.
-  /// If unspecified at creation time, the value will be set to `MILLIS`.
-  /// Views: `SCHEMA_VIEW`, `FULL`.
+  /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored
+  /// in this table. Timestamps not matching the granularity will be rejected.
+  /// If unspecified at creation time, the value will be set to `MILLIS`. Views:
+  /// `SCHEMA_VIEW`, `FULL`.
   /// Possible string values are:
   /// - "TIMESTAMP_GRANULARITY_UNSPECIFIED" : The user did not specify a
-  /// granularity. Should not be returned.
-  /// When specified during table creation, MILLIS will be used.
+  /// granularity. Should not be returned. When specified during table creation,
+  /// MILLIS will be used.
   /// - "MILLIS" : The table keeps data versioned at a granularity of 1ms.
   core.String granularity;
 
-  /// Output only. The unique name of the table. Values are of the form
-  /// `projects/<project>/instances/<instance>/tables/_a-zA-Z0-9*`.
-  /// Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+  /// The unique name of the table. Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views:
+  /// `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
   core.String name;
+
+  /// Output only. If this table was restored from another data source (e.g. a
+  /// backup), this field will be populated with information about the restore.
+  RestoreInfo restoreInfo;
 
   Table();
 
@@ -4445,6 +5120,9 @@ class Table {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("restoreInfo")) {
+      restoreInfo = new RestoreInfo.fromJson(_json["restoreInfo"]);
     }
   }
 
@@ -4467,15 +5145,18 @@ class Table {
     if (name != null) {
       _json["name"] = name;
     }
+    if (restoreInfo != null) {
+      _json["restoreInfo"] = (restoreInfo).toJson();
+    }
     return _json;
   }
 }
 
 /// Progress info for copying a table's data to the new cluster.
 class TableProgress {
-  /// Estimate of the number of bytes copied so far for this table.
-  /// This will eventually reach 'estimated_size_bytes' unless the table copy
-  /// is CANCELLED.
+  /// Estimate of the number of bytes copied so far for this table. This will
+  /// eventually reach 'estimated_size_bytes' unless the table copy is
+  /// CANCELLED.
   core.String estimatedCopiedBytes;
 
   /// Estimate of the size of the table to be copied.
@@ -4488,8 +5169,7 @@ class TableProgress {
   /// - "COPYING" : The table is actively being copied to the new cluster.
   /// - "COMPLETED" : The table has been fully copied to the new cluster.
   /// - "CANCELLED" : The table was deleted before it finished copying to the
-  /// new cluster.
-  /// Note that tables deleted after completion will stay marked as
+  /// new cluster. Note that tables deleted after completion will stay marked as
   /// COMPLETED, not CANCELLED.
   core.String state;
 
@@ -4527,8 +5207,8 @@ class TableProgress {
 class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`. Permissions with
   /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// information see [IAM
+  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();

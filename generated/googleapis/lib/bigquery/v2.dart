@@ -253,12 +253,12 @@ class DatasetsResourceApi {
   /// "labels.department:receiving labels.active". See Filtering datasets using
   /// labels for details.
   ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
+  /// [all] - Whether to list all datasets, including hidden ones
   ///
   /// [maxResults] - The maximum number of results to return
   ///
-  /// [all] - Whether to list all datasets, including hidden ones
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -272,9 +272,9 @@ class DatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future<DatasetList> list(core.String projectId,
       {core.String filter,
-      core.String pageToken,
-      core.int maxResults,
       core.bool all,
+      core.int maxResults,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -289,14 +289,14 @@ class DatasetsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (all != null) {
+      _queryParams["all"] = ["${all}"];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (all != null) {
-      _queryParams["all"] = ["${all}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -569,20 +569,20 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the query job
   ///
+  /// [timeoutMs] - How long to wait for the query to complete, in milliseconds,
+  /// before returning. Default is 10 seconds. If the timeout passes before the
+  /// job completes, the 'jobComplete' field in the response will be false
+  ///
   /// [startIndex] - Zero-based index of the starting row
   ///
   /// [location] - The geographic location where the job should run. Required
   /// except for US and EU. See details at
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   ///
+  /// [maxResults] - Maximum number of results to read
+  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
-  ///
-  /// [timeoutMs] - How long to wait for the query to complete, in milliseconds,
-  /// before returning. Default is 10 seconds. If the timeout passes before the
-  /// job completes, the 'jobComplete' field in the response will be false
-  ///
-  /// [maxResults] - Maximum number of results to read
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -596,11 +596,11 @@ class JobsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetQueryResultsResponse> getQueryResults(
       core.String projectId, core.String jobId,
-      {core.String startIndex,
+      {core.int timeoutMs,
+      core.String startIndex,
       core.String location,
-      core.String pageToken,
-      core.int timeoutMs,
       core.int maxResults,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -615,20 +615,20 @@ class JobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
+    if (timeoutMs != null) {
+      _queryParams["timeoutMs"] = ["${timeoutMs}"];
+    }
     if (startIndex != null) {
       _queryParams["startIndex"] = [startIndex];
     }
     if (location != null) {
       _queryParams["location"] = [location];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (timeoutMs != null) {
-      _queryParams["timeoutMs"] = ["${timeoutMs}"];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -728,31 +728,31 @@ class JobsResourceApi {
   ///
   /// [projectId] - Project ID of the jobs to list
   ///
-  /// [maxResults] - Maximum number of results to return
+  /// [stateFilter] - Filter for job state
+  ///
+  /// [allUsers] - Whether to display jobs owned by all users in the project.
+  /// Default false
+  ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
+  ///
+  /// [minCreationTime] - Min value for job creation time, in milliseconds since
+  /// the POSIX epoch. If set, only jobs created after or at this timestamp are
+  /// returned
+  ///
+  /// [parentJobId] - If set, retrieves only jobs whose parent is this job.
+  /// Otherwise, retrieves only jobs which have no parent
   ///
   /// [maxCreationTime] - Max value for job creation time, in milliseconds since
   /// the POSIX epoch. If set, only jobs created before or at this timestamp are
   /// returned
-  ///
-  /// [stateFilter] - Filter for job state
   ///
   /// [projection] - Restrict information returned to a set of selected fields
   /// Possible string values are:
   /// - "full" : Includes all job data
   /// - "minimal" : Does not include the job configuration
   ///
-  /// [parentJobId] - If set, retrieves only jobs whose parent is this job.
-  /// Otherwise, retrieves only jobs which have no parent
-  ///
-  /// [minCreationTime] - Min value for job creation time, in milliseconds since
-  /// the POSIX epoch. If set, only jobs created after or at this timestamp are
-  /// returned
-  ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
-  ///
-  /// [allUsers] - Whether to display jobs owned by all users in the project.
-  /// Default false
+  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -765,14 +765,14 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<JobList> list(core.String projectId,
-      {core.int maxResults,
-      core.String maxCreationTime,
-      core.List<core.String> stateFilter,
-      core.String projection,
-      core.String parentJobId,
-      core.String minCreationTime,
-      core.String pageToken,
+      {core.List<core.String> stateFilter,
       core.bool allUsers,
+      core.String pageToken,
+      core.String minCreationTime,
+      core.String parentJobId,
+      core.String maxCreationTime,
+      core.String projection,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -784,29 +784,29 @@ class JobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (maxCreationTime != null) {
-      _queryParams["maxCreationTime"] = [maxCreationTime];
-    }
     if (stateFilter != null) {
       _queryParams["stateFilter"] = stateFilter;
     }
-    if (projection != null) {
-      _queryParams["projection"] = [projection];
-    }
-    if (parentJobId != null) {
-      _queryParams["parentJobId"] = [parentJobId];
-    }
-    if (minCreationTime != null) {
-      _queryParams["minCreationTime"] = [minCreationTime];
+    if (allUsers != null) {
+      _queryParams["allUsers"] = ["${allUsers}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (allUsers != null) {
-      _queryParams["allUsers"] = ["${allUsers}"];
+    if (minCreationTime != null) {
+      _queryParams["minCreationTime"] = [minCreationTime];
+    }
+    if (parentJobId != null) {
+      _queryParams["parentJobId"] = [parentJobId];
+    }
+    if (maxCreationTime != null) {
+      _queryParams["maxCreationTime"] = [maxCreationTime];
+    }
+    if (projection != null) {
+      _queryParams["projection"] = [projection];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1015,12 +1015,11 @@ class ModelsResourceApi {
   /// Value must have pattern "^[^/]+$".
   ///
   /// [pageToken] - Page token, returned by a previous call to request the next
-  /// page of
-  /// results
+  /// page of results
   ///
   /// [maxResults] - The maximum number of results to return in a single
-  /// response page.
-  /// Leverage the page tokens to iterate through the entire collection.
+  /// response page. Leverage the page tokens to iterate through the entire
+  /// collection.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1198,10 +1197,10 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [maxResults] - Maximum number of results to return
+  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
-  ///
-  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1214,7 +1213,7 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProjectList> list(
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1222,11 +1221,11 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1325,8 +1324,7 @@ class RoutinesResourceApi {
   /// Value must have pattern "^[^/]+$".
   ///
   /// [readMask] - If set, only the Routine fields in the field mask are
-  /// returned in the
-  /// response. If unset, all Routine fields are returned.
+  /// returned in the response. If unset, all Routine fields are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1452,25 +1450,22 @@ class RoutinesResourceApi {
   /// Value must have pattern "^[^/]+$".
   ///
   /// [readMask] - If set, then only the Routine fields in the field mask, as
-  /// well as
-  /// project_id, dataset_id and routine_id, are returned in the response.
-  /// If unset, then the following Routine fields are returned:
-  /// etag, project_id, dataset_id, routine_id, routine_type, creation_time,
+  /// well as project_id, dataset_id and routine_id, are returned in the
+  /// response. If unset, then the following Routine fields are returned: etag,
+  /// project_id, dataset_id, routine_id, routine_type, creation_time,
   /// last_modified_time, and language.
   ///
-  /// [filter] - If set, then only the Routines matching this filter are
-  /// returned.
-  /// The current supported form is either "routine_type:<RoutineType>" or
-  /// "routineType:<RoutineType>", where <RoutineType> is a RoutineType enum.
-  /// Example: "routineType:SCALAR_FUNCTION".
-  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of
-  /// results
+  /// page of results
+  ///
+  /// [filter] - If set, then only the Routines matching this filter are
+  /// returned. The current supported form is either "routine_type:" or
+  /// "routineType:", where is a RoutineType enum. Example:
+  /// "routineType:SCALAR_FUNCTION".
   ///
   /// [maxResults] - The maximum number of results to return in a single
-  /// response page.
-  /// Leverage the page tokens to iterate through the entire collection.
+  /// response page. Leverage the page tokens to iterate through the entire
+  /// collection.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1485,8 +1480,8 @@ class RoutinesResourceApi {
   async.Future<ListRoutinesResponse> list(
       core.String projectId, core.String datasetId,
       {core.String readMask,
-      core.String filter,
       core.String pageToken,
+      core.String filter,
       core.int maxResults,
       core.String $fields}) {
     var _url;
@@ -1505,11 +1500,11 @@ class RoutinesResourceApi {
     if (readMask != null) {
       _queryParams["readMask"] = [readMask];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1688,15 +1683,15 @@ class TabledataResourceApi {
   ///
   /// [tableId] - Table ID of the table to read
   ///
-  /// [selectedFields] - List of fields to return (comma-separated). If
-  /// unspecified, all fields are returned
-  ///
-  /// [startIndex] - Zero-based index of the starting row to read
-  ///
   /// [pageToken] - Page token, returned by a previous call, identifying the
   /// result set
   ///
   /// [maxResults] - Maximum number of results to return
+  ///
+  /// [selectedFields] - List of fields to return (comma-separated). If
+  /// unspecified, all fields are returned
+  ///
+  /// [startIndex] - Zero-based index of the starting row to read
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1710,10 +1705,10 @@ class TabledataResourceApi {
   /// this method will complete with the same error.
   async.Future<TableDataList> list(
       core.String projectId, core.String datasetId, core.String tableId,
-      {core.String selectedFields,
-      core.String startIndex,
-      core.String pageToken,
+      {core.String pageToken,
       core.int maxResults,
+      core.String selectedFields,
+      core.String startIndex,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1731,17 +1726,17 @@ class TabledataResourceApi {
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
     }
-    if (selectedFields != null) {
-      _queryParams["selectedFields"] = [selectedFields];
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = [startIndex];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (selectedFields != null) {
+      _queryParams["selectedFields"] = [selectedFields];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = [startIndex];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1897,17 +1892,16 @@ class TablesResourceApi {
     return _response.then((data) => new Table.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/datasets/[^/]+/tables/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2018,10 +2012,10 @@ class TablesResourceApi {
   ///
   /// [datasetId] - Dataset ID of the tables to list
   ///
+  /// [maxResults] - Maximum number of results to return
+  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
-  ///
-  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2034,7 +2028,7 @@ class TablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TableList> list(core.String projectId, core.String datasetId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2048,11 +2042,11 @@ class TablesResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2141,18 +2135,16 @@ class TablesResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
-  ///
-  /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED`
-  /// errors.
+  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
+  /// `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/datasets/[^/]+/tables/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2196,21 +2188,19 @@ class TablesResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/datasets/[^/]+/tables/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2326,38 +2316,36 @@ class TablesResourceApi {
 /// Aggregate metrics for classification/classifier models. For multi-class
 /// models, the metrics are either macro-averaged or micro-averaged. When
 /// macro-averaged, the metrics are calculated for each label and then an
-/// unweighted average is taken of those values. When micro-averaged, the
-/// metric is calculated globally by counting the total number of correctly
-/// predicted rows.
+/// unweighted average is taken of those values. When micro-averaged, the metric
+/// is calculated globally by counting the total number of correctly predicted
+/// rows.
 class AggregateClassificationMetrics {
   /// Accuracy is the fraction of predictions given the correct label. For
   /// multiclass this is a micro-averaged metric.
   core.double accuracy;
 
-  /// The F1 score is an average of recall and precision. For multiclass
-  /// this is a macro-averaged metric.
+  /// The F1 score is an average of recall and precision. For multiclass this is
+  /// a macro-averaged metric.
   core.double f1Score;
 
   /// Logarithmic Loss. For multiclass this is a macro-averaged metric.
   core.double logLoss;
 
-  /// Precision is the fraction of actual positive predictions that had
-  /// positive actual labels. For multiclass this is a macro-averaged
-  /// metric treating each class as a binary classifier.
+  /// Precision is the fraction of actual positive predictions that had positive
+  /// actual labels. For multiclass this is a macro-averaged metric treating
+  /// each class as a binary classifier.
   core.double precision;
 
   /// Recall is the fraction of actual positive labels that were given a
   /// positive prediction. For multiclass this is a macro-averaged metric.
   core.double recall;
 
-  /// Area Under a ROC Curve. For multiclass this is a macro-averaged
-  /// metric.
+  /// Area Under a ROC Curve. For multiclass this is a macro-averaged metric.
   core.double rocAuc;
 
-  /// Threshold at which the metrics are computed. For binary
-  /// classification models this is the positive class threshold.
-  /// For multi-class classfication models this is the confidence
-  /// threshold.
+  /// Threshold at which the metrics are computed. For binary classification
+  /// models this is the positive class threshold. For multi-class classfication
+  /// models this is the confidence threshold.
   core.double threshold;
 
   AggregateClassificationMetrics();
@@ -2420,18 +2408,16 @@ class Argument {
   /// Possible string values are:
   /// - "ARGUMENT_KIND_UNSPECIFIED"
   /// - "FIXED_TYPE" : The argument is a variable with fully specified type,
-  /// which can be a
-  /// struct or an array, but not a table.
+  /// which can be a struct or an array, but not a table.
   /// - "ANY_TYPE" : The argument is any type, including struct or array, but
-  /// not a table.
-  /// To be added: FIXED_TABLE, ANY_TABLE
+  /// not a table. To be added: FIXED_TABLE, ANY_TABLE
   core.String argumentKind;
 
   /// Required unless argument_kind = ANY_TYPE.
   StandardSqlDataType dataType;
 
-  /// Optional. Specifies whether the argument is input or output.
-  /// Can be set for procedures only.
+  /// Optional. Specifies whether the argument is input or output. Can be set
+  /// for procedures only.
   /// Possible string values are:
   /// - "MODE_UNSPECIFIED"
   /// - "IN" : The argument is input-only.
@@ -2567,6 +2553,93 @@ class ArimaFittingMetrics {
   }
 }
 
+/// Model evaluation metrics for ARIMA forecasting models.
+class ArimaForecastingMetrics {
+  /// Arima model fitting metrics.
+  core.List<ArimaFittingMetrics> arimaFittingMetrics;
+
+  /// Repeated as there can be many metric sets (one for each model) in
+  /// auto-arima and the large-scale case.
+  core.List<ArimaSingleModelForecastingMetrics>
+      arimaSingleModelForecastingMetrics;
+
+  /// Whether Arima model fitted with drift or not. It is always false when d is
+  /// not 1.
+  core.List<core.bool> hasDrift;
+
+  /// Non-seasonal order.
+  core.List<ArimaOrder> nonSeasonalOrder;
+
+  /// Seasonal periods. Repeated because multiple periods are supported for one
+  /// time series.
+  core.List<core.String> seasonalPeriods;
+
+  /// Id to differentiate different time series for the large-scale case.
+  core.List<core.String> timeSeriesId;
+
+  ArimaForecastingMetrics();
+
+  ArimaForecastingMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("arimaFittingMetrics")) {
+      arimaFittingMetrics = (_json["arimaFittingMetrics"] as core.List)
+          .map<ArimaFittingMetrics>(
+              (value) => new ArimaFittingMetrics.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("arimaSingleModelForecastingMetrics")) {
+      arimaSingleModelForecastingMetrics =
+          (_json["arimaSingleModelForecastingMetrics"] as core.List)
+              .map<ArimaSingleModelForecastingMetrics>((value) =>
+                  new ArimaSingleModelForecastingMetrics.fromJson(value))
+              .toList();
+    }
+    if (_json.containsKey("hasDrift")) {
+      hasDrift = (_json["hasDrift"] as core.List).cast<core.bool>();
+    }
+    if (_json.containsKey("nonSeasonalOrder")) {
+      nonSeasonalOrder = (_json["nonSeasonalOrder"] as core.List)
+          .map<ArimaOrder>((value) => new ArimaOrder.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("seasonalPeriods")) {
+      seasonalPeriods =
+          (_json["seasonalPeriods"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("timeSeriesId")) {
+      timeSeriesId = (_json["timeSeriesId"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (arimaFittingMetrics != null) {
+      _json["arimaFittingMetrics"] =
+          arimaFittingMetrics.map((value) => (value).toJson()).toList();
+    }
+    if (arimaSingleModelForecastingMetrics != null) {
+      _json["arimaSingleModelForecastingMetrics"] =
+          arimaSingleModelForecastingMetrics
+              .map((value) => (value).toJson())
+              .toList();
+    }
+    if (hasDrift != null) {
+      _json["hasDrift"] = hasDrift;
+    }
+    if (nonSeasonalOrder != null) {
+      _json["nonSeasonalOrder"] =
+          nonSeasonalOrder.map((value) => (value).toJson()).toList();
+    }
+    if (seasonalPeriods != null) {
+      _json["seasonalPeriods"] = seasonalPeriods;
+    }
+    if (timeSeriesId != null) {
+      _json["timeSeriesId"] = timeSeriesId;
+    }
+    return _json;
+  }
+}
+
 /// Arima model information.
 class ArimaModelInfo {
   /// Arima coefficients.
@@ -2575,15 +2648,15 @@ class ArimaModelInfo {
   /// Arima fitting metrics.
   ArimaFittingMetrics arimaFittingMetrics;
 
-  /// Whether Arima model fitted with drift or not. It is always false
-  /// when d is not 1.
+  /// Whether Arima model fitted with drift or not. It is always false when d is
+  /// not 1.
   core.bool hasDrift;
 
   /// Non-seasonal order.
   ArimaOrder nonSeasonalOrder;
 
-  /// Seasonal periods. Repeated because multiple periods are supported
-  /// for one time series.
+  /// Seasonal periods. Repeated because multiple periods are supported for one
+  /// time series.
   core.List<core.String> seasonalPeriods;
 
   /// The id to indicate different time series.
@@ -2684,12 +2757,12 @@ class ArimaOrder {
 /// (Auto-)arima fitting result. Wrap everything in ArimaResult for easier
 /// refactoring if we want to use model-specific iteration results.
 class ArimaResult {
-  /// This message is repeated because there are multiple arima models
-  /// fitted in auto-arima. For non-auto-arima model, its size is one.
+  /// This message is repeated because there are multiple arima models fitted in
+  /// auto-arima. For non-auto-arima model, its size is one.
   core.List<ArimaModelInfo> arimaModelInfo;
 
-  /// Seasonal periods. Repeated because multiple periods are supported for
-  /// one time series.
+  /// Seasonal periods. Repeated because multiple periods are supported for one
+  /// time series.
   core.List<core.String> seasonalPeriods;
 
   ArimaResult();
@@ -2720,64 +2793,92 @@ class ArimaResult {
   }
 }
 
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditLogConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:jose@example.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "sampleservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:aliya@example.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// Model evaluation metrics for a single ARIMA forecasting model.
+class ArimaSingleModelForecastingMetrics {
+  /// Arima fitting metrics.
+  ArimaFittingMetrics arimaFittingMetrics;
+
+  /// Is arima model fitted with drift or not. It is always false when d is not
+  /// 1.
+  core.bool hasDrift;
+
+  /// Non-seasonal order.
+  ArimaOrder nonSeasonalOrder;
+
+  /// Seasonal periods. Repeated because multiple periods are supported for one
+  /// time series.
+  core.List<core.String> seasonalPeriods;
+
+  /// The id to indicate different time series.
+  core.String timeSeriesId;
+
+  ArimaSingleModelForecastingMetrics();
+
+  ArimaSingleModelForecastingMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("arimaFittingMetrics")) {
+      arimaFittingMetrics =
+          new ArimaFittingMetrics.fromJson(_json["arimaFittingMetrics"]);
+    }
+    if (_json.containsKey("hasDrift")) {
+      hasDrift = _json["hasDrift"];
+    }
+    if (_json.containsKey("nonSeasonalOrder")) {
+      nonSeasonalOrder = new ArimaOrder.fromJson(_json["nonSeasonalOrder"]);
+    }
+    if (_json.containsKey("seasonalPeriods")) {
+      seasonalPeriods =
+          (_json["seasonalPeriods"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("timeSeriesId")) {
+      timeSeriesId = _json["timeSeriesId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (arimaFittingMetrics != null) {
+      _json["arimaFittingMetrics"] = (arimaFittingMetrics).toJson();
+    }
+    if (hasDrift != null) {
+      _json["hasDrift"] = hasDrift;
+    }
+    if (nonSeasonalOrder != null) {
+      _json["nonSeasonalOrder"] = (nonSeasonalOrder).toJson();
+    }
+    if (seasonalPeriods != null) {
+      _json["seasonalPeriods"] = seasonalPeriods;
+    }
+    if (timeSeriesId != null) {
+      _json["timeSeriesId"] = timeSeriesId;
+    }
+    return _json;
+  }
+}
+
+/// Specifies the audit configuration for a service. The configuration
+/// determines which permission types are logged, and what identities, if any,
+/// are exempted from logging. An AuditConfig must have one or more
+/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
+/// specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
+/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging. For example,
+  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
+  /// special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -2807,29 +2908,14 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:jose@example.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// jose@example.com from DATA_READ logging.
+/// Provides the configuration for logging a type of permissions. Example: {
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
+/// DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
+  /// permission. Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -3285,68 +3371,48 @@ class BinaryConfusionMatrix {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  ///
-  /// If the condition evaluates to `true`, then this binding applies to the
-  /// current request.
-  ///
-  /// If the condition evaluates to `false`, then this binding does not apply to
+  /// The condition that is associated with this binding. If the condition
+  /// evaluates to `true`, then this binding applies to the current request. If
+  /// the condition evaluates to `false`, then this binding does not apply to
   /// the current request. However, a different role binding might grant the
-  /// same
-  /// role to one or more of the members in this binding.
-  ///
-  /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
+  /// same role to one or more of the members in this binding. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
-  /// `members` can have the following values:
-  ///
-  /// * `allUsers`: A special identifier that represents anyone who is
-  ///    on the internet; with or without a Google account.
-  ///
-  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
-  ///    who is authenticated with a Google account or a service account.
-  ///
-  /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@example.com` .
-  ///
-  ///
-  /// * `serviceAccount:{emailid}`: An email address that represents a service
-  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  ///
-  /// * `group:{emailid}`: An email address that represents a Google group.
-  ///    For example, `admins@example.com`.
-  ///
-  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a user that has been recently deleted. For
-  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
-  /// recovered, this value reverts to `user:{emailid}` and the recovered user
-  ///    retains the role in the binding.
-  ///
-  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
-  /// (plus
-  /// unique identifier) representing a service account that has been recently
-  ///    deleted. For example,
-  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-  ///    If the service account is undeleted, this value reverts to
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
-  ///    role in the binding.
-  ///
-  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a Google group that has been recently
-  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-  /// the group is recovered, this value reverts to `group:{emailid}` and the
-  ///    recovered group retains the role in the binding.
-  ///
-  ///
-  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
-  ///    users of that domain. For example, `google.com` or `example.com`.
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`.
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`. For example, `roles/viewer`,
+  /// `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -3592,10 +3658,10 @@ class BqmlTrainingRun {
 
 /// Representative value of a categorical feature.
 class CategoricalValue {
-  /// Counts of all categories for the categorical feature. If there are
-  /// more than ten categories, we return top ten (by count) and return
-  /// one more CategoryCount with category "_OTHER_" and count as
-  /// aggregate counts of remaining categories.
+  /// Counts of all categories for the categorical feature. If there are more
+  /// than ten categories, we return top ten (by count) and return one more
+  /// CategoryCount with category "_OTHER_" and count as aggregate counts of
+  /// remaining categories.
   core.List<CategoryCount> categoryCounts;
 
   CategoricalValue();
@@ -3624,8 +3690,7 @@ class CategoryCount {
   /// The name of category.
   core.String category;
 
-  /// The count of training samples matching the category within the
-  /// cluster.
+  /// The count of training samples matching the category within the cluster.
   core.String count;
 
   CategoryCount();
@@ -3701,8 +3766,8 @@ class ClusterInfo {
   /// Centroid id.
   core.String centroidId;
 
-  /// Cluster radius, the average distance from centroid
-  /// to each point assigned to the cluster.
+  /// Cluster radius, the average distance from centroid to each point assigned
+  /// to the cluster.
   core.double clusterRadius;
 
   /// Cluster size, the total number of points assigned to the cluster.
@@ -3809,8 +3874,8 @@ class ClusteringMetrics {
 
 /// Confusion matrix for multi-class classification models.
 class ConfusionMatrix {
-  /// Confidence threshold used when computing the entries of the
-  /// confusion matrix.
+  /// Confidence threshold used when computing the entries of the confusion
+  /// matrix.
   core.double confidenceThreshold;
 
   /// One row per actual label.
@@ -4173,6 +4238,9 @@ class Dataset {
   /// is US. See details at https://cloud.google.com/bigquery/docs/locations.
   core.String location;
 
+  /// [Output-only] Reserved for future use.
+  core.bool satisfiesPZS;
+
   /// [Output-only] A URL that can be used to access the resource again. You can
   /// use this URL in Get or Update requests to the resource.
   core.String selfLink;
@@ -4226,6 +4294,9 @@ class Dataset {
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
+    if (_json.containsKey("satisfiesPZS")) {
+      satisfiesPZS = _json["satisfiesPZS"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -4276,6 +4347,9 @@ class Dataset {
     }
     if (location != null) {
       _json["location"] = location;
+    }
+    if (satisfiesPZS != null) {
+      _json["satisfiesPZS"] = satisfiesPZS;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -4524,9 +4598,8 @@ class Entry {
   /// Number of items being predicted as this label.
   core.String itemCount;
 
-  /// The predicted label. For confidence_threshold > 0, we will
-  /// also add an entry indicating the number of items under the
-  /// confidence threshold.
+  /// The predicted label. For confidence_threshold > 0, we will also add an
+  /// entry indicating the number of items under the confidence threshold.
   core.String predictedLabel;
 
   Entry();
@@ -4607,6 +4680,9 @@ class ErrorProto {
 /// data or just the eval data based on whether eval data was used during
 /// training. These are not present for imported models.
 class EvaluationMetrics {
+  /// Populated for ARIMA models.
+  ArimaForecastingMetrics arimaForecastingMetrics;
+
   /// Populated for binary classification/classifier models.
   BinaryClassificationMetrics binaryClassificationMetrics;
 
@@ -4616,8 +4692,7 @@ class EvaluationMetrics {
   /// Populated for multi-class classification/classifier models.
   MultiClassClassificationMetrics multiClassClassificationMetrics;
 
-  /// [Alpha] Populated for implicit feedback type matrix factorization
-  /// models.
+  /// Populated for implicit feedback type matrix factorization models.
   RankingMetrics rankingMetrics;
 
   /// Populated for regression models and explicit feedback type matrix
@@ -4627,6 +4702,10 @@ class EvaluationMetrics {
   EvaluationMetrics();
 
   EvaluationMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("arimaForecastingMetrics")) {
+      arimaForecastingMetrics = new ArimaForecastingMetrics.fromJson(
+          _json["arimaForecastingMetrics"]);
+    }
     if (_json.containsKey("binaryClassificationMetrics")) {
       binaryClassificationMetrics = new BinaryClassificationMetrics.fromJson(
           _json["binaryClassificationMetrics"]);
@@ -4652,6 +4731,9 @@ class EvaluationMetrics {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (arimaForecastingMetrics != null) {
+      _json["arimaForecastingMetrics"] = (arimaForecastingMetrics).toJson();
+    }
     if (binaryClassificationMetrics != null) {
       _json["binaryClassificationMetrics"] =
           (binaryClassificationMetrics).toJson();
@@ -4993,36 +5075,20 @@ class ExplainQueryStep {
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec.
-///
-/// Example (Comparison):
-///
-///     title: "Summary size limit"
-///     description: "Determines if a summary is less than 100 chars"
-///     expression: "document.summary.size() < 100"
-///
-/// Example (Equality):
-///
-///     title: "Requestor is owner"
-///     description: "Determines if requestor is the document owner"
-///     expression: "document.owner == request.auth.claims.email"
-///
-/// Example (Logic):
-///
-///     title: "Public documents"
+/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
 /// description: "Determine whether the document should be publicly visible"
-///     expression: "document.type != 'private' && document.type != 'internal'"
-///
-/// Example (Data Manipulation):
-///
-///     title: "Notification string"
-///     description: "Create a notification string with a timestamp."
-///     expression: "'New message received at ' + string(document.create_time)"
-///
-/// The exact variables and functions that may be referenced within an
-/// expression
-/// are determined by the service that evaluates it. See the service
-/// documentation for additional information.
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
 class Expr {
   /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
@@ -5036,9 +5102,8 @@ class Expr {
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
+  /// Optional. Title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
   Expr();
@@ -5090,6 +5155,9 @@ class ExternalDataConfiguration {
   /// for Google Cloud Bigtable, Google Cloud Datastore backups and Avro
   /// formats.
   core.String compression;
+
+  /// [Optional, Trusted Tester] Connection for external data source.
+  core.String connectionId;
 
   /// Additional properties to set if sourceFormat is set to CSV.
   CsvOptions csvOptions;
@@ -5153,6 +5221,9 @@ class ExternalDataConfiguration {
     if (_json.containsKey("compression")) {
       compression = _json["compression"];
     }
+    if (_json.containsKey("connectionId")) {
+      connectionId = _json["connectionId"];
+    }
     if (_json.containsKey("csvOptions")) {
       csvOptions = new CsvOptions.fromJson(_json["csvOptions"]);
     }
@@ -5193,6 +5264,9 @@ class ExternalDataConfiguration {
     if (compression != null) {
       _json["compression"] = compression;
     }
+    if (connectionId != null) {
+      _json["connectionId"] = connectionId;
+    }
     if (csvOptions != null) {
       _json["csvOptions"] = (csvOptions).toJson();
     }
@@ -5229,8 +5303,7 @@ class FeatureValue {
   /// The feature column name.
   core.String featureColumn;
 
-  /// The numerical feature value. This is the centroid value for this
-  /// feature.
+  /// The numerical feature value. This is the centroid value for this feature.
   core.double numericalValue;
 
   FeatureValue();
@@ -5290,18 +5363,12 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
-  ///
-  /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
+  /// Optional. The policy format version to be returned. Valid values are 0, 1,
+  /// and 3. Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional bindings must specify version 3. Policies
+  /// without any conditional bindings may specify any valid value or leave the
+  /// field unset. To learn which resources support conditions in their IAM
+  /// policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int requestedPolicyVersion;
 
@@ -5539,19 +5606,27 @@ class GoogleSheetsOptions {
 }
 
 class HivePartitioningOptions {
-  /// [Optional, Trusted Tester] When set, what mode of hive partitioning to use
-  /// when reading data. Two modes are supported. (1) AUTO: automatically infer
+  /// [Optional] When set, what mode of hive partitioning to use when reading
+  /// data. The following modes are supported. (1) AUTO: automatically infer
   /// partition key name(s) and type(s). (2) STRINGS: automatically infer
-  /// partition key name(s). All types are interpreted as strings. Not all
-  /// storage formats support hive partitioning. Requesting hive partitioning on
-  /// an unsupported format will lead to an error. Currently supported types
+  /// partition key name(s). All types are interpreted as strings. (3) CUSTOM:
+  /// partition key schema is encoded in the source URI prefix. Not all storage
+  /// formats support hive partitioning. Requesting hive partitioning on an
+  /// unsupported format will lead to an error. Currently supported types
   /// include: AVRO, CSV, JSON, ORC and Parquet.
   core.String mode;
 
-  /// [Optional, Trusted Tester] When hive partition detection is requested, a
-  /// common prefix for all source uris should be supplied. The prefix must end
-  /// immediately before the partition key encoding begins. For example,
-  /// consider files following this data layout.
+  /// [Optional] If set to true, queries over this table require a partition
+  /// filter that can be used for partition elimination to be specified. Note
+  /// that this field should only be true when creating a permanent external
+  /// table or querying a temporary external table. Hive-partitioned loads with
+  /// requirePartitionFilter explicitly set to true will fail.
+  core.bool requirePartitionFilter;
+
+  /// [Optional] When hive partition detection is requested, a common prefix for
+  /// all source uris should be supplied. The prefix must end immediately before
+  /// the partition key encoding begins. For example, consider files following
+  /// this data layout.
   /// gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro
   /// gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When
   /// hive partitioning is requested with either AUTO or STRINGS detection, the
@@ -5565,6 +5640,9 @@ class HivePartitioningOptions {
     if (_json.containsKey("mode")) {
       mode = _json["mode"];
     }
+    if (_json.containsKey("requirePartitionFilter")) {
+      requirePartitionFilter = _json["requirePartitionFilter"];
+    }
     if (_json.containsKey("sourceUriPrefix")) {
       sourceUriPrefix = _json["sourceUriPrefix"];
     }
@@ -5575,6 +5653,9 @@ class HivePartitioningOptions {
         new core.Map<core.String, core.Object>();
     if (mode != null) {
       _json["mode"] = mode;
+    }
+    if (requirePartitionFilter != null) {
+      _json["requirePartitionFilter"] = requirePartitionFilter;
     }
     if (sourceUriPrefix != null) {
       _json["sourceUriPrefix"] = sourceUriPrefix;
@@ -5892,10 +5973,10 @@ class JobConfigurationExtract {
   core.String compression;
 
   /// [Optional] The exported file format. Possible values include CSV,
-  /// NEWLINE_DELIMITED_JSON or AVRO for tables and ML_TF_SAVED_MODEL or
-  /// ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables
-  /// with nested or repeated fields cannot be exported as CSV. The default
-  /// value for models is ML_TF_SAVED_MODEL.
+  /// NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL
+  /// or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV.
+  /// Tables with nested or repeated fields cannot be exported as CSV. The
+  /// default value for models is ML_TF_SAVED_MODEL.
   core.String destinationFormat;
 
   /// [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI
@@ -6023,6 +6104,26 @@ class JobConfigurationLoad {
   /// The default value is CREATE_IF_NEEDED. Creation, truncation and append
   /// actions occur as one atomic update upon job completion.
   core.String createDisposition;
+
+  /// [Trusted Tester] Defines the list of possible SQL data types to which the
+  /// source decimal values are converted. This list and the precision and the
+  /// scale parameters of the decimal field determine the target type. In the
+  /// order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the
+  /// specified list and if it supports the precision and the scale. STRING
+  /// supports all precision and scale values. If none of the listed types
+  /// supports the precision and the scale, the type supporting the widest range
+  /// in the specified list is picked, and if a value exceeds the supported
+  /// range when reading the data, an error will be thrown. For example: suppose
+  /// decimal_target_type = ["NUMERIC", "BIGNUMERIC"]. Then if (precision,scale)
+  /// is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30
+  /// integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10
+  /// fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC
+  /// (error if value exeeds supported range). For duplicated types in this
+  /// field, only one will be considered and the rest will be ignored. The order
+  /// of the types in this field is ignored. For example, ["BIGNUMERIC",
+  /// "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always
+  /// takes precedence over BIGNUMERIC.
+  core.List<core.String> decimalTargetTypes;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   EncryptionConfiguration destinationEncryptionConfiguration;
@@ -6182,6 +6283,10 @@ class JobConfigurationLoad {
     if (_json.containsKey("createDisposition")) {
       createDisposition = _json["createDisposition"];
     }
+    if (_json.containsKey("decimalTargetTypes")) {
+      decimalTargetTypes =
+          (_json["decimalTargetTypes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("destinationEncryptionConfiguration")) {
       destinationEncryptionConfiguration = new EncryptionConfiguration.fromJson(
           _json["destinationEncryptionConfiguration"]);
@@ -6274,6 +6379,9 @@ class JobConfigurationLoad {
     }
     if (createDisposition != null) {
       _json["createDisposition"] = createDisposition;
+    }
+    if (decimalTargetTypes != null) {
+      _json["decimalTargetTypes"] = decimalTargetTypes;
     }
     if (destinationEncryptionConfiguration != null) {
       _json["destinationEncryptionConfiguration"] =
@@ -6659,8 +6767,18 @@ class JobConfigurationTableCopy {
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   EncryptionConfiguration destinationEncryptionConfiguration;
 
+  /// [Optional] The time when the destination table expires. Expired tables
+  /// will be deleted and their storage reclaimed.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object destinationExpirationTime;
+
   /// [Required] The destination table
   TableReference destinationTable;
+
+  /// [Optional] Supported operation types in table copy job.
+  core.String operationType;
 
   /// [Pick one] Source table to copy.
   TableReference sourceTable;
@@ -6689,8 +6807,14 @@ class JobConfigurationTableCopy {
       destinationEncryptionConfiguration = new EncryptionConfiguration.fromJson(
           _json["destinationEncryptionConfiguration"]);
     }
+    if (_json.containsKey("destinationExpirationTime")) {
+      destinationExpirationTime = _json["destinationExpirationTime"];
+    }
     if (_json.containsKey("destinationTable")) {
       destinationTable = new TableReference.fromJson(_json["destinationTable"]);
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
     }
     if (_json.containsKey("sourceTable")) {
       sourceTable = new TableReference.fromJson(_json["sourceTable"]);
@@ -6715,8 +6839,14 @@ class JobConfigurationTableCopy {
       _json["destinationEncryptionConfiguration"] =
           (destinationEncryptionConfiguration).toJson();
     }
+    if (destinationExpirationTime != null) {
+      _json["destinationExpirationTime"] = destinationExpirationTime;
+    }
     if (destinationTable != null) {
       _json["destinationTable"] = (destinationTable).toJson();
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
     }
     if (sourceTable != null) {
       _json["sourceTable"] = (sourceTable).toJson();
@@ -7012,6 +7142,10 @@ class JobStatistics {
   /// [Output-only] Slot-milliseconds for the job.
   core.String totalSlotMs;
 
+  /// [Output-only] [Alpha] Information of the multi-statement transaction if
+  /// this job is part of one.
+  TransactionInfo transactionInfoTemplate;
+
   JobStatistics();
 
   JobStatistics.fromJson(core.Map _json) {
@@ -7069,6 +7203,10 @@ class JobStatistics {
     if (_json.containsKey("totalSlotMs")) {
       totalSlotMs = _json["totalSlotMs"];
     }
+    if (_json.containsKey("transactionInfoTemplate")) {
+      transactionInfoTemplate =
+          new TransactionInfo.fromJson(_json["transactionInfoTemplate"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -7123,6 +7261,9 @@ class JobStatistics {
     }
     if (totalSlotMs != null) {
       _json["totalSlotMs"] = totalSlotMs;
+    }
+    if (transactionInfoTemplate != null) {
+      _json["transactionInfoTemplate"] = (transactionInfoTemplate).toJson();
     }
     return _json;
   }
@@ -7647,8 +7788,7 @@ class JsonObject extends collection.MapBase<core.String, core.Object> {
 
 class ListModelsResponse {
   /// Models in the requested dataset. Only the following fields are populated:
-  /// model_reference, model_type, creation_time, last_modified_time and
-  /// labels.
+  /// model_reference, model_type, creation_time, last_modified_time and labels.
   core.List<Model> models;
 
   /// A token to request the next page of results.
@@ -7685,9 +7825,8 @@ class ListRoutinesResponse {
   core.String nextPageToken;
 
   /// Routines in the requested dataset. Unless read_mask is set in the request,
-  /// only the following fields are populated:
-  /// etag, project_id, dataset_id, routine_id, routine_type, creation_time,
-  /// last_modified_time, and language.
+  /// only the following fields are populated: etag, project_id, dataset_id,
+  /// routine_id, routine_type, creation_time, last_modified_time, and language.
   core.List<Routine> routines;
 
   ListRoutinesResponse();
@@ -7717,12 +7856,10 @@ class ListRoutinesResponse {
 }
 
 /// BigQuery-specific metadata about a location. This will be set on
-/// google.cloud.location.Location.metadata in Cloud Location API
-/// responses.
+/// google.cloud.location.Location.metadata in Cloud Location API responses.
 class LocationMetadata {
-  /// The legacy BigQuery location ID, e.g. “EU” for the “europe” location.
-  /// This is for any API consumers that need the legacy “US” and “EU”
-  /// locations.
+  /// The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This
+  /// is for any API consumers that need the legacy “US” and “EU” locations.
   core.String legacyLocationId;
 
   LocationMetadata();
@@ -7814,9 +7951,8 @@ class Model {
   core.String etag;
 
   /// Optional. The time when this model expires, in milliseconds since the
-  /// epoch.
-  /// If not present, the model will persist indefinitely. Expired models
-  /// will be deleted and their storage reclaimed.  The defaultTableExpirationMs
+  /// epoch. If not present, the model will persist indefinitely. Expired models
+  /// will be deleted and their storage reclaimed. The defaultTableExpirationMs
   /// property of the encapsulating dataset can be used to set a default
   /// expirationTime on newly created models.
   core.String expirationTime;
@@ -7827,16 +7963,16 @@ class Model {
   /// Optional. A descriptive name for this model.
   core.String friendlyName;
 
-  /// Output only. Label columns that were used to train this model.
-  /// The output of the model will have a "predicted_" prefix to these columns.
+  /// Output only. Label columns that were used to train this model. The output
+  /// of the model will have a "predicted_" prefix to these columns.
   core.List<StandardSqlField> labelColumns;
 
-  /// The labels associated with this model. You can use these to organize
-  /// and group your models. Label keys and values can be no longer
-  /// than 63 characters, can only contain lowercase letters, numeric
-  /// characters, underscores and dashes. International characters are allowed.
-  /// Label values are optional. Label keys must start with a letter and each
-  /// label in the list must have a different key.
+  /// The labels associated with this model. You can use these to organize and
+  /// group your models. Label keys and values can be no longer than 63
+  /// characters, can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter and each label in the
+  /// list must have a different key.
   core.Map<core.String, core.String> labels;
 
   /// Output only. The time when this model was last modified, in millisecs
@@ -7857,13 +7993,14 @@ class Model {
   /// - "LOGISTIC_REGRESSION" : Logistic regression based classification model.
   /// - "KMEANS" : K-means clustering model.
   /// - "MATRIX_FACTORIZATION" : Matrix factorization model.
-  /// - "DNN_CLASSIFIER" : DNN classifier model.
+  /// - "DNN_CLASSIFIER" : [Beta] DNN classifier model.
   /// - "TENSORFLOW" : [Beta] An imported TensorFlow model.
-  /// - "DNN_REGRESSOR" : DNN regressor model.
-  /// - "BOOSTED_TREE_REGRESSOR" : Boosted tree regressor model.
-  /// - "BOOSTED_TREE_CLASSIFIER" : Boosted tree classifier model.
-  /// - "AUTOML_REGRESSOR" : AutoML Tables regression model.
-  /// - "AUTOML_CLASSIFIER" : AutoML Tables classification model.
+  /// - "DNN_REGRESSOR" : [Beta] DNN regressor model.
+  /// - "BOOSTED_TREE_REGRESSOR" : [Beta] Boosted tree regressor model.
+  /// - "BOOSTED_TREE_CLASSIFIER" : [Beta] Boosted tree classifier model.
+  /// - "ARIMA" : [Beta] ARIMA model.
+  /// - "AUTOML_REGRESSOR" : [Beta] AutoML Tables regression model.
+  /// - "AUTOML_CLASSIFIER" : [Beta] AutoML Tables classification model.
   core.String modelType;
 
   /// Output only. Information for all training runs in increasing order of
@@ -8137,74 +8274,34 @@ class MultiClassClassificationMetrics {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources.
-///
-///
-/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts,
-/// Google groups, and domains (such as G Suite). A `role` is a named list of
-/// permissions; each `role` can be an IAM predefined role or a user-created
-/// custom role.
-///
-/// For some types of Google Cloud resources, a `binding` can also specify a
-/// `condition`, which is a logical expression that allows access to a resource
-/// only if the expression evaluates to `true`. A condition can add constraints
-/// based on attributes of the request, the resource, or both. To learn which
-/// resources support conditions in their IAM policies, see the
-/// [IAM
+/// controls for Google Cloud resources. A `Policy` is a collection of
+/// `bindings`. A `binding` binds one or more `members` to a single `role`.
+/// Members can be user accounts, service accounts, Google groups, and domains
+/// (such as G Suite). A `role` is a named list of permissions; each `role` can
+/// be an IAM predefined role or a user-created custom role. For some types of
+/// Google Cloud resources, a `binding` can also specify a `condition`, which is
+/// a logical expression that allows access to a resource only if the expression
+/// evaluates to `true`. A condition can add constraints based on attributes of
+/// the request, the resource, or both. To learn which resources support
+/// conditions in their IAM policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-///
-/// **JSON example:**
-///
-///     {
-///       "bindings": [
-///         {
-///           "role": "roles/resourcemanager.organizationAdmin",
-///           "members": [
-///             "user:mike@example.com",
-///             "group:admins@example.com",
-///             "domain:google.com",
-///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-///           ]
-///         },
-///         {
-///           "role": "roles/resourcemanager.organizationViewer",
-///           "members": [
-///             "user:eve@example.com"
-///           ],
-///           "condition": {
-///             "title": "expirable access",
-///             "description": "Does not grant access after Sep 2020",
-/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-///           }
-///         }
-///       ],
-///       "etag": "BwWWja0YfJA=",
-///       "version": 3
-///     }
-///
-/// **YAML example:**
-///
-///     bindings:
-///     - members:
-///       - user:mike@example.com
-///       - group:admins@example.com
-///       - domain:google.com
-///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
-///       role: roles/resourcemanager.organizationAdmin
-///     - members:
-///       - user:eve@example.com
-///       role: roles/resourcemanager.organizationViewer
-///       condition:
-///         title: expirable access
-///         description: Does not grant access after Sep 2020
-///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-///     - etag: BwWWja0YfJA=
-///     - version: 3
-///
-/// For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// **JSON example:** { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// version: 3 For a description of IAM and its features, see the [IAM
+/// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -8214,21 +8311,17 @@ class Policy {
   /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a policy from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other. It is
+  /// strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
   /// ensure that their change will be applied to the same version of the
-  /// policy.
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -8239,32 +8332,20 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Specifies the format of the policy.
-  ///
-  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-  /// are rejected.
-  ///
-  /// Any operation that affects conditional role bindings must specify version
-  /// `3`. This requirement applies to the following operations:
-  ///
-  /// * Getting a policy that includes a conditional role binding
-  /// * Adding a conditional role binding to a policy
-  /// * Changing a conditional role binding in a policy
-  /// * Removing any role binding, with or without a condition, from a policy
-  ///   that includes conditions
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
-  ///
-  /// If a policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset.
-  ///
-  /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
+  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+  /// Requests that specify an invalid value are rejected. Any operation that
+  /// affects conditional role bindings must specify version `3`. This
+  /// requirement applies to the following operations: * Getting a policy that
+  /// includes a conditional role binding * Adding a conditional role binding to
+  /// a policy * Changing a conditional role binding in a policy * Removing any
+  /// role binding, with or without a condition, from a policy that includes
+  /// conditions **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost. If a
+  /// policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -8646,6 +8727,14 @@ class QueryRequest {
   /// The resource type of the request.
   core.String kind;
 
+  /// The labels associated with this job. You can use these to organize and
+  /// group your jobs. Label keys and values can be no longer than 63
+  /// characters, can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter and each label in the
+  /// list must have a different key.
+  core.Map<core.String, core.String> labels;
+
   /// The geographic location where the job should run. See details at
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   core.String location;
@@ -8656,6 +8745,11 @@ class QueryRequest {
   /// large. In addition to this limit, responses are also limited to 10 MB. By
   /// default, there is no maximum row count, and only the byte limit applies.
   core.int maxResults;
+
+  /// [Optional] Limits the bytes billed for this job. Queries that will have
+  /// bytes billed beyond this limit will fail (without incurring a charge). If
+  /// unspecified, this will be set to your project default.
+  core.String maximumBytesBilled;
 
   /// Standard SQL only. Set to POSITIONAL to use positional (?) query
   /// parameters or to NAMED to use named (@myparam) query parameters in this
@@ -8672,6 +8766,28 @@ class QueryRequest {
 
   /// Query parameters for Standard SQL queries.
   core.List<QueryParameter> queryParameters;
+
+  /// A unique user provided identifier to ensure idempotent behavior for
+  /// queries. Note that this is different from the job_id. It has the following
+  /// properties: 1. It is case-sensitive, limited to up to 36 ASCII characters.
+  /// A UUID is recommended. 2. Read only queries can ignore this token since
+  /// they are nullipotent by definition. 3. For the purposes of idempotency
+  /// ensured by the request_id, a request is considered duplicate of another
+  /// only if they have the same request_id and are actually duplicates. When
+  /// determining whether a request is a duplicate of the previous request, all
+  /// parameters in the request that may affect the behavior are considered. For
+  /// example, query, connection_properties, query_parameters, use_legacy_sql
+  /// are parameters that affect the result and are considered when determining
+  /// whether a request is a duplicate, but properties like timeout_ms don't
+  /// affect the result and are thus not considered. Dry run query requests are
+  /// never considered duplicate of another request. 4. When a duplicate
+  /// mutating query request is detected, it returns: a. the results of the
+  /// mutation if it completes successfully within the timeout. b. the running
+  /// operation if it is still in progress at the end of the timeout. 5. Its
+  /// lifetime is limited to 15 minutes. In other words, if two requests are
+  /// sent with the same request_id, but more than 15 minutes apart, idempotency
+  /// is not guaranteed.
+  core.String requestId;
 
   /// [Optional] How long to wait for the query to complete, in milliseconds,
   /// before the request times out and returns. Note that this is only a timeout
@@ -8712,11 +8828,17 @@ class QueryRequest {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
     if (_json.containsKey("maxResults")) {
       maxResults = _json["maxResults"];
+    }
+    if (_json.containsKey("maximumBytesBilled")) {
+      maximumBytesBilled = _json["maximumBytesBilled"];
     }
     if (_json.containsKey("parameterMode")) {
       parameterMode = _json["parameterMode"];
@@ -8731,6 +8853,9 @@ class QueryRequest {
       queryParameters = (_json["queryParameters"] as core.List)
           .map<QueryParameter>((value) => new QueryParameter.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
     }
     if (_json.containsKey("timeoutMs")) {
       timeoutMs = _json["timeoutMs"];
@@ -8759,11 +8884,17 @@ class QueryRequest {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (location != null) {
       _json["location"] = location;
     }
     if (maxResults != null) {
       _json["maxResults"] = maxResults;
+    }
+    if (maximumBytesBilled != null) {
+      _json["maximumBytesBilled"] = maximumBytesBilled;
     }
     if (parameterMode != null) {
       _json["parameterMode"] = parameterMode;
@@ -8777,6 +8908,9 @@ class QueryRequest {
     if (queryParameters != null) {
       _json["queryParameters"] =
           queryParameters.map((value) => (value).toJson()).toList();
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
     }
     if (timeoutMs != null) {
       _json["timeoutMs"] = timeoutMs;
@@ -9060,17 +9194,17 @@ class RangePartitioning {
 /// Evaluation metrics used by weighted-ALS models specified by
 /// feedback_type=implicit.
 class RankingMetrics {
-  /// Determines the goodness of a ranking by computing the percentile rank
-  /// from the predicted confidence and dividing it by the original rank.
+  /// Determines the goodness of a ranking by computing the percentile rank from
+  /// the predicted confidence and dividing it by the original rank.
   core.double averageRank;
 
-  /// Calculates a precision per user for all the items by ranking them and
-  /// then averages all the precisions across all the users.
+  /// Calculates a precision per user for all the items by ranking them and then
+  /// averages all the precisions across all the users.
   core.double meanAveragePrecision;
 
   /// Similar to the mean squared error computed in regression and explicit
-  /// recommendation models except instead of computing the rating directly,
-  /// the output from evaluate is computed against a preference which is 1 or 0
+  /// recommendation models except instead of computing the rating directly, the
+  /// output from evaluate is computed against a preference which is 1 or 0
   /// depending on if the rating exists or not.
   core.double meanSquaredError;
 
@@ -9186,33 +9320,31 @@ class Routine {
   /// the epoch.
   core.String creationTime;
 
-  /// Required. The body of the routine.
-  ///
-  /// For functions, this is the expression in the AS clause.
-  ///
-  /// If language=SQL, it is the substring inside (but excluding) the
-  /// parentheses. For example, for the function created with the following
-  /// statement:
-  ///
-  /// `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))`
-  ///
-  /// The definition_body is `concat(x, "\n", y)` (\n is not replaced with
-  /// linebreak).
-  ///
-  /// If language=JAVASCRIPT, it is the evaluated string in the AS clause.
-  /// For example, for the function created with the following statement:
-  ///
-  /// `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'`
-  ///
-  /// The definition_body is
-  ///
-  /// `return "\n";\n`
-  ///
-  /// Note that both \n are replaced with linebreaks.
+  /// Required. The body of the routine. For functions, this is the expression
+  /// in the AS clause. If language=SQL, it is the substring inside (but
+  /// excluding) the parentheses. For example, for the function created with the
+  /// following statement: `CREATE FUNCTION JoinLines(x string, y string) as
+  /// (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is
+  /// not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated
+  /// string in the AS clause. For example, for the function created with the
+  /// following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS
+  /// 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both
+  /// \n are replaced with linebreaks.
   core.String definitionBody;
 
   /// Optional. [Experimental] The description of the routine if defined.
   core.String description;
+
+  /// Optional. [Experimental] The determinism level of the JavaScript UDF if
+  /// defined.
+  /// Possible string values are:
+  /// - "DETERMINISM_LEVEL_UNSPECIFIED" : The determinism of the UDF is
+  /// unspecified.
+  /// - "DETERMINISTIC" : The UDF is deterministic, meaning that 2 function
+  /// calls with the same inputs always produce the same result, even across 2
+  /// query runs.
+  /// - "NOT_DETERMINISTIC" : The UDF is not deterministic.
+  core.String determinismLevel;
 
   /// Output only. A hash of this resource.
   core.String etag;
@@ -9232,26 +9364,17 @@ class Routine {
   /// since the epoch.
   core.String lastModifiedTime;
 
-  /// Optional if language = "SQL"; required otherwise.
-  ///
-  /// If absent, the return type is inferred from definition_body at query time
-  /// in each query that references this routine. If present, then the evaluated
-  /// result will be cast to the specified returned type at query time.
-  ///
-  /// For example, for the functions created with the following statements:
-  ///
-  /// * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);`
-  ///
-  /// * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));`
-  ///
-  /// * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));`
-  ///
-  /// The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and
-  /// is absent for `Increment` (inferred as FLOAT64 at query time).
-  ///
-  /// Suppose the function `Add` is replaced by
-  ///   `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);`
-  ///
+  /// Optional if language = "SQL"; required otherwise. If absent, the return
+  /// type is inferred from definition_body at query time in each query that
+  /// references this routine. If present, then the evaluated result will be
+  /// cast to the specified returned type at query time. For example, for the
+  /// functions created with the following statements: * `CREATE FUNCTION Add(x
+  /// FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION
+  /// Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x
+  /// FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind:
+  /// "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment`
+  /// (inferred as FLOAT64 at query time). Suppose the function `Add` is
+  /// replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);`
   /// Then the inferred return type of `Increment` is automatically changed to
   /// INT64 at query time, while the return type of `Decrement` remains FLOAT64.
   StandardSqlDataType returnType;
@@ -9282,6 +9405,9 @@ class Routine {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("determinismLevel")) {
+      determinismLevel = _json["determinismLevel"];
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -9322,6 +9448,9 @@ class Routine {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (determinismLevel != null) {
+      _json["determinismLevel"] = determinismLevel;
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -9606,17 +9735,14 @@ class ScriptStatistics {
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects)
-  /// might reject them.
+  /// the policy is limited to a few 10s of KB. An empty policy is a valid
+  /// policy but certain Cloud Platform services (such as Projects) might reject
+  /// them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
-  /// Only
-  /// the fields in the mask will be modified. If no mask is provided, the
-  /// following default mask is used:
-  ///
-  /// `paths: "bindings, etag"`
+  /// Only the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
 
   SetIamPolicyRequest();
@@ -9643,16 +9769,43 @@ class SetIamPolicyRequest {
   }
 }
 
-/// The type of a variable, e.g., a function argument.
-/// Examples:
-/// INT64: {type_kind="INT64"}
-/// ARRAY<STRING>: {type_kind="ARRAY", array_element_type="STRING"}
-/// STRUCT<x STRING, y ARRAY<DATE>>:
-///   {type_kind="STRUCT",
-///    struct_type={fields=[
-///      {name="x", type={type_kind="STRING"}},
-///      {name="y", type={type_kind="ARRAY", array_element_type="DATE"}}
-///    ]}}
+class SnapshotDefinition {
+  /// [Required] Reference describing the ID of the table that is snapshotted.
+  TableReference baseTableReference;
+
+  /// [Required] The time at which the base table was snapshot.
+  core.DateTime snapshotTime;
+
+  SnapshotDefinition();
+
+  SnapshotDefinition.fromJson(core.Map _json) {
+    if (_json.containsKey("baseTableReference")) {
+      baseTableReference =
+          new TableReference.fromJson(_json["baseTableReference"]);
+    }
+    if (_json.containsKey("snapshotTime")) {
+      snapshotTime = core.DateTime.parse(_json["snapshotTime"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (baseTableReference != null) {
+      _json["baseTableReference"] = (baseTableReference).toJson();
+    }
+    if (snapshotTime != null) {
+      _json["snapshotTime"] = (snapshotTime).toIso8601String();
+    }
+    return _json;
+  }
+}
+
+/// The type of a variable, e.g., a function argument. Examples: INT64:
+/// {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"}
+/// STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x",
+/// type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY",
+/// array_element_type="DATE"}} ]}}
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
   StandardSqlDataType arrayElementType;
@@ -9660,8 +9813,8 @@ class StandardSqlDataType {
   /// The fields of this struct, in order, if type_kind = "STRUCT".
   StandardSqlStructType structType;
 
-  /// Required. The top level type of this field.
-  /// Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+  /// Required. The top level type of this field. Can be any standard SQL data
+  /// type (e.g., "INT64", "DATE", "ARRAY").
   /// Possible string values are:
   /// - "TYPE_KIND_UNSPECIFIED" : Invalid type.
   /// - "INT64" : Encoded as a string in decimal format.
@@ -9671,18 +9824,17 @@ class StandardSqlDataType {
   /// - "STRING" : Encoded as a string value.
   /// - "BYTES" : Encoded as a base64 string per RFC 4648, section 4.
   /// - "TIMESTAMP" : Encoded as an RFC 3339 timestamp with mandatory "Z" time
-  /// zone string:
-  /// 1985-04-12T23:20:50.52Z
+  /// zone string: 1985-04-12T23:20:50.52Z
   /// - "DATE" : Encoded as RFC 3339 full-date format string: 1985-04-12
   /// - "TIME" : Encoded as RFC 3339 partial-time format string: 23:20:50.52
   /// - "DATETIME" : Encoded as RFC 3339 full-date "T" partial-time:
   /// 1985-04-12T23:20:50.52
   /// - "GEOGRAPHY" : Encoded as WKT
   /// - "NUMERIC" : Encoded as a decimal string.
+  /// - "BIGNUMERIC" : Encoded as a decimal string.
   /// - "ARRAY" : Encoded as a list with types matching Type.array_type.
   /// - "STRUCT" : Encoded as a list with fields of type Type.struct_type[i].
-  /// List is used
-  /// because a JSON object cannot have duplicate field names.
+  /// List is used because a JSON object cannot have duplicate field names.
   core.String typeKind;
 
   StandardSqlDataType();
@@ -9721,9 +9873,9 @@ class StandardSqlField {
   /// Optional. The name of this field. Can be absent for struct fields.
   core.String name;
 
-  /// Optional. The type of this parameter. Absent if not explicitly
-  /// specified (e.g., CREATE FUNCTION statement can omit the return type;
-  /// in this case the output parameter does not have this "type" field).
+  /// Optional. The type of this parameter. Absent if not explicitly specified
+  /// (e.g., CREATE FUNCTION statement can omit the return type; in this case
+  /// the output parameter does not have this "type" field).
   StandardSqlDataType type;
 
   StandardSqlField();
@@ -9916,6 +10068,9 @@ class Table {
   /// [Output-only] A URL that can be used to access this resource again.
   core.String selfLink;
 
+  /// [Output-only] Snapshot definition.
+  SnapshotDefinition snapshotDefinition;
+
   /// [Output-only] Contains information regarding this table's streaming
   /// buffer, if one is present. This field will be absent if the table is not
   /// being streamed to or if there is no data in the streaming buffer.
@@ -9930,9 +10085,11 @@ class Table {
 
   /// [Output-only] Describes the table type. The following values are
   /// supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined
-  /// by a SQL query. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result
-  /// is persisted. EXTERNAL: A table that references data stored in an external
-  /// storage system, such as Google Cloud Storage. The default value is TABLE.
+  /// by a SQL query. [TrustedTester] SNAPSHOT: An immutable, read-only table
+  /// that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL
+  /// query whose result is persisted. EXTERNAL: A table that references data
+  /// stored in an external storage system, such as Google Cloud Storage. The
+  /// default value is TABLE.
   core.String type;
 
   /// [Optional] The view definition.
@@ -10013,6 +10170,10 @@ class Table {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("snapshotDefinition")) {
+      snapshotDefinition =
+          new SnapshotDefinition.fromJson(_json["snapshotDefinition"]);
     }
     if (_json.containsKey("streamingBuffer")) {
       streamingBuffer = new Streamingbuffer.fromJson(_json["streamingBuffer"]);
@@ -10103,6 +10264,9 @@ class Table {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (snapshotDefinition != null) {
+      _json["snapshotDefinition"] = (snapshotDefinition).toJson();
     }
     if (streamingBuffer != null) {
       _json["streamingBuffer"] = (streamingBuffer).toJson();
@@ -10821,8 +10985,8 @@ class TableSchema {
 class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`. Permissions with
   /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// information see [IAM
+  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();
@@ -10881,8 +11045,9 @@ class TimePartitioning {
   core.String field;
   core.bool requirePartitionFilter;
 
-  /// [Required] The only type supported is DAY, which will generate one
-  /// partition per day.
+  /// [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will
+  /// generate one partition per day, hour, month, and year, respectively. When
+  /// the type is not specified, the default behavior is DAY.
   core.String type;
 
   TimePartitioning();
@@ -10922,25 +11087,40 @@ class TimePartitioning {
 }
 
 class TrainingOptions {
+  /// Whether to enable auto ARIMA or not.
+  core.bool autoArima;
+
+  /// The max value of non-seasonal p and q.
+  core.String autoArimaMaxOrder;
+
   /// Batch size for dnn models.
   core.String batchSize;
 
-  /// The column to split data with. This column won't be used as a
-  /// feature.
-  /// 1. When data_split_method is CUSTOM, the corresponding column should
-  /// be boolean. The rows with true value tag are eval data, and the false
-  /// are training data.
-  /// 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION
-  /// rows (from smallest to largest) in the corresponding column are used
-  /// as training data, and the rest are eval data. It respects the order
-  /// in Orderable data types:
+  /// The data frequency of a time series.
+  /// Possible string values are:
+  /// - "DATA_FREQUENCY_UNSPECIFIED"
+  /// - "AUTO_FREQUENCY" : Automatically inferred from timestamps.
+  /// - "YEARLY" : Yearly data.
+  /// - "QUARTERLY" : Quarterly data.
+  /// - "MONTHLY" : Monthly data.
+  /// - "WEEKLY" : Weekly data.
+  /// - "DAILY" : Daily data.
+  /// - "HOURLY" : Hourly data.
+  core.String dataFrequency;
+
+  /// The column to split data with. This column won't be used as a feature. 1.
+  /// When data_split_method is CUSTOM, the corresponding column should be
+  /// boolean. The rows with true value tag are eval data, and the false are
+  /// training data. 2. When data_split_method is SEQ, the first
+  /// DATA_SPLIT_EVAL_FRACTION rows (from smallest to largest) in the
+  /// corresponding column are used as training data, and the rest are eval
+  /// data. It respects the order in Orderable data types:
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties
   core.String dataSplitColumn;
 
-  /// The fraction of evaluation data over the whole input data. The rest
-  /// of data will be used as training data. The format should be double.
-  /// Accurate to two decimal places.
-  /// Default value is 0.2.
+  /// The fraction of evaluation data over the whole input data. The rest of
+  /// data will be used as training data. The format should be double. Accurate
+  /// to two decimal places. Default value is 0.2.
   core.double dataSplitEvalFraction;
 
   /// The data split type for training and evaluation, e.g. RANDOM.
@@ -10951,8 +11131,7 @@ class TrainingOptions {
   /// - "SEQUENTIAL" : Splits data sequentially.
   /// - "NO_SPLIT" : Data split will be skipped.
   /// - "AUTO_SPLIT" : Splits data automatically: Uses NO_SPLIT if the data size
-  /// is small.
-  /// Otherwise uses RANDOM.
+  /// is small. Otherwise uses RANDOM.
   core.String dataSplitMethod;
 
   /// Distance type for clustering models.
@@ -10965,9 +11144,9 @@ class TrainingOptions {
   /// Dropout probability for dnn models.
   core.double dropout;
 
-  /// Whether to stop early when the loss doesn't improve significantly
-  /// any more (compared to min_relative_progress). Used only for iterative
-  /// training algorithms.
+  /// Whether to stop early when the loss doesn't improve significantly any more
+  /// (compared to min_relative_progress). Used only for iterative training
+  /// algorithms.
   core.bool earlyStop;
 
   /// Feedback type that specifies which algorithm to run for matrix
@@ -10981,6 +11160,88 @@ class TrainingOptions {
   /// Hidden units for dnn models.
   core.List<core.String> hiddenUnits;
 
+  /// The geographical region based on which the holidays are considered in time
+  /// series modeling. If a valid value is specified, then holiday effects
+  /// modeling is enabled.
+  /// Possible string values are:
+  /// - "HOLIDAY_REGION_UNSPECIFIED" : Holiday region unspecified.
+  /// - "GLOBAL" : Global.
+  /// - "NA" : North America.
+  /// - "JAPAC" : Japan and Asia Pacific: Korea, Greater China, India,
+  /// Australia, and New Zealand.
+  /// - "EMEA" : Europe, the Middle East and Africa.
+  /// - "LAC" : Latin America and the Caribbean.
+  /// - "AE" : United Arab Emirates
+  /// - "AR" : Argentina
+  /// - "AT" : Austria
+  /// - "AU" : Australia
+  /// - "BE" : Belgium
+  /// - "BR" : Brazil
+  /// - "CA" : Canada
+  /// - "CH" : Switzerland
+  /// - "CL" : Chile
+  /// - "CN" : China
+  /// - "CO" : Colombia
+  /// - "CS" : Czechoslovakia
+  /// - "CZ" : Czech Republic
+  /// - "DE" : Germany
+  /// - "DK" : Denmark
+  /// - "DZ" : Algeria
+  /// - "EC" : Ecuador
+  /// - "EE" : Estonia
+  /// - "EG" : Egypt
+  /// - "ES" : Spain
+  /// - "FI" : Finland
+  /// - "FR" : France
+  /// - "GB" : Great Britain (United Kingdom)
+  /// - "GR" : Greece
+  /// - "HK" : Hong Kong
+  /// - "HU" : Hungary
+  /// - "ID" : Indonesia
+  /// - "IE" : Ireland
+  /// - "IL" : Israel
+  /// - "IN" : India
+  /// - "IR" : Iran
+  /// - "IT" : Italy
+  /// - "JP" : Japan
+  /// - "KR" : Korea (South)
+  /// - "LV" : Latvia
+  /// - "MA" : Morocco
+  /// - "MX" : Mexico
+  /// - "MY" : Malaysia
+  /// - "NG" : Nigeria
+  /// - "NL" : Netherlands
+  /// - "NO" : Norway
+  /// - "NZ" : New Zealand
+  /// - "PE" : Peru
+  /// - "PH" : Philippines
+  /// - "PK" : Pakistan
+  /// - "PL" : Poland
+  /// - "PT" : Portugal
+  /// - "RO" : Romania
+  /// - "RS" : Serbia
+  /// - "RU" : Russian Federation
+  /// - "SA" : Saudi Arabia
+  /// - "SE" : Sweden
+  /// - "SG" : Singapore
+  /// - "SI" : Slovenia
+  /// - "SK" : Slovakia
+  /// - "TH" : Thailand
+  /// - "TR" : Turkey
+  /// - "TW" : Taiwan
+  /// - "UA" : Ukraine
+  /// - "US" : United States
+  /// - "VE" : Venezuela
+  /// - "VN" : Viet Nam
+  /// - "ZA" : South Africa
+  core.String holidayRegion;
+
+  /// The number of periods ahead that need to be forecasted.
+  core.String horizon;
+
+  /// Include drift when fitting an ARIMA model.
+  core.bool includeDrift;
+
   /// Specifies the initial learning rate for the line search learn rate
   /// strategy.
   core.double initialLearnRate;
@@ -10991,8 +11252,8 @@ class TrainingOptions {
   /// Item column specified for matrix factorization models.
   core.String itemColumn;
 
-  /// The column used to provide the initial centroids for kmeans algorithm
-  /// when kmeans_initialization_method is CUSTOM.
+  /// The column used to provide the initial centroids for kmeans algorithm when
+  /// kmeans_initialization_method is CUSTOM.
   core.String kmeansInitializationColumn;
 
   /// The method used to initialize the centroids for kmeans algorithm.
@@ -11010,8 +11271,8 @@ class TrainingOptions {
   /// L2 regularization coefficient.
   core.double l2Regularization;
 
-  /// Weights associated with each label class, for rebalancing the
-  /// training data. Only applicable for classification models.
+  /// Weights associated with each label class, for rebalancing the training
+  /// data. Only applicable for classification models.
   core.Map<core.String, core.double> labelClassWeights;
 
   /// Learning rate in training. Used only for iterative training algorithms.
@@ -11038,9 +11299,8 @@ class TrainingOptions {
   /// Maximum depth of a tree for boosted tree models.
   core.String maxTreeDepth;
 
-  /// When early_stop is true, stops training when accuracy improvement is
-  /// less than 'min_relative_progress'. Used only for iterative training
-  /// algorithms.
+  /// When early_stop is true, stops training when accuracy improvement is less
+  /// than 'min_relative_progress'. Used only for iterative training algorithms.
   core.double minRelativeProgress;
 
   /// Minimum split loss for boosted tree models.
@@ -11049,6 +11309,11 @@ class TrainingOptions {
   /// [Beta] Google Cloud Storage URI from which the model was imported. Only
   /// applicable for imported models.
   core.String modelUri;
+
+  /// A specification of the non-seasonal part of the ARIMA model: the three
+  /// components (p, d, q) are the AR order, the degree of differencing, and the
+  /// MA order.
+  ArimaOrder nonSeasonalOrder;
 
   /// Number of clusters for clustering models.
   core.String numClusters;
@@ -11065,9 +11330,24 @@ class TrainingOptions {
   /// problem.
   core.String optimizationStrategy;
 
+  /// Whether to preserve the input structs in output feature names. Suppose
+  /// there is a struct A with field b. When false (default), the output feature
+  /// name is A_b. When true, the output feature name is A.b.
+  core.bool preserveInputStructs;
+
   /// Subsample fraction of the training data to grow tree to prevent
   /// overfitting for boosted tree models.
   core.double subsample;
+
+  /// Column to be designated as time series data for ARIMA model.
+  core.String timeSeriesDataColumn;
+
+  /// The id column that will be used to indicate different time series to
+  /// forecast in parallel.
+  core.String timeSeriesIdColumn;
+
+  /// Column to be designated as time series timestamp for ARIMA model.
+  core.String timeSeriesTimestampColumn;
 
   /// User column specified for matrix factorization models.
   core.String userColumn;
@@ -11082,8 +11362,17 @@ class TrainingOptions {
   TrainingOptions();
 
   TrainingOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("autoArima")) {
+      autoArima = _json["autoArima"];
+    }
+    if (_json.containsKey("autoArimaMaxOrder")) {
+      autoArimaMaxOrder = _json["autoArimaMaxOrder"];
+    }
     if (_json.containsKey("batchSize")) {
       batchSize = _json["batchSize"];
+    }
+    if (_json.containsKey("dataFrequency")) {
+      dataFrequency = _json["dataFrequency"];
     }
     if (_json.containsKey("dataSplitColumn")) {
       dataSplitColumn = _json["dataSplitColumn"];
@@ -11108,6 +11397,15 @@ class TrainingOptions {
     }
     if (_json.containsKey("hiddenUnits")) {
       hiddenUnits = (_json["hiddenUnits"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("holidayRegion")) {
+      holidayRegion = _json["holidayRegion"];
+    }
+    if (_json.containsKey("horizon")) {
+      horizon = _json["horizon"];
+    }
+    if (_json.containsKey("includeDrift")) {
+      includeDrift = _json["includeDrift"];
     }
     if (_json.containsKey("initialLearnRate")) {
       initialLearnRate = _json["initialLearnRate"].toDouble();
@@ -11160,6 +11458,9 @@ class TrainingOptions {
     if (_json.containsKey("modelUri")) {
       modelUri = _json["modelUri"];
     }
+    if (_json.containsKey("nonSeasonalOrder")) {
+      nonSeasonalOrder = new ArimaOrder.fromJson(_json["nonSeasonalOrder"]);
+    }
     if (_json.containsKey("numClusters")) {
       numClusters = _json["numClusters"];
     }
@@ -11169,8 +11470,20 @@ class TrainingOptions {
     if (_json.containsKey("optimizationStrategy")) {
       optimizationStrategy = _json["optimizationStrategy"];
     }
+    if (_json.containsKey("preserveInputStructs")) {
+      preserveInputStructs = _json["preserveInputStructs"];
+    }
     if (_json.containsKey("subsample")) {
       subsample = _json["subsample"].toDouble();
+    }
+    if (_json.containsKey("timeSeriesDataColumn")) {
+      timeSeriesDataColumn = _json["timeSeriesDataColumn"];
+    }
+    if (_json.containsKey("timeSeriesIdColumn")) {
+      timeSeriesIdColumn = _json["timeSeriesIdColumn"];
+    }
+    if (_json.containsKey("timeSeriesTimestampColumn")) {
+      timeSeriesTimestampColumn = _json["timeSeriesTimestampColumn"];
     }
     if (_json.containsKey("userColumn")) {
       userColumn = _json["userColumn"];
@@ -11186,8 +11499,17 @@ class TrainingOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (autoArima != null) {
+      _json["autoArima"] = autoArima;
+    }
+    if (autoArimaMaxOrder != null) {
+      _json["autoArimaMaxOrder"] = autoArimaMaxOrder;
+    }
     if (batchSize != null) {
       _json["batchSize"] = batchSize;
+    }
+    if (dataFrequency != null) {
+      _json["dataFrequency"] = dataFrequency;
     }
     if (dataSplitColumn != null) {
       _json["dataSplitColumn"] = dataSplitColumn;
@@ -11212,6 +11534,15 @@ class TrainingOptions {
     }
     if (hiddenUnits != null) {
       _json["hiddenUnits"] = hiddenUnits;
+    }
+    if (holidayRegion != null) {
+      _json["holidayRegion"] = holidayRegion;
+    }
+    if (horizon != null) {
+      _json["horizon"] = horizon;
+    }
+    if (includeDrift != null) {
+      _json["includeDrift"] = includeDrift;
     }
     if (initialLearnRate != null) {
       _json["initialLearnRate"] = initialLearnRate;
@@ -11261,6 +11592,9 @@ class TrainingOptions {
     if (modelUri != null) {
       _json["modelUri"] = modelUri;
     }
+    if (nonSeasonalOrder != null) {
+      _json["nonSeasonalOrder"] = (nonSeasonalOrder).toJson();
+    }
     if (numClusters != null) {
       _json["numClusters"] = numClusters;
     }
@@ -11270,8 +11604,20 @@ class TrainingOptions {
     if (optimizationStrategy != null) {
       _json["optimizationStrategy"] = optimizationStrategy;
     }
+    if (preserveInputStructs != null) {
+      _json["preserveInputStructs"] = preserveInputStructs;
+    }
     if (subsample != null) {
       _json["subsample"] = subsample;
+    }
+    if (timeSeriesDataColumn != null) {
+      _json["timeSeriesDataColumn"] = timeSeriesDataColumn;
+    }
+    if (timeSeriesIdColumn != null) {
+      _json["timeSeriesIdColumn"] = timeSeriesIdColumn;
+    }
+    if (timeSeriesTimestampColumn != null) {
+      _json["timeSeriesTimestampColumn"] = timeSeriesTimestampColumn;
     }
     if (userColumn != null) {
       _json["userColumn"] = userColumn;
@@ -11302,8 +11648,8 @@ class TrainingRun {
   /// The start time of this training run.
   core.String startTime;
 
-  /// Options that were used for this training run, includes
-  /// user specified and default options that were used.
+  /// Options that were used for this training run, includes user specified and
+  /// default options that were used.
   TrainingOptions trainingOptions;
 
   TrainingRun();
@@ -11351,6 +11697,33 @@ class TrainingRun {
   }
 }
 
+class TransactionInfo {
+  /// [Output-only] // [Alpha] Id of the transaction.
+  core.String transactionId;
+
+  TransactionInfo();
+
+  TransactionInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("transactionId")) {
+      transactionId = _json["transactionId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (transactionId != null) {
+      _json["transactionId"] = transactionId;
+    }
+    return _json;
+  }
+}
+
+/// This is used for defining User Defined Function (UDF) resources only when
+/// using legacy SQL. Users of Standard SQL should leverage either DDL (e.g.
+/// CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF
+/// resources. For additional information on migrating, see:
+/// https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
 class UserDefinedFunctionResource {
   /// [Pick one] An inline resource that contains code for a user-defined
   /// function (UDF). Providing a inline code resource is equivalent to

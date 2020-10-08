@@ -168,14 +168,14 @@ checkRenewalSettings(api.RenewalSettings o) {
   buildCounterRenewalSettings--;
 }
 
-buildUnnamed4229() {
+buildUnnamed4467() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4229(core.List<core.String> o) {
+checkUnnamed4467(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -186,7 +186,7 @@ buildResellernotifyGetwatchdetailsResponse() {
   var o = new api.ResellernotifyGetwatchdetailsResponse();
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    o.serviceAccountEmailAddresses = buildUnnamed4229();
+    o.serviceAccountEmailAddresses = buildUnnamed4467();
     o.topicName = "foo";
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -197,7 +197,7 @@ checkResellernotifyGetwatchdetailsResponse(
     api.ResellernotifyGetwatchdetailsResponse o) {
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    checkUnnamed4229(o.serviceAccountEmailAddresses);
+    checkUnnamed4467(o.serviceAccountEmailAddresses);
     unittest.expect(o.topicName, unittest.equals('foo'));
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -292,14 +292,14 @@ checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-buildUnnamed4230() {
+buildUnnamed4468() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4230(core.List<core.String> o) {
+checkUnnamed4468(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -367,7 +367,7 @@ buildSubscription() {
     o.skuName = "foo";
     o.status = "foo";
     o.subscriptionId = "foo";
-    o.suspensionReasons = buildUnnamed4230();
+    o.suspensionReasons = buildUnnamed4468();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
   }
@@ -393,21 +393,21 @@ checkSubscription(api.Subscription o) {
     unittest.expect(o.skuName, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.subscriptionId, unittest.equals('foo'));
-    checkUnnamed4230(o.suspensionReasons);
+    checkUnnamed4468(o.suspensionReasons);
     checkSubscriptionTransferInfo(o.transferInfo);
     checkSubscriptionTrialSettings(o.trialSettings);
   }
   buildCounterSubscription--;
 }
 
-buildUnnamed4231() {
+buildUnnamed4469() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed4231(core.List<api.Subscription> o) {
+checkUnnamed4469(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -420,7 +420,7 @@ buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.subscriptions = buildUnnamed4231();
+    o.subscriptions = buildUnnamed4469();
   }
   buildCounterSubscriptions--;
   return o;
@@ -431,7 +431,7 @@ checkSubscriptions(api.Subscriptions o) {
   if (buildCounterSubscriptions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4231(o.subscriptions);
+    checkUnnamed4469(o.subscriptions);
   }
   buildCounterSubscriptions--;
 }
@@ -1473,10 +1473,10 @@ main() {
       api.SubscriptionsResourceApi res =
           new api.ResellerApi(mock).subscriptions;
       var arg_customerAuthToken = "foo";
-      var arg_customerId = "foo";
-      var arg_customerNamePrefix = "foo";
-      var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_customerNamePrefix = "foo";
+      var arg_customerId = "foo";
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1514,13 +1514,13 @@ main() {
         unittest.expect(queryMap["customerAuthToken"].first,
             unittest.equals(arg_customerAuthToken));
         unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["customerNamePrefix"].first,
             unittest.equals(arg_customerNamePrefix));
+        unittest.expect(
+            queryMap["customerId"].first, unittest.equals(arg_customerId));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1532,10 +1532,10 @@ main() {
       res
           .list(
               customerAuthToken: arg_customerAuthToken,
-              customerId: arg_customerId,
-              customerNamePrefix: arg_customerNamePrefix,
-              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              customerNamePrefix: arg_customerNamePrefix,
+              customerId: arg_customerId,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSubscriptions(response);

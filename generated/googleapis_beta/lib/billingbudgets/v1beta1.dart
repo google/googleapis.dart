@@ -19,6 +19,10 @@ const core.String USER_AGENT = 'dart-api-client billingbudgets/v1beta1';
 /// The Cloud Billing Budget API stores Cloud Billing budgets, which define a
 /// budget plan and the rules to execute as spend is tracked against that plan.
 class BillingbudgetsApi {
+  /// View and manage your Google Cloud Platform billing accounts
+  static const CloudBillingScope =
+      "https://www.googleapis.com/auth/cloud-billing";
+
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
       "https://www.googleapis.com/auth/cloud-platform";
@@ -50,18 +54,15 @@ class BillingAccountsBudgetsResourceApi {
   BillingAccountsBudgetsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new budget. See
-  /// <a href="https://cloud.google.com/billing/quotas">Quotas and limits</a>
-  /// for more information on the limits of the number of budgets you can
-  /// create.
+  /// Creates a new budget. See Quotas and limits for more information on the
+  /// limits of the number of budgets you can create.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the billing account to create the budget
-  /// in. Values
-  /// are of the form `billingAccounts/{billingAccountId}`.
+  /// in. Values are of the form `billingAccounts/{billingAccountId}`.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -154,12 +155,10 @@ class BillingAccountsBudgetsResourceApi {
     return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
   }
 
-  /// Returns a budget.
-  ///
-  /// WARNING: There are some fields exposed on the Google Cloud Console that
-  /// aren't available on this API. When reading from the API, you will not
-  /// see these fields in the return value, though they may have been set
-  /// in the Cloud Console.
+  /// Returns a budget. WARNING: There are some fields exposed on the Google
+  /// Cloud Console that aren't available on this API. When reading from the
+  /// API, you will not see these fields in the return value, though they may
+  /// have been set in the Cloud Console.
   ///
   /// Request parameters:
   ///
@@ -205,12 +204,10 @@ class BillingAccountsBudgetsResourceApi {
         (data) => new GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
   }
 
-  /// Returns a list of budgets for a billing account.
-  ///
-  /// WARNING: There are some fields exposed on the Google Cloud Console that
-  /// aren't available on this API. When reading from the API, you will not
-  /// see these fields in the return value, though they may have been set
-  /// in the Cloud Console.
+  /// Returns a list of budgets for a billing account. WARNING: There are some
+  /// fields exposed on the Google Cloud Console that aren't available on this
+  /// API. When reading from the API, you will not see these fields in the
+  /// return value, though they may have been set in the Cloud Console.
   ///
   /// Request parameters:
   ///
@@ -218,13 +215,13 @@ class BillingAccountsBudgetsResourceApi {
   /// are of the form `billingAccounts/{billingAccountId}`.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
-  /// [pageToken] - Optional. The value returned by the last
-  /// `ListBudgetsResponse` which
-  /// indicates that this is a continuation of a prior `ListBudgets` call,
-  /// and that the system should return the next page of data.
-  ///
   /// [pageSize] - Optional. The maximum number of budgets to return per page.
   /// The default and maximum value are 100.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListBudgetsResponse` which indicates that this is a continuation of a
+  /// prior `ListBudgets` call, and that the system should return the next page
+  /// of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -238,8 +235,8 @@ class BillingAccountsBudgetsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse> list(
       core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -251,11 +248,11 @@ class BillingAccountsBudgetsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -275,18 +272,17 @@ class BillingAccountsBudgetsResourceApi {
         new GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(data));
   }
 
-  /// Updates a budget and returns the updated budget.
-  ///
-  /// WARNING: There are some fields exposed on the Google Cloud Console that
-  /// aren't available on this API. Budget fields that are not exposed in
-  /// this API will not be changed by this method.
+  /// Updates a budget and returns the updated budget. WARNING: There are some
+  /// fields exposed on the Google Cloud Console that aren't available on this
+  /// API. Budget fields that are not exposed in this API will not be changed by
+  /// this method.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the budget.
-  /// The resource name implies the scope of a budget. Values are of the form
+  /// [name] - Output only. Resource name of the budget. The resource name
+  /// implies the scope of a budget. Values are of the form
   /// `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
   /// Value must have pattern "^billingAccounts/[^/]+/budgets/[^/]+$".
   ///
@@ -334,32 +330,53 @@ class BillingAccountsBudgetsResourceApi {
   }
 }
 
-/// AllUpdatesRule defines notifications that are sent on every update to the
-/// billing account's spend, regardless of the thresholds defined using
-/// threshold rules.
+/// AllUpdatesRule defines notifications that are sent based on budget spend and
+/// thresholds.
 class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
-  /// Required. The name of the Cloud Pub/Sub topic where budget related
-  /// messages will be
-  /// published, in the form `projects/{project_id}/topics/{topic_id}`. Updates
-  /// are sent at regular intervals to the topic.
-  /// The topic needs to be created before the budget is created; see
-  /// https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications
+  /// Optional. When set to true, disables default notifications sent when a
+  /// threshold is exceeded. Default notifications are sent to those with
+  /// Billing Account Administrator and Billing Account User IAM roles for the
+  /// target account.
+  core.bool disableDefaultIamRecipients;
+
+  /// Optional. Targets to send notifications to when a threshold is exceeded.
+  /// This is in addition to default recipients who have billing account IAM
+  /// roles. The value is the full REST resource name of a monitoring
+  /// notification channel with the form
+  /// `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5
+  /// channels are allowed. See
+  /// https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients
   /// for more details.
-  /// Caller is expected to have
-  /// `pubsub.topics.setIamPolicy` permission on the topic when it's set for a
-  /// budget, otherwise, the API call will fail with PERMISSION_DENIED. See
-  /// https://cloud.google.com/pubsub/docs/access-control for more details on
-  /// Pub/Sub roles and permissions.
+  core.List<core.String> monitoringNotificationChannels;
+
+  /// Optional. The name of the Pub/Sub topic where budget related messages will
+  /// be published, in the form `projects/{project_id}/topics/{topic_id}`.
+  /// Updates are sent at regular intervals to the topic. The topic needs to be
+  /// created before the budget is created; see
+  /// https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications
+  /// for more details. Caller is expected to have `pubsub.topics.setIamPolicy`
+  /// permission on the topic when it's set for a budget, otherwise, the API
+  /// call will fail with PERMISSION_DENIED. See
+  /// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications
+  /// for more details on Pub/Sub roles and permissions.
   core.String pubsubTopic;
 
-  /// Required. The schema version of the notification.
+  /// Optional. The schema version of the notification sent to `pubsub_topic`.
   /// Only "1.0" is accepted. It represents the JSON schema as defined in
-  /// https://cloud.google.com/billing/docs/how-to/budgets#notification_format
+  /// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format
   core.String schemaVersion;
 
   GoogleCloudBillingBudgetsV1beta1AllUpdatesRule();
 
   GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(core.Map _json) {
+    if (_json.containsKey("disableDefaultIamRecipients")) {
+      disableDefaultIamRecipients = _json["disableDefaultIamRecipients"];
+    }
+    if (_json.containsKey("monitoringNotificationChannels")) {
+      monitoringNotificationChannels =
+          (_json["monitoringNotificationChannels"] as core.List)
+              .cast<core.String>();
+    }
     if (_json.containsKey("pubsubTopic")) {
       pubsubTopic = _json["pubsubTopic"];
     }
@@ -371,6 +388,12 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (disableDefaultIamRecipients != null) {
+      _json["disableDefaultIamRecipients"] = disableDefaultIamRecipients;
+    }
+    if (monitoringNotificationChannels != null) {
+      _json["monitoringNotificationChannels"] = monitoringNotificationChannels;
+    }
     if (pubsubTopic != null) {
       _json["pubsubTopic"] = pubsubTopic;
     }
@@ -383,37 +406,36 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
 
 /// A budget is a plan that describes what you expect to spend on Cloud
 /// projects, plus the rules to execute as spend is tracked against that plan,
-/// (for example, send an alert when 90% of the target spend is met).
-/// Currently all plans are monthly budgets so the usage period(s) tracked are
-/// implied (calendar months of usage back-to-back).
+/// (for example, send an alert when 90% of the target spend is met). Currently
+/// all plans are monthly budgets so the usage period(s) tracked are implied
+/// (calendar months of usage back-to-back).
 class GoogleCloudBillingBudgetsV1beta1Budget {
-  /// Optional. Rules to apply to all updates to the actual spend, regardless
-  /// of the thresholds set in `threshold_rules`.
+  /// Optional. Rules to apply to notifications sent based on budget spend and
+  /// thresholds.
   GoogleCloudBillingBudgetsV1beta1AllUpdatesRule allUpdatesRule;
 
   /// Required. Budgeted amount.
   GoogleCloudBillingBudgetsV1beta1BudgetAmount amount;
 
-  /// Optional. Filters that define which resources are used to compute
-  /// the actual spend against the budget.
+  /// Optional. Filters that define which resources are used to compute the
+  /// actual spend against the budget.
   GoogleCloudBillingBudgetsV1beta1Filter budgetFilter;
 
-  /// User data for display name in UI.
-  /// Validation: <= 60 chars.
+  /// User data for display name in UI. Validation: <= 60 chars.
   core.String displayName;
 
   /// Optional. Etag to validate that the object is unchanged for a
-  /// read-modify-write operation.
-  /// An empty etag will cause an update to overwrite other changes.
+  /// read-modify-write operation. An empty etag will cause an update to
+  /// overwrite other changes.
   core.String etag;
 
-  /// Output only. Resource name of the budget.
-  /// The resource name implies the scope of a budget. Values are of the form
+  /// Output only. Resource name of the budget. The resource name implies the
+  /// scope of a budget. Values are of the form
   /// `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
   core.String name;
 
-  /// Optional. Rules that trigger alerts (notifications of thresholds
-  /// being crossed) when spend exceeds the specified percentages of the budget.
+  /// Optional. Rules that trigger alerts (notifications of thresholds being
+  /// crossed) when spend exceeds the specified percentages of the budget.
   core.List<GoogleCloudBillingBudgetsV1beta1ThresholdRule> thresholdRules;
 
   GoogleCloudBillingBudgetsV1beta1Budget();
@@ -483,10 +505,9 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
   /// Use the last period's actual spend as the budget for the present period.
   GoogleCloudBillingBudgetsV1beta1LastPeriodAmount lastPeriodAmount;
 
-  /// A specified amount to use as the budget.
-  /// `currency_code` is optional. If specified, it must match the
-  /// currency of the billing account. The `currency_code` is provided on
-  /// output.
+  /// A specified amount to use as the budget. `currency_code` is optional. If
+  /// specified, it must match the currency of the billing account. The
+  /// `currency_code` is provided on output.
   GoogleTypeMoney specifiedAmount;
 
   GoogleCloudBillingBudgetsV1beta1BudgetAmount();
@@ -545,27 +566,41 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
   /// Possible string values are:
   /// - "CREDIT_TYPES_TREATMENT_UNSPECIFIED"
   /// - "INCLUDE_ALL_CREDITS" : All types of credit are subtracted from the
-  /// gross cost to determine the
-  /// spend for threshold calculations.
+  /// gross cost to determine the spend for threshold calculations.
   /// - "EXCLUDE_ALL_CREDITS" : All types of credit are added to the net cost to
-  /// determine the spend for
-  /// threshold calculations.
+  /// determine the spend for threshold calculations.
   core.String creditTypesTreatment;
 
-  /// Optional. A set of projects of the form `projects/{project}`,
-  /// specifying that usage from only this set of projects should be
-  /// included in the budget. If omitted, the report will include all usage for
-  /// the billing account, regardless of which project the usage occurred on.
-  /// Only zero or one project can be specified currently.
+  /// Optional. A single label and value pair specifying that usage from only
+  /// this set of labeled resources should be included in the budget. Currently,
+  /// multiple entries or multiple values per entry are not allowed. If omitted,
+  /// the report will include all labeled and unlabeled usage.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.List<core.Object>> labels;
+
+  /// Optional. A set of projects of the form `projects/{project}`, specifying
+  /// that usage from only this set of projects should be included in the
+  /// budget. If omitted, the report will include all usage for the billing
+  /// account, regardless of which project the usage occurred on. Only zero or
+  /// one project can be specified currently.
   core.List<core.String> projects;
 
   /// Optional. A set of services of the form `services/{service_id}`,
-  /// specifying that usage from only this set of services should be
-  /// included in the budget. If omitted, the report will include usage for
-  /// all the services.
-  /// The service names are available through the Catalog API:
+  /// specifying that usage from only this set of services should be included in
+  /// the budget. If omitted, the report will include usage for all the
+  /// services. The service names are available through the Catalog API:
   /// https://cloud.google.com/billing/v1/how-tos/catalog-api.
   core.List<core.String> services;
+
+  /// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`,
+  /// specifying that usage from only this set of subaccounts should be included
+  /// in the budget. If a subaccount is set to the name of the parent account,
+  /// usage from the parent account will be included. If omitted, the report
+  /// will include usage from the parent account and all subaccounts, if they
+  /// exist.
+  core.List<core.String> subaccounts;
 
   GoogleCloudBillingBudgetsV1beta1Filter();
 
@@ -573,11 +608,19 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
     if (_json.containsKey("creditTypesTreatment")) {
       creditTypesTreatment = _json["creditTypesTreatment"];
     }
+    if (_json.containsKey("labels")) {
+      labels = commons.mapMap<core.List, core.List<core.Object>>(
+          _json["labels"].cast<core.String, core.List>(),
+          (core.List item) => (item as core.List).cast<core.Object>());
+    }
     if (_json.containsKey("projects")) {
       projects = (_json["projects"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("services")) {
       services = (_json["services"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("subaccounts")) {
+      subaccounts = (_json["subaccounts"] as core.List).cast<core.String>();
     }
   }
 
@@ -587,21 +630,26 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
     if (creditTypesTreatment != null) {
       _json["creditTypesTreatment"] = creditTypesTreatment;
     }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (projects != null) {
       _json["projects"] = projects;
     }
     if (services != null) {
       _json["services"] = services;
     }
+    if (subaccounts != null) {
+      _json["subaccounts"] = subaccounts;
+    }
     return _json;
   }
 }
 
-/// Describes a budget amount targeted to last period's spend.
-/// At this time, the amount is automatically 100% of last period's spend;
-/// that is, there are no other options yet.
-/// Future configuration will be described here (for example, configuring a
-/// percentage of last period's spend).
+/// Describes a budget amount targeted to last period's spend. At this time, the
+/// amount is automatically 100% of last period's spend; that is, there are no
+/// other options yet. Future configuration will be described here (for example,
+/// configuring a percentage of last period's spend).
 class GoogleCloudBillingBudgetsV1beta1LastPeriodAmount {
   GoogleCloudBillingBudgetsV1beta1LastPeriodAmount();
 
@@ -650,13 +698,12 @@ class GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
   }
 }
 
-/// ThresholdRule contains a definition of a threshold which triggers
-/// an alert (a notification of a threshold being crossed) to be sent when
-/// spend goes above the specified amount.
-/// Alerts are automatically e-mailed to users with the Billing Account
-/// Administrator role or the Billing Account User role.
-/// The thresholds here have no effect on notifications sent to anything
-/// configured under `Budget.all_updates_rule`.
+/// ThresholdRule contains a definition of a threshold which triggers an alert
+/// (a notification of a threshold being crossed) to be sent when spend goes
+/// above the specified amount. Alerts are automatically e-mailed to users with
+/// the Billing Account Administrator role or the Billing Account User role. The
+/// thresholds here have no effect on notifications sent to anything configured
+/// under `Budget.all_updates_rule`.
 class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
   /// Optional. The type of basis used to determine if spend has passed the
   /// threshold. Behavior defaults to CURRENT_SPEND if not set.
@@ -665,13 +712,11 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
   /// - "CURRENT_SPEND" : Use current spend as the basis for comparison against
   /// the threshold.
   /// - "FORECASTED_SPEND" : Use forecasted spend for the period as the basis
-  /// for comparison against
-  /// the threshold.
+  /// for comparison against the threshold.
   core.String spendBasis;
 
-  /// Required. Send an alert when this threshold is exceeded.
-  /// This is a 1.0-based percentage, so 0.5 = 50%.
-  /// Validation: non-negative number.
+  /// Required. Send an alert when this threshold is exceeded. This is a
+  /// 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
   core.double thresholdPercent;
 
   GoogleCloudBillingBudgetsV1beta1ThresholdRule();
@@ -700,8 +745,8 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
 
 /// Request for UpdateBudget
 class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
-  /// Required. The updated budget object.
-  /// The budget to update is specified by the budget name in the budget.
+  /// Required. The updated budget object. The budget to update is specified by
+  /// the budget name in the budget.
   GoogleCloudBillingBudgetsV1beta1Budget budget;
 
   /// Optional. Indicates which fields in the provided budget to update.
@@ -709,8 +754,7 @@ class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
   /// provided, then only fields with non-default values from the request are
   /// updated. See
   /// https://developers.google.com/protocol-buffers/docs/proto3#default for
-  /// more
-  /// details about default values.
+  /// more details about default values.
   core.String updateMask;
 
   GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest();
@@ -740,13 +784,9 @@ class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class GoogleProtobufEmpty {
   GoogleProtobufEmpty();
 
@@ -764,16 +804,16 @@ class GoogleTypeMoney {
   /// The 3-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
-  /// Number of nano (10^-9) units of the amount.
-  /// The value must be between -999,999,999 and +999,999,999 inclusive.
-  /// If `units` is positive, `nanos` must be positive or zero.
-  /// If `units` is zero, `nanos` can be positive, zero, or negative.
-  /// If `units` is negative, `nanos` must be negative or zero.
-  /// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+  /// Number of nano (10^-9) units of the amount. The value must be between
+  /// -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos`
+  /// must be positive or zero. If `units` is zero, `nanos` can be positive,
+  /// zero, or negative. If `units` is negative, `nanos` must be negative or
+  /// zero. For example $-1.75 is represented as `units`=-1 and
+  /// `nanos`=-750,000,000.
   core.int nanos;
 
-  /// The whole units of the amount.
-  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+  /// The whole units of the amount. For example if `currencyCode` is `"USD"`,
+  /// then 1 unit is one US dollar.
   core.String units;
 
   GoogleTypeMoney();

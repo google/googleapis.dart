@@ -89,6 +89,21 @@ class AssetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [format] - Return only assets with the matching format. Acceptable values
+  /// are:
+  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
+  ///
+  /// [category] - Filter assets based on the specified category. Supported
+  /// values are:
+  /// `animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,
+  /// `scenes`, `technology`, and `transport`.
+  ///
+  /// [pageToken] - Specifies a continuation token from a previous search whose
+  /// results were
+  /// split into multiple pages. To get the next page, submit the same request
+  /// specifying the value from
+  /// next_page_token.
+  ///
   /// [maxComplexity] - Returns assets that are of the specified complexity or
   /// less. Defaults to
   /// COMPLEX. For example, a request for
@@ -100,15 +115,7 @@ class AssetsResourceApi {
   /// - "MEDIUM" : A MEDIUM.
   /// - "SIMPLE" : A SIMPLE.
   ///
-  /// [pageToken] - Specifies a continuation token from a previous search whose
-  /// results were
-  /// split into multiple pages. To get the next page, submit the same request
-  /// specifying the value from
-  /// next_page_token.
-  ///
-  /// [pageSize] - The maximum number of assets to be returned. This value must
-  /// be between `1`
-  /// and `100`. Defaults to `20`.
+  /// [curated] - Return only assets that have been curated by the Poly team.
   ///
   /// [keywords] - One or more search terms to be matched against all text that
   /// Poly has
@@ -116,20 +123,13 @@ class AssetsResourceApi {
   /// description, and tags. Multiple keywords should be
   /// separated by spaces.
   ///
+  /// [pageSize] - The maximum number of assets to be returned. This value must
+  /// be between `1`
+  /// and `100`. Defaults to `20`.
+  ///
   /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
   /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
   /// based on a combination of popularity and other features.
-  ///
-  /// [format] - Return only assets with the matching format. Acceptable values
-  /// are:
-  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
-  ///
-  /// [curated] - Return only assets that have been curated by the Poly team.
-  ///
-  /// [category] - Filter assets based on the specified category. Supported
-  /// values are:
-  /// `animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,
-  /// `scenes`, `technology`, and `transport`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -142,14 +142,14 @@ class AssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAssetsResponse> list(
-      {core.String maxComplexity,
-      core.String pageToken,
-      core.int pageSize,
-      core.String keywords,
-      core.String orderBy,
-      core.String format,
-      core.bool curated,
+      {core.String format,
       core.String category,
+      core.String pageToken,
+      core.String maxComplexity,
+      core.bool curated,
+      core.String keywords,
+      core.int pageSize,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -158,29 +158,29 @@ class AssetsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxComplexity != null) {
-      _queryParams["maxComplexity"] = [maxComplexity];
+    if (format != null) {
+      _queryParams["format"] = [format];
+    }
+    if (category != null) {
+      _queryParams["category"] = [category];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (keywords != null) {
-      _queryParams["keywords"] = [keywords];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (format != null) {
-      _queryParams["format"] = [format];
+    if (maxComplexity != null) {
+      _queryParams["maxComplexity"] = [maxComplexity];
     }
     if (curated != null) {
       _queryParams["curated"] = ["${curated}"];
     }
-    if (category != null) {
-      _queryParams["category"] = [category];
+    if (keywords != null) {
+      _queryParams["keywords"] = [keywords];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -228,23 +228,15 @@ class UsersAssetsResourceApi {
   /// an OAuth token with the request.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
-  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
-  /// based on a combination of popularity and other features.
-  ///
-  /// [format] - Return only assets with the matching format. Acceptable values
-  /// are:
-  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
-  ///
   /// [pageToken] - Specifies a continuation token from a previous search whose
   /// results were
   /// split into multiple pages. To get the next page, submit the same request
   /// specifying the value from
   /// next_page_token.
   ///
-  /// [pageSize] - The maximum number of assets to be returned. This value must
-  /// be between `1`
-  /// and `100`. Defaults to `20`.
+  /// [format] - Return only assets with the matching format. Acceptable values
+  /// are:
+  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
   ///
   /// [visibility] - The visibility of the assets to be returned.
   /// Defaults to
@@ -254,6 +246,14 @@ class UsersAssetsResourceApi {
   /// - "VISIBILITY_UNSPECIFIED" : A VISIBILITY_UNSPECIFIED.
   /// - "PUBLISHED" : A PUBLISHED.
   /// - "PRIVATE" : A PRIVATE.
+  ///
+  /// [pageSize] - The maximum number of assets to be returned. This value must
+  /// be between `1`
+  /// and `100`. Defaults to `20`.
+  ///
+  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
+  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
+  /// based on a combination of popularity and other features.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -266,11 +266,11 @@ class UsersAssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserAssetsResponse> list(core.String name,
-      {core.String orderBy,
+      {core.String pageToken,
       core.String format,
-      core.String pageToken,
-      core.int pageSize,
       core.String visibility,
+      core.int pageSize,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -282,20 +282,20 @@ class UsersAssetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (format != null) {
       _queryParams["format"] = [format];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (visibility != null) {
+      _queryParams["visibility"] = [visibility];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (visibility != null) {
-      _queryParams["visibility"] = [visibility];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -331,12 +331,6 @@ class UsersLikedassetsResourceApi {
   /// an OAuth token with the request.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [pageToken] - Specifies a continuation token from a previous search whose
-  /// results were
-  /// split into multiple pages. To get the next page, submit the same request
-  /// specifying the value from
-  /// next_page_token.
-  ///
   /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
   /// `BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'. Defaults to `LIKED_TIME`, which
   /// ranks assets based on how recently they were liked.
@@ -349,6 +343,12 @@ class UsersLikedassetsResourceApi {
   /// be between `1`
   /// and `100`. Defaults to `20`.
   ///
+  /// [pageToken] - Specifies a continuation token from a previous search whose
+  /// results were
+  /// split into multiple pages. To get the next page, submit the same request
+  /// specifying the value from
+  /// next_page_token.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -360,10 +360,10 @@ class UsersLikedassetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLikedAssetsResponse> list(core.String name,
-      {core.String pageToken,
-      core.String orderBy,
+      {core.String orderBy,
       core.String format,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -375,9 +375,6 @@ class UsersLikedassetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -386,6 +383,9 @@ class UsersLikedassetsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

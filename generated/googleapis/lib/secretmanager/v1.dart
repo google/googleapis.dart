@@ -101,11 +101,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [filter] - The standard list filter.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -118,9 +118,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -132,14 +132,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -166,8 +166,8 @@ class ProjectsSecretsResourceApi {
 
   ProjectsSecretsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new SecretVersion containing secret data and attaches
-  /// it to an existing Secret.
+  /// Creates a new SecretVersion containing secret data and attaches it to an
+  /// existing Secret.
   ///
   /// [request] - The metadata request object.
   ///
@@ -227,15 +227,12 @@ class ProjectsSecretsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the project to associate with
-  /// the
-  /// Secret, in the format `projects / * `.
+  /// the Secret, in the format `projects / * `.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [secretId] - Required. This must be unique within the project.
-  ///
-  /// A secret ID is a string with a maximum length of 255 characters and can
-  /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`)
-  /// and
+  /// [secretId] - Required. This must be unique within the project. A secret ID
+  /// is a string with a maximum length of 255 characters and can contain
+  /// uppercase and lowercase letters, numerals, and the hyphen (`-`) and
   /// underscore (`_`) characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -370,26 +367,23 @@ class ProjectsSecretsResourceApi {
     return _response.then((data) => new Secret.fromJson(data));
   }
 
-  /// Gets the access control policy for a secret.
-  /// Returns empty policy if the secret exists and does not have a policy set.
+  /// Gets the access control policy for a secret. Returns empty policy if the
+  /// secret exists and does not have a policy set.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -447,9 +441,8 @@ class ProjectsSecretsResourceApi {
   /// ListSecretsResponse.next_page_token.
   ///
   /// [pageSize] - Optional. The maximum number of results to be returned in a
-  /// single page. If
-  /// set to 0, the server decides the number of results to return. If the
-  /// number is greater than 25000, it is capped at 25000.
+  /// single page. If set to 0, the server decides the number of results to
+  /// return. If the number is greater than 25000, it is capped at 25000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -551,18 +544,16 @@ class ProjectsSecretsResourceApi {
   }
 
   /// Sets the access control policy on the specified secret. Replaces any
-  /// existing policy.
-  ///
-  /// Permissions on SecretVersions are enforced according
-  /// to the policy set on the associated Secret.
+  /// existing policy. Permissions on SecretVersions are enforced according to
+  /// the policy set on the associated Secret.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -608,21 +599,19 @@ class ProjectsSecretsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has for the specified secret.
-  /// If the secret does not exist, this call returns an empty set of
-  /// permissions, not a NOT_FOUND error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has for the specified secret. If the
+  /// secret does not exist, this call returns an empty set of permissions, not
+  /// a NOT_FOUND error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -676,10 +665,8 @@ class ProjectsSecretsVersionsResourceApi {
   ProjectsSecretsVersionsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Accesses a SecretVersion. This call returns the secret data.
-  ///
-  /// `projects / * /secrets / * /versions/latest` is an alias to the `latest`
-  /// SecretVersion.
+  /// Accesses a SecretVersion. This call returns the secret data. `projects / *
+  /// /secrets / * /versions/latest` is an alias to the `latest` SecretVersion.
   ///
   /// Request parameters:
   ///
@@ -725,19 +712,15 @@ class ProjectsSecretsVersionsResourceApi {
         .then((data) => new AccessSecretVersionResponse.fromJson(data));
   }
 
-  /// Destroys a SecretVersion.
-  ///
-  /// Sets the state of the SecretVersion to
-  /// DESTROYED and irrevocably destroys the
-  /// secret data.
+  /// Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED
+  /// and irrevocably destroys the secret data.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion to destroy in
-  /// the format
-  /// `projects / * /secrets / * /versions / * `.
+  /// the format `projects / * /secrets / * /versions / * `.
   /// Value must have pattern "^projects/[^/]+/secrets/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -781,18 +764,14 @@ class ProjectsSecretsVersionsResourceApi {
     return _response.then((data) => new SecretVersion.fromJson(data));
   }
 
-  /// Disables a SecretVersion.
-  ///
-  /// Sets the state of the SecretVersion to
-  /// DISABLED.
+  /// Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion to disable in
-  /// the format
-  /// `projects / * /secrets / * /versions / * `.
+  /// the format `projects / * /secrets / * /versions / * `.
   /// Value must have pattern "^projects/[^/]+/secrets/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -836,18 +815,14 @@ class ProjectsSecretsVersionsResourceApi {
     return _response.then((data) => new SecretVersion.fromJson(data));
   }
 
-  /// Enables a SecretVersion.
-  ///
-  /// Sets the state of the SecretVersion to
-  /// ENABLED.
+  /// Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion to enable in the
-  /// format
-  /// `projects / * /secrets / * /versions / * `.
+  /// format `projects / * /secrets / * /versions / * `.
   /// Value must have pattern "^projects/[^/]+/secrets/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -891,17 +866,14 @@ class ProjectsSecretsVersionsResourceApi {
     return _response.then((data) => new SecretVersion.fromJson(data));
   }
 
-  /// Gets metadata for a SecretVersion.
-  ///
-  /// `projects / * /secrets / * /versions/latest` is an alias to the `latest`
-  /// SecretVersion.
+  /// Gets metadata for a SecretVersion. `projects / * /secrets / *
+  /// /versions/latest` is an alias to the `latest` SecretVersion.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the SecretVersion in the format
-  /// `projects / * /secrets / * /versions / * `.
-  /// `projects / * /secrets / * /versions/latest` is an alias to the `latest`
-  /// SecretVersion.
+  /// `projects / * /secrets / * /versions / * `. `projects / * /secrets / *
+  /// /versions/latest` is an alias to the `latest` SecretVersion.
   /// Value must have pattern "^projects/[^/]+/secrets/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -940,23 +912,20 @@ class ProjectsSecretsVersionsResourceApi {
     return _response.then((data) => new SecretVersion.fromJson(data));
   }
 
-  /// Lists SecretVersions. This call does not return secret
-  /// data.
+  /// Lists SecretVersions. This call does not return secret data.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the Secret associated with the
-  /// SecretVersions to list, in the format
-  /// `projects / * /secrets / * `.
+  /// SecretVersions to list, in the format `projects / * /secrets / * `.
   /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
+  ///
+  /// [pageSize] - Optional. The maximum number of results to be returned in a
+  /// single page. If set to 0, the server decides the number of results to
+  /// return. If the number is greater than 25000, it is capped at 25000.
   ///
   /// [pageToken] - Optional. Pagination token, returned earlier via
   /// ListSecretVersionsResponse.next_page_token][].
-  ///
-  /// [pageSize] - Optional. The maximum number of results to be returned in a
-  /// single page. If
-  /// set to 0, the server decides the number of results to return. If the
-  /// number is greater than 25000, it is capped at 25000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -969,7 +938,7 @@ class ProjectsSecretsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSecretVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -980,11 +949,11 @@ class ProjectsSecretsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1006,8 +975,8 @@ class ProjectsSecretsVersionsResourceApi {
 
 /// Response message for SecretManagerService.AccessSecretVersion.
 class AccessSecretVersionResponse {
-  /// The resource name of the SecretVersion in the format
-  /// `projects / * /secrets / * /versions / * `.
+  /// The resource name of the SecretVersion in the format `projects / *
+  /// /secrets / * /versions / * `.
   core.String name;
 
   /// Secret payload
@@ -1060,64 +1029,29 @@ class AddSecretVersionRequest {
   }
 }
 
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditLogConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:jose@example.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "sampleservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:aliya@example.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// Specifies the audit configuration for a service. The configuration
+/// determines which permission types are logged, and what identities, if any,
+/// are exempted from logging. An AuditConfig must have one or more
+/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
+/// specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
+/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging. For example,
+  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
+  /// special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -1147,29 +1081,14 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:jose@example.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// jose@example.com from DATA_READ logging.
+/// Provides the configuration for logging a type of permissions. Example: {
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
+/// DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
+  /// permission. Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -1208,77 +1127,114 @@ class AuditLogConfig {
 /// A replication policy that replicates the Secret payload without any
 /// restrictions.
 class Automatic {
+  /// Optional. The customer-managed encryption configuration of the Secret. If
+  /// no configuration is provided, Google-managed default encryption is used.
+  /// Updates to the Secret encryption configuration only apply to
+  /// SecretVersions added afterwards. They do not apply retroactively to
+  /// existing SecretVersions.
+  CustomerManagedEncryption customerManagedEncryption;
+
   Automatic();
 
-  Automatic.fromJson(core.Map _json) {}
+  Automatic.fromJson(core.Map _json) {
+    if (_json.containsKey("customerManagedEncryption")) {
+      customerManagedEncryption = new CustomerManagedEncryption.fromJson(
+          _json["customerManagedEncryption"]);
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (customerManagedEncryption != null) {
+      _json["customerManagedEncryption"] = (customerManagedEncryption).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The replication status of a SecretVersion using automatic replication. Only
+/// populated if the parent Secret has an automatic replication policy.
+class AutomaticStatus {
+  /// Output only. The customer-managed encryption status of the SecretVersion.
+  /// Only populated if customer-managed encryption is used.
+  CustomerManagedEncryptionStatus customerManagedEncryption;
+
+  AutomaticStatus();
+
+  AutomaticStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("customerManagedEncryption")) {
+      customerManagedEncryption = new CustomerManagedEncryptionStatus.fromJson(
+          _json["customerManagedEncryption"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customerManagedEncryption != null) {
+      _json["customerManagedEncryption"] = (customerManagedEncryption).toJson();
+    }
     return _json;
   }
 }
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  /// NOTE: An unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
+  /// A client-specified ID for this binding. Expected to be globally unique to
+  /// support the internal bindings-by-ID API.
+  core.String bindingId;
+
+  /// The condition that is associated with this binding. If the condition
+  /// evaluates to `true`, then this binding applies to the current request. If
+  /// the condition evaluates to `false`, then this binding does not apply to
+  /// the current request. However, a different role binding might grant the
+  /// same role to one or more of the members in this binding. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
-  /// `members` can have the following values:
-  ///
-  /// * `allUsers`: A special identifier that represents anyone who is
-  ///    on the internet; with or without a Google account.
-  ///
-  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
-  ///    who is authenticated with a Google account or a service account.
-  ///
-  /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@example.com` .
-  ///
-  ///
-  /// * `serviceAccount:{emailid}`: An email address that represents a service
-  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  ///
-  /// * `group:{emailid}`: An email address that represents a Google group.
-  ///    For example, `admins@example.com`.
-  ///
-  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a user that has been recently deleted. For
-  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
-  /// recovered, this value reverts to `user:{emailid}` and the recovered user
-  ///    retains the role in the binding.
-  ///
-  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
-  /// (plus
-  /// unique identifier) representing a service account that has been recently
-  ///    deleted. For example,
-  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-  ///    If the service account is undeleted, this value reverts to
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
-  ///    role in the binding.
-  ///
-  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a Google group that has been recently
-  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-  /// the group is recovered, this value reverts to `group:{emailid}` and the
-  ///    recovered group retains the role in the binding.
-  ///
-  ///
-  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
-  ///    users of that domain. For example, `google.com` or `example.com`.
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`.
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`. For example, `roles/viewer`,
+  /// `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingId")) {
+      bindingId = _json["bindingId"];
+    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1293,6 +1249,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bindingId != null) {
+      _json["bindingId"] = bindingId;
+    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -1301,6 +1260,60 @@ class Binding {
     }
     if (role != null) {
       _json["role"] = role;
+    }
+    return _json;
+  }
+}
+
+/// Configuration for encrypting secret payloads using customer-managed
+/// encryption keys (CMEK).
+class CustomerManagedEncryption {
+  /// Required. The resource name of the Cloud KMS CryptoKey used to encrypt
+  /// secret payloads. For secrets using the UserManaged replication policy
+  /// type, Cloud KMS CryptoKeys must reside in the same location as the replica
+  /// location. For secrets using the Automatic replication policy type, Cloud
+  /// KMS CryptoKeys must reside in `global`. The expected format is `projects /
+  /// * /locations / * /keyRings / * /cryptoKeys / * `.
+  core.String kmsKeyName;
+
+  CustomerManagedEncryption();
+
+  CustomerManagedEncryption.fromJson(core.Map _json) {
+    if (_json.containsKey("kmsKeyName")) {
+      kmsKeyName = _json["kmsKeyName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kmsKeyName != null) {
+      _json["kmsKeyName"] = kmsKeyName;
+    }
+    return _json;
+  }
+}
+
+/// Describes the status of customer-managed encryption.
+class CustomerManagedEncryptionStatus {
+  /// Required. The resource name of the Cloud KMS CryptoKeyVersion used to
+  /// encrypt the secret payload, in the following format: `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * /versions / * `.
+  core.String kmsKeyVersionName;
+
+  CustomerManagedEncryptionStatus();
+
+  CustomerManagedEncryptionStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("kmsKeyVersionName")) {
+      kmsKeyVersionName = _json["kmsKeyVersionName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kmsKeyVersionName != null) {
+      _json["kmsKeyVersionName"] = kmsKeyVersionName;
     }
     return _json;
   }
@@ -1334,13 +1347,9 @@ class DisableSecretVersionRequest {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -1368,36 +1377,20 @@ class EnableSecretVersionRequest {
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec.
-///
-/// Example (Comparison):
-///
-///     title: "Summary size limit"
-///     description: "Determines if a summary is less than 100 chars"
-///     expression: "document.summary.size() < 100"
-///
-/// Example (Equality):
-///
-///     title: "Requestor is owner"
-///     description: "Determines if requestor is the document owner"
-///     expression: "document.owner == request.auth.claims.email"
-///
-/// Example (Logic):
-///
-///     title: "Public documents"
+/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
 /// description: "Determine whether the document should be publicly visible"
-///     expression: "document.type != 'private' && document.type != 'internal'"
-///
-/// Example (Data Manipulation):
-///
-///     title: "Notification string"
-///     description: "Create a notification string with a timestamp."
-///     expression: "'New message received at ' + string(document.create_time)"
-///
-/// The exact variables and functions that may be referenced within an
-/// expression
-/// are determined by the service that evaluates it. See the service
-/// documentation for additional information.
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
 class Expr {
   /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
@@ -1411,9 +1404,8 @@ class Expr {
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
+  /// Optional. Title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
   Expr();
@@ -1495,8 +1487,8 @@ class ListSecretVersionsResponse {
   /// The total number of SecretVersions.
   core.int totalSize;
 
-  /// The list of SecretVersions sorted in reverse by
-  /// create_time (newest first).
+  /// The list of SecretVersions sorted in reverse by create_time (newest
+  /// first).
   core.List<SecretVersion> versions;
 
   ListSecretVersionsResponse();
@@ -1537,8 +1529,7 @@ class ListSecretsResponse {
   /// ListSecretsRequest.page_token to retrieve the next page.
   core.String nextPageToken;
 
-  /// The list of Secrets sorted in reverse by create_time (newest
-  /// first).
+  /// The list of Secrets sorted in reverse by create_time (newest first).
   core.List<Secret> secrets;
 
   /// The total number of Secrets.
@@ -1578,13 +1569,12 @@ class ListSecretsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  /// For example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
   core.String displayName;
 
   /// Cross-service attributes for the location. For example
-  ///
-  ///     {"cloud.googleapis.com/region": "us-east1"}
+  /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
   /// The canonical id for this location. For example: `"us-east1"`.
@@ -1645,69 +1635,34 @@ class Location {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources.
-///
-///
-/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts,
-/// Google groups, and domains (such as G Suite). A `role` is a named list of
-/// permissions; each `role` can be an IAM predefined role or a user-created
-/// custom role.
-///
-/// Optionally, a `binding` can specify a `condition`, which is a logical
-/// expression that allows access to a resource only if the expression evaluates
-/// to `true`. A condition can add constraints based on attributes of the
-/// request, the resource, or both.
-///
-/// **JSON example:**
-///
-///     {
-///       "bindings": [
-///         {
-///           "role": "roles/resourcemanager.organizationAdmin",
-///           "members": [
-///             "user:mike@example.com",
-///             "group:admins@example.com",
-///             "domain:google.com",
-///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-///           ]
-///         },
-///         {
-///           "role": "roles/resourcemanager.organizationViewer",
-///           "members": ["user:eve@example.com"],
-///           "condition": {
-///             "title": "expirable access",
-///             "description": "Does not grant access after Sep 2020",
-/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-///           }
-///         }
-///       ],
-///       "etag": "BwWWja0YfJA=",
-///       "version": 3
-///     }
-///
-/// **YAML example:**
-///
-///     bindings:
-///     - members:
-///       - user:mike@example.com
-///       - group:admins@example.com
-///       - domain:google.com
-///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
-///       role: roles/resourcemanager.organizationAdmin
-///     - members:
-///       - user:eve@example.com
-///       role: roles/resourcemanager.organizationViewer
-///       condition:
-///         title: expirable access
-///         description: Does not grant access after Sep 2020
-///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-///     - etag: BwWWja0YfJA=
-///     - version: 3
-///
-/// For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// controls for Google Cloud resources. A `Policy` is a collection of
+/// `bindings`. A `binding` binds one or more `members` to a single `role`.
+/// Members can be user accounts, service accounts, Google groups, and domains
+/// (such as G Suite). A `role` is a named list of permissions; each `role` can
+/// be an IAM predefined role or a user-created custom role. For some types of
+/// Google Cloud resources, a `binding` can also specify a `condition`, which is
+/// a logical expression that allows access to a resource only if the expression
+/// evaluates to `true`. A condition can add constraints based on attributes of
+/// the request, the resource, or both. To learn which resources support
+/// conditions in their IAM policies, see the [IAM
+/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// version: 3 For a description of IAM and its features, see the [IAM
+/// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -1717,21 +1672,17 @@ class Policy {
   /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a policy from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other. It is
+  /// strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
   /// ensure that their change will be applied to the same version of the
-  /// policy.
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -1742,29 +1693,21 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Specifies the format of the policy.
-  ///
-  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-  /// are rejected.
-  ///
-  /// Any operation that affects conditional role bindings must specify version
-  /// `3`. This requirement applies to the following operations:
-  ///
-  /// * Getting a policy that includes a conditional role binding
-  /// * Adding a conditional role binding to a policy
-  /// * Changing a conditional role binding in a policy
-  /// * Removing any role binding, with or without a condition, from a policy
-  ///   that includes conditions
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
-  ///
-  /// If a policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset.
+  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+  /// Requests that specify an invalid value are rejected. Any operation that
+  /// affects conditional role bindings must specify version `3`. This
+  /// requirement applies to the following operations: * Getting a policy that
+  /// includes a conditional role binding * Adding a conditional role binding to
+  /// a policy * Changing a conditional role binding in a policy * Removing any
+  /// role binding, with or without a condition, from a policy that includes
+  /// conditions **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost. If a
+  /// policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -1810,13 +1753,24 @@ class Policy {
 
 /// Represents a Replica for this Secret.
 class Replica {
-  /// The canonical IDs of the location to replicate data.
-  /// For example: `"us-east1"`.
+  /// Optional. The customer-managed encryption configuration of the
+  /// User-Managed Replica. If no configuration is provided, Google-managed
+  /// default encryption is used. Updates to the Secret encryption configuration
+  /// only apply to SecretVersions added afterwards. They do not apply
+  /// retroactively to existing SecretVersions.
+  CustomerManagedEncryption customerManagedEncryption;
+
+  /// The canonical IDs of the location to replicate data. For example:
+  /// `"us-east1"`.
   core.String location;
 
   Replica();
 
   Replica.fromJson(core.Map _json) {
+    if (_json.containsKey("customerManagedEncryption")) {
+      customerManagedEncryption = new CustomerManagedEncryption.fromJson(
+          _json["customerManagedEncryption"]);
+    }
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
@@ -1825,6 +1779,9 @@ class Replica {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (customerManagedEncryption != null) {
+      _json["customerManagedEncryption"] = (customerManagedEncryption).toJson();
+    }
     if (location != null) {
       _json["location"] = location;
     }
@@ -1832,7 +1789,42 @@ class Replica {
   }
 }
 
-/// A policy that defines the replication configuration of data.
+/// Describes the status of a user-managed replica for the SecretVersion.
+class ReplicaStatus {
+  /// Output only. The customer-managed encryption status of the SecretVersion.
+  /// Only populated if customer-managed encryption is used.
+  CustomerManagedEncryptionStatus customerManagedEncryption;
+
+  /// Output only. The canonical ID of the replica location. For example:
+  /// `"us-east1"`.
+  core.String location;
+
+  ReplicaStatus();
+
+  ReplicaStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("customerManagedEncryption")) {
+      customerManagedEncryption = new CustomerManagedEncryptionStatus.fromJson(
+          _json["customerManagedEncryption"]);
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customerManagedEncryption != null) {
+      _json["customerManagedEncryption"] = (customerManagedEncryption).toJson();
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    return _json;
+  }
+}
+
+/// A policy that defines the replication and encryption configuration of data.
 class Replication {
   /// The Secret will automatically be replicated without any restrictions.
   Automatic automatic;
@@ -1864,26 +1856,56 @@ class Replication {
   }
 }
 
-/// A Secret is a logical secret whose value and versions can
-/// be accessed.
-///
-/// A Secret is made up of zero or more SecretVersions that
-/// represent the secret data.
+/// The replication status of a SecretVersion.
+class ReplicationStatus {
+  /// Describes the replication status of a SecretVersion with automatic
+  /// replication. Only populated if the parent Secret has an automatic
+  /// replication policy.
+  AutomaticStatus automatic;
+
+  /// Describes the replication status of a SecretVersion with user-managed
+  /// replication. Only populated if the parent Secret has a user-managed
+  /// replication policy.
+  UserManagedStatus userManaged;
+
+  ReplicationStatus();
+
+  ReplicationStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("automatic")) {
+      automatic = new AutomaticStatus.fromJson(_json["automatic"]);
+    }
+    if (_json.containsKey("userManaged")) {
+      userManaged = new UserManagedStatus.fromJson(_json["userManaged"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (automatic != null) {
+      _json["automatic"] = (automatic).toJson();
+    }
+    if (userManaged != null) {
+      _json["userManaged"] = (userManaged).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A Secret is a logical secret whose value and versions can be accessed. A
+/// Secret is made up of zero or more SecretVersions that represent the secret
+/// data.
 class Secret {
   /// Output only. The time at which the Secret was created.
   core.String createTime;
 
-  /// The labels assigned to this Secret.
-  ///
-  /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
-  /// of maximum 128 bytes, and must conform to the following PCRE regular
-  /// expression: `\p{Ll}\p{Lo}{0,62}`
-  ///
+  /// The labels assigned to this Secret. Label keys must be between 1 and 63
+  /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+  /// conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}`
   /// Label values must be between 0 and 63 characters long, have a UTF-8
   /// encoding of maximum 128 bytes, and must conform to the following PCRE
-  /// regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`
-  ///
-  /// No more than 64 labels can be assigned to a given resource.
+  /// regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels
+  /// can be assigned to a given resource.
   core.Map<core.String, core.String> labels;
 
   /// Output only. The resource name of the Secret in the format `projects / *
@@ -1891,10 +1913,8 @@ class Secret {
   core.String name;
 
   /// Required. Immutable. The replication policy of the secret data attached to
-  /// the Secret.
-  ///
-  /// The replication policy cannot be changed after the Secret has been
-  /// created.
+  /// the Secret. The replication policy cannot be changed after the Secret has
+  /// been created.
   Replication replication;
 
   Secret();
@@ -1934,7 +1954,7 @@ class Secret {
 }
 
 /// A secret payload resource in the Secret Manager API. This contains the
-/// sensitive secret data that is associated with a SecretVersion.
+/// sensitive secret payload that is associated with a SecretVersion.
 class SecretPayload {
   /// The secret data. Must be no larger than 64KiB.
   core.String data;
@@ -1970,28 +1990,26 @@ class SecretVersion {
   /// Output only. The time at which the SecretVersion was created.
   core.String createTime;
 
-  /// Output only. The time this SecretVersion was destroyed.
-  /// Only present if state is
-  /// DESTROYED.
+  /// Output only. The time this SecretVersion was destroyed. Only present if
+  /// state is DESTROYED.
   core.String destroyTime;
 
-  /// Output only. The resource name of the SecretVersion in the
-  /// format `projects / * /secrets / * /versions / * `.
-  ///
-  /// SecretVersion IDs in a Secret start at 1 and
-  /// are incremented for each subsequent version of the secret.
+  /// Output only. The resource name of the SecretVersion in the format
+  /// `projects / * /secrets / * /versions / * `. SecretVersion IDs in a Secret
+  /// start at 1 and are incremented for each subsequent version of the secret.
   core.String name;
+
+  /// The replication status of the SecretVersion.
+  ReplicationStatus replicationStatus;
 
   /// Output only. The current state of the SecretVersion.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not specified. This value is unused and invalid.
   /// - "ENABLED" : The SecretVersion may be accessed.
   /// - "DISABLED" : The SecretVersion may not be accessed, but the secret data
-  /// is still available and can be placed back into the ENABLED
-  /// state.
+  /// is still available and can be placed back into the ENABLED state.
   /// - "DESTROYED" : The SecretVersion is destroyed and the secret data is no
-  /// longer
-  /// stored. A version may not leave this state once entered.
+  /// longer stored. A version may not leave this state once entered.
   core.String state;
 
   SecretVersion();
@@ -2005,6 +2023,10 @@ class SecretVersion {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("replicationStatus")) {
+      replicationStatus =
+          new ReplicationStatus.fromJson(_json["replicationStatus"]);
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
@@ -2023,6 +2045,9 @@ class SecretVersion {
     if (name != null) {
       _json["name"] = name;
     }
+    if (replicationStatus != null) {
+      _json["replicationStatus"] = (replicationStatus).toJson();
+    }
     if (state != null) {
       _json["state"] = state;
     }
@@ -2033,17 +2058,14 @@ class SecretVersion {
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects)
-  /// might reject them.
+  /// the policy is limited to a few 10s of KB. An empty policy is a valid
+  /// policy but certain Cloud Platform services (such as Projects) might reject
+  /// them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
-  /// Only
-  /// the fields in the mask will be modified. If no mask is provided, the
-  /// following default mask is used:
-  ///
-  /// `paths: "bindings, etag"`
+  /// Only the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
 
   SetIamPolicyRequest();
@@ -2074,8 +2096,8 @@ class SetIamPolicyRequest {
 class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`. Permissions with
   /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// information see [IAM
+  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();
@@ -2120,12 +2142,10 @@ class TestIamPermissionsResponse {
   }
 }
 
-/// A replication policy that replicates the Secret payload into the
-/// locations specified in Secret.replication.user_managed.replicas
+/// A replication policy that replicates the Secret payload into the locations
+/// specified in Secret.replication.user_managed.replicas
 class UserManaged {
-  /// Required. The list of Replicas for this Secret.
-  ///
-  /// Cannot be empty.
+  /// Required. The list of Replicas for this Secret. Cannot be empty.
   core.List<Replica> replicas;
 
   UserManaged();
@@ -2134,6 +2154,32 @@ class UserManaged {
     if (_json.containsKey("replicas")) {
       replicas = (_json["replicas"] as core.List)
           .map<Replica>((value) => new Replica.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (replicas != null) {
+      _json["replicas"] = replicas.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The replication status of a SecretVersion using user-managed replication.
+/// Only populated if the parent Secret has a user-managed replication policy.
+class UserManagedStatus {
+  /// Output only. The list of replica statuses for the SecretVersion.
+  core.List<ReplicaStatus> replicas;
+
+  UserManagedStatus();
+
+  UserManagedStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("replicas")) {
+      replicas = (_json["replicas"] as core.List)
+          .map<ReplicaStatus>((value) => new ReplicaStatus.fromJson(value))
           .toList();
     }
   }

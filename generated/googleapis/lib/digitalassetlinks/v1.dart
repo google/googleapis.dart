@@ -36,177 +36,102 @@ class AssetlinksResourceApi {
   AssetlinksResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Determines whether the specified (directional) relationship exists between
-  /// the specified source and target assets.
-  ///
-  /// The relation describes the intent of the link between the two assets as
-  /// claimed by the source asset.  An example for such relationships is the
-  /// delegation of privileges or permissions.
-  ///
-  /// This command is most often used by infrastructure systems to check
-  /// preconditions for an action.  For example, a client may want to know if it
-  /// is OK to send a web URL to a particular mobile app instead. The client can
-  /// check for the relevant asset link from the website to the mobile app to
-  /// decide if the operation should be allowed.
-  ///
-  /// A note about security: if you specify a secure asset as the source, such
-  /// as
-  /// an HTTPS website or an Android app, the API will ensure that any
-  /// statements used to generate the response have been made in a secure way by
-  /// the owner of that asset.  Conversely, if the source asset is an insecure
-  /// HTTP website (that is, the URL starts with `http://` instead of
-  /// `https://`), the API cannot verify its statements securely, and it is not
-  /// possible to ensure that the website's statements have not been altered by
-  /// a
-  /// third party.  For more information, see the [Digital Asset Links technical
-  /// design
+  /// the specified source and target assets. The relation describes the intent
+  /// of the link between the two assets as claimed by the source asset. An
+  /// example for such relationships is the delegation of privileges or
+  /// permissions. This command is most often used by infrastructure systems to
+  /// check preconditions for an action. For example, a client may want to know
+  /// if it is OK to send a web URL to a particular mobile app instead. The
+  /// client can check for the relevant asset link from the website to the
+  /// mobile app to decide if the operation should be allowed. A note about
+  /// security: if you specify a secure asset as the source, such as an HTTPS
+  /// website or an Android app, the API will ensure that any statements used to
+  /// generate the response have been made in a secure way by the owner of that
+  /// asset. Conversely, if the source asset is an insecure HTTP website (that
+  /// is, the URL starts with `http://` instead of `https://`), the API cannot
+  /// verify its statements securely, and it is not possible to ensure that the
+  /// website's statements have not been altered by a third party. For more
+  /// information, see the [Digital Asset Links technical design
   /// specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).
   ///
   /// Request parameters:
   ///
-  /// [relation] - Query string for the relation.
-  ///
-  /// We identify relations with strings of the format `<kind>/<detail>`, where
-  /// `<kind>` must be one of a set of pre-defined purpose categories, and
-  /// `<detail>` is a free-form lowercase alphanumeric string that describes the
-  /// specific use case of the statement.
-  ///
-  /// Refer to [our API documentation](/digital-asset-links/v1/relation-strings)
-  /// for the current list of supported relations.
-  ///
-  /// For a query to match an asset link, both the query's and the asset link's
-  /// relation strings must match exactly.
-  ///
-  /// Example: A query with relation
-  /// `delegate_permission/common.handle_all_urls`
-  /// matches an asset link with relation
-  /// `delegate_permission/common.handle_all_urls`.
-  ///
   /// [target_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname
-  /// and port parts.  The format is
-  ///
-  ///     http[s]://<hostname>[:<port>]
-  ///
-  /// Hostnames must be fully qualified: they must end in a single period
-  /// ("`.`").
-  ///
-  /// Only the schemes "http" and "https" are currently allowed.
-  ///
-  /// Port numbers are given as a decimal number, and they must be omitted if
-  /// the
-  /// standard port numbers are used: 80 for http and 443 for https.
-  ///
-  /// We call this limited URL the "site".  All URLs that share the same scheme,
-  /// hostname and port are considered to be a part of the site and thus belong
-  /// to the web asset.
-  ///
+  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
+  /// must be fully qualified: they must end in a single period ("`.`"). Only
+  /// the schemes "http" and "https" are currently allowed. Port numbers are
+  /// given as a decimal number, and they must be omitted if the standard port
+  /// numbers are used: 80 for http and 443 for https. We call this limited URL
+  /// the "site". All URLs that share the same scheme, hostname and port are
+  /// considered to be a part of the site and thus belong to the web asset.
   /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs:
+  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
+  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
+  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
+  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
+  /// scheme) * `https://google.com/` (hostname does not match) *
+  /// `https://www.google.com:444/` (port does not match) REQUIRED
   ///
-  ///   *   `https://www.google.com/`
-  ///   *   `https://www.google.com:443/`
-  ///   *   `https://www.google.com/foo`
-  ///   *   `https://www.google.com/foo?bar`
-  ///   *   `https://www.google.com/foo#bar`
-  ///   *   `https://user@password:www.google.com/`
+  /// [target_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name. For example, the Google Maps app
+  /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
-  /// But it does not contain these URLs:
-  ///
-  ///   *   `http://www.google.com/`       (wrong scheme)
-  ///   *   `https://google.com/`          (hostname does not match)
-  ///   *   `https://www.google.com:444/`  (port does not match)
-  /// REQUIRED
+  /// [relation] - Query string for the relation. We identify relations with
+  /// strings of the format `/`, where `` must be one of a set of pre-defined
+  /// purpose categories, and `` is a free-form lowercase alphanumeric string
+  /// that describes the specific use case of the statement. Refer to [our API
+  /// documentation](/digital-asset-links/v1/relation-strings) for the current
+  /// list of supported relations. For a query to match an asset link, both the
+  /// query's and the asset link's relation strings must match exactly. Example:
+  /// A query with relation `delegate_permission/common.handle_all_urls` matches
+  /// an asset link with relation `delegate_permission/common.handle_all_urls`.
   ///
   /// [target_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
-  /// fingerprint of the certificate.  From the PEM
-  ///  certificate, it can be acquired like this:
-  ///
-  ///     $ keytool -printcert -file $CERTFILE | grep SHA256:
-  ///     SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
-  ///         42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// or like this:
-  ///
-  ///     $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256
-  ///     SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
-  ///         16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
+  /// fingerprint of the certificate. From the PEM certificate, it can be
+  /// acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256:
+  /// SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
+  /// 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in
+  /// $CERTFILE -noout -fingerprint -sha256 SHA256
+  /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
+  /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the
+  /// contents of this field would be `14:6D:E9:83:C5:73:
   /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
-  /// 44:E5`.
-  ///
-  /// If these tools are not available to you, you can convert the PEM
+  /// 44:E5`. If these tools are not available to you, you can convert the PEM
   /// certificate into the DER format, compute the SHA-256 hash of that string
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
   ///
-  /// [source_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname
-  /// and port parts.  The format is
-  ///
-  ///     http[s]://<hostname>[:<port>]
-  ///
-  /// Hostnames must be fully qualified: they must end in a single period
-  /// ("`.`").
-  ///
-  /// Only the schemes "http" and "https" are currently allowed.
-  ///
-  /// Port numbers are given as a decimal number, and they must be omitted if
-  /// the
-  /// standard port numbers are used: 80 for http and 443 for https.
-  ///
-  /// We call this limited URL the "site".  All URLs that share the same scheme,
-  /// hostname and port are considered to be a part of the site and thus belong
-  /// to the web asset.
-  ///
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs:
-  ///
-  ///   *   `https://www.google.com/`
-  ///   *   `https://www.google.com:443/`
-  ///   *   `https://www.google.com/foo`
-  ///   *   `https://www.google.com/foo?bar`
-  ///   *   `https://www.google.com/foo#bar`
-  ///   *   `https://user@password:www.google.com/`
-  ///
-  /// But it does not contain these URLs:
-  ///
-  ///   *   `http://www.google.com/`       (wrong scheme)
-  ///   *   `https://google.com/`          (hostname does not match)
-  ///   *   `https://www.google.com:444/`  (port does not match)
-  /// REQUIRED
-  ///
   /// [source_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name.
-  /// For example, the Google Maps app uses the package name
-  /// `com.google.android.apps.maps`.
-  /// REQUIRED
+  /// identified by their Java package name. For example, the Google Maps app
+  /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
-  /// [target_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name.
-  /// For example, the Google Maps app uses the package name
-  /// `com.google.android.apps.maps`.
-  /// REQUIRED
+  /// [source_web_site] - Web assets are identified by a URL that contains only
+  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
+  /// must be fully qualified: they must end in a single period ("`.`"). Only
+  /// the schemes "http" and "https" are currently allowed. Port numbers are
+  /// given as a decimal number, and they must be omitted if the standard port
+  /// numbers are used: 80 for http and 443 for https. We call this limited URL
+  /// the "site". All URLs that share the same scheme, hostname and port are
+  /// considered to be a part of the site and thus belong to the web asset.
+  /// Example: the asset with the site `https://www.google.com` contains all
+  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
+  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
+  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
+  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
+  /// scheme) * `https://google.com/` (hostname does not match) *
+  /// `https://www.google.com:444/` (port does not match) REQUIRED
   ///
   /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
-  /// fingerprint of the certificate.  From the PEM
-  ///  certificate, it can be acquired like this:
-  ///
-  ///     $ keytool -printcert -file $CERTFILE | grep SHA256:
-  ///     SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
-  ///         42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// or like this:
-  ///
-  ///     $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256
-  ///     SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
-  ///         16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
+  /// fingerprint of the certificate. From the PEM certificate, it can be
+  /// acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256:
+  /// SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
+  /// 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in
+  /// $CERTFILE -noout -fingerprint -sha256 SHA256
+  /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
+  /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the
+  /// contents of this field would be `14:6D:E9:83:C5:73:
   /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
-  /// 44:E5`.
-  ///
-  /// If these tools are not available to you, you can convert the PEM
+  /// 44:E5`. If these tools are not available to you, you can convert the PEM
   /// certificate into the DER format, compute the SHA-256 hash of that string
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
@@ -222,12 +147,12 @@ class AssetlinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckResponse> check(
-      {core.String relation,
-      core.String target_web_site,
-      core.String target_androidApp_certificate_sha256Fingerprint,
-      core.String source_web_site,
-      core.String source_androidApp_packageName,
+      {core.String target_web_site,
       core.String target_androidApp_packageName,
+      core.String relation,
+      core.String target_androidApp_certificate_sha256Fingerprint,
+      core.String source_androidApp_packageName,
+      core.String source_web_site,
       core.String source_androidApp_certificate_sha256Fingerprint,
       core.String $fields}) {
     var _url;
@@ -237,29 +162,29 @@ class AssetlinksResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (relation != null) {
-      _queryParams["relation"] = [relation];
-    }
     if (target_web_site != null) {
       _queryParams["target.web.site"] = [target_web_site];
+    }
+    if (target_androidApp_packageName != null) {
+      _queryParams["target.androidApp.packageName"] = [
+        target_androidApp_packageName
+      ];
+    }
+    if (relation != null) {
+      _queryParams["relation"] = [relation];
     }
     if (target_androidApp_certificate_sha256Fingerprint != null) {
       _queryParams["target.androidApp.certificate.sha256Fingerprint"] = [
         target_androidApp_certificate_sha256Fingerprint
       ];
     }
-    if (source_web_site != null) {
-      _queryParams["source.web.site"] = [source_web_site];
-    }
     if (source_androidApp_packageName != null) {
       _queryParams["source.androidApp.packageName"] = [
         source_androidApp_packageName
       ];
     }
-    if (target_androidApp_packageName != null) {
-      _queryParams["target.androidApp.packageName"] = [
-        target_androidApp_packageName
-      ];
+    if (source_web_site != null) {
+      _queryParams["source.web.site"] = [source_web_site];
     }
     if (source_androidApp_certificate_sha256Fingerprint != null) {
       _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
@@ -288,107 +213,65 @@ class StatementsResourceApi {
   StatementsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of all statements from a given source that match the
-  /// specified target and statement string.
-  ///
-  /// The API guarantees that all statements with secure source assets, such as
-  /// HTTPS websites or Android apps, have been made in a secure way by the
-  /// owner
-  /// of those assets, as described in the [Digital Asset Links technical design
+  /// specified target and statement string. The API guarantees that all
+  /// statements with secure source assets, such as HTTPS websites or Android
+  /// apps, have been made in a secure way by the owner of those assets, as
+  /// described in the [Digital Asset Links technical design
   /// specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).
   /// Specifically, you should consider that for insecure websites (that is,
   /// where the URL starts with `http://` instead of `https://`), this guarantee
-  /// cannot be made.
-  ///
-  /// The `List` command is most useful in cases where the API client wants to
-  /// know all the ways in which two assets are related, or enumerate all the
-  /// relationships from a particular source asset.  Example: a feature that
-  /// helps users navigate to related items.  When a mobile app is running on a
-  /// device, the feature would make it easy to navigate to the corresponding
-  /// web
-  /// site or Google+ profile.
+  /// cannot be made. The `List` command is most useful in cases where the API
+  /// client wants to know all the ways in which two assets are related, or
+  /// enumerate all the relationships from a particular source asset. Example: a
+  /// feature that helps users navigate to related items. When a mobile app is
+  /// running on a device, the feature would make it easy to navigate to the
+  /// corresponding web site or Google+ profile.
   ///
   /// Request parameters:
   ///
+  /// [source_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name. For example, the Google Maps app
+  /// uses the package name `com.google.android.apps.maps`. REQUIRED
+  ///
+  /// [relation] - Use only associations that match the specified relation. See
+  /// the [`Statement`](#Statement) message for a detailed definition of
+  /// relation strings. For a query to match a statement, one of the following
+  /// must be true: * both the query's and the statement's relation strings
+  /// match exactly, or * the query's relation string is empty or missing.
+  /// Example: A query with relation
+  /// `delegate_permission/common.handle_all_urls` matches an asset link with
+  /// relation `delegate_permission/common.handle_all_urls`.
+  ///
+  /// [source_web_site] - Web assets are identified by a URL that contains only
+  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
+  /// must be fully qualified: they must end in a single period ("`.`"). Only
+  /// the schemes "http" and "https" are currently allowed. Port numbers are
+  /// given as a decimal number, and they must be omitted if the standard port
+  /// numbers are used: 80 for http and 443 for https. We call this limited URL
+  /// the "site". All URLs that share the same scheme, hostname and port are
+  /// considered to be a part of the site and thus belong to the web asset.
+  /// Example: the asset with the site `https://www.google.com` contains all
+  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
+  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
+  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
+  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
+  /// scheme) * `https://google.com/` (hostname does not match) *
+  /// `https://www.google.com:444/` (port does not match) REQUIRED
+  ///
   /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
-  /// fingerprint of the certificate.  From the PEM
-  ///  certificate, it can be acquired like this:
-  ///
-  ///     $ keytool -printcert -file $CERTFILE | grep SHA256:
-  ///     SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
-  ///         42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// or like this:
-  ///
-  ///     $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256
-  ///     SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
-  ///         16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
+  /// fingerprint of the certificate. From the PEM certificate, it can be
+  /// acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256:
+  /// SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
+  /// 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in
+  /// $CERTFILE -noout -fingerprint -sha256 SHA256
+  /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
+  /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the
+  /// contents of this field would be `14:6D:E9:83:C5:73:
   /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
-  /// 44:E5`.
-  ///
-  /// If these tools are not available to you, you can convert the PEM
+  /// 44:E5`. If these tools are not available to you, you can convert the PEM
   /// certificate into the DER format, compute the SHA-256 hash of that string
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
-  ///
-  /// [relation] - Use only associations that match the specified relation.
-  ///
-  /// See the [`Statement`](#Statement) message for a detailed definition of
-  /// relation strings.
-  ///
-  /// For a query to match a statement, one of the following must be true:
-  ///
-  /// *    both the query's and the statement's relation strings match exactly,
-  ///      or
-  /// *    the query's relation string is empty or missing.
-  ///
-  /// Example: A query with relation
-  /// `delegate_permission/common.handle_all_urls`
-  /// matches an asset link with relation
-  /// `delegate_permission/common.handle_all_urls`.
-  ///
-  /// [source_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname
-  /// and port parts.  The format is
-  ///
-  ///     http[s]://<hostname>[:<port>]
-  ///
-  /// Hostnames must be fully qualified: they must end in a single period
-  /// ("`.`").
-  ///
-  /// Only the schemes "http" and "https" are currently allowed.
-  ///
-  /// Port numbers are given as a decimal number, and they must be omitted if
-  /// the
-  /// standard port numbers are used: 80 for http and 443 for https.
-  ///
-  /// We call this limited URL the "site".  All URLs that share the same scheme,
-  /// hostname and port are considered to be a part of the site and thus belong
-  /// to the web asset.
-  ///
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs:
-  ///
-  ///   *   `https://www.google.com/`
-  ///   *   `https://www.google.com:443/`
-  ///   *   `https://www.google.com/foo`
-  ///   *   `https://www.google.com/foo?bar`
-  ///   *   `https://www.google.com/foo#bar`
-  ///   *   `https://user@password:www.google.com/`
-  ///
-  /// But it does not contain these URLs:
-  ///
-  ///   *   `http://www.google.com/`       (wrong scheme)
-  ///   *   `https://google.com/`          (hostname does not match)
-  ///   *   `https://www.google.com:444/`  (port does not match)
-  /// REQUIRED
-  ///
-  /// [source_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name.
-  /// For example, the Google Maps app uses the package name
-  /// `com.google.android.apps.maps`.
-  /// REQUIRED
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -401,10 +284,10 @@ class StatementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListResponse> list(
-      {core.String source_androidApp_certificate_sha256Fingerprint,
+      {core.String source_androidApp_packageName,
       core.String relation,
       core.String source_web_site,
-      core.String source_androidApp_packageName,
+      core.String source_androidApp_certificate_sha256Fingerprint,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -413,9 +296,9 @@ class StatementsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (source_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
-        source_androidApp_certificate_sha256Fingerprint
+    if (source_androidApp_packageName != null) {
+      _queryParams["source.androidApp.packageName"] = [
+        source_androidApp_packageName
       ];
     }
     if (relation != null) {
@@ -424,9 +307,9 @@ class StatementsResourceApi {
     if (source_web_site != null) {
       _queryParams["source.web.site"] = [source_web_site];
     }
-    if (source_androidApp_packageName != null) {
-      _queryParams["source.androidApp.packageName"] = [
-        source_androidApp_packageName
+    if (source_androidApp_certificate_sha256Fingerprint != null) {
+      _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
+        source_androidApp_certificate_sha256Fingerprint
       ];
     }
     if ($fields != null) {
@@ -449,26 +332,20 @@ class StatementsResourceApi {
 class AndroidAppAsset {
   /// Because there is no global enforcement of package name uniqueness, we also
   /// require a signing certificate, which in combination with the package name
-  /// uniquely identifies an app.
-  ///
-  /// Some apps' signing keys are rotated, so they may be signed by different
-  /// keys over time.  We treat these as distinct assets, since we use (package
-  /// name, cert) as the unique ID.  This should not normally pose any problems
-  /// as both versions of the app will make the same or similar statements.
-  /// Other assets making statements about the app will have to be updated when
-  /// a
-  /// key is rotated, however.
-  ///
-  /// (Note that the syntaxes for publishing and querying for statements contain
-  /// syntactic sugar to easily let you specify apps that are known by multiple
-  /// certificates.)
-  /// REQUIRED
+  /// uniquely identifies an app. Some apps' signing keys are rotated, so they
+  /// may be signed by different keys over time. We treat these as distinct
+  /// assets, since we use (package name, cert) as the unique ID. This should
+  /// not normally pose any problems as both versions of the app will make the
+  /// same or similar statements. Other assets making statements about the app
+  /// will have to be updated when a key is rotated, however. (Note that the
+  /// syntaxes for publishing and querying for statements contain syntactic
+  /// sugar to easily let you specify apps that are known by multiple
+  /// certificates.) REQUIRED
   CertificateInfo certificate;
 
   /// Android App assets are naturally identified by their Java package name.
   /// For example, the Google Maps app uses the package name
-  /// `com.google.android.apps.maps`.
-  /// REQUIRED
+  /// `com.google.android.apps.maps`. REQUIRED
   core.String packageName;
 
   AndroidAppAsset();
@@ -495,12 +372,10 @@ class AndroidAppAsset {
   }
 }
 
-/// Uniquely identifies an asset.
-///
-/// A digital asset is an identifiable and addressable online entity that
-/// typically provides some service or content.  Examples of assets are
-/// websites,
-/// Android apps, Twitter feeds, and Plus Pages.
+/// Uniquely identifies an asset. A digital asset is an identifiable and
+/// addressable online entity that typically provides some service or content.
+/// Examples of assets are websites, Android apps, Twitter feeds, and Plus
+/// Pages.
 class Asset {
   /// Set if this is an Android App asset.
   AndroidAppAsset androidApp;
@@ -534,24 +409,17 @@ class Asset {
 
 /// Describes an X509 certificate.
 class CertificateInfo {
-  /// The uppercase SHA-265 fingerprint of the certificate.  From the PEM
-  ///  certificate, it can be acquired like this:
-  ///
-  ///     $ keytool -printcert -file $CERTFILE | grep SHA256:
-  ///     SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
-  ///         42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// or like this:
-  ///
-  ///     $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256
-  ///     SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
-  ///         16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-  ///
-  /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
+  /// The uppercase SHA-265 fingerprint of the certificate. From the PEM
+  /// certificate, it can be acquired like this: $ keytool -printcert -file
+  /// $CERTFILE | grep SHA256: SHA256:
+  /// 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
+  /// 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in
+  /// $CERTFILE -noout -fingerprint -sha256 SHA256
+  /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
+  /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the
+  /// contents of this field would be `14:6D:E9:83:C5:73:
   /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
-  /// 44:E5`.
-  ///
-  /// If these tools are not available to you, you can convert the PEM
+  /// 44:E5`. If these tools are not available to you, you can convert the PEM
   /// certificate into the DER format, compute the SHA-256 hash of that string
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
@@ -578,16 +446,12 @@ class CertificateInfo {
 /// Response message for the CheckAssetLinks call.
 class CheckResponse {
   /// Human-readable message containing information intended to help end users
-  /// understand, reproduce and debug the result.
-  ///
-  ///
-  /// The message will be in English and we are currently not planning to offer
-  /// any translations.
-  ///
-  /// Please note that no guarantees are made about the contents or format of
-  /// this string.  Any aspect of it may be subject to change without notice.
-  /// You should not attempt to programmatically parse this data.  For
-  /// programmatic access, use the error_code field below.
+  /// understand, reproduce and debug the result. The message will be in English
+  /// and we are currently not planning to offer any translations. Please note
+  /// that no guarantees are made about the contents or format of this string.
+  /// Any aspect of it may be subject to change without notice. You should not
+  /// attempt to programmatically parse this data. For programmatic access, use
+  /// the error_code field below.
   core.String debugString;
 
   /// Error codes that describe the result of the Check operation.
@@ -598,8 +462,7 @@ class CheckResponse {
   core.bool linked;
 
   /// From serving time, how much longer the response should be considered valid
-  /// barring further updates.
-  /// REQUIRED
+  /// barring further updates. REQUIRED
   core.String maxAge;
 
   CheckResponse();
@@ -641,24 +504,19 @@ class CheckResponse {
 /// Response message for the List call.
 class ListResponse {
   /// Human-readable message containing information intended to help end users
-  /// understand, reproduce and debug the result.
-  ///
-  ///
-  /// The message will be in English and we are currently not planning to offer
-  /// any translations.
-  ///
-  /// Please note that no guarantees are made about the contents or format of
-  /// this string.  Any aspect of it may be subject to change without notice.
-  /// You should not attempt to programmatically parse this data.  For
-  /// programmatic access, use the error_code field below.
+  /// understand, reproduce and debug the result. The message will be in English
+  /// and we are currently not planning to offer any translations. Please note
+  /// that no guarantees are made about the contents or format of this string.
+  /// Any aspect of it may be subject to change without notice. You should not
+  /// attempt to programmatically parse this data. For programmatic access, use
+  /// the error_code field below.
   core.String debugString;
 
   /// Error codes that describe the result of the List operation.
   core.List<core.String> errorCode;
 
   /// From serving time, how much longer the response should be considered valid
-  /// barring further updates.
-  /// REQUIRED
+  /// barring further updates. REQUIRED
   core.String maxAge;
 
   /// A list of all the matching statements that have been found.
@@ -704,37 +562,27 @@ class ListResponse {
 }
 
 /// Describes a reliable statement that has been made about the relationship
-/// between a source asset and a target asset.
-///
-/// Statements are always made by the source asset, either directly or by
-/// delegating to a statement list that is stored elsewhere.
-///
-/// For more detailed definitions of statements and assets, please refer
-/// to our [API documentation landing
+/// between a source asset and a target asset. Statements are always made by the
+/// source asset, either directly or by delegating to a statement list that is
+/// stored elsewhere. For more detailed definitions of statements and assets,
+/// please refer to our [API documentation landing
 /// page](/digital-asset-links/v1/getting-started).
 class Statement {
   /// The relation identifies the use of the statement as intended by the source
   /// asset's owner (that is, the person or entity who issued the statement).
-  /// Every complete statement has a relation.
-  ///
-  /// We identify relations with strings of the format `<kind>/<detail>`, where
-  /// `<kind>` must be one of a set of pre-defined purpose categories, and
-  /// `<detail>` is a free-form lowercase alphanumeric string that describes the
-  /// specific use case of the statement.
-  ///
-  /// Refer to [our API documentation](/digital-asset-links/v1/relation-strings)
-  /// for the current list of supported relations.
-  ///
-  /// Example: `delegate_permission/common.handle_all_urls`
-  /// REQUIRED
+  /// Every complete statement has a relation. We identify relations with
+  /// strings of the format `/`, where `` must be one of a set of pre-defined
+  /// purpose categories, and `` is a free-form lowercase alphanumeric string
+  /// that describes the specific use case of the statement. Refer to [our API
+  /// documentation](/digital-asset-links/v1/relation-strings) for the current
+  /// list of supported relations. Example:
+  /// `delegate_permission/common.handle_all_urls` REQUIRED
   core.String relation;
 
-  /// Every statement has a source asset.
-  /// REQUIRED
+  /// Every statement has a source asset. REQUIRED
   Asset source;
 
-  /// Every statement has a target asset.
-  /// REQUIRED
+  /// Every statement has a target asset. REQUIRED
   Asset target;
 
   Statement();
@@ -770,39 +618,20 @@ class Statement {
 /// Describes a web asset.
 class WebAsset {
   /// Web assets are identified by a URL that contains only the scheme, hostname
-  /// and port parts.  The format is
-  ///
-  ///     http[s]://<hostname>[:<port>]
-  ///
-  /// Hostnames must be fully qualified: they must end in a single period
-  /// ("`.`").
-  ///
-  /// Only the schemes "http" and "https" are currently allowed.
-  ///
-  /// Port numbers are given as a decimal number, and they must be omitted if
-  /// the
-  /// standard port numbers are used: 80 for http and 443 for https.
-  ///
-  /// We call this limited URL the "site".  All URLs that share the same scheme,
-  /// hostname and port are considered to be a part of the site and thus belong
-  /// to the web asset.
-  ///
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs:
-  ///
-  ///   *   `https://www.google.com/`
-  ///   *   `https://www.google.com:443/`
-  ///   *   `https://www.google.com/foo`
-  ///   *   `https://www.google.com/foo?bar`
-  ///   *   `https://www.google.com/foo#bar`
-  ///   *   `https://user@password:www.google.com/`
-  ///
-  /// But it does not contain these URLs:
-  ///
-  ///   *   `http://www.google.com/`       (wrong scheme)
-  ///   *   `https://google.com/`          (hostname does not match)
-  ///   *   `https://www.google.com:444/`  (port does not match)
-  /// REQUIRED
+  /// and port parts. The format is http[s]://[:] Hostnames must be fully
+  /// qualified: they must end in a single period ("`.`"). Only the schemes
+  /// "http" and "https" are currently allowed. Port numbers are given as a
+  /// decimal number, and they must be omitted if the standard port numbers are
+  /// used: 80 for http and 443 for https. We call this limited URL the "site".
+  /// All URLs that share the same scheme, hostname and port are considered to
+  /// be a part of the site and thus belong to the web asset. Example: the asset
+  /// with the site `https://www.google.com` contains all these URLs: *
+  /// `https://www.google.com/` * `https://www.google.com:443/` *
+  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
+  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
+  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
+  /// scheme) * `https://google.com/` (hostname does not match) *
+  /// `https://www.google.com:444/` (port does not match) REQUIRED
   core.String site;
 
   WebAsset();

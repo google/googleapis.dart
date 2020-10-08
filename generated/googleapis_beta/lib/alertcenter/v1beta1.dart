@@ -132,19 +132,18 @@ class AlertsResourceApi {
   }
 
   /// Marks the specified alert for deletion. An alert that has been marked for
-  /// deletion is removed from Alert Center after 30 days.
-  /// Marking an alert for deletion has no effect on an alert which has
-  /// already been marked for deletion. Attempting to mark a nonexistent alert
-  /// for deletion results in a `NOT_FOUND` error.
+  /// deletion is removed from Alert Center after 30 days. Marking an alert for
+  /// deletion has no effect on an alert which has already been marked for
+  /// deletion. Attempting to mark a nonexistent alert for deletion results in a
+  /// `NOT_FOUND` error.
   ///
   /// Request parameters:
   ///
   /// [alertId] - Required. The identifier of the alert to delete.
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alert is associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert is associated with. Inferred from the
+  /// caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -194,9 +193,8 @@ class AlertsResourceApi {
   /// [alertId] - Required. The identifier of the alert to retrieve.
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alert is associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert is associated with. Inferred from the
+  /// caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -238,8 +236,8 @@ class AlertsResourceApi {
     return _response.then((data) => new Alert.fromJson(data));
   }
 
-  /// Returns the metadata of an alert. Attempting to get metadata for
-  /// a non-existent alert returns `NOT_FOUND` error.
+  /// Returns the metadata of an alert. Attempting to get metadata for a
+  /// non-existent alert returns `NOT_FOUND` error.
   ///
   /// Request parameters:
   ///
@@ -247,9 +245,8 @@ class AlertsResourceApi {
   /// to.
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alert metadata is associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert metadata is associated with. Inferred
+  /// from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -297,32 +294,27 @@ class AlertsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. The requested page size. Server may return fewer
-  /// items than
-  /// requested. If unspecified, server picks an appropriate default.
-  ///
-  /// [orderBy] - Optional. The sort order of the list results.
-  /// If not specified results may be returned in arbitrary order.
-  /// You can sort the results in descending order based on the creation
-  /// timestamp using `order_by="create_time desc"`.
-  /// Currently, supported sorting are `create_time asc`, `create_time desc`,
-  /// `update_time desc`
+  /// [customerId] - Optional. The unique identifier of the G Suite organization
+  /// account of the customer the alerts are associated with. Inferred from the
+  /// caller identity if not provided.
   ///
   /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
-  /// If empty, a new iteration is started. To continue an iteration, pass in
-  /// the value from the previous ListAlertsResponse's
+  /// should return. If empty, a new iteration is started. To continue an
+  /// iteration, pass in the value from the previous ListAlertsResponse's
   /// next_page_token field.
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alerts are associated with.
-  /// Inferred from the caller identity if not provided.
+  /// [pageSize] - Optional. The requested page size. Server may return fewer
+  /// items than requested. If unspecified, server picks an appropriate default.
   ///
-  /// [filter] - Optional. A query string for filtering alert results.
-  /// For more details, see [Query
-  /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
-  /// query filter
+  /// [orderBy] - Optional. The sort order of the list results. If not specified
+  /// results may be returned in arbitrary order. You can sort the results in
+  /// descending order based on the creation timestamp using
+  /// `order_by="create_time desc"`. Currently, supported sorting are
+  /// `create_time asc`, `create_time desc`, `update_time desc`
+  ///
+  /// [filter] - Optional. A query string for filtering alert results. For more
+  /// details, see [Query filters](/admin-sdk/alertcenter/guides/query-filters)
+  /// and [Supported query filter
   /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -336,10 +328,10 @@ class AlertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertsResponse> list(
-      {core.int pageSize,
-      core.String orderBy,
+      {core.String customerId,
       core.String pageToken,
-      core.String customerId,
+      core.int pageSize,
+      core.String orderBy,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -349,17 +341,17 @@ class AlertsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -381,11 +373,9 @@ class AlertsResourceApi {
 
   /// Restores, or "undeletes", an alert that was marked for deletion within the
   /// past 30 days. Attempting to undelete an alert which was marked for
-  /// deletion
-  /// over 30 days ago (which has been removed from the Alert Center database)
-  /// or
-  /// a nonexistent alert returns a `NOT_FOUND` error. Attempting to
-  /// undelete an alert which has not been marked for deletion has no effect.
+  /// deletion over 30 days ago (which has been removed from the Alert Center
+  /// database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting
+  /// to undelete an alert which has not been marked for deletion has no effect.
   ///
   /// [request] - The metadata request object.
   ///
@@ -442,8 +432,8 @@ class AlertsFeedbackResourceApi {
 
   AlertsFeedbackResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates new feedback for an alert. Attempting to create a feedback for
-  /// a non-existent alert returns `NOT_FOUND` error. Attempting to create a
+  /// Creates new feedback for an alert. Attempting to create a feedback for a
+  /// non-existent alert returns `NOT_FOUND` error. Attempting to create a
   /// feedback for an alert that is marked for deletion returns
   /// `FAILED_PRECONDITION' error.
   ///
@@ -455,9 +445,8 @@ class AlertsFeedbackResourceApi {
   /// to.
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alert is associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert is associated with. Inferred from the
+  /// caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -504,23 +493,22 @@ class AlertsFeedbackResourceApi {
     return _response.then((data) => new AlertFeedback.fromJson(data));
   }
 
-  /// Lists all the feedback for an alert. Attempting to list feedbacks for
-  /// a non-existent alert returns `NOT_FOUND` error.
+  /// Lists all the feedback for an alert. Attempting to list feedbacks for a
+  /// non-existent alert returns `NOT_FOUND` error.
   ///
   /// Request parameters:
   ///
-  /// [alertId] - Required. The alert identifier.
-  /// The "-" wildcard could be used to represent all alerts.
+  /// [alertId] - Required. The alert identifier. The "-" wildcard could be used
+  /// to represent all alerts.
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alert feedback are associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert feedback are associated with. Inferred
+  /// from the caller identity if not provided.
   ///
   /// [filter] - Optional. A query string for filtering alert feedback results.
   /// For more details, see [Query
-  /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
-  /// query filter
+  /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query
+  /// filter
   /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -580,9 +568,8 @@ class V1beta1ResourceApi {
   /// Request parameters:
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alert settings are associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert settings are associated with. Inferred
+  /// from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -628,9 +615,8 @@ class V1beta1ResourceApi {
   /// Request parameters:
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alert settings are associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert settings are associated with. Inferred
+  /// from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -679,12 +665,9 @@ class AccountWarning {
   core.String email;
 
   /// Optional. Details of the login action associated with the warning event.
-  /// This is only available for:
-  ///
-  /// * Suspicious login
-  /// * Suspicious login (less secure app)
-  /// * Suspicious programmatic login
-  /// * User suspended (suspicious activity)
+  /// This is only available for: * Suspicious login * Suspicious login (less
+  /// secure app) * Suspicious programmatic login * User suspended (suspicious
+  /// activity)
   LoginDetails loginDetails;
 
   AccountWarning();
@@ -744,11 +727,8 @@ class ActivityRule {
   /// Alert threshold is for example “COUNT > 5”.
   core.String threshold;
 
-  /// The trigger sources for this rule.
-  ///
-  /// * GMAIL_EVENTS
-  /// * DEVICE_EVENTS
-  /// * USER_EVENTS
+  /// The trigger sources for this rule. * GMAIL_EVENTS * DEVICE_EVENTS *
+  /// USER_EVENTS
   core.String triggerSource;
 
   /// The timestamp of the last update to the rule.
@@ -864,53 +844,41 @@ class Alert {
   core.bool deleted;
 
   /// Optional. The time the event that caused this alert ceased being active.
-  /// If provided, the end time must not be earlier than the start time.
-  /// If not provided, it indicates an ongoing alert.
+  /// If provided, the end time must not be earlier than the start time. If not
+  /// provided, it indicates an ongoing alert.
   core.String endTime;
 
   /// Optional. `etag` is used for optimistic concurrency control as a way to
-  /// help
-  /// prevent simultaneous updates of an alert from overwriting each other.
+  /// help prevent simultaneous updates of an alert from overwriting each other.
   /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform alert updates in order to avoid race
   /// conditions: An `etag` is returned in the response which contains alerts,
   /// and systems are expected to put that etag in the request to update alert
-  /// to
-  /// ensure that their change will be applied to the same version of the alert.
-  ///
-  /// If no `etag` is provided in the call to update alert, then the existing
-  /// alert is overwritten blindly.
+  /// to ensure that their change will be applied to the same version of the
+  /// alert. If no `etag` is provided in the call to update alert, then the
+  /// existing alert is overwritten blindly.
   core.String etag;
 
   /// Output only. The metadata associated with this alert.
   AlertMetadata metadata;
 
-  /// Output only. An optional
-  /// [Security Investigation Tool](https://support.google.com/a/answer/7575955)
-  /// query for this alert.
+  /// Output only. An optional [Security Investigation
+  /// Tool](https://support.google.com/a/answer/7575955) query for this alert.
   core.String securityInvestigationToolLink;
 
-  /// Required. A unique identifier for the system that reported the alert.
-  /// This is output only after alert is created.
-  ///
-  /// Supported sources are any of the following:
-  ///
-  /// * Google Operations
-  /// * Mobile device management
-  /// * Gmail phishing
-  /// * Domain wide takeout
-  /// * State sponsored attack
-  /// * Google identity
+  /// Required. A unique identifier for the system that reported the alert. This
+  /// is output only after alert is created. Supported sources are any of the
+  /// following: * Google Operations * Mobile device management * Gmail phishing
+  /// * Domain wide takeout * State sponsored attack * Google identity
   core.String source;
 
   /// Required. The time the event that caused this alert was started or
   /// detected.
   core.String startTime;
 
-  /// Required. The type of the alert.
-  /// This is output only after alert is created.
-  /// For a list of available alert types see
-  /// [G Suite Alert types](/admin-sdk/alertcenter/reference/alert-types).
+  /// Required. The type of the alert. This is output only after alert is
+  /// created. For a list of available alert types see [G Suite Alert
+  /// types](/admin-sdk/alertcenter/reference/alert-types).
   core.String type;
 
   /// Output only. The time this alert was last updated.
@@ -1093,34 +1061,23 @@ class AlertMetadata {
   /// Optional. `etag` is used for optimistic concurrency control as a way to
   /// help prevent simultaneous updates of an alert metadata from overwriting
   /// each other. It is strongly suggested that systems make use of the `etag`
-  /// in
-  /// the read-modify-write cycle to perform metatdata updates in order to avoid
-  /// race conditions: An `etag` is returned in the response which contains
-  /// alert
-  /// metadata, and systems are expected to put that etag in the request to
-  /// update alert metadata to ensure that their change will be applied to the
-  /// same version of the alert metadata.
-  ///
-  /// If no `etag` is provided in the call to update alert metadata, then the
-  /// existing alert metadata is overwritten blindly.
+  /// in the read-modify-write cycle to perform metatdata updates in order to
+  /// avoid race conditions: An `etag` is returned in the response which
+  /// contains alert metadata, and systems are expected to put that etag in the
+  /// request to update alert metadata to ensure that their change will be
+  /// applied to the same version of the alert metadata. If no `etag` is
+  /// provided in the call to update alert metadata, then the existing alert
+  /// metadata is overwritten blindly.
   core.String etag;
 
   /// The severity value of the alert. Alert Center will set this field at alert
   /// creation time, default's to an empty string when it could not be
-  /// determined.
-  /// The supported values for update actions on this field are the following:
-  ///
-  /// * HIGH
-  /// * MEDIUM
-  /// * LOW
+  /// determined. The supported values for update actions on this field are the
+  /// following: * HIGH * MEDIUM * LOW
   core.String severity;
 
-  /// The current status of the alert.
-  /// The supported values are the following:
-  ///
-  /// * NOT_STARTED
-  /// * IN_PROGRESS
-  /// * CLOSED
+  /// The current status of the alert. The supported values are the following: *
+  /// NOT_STARTED * IN_PROGRESS * CLOSED
   core.String status;
 
   /// Output only. The time this metadata was last updated.
@@ -1241,8 +1198,7 @@ class BadWhitelist {
   /// The list of messages contained by this alert.
   core.List<GmailMessageInfo> messages;
 
-  /// The source IP address of the malicious email, for example,
-  /// `127.0.0.1`.
+  /// The source IP address of the malicious email, for example, `127.0.0.1`.
   core.String sourceIp;
 
   BadWhitelist();
@@ -1424,14 +1380,13 @@ class BatchUndeleteAlertsResponse {
   }
 }
 
-/// A reference to a Cloud Pubsub topic.
-///
-/// To register for notifications, the owner of the topic must grant
+/// A reference to a Cloud Pubsub topic. To register for notifications, the
+/// owner of the topic must grant
 /// `alerts-api-push-notifications@system.gserviceaccount.com` the
-///  `projects.topics.publish` permission.
+/// `projects.topics.publish` permission.
 class CloudPubsubTopic {
-  /// Optional. The format of the payload that would be sent.
-  /// If not specified the format will be JSON.
+  /// Optional. The format of the payload that would be sent. If not specified
+  /// the format will be JSON.
   /// Possible string values are:
   /// - "PAYLOAD_FORMAT_UNSPECIFIED" : Payload format is not specified (will use
   /// JSON as default).
@@ -1466,8 +1421,8 @@ class CloudPubsubTopic {
   }
 }
 
-/// A representation of a CSV file attachment, as a list of column headers and
-/// a list of data rows.
+/// A representation of a CSV file attachment, as a list of column headers and a
+/// list of data rows.
 class Csv {
   /// The list of data rows in a CSV file, as string arrays rather than as a
   /// single comma-separated string.
@@ -1504,8 +1459,8 @@ class Csv {
 
 /// A representation of a single data row in a CSV file.
 class CsvRow {
-  /// The data entries in a CSV file row, as a string array rather than a
-  /// single comma-separated string.
+  /// The data entries in a CSV file row, as a string array rather than a single
+  /// comma-separated string.
   core.List<core.String> entries;
 
   CsvRow();
@@ -1563,8 +1518,8 @@ class DeviceCompromised {
 
 /// Detailed information of a single MDM device compromised event.
 class DeviceCompromisedSecurityDetail {
-  /// The device compromised state. Possible values are "`Compromised`" or
-  /// "`Not Compromised`".
+  /// The device compromised state. Possible values are "`Compromised`" or "`Not
+  /// Compromised`".
   core.String deviceCompromisedState;
 
   /// Required. The device ID.
@@ -1641,13 +1596,10 @@ class DeviceCompromisedSecurityDetail {
 
 /// Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.
 class DlpRuleViolation {
-  /// Details about the violated DLP rule.
-  ///
-  /// Admins can use the predefined detectors provided by Google Cloud DLP
-  /// https://cloud.google.com/dlp/ when setting up a DLP rule. Matched Cloud
-  /// DLP
-  /// detectors in this violation if any will be captured in the
-  /// MatchInfo.predefined_detector.
+  /// Details about the violated DLP rule. Admins can use the predefined
+  /// detectors provided by Google Cloud DLP https://cloud.google.com/dlp/ when
+  /// setting up a DLP rule. Matched Cloud DLP detectors in this violation if
+  /// any will be captured in the MatchInfo.predefined_detector.
   RuleViolationInfo ruleViolationInfo;
 
   DlpRuleViolation();
@@ -1727,13 +1679,9 @@ class DomainWideTakeoutInitiated {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -1839,8 +1787,8 @@ class GoogleOperations {
   /// incident.
   core.List<core.String> affectedUserEmails;
 
-  /// Optional. Application-specific data for an incident, provided when the
-  /// G Suite application which reported the incident cannot be completely
+  /// Optional. Application-specific data for an incident, provided when the G
+  /// Suite application which reported the incident cannot be completely
   /// restored to a valid state.
   Attachment attachmentData;
 
@@ -1889,8 +1837,8 @@ class GoogleOperations {
 
 /// Response message for an alert feedback listing request.
 class ListAlertFeedbackResponse {
-  /// The list of alert feedback.
-  /// Feedback entries for each alert are ordered by creation time descending.
+  /// The list of alert feedback. Feedback entries for each alert are ordered by
+  /// creation time descending.
   core.List<AlertFeedback> feedback;
 
   ListAlertFeedbackResponse();
@@ -1919,10 +1867,9 @@ class ListAlertsResponse {
   core.List<Alert> alerts;
 
   /// The token for the next page. If not empty, indicates that there may be
-  /// more
-  /// alerts that match the listing request; this value can be used in a
-  /// subsequent ListAlertsRequest to get alerts continuing from last result
-  /// of the current list call.
+  /// more alerts that match the listing request; this value can be used in a
+  /// subsequent ListAlertsRequest to get alerts continuing from last result of
+  /// the current list call.
   core.String nextPageToken;
 
   ListAlertsResponse();
@@ -1953,8 +1900,8 @@ class ListAlertsResponse {
 
 /// The details of the login action.
 class LoginDetails {
-  /// Optional. The human-readable IP address (for example,
-  /// `11.22.33.44`) that is associated with the warning event.
+  /// Optional. The human-readable IP address (for example, `11.22.33.44`) that
+  /// is associated with the warning event.
   core.String ipAddress;
 
   /// Optional. The successful login time that is associated with the warning
@@ -1985,15 +1932,10 @@ class LoginDetails {
   }
 }
 
-/// Proto for all phishing alerts with common payload.
-/// Supported types are any of the following:
-///
-/// * User reported phishing
-/// * User reported spam spike
-/// * Suspicious message reported
-/// * Phishing reclassification
-/// * Malware reclassification
-/// * Gmail potential employee spoofing
+/// Proto for all phishing alerts with common payload. Supported types are any
+/// of the following: * User reported phishing * User reported spam spike *
+/// Suspicious message reported * Phishing reclassification * Malware
+/// reclassification * Gmail potential employee spoofing
 class MailPhishing {
   /// The domain ID.
   DomainId domainId;
@@ -2134,8 +2076,7 @@ class MatchInfo {
   }
 }
 
-/// Settings for callback notifications.
-/// For more details see [G Suite Alert
+/// Settings for callback notifications. For more details see [G Suite Alert
 /// Notification](/admin-sdk/alertcenter/guides/notifications).
 class Notification {
   /// A Google Cloud Pub/sub topic destination.
@@ -2160,10 +2101,10 @@ class Notification {
   }
 }
 
-/// Alert for a spike in user reported phishing.
-/// <aside class="warning"><b>Warning</b>: This type has been deprecated. Use
+/// Alert for a spike in user reported phishing. *Warning*: This type has been
+/// deprecated. Use
 /// [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing)
-/// instead.</aside>
+/// instead.
 class PhishingSpike {
   /// The domain ID.
   DomainId domainId;
@@ -2241,8 +2182,7 @@ class PredefinedDetectorInfo {
 
 /// Requests for one application that needs default SQL setup.
 class RequestInfo {
-  /// List of app developers who triggered notifications for above
-  /// application.
+  /// List of app developers who triggered notifications for above application.
   core.List<core.String> appDeveloperEmail;
 
   /// Required. The application that requires the SQL setup.
@@ -2359,15 +2299,12 @@ class RuleViolationInfo {
   /// List of matches that were found in the resource content.
   core.List<MatchInfo> matchInfo;
 
-  /// Resource recipients.
-  ///
-  /// For Drive, they are grantees that the Drive file was shared with at the
-  /// time of rule triggering. Valid values include user emails, group emails,
-  /// domains, or 'anyone' if the file was publicly accessible. If the file was
-  /// private the recipients list will be empty.
-  ///
-  /// For Gmail, they are emails of the users or groups that the Gmail message
-  /// was sent to.
+  /// Resource recipients. For Drive, they are grantees that the Drive file was
+  /// shared with at the time of rule triggering. Valid values include user
+  /// emails, group emails, domains, or 'anyone' if the file was publicly
+  /// accessible. If the file was private the recipients list will be empty. For
+  /// Gmail, they are emails of the users or groups that the Gmail message was
+  /// sent to.
   core.List<core.String> recipients;
 
   /// Details of the resource which violated the rule.
@@ -2514,15 +2451,14 @@ class StateSponsoredAttack {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -2700,8 +2636,8 @@ class SuspiciousActivitySecurityDetail {
 /// A request to undelete a specific alert that was marked for deletion.
 class UndeleteAlertRequest {
   /// Optional. The unique identifier of the G Suite organization account of the
-  /// customer the alert is associated with.
-  /// Inferred from the caller identity if not provided.
+  /// customer the alert is associated with. Inferred from the caller identity
+  /// if not provided.
   core.String customerId;
 
   UndeleteAlertRequest();

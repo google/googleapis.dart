@@ -35,7 +35,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/fL_duPreaAEBlLVMyeWNercZKGY\"",
+    "etag": "\"-2NioU2H8y8siEzrBOV_qzRI6kQ/lYzeVghRp2AhwBoE0RMEl0_BZkA\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -128,7 +128,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -179,9 +179,14 @@
                         },
                         "includeItemsFromAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items are included in the results.",
+                            "description": "Whether both My Drive and shared drive items should be included in results.",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "includePermissionsForView": {
+                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "includeRemoved": {
                             "default": "true",
@@ -224,7 +229,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -276,9 +281,14 @@
                         },
                         "includeItemsFromAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items are included in the results.",
+                            "description": "Whether both My Drive and shared drive items should be included in results.",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "includePermissionsForView": {
+                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "includeRemoved": {
                             "default": "true",
@@ -321,7 +331,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -763,7 +773,7 @@
         "files": {
             "methods": {
                 "copy": {
-                    "description": "Creates a copy of a file and applies any requested updates with patch semantics.",
+                    "description": "Creates a copy of a file and applies any requested updates with patch semantics. Folders cannot be copied.",
                     "httpMethod": "POST",
                     "id": "drive.files.copy",
                     "parameterOrder": [
@@ -788,6 +798,11 @@
                             "location": "query",
                             "type": "boolean"
                         },
+                        "includePermissionsForView": {
+                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "keepRevisionForever": {
                             "default": "false",
                             "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions.",
@@ -801,7 +816,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -859,6 +874,11 @@
                             "location": "query",
                             "type": "boolean"
                         },
+                        "includePermissionsForView": {
+                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "keepRevisionForever": {
                             "default": "false",
                             "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions.",
@@ -872,7 +892,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -912,6 +932,12 @@
                         "fileId"
                     ],
                     "parameters": {
+                        "enforceSingleParent": {
+                            "default": "false",
+                            "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter will only take effect if the item is not in a shared drive. If an item's last parent is deleted but the item itself is not, the item will be placed under its owner's root.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "fileId": {
                             "description": "The ID of the file.",
                             "location": "path",
@@ -920,7 +946,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -942,6 +968,14 @@
                     "description": "Permanently deletes all of the user's trashed files.",
                     "httpMethod": "DELETE",
                     "id": "drive.files.emptyTrash",
+                    "parameters": {
+                        "enforceSingleParent": {
+                            "default": "false",
+                            "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter will only take effect if the item is not in a shared drive. If an item's last parent is deleted but the item itself is not, the item will be placed under its owner's root.",
+                            "location": "query",
+                            "type": "boolean"
+                        }
+                    },
                     "path": "files/trash",
                     "scopes": [
                         "https://www.googleapis.com/auth/drive"
@@ -1028,9 +1062,14 @@
                             "required": true,
                             "type": "string"
                         },
+                        "includePermissionsForView": {
+                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1064,7 +1103,7 @@
                     "id": "drive.files.list",
                     "parameters": {
                         "corpora": {
-                            "description": "Bodies of items (files/documents) to which the query applies. Supported bodies are 'user', 'domain', 'drive' and 'allDrives'. Prefer 'user' or 'drive' to 'allDrives' for efficiency.",
+                            "description": "Groupings of files to which the query applies. Supported groupings are: 'user' (files created by, opened by, or shared directly with the user), 'drive' (files in the specified shared drive as indicated by the 'driveId'), 'domain' (files shared to the user's domain), and 'allDrives' (A combination of 'user' and 'drive' for all drives where the user is a member). When able, use 'user' or 'drive', instead of 'allDrives', for efficiency.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1076,7 +1115,7 @@
                             ],
                             "enumDescriptions": [
                                 "Files shared to the user's domain.",
-                                "Files owned by or shared to the user."
+                                "Files owned by or shared to the user. If a user has permissions on a Shared Drive, the files inside it won't be retrieved unless the user has created, opened, or shared the file."
                             ],
                             "location": "query",
                             "type": "string"
@@ -1088,9 +1127,14 @@
                         },
                         "includeItemsFromAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items are included in the results.",
+                            "description": "Whether both My Drive and shared drive items should be included in results.",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "includePermissionsForView": {
+                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "location": "query",
+                            "type": "string"
                         },
                         "includeTeamDriveItems": {
                             "default": "false",
@@ -1130,7 +1174,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1161,7 +1205,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a file's metadata and/or content with patch semantics.",
+                    "description": "Updates a file's metadata and/or content. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "drive.files.update",
                     "mediaUpload": {
@@ -1201,6 +1245,11 @@
                             "required": true,
                             "type": "string"
                         },
+                        "includePermissionsForView": {
+                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "keepRevisionForever": {
                             "default": "false",
                             "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions.",
@@ -1219,7 +1268,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1272,9 +1321,14 @@
                             "required": true,
                             "type": "string"
                         },
+                        "includePermissionsForView": {
+                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1348,7 +1402,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1406,7 +1460,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1452,7 +1506,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1496,6 +1550,11 @@
                             "required": true,
                             "type": "string"
                         },
+                        "includePermissionsForView": {
+                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "pageSize": {
                             "description": "The maximum number of permissions to return per page. When not set for files in a shared drive, at most 100 results will be returned. When not set for files that are not in a shared drive, the entire list will be returned.",
                             "format": "int32",
@@ -1511,7 +1570,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1570,7 +1629,7 @@
                         },
                         "supportsAllDrives": {
                             "default": "false",
-                            "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
+                            "description": "Whether the requesting application supports both My Drives and shared drives.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -2126,7 +2185,7 @@
             }
         }
     },
-    "revision": "20200423",
+    "revision": "20200922",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -2498,6 +2557,34 @@
             },
             "type": "object"
         },
+        "ContentRestriction": {
+            "description": "A restriction for accessing the content of the file.",
+            "id": "ContentRestriction",
+            "properties": {
+                "readOnly": {
+                    "description": "Whether the content of the file is read-only. If a file is read-only, a new revision of the file may not be added, comments may not be added or modified, and the title of the file may not be modified.",
+                    "type": "boolean"
+                },
+                "reason": {
+                    "description": "Reason for why the content of the file is restricted. This is only mutable on requests that also set readOnly=true.",
+                    "type": "string"
+                },
+                "restrictingUser": {
+                    "$ref": "User",
+                    "description": "The user who set the content restriction. Only populated if readOnly is true."
+                },
+                "restrictionTime": {
+                    "description": "The time at which the content restriction was set (formatted RFC 3339 timestamp). Only populated if readOnly is true.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the content restriction. Currently the only possible value is globalContentRestriction.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Drive": {
             "description": "Representation of a shared drive.",
             "id": "Drive",
@@ -2705,6 +2792,10 @@
                             "description": "Whether the current user can add children to this folder. This is always false when the item is not a folder.",
                             "type": "boolean"
                         },
+                        "canAddFolderFromAnotherDrive": {
+                            "description": "Whether the current user can add a folder from another drive (different shared drive or My Drive) to this folder. This is false when the item is not a folder. Only populated for items in shared drives.",
+                            "type": "boolean"
+                        },
                         "canAddMyDriveParent": {
                             "description": "Whether the current user can add a parent for the item without removing an existing parent in the same request. Not populated for shared drive files.",
                             "type": "boolean"
@@ -2749,6 +2840,10 @@
                             "description": "Whether the current user can modify the content of this file.",
                             "type": "boolean"
                         },
+                        "canModifyContentRestriction": {
+                            "description": "Whether the current user can modify restrictions on content of this file.",
+                            "type": "boolean"
+                        },
                         "canMoveChildrenOutOfDrive": {
                             "description": "Whether the current user can move children of this folder outside of the shared drive. This is false when the item is not a folder. Only populated for items in shared drives.",
                             "type": "boolean"
@@ -2758,7 +2853,7 @@
                             "type": "boolean"
                         },
                         "canMoveChildrenWithinDrive": {
-                            "description": "Whether the current user can move children of this folder within the shared drive. This is false when the item is not a folder. Only populated for items in shared drives.",
+                            "description": "Whether the current user can move children of this folder within this drive. This is false when the item is not a folder. Note that a request to move the child may still fail depending on the current user's access to the child and to the destination folder.",
                             "type": "boolean"
                         },
                         "canMoveChildrenWithinTeamDrive": {
@@ -2778,7 +2873,7 @@
                             "type": "boolean"
                         },
                         "canMoveItemWithinDrive": {
-                            "description": "Whether the current user can move this item within this shared drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added. Only populated for items in shared drives.",
+                            "description": "Whether the current user can move this item within this drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added and the parent that is being removed.",
                             "type": "boolean"
                         },
                         "canMoveItemWithinTeamDrive": {
@@ -2856,6 +2951,13 @@
                         }
                     },
                     "type": "object"
+                },
+                "contentRestrictions": {
+                    "description": "Restrictions for accessing the content of the file. Only populated if such a restriction exists.",
+                    "items": {
+                        "$ref": "ContentRestriction"
+                    },
+                    "type": "array"
                 },
                 "copyRequiresWriterPermission": {
                     "description": "Whether the options to copy, print, or download this file, should be disabled for readers and commenters.",
@@ -3179,7 +3281,7 @@
                     "type": "string"
                 },
                 "trashed": {
-                    "description": "Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the owner may trash a file, and other users cannot see files in the owner's trash.",
+                    "description": "Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the owner may trash a file. The trashed item is excluded from all files.list responses returned for any user who does not own the file. However, all users with access to the file can see the trashed item metadata in an API response. All users with access can copy, download, export, and share the file.",
                     "type": "boolean"
                 },
                 "trashedTime": {
@@ -3404,6 +3506,10 @@
                     },
                     "description": "The type of the grantee. Valid values are:  \n- user \n- group \n- domain \n- anyone  When creating a permission, if type is user or group, you must provide an emailAddress for the user or group. When type is domain, you must provide a domain. There isn't extra information required for a anyone type.",
                     "type": "string"
+                },
+                "view": {
+                    "description": "Indicates the view for this permission. Only populated for permissions that belong to a view. published is the only supported value.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3558,6 +3664,10 @@
                 "published": {
                     "description": "Whether this revision is published. This is only applicable to Google Docs.",
                     "type": "boolean"
+                },
+                "publishedLink": {
+                    "description": "A link to the published revision.",
+                    "type": "string"
                 },
                 "publishedOutsideDomain": {
                     "description": "Whether this revision is published outside the domain. This is only applicable to Google Docs.",

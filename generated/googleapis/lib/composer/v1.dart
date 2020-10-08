@@ -209,14 +209,13 @@ class ProjectsLocationsEnvironmentsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - List environments in the given project and location, in the
-  /// form:
-  /// "projects/{projectId}/locations/{locationId}"
+  /// form: "projects/{projectId}/locations/{locationId}"
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageSize] - The maximum number of environments to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of environments to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -229,7 +228,7 @@ class ProjectsLocationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEnvironmentsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -240,11 +239,11 @@ class ProjectsLocationsEnvironmentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -277,139 +276,68 @@ class ProjectsLocationsEnvironmentsResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/environments/[^/]+$".
   ///
   /// [updateMask] - Required. A comma-separated list of paths, relative to
-  /// `Environment`, of
-  /// fields to update.
-  /// For example, to set the version of scikit-learn to install in the
-  /// environment to 0.19.0 and to remove an existing installation of
-  /// numpy, the `updateMask` parameter would include the following two
-  /// `paths` values: "config.softwareConfig.pypiPackages.scikit-learn" and
-  /// "config.softwareConfig.pypiPackages.numpy". The included patch
-  /// environment would specify the scikit-learn version as follows:
-  ///
-  ///     {
-  ///       "config":{
-  ///         "softwareConfig":{
-  ///           "pypiPackages":{
-  ///             "scikit-learn":"==0.19.0"
-  ///           }
-  ///         }
-  ///       }
-  ///     }
-  ///
-  /// Note that in the above example, any existing PyPI packages
-  /// other than scikit-learn and numpy will be unaffected.
-  ///
-  /// Only one update type may be included in a single request's `updateMask`.
-  /// For example, one cannot update both the PyPI packages and
-  /// labels in the same request. However, it is possible to update multiple
-  /// members of a map field simultaneously in the same request. For example,
-  /// to set the labels "label1" and "label2" while clearing "label3" (assuming
-  /// it already exists), one can
-  /// provide the paths "labels.label1", "labels.label2", and "labels.label3"
-  /// and populate the patch environment as follows:
-  ///
-  ///     {
-  ///       "labels":{
-  ///         "label1":"new-label1-value"
-  ///         "label2":"new-label2-value"
-  ///       }
-  ///     }
-  ///
-  /// Note that in the above example, any existing labels that are not
-  /// included in the `updateMask` will be unaffected.
-  ///
-  /// It is also possible to replace an entire map field by providing the
-  /// map field's path in the `updateMask`. The new value of the field will
-  /// be that which is provided in the patch environment. For example, to
-  /// delete all pre-existing user-specified PyPI packages and
-  /// install botocore at version 1.7.14, the `updateMask` would contain
-  /// the path "config.softwareConfig.pypiPackages", and
-  /// the patch environment would be the following:
-  ///
-  ///     {
-  ///       "config":{
-  ///         "softwareConfig":{
-  ///           "pypiPackages":{
-  ///             "botocore":"==1.7.14"
-  ///           }
-  ///         }
-  ///       }
-  ///     }
-  ///
-  /// **Note:** Only the following fields can be updated:
-  ///
-  ///  <table>
-  ///  <tbody>
-  ///  <tr>
-  ///  <td><strong>Mask</strong></td>
-  ///  <td><strong>Purpose</strong></td>
-  ///  </tr>
-  ///  <tr>
-  ///  <td>config.softwareConfig.pypiPackages
-  ///  </td>
-  ///  <td>Replace all custom custom PyPI packages. If a replacement
-  ///  package map is not included in `environment`, all custom
-  /// PyPI packages are cleared. It is an error to provide both this mask and a
-  ///  mask specifying an individual package.</td>
-  ///  </tr>
-  ///  <tr>
-  ///  <td>config.softwareConfig.pypiPackages.<var>packagename</var></td>
-  ///  <td>Update the custom PyPI package <var>packagename</var>,
-  ///  preserving other packages. To delete the package, include it in
-  ///  `updateMask`, and omit the mapping for it in
-  ///  `environment.config.softwareConfig.pypiPackages`. It is an error
-  ///  to provide both a mask of this form and the
-  ///  "config.softwareConfig.pypiPackages" mask.</td>
-  ///  </tr>
-  ///  <tr>
-  ///  <td>labels</td>
-  ///  <td>Replace all environment labels. If a replacement labels map is not
-  ///  included in `environment`, all labels are cleared. It is an error to
-  ///  provide both this mask and a mask specifying one or more individual
-  ///  labels.</td>
-  ///  </tr>
-  ///  <tr>
-  ///  <td>labels.<var>labelName</var></td>
-  ///  <td>Set the label named <var>labelName</var>, while preserving other
-  ///  labels. To delete the label, include it in `updateMask` and omit its
-  ///  mapping in `environment.labels`. It is an error to provide both a
-  ///  mask of this form and the "labels" mask.</td>
-  ///  </tr>
-  ///  <tr>
-  ///  <td>config.nodeCount</td>
-  /// <td>Horizontally scale the number of nodes in the environment. An integer
-  ///  greater than or equal to 3 must be provided in the `config.nodeCount`
-  ///  field.
-  ///  </td>
-  ///  </tr>
-  ///  <tr>
-  ///  <td>config.softwareConfig.airflowConfigOverrides</td>
-  ///  <td>Replace all Apache Airflow config overrides. If a replacement config
-  ///  overrides map is not included in `environment`, all config overrides
-  ///  are cleared.
-  ///  It is an error to provide both this mask and a mask specifying one or
-  ///  more individual config overrides.</td>
-  ///  </tr>
-  ///  <tr>
-  /// <td>config.softwareConfig.airflowConfigOverrides.<var>section</var>-<var>name
-  ///  </var></td>
-  ///  <td>Override the Apache Airflow config property <var>name</var> in the
-  ///  section named <var>section</var>, preserving other properties. To delete
-  ///  the property override, include it in `updateMask` and omit its mapping
-  ///  in `environment.config.softwareConfig.airflowConfigOverrides`.
-  ///  It is an error to provide both a mask of this form and the
-  ///  "config.softwareConfig.airflowConfigOverrides" mask.</td>
-  ///  </tr>
-  ///  <tr>
-  ///  <td>config.softwareConfig.envVariables</td>
-  ///  <td>Replace all environment variables. If a replacement environment
-  ///  variable map is not included in `environment`, all custom environment
-  ///  variables  are cleared.
-  ///  It is an error to provide both this mask and a mask specifying one or
-  ///  more individual environment variables.</td>
-  ///  </tr>
-  ///  </tbody>
-  ///  </table>
+  /// `Environment`, of fields to update. For example, to set the version of
+  /// scikit-learn to install in the environment to 0.19.0 and to remove an
+  /// existing installation of numpy, the `updateMask` parameter would include
+  /// the following two `paths` values:
+  /// "config.softwareConfig.pypiPackages.scikit-learn" and
+  /// "config.softwareConfig.pypiPackages.numpy". The included patch environment
+  /// would specify the scikit-learn version as follows: { "config":{
+  /// "softwareConfig":{ "pypiPackages":{ "scikit-learn":"==0.19.0" } } } } Note
+  /// that in the above example, any existing PyPI packages other than
+  /// scikit-learn and numpy will be unaffected. Only one update type may be
+  /// included in a single request's `updateMask`. For example, one cannot
+  /// update both the PyPI packages and labels in the same request. However, it
+  /// is possible to update multiple members of a map field simultaneously in
+  /// the same request. For example, to set the labels "label1" and "label2"
+  /// while clearing "label3" (assuming it already exists), one can provide the
+  /// paths "labels.label1", "labels.label2", and "labels.label3" and populate
+  /// the patch environment as follows: { "labels":{ "label1":"new-label1-value"
+  /// "label2":"new-label2-value" } } Note that in the above example, any
+  /// existing labels that are not included in the `updateMask` will be
+  /// unaffected. It is also possible to replace an entire map field by
+  /// providing the map field's path in the `updateMask`. The new value of the
+  /// field will be that which is provided in the patch environment. For
+  /// example, to delete all pre-existing user-specified PyPI packages and
+  /// install botocore at version 1.7.14, the `updateMask` would contain the
+  /// path "config.softwareConfig.pypiPackages", and the patch environment would
+  /// be the following: { "config":{ "softwareConfig":{ "pypiPackages":{
+  /// "botocore":"==1.7.14" } } } } **Note:** Only the following fields can be
+  /// updated: *Mask* *Purpose* config.softwareConfig.pypiPackages Replace all
+  /// custom custom PyPI packages. If a replacement package map is not included
+  /// in `environment`, all custom PyPI packages are cleared. It is an error to
+  /// provide both this mask and a mask specifying an individual package.
+  /// config.softwareConfig.pypiPackages.packagename Update the custom PyPI
+  /// package packagename, preserving other packages. To delete the package,
+  /// include it in `updateMask`, and omit the mapping for it in
+  /// `environment.config.softwareConfig.pypiPackages`. It is an error to
+  /// provide both a mask of this form and the
+  /// "config.softwareConfig.pypiPackages" mask. labels Replace all environment
+  /// labels. If a replacement labels map is not included in `environment`, all
+  /// labels are cleared. It is an error to provide both this mask and a mask
+  /// specifying one or more individual labels. labels.labelName Set the label
+  /// named labelName, while preserving other labels. To delete the label,
+  /// include it in `updateMask` and omit its mapping in `environment.labels`.
+  /// It is an error to provide both a mask of this form and the "labels" mask.
+  /// config.nodeCount Horizontally scale the number of nodes in the
+  /// environment. An integer greater than or equal to 3 must be provided in the
+  /// `config.nodeCount` field. config.softwareConfig.airflowConfigOverrides
+  /// Replace all Apache Airflow config overrides. If a replacement config
+  /// overrides map is not included in `environment`, all config overrides are
+  /// cleared. It is an error to provide both this mask and a mask specifying
+  /// one or more individual config overrides.
+  /// config.softwareConfig.airflowConfigOverrides.section-name Override the
+  /// Apache Airflow config property name in the section named section,
+  /// preserving other properties. To delete the property override, include it
+  /// in `updateMask` and omit its mapping in
+  /// `environment.config.softwareConfig.airflowConfigOverrides`. It is an error
+  /// to provide both a mask of this form and the
+  /// "config.softwareConfig.airflowConfigOverrides" mask.
+  /// config.softwareConfig.envVariables Replace all environment variables. If a
+  /// replacement environment variable map is not included in `environment`, all
+  /// custom environment variables are cleared. It is an error to provide both
+  /// this mask and a mask specifying one or more individual environment
+  /// variables.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -466,14 +394,13 @@ class ProjectsLocationsImageVersionsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - List ImageVersions in the given project and location, in the
-  /// form:
-  /// "projects/{projectId}/locations/{locationId}"
+  /// form: "projects/{projectId}/locations/{locationId}"
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageSize] - The maximum number of image_versions to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of image_versions to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -486,7 +413,7 @@ class ProjectsLocationsImageVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListImageVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -497,11 +424,11 @@ class ProjectsLocationsImageVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -575,7 +502,7 @@ class ProjectsLocationsOperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -622,27 +549,25 @@ class ProjectsLocationsOperationsResourceApi {
   }
 
   /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [filter] - The standard list filter.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -655,9 +580,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -669,14 +594,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -697,13 +622,9 @@ class ProjectsLocationsOperationsResourceApi {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -724,19 +645,16 @@ class Environment {
   /// Output only. The time at which this environment was created.
   core.String createTime;
 
-  /// Optional. User-defined labels for this environment.
-  /// The labels map can contain no more than 64 entries. Entries of the labels
-  /// map are UTF8 strings that comply with the following restrictions:
-  ///
-  /// * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62}
-  /// * Values must conform to regexp:  [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-  /// * Both keys and values are additionally constrained to be <= 128 bytes in
-  /// size.
+  /// Optional. User-defined labels for this environment. The labels map can
+  /// contain no more than 64 entries. Entries of the labels map are UTF8
+  /// strings that comply with the following restrictions: * Keys must conform
+  /// to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp:
+  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally
+  /// constrained to be <= 128 bytes in size.
   core.Map<core.String, core.String> labels;
 
   /// The resource name of the environment, in the form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
-  ///
   /// EnvironmentId must start with a lowercase letter followed by up to 63
   /// lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   core.String name;
@@ -748,8 +666,7 @@ class Environment {
   /// - "RUNNING" : The environment is currently running and healthy. It is
   /// ready for use.
   /// - "UPDATING" : The environment is being updated. It remains usable but
-  /// cannot receive
-  /// additional update requests or be deleted at this time.
+  /// cannot receive additional update requests or be deleted at this time.
   /// - "DELETING" : The environment is undergoing deletion. It cannot be used.
   /// - "ERROR" : The environment has encountered an error and cannot be used.
   core.String state;
@@ -758,8 +675,7 @@ class Environment {
   core.String updateTime;
 
   /// Output only. The UUID (Universally Unique IDentifier) associated with this
-  /// environment.
-  /// This value is generated when the environment is created.
+  /// environment. This value is generated when the environment is created.
   core.String uuid;
 
   Environment();
@@ -819,16 +735,15 @@ class Environment {
 /// Configuration information for an environment.
 class EnvironmentConfig {
   /// Output only. The URI of the Apache Airflow Web UI hosted within this
-  /// environment (see
-  /// [Airflow web
+  /// environment (see [Airflow web
   /// interface](/composer/docs/how-to/accessing/airflow-web-interface)).
   core.String airflowUri;
 
   /// Output only. The Cloud Storage prefix of the DAGs for this environment.
-  /// Although Cloud
-  /// Storage objects reside in a flat namespace, a hierarchical file tree
-  /// can be simulated using "/"-delimited object name prefixes. DAG objects for
-  /// this environment reside in a simulated directory with the given prefix.
+  /// Although Cloud Storage objects reside in a flat namespace, a hierarchical
+  /// file tree can be simulated using "/"-delimited object name prefixes. DAG
+  /// objects for this environment reside in a simulated directory with the
+  /// given prefix.
   core.String dagGcsPrefix;
 
   /// Output only. The Kubernetes Engine cluster used to run this environment.
@@ -837,8 +752,8 @@ class EnvironmentConfig {
   /// The configuration used for the Kubernetes Engine cluster.
   NodeConfig nodeConfig;
 
-  /// The number of nodes in the Kubernetes Engine cluster that will be
-  /// used to run this environment.
+  /// The number of nodes in the Kubernetes Engine cluster that will be used to
+  /// run this environment.
   core.int nodeCount;
 
   /// The configuration used for the Private IP Cloud Composer environment.
@@ -902,20 +817,14 @@ class EnvironmentConfig {
   }
 }
 
-/// Configuration for controlling how IPs are allocated in the
-/// GKE cluster running the Apache Airflow software.
+/// Configuration for controlling how IPs are allocated in the GKE cluster
+/// running the Apache Airflow software.
 class IPAllocationPolicy {
   /// Optional. The IP address range used to allocate IP addresses to pods in
-  /// the GKE cluster.
-  ///
-  /// This field is applicable only when `use_ip_aliases` is true.
-  ///
-  /// Set to blank to have GKE choose a range with the default size.
-  ///
-  /// Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific
-  /// netmask.
-  ///
-  /// Set to a
+  /// the GKE cluster. This field is applicable only when `use_ip_aliases` is
+  /// true. Set to blank to have GKE choose a range with the default size. Set
+  /// to /netmask (e.g. `/14`) to have GKE choose a range with a specific
+  /// netmask. Set to a
   /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
   /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
   /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
@@ -923,36 +832,27 @@ class IPAllocationPolicy {
   core.String clusterIpv4CidrBlock;
 
   /// Optional. The name of the GKE cluster's secondary range used to allocate
-  /// IP addresses to pods.
-  ///
-  /// This field is applicable only when `use_ip_aliases` is true.
+  /// IP addresses to pods. This field is applicable only when `use_ip_aliases`
+  /// is true.
   core.String clusterSecondaryRangeName;
 
-  /// Optional. The IP address range of the services IP addresses in this
-  /// GKE cluster.
-  ///
-  /// This field is applicable only when `use_ip_aliases` is true.
-  ///
-  /// Set to blank to have GKE choose a range with the default size.
-  ///
-  /// Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific
-  /// netmask.
-  ///
-  /// Set to a
+  /// Optional. The IP address range of the services IP addresses in this GKE
+  /// cluster. This field is applicable only when `use_ip_aliases` is true. Set
+  /// to blank to have GKE choose a range with the default size. Set to /netmask
+  /// (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a
   /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
   /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
   /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
   /// to use.
   core.String servicesIpv4CidrBlock;
 
-  /// Optional. The name of the services' secondary range used to allocate
-  /// IP addresses to the GKE cluster.
-  ///
-  /// This field is applicable only when `use_ip_aliases` is true.
+  /// Optional. The name of the services' secondary range used to allocate IP
+  /// addresses to the GKE cluster. This field is applicable only when
+  /// `use_ip_aliases` is true.
   core.String servicesSecondaryRangeName;
 
-  /// Optional. Whether or not to enable Alias IPs in the GKE cluster.
-  /// If `true`, a VPC-native cluster is created.
+  /// Optional. Whether or not to enable Alias IPs in the GKE cluster. If
+  /// `true`, a VPC-native cluster is created.
   core.bool useIpAliases;
 
   IPAllocationPolicy();
@@ -1146,11 +1046,11 @@ class ListOperationsResponse {
   }
 }
 
-/// The configuration information for the Kubernetes Engine nodes running
-/// the Apache Airflow software.
+/// The configuration information for the Kubernetes Engine nodes running the
+/// Apache Airflow software.
 class NodeConfig {
-  /// Optional. The disk size in GB used for node VMs. Minimum size is 20GB.
-  /// If unspecified, defaults to 100GB. Cannot be updated.
+  /// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If
+  /// unspecified, defaults to 100GB. Cannot be updated.
   core.int diskSizeGb;
 
   /// Optional. The configuration for controlling how IPs are allocated in the
@@ -1161,56 +1061,47 @@ class NodeConfig {
   /// to deploy the VMs used to run the Apache Airflow software, specified as a
   /// [relative resource
   /// name](/apis/design/resource_names#relative_resource_name). For example:
-  /// "projects/{projectId}/zones/{zoneId}".
-  ///
-  /// This `location` must belong to the enclosing environment's project and
-  /// location. If both this field and `nodeConfig.machineType` are specified,
-  /// `nodeConfig.machineType` must belong to this `location`; if both are
-  /// unspecified, the service will pick a zone in the Compute Engine region
-  /// corresponding to the Cloud Composer location, and propagate that choice to
-  /// both fields. If only one field (`location` or `nodeConfig.machineType`) is
-  /// specified, the location information from the specified field will be
-  /// propagated to the unspecified field.
+  /// "projects/{projectId}/zones/{zoneId}". This `location` must belong to the
+  /// enclosing environment's project and location. If both this field and
+  /// `nodeConfig.machineType` are specified, `nodeConfig.machineType` must
+  /// belong to this `location`; if both are unspecified, the service will pick
+  /// a zone in the Compute Engine region corresponding to the Cloud Composer
+  /// location, and propagate that choice to both fields. If only one field
+  /// (`location` or `nodeConfig.machineType`) is specified, the location
+  /// information from the specified field will be propagated to the unspecified
+  /// field.
   core.String location;
 
-  /// Optional. The Compute Engine
-  /// [machine type](/compute/docs/machine-types) used for cluster instances,
-  /// specified as a
-  /// [relative resource
+  /// Optional. The Compute Engine [machine type](/compute/docs/machine-types)
+  /// used for cluster instances, specified as a [relative resource
   /// name](/apis/design/resource_names#relative_resource_name). For example:
-  /// "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}".
-  ///
-  /// The `machineType` must belong to the enclosing environment's project and
-  /// location. If both this field and `nodeConfig.location` are specified,
-  /// this `machineType` must belong to the `nodeConfig.location`; if both are
+  /// "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The
+  /// `machineType` must belong to the enclosing environment's project and
+  /// location. If both this field and `nodeConfig.location` are specified, this
+  /// `machineType` must belong to the `nodeConfig.location`; if both are
   /// unspecified, the service will pick a zone in the Compute Engine region
   /// corresponding to the Cloud Composer location, and propagate that choice to
   /// both fields. If exactly one of this field and `nodeConfig.location` is
   /// specified, the location information from the specified field will be
-  /// propagated to the unspecified field.
-  ///
-  /// The `machineTypeId` must not be a [shared-core machine
-  /// type](/compute/docs/machine-types#sharedcore).
-  ///
-  /// If this field is unspecified, the `machineTypeId` defaults
-  /// to "n1-standard-1".
+  /// propagated to the unspecified field. The `machineTypeId` must not be a
+  /// [shared-core machine type](/compute/docs/machine-types#sharedcore). If
+  /// this field is unspecified, the `machineTypeId` defaults to
+  /// "n1-standard-1".
   core.String machineType;
 
   /// Optional. The Compute Engine network to be used for machine
-  /// communications, specified as a
-  /// [relative resource
+  /// communications, specified as a [relative resource
   /// name](/apis/design/resource_names#relative_resource_name). For example:
-  /// "projects/{projectId}/global/networks/{networkId}".
-  ///
-  /// [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The
-  /// network must belong to the environment's project. If unspecified, the
-  /// "default" network ID in the environment's project is used.  If a
-  /// [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets)
-  /// is provided, `nodeConfig.subnetwork` must also be provided.
+  /// "projects/{projectId}/global/networks/{networkId}". [Shared
+  /// VPC](/vpc/docs/shared-vpc) is not currently supported. The network must
+  /// belong to the environment's project. If unspecified, the "default" network
+  /// ID in the environment's project is used. If a [Custom Subnet
+  /// Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided,
+  /// `nodeConfig.subnetwork` must also be provided.
   core.String network;
 
-  /// Optional. The set of Google API scopes to be made available on all
-  /// node VMs. If `oauth_scopes` is empty, defaults to
+  /// Optional. The set of Google API scopes to be made available on all node
+  /// VMs. If `oauth_scopes` is empty, defaults to
   /// ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
   core.List<core.String> oauthScopes;
 
@@ -1220,21 +1111,18 @@ class NodeConfig {
   core.String serviceAccount;
 
   /// Optional. The Compute Engine subnetwork to be used for machine
-  /// communications, specified as a
-  /// [relative resource
+  /// communications, specified as a [relative resource
   /// name](/apis/design/resource_names#relative_resource_name). For example:
-  /// "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}"
-  ///
-  /// If a subnetwork is provided, `nodeConfig.network` must also be provided,
-  /// and the subnetwork must belong to the enclosing environment's project and
+  /// "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a
+  /// subnetwork is provided, `nodeConfig.network` must also be provided, and
+  /// the subnetwork must belong to the enclosing environment's project and
   /// location.
   core.String subnetwork;
 
   /// Optional. The list of instance tags applied to all node VMs. Tags are used
   /// to identify valid sources or targets for network firewalls. Each tag
-  /// within
-  /// the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
-  /// Cannot be updated.
+  /// within the list must comply with
+  /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
   core.List<core.String> tags;
 
   NodeConfig();
@@ -1307,17 +1195,17 @@ class NodeConfig {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -1325,19 +1213,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1393,8 +1279,7 @@ class OperationMetadata {
   core.String createTime;
 
   /// Output only. The time when the operation terminated, regardless of its
-  /// success.
-  /// This field is unset if the operation is still ongoing.
+  /// success. This field is unset if the operation is still ongoing.
   core.String endTime;
 
   /// Output only. The type of operation being performed.
@@ -1406,8 +1291,7 @@ class OperationMetadata {
   core.String operationType;
 
   /// Output only. The resource being operated on, as a [relative resource
-  /// name](
-  /// /apis/design/resource_names#relative_resource_name).
+  /// name]( /apis/design/resource_names#relative_resource_name).
   core.String resource;
 
   /// Output only. The UUID of the resource being operated on.
@@ -1479,16 +1363,14 @@ class PrivateClusterConfig {
   core.bool enablePrivateEndpoint;
 
   /// Optional. The CIDR block from which IPv4 range for GKE master will be
-  /// reserved. If
-  /// left blank, the default value of '172.16.0.0/23' is used.
+  /// reserved. If left blank, the default value of '172.16.0.0/23' is used.
   core.String masterIpv4CidrBlock;
 
   /// Output only. The IP range in CIDR notation to use for the hosted master
-  /// network. This
-  /// range is used for assigning internal IP addresses to the GKE cluster
-  /// master or set of masters and to the internal load balancer virtual IP.
-  /// This range must not overlap with any other ranges in use
-  /// within the cluster's network.
+  /// network. This range is used for assigning internal IP addresses to the GKE
+  /// cluster master or set of masters and to the internal load balancer virtual
+  /// IP. This range must not overlap with any other ranges in use within the
+  /// cluster's network.
   core.String masterIpv4ReservedRange;
 
   PrivateClusterConfig();
@@ -1525,8 +1407,8 @@ class PrivateClusterConfig {
 /// environment.
 class PrivateEnvironmentConfig {
   /// Optional. The CIDR block from which IP range in tenant project will be
-  /// reserved for
-  /// Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
+  /// reserved for Cloud SQL. Needs to be disjoint from
+  /// `web_server_ipv4_cidr_block`.
   core.String cloudSqlIpv4CidrBlock;
 
   /// Optional. If `true`, a Private IP Cloud Composer environment is created.
@@ -1534,13 +1416,13 @@ class PrivateEnvironmentConfig {
   /// set to true.
   core.bool enablePrivateEnvironment;
 
-  /// Optional. Configuration for the private GKE cluster for a Private IP
-  /// Cloud Composer environment.
+  /// Optional. Configuration for the private GKE cluster for a Private IP Cloud
+  /// Composer environment.
   PrivateClusterConfig privateClusterConfig;
 
   /// Optional. The CIDR block from which IP range for web server will be
-  /// reserved. Needs
-  /// to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and
+  /// reserved. Needs to be disjoint from
+  /// `private_cluster_config.master_ipv4_cidr_block` and
   /// `cloud_sql_ipv4_cidr_block`.
   core.String webServerIpv4CidrBlock;
 
@@ -1594,76 +1476,50 @@ class PrivateEnvironmentConfig {
 /// Specifies the selection and configuration of software inside the
 /// environment.
 class SoftwareConfig {
-  /// Optional. Apache Airflow configuration properties to override.
-  ///
-  /// Property keys contain the section and property names, separated by a
-  /// hyphen, for example "core-dags_are_paused_at_creation". Section names must
-  /// not contain hyphens ("-"), opening square brackets ("["),  or closing
-  /// square brackets ("]"). The property name must not be empty and must not
-  /// contain an equals sign ("=") or semicolon (";"). Section and property
-  /// names
-  /// must not contain a period ("."). Apache Airflow configuration property
-  /// names must be written in
-  /// [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values
-  /// can
-  /// contain any character, and can be written in any lower/upper case format.
-  ///
-  /// Certain Apache Airflow configuration property values are
-  /// [blacklisted](/composer/docs/how-to/managing/setting-airflow-configurations#airflow_configuration_blacklists),
-  /// and cannot be overridden.
+  /// Optional. Apache Airflow configuration properties to override. Property
+  /// keys contain the section and property names, separated by a hyphen, for
+  /// example "core-dags_are_paused_at_creation". Section names must not contain
+  /// hyphens ("-"), opening square brackets ("["), or closing square brackets
+  /// ("]"). The property name must not be empty and must not contain an equals
+  /// sign ("=") or semicolon (";"). Section and property names must not contain
+  /// a period ("."). Apache Airflow configuration property names must be
+  /// written in [snake_case](https://en.wikipedia.org/wiki/Snake_case).
+  /// Property values can contain any character, and can be written in any
+  /// lower/upper case format. Certain Apache Airflow configuration property
+  /// values are [blocked](/composer/docs/concepts/airflow-configurations), and
+  /// cannot be overridden.
   core.Map<core.String, core.String> airflowConfigOverrides;
 
   /// Optional. Additional environment variables to provide to the Apache
-  /// Airflow
-  /// scheduler, worker, and webserver processes.
-  ///
-  /// Environment variable names must match the regular expression
-  /// `a-zA-Z_*`. They cannot specify Apache Airflow
-  /// software configuration overrides (they cannot match the regular expression
-  /// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the
-  /// following reserved names:
-  ///
-  /// * `AIRFLOW_HOME`
-  /// * `C_FORCE_ROOT`
-  /// * `CONTAINER_NAME`
-  /// * `DAGS_FOLDER`
-  /// * `GCP_PROJECT`
-  /// * `GCS_BUCKET`
-  /// * `GKE_CLUSTER_NAME`
-  /// * `SQL_DATABASE`
-  /// * `SQL_INSTANCE`
-  /// * `SQL_PASSWORD`
-  /// * `SQL_PROJECT`
-  /// * `SQL_REGION`
-  /// * `SQL_USER`
+  /// Airflow scheduler, worker, and webserver processes. Environment variable
+  /// names must match the regular expression `a-zA-Z_*`. They cannot specify
+  /// Apache Airflow software configuration overrides (they cannot match the
+  /// regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot
+  /// match any of the following reserved names: * `AIRFLOW_HOME` *
+  /// `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` *
+  /// `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` *
+  /// `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
   core.Map<core.String, core.String> envVariables;
 
-  /// The version of the software running in the environment.
-  /// This encapsulates both the version of Cloud Composer functionality and the
-  /// version of Apache Airflow. It must match the regular expression
+  /// The version of the software running in the environment. This encapsulates
+  /// both the version of Cloud Composer functionality and the version of Apache
+  /// Airflow. It must match the regular expression
   /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
   /// When used as input, the server also checks if the provided version is
-  /// supported and denies the request for an unsupported version.
-  ///
-  /// The Cloud Composer portion of the version is a
-  /// [semantic version](https://semver.org) or `latest`. When the patch version
-  /// is omitted, the current Cloud Composer patch version is selected.
-  /// When `latest` is provided instead of an explicit version number,
-  /// the server replaces `latest` with the current Cloud Composer version
-  /// and stores that version number in the same field.
-  ///
-  /// The portion of the image version that follows <em>airflow-</em> is an
-  /// official Apache Airflow repository
-  /// [release name](https://github.com/apache/incubator-airflow/releases).
-  ///
-  /// See also [Version
-  /// List](/composer/docs/concepts/versioning/composer-versions).
+  /// supported and denies the request for an unsupported version. The Cloud
+  /// Composer portion of the version is a [semantic
+  /// version](https://semver.org) or `latest`. When the patch version is
+  /// omitted, the current Cloud Composer patch version is selected. When
+  /// `latest` is provided instead of an explicit version number, the server
+  /// replaces `latest` with the current Cloud Composer version and stores that
+  /// version number in the same field. The portion of the image version that
+  /// follows *airflow-* is an official Apache Airflow repository [release
+  /// name](https://github.com/apache/incubator-airflow/releases). See also
+  /// [Version List](/composer/docs/concepts/versioning/composer-versions).
   core.String imageVersion;
 
   /// Optional. Custom Python Package Index (PyPI) packages to be installed in
-  /// the environment.
-  ///
-  /// Keys refer to the lowercase package name such as "numpy"
+  /// the environment. Keys refer to the lowercase package name such as "numpy"
   /// and values are the lowercase extras and version specifier such as
   /// "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a
   /// package without pinning it to a version specifier, use the empty string as
@@ -1671,10 +1527,8 @@ class SoftwareConfig {
   core.Map<core.String, core.String> pypiPackages;
 
   /// Optional. The major version of Python used to run the Apache Airflow
-  /// scheduler, worker, and webserver processes.
-  ///
-  /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
-  /// updated.
+  /// scheduler, worker, and webserver processes. Can be set to '2' or '3'. If
+  /// not specified, the default is '2'. Cannot be updated.
   core.String pythonVersion;
 
   SoftwareConfig();
@@ -1725,15 +1579,14 @@ class SoftwareConfig {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,

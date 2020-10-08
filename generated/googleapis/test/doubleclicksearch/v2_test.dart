@@ -79,27 +79,27 @@ checkAvailability(api.Availability o) {
   buildCounterAvailability--;
 }
 
-buildUnnamed530() {
+buildUnnamed549() {
   var o = new core.List<api.CustomDimension>();
   o.add(buildCustomDimension());
   o.add(buildCustomDimension());
   return o;
 }
 
-checkUnnamed530(core.List<api.CustomDimension> o) {
+checkUnnamed549(core.List<api.CustomDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomDimension(o[0]);
   checkCustomDimension(o[1]);
 }
 
-buildUnnamed531() {
+buildUnnamed550() {
   var o = new core.List<api.CustomMetric>();
   o.add(buildCustomMetric());
   o.add(buildCustomMetric());
   return o;
 }
 
-checkUnnamed531(core.List<api.CustomMetric> o) {
+checkUnnamed550(core.List<api.CustomMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomMetric(o[0]);
   checkCustomMetric(o[1]);
@@ -124,8 +124,8 @@ buildConversion() {
     o.countMillis = "foo";
     o.criterionId = "foo";
     o.currencyCode = "foo";
-    o.customDimension = buildUnnamed530();
-    o.customMetric = buildUnnamed531();
+    o.customDimension = buildUnnamed549();
+    o.customMetric = buildUnnamed550();
     o.deviceType = "foo";
     o.dsConversionId = "foo";
     o.engineAccountId = "foo";
@@ -165,8 +165,8 @@ checkConversion(api.Conversion o) {
     unittest.expect(o.countMillis, unittest.equals('foo'));
     unittest.expect(o.criterionId, unittest.equals('foo'));
     unittest.expect(o.currencyCode, unittest.equals('foo'));
-    checkUnnamed530(o.customDimension);
-    checkUnnamed531(o.customMetric);
+    checkUnnamed549(o.customDimension);
+    checkUnnamed550(o.customMetric);
     unittest.expect(o.deviceType, unittest.equals('foo'));
     unittest.expect(o.dsConversionId, unittest.equals('foo'));
     unittest.expect(o.engineAccountId, unittest.equals('foo'));
@@ -188,14 +188,14 @@ checkConversion(api.Conversion o) {
   buildCounterConversion--;
 }
 
-buildUnnamed532() {
+buildUnnamed551() {
   var o = new core.List<api.Conversion>();
   o.add(buildConversion());
   o.add(buildConversion());
   return o;
 }
 
-checkUnnamed532(core.List<api.Conversion> o) {
+checkUnnamed551(core.List<api.Conversion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConversion(o[0]);
   checkConversion(o[1]);
@@ -206,7 +206,7 @@ buildConversionList() {
   var o = new api.ConversionList();
   buildCounterConversionList++;
   if (buildCounterConversionList < 3) {
-    o.conversion = buildUnnamed532();
+    o.conversion = buildUnnamed551();
     o.kind = "foo";
   }
   buildCounterConversionList--;
@@ -216,7 +216,7 @@ buildConversionList() {
 checkConversionList(api.ConversionList o) {
   buildCounterConversionList++;
   if (buildCounterConversionList < 3) {
-    checkUnnamed532(o.conversion);
+    checkUnnamed551(o.conversion);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterConversionList--;
@@ -285,27 +285,27 @@ checkReportFiles(api.ReportFiles o) {
   buildCounterReportFiles--;
 }
 
-buildUnnamed533() {
+buildUnnamed552() {
   var o = new core.List<api.ReportFiles>();
   o.add(buildReportFiles());
   o.add(buildReportFiles());
   return o;
 }
 
-checkUnnamed533(core.List<api.ReportFiles> o) {
+checkUnnamed552(core.List<api.ReportFiles> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportFiles(o[0]);
   checkReportFiles(o[1]);
 }
 
-buildUnnamed534() {
+buildUnnamed553() {
   var o = new core.List<api.ReportRow>();
   o.add(buildReportRow());
   o.add(buildReportRow());
   return o;
 }
 
-checkUnnamed534(core.List<api.ReportRow> o) {
+checkUnnamed553(core.List<api.ReportRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRow(o[0]);
   checkReportRow(o[1]);
@@ -316,13 +316,13 @@ buildReport() {
   var o = new api.Report();
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    o.files = buildUnnamed533();
+    o.files = buildUnnamed552();
     o.id = "foo";
     o.isReportReady = true;
     o.kind = "foo";
     o.request = buildReportRequest();
     o.rowCount = 42;
-    o.rows = buildUnnamed534();
+    o.rows = buildUnnamed553();
     o.statisticsCurrencyCode = "foo";
     o.statisticsTimeZone = "foo";
   }
@@ -333,13 +333,13 @@ buildReport() {
 checkReport(api.Report o) {
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    checkUnnamed533(o.files);
+    checkUnnamed552(o.files);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isReportReady, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkReportRequest(o.request);
     unittest.expect(o.rowCount, unittest.equals(42));
-    checkUnnamed534(o.rows);
+    checkUnnamed553(o.rows);
     unittest.expect(o.statisticsCurrencyCode, unittest.equals('foo'));
     unittest.expect(o.statisticsTimeZone, unittest.equals('foo'));
   }
@@ -383,20 +383,20 @@ checkReportApiColumnSpec(api.ReportApiColumnSpec o) {
   buildCounterReportApiColumnSpec--;
 }
 
-buildUnnamed535() {
+buildUnnamed554() {
   var o = new core.List<api.ReportApiColumnSpec>();
   o.add(buildReportApiColumnSpec());
   o.add(buildReportApiColumnSpec());
   return o;
 }
 
-checkUnnamed535(core.List<api.ReportApiColumnSpec> o) {
+checkUnnamed554(core.List<api.ReportApiColumnSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportApiColumnSpec(o[0]);
   checkReportApiColumnSpec(o[1]);
 }
 
-buildUnnamed536() {
+buildUnnamed555() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -411,7 +411,7 @@ buildUnnamed536() {
   return o;
 }
 
-checkUnnamed536(core.List<core.Object> o) {
+checkUnnamed555(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -432,7 +432,7 @@ buildReportRequestFilters() {
   if (buildCounterReportRequestFilters < 3) {
     o.column = buildReportApiColumnSpec();
     o.operator = "foo";
-    o.values = buildUnnamed536();
+    o.values = buildUnnamed555();
   }
   buildCounterReportRequestFilters--;
   return o;
@@ -443,19 +443,19 @@ checkReportRequestFilters(api.ReportRequestFilters o) {
   if (buildCounterReportRequestFilters < 3) {
     checkReportApiColumnSpec(o.column);
     unittest.expect(o.operator, unittest.equals('foo'));
-    checkUnnamed536(o.values);
+    checkUnnamed555(o.values);
   }
   buildCounterReportRequestFilters--;
 }
 
-buildUnnamed537() {
+buildUnnamed556() {
   var o = new core.List<api.ReportRequestFilters>();
   o.add(buildReportRequestFilters());
   o.add(buildReportRequestFilters());
   return o;
 }
 
-checkUnnamed537(core.List<api.ReportRequestFilters> o) {
+checkUnnamed556(core.List<api.ReportRequestFilters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRequestFilters(o[0]);
   checkReportRequestFilters(o[1]);
@@ -482,14 +482,14 @@ checkReportRequestOrderBy(api.ReportRequestOrderBy o) {
   buildCounterReportRequestOrderBy--;
 }
 
-buildUnnamed538() {
+buildUnnamed557() {
   var o = new core.List<api.ReportRequestOrderBy>();
   o.add(buildReportRequestOrderBy());
   o.add(buildReportRequestOrderBy());
   return o;
 }
 
-checkUnnamed538(core.List<api.ReportRequestOrderBy> o) {
+checkUnnamed557(core.List<api.ReportRequestOrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRequestOrderBy(o[0]);
   checkReportRequestOrderBy(o[1]);
@@ -531,9 +531,8 @@ buildReportRequestTimeRange() {
   var o = new api.ReportRequestTimeRange();
   buildCounterReportRequestTimeRange++;
   if (buildCounterReportRequestTimeRange < 3) {
-    o.changedAttributesSinceTimestamp =
-        core.DateTime.parse("2002-02-27T14:01:02");
-    o.changedMetricsSinceTimestamp = core.DateTime.parse("2002-02-27T14:01:02");
+    o.changedAttributesSinceTimestamp = "foo";
+    o.changedMetricsSinceTimestamp = "foo";
     o.endDate = "foo";
     o.startDate = "foo";
   }
@@ -544,10 +543,8 @@ buildReportRequestTimeRange() {
 checkReportRequestTimeRange(api.ReportRequestTimeRange o) {
   buildCounterReportRequestTimeRange++;
   if (buildCounterReportRequestTimeRange < 3) {
-    unittest.expect(o.changedAttributesSinceTimestamp,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.changedMetricsSinceTimestamp,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.changedAttributesSinceTimestamp, unittest.equals('foo'));
+    unittest.expect(o.changedMetricsSinceTimestamp, unittest.equals('foo'));
     unittest.expect(o.endDate, unittest.equals('foo'));
     unittest.expect(o.startDate, unittest.equals('foo'));
   }
@@ -559,13 +556,13 @@ buildReportRequest() {
   var o = new api.ReportRequest();
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    o.columns = buildUnnamed535();
+    o.columns = buildUnnamed554();
     o.downloadFormat = "foo";
-    o.filters = buildUnnamed537();
+    o.filters = buildUnnamed556();
     o.includeDeletedEntities = true;
     o.includeRemovedEntities = true;
     o.maxRowsPerFile = 42;
-    o.orderBy = buildUnnamed538();
+    o.orderBy = buildUnnamed557();
     o.reportScope = buildReportRequestReportScope();
     o.reportType = "foo";
     o.rowCount = 42;
@@ -581,13 +578,13 @@ buildReportRequest() {
 checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    checkUnnamed535(o.columns);
+    checkUnnamed554(o.columns);
     unittest.expect(o.downloadFormat, unittest.equals('foo'));
-    checkUnnamed537(o.filters);
+    checkUnnamed556(o.filters);
     unittest.expect(o.includeDeletedEntities, unittest.isTrue);
     unittest.expect(o.includeRemovedEntities, unittest.isTrue);
     unittest.expect(o.maxRowsPerFile, unittest.equals(42));
-    checkUnnamed538(o.orderBy);
+    checkUnnamed557(o.orderBy);
     checkReportRequestReportScope(o.reportScope);
     unittest.expect(o.reportType, unittest.equals('foo'));
     unittest.expect(o.rowCount, unittest.equals(42));
@@ -651,14 +648,14 @@ checkSavedColumn(api.SavedColumn o) {
   buildCounterSavedColumn--;
 }
 
-buildUnnamed539() {
+buildUnnamed558() {
   var o = new core.List<api.SavedColumn>();
   o.add(buildSavedColumn());
   o.add(buildSavedColumn());
   return o;
 }
 
-checkUnnamed539(core.List<api.SavedColumn> o) {
+checkUnnamed558(core.List<api.SavedColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSavedColumn(o[0]);
   checkSavedColumn(o[1]);
@@ -669,7 +666,7 @@ buildSavedColumnList() {
   var o = new api.SavedColumnList();
   buildCounterSavedColumnList++;
   if (buildCounterSavedColumnList < 3) {
-    o.items = buildUnnamed539();
+    o.items = buildUnnamed558();
     o.kind = "foo";
   }
   buildCounterSavedColumnList--;
@@ -679,20 +676,20 @@ buildSavedColumnList() {
 checkSavedColumnList(api.SavedColumnList o) {
   buildCounterSavedColumnList++;
   if (buildCounterSavedColumnList < 3) {
-    checkUnnamed539(o.items);
+    checkUnnamed558(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterSavedColumnList--;
 }
 
-buildUnnamed540() {
+buildUnnamed559() {
   var o = new core.List<api.Availability>();
   o.add(buildAvailability());
   o.add(buildAvailability());
   return o;
 }
 
-checkUnnamed540(core.List<api.Availability> o) {
+checkUnnamed559(core.List<api.Availability> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAvailability(o[0]);
   checkAvailability(o[1]);
@@ -703,7 +700,7 @@ buildUpdateAvailabilityRequest() {
   var o = new api.UpdateAvailabilityRequest();
   buildCounterUpdateAvailabilityRequest++;
   if (buildCounterUpdateAvailabilityRequest < 3) {
-    o.availabilities = buildUnnamed540();
+    o.availabilities = buildUnnamed559();
   }
   buildCounterUpdateAvailabilityRequest--;
   return o;
@@ -712,19 +709,19 @@ buildUpdateAvailabilityRequest() {
 checkUpdateAvailabilityRequest(api.UpdateAvailabilityRequest o) {
   buildCounterUpdateAvailabilityRequest++;
   if (buildCounterUpdateAvailabilityRequest < 3) {
-    checkUnnamed540(o.availabilities);
+    checkUnnamed559(o.availabilities);
   }
   buildCounterUpdateAvailabilityRequest--;
 }
 
-buildUnnamed541() {
+buildUnnamed560() {
   var o = new core.List<api.Availability>();
   o.add(buildAvailability());
   o.add(buildAvailability());
   return o;
 }
 
-checkUnnamed541(core.List<api.Availability> o) {
+checkUnnamed560(core.List<api.Availability> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAvailability(o[0]);
   checkAvailability(o[1]);
@@ -735,7 +732,7 @@ buildUpdateAvailabilityResponse() {
   var o = new api.UpdateAvailabilityResponse();
   buildCounterUpdateAvailabilityResponse++;
   if (buildCounterUpdateAvailabilityResponse < 3) {
-    o.availabilities = buildUnnamed541();
+    o.availabilities = buildUnnamed560();
   }
   buildCounterUpdateAvailabilityResponse--;
   return o;
@@ -744,7 +741,7 @@ buildUpdateAvailabilityResponse() {
 checkUpdateAvailabilityResponse(api.UpdateAvailabilityResponse o) {
   buildCounterUpdateAvailabilityResponse++;
   if (buildCounterUpdateAvailabilityResponse < 3) {
-    checkUnnamed541(o.availabilities);
+    checkUnnamed560(o.availabilities);
   }
   buildCounterUpdateAvailabilityResponse--;
 }
@@ -906,10 +903,10 @@ main() {
       var arg_rowCount = 42;
       var arg_startDate = 42;
       var arg_startRow = 42;
-      var arg_adGroupId = "foo";
       var arg_adId = "foo";
-      var arg_campaignId = "foo";
       var arg_criterionId = "foo";
+      var arg_adGroupId = "foo";
+      var arg_campaignId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -919,12 +916,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("doubleclicksearch/v2/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("agency/"));
-        pathOffset += 7;
+        unittest.expect(path.substring(pathOffset, pathOffset + 28),
+            unittest.equals("doubleclicksearch/v2/agency/"));
+        pathOffset += 28;
         index = path.indexOf("/advertiser/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -979,13 +973,13 @@ main() {
             unittest.equals(arg_startDate));
         unittest.expect(core.int.parse(queryMap["startRow"].first),
             unittest.equals(arg_startRow));
-        unittest.expect(
-            queryMap["adGroupId"].first, unittest.equals(arg_adGroupId));
         unittest.expect(queryMap["adId"].first, unittest.equals(arg_adId));
         unittest.expect(
-            queryMap["campaignId"].first, unittest.equals(arg_campaignId));
-        unittest.expect(
             queryMap["criterionId"].first, unittest.equals(arg_criterionId));
+        unittest.expect(
+            queryMap["adGroupId"].first, unittest.equals(arg_adGroupId));
+        unittest.expect(
+            queryMap["campaignId"].first, unittest.equals(arg_campaignId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -997,10 +991,10 @@ main() {
       res
           .get(arg_agencyId, arg_advertiserId, arg_engineAccountId, arg_endDate,
               arg_rowCount, arg_startDate, arg_startRow,
-              adGroupId: arg_adGroupId,
               adId: arg_adId,
-              campaignId: arg_campaignId,
               criterionId: arg_criterionId,
+              adGroupId: arg_adGroupId,
+              campaignId: arg_campaignId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkConversionList(response);
@@ -1024,12 +1018,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("doubleclicksearch/v2/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("conversion"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 31),
+            unittest.equals("doubleclicksearch/v2/conversion"));
+        pathOffset += 31;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1081,12 +1072,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("doubleclicksearch/v2/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("conversion"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 31),
+            unittest.equals("doubleclicksearch/v2/conversion"));
+        pathOffset += 31;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1138,12 +1126,11 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("doubleclicksearch/v2/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 29),
-            unittest.equals("conversion/updateAvailability"));
-        pathOffset += 29;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 50),
+            unittest
+                .equals("doubleclicksearch/v2/conversion/updateAvailability"));
+        pathOffset += 50;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1196,12 +1183,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("doubleclicksearch/v2/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("reports/generate"));
-        pathOffset += 16;
+        unittest.expect(path.substring(pathOffset, pathOffset + 37),
+            unittest.equals("doubleclicksearch/v2/reports/generate"));
+        pathOffset += 37;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1249,12 +1233,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("doubleclicksearch/v2/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("reports/"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 29),
+            unittest.equals("doubleclicksearch/v2/reports/"));
+        pathOffset += 29;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals("$arg_reportId"));
@@ -1309,12 +1290,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("doubleclicksearch/v2/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("reports/"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 29),
+            unittest.equals("doubleclicksearch/v2/reports/"));
+        pathOffset += 29;
         index = path.indexOf("/files/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1375,12 +1353,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("doubleclicksearch/v2/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("reports"));
-        pathOffset += 7;
+        unittest.expect(path.substring(pathOffset, pathOffset + 28),
+            unittest.equals("doubleclicksearch/v2/reports"));
+        pathOffset += 28;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1432,12 +1407,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("doubleclicksearch/v2/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("agency/"));
-        pathOffset += 7;
+        unittest.expect(path.substring(pathOffset, pathOffset + 28),
+            unittest.equals("doubleclicksearch/v2/agency/"));
+        pathOffset += 28;
         index = path.indexOf("/advertiser/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =

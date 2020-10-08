@@ -103,54 +103,48 @@ class ProcessesResourceApi {
 
   ProcessesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// List information about processes made by or on behalf of a user,
-  /// such as process type and current status.
+  /// List information about processes made by or on behalf of a user, such as
+  /// process type and current status.
   ///
   /// Request parameters:
   ///
   /// [userProcessFilter_deploymentId] - Optional field used to limit returned
-  /// processes to those originating from
-  /// projects with a specific deployment ID.
-  ///
-  /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This
-  /// should be set to the value of `nextPageToken` from a previous response.
-  ///
-  /// [userProcessFilter_endTime] - Optional field used to limit returned
-  /// processes to those that completed
-  /// on or before the given timestamp.
-  ///
-  /// [pageSize] - The maximum number of returned processes per page of results.
-  /// Defaults to
-  /// 50.
+  /// processes to those originating from projects with a specific deployment
+  /// ID.
   ///
   /// [userProcessFilter_startTime] - Optional field used to limit returned
-  /// processes to those that were
-  /// started on or after the given timestamp.
+  /// processes to those that were started on or after the given timestamp.
+  ///
+  /// [userProcessFilter_endTime] - Optional field used to limit returned
+  /// processes to those that completed on or before the given timestamp.
   ///
   /// [userProcessFilter_userAccessLevels] - Optional field used to limit
-  /// returned processes to those having one of
-  /// the specified user access levels.
-  ///
-  /// [userProcessFilter_projectName] - Optional field used to limit returned
-  /// processes to those originating from
-  /// projects with project names containing a specific string.
-  ///
-  /// [userProcessFilter_functionName] - Optional field used to limit returned
-  /// processes to those originating from
-  /// a script function with the given function name.
-  ///
-  /// [userProcessFilter_scriptId] - Optional field used to limit returned
-  /// processes to those originating from
-  /// projects with a specific script ID.
-  ///
-  /// [userProcessFilter_statuses] - Optional field used to limit returned
-  /// processes to those having one of
-  /// the specified process statuses.
+  /// returned processes to those having one of the specified user access
+  /// levels.
   ///
   /// [userProcessFilter_types] - Optional field used to limit returned
-  /// processes to those having one of
-  /// the specified process types.
+  /// processes to those having one of the specified process types.
+  ///
+  /// [userProcessFilter_statuses] - Optional field used to limit returned
+  /// processes to those having one of the specified process statuses.
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of `nextPageToken` from a previous
+  /// response.
+  ///
+  /// [userProcessFilter_functionName] - Optional field used to limit returned
+  /// processes to those originating from a script function with the given
+  /// function name.
+  ///
+  /// [userProcessFilter_scriptId] - Optional field used to limit returned
+  /// processes to those originating from projects with a specific script ID.
+  ///
+  /// [pageSize] - The maximum number of returned processes per page of results.
+  /// Defaults to 50.
+  ///
+  /// [userProcessFilter_projectName] - Optional field used to limit returned
+  /// processes to those originating from projects with project names containing
+  /// a specific string.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -164,16 +158,16 @@ class ProcessesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListUserProcessesResponse> list(
       {core.String userProcessFilter_deploymentId,
-      core.String pageToken,
-      core.String userProcessFilter_endTime,
-      core.int pageSize,
       core.String userProcessFilter_startTime,
+      core.String userProcessFilter_endTime,
       core.List<core.String> userProcessFilter_userAccessLevels,
-      core.String userProcessFilter_projectName,
+      core.List<core.String> userProcessFilter_types,
+      core.List<core.String> userProcessFilter_statuses,
+      core.String pageToken,
       core.String userProcessFilter_functionName,
       core.String userProcessFilter_scriptId,
-      core.List<core.String> userProcessFilter_statuses,
-      core.List<core.String> userProcessFilter_types,
+      core.int pageSize,
+      core.String userProcessFilter_projectName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -187,28 +181,26 @@ class ProcessesResourceApi {
         userProcessFilter_deploymentId
       ];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (userProcessFilter_endTime != null) {
-      _queryParams["userProcessFilter.endTime"] = [userProcessFilter_endTime];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (userProcessFilter_startTime != null) {
       _queryParams["userProcessFilter.startTime"] = [
         userProcessFilter_startTime
       ];
     }
+    if (userProcessFilter_endTime != null) {
+      _queryParams["userProcessFilter.endTime"] = [userProcessFilter_endTime];
+    }
     if (userProcessFilter_userAccessLevels != null) {
       _queryParams["userProcessFilter.userAccessLevels"] =
           userProcessFilter_userAccessLevels;
     }
-    if (userProcessFilter_projectName != null) {
-      _queryParams["userProcessFilter.projectName"] = [
-        userProcessFilter_projectName
-      ];
+    if (userProcessFilter_types != null) {
+      _queryParams["userProcessFilter.types"] = userProcessFilter_types;
+    }
+    if (userProcessFilter_statuses != null) {
+      _queryParams["userProcessFilter.statuses"] = userProcessFilter_statuses;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (userProcessFilter_functionName != null) {
       _queryParams["userProcessFilter.functionName"] = [
@@ -218,11 +210,13 @@ class ProcessesResourceApi {
     if (userProcessFilter_scriptId != null) {
       _queryParams["userProcessFilter.scriptId"] = [userProcessFilter_scriptId];
     }
-    if (userProcessFilter_statuses != null) {
-      _queryParams["userProcessFilter.statuses"] = userProcessFilter_statuses;
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (userProcessFilter_types != null) {
-      _queryParams["userProcessFilter.types"] = userProcessFilter_types;
+    if (userProcessFilter_projectName != null) {
+      _queryParams["userProcessFilter.projectName"] = [
+        userProcessFilter_projectName
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -245,43 +239,38 @@ class ProcessesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [scriptProcessFilter_statuses] - Optional field used to limit returned
+  /// processes to those having one of the specified process statuses.
+  ///
   /// [scriptProcessFilter_functionName] - Optional field used to limit returned
-  /// processes to those originating from
-  /// a script function with the given function name.
+  /// processes to those originating from a script function with the given
+  /// function name.
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of `nextPageToken` from a previous
+  /// response.
+  ///
+  /// [scriptProcessFilter_userAccessLevels] - Optional field used to limit
+  /// returned processes to those having one of the specified user access
+  /// levels.
+  ///
+  /// [pageSize] - The maximum number of returned processes per page of results.
+  /// Defaults to 50.
   ///
   /// [scriptProcessFilter_startTime] - Optional field used to limit returned
-  /// processes to those that were
-  /// started on or after the given timestamp.
+  /// processes to those that were started on or after the given timestamp.
   ///
   /// [scriptProcessFilter_deploymentId] - Optional field used to limit returned
-  /// processes to those originating from
-  /// projects with a specific deployment ID.
+  /// processes to those originating from projects with a specific deployment
+  /// ID.
   ///
   /// [scriptId] - The script ID of the project whose processes are listed.
   ///
   /// [scriptProcessFilter_types] - Optional field used to limit returned
-  /// processes to those having one of
-  /// the specified process types.
-  ///
-  /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This
-  /// should be set to the value of `nextPageToken` from a previous response.
-  ///
-  /// [pageSize] - The maximum number of returned processes per page of results.
-  /// Defaults to
-  /// 50.
+  /// processes to those having one of the specified process types.
   ///
   /// [scriptProcessFilter_endTime] - Optional field used to limit returned
-  /// processes to those that completed
-  /// on or before the given timestamp.
-  ///
-  /// [scriptProcessFilter_userAccessLevels] - Optional field used to limit
-  /// returned processes to those having one of
-  /// the specified user access levels.
-  ///
-  /// [scriptProcessFilter_statuses] - Optional field used to limit returned
-  /// processes to those having one of
-  /// the specified process statuses.
+  /// processes to those that completed on or before the given timestamp.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,16 +283,16 @@ class ProcessesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScriptProcessesResponse> listScriptProcesses(
-      {core.String scriptProcessFilter_functionName,
+      {core.List<core.String> scriptProcessFilter_statuses,
+      core.String scriptProcessFilter_functionName,
+      core.String pageToken,
+      core.List<core.String> scriptProcessFilter_userAccessLevels,
+      core.int pageSize,
       core.String scriptProcessFilter_startTime,
       core.String scriptProcessFilter_deploymentId,
       core.String scriptId,
       core.List<core.String> scriptProcessFilter_types,
-      core.String pageToken,
-      core.int pageSize,
       core.String scriptProcessFilter_endTime,
-      core.List<core.String> scriptProcessFilter_userAccessLevels,
-      core.List<core.String> scriptProcessFilter_statuses,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -312,10 +301,24 @@ class ProcessesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (scriptProcessFilter_statuses != null) {
+      _queryParams["scriptProcessFilter.statuses"] =
+          scriptProcessFilter_statuses;
+    }
     if (scriptProcessFilter_functionName != null) {
       _queryParams["scriptProcessFilter.functionName"] = [
         scriptProcessFilter_functionName
       ];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (scriptProcessFilter_userAccessLevels != null) {
+      _queryParams["scriptProcessFilter.userAccessLevels"] =
+          scriptProcessFilter_userAccessLevels;
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (scriptProcessFilter_startTime != null) {
       _queryParams["scriptProcessFilter.startTime"] = [
@@ -333,24 +336,10 @@ class ProcessesResourceApi {
     if (scriptProcessFilter_types != null) {
       _queryParams["scriptProcessFilter.types"] = scriptProcessFilter_types;
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (scriptProcessFilter_endTime != null) {
       _queryParams["scriptProcessFilter.endTime"] = [
         scriptProcessFilter_endTime
       ];
-    }
-    if (scriptProcessFilter_userAccessLevels != null) {
-      _queryParams["scriptProcessFilter.userAccessLevels"] =
-          scriptProcessFilter_userAccessLevels;
-    }
-    if (scriptProcessFilter_statuses != null) {
-      _queryParams["scriptProcessFilter.statuses"] =
-          scriptProcessFilter_statuses;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -473,8 +462,7 @@ class ProjectsResourceApi {
   /// [scriptId] - The script project's Drive ID.
   ///
   /// [versionNumber] - The version number of the project to retrieve. If not
-  /// provided, the
-  /// project's HEAD version is returned.
+  /// provided, the project's HEAD version is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -518,22 +506,23 @@ class ProjectsResourceApi {
     return _response.then((data) => new Content.fromJson(data));
   }
 
-  /// Get metrics data for scripts, such as number of executions and
-  /// active users.
+  /// Get metrics data for scripts, such as number of executions and active
+  /// users.
   ///
   /// Request parameters:
   ///
   /// [scriptId] - Required field indicating the script to get metrics for.
   ///
+  /// [metricsFilter_deploymentId] - Optional field indicating a specific
+  /// deployment to retrieve metrics from.
+  ///
   /// [metricsGranularity] - Required field indicating what granularity of
   /// metrics are returned.
   /// Possible string values are:
-  /// - "UNSPECIFIED_GRANULARITY" : A UNSPECIFIED_GRANULARITY.
-  /// - "WEEKLY" : A WEEKLY.
-  /// - "DAILY" : A DAILY.
-  ///
-  /// [metricsFilter_deploymentId] - Optional field indicating a specific
-  /// deployment to retrieve metrics from.
+  /// - "UNSPECIFIED_GRANULARITY" : Default metric granularity used to query no
+  /// metrics.
+  /// - "WEEKLY" : Represents weekly metrics.
+  /// - "DAILY" : Represents daily metrics over a period of 7 days.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -546,8 +535,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Metrics> getMetrics(core.String scriptId,
-      {core.String metricsGranularity,
-      core.String metricsFilter_deploymentId,
+      {core.String metricsFilter_deploymentId,
+      core.String metricsGranularity,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -559,11 +548,11 @@ class ProjectsResourceApi {
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
     }
-    if (metricsGranularity != null) {
-      _queryParams["metricsGranularity"] = [metricsGranularity];
-    }
     if (metricsFilter_deploymentId != null) {
       _queryParams["metricsFilter.deploymentId"] = [metricsFilter_deploymentId];
+    }
+    if (metricsGranularity != null) {
+      _queryParams["metricsGranularity"] = [metricsGranularity];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -582,11 +571,11 @@ class ProjectsResourceApi {
     return _response.then((data) => new Metrics.fromJson(data));
   }
 
-  /// Updates the content of the specified script project.
-  /// This content is stored as the HEAD version, and is used when the script is
-  /// executed as a trigger, in the script editor, in add-on preview mode, or as
-  /// a web app or Apps Script API in development mode. This clears all the
-  /// existing files in the project.
+  /// Updates the content of the specified script project. This content is
+  /// stored as the HEAD version, and is used when the script is executed as a
+  /// trigger, in the script editor, in add-on preview mode, or as a web app or
+  /// Apps Script API in development mode. This clears all the existing files in
+  /// the project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -802,12 +791,12 @@ class ProjectsDeploymentsResourceApi {
   ///
   /// [scriptId] - The script project's Drive ID.
   ///
-  /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This
-  /// should be set to the value of `nextPageToken` from a previous response.
-  ///
   /// [pageSize] - The maximum number of deployments on each returned page.
   /// Defaults to 50.
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of `nextPageToken` from a previous
+  /// response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -820,7 +809,7 @@ class ProjectsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDeploymentsResponse> list(core.String scriptId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -831,11 +820,11 @@ class ProjectsDeploymentsResourceApi {
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1027,8 +1016,8 @@ class ProjectsVersionsResourceApi {
   /// [scriptId] - The script project's Drive ID.
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This
-  /// should be set to the value of `nextPageToken` from a previous response.
+  /// page. This should be set to the value of `nextPageToken` from a previous
+  /// response.
   ///
   /// [pageSize] - The maximum number of versions on each returned page.
   /// Defaults to 50.
@@ -1086,29 +1075,24 @@ class ScriptsResourceApi {
 
   /// Runs a function in an Apps Script project. The script project must be
   /// deployed for use with the Apps Script API and the calling application must
-  /// share the same Cloud Platform project.
-  ///
-  /// This method requires authorization with an OAuth 2.0 token that includes
-  /// at
-  /// least one of the scopes listed in the
-  /// [Authorization](#authorization-scopes) section; script projects that do
-  /// not
-  /// require authorization cannot be executed through this API. To find the
-  /// correct scopes to include in the authentication token, open the project in
-  /// the script editor, then select **File > Project properties** and click the
-  /// **Scopes** tab.
-  ///
-  /// The error `403, PERMISSION_DENIED: The caller does not have permission`
-  /// indicates that the Cloud Platform project used to authorize the request is
-  /// not the same as the one used by the script.
+  /// share the same Cloud Platform project. This method requires authorization
+  /// with an OAuth 2.0 token that includes at least one of the scopes listed in
+  /// the [Authorization](#authorization-scopes) section; script projects that
+  /// do not require authorization cannot be executed through this API. To find
+  /// the correct scopes to include in the authentication token, open the
+  /// project in the script editor, then select **File > Project properties**
+  /// and click the **Scopes** tab. The error `403, PERMISSION_DENIED: The
+  /// caller does not have permission` indicates that the Cloud Platform project
+  /// used to authorize the request is not the same as the one used by the
+  /// script.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [scriptId] - The script ID of the script to be executed. To find the
-  /// script ID, open
-  /// the project in the script editor and select **File > Project properties**.
+  /// script ID, open the project in the script editor and select **File >
+  /// Project properties**.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1153,10 +1137,9 @@ class ScriptsResourceApi {
 
 /// The Content resource.
 class Content {
-  /// The list of script project files.
-  /// One of the files is a script manifest; it must be named "appsscript",
-  /// must have type of JSON, and include the manifest configurations for the
-  /// project.
+  /// The list of script project files. One of the files is a script manifest;
+  /// it must be named "appsscript", must have type of JSON, and include the
+  /// manifest configurations for the project.
   core.List<File> files;
 
   /// The script project's Drive ID.
@@ -1328,13 +1311,9 @@ class DeploymentConfig {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -1430,13 +1409,10 @@ class ExecuteStreamResponse {
 
 /// An object that provides information about the nature of an error resulting
 /// from an attempted execution of a script function using the Apps Script API.
-/// If a run call
-/// succeeds but the script function (or Apps Script itself) throws an
-/// exception,
-/// the response body's error field
-/// contains a
-/// Status object. The `Status` object's `details` field
-/// contains an array with a single one of these `ExecutionError` objects.
+/// If a run call succeeds but the script function (or Apps Script itself)
+/// throws an exception, the response body's error field contains a Status
+/// object. The `Status` object's `details` field contains an array with a
+/// single one of these `ExecutionError` objects.
 class ExecutionError {
   /// The error message thrown by Apps Script, usually localized into the user's
   /// language.
@@ -1500,8 +1476,7 @@ class ExecutionRequest {
   core.String function;
 
   /// The parameters to be passed to the function being executed. The object
-  /// type
-  /// for each parameter should match the expected type in Apps Script.
+  /// type for each parameter should match the expected type in Apps Script.
   /// Parameters cannot be Apps Script-specific object types (such as a
   /// `Document` or a `Calendar`); they can only be primitive types such as
   /// `string`, `number`, `array`, `object`, or `boolean`. Optional.
@@ -1510,17 +1485,16 @@ class ExecutionRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object> parameters;
 
-  /// <b>Deprecated</b>. For use with Android add-ons only. An ID that
-  /// represents
-  /// the user's current session in the Android app for Google Docs or Sheets,
+  /// *Deprecated*. For use with Android add-ons only. An ID that represents the
+  /// user's current session in the Android app for Google Docs or Sheets,
   /// included as extra data in the
   /// [Intent](https://developer.android.com/guide/components/intents-filters.html)
   /// that launches the add-on. When an Android add-on is run with a session
   /// state, it gains the privileges of a
   /// [bound](https://developers.google.com/apps-script/guides/bound)
-  /// script&mdash;that is, it can access information like the user's current
-  /// cursor position (in Docs) or selected cell (in Sheets). To retrieve the
-  /// state, call
+  /// script—that is, it can access information like the user's current cursor
+  /// position (in Docs) or selected cell (in Sheets). To retrieve the state,
+  /// call
   /// `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
   /// Optional.
   core.String sessionState;
@@ -1563,16 +1537,13 @@ class ExecutionRequest {
 
 /// An object that provides the return value of a function executed using the
 /// Apps Script API. If the script function returns successfully, the response
-/// body's response field contains this
-/// `ExecutionResponse` object.
+/// body's response field contains this `ExecutionResponse` object.
 class ExecutionResponse {
   /// The return value of the script function. The type matches the object type
   /// returned in Apps Script. Functions called using the Apps Script API cannot
   /// return Apps Script-specific objects (such as a `Document` or a
-  /// `Calendar`);
-  /// they can only return primitive types such as a `string`, `number`,
-  /// `array`,
-  /// `object`, or `boolean`.
+  /// `Calendar`); they can only return primitive types such as a `string`,
+  /// `number`, `array`, `object`, or `boolean`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1596,26 +1567,24 @@ class ExecutionResponse {
   }
 }
 
-/// An individual file within a script project.
-/// A file is a third-party source code created by one or more
-/// developers. It can be a server-side JS code, HTML, or a
-/// configuration file. Each script project can contain multiple files.
+/// An individual file within a script project. A file is a third-party source
+/// code created by one or more developers. It can be a server-side JS code,
+/// HTML, or a configuration file. Each script project can contain multiple
+/// files.
 class File {
-  /// Creation date timestamp.
-  /// This read-only field is only visible to users who have WRITER
-  /// permission for the script project.
+  /// Creation date timestamp. This read-only field is only visible to users who
+  /// have WRITER permission for the script project.
   core.String createTime;
 
   /// The defined set of functions in the script file, if any.
   GoogleAppsScriptTypeFunctionSet functionSet;
 
-  /// The user who modified the file most recently.
-  /// This read-only field is only visible to users who have WRITER
-  /// permission for the script project.
+  /// The user who modified the file most recently. This read-only field is only
+  /// visible to users who have WRITER permission for the script project.
   GoogleAppsScriptTypeUser lastModifyUser;
 
-  /// The name of the file. The file extension is not part of the file
-  /// name, which can be identified from the type field.
+  /// The name of the file. The file extension is not part of the file name,
+  /// which can be identified from the type field.
   core.String name;
 
   /// The file content.
@@ -1627,14 +1596,12 @@ class File {
   /// - "SERVER_JS" : An Apps Script server-side code file.
   /// - "HTML" : A file containing client-side HTML.
   /// - "JSON" : A file in JSON format. This type is only used for the script
-  /// project's manifest. The manifest file content must match the
-  /// structure of a valid
-  /// [ScriptManifest](/apps-script/concepts/manifests)
+  /// project's manifest. The manifest file content must match the structure of
+  /// a valid [ScriptManifest](/apps-script/concepts/manifests)
   core.String type;
 
-  /// Last modified date timestamp.
-  /// This read-only field is only visible to users who have WRITER
-  /// permission for the script project.
+  /// Last modified date timestamp. This read-only field is only visible to
+  /// users who have WRITER permission for the script project.
   core.String updateTime;
 
   File();
@@ -1771,11 +1738,10 @@ class GoogleAppsScriptTypeExecutionApiConfig {
   /// Possible string values are:
   /// - "UNKNOWN_ACCESS" : Default value, should not be used.
   /// - "MYSELF" : Only the user who deployed the web app or executable can
-  /// access it.
-  /// Note that this is not necessarily the owner of the script project.
+  /// access it. Note that this is not necessarily the owner of the script
+  /// project.
   /// - "DOMAIN" : Only users in the same domain as the user who deployed the
-  /// web app or
-  /// executable can access it.
+  /// web app or executable can access it.
   /// - "ANYONE" : Any logged in user can access the web app or executable.
   /// - "ANYONE_ANONYMOUS" : Any user, logged in or not, can access the web app
   /// or executable.
@@ -1874,8 +1840,8 @@ class GoogleAppsScriptTypeFunctionSet {
 
 /// Representation of a single script process execution that was started from
 /// the script editor, a trigger, an application, or using the Apps Script API.
-/// This is distinct from the `Operation`
-/// resource, which only represents executions started via the Apps Script API.
+/// This is distinct from the `Operation` resource, which only represents
+/// executions started via the Apps Script API.
 class GoogleAppsScriptTypeProcess {
   /// Duration the execution spent executing.
   core.String duration;
@@ -2036,11 +2002,10 @@ class GoogleAppsScriptTypeWebAppConfig {
   /// Possible string values are:
   /// - "UNKNOWN_ACCESS" : Default value, should not be used.
   /// - "MYSELF" : Only the user who deployed the web app or executable can
-  /// access it.
-  /// Note that this is not necessarily the owner of the script project.
+  /// access it. Note that this is not necessarily the owner of the script
+  /// project.
   /// - "DOMAIN" : Only users in the same domain as the user who deployed the
-  /// web app or
-  /// executable can access it.
+  /// web app or executable can access it.
   /// - "ANYONE" : Any logged in user can access the web app or executable.
   /// - "ANYONE_ANONYMOUS" : Any user, logged in or not, can access the web app
   /// or executable.
@@ -2051,8 +2016,7 @@ class GoogleAppsScriptTypeWebAppConfig {
   /// - "UNKNOWN_EXECUTE_AS" : Default value, should not be used.
   /// - "USER_ACCESSING" : The script runs as the user accessing the web app.
   /// - "USER_DEPLOYING" : The script runs as the user who deployed the web app.
-  /// Note that this is
-  /// not necessarily the owner of the script project.
+  /// Note that this is not necessarily the owner of the script project.
   core.String executeAs;
 
   GoogleAppsScriptTypeWebAppConfig();
@@ -2148,8 +2112,7 @@ class ListDeploymentsResponse {
   }
 }
 
-/// Response with the list of
-/// Process resources.
+/// Response with the list of Process resources.
 class ListScriptProcessesResponse {
   /// Token for the next page of results. If empty, there are no more pages
   /// remaining.
@@ -2185,8 +2148,7 @@ class ListScriptProcessesResponse {
   }
 }
 
-/// Response with the list of
-/// Process resources.
+/// Response with the list of Process resources.
 class ListUserProcessesResponse {
   /// Token for the next page of results. If empty, there are no more pages
   /// remaining.
@@ -2378,26 +2340,19 @@ class MetricsValue {
 /// run. The execution response does not arrive until the function finishes
 /// executing. The maximum execution runtime is listed in the [Apps Script
 /// quotas guide](/apps-script/guides/services/quotas#current_limitations).
-/// <p>After execution has started, it can have one of four outcomes:</p> <ul>
-/// <li> If the script function returns successfully, the
-///   response field contains an
-///   ExecutionResponse object
-///   with the function's return value in the object's `result` field.</li>
-/// <li> If the script function (or Apps Script itself) throws an exception, the
-///   error field contains a
-///   Status object. The `Status` object's `details`
-///   field contains an array with a single
-///   ExecutionError object that
-///   provides information about the nature of the error.</li>
-/// <li> If the execution has not yet completed,
-///   the done field is `false` and
-///   the neither the `response` nor `error` fields are present.</li>
-/// <li> If the `run` call itself fails (for example, because of a
-///   malformed request or an authorization error), the method returns an HTTP
-///   response code in the 4XX range with a different format for the response
-///   body. Client libraries automatically convert a 4XX response into an
-///   exception class.</li>
-/// </ul>
+/// After execution has started, it can have one of four outcomes: - If the
+/// script function returns successfully, the response field contains an
+/// ExecutionResponse object with the function's return value in the object's
+/// `result` field. - If the script function (or Apps Script itself) throws an
+/// exception, the error field contains a Status object. The `Status` object's
+/// `details` field contains an array with a single ExecutionError object that
+/// provides information about the nature of the error. - If the execution has
+/// not yet completed, the done field is `false` and the neither the `response`
+/// nor `error` fields are present. - If the `run` call itself fails (for
+/// example, because of a malformed request or an authorization error), the
+/// method returns an HTTP response code in the 4XX range with a different
+/// format for the response body. Client libraries automatically convert a 4XX
+/// response into an exception class.
 class Operation {
   /// This field indicates whether the script execution has completed. A
   /// completed execution has a populated `response` field containing the
@@ -2587,9 +2542,9 @@ class ScriptStackTraceElement {
 /// throws an exception, the response body's error field contains this `Status`
 /// object.
 class Status {
-  /// The status code. For this API, this value either: <ul> <li> 10, indicating
-  /// a `SCRIPT_TIMEOUT` error,</li> <li> 3, indicating an `INVALID_ARGUMENT`
-  /// error, or</li> <li> 1, indicating a `CANCELLED` execution.</li> </ul>
+  /// The status code. For this API, this value either: - 10, indicating a
+  /// `SCRIPT_TIMEOUT` error, - 3, indicating an `INVALID_ARGUMENT` error, or -
+  /// 1, indicating a `CANCELLED` execution.
   core.int code;
 
   /// An array that contains a single ExecutionError object that provides

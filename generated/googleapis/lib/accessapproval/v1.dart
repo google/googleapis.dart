@@ -48,8 +48,8 @@ class FoldersResourceApi {
   /// This will have the effect of disabling Access Approval for the project,
   /// folder, or organization, but only if all ancestors also have Access
   /// Approval disabled. If Access Approval is enabled at a higher level of the
-  /// hierarchy, then Access Approval will still be enabled at this level as
-  /// the settings are inherited.
+  /// hierarchy, then Access Approval will still be enabled at this level as the
+  /// settings are inherited.
   ///
   /// Request parameters:
   ///
@@ -145,22 +145,17 @@ class FoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the settings. Format is one of:
-  /// <ol>
-  ///   <li>"projects/{project_id}/accessApprovalSettings"</li>
-  ///   <li>"folders/{folder_id}/accessApprovalSettings"</li>
-  ///   <li>"organizations/{organization_id}/accessApprovalSettings"</li>
-  /// <ol>
+  /// [name] - The resource name of the settings. Format is one of: *
+  /// "projects/{project}/accessApprovalSettings" *
+  /// "folders/{folder}/accessApprovalSettings" *
+  /// "organizations/{organization}/accessApprovalSettings"
   /// Value must have pattern "^folders/[^/]+/accessApprovalSettings$".
   ///
   /// [updateMask] - The update mask applies to the settings. Only the top level
-  /// fields of
-  /// AccessApprovalSettings (notification_emails & enrolled_services) are
-  /// supported. For each field, if it is included, the currently stored value
-  /// will be entirely overwritten with the value of the field passed in this
-  /// request.
-  ///
-  /// For the `FieldMask` definition, see
+  /// fields of AccessApprovalSettings (notification_emails & enrolled_services)
+  /// are supported. For each field, if it is included, the currently stored
+  /// value will be entirely overwritten with the value of the field passed in
+  /// this request. For the `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   /// If this field is left unset, only the notification_emails field will be
   /// updated.
@@ -216,10 +211,9 @@ class FoldersApprovalRequestsResourceApi {
   FoldersApprovalRequestsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Approves a request and returns the updated ApprovalRequest.
-  ///
-  /// Returns NOT_FOUND if the request does not exist. Returns
-  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
+  /// Approves a request and returns the updated ApprovalRequest. Returns
+  /// NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if
+  /// the request exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -269,17 +263,11 @@ class FoldersApprovalRequestsResourceApi {
     return _response.then((data) => new ApprovalRequest.fromJson(data));
   }
 
-  /// Dismisses a request. Returns the updated ApprovalRequest.
-  ///
-  /// NOTE: This does not deny access to the resource if another request has
-  /// been
-  /// made and approved. It is equivalent in effect to ignoring the request
-  /// altogether.
-  ///
-  /// Returns NOT_FOUND if the request does not exist.
-  ///
-  /// Returns FAILED_PRECONDITION if the request exists but is not in a pending
-  /// state.
+  /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does
+  /// not deny access to the resource if another request has been made and
+  /// approved. It is equivalent in effect to ignoring the request altogether.
+  /// Returns NOT_FOUND if the request does not exist. Returns
+  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -373,28 +361,23 @@ class FoldersApprovalRequestsResourceApi {
   }
 
   /// Lists approval requests associated with a project, folder, or
-  /// organization.
-  /// Approval requests can be filtered by state (pending, active, dismissed).
-  /// The order is reverse chronological.
+  /// organization. Approval requests can be filtered by state (pending, active,
+  /// dismissed). The order is reverse chronological.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource. This may be "projects/{project_id}",
-  /// "folders/{folder_id}", or "organizations/{organization_id}".
+  /// [parent] - The parent resource. This may be "projects/{project}",
+  /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^folders/[^/]+$".
   ///
-  /// [filter] - A filter on the type of approval requests to retrieve. Must be
-  /// one of the
-  /// following values:
-  /// <ol>
-  ///   <li>[not set]: Requests that are pending or have active approvals.</li>
-  ///   <li>ALL: All requests.</li>
-  ///   <li>PENDING: Only pending requests.</li>
-  ///   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-  ///   <li>DISMISSED: Only dismissed (including expired) requests.</li>
-  /// </ol>
-  ///
   /// [pageToken] - A token identifying the page of results to return.
+  ///
+  /// [filter] - A filter on the type of approval requests to retrieve. Must be
+  /// one of the following values: * [not set]: Requests that are pending or
+  /// have active approvals. * ALL: All requests. * PENDING: Only pending
+  /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
+  /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
+  /// and dismissed (including expired) requests.
   ///
   /// [pageSize] - Requested page size.
   ///
@@ -409,8 +392,8 @@ class FoldersApprovalRequestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -423,11 +406,11 @@ class FoldersApprovalRequestsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -463,8 +446,8 @@ class OrganizationsResourceApi {
   /// This will have the effect of disabling Access Approval for the project,
   /// folder, or organization, but only if all ancestors also have Access
   /// Approval disabled. If Access Approval is enabled at a higher level of the
-  /// hierarchy, then Access Approval will still be enabled at this level as
-  /// the settings are inherited.
+  /// hierarchy, then Access Approval will still be enabled at this level as the
+  /// settings are inherited.
   ///
   /// Request parameters:
   ///
@@ -560,22 +543,17 @@ class OrganizationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the settings. Format is one of:
-  /// <ol>
-  ///   <li>"projects/{project_id}/accessApprovalSettings"</li>
-  ///   <li>"folders/{folder_id}/accessApprovalSettings"</li>
-  ///   <li>"organizations/{organization_id}/accessApprovalSettings"</li>
-  /// <ol>
+  /// [name] - The resource name of the settings. Format is one of: *
+  /// "projects/{project}/accessApprovalSettings" *
+  /// "folders/{folder}/accessApprovalSettings" *
+  /// "organizations/{organization}/accessApprovalSettings"
   /// Value must have pattern "^organizations/[^/]+/accessApprovalSettings$".
   ///
   /// [updateMask] - The update mask applies to the settings. Only the top level
-  /// fields of
-  /// AccessApprovalSettings (notification_emails & enrolled_services) are
-  /// supported. For each field, if it is included, the currently stored value
-  /// will be entirely overwritten with the value of the field passed in this
-  /// request.
-  ///
-  /// For the `FieldMask` definition, see
+  /// fields of AccessApprovalSettings (notification_emails & enrolled_services)
+  /// are supported. For each field, if it is included, the currently stored
+  /// value will be entirely overwritten with the value of the field passed in
+  /// this request. For the `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   /// If this field is left unset, only the notification_emails field will be
   /// updated.
@@ -631,10 +609,9 @@ class OrganizationsApprovalRequestsResourceApi {
   OrganizationsApprovalRequestsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Approves a request and returns the updated ApprovalRequest.
-  ///
-  /// Returns NOT_FOUND if the request does not exist. Returns
-  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
+  /// Approves a request and returns the updated ApprovalRequest. Returns
+  /// NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if
+  /// the request exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -684,17 +661,11 @@ class OrganizationsApprovalRequestsResourceApi {
     return _response.then((data) => new ApprovalRequest.fromJson(data));
   }
 
-  /// Dismisses a request. Returns the updated ApprovalRequest.
-  ///
-  /// NOTE: This does not deny access to the resource if another request has
-  /// been
-  /// made and approved. It is equivalent in effect to ignoring the request
-  /// altogether.
-  ///
-  /// Returns NOT_FOUND if the request does not exist.
-  ///
-  /// Returns FAILED_PRECONDITION if the request exists but is not in a pending
-  /// state.
+  /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does
+  /// not deny access to the resource if another request has been made and
+  /// approved. It is equivalent in effect to ignoring the request altogether.
+  /// Returns NOT_FOUND if the request does not exist. Returns
+  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -788,14 +759,13 @@ class OrganizationsApprovalRequestsResourceApi {
   }
 
   /// Lists approval requests associated with a project, folder, or
-  /// organization.
-  /// Approval requests can be filtered by state (pending, active, dismissed).
-  /// The order is reverse chronological.
+  /// organization. Approval requests can be filtered by state (pending, active,
+  /// dismissed). The order is reverse chronological.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource. This may be "projects/{project_id}",
-  /// "folders/{folder_id}", or "organizations/{organization_id}".
+  /// [parent] - The parent resource. This may be "projects/{project}",
+  /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
   /// [pageToken] - A token identifying the page of results to return.
@@ -803,15 +773,11 @@ class OrganizationsApprovalRequestsResourceApi {
   /// [pageSize] - Requested page size.
   ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
-  /// one of the
-  /// following values:
-  /// <ol>
-  ///   <li>[not set]: Requests that are pending or have active approvals.</li>
-  ///   <li>ALL: All requests.</li>
-  ///   <li>PENDING: Only pending requests.</li>
-  ///   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-  ///   <li>DISMISSED: Only dismissed (including expired) requests.</li>
-  /// </ol>
+  /// one of the following values: * [not set]: Requests that are pending or
+  /// have active approvals. * ALL: All requests. * PENDING: Only pending
+  /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
+  /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
+  /// and dismissed (including expired) requests.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -878,8 +844,8 @@ class ProjectsResourceApi {
   /// This will have the effect of disabling Access Approval for the project,
   /// folder, or organization, but only if all ancestors also have Access
   /// Approval disabled. If Access Approval is enabled at a higher level of the
-  /// hierarchy, then Access Approval will still be enabled at this level as
-  /// the settings are inherited.
+  /// hierarchy, then Access Approval will still be enabled at this level as the
+  /// settings are inherited.
   ///
   /// Request parameters:
   ///
@@ -975,22 +941,17 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the settings. Format is one of:
-  /// <ol>
-  ///   <li>"projects/{project_id}/accessApprovalSettings"</li>
-  ///   <li>"folders/{folder_id}/accessApprovalSettings"</li>
-  ///   <li>"organizations/{organization_id}/accessApprovalSettings"</li>
-  /// <ol>
+  /// [name] - The resource name of the settings. Format is one of: *
+  /// "projects/{project}/accessApprovalSettings" *
+  /// "folders/{folder}/accessApprovalSettings" *
+  /// "organizations/{organization}/accessApprovalSettings"
   /// Value must have pattern "^projects/[^/]+/accessApprovalSettings$".
   ///
   /// [updateMask] - The update mask applies to the settings. Only the top level
-  /// fields of
-  /// AccessApprovalSettings (notification_emails & enrolled_services) are
-  /// supported. For each field, if it is included, the currently stored value
-  /// will be entirely overwritten with the value of the field passed in this
-  /// request.
-  ///
-  /// For the `FieldMask` definition, see
+  /// fields of AccessApprovalSettings (notification_emails & enrolled_services)
+  /// are supported. For each field, if it is included, the currently stored
+  /// value will be entirely overwritten with the value of the field passed in
+  /// this request. For the `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   /// If this field is left unset, only the notification_emails field will be
   /// updated.
@@ -1046,10 +1007,9 @@ class ProjectsApprovalRequestsResourceApi {
   ProjectsApprovalRequestsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Approves a request and returns the updated ApprovalRequest.
-  ///
-  /// Returns NOT_FOUND if the request does not exist. Returns
-  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
+  /// Approves a request and returns the updated ApprovalRequest. Returns
+  /// NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if
+  /// the request exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1099,17 +1059,11 @@ class ProjectsApprovalRequestsResourceApi {
     return _response.then((data) => new ApprovalRequest.fromJson(data));
   }
 
-  /// Dismisses a request. Returns the updated ApprovalRequest.
-  ///
-  /// NOTE: This does not deny access to the resource if another request has
-  /// been
-  /// made and approved. It is equivalent in effect to ignoring the request
-  /// altogether.
-  ///
-  /// Returns NOT_FOUND if the request does not exist.
-  ///
-  /// Returns FAILED_PRECONDITION if the request exists but is not in a pending
-  /// state.
+  /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does
+  /// not deny access to the resource if another request has been made and
+  /// approved. It is equivalent in effect to ignoring the request altogether.
+  /// Returns NOT_FOUND if the request does not exist. Returns
+  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1203,30 +1157,25 @@ class ProjectsApprovalRequestsResourceApi {
   }
 
   /// Lists approval requests associated with a project, folder, or
-  /// organization.
-  /// Approval requests can be filtered by state (pending, active, dismissed).
-  /// The order is reverse chronological.
+  /// organization. Approval requests can be filtered by state (pending, active,
+  /// dismissed). The order is reverse chronological.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource. This may be "projects/{project_id}",
-  /// "folders/{folder_id}", or "organizations/{organization_id}".
+  /// [parent] - The parent resource. This may be "projects/{project}",
+  /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [filter] - A filter on the type of approval requests to retrieve. Must be
-  /// one of the
-  /// following values:
-  /// <ol>
-  ///   <li>[not set]: Requests that are pending or have active approvals.</li>
-  ///   <li>ALL: All requests.</li>
-  ///   <li>PENDING: Only pending requests.</li>
-  ///   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-  ///   <li>DISMISSED: Only dismissed (including expired) requests.</li>
-  /// </ol>
   ///
   /// [pageToken] - A token identifying the page of results to return.
   ///
   /// [pageSize] - Requested page size.
+  ///
+  /// [filter] - A filter on the type of approval requests to retrieve. Must be
+  /// one of the following values: * [not set]: Requests that are pending or
+  /// have active approvals. * ALL: All requests. * PENDING: Only pending
+  /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
+  /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
+  /// and dismissed (including expired) requests.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1239,9 +1188,9 @@ class ProjectsApprovalRequestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1253,14 +1202,14 @@ class ProjectsApprovalRequestsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1295,20 +1244,16 @@ class AccessApprovalSettings {
   /// any of these services contained here will be required to have explicit
   /// approval. If name refers to an organization, enrollment can be done for
   /// individual services. If name refers to a folder or project, enrollment can
-  /// only be done on an all or nothing basis.
-  ///
-  /// If a cloud_product is repeated in this list, the first entry will be
-  /// honored and all following entries will be discarded. A maximum of 10
-  /// enrolled services will be enforced, to be expanded as the set of supported
-  /// services is expanded.
+  /// only be done on an all or nothing basis. If a cloud_product is repeated in
+  /// this list, the first entry will be honored and all following entries will
+  /// be discarded. A maximum of 10 enrolled services will be enforced, to be
+  /// expanded as the set of supported services is expanded.
   core.List<EnrolledService> enrolledServices;
 
-  /// The resource name of the settings. Format is one of:
-  /// <ol>
-  ///   <li>"projects/{project_id}/accessApprovalSettings"</li>
-  ///   <li>"folders/{folder_id}/accessApprovalSettings"</li>
-  ///   <li>"organizations/{organization_id}/accessApprovalSettings"</li>
-  /// <ol>
+  /// The resource name of the settings. Format is one of: *
+  /// "projects/{project}/accessApprovalSettings" *
+  /// "folders/{folder}/accessApprovalSettings" *
+  /// "organizations/{organization}/accessApprovalSettings"
   core.String name;
 
   /// A list of email addresses to which notifications relating to approval
@@ -1362,37 +1307,17 @@ class AccessLocations {
   /// The "home office" location of the principal. A two-letter country code
   /// (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In some
   /// limited situations Google systems may refer refer to a region code instead
-  /// of a country code.
-  /// Possible Region Codes:
-  /// <ol>
-  ///   <li>ASI: Asia</li>
-  ///   <li>EUR: Europe</li>
-  ///   <li>OCE: Oceania</li>
-  ///   <li>AFR: Africa</li>
-  ///   <li>NAM: North America</li>
-  ///   <li>SAM: South America</li>
-  ///   <li>ANT: Antarctica</li>
-  ///   <li>ANY: Any location</li>
-  /// </ol>
+  /// of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE:
+  /// Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT:
+  /// Antarctica * ANY: Any location
   core.String principalOfficeCountry;
 
-  /// Physical location of the principal at the time of the access. A
-  /// two-letter country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB"
-  /// or
-  /// a region code. In some limited situations Google systems may refer refer
-  /// to
-  /// a region code instead of a country code.
-  /// Possible Region Codes:
-  /// <ol>
-  ///   <li>ASI: Asia</li>
-  ///   <li>EUR: Europe</li>
-  ///   <li>OCE: Oceania</li>
-  ///   <li>AFR: Africa</li>
-  ///   <li>NAM: North America</li>
-  ///   <li>SAM: South America</li>
-  ///   <li>ANT: Antarctica</li>
-  ///   <li>ANY: Any location</li>
-  /// </ol>
+  /// Physical location of the principal at the time of the access. A two-letter
+  /// country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region
+  /// code. In some limited situations Google systems may refer refer to a
+  /// region code instead of a country code. Possible Region Codes: * ASI: Asia
+  /// * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America * SAM:
+  /// South America * ANT: Antarctica * ANY: Any location
   core.String principalPhysicalLocationCountry;
 
   AccessLocations();
@@ -1429,24 +1354,17 @@ class AccessReason {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value for proto, shouldn't be used.
   /// - "CUSTOMER_INITIATED_SUPPORT" : Customer made a request or raised an
-  /// issue that required the principal to
-  /// access customer data. `detail` is of the form ("#####" is the issue ID):
-  /// <ol>
-  ///   <li>"Feedback Report: #####"</li>
-  ///   <li>"Case Number: #####"</li>
-  ///   <li>"Case ID: #####"</li>
-  ///   <li>"E-PIN Reference: #####"</li>
-  ///   <li>"Google-#####"</li>
-  ///   <li>"T-#####"</li>
-  /// </ol>
+  /// issue that required the principal to access customer data. `detail` is of
+  /// the form ("#####" is the issue ID): * "Feedback Report: #####" * "Case
+  /// Number: #####" * "Case ID: #####" * "E-PIN Reference: #####" *
+  /// "Google-#####" * "T-#####"
   /// - "GOOGLE_INITIATED_SERVICE" : The principal accessed customer data in
-  /// order to diagnose or resolve a
-  /// suspected issue in services or a known outage. Often this access is used
-  /// to confirm that customers are not affected by a suspected service issue
-  /// or to remediate a reversible system issue.
+  /// order to diagnose or resolve a suspected issue in services or a known
+  /// outage. Often this access is used to confirm that customers are not
+  /// affected by a suspected service issue or to remediate a reversible system
+  /// issue.
   /// - "GOOGLE_INITIATED_REVIEW" : Google initiated service for security,
-  /// fraud, abuse, or compliance
-  /// purposes.
+  /// fraud, abuse, or compliance purposes.
   core.String type;
 
   AccessReason();
@@ -1482,7 +1400,7 @@ class ApprovalRequest {
   DismissDecision dismiss;
 
   /// The resource name of the request. Format is
-  /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request_id}".
+  /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}".
   core.String name;
 
   /// The time at which approval was requested.
@@ -1502,8 +1420,7 @@ class ApprovalRequest {
   /// The resource for which approval is being requested. The format of the
   /// resource name is defined at
   /// https://cloud.google.com/apis/design/resource_names. The resource name
-  /// here
-  /// may either be a "full" resource name (e.g.
+  /// here may either be a "full" resource name (e.g.
   /// "//library.googleapis.com/shelves/shelf1/books/book2") or a "relative"
   /// resource name (e.g. "shelves/shelf1/books/book2") as described in the
   /// resource name specification.
@@ -1654,11 +1571,19 @@ class DismissDecision {
   /// The time at which the approval request was dismissed.
   core.String dismissTime;
 
+  /// This field will be true if the ApprovalRequest was implcitly dismissed due
+  /// to inaction by the access approval approvers (the request is not acted on
+  /// by the approvers before the exiration time).
+  core.bool implicit;
+
   DismissDecision();
 
   DismissDecision.fromJson(core.Map _json) {
     if (_json.containsKey("dismissTime")) {
       dismissTime = _json["dismissTime"];
+    }
+    if (_json.containsKey("implicit")) {
+      implicit = _json["implicit"];
     }
   }
 
@@ -1668,19 +1593,18 @@ class DismissDecision {
     if (dismissTime != null) {
       _json["dismissTime"] = dismissTime;
     }
+    if (implicit != null) {
+      _json["implicit"] = implicit;
+    }
     return _json;
   }
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -1696,19 +1620,22 @@ class Empty {
 /// Represents the enrollment of a cloud resource into a specific service.
 class EnrolledService {
   /// The product for which Access Approval will be enrolled. Allowed values are
-  /// listed below (case-sensitive):
-  /// <ol>
-  ///   <li>all</li>
-  ///   <li>appengine.googleapis.com</li>
-  ///   <li>bigquery.googleapis.com</li>
-  ///   <li>bigtable.googleapis.com</li>
-  ///   <li>cloudkms.googleapis.com</li>
-  ///   <li>compute.googleapis.com</li>
-  ///   <li>dataflow.googleapis.com</li>
-  ///   <li>iam.googleapis.com</li>
-  ///   <li>pubsub.googleapis.com</li>
-  ///   <li>storage.googleapis.com</li>
-  /// <ol>
+  /// listed below (case-sensitive): * all * GA * App Engine * BigQuery * Cloud
+  /// Bigtable * Cloud Key Management Service * Compute Engine * Cloud Dataflow
+  /// * Cloud Identity and Access Management * Cloud Pub/Sub * Cloud Storage *
+  /// Persistent Disk Note: These values are supported as input for legacy
+  /// purposes, but will not be returned from the API. * all * ga-only *
+  /// appengine.googleapis.com * bigquery.googleapis.com *
+  /// bigtable.googleapis.com * cloudkms.googleapis.com * compute.googleapis.com
+  /// * dataflow.googleapis.com * iam.googleapis.com * pubsub.googleapis.com *
+  /// storage.googleapis.com Calls to UpdateAccessApprovalSettings using 'all',
+  /// 'ga-only', or any of the XXX.googleapis.com will be translated to the
+  /// associated product name ('all', 'GA', 'App Engine', etc.). Note: 'all'
+  /// will enroll the resource in all products supported at both 'GA' and
+  /// 'Preview' levels. 'ga-only'/'GA' will only enroll the resource in products
+  /// supported at 'GA' level. More information about levels of support is
+  /// available at
+  /// https://cloud.google.com/access-approval/docs/supported-services
   core.String cloudProduct;
 
   /// The enrollment level of the service.

@@ -52,25 +52,18 @@ class DocumentsResourceApi {
 
   DocumentsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Applies one or more updates to the document.
-  ///
-  /// Each request is validated before
-  /// being applied. If any request is not valid, then the entire request will
-  /// fail and nothing will be applied.
-  ///
-  /// Some requests have replies to
-  /// give you some information about how they are applied. Other requests do
-  /// not need to return information; these each return an empty reply.
-  /// The order of replies matches that of the requests.
-  ///
-  /// For example, suppose you call batchUpdate with four updates, and only the
-  /// third one returns information. The response would have two empty replies,
-  /// the reply to the third request, and another empty reply, in that order.
-  ///
-  /// Because other users may be editing the document, the document
-  /// might not exactly reflect your changes: your changes may
-  /// be altered with respect to collaborator changes. If there are no
-  /// collaborators, the document should reflect your changes. In any case,
+  /// Applies one or more updates to the document. Each request is validated
+  /// before being applied. If any request is not valid, then the entire request
+  /// will fail and nothing will be applied. Some requests have replies to give
+  /// you some information about how they are applied. Other requests do not
+  /// need to return information; these each return an empty reply. The order of
+  /// replies matches that of the requests. For example, suppose you call
+  /// batchUpdate with four updates, and only the third one returns information.
+  /// The response would have two empty replies, the reply to the third request,
+  /// and another empty reply, in that order. Because other users may be editing
+  /// the document, the document might not exactly reflect your changes: your
+  /// changes may be altered with respect to collaborator changes. If there are
+  /// no collaborators, the document should reflect your changes. In any case,
   /// the updates in your request are guaranteed to be applied together
   /// atomically.
   ///
@@ -125,9 +118,7 @@ class DocumentsResourceApi {
   }
 
   /// Creates a blank document using the title given in the request. Other
-  /// fields
-  /// in the request, including any provided content, are ignored.
-  ///
+  /// fields in the request, including any provided content, are ignored.
   /// Returns the created document.
   ///
   /// [request] - The metadata request object.
@@ -177,15 +168,25 @@ class DocumentsResourceApi {
   /// [documentId] - The ID of the document to retrieve.
   ///
   /// [suggestionsViewMode] - The suggestions view mode to apply to the
-  /// document. This allows viewing the
-  /// document with all suggestions inline, accepted or rejected. If one is not
-  /// specified, DEFAULT_FOR_CURRENT_ACCESS is
-  /// used.
+  /// document. This allows viewing the document with all suggestions inline,
+  /// accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS
+  /// is used.
   /// Possible string values are:
-  /// - "DEFAULT_FOR_CURRENT_ACCESS" : A DEFAULT_FOR_CURRENT_ACCESS.
-  /// - "SUGGESTIONS_INLINE" : A SUGGESTIONS_INLINE.
-  /// - "PREVIEW_SUGGESTIONS_ACCEPTED" : A PREVIEW_SUGGESTIONS_ACCEPTED.
-  /// - "PREVIEW_WITHOUT_SUGGESTIONS" : A PREVIEW_WITHOUT_SUGGESTIONS.
+  /// - "DEFAULT_FOR_CURRENT_ACCESS" : The SuggestionsViewMode applied to the
+  /// returned document depends on the user's current access level. If the user
+  /// only has view access, PREVIEW_WITHOUT_SUGGESTIONS is applied. Otherwise,
+  /// SUGGESTIONS_INLINE is applied. This is the default suggestions view mode.
+  /// - "SUGGESTIONS_INLINE" : The returned document has suggestions inline.
+  /// Suggested changes will be differentiated from base content within the
+  /// document. Requests to retrieve a document using this mode will return a
+  /// 403 error if the user does not have permission to view suggested changes.
+  /// - "PREVIEW_SUGGESTIONS_ACCEPTED" : The returned document is a preview with
+  /// all suggested changes accepted. Requests to retrieve a document using this
+  /// mode will return a 403 error if the user does not have permission to view
+  /// suggested changes.
+  /// - "PREVIEW_WITHOUT_SUGGESTIONS" : The returned document is a preview with
+  /// all suggested changes rejected if there are any suggestions in the
+  /// document.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -228,18 +229,16 @@ class DocumentsResourceApi {
   }
 }
 
-/// A ParagraphElement representing a
-/// spot in the text that is dynamically replaced with content that can change
-/// over time, like a page number.
+/// A ParagraphElement representing a spot in the text that is dynamically
+/// replaced with content that can change over time, like a page number.
 class AutoText {
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
-  /// The suggested insertion IDs. An AutoText
-  /// may have multiple insertion IDs if it is a nested suggested change. If
-  /// empty, then this is not a suggested insertion.
+  /// The suggested insertion IDs. An AutoText may have multiple insertion IDs
+  /// if it is a nested suggested change. If empty, then this is not a suggested
+  /// insertion.
   core.List<core.String> suggestedInsertionIds;
 
   /// The suggested text style changes to this AutoText, keyed by suggestion ID.
@@ -254,8 +253,7 @@ class AutoText {
   /// - "PAGE_NUMBER" : Type for auto text that represents the current page
   /// number.
   /// - "PAGE_COUNT" : Type for auto text that represents the total number of
-  /// pages in the
-  /// document.
+  /// pages in the document.
   core.String type;
 
   AutoText();
@@ -331,8 +329,8 @@ class Background {
 }
 
 /// A mask that indicates which of the fields on the base Background have been
-/// changed in this suggestion.
-/// For any field set to true, the Backgound has a new suggested value.
+/// changed in this suggestion. For any field set to true, the Backgound has a
+/// new suggested value.
 class BackgroundSuggestionState {
   /// Indicates whether the current background color has been modified in this
   /// suggestion.
@@ -434,15 +432,11 @@ class BatchUpdateDocumentResponse {
   }
 }
 
-/// The document body.
-///
-/// The body typically contains the full document contents except for
-/// headers, footers
-/// and footnotes.
+/// The document body. The body typically contains the full document contents
+/// except for headers, footers and footnotes.
 class Body {
-  /// The contents of the body.
-  ///
-  /// The indexes for the body's content begin at zero.
+  /// The contents of the body. The indexes for the body's content begin at
+  /// zero.
   core.List<StructuralElement> content;
 
   Body();
@@ -507,21 +501,18 @@ class Bullet {
   }
 }
 
-/// A mask that indicates which of the fields on the base
-/// Bullet have been changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// A mask that indicates which of the fields on the base Bullet have been
+/// changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class BulletSuggestionState {
-  /// Indicates if there was a suggested change to the
-  /// list_id.
+  /// Indicates if there was a suggested change to the list_id.
   core.bool listIdSuggested;
 
-  /// Indicates if there was a suggested change to the
-  /// nesting_level.
+  /// Indicates if there was a suggested change to the nesting_level.
   core.bool nestingLevelSuggested;
 
   /// A mask that indicates which of the fields in text style have been changed
-  /// in this
-  /// suggestion.
+  /// in this suggestion.
   TextStyleSuggestionState textStyleSuggestionState;
 
   BulletSuggestionState();
@@ -578,18 +569,15 @@ class Color {
   }
 }
 
-/// A ParagraphElement representing a
-/// column break. A column break makes the subsequent text start at the top of
-/// the next column.
+/// A ParagraphElement representing a column break. A column break makes the
+/// subsequent text start at the top of the next column.
 class ColumnBreak {
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
   /// The suggested insertion IDs. A ColumnBreak may have multiple insertion IDs
-  /// if it is
-  /// a nested suggested change. If empty, then this is not a suggested
+  /// if it is a nested suggested change. If empty, then this is not a suggested
   /// insertion.
   core.List<core.String> suggestedInsertionIds;
 
@@ -597,12 +585,9 @@ class ColumnBreak {
   /// ID.
   core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
 
-  /// The text style of this ColumnBreak.
-  ///
-  /// Similar to text content, like text runs and footnote references, the text
-  /// style of a column break can affect content layout as well as the styling
-  /// of
-  /// text inserted adjacent to it.
+  /// The text style of this ColumnBreak. Similar to text content, like text
+  /// runs and footnote references, the text style of a column break can affect
+  /// content layout as well as the styling of text inserted adjacent to it.
   TextStyle textStyle;
 
   ColumnBreak();
@@ -648,19 +633,15 @@ class ColumnBreak {
   }
 }
 
-/// Creates a Footer. The new footer is applied to
-/// the SectionStyle at the location of the
-/// SectionBreak if specificed, otherwise
-/// it is applied to the DocumentStyle.
-///
-/// If a footer of the specified type already exists, a 400 bad request error
-/// is returned.
+/// Creates a Footer. The new footer is applied to the SectionStyle at the
+/// location of the SectionBreak if specificed, otherwise it is applied to the
+/// DocumentStyle. If a footer of the specified type already exists, a 400 bad
+/// request error is returned.
 class CreateFooterRequest {
-  /// The location of the SectionBreak
-  /// immediately preceding the section whose SectionStyle this footer should
-  /// belong to. If this is
-  /// unset or refers to the first section break in the document, the footer
-  /// applies to the document style.
+  /// The location of the SectionBreak immediately preceding the section whose
+  /// SectionStyle this footer should belong to. If this is unset or refers to
+  /// the first section break in the document, the footer applies to the
+  /// document style.
   Location sectionBreakLocation;
 
   /// The type of footer to create.
@@ -718,31 +699,23 @@ class CreateFooterResponse {
   }
 }
 
-/// Creates a Footnote segment
-/// and inserts a new FootnoteReference
-/// to it at the given location.
-///
-/// The new Footnote segment will contain a
-/// space followed by a newline character.
+/// Creates a Footnote segment and inserts a new FootnoteReference to it at the
+/// given location. The new Footnote segment will contain a space followed by a
+/// newline character.
 class CreateFootnoteRequest {
-  /// Inserts the footnote reference at the end of the document body.
-  ///
-  /// Footnote references cannot be inserted inside a header, footer or
-  /// footnote. Since footnote references can only be inserted in the body, the
-  /// segment ID field
+  /// Inserts the footnote reference at the end of the document body. Footnote
+  /// references cannot be inserted inside a header, footer or footnote. Since
+  /// footnote references can only be inserted in the body, the segment ID field
   /// must be empty.
   EndOfSegmentLocation endOfSegmentLocation;
 
-  /// Inserts the footnote reference at a specific index in the document.
-  ///
-  /// The footnote reference must be inserted inside the bounds of an existing
-  /// Paragraph. For instance, it cannot be
-  /// inserted at a table's start index (i.e. between the table and its
-  /// preceding paragraph).
-  ///
-  /// Footnote references cannot be inserted inside an equation,
-  /// header, footer or footnote. Since footnote references can only be
-  /// inserted in the body, the segment ID field must be empty.
+  /// Inserts the footnote reference at a specific index in the document. The
+  /// footnote reference must be inserted inside the bounds of an existing
+  /// Paragraph. For instance, it cannot be inserted at a table's start index
+  /// (i.e. between the table and its preceding paragraph). Footnote references
+  /// cannot be inserted inside an equation, header, footer or footnote. Since
+  /// footnote references can only be inserted in the body, the segment ID field
+  /// must be empty.
   Location location;
 
   CreateFootnoteRequest();
@@ -793,18 +766,14 @@ class CreateFootnoteResponse {
   }
 }
 
-/// Creates a Header. The new header is applied to
-/// the SectionStyle at the location of the
-/// SectionBreak if specificed, otherwise
-/// it is applied to the DocumentStyle.
-///
-/// If a header of the specified type already exists, a 400 bad request error
-/// is returned.
+/// Creates a Header. The new header is applied to the SectionStyle at the
+/// location of the SectionBreak if specificed, otherwise it is applied to the
+/// DocumentStyle. If a header of the specified type already exists, a 400 bad
+/// request error is returned.
 class CreateHeaderRequest {
-  /// The location of the SectionBreak
-  /// which begins the section this header should belong to. If
-  /// `section_break_location' is unset or if it refers to the first section
-  /// break in the document body, the header applies to the
+  /// The location of the SectionBreak which begins the section this header
+  /// should belong to. If `section_break_location' is unset or if it refers to
+  /// the first section break in the document body, the header applies to the
   /// DocumentStyle
   Location sectionBreakLocation;
 
@@ -863,13 +832,11 @@ class CreateHeaderResponse {
   }
 }
 
-/// Creates a NamedRange referencing the given
-/// range.
+/// Creates a NamedRange referencing the given range.
 class CreateNamedRangeRequest {
-  /// The name of the NamedRange. Names do not need to be unique.
-  ///
-  /// Names must be at least 1 character and no more than 256 characters,
-  /// measured in UTF-16 code units.
+  /// The name of the NamedRange. Names do not need to be unique. Names must be
+  /// at least 1 character and no more than 256 characters, measured in UTF-16
+  /// code units.
   core.String name;
 
   /// The range to apply the name to.
@@ -923,66 +890,56 @@ class CreateNamedRangeResponse {
 }
 
 /// Creates bullets for all of the paragraphs that overlap with the given range.
-///
 /// The nesting level of each paragraph will be determined by counting leading
 /// tabs in front of each paragraph. To avoid excess space between the bullet
-/// and
-/// the corresponding paragraph, these leading tabs are removed by this request.
-/// This may change the indices of parts of the text.
-///
-/// If the paragraph immediately before paragraphs being updated is in a list
-/// with a matching preset, the paragraphs being updated are added to that
-/// preceding list.
+/// and the corresponding paragraph, these leading tabs are removed by this
+/// request. This may change the indices of parts of the text. If the paragraph
+/// immediately before paragraphs being updated is in a list with a matching
+/// preset, the paragraphs being updated are added to that preceding list.
 class CreateParagraphBulletsRequest {
   /// The kinds of bullet glyphs to be used.
   /// Possible string values are:
   /// - "BULLET_GLYPH_PRESET_UNSPECIFIED" : The bullet glyph preset is
   /// unspecified.
   /// - "BULLET_DISC_CIRCLE_SQUARE" : A bulleted list with a `DISC`, `CIRCLE`
-  /// and `SQUARE` bullet glyph for the
-  /// first 3 list nesting levels.
+  /// and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_DIAMONDX_ARROW3D_SQUARE" : A bulleted list with a `DIAMONDX`,
-  /// `ARROW3D` and `SQUARE` bullet glyph for
-  /// the first 3 list nesting levels.
+  /// `ARROW3D` and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_CHECKBOX" : A bulleted list with `CHECKBOX` bullet glyphs for
   /// all list nesting levels.
   /// - "BULLET_ARROW_DIAMOND_DISC" : A bulleted list with a `ARROW`, `DIAMOND`
-  /// and `DISC` bullet glyph for
-  /// the first 3 list nesting levels.
+  /// and `DISC` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_STAR_CIRCLE_SQUARE" : A bulleted list with a `STAR`, `CIRCLE`
-  /// and `SQUARE` bullet glyph for
-  /// the first 3 list nesting levels.
+  /// and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_ARROW3D_CIRCLE_SQUARE" : A bulleted list with a `ARROW3D`,
-  /// `CIRCLE` and `SQUARE` bullet glyph for
-  /// the first 3 list nesting levels.
+  /// `CIRCLE` and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_LEFTTRIANGLE_DIAMOND_DISC" : A bulleted list with a
-  /// `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph
-  /// for the first 3 list nesting levels.
+  /// `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph for the first 3 list
+  /// nesting levels.
   /// - "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE" : A bulleted list with a
-  /// `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet
-  /// glyph for the first 3 list nesting levels.
+  /// `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet glyph for the first 3 list
+  /// nesting levels.
   /// - "BULLET_DIAMOND_CIRCLE_SQUARE" : A bulleted list with a `DIAMOND`,
-  /// `CIRCLE` and `SQUARE` bullet glyph
-  /// for the first 3 list nesting levels.
+  /// `CIRCLE` and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "NUMBERED_DECIMAL_ALPHA_ROMAN" : A numbered list with `DECIMAL`, `ALPHA`
-  /// and `ROMAN` numeric glyphs for
-  /// the first 3 list nesting levels, followed by periods.
+  /// and `ROMAN` numeric glyphs for the first 3 list nesting levels, followed
+  /// by periods.
   /// - "NUMBERED_DECIMAL_ALPHA_ROMAN_PARENS" : A numbered list with `DECIMAL`,
-  /// `ALPHA` and `ROMAN` numeric glyphs for
-  /// the first 3 list nesting levels, followed by parenthesis.
+  /// `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels,
+  /// followed by parenthesis.
   /// - "NUMBERED_DECIMAL_NESTED" : A numbered list with `DECIMAL` numeric
-  /// glyphs separated by periods, where
-  /// each nesting level uses the previous nesting level's glyph as a prefix.
-  /// For example: '1.', '1.1.', '2.', '2.2.'.
+  /// glyphs separated by periods, where each nesting level uses the previous
+  /// nesting level's glyph as a prefix. For example: '1.', '1.1.', '2.',
+  /// '2.2.'.
   /// - "NUMBERED_UPPERALPHA_ALPHA_ROMAN" : A numbered list with `UPPERALPHA`,
-  /// `ALPHA` and `ROMAN` numeric glyphs for
-  /// the first 3 list nesting levels, followed by periods.
+  /// `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels,
+  /// followed by periods.
   /// - "NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL" : A numbered list with
-  /// `UPPERROMAN`, `UPPERALPHA` and `DECIMAL` numeric
-  /// glyphs for the first 3 list nesting levels, followed by periods.
+  /// `UPPERROMAN`, `UPPERALPHA` and `DECIMAL` numeric glyphs for the first 3
+  /// list nesting levels, followed by periods.
   /// - "NUMBERED_ZERODECIMAL_ALPHA_ROMAN" : A numbered list with `ZERODECIMAL`,
-  /// `ALPHA` and `ROMAN` numeric glyphs for
-  /// the first 3 list nesting levels, followed by periods.
+  /// `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels,
+  /// followed by periods.
   core.String bulletPreset;
 
   /// The range to apply the bullet preset to.
@@ -1012,15 +969,11 @@ class CreateParagraphBulletsRequest {
   }
 }
 
-/// The crop properties of an image.
-///
-/// The crop rectangle is represented using fractional offsets from the original
-/// content's four edges.
-///
-/// - If the offset is in the interval (0, 1), the corresponding edge of crop
-/// rectangle is positioned inside of the image's original bounding rectangle.
-/// - If the offset is negative or greater than 1, the corresponding edge of
-/// crop
+/// The crop properties of an image. The crop rectangle is represented using
+/// fractional offsets from the original content's four edges. - If the offset
+/// is in the interval (0, 1), the corresponding edge of crop rectangle is
+/// positioned inside of the image's original bounding rectangle. - If the
+/// offset is negative or greater than 1, the corresponding edge of crop
 /// rectangle is positioned outside of the image's original bounding rectangle.
 /// - If all offsets and rotation angle are 0, the image is not cropped.
 class CropProperties {
@@ -1034,9 +987,8 @@ class CropProperties {
   core.double offsetBottom;
 
   /// The offset specifies how far inwards the left edge of the crop rectangle
-  /// is
-  /// from the left edge of the original content as a fraction of the original
-  /// content's width.
+  /// is from the left edge of the original content as a fraction of the
+  /// original content's width.
   core.double offsetLeft;
 
   /// The offset specifies how far inwards the right edge of the crop rectangle
@@ -1092,8 +1044,8 @@ class CropProperties {
 }
 
 /// A mask that indicates which of the fields on the base CropProperties have
-/// been changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// been changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class CropPropertiesSuggestionState {
   /// Indicates if there was a suggested change to angle.
   core.bool angleSuggested;
@@ -1154,30 +1106,18 @@ class CropPropertiesSuggestionState {
 
 /// Deletes content from the document.
 class DeleteContentRangeRequest {
-  /// The range of content to delete.
-  ///
-  /// Deleting text that crosses a paragraph boundary may result in changes
-  /// to paragraph styles, lists, positioned objects and bookmarks as the two
-  /// paragraphs are merged.
-  ///
-  /// Attempting to delete certain ranges can result in an invalid document
-  /// structure in which case a 400 bad request error is returned.
-  ///
-  /// Some examples of invalid delete requests include:
-  ///
-  /// * Deleting one code unit of a surrogate pair.
-  /// * Deleting the last newline character of a Body, Header,
-  ///   Footer, Footnote, TableCell or TableOfContents.
-  /// * Deleting the start or end of a Table,
-  ///   TableOfContents or Equation without deleting the entire element.
-  /// * Deleting the newline character before a
-  ///   Table,
-  ///   TableOfContents or
-  ///   SectionBreak without deleting the
-  ///   element.
-  /// * Deleting individual rows or cells of a table. Deleting the content
-  /// within
-  ///   a table cell is allowed.
+  /// The range of content to delete. Deleting text that crosses a paragraph
+  /// boundary may result in changes to paragraph styles, lists, positioned
+  /// objects and bookmarks as the two paragraphs are merged. Attempting to
+  /// delete certain ranges can result in an invalid document structure in which
+  /// case a 400 bad request error is returned. Some examples of invalid delete
+  /// requests include: * Deleting one code unit of a surrogate pair. * Deleting
+  /// the last newline character of a Body, Header, Footer, Footnote, TableCell
+  /// or TableOfContents. * Deleting the start or end of a Table,
+  /// TableOfContents or Equation without deleting the entire element. *
+  /// Deleting the newline character before a Table, TableOfContents or
+  /// SectionBreak without deleting the element. * Deleting individual rows or
+  /// cells of a table. Deleting the content within a table cell is allowed.
   Range range;
 
   DeleteContentRangeRequest();
@@ -1201,12 +1141,10 @@ class DeleteContentRangeRequest {
 /// Deletes a Footer from the document.
 class DeleteFooterRequest {
   /// The id of the footer to delete. If this footer is defined on
-  /// DocumentStyle, the reference to
-  /// this footer is removed, resulting in no footer of that type for
-  /// the first section of the document. If this footer is defined on a
-  /// SectionStyle, the reference to this
-  /// footer is removed and the footer of that type is now continued from
-  /// the previous section.
+  /// DocumentStyle, the reference to this footer is removed, resulting in no
+  /// footer of that type for the first section of the document. If this footer
+  /// is defined on a SectionStyle, the reference to this footer is removed and
+  /// the footer of that type is now continued from the previous section.
   core.String footerId;
 
   DeleteFooterRequest();
@@ -1230,12 +1168,10 @@ class DeleteFooterRequest {
 /// Deletes a Header from the document.
 class DeleteHeaderRequest {
   /// The id of the header to delete. If this header is defined on
-  /// DocumentStyle, the reference to
-  /// this header is removed, resulting in no header of that type for
-  /// the first section of the document. If this header is defined on a
-  /// SectionStyle, the reference to this
-  /// header is removed and the header of that type is now continued from
-  /// the previous section.
+  /// DocumentStyle, the reference to this header is removed, resulting in no
+  /// header of that type for the first section of the document. If this header
+  /// is defined on a SectionStyle, the reference to this header is removed and
+  /// the header of that type is now continued from the previous section.
   core.String headerId;
 
   DeleteHeaderRequest();
@@ -1258,8 +1194,8 @@ class DeleteHeaderRequest {
 
 /// Deletes a NamedRange.
 class DeleteNamedRangeRequest {
-  /// The name of the range(s) to delete. All named ranges with the given
-  /// name will be deleted.
+  /// The name of the range(s) to delete. All named ranges with the given name
+  /// will be deleted.
   core.String name;
 
   /// The ID of the named range to delete.
@@ -1290,10 +1226,8 @@ class DeleteNamedRangeRequest {
 }
 
 /// Deletes bullets from all of the paragraphs that overlap with the given
-/// range.
-///
-/// The nesting level of each paragraph will be visually preserved by adding
-/// indent to the start of the corresponding paragraph.
+/// range. The nesting level of each paragraph will be visually preserved by
+/// adding indent to the start of the corresponding paragraph.
 class DeleteParagraphBulletsRequest {
   /// The range to delete bullets from.
   Range range;
@@ -1316,8 +1250,7 @@ class DeleteParagraphBulletsRequest {
   }
 }
 
-/// Deletes a PositionedObject from the
-/// document.
+/// Deletes a PositionedObject from the document.
 class DeletePositionedObjectRequest {
   /// The ID of the positioned object to delete.
   core.String objectId;
@@ -1343,11 +1276,9 @@ class DeletePositionedObjectRequest {
 /// Deletes a column from a table.
 class DeleteTableColumnRequest {
   /// The reference table cell location from which the column will be deleted.
-  ///
   /// The column this cell spans will be deleted. If this is a merged cell that
   /// spans multiple columns, all columns that the cell spans will be deleted.
-  /// If
-  /// no columns remain in the table after this deletion, the whole table is
+  /// If no columns remain in the table after this deletion, the whole table is
   /// deleted.
   TableCellLocation tableCellLocation;
 
@@ -1372,11 +1303,10 @@ class DeleteTableColumnRequest {
 
 /// Deletes a row from a table.
 class DeleteTableRowRequest {
-  /// The reference table cell location from which the row will be deleted.
-  ///
-  /// The row this cell spans will be deleted. If this is a merged cell that
-  /// spans multiple rows, all rows that the cell spans will be deleted. If no
-  /// rows remain in the table after this deletion, the whole table is deleted.
+  /// The reference table cell location from which the row will be deleted. The
+  /// row this cell spans will be deleted. If this is a merged cell that spans
+  /// multiple rows, all rows that the cell spans will be deleted. If no rows
+  /// remain in the table after this deletion, the whole table is deleted.
   TableCellLocation tableCellLocation;
 
   DeleteTableRowRequest();
@@ -1471,16 +1401,13 @@ class Document {
   /// Output only. The revision ID of the document. Can be used in update
   /// requests to specify which revision of a document to apply updates to and
   /// how the request should behave if the document has been edited since that
-  /// revision. Only populated if the user has edit access to the document.
-  ///
-  /// The format of the revision ID may change over time, so it should be
-  /// treated
+  /// revision. Only populated if the user has edit access to the document. The
+  /// format of the revision ID may change over time, so it should be treated
   /// opaquely. A returned revision ID is only guaranteed to be valid for 24
   /// hours after it has been returned and cannot be shared across users. If the
   /// revision ID is unchanged between calls, then the document has not changed.
   /// Conversely, a changed ID (for the same document and user) usually means
-  /// the
-  /// document has been updated; however, a changed ID can also be due to
+  /// the document has been updated; however, a changed ID can also be due to
   /// internal factors such as ID format changes.
   core.String revisionId;
 
@@ -1492,31 +1419,25 @@ class Document {
   /// keyed by suggestion ID.
   core.Map<core.String, SuggestedNamedStyles> suggestedNamedStylesChanges;
 
-  /// Output only. The suggestions view mode applied to the document.
-  ///
-  /// Note: When editing a document, changes must be based on a document with
+  /// Output only. The suggestions view mode applied to the document. Note: When
+  /// editing a document, changes must be based on a document with
   /// SUGGESTIONS_INLINE.
   /// Possible string values are:
   /// - "DEFAULT_FOR_CURRENT_ACCESS" : The SuggestionsViewMode applied to the
-  /// returned document depends on the
-  /// user's current access level. If the user only has view access,
-  /// PREVIEW_WITHOUT_SUGGESTIONS is
-  /// applied. Otherwise, SUGGESTIONS_INLINE is applied.
-  /// This is the default suggestions view mode.
+  /// returned document depends on the user's current access level. If the user
+  /// only has view access, PREVIEW_WITHOUT_SUGGESTIONS is applied. Otherwise,
+  /// SUGGESTIONS_INLINE is applied. This is the default suggestions view mode.
   /// - "SUGGESTIONS_INLINE" : The returned document has suggestions inline.
-  /// Suggested changes will be
-  /// differentiated from base content within the document.
-  ///
-  /// Requests to retrieve a document using this mode will return a 403 error if
-  /// the user does not have permission to view suggested changes.
+  /// Suggested changes will be differentiated from base content within the
+  /// document. Requests to retrieve a document using this mode will return a
+  /// 403 error if the user does not have permission to view suggested changes.
   /// - "PREVIEW_SUGGESTIONS_ACCEPTED" : The returned document is a preview with
-  /// all suggested changes accepted.
-  ///
-  /// Requests to retrieve a document using this mode will return a 403 error if
-  /// the user does not have permission to view suggested changes.
+  /// all suggested changes accepted. Requests to retrieve a document using this
+  /// mode will return a 403 error if the user does not have permission to view
+  /// suggested changes.
   /// - "PREVIEW_WITHOUT_SUGGESTIONS" : The returned document is a preview with
-  /// all suggested changes rejected if
-  /// there are any suggestions in the document.
+  /// all suggested changes rejected if there are any suggestions in the
+  /// document.
   core.String suggestionsViewMode;
 
   /// The title of the document.
@@ -1677,54 +1598,42 @@ class DocumentStyle {
   /// background color.
   Background background;
 
-  /// The ID of the default footer. If not set, there is no default footer.
-  ///
-  /// This property is read-only.
+  /// The ID of the default footer. If not set, there is no default footer. This
+  /// property is read-only.
   core.String defaultFooterId;
 
-  /// The ID of the default header. If not set, there is no default header.
-  ///
-  /// This property is read-only.
+  /// The ID of the default header. If not set, there is no default header. This
+  /// property is read-only.
   core.String defaultHeaderId;
 
   /// The ID of the footer used only for even pages. The value of
-  /// use_even_page_header_footer determines
-  /// whether to use the default_footer_id or this value for the
-  /// footer on even pages. If not set, there is no even page footer.
-  ///
-  /// This property is read-only.
+  /// use_even_page_header_footer determines whether to use the
+  /// default_footer_id or this value for the footer on even pages. If not set,
+  /// there is no even page footer. This property is read-only.
   core.String evenPageFooterId;
 
   /// The ID of the header used only for even pages. The value of
-  /// use_even_page_header_footer determines
-  /// whether to use the default_header_id or this value for the
-  /// header on even pages. If not set, there is no even page header.
-  ///
-  /// This property is read-only.
+  /// use_even_page_header_footer determines whether to use the
+  /// default_header_id or this value for the header on even pages. If not set,
+  /// there is no even page header. This property is read-only.
   core.String evenPageHeaderId;
 
-  /// The ID of the footer used only for the first page. If not set then
-  /// a unique footer for the first page does not exist. The value of
-  /// use_first_page_header_footer determines
-  /// whether to use the default_footer_id or this value for the
-  /// footer on the first page. If not set, there is no first page footer.
-  ///
-  /// This property is read-only.
+  /// The ID of the footer used only for the first page. If not set then a
+  /// unique footer for the first page does not exist. The value of
+  /// use_first_page_header_footer determines whether to use the
+  /// default_footer_id or this value for the footer on the first page. If not
+  /// set, there is no first page footer. This property is read-only.
   core.String firstPageFooterId;
 
-  /// The ID of the header used only for the first page. If not set then
-  /// a unique header for the first page does not exist.
-  /// The value of use_first_page_header_footer determines
-  /// whether to use the default_header_id or this value for the
-  /// header on the first page. If not set, there is no first page header.
-  ///
-  /// This property is read-only.
+  /// The ID of the header used only for the first page. If not set then a
+  /// unique header for the first page does not exist. The value of
+  /// use_first_page_header_footer determines whether to use the
+  /// default_header_id or this value for the header on the first page. If not
+  /// set, there is no first page header. This property is read-only.
   core.String firstPageHeaderId;
 
-  /// The bottom page margin.
-  ///
-  /// Updating the bottom page margin on the document style clears the bottom
-  /// page margin on all section styles.
+  /// The bottom page margin. Updating the bottom page margin on the document
+  /// style clears the bottom page margin on all section styles.
   Dimension marginBottom;
 
   /// The amount of space between the bottom of the page and the contents of the
@@ -1735,24 +1644,18 @@ class DocumentStyle {
   /// header.
   Dimension marginHeader;
 
-  /// The left page margin.
-  ///
-  /// Updating the left page margin on the document style clears the left page
-  /// margin on all section styles. It may also cause columns to resize in all
-  /// sections.
+  /// The left page margin. Updating the left page margin on the document style
+  /// clears the left page margin on all section styles. It may also cause
+  /// columns to resize in all sections.
   Dimension marginLeft;
 
-  /// The right page margin.
-  ///
-  /// Updating the right page margin on the document style clears the right page
-  /// margin on all section styles. It may also cause columns to resize in all
-  /// sections.
+  /// The right page margin. Updating the right page margin on the document
+  /// style clears the right page margin on all section styles. It may also
+  /// cause columns to resize in all sections.
   Dimension marginRight;
 
-  /// The top page margin.
-  ///
-  /// Updating the top page margin on the document style clears the top page
-  /// margin on all section styles.
+  /// The top page margin. Updating the top page margin on the document style
+  /// clears the top page margin on all section styles.
   Dimension marginTop;
 
   /// The page number from which to start counting the number of pages.
@@ -1761,19 +1664,10 @@ class DocumentStyle {
   /// The size of a page in the document.
   Size pageSize;
 
-  /// Indicates whether DocumentStyle
-  /// margin_header,
-  /// SectionStyle
-  /// margin_header and
-  /// DocumentStyle
-  /// margin_footer,
-  /// SectionStyle
-  /// margin_footer are
-  /// respected. When false, the default values in the Docs editor for header
-  /// and
-  /// footer margin are used.
-  ///
-  /// This property is read-only.
+  /// Indicates whether DocumentStyle margin_header, SectionStyle margin_header
+  /// and DocumentStyle margin_footer, SectionStyle margin_footer are respected.
+  /// When false, the default values in the Docs editor for header and footer
+  /// margin are used. This property is read-only.
   core.bool useCustomHeaderFooterMargins;
 
   /// Indicates whether to use the even page header / footer IDs for the even
@@ -1905,12 +1799,11 @@ class DocumentStyle {
 }
 
 /// A mask that indicates which of the fields on the base DocumentStyle have
-/// been changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// been changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class DocumentStyleSuggestionState {
   /// A mask that indicates which of the fields in background have been changed
-  /// in this
-  /// suggestion.
+  /// in this suggestion.
   BackgroundSuggestionState backgroundSuggestionState;
 
   /// Indicates if there was a suggested change to default_footer_id.
@@ -1953,8 +1846,7 @@ class DocumentStyleSuggestionState {
   core.bool pageNumberStartSuggested;
 
   /// A mask that indicates which of the fields in size have been changed in
-  /// this
-  /// suggestion.
+  /// this suggestion.
   SizeSuggestionState pageSizeSuggestionState;
 
   /// Indicates if there was a suggested change to
@@ -2109,9 +2001,8 @@ class EmbeddedDrawingProperties {
 }
 
 /// A mask that indicates which of the fields on the base
-/// EmbeddedDrawingProperties
-/// have been changed in this suggestion. For any field set to true, there is a
-/// new suggested value.
+/// EmbeddedDrawingProperties have been changed in this suggestion. For any
+/// field set to true, there is a new suggested value.
 class EmbeddedDrawingPropertiesSuggestionState {
   EmbeddedDrawingPropertiesSuggestionState();
 
@@ -2140,12 +2031,8 @@ class EmbeddedObject {
   ImageProperties imageProperties;
 
   /// A reference to the external linked source content. For example, it
-  /// contains
-  /// a reference to the source Sheets chart when the embedded object is a
-  /// linked
-  /// chart.
-  ///
-  /// If unset, then the embedded object is not linked.
+  /// contains a reference to the source Sheets chart when the embedded object
+  /// is a linked chart. If unset, then the embedded object is not linked.
   LinkedContentReference linkedContentReference;
 
   /// The bottom margin of the embedded object.
@@ -2257,8 +2144,7 @@ class EmbeddedObjectBorder {
   /// Possible string values are:
   /// - "DASH_STYLE_UNSPECIFIED" : Unspecified dash style.
   /// - "SOLID" : Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value
-  /// 'solid'.
-  /// This is the default dash style.
+  /// 'solid'. This is the default dash style.
   /// - "DOT" : Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dot'.
   /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
@@ -2268,11 +2154,10 @@ class EmbeddedObjectBorder {
   /// The property state of the border property.
   /// Possible string values are:
   /// - "RENDERED" : If a property's state is RENDERED, then the element has the
-  /// corresponding
-  /// property when rendered in the document. This is the default value.
+  /// corresponding property when rendered in the document. This is the default
+  /// value.
   /// - "NOT_RENDERED" : If a property's state is NOT_RENDERED, then the element
-  /// does not have the
-  /// corresponding property when rendered in the document.
+  /// does not have the corresponding property when rendered in the document.
   core.String propertyState;
 
   /// The width of the border.
@@ -2315,8 +2200,8 @@ class EmbeddedObjectBorder {
 }
 
 /// A mask that indicates which of the fields on the base EmbeddedObjectBorder
-/// have been changed in this
-/// suggestion. For any field set to true, there is a new suggested value.
+/// have been changed in this suggestion. For any field set to true, there is a
+/// new suggested value.
 class EmbeddedObjectBorderSuggestionState {
   /// Indicates if there was a suggested change to color.
   core.bool colorSuggested;
@@ -2367,31 +2252,27 @@ class EmbeddedObjectBorderSuggestionState {
 }
 
 /// A mask that indicates which of the fields on the base EmbeddedObject have
-/// been changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// been changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class EmbeddedObjectSuggestionState {
   /// Indicates if there was a suggested change to description.
   core.bool descriptionSuggested;
 
   /// A mask that indicates which of the fields in embedded_drawing_properties
-  /// have been
-  /// changed in this suggestion.
+  /// have been changed in this suggestion.
   EmbeddedDrawingPropertiesSuggestionState
       embeddedDrawingPropertiesSuggestionState;
 
   /// A mask that indicates which of the fields in embedded_object_border have
-  /// been
-  /// changed in this suggestion.
+  /// been changed in this suggestion.
   EmbeddedObjectBorderSuggestionState embeddedObjectBorderSuggestionState;
 
   /// A mask that indicates which of the fields in image_properties have been
-  /// changed in
-  /// this suggestion.
+  /// changed in this suggestion.
   ImagePropertiesSuggestionState imagePropertiesSuggestionState;
 
   /// A mask that indicates which of the fields in linked_content_reference have
-  /// been
-  /// changed in this suggestion.
+  /// been changed in this suggestion.
   LinkedContentReferenceSuggestionState linkedContentReferenceSuggestionState;
 
   /// Indicates if there was a suggested change to margin_bottom.
@@ -2407,8 +2288,7 @@ class EmbeddedObjectSuggestionState {
   core.bool marginTopSuggested;
 
   /// A mask that indicates which of the fields in size have been changed in
-  /// this
-  /// suggestion.
+  /// this suggestion.
   SizeSuggestionState sizeSuggestionState;
 
   /// Indicates if there was a suggested change to title.
@@ -2530,17 +2410,15 @@ class EndOfSegmentLocation {
   }
 }
 
-/// A ParagraphElement representing an
-/// equation.
+/// A ParagraphElement representing an equation.
 class Equation {
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
-  /// The suggested insertion IDs. A Equation
-  /// may have multiple insertion IDs if it is a nested suggested change. If
-  /// empty, then this is not a suggested insertion.
+  /// The suggested insertion IDs. A Equation may have multiple insertion IDs if
+  /// it is a nested suggested change. If empty, then this is not a suggested
+  /// insertion.
   core.List<core.String> suggestedInsertionIds;
 
   Equation();
@@ -2571,9 +2449,8 @@ class Equation {
 
 /// A document footer.
 class Footer {
-  /// The contents of the footer.
-  ///
-  /// The indexes for a footer's content begin at zero.
+  /// The contents of the footer. The indexes for a footer's content begin at
+  /// zero.
   core.List<StructuralElement> content;
 
   /// The ID of the footer.
@@ -2608,9 +2485,8 @@ class Footer {
 
 /// A document footnote.
 class Footnote {
-  /// The contents of the footnote.
-  ///
-  /// The indexes for a footnote's content begin at zero.
+  /// The contents of the footnote. The indexes for a footnote's content begin
+  /// at zero.
   core.List<StructuralElement> content;
 
   /// The ID of the footnote.
@@ -2643,26 +2519,24 @@ class Footnote {
   }
 }
 
-/// A ParagraphElement representing a
-/// footnote reference. A footnote reference is the inline content rendered with
-/// a number and is used to identify the footnote.
+/// A ParagraphElement representing a footnote reference. A footnote reference
+/// is the inline content rendered with a number and is used to identify the
+/// footnote.
 class FootnoteReference {
-  /// The ID of the footnote that
-  /// contains the content of this footnote reference.
+  /// The ID of the footnote that contains the content of this footnote
+  /// reference.
   core.String footnoteId;
 
   /// The rendered number of this footnote.
   core.String footnoteNumber;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
   /// The suggested insertion IDs. A FootnoteReference may have multiple
-  /// insertion IDs if
-  /// it is a nested suggested change. If empty, then this is not a suggested
-  /// insertion.
+  /// insertion IDs if it is a nested suggested change. If empty, then this is
+  /// not a suggested insertion.
   core.List<core.String> suggestedInsertionIds;
 
   /// The suggested text style changes to this FootnoteReference, keyed by
@@ -2729,9 +2603,8 @@ class FootnoteReference {
 
 /// A document header.
 class Header {
-  /// The contents of the header.
-  ///
-  /// The indexes for a header's content begin at zero.
+  /// The contents of the header. The indexes for a header's content begin at
+  /// zero.
   core.List<StructuralElement> content;
 
   /// The ID of the header.
@@ -2764,30 +2637,25 @@ class Header {
   }
 }
 
-/// A ParagraphElement representing a
-/// horizontal line.
+/// A ParagraphElement representing a horizontal line.
 class HorizontalRule {
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
   /// The suggested insertion IDs. A HorizontalRule may have multiple insertion
-  /// IDs if it
-  /// is a nested suggested change. If empty, then this is not a suggested
-  /// insertion.
+  /// IDs if it is a nested suggested change. If empty, then this is not a
+  /// suggested insertion.
   core.List<core.String> suggestedInsertionIds;
 
   /// The suggested text style changes to this HorizontalRule, keyed by
   /// suggestion ID.
   core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
 
-  /// The text style of this HorizontalRule.
-  ///
-  /// Similar to text content, like text runs and footnote references, the text
-  /// style of a horizontal rule can affect content layout as well as the
-  /// styling
-  /// of text inserted adjacent to it.
+  /// The text style of this HorizontalRule. Similar to text content, like text
+  /// runs and footnote references, the text style of a horizontal rule can
+  /// affect content layout as well as the styling of text inserted adjacent to
+  /// it.
   TextStyle textStyle;
 
   HorizontalRule();
@@ -2842,10 +2710,10 @@ class ImageProperties {
   /// [-1.0, 1.0], where 0 means no effect.
   core.double brightness;
 
-  /// A URI to the image with a default lifetime of 30 minutes.
-  /// This URI is tagged with the account of the requester. Anyone with the URI
-  /// effectively accesses the image as the original requester. Access to the
-  /// image may be lost if the document's sharing settings change.
+  /// A URI to the image with a default lifetime of 30 minutes. This URI is
+  /// tagged with the account of the requester. Anyone with the URI effectively
+  /// accesses the image as the original requester. Access to the image may be
+  /// lost if the document's sharing settings change.
   core.String contentUri;
 
   /// The contrast effect of the image. The value should be in the interval
@@ -2918,8 +2786,8 @@ class ImageProperties {
 }
 
 /// A mask that indicates which of the fields on the base ImageProperties have
-/// been changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// been changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class ImagePropertiesSuggestionState {
   /// Indicates if there was a suggested change to angle.
   core.bool angleSuggested;
@@ -2927,16 +2795,14 @@ class ImagePropertiesSuggestionState {
   /// Indicates if there was a suggested change to brightness.
   core.bool brightnessSuggested;
 
-  /// Indicates if there was a suggested change to
-  /// content_uri.
+  /// Indicates if there was a suggested change to content_uri.
   core.bool contentUriSuggested;
 
   /// Indicates if there was a suggested change to contrast.
   core.bool contrastSuggested;
 
   /// A mask that indicates which of the fields in crop_properties have been
-  /// changed in
-  /// this suggestion.
+  /// changed in this suggestion.
   CropPropertiesSuggestionState cropPropertiesSuggestionState;
 
   /// Indicates if there was a suggested change to source_uri.
@@ -3002,8 +2868,8 @@ class ImagePropertiesSuggestionState {
   }
 }
 
-/// An object that appears inline with text. An InlineObject contains
-/// an EmbeddedObject such as an image.
+/// An object that appears inline with text. An InlineObject contains an
+/// EmbeddedObject such as an image.
 class InlineObject {
   /// The properties of this inline object.
   InlineObjectProperties inlineObjectProperties;
@@ -3012,8 +2878,7 @@ class InlineObject {
   core.String objectId;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
   /// The suggested changes to the inline object properties, keyed by suggestion
@@ -3078,33 +2943,28 @@ class InlineObject {
   }
 }
 
-/// A ParagraphElement that contains
-/// an InlineObject.
+/// A ParagraphElement that contains an InlineObject.
 class InlineObjectElement {
-  /// The ID of the InlineObject this
-  /// element contains.
+  /// The ID of the InlineObject this element contains.
   core.String inlineObjectId;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
   /// The suggested insertion IDs. An InlineObjectElement may have multiple
-  /// insertion IDs
-  /// if it is a nested suggested change. If empty, then this is not a suggested
-  /// insertion.
+  /// insertion IDs if it is a nested suggested change. If empty, then this is
+  /// not a suggested insertion.
   core.List<core.String> suggestedInsertionIds;
 
   /// The suggested text style changes to this InlineObject, keyed by suggestion
   /// ID.
   core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
 
-  /// The text style of this InlineObjectElement.
-  ///
-  /// Similar to text content, like text runs and footnote references, the text
-  /// style of an inline object element can affect content layout as well as the
-  /// styling of text inserted adjacent to it.
+  /// The text style of this InlineObjectElement. Similar to text content, like
+  /// text runs and footnote references, the text style of an inline object
+  /// element can affect content layout as well as the styling of text inserted
+  /// adjacent to it.
   TextStyle textStyle;
 
   InlineObjectElement();
@@ -3179,10 +3039,9 @@ class InlineObjectProperties {
   }
 }
 
-/// A mask that indicates which of the fields on the base
-/// InlineObjectProperties have
-/// been changed in this suggestion. For any field set to true, there is a new
-/// suggested value.
+/// A mask that indicates which of the fields on the base InlineObjectProperties
+/// have been changed in this suggestion. For any field set to true, there is a
+/// new suggested value.
 class InlineObjectPropertiesSuggestionState {
   /// A mask that indicates which of the fields in embedded_object have been
   /// changed in this suggestion.
@@ -3209,43 +3068,35 @@ class InlineObjectPropertiesSuggestionState {
   }
 }
 
-/// Inserts an InlineObject containing an
-/// image at the given location.
+/// Inserts an InlineObject containing an image at the given location.
 class InsertInlineImageRequest {
   /// Inserts the text at the end of a header, footer or the document body.
-  ///
   /// Inline images cannot be inserted inside a footnote.
   EndOfSegmentLocation endOfSegmentLocation;
 
-  /// Inserts the image at a specific index in the document.
-  ///
-  /// The image must be inserted inside the bounds of an existing
-  /// Paragraph. For instance, it cannot be
-  /// inserted at a table's start index (i.e. between the table and its
-  /// preceding paragraph).
-  ///
-  /// Inline images cannot be inserted inside a footnote or equation.
+  /// Inserts the image at a specific index in the document. The image must be
+  /// inserted inside the bounds of an existing Paragraph. For instance, it
+  /// cannot be inserted at a table's start index (i.e. between the table and
+  /// its preceding paragraph). Inline images cannot be inserted inside a
+  /// footnote or equation.
   Location location;
 
   /// The size that the image should appear as in the document. This property is
   /// optional and the final size of the image in the document is determined by
-  /// the following rules:
-  ///  * If neither width nor height is specified, then a default size of the
-  ///  image is calculated based on its resolution.
-  /// * If one dimension is specified then the other dimension is calculated to
-  ///  preserve the aspect ratio of the image.
-  ///  * If both width and height are specified, the image is scaled to fit
-  ///  within the provided dimensions while maintaining its aspect ratio.
+  /// the following rules: * If neither width nor height is specified, then a
+  /// default size of the image is calculated based on its resolution. * If one
+  /// dimension is specified then the other dimension is calculated to preserve
+  /// the aspect ratio of the image. * If both width and height are specified,
+  /// the image is scaled to fit within the provided dimensions while
+  /// maintaining its aspect ratio.
   Size objectSize;
 
-  /// The image URI.
-  ///
-  /// The image is fetched once at insertion time and a copy is stored for
-  /// display inside the document. Images must be less than 50MB in size, cannot
-  /// exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
-  ///
-  /// The provided URI can be at most 2 kB in length. The URI itself is saved
-  /// with the image, and exposed via the ImageProperties.content_uri field.
+  /// The image URI. The image is fetched once at insertion time and a copy is
+  /// stored for display inside the document. Images must be less than 50MB in
+  /// size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
+  /// format. The provided URI can be at most 2 kB in length. The URI itself is
+  /// saved with the image, and exposed via the ImageProperties.content_uri
+  /// field.
   core.String uri;
 
   InsertInlineImageRequest();
@@ -3333,25 +3184,17 @@ class InsertInlineSheetsChartResponse {
 
 /// Inserts a page break followed by a newline at the specified location.
 class InsertPageBreakRequest {
-  /// Inserts the page break at the end of the document body.
-  ///
-  /// Page breaks cannot be inserted inside a footnote, header or footer.
-  /// Since page breaks can only be inserted inside the body, the segment ID
-  /// field must be
-  /// empty.
+  /// Inserts the page break at the end of the document body. Page breaks cannot
+  /// be inserted inside a footnote, header or footer. Since page breaks can
+  /// only be inserted inside the body, the segment ID field must be empty.
   EndOfSegmentLocation endOfSegmentLocation;
 
-  /// Inserts the page break at a specific index in the document.
-  ///
-  /// The page break must be inserted inside the bounds of an existing
-  /// Paragraph. For instance, it cannot be
-  /// inserted at a table's start index (i.e. between the table and its
-  /// preceding paragraph).
-  ///
-  /// Page breaks cannot be inserted inside a table, equation, footnote, header
-  /// or footer. Since page breaks can only be inserted inside the body, the
-  /// segment ID field must be
-  /// empty.
+  /// Inserts the page break at a specific index in the document. The page break
+  /// must be inserted inside the bounds of an existing Paragraph. For instance,
+  /// it cannot be inserted at a table's start index (i.e. between the table and
+  /// its preceding paragraph). Page breaks cannot be inserted inside a table,
+  /// equation, footnote, header or footer. Since page breaks can only be
+  /// inserted inside the body, the segment ID field must be empty.
   Location location;
 
   InsertPageBreakRequest();
@@ -3379,38 +3222,29 @@ class InsertPageBreakRequest {
   }
 }
 
-/// Inserts a section break at the given location.
-///
-/// A newline character will be inserted before the section break.
+/// Inserts a section break at the given location. A newline character will be
+/// inserted before the section break.
 class InsertSectionBreakRequest {
   /// Inserts a newline and a section break at the end of the document body.
-  ///
   /// Section breaks cannot be inserted inside a footnote, header or footer.
   /// Because section breaks can only be inserted inside the body, the segment
-  /// ID field must be
-  /// empty.
+  /// ID field must be empty.
   EndOfSegmentLocation endOfSegmentLocation;
 
-  /// Inserts a newline and a section break at a specific index in the
-  /// document.
-  ///
+  /// Inserts a newline and a section break at a specific index in the document.
   /// The section break must be inserted inside the bounds of an existing
-  /// Paragraph. For instance, it cannot be
-  /// inserted at a table's start index (i.e. between the table and its
-  /// preceding paragraph).
-  ///
-  /// Section breaks cannot be inserted inside a table, equation, footnote,
-  /// header, or footer. Since section breaks can only be inserted inside the
-  /// body, the segment ID field
-  /// must be empty.
+  /// Paragraph. For instance, it cannot be inserted at a table's start index
+  /// (i.e. between the table and its preceding paragraph). Section breaks
+  /// cannot be inserted inside a table, equation, footnote, header, or footer.
+  /// Since section breaks can only be inserted inside the body, the segment ID
+  /// field must be empty.
   Location location;
 
   /// The type of section to insert.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : The section type is unspecified.
   /// - "CONTINUOUS" : The section starts immediately after the last paragraph
-  /// of the previous
-  /// section.
+  /// of the previous section.
   /// - "NEXT_PAGE" : The section starts on the next page.
   core.String sectionType;
 
@@ -3448,16 +3282,13 @@ class InsertSectionBreakRequest {
 /// Inserts an empty column into a table.
 class InsertTableColumnRequest {
   /// Whether to insert new column to the right of the reference cell location.
-  ///
-  /// - `True`: insert to the right.
-  /// - `False`: insert to the left.
+  /// - `True`: insert to the right. - `False`: insert to the left.
   core.bool insertRight;
 
-  /// The reference table cell location from which columns will be inserted.
-  ///
-  /// A new column will be inserted to the left (or right) of the column where
-  /// the reference cell is. If the reference cell is a merged cell, a new
-  /// column will be inserted to the left (or right) of the merged cell.
+  /// The reference table cell location from which columns will be inserted. A
+  /// new column will be inserted to the left (or right) of the column where the
+  /// reference cell is. If the reference cell is a merged cell, a new column
+  /// will be inserted to the left (or right) of the merged cell.
   TableCellLocation tableCellLocation;
 
   InsertTableColumnRequest();
@@ -3485,30 +3316,23 @@ class InsertTableColumnRequest {
   }
 }
 
-/// Inserts a table at the specified location.
-///
-/// A newline character will be inserted before the inserted table.
+/// Inserts a table at the specified location. A newline character will be
+/// inserted before the inserted table.
 class InsertTableRequest {
   /// The number of columns in the table.
   core.int columns;
 
-  /// Inserts the table at the end of the given header, footer or document
-  /// body. A newline character will be inserted before the inserted table.
-  ///
-  /// Tables cannot be inserted inside a footnote.
+  /// Inserts the table at the end of the given header, footer or document body.
+  /// A newline character will be inserted before the inserted table. Tables
+  /// cannot be inserted inside a footnote.
   EndOfSegmentLocation endOfSegmentLocation;
 
-  /// Inserts the table at a specific model index.
-  ///
-  /// A newline character will be inserted before the inserted table, therefore
-  /// the table start index will be at the specified location index + 1.
-  ///
-  /// The table must be inserted inside the bounds of an existing
-  /// Paragraph. For instance, it cannot be
-  /// inserted at a table's start index (i.e. between an existing table and its
-  /// preceding paragraph).
-  ///
-  /// Tables cannot be inserted inside a footnote or equation.
+  /// Inserts the table at a specific model index. A newline character will be
+  /// inserted before the inserted table, therefore the table start index will
+  /// be at the specified location index + 1. The table must be inserted inside
+  /// the bounds of an existing Paragraph. For instance, it cannot be inserted
+  /// at a table's start index (i.e. between an existing table and its preceding
+  /// paragraph). Tables cannot be inserted inside a footnote or equation.
   Location location;
 
   /// The number of rows in the table.
@@ -3553,17 +3377,14 @@ class InsertTableRequest {
 
 /// Inserts an empty row into a table.
 class InsertTableRowRequest {
-  /// Whether to insert new row below the reference cell location.
-  ///
-  /// - `True`: insert below the cell.
-  /// - `False`: insert above the cell.
+  /// Whether to insert new row below the reference cell location. - `True`:
+  /// insert below the cell. - `False`: insert above the cell.
   core.bool insertBelow;
 
-  /// The reference table cell location from which rows will be inserted.
-  ///
-  /// A new row will be inserted above (or below) the row where the reference
-  /// cell is. If the reference cell is a merged cell, a new row will be
-  /// inserted above (or below) the merged cell.
+  /// The reference table cell location from which rows will be inserted. A new
+  /// row will be inserted above (or below) the row where the reference cell is.
+  /// If the reference cell is a merged cell, a new row will be inserted above
+  /// (or below) the merged cell.
   TableCellLocation tableCellLocation;
 
   InsertTableRowRequest();
@@ -3593,34 +3414,27 @@ class InsertTableRowRequest {
 
 /// Inserts text at the specified location.
 class InsertTextRequest {
-  /// Inserts the text at the end of a header, footer, footnote or
-  /// the document body.
+  /// Inserts the text at the end of a header, footer, footnote or the document
+  /// body.
   EndOfSegmentLocation endOfSegmentLocation;
 
-  /// Inserts the text at a specific index in the document.
-  ///
-  /// Text must be inserted inside the bounds of an existing
-  /// Paragraph. For instance, text cannot be
-  /// inserted at a table's start index (i.e. between the table and its
-  /// preceding paragraph). The text must be inserted in the preceding
+  /// Inserts the text at a specific index in the document. Text must be
+  /// inserted inside the bounds of an existing Paragraph. For instance, text
+  /// cannot be inserted at a table's start index (i.e. between the table and
+  /// its preceding paragraph). The text must be inserted in the preceding
   /// paragraph.
   Location location;
 
-  /// The text to be inserted.
-  ///
-  /// Inserting a newline character will implicitly create a new
-  /// Paragraph at that index.
-  /// The paragraph style of the new paragraph will be copied from the paragraph
-  /// at the current insertion index, including lists and bullets.
-  ///
-  /// Text styles for inserted text will be determined automatically, generally
-  /// preserving the styling of neighboring text. In most cases, the text style
-  /// for the inserted text will match the text immediately before the insertion
-  /// index.
-  ///
-  /// Some control characters (U+0000-U+0008, U+000C-U+001F) and characters
-  /// from the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF)
-  /// will be stripped out of the inserted text.
+  /// The text to be inserted. Inserting a newline character will implicitly
+  /// create a new Paragraph at that index. The paragraph style of the new
+  /// paragraph will be copied from the paragraph at the current insertion
+  /// index, including lists and bullets. Text styles for inserted text will be
+  /// determined automatically, generally preserving the styling of neighboring
+  /// text. In most cases, the text style for the inserted text will match the
+  /// text immediately before the insertion index. Some control characters
+  /// (U+0000-U+0008, U+000C-U+001F) and characters from the Unicode Basic
+  /// Multilingual Plane Private Use Area (U+E000-U+F8FF) will be stripped out
+  /// of the inserted text.
   core.String text;
 
   InsertTextRequest();
@@ -3719,10 +3533,9 @@ class LinkedContentReference {
   }
 }
 
-/// A mask that indicates which of the fields on the base
-/// LinkedContentReference have
-/// been changed in this suggestion. For any field set to true, there is a new
-/// suggested value.
+/// A mask that indicates which of the fields on the base LinkedContentReference
+/// have been changed in this suggestion. For any field set to true, there is a
+/// new suggested value.
 class LinkedContentReferenceSuggestionState {
   /// A mask that indicates which of the fields in sheets_chart_reference have
   /// been changed in this suggestion.
@@ -3757,16 +3570,14 @@ class List {
   ListProperties listProperties;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this list.
+  /// deletions of this list.
   core.List<core.String> suggestedDeletionIds;
 
   /// The suggested insertion ID. If empty, then this is not a suggested
   /// insertion.
   core.String suggestedInsertionId;
 
-  /// The suggested changes to the list properties, keyed by suggestion
-  /// ID.
+  /// The suggested changes to the list properties, keyed by suggestion ID.
   core.Map<core.String, SuggestedListProperties> suggestedListPropertiesChanges;
 
   List();
@@ -3813,15 +3624,14 @@ class List {
   }
 }
 
-/// The properties of a list which describe the look
-/// and feel of bullets belonging to paragraphs associated with a list.
+/// The properties of a list which describe the look and feel of bullets
+/// belonging to paragraphs associated with a list.
 class ListProperties {
-  /// Describes the properties of the bullets at the associated level.
-  ///
-  /// A list has at most nine levels of nesting with nesting level 0
-  /// corresponding to the top-most level and nesting level 8 corresponding to
-  /// the most nested level. The nesting levels are returned in ascending order
-  /// with the least nested returned first.
+  /// Describes the properties of the bullets at the associated level. A list
+  /// has at most nine levels of nesting with nesting level 0 corresponding to
+  /// the top-most level and nesting level 8 corresponding to the most nested
+  /// level. The nesting levels are returned in ascending order with the least
+  /// nested returned first.
   core.List<NestingLevel> nestingLevels;
 
   ListProperties();
@@ -3846,14 +3656,12 @@ class ListProperties {
 }
 
 /// A mask that indicates which of the fields on the base ListProperties have
-/// been changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// been changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class ListPropertiesSuggestionState {
   /// A mask that indicates which of the fields on the corresponding
-  /// NestingLevel in nesting_levels have been changed in
-  /// this suggestion.
-  ///
-  /// The nesting level suggestion states are returned in ascending order of the
+  /// NestingLevel in nesting_levels have been changed in this suggestion. The
+  /// nesting level suggestion states are returned in ascending order of the
   /// nesting level with the least nested returned first.
   core.List<NestingLevelSuggestionState> nestingLevelsSuggestionStates;
 
@@ -3883,10 +3691,8 @@ class ListPropertiesSuggestionState {
 
 /// A particular location in the document.
 class Location {
-  /// The zero-based index, in UTF-16 code units.
-  ///
-  /// The index is relative to the beginning of the segment specified by
-  /// segment_id.
+  /// The zero-based index, in UTF-16 code units. The index is relative to the
+  /// beginning of the segment specified by segment_id.
   core.int index;
 
   /// The ID of the header, footer or footnote the location is in. An empty
@@ -3919,15 +3725,12 @@ class Location {
 
 /// Merges cells in a Table.
 class MergeTableCellsRequest {
-  /// The table range specifying which cells of the table to merge.
-  ///
-  /// Any text in the cells being merged will be concatenated and stored in the
-  /// "head" cell of the range. This is the upper-left cell of the range when
-  /// the content direction is left to right, and the upper-right cell of the
-  /// range otherwise.
-  ///
-  /// If the range is non-rectangular (which can occur in some cases where the
-  /// range covers cells that are already merged or where the table is
+  /// The table range specifying which cells of the table to merge. Any text in
+  /// the cells being merged will be concatenated and stored in the "head" cell
+  /// of the range. This is the upper-left cell of the range when the content
+  /// direction is left to right, and the upper-right cell of the range
+  /// otherwise. If the range is non-rectangular (which can occur in some cases
+  /// where the range covers cells that are already merged or where the table is
   /// non-rectangular), a 400 bad request error is returned.
   TableRange tableRange;
 
@@ -3949,21 +3752,15 @@ class MergeTableCellsRequest {
   }
 }
 
-/// A collection of Ranges with the same named range
-/// ID.
-///
-/// Named ranges allow developers to associate parts of a document with an
-/// arbitrary user-defined label so their contents can be programmatically read
-/// or edited at a later time. A document can contain multiple named ranges with
-/// the same name, but every named range has a unique ID.
-///
-/// A named range is created with a single Range,
-/// and content inserted inside a named range generally expands that range.
-/// However, certain document changes can cause the range to be split into
-/// multiple ranges.
-///
-/// Named ranges are not private. All applications and collaborators that have
-/// access to the document can see its named ranges.
+/// A collection of Ranges with the same named range ID. Named ranges allow
+/// developers to associate parts of a document with an arbitrary user-defined
+/// label so their contents can be programmatically read or edited at a later
+/// time. A document can contain multiple named ranges with the same name, but
+/// every named range has a unique ID. A named range is created with a single
+/// Range, and content inserted inside a named range generally expands that
+/// range. However, certain document changes can cause the range to be split
+/// into multiple ranges. Named ranges are not private. All applications and
+/// collaborators that have access to the document can see its named ranges.
 class NamedRange {
   /// The name of the named range.
   core.String name;
@@ -4006,8 +3803,7 @@ class NamedRange {
   }
 }
 
-/// A collection of all the NamedRanges in the
-/// document that share a given name.
+/// A collection of all the NamedRanges in the document that share a given name.
 class NamedRanges {
   /// The name that all the named ranges share.
   core.String name;
@@ -4042,10 +3838,9 @@ class NamedRanges {
   }
 }
 
-/// A named style. Paragraphs in the document can inherit their
-/// TextStyle and
-/// ParagraphStyle from this named style
-/// when they have the same named style type.
+/// A named style. Paragraphs in the document can inherit their TextStyle and
+/// ParagraphStyle from this named style when they have the same named style
+/// type.
 class NamedStyle {
   /// The type of this named style.
   /// Possible string values are:
@@ -4099,10 +3894,9 @@ class NamedStyle {
 
 /// A suggestion state of a NamedStyle message.
 class NamedStyleSuggestionState {
-  /// The named style type that this suggestion state corresponds to.
-  ///
-  /// This field is provided as a convenience for matching the
-  /// NamedStyleSuggestionState with its corresponding NamedStyle.
+  /// The named style type that this suggestion state corresponds to. This field
+  /// is provided as a convenience for matching the NamedStyleSuggestionState
+  /// with its corresponding NamedStyle.
   /// Possible string values are:
   /// - "NAMED_STYLE_TYPE_UNSPECIFIED" : The type of named style is unspecified.
   /// - "NORMAL_TEXT" : Normal text.
@@ -4117,13 +3911,11 @@ class NamedStyleSuggestionState {
   core.String namedStyleType;
 
   /// A mask that indicates which of the fields in paragraph style have been
-  /// changed in this
-  /// suggestion.
+  /// changed in this suggestion.
   ParagraphStyleSuggestionState paragraphStyleSuggestionState;
 
   /// A mask that indicates which of the fields in text style have been changed
-  /// in this
-  /// suggestion.
+  /// in this suggestion.
   TextStyleSuggestionState textStyleSuggestionState;
 
   NamedStyleSuggestionState();
@@ -4160,13 +3952,11 @@ class NamedStyleSuggestionState {
   }
 }
 
-/// The named styles. Paragraphs in the document can inherit their
-/// TextStyle and
+/// The named styles. Paragraphs in the document can inherit their TextStyle and
 /// ParagraphStyle from these named styles.
 class NamedStyles {
-  /// The named styles.
-  ///
-  /// There is an entry for each of the possible named style types.
+  /// The named styles. There is an entry for each of the possible named style
+  /// types.
   core.List<NamedStyle> styles;
 
   NamedStyles();
@@ -4189,15 +3979,12 @@ class NamedStyles {
   }
 }
 
-/// The suggestion state of a NamedStyles
-/// message.
+/// The suggestion state of a NamedStyles message.
 class NamedStylesSuggestionState {
   /// A mask that indicates which of the fields on the corresponding NamedStyle
-  /// in styles have been changed in this
-  /// suggestion.
-  ///
-  /// The order of these named style suggestion states match the order of the
-  /// corresponding named style within the named styles suggestion.
+  /// in styles have been changed in this suggestion. The order of these named
+  /// style suggestion states match the order of the corresponding named style
+  /// within the named styles suggestion.
   core.List<NamedStyleSuggestionState> stylesSuggestionStates;
 
   NamedStylesSuggestionState();
@@ -4230,83 +4017,55 @@ class NestingLevel {
   /// Possible string values are:
   /// - "BULLET_ALIGNMENT_UNSPECIFIED" : The bullet alignment is unspecified.
   /// - "START" : The bullet is aligned to the start of the space allotted for
-  /// rendering
-  /// the bullet. Left-aligned for LTR text, right-aligned otherwise.
+  /// rendering the bullet. Left-aligned for LTR text, right-aligned otherwise.
   /// - "CENTER" : The bullet is aligned to the center of the space allotted for
-  /// rendering
-  /// the bullet.
+  /// rendering the bullet.
   /// - "END" : The bullet is aligned to the end of the space allotted for
-  /// rendering the
-  /// bullet. Right-aligned for LTR text, left-aligned otherwise.
+  /// rendering the bullet. Right-aligned for LTR text, left-aligned otherwise.
   core.String bulletAlignment;
 
-  /// The format string used by bullets at this level of nesting.
-  ///
-  /// The glyph format contains one or more placeholders, and these placeholder
-  /// are replaced with the appropriate values depending on the glyph_type or
-  /// glyph_symbol. The placeholders follow
-  /// the pattern `%[nesting_level]`. Furthermore, placeholders can have
-  /// prefixes
-  /// and suffixes. Thus, the glyph format follows the pattern
-  /// `<prefix>%[nesting_level]<suffix>`. Note that the prefix and suffix are
-  /// optional and can be arbitrary strings.
-  ///
-  /// For example, the glyph format `%0.` indicates that the rendered glyph will
-  /// replace the placeholder with the corresponding glyph for nesting level 0
-  /// followed by a period as the suffix. So a list with a glyph type of
-  /// UPPER_ALPHA and
-  /// glyph format `%0.` at nesting level 0 will result in a list with rendered
-  /// glyphs
-  /// <p>`A.`
-  /// <p>`B.`
-  /// <p>`C.`
-  ///
-  /// The glyph format can contain placeholders for the current nesting level as
-  /// well as placeholders for parent nesting levels. For example, a
-  /// list can have a glyph format of `%0.` at nesting level 0 and a
+  /// The format string used by bullets at this level of nesting. The glyph
+  /// format contains one or more placeholders, and these placeholder are
+  /// replaced with the appropriate values depending on the glyph_type or
+  /// glyph_symbol. The placeholders follow the pattern `%[nesting_level]`.
+  /// Furthermore, placeholders can have prefixes and suffixes. Thus, the glyph
+  /// format follows the pattern `%[nesting_level]`. Note that the prefix and
+  /// suffix are optional and can be arbitrary strings. For example, the glyph
+  /// format `%0.` indicates that the rendered glyph will replace the
+  /// placeholder with the corresponding glyph for nesting level 0 followed by a
+  /// period as the suffix. So a list with a glyph type of UPPER_ALPHA and glyph
+  /// format `%0.` at nesting level 0 will result in a list with rendered glyphs
+  /// `A.` `B.` `C.` The glyph format can contain placeholders for the current
+  /// nesting level as well as placeholders for parent nesting levels. For
+  /// example, a list can have a glyph format of `%0.` at nesting level 0 and a
   /// glyph format of `%0.%1.` at nesting level 1. Assuming both nesting levels
-  /// have DECIMAL glyph
-  /// types, this would result in a list with rendered glyphs
-  /// <p>`1.`
-  /// <p>`2.`
-  /// <p>`  2.1.`
-  /// <p>`  2.2.`
-  /// <p>`3.`
-  ///
-  /// For nesting levels that are ordered, the string that replaces a
-  /// placeholder
-  /// in the glyph format for a particular paragraph depends on the paragraph's
-  /// order within the list.
+  /// have DECIMAL glyph types, this would result in a list with rendered glyphs
+  /// `1.` `2.` ` 2.1.` ` 2.2.` `3.` For nesting levels that are ordered, the
+  /// string that replaces a placeholder in the glyph format for a particular
+  /// paragraph depends on the paragraph's order within the list.
   core.String glyphFormat;
 
   /// A custom glyph symbol used by bullets when paragraphs at this level of
-  /// nesting are unordered.
-  ///
-  /// The glyph symbol replaces placeholders within the glyph_format. For
-  /// example, if the
-  /// glyph_symbol is the solid circle corresponding to Unicode U+25cf code
-  /// point and the glyph_format is `%0`, the rendered
-  /// glyph would be the solid circle.
+  /// nesting are unordered. The glyph symbol replaces placeholders within the
+  /// glyph_format. For example, if the glyph_symbol is the solid circle
+  /// corresponding to Unicode U+25cf code point and the glyph_format is `%0`,
+  /// the rendered glyph would be the solid circle.
   core.String glyphSymbol;
 
-  /// The type of glyph used by bullets when paragraphs at this level of
-  /// nesting are ordered.
-  ///
-  /// The glyph type determines the type of glyph used to replace placeholders
-  /// within the glyph_format
-  /// when paragraphs at this level of nesting are ordered. For example, if the
-  /// nesting level is 0, the glyph_format is `%0.` and the glyph
-  /// type is DECIMAL,
-  /// then the rendered glyph would replace the placeholder `%0` in the glyph
-  /// format with a number corresponding to list item's order within the list.
+  /// The type of glyph used by bullets when paragraphs at this level of nesting
+  /// are ordered. The glyph type determines the type of glyph used to replace
+  /// placeholders within the glyph_format when paragraphs at this level of
+  /// nesting are ordered. For example, if the nesting level is 0, the
+  /// glyph_format is `%0.` and the glyph type is DECIMAL, then the rendered
+  /// glyph would replace the placeholder `%0` in the glyph format with a number
+  /// corresponding to list item's order within the list.
   /// Possible string values are:
   /// - "GLYPH_TYPE_UNSPECIFIED" : The glyph type is unspecified or unsupported.
   /// - "NONE" : An empty string.
   /// - "DECIMAL" : A number, like `1`, `2`, or `3`.
   /// - "ZERO_DECIMAL" : A number where single digit numbers are prefixed with a
-  /// zero, like `01`,
-  /// `02`, or `03`. Numbers with more than one digit are not prefixed with a
-  /// zero.
+  /// zero, like `01`, `02`, or `03`. Numbers with more than one digit are not
+  /// prefixed with a zero.
   /// - "UPPER_ALPHA" : An uppercase letter, like `A`, `B`, or `C`.
   /// - "ALPHA" : A lowercase letter, like `a`, `b`, or `c`.
   /// - "UPPER_ROMAN" : An uppercase Roman numeral, like `I`, `II`, or `III`.
@@ -4314,8 +4073,7 @@ class NestingLevel {
   core.String glyphType;
 
   /// The amount of indentation for the first line of paragraphs at this level
-  /// of
-  /// nesting.
+  /// of nesting.
   Dimension indentFirstLine;
 
   /// The amount of indentation for paragraphs at this level of nesting. Applied
@@ -4323,13 +4081,11 @@ class NestingLevel {
   /// paragraph's content direction.
   Dimension indentStart;
 
-  /// The number of the first list item at this nesting level.
-  ///
-  /// A value of 0 is treated as a value of 1 for lettered lists and roman
-  /// numeraled lists, i.e. for values of both 0 and 1, lettered and roman
-  /// numeraled lists will begin at `a` and `i` respectively.
-  ///
-  /// This value is ignored for nesting levels with unordered glyphs.
+  /// The number of the first list item at this nesting level. A value of 0 is
+  /// treated as a value of 1 for lettered lists and roman numeraled lists, i.e.
+  /// for values of both 0 and 1, lettered and roman numeraled lists will begin
+  /// at `a` and `i` respectively. This value is ignored for nesting levels with
+  /// unordered glyphs.
   core.int startNumber;
 
   /// The text style of bullets at this level of nesting.
@@ -4396,40 +4152,32 @@ class NestingLevel {
 }
 
 /// A mask that indicates which of the fields on the base NestingLevel have been
-/// changed in this suggestion. For
-/// any field set to true, there is a new suggested value.
+/// changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class NestingLevelSuggestionState {
-  /// Indicates if there was a suggested change to
-  /// bullet_alignment.
+  /// Indicates if there was a suggested change to bullet_alignment.
   core.bool bulletAlignmentSuggested;
 
-  /// Indicates if there was a suggested change to
-  /// glyph_format.
+  /// Indicates if there was a suggested change to glyph_format.
   core.bool glyphFormatSuggested;
 
-  /// Indicates if there was a suggested change to
-  /// glyph_symbol.
+  /// Indicates if there was a suggested change to glyph_symbol.
   core.bool glyphSymbolSuggested;
 
-  /// Indicates if there was a suggested change to
-  /// glyph_type.
+  /// Indicates if there was a suggested change to glyph_type.
   core.bool glyphTypeSuggested;
 
-  /// Indicates if there was a suggested change to
-  /// indent_first_line.
+  /// Indicates if there was a suggested change to indent_first_line.
   core.bool indentFirstLineSuggested;
 
-  /// Indicates if there was a suggested change to
-  /// indent_start.
+  /// Indicates if there was a suggested change to indent_start.
   core.bool indentStartSuggested;
 
-  /// Indicates if there was a suggested change to
-  /// start_number.
+  /// Indicates if there was a suggested change to start_number.
   core.bool startNumberSuggested;
 
   /// A mask that indicates which of the fields in text style have been changed
-  /// in this
-  /// suggestion.
+  /// in this suggestion.
   TextStyleSuggestionState textStyleSuggestionState;
 
   NestingLevelSuggestionState();
@@ -4518,8 +4266,8 @@ class ObjectReferences {
 
 /// A color that can either be fully opaque or fully transparent.
 class OptionalColor {
-  /// If set, this will be used as an opaque color. If unset, this represents
-  /// a transparent color.
+  /// If set, this will be used as an opaque color. If unset, this represents a
+  /// transparent color.
   Color color;
 
   OptionalColor();
@@ -4540,29 +4288,25 @@ class OptionalColor {
   }
 }
 
-/// A ParagraphElement representing a
-/// page break. A page break makes the subsequent text start at the top of the
-/// next page.
+/// A ParagraphElement representing a page break. A page break makes the
+/// subsequent text start at the top of the next page.
 class PageBreak {
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
-  /// The suggested insertion IDs. A PageBreak
-  /// may have multiple insertion IDs if it is a nested suggested change. If
-  /// empty, then this is not a suggested insertion.
+  /// The suggested insertion IDs. A PageBreak may have multiple insertion IDs
+  /// if it is a nested suggested change. If empty, then this is not a suggested
+  /// insertion.
   core.List<core.String> suggestedInsertionIds;
 
   /// The suggested text style changes to this PageBreak, keyed by suggestion
   /// ID.
   core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
 
-  /// The text style of this PageBreak.
-  ///
-  /// Similar to text content, like text runs and footnote references, the text
-  /// style of a page break can affect content layout as well as the styling of
-  /// text inserted adjacent to it.
+  /// The text style of this PageBreak. Similar to text content, like text runs
+  /// and footnote references, the text style of a page break can affect content
+  /// layout as well as the styling of text inserted adjacent to it.
   TextStyle textStyle;
 
   PageBreak();
@@ -4608,9 +4352,8 @@ class PageBreak {
   }
 }
 
-/// A StructuralElement representing a
-/// paragraph. A paragraph is a range of content that is terminated with a
-/// newline character.
+/// A StructuralElement representing a paragraph. A paragraph is a range of
+/// content that is terminated with a newline character.
 class Paragraph {
   /// The bullet for this paragraph. If not present, the paragraph does not
   /// belong to a list.
@@ -4633,8 +4376,7 @@ class Paragraph {
   core.Map<core.String, SuggestedParagraphStyle> suggestedParagraphStyleChanges;
 
   /// The IDs of the positioned objects that are suggested to be attached to
-  /// this
-  /// paragraph, keyed by suggestion ID.
+  /// this paragraph, keyed by suggestion ID.
   core.Map<core.String, ObjectReferences> suggestedPositionedObjectIds;
 
   Paragraph();
@@ -4721,8 +4463,7 @@ class ParagraphBorder {
   /// Possible string values are:
   /// - "DASH_STYLE_UNSPECIFIED" : Unspecified dash style.
   /// - "SOLID" : Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value
-  /// 'solid'.
-  /// This is the default dash style.
+  /// 'solid'. This is the default dash style.
   /// - "DOT" : Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dot'.
   /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
@@ -4771,8 +4512,7 @@ class ParagraphBorder {
   }
 }
 
-/// A ParagraphElement describes content within a
-/// Paragraph.
+/// A ParagraphElement describes content within a Paragraph.
 class ParagraphElement {
   /// An auto text paragraph element.
   AutoText autoText;
@@ -4880,35 +4620,27 @@ class ParagraphElement {
   }
 }
 
-/// Styles that apply to a whole paragraph.
-///
-/// Inherited paragraph styles are represented as unset fields in this message.
-/// A paragraph style's parent depends on where the paragraph style is defined:
-///
-///   * The ParagraphStyle on a Paragraph
-///     inherits from the paragraph's corresponding named style type.
-///   * The ParagraphStyle on a named style
-///     inherits from the normal text named style.
-///   * The ParagraphStyle of the normal text named style inherits
-///     from the default paragraph style in the Docs editor.
-///   * The ParagraphStyle on a Paragraph
-/// element that is contained in a table may inherit its paragraph style from
-///     the table style.
-///
-/// If the paragraph style does not inherit from a parent, unsetting fields will
-/// revert the style to a value matching the defaults in the Docs editor.
+/// Styles that apply to a whole paragraph. Inherited paragraph styles are
+/// represented as unset fields in this message. A paragraph style's parent
+/// depends on where the paragraph style is defined: * The ParagraphStyle on a
+/// Paragraph inherits from the paragraph's corresponding named style type. *
+/// The ParagraphStyle on a named style inherits from the normal text named
+/// style. * The ParagraphStyle of the normal text named style inherits from the
+/// default paragraph style in the Docs editor. * The ParagraphStyle on a
+/// Paragraph element that is contained in a table may inherit its paragraph
+/// style from the table style. If the paragraph style does not inherit from a
+/// parent, unsetting fields will revert the style to a value matching the
+/// defaults in the Docs editor.
 class ParagraphStyle {
   /// The text alignment for this paragraph.
   /// Possible string values are:
   /// - "ALIGNMENT_UNSPECIFIED" : The paragraph alignment is inherited from the
   /// parent.
   /// - "START" : The paragraph is aligned to the start of the line.
-  /// Left-aligned for LTR
-  /// text, right-aligned otherwise.
+  /// Left-aligned for LTR text, right-aligned otherwise.
   /// - "CENTER" : The paragraph is centered.
   /// - "END" : The paragraph is aligned to the end of the line. Right-aligned
-  /// for LTR
-  /// text, left-aligned otherwise.
+  /// for LTR text, left-aligned otherwise.
   /// - "JUSTIFIED" : The paragraph is justified.
   core.String alignment;
 
@@ -4916,60 +4648,42 @@ class ParagraphStyle {
   /// is inherited from the parent.
   core.bool avoidWidowAndOrphan;
 
-  /// The border between this paragraph and the next and previous paragraphs.
-  /// If unset, the value is inherited from the parent.
-  ///
-  /// The between border is rendered when the adjacent paragraph has the same
-  /// border and indent properties.
-  ///
-  /// Paragraph borders cannot be partially updated. When making
-  /// changes to a paragraph border the new border must be specified in
-  /// its entirety.
+  /// The border between this paragraph and the next and previous paragraphs. If
+  /// unset, the value is inherited from the parent. The between border is
+  /// rendered when the adjacent paragraph has the same border and indent
+  /// properties. Paragraph borders cannot be partially updated. When making
+  /// changes to a paragraph border the new border must be specified in its
+  /// entirety.
   ParagraphBorder borderBetween;
 
   /// The border at the bottom of this paragraph. If unset, the value is
-  /// inherited from the parent.
-  ///
-  /// The bottom border is rendered when the paragraph below has different
-  /// border
-  /// and indent properties.
-  ///
-  /// Paragraph borders cannot be partially updated. When making
-  /// changes to a paragraph border the new border must be specified in
-  /// its entirety.
+  /// inherited from the parent. The bottom border is rendered when the
+  /// paragraph below has different border and indent properties. Paragraph
+  /// borders cannot be partially updated. When making changes to a paragraph
+  /// border the new border must be specified in its entirety.
   ParagraphBorder borderBottom;
 
   /// The border to the left of this paragraph. If unset, the value is inherited
-  /// from the parent.
-  ///
-  /// Paragraph borders cannot be partially updated. When making
-  /// changes to a paragraph border the new border must be specified in
+  /// from the parent. Paragraph borders cannot be partially updated. When
+  /// making changes to a paragraph border the new border must be specified in
   /// its entirety.
   ParagraphBorder borderLeft;
 
   /// The border to the right of this paragraph. If unset, the value is
-  /// inherited
-  /// from the parent.
-  ///
-  /// Paragraph borders cannot be partially updated. When making
-  /// changes to a paragraph border the new border must be specified in
-  /// its entirety.
+  /// inherited from the parent. Paragraph borders cannot be partially updated.
+  /// When making changes to a paragraph border the new border must be specified
+  /// in its entirety.
   ParagraphBorder borderRight;
 
   /// The border at the top of this paragraph. If unset, the value is inherited
-  /// from the parent.
-  ///
-  /// The top border is rendered when the paragraph above has different border
-  /// and indent properties.
-  ///
-  /// Paragraph borders cannot be partially updated. When making
-  /// changes to a paragraph border the new border must be specified in
-  /// its entirety.
+  /// from the parent. The top border is rendered when the paragraph above has
+  /// different border and indent properties. Paragraph borders cannot be
+  /// partially updated. When making changes to a paragraph border the new
+  /// border must be specified in its entirety.
   ParagraphBorder borderTop;
 
   /// The text direction of this paragraph. If unset, the value defaults to
-  /// LEFT_TO_RIGHT since
-  /// paragraph direction is not inherited.
+  /// LEFT_TO_RIGHT since paragraph direction is not inherited.
   /// Possible string values are:
   /// - "CONTENT_DIRECTION_UNSPECIFIED" : The content direction is unspecified.
   /// - "LEFT_TO_RIGHT" : The content goes from left to right.
@@ -4977,15 +4691,12 @@ class ParagraphStyle {
   core.String direction;
 
   /// The heading ID of the paragraph. If empty, then this paragraph is not a
-  /// heading.
-  ///
-  /// This property is read-only.
+  /// heading. This property is read-only.
   core.String headingId;
 
   /// The amount of indentation for the paragraph on the side that corresponds
-  /// to
-  /// the end of the text, based on the current paragraph direction. If unset,
-  /// the value is inherited from the parent.
+  /// to the end of the text, based on the current paragraph direction. If
+  /// unset, the value is inherited from the parent.
   Dimension indentEnd;
 
   /// The amount of indentation for the first line of the paragraph. If unset,
@@ -4993,9 +4704,8 @@ class ParagraphStyle {
   Dimension indentFirstLine;
 
   /// The amount of indentation for the paragraph on the side that corresponds
-  /// to
-  /// the start of the text, based on the current paragraph direction. If unset,
-  /// the value is inherited from the parent.
+  /// to the start of the text, based on the current paragraph direction. If
+  /// unset, the value is inherited from the parent.
   Dimension indentStart;
 
   /// Whether all lines of the paragraph should be laid out on the same page or
@@ -5011,12 +4721,9 @@ class ParagraphStyle {
   /// is represented as 100.0. If unset, the value is inherited from the parent.
   core.double lineSpacing;
 
-  /// The named style type of the paragraph.
-  ///
-  /// Since updating the named style type affects other properties within
-  /// ParagraphStyle, the named style type is applied before the other
-  /// properties
-  /// are updated.
+  /// The named style type of the paragraph. Since updating the named style type
+  /// affects other properties within ParagraphStyle, the named style type is
+  /// applied before the other properties are updated.
   /// Possible string values are:
   /// - "NAMED_STYLE_TYPE_UNSPECIFIED" : The type of named style is unspecified.
   /// - "NORMAL_TEXT" : Normal text.
@@ -5051,9 +4758,7 @@ class ParagraphStyle {
   core.String spacingMode;
 
   /// A list of the tab stops for this paragraph. The list of tab stops is not
-  /// inherited.
-  ///
-  /// This property is read-only.
+  /// inherited. This property is read-only.
   core.List<TabStop> tabStops;
 
   ParagraphStyle();
@@ -5197,8 +4902,8 @@ class ParagraphStyle {
 }
 
 /// A mask that indicates which of the fields on the base ParagraphStyle have
-/// been changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// been changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class ParagraphStyleSuggestionState {
   /// Indicates if there was a suggested change to alignment.
   core.bool alignmentSuggested;
@@ -5394,11 +5099,9 @@ class ParagraphStyleSuggestionState {
   }
 }
 
-/// An object that is tethered to a Paragraph
-/// and positioned relative to the beginning of the paragraph. A
-/// PositionedObject
-/// contains an EmbeddedObject such as an
-/// image.
+/// An object that is tethered to a Paragraph and positioned relative to the
+/// beginning of the paragraph. A PositionedObject contains an EmbeddedObject
+/// such as an image.
 class PositionedObject {
   /// The ID of this positioned object.
   core.String objectId;
@@ -5407,8 +5110,7 @@ class PositionedObject {
   PositionedObjectProperties positionedObjectProperties;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
   /// The suggested insertion ID. If empty, then this is not a suggested
@@ -5475,35 +5177,31 @@ class PositionedObject {
 }
 
 /// The positioning of a PositionedObject. The positioned object is positioned
-/// relative to the beginning of the Paragraph
-/// it is tethered to.
+/// relative to the beginning of the Paragraph it is tethered to.
 class PositionedObjectPositioning {
   /// The layout of this positioned object.
   /// Possible string values are:
   /// - "POSITIONED_OBJECT_LAYOUT_UNSPECIFIED" : The layout is unspecified.
   /// - "WRAP_TEXT" : The text wraps around the positioned object.
   /// - "BREAK_LEFT" : Breaks text such that the positioned object is on the
-  /// left and text is on
-  /// the right.
+  /// left and text is on the right.
   /// - "BREAK_RIGHT" : Breaks text such that the positioned object is on the
-  /// right and text is on
-  /// the left.
+  /// right and text is on the left.
   /// - "BREAK_LEFT_RIGHT" : Breaks text such that there is no text on the left
-  /// or right of the
-  /// positioned object.
+  /// or right of the positioned object.
   /// - "IN_FRONT_OF_TEXT" : The positioned object is in front of the text.
   core.String layout;
 
   /// The offset of the left edge of the positioned object relative to the
-  /// beginning of the Paragraph it is tethered
-  /// to. The exact positioning of the object can depend on other content in the
-  /// document and the document's styling.
+  /// beginning of the Paragraph it is tethered to. The exact positioning of the
+  /// object can depend on other content in the document and the document's
+  /// styling.
   Dimension leftOffset;
 
   /// The offset of the top edge of the positioned object relative to the
-  /// beginning of the Paragraph it is tethered
-  /// to. The exact positioning of the object can depend on other content in the
-  /// document and the document's styling.
+  /// beginning of the Paragraph it is tethered to. The exact positioning of the
+  /// object can depend on other content in the document and the document's
+  /// styling.
   Dimension topOffset;
 
   PositionedObjectPositioning();
@@ -5537,8 +5235,8 @@ class PositionedObjectPositioning {
 }
 
 /// A mask that indicates which of the fields on the base
-/// PositionedObjectPositioning have been changed in this
-/// suggestion. For any field set to true, there is a new suggested value.
+/// PositionedObjectPositioning have been changed in this suggestion. For any
+/// field set to true, there is a new suggested value.
 class PositionedObjectPositioningSuggestionState {
   /// Indicates if there was a suggested change to layout.
   core.bool layoutSuggested;
@@ -5585,8 +5283,7 @@ class PositionedObjectProperties {
   EmbeddedObject embeddedObject;
 
   /// The positioning of this positioned object relative to the newline of the
-  /// Paragraph that references this positioned
-  /// object.
+  /// Paragraph that references this positioned object.
   PositionedObjectPositioning positioning;
 
   PositionedObjectProperties();
@@ -5615,16 +5312,15 @@ class PositionedObjectProperties {
 }
 
 /// A mask that indicates which of the fields on the base
-/// PositionedObjectProperties
-/// have been changed in this suggestion. For any field set to true, there is a
-/// new suggested value.
+/// PositionedObjectProperties have been changed in this suggestion. For any
+/// field set to true, there is a new suggested value.
 class PositionedObjectPropertiesSuggestionState {
   /// A mask that indicates which of the fields in embedded_object have been
   /// changed in this suggestion.
   EmbeddedObjectSuggestionState embeddedObjectSuggestionState;
 
-  /// A mask that indicates which of the fields in positioning have been
-  /// changed in this suggestion.
+  /// A mask that indicates which of the fields in positioning have been changed
+  /// in this suggestion.
   PositionedObjectPositioningSuggestionState positioningSuggestionState;
 
   PositionedObjectPropertiesSuggestionState();
@@ -5660,7 +5356,6 @@ class PositionedObjectPropertiesSuggestionState {
 /// Specifies a contiguous range of text.
 class Range {
   /// The zero-based end index of this range, exclusive, in UTF-16 code units.
-  ///
   /// In all current uses, an end index must be provided. This field is an
   /// Int32Value in order to accommodate future use cases with open-ended
   /// ranges.
@@ -5670,11 +5365,9 @@ class Range {
   /// An empty segment ID signifies the document's body.
   core.String segmentId;
 
-  /// The zero-based start index of this range, in UTF-16 code units.
-  ///
-  /// In all current uses, a start index must be provided. This field is an
-  /// Int32Value in order to accommodate future use cases with open-ended
-  /// ranges.
+  /// The zero-based start index of this range, in UTF-16 code units. In all
+  /// current uses, a start index must be provided. This field is an Int32Value
+  /// in order to accommodate future use cases with open-ended ranges.
   core.int startIndex;
 
   Range();
@@ -5762,11 +5455,9 @@ class ReplaceAllTextResponse {
   }
 }
 
-/// Replaces an existing image with a new image.
-///
-/// Replacing an image removes some image effects from the existing image in
-/// order to
-/// mirror the behavior of the Docs editor.
+/// Replaces an existing image with a new image. Replacing an image removes some
+/// image effects from the existing image in order to mirror the behavior of the
+/// Docs editor.
 class ReplaceImageRequest {
   /// The ID of the existing image that will be replaced.
   core.String imageObjectId;
@@ -5776,19 +5467,17 @@ class ReplaceImageRequest {
   /// - "IMAGE_REPLACE_METHOD_UNSPECIFIED" : Unspecified image replace method.
   /// This value must not be used.
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
-  /// original image.
-  /// The image may be cropped in order to fill the original image's bounds. The
-  /// rendered size of the image will be the same as that of the original image.
+  /// original image. The image may be cropped in order to fill the original
+  /// image's bounds. The rendered size of the image will be the same as that of
+  /// the original image.
   core.String imageReplaceMethod;
 
-  /// The URI of the new image.
-  ///
-  /// The image is fetched once at insertion time and a copy is stored for
-  /// display inside the document. Images must be less than 50MB in size, cannot
-  /// exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
-  ///
-  /// The provided URI can be at most 2 kB in length. The URI itself is saved
-  /// with the image, and exposed via the ImageProperties.source_uri field.
+  /// The URI of the new image. The image is fetched once at insertion time and
+  /// a copy is stored for display inside the document. Images must be less than
+  /// 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG,
+  /// JPEG, or GIF format. The provided URI can be at most 2 kB in length. The
+  /// URI itself is saved with the image, and exposed via the
+  /// ImageProperties.source_uri field.
   core.String uri;
 
   ReplaceImageRequest();
@@ -5821,32 +5510,21 @@ class ReplaceImageRequest {
   }
 }
 
-/// Replaces the contents of the specified
-/// NamedRange or
-/// NamedRanges with the given replacement
-/// content.
-///
-/// Note that an individual NamedRange may
-/// consist of multiple discontinuous
-/// ranges. In this case, only the
-/// content in the first range will be replaced. The other ranges and their
-/// content will be deleted.
-///
+/// Replaces the contents of the specified NamedRange or NamedRanges with the
+/// given replacement content. Note that an individual NamedRange may consist of
+/// multiple discontinuous ranges. In this case, only the content in the first
+/// range will be replaced. The other ranges and their content will be deleted.
 /// In cases where replacing or deleting any ranges would result in an invalid
 /// document structure, a 400 bad request error is returned.
 class ReplaceNamedRangeContentRequest {
-  /// The ID of the named range whose content will be replaced.
-  ///
-  /// If there is no named range with the given ID a 400 bad request error is
-  /// returned.
+  /// The ID of the named range whose content will be replaced. If there is no
+  /// named range with the given ID a 400 bad request error is returned.
   core.String namedRangeId;
 
-  /// The name of the NamedRanges whose
-  /// content will be replaced.
-  ///
-  /// If there are multiple named ranges with the given name, then
-  /// the content of each one will be replaced. If there are no named ranges
-  /// with the given name, then the request will be a no-op.
+  /// The name of the NamedRanges whose content will be replaced. If there are
+  /// multiple named ranges with the given name, then the content of each one
+  /// will be replaced. If there are no named ranges with the given name, then
+  /// the request will be a no-op.
   core.String namedRangeName;
 
   /// Replaces the content of the specified named range(s) with the given text.
@@ -6334,26 +6012,21 @@ class RgbColor {
   }
 }
 
-/// A StructuralElement representing a
-/// section break. A section is a range of content which has the same
-/// SectionStyle. A section break represents
-/// the start of a new section, and the section style applies to the section
-/// after the section break.
-///
-/// The document body always begins with a section break.
+/// A StructuralElement representing a section break. A section is a range of
+/// content which has the same SectionStyle. A section break represents the
+/// start of a new section, and the section style applies to the section after
+/// the section break. The document body always begins with a section break.
 class SectionBreak {
   /// The style of the section after this section break.
   SectionStyle sectionStyle;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
   /// The suggested insertion IDs. A SectionBreak may have multiple insertion
-  /// IDs if it is
-  /// a nested suggested change. If empty, then this is not a suggested
-  /// insertion.
+  /// IDs if it is a nested suggested change. If empty, then this is not a
+  /// suggested insertion.
   core.List<core.String> suggestedInsertionIds;
 
   SectionBreak();
@@ -6422,22 +6095,17 @@ class SectionColumnProperties {
 
 /// The styling that applies to a section.
 class SectionStyle {
-  /// The section's columns properties.
-  ///
-  /// If empty, the section contains one column with the default properties in
-  /// the Docs editor.
-  /// A section can be updated to have no more than three columns.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property will result in a 400 bad request error.
+  /// The section's columns properties. If empty, the section contains one
+  /// column with the default properties in the Docs editor. A section can be
+  /// updated to have no more than three columns. When updating this property,
+  /// setting a concrete value is required. Unsetting this property will result
+  /// in a 400 bad request error.
   core.List<SectionColumnProperties> columnProperties;
 
-  /// The style of column separators.
-  ///
-  /// This style can be set even when there is one column in the section.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// The style of column separators. This style can be set even when there is
+  /// one column in the section. When updating this property, setting a concrete
+  /// value is required. Unsetting this property results in a 400 bad request
+  /// error.
   /// Possible string values are:
   /// - "COLUMN_SEPARATOR_STYLE_UNSPECIFIED" : An unspecified column separator
   /// style.
@@ -6447,10 +6115,8 @@ class SectionStyle {
   core.String columnSeparatorStyle;
 
   /// The content direction of this section. If unset, the value defaults to
-  /// LEFT_TO_RIGHT.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// LEFT_TO_RIGHT. When updating this property, setting a concrete value is
+  /// required. Unsetting this property results in a 400 bad request error.
   /// Possible string values are:
   /// - "CONTENT_DIRECTION_UNSPECIFIED" : The content direction is unspecified.
   /// - "LEFT_TO_RIGHT" : The content goes from left to right.
@@ -6458,154 +6124,114 @@ class SectionStyle {
   core.String contentDirection;
 
   /// The ID of the default footer. If unset, the value inherits from the
-  /// previous SectionBreak's SectionStyle.
-  /// If the value is unset in the first SectionBreak, it inherits from
-  /// DocumentStyle's default_footer_id.
-  ///
-  /// This property is read-only.
+  /// previous SectionBreak's SectionStyle. If the value is unset in the first
+  /// SectionBreak, it inherits from DocumentStyle's default_footer_id. This
+  /// property is read-only.
   core.String defaultFooterId;
 
   /// The ID of the default header. If unset, the value inherits from the
-  /// previous SectionBreak's SectionStyle.
-  /// If the value is unset in the first SectionBreak, it inherits from
-  /// DocumentStyle's default_header_id.
-  ///
-  /// This property is read-only.
+  /// previous SectionBreak's SectionStyle. If the value is unset in the first
+  /// SectionBreak, it inherits from DocumentStyle's default_header_id. This
+  /// property is read-only.
   core.String defaultHeaderId;
 
   /// The ID of the footer used only for even pages. If the value of
-  /// DocumentStyle's use_even_page_header_footer is true,
-  /// this value is used for the footers on even pages in the section. If it
-  /// is false, the footers on even pages uses the default_footer_id. If unset,
-  /// the value
-  /// inherits from the previous SectionBreak's SectionStyle. If the value is
-  /// unset in
+  /// DocumentStyle's use_even_page_header_footer is true, this value is used
+  /// for the footers on even pages in the section. If it is false, the footers
+  /// on even pages uses the default_footer_id. If unset, the value inherits
+  /// from the previous SectionBreak's SectionStyle. If the value is unset in
   /// the first SectionBreak, it inherits from DocumentStyle's
-  /// even_page_footer_id.
-  ///
-  /// This property is read-only.
+  /// even_page_footer_id. This property is read-only.
   core.String evenPageFooterId;
 
   /// The ID of the header used only for even pages. If the value of
-  /// DocumentStyle's use_even_page_header_footer is true,
-  /// this value is used for the headers on even pages in the section. If it
-  /// is false, the headers on even pages uses the default_header_id. If unset,
-  /// the value
-  /// inherits from the previous SectionBreak's SectionStyle. If the value is
-  /// unset in
+  /// DocumentStyle's use_even_page_header_footer is true, this value is used
+  /// for the headers on even pages in the section. If it is false, the headers
+  /// on even pages uses the default_header_id. If unset, the value inherits
+  /// from the previous SectionBreak's SectionStyle. If the value is unset in
   /// the first SectionBreak, it inherits from DocumentStyle's
-  /// even_page_header_id.
-  ///
-  /// This property is read-only.
+  /// even_page_header_id. This property is read-only.
   core.String evenPageHeaderId;
 
-  /// The ID of the footer used only for the first page of the section.
-  /// If use_first_page_header_footer is true,
-  /// this value is used for the footer on the first page of the section. If
-  /// it is false, the footer on the first page of the section uses the
-  /// default_footer_id.
-  /// If unset, the value inherits from the previous SectionBreak's
-  /// SectionStyle. If the value is unset in
-  /// the first SectionBreak, it inherits from DocumentStyle's
-  /// first_page_footer_id.
-  ///
-  /// This property is read-only.
+  /// The ID of the footer used only for the first page of the section. If
+  /// use_first_page_header_footer is true, this value is used for the footer on
+  /// the first page of the section. If it is false, the footer on the first
+  /// page of the section uses the default_footer_id. If unset, the value
+  /// inherits from the previous SectionBreak's SectionStyle. If the value is
+  /// unset in the first SectionBreak, it inherits from DocumentStyle's
+  /// first_page_footer_id. This property is read-only.
   core.String firstPageFooterId;
 
-  /// The ID of the header used only for the first page of the section.
-  /// If use_first_page_header_footer is true,
-  /// this value is used for the header on the first page of the section. If
-  /// it is false, the header on the first page of the section uses the
-  /// default_header_id.
-  /// If unset, the value inherits from the previous SectionBreak's
-  /// SectionStyle. If the value is unset in
-  /// the first SectionBreak, it inherits from DocumentStyle's
-  /// first_page_header_id.
-  ///
-  /// This property is read-only.
+  /// The ID of the header used only for the first page of the section. If
+  /// use_first_page_header_footer is true, this value is used for the header on
+  /// the first page of the section. If it is false, the header on the first
+  /// page of the section uses the default_header_id. If unset, the value
+  /// inherits from the previous SectionBreak's SectionStyle. If the value is
+  /// unset in the first SectionBreak, it inherits from DocumentStyle's
+  /// first_page_header_id. This property is read-only.
   core.String firstPageHeaderId;
 
   /// The bottom page margin of the section. If unset, uses margin_bottom from
-  /// DocumentStyle.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// DocumentStyle. When updating this property, setting a concrete value is
+  /// required. Unsetting this property results in a 400 bad request error.
   Dimension marginBottom;
 
   /// The footer margin of the section. If unset, uses margin_footer from
-  /// DocumentStyle. If
-  /// updated, use_custom_header_footer_margins is set
-  /// to true on DocumentStyle. The value of use_custom_header_footer_margins on
+  /// DocumentStyle. If updated, use_custom_header_footer_margins is set to true
+  /// on DocumentStyle. The value of use_custom_header_footer_margins on
   /// DocumentStyle indicates if a footer margin is being respected for this
-  /// section
-  ///
-  /// When updating this property, setting a concrete value is required.
+  /// section When updating this property, setting a concrete value is required.
   /// Unsetting this property results in a 400 bad request error.
   Dimension marginFooter;
 
   /// The header margin of the section. If unset, uses margin_header from
-  /// DocumentStyle. If
-  /// updated, use_custom_header_footer_margins is set
-  /// to true on DocumentStyle. The value of use_custom_header_footer_margins on
+  /// DocumentStyle. If updated, use_custom_header_footer_margins is set to true
+  /// on DocumentStyle. The value of use_custom_header_footer_margins on
   /// DocumentStyle indicates if a header margin is being respected for this
-  /// section.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// section. When updating this property, setting a concrete value is
+  /// required. Unsetting this property results in a 400 bad request error.
   Dimension marginHeader;
 
   /// The left page margin of the section. If unset, uses margin_left from
-  /// DocumentStyle.
-  /// Updating left margin causes columns in this section to resize. Since
-  /// the margin affects column width, it is applied before column properties.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// DocumentStyle. Updating left margin causes columns in this section to
+  /// resize. Since the margin affects column width, it is applied before column
+  /// properties. When updating this property, setting a concrete value is
+  /// required. Unsetting this property results in a 400 bad request error.
   Dimension marginLeft;
 
   /// The right page margin of the section. If unset, uses margin_right from
-  /// DocumentStyle.
-  /// Updating right margin causes columns in this section to resize. Since
-  /// the margin affects column width, it is applied before column properties.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// DocumentStyle. Updating right margin causes columns in this section to
+  /// resize. Since the margin affects column width, it is applied before column
+  /// properties. When updating this property, setting a concrete value is
+  /// required. Unsetting this property results in a 400 bad request error.
   Dimension marginRight;
 
   /// The top page margin of the section. If unset, uses margin_top from
-  /// DocumentStyle.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// DocumentStyle. When updating this property, setting a concrete value is
+  /// required. Unsetting this property results in a 400 bad request error.
   Dimension marginTop;
 
   /// The page number from which to start counting the number of pages for this
-  /// section. If unset, page numbering continues from the previous section.
-  /// If the value is unset in the first
-  /// SectionBreak, refer to DocumentStyle's
-  /// page_number_start.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// section. If unset, page numbering continues from the previous section. If
+  /// the value is unset in the first SectionBreak, refer to DocumentStyle's
+  /// page_number_start. When updating this property, setting a concrete value
+  /// is required. Unsetting this property results in a 400 bad request error.
   core.int pageNumberStart;
 
   /// Output only. The type of section.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : The section type is unspecified.
   /// - "CONTINUOUS" : The section starts immediately after the last paragraph
-  /// of the previous
-  /// section.
+  /// of the previous section.
   /// - "NEXT_PAGE" : The section starts on the next page.
   core.String sectionType;
 
   /// Indicates whether to use the first page header / footer IDs for the first
   /// page of the section. If unset, it inherits from DocumentStyle's
-  /// use_first_page_header_footer for the
-  /// first section. If the value is unset for subsequent sectors, it should be
-  /// interpreted as false.
-  ///
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// use_first_page_header_footer for the first section. If the value is unset
+  /// for subsequent sectors, it should be interpreted as false. When updating
+  /// this property, setting a concrete value is required. Unsetting this
+  /// property results in a 400 bad request error.
   core.bool useFirstPageHeaderFooter;
 
   SectionStyle();
@@ -6756,8 +6382,8 @@ class Shading {
 }
 
 /// A mask that indicates which of the fields on the base Shading have been
-/// changed in this
-/// suggested change. For any field set to true, there is a new suggested value.
+/// changed in this suggested change. For any field set to true, there is a new
+/// suggested value.
 class ShadingSuggestionState {
   /// Indicates if there was a suggested change to the Shading.
   core.bool backgroundColorSuggested;
@@ -6814,8 +6440,8 @@ class SheetsChartReference {
 }
 
 /// A mask that indicates which of the fields on the base SheetsChartReference
-/// have been changed in this
-/// suggestion. For any field set to true, there is a new suggested value.
+/// have been changed in this suggestion. For any field set to true, there is a
+/// new suggested value.
 class SheetsChartReferenceSuggestionState {
   /// Indicates if there was a suggested change to chart_id.
   core.bool chartIdSuggested;
@@ -6880,9 +6506,8 @@ class Size {
 }
 
 /// A mask that indicates which of the fields on the base Size have been changed
-/// in this suggestion.
-/// For any field set to true, the Size has
-/// a new suggested value.
+/// in this suggestion. For any field set to true, the Size has a new suggested
+/// value.
 class SizeSuggestionState {
   /// Indicates if there was a suggested change to height.
   core.bool heightSuggested;
@@ -6987,10 +6612,8 @@ class StructuralElement {
 
 /// A criteria that matches a specific string of text in the document.
 class SubstringMatchCriteria {
-  /// Indicates whether the search should respect case:
-  ///
-  /// - `True`: the search is case sensitive.
-  /// - `False`: the search is case insensitive.
+  /// Indicates whether the search should respect case: - `True`: the search is
+  /// case sensitive. - `False`: the search is case insensitive.
   core.bool matchCase;
 
   /// The text to search for in the document.
@@ -7022,14 +6645,13 @@ class SubstringMatchCriteria {
 
 /// A suggested change to a Bullet.
 class SuggestedBullet {
-  /// A Bullet that only includes the changes made
-  /// in this suggestion. This can be used along with the
-  /// bullet_suggestion_state to see which
-  /// fields have changed and their new values.
+  /// A Bullet that only includes the changes made in this suggestion. This can
+  /// be used along with the bullet_suggestion_state to see which fields have
+  /// changed and their new values.
   Bullet bullet;
 
-  /// A mask that indicates which of the fields on the base
-  /// Bullet have been changed in this suggestion.
+  /// A mask that indicates which of the fields on the base Bullet have been
+  /// changed in this suggestion.
   BulletSuggestionState bulletSuggestionState;
 
   SuggestedBullet();
@@ -7059,10 +6681,9 @@ class SuggestedBullet {
 
 /// A suggested change to the DocumentStyle.
 class SuggestedDocumentStyle {
-  /// A DocumentStyle that only includes
-  /// the changes made in this suggestion. This can be used along with the
-  /// document_style_suggestion_state
-  /// to see which fields have changed and their new values.
+  /// A DocumentStyle that only includes the changes made in this suggestion.
+  /// This can be used along with the document_style_suggestion_state to see
+  /// which fields have changed and their new values.
   DocumentStyle documentStyle;
 
   /// A mask that indicates which of the fields on the base DocumentStyle have
@@ -7097,15 +6718,14 @@ class SuggestedDocumentStyle {
 
 /// A suggested change to InlineObjectProperties.
 class SuggestedInlineObjectProperties {
-  /// An InlineObjectProperties
-  /// that only includes the changes made in this suggestion. This can be used
-  /// along with the inline_object_properties_suggestion_state
-  /// to see which fields have changed and their new values.
+  /// An InlineObjectProperties that only includes the changes made in this
+  /// suggestion. This can be used along with the
+  /// inline_object_properties_suggestion_state to see which fields have changed
+  /// and their new values.
   InlineObjectProperties inlineObjectProperties;
 
   /// A mask that indicates which of the fields on the base
-  /// InlineObjectProperties have
-  /// been changed in this suggestion.
+  /// InlineObjectProperties have been changed in this suggestion.
   InlineObjectPropertiesSuggestionState inlineObjectPropertiesSuggestionState;
 
   SuggestedInlineObjectProperties();
@@ -7138,10 +6758,9 @@ class SuggestedInlineObjectProperties {
 
 /// A suggested change to ListProperties.
 class SuggestedListProperties {
-  /// A ListProperties that only includes
-  /// the changes made in this suggestion. This can be used along with the
-  /// list_properties_suggestion_state
-  /// to see which fields have changed and their new values.
+  /// A ListProperties that only includes the changes made in this suggestion.
+  /// This can be used along with the list_properties_suggestion_state to see
+  /// which fields have changed and their new values.
   ListProperties listProperties;
 
   /// A mask that indicates which of the fields on the base ListProperties have
@@ -7177,10 +6796,9 @@ class SuggestedListProperties {
 
 /// A suggested change to the NamedStyles.
 class SuggestedNamedStyles {
-  /// A NamedStyles that only includes the
-  /// changes made in this suggestion. This can be used along with the
-  /// named_styles_suggestion_state to
-  /// see which fields have changed and their new values.
+  /// A NamedStyles that only includes the changes made in this suggestion. This
+  /// can be used along with the named_styles_suggestion_state to see which
+  /// fields have changed and their new values.
   NamedStyles namedStyles;
 
   /// A mask that indicates which of the fields on the base NamedStyles have
@@ -7213,13 +6831,11 @@ class SuggestedNamedStyles {
   }
 }
 
-/// A suggested change to a
-/// ParagraphStyle.
+/// A suggested change to a ParagraphStyle.
 class SuggestedParagraphStyle {
-  /// A ParagraphStyle that only includes
-  /// the changes made in this suggestion. This can be used along with the
-  /// paragraph_suggestion_state
-  /// to see which fields have changed and their new values.
+  /// A ParagraphStyle that only includes the changes made in this suggestion.
+  /// This can be used along with the paragraph_suggestion_state to see which
+  /// fields have changed and their new values.
   ParagraphStyle paragraphStyle;
 
   /// A mask that indicates which of the fields on the base ParagraphStyle have
@@ -7255,15 +6871,14 @@ class SuggestedParagraphStyle {
 
 /// A suggested change to PositionedObjectProperties.
 class SuggestedPositionedObjectProperties {
-  /// A PositionedObjectProperties that only includes the
-  /// changes made in this suggestion. This can be used along with the
-  /// positioned_object_properties_suggestion_state
-  /// to see which fields have changed and their new values.
+  /// A PositionedObjectProperties that only includes the changes made in this
+  /// suggestion. This can be used along with the
+  /// positioned_object_properties_suggestion_state to see which fields have
+  /// changed and their new values.
   PositionedObjectProperties positionedObjectProperties;
 
   /// A mask that indicates which of the fields on the base
-  /// PositionedObjectProperties have been changed in this
-  /// suggestion.
+  /// PositionedObjectProperties have been changed in this suggestion.
   PositionedObjectPropertiesSuggestionState
       positionedObjectPropertiesSuggestionState;
 
@@ -7298,10 +6913,9 @@ class SuggestedPositionedObjectProperties {
 
 /// A suggested change to a TableCellStyle.
 class SuggestedTableCellStyle {
-  /// A TableCellStyle that only includes
-  /// the changes made in this suggestion. This can be used along with the
-  /// table_cell_style_suggestion_state
-  /// to see which fields have changed and their new values.
+  /// A TableCellStyle that only includes the changes made in this suggestion.
+  /// This can be used along with the table_cell_style_suggestion_state to see
+  /// which fields have changed and their new values.
   TableCellStyle tableCellStyle;
 
   /// A mask that indicates which of the fields on the base TableCellStyle have
@@ -7335,13 +6949,11 @@ class SuggestedTableCellStyle {
   }
 }
 
-/// A suggested change to a
-/// TableRowStyle.
+/// A suggested change to a TableRowStyle.
 class SuggestedTableRowStyle {
-  /// A TableRowStyle that only includes
-  /// the changes made in this suggestion. This can be used along with the
-  /// table_row_style_suggestion_state
-  /// to see which fields have changed and their new values.
+  /// A TableRowStyle that only includes the changes made in this suggestion.
+  /// This can be used along with the table_row_style_suggestion_state to see
+  /// which fields have changed and their new values.
   TableRowStyle tableRowStyle;
 
   /// A mask that indicates which of the fields on the base TableRowStyle have
@@ -7376,10 +6988,9 @@ class SuggestedTableRowStyle {
 
 /// A suggested change to a TextStyle.
 class SuggestedTextStyle {
-  /// A TextStyle that only includes
-  /// the changes made in this suggestion. This can be used along with the
-  /// text_style_suggestion_state
-  /// to see which fields have changed and their new values.
+  /// A TextStyle that only includes the changes made in this suggestion. This
+  /// can be used along with the text_style_suggestion_state to see which fields
+  /// have changed and their new values.
   TextStyle textStyle;
 
   /// A mask that indicates which of the fields on the base TextStyle have been
@@ -7450,26 +7061,22 @@ class TabStop {
   }
 }
 
-/// A StructuralElement representing a
-/// table.
+/// A StructuralElement representing a table.
 class Table {
-  /// Number of columns in the table.
-  ///
-  /// It is possible for a table to be non-rectangular, so some rows may have a
-  /// different number of cells.
+  /// Number of columns in the table. It is possible for a table to be
+  /// non-rectangular, so some rows may have a different number of cells.
   core.int columns;
 
   /// Number of rows in the table.
   core.int rows;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
-  /// The suggested insertion IDs. A Table may have
-  /// multiple insertion IDs if it is a nested suggested change. If empty, then
-  /// this is not a suggested insertion.
+  /// The suggested insertion IDs. A Table may have multiple insertion IDs if it
+  /// is a nested suggested change. If empty, then this is not a suggested
+  /// insertion.
   core.List<core.String> suggestedInsertionIds;
 
   /// The contents and style of each row.
@@ -7542,13 +7149,12 @@ class TableCell {
   core.int startIndex;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
-  /// The suggested insertion IDs. A TableCell
-  /// may have multiple insertion IDs if it is a nested suggested change. If
-  /// empty, then this is not a suggested insertion.
+  /// The suggested insertion IDs. A TableCell may have multiple insertion IDs
+  /// if it is a nested suggested change. If empty, then this is not a suggested
+  /// insertion.
   core.List<core.String> suggestedInsertionIds;
 
   /// The suggested changes to the table cell style, keyed by suggestion ID.
@@ -7623,22 +7229,17 @@ class TableCell {
   }
 }
 
-/// A border around a table cell.
-///
-/// Table cell borders cannot be transparent. To hide a table cell border, make
-/// its width 0.
+/// A border around a table cell. Table cell borders cannot be transparent. To
+/// hide a table cell border, make its width 0.
 class TableCellBorder {
-  /// The color of the border.
-  ///
-  /// This color cannot be transparent.
+  /// The color of the border. This color cannot be transparent.
   OptionalColor color;
 
   /// The dash style of the border.
   /// Possible string values are:
   /// - "DASH_STYLE_UNSPECIFIED" : Unspecified dash style.
   /// - "SOLID" : Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value
-  /// 'solid'.
-  /// This is the default dash style.
+  /// 'solid'. This is the default dash style.
   /// - "DOT" : Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dot'.
   /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
@@ -7721,10 +7322,9 @@ class TableCellLocation {
   }
 }
 
-/// The style of a TableCell.
-///
-/// Inherited table cell styles are represented as unset fields in this message.
-/// A table cell style can inherit from the table's style.
+/// The style of a TableCell. Inherited table cell styles are represented as
+/// unset fields in this message. A table cell style can inherit from the
+/// table's style.
 class TableCellStyle {
   /// The background color of the cell.
   OptionalColor backgroundColor;
@@ -7741,27 +7341,21 @@ class TableCellStyle {
   /// The top border of the cell.
   TableCellBorder borderTop;
 
-  /// The column span of the cell.
-  ///
-  /// This property is read-only.
+  /// The column span of the cell. This property is read-only.
   core.int columnSpan;
 
   /// The alignment of the content in the table cell. The default alignment
   /// matches the alignment for newly created table cells in the Docs editor.
   /// Possible string values are:
   /// - "CONTENT_ALIGNMENT_UNSPECIFIED" : An unspecified content alignment. The
-  /// content alignment is inherited from
-  /// the parent if one exists.
+  /// content alignment is inherited from the parent if one exists.
   /// - "CONTENT_ALIGNMENT_UNSUPPORTED" : An unsupported content alignment.
   /// - "TOP" : An alignment that aligns the content to the top of the content
-  /// holder.
-  /// Corresponds to ECMA-376 ST_TextAnchoringType 't'.
+  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 't'.
   /// - "MIDDLE" : An alignment that aligns the content to the middle of the
-  /// content holder.
-  /// Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
+  /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
   /// - "BOTTOM" : An alignment that aligns the content to the bottom of the
-  /// content holder.
-  /// Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
+  /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
   core.String contentAlignment;
 
   /// The bottom padding of the cell.
@@ -7776,9 +7370,7 @@ class TableCellStyle {
   /// The top padding of the cell.
   Dimension paddingTop;
 
-  /// The row span of the cell.
-  ///
-  /// This property is read-only.
+  /// The row span of the cell. This property is read-only.
   core.int rowSpan;
 
   TableCellStyle();
@@ -7866,8 +7458,8 @@ class TableCellStyle {
 }
 
 /// A mask that indicates which of the fields on the base TableCellStyle have
-/// been changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// been changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class TableCellStyleSuggestionState {
   /// Indicates if there was a suggested change to background_color.
   core.bool backgroundColorSuggested;
@@ -7999,15 +7591,11 @@ class TableColumnProperties {
   /// Possible string values are:
   /// - "WIDTH_TYPE_UNSPECIFIED" : The column width type is unspecified.
   /// - "EVENLY_DISTRIBUTED" : The column width is evenly distributed among the
-  /// other evenly distrubted
-  /// columns.
-  ///
-  /// The width of the column is automatically determined and will
-  /// have an equal portion of the width remaining for the table after
-  /// accounting for all columns with specified widths.
-  /// - "FIXED_WIDTH" : A fixed column width. The
-  /// width property
-  /// contains the column's width.
+  /// other evenly distrubted columns. The width of the column is automatically
+  /// determined and will have an equal portion of the width remaining for the
+  /// table after accounting for all columns with specified widths.
+  /// - "FIXED_WIDTH" : A fixed column width. The width property contains the
+  /// column's width.
   core.String widthType;
 
   TableColumnProperties();
@@ -8034,21 +7622,18 @@ class TableColumnProperties {
   }
 }
 
-/// A StructuralElement representing
-/// a table of contents.
+/// A StructuralElement representing a table of contents.
 class TableOfContents {
   /// The content of the table of contents.
   core.List<StructuralElement> content;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
   /// The suggested insertion IDs. A TableOfContents may have multiple insertion
-  /// IDs if it
-  /// is a nested suggested change. If empty, then this is not a suggested
-  /// insertion.
+  /// IDs if it is a nested suggested change. If empty, then this is not a
+  /// suggested insertion.
   core.List<core.String> suggestedInsertionIds;
 
   TableOfContents();
@@ -8086,21 +7671,13 @@ class TableOfContents {
   }
 }
 
-/// A table range represents a reference to a subset of a table.
-///
-/// It's important to note that the cells specified by a table range do not
-/// necessarily form a rectangle. For example, let's say we have a 3 x 3 table
-/// where all the cells of the last row are merged together. The table looks
-/// like this:
-///
-///
-///      [             ]
-///
-/// A table range with table cell location = (table_start_location, row = 0,
-/// column = 0), row span = 3 and column span = 2 specifies the following cells:
-///
-///       x     x
-///      [ x    x    x ]
+/// A table range represents a reference to a subset of a table. It's important
+/// to note that the cells specified by a table range do not necessarily form a
+/// rectangle. For example, let's say we have a 3 x 3 table where all the cells
+/// of the last row are merged together. The table looks like this: [ ] A table
+/// range with table cell location = (table_start_location, row = 0, column =
+/// 0), row span = 3 and column span = 2 specifies the following cells: x x [ x
+/// x x ]
 class TableRange {
   /// The column span of the table range.
   core.int columnSpan;
@@ -8151,22 +7728,20 @@ class TableRow {
   core.int startIndex;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
-  /// The suggested insertion IDs. A TableRow
-  /// may have multiple insertion IDs if it is a nested suggested change. If
-  /// empty, then this is not a suggested insertion.
+  /// The suggested insertion IDs. A TableRow may have multiple insertion IDs if
+  /// it is a nested suggested change. If empty, then this is not a suggested
+  /// insertion.
   core.List<core.String> suggestedInsertionIds;
 
   /// The suggested style changes to this row, keyed by suggestion ID.
   core.Map<core.String, SuggestedTableRowStyle> suggestedTableRowStyleChanges;
 
-  /// The contents and style of each cell in this row.
-  ///
-  /// It is possible for a table to be non-rectangular, so some rows may have a
-  /// different number of cells than other rows in the same table.
+  /// The contents and style of each cell in this row. It is possible for a
+  /// table to be non-rectangular, so some rows may have a different number of
+  /// cells than other rows in the same table.
   core.List<TableCell> tableCells;
 
   /// The style of the table row.
@@ -8264,8 +7839,8 @@ class TableRowStyle {
 }
 
 /// A mask that indicates which of the fields on the base TableRowStyle have
-/// been changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// been changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class TableRowStyleSuggestionState {
   /// Indicates if there was a suggested change to min_row_height.
   core.bool minRowHeightSuggested;
@@ -8290,11 +7865,9 @@ class TableRowStyleSuggestionState {
 
 /// Styles that apply to a table.
 class TableStyle {
-  /// The properties of each column.
-  ///
-  /// Note that in Docs, tables contain rows and rows contain cells, similar to
-  /// HTML. So the properties for a row can be found on the row's
-  /// table_row_style.
+  /// The properties of each column. Note that in Docs, tables contain rows and
+  /// rows contain cells, similar to HTML. So the properties for a row can be
+  /// found on the row's table_row_style.
   core.List<TableColumnProperties> tableColumnProperties;
 
   TableStyle();
@@ -8319,23 +7892,20 @@ class TableStyle {
   }
 }
 
-/// A ParagraphElement that represents a
-/// run of text that all has the same styling.
+/// A ParagraphElement that represents a run of text that all has the same
+/// styling.
 class TextRun {
-  /// The text of this run.
-  ///
-  /// Any non-text elements in the run are replaced with the Unicode character
-  /// U+E907.
+  /// The text of this run. Any non-text elements in the run are replaced with
+  /// the Unicode character U+E907.
   core.String content;
 
   /// The suggested deletion IDs. If empty, then there are no suggested
-  /// deletions
-  /// of this content.
+  /// deletions of this content.
   core.List<core.String> suggestedDeletionIds;
 
-  /// The suggested insertion IDs. A TextRun may
-  /// have multiple insertion IDs if it is a nested suggested change. If empty,
-  /// then this is not a suggested insertion.
+  /// The suggested insertion IDs. A TextRun may have multiple insertion IDs if
+  /// it is a nested suggested change. If empty, then this is not a suggested
+  /// insertion.
   core.List<core.String> suggestedInsertionIds;
 
   /// The suggested text style changes to this run, keyed by suggestion ID.
@@ -8393,33 +7963,25 @@ class TextRun {
   }
 }
 
-/// Represents the styling that can be applied to text.
-///
-/// Inherited text styles are represented as unset fields in this message. A
-/// text style's parent depends on where the text style is defined:
-///
-///   * The TextStyle of text in a Paragraph
-///     inherits from the paragraph's corresponding named style type.
-///   * The TextStyle on a named style
-///     inherits from the normal text named style.
-///   * The TextStyle of the normal text named style inherits
-///     from the default text style in the Docs editor.
-///   * The TextStyle on a Paragraph element
-///     that is contained in a table may inherit its text style from the table
-///     style.
-///
-/// If the text style does not inherit from a parent, unsetting fields will
-/// revert the style to a value matching the defaults in the Docs editor.
+/// Represents the styling that can be applied to text. Inherited text styles
+/// are represented as unset fields in this message. A text style's parent
+/// depends on where the text style is defined: * The TextStyle of text in a
+/// Paragraph inherits from the paragraph's corresponding named style type. *
+/// The TextStyle on a named style inherits from the normal text named style. *
+/// The TextStyle of the normal text named style inherits from the default text
+/// style in the Docs editor. * The TextStyle on a Paragraph element that is
+/// contained in a table may inherit its text style from the table style. If the
+/// text style does not inherit from a parent, unsetting fields will revert the
+/// style to a value matching the defaults in the Docs editor.
 class TextStyle {
   /// The background color of the text. If set, the color is either an RGB color
   /// or transparent, depending on the `color` field.
   OptionalColor backgroundColor;
 
-  /// The text's vertical offset from its normal position.
-  ///
-  /// Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically
-  /// rendered in a smaller font size, computed based on the `font_size` field.
-  /// The `font_size` itself is not affected by changes in this field.
+  /// The text's vertical offset from its normal position. Text with
+  /// `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in
+  /// a smaller font size, computed based on the `font_size` field. The
+  /// `font_size` itself is not affected by changes in this field.
   /// Possible string values are:
   /// - "BASELINE_OFFSET_UNSPECIFIED" : The text's baseline offset is inherited
   /// from the parent.
@@ -8442,26 +8004,20 @@ class TextStyle {
   core.bool italic;
 
   /// The hyperlink destination of the text. If unset, there is no link. Links
-  /// are not inherited from parent text.
-  ///
-  /// Changing the link in an update request causes some other changes to the
-  /// text style of the range:
-  ///
-  /// * When setting a link, the text foreground color will be updated to the
-  ///   default link color and the text will be underlined. If these fields are
-  ///   modified in the same request, those values will be used instead of the
-  ///   link defaults.
-  /// * Setting a link on a text range that overlaps with an existing link will
-  ///   also update the existing link to point to the new URL.
-  /// * Links are not settable on newline characters. As a result, setting a
-  /// link
-  /// on a text range that crosses a paragraph boundary, such as `"ABC\n123"`,
-  ///   will separate the newline character(s) into their own text runs. The
-  /// link will be applied separately to the runs before and after the newline.
-  /// * Removing a link will update the text style of the range to match the
-  /// style of the preceding text (or the default text styles if the preceding
-  ///   text is another link) unless different styles are being set in the same
-  ///   request.
+  /// are not inherited from parent text. Changing the link in an update request
+  /// causes some other changes to the text style of the range: * When setting a
+  /// link, the text foreground color will be updated to the default link color
+  /// and the text will be underlined. If these fields are modified in the same
+  /// request, those values will be used instead of the link defaults. * Setting
+  /// a link on a text range that overlaps with an existing link will also
+  /// update the existing link to point to the new URL. * Links are not settable
+  /// on newline characters. As a result, setting a link on a text range that
+  /// crosses a paragraph boundary, such as `"ABC\n123"`, will separate the
+  /// newline character(s) into their own text runs. The link will be applied
+  /// separately to the runs before and after the newline. * Removing a link
+  /// will update the text style of the range to match the style of the
+  /// preceding text (or the default text styles if the preceding text is
+  /// another link) unless different styles are being set in the same request.
   Link link;
 
   /// Whether or not the text is in small capital letters.
@@ -8473,17 +8029,13 @@ class TextStyle {
   /// Whether or not the text is underlined.
   core.bool underline;
 
-  /// The font family and rendered weight of the text.
-  ///
-  /// If an update request specifies values for both `weighted_font_family` and
-  /// `bold`, the `weighted_font_family` is applied first, then `bold`.
-  ///
-  /// If `weighted_font_family#weight` is not set, it defaults to `400`.
-  ///
-  /// If `weighted_font_family` is set, then `weighted_font_family#font_family`
+  /// The font family and rendered weight of the text. If an update request
+  /// specifies values for both `weighted_font_family` and `bold`, the
+  /// `weighted_font_family` is applied first, then `bold`. If
+  /// `weighted_font_family#weight` is not set, it defaults to `400`. If
+  /// `weighted_font_family` is set, then `weighted_font_family#font_family`
   /// must also be set with a non-empty value. Otherwise, a 400 bad request
-  /// error
-  /// is returned.
+  /// error is returned.
   WeightedFontFamily weightedFontFamily;
 
   TextStyle();
@@ -8566,8 +8118,8 @@ class TextStyle {
 }
 
 /// A mask that indicates which of the fields on the base TextStyle have been
-/// changed in this suggestion.
-/// For any field set to true, there is a new suggested value.
+/// changed in this suggestion. For any field set to true, there is a new
+/// suggested value.
 class TextStyleSuggestionState {
   /// Indicates if there was a suggested change to background_color.
   core.bool backgroundColorSuggested;
@@ -8682,17 +8234,13 @@ class TextStyleSuggestionState {
 
 /// Unmerges cells in a Table.
 class UnmergeTableCellsRequest {
-  /// The table range specifying which cells of the table to unmerge.
-  ///
-  /// All merged cells in this range will be unmerged, and cells that are
-  /// already
-  /// unmerged will not be affected. If the range has no merged cells, the
-  /// request will do nothing.
-  ///
-  /// If there is text in any of the merged cells, the text will remain in the
-  /// "head" cell of the resulting block of unmerged cells. The "head" cell is
-  /// the upper-left cell when the content direction is from left to right, and
-  /// the upper-right otherwise.
+  /// The table range specifying which cells of the table to unmerge. All merged
+  /// cells in this range will be unmerged, and cells that are already unmerged
+  /// will not be affected. If the range has no merged cells, the request will
+  /// do nothing. If there is text in any of the merged cells, the text will
+  /// remain in the "head" cell of the resulting block of unmerged cells. The
+  /// "head" cell is the upper-left cell when the content direction is from left
+  /// to right, and the upper-right otherwise.
   TableRange tableRange;
 
   UnmergeTableCellsRequest();
@@ -8715,20 +8263,15 @@ class UnmergeTableCellsRequest {
 
 /// Updates the DocumentStyle.
 class UpdateDocumentStyleRequest {
-  /// The styles to set on the document.
-  ///
-  /// Certain document style changes may cause other changes in order to mirror
-  /// the behavior of the Docs editor. See the documentation of DocumentStyle
-  /// for more information.
+  /// The styles to set on the document. Certain document style changes may
+  /// cause other changes in order to mirror the behavior of the Docs editor.
+  /// See the documentation of DocumentStyle for more information.
   DocumentStyle documentStyle;
 
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `document_style` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the background, set `fields` to `"background"`.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `document_style` is implied and should not be specified. A single
+  /// `"*"` can be used as short-hand for listing every field. For example to
+  /// update the background, set `fields` to `"background"`.
   core.String fields;
 
   UpdateDocumentStyleRequest();
@@ -8757,24 +8300,16 @@ class UpdateDocumentStyleRequest {
 
 /// Update the styling of all paragraphs that overlap with the given range.
 class UpdateParagraphStyleRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `paragraph_style` is
-  /// implied
-  /// and should not be specified.
-  ///
-  /// For example, to update the paragraph style's alignment property, set
-  /// `fields` to `"alignment"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `paragraph_style` is implied and should not be specified. For
+  /// example, to update the paragraph style's alignment property, set `fields`
+  /// to `"alignment"`. To reset a property to its default value, include its
+  /// field name in the field mask but leave the field itself unset.
   core.String fields;
 
-  /// The styles to set on the paragraphs.
-  ///
-  /// Certain paragraph style changes may cause other changes in order to mirror
-  /// the behavior of the Docs editor. See the documentation of ParagraphStyle
-  /// for more information.
+  /// The styles to set on the paragraphs. Certain paragraph style changes may
+  /// cause other changes in order to mirror the behavior of the Docs editor.
+  /// See the documentation of ParagraphStyle for more information.
   ParagraphStyle paragraphStyle;
 
   /// The range overlapping the paragraphs to style.
@@ -8812,26 +8347,19 @@ class UpdateParagraphStyleRequest {
 
 /// Updates the SectionStyle.
 class UpdateSectionStyleRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `section_style` is
-  /// implied and must not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the left margin, set `fields` to `"margin_left"`.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `section_style` is implied and must not be specified. A single
+  /// `"*"` can be used as short-hand for listing every field. For example to
+  /// update the left margin, set `fields` to `"margin_left"`.
   core.String fields;
 
-  /// The range overlapping the sections to style.
-  ///
-  /// Because section breaks can only be inserted inside the body, the segment
-  /// ID field must be empty.
+  /// The range overlapping the sections to style. Because section breaks can
+  /// only be inserted inside the body, the segment ID field must be empty.
   Range range;
 
-  /// The styles to  be set on the section.
-  ///
-  /// Certain section style changes may cause other changes in order to mirror
-  /// the behavior of the Docs editor. See the documentation of SectionStyle for
-  /// more information.
+  /// The styles to be set on the section. Certain section style changes may
+  /// cause other changes in order to mirror the behavior of the Docs editor.
+  /// See the documentation of SectionStyle for more information.
   SectionStyle sectionStyle;
 
   UpdateSectionStyleRequest();
@@ -8866,34 +8394,21 @@ class UpdateSectionStyleRequest {
 
 /// Updates the style of a range of table cells.
 class UpdateTableCellStyleRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `tableCellStyle` is implied
-  /// and should not be specified. A single `"*"` can be used as short-hand for
-  /// listing every field.
-  ///
-  /// For example to update the table cell background color, set `fields` to
-  /// `"backgroundColor"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `tableCellStyle` is implied and should not be specified. A single
+  /// `"*"` can be used as short-hand for listing every field. For example to
+  /// update the table cell background color, set `fields` to
+  /// `"backgroundColor"`. To reset a property to its default value, include its
+  /// field name in the field mask but leave the field itself unset.
   core.String fields;
 
-  /// The style to set on the table cells.
-  ///
-  /// When updating borders, if a cell shares a border with an adjacent cell,
-  /// the
-  /// corresponding border property of the adjacent cell is updated as well.
-  /// Borders that are merged and invisible are not updated.
-  ///
-  /// Since updating a border shared by adjacent cells in the same request can
-  /// cause conflicting border updates, border updates are applied in the
-  /// following order:
-  ///
-  /// - `border_right`
-  /// - `border_left`
-  /// - `border_bottom`
-  /// - `border_top`
+  /// The style to set on the table cells. When updating borders, if a cell
+  /// shares a border with an adjacent cell, the corresponding border property
+  /// of the adjacent cell is updated as well. Borders that are merged and
+  /// invisible are not updated. Since updating a border shared by adjacent
+  /// cells in the same request can cause conflicting border updates, border
+  /// updates are applied in the following order: - `border_right` -
+  /// `border_left` - `border_bottom` - `border_top`
   TableCellStyle tableCellStyle;
 
   /// The table range representing the subset of the table to which the updates
@@ -8940,27 +8455,21 @@ class UpdateTableCellStyleRequest {
   }
 }
 
-/// Updates the
-/// TableColumnProperties of columns
-/// in a table.
+/// Updates the TableColumnProperties of columns in a table.
 class UpdateTableColumnPropertiesRequest {
   /// The list of zero-based column indices whose property should be updated. If
   /// no indices are specified, all columns will be updated.
   core.List<core.int> columnIndices;
 
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `tableColumnProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the column width, set `fields` to `"width"`.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `tableColumnProperties` is implied and should not be specified. A
+  /// single `"*"` can be used as short-hand for listing every field. For
+  /// example to update the column width, set `fields` to `"width"`.
   core.String fields;
 
-  /// The table column properties to update.
-  ///
-  /// If the value of `table_column_properties#width` is less than 5 points
-  /// (5/72 inch), a 400 bad request error is returned.
+  /// The table column properties to update. If the value of
+  /// `table_column_properties#width` is less than 5 points (5/72 inch), a 400
+  /// bad request error is returned.
   TableColumnProperties tableColumnProperties;
 
   /// The location where the table starts in the document.
@@ -9003,17 +8512,12 @@ class UpdateTableColumnPropertiesRequest {
   }
 }
 
-/// Updates the TableRowStyle of rows in a
-/// table.
+/// Updates the TableRowStyle of rows in a table.
 class UpdateTableRowStyleRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `tableRowStyle` is implied
-  /// and should not be specified. A single `"*"` can be used as short-hand for
-  /// listing every field.
-  ///
-  /// For example to update the minimum row height, set `fields` to
-  /// `"min_row_height"`.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `tableRowStyle` is implied and should not be specified. A single
+  /// `"*"` can be used as short-hand for listing every field. For example to
+  /// update the minimum row height, set `fields` to `"min_row_height"`.
   core.String fields;
 
   /// The list of zero-based row indices whose style should be updated. If no
@@ -9064,36 +8568,24 @@ class UpdateTableRowStyleRequest {
 
 /// Update the styling of text.
 class UpdateTextStyleRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `text_style` is implied and
-  /// should not be specified. A single `"*"` can be used as short-hand for
-  /// listing every field.
-  ///
-  /// For example, to update the text style to bold, set `fields` to `"bold"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `text_style` is implied and should not be specified. A single
+  /// `"*"` can be used as short-hand for listing every field. For example, to
+  /// update the text style to bold, set `fields` to `"bold"`. To reset a
+  /// property to its default value, include its field name in the field mask
+  /// but leave the field itself unset.
   core.String fields;
 
-  /// The range of text to style.
-  ///
-  /// The range may be extended to include adjacent newlines.
-  ///
-  /// If the range fully contains a paragraph belonging to a list, the
-  /// paragraph's bullet is also updated with the matching text style.
-  ///
-  /// Ranges cannot be inserted inside a relative UpdateTextStyleRequest.
+  /// The range of text to style. The range may be extended to include adjacent
+  /// newlines. If the range fully contains a paragraph belonging to a list, the
+  /// paragraph's bullet is also updated with the matching text style. Ranges
+  /// cannot be inserted inside a relative UpdateTextStyleRequest.
   Range range;
 
-  /// The styles to set on the text.
-  ///
-  /// If the value for a particular style matches that of the parent, that style
-  /// will be set to inherit.
-  ///
-  /// Certain text style changes may cause other changes in order to to mirror
-  /// the behavior of the Docs editor. See the documentation of
-  /// TextStyle for more information.
+  /// The styles to set on the text. If the value for a particular style matches
+  /// that of the parent, that style will be set to inherit. Certain text style
+  /// changes may cause other changes in order to to mirror the behavior of the
+  /// Docs editor. See the documentation of TextStyle for more information.
   TextStyle textStyle;
 
   UpdateTextStyleRequest();
@@ -9128,33 +8620,25 @@ class UpdateTextStyleRequest {
 
 /// Represents a font family and weight of text.
 class WeightedFontFamily {
-  /// The font family of the text.
-  ///
-  /// The font family can be any font from the Font menu in Docs or from
-  /// [Google Fonts] (https://fonts.google.com/). If the font name is
-  /// unrecognized, the text is rendered in `Arial`.
+  /// The font family of the text. The font family can be any font from the Font
+  /// menu in Docs or from [Google Fonts] (https://fonts.google.com/). If the
+  /// font name is unrecognized, the text is rendered in `Arial`.
   core.String fontFamily;
 
   /// The weight of the font. This field can have any value that is a multiple
-  /// of
-  /// `100` between `100` and `900`, inclusive. This range corresponds to the
-  /// numerical values described in the CSS 2.1 Specification,
-  /// [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with
-  /// non-numerical values disallowed.
-  ///
-  /// The default value is `400` ("normal").
-  ///
+  /// of `100` between `100` and `900`, inclusive. This range corresponds to the
+  /// numerical values described in the CSS 2.1 Specification, [section
+  /// 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with
+  /// non-numerical values disallowed. The default value is `400` ("normal").
   /// The font weight makes up just one component of the rendered font weight.
   /// The rendered weight is determined by a combination of the `weight` and the
-  /// text style's resolved `bold` value, after accounting for inheritance:
-  ///
-  /// * If the text is bold and the weight is less than `400`, the rendered
-  ///   weight is 400.
-  /// * If the text is bold and the weight is greater than or equal to `400` but
-  ///   is less than `700`, the rendered weight is `700`.
-  /// * If the weight is greater than or equal to `700`, the rendered weight is
-  ///   equal to the weight.
-  /// * If the text is not bold, the rendered weight is equal to the weight.
+  /// text style's resolved `bold` value, after accounting for inheritance: * If
+  /// the text is bold and the weight is less than `400`, the rendered weight is
+  /// 400. * If the text is bold and the weight is greater than or equal to
+  /// `400` but is less than `700`, the rendered weight is `700`. * If the
+  /// weight is greater than or equal to `700`, the rendered weight is equal to
+  /// the weight. * If the text is not bold, the rendered weight is equal to the
+  /// weight.
   core.int weight;
 
   WeightedFontFamily();
@@ -9183,33 +8667,28 @@ class WeightedFontFamily {
 
 /// Provides control over how write requests are executed.
 class WriteControl {
-  /// The revision ID of the
-  /// document that the write request will be applied to. If this is not the
-  /// latest revision of the document, the request will not be processed and
-  /// will return a 400 bad request error.
-  ///
-  /// When a required revision ID is returned in a response, it indicates the
-  /// revision ID of the document after the request was applied.
+  /// The revision ID of the document that the write request will be applied to.
+  /// If this is not the latest revision of the document, the request will not
+  /// be processed and will return a 400 bad request error. When a required
+  /// revision ID is returned in a response, it indicates the revision ID of the
+  /// document after the request was applied.
   core.String requiredRevisionId;
 
-  /// The target revision ID of the
-  /// document that the write request will be applied to.
-  ///
-  /// If collaborator changes have occurred after the document was read using
-  /// the API, the changes produced by this write request will be transformed
-  /// against the collaborator changes. This results in a new revision of the
-  /// document which incorporates both the changes in the request and the
-  /// collaborator changes, and the Docs server will resolve conflicting
-  /// changes. When using `target_revision_id`, the API client can be thought
-  /// of as another collaborator of the document.
-  ///
-  /// The target revision ID may only be used to write to recent versions of a
-  /// document. If the target revision is too far behind the latest revision,
-  /// the request will not be processed and will return a 400 bad request error
-  /// and the request should be retried after reading the latest version of the
-  /// document. In most cases a `revision_id` will remain valid for use as a
-  /// target revision for several minutes after it is read, but for
-  /// frequently-edited documents this window may be shorter.
+  /// The target revision ID of the document that the write request will be
+  /// applied to. If collaborator changes have occurred after the document was
+  /// read using the API, the changes produced by this write request will be
+  /// transformed against the collaborator changes. This results in a new
+  /// revision of the document which incorporates both the changes in the
+  /// request and the collaborator changes, and the Docs server will resolve
+  /// conflicting changes. When using `target_revision_id`, the API client can
+  /// be thought of as another collaborator of the document. The target revision
+  /// ID may only be used to write to recent versions of a document. If the
+  /// target revision is too far behind the latest revision, the request will
+  /// not be processed and will return a 400 bad request error and the request
+  /// should be retried after reading the latest version of the document. In
+  /// most cases a `revision_id` will remain valid for use as a target revision
+  /// for several minutes after it is read, but for frequently-edited documents
+  /// this window may be shorter.
   core.String targetRevisionId;
 
   WriteControl();

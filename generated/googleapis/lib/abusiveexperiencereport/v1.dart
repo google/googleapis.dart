@@ -41,9 +41,7 @@ class SitesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the site whose summary to get, e.g.
-  /// `sites/http%3A%2F%2Fwww.google.com%2F`.
-  ///
-  /// Format: `sites/{site}`
+  /// `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}`
   /// Value must have pattern "^sites/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -138,11 +136,7 @@ class SiteSummaryResponse {
 
   /// The time at which
   /// [enforcement](https://support.google.com/webtools/answer/7538608) against
-  /// the site began or will begin.
-  ///
-  /// Not set when the
-  /// filter_status
-  /// is OFF.
+  /// the site began or will begin. Not set when the filter_status is OFF.
   core.String enforcementTime;
 
   /// The site's [enforcement
@@ -158,15 +152,11 @@ class SiteSummaryResponse {
   /// The time at which the site's status last changed.
   core.String lastChangeTime;
 
-  /// A link to the full Abusive Experience Report for the site.
-  ///
-  /// Not set in
-  /// ViolatingSitesResponse.
-  ///
-  /// Note that you must complete the [Search Console verification
+  /// A link to the full Abusive Experience Report for the site. Not set in
+  /// ViolatingSitesResponse. Note that you must complete the [Search Console
+  /// verification
   /// process](https://support.google.com/webmasters/answer/9008080) for the
-  /// site
-  /// before you can access the full report.
+  /// site before you can access the full report.
   core.String reportUrl;
 
   /// The name of the reviewed site, e.g. `google.com`.

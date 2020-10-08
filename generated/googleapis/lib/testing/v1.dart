@@ -107,15 +107,12 @@ class ProjectsTestMatricesResourceApi {
   ProjectsTestMatricesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Cancels unfinished test executions in a test matrix.
-  /// This call returns immediately and cancellation proceeds asychronously.
-  /// If the matrix is already final, this operation will have no effect.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to read project
-  /// - INVALID_ARGUMENT - if the request is malformed
-  /// - NOT_FOUND - if the Test Matrix does not exist
+  /// Cancels unfinished test executions in a test matrix. This call returns
+  /// immediately and cancellation proceeds asynchronously. If the matrix is
+  /// already final, this operation will have no effect. May return any of the
+  /// following canonical error codes: - PERMISSION_DENIED - if the user is not
+  /// authorized to read project - INVALID_ARGUMENT - if the request is
+  /// malformed - NOT_FOUND - if the Test Matrix does not exist
   ///
   /// Request parameters:
   ///
@@ -171,13 +168,11 @@ class ProjectsTestMatricesResourceApi {
 
   /// Creates and runs a matrix of tests according to the given specifications.
   /// Unsupported environments will be returned in the state UNSUPPORTED.
-  /// Matrices are limited to at most 200 supported executions.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project
-  /// - INVALID_ARGUMENT - if the request is malformed or if the matrix expands
-  ///                      to more than 200 supported executions
+  /// Matrices are limited to at most 200 supported executions. May return any
+  /// of the following canonical error codes: - PERMISSION_DENIED - if the user
+  /// is not authorized to write to project - INVALID_ARGUMENT - if the request
+  /// is malformed or if the matrix expands to more than 200 supported
+  /// executions
   ///
   /// [request] - The metadata request object.
   ///
@@ -185,12 +180,9 @@ class ProjectsTestMatricesResourceApi {
   ///
   /// [projectId] - The GCE project under which this job will run.
   ///
-  /// [requestId] - A string id used to detect duplicated requests.
-  /// Ids are automatically scoped to a project, so
-  /// users should ensure the ID is unique per-project.
-  /// A UUID is recommended.
-  ///
-  /// Optional, but strongly recommended.
+  /// [requestId] - A string id used to detect duplicated requests. Ids are
+  /// automatically scoped to a project, so users should ensure the ID is unique
+  /// per-project. A UUID is recommended. Optional, but strongly recommended.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -237,13 +229,10 @@ class ProjectsTestMatricesResourceApi {
     return _response.then((data) => new TestMatrix.fromJson(data));
   }
 
-  /// Checks the status of a test matrix.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to read project
-  /// - INVALID_ARGUMENT - if the request is malformed
-  /// - NOT_FOUND - if the Test Matrix does not exist
+  /// Checks the status of a test matrix. May return any of the following
+  /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized
+  /// to read project - INVALID_ARGUMENT - if the request is malformed -
+  /// NOT_FOUND - if the Test Matrix does not exist
   ///
   /// Request parameters:
   ///
@@ -301,24 +290,25 @@ class TestEnvironmentCatalogResourceApi {
   TestEnvironmentCatalogResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the catalog of supported test environments.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - INVALID_ARGUMENT - if the request is malformed
-  /// - NOT_FOUND - if the environment type does not exist
-  /// - INTERNAL - if an internal error occurred
+  /// Gets the catalog of supported test environments. May return any of the
+  /// following canonical error codes: - INVALID_ARGUMENT - if the request is
+  /// malformed - NOT_FOUND - if the environment type does not exist - INTERNAL
+  /// - if an internal error occurred
   ///
   /// Request parameters:
   ///
   /// [environmentType] - Required. The type of environment that should be
   /// listed.
   /// Possible string values are:
-  /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : A ENVIRONMENT_TYPE_UNSPECIFIED.
-  /// - "ANDROID" : A ANDROID.
-  /// - "IOS" : A IOS.
-  /// - "NETWORK_CONFIGURATION" : A NETWORK_CONFIGURATION.
-  /// - "PROVIDED_SOFTWARE" : A PROVIDED_SOFTWARE.
+  /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : Do not use. For proto versioning only.
+  /// - "ANDROID" : A device running a version of the Android OS.
+  /// - "IOS" : A device running a version of iOS.
+  /// - "NETWORK_CONFIGURATION" : A network configuration to use when running a
+  /// test.
+  /// - "PROVIDED_SOFTWARE" : The software environment provided by
+  /// TestExecutionService.
+  /// - "DEVICE_IP_BLOCKS" : The IP blocks used by devices in the test
+  /// environment.
   ///
   /// [projectId] - For authorization, the cloud project requesting the
   /// TestEnvironmentCatalog.
@@ -390,20 +380,20 @@ class Account {
 
 /// A single Android device.
 class AndroidDevice {
-  /// Required. The id of the Android device to be used.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The id of the Android device to be used. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.String androidModelId;
 
-  /// Required. The id of the Android OS version to be used.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The id of the Android OS version to be used. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.String androidVersionId;
 
-  /// Required. The locale the test device used for testing.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The locale the test device used for testing. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.String locale;
 
-  /// Required. How the device is oriented during the test.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. How the device is oriented during the test. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.String orientation;
 
   AndroidDevice();
@@ -515,14 +505,11 @@ class AndroidDeviceList {
 }
 
 /// A test of an Android application that can control an Android component
-/// independently of its normal lifecycle.
-/// Android instrumentation tests run an application APK and test APK inside the
-/// same process on a virtual or physical AndroidDevice.  They also specify
-/// a test runner class, such as com.google.GoogleTestRunner, which can vary
-/// on the specific instrumentation framework chosen.
-///
-/// See <http://developer.android.com/tools/testing/testing_android.html> for
-/// more information on types of Android tests.
+/// independently of its normal lifecycle. Android instrumentation tests run an
+/// application APK and test APK inside the same process on a virtual or
+/// physical AndroidDevice. They also specify a test runner class, such as
+/// com.google.GoogleTestRunner, which can vary on the specific instrumentation
+/// framework chosen. See for more information on types of Android tests.
 class AndroidInstrumentationTest {
   /// The APK for the application under test.
   FileReference appApk;
@@ -530,34 +517,25 @@ class AndroidInstrumentationTest {
   /// A multi-apk app bundle for the application under test.
   AppBundle appBundle;
 
-  /// The java package for the application under test.
-  /// The default value is determined by examining the application's manifest.
+  /// The java package for the application under test. The default value is
+  /// determined by examining the application's manifest.
   core.String appPackageId;
 
   /// The option of whether running each test within its own invocation of
-  /// instrumentation with Android Test Orchestrator or not.
-  /// ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or
-  /// higher! **
-  /// Orchestrator offers the following benefits:
-  ///  - No shared state
-  ///  - Crashes are isolated
-  ///  - Logs are scoped per test
-  ///
-  /// See
-  /// <https://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator>
-  /// for more information about Android Test Orchestrator.
-  ///
-  /// If not set, the test will be run without the orchestrator.
+  /// instrumentation with Android Test Orchestrator or not. ** Orchestrator is
+  /// only compatible with AndroidJUnitRunner version 1.0 or higher! **
+  /// Orchestrator offers the following benefits: - No shared state - Crashes
+  /// are isolated - Logs are scoped per test See for more information about
+  /// Android Test Orchestrator. If not set, the test will be run without the
+  /// orchestrator.
   /// Possible string values are:
   /// - "ORCHESTRATOR_OPTION_UNSPECIFIED" : Default value: the server will
-  /// choose the mode. Currently implies that
-  /// the test will run without the orchestrator. In the future,
-  /// all instrumentation tests will be run with the orchestrator.
-  /// Using the orchestrator is highly encouraged because of all the benefits it
-  /// offers.
-  /// - "USE_ORCHESTRATOR" : Run test using orchestrator.
-  /// ** Only compatible with AndroidJUnitRunner version 1.0 or higher! **
-  /// Recommended.
+  /// choose the mode. Currently implies that the test will run without the
+  /// orchestrator. In the future, all instrumentation tests will be run with
+  /// the orchestrator. Using the orchestrator is highly encouraged because of
+  /// all the benefits it offers.
+  /// - "USE_ORCHESTRATOR" : Run test using orchestrator. ** Only compatible
+  /// with AndroidJUnitRunner version 1.0 or higher! ** Recommended.
   /// - "DO_NOT_USE_ORCHESTRATOR" : Run test without using orchestrator.
   core.String orchestratorOption;
 
@@ -567,21 +545,18 @@ class AndroidInstrumentationTest {
   /// Required. The APK containing the test code to be executed.
   FileReference testApk;
 
-  /// The java package for the test to be executed.
-  /// The default value is determined by examining the application's manifest.
+  /// The java package for the test to be executed. The default value is
+  /// determined by examining the application's manifest.
   core.String testPackageId;
 
-  /// The InstrumentationTestRunner class.
-  /// The default value is determined by examining the application's manifest.
+  /// The InstrumentationTestRunner class. The default value is determined by
+  /// examining the application's manifest.
   core.String testRunnerClass;
 
   /// Each target must be fully qualified with the package name or class name,
-  /// in one of these formats:
-  ///  - "package package_name"
-  ///  - "class package_name.class_name"
-  ///  - "class package_name.class_name#method_name"
-  ///
-  /// If empty, all targets in the module will be run.
+  /// in one of these formats: - "package package_name" - "class
+  /// package_name.class_name" - "class package_name.class_name#method_name" If
+  /// empty, all targets in the module will be run.
   core.List<core.String> testTargets;
 
   AndroidInstrumentationTest();
@@ -650,27 +625,26 @@ class AndroidInstrumentationTest {
   }
 }
 
-/// A set of Android device configuration permutations is defined by the
-/// the cross-product of the given axes. Internally, the given AndroidMatrix
-/// will be expanded into a set of AndroidDevices.
-///
-/// Only supported permutations will be instantiated.  Invalid permutations
-/// (e.g., incompatible models/versions) are ignored.
+/// A set of Android device configuration permutations is defined by the the
+/// cross-product of the given axes. Internally, the given AndroidMatrix will be
+/// expanded into a set of AndroidDevices. Only supported permutations will be
+/// instantiated. Invalid permutations (e.g., incompatible models/versions) are
+/// ignored.
 class AndroidMatrix {
-  /// Required. The ids of the set of Android device to be used.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The ids of the set of Android device to be used. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.List<core.String> androidModelIds;
 
-  /// Required. The ids of the set of Android OS version to be used.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The ids of the set of Android OS version to be used. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.List<core.String> androidVersionIds;
 
-  /// Required. The set of locales the test device will enable for testing.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The set of locales the test device will enable for testing. Use
+  /// the TestEnvironmentDiscoveryService to get supported options.
   core.List<core.String> locales;
 
-  /// Required. The set of orientations to test with.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The set of orientations to test with. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.List<core.String> orientations;
 
   AndroidMatrix();
@@ -713,19 +687,22 @@ class AndroidMatrix {
 
 /// A description of an Android device tests may be run on.
 class AndroidModel {
-  /// The company that this device is branded with.
-  /// Example: "Google", "Samsung".
+  /// The company that this device is branded with. Example: "Google",
+  /// "Samsung".
   core.String brand;
 
-  /// The name of the industrial design.
-  /// This corresponds to android.os.Build.DEVICE.
+  /// The name of the industrial design. This corresponds to
+  /// android.os.Build.DEVICE.
   core.String codename;
 
   /// Whether this device is virtual or physical.
   /// Possible string values are:
-  /// - "DEVICE_FORM_UNSPECIFIED" : Do not use.  For proto versioning only.
-  /// - "VIRTUAL" : A software stack that simulates the device.
+  /// - "DEVICE_FORM_UNSPECIFIED" : Do not use. For proto versioning only.
+  /// - "VIRTUAL" : Android virtual device using Compute Engine native
+  /// virtualization. Firebase Test Lab only.
   /// - "PHYSICAL" : Actual hardware.
+  /// - "EMULATOR" : Android virtual device using emulator in nested
+  /// virtualization. Equivalent to Android Studio.
   core.String form;
 
   /// Whether this device is a phone, tablet, wearable, etc.
@@ -737,8 +714,8 @@ class AndroidModel {
   /// - "WEARABLE" : This device has the shape of a watch or other wearable.
   core.String formFactor;
 
-  /// The unique opaque id for this model.
-  /// Use this for invoking the TestExecutionService.
+  /// The unique opaque id for this model. Use this for invoking the
+  /// TestExecutionService.
   core.String id;
 
   /// True if and only if tests with this model are recorded by stitching
@@ -748,12 +725,11 @@ class AndroidModel {
   /// The manufacturer of this device.
   core.String manufacturer;
 
-  /// The human-readable marketing name for this device model.
-  /// Examples: "Nexus 5", "Galaxy S5".
+  /// The human-readable marketing name for this device model. Examples: "Nexus
+  /// 5", "Galaxy S5".
   core.String name;
 
-  /// Screen density in DPI.
-  /// This corresponds to ro.sf.lcd_density
+  /// Screen density in DPI. This corresponds to ro.sf.lcd_density
   core.int screenDensity;
 
   /// Screen size in the horizontal (X) dimension measured in pixels.
@@ -762,24 +738,22 @@ class AndroidModel {
   /// Screen size in the vertical (Y) dimension measured in pixels.
   core.int screenY;
 
-  /// The list of supported ABIs for this device.
-  /// This corresponds to either android.os.Build.SUPPORTED_ABIS (for API level
-  /// 21 and above) or android.os.Build.CPU_ABI/CPU_ABI2.
-  /// The most preferred ABI is the first element in the list.
-  ///
-  /// Elements are optionally prefixed by "version_id:" (where version_id is
-  /// the id of an AndroidVersion), denoting an ABI that is supported only on
-  /// a particular version.
+  /// The list of supported ABIs for this device. This corresponds to either
+  /// android.os.Build.SUPPORTED_ABIS (for API level 21 and above) or
+  /// android.os.Build.CPU_ABI/CPU_ABI2. The most preferred ABI is the first
+  /// element in the list. Elements are optionally prefixed by "version_id:"
+  /// (where version_id is the id of an AndroidVersion), denoting an ABI that is
+  /// supported only on a particular version.
   core.List<core.String> supportedAbis;
 
   /// The set of Android versions this device supports.
   core.List<core.String> supportedVersionIds;
 
-  /// Tags for this dimension.
-  /// Examples: "default", "preview", "deprecated".
+  /// Tags for this dimension. Examples: "default", "preview", "deprecated".
   core.List<core.String> tags;
 
-  /// URL of a thumbnail image of the device.
+  /// URL of a thumbnail image (photo) of the device. e.g.
+  /// https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...
   core.String thumbnailUrl;
 
   AndroidModel();
@@ -886,7 +860,8 @@ class AndroidModel {
 }
 
 /// A test of an android application that explores the application on a virtual
-/// or physical Android Device, finding culprits and crashes as it goes.
+/// or physical Android Device, finding culprits and crashes as it goes. Next
+/// tag: 29
 class AndroidRoboTest {
   /// The APK for the application under test.
   FileReference appApk;
@@ -897,33 +872,31 @@ class AndroidRoboTest {
   /// The initial activity that should be used to start the app.
   core.String appInitialActivity;
 
-  /// The java package for the application under test.
-  /// The default value is determined by examining the application's manifest.
+  /// The java package for the application under test. The default value is
+  /// determined by examining the application's manifest.
   core.String appPackageId;
 
   /// The max depth of the traversal stack Robo can explore. Needs to be at
-  /// least
-  /// 2 to make Robo explore the app beyond the first activity.
-  /// Default is 50.
+  /// least 2 to make Robo explore the app beyond the first activity. Default is
+  /// 50.
   core.int maxDepth;
 
-  /// The max number of steps Robo can execute.
-  /// Default is no limit.
+  /// The max number of steps Robo can execute. Default is no limit.
   core.int maxSteps;
 
-  /// A set of directives Robo should apply during the crawl.
-  /// This allows users to customize the crawl. For example, the username and
-  /// password for a test account can be provided.
+  /// A set of directives Robo should apply during the crawl. This allows users
+  /// to customize the crawl. For example, the username and password for a test
+  /// account can be provided.
   core.List<RoboDirective> roboDirectives;
 
   /// A JSON file with a sequence of actions Robo should perform as a prologue
   /// for the crawl.
   FileReference roboScript;
 
-  /// The intents used to launch the app for the crawl.
-  /// If none are provided, then the main launcher activity is launched.
-  /// If some are provided, then only those provided are launched (the main
-  /// launcher activity must be provided explicitly).
+  /// The intents used to launch the app for the crawl. If none are provided,
+  /// then the main launcher activity is launched. If some are provided, then
+  /// only those provided are launched (the main launcher activity must be
+  /// provided explicitly).
   core.List<RoboStartingIntent> startingIntents;
 
   AndroidRoboTest();
@@ -1036,9 +1009,9 @@ class AndroidRuntimeConfiguration {
   }
 }
 
-/// A test of an Android Application with a Test Loop.
-/// The intent \<intent-name\> will be implicitly added, since Games is the only
-/// user of this api, for the time being.
+/// A test of an Android Application with a Test Loop. The intent \ will be
+/// implicitly added, since Games is the only user of this api, for the time
+/// being.
 class AndroidTestLoop {
   /// The APK for the application under test.
   FileReference appApk;
@@ -1046,23 +1019,20 @@ class AndroidTestLoop {
   /// A multi-apk app bundle for the application under test.
   AppBundle appBundle;
 
-  /// The java package for the application under test.
-  /// The default is determined by examining the application's manifest.
+  /// The java package for the application under test. The default is determined
+  /// by examining the application's manifest.
   core.String appPackageId;
 
-  /// The list of scenario labels that should be run during the test.
-  /// The scenario labels should map to labels defined in the application's
+  /// The list of scenario labels that should be run during the test. The
+  /// scenario labels should map to labels defined in the application's
   /// manifest. For example, player_experience and
   /// com.google.test.loops.player_experience add all of the loops labeled in
-  /// the
-  /// manifest with the com.google.test.loops.player_experience name to the
-  /// execution.
-  /// Scenarios can also be specified in the scenarios field.
+  /// the manifest with the com.google.test.loops.player_experience name to the
+  /// execution. Scenarios can also be specified in the scenarios field.
   core.List<core.String> scenarioLabels;
 
-  /// The list of scenarios that should be run during the test.
-  /// The default is all test loops, derived from the application's
-  /// manifest.
+  /// The list of scenarios that should be run during the test. The default is
+  /// all test loops, derived from the application's manifest.
   core.List<core.int> scenarios;
 
   AndroidTestLoop();
@@ -1110,30 +1080,27 @@ class AndroidTestLoop {
 
 /// A version of the Android OS.
 class AndroidVersion {
-  /// The API level for this Android version.
-  /// Examples: 18, 19.
+  /// The API level for this Android version. Examples: 18, 19.
   core.int apiLevel;
 
-  /// The code name for this Android version.
-  /// Examples: "JellyBean", "KitKat".
+  /// The code name for this Android version. Examples: "JellyBean", "KitKat".
   core.String codeName;
 
   /// Market share for this version.
   Distribution distribution;
 
-  /// An opaque id for this Android version.
-  /// Use this id to invoke the TestExecutionService.
+  /// An opaque id for this Android version. Use this id to invoke the
+  /// TestExecutionService.
   core.String id;
 
   /// The date this Android version became available in the market.
   Date releaseDate;
 
-  /// Tags for this dimension.
-  /// Examples: "default", "preview", "deprecated".
+  /// Tags for this dimension. Examples: "default", "preview", "deprecated".
   core.List<core.String> tags;
 
-  /// A string representing this version of the Android OS.
-  /// Examples: "4.3", "4.4".
+  /// A string representing this version of the Android OS. Examples: "4.3",
+  /// "4.4".
   core.String versionString;
 
   AndroidVersion();
@@ -1195,8 +1162,8 @@ class Apk {
   /// The path to an APK to be installed on the device before the test begins.
   FileReference location;
 
-  /// The java package for the APK to be installed.
-  /// Value is determined by examining the application's manifest.
+  /// The java package for the APK to be installed. Value is determined by
+  /// examining the application's manifest.
   core.String packageName;
 
   Apk();
@@ -1259,8 +1226,7 @@ class ApkManifest {
   /// Minimum API level required for the application to run.
   core.int minSdkVersion;
 
-  /// Full Java-style package name for this application, e.g.
-  /// "com.example.foo".
+  /// Full Java-style package name for this application, e.g. "com.example.foo".
   core.String packageName;
 
   /// Specifies the API Level on which the application is designed to run.
@@ -1317,9 +1283,9 @@ class ApkManifest {
   }
 }
 
-/// An Android App Bundle file format, containing a BundleConfig.pb file,
-/// a base module directory, zero or more dynamic feature module directories.
-/// <p>See https://developer.android.com/guide/app-bundle/build for guidance on
+/// An Android App Bundle file format, containing a BundleConfig.pb file, a base
+/// module directory, zero or more dynamic feature module directories. See
+/// https://developer.android.com/guide/app-bundle/build for guidance on
 /// building App Bundles.
 class AppBundle {
   /// .aab file representing the app bundle under test.
@@ -1345,53 +1311,35 @@ class AppBundle {
 
 /// Response containing the current state of the specified test matrix.
 class CancelTestMatrixResponse {
-  /// The current rolled-up state of the test matrix.
-  /// If this state is already final, then the cancelation request will
-  /// have no effect.
+  /// The current rolled-up state of the test matrix. If this state is already
+  /// final, then the cancelation request will have no effect.
   /// Possible string values are:
-  /// - "TEST_STATE_UNSPECIFIED" : Do not use.  For proto versioning only.
+  /// - "TEST_STATE_UNSPECIFIED" : Do not use. For proto versioning only.
   /// - "VALIDATING" : The execution or matrix is being validated.
   /// - "PENDING" : The execution or matrix is waiting for resources to become
   /// available.
-  /// - "RUNNING" : The execution is currently being processed.
-  ///
-  /// Can only be set on an execution.
-  /// - "FINISHED" : The execution or matrix has terminated normally.
-  ///
-  /// On a matrix this means that the matrix level processing completed
-  /// normally,
-  /// but individual executions may be in an ERROR state.
+  /// - "RUNNING" : The execution is currently being processed. Can only be set
+  /// on an execution.
+  /// - "FINISHED" : The execution or matrix has terminated normally. On a
+  /// matrix this means that the matrix level processing completed normally, but
+  /// individual executions may be in an ERROR state.
   /// - "ERROR" : The execution or matrix has stopped because it encountered an
   /// infrastructure failure.
   /// - "UNSUPPORTED_ENVIRONMENT" : The execution was not run because it
-  /// corresponds to a unsupported
-  /// environment.
-  ///
-  /// Can only be set on an execution.
+  /// corresponds to a unsupported environment. Can only be set on an execution.
   /// - "INCOMPATIBLE_ENVIRONMENT" : The execution was not run because the
-  /// provided inputs are incompatible with
-  /// the requested environment.
-  ///
-  /// Example: requested AndroidVersion is lower than APK's minSdkVersion
-  ///
-  /// Can only be set on an execution.
+  /// provided inputs are incompatible with the requested environment. Example:
+  /// requested AndroidVersion is lower than APK's minSdkVersion Can only be set
+  /// on an execution.
   /// - "INCOMPATIBLE_ARCHITECTURE" : The execution was not run because the
-  /// provided inputs are incompatible with
-  /// the requested architecture.
-  ///
-  /// Example: requested device does not support running the native code in
-  /// the supplied APK
-  ///
-  /// Can only be set on an execution.
-  /// - "CANCELLED" : The user cancelled the execution.
-  ///
-  /// Can only be set on an execution.
+  /// provided inputs are incompatible with the requested architecture. Example:
+  /// requested device does not support running the native code in the supplied
+  /// APK Can only be set on an execution.
+  /// - "CANCELLED" : The user cancelled the execution. Can only be set on an
+  /// execution.
   /// - "INVALID" : The execution or matrix was not run because the provided
-  /// inputs are not
-  /// valid.
-  ///
-  /// Examples: input file is not of the expected type, is malformed/corrupt, or
-  /// was flagged as malware
+  /// inputs are not valid. Examples: input file is not of the expected type, is
+  /// malformed/corrupt, or was flagged as malware
   core.String testState;
 
   CancelTestMatrixResponse();
@@ -1482,18 +1430,13 @@ class ClientInfoDetail {
 }
 
 /// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day
-/// and time zone are either specified elsewhere or are not significant. The
-/// date
-/// is relative to the Proleptic Gregorian Calendar. This can represent:
-///
-/// * A full date, with non-zero year, month and day values
-/// * A month and day value, with a zero year, e.g. an anniversary
-/// * A year on its own, with zero month and day values
-/// * A year and month value, with a zero day, e.g. a credit card expiration
-/// date
-///
-/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// day and time zone are either specified elsewhere or are not significant. The
+/// date is relative to the Proleptic Gregorian Calendar. This can represent: *
+/// A full date, with non-zero year, month and day values * A month and day
+/// value, with a zero year, e.g. an anniversary * A year on its own, with zero
+/// month and day values * A year and month value, with a zero day, e.g. a
+/// credit card expiration date Related types are google.type.TimeOfDay and
+/// `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
   /// if specifying a year by itself or a year and month where the day is not
@@ -1504,8 +1447,8 @@ class Date {
   /// month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-  /// a year.
+  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
+  /// year.
   core.int year;
 
   Date();
@@ -1570,8 +1513,81 @@ class DeviceFile {
   }
 }
 
-/// Data about the relative number of devices running a
-/// given configuration of the Android platform.
+/// A single device IP block
+class DeviceIpBlock {
+  /// The date this block was added to Firebase Test Lab
+  Date addedDate;
+
+  /// An IP address block in CIDR notation eg: 34.68.194.64/29
+  core.String block;
+
+  /// Whether this block is used by physical or virtual devices
+  /// Possible string values are:
+  /// - "DEVICE_FORM_UNSPECIFIED" : Do not use. For proto versioning only.
+  /// - "VIRTUAL" : Android virtual device using Compute Engine native
+  /// virtualization. Firebase Test Lab only.
+  /// - "PHYSICAL" : Actual hardware.
+  /// - "EMULATOR" : Android virtual device using emulator in nested
+  /// virtualization. Equivalent to Android Studio.
+  core.String form;
+
+  DeviceIpBlock();
+
+  DeviceIpBlock.fromJson(core.Map _json) {
+    if (_json.containsKey("addedDate")) {
+      addedDate = new Date.fromJson(_json["addedDate"]);
+    }
+    if (_json.containsKey("block")) {
+      block = _json["block"];
+    }
+    if (_json.containsKey("form")) {
+      form = _json["form"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (addedDate != null) {
+      _json["addedDate"] = (addedDate).toJson();
+    }
+    if (block != null) {
+      _json["block"] = block;
+    }
+    if (form != null) {
+      _json["form"] = form;
+    }
+    return _json;
+  }
+}
+
+/// List of IP blocks used by the Firebase Test Lab
+class DeviceIpBlockCatalog {
+  /// The device IP blocks used by Firebase Test Lab
+  core.List<DeviceIpBlock> ipBlocks;
+
+  DeviceIpBlockCatalog();
+
+  DeviceIpBlockCatalog.fromJson(core.Map _json) {
+    if (_json.containsKey("ipBlocks")) {
+      ipBlocks = (_json["ipBlocks"] as core.List)
+          .map<DeviceIpBlock>((value) => new DeviceIpBlock.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipBlocks != null) {
+      _json["ipBlocks"] = ipBlocks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Data about the relative number of devices running a given configuration of
+/// the Android platform.
 class Distribution {
   /// Output only. The estimated fraction (0-1) of the total market with this
   /// configuration.
@@ -1713,8 +1729,9 @@ class EnvironmentVariable {
 
 /// A reference to a file, used for user inputs.
 class FileReference {
-  /// A path to a file in Google Cloud Storage.
-  /// Example: gs://build-app-1414623860166/app-debug-unaligned.apk
+  /// A path to a file in Google Cloud Storage. Example:
+  /// gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are
+  /// expected to be url encoded (percent encoding)
   core.String gcsPath;
 
   FileReference();
@@ -1758,14 +1775,12 @@ class GetApkDetailsResponse {
   }
 }
 
-/// Enables automatic Google account login.
-/// If set, the service automatically generates a Google test account and adds
-/// it to the device, before executing the test. Note that test accounts might
-/// be
-/// reused.
-/// Many applications show their full set of functionalities when an account is
-/// present on the device. Logging into the device with these generated accounts
-/// allows testing more functionalities.
+/// Enables automatic Google account login. If set, the service automatically
+/// generates a Google test account and adds it to the device, before executing
+/// the test. Note that test accounts might be reused. Many applications show
+/// their full set of functionalities when an account is present on the device.
+/// Logging into the device with these generated accounts allows testing more
+/// functionalities.
 class GoogleAuto {
   GoogleAuto();
 
@@ -1780,10 +1795,9 @@ class GoogleAuto {
 
 /// A storage location within Google cloud storage (GCS).
 class GoogleCloudStorage {
-  /// Required. The path to a directory in GCS that will
-  /// eventually contain the results for this test.
-  /// The requesting user must have write access on the bucket in the supplied
-  /// path.
+  /// Required. The path to a directory in GCS that will eventually contain the
+  /// results for this test. The requesting user must have write access on the
+  /// bucket in the supplied path.
   core.String gcsPath;
 
   GoogleCloudStorage();
@@ -1804,16 +1818,16 @@ class GoogleCloudStorage {
   }
 }
 
-/// The <intent-filter> section of an <activity> tag.
+/// The section of an tag.
 /// https://developer.android.com/guide/topics/manifest/intent-filter-element.html
 class IntentFilter {
-  /// The android:name value of the <action> tag.
+  /// The android:name value of the tag.
   core.List<core.String> actionNames;
 
-  /// The android:name value of the <category> tag.
+  /// The android:name value of the tag.
   core.List<core.String> categoryNames;
 
-  /// The android:mimeType value of the <data> tag.
+  /// The android:mimeType value of the tag.
   core.String mimeType;
 
   IntentFilter();
@@ -1848,20 +1862,20 @@ class IntentFilter {
 
 /// A single iOS device.
 class IosDevice {
-  /// Required. The id of the iOS device to be used.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The id of the iOS device to be used. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.String iosModelId;
 
-  /// Required. The id of the iOS major software version to be used.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The id of the iOS major software version to be used. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.String iosVersionId;
 
-  /// Required. The locale the test device used for testing.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. The locale the test device used for testing. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.String locale;
 
-  /// Required. How the device is oriented during the test.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
+  /// Required. How the device is oriented during the test. Use the
+  /// TestEnvironmentDiscoveryService to get supported options.
   core.String orientation;
 
   IosDevice();
@@ -1984,11 +1998,9 @@ class IosDeviceList {
   }
 }
 
-/// A description of an iOS device tests may be run on.
-/// Next tag: 12
+/// A description of an iOS device tests may be run on. Next tag: 13
 class IosModel {
-  /// Device capabilities.
-  /// Copied from
+  /// Device capabilities. Copied from
   /// https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html
   core.List<core.String> deviceCapabilities;
 
@@ -2001,12 +2013,12 @@ class IosModel {
   /// - "WEARABLE" : This device has the shape of a watch or other wearable.
   core.String formFactor;
 
-  /// The unique opaque id for this model.
-  /// Use this for invoking the TestExecutionService.
+  /// The unique opaque id for this model. Use this for invoking the
+  /// TestExecutionService.
   core.String id;
 
-  /// The human-readable name for this device model.
-  /// Examples: "iPhone 4s", "iPad Mini 2".
+  /// The human-readable name for this device model. Examples: "iPhone 4s",
+  /// "iPad Mini 2".
   core.String name;
 
   /// Screen density in DPI.
@@ -2021,8 +2033,7 @@ class IosModel {
   /// The set of iOS major software versions this device supports.
   core.List<core.String> supportedVersionIds;
 
-  /// Tags for this dimension.
-  /// Examples: "default", "preview", "deprecated".
+  /// Tags for this dimension. Examples: "default", "preview", "deprecated".
   core.List<core.String> tags;
 
   IosModel();
@@ -2131,9 +2142,8 @@ class IosRuntimeConfiguration {
 }
 
 /// A test of an iOS application that implements one or more game loop
-/// scenarios.
-/// This test type accepts an archived application (.ipa file) and a list of
-/// integer scenarios that will be executed on the app sequentially.
+/// scenarios. This test type accepts an archived application (.ipa file) and a
+/// list of integer scenarios that will be executed on the app sequentially.
 class IosTestLoop {
   /// Output only. The bundle id for the application under test.
   core.String appBundleId;
@@ -2177,15 +2187,23 @@ class IosTestLoop {
 
 /// A description of how to set up an iOS device prior to running the test.
 class IosTestSetup {
-  /// The network traffic profile used for running the test.
-  /// Available network profiles can be queried by using the
-  /// NETWORK_CONFIGURATION environment type when calling
+  /// iOS apps to install in addition to those being directly tested.
+  core.List<FileReference> additionalIpas;
+
+  /// The network traffic profile used for running the test. Available network
+  /// profiles can be queried by using the NETWORK_CONFIGURATION environment
+  /// type when calling
   /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   core.String networkProfile;
 
   IosTestSetup();
 
   IosTestSetup.fromJson(core.Map _json) {
+    if (_json.containsKey("additionalIpas")) {
+      additionalIpas = (_json["additionalIpas"] as core.List)
+          .map<FileReference>((value) => new FileReference.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("networkProfile")) {
       networkProfile = _json["networkProfile"];
     }
@@ -2194,6 +2212,10 @@ class IosTestSetup {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (additionalIpas != null) {
+      _json["additionalIpas"] =
+          additionalIpas.map((value) => (value).toJson()).toList();
+    }
     if (networkProfile != null) {
       _json["networkProfile"] = networkProfile;
     }
@@ -2203,23 +2225,20 @@ class IosTestSetup {
 
 /// An iOS version.
 class IosVersion {
-  /// An opaque id for this iOS version.
-  /// Use this id to invoke the TestExecutionService.
+  /// An opaque id for this iOS version. Use this id to invoke the
+  /// TestExecutionService.
   core.String id;
 
-  /// An integer representing the major iOS version.
-  /// Examples: "8", "9".
+  /// An integer representing the major iOS version. Examples: "8", "9".
   core.int majorVersion;
 
-  /// An integer representing the minor iOS version.
-  /// Examples: "1", "2".
+  /// An integer representing the minor iOS version. Examples: "1", "2".
   core.int minorVersion;
 
   /// The available Xcode versions for this version.
   core.List<core.String> supportedXcodeVersionIds;
 
-  /// Tags for this dimension.
-  /// Examples: "default", "preview", "deprecated".
+  /// Tags for this dimension. Examples: "default", "preview", "deprecated".
   core.List<core.String> tags;
 
   IosVersion();
@@ -2265,38 +2284,36 @@ class IosVersion {
   }
 }
 
-/// A test of an iOS application that uses the XCTest framework.
-/// Xcode supports the option to "build for testing", which generates an
-/// .xctestrun file that contains a test specification (arguments, test methods,
-/// etc). This test type accepts a zip file containing the .xctestrun file and
-/// the corresponding contents of the Build/Products directory that contains all
-/// the binaries needed to run the tests.
+/// A test of an iOS application that uses the XCTest framework. Xcode supports
+/// the option to "build for testing", which generates an .xctestrun file that
+/// contains a test specification (arguments, test methods, etc). This test type
+/// accepts a zip file containing the .xctestrun file and the corresponding
+/// contents of the Build/Products directory that contains all the binaries
+/// needed to run the tests.
 class IosXcTest {
   /// Output only. The bundle id for the application under test.
   core.String appBundleId;
 
   /// The option to test special app entitlements. Setting this would re-sign
-  /// the
-  /// app having special entitlements with an explicit application-identifier.
-  /// Currently supports testing aps-environment entitlement.
+  /// the app having special entitlements with an explicit
+  /// application-identifier. Currently supports testing aps-environment
+  /// entitlement.
   core.bool testSpecialEntitlements;
 
   /// Required. The .zip containing the .xctestrun file and the contents of the
-  /// DerivedData/Build/Products directory.
-  /// The .xctestrun file in this zip is ignored if the xctestrun field is
-  /// specified.
+  /// DerivedData/Build/Products directory. The .xctestrun file in this zip is
+  /// ignored if the xctestrun field is specified.
   FileReference testsZip;
 
-  /// The Xcode version that should be used for the test.
-  /// Use the TestEnvironmentDiscoveryService to get supported options.
-  /// Defaults to the latest Xcode version Firebase Test Lab supports.
+  /// The Xcode version that should be used for the test. Use the
+  /// TestEnvironmentDiscoveryService to get supported options. Defaults to the
+  /// latest Xcode version Firebase Test Lab supports.
   core.String xcodeVersion;
 
-  /// An .xctestrun file that will override the .xctestrun file in the
-  /// tests zip. Because the .xctestrun file contains environment variables
-  /// along
-  /// with test methods to run and/or ignore, this can be useful for sharding
-  /// tests. Default is taken from the tests zip.
+  /// An .xctestrun file that will override the .xctestrun file in the tests
+  /// zip. Because the .xctestrun file contains environment variables along with
+  /// test methods to run and/or ignore, this can be useful for sharding tests.
+  /// Default is taken from the tests zip.
   FileReference xctestrun;
 
   IosXcTest();
@@ -2356,20 +2373,17 @@ class LauncherActivityIntent {
 
 /// A location/region designation for language.
 class Locale {
-  /// The id for this locale.
-  /// Example: "en_US".
+  /// The id for this locale. Example: "en_US".
   core.String id;
 
-  /// A human-friendly name for this language/locale.
-  /// Example: "English".
+  /// A human-friendly name for this language/locale. Example: "English".
   core.String name;
 
-  /// A human-friendly string representing the region for this
-  /// locale. Example: "United States". Not present for every locale.
+  /// A human-friendly string representing the region for this locale. Example:
+  /// "United States". Not present for every locale.
   core.String region;
 
-  /// Tags for this dimension.
-  /// Example: "default".
+  /// Tags for this dimension. Example: "default".
   core.List<core.String> tags;
 
   Locale();
@@ -2409,13 +2423,13 @@ class Locale {
 }
 
 /// Shards test cases into the specified groups of packages, classes, and/or
-/// methods.
-///
-/// With manual sharding enabled, specifying test targets via
+/// methods. With manual sharding enabled, specifying test targets via
 /// environment_variables or in InstrumentationTest is invalid.
 class ManualSharding {
   /// Required. Group of packages, classes, and/or test methods to be run for
-  /// each shard. The number of shard_test_targets must be >= 1 and <= 50.
+  /// each shard. When any physical devices are selected, the number of
+  /// test_targets_for_shard must be >= 1 and <= 50. When no physical devices
+  /// are selected, the number must be >= 1 and <= 250.
   core.List<TestTargetsForShard> testTargetsForShard;
 
   ManualSharding();
@@ -2511,11 +2525,8 @@ class ObbFile {
   FileReference obb;
 
   /// Required. OBB file name which must conform to the format as specified by
-  /// Android
-  /// e.g. [main|patch].0300110.com.example.android.obb
-  /// which will be installed into
-  ///   \<shared-storage\>/Android/obb/\<package-name\>/
-  /// on the device.
+  /// Android e.g. [main|patch].0300110.com.example.android.obb which will be
+  /// installed into \/Android/obb/\/ on the device.
   core.String obbFileName;
 
   ObbFile();
@@ -2544,16 +2555,13 @@ class ObbFile {
 
 /// Screen orientation of the device.
 class Orientation {
-  /// The id for this orientation.
-  /// Example: "portrait".
+  /// The id for this orientation. Example: "portrait".
   core.String id;
 
-  /// A human-friendly name for this orientation.
-  /// Example: "portrait".
+  /// A human-friendly name for this orientation. Example: "portrait".
   core.String name;
 
-  /// Tags for this dimension.
-  /// Example: "default".
+  /// Tags for this dimension. Example: "default".
   core.List<core.String> tags;
 
   Orientation();
@@ -2588,9 +2596,8 @@ class Orientation {
 
 /// The currently provided software environment on the devices under test.
 class ProvidedSoftwareCatalog {
-  /// A string representing the current version of Android Test
-  /// Orchestrator that is provided by TestExecutionService.
-  /// Example: "1.0.2 beta".
+  /// A string representing the current version of Android Test Orchestrator
+  /// that is provided by TestExecutionService. Example: "1.0.2 beta".
   core.String orchestratorVersion;
 
   ProvidedSoftwareCatalog();
@@ -2617,23 +2624,16 @@ class RegularFile {
   FileReference content;
 
   /// Required. Where to put the content on the device. Must be an absolute,
-  /// whitelisted path. If the file exists, it will be replaced.
-  /// The following device-side directories and any of their subdirectories are
-  /// whitelisted:
-  /// <p>${EXTERNAL_STORAGE}, or /sdcard</p>
-  /// <p>${ANDROID_DATA}/local/tmp, or /data/local/tmp</p>
-  /// <p>Specifying a path outside of these directory trees is invalid.
-  ///
-  /// <p> The paths /sdcard and /data will be made available and treated as
+  /// allowlisted path. If the file exists, it will be replaced. The following
+  /// device-side directories and any of their subdirectories are allowlisted:
+  /// ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or
+  /// /data/local/tmp Specifying a path outside of these directory trees is
+  /// invalid. The paths /sdcard and /data will be made available and treated as
   /// implicit path substitutions. E.g. if /sdcard on a particular device does
   /// not map to external storage, the system will replace it with the external
-  /// storage path prefix for that device and copy the file there.
-  ///
-  /// <p> It is strongly advised to use the <a href=
-  /// "http://developer.android.com/reference/android/os/Environment.html">
-  /// Environment API</a> in app and test code to access files on the device in
-  /// a
-  /// portable way.
+  /// storage path prefix for that device and copy the file there. It is
+  /// strongly advised to use the Environment API in app and test code to access
+  /// files on the device in a portable way.
   core.String devicePath;
 
   RegularFile();
@@ -2672,9 +2672,8 @@ class ResultStorage {
   ToolResultsExecution toolResultsExecution;
 
   /// The tool results history that contains the tool results execution that
-  /// results are written to.
-  ///
-  /// If not provided, the service will choose an appropriate value.
+  /// results are written to. If not provided, the service will choose an
+  /// appropriate value.
   ToolResultsHistory toolResultsHistory;
 
   ResultStorage();
@@ -2724,24 +2723,18 @@ class RoboDirective {
   /// Possible string values are:
   /// - "ACTION_TYPE_UNSPECIFIED" : DO NOT USE. For proto versioning only.
   /// - "SINGLE_CLICK" : Direct Robo to click on the specified element. No-op if
-  /// specified element
-  /// is not clickable.
+  /// specified element is not clickable.
   /// - "ENTER_TEXT" : Direct Robo to enter text on the specified element. No-op
-  /// if specified
-  /// element is not enabled or does not allow text entry.
+  /// if specified element is not enabled or does not allow text entry.
   /// - "IGNORE" : Direct Robo to ignore interactions with a specific element.
   core.String actionType;
 
   /// The text that Robo is directed to set. If left empty, the directive will
-  /// be
-  /// treated as a CLICK on the element matching the resource_name.
+  /// be treated as a CLICK on the element matching the resource_name.
   core.String inputText;
 
-  /// Required. The android resource name of the target UI element.
-  /// For example,
-  ///    in Java: R.string.foo
-  ///    in xml: @string/foo
-  /// Only the "foo" part is needed.
+  /// Required. The android resource name of the target UI element. For example,
+  /// in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed.
   /// Reference doc:
   /// https://developer.android.com/guide/topics/resources/accessing-resources.html
   core.String resourceName;
@@ -2895,8 +2888,7 @@ class ShardingOption {
 
 /// A starting intent specified by an action, uri, and categories.
 class StartActivityIntent {
-  /// Action name.
-  /// Required for START_ACTIVITY.
+  /// Action name. Required for START_ACTIVITY.
   core.String action;
 
   /// Intent categories to set on the intent.
@@ -2936,8 +2928,8 @@ class StartActivityIntent {
 }
 
 class SystraceSetup {
-  /// Systrace duration in seconds.
-  /// Should be between 1 and 30 seconds. 0 disables systrace.
+  /// Systrace duration in seconds. Should be between 1 and 30 seconds. 0
+  /// disables systrace.
   core.int durationSeconds;
 
   SystraceSetup();
@@ -2965,10 +2957,8 @@ class TestDetails {
   core.String errorMessage;
 
   /// Output only. Human-readable, detailed descriptions of the test's progress.
-  /// For example: "Provisioning a device", "Starting Test".
-  ///
-  /// During the course of execution new data may be appended
-  /// to the end of progress_messages.
+  /// For example: "Provisioning a device", "Starting Test". During the course
+  /// of execution new data may be appended to the end of progress_messages.
   core.List<core.String> progressMessages;
 
   TestDetails();
@@ -3001,6 +2991,9 @@ class TestEnvironmentCatalog {
   /// Supported Android devices.
   AndroidDeviceCatalog androidDeviceCatalog;
 
+  /// The IP blocks used by devices in the test environment.
+  DeviceIpBlockCatalog deviceIpBlockCatalog;
+
   /// Supported iOS devices.
   IosDeviceCatalog iosDeviceCatalog;
 
@@ -3016,6 +3009,10 @@ class TestEnvironmentCatalog {
     if (_json.containsKey("androidDeviceCatalog")) {
       androidDeviceCatalog =
           new AndroidDeviceCatalog.fromJson(_json["androidDeviceCatalog"]);
+    }
+    if (_json.containsKey("deviceIpBlockCatalog")) {
+      deviceIpBlockCatalog =
+          new DeviceIpBlockCatalog.fromJson(_json["deviceIpBlockCatalog"]);
     }
     if (_json.containsKey("iosDeviceCatalog")) {
       iosDeviceCatalog =
@@ -3036,6 +3033,9 @@ class TestEnvironmentCatalog {
         new core.Map<core.String, core.Object>();
     if (androidDeviceCatalog != null) {
       _json["androidDeviceCatalog"] = (androidDeviceCatalog).toJson();
+    }
+    if (deviceIpBlockCatalog != null) {
+      _json["deviceIpBlockCatalog"] = (deviceIpBlockCatalog).toJson();
     }
     if (iosDeviceCatalog != null) {
       _json["iosDeviceCatalog"] = (iosDeviceCatalog).toJson();
@@ -3068,52 +3068,35 @@ class TestExecution {
   /// Output only. Details about the shard.
   Shard shard;
 
-  /// Output only. Indicates the current progress of the test execution
-  /// (e.g., FINISHED).
+  /// Output only. Indicates the current progress of the test execution (e.g.,
+  /// FINISHED).
   /// Possible string values are:
-  /// - "TEST_STATE_UNSPECIFIED" : Do not use.  For proto versioning only.
+  /// - "TEST_STATE_UNSPECIFIED" : Do not use. For proto versioning only.
   /// - "VALIDATING" : The execution or matrix is being validated.
   /// - "PENDING" : The execution or matrix is waiting for resources to become
   /// available.
-  /// - "RUNNING" : The execution is currently being processed.
-  ///
-  /// Can only be set on an execution.
-  /// - "FINISHED" : The execution or matrix has terminated normally.
-  ///
-  /// On a matrix this means that the matrix level processing completed
-  /// normally,
-  /// but individual executions may be in an ERROR state.
+  /// - "RUNNING" : The execution is currently being processed. Can only be set
+  /// on an execution.
+  /// - "FINISHED" : The execution or matrix has terminated normally. On a
+  /// matrix this means that the matrix level processing completed normally, but
+  /// individual executions may be in an ERROR state.
   /// - "ERROR" : The execution or matrix has stopped because it encountered an
   /// infrastructure failure.
   /// - "UNSUPPORTED_ENVIRONMENT" : The execution was not run because it
-  /// corresponds to a unsupported
-  /// environment.
-  ///
-  /// Can only be set on an execution.
+  /// corresponds to a unsupported environment. Can only be set on an execution.
   /// - "INCOMPATIBLE_ENVIRONMENT" : The execution was not run because the
-  /// provided inputs are incompatible with
-  /// the requested environment.
-  ///
-  /// Example: requested AndroidVersion is lower than APK's minSdkVersion
-  ///
-  /// Can only be set on an execution.
+  /// provided inputs are incompatible with the requested environment. Example:
+  /// requested AndroidVersion is lower than APK's minSdkVersion Can only be set
+  /// on an execution.
   /// - "INCOMPATIBLE_ARCHITECTURE" : The execution was not run because the
-  /// provided inputs are incompatible with
-  /// the requested architecture.
-  ///
-  /// Example: requested device does not support running the native code in
-  /// the supplied APK
-  ///
-  /// Can only be set on an execution.
-  /// - "CANCELLED" : The user cancelled the execution.
-  ///
-  /// Can only be set on an execution.
+  /// provided inputs are incompatible with the requested architecture. Example:
+  /// requested device does not support running the native code in the supplied
+  /// APK Can only be set on an execution.
+  /// - "CANCELLED" : The user cancelled the execution. Can only be set on an
+  /// execution.
   /// - "INVALID" : The execution or matrix was not run because the provided
-  /// inputs are not
-  /// valid.
-  ///
-  /// Examples: input file is not of the expected type, is malformed/corrupt, or
-  /// was flagged as malware
+  /// inputs are not valid. Examples: input file is not of the expected type, is
+  /// malformed/corrupt, or was flagged as malware
   core.String state;
 
   /// Output only. Additional details about the running test.
@@ -3212,14 +3195,12 @@ class TestMatrix {
   EnvironmentMatrix environmentMatrix;
 
   /// The number of times a TestExecution should be re-attempted if one or more
-  /// of its test cases fail for any reason.
-  /// The maximum number of reruns allowed is 10.
-  ///
-  /// Default is 0, which implies no reruns.
+  /// of its test cases fail for any reason. The maximum number of reruns
+  /// allowed is 10. Default is 0, which implies no reruns.
   core.int flakyTestAttempts;
 
-  /// Output only. Describes why the matrix is considered invalid.
-  /// Only useful for matrices in the INVALID state.
+  /// Output only. Describes why the matrix is considered invalid. Only useful
+  /// for matrices in the INVALID state.
   /// Possible string values are:
   /// - "INVALID_MATRIX_DETAILS_UNSPECIFIED" : Do not use. For proto versioning
   /// only.
@@ -3230,75 +3211,62 @@ class TestMatrix {
   /// - "NO_MANIFEST" : The AndroidManifest.xml could not be found.
   /// - "NO_PACKAGE_NAME" : The APK manifest does not declare a package name.
   /// - "INVALID_PACKAGE_NAME" : The APK application ID (aka package name) is
-  /// invalid.
-  /// See also
+  /// invalid. See also
   /// https://developer.android.com/studio/build/application-id
   /// - "TEST_SAME_AS_APP" : The test package and app package are the same.
   /// - "NO_INSTRUMENTATION" : The test apk does not declare an instrumentation.
   /// - "NO_SIGNATURE" : The input app apk does not have a signature.
   /// - "INSTRUMENTATION_ORCHESTRATOR_INCOMPATIBLE" : The test runner class
-  /// specified by user or in the test APK's manifest file
-  /// is not compatible with Android Test Orchestrator.
-  /// Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or
-  /// higher.
-  /// Orchestrator can be disabled by using DO_NOT_USE_ORCHESTRATOR
-  /// OrchestratorOption.
+  /// specified by user or in the test APK's manifest file is not compatible
+  /// with Android Test Orchestrator. Orchestrator is only compatible with
+  /// AndroidJUnitRunner version 1.0 or higher. Orchestrator can be disabled by
+  /// using DO_NOT_USE_ORCHESTRATOR OrchestratorOption.
   /// - "NO_TEST_RUNNER_CLASS" : The test APK does not contain the test runner
-  /// class specified by user or in
-  /// the manifest file.
-  /// This can be caused by either of the following reasons:
-  /// - the user provided a runner class name that's incorrect, or
-  /// - the test runner isn't built into the test APK (might be in the app APK
-  /// instead).
+  /// class specified by user or in the manifest file. This can be caused by
+  /// either of the following reasons: - the user provided a runner class name
+  /// that's incorrect, or - the test runner isn't built into the test APK
+  /// (might be in the app APK instead).
   /// - "NO_LAUNCHER_ACTIVITY" : A main launcher activity could not be found.
   /// - "FORBIDDEN_PERMISSIONS" : The app declares one or more permissions that
   /// are not allowed.
   /// - "INVALID_ROBO_DIRECTIVES" : There is a conflict in the provided
   /// robo_directives.
   /// - "INVALID_RESOURCE_NAME" : There is at least one invalid resource name in
-  /// the provided
-  /// robo directives
+  /// the provided robo directives
   /// - "INVALID_DIRECTIVE_ACTION" : Invalid definition of action in the robo
-  /// directives
-  /// (e.g. a click or ignore action includes an input text field)
+  /// directives (e.g. a click or ignore action includes an input text field)
   /// - "TEST_LOOP_INTENT_FILTER_NOT_FOUND" : There is no test loop intent
-  /// filter, or the one that is given is
-  /// not formatted correctly.
+  /// filter, or the one that is given is not formatted correctly.
   /// - "SCENARIO_LABEL_NOT_DECLARED" : The request contains a scenario label
-  /// that was not declared in the
-  /// manifest.
+  /// that was not declared in the manifest.
   /// - "SCENARIO_LABEL_MALFORMED" : There was an error when parsing a label's
   /// value.
   /// - "SCENARIO_NOT_DECLARED" : The request contains a scenario number that
-  /// was not declared in the
-  /// manifest.
+  /// was not declared in the manifest.
   /// - "DEVICE_ADMIN_RECEIVER" : Device administrator applications are not
   /// allowed.
   /// - "MALFORMED_XC_TEST_ZIP" : The zipped XCTest was malformed. The zip did
-  /// not contain a single
-  /// .xctestrun file and the contents of the DerivedData/Build/Products
-  /// directory.
+  /// not contain a single .xctestrun file and the contents of the
+  /// DerivedData/Build/Products directory.
   /// - "BUILT_FOR_IOS_SIMULATOR" : The zipped XCTest was built for the iOS
-  /// simulator rather than for a
-  /// physical device.
+  /// simulator rather than for a physical device.
   /// - "NO_TESTS_IN_XC_TEST_ZIP" : The .xctestrun file did not specify any test
   /// targets.
   /// - "USE_DESTINATION_ARTIFACTS" : One or more of the test targets defined in
-  /// the .xctestrun file specifies
-  /// "UseDestinationArtifacts", which is disallowed.
+  /// the .xctestrun file specifies "UseDestinationArtifacts", which is
+  /// disallowed.
   /// - "TEST_NOT_APP_HOSTED" : XC tests which run on physical devices must have
   /// "IsAppHostedTestBundle" == "true" in the xctestrun file.
   /// - "PLIST_CANNOT_BE_PARSED" : An Info.plist file in the XCTest zip could
   /// not be parsed.
-  /// - "TEST_ONLY_APK" : The APK is marked as "testOnly".
-  /// Deprecated and not currently used.
+  /// - "TEST_ONLY_APK" : The APK is marked as "testOnly". Deprecated and not
+  /// currently used.
   /// - "MALFORMED_IPA" : The input IPA could not be parsed.
   /// - "MISSING_URL_SCHEME" : The application doesn't register the game loop
   /// URL scheme.
   /// - "MALFORMED_APP_BUNDLE" : The iOS application bundle (.app) couldn't be
   /// processed.
-  /// - "NO_CODE_APK" : APK contains no code.
-  /// See also
+  /// - "NO_CODE_APK" : APK contains no code. See also
   /// https://developer.android.com/guide/topics/manifest/application-element.html#code
   /// - "INVALID_INPUT_APK" : Either the provided input APK path was malformed,
   /// the APK file does not exist, or the user does not have permission to
@@ -3307,23 +3275,20 @@ class TestMatrix {
   /// unsupported
   core.String invalidMatrixDetails;
 
-  /// Output Only. The overall outcome of the test.
-  /// Only set when the test matrix state is FINISHED.
+  /// Output Only. The overall outcome of the test. Only set when the test
+  /// matrix state is FINISHED.
   /// Possible string values are:
   /// - "OUTCOME_SUMMARY_UNSPECIFIED" : Do not use. For proto versioning only.
-  /// - "SUCCESS" : The test matrix run was successful, for instance:
-  /// - All the test cases passed.
-  /// - Robo did not detect a crash of the application under test.
-  /// - "FAILURE" : A run failed, for instance:
-  /// - One or more test case failed.
-  /// - A test timed out.
-  /// - The application under test crashed.
+  /// - "SUCCESS" : The test matrix run was successful, for instance: - All the
+  /// test cases passed. - Robo did not detect a crash of the application under
+  /// test.
+  /// - "FAILURE" : A run failed, for instance: - One or more test case failed.
+  /// - A test timed out. - The application under test crashed.
   /// - "INCONCLUSIVE" : Something unexpected happened. The run should still be
-  /// considered
-  /// unsuccessful but this is likely a transient problem and re-running the
-  /// test might be successful.
-  /// - "SKIPPED" : All tests were skipped, for instance:
-  /// - All device configurations were incompatible.
+  /// considered unsuccessful but this is likely a transient problem and
+  /// re-running the test might be successful.
+  /// - "SKIPPED" : All tests were skipped, for instance: - All device
+  /// configurations were incompatible.
   core.String outcomeSummary;
 
   /// The cloud project that owns the test matrix.
@@ -3334,53 +3299,36 @@ class TestMatrix {
 
   /// Output only. Indicates the current progress of the test matrix.
   /// Possible string values are:
-  /// - "TEST_STATE_UNSPECIFIED" : Do not use.  For proto versioning only.
+  /// - "TEST_STATE_UNSPECIFIED" : Do not use. For proto versioning only.
   /// - "VALIDATING" : The execution or matrix is being validated.
   /// - "PENDING" : The execution or matrix is waiting for resources to become
   /// available.
-  /// - "RUNNING" : The execution is currently being processed.
-  ///
-  /// Can only be set on an execution.
-  /// - "FINISHED" : The execution or matrix has terminated normally.
-  ///
-  /// On a matrix this means that the matrix level processing completed
-  /// normally,
-  /// but individual executions may be in an ERROR state.
+  /// - "RUNNING" : The execution is currently being processed. Can only be set
+  /// on an execution.
+  /// - "FINISHED" : The execution or matrix has terminated normally. On a
+  /// matrix this means that the matrix level processing completed normally, but
+  /// individual executions may be in an ERROR state.
   /// - "ERROR" : The execution or matrix has stopped because it encountered an
   /// infrastructure failure.
   /// - "UNSUPPORTED_ENVIRONMENT" : The execution was not run because it
-  /// corresponds to a unsupported
-  /// environment.
-  ///
-  /// Can only be set on an execution.
+  /// corresponds to a unsupported environment. Can only be set on an execution.
   /// - "INCOMPATIBLE_ENVIRONMENT" : The execution was not run because the
-  /// provided inputs are incompatible with
-  /// the requested environment.
-  ///
-  /// Example: requested AndroidVersion is lower than APK's minSdkVersion
-  ///
-  /// Can only be set on an execution.
+  /// provided inputs are incompatible with the requested environment. Example:
+  /// requested AndroidVersion is lower than APK's minSdkVersion Can only be set
+  /// on an execution.
   /// - "INCOMPATIBLE_ARCHITECTURE" : The execution was not run because the
-  /// provided inputs are incompatible with
-  /// the requested architecture.
-  ///
-  /// Example: requested device does not support running the native code in
-  /// the supplied APK
-  ///
-  /// Can only be set on an execution.
-  /// - "CANCELLED" : The user cancelled the execution.
-  ///
-  /// Can only be set on an execution.
+  /// provided inputs are incompatible with the requested architecture. Example:
+  /// requested device does not support running the native code in the supplied
+  /// APK Can only be set on an execution.
+  /// - "CANCELLED" : The user cancelled the execution. Can only be set on an
+  /// execution.
   /// - "INVALID" : The execution or matrix was not run because the provided
-  /// inputs are not
-  /// valid.
-  ///
-  /// Examples: input file is not of the expected type, is malformed/corrupt, or
-  /// was flagged as malware
+  /// inputs are not valid. Examples: input file is not of the expected type, is
+  /// malformed/corrupt, or was flagged as malware
   core.String state;
 
-  /// Output only. The list of test executions that the service creates for
-  /// this matrix.
+  /// Output only. The list of test executions that the service creates for this
+  /// matrix.
   core.List<TestExecution> testExecutions;
 
   /// Output only. Unique id set by the service.
@@ -3486,19 +3434,21 @@ class TestSetup {
   /// The device will be logged in on this account for the duration of the test.
   Account account;
 
-  /// APKs to install in addition to those being directly tested.
-  /// Currently capped at 100.
+  /// APKs to install in addition to those being directly tested. Currently
+  /// capped at 100.
   core.List<Apk> additionalApks;
 
   /// List of directories on the device to upload to GCS at the end of the test;
-  /// they must be absolute paths under /sdcard or /data/local/tmp.
-  /// Path names are restricted to characters a-z A-Z 0-9 _ - . + and /
-  ///
-  /// Note: The paths /sdcard and /data will be made available and treated as
-  /// implicit path substitutions. E.g. if /sdcard on a particular device does
-  /// not map to external storage, the system will replace it with the external
-  /// storage path prefix for that device.
+  /// they must be absolute paths under /sdcard, /storage or /data/local/tmp.
+  /// Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note:
+  /// The paths /sdcard and /data will be made available and treated as implicit
+  /// path substitutions. E.g. if /sdcard on a particular device does not map to
+  /// external storage, the system will replace it with the external storage
+  /// path prefix for that device.
   core.List<core.String> directoriesToPull;
+
+  /// Whether to prevent all runtime permissions to be granted at app install
+  core.bool dontAutograntPermissions;
 
   /// Environment variables to set for the test (only applicable for
   /// instrumentation tests).
@@ -3507,17 +3457,16 @@ class TestSetup {
   /// List of files to push to the device before starting the test.
   core.List<DeviceFile> filesToPush;
 
-  /// The network traffic profile used for running the test.
-  /// Available network profiles can be queried by using the
-  /// NETWORK_CONFIGURATION environment type when calling
+  /// The network traffic profile used for running the test. Available network
+  /// profiles can be queried by using the NETWORK_CONFIGURATION environment
+  /// type when calling
   /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   core.String networkProfile;
 
-  /// Systrace configuration for the run.
-  /// If set a systrace will be taken, starting on test start and lasting for
-  /// the
-  /// configured duration. The systrace file thus obtained is put in the results
-  /// bucket together with the other artifacts from the run.
+  /// Systrace configuration for the run. If set a systrace will be taken,
+  /// starting on test start and lasting for the configured duration. The
+  /// systrace file thus obtained is put in the results bucket together with the
+  /// other artifacts from the run.
   SystraceSetup systrace;
 
   TestSetup();
@@ -3534,6 +3483,9 @@ class TestSetup {
     if (_json.containsKey("directoriesToPull")) {
       directoriesToPull =
           (_json["directoriesToPull"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("dontAutograntPermissions")) {
+      dontAutograntPermissions = _json["dontAutograntPermissions"];
     }
     if (_json.containsKey("environmentVariables")) {
       environmentVariables = (_json["environmentVariables"] as core.List)
@@ -3566,6 +3518,9 @@ class TestSetup {
     }
     if (directoriesToPull != null) {
       _json["directoriesToPull"] = directoriesToPull;
+    }
+    if (dontAutograntPermissions != null) {
+      _json["dontAutograntPermissions"] = dontAutograntPermissions;
     }
     if (environmentVariables != null) {
       _json["environmentVariables"] =
@@ -3615,9 +3570,8 @@ class TestSpecification {
   /// scripts.
   TestSetup testSetup;
 
-  /// Max time a test execution is allowed to run before it is
-  /// automatically cancelled.
-  /// The default value is 5 min.
+  /// Max time a test execution is allowed to run before it is automatically
+  /// cancelled. The default value is 5 min.
   core.String testTimeout;
 
   TestSpecification();
@@ -3698,10 +3652,8 @@ class TestSpecification {
 class TestTargetsForShard {
   /// Group of packages, classes, and/or test methods to be run for each shard.
   /// The targets need to be specified in AndroidJUnitRunner argument format.
-  /// For
-  /// example, “package com.my.packages” “class com.my.package.MyClass”.
-  ///
-  /// The number of shard_test_targets must be greater than 0.
+  /// For example, "package com.my.packages" "class com.my.package.MyClass". The
+  /// number of shard_test_targets must be greater than 0.
   core.List<core.String> testTargets;
 
   TestTargetsForShard();
@@ -3722,9 +3674,8 @@ class TestTargetsForShard {
   }
 }
 
-/// Represents a tool results execution resource.
-///
-/// This has the results of a TestMatrix.
+/// Represents a tool results execution resource. This has the results of a
+/// TestMatrix.
 class ToolResultsExecution {
   /// Output only. A tool results execution ID.
   core.String executionId;
@@ -3797,9 +3748,8 @@ class ToolResultsHistory {
   }
 }
 
-/// Represents a tool results step resource.
-///
-/// This has the results of a TestExecution.
+/// Represents a tool results step resource. This has the results of a
+/// TestExecution.
 class ToolResultsStep {
   /// Output only. A tool results execution ID.
   core.String executionId;
@@ -3908,13 +3858,14 @@ class TrafficRule {
   }
 }
 
-/// Uniformly shards test cases given a total number of shards.
-///
-/// For Instrumentation test, it will be translated to “-e numShard” “-e
-/// shardIndex” AndroidJUnitRunner arguments. With uniform sharding enabled,
-/// specifying these sharding arguments via environment_variables is invalid.
+/// Uniformly shards test cases given a total number of shards. For
+/// Instrumentation test, it will be translated to "-e numShard" "-e shardIndex"
+/// AndroidJUnitRunner arguments. With uniform sharding enabled, specifying
+/// these sharding arguments via environment_variables is invalid.
 class UniformSharding {
-  /// Required. Total number of shards. The number must be >= 1 and <= 50.
+  /// Required. Total number of shards. When any physical devices are selected,
+  /// the number must be >= 1 and <= 50. When no physical devices are selected,
+  /// the number must be >= 1 and <= 250.
   core.int numShards;
 
   UniformSharding();
@@ -3937,12 +3888,10 @@ class UniformSharding {
 
 /// An Xcode version that an iOS version is compatible with.
 class XcodeVersion {
-  /// Tags for this Xcode version.
-  /// Example: "default".
+  /// Tags for this Xcode version. Example: "default".
   core.List<core.String> tags;
 
-  /// The id for this version.
-  /// Example: "9.2".
+  /// The id for this version. Example: "9.2".
   core.String version;
 
   XcodeVersion();

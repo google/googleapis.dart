@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4992() {
+buildUnnamed5372() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4992(core.List<core.String> o) {
+checkUnnamed5372(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -72,7 +72,7 @@ buildPlatformSummary() {
     o.enforcementTime = "foo";
     o.filterStatus = "foo";
     o.lastChangeTime = "foo";
-    o.region = buildUnnamed4992();
+    o.region = buildUnnamed5372();
     o.reportUrl = "foo";
     o.underReview = true;
   }
@@ -87,7 +87,7 @@ checkPlatformSummary(api.PlatformSummary o) {
     unittest.expect(o.enforcementTime, unittest.equals('foo'));
     unittest.expect(o.filterStatus, unittest.equals('foo'));
     unittest.expect(o.lastChangeTime, unittest.equals('foo'));
-    checkUnnamed4992(o.region);
+    checkUnnamed5372(o.region);
     unittest.expect(o.reportUrl, unittest.equals('foo'));
     unittest.expect(o.underReview, unittest.isTrue);
   }
@@ -117,14 +117,14 @@ checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-buildUnnamed4993() {
+buildUnnamed5373() {
   var o = new core.List<api.SiteSummaryResponse>();
   o.add(buildSiteSummaryResponse());
   o.add(buildSiteSummaryResponse());
   return o;
 }
 
-checkUnnamed4993(core.List<api.SiteSummaryResponse> o) {
+checkUnnamed5373(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteSummaryResponse(o[0]);
   checkSiteSummaryResponse(o[1]);
@@ -135,7 +135,7 @@ buildViolatingSitesResponse() {
   var o = new api.ViolatingSitesResponse();
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    o.violatingSites = buildUnnamed4993();
+    o.violatingSites = buildUnnamed5373();
   }
   buildCounterViolatingSitesResponse--;
   return o;
@@ -144,7 +144,7 @@ buildViolatingSitesResponse() {
 checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed4993(o.violatingSites);
+    checkUnnamed5373(o.violatingSites);
   }
   buildCounterViolatingSitesResponse--;
 }

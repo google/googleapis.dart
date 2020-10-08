@@ -105,15 +105,14 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [includeUnrevealedLocations] - If true, the returned list will include
-  /// locations which are not yet
-  /// revealed.
-  ///
-  /// [pageToken] - The standard list page token.
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [filter] - The standard list filter.
+  /// [includeUnrevealedLocations] - If true, the returned list will include
+  /// locations which are not yet revealed.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -126,10 +125,10 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.bool includeUnrevealedLocations,
-      core.String pageToken,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.bool includeUnrevealedLocations,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -141,6 +140,12 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (includeUnrevealedLocations != null) {
       _queryParams["includeUnrevealedLocations"] = [
         "${includeUnrevealedLocations}"
@@ -148,12 +153,6 @@ class ProjectsLocationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -182,7 +181,7 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ProjectsLocationsGameServerDeploymentsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new Game Server Deployment in a given project and Location.
+  /// Creates a new game server deployment in a given project and location.
   ///
   /// [request] - The metadata request object.
   ///
@@ -192,7 +191,7 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// `projects/{project}/locations/{location}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [deploymentId] - Required. The ID of the Game Server Deployment resource
+  /// [deploymentId] - Required. The ID of the game server delpoyment resource
   /// to be created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -241,13 +240,12 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Deletes a single Game Server Deployment.
+  /// Deletes a single game server deployment.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Game Server Deployment to delete. Uses
+  /// [name] - Required. The name of the game server delpoyment to delete. Uses
   /// the form:
-  ///
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
@@ -288,16 +286,15 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Retrieves information about the current state of the Game Server
-  /// Ddeployment. Gathers all the Agones fleets and Agones autoscalers,
-  /// including fleets running an older version of the Game Server Deployment.
+  /// Retrieves information about the current state of the game server
+  /// deployment. Gathers all the Agones fleets and Agones autoscalers,
+  /// including fleets running an older version of the game server deployment.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Game Server Deployment. Uses the form:
-  ///
+  /// [name] - Required. The name of the game server delpoyment. Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
@@ -346,13 +343,12 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         .then((data) => new FetchDeploymentStateResponse.fromJson(data));
   }
 
-  /// Gets details of a single Game Server Deployment.
+  /// Gets details of a single game server deployment.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Game Server Deployment to retrieve.
+  /// [name] - Required. The name of the game server delpoyment to retrieve.
   /// Uses the form:
-  ///
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
@@ -394,28 +390,24 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     return _response.then((data) => new GameServerDeployment.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -461,13 +453,12 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Gets details a single Game Server Deployment Rollout.
+  /// Gets details a single game server deployment rollout.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Game Server Deployment to retrieve.
+  /// [name] - Required. The name of the game server delpoyment to retrieve.
   /// Uses the form:
-  ///
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
@@ -511,7 +502,7 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         .then((data) => new GameServerDeploymentRollout.fromJson(data));
   }
 
-  /// Lists Game Server Deployments in a given project and Location.
+  /// Lists game server deployments in a given project and location.
   ///
   /// Request parameters:
   ///
@@ -519,22 +510,19 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// `projects/{project}/locations/{location}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request,
-  /// if any.
+  /// [filter] - Optional. The filter to apply to list results.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, the server will pick an appropriate default. The server may
+  /// return fewer items than requested. A caller should only rely on response's
+  /// next_page_token to determine if there are more GameServerDeployments left
+  /// to be queried.
   ///
   /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at
-  /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return.  If
-  /// unspecified, server
-  /// will pick an appropriate default. Server may return fewer items than
-  /// requested. A caller should only rely on response's
-  /// next_page_token to
-  /// determine if there are more GameServerDeployments left to be queried.
-  ///
-  /// [filter] - Optional. The filter to apply to list results.
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -547,10 +535,10 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGameServerDeploymentsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.String orderBy,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.String orderBy,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -562,17 +550,17 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -592,28 +580,23 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         .then((data) => new ListGameServerDeploymentsResponse.fromJson(data));
   }
 
-  /// Patches a Game Server Deployment.
+  /// Patches a game server deployment.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the Game Server Deployment. Uses the form:
-  ///
+  /// [name] - The resource name of the game server deployment. Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// For example,
-  ///
-  /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
+  /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in
-  /// this field. For the `FieldMask` definition, see
-  ///
-  /// https:
-  /// //developers.google.com/protocol-buffers
-  /// // /docs/reference/google.protobuf#fieldmask
+  /// be supplied in this field. For the `FieldMask` definition, see https:
+  /// //developers.google.com/protocol-buffers //
+  /// /docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -658,34 +641,28 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Previews the Game Server Deployment Rollout. This API does not mutate the
-  /// Rollout resource.
+  /// Previews the game server deployment rollout. This API does not mutate the
+  /// rollout resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the Game Server Deployment Rollout. Uses the
+  /// [name] - The resource name of the game server deployment rollout. Uses the
   /// form:
-  ///
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
   /// For example,
-  ///
-  /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment/rollout`.
+  /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
   ///
   /// [updateMask] - Optional. Mask of fields to update. At least one path must
-  /// be supplied in
-  /// this field. For the `FieldMask` definition, see
-  ///
-  /// https:
-  /// //developers.google.com/protocol-buffers
-  /// // /docs/reference/google.protobuf#fieldmask
+  /// be supplied in this field. For the `FieldMask` definition, see https:
+  /// //developers.google.com/protocol-buffers //
+  /// /docs/reference/google.protobuf#fieldmask
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
-  /// Defaults to the immediately
-  /// after the proposed Rollout completes.
+  /// Defaults to the immediately after the proposed rollout completes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -738,18 +715,16 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
-  ///
-  /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED`
-  /// errors.
+  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
+  /// `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
   ///
@@ -796,21 +771,19 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
   ///
@@ -858,36 +831,29 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 
-  /// Patches a single Game Server Deployment Rollout.
-  /// The method will not return an error if the update does not affect any
-  /// existing realms. For example - if the default_game_server_config is
-  /// changed
-  /// but all existing realms use the override, that is valid. Similarly, if a
-  /// non existing realm is explicitly called out in
-  /// game_server_config_overrides
-  /// field, that will also not result in an error.
+  /// Patches a single game server deployment rollout. The method will not
+  /// return an error if the update does not affect any existing realms. For
+  /// example - if the default_game_server_config is changed but all existing
+  /// realms use the override, that is valid. Similarly, if a non existing realm
+  /// is explicitly called out in game_server_config_overrides field, that will
+  /// also not result in an error.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the Game Server Deployment Rollout. Uses the
+  /// [name] - The resource name of the game server deployment rollout. Uses the
   /// form:
-  ///
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
   /// For example,
-  ///
-  /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment/rollout`.
+  /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in
-  /// this field. For the `FieldMask` definition, see
-  ///
-  /// https:
-  /// //developers.google.com/protocol-buffers
-  /// // /docs/reference/google.protobuf#fieldmask
+  /// be supplied in this field. For the `FieldMask` definition, see https:
+  /// //developers.google.com/protocol-buffers //
+  /// /docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -942,21 +908,20 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new Game Server Config in a given project, Location, and Game
-  /// Server Deployment. Game Server Configs are immutable, and are not applied
-  /// until referenced in the Game Server Deployment Rollout resource.
+  /// Creates a new game server config in a given project, location, and game
+  /// server deployment. Game server configs are immutable, and are not applied
+  /// until referenced in the game server deployment rollout resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name. Uses the form:
-  ///
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
   ///
-  /// [configId] - Required. The ID of the Game Server Config resource to be
+  /// [configId] - Required. The ID of the game server config resource to be
   /// created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1004,14 +969,13 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Deletes a single Game Server Config. The deletion will fail if the Game
-  /// Server Config is referenced in a Game Server Deployment Rollout.
+  /// Deletes a single game server config. The deletion will fail if the game
+  /// server config is referenced in a game server deployment rollout.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Game Server Config to delete. Uses the
+  /// [name] - Required. The name of the game server config to delete. Uses the
   /// form:
-  ///
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+/configs/[^/]+$".
@@ -1052,13 +1016,12 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Gets details of a single Game Server Config.
+  /// Gets details of a single game server config.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Game Server Config to retrieve. Uses
+  /// [name] - Required. The name of the game server config to retrieve. Uses
   /// the form:
-  ///
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+/configs/[^/]+$".
@@ -1099,13 +1062,12 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
     return _response.then((data) => new GameServerConfig.fromJson(data));
   }
 
-  /// Lists Game Server Configs in a given project, Location, and Game Server
-  /// Deployment.
+  /// Lists game server configs in a given project, location, and game server
+  /// deployment.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name. Uses the form:
-  ///
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs
   /// / * `.
   /// Value must have pattern
@@ -1113,19 +1075,17 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, server will pick an appropriate default. Server may return
+  /// fewer items than requested. A caller should only rely on response's
+  /// next_page_token to determine if there are more GameServerConfigs left to
+  /// be queried.
   ///
   /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at
-  /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return.  If
-  /// unspecified, server
-  /// will pick an appropriate default. Server may return fewer items than
-  /// requested. A caller should only rely on response's
-  /// next_page_token to
-  /// determine if there are more GameServerConfigs left to be queried.
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1139,9 +1099,9 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListGameServerConfigsResponse> list(core.String parent,
       {core.String filter,
-      core.String pageToken,
-      core.String orderBy,
       core.int pageSize,
+      core.String orderBy,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1156,14 +1116,14 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1190,16 +1150,15 @@ class ProjectsLocationsOperationsResourceApi {
   ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1297,7 +1256,7 @@ class ProjectsLocationsOperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -1344,27 +1303,25 @@ class ProjectsLocationsOperationsResourceApi {
   }
 
   /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1377,9 +1334,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1391,14 +1348,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1427,7 +1384,7 @@ class ProjectsLocationsRealmsResourceApi {
   ProjectsLocationsRealmsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new Realm in a given project and Location.
+  /// Creates a new realm in a given project and location.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1437,7 +1394,7 @@ class ProjectsLocationsRealmsResourceApi {
   /// `projects/{project}/locations/{location}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [realmId] - Required. The ID of the Realm resource to be created.
+  /// [realmId] - Required. The ID of the realm resource to be created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1484,11 +1441,11 @@ class ProjectsLocationsRealmsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Deletes a single Realm.
+  /// Deletes a single realm.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Realm to delete. Uses the form:
+  /// [name] - Required. The name of the realm to delete. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
@@ -1528,11 +1485,11 @@ class ProjectsLocationsRealmsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Gets details of a single Realm.
+  /// Gets details of a single realm.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Realm to retrieve. Uses the form:
+  /// [name] - Required. The name of the realm to retrieve. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
@@ -1572,7 +1529,7 @@ class ProjectsLocationsRealmsResourceApi {
     return _response.then((data) => new Realm.fromJson(data));
   }
 
-  /// Lists Realms in a given project and Location.
+  /// Lists realms in a given project and location.
   ///
   /// Request parameters:
   ///
@@ -1582,20 +1539,16 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request,
-  /// if any.
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, server will pick an appropriate default. Server may return
+  /// fewer items than requested. A caller should only rely on response's
+  /// next_page_token to determine if there are more realms left to be queried.
   ///
   /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at
-  /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return.  If
-  /// unspecified, server
-  /// will pick an appropriate default. Server may return fewer items than
-  /// requested. A caller should only rely on response's
-  /// next_page_token to
-  /// determine if there are more Realms left to be queried.
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1609,9 +1562,9 @@ class ProjectsLocationsRealmsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListRealmsResponse> list(core.String parent,
       {core.String filter,
-      core.String pageToken,
-      core.String orderBy,
       core.int pageSize,
+      core.String orderBy,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1626,14 +1579,14 @@ class ProjectsLocationsRealmsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1652,24 +1605,21 @@ class ProjectsLocationsRealmsResourceApi {
     return _response.then((data) => new ListRealmsResponse.fromJson(data));
   }
 
-  /// Patches a single Realm.
+  /// Patches a single realm.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the Realm. Uses the form:
-  /// `projects/{project}/locations/{location}/realms/{realm}`. For
-  /// example, `projects/my-project/locations/{location}/realms/my-realm`.
+  /// [name] - The resource name of the realm. Uses the form:
+  /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
+  /// `projects/my-project/locations/{location}/realms/my-realm`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
   /// [updateMask] - Required. The update mask applies to the resource. For the
-  /// `FieldMask`
-  /// definition, see
-  ///
-  /// https:
-  /// //developers.google.com/protocol-buffers
-  /// // /docs/reference/google.protobuf#fieldmask
+  /// `FieldMask` definition, see https:
+  /// //developers.google.com/protocol-buffers //
+  /// /docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1714,24 +1664,21 @@ class ProjectsLocationsRealmsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Previews patches to a single Realm.
+  /// Previews patches to a single realm.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the Realm. Uses the form:
-  /// `projects/{project}/locations/{location}/realms/{realm}`. For
-  /// example, `projects/my-project/locations/{location}/realms/my-realm`.
+  /// [name] - The resource name of the realm. Uses the form:
+  /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
+  /// `projects/my-project/locations/{location}/realms/my-realm`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
   /// [updateMask] - Required. The update mask applies to the resource. For the
-  /// `FieldMask`
-  /// definition, see
-  ///
-  /// https:
-  /// //developers.google.com/protocol-buffers
-  /// // /docs/reference/google.protobuf#fieldmask
+  /// `FieldMask` definition, see https:
+  /// //developers.google.com/protocol-buffers //
+  /// /docs/reference/google.protobuf#fieldmask
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   ///
@@ -1803,7 +1750,7 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   /// `projects/{project}/locations/{location}/realms/{realm-id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
-  /// [gameServerClusterId] - Required. The ID of the Game Server Cluster
+  /// [gameServerClusterId] - Required. The ID of the game server cluster
   /// resource to be created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1855,7 +1802,7 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Game Server Cluster to delete. Uses the
+  /// [name] - Required. The name of the game server cluster to delete. Uses the
   /// form:
   /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
   /// Value must have pattern
@@ -1901,9 +1848,8 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Game Server Cluster to retrieve. Uses
+  /// [name] - Required. The name of the game server cluster to retrieve. Uses
   /// the form:
-  ///
   /// `projects/{project}/locations/{location}/realms/{realm-id}/gameServerClusters/{cluster}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
@@ -1944,7 +1890,7 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
     return _response.then((data) => new GameServerCluster.fromJson(data));
   }
 
-  /// Lists Game Server Clusters in a given project and location.
+  /// Lists game server clusters in a given project and location.
   ///
   /// Request parameters:
   ///
@@ -1952,19 +1898,17 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   /// "projects/{project}/locations/{location}/realms/{realm}".
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, the server will pick an appropriate default. The server may
+  /// return fewer items than requested. A caller should only rely on response's
+  /// next_page_token to determine if there are more GameServerClusters left to
+  /// be queried.
   ///
   /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at
-  /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return.  If
-  /// unspecified, server
-  /// will pick an appropriate default. Server may return fewer items than
-  /// requested. A caller should only rely on response's
-  /// next_page_token to
-  /// determine if there are more GameServerClusters left to be queried.
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
@@ -1979,9 +1923,9 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGameServerClustersResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String orderBy,
-      core.int pageSize,
+      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -1994,14 +1938,14 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -2030,23 +1974,18 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the Game Server Cluster. Uses the
+  /// [name] - Required. The resource name of the game server cluster. Uses the
   /// form:
-  ///
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
   /// For example,
-  ///
   /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in
-  /// this field. For the `FieldMask` definition, see
-  ///
-  /// https:
-  /// //developers.google.com/protocol-buffers
-  /// // /docs/reference/google.protobuf#fieldmask
+  /// be supplied in this field. For the `FieldMask` definition, see https:
+  /// //developers.google.com/protocol-buffers //
+  /// /docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2102,7 +2041,7 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   /// `projects/{project}/locations/{location}/realms/{realm}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
-  /// [gameServerClusterId] - Required. The ID of the Game Server Cluster
+  /// [gameServerClusterId] - Required. The ID of the game server cluster
   /// resource to be created.
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
@@ -2163,7 +2102,7 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the Game Server Cluster to delete. Uses the
+  /// [name] - Required. The name of the game server cluster to delete. Uses the
   /// form:
   /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
   /// Value must have pattern
@@ -2222,25 +2161,20 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the Game Server Cluster. Uses the
+  /// [name] - Required. The resource name of the game server cluster. Uses the
   /// form:
-  ///
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
   /// For example,
-  ///
   /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
   ///
-  /// [previewTime] - Optional. The target timestamp to compute the preview.
-  ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in
-  /// this field. For the `FieldMask` definition, see
+  /// be supplied in this field. For the `FieldMask` definition, see https:
+  /// //developers.google.com/protocol-buffers //
+  /// /docs/reference/google.protobuf#fieldmask
   ///
-  /// https:
-  /// //developers.google.com/protocol-buffers
-  /// // /docs/reference/google.protobuf#fieldmask
+  /// [previewTime] - Optional. The target timestamp to compute the preview.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2254,7 +2188,7 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<PreviewUpdateGameServerClusterResponse> previewUpdate(
       GameServerCluster request, core.String name,
-      {core.String previewTime, core.String updateMask, core.String $fields}) {
+      {core.String updateMask, core.String previewTime, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2268,11 +2202,11 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (previewTime != null) {
-      _queryParams["previewTime"] = [previewTime];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (previewTime != null) {
+      _queryParams["previewTime"] = [previewTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2293,55 +2227,20 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   }
 }
 
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditLogConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:jose@example.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "sampleservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:aliya@example.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// Specifies the audit configuration for a service. The configuration
+/// determines which permission types are logged, and what identities, if any,
+/// are exempted from logging. An AuditConfig must have one or more
+/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
+/// specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
+/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -2349,9 +2248,9 @@ class AuditConfig {
   core.List<AuditLogConfig> auditLogConfigs;
   core.List<core.String> exemptedMembers;
 
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging. For example,
+  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
+  /// special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -2388,29 +2287,14 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:jose@example.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// jose@example.com from DATA_READ logging.
+/// Provides the configuration for logging a type of permissions. Example: {
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
+/// DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
+  /// permission. Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
   core.bool ignoreChildExemptions;
 
@@ -2484,64 +2368,60 @@ class AuthorizationLoggingOptions {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  /// NOTE: An unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
+  /// A client-specified ID for this binding. Expected to be globally unique to
+  /// support the internal bindings-by-ID API.
+  core.String bindingId;
+
+  /// The condition that is associated with this binding. If the condition
+  /// evaluates to `true`, then this binding applies to the current request. If
+  /// the condition evaluates to `false`, then this binding does not apply to
+  /// the current request. However, a different role binding might grant the
+  /// same role to one or more of the members in this binding. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
-  /// `members` can have the following values:
-  ///
-  /// * `allUsers`: A special identifier that represents anyone who is
-  ///    on the internet; with or without a Google account.
-  ///
-  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
-  ///    who is authenticated with a Google account or a service account.
-  ///
-  /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@example.com` .
-  ///
-  ///
-  /// * `serviceAccount:{emailid}`: An email address that represents a service
-  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  ///
-  /// * `group:{emailid}`: An email address that represents a Google group.
-  ///    For example, `admins@example.com`.
-  ///
-  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a user that has been recently deleted. For
-  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
-  /// recovered, this value reverts to `user:{emailid}` and the recovered user
-  ///    retains the role in the binding.
-  ///
-  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
-  /// (plus
-  /// unique identifier) representing a service account that has been recently
-  ///    deleted. For example,
-  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-  ///    If the service account is undeleted, this value reverts to
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
-  ///    role in the binding.
-  ///
-  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a Google group that has been recently
-  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-  /// the group is recovered, this value reverts to `group:{emailid}` and the
-  ///    recovered group retains the role in the binding.
-  ///
-  ///
-  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
-  ///    users of that domain. For example, `google.com` or `example.com`.
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`.
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`. For example, `roles/viewer`,
+  /// `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingId")) {
+      bindingId = _json["bindingId"];
+    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -2556,6 +2436,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bindingId != null) {
+      _json["bindingId"] = bindingId;
+    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -2627,50 +2510,42 @@ class Condition {
   /// - "NO_ATTR" : Default non-attribute.
   /// - "AUTHORITY" : Either principal or (if present) authority selector.
   /// - "ATTRIBUTION" : The principal (even if an authority selector is
-  /// present), which
-  /// must only be used for attribution, not authorization.
+  /// present), which must only be used for attribution, not authorization.
   /// - "SECURITY_REALM" : Any of the security realms in the IAMContext
-  /// (go/security-realms).
-  /// When used with IN, the condition indicates "any of the request's realms
-  /// match one of the given values; with NOT_IN, "none of the realms match
-  /// any of the given values". Note that a value can be:
-  ///  - 'self' (i.e., allow connections from clients that are in the same
-  ///  security realm)
-  ///  - 'self:cloud-region' (i.e., allow connections from clients that are in
-  ///  the same cloud region)
-  ///  - a realm (e.g., 'campus-abc')
-  ///  - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups)
-  /// A match is determined by a realm group
-  /// membership check performed by a RealmAclRep object (go/realm-acl-howto).
-  /// It is not permitted to grant access based on the *absence* of a realm, so
-  /// realm conditions can only be used in a "positive" context (e.g., ALLOW/IN
-  /// or DENY/NOT_IN).
+  /// (go/security-realms). When used with IN, the condition indicates "any of
+  /// the request's realms match one of the given values; with NOT_IN, "none of
+  /// the realms match any of the given values". Note that a value can be: -
+  /// 'self' (i.e., allow connections from clients that are in the same security
+  /// realm) - 'self:metro' (i.e., clients that are in the same metro) -
+  /// 'self:cloud-region' (i.e., allow connections from clients that are in the
+  /// same cloud region) - 'guardians' (i.e., allow connections from its
+  /// guardian realms. See go/security-realms-glossary#guardian for more
+  /// information.) - a realm (e.g., 'campus-abc') - a realm group (e.g.,
+  /// 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by
+  /// a realm group membership check performed by a RealmAclRep object
+  /// (go/realm-acl-howto). It is not permitted to grant access based on the
+  /// *absence* of a realm, so realm conditions can only be used in a "positive"
+  /// context (e.g., ALLOW/IN or DENY/NOT_IN).
   /// - "APPROVER" : An approver (distinct from the requester) that has
-  /// authorized this
-  /// request.
-  /// When used with IN, the condition indicates that one of the approvers
-  /// associated with the request matches the specified principal, or is a
-  /// member of the specified group. Approvers can only grant additional
-  /// access, and are thus only used in a strictly positive context
+  /// authorized this request. When used with IN, the condition indicates that
+  /// one of the approvers associated with the request matches the specified
+  /// principal, or is a member of the specified group. Approvers can only grant
+  /// additional access, and are thus only used in a strictly positive context
   /// (e.g. ALLOW/IN or DENY/NOT_IN).
   /// - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
-  /// with this request.
-  /// String values should match enum names from
+  /// with this request. String values should match enum names from
   /// security.credentials.JustificationType, e.g. "MANUAL_STRING". It is not
   /// permitted to grant access based on the *absence* of a justification, so
-  /// justification conditions can only be used in a "positive" context
-  /// (e.g., ALLOW/IN or DENY/NOT_IN).
-  ///
-  /// Multiple justifications, e.g., a Buganizer ID and a manually-entered
-  /// reason, are normal and supported.
+  /// justification conditions can only be used in a "positive" context (e.g.,
+  /// ALLOW/IN or DENY/NOT_IN). Multiple justifications, e.g., a Buganizer ID
+  /// and a manually-entered reason, are normal and supported.
   /// - "CREDENTIALS_TYPE" : What type of credentials have been supplied with
-  /// this request.
-  /// String values should match enum names from
-  /// security_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY
-  /// is supported.
-  /// It is not permitted to grant access based on the *absence* of a
+  /// this request. String values should match enum names from
+  /// security_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY is
+  /// supported. It is not permitted to grant access based on the *absence* of a
   /// credentials type, so the conditions can only be used in a "positive"
   /// context (e.g., ALLOW/IN or DENY/NOT_IN).
+  /// - "CREDS_ASSERTION" : EXPERIMENTAL -- DO NOT USE.
   core.String iam;
 
   /// An operator to apply the subject with.
@@ -2679,11 +2554,9 @@ class Condition {
   /// - "EQUALS" : DEPRECATED. Use IN instead.
   /// - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
   /// - "IN" : The condition is true if the subject (or any element of it if it
-  /// is
-  /// a set) matches any of the supplied values.
+  /// is a set) matches any of the supplied values.
   /// - "NOT_IN" : The condition is true if the subject (or every element of it
-  /// if it is
-  /// a set) matches none of the supplied values.
+  /// if it is a set) matches none of the supplied values.
   /// - "DISCHARGED" : Subject is discharged
   core.String op;
 
@@ -2746,26 +2619,19 @@ class Condition {
 }
 
 /// Increment a streamz counter with the specified metric and field names.
-///
-/// Metric names should start with a '/', generally be lowercase-only,
-/// and end in "_count". Field names should not contain an initial slash.
-/// The actual exported metric names will have "/iam/policy" prepended.
-///
-/// Field names correspond to IAM request parameters and field values are
-/// their respective values.
-///
-/// Supported field names:
-///    - "authority", which is "[token]" if IAMContext.token is present,
-///      otherwise the value of IAMContext.authority_selector if present, and
-///      otherwise a representation of IAMContext.principal; or
-///    - "iam_principal", a representation of IAMContext.principal even if a
-///      token or authority selector is present; or
-///    - "" (empty string), resulting in a counter with no fields.
-///
-/// Examples:
-///   counter { metric: "/debug_access_count"  field: "iam_principal" }
-///   ==> increment counter /iam/policy/debug_access_count
-///                         {iam_principal=[value of IAMContext.principal]}
+/// Metric names should start with a '/', generally be lowercase-only, and end
+/// in "_count". Field names should not contain an initial slash. The actual
+/// exported metric names will have "/iam/policy" prepended. Field names
+/// correspond to IAM request parameters and field values are their respective
+/// values. Supported field names: - "authority", which is "[token]" if
+/// IAMContext.token is present, otherwise the value of
+/// IAMContext.authority_selector if present, and otherwise a representation of
+/// IAMContext.principal; or - "iam_principal", a representation of
+/// IAMContext.principal even if a token or authority selector is present; or -
+/// "" (empty string), resulting in a counter with no fields. Examples: counter
+/// { metric: "/debug_access_count" field: "iam_principal" } ==> increment
+/// counter /iam/policy/debug_access_count {iam_principal=[value of
+/// IAMContext.principal]}
 class CounterOptions {
   /// Custom fields.
   core.List<CustomField> customFields;
@@ -2809,17 +2675,15 @@ class CounterOptions {
   }
 }
 
-/// Custom fields.
-/// These can be used to create a counter with arbitrary field/value
-/// pairs.
-/// See: go/rpcsp-custom-fields.
+/// Custom fields. These can be used to create a counter with arbitrary
+/// field/value pairs. See: go/rpcsp-custom-fields.
 class CustomField {
   /// Name is the field name.
   core.String name;
 
   /// Value is the field value. It is important that in contrast to the
-  /// CounterOptions.field, the value here is a constant that is not
-  /// derived from the IAMContext.
+  /// CounterOptions.field, the value here is a constant that is not derived
+  /// from the IAMContext.
   core.String value;
 
   CustomField();
@@ -2851,19 +2715,16 @@ class DataAccessOptions {
   ///
   /// Possible string values are:
   /// - "LOG_MODE_UNSPECIFIED" : Client is not required to write a partial Gin
-  /// log immediately after
-  /// the authorization check. If client chooses to write one and it fails,
-  /// client may either fail open (allow the operation to continue) or
-  /// fail closed (handle as a DENY outcome).
+  /// log immediately after the authorization check. If client chooses to write
+  /// one and it fails, client may either fail open (allow the operation to
+  /// continue) or fail closed (handle as a DENY outcome).
   /// - "LOG_FAIL_CLOSED" : The application's operation in the context of which
-  /// this authorization
-  /// check is being made may only be performed if it is successfully logged
-  /// to Gin. For instance, the authorization library may satisfy this
-  /// obligation by emitting a partial log entry at authorization check time
-  /// and only returning ALLOW to the application if it succeeds.
-  ///
-  /// If a matching Rule has this directive, but the client has not indicated
-  /// that it will honor such requirements, then the IAM check will result in
+  /// this authorization check is being made may only be performed if it is
+  /// successfully logged to Gin. For instance, the authorization library may
+  /// satisfy this obligation by emitting a partial log entry at authorization
+  /// check time and only returning ALLOW to the application if it succeeds. If
+  /// a matching Rule has this directive, but the client has not indicated that
+  /// it will honor such requirements, then the IAM check will result in
   /// authorization failure by setting CheckPolicyResponse.success=false.
   core.String logMode;
 
@@ -2885,13 +2746,13 @@ class DataAccessOptions {
   }
 }
 
-/// The Game Server Cluster changes made by the Game Server Deployment.
+/// The game server cluster changes made by the game server deployment.
 class DeployedClusterState {
   /// The name of the cluster.
   core.String cluster;
 
-  /// The details about the Agones fleets and autoscalers created in the
-  /// Game Server Cluster.
+  /// The details about the Agones fleets and autoscalers created in the game
+  /// server cluster.
   core.List<DeployedFleetDetails> fleetDetails;
 
   DeployedClusterState();
@@ -2930,12 +2791,12 @@ class DeployedFleet {
   /// The fleet spec retrieved from the Agones fleet.
   core.String fleetSpec;
 
-  /// The source spec that is used to create the Agones fleet.
-  /// The GameServerConfig resource may no longer exist in the system.
+  /// The source spec that is used to create the Agones fleet. The
+  /// GameServerConfig resource may no longer exist in the system.
   SpecSource specSource;
 
-  /// The current status of the Agones fleet.
-  /// Includes count of game servers in various states.
+  /// The current status of the Agones fleet. Includes count of game servers in
+  /// various states.
   DeployedFleetStatus status;
 
   DeployedFleet();
@@ -2982,8 +2843,8 @@ class DeployedFleetAutoscaler {
   /// The autoscaler spec retrieved from Agones.
   core.String fleetAutoscalerSpec;
 
-  /// The source spec that is used to create the autoscaler.
-  /// The GameServerConfig resource may no longer exist in the system.
+  /// The source spec that is used to create the autoscaler. The
+  /// GameServerConfig resource may no longer exist in the system.
   SpecSource specSource;
 
   DeployedFleetAutoscaler();
@@ -3049,8 +2910,8 @@ class DeployedFleetDetails {
   }
 }
 
-/// DeployedFleetStatus has details about the Agones fleets such as how many
-/// are running, how many allocated, and so on.
+/// DeployedFleetStatus has details about the Agones fleets such as how many are
+/// running, how many allocated, and so on.
 class DeployedFleetStatus {
   /// The number of GameServer replicas in the ALLOCATED state in this fleet.
   core.String allocatedReplicas;
@@ -3062,8 +2923,8 @@ class DeployedFleetStatus {
   core.String replicas;
 
   /// The number of GameServer replicas in the RESERVED state in this fleet.
-  /// Reserved instances won't be deleted on scale down, but won't cause
-  /// an autoscaler to scale up.
+  /// Reserved instances won't be deleted on scale down, but won't cause an
+  /// autoscaler to scale up.
   core.String reservedReplicas;
 
   DeployedFleetStatus();
@@ -3104,13 +2965,9 @@ class DeployedFleetStatus {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -3125,36 +2982,20 @@ class Empty {
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec.
-///
-/// Example (Comparison):
-///
-///     title: "Summary size limit"
-///     description: "Determines if a summary is less than 100 chars"
-///     expression: "document.summary.size() < 100"
-///
-/// Example (Equality):
-///
-///     title: "Requestor is owner"
-///     description: "Determines if requestor is the document owner"
-///     expression: "document.owner == request.auth.claims.email"
-///
-/// Example (Logic):
-///
-///     title: "Public documents"
+/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
 /// description: "Determine whether the document should be publicly visible"
-///     expression: "document.type != 'private' && document.type != 'internal'"
-///
-/// Example (Data Manipulation):
-///
-///     title: "Notification string"
-///     description: "Create a notification string with a timestamp."
-///     expression: "'New message received at ' + string(document.create_time)"
-///
-/// The exact variables and functions that may be referenced within an
-/// expression
-/// are determined by the service that evaluates it. See the service
-/// documentation for additional information.
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
 class Expr {
   /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
@@ -3168,9 +3009,8 @@ class Expr {
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
+  /// Optional. Title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
   Expr();
@@ -3224,10 +3064,10 @@ class FetchDeploymentStateRequest {
 
 /// Response message for GameServerDeploymentsService.FetchDeploymentState.
 class FetchDeploymentStateResponse {
-  /// The state of the Game Server Deployment in each Game Server Cluster.
+  /// The state of the game server deployment in each game server cluster.
   core.List<DeployedClusterState> clusterState;
 
-  /// List of Locations that could not be reached.
+  /// List of locations that could not be reached.
   core.List<core.String> unavailable;
 
   FetchDeploymentStateResponse();
@@ -3291,10 +3131,10 @@ class FleetConfig {
   }
 }
 
-/// A Game Server Cluster resource.
+/// A game server cluster resource.
 class GameServerCluster {
-  /// Game Server Cluster connection information. This information is used to
-  /// manage Game Server Clusters.
+  /// The game server cluster connection information. This information is used
+  /// to manage game server clusters.
   GameServerClusterConnectionInfo connectionInfo;
 
   /// Output only. The creation time.
@@ -3306,15 +3146,13 @@ class GameServerCluster {
   /// ETag of the resource.
   core.String etag;
 
-  /// The labels associated with this Game Server Cluster. Each label is a
+  /// The labels associated with this game server cluster. Each label is a
   /// key-value pair.
   core.Map<core.String, core.String> labels;
 
-  /// Required. The resource name of the Game Server Cluster. Uses the form:
-  ///
+  /// Required. The resource name of the game server cluster. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
   /// For example,
-  ///
   /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
   core.String name;
 
@@ -3376,12 +3214,12 @@ class GameServerCluster {
   }
 }
 
-/// The Game Server Cluster connection information.
+/// The game server cluster connection information.
 class GameServerClusterConnectionInfo {
   /// Reference to the GKE cluster where the game servers are installed.
   GkeClusterReference gkeClusterReference;
 
-  /// Namespace designated on the Game Server Cluster where the Agones game
+  /// Namespace designated on the game server cluster where the Agones game
   /// server instances will be created. Existence of the namespace will be
   /// validated during creation.
   core.String namespace;
@@ -3411,27 +3249,25 @@ class GameServerClusterConnectionInfo {
   }
 }
 
-/// A Game Server Config resource.
+/// A game server config resource.
 class GameServerConfig {
   /// Output only. The creation time.
   core.String createTime;
 
-  /// The description of the Game Server Config.
+  /// The description of the game server config.
   core.String description;
 
-  /// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig
-  /// is allowed.
+  /// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is
+  /// allowed.
   core.List<FleetConfig> fleetConfigs;
 
-  /// The labels associated with this Game Server Config. Each label is a
+  /// The labels associated with this game server config. Each label is a
   /// key-value pair.
   core.Map<core.String, core.String> labels;
 
-  /// The resource name of the Game Server Config. Uses the form:
-  ///
+  /// The resource name of the game server config. Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
   /// For example,
-  ///
   /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
   core.String name;
 
@@ -3501,7 +3337,7 @@ class GameServerConfig {
   }
 }
 
-/// A Game Server Config override.
+/// A game server config override.
 class GameServerConfigOverride {
   /// The game server config for this override.
   core.String configVersion;
@@ -3533,27 +3369,25 @@ class GameServerConfigOverride {
   }
 }
 
-/// A Game Server Deployment resource.
+/// A game server deployment resource.
 class GameServerDeployment {
   /// Output only. The creation time.
   core.String createTime;
 
-  /// Human readable description of the Game Server Deployment.
+  /// Human readable description of the game server delpoyment.
   core.String description;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// The labels associated with this Game Server Deployment. Each label is a
+  /// The labels associated with this game server deployment. Each label is a
   /// key-value pair.
   core.Map<core.String, core.String> labels;
 
-  /// The resource name of the Game Server Deployment. Uses the form:
-  ///
+  /// The resource name of the game server deployment. Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// For example,
-  ///
-  /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
+  /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
   core.String name;
 
   /// Output only. The last-modified time.
@@ -3607,32 +3441,29 @@ class GameServerDeployment {
   }
 }
 
-/// The Game Server Deployment Rollout which represents the desired rollout
+/// The game server deployment rollout which represents the desired rollout
 /// state.
 class GameServerDeploymentRollout {
   /// Output only. The creation time.
   core.String createTime;
 
-  /// The default Game Server Config is applied to all Realms unless overridden
-  /// in the Rollout. For example,
-  ///
+  /// The default game server config is applied to all realms unless overridden
+  /// in the rollout. For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
   core.String defaultGameServerConfig;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// Contains the Game Server Config Rollout overrides. Overrides are processed
-  /// in the order they are listed. Once a match is found for a Realm, the rest
+  /// Contains the game server config rollout overrides. Overrides are processed
+  /// in the order they are listed. Once a match is found for a realm, the rest
   /// of the list is not processed.
   core.List<GameServerConfigOverride> gameServerConfigOverrides;
 
-  /// The resource name of the Game Server Deployment Rollout. Uses the form:
-  ///
+  /// The resource name of the game server deployment rollout. Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
   /// For example,
-  ///
-  /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment/rollout`.
+  /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
   core.String name;
 
   /// Output only. The last-modified time.
@@ -3694,13 +3525,11 @@ class GameServerDeploymentRollout {
 /// A reference to a GKE cluster.
 class GkeClusterReference {
   /// The full or partial name of a GKE cluster, using one of the following
-  /// forms:
-  ///  * `projects/{project}/locations/{location}/clusters/{cluster}`
-  ///  * `locations/{location}/clusters/{cluster}`
-  ///  * `{cluster}`
-  /// If project and location are not specified, the project and location of the
-  /// GameServerCluster resource are used to generate the full name of the
-  /// GKE cluster.
+  /// forms: * `projects/{project}/locations/{location}/clusters/{cluster}` *
+  /// `locations/{location}/clusters/{cluster}` * `{cluster}` If project and
+  /// location are not specified, the project and location of the
+  /// GameServerCluster resource are used to generate the full name of the GKE
+  /// cluster.
   core.String cluster;
 
   GkeClusterReference();
@@ -3746,14 +3575,14 @@ class LabelSelector {
 
 /// Response message for GameServerClustersService.ListGameServerClusters.
 class ListGameServerClustersResponse {
-  /// The list of Game Server Clusters.
+  /// The list of game server clusters.
   core.List<GameServerCluster> gameServerClusters;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
   core.String nextPageToken;
 
-  /// List of Locations that could not be reached.
+  /// List of locations that could not be reached.
   core.List<core.String> unreachable;
 
   ListGameServerClustersResponse();
@@ -3792,14 +3621,14 @@ class ListGameServerClustersResponse {
 
 /// Response message for GameServerConfigsService.ListGameServerConfigs.
 class ListGameServerConfigsResponse {
-  /// The list of Game Server Configs.
+  /// The list of game server configs.
   core.List<GameServerConfig> gameServerConfigs;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
   core.String nextPageToken;
 
-  /// List of Locations that could not be reached.
+  /// List of locations that could not be reached.
   core.List<core.String> unreachable;
 
   ListGameServerConfigsResponse();
@@ -3838,14 +3667,14 @@ class ListGameServerConfigsResponse {
 
 /// Response message for GameServerDeploymentsService.ListGameServerDeployments.
 class ListGameServerDeploymentsResponse {
-  /// The list of Game Server Delpoyments.
+  /// The list of game server deployments.
   core.List<GameServerDeployment> gameServerDeployments;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
   core.String nextPageToken;
 
-  /// List of Locations that could not be reached.
+  /// List of locations that could not be reached.
   core.List<core.String> unreachable;
 
   ListGameServerDeploymentsResponse();
@@ -3957,10 +3786,10 @@ class ListRealmsResponse {
   /// results in the list.
   core.String nextPageToken;
 
-  /// The list of Realms.
+  /// The list of realms.
   core.List<Realm> realms;
 
-  /// List of Locations that could not be reached.
+  /// List of locations that could not be reached.
   core.List<core.String> unreachable;
 
   ListRealmsResponse();
@@ -3997,13 +3826,12 @@ class ListRealmsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  /// For example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
   core.String displayName;
 
   /// Cross-service attributes for the location. For example
-  ///
-  ///     {"cloud.googleapis.com/region": "us-east1"}
+  /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
   /// The canonical id for this location. For example: `"us-east1"`.
@@ -4107,17 +3935,17 @@ class LogConfig {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -4125,19 +3953,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -4198,18 +4024,16 @@ class OperationMetadata {
   /// Output only. The time the operation finished running.
   core.String endTime;
 
-  /// Output only. Operation status for gameservices API operations. Operation
-  /// status is in
-  /// the form of key-value pairs where keys are resource IDs and the values
-  /// show
-  /// the status of the operation. In case of failures, the value includes an
-  /// error code and error message.
+  /// Output only. Operation status for Game Services API operations. Operation
+  /// status is in the form of key-value pairs where keys are resource IDs and
+  /// the values show the status of the operation. In case of failures, the
+  /// value includes an error code and error message.
   core.Map<core.String, OperationStatus> operationStatus;
 
-  /// Output only. Identifies whether the user has requested cancellation
-  /// of the operation. Operations that have successfully been cancelled
-  /// have Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// Output only. Identifies whether the user has requested cancellation of the
+  /// operation. Operations that have successfully been cancelled have
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   core.bool requestedCancellation;
 
   /// Output only. Human-readable status of the operation, if any.
@@ -4340,69 +4164,34 @@ class OperationStatus {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources.
-///
-///
-/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts,
-/// Google groups, and domains (such as G Suite). A `role` is a named list of
-/// permissions; each `role` can be an IAM predefined role or a user-created
-/// custom role.
-///
-/// Optionally, a `binding` can specify a `condition`, which is a logical
-/// expression that allows access to a resource only if the expression evaluates
-/// to `true`. A condition can add constraints based on attributes of the
-/// request, the resource, or both.
-///
-/// **JSON example:**
-///
-///     {
-///       "bindings": [
-///         {
-///           "role": "roles/resourcemanager.organizationAdmin",
-///           "members": [
-///             "user:mike@example.com",
-///             "group:admins@example.com",
-///             "domain:google.com",
-///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-///           ]
-///         },
-///         {
-///           "role": "roles/resourcemanager.organizationViewer",
-///           "members": ["user:eve@example.com"],
-///           "condition": {
-///             "title": "expirable access",
-///             "description": "Does not grant access after Sep 2020",
-/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-///           }
-///         }
-///       ],
-///       "etag": "BwWWja0YfJA=",
-///       "version": 3
-///     }
-///
-/// **YAML example:**
-///
-///     bindings:
-///     - members:
-///       - user:mike@example.com
-///       - group:admins@example.com
-///       - domain:google.com
-///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
-///       role: roles/resourcemanager.organizationAdmin
-///     - members:
-///       - user:eve@example.com
-///       role: roles/resourcemanager.organizationViewer
-///       condition:
-///         title: expirable access
-///         description: Does not grant access after Sep 2020
-///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-///     - etag: BwWWja0YfJA=
-///     - version: 3
-///
-/// For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// controls for Google Cloud resources. A `Policy` is a collection of
+/// `bindings`. A `binding` binds one or more `members` to a single `role`.
+/// Members can be user accounts, service accounts, Google groups, and domains
+/// (such as G Suite). A `role` is a named list of permissions; each `role` can
+/// be an IAM predefined role or a user-created custom role. For some types of
+/// Google Cloud resources, a `binding` can also specify a `condition`, which is
+/// a logical expression that allows access to a resource only if the expression
+/// evaluates to `true`. A condition can add constraints based on attributes of
+/// the request, the resource, or both. To learn which resources support
+/// conditions in their IAM policies, see the [IAM
+/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// version: 3 For a description of IAM and its features, see the [IAM
+/// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -4412,21 +4201,17 @@ class Policy {
   /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a policy from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other. It is
+  /// strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
   /// ensure that their change will be applied to the same version of the
-  /// policy.
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -4440,39 +4225,29 @@ class Policy {
   core.bool iamOwned;
 
   /// If more than one rule is specified, the rules are applied in the following
-  /// manner:
-  /// - All matching LOG rules are always applied.
-  /// - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
-  ///   Logging will be applied if one or more matching rule requires logging.
-  /// - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-  ///   granted.
-  ///   Logging will be applied if one or more matching rule requires logging.
-  /// - Otherwise, if no rule applies, permission is denied.
+  /// manner: - All matching LOG rules are always applied. - If any
+  /// DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be
+  /// applied if one or more matching rule requires logging. - Otherwise, if any
+  /// ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be
+  /// applied if one or more matching rule requires logging. - Otherwise, if no
+  /// rule applies, permission is denied.
   core.List<Rule> rules;
 
-  /// Specifies the format of the policy.
-  ///
-  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-  /// are rejected.
-  ///
-  /// Any operation that affects conditional role bindings must specify version
-  /// `3`. This requirement applies to the following operations:
-  ///
-  /// * Getting a policy that includes a conditional role binding
-  /// * Adding a conditional role binding to a policy
-  /// * Changing a conditional role binding in a policy
-  /// * Removing any role binding, with or without a condition, from a policy
-  ///   that includes conditions
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
-  ///
-  /// If a policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset.
+  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+  /// Requests that specify an invalid value are rejected. Any operation that
+  /// affects conditional role bindings must specify version `3`. This
+  /// requirement applies to the following operations: * Getting a policy that
+  /// includes a conditional role binding * Adding a conditional role binding to
+  /// a policy * Changing a conditional role binding in a policy * Removing any
+  /// role binding, with or without a condition, from a policy that includes
+  /// conditions **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost. If a
+  /// policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -4596,10 +4371,10 @@ class PreviewDeleteGameServerClusterResponse {
   }
 }
 
-/// Response message for PreviewGameServerDeploymentRollout.
-/// This has details about the Agones fleet and autoscaler to be actuated.
+/// Response message for PreviewGameServerDeploymentRollout. This has details
+/// about the Agones fleet and autoscaler to be actuated.
 class PreviewGameServerDeploymentRolloutResponse {
-  /// ETag of the Game Server Deployment.
+  /// ETag of the game server deployment.
   core.String etag;
 
   /// The target state.
@@ -4703,28 +4478,27 @@ class PreviewUpdateGameServerClusterResponse {
   }
 }
 
-/// A Realm resource.
+/// A realm resource.
 class Realm {
   /// Output only. The creation time.
   core.String createTime;
 
-  /// Human readable description of the Realm.
+  /// Human readable description of the realm.
   core.String description;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// The labels associated with this Realm. Each label is a key-value pair.
+  /// The labels associated with this realm. Each label is a key-value pair.
   core.Map<core.String, core.String> labels;
 
-  /// The resource name of the Realm. Uses the form:
-  /// `projects/{project}/locations/{location}/realms/{realm}`. For
-  /// example, `projects/my-project/locations/{location}/realms/my-realm`.
+  /// The resource name of the realm. Uses the form:
+  /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
+  /// `projects/my-project/locations/{location}/realms/my-realm`.
   core.String name;
 
-  /// Required. Time zone where all policies targeting this Realm are evaluated.
-  /// The value
-  /// of this field must be from the IANA time zone database:
+  /// Required. Time zone where all policies targeting this realm are evaluated.
+  /// The value of this field must be from the IANA time zone database:
   /// https://www.iana.org/time-zones.
   core.String timeZone;
 
@@ -4785,9 +4559,9 @@ class Realm {
   }
 }
 
-/// The Realm selector, used to match Realm resources.
+/// The realm selector, used to match realm resources.
 class RealmSelector {
-  /// List of Realms to match.
+  /// List of realms to match.
   core.List<core.String> realms;
 
   RealmSelector();
@@ -4815,12 +4589,10 @@ class Rule {
   /// - "NO_ACTION" : Default no action.
   /// - "ALLOW" : Matching 'Entries' grant access.
   /// - "ALLOW_WITH_LOG" : Matching 'Entries' grant access and the caller
-  /// promises to log
-  /// the request per the returned log_configs.
+  /// promises to log the request per the returned log_configs.
   /// - "DENY" : Matching 'Entries' deny access.
   /// - "DENY_WITH_LOG" : Matching 'Entries' deny access and the caller promises
-  /// to log
-  /// the request per the returned log_configs.
+  /// to log the request per the returned log_configs.
   /// - "LOG" : Matching 'Entries' tell IAM.Check callers to generate logs.
   core.String action;
 
@@ -4831,23 +4603,23 @@ class Rule {
   /// Human-readable description of the rule.
   core.String description;
 
-  /// If one or more 'in' clauses are specified, the rule matches if
-  /// the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
+  /// If one or more 'in' clauses are specified, the rule matches if the
+  /// PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
   core.List<core.String> in_;
 
   /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
   /// that match the LOG action.
   core.List<LogConfig> logConfig;
 
-  /// If one or more 'not_in' clauses are specified, the rule matches
-  /// if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-  /// The format for in and not_in entries can be found at in the Local IAM
-  /// documentation (see go/local-iam#features).
+  /// If one or more 'not_in' clauses are specified, the rule matches if the
+  /// PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in
+  /// and not_in entries can be found at in the Local IAM documentation (see
+  /// go/local-iam#features).
   core.List<core.String> notIn;
 
-  /// A permission is a string of form '<service>.<resource type>.<verb>'
-  /// (e.g., 'storage.buckets.list'). A value of '*' matches all permissions,
-  /// and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
+  /// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A
+  /// value of '*' matches all permissions, and a verb part of '*' (e.g.,
+  /// 'storage.buckets.*') matches all verbs.
   core.List<core.String> permissions;
 
   Rule();
@@ -4921,8 +4693,8 @@ class ScalingConfig {
   /// The schedules to which this Scaling Config applies.
   core.List<Schedule> schedules;
 
-  /// Labels used to identify the Game Server Clusters to which this Agones
-  /// scaling config applies. A Game Server Cluster is subject to this Agones
+  /// Labels used to identify the game server clusters to which this Agones
+  /// scaling config applies. A game server cluster is subject to this Agones
   /// scaling config if its labels match any of the selector entries.
   core.List<LabelSelector> selectors;
 
@@ -4971,18 +4743,16 @@ class ScalingConfig {
 /// larger than the cron_spec + cron_job_duration, the event will be recurring.
 /// If only cron_spec + cron_job_duration are specified, the event is effective
 /// starting at the local time specified by cron_spec, and is recurring.
-///
 /// start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time
-///   cron job: cron spec start time + duration
+/// cron job: cron spec start time + duration
 class Schedule {
   /// The duration for the cron job event. The duration of the event is
-  /// effective
-  /// after the cron job's start time.
+  /// effective after the cron job's start time.
   core.String cronJobDuration;
 
   /// The cron definition of the scheduled event. See
   /// https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as
-  /// defined by the Realm.
+  /// defined by the realm.
   core.String cronSpec;
 
   /// The end time of the event.
@@ -5030,17 +4800,14 @@ class Schedule {
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects)
-  /// might reject them.
+  /// the policy is limited to a few 10s of KB. An empty policy is a valid
+  /// policy but certain Cloud Platform services (such as Projects) might reject
+  /// them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
-  /// Only
-  /// the fields in the mask will be modified. If no mask is provided, the
-  /// following default mask is used:
-  ///
-  /// `paths: "bindings, etag"`
+  /// Only the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
 
   SetIamPolicyRequest();
@@ -5069,8 +4836,7 @@ class SetIamPolicyRequest {
 
 /// Encapsulates Agones fleet spec and Agones autoscaler spec sources.
 class SpecSource {
-  /// The Game Server Config resource. Uses the form:
-  ///
+  /// The game server config resource. Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}`.
   core.String gameServerConfigName;
 
@@ -5105,15 +4871,14 @@ class SpecSource {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -5160,16 +4925,14 @@ class Status {
 
 /// Details about the Agones resources.
 class TargetDetails {
-  /// Agones fleet details for Game Server Clusters and Game Server Deployments.
+  /// Agones fleet details for game server clusters and game server deployments.
   core.List<TargetFleetDetails> fleetDetails;
 
-  /// The Game Server Cluster name. Uses the form:
-  ///
+  /// The game server cluster name. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
   core.String gameServerClusterName;
 
-  /// The Game Server Deployment name. Uses the form:
-  ///
+  /// The game server deployment name. Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}`.
   core.String gameServerDeploymentName;
 
@@ -5212,8 +4975,8 @@ class TargetFleet {
   /// The name of the Agones fleet.
   core.String name;
 
-  /// Encapsulates the source of the Agones fleet spec.
-  /// The Agones fleet spec source.
+  /// Encapsulates the source of the Agones fleet spec. The Agones fleet spec
+  /// source.
   SpecSource specSource;
 
   TargetFleet();
@@ -5245,8 +5008,8 @@ class TargetFleetAutoscaler {
   /// The name of the Agones autoscaler.
   core.String name;
 
-  /// Encapsulates the source of the Agones fleet spec.
-  /// Details about the Agones autoscaler spec.
+  /// Encapsulates the source of the Agones fleet spec. Details about the Agones
+  /// autoscaler spec.
   SpecSource specSource;
 
   TargetFleetAutoscaler();
@@ -5334,8 +5097,8 @@ class TargetState {
 class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`. Permissions with
   /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// information see [IAM
+  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();

@@ -42,7 +42,7 @@ class GamesConfigurationApi {
       new LeaderboardConfigurationsResourceApi(_requester);
 
   GamesConfigurationApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
+      {core.String rootUrl = "https://gamesconfiguration.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -202,12 +202,11 @@ class AchievementConfigurationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
-  /// [maxResults] - The maximum number of resource configurations to return in
-  /// the response,
-  /// used for paging. For any response, the actual number of resources returned
-  /// may be less than the specified `maxResults`.
-  ///
   /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [maxResults] - The maximum number of resource configurations to return in
+  /// the response, used for paging. For any response, the actual number of
+  /// resources returned may be less than the specified `maxResults`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -221,8 +220,8 @@ class AchievementConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementConfigurationListResponse> list(
       core.String applicationId,
-      {core.int maxResults,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -234,11 +233,11 @@ class AchievementConfigurationsResourceApi {
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -324,9 +323,9 @@ class ImageConfigurationsResourceApi {
   ///
   /// [imageType] - Selects which image in a resource for this method.
   /// Possible string values are:
-  /// - "IMAGE_TYPE_UNSPECIFIED" : A IMAGE_TYPE_UNSPECIFIED.
-  /// - "ACHIEVEMENT_ICON" : A ACHIEVEMENT_ICON.
-  /// - "LEADERBOARD_ICON" : A LEADERBOARD_ICON.
+  /// - "IMAGE_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACHIEVEMENT_ICON" : The icon image for an achievement resource.
+  /// - "LEADERBOARD_ICON" : The icon image for a leaderboard resource.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -539,12 +538,11 @@ class LeaderboardConfigurationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
   /// [maxResults] - The maximum number of resource configurations to return in
-  /// the response,
-  /// used for paging. For any response, the actual number of resources returned
-  /// may be less than the specified `maxResults`.
+  /// the response, used for paging. For any response, the actual number of
+  /// resources returned may be less than the specified `maxResults`.
+  ///
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -558,8 +556,8 @@ class LeaderboardConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardConfigurationListResponse> list(
       core.String applicationId,
-      {core.String pageToken,
-      core.int maxResults,
+      {core.int maxResults,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -571,11 +569,11 @@ class LeaderboardConfigurationsResourceApi {
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -676,7 +674,7 @@ class AchievementConfiguration {
   /// The read-only published data of the achievement.
   AchievementConfigurationDetail published;
 
-  /// Steps to unlock.  Only applicable to incremental achievements.
+  /// Steps to unlock. Only applicable to incremental achievements.
   core.int stepsToUnlock;
 
   /// The token for this resource.
@@ -860,9 +858,8 @@ class AchievementConfigurationListResponse {
 /// A number affix resource.
 class GamesNumberAffixConfiguration {
   /// When the language requires special treatment of "small" numbers (as with
-  /// 2,
-  /// 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in
-  /// Polish).
+  /// 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14
+  /// in Polish).
   LocalizedStringBundle few;
 
   /// When the language requires special treatment of "large" numbers (as with
@@ -879,8 +876,7 @@ class GamesNumberAffixConfiguration {
   LocalizedStringBundle other;
 
   /// When the language requires special treatment of numbers like two (as with
-  /// 2
-  /// in Welsh, or 102 in Slovenian).
+  /// 2 in Welsh, or 102 in Slovenian).
   LocalizedStringBundle two;
 
   /// When the language requires special treatment of the number 0 (as in
@@ -948,17 +944,14 @@ class GamesNumberFormatConfiguration {
   /// Possible string values are:
   /// - "NUMBER_FORMAT_TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "NUMERIC" : Numbers are formatted to have no digits or fixed number of
-  /// digits after
-  /// the decimal point according to locale. An optional custom unit can be
-  /// added.
+  /// digits after the decimal point according to locale. An optional custom
+  /// unit can be added.
   /// - "TIME_DURATION" : Numbers are formatted to hours, minutes and seconds.
   /// - "CURRENCY" : Numbers are formatted to currency according to locale.
   core.String numberFormatType;
 
-  /// An optional suffix for the NUMERIC format type.  These strings follow the
-  /// same <a
-  /// href="http://developer.android.com/guide/topics/resources/string-resource.html#Plurals">
-  /// plural rules</a> as all Android string resources.
+  /// An optional suffix for the NUMERIC format type. These strings follow the
+  /// same plural rules as all Android string resources.
   GamesNumberAffixConfiguration suffix;
 
   GamesNumberFormatConfiguration();
@@ -1211,8 +1204,7 @@ class LeaderboardConfigurationListResponse {
   core.List<LeaderboardConfiguration> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string
-  /// `gamesConfiguration#leaderboardConfigurationListResponse`.
+  /// string `gamesConfiguration#leaderboardConfigurationListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.

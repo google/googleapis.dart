@@ -61,11 +61,11 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [signupUrlName] - The name of the SignupUrl used to sign up for the
-  /// enterprise.
-  ///
   /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
+  ///
+  /// [signupUrlName] - The name of the SignupUrl used to sign up for the
+  /// enterprise.
   ///
   /// [enterpriseToken] - The enterprise token appended to the callback URL.
   ///
@@ -80,8 +80,8 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> create(Enterprise request,
-      {core.String signupUrlName,
-      core.String projectId,
+      {core.String projectId,
+      core.String signupUrlName,
       core.String enterpriseToken,
       core.String $fields}) {
     var _url;
@@ -94,11 +94,11 @@ class EnterprisesResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (signupUrlName != null) {
-      _queryParams["signupUrlName"] = [signupUrlName];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (signupUrlName != null) {
+      _queryParams["signupUrlName"] = [signupUrlName];
     }
     if (enterpriseToken != null) {
       _queryParams["enterpriseToken"] = [enterpriseToken];
@@ -295,11 +295,11 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}/devices/{deviceId}.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
-  /// [wipeDataFlags] - Optional flags that control the device wiping behavior.
-  ///
   /// [wipeReasonMessage] - Optional. A short message displayed to the user
   /// before wiping the work profile on personal devices. This has no effect on
   /// company owned devices. The maximum message length is 200 characters.
+  ///
+  /// [wipeDataFlags] - Optional flags that control the device wiping behavior.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -312,8 +312,8 @@ class EnterprisesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name,
-      {core.List<core.String> wipeDataFlags,
-      core.String wipeReasonMessage,
+      {core.String wipeReasonMessage,
+      core.List<core.String> wipeDataFlags,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -325,11 +325,11 @@ class EnterprisesDevicesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (wipeDataFlags != null) {
-      _queryParams["wipeDataFlags"] = wipeDataFlags;
-    }
     if (wipeReasonMessage != null) {
       _queryParams["wipeReasonMessage"] = [wipeReasonMessage];
+    }
+    if (wipeDataFlags != null) {
+      _queryParams["wipeDataFlags"] = wipeDataFlags;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -452,11 +452,11 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results returned by the
-  /// server.
-  ///
   /// [pageSize] - The requested page size. The actual page size may be fixed to
   /// a min or max value.
+  ///
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -469,7 +469,7 @@ class EnterprisesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -480,11 +480,11 @@ class EnterprisesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -727,9 +727,9 @@ class EnterprisesDevicesOperationsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -743,8 +743,8 @@ class EnterprisesDevicesOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
       {core.String pageToken,
-      core.int pageSize,
       core.String filter,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -759,11 +759,11 @@ class EnterprisesDevicesOperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1769,6 +1769,17 @@ class ApplicationPolicy {
   /// about each track are available in AppTrackInfo.
   core.List<core.String> accessibleTrackIds;
 
+  /// Controls whether the app can communicate with itself across a device’s
+  /// work and personal profiles, subject to user consent.
+  /// Possible string values are:
+  /// - "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED" : Unspecified. Defaults to
+  /// CONNECTED_WORK_AND_PERSONAL_APPS_DISALLOWED.
+  /// - "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED" : Default. Prevents the app
+  /// from communicating cross-profile.
+  /// - "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED" : Allows the app to
+  /// communicate across profiles after receiving user consent.
+  core.String connectedWorkAndPersonalApp;
+
   /// The default policy for all permissions requested by the app. If specified,
   /// this overrides the policy-level default_permission_policy which applies to
   /// all apps. It does not override the permission_grants which applies to all
@@ -1819,13 +1830,9 @@ class ApplicationPolicy {
   /// is dictated by the ManagedProperty values supported by the app. Each field
   /// name in the managed configuration must match the key field of the
   /// ManagedProperty. The field value must be compatible with the type of the
-  /// ManagedProperty: <table> <tr><td><i>type</i></td><td><i>JSON
-  /// value</i></td></tr> <tr><td>BOOL</td><td>true or false</td></tr>
-  /// <tr><td>STRING</td><td>string</td></tr>
-  /// <tr><td>INTEGER</td><td>number</td></tr>
-  /// <tr><td>CHOICE</td><td>string</td></tr> <tr><td>MULTISELECT</td><td>array
-  /// of strings</td></tr> <tr><td>HIDDEN</td><td>string</td></tr>
-  /// <tr><td>BUNDLE_ARRAY</td><td>array of objects</td></tr> </table>
+  /// ManagedProperty: *type* *JSON value* BOOL true or false STRING string
+  /// INTEGER number CHOICE string MULTISELECT array of strings HIDDEN string
+  /// BUNDLE_ARRAY array of objects
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1859,6 +1866,9 @@ class ApplicationPolicy {
     if (_json.containsKey("accessibleTrackIds")) {
       accessibleTrackIds =
           (_json["accessibleTrackIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("connectedWorkAndPersonalApp")) {
+      connectedWorkAndPersonalApp = _json["connectedWorkAndPersonalApp"];
     }
     if (_json.containsKey("defaultPermissionPolicy")) {
       defaultPermissionPolicy = _json["defaultPermissionPolicy"];
@@ -1902,6 +1912,9 @@ class ApplicationPolicy {
         new core.Map<core.String, core.Object>();
     if (accessibleTrackIds != null) {
       _json["accessibleTrackIds"] = accessibleTrackIds;
+    }
+    if (connectedWorkAndPersonalApp != null) {
+      _json["connectedWorkAndPersonalApp"] = connectedWorkAndPersonalApp;
     }
     if (defaultPermissionPolicy != null) {
       _json["defaultPermissionPolicy"] = defaultPermissionPolicy;
@@ -2111,11 +2124,25 @@ class BlockAction {
   /// must be less than wipeAfterDays.
   core.int blockAfterDays;
 
+  /// Specifies the scope of this BlockAction. Only applicable to devices that
+  /// are company-owned.
+  /// Possible string values are:
+  /// - "BLOCK_SCOPE_UNSPECIFIED" : Unspecified. Defaults to
+  /// BLOCK_SCOPE_WORK_PROFILE.
+  /// - "BLOCK_SCOPE_WORK_PROFILE" : Block action is only applied to apps in the
+  /// work profile. Apps in the personal profile are unaffected.
+  /// - "BLOCK_SCOPE_DEVICE" : Block action is applied to the entire device,
+  /// including apps in the personal profile.
+  core.String blockScope;
+
   BlockAction();
 
   BlockAction.fromJson(core.Map _json) {
     if (_json.containsKey("blockAfterDays")) {
       blockAfterDays = _json["blockAfterDays"];
+    }
+    if (_json.containsKey("blockScope")) {
+      blockScope = _json["blockScope"];
     }
   }
 
@@ -2124,6 +2151,9 @@ class BlockAction {
         new core.Map<core.String, core.Object>();
     if (blockAfterDays != null) {
       _json["blockAfterDays"] = blockAfterDays;
+    }
+    if (blockScope != null) {
+      _json["blockScope"] = blockScope;
     }
     return _json;
   }
@@ -2214,7 +2244,8 @@ class Command {
   /// - "COMMAND_TYPE_UNSPECIFIED" : This value is disallowed.
   /// - "LOCK" : Lock the device, as if the lock screen timeout had expired.
   /// - "RESET_PASSWORD" : Reset the user's password.
-  /// - "REBOOT" : Reboot the device. Only supported on API level 24+.
+  /// - "REBOOT" : Reboot the device. Only supported on fully managed devices
+  /// running Android 7.0 (API level 24) or higher.
   core.String type;
 
   /// The resource name of the user that owns the device in the form
@@ -2344,12 +2375,12 @@ class ComplianceRule {
 
 /// Represents a whole or partial calendar date, e.g. a birthday. The time of
 /// day and time zone are either specified elsewhere or are not significant. The
-/// date is relative to the Proleptic Gregorian Calendar. This can represent:
-/// A full date, with non-zero year, month and day values
-/// A month and day value, with a zero year, e.g. an anniversary
-/// A year on its own, with zero month and day values
-/// A year and month value, with a zero day, e.g. a credit card expiration
-/// dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.
+/// date is relative to the Proleptic Gregorian Calendar. This can represent: A
+/// full date, with non-zero year, month and day values A month and day value,
+/// with a zero year, e.g. an anniversary A year on its own, with zero month and
+/// day values A year and month value, with a zero day, e.g. a credit card
+/// expiration dateRelated types are google.type.TimeOfDay and
+/// google.protobuf.Timestamp.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
   /// if specifying a year by itself or a year and month where the day is not
@@ -2492,6 +2523,13 @@ class Device {
   /// Details about policy settings that the device is not compliant with.
   core.List<NonComplianceDetail> nonComplianceDetails;
 
+  /// Ownership of the managed device.
+  /// Possible string values are:
+  /// - "OWNERSHIP_UNSPECIFIED" : Ownership is unspecified.
+  /// - "COMPANY_OWNED" : Device is company-owned.
+  /// - "PERSONALLY_OWNED" : Device is personally-owned.
+  core.String ownership;
+
   /// Whether the device is compliant with its policy.
   core.bool policyCompliant;
 
@@ -2629,6 +2667,9 @@ class Device {
               (value) => new NonComplianceDetail.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("ownership")) {
+      ownership = _json["ownership"];
+    }
     if (_json.containsKey("policyCompliant")) {
       policyCompliant = _json["policyCompliant"];
     }
@@ -2738,6 +2779,9 @@ class Device {
     if (nonComplianceDetails != null) {
       _json["nonComplianceDetails"] =
           nonComplianceDetails.map((value) => (value).toJson()).toList();
+    }
+    if (ownership != null) {
+      _json["ownership"] = ownership;
     }
     if (policyCompliant != null) {
       _json["policyCompliant"] = policyCompliant;
@@ -2952,11 +2996,9 @@ class Display {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-/// service Foo {
-///   rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-/// }
-/// The JSON representation for Empty is empty JSON object {}.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for Empty is empty JSON object {}.
 class Empty {
   Empty();
 
@@ -2978,6 +3020,21 @@ class EnrollmentToken {
   /// data must be 1024 characters or less; otherwise, the creation request will
   /// fail.
   core.String additionalData;
+
+  /// Controls whether personal usage is allowed on a device provisioned with
+  /// this enrollment token.For company-owned devices: Enabling personal usage
+  /// allows the user to set up a work profile on the device. Disabling personal
+  /// usage requires the user provision the device as a fully managed device.For
+  /// personally-owned devices: Enabling personal usage allows the user to set
+  /// up a work profile on the device. Disabling personal usage will prevent the
+  /// device from provisioning. Personal usage cannot be disabled on
+  /// personally-owned device.
+  /// Possible string values are:
+  /// - "ALLOW_PERSONAL_USAGE_UNSPECIFIED" : Personal usage restriction is not
+  /// specified
+  /// - "PERSONAL_USAGE_ALLOWED" : Personal usage is allowed
+  /// - "PERSONAL_USAGE_DISALLOWED" : Personal usage is disallowed
+  core.String allowPersonalUsage;
 
   /// The length of time the enrollment token is valid, ranging from 1 minute to
   /// 30 days. If not specified, the default duration is 1 hour.
@@ -3027,6 +3084,9 @@ class EnrollmentToken {
     if (_json.containsKey("additionalData")) {
       additionalData = _json["additionalData"];
     }
+    if (_json.containsKey("allowPersonalUsage")) {
+      allowPersonalUsage = _json["allowPersonalUsage"];
+    }
     if (_json.containsKey("duration")) {
       duration = _json["duration"];
     }
@@ -3058,6 +3118,9 @@ class EnrollmentToken {
         new core.Map<core.String, core.Object>();
     if (additionalData != null) {
       _json["additionalData"] = additionalData;
+    }
+    if (allowPersonalUsage != null) {
+      _json["allowPersonalUsage"] = allowPersonalUsage;
     }
     if (duration != null) {
       _json["duration"] = duration;
@@ -3892,8 +3955,8 @@ class ListWebAppsResponse {
 /// The managed configurations template for the app, saved from the managed
 /// configurations iframe.
 class ManagedConfigurationTemplate {
-  /// Optional, a map containing <key, value> configuration variables defined
-  /// for the configuration.
+  /// Optional, a map containing configuration variables defined for the
+  /// configuration.
   core.Map<core.String, core.String> configurationVariables;
 
   /// The ID of the managed configurations template.
@@ -4208,8 +4271,8 @@ class NonComplianceDetail {
   /// compliance, this specifies the full path to the offending field. The path
   /// is formatted in the same way the policy JSON field would be referenced in
   /// JavaScript, that is: 1) For object-typed fields, the field name is
-  /// followed by a dot then by a  subfield name. 2) For array-typed fields, the
-  /// field name is followed by the array index  enclosed in brackets. For
+  /// followed by a dot then by a subfield name. 2) For array-typed fields, the
+  /// field name is followed by the array index enclosed in brackets. For
   /// example, to indicate a problem with the url field in the externalData
   /// field in the 3rd application, the path would be
   /// applications[2].externalData.url
@@ -4235,8 +4298,9 @@ class NonComplianceDetail {
   /// country.
   /// - "NO_LICENSES_REMAINING" : There are no licenses available to assign to
   /// the user.
-  /// - "NOT_ENROLLED" : The enterprise is no longer enrolled with managed Play
-  /// or the admin has not accepted the latest managed Play terms of service.
+  /// - "NOT_ENROLLED" : The enterprise is no longer enrolled with Managed
+  /// Google Play or the admin has not accepted the latest Managed Google Play
+  /// Terms of Service.
   /// - "USER_INVALID" : The user is no longer valid. The user may have been
   /// deleted or disabled.
   core.String installationFailureReason;
@@ -4269,7 +4333,7 @@ class NonComplianceDetail {
   core.String packageName;
 
   /// The name of the policy setting. This is the JSON field name of a top-level
-  /// Policy  field.
+  /// Policy field.
   core.String settingName;
 
   NonComplianceDetail();
@@ -4764,6 +4828,126 @@ class PersistentPreferredActivity {
   }
 }
 
+/// Policies for apps in the personal profile of a company-owned device with a
+/// work profile.
+class PersonalApplicationPolicy {
+  /// The type of installation to perform.
+  /// Possible string values are:
+  /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. The default behavior is that
+  /// all installs are allowed.
+  /// - "BLOCKED" : The app is blocked and can't be installed in the personal
+  /// profile.
+  core.String installType;
+
+  /// The package name of the application.
+  core.String packageName;
+
+  PersonalApplicationPolicy();
+
+  PersonalApplicationPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("installType")) {
+      installType = _json["installType"];
+    }
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (installType != null) {
+      _json["installType"] = installType;
+    }
+    if (packageName != null) {
+      _json["packageName"] = packageName;
+    }
+    return _json;
+  }
+}
+
+/// Policies controlling personal usage on a company-owned device with a work
+/// profile.
+class PersonalUsagePolicies {
+  /// Account types that can't be managed by the user.
+  core.List<core.String> accountTypesWithManagementDisabled;
+
+  /// Whether camera is disabled.
+  core.bool cameraDisabled;
+
+  /// Controls how long the work profile can stay off.
+  core.int maxDaysWithWorkOff;
+
+  /// Policy applied to applications in the personal profile.
+  core.List<PersonalApplicationPolicy> personalApplications;
+
+  /// Used together with personal_applications to control how apps in the
+  /// personal profile are allowed or blocked.
+  /// Possible string values are:
+  /// - "PLAY_STORE_MODE_UNSPECIFIED" : Unspecified. Default behavior is to
+  /// allow all installs.
+  /// - "BLACKLIST" : All Play Store apps are available, except those whose
+  /// install_type is BLOCKED in personal_applications.
+  core.String personalPlayStoreMode;
+
+  /// Whether screen capture is disabled.
+  core.bool screenCaptureDisabled;
+
+  PersonalUsagePolicies();
+
+  PersonalUsagePolicies.fromJson(core.Map _json) {
+    if (_json.containsKey("accountTypesWithManagementDisabled")) {
+      accountTypesWithManagementDisabled =
+          (_json["accountTypesWithManagementDisabled"] as core.List)
+              .cast<core.String>();
+    }
+    if (_json.containsKey("cameraDisabled")) {
+      cameraDisabled = _json["cameraDisabled"];
+    }
+    if (_json.containsKey("maxDaysWithWorkOff")) {
+      maxDaysWithWorkOff = _json["maxDaysWithWorkOff"];
+    }
+    if (_json.containsKey("personalApplications")) {
+      personalApplications = (_json["personalApplications"] as core.List)
+          .map<PersonalApplicationPolicy>(
+              (value) => new PersonalApplicationPolicy.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("personalPlayStoreMode")) {
+      personalPlayStoreMode = _json["personalPlayStoreMode"];
+    }
+    if (_json.containsKey("screenCaptureDisabled")) {
+      screenCaptureDisabled = _json["screenCaptureDisabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountTypesWithManagementDisabled != null) {
+      _json["accountTypesWithManagementDisabled"] =
+          accountTypesWithManagementDisabled;
+    }
+    if (cameraDisabled != null) {
+      _json["cameraDisabled"] = cameraDisabled;
+    }
+    if (maxDaysWithWorkOff != null) {
+      _json["maxDaysWithWorkOff"] = maxDaysWithWorkOff;
+    }
+    if (personalApplications != null) {
+      _json["personalApplications"] =
+          personalApplications.map((value) => (value).toJson()).toList();
+    }
+    if (personalPlayStoreMode != null) {
+      _json["personalPlayStoreMode"] = personalPlayStoreMode;
+    }
+    if (screenCaptureDisabled != null) {
+      _json["screenCaptureDisabled"] = screenCaptureDisabled;
+    }
+    return _json;
+  }
+}
+
 /// A policy resource represents a group of settings that govern the behavior of
 /// a managed device and the apps installed on it.
 class Policy {
@@ -5009,6 +5193,9 @@ class Policy {
 
   /// Default intent handler activities.
   core.List<PersistentPreferredActivity> persistentPreferredActivities;
+
+  /// Policies managing personal usage on a company-owned device.
+  PersonalUsagePolicies personalUsagePolicies;
 
   /// This mode controls which apps are available to the user in the Play Store
   /// and the behavior on the device when apps are removed from the policy.
@@ -5313,6 +5500,10 @@ class Policy {
                   (value) => new PersistentPreferredActivity.fromJson(value))
               .toList();
     }
+    if (_json.containsKey("personalUsagePolicies")) {
+      personalUsagePolicies =
+          new PersonalUsagePolicies.fromJson(_json["personalUsagePolicies"]);
+    }
     if (_json.containsKey("playStoreMode")) {
       playStoreMode = _json["playStoreMode"];
     }
@@ -5576,6 +5767,9 @@ class Policy {
       _json["persistentPreferredActivities"] = persistentPreferredActivities
           .map((value) => (value).toJson())
           .toList();
+    }
+    if (personalUsagePolicies != null) {
+      _json["personalUsagePolicies"] = (personalUsagePolicies).toJson();
     }
     if (playStoreMode != null) {
       _json["playStoreMode"] = playStoreMode;
@@ -5945,6 +6139,21 @@ class SetupAction {
 
 /// A resource containing sign in details for an enterprise.
 class SigninDetail {
+  /// Controls whether personal usage is allowed on a device provisioned with
+  /// this enrollment token.For company-owned devices: Enabling personal usage
+  /// allows the user to set up a work profile on the device. Disabling personal
+  /// usage requires the user provision the device as a fully managed device.For
+  /// personally-owned devices: Enabling personal usage allows the user to set
+  /// up a work profile on the device. Disabling personal usage will prevent the
+  /// device from provisioning. Personal usage cannot be disabled on
+  /// personally-owned device.
+  /// Possible string values are:
+  /// - "ALLOW_PERSONAL_USAGE_UNSPECIFIED" : Personal usage restriction is not
+  /// specified
+  /// - "PERSONAL_USAGE_ALLOWED" : Personal usage is allowed
+  /// - "PERSONAL_USAGE_DISALLOWED" : Personal usage is disallowed
+  core.String allowPersonalUsage;
+
   /// A JSON string whose UTF-8 representation can be used to generate a QR code
   /// to enroll a device with this enrollment token. To enroll a device using
   /// NFC, the NFC record must contain a serialized java.util.Properties
@@ -5958,15 +6167,17 @@ class SigninDetail {
 
   /// Sign-in URL for authentication when device is provisioned with a sign-in
   /// enrollment token. The sign-in endpoint should finish authentication flow
-  /// with a URL in the form of
-  /// https://enterprise.google.com/android/enroll?et=<token> for a successful
-  /// login, or https://enterprise.google.com/android/enroll/invalid for a
-  /// failed login.
+  /// with a URL in the form of https://enterprise.google.com/android/enroll?et=
+  /// for a successful login, or
+  /// https://enterprise.google.com/android/enroll/invalid for a failed login.
   core.String signinUrl;
 
   SigninDetail();
 
   SigninDetail.fromJson(core.Map _json) {
+    if (_json.containsKey("allowPersonalUsage")) {
+      allowPersonalUsage = _json["allowPersonalUsage"];
+    }
     if (_json.containsKey("qrCode")) {
       qrCode = _json["qrCode"];
     }
@@ -5981,6 +6192,9 @@ class SigninDetail {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (allowPersonalUsage != null) {
+      _json["allowPersonalUsage"] = allowPersonalUsage;
+    }
     if (qrCode != null) {
       _json["qrCode"] = qrCode;
     }
@@ -6064,6 +6278,9 @@ class SoftwareInfo {
   /// Security patch level, e.g. 2016-05-01.
   core.String securityPatchLevel;
 
+  /// Information about a potential pending system update.
+  SystemUpdateInfo systemUpdateInfo;
+
   SoftwareInfo();
 
   SoftwareInfo.fromJson(core.Map _json) {
@@ -6096,6 +6313,10 @@ class SoftwareInfo {
     }
     if (_json.containsKey("securityPatchLevel")) {
       securityPatchLevel = _json["securityPatchLevel"];
+    }
+    if (_json.containsKey("systemUpdateInfo")) {
+      systemUpdateInfo =
+          new SystemUpdateInfo.fromJson(_json["systemUpdateInfo"]);
     }
   }
 
@@ -6131,6 +6352,9 @@ class SoftwareInfo {
     }
     if (securityPatchLevel != null) {
       _json["securityPatchLevel"] = securityPatchLevel;
+    }
+    if (systemUpdateInfo != null) {
+      _json["systemUpdateInfo"] = (systemUpdateInfo).toJson();
     }
     return _json;
   }
@@ -6374,6 +6598,51 @@ class SystemUpdate {
   }
 }
 
+/// Information about a potential pending system update.
+class SystemUpdateInfo {
+  /// The time when the update was first available. A zero value indicates that
+  /// this field is not set. This field is set only if an update is available
+  /// (that is, updateStatus is neither UPDATE_STATUS_UNKNOWN nor UP_TO_DATE).
+  core.String updateReceivedTime;
+
+  /// The status of an update: whether an update exists and what type it is.
+  /// Possible string values are:
+  /// - "UPDATE_STATUS_UNKNOWN" : It is unknown whether there is a pending
+  /// system update. This happens when, for example, the device API level is
+  /// less than 26, or if the version of Android Device Policy is outdated.
+  /// - "UP_TO_DATE" : There is no pending system update available on the
+  /// device.
+  /// - "UNKNOWN_UPDATE_AVAILABLE" : There is a pending system update available,
+  /// but its type is not known.
+  /// - "SECURITY_UPDATE_AVAILABLE" : There is a pending security update
+  /// available.
+  /// - "OS_UPDATE_AVAILABLE" : There is a pending OS update available.
+  core.String updateStatus;
+
+  SystemUpdateInfo();
+
+  SystemUpdateInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("updateReceivedTime")) {
+      updateReceivedTime = _json["updateReceivedTime"];
+    }
+    if (_json.containsKey("updateStatus")) {
+      updateStatus = _json["updateStatus"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (updateReceivedTime != null) {
+      _json["updateReceivedTime"] = updateReceivedTime;
+    }
+    if (updateStatus != null) {
+      _json["updateStatus"] = updateStatus;
+    }
+    return _json;
+  }
+}
+
 /// A terms and conditions page to be accepted during provisioning.
 class TermsAndConditions {
   /// A well-formatted HTML string. It will be parsed on the client with
@@ -6442,9 +6711,9 @@ class UserFacingMessage {
   /// message must be provided if any localized messages are provided.
   core.String defaultMessage;
 
-  /// A map containing <locale, message> pairs, where locale is a well-formed
-  /// BCP 47 language (https://www.w3.org/International/articles/language-tags/)
-  /// code, such as en-US, es-ES, or fr.
+  /// A map containing pairs, where locale is a well-formed BCP 47 language
+  /// (https://www.w3.org/International/articles/language-tags/) code, such as
+  /// en-US, es-ES, or fr.
   core.Map<core.String, core.String> localizedMessages;
 
   UserFacingMessage();
@@ -6561,9 +6830,9 @@ class WebApp {
 /// An icon for a web app. Supported formats are: png, jpg and webp.
 class WebAppIcon {
   /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
-  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). <ul>
-  /// <li>The image type can be png or jpg. <li>The image should ideally be
-  /// square. <li>The image should ideally have a size of 512x512. </ul>
+  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). - The
+  /// image type can be png or jpg. - The image should ideally be square. - The
+  /// image should ideally have a size of 512x512.
   core.String imageData;
 
   WebAppIcon();
@@ -6588,11 +6857,10 @@ class WebAppIcon {
 class WebToken {
   /// The features to enable. Use this if you want to control exactly which
   /// feature(s) will be activated; leave empty to allow all
-  /// features.Restrictions / things to note: <ul> <li> If no features are
-  /// listed here, all features are enabled — this is the  default behavior
-  /// where you give access to all features to your admins. <li> This must not
-  /// contain any FEATURE_UNSPECIFIED values. <li> Repeated values are ignored
-  /// </ul>
+  /// features.Restrictions / things to note: - If no features are listed here,
+  /// all features are enabled — this is the default behavior where you give
+  /// access to all features to your admins. - This must not contain any
+  /// FEATURE_UNSPECIFIED values. - Repeated values are ignored
   core.List<core.String> enabledFeatures;
 
   /// The name of the web token, which is generated by the server during

@@ -107,11 +107,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [filter] - The standard list filter.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -124,9 +124,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -138,14 +138,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -221,12 +221,12 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// [parent] - The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
+  /// [pageSize] - The maximum number of items to return.
   ///
   /// [orderBy] - Sort results.
   ///
-  /// [pageSize] - The maximum number of items to return.
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
   /// [filter] - List filter.
   ///
@@ -241,9 +241,9 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAcceleratorTypesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String orderBy,
-      core.int pageSize,
+      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -256,14 +256,14 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -642,16 +642,15 @@ class ProjectsLocationsOperationsResourceApi {
   ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -742,7 +741,7 @@ class ProjectsLocationsOperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -789,16 +788,14 @@ class ProjectsLocationsOperationsResourceApi {
   }
 
   /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -807,9 +804,9 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -823,8 +820,8 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
       {core.int pageSize,
-      core.String filter,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -839,11 +836,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -919,14 +916,14 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   /// [parent] - The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
+  /// [filter] - List filter.
   ///
   /// [orderBy] - Sort results.
   ///
-  /// [pageSize] - The maximum number of items to return.
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
-  /// [filter] - List filter.
+  /// [pageSize] - The maximum number of items to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -939,10 +936,10 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTensorFlowVersionsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
       core.String orderBy,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -954,17 +951,17 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1019,13 +1016,9 @@ class AcceleratorType {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -1241,13 +1234,12 @@ class ListTensorFlowVersionsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  /// For example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
   core.String displayName;
 
   /// Cross-service attributes for the location. For example
-  ///
-  ///     {"cloud.googleapis.com/region": "us-east1"}
+  /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
   /// The canonical id for this location. For example: `"us-east1"`.
@@ -1341,8 +1333,7 @@ class NetworkEndpoint {
 
 /// A TPU instance.
 class Node {
-  /// The type of hardware accelerators associated with this node.
-  /// Required.
+  /// The type of hardware accelerators associated with this node. Required.
   core.String acceleratorType;
 
   /// The CIDR block that the TPU node will use when selecting an IP address.
@@ -1370,18 +1361,15 @@ class Node {
   /// - "TIMEOUT" : The resource is unresponsive.
   /// - "UNHEALTHY_TENSORFLOW" : The in-guest ML stack is unhealthy.
   /// - "UNHEALTHY_MAINTENANCE" : The node is under maintenance/priority boost
-  /// caused rescheduling and
-  /// will resume running once rescheduled.
+  /// caused rescheduling and will resume running once rescheduled.
   core.String health;
 
   /// Output only. If this field is populated, it contains a description of why
-  /// the TPU Node
-  /// is unhealthy.
+  /// the TPU Node is unhealthy.
   core.String healthDescription;
 
-  /// Output only. DEPRECATED! Use network_endpoints instead.
-  /// The network address for the TPU Node as visible to Compute Engine
-  /// instances.
+  /// Output only. DEPRECATED! Use network_endpoints instead. The network
+  /// address for the TPU Node as visible to Compute Engine instances.
   core.String ipAddress;
 
   /// Resource labels to represent user-provided metadata.
@@ -1400,16 +1388,15 @@ class Node {
   /// to the 0th entry in this map first.
   core.List<NetworkEndpoint> networkEndpoints;
 
-  /// Output only. DEPRECATED! Use network_endpoints instead.
-  /// The network port for the TPU Node as visible to Compute Engine instances.
+  /// Output only. DEPRECATED! Use network_endpoints instead. The network port
+  /// for the TPU Node as visible to Compute Engine instances.
   core.String port;
   SchedulingConfig schedulingConfig;
 
   /// Output only. The service account used to run the tensor flow services
-  /// within the node.
-  /// To share resources, including Google Cloud Storage data, with the
-  /// Tensorflow job running in the Node, this account must have permissions to
-  /// that data.
+  /// within the node. To share resources, including Google Cloud Storage data,
+  /// with the Tensorflow job running in the Node, this account must have
+  /// permissions to that data.
   core.String serviceAccount;
 
   /// Output only. The current state for the TPU Node.
@@ -1421,24 +1408,31 @@ class Node {
   /// - "REIMAGING" : TPU node is undergoing reimaging.
   /// - "DELETING" : TPU node is being deleted.
   /// - "REPAIRING" : TPU node is being repaired and may be unusable. Details
-  /// can be
-  /// found in the `help_description` field.
+  /// can be found in the `help_description` field.
   /// - "STOPPED" : TPU node is stopped.
   /// - "STOPPING" : TPU node is currently stopping.
   /// - "STARTING" : TPU node is currently starting.
   /// - "PREEMPTED" : TPU node has been preempted. Only applies to Preemptible
   /// TPU Nodes.
   /// - "TERMINATED" : TPU node has been terminated due to maintenance or has
-  /// reached the end of
-  /// its life cycle (for preemptible nodes).
+  /// reached the end of its life cycle (for preemptible nodes).
   /// - "HIDING" : TPU node is currently hiding.
   /// - "HIDDEN" : TPU node has been hidden.
   /// - "UNHIDING" : TPU node is currently unhiding.
   core.String state;
 
-  /// The version of Tensorflow running in the Node.
-  /// Required.
+  /// Output only. The Symptoms that have occurred to the TPU Node.
+  core.List<Symptom> symptoms;
+
+  /// The version of Tensorflow running in the Node. Required.
   core.String tensorflowVersion;
+
+  /// Whether the VPC peering for the node is set up through Service Networking
+  /// API. The VPC Peering should be set up before provisioning the node. If
+  /// this field is set, cidr_block field should not be specified. If the
+  /// network, that you want to peer the TPU Node to, is Shared VPC networks,
+  /// the node must be created with this this field enabled.
+  core.bool useServiceNetworking;
 
   Node();
 
@@ -1491,8 +1485,16 @@ class Node {
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
+    if (_json.containsKey("symptoms")) {
+      symptoms = (_json["symptoms"] as core.List)
+          .map<Symptom>((value) => new Symptom.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("tensorflowVersion")) {
       tensorflowVersion = _json["tensorflowVersion"];
+    }
+    if (_json.containsKey("useServiceNetworking")) {
+      useServiceNetworking = _json["useServiceNetworking"];
     }
   }
 
@@ -1545,8 +1547,14 @@ class Node {
     if (state != null) {
       _json["state"] = state;
     }
+    if (symptoms != null) {
+      _json["symptoms"] = symptoms.map((value) => (value).toJson()).toList();
+    }
     if (tensorflowVersion != null) {
       _json["tensorflowVersion"] = tensorflowVersion;
+    }
+    if (useServiceNetworking != null) {
+      _json["useServiceNetworking"] = useServiceNetworking;
     }
     return _json;
   }
@@ -1555,17 +1563,17 @@ class Node {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -1573,19 +1581,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1640,10 +1646,10 @@ class OperationMetadata {
   /// [Output only] API version used to start the operation.
   core.String apiVersion;
 
-  /// [Output only] Identifies whether the user has requested cancellation
-  /// of the operation. Operations that have successfully been cancelled
-  /// have Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// [Output only] Identifies whether the user has requested cancellation of
+  /// the operation. Operations that have successfully been cancelled have
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   core.bool cancelRequested;
 
   /// [Output only] The time the operation was created.
@@ -1739,7 +1745,9 @@ class ReimageNodeRequest {
   }
 }
 
+/// Sets the scheduling options for this node.
 class SchedulingConfig {
+  /// Defines whether the node is preemptible.
   core.bool preemptible;
 
   /// Whether the node is created under a reservation.
@@ -1785,15 +1793,14 @@ class StartNodeRequest {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -1847,6 +1854,64 @@ class StopNodeRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A Symptom instance.
+class Symptom {
+  /// Timestamp when the Symptom is created.
+  core.String createTime;
+
+  /// Detailed information of the current Symptom.
+  core.String details;
+
+  /// Type of the Symptom.
+  /// Possible string values are:
+  /// - "SYMPTOM_TYPE_UNSPECIFIED" : Unspecified symptom.
+  /// - "LOW_MEMORY" : TPU VM memory is low.
+  /// - "OUT_OF_MEMORY" : TPU runtime is out of memory.
+  /// - "EXECUTE_TIMED_OUT" : TPU runtime execution has timed out.
+  /// - "MESH_BUILD_FAIL" : TPU runtime fails to construct a mesh that
+  /// recognizes each TPU device's neighbors.
+  /// - "HBM_OUT_OF_MEMORY" : TPU HBM is out of memory.
+  core.String symptomType;
+
+  /// A string used to uniquely distinguish a worker within a TPU node.
+  core.String workerId;
+
+  Symptom();
+
+  Symptom.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("details")) {
+      details = _json["details"];
+    }
+    if (_json.containsKey("symptomType")) {
+      symptomType = _json["symptomType"];
+    }
+    if (_json.containsKey("workerId")) {
+      workerId = _json["workerId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (symptomType != null) {
+      _json["symptomType"] = symptomType;
+    }
+    if (workerId != null) {
+      _json["workerId"] = workerId;
+    }
     return _json;
   }
 }

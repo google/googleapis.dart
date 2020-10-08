@@ -64,8 +64,8 @@ class JobsResourceApi {
   /// Request parameters:
   ///
   /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
+  /// the user is acting on. If not set, the user is acting for himself (his own
+  /// channel).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -114,8 +114,8 @@ class JobsResourceApi {
   /// [jobId] - The ID of the job to delete.
   ///
   /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
+  /// the user is acting on. If not set, the user is acting for himself (his own
+  /// channel).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -164,8 +164,8 @@ class JobsResourceApi {
   /// [jobId] - The ID of the job to retrieve.
   ///
   /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
+  /// the user is acting on. If not set, the user is acting for himself (his own
+  /// channel).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -211,24 +211,21 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. Server may return fewer jobs than
-  /// requested.
-  /// If unspecified, server will pick an appropriate default.
-  ///
-  /// [includeSystemManaged] - If set to true, also system-managed jobs will be
-  /// returned; otherwise only
-  /// user-created jobs will be returned. System-managed jobs can neither be
-  /// modified nor deleted.
+  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+  /// the user is acting on. If not set, the user is acting for himself (his own
+  /// channel).
   ///
   /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically,
-  /// this is the value of
-  /// ListReportTypesResponse.next_page_token
-  /// returned in response to the previous call to the `ListJobs` method.
+  /// return. Typically, this is the value of
+  /// ListReportTypesResponse.next_page_token returned in response to the
+  /// previous call to the `ListJobs` method.
   ///
-  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
+  /// [includeSystemManaged] - If set to true, also system-managed jobs will be
+  /// returned; otherwise only user-created jobs will be returned.
+  /// System-managed jobs can neither be modified nor deleted.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer jobs than
+  /// requested. If unspecified, server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -241,10 +238,10 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
-      {core.int pageSize,
-      core.bool includeSystemManaged,
+      {core.String onBehalfOfContentOwner,
       core.String pageToken,
-      core.String onBehalfOfContentOwner,
+      core.bool includeSystemManaged,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -253,17 +250,17 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (includeSystemManaged != null) {
-      _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    if (includeSystemManaged != null) {
+      _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -295,8 +292,8 @@ class JobsReportsResourceApi {
   /// [reportId] - The ID of the report to retrieve.
   ///
   /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
+  /// the user is acting on. If not set, the user is acting for himself (his own
+  /// channel).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -344,37 +341,33 @@ class JobsReportsResourceApi {
     return _response.then((data) => new Report.fromJson(data));
   }
 
-  /// Lists reports created by a specific job.
-  /// Returns NOT_FOUND if the job does not exist.
+  /// Lists reports created by a specific job. Returns NOT_FOUND if the job does
+  /// not exist.
   ///
   /// Request parameters:
   ///
   /// [jobId] - The ID of the job.
   ///
-  /// [startTimeBefore] - If set, only reports whose start time is smaller than
-  /// the specified
-  /// date/time are returned.
-  ///
-  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
-  ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically,
-  /// this is the value of
-  /// ListReportsResponse.next_page_token
-  /// returned in response to the previous call to the `ListReports` method.
-  ///
-  /// [pageSize] - Requested page size. Server may return fewer report types
-  /// than requested.
-  /// If unspecified, server will pick an appropriate default.
-  ///
   /// [createdAfter] - If set, only reports created after the specified
   /// date/time are returned.
   ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListReportsResponse.next_page_token returned in response to the previous
+  /// call to the `ListReports` method.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer report types
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
   /// [startTimeAtOrAfter] - If set, only reports whose start time is greater
-  /// than or equal the
-  /// specified date/time are returned.
+  /// than or equal the specified date/time are returned.
+  ///
+  /// [startTimeBefore] - If set, only reports whose start time is smaller than
+  /// the specified date/time are returned.
+  ///
+  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+  /// the user is acting on. If not set, the user is acting for himself (his own
+  /// channel).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -387,12 +380,12 @@ class JobsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReportsResponse> list(core.String jobId,
-      {core.String startTimeBefore,
-      core.String onBehalfOfContentOwner,
+      {core.String createdAfter,
       core.String pageToken,
       core.int pageSize,
-      core.String createdAfter,
       core.String startTimeAtOrAfter,
+      core.String startTimeBefore,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -404,11 +397,8 @@ class JobsReportsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (startTimeBefore != null) {
-      _queryParams["startTimeBefore"] = [startTimeBefore];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    if (createdAfter != null) {
+      _queryParams["createdAfter"] = [createdAfter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -416,11 +406,14 @@ class JobsReportsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (createdAfter != null) {
-      _queryParams["createdAfter"] = [createdAfter];
-    }
     if (startTimeAtOrAfter != null) {
       _queryParams["startTimeAtOrAfter"] = [startTimeAtOrAfter];
+    }
+    if (startTimeBefore != null) {
+      _queryParams["startTimeBefore"] = [startTimeBefore];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -443,8 +436,8 @@ class MediaResourceApi {
 
   MediaResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Method for media download. Download is supported
-  /// on the URI `/v1/media/{+name}?alt=media`.
+  /// Method for media download. Download is supported on the URI
+  /// `/v1/media/{+name}?alt=media`.
   ///
   /// Request parameters:
   ///
@@ -515,24 +508,21 @@ class ReportTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [includeSystemManaged] - If set to true, also system-managed report types
-  /// will be returned;
-  /// otherwise only the report types that can be used to create new reporting
-  /// jobs will be returned.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically,
-  /// this is the value of
-  /// ListReportTypesResponse.next_page_token
-  /// returned in response to the previous call to the `ListReportTypes` method.
+  /// return. Typically, this is the value of
+  /// ListReportTypesResponse.next_page_token returned in response to the
+  /// previous call to the `ListReportTypes` method.
   ///
-  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
+  /// [includeSystemManaged] - If set to true, also system-managed report types
+  /// will be returned; otherwise only the report types that can be used to
+  /// create new reporting jobs will be returned.
   ///
   /// [pageSize] - Requested page size. Server may return fewer report types
-  /// than requested.
-  /// If unspecified, server will pick an appropriate default.
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+  /// the user is acting on. If not set, the user is acting for himself (his own
+  /// channel).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -545,10 +535,10 @@ class ReportTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReportTypesResponse> list(
-      {core.bool includeSystemManaged,
-      core.String pageToken,
-      core.String onBehalfOfContentOwner,
+      {core.String pageToken,
+      core.bool includeSystemManaged,
       core.int pageSize,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -557,17 +547,17 @@ class ReportTypesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (includeSystemManaged != null) {
-      _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    if (includeSystemManaged != null) {
+      _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -587,13 +577,9 @@ class ReportTypesResourceApi {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -1614,11 +1600,9 @@ class ListJobsResponse {
   /// The list of jobs.
   core.List<Job> jobs;
 
-  /// A token to retrieve next page of results.
-  /// Pass this value in the
-  /// ListJobsRequest.page_token
-  /// field in the subsequent call to `ListJobs` method to retrieve the next
-  /// page of results.
+  /// A token to retrieve next page of results. Pass this value in the
+  /// ListJobsRequest.page_token field in the subsequent call to `ListJobs`
+  /// method to retrieve the next page of results.
   core.String nextPageToken;
 
   ListJobsResponse();
@@ -1649,11 +1633,9 @@ class ListJobsResponse {
 
 /// Response message for ReportingService.ListReportTypes.
 class ListReportTypesResponse {
-  /// A token to retrieve next page of results.
-  /// Pass this value in the
-  /// ListReportTypesRequest.page_token
-  /// field in the subsequent call to `ListReportTypes` method to retrieve the
-  /// next page of results.
+  /// A token to retrieve next page of results. Pass this value in the
+  /// ListReportTypesRequest.page_token field in the subsequent call to
+  /// `ListReportTypes` method to retrieve the next page of results.
   core.String nextPageToken;
 
   /// The list of report types.
@@ -1688,11 +1670,9 @@ class ListReportTypesResponse {
 
 /// Response message for ReportingService.ListReports.
 class ListReportsResponse {
-  /// A token to retrieve next page of results.
-  /// Pass this value in the
-  /// ListReportsRequest.page_token
-  /// field in the subsequent call to `ListReports` method to retrieve the next
-  /// page of results.
+  /// A token to retrieve next page of results. Pass this value in the
+  /// ListReportsRequest.page_token field in the subsequent call to
+  /// `ListReports` method to retrieve the next page of results.
   core.String nextPageToken;
 
   /// The list of report types.

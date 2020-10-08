@@ -42,19 +42,14 @@ class ManagedShortLinksResourceApi {
       : _requester = client;
 
   /// Creates a managed short Dynamic Link given either a valid long Dynamic
-  /// Link
-  /// or details such as Dynamic Link domain, Android and iOS app information.
-  /// The created short Dynamic Link will not expire.
-  ///
-  /// This differs from CreateShortDynamicLink in the following ways:
-  ///   - The request will also contain a name for the link (non unique name
-  ///     for the front end).
-  ///   - The response must be authenticated with an auth token (generated with
-  ///     the admin service account).
-  /// - The link will appear in the FDL list of links in the console front end.
-  ///
-  /// The Dynamic Link domain in the request must be owned by requester's
-  /// Firebase project.
+  /// Link or details such as Dynamic Link domain, Android and iOS app
+  /// information. The created short Dynamic Link will not expire. This differs
+  /// from CreateShortDynamicLink in the following ways: - The request will also
+  /// contain a name for the link (non unique name for the front end). - The
+  /// response must be authenticated with an auth token (generated with the
+  /// admin service account). - The link will appear in the FDL list of links in
+  /// the console front end. The Dynamic Link domain in the request must be
+  /// owned by requester's Firebase project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -106,14 +101,11 @@ class ShortLinksResourceApi {
   ShortLinksResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Creates a short Dynamic Link given either a valid long Dynamic Link or
-  /// details such as Dynamic Link domain, Android and iOS app information.
-  /// The created short Dynamic Link will not expire.
-  ///
-  /// Repeated calls with the same long Dynamic Link or Dynamic Link information
-  /// will produce the same short Dynamic Link.
-  ///
-  /// The Dynamic Link domain in the request must be owned by requester's
-  /// Firebase project.
+  /// details such as Dynamic Link domain, Android and iOS app information. The
+  /// created short Dynamic Link will not expire. Repeated calls with the same
+  /// long Dynamic Link or Dynamic Link information will produce the same short
+  /// Dynamic Link. The Dynamic Link domain in the request must be owned by
+  /// requester's Firebase project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -164,9 +156,9 @@ class V1ResourceApi {
 
   V1ResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Fetches analytics stats of a short Dynamic Link for a given
-  /// duration. Metrics include number of clicks, redirects, installs,
-  /// app first opens, and app reopens.
+  /// Fetches analytics stats of a short Dynamic Link for a given duration.
+  /// Metrics include number of clicks, redirects, installs, app first opens,
+  /// and app reopens.
   ///
   /// Request parameters:
   ///
@@ -398,13 +390,12 @@ class AndroidInfo {
 
 /// Request to create a managed Short Dynamic Link.
 class CreateManagedShortLinkRequest {
-  /// Information about the Dynamic Link to be shortened.
-  /// [Learn
+  /// Information about the Dynamic Link to be shortened. [Learn
   /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
   DynamicLinkInfo dynamicLinkInfo;
 
-  /// Full long Dynamic Link URL with desired query parameters specified.
-  /// For example,
+  /// Full long Dynamic Link URL with desired query parameters specified. For
+  /// example,
   /// "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
   /// [Learn
   /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
@@ -412,8 +403,7 @@ class CreateManagedShortLinkRequest {
 
   /// Link name to associate with the link. It's used for marketer to identify
   /// manually-created links in the Firebase console
-  /// (https://console.firebase.google.com/).
-  /// Links must be named to be tracked.
+  /// (https://console.firebase.google.com/). Links must be named to be tracked.
   core.String name;
 
   /// Google SDK version. Version takes the form "$major.$minor.$patch"
@@ -511,13 +501,12 @@ class CreateManagedShortLinkResponse {
 
 /// Request to create a short Dynamic Link.
 class CreateShortDynamicLinkRequest {
-  /// Information about the Dynamic Link to be shortened.
-  /// [Learn
+  /// Information about the Dynamic Link to be shortened. [Learn
   /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
   DynamicLinkInfo dynamicLinkInfo;
 
-  /// Full long Dynamic Link URL with desired query parameters specified.
-  /// For example,
+  /// Full long Dynamic Link URL with desired query parameters specified. For
+  /// example,
   /// "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
   /// [Learn
   /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
@@ -644,10 +633,9 @@ class DeviceInfo {
   /// WebView.
   core.String languageCodeFromWebview;
 
-  /// Device language code raw setting.
-  /// iOS does returns language code in different format than iOS WebView.
-  /// For example WebView returns en_US, but iOS returns en-US.
-  /// Field below will return raw value returned by iOS.
+  /// Device language code raw setting. iOS does returns language code in
+  /// different format than iOS WebView. For example WebView returns en_US, but
+  /// iOS returns en-US. Field below will return raw value returned by iOS.
   core.String languageCodeRaw;
 
   /// Device display resolution height.
@@ -724,11 +712,9 @@ class DynamicLinkEventStat {
   /// - "CLICK" : Indicates that an FDL is clicked by users.
   /// - "REDIRECT" : Indicates that an FDL redirects users to fallback link.
   /// - "APP_INSTALL" : Indicates that an FDL triggers an app install from Play
-  /// store, currently
-  /// it's impossible to get stats from App store.
+  /// store, currently it's impossible to get stats from App store.
   /// - "APP_FIRST_OPEN" : Indicates that the app is opened for the first time
-  /// after an install
-  /// triggered by FDLs
+  /// after an install triggered by FDLs
   /// - "APP_RE_OPEN" : Indicates that the app is opened via an FDL for
   /// non-first time.
   core.String event;
@@ -736,10 +722,10 @@ class DynamicLinkEventStat {
   /// Requested platform.
   /// Possible string values are:
   /// - "DYNAMIC_LINK_PLATFORM_UNSPECIFIED" : Unspecified platform.
-  /// - "ANDROID" : Represents Android platform.
-  /// All apps and browsers on Android are classfied in this category.
-  /// - "IOS" : Represents iOS platform.
-  /// All apps and browsers on iOS are classfied in this category.
+  /// - "ANDROID" : Represents Android platform. All apps and browsers on
+  /// Android are classfied in this category.
+  /// - "IOS" : Represents iOS platform. All apps and browsers on iOS are
+  /// classfied in this category.
   /// - "DESKTOP" : Represents desktop.
   /// - "OTHER" : Platforms are not categorized as Android/iOS/Destop fall into
   /// here.
@@ -791,16 +777,13 @@ class DynamicLinkInfo {
 
   /// E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps
   /// More examples can be found in description of getNormalizedUriPrefix in
-  /// j/c/g/firebase/dynamiclinks/uri/DdlDomain.java
-  ///
-  /// Will fallback to dynamic_link_domain is this field is missing
+  /// j/c/g/firebase/dynamiclinks/uri/DdlDomain.java Will fallback to
+  /// dynamic_link_domain is this field is missing
   core.String domainUriPrefix;
 
-  /// Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
-  /// [Learn
+  /// Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn
   /// more](https://firebase.google.com/docs/dynamic-links/android/receive) on
   /// how to set up Dynamic Link domain associated with your Firebase project.
-  ///
   /// Required if missing domain_uri_prefix.
   core.String dynamicLinkDomain;
 
@@ -812,15 +795,14 @@ class DynamicLinkInfo {
   /// This link must be a well-formatted URL, be properly URL-encoded, and use
   /// the HTTP or HTTPS scheme. See 'link' parameters in the
   /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
-  ///
   /// Required.
   core.String link;
 
   /// Information of navigation behavior of a Firebase Dynamic Links.
   NavigationInfo navigationInfo;
 
-  /// Parameters for social meta tag params.
-  /// Used to set meta tag data for link previews on social sites.
+  /// Parameters for social meta tag params. Used to set meta tag data for link
+  /// previews on social sites.
   SocialMetaTagInfo socialMetaTagInfo;
 
   DynamicLinkInfo();
@@ -927,12 +909,10 @@ class DynamicLinkWarning {
   /// - "NOT_INTEGER_ANDROID_PACKAGE_MIN_VERSION" : The Android minimum version
   /// code has to be a valid integer.
   /// - "UNNECESSARY_ANDROID_PACKAGE_MIN_VERSION" : Android package min version
-  /// param is not needed, e.g. when
-  /// 'apn' is missing.
+  /// param is not needed, e.g. when 'apn' is missing.
   /// - "NOT_URI_ANDROID_LINK" : Android link is not a valid URI.
   /// - "UNNECESSARY_ANDROID_LINK" : Android link param is not needed, e.g. when
-  /// param 'al' and 'link' have
-  /// the same value..
+  /// param 'al' and 'link' have the same value..
   /// - "NOT_URI_ANDROID_FALLBACK_LINK" : Android fallback link is not a valid
   /// URI.
   /// - "BAD_URI_SCHEME_ANDROID_FALLBACK_LINK" : Android fallback link has an
@@ -1006,8 +986,8 @@ class DynamicLinkWarning {
 }
 
 /// Request for iSDK to execute strong match flow for post-install attribution.
-/// This is meant for iOS requests only. Requests from other platforms will
-/// not be honored.
+/// This is meant for iOS requests only. Requests from other platforms will not
+/// be honored.
 class GetIosPostInstallAttributionRequest {
   /// App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).
   /// This is a client signal for a more accurate weak match.
@@ -1019,23 +999,21 @@ class GetIosPostInstallAttributionRequest {
   /// Device information.
   DeviceInfo device;
 
-  /// iOS version, ie: 9.3.5.
-  /// Consider adding "build".
+  /// iOS version, ie: 9.3.5. Consider adding "build".
   core.String iosVersion;
 
   /// App post install attribution retrieval information. Disambiguates
-  /// mechanism (iSDK or developer invoked) to retrieve payload from
-  /// clicked link.
+  /// mechanism (iSDK or developer invoked) to retrieve payload from clicked
+  /// link.
   /// Possible string values are:
   /// - "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" : Unknown method.
   /// - "IMPLICIT_WEAK_MATCH" : iSDK performs a server lookup by device
-  /// fingerprint in the background
-  /// when app is first-opened; no API called by developer.
+  /// fingerprint in the background when app is first-opened; no API called by
+  /// developer.
   /// - "EXPLICIT_WEAK_MATCH" : iSDK performs a server lookup by device
   /// fingerprint upon a dev API call.
   /// - "EXPLICIT_STRONG_AFTER_WEAK_MATCH" : iSDK performs a strong match only
-  /// if weak match is found upon a dev
-  /// API call.
+  /// if weak match is found upon a dev API call.
   core.String retrievalMethod;
 
   /// Google SDK version. Version takes the form "$major.$minor.$patch"
@@ -1046,8 +1024,8 @@ class GetIosPostInstallAttributionRequest {
   /// If link is long server need to vslidate the link.
   core.String uniqueMatchLinkToCheck;
 
-  /// Strong match page information. Disambiguates between default UI and
-  /// custom page to present when strong match succeeds/fails to find cookie.
+  /// Strong match page information. Disambiguates between default UI and custom
+  /// page to present when strong match succeeds/fails to find cookie.
   /// Possible string values are:
   /// - "UNKNOWN_VISUAL_STYLE" : Unknown style.
   /// - "DEFAULT_STYLE" : Default style.
@@ -1124,12 +1102,10 @@ class GetIosPostInstallAttributionResponse {
   /// Possible string values are:
   /// - "UNKNOWN_ATTRIBUTION_CONFIDENCE" : Unset.
   /// - "WEAK" : Weak confidence, more than one matching link found or link
-  /// suspected to
-  /// be false positive
+  /// suspected to be false positive
   /// - "DEFAULT" : Default confidence, match based on fingerprint
   /// - "UNIQUE" : Unique confidence, match based on "unique match link to
-  /// check" or other
-  /// means
+  /// check" or other means
   core.String attributionConfidence;
 
   /// The deep-link attributed post-install via one of several techniques
@@ -1138,29 +1114,28 @@ class GetIosPostInstallAttributionResponse {
 
   /// User-agent specific custom-scheme URIs for iSDK to open. This will be set
   /// according to the user-agent tha the click was originally made in. There is
-  /// no Safari-equivalent custom-scheme open URLs.
-  /// ie: googlechrome://www.example.com
-  /// ie: firefox://open-url?url=http://www.example.com
-  /// ie: opera-http://example.com
+  /// no Safari-equivalent custom-scheme open URLs. ie:
+  /// googlechrome://www.example.com ie:
+  /// firefox://open-url?url=http://www.example.com ie: opera-http://example.com
   core.String externalBrowserDestinationLink;
 
-  /// The link to navigate to update the app if min version is not met.
-  /// This is either (in order): 1) fallback link (from ?ifl= parameter, if
-  /// specified by developer) or 2) AppStore URL (from ?isi= parameter, if
-  /// specified), or 3) the payload link (from required link= parameter).
+  /// The link to navigate to update the app if min version is not met. This is
+  /// either (in order): 1) fallback link (from ?ifl= parameter, if specified by
+  /// developer) or 2) AppStore URL (from ?isi= parameter, if specified), or 3)
+  /// the payload link (from required link= parameter).
   core.String fallbackLink;
 
   /// Invitation ID attributed post-install via one of several techniques
   /// (fingerprint, copy unique).
   core.String invitationId;
 
-  /// Instruction for iSDK to attemmpt to perform strong match. For instance,
-  /// if browser does not support/allow cookie or outside of support browsers,
-  /// this will be false.
+  /// Instruction for iSDK to attemmpt to perform strong match. For instance, if
+  /// browser does not support/allow cookie or outside of support browsers, this
+  /// will be false.
   core.bool isStrongMatchExecutable;
 
-  /// Describes why match failed, ie: "discarded due to low confidence".
-  /// This message will be publicly visible.
+  /// Describes why match failed, ie: "discarded due to low confidence". This
+  /// message will be publicly visible.
   core.String matchMessage;
 
   /// Which IP version the request was made from.
@@ -1175,10 +1150,10 @@ class GetIosPostInstallAttributionResponse {
   core.String requestedLink;
 
   /// The entire FDL, expanded from a short link. It is the same as the
-  /// requested_link, if it is long. Parameters from this should not be
-  /// used directly (ie: server can default utm_[campaign|medium|source]
-  /// to a value when requested_link lack them, server determine the best
-  /// fallback_link when requested_link specifies >1 fallback links).
+  /// requested_link, if it is long. Parameters from this should not be used
+  /// directly (ie: server can default utm_[campaign|medium|source] to a value
+  /// when requested_link lack them, server determine the best fallback_link
+  /// when requested_link specifies >1 fallback links).
   core.String resolvedLink;
 
   /// Scion campaign value to be propagated by iSDK to Scion at post-install.
@@ -1310,14 +1285,9 @@ class GetIosReopenAttributionRequest {
   /// APP bundle ID.
   core.String bundleId;
 
-  /// FDL link to be verified from an app universal link open.
-  /// The FDL link can be one of:
-  /// 1) short FDL.
-  /// e.g. <app_code>.page.link/<ddl_id>, or
-  /// 2) long FDL.
-  /// e.g. <app_code>.page.link/?{query params}, or
-  /// 3) Invite FDL.
-  /// e.g. <app_code>.page.link/i/<invite_id_or_alias>
+  /// FDL link to be verified from an app universal link open. The FDL link can
+  /// be one of: 1) short FDL. e.g. .page.link/, or 2) long FDL. e.g.
+  /// .page.link/?{query params}, or 3) Invite FDL. e.g. .page.link/i/
   core.String requestedLink;
 
   /// Google SDK version. Version takes the form "$major.$minor.$patch"
@@ -1356,8 +1326,8 @@ class GetIosReopenAttributionRequest {
 /// Response for iSDK to get reopen attribution for app universal link open
 /// deeplinking. This endpoint is meant for only iOS requests.
 class GetIosReopenAttributionResponse {
-  /// The deep-link attributed the app universal link open. For both regular
-  /// FDL links and invite FDL links.
+  /// The deep-link attributed the app universal link open. For both regular FDL
+  /// links and invite FDL links.
   core.String deepLink;
 
   /// Optional invitation ID, for only invite typed requested FDL links.
@@ -1452,15 +1422,13 @@ class GetIosReopenAttributionResponse {
   }
 }
 
-/// Parameters for Google Play Campaign Measurements.
-/// [Learn
+/// Parameters for Google Play Campaign Measurements. [Learn
 /// more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params)
 class GooglePlayAnalytics {
   /// [AdWords autotagging
   /// parameter](https://support.google.com/analytics/answer/1033981?hl=en);
-  /// used
-  /// to measure Google AdWords ads. This value is generated dynamically and
-  /// should never be modified.
+  /// used to measure Google AdWords ads. This value is generated dynamically
+  /// and should never be modified.
   core.String gclid;
 
   /// Campaign name; used for keyword analysis to identify a specific product
@@ -1673,13 +1641,10 @@ class ManagedShortLink {
   DynamicLinkInfo info;
 
   /// Short durable link url, for example, "https://sample.app.goo.gl/xyz123".
-  ///
   /// Required.
   core.String link;
 
-  /// Link name defined by the creator.
-  ///
-  /// Required.
+  /// Link name defined by the creator. Required.
   core.String linkName;
 
   /// Visibility status of link.
@@ -1687,8 +1652,7 @@ class ManagedShortLink {
   /// - "UNSPECIFIED_VISIBILITY" : Visibility of the link is not specified.
   /// - "UNARCHIVED" : Link created in console and should be shown in console.
   /// - "ARCHIVED" : Link created in console and should not be shown in console
-  /// (but can
-  /// be shown in the console again if it is unarchived).
+  /// (but can be shown in the console again if it is unarchived).
   /// - "NEVER_SHOWN" : Link created outside of console and should never be
   /// shown in console.
   core.String visibility;
@@ -1766,8 +1730,8 @@ class NavigationInfo {
   }
 }
 
-/// Parameters for social meta tag params.
-/// Used to set meta tag data for link previews on social sites.
+/// Parameters for social meta tag params. Used to set meta tag data for link
+/// previews on social sites.
 class SocialMetaTagInfo {
   /// A short description of the link. Optional.
   core.String socialDescription;
@@ -1818,19 +1782,16 @@ class Suffix {
   /// - "OPTION_UNSPECIFIED" : The suffix option is not specified, performs as
   /// UNGUESSABLE .
   /// - "UNGUESSABLE" : Short Dynamic Link suffix is a base62 [0-9A-Za-z]
-  /// encoded string of
-  /// a random generated 96 bit random number, which has a length of 17 chars.
-  /// For example, "nlAR8U4SlKRZw1cb2".
-  /// It prevents other people from guessing and crawling short Dynamic Links
-  /// that contain personal identifiable information.
+  /// encoded string of a random generated 96 bit random number, which has a
+  /// length of 17 chars. For example, "nlAR8U4SlKRZw1cb2". It prevents other
+  /// people from guessing and crawling short Dynamic Links that contain
+  /// personal identifiable information.
   /// - "SHORT" : Short Dynamic Link suffix is a base62 [0-9A-Za-z] string
-  /// starting with a
-  /// length of 4 chars. the length will increase when all the space is
-  /// occupied.
+  /// starting with a length of 4 chars. the length will increase when all the
+  /// space is occupied.
   /// - "CUSTOM" : Custom DDL suffix is a client specified string, for example,
-  /// "buy2get1free".
-  /// NOTE: custom suffix should only be available to managed short link
-  /// creation
+  /// "buy2get1free". NOTE: custom suffix should only be available to managed
+  /// short link creation
   core.String option;
 
   Suffix();

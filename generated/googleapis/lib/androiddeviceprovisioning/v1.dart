@@ -109,8 +109,7 @@ class CustomersConfigurationsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The customer that manages the configuration. An API
-  /// resource name
-  /// in the format `customers/[CUSTOMER_ID]`.
+  /// resource name in the format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern "^customers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -161,9 +160,8 @@ class CustomersConfigurationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The configuration to delete. An API resource name in
-  /// the format
-  /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If the
-  /// configuration is applied to any devices, the API call fails.
+  /// the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If
+  /// the configuration is applied to any devices, the API call fails.
   /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -207,8 +205,7 @@ class CustomersConfigurationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The configuration to get. An API resource name in the
-  /// format
-  /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
+  /// format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
   /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -252,8 +249,7 @@ class CustomersConfigurationsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The customer that manages the listed configurations.
-  /// An API
-  /// resource name in the format `customers/[CUSTOMER_ID]`.
+  /// An API resource name in the format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern "^customers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -308,8 +304,8 @@ class CustomersConfigurationsResourceApi {
   /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
   ///
   /// [updateMask] - Required. The field mask applied to the target
-  /// `Configuration` before
-  /// updating the fields. To learn more about using field masks, read
+  /// `Configuration` before updating the fields. To learn more about using
+  /// field masks, read
   /// [FieldMask](/protocol-buffers/docs/reference/google.protobuf#fieldmask) in
   /// the Protocol Buffers documentation.
   ///
@@ -364,17 +360,16 @@ class CustomersDevicesResourceApi {
       : _requester = client;
 
   /// Applies a Configuration to the device to register the device for
-  /// zero-touch
-  /// enrollment. After applying a configuration to a device, the device
-  /// automatically provisions itself on first boot, or next factory reset.
+  /// zero-touch enrollment. After applying a configuration to a device, the
+  /// device automatically provisions itself on first boot, or next factory
+  /// reset.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The customer managing the device. An API resource
-  /// name in the
-  /// format `customers/[CUSTOMER_ID]`.
+  /// name in the format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern "^customers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -469,8 +464,7 @@ class CustomersDevicesResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The customer managing the devices. An API resource
-  /// name in the
-  /// format `customers/[CUSTOMER_ID]`.
+  /// name in the format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern "^customers/[^/]+$".
   ///
   /// [pageToken] - A token specifying which result page to return.
@@ -577,19 +571,15 @@ class CustomersDevicesResourceApi {
   }
 
   /// Unclaims a device from a customer and removes it from zero-touch
-  /// enrollment.
-  ///
-  /// After removing a device, a customer must contact their reseller to
-  /// register
-  /// the device into zero-touch enrollment again.
+  /// enrollment. After removing a device, a customer must contact their
+  /// reseller to register the device into zero-touch enrollment again.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The customer managing the device. An API resource
-  /// name in the
-  /// format `customers/[CUSTOMER_ID]`.
+  /// name in the format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern "^customers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -647,8 +637,7 @@ class CustomersDpcsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Required. The customer that can use the DPCs in configurations.
-  /// An API
-  /// resource name in the format `customers/[CUSTOMER_ID]`.
+  /// An API resource name in the format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern "^customers/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -695,7 +684,7 @@ class OperationsResourceApi {
 
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -761,18 +750,17 @@ class PartnersCustomersResourceApi {
       : _requester = client;
 
   /// Creates a customer for zero-touch enrollment. After the method returns
-  /// successfully, admin and owner roles can manage devices and EMM configs
-  /// by calling API methods or using their zero-touch enrollment portal.
-  /// The customer receives an email that welcomes them to zero-touch enrollment
-  /// and explains how to sign into the portal.
+  /// successfully, admin and owner roles can manage devices and EMM configs by
+  /// calling API methods or using their zero-touch enrollment portal. The
+  /// customer receives an email that welcomes them to zero-touch enrollment and
+  /// explains how to sign into the portal.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource ID in the format
-  /// `partners/[PARTNER_ID]` that
-  /// identifies the reseller.
+  /// `partners/[PARTNER_ID]` that identifies the reseller.
   /// Value must have pattern "^partners/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -826,12 +814,11 @@ class PartnersCustomersResourceApi {
   /// [partnerId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [pageSize] - The maximum number of results to be returned. If not
+  /// specified or 0, all the records are returned.
+  ///
   /// [pageToken] - A token identifying a page of results returned by the
   /// server.
-  ///
-  /// [pageSize] - The maximum number of results to be returned. If not
-  /// specified or 0, all
-  /// the records are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -844,7 +831,7 @@ class PartnersCustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCustomersResponse> list(core.String partnerId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -855,11 +842,11 @@ class PartnersCustomersResourceApi {
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -885,8 +872,8 @@ class PartnersDevicesResourceApi {
   PartnersDevicesResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Claims a device for a customer and adds it to zero-touch enrollment. If
-  /// the
-  /// device is already claimed by another customer, the call returns an error.
+  /// the device is already claimed by another customer, the call returns an
+  /// error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1261,8 +1248,7 @@ class PartnersDevicesResourceApi {
 
   /// Unclaims a batch of devices for a customer asynchronously. Removes the
   /// devices from zero-touch enrollment. To learn more, read [Long‑running
-  /// batch
-  /// operations](/zero-touch/guides/how-it-works#operations).
+  /// batch operations](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1506,7 +1492,7 @@ class ClaimDeviceRequest {
   /// Required. The ID of the customer for whom the device is being claimed.
   core.String customerId;
 
-  /// Required. The device identifier of the device to claim.
+  /// Required. Required. The device identifier of the device to claim.
   DeviceIdentifier deviceIdentifier;
 
   /// Optional. The metadata to attach to the device.
@@ -1619,39 +1605,33 @@ class ClaimDevicesRequest {
 /// A reseller, vendor, or customer in the zero-touch reseller and customer
 /// APIs.
 class Company {
-  /// Optional. Input only. Email address of customer's users in the admin role.
-  /// Each email address must be associated with a Google Account.
+  /// Optional. Email address of customer's users in the admin role. Each email
+  /// address must be associated with a Google Account.
   core.List<core.String> adminEmails;
 
   /// Output only. The ID of the company. Assigned by the server.
   core.String companyId;
 
   /// Required. The name of the company. For example _XYZ Corp_. Displayed to
-  /// the
-  /// company's employees in the zero-touch enrollment portal.
+  /// the company's employees in the zero-touch enrollment portal.
   core.String companyName;
 
   /// Output only. The API resource name of the company. The resource name is
-  /// one
-  /// of the following formats:
-  ///
-  /// * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`
-  /// * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`
-  /// * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]`
-  ///
+  /// one of the following formats: *
+  /// `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` *
+  /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` *
+  /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]`
   /// Assigned by the server.
   core.String name;
 
-  /// Input only. Email address of customer's users in the owner role. At least
-  /// one `owner_email` is required. Each email address must be associated with
-  /// a
-  /// Google Account. Owners share the same access as admins but can also add,
-  /// delete, and edit your organization's portal users.
+  /// Required. Input only. Email address of customer's users in the owner role.
+  /// At least one `owner_email` is required. Each email address must be
+  /// associated with a Google Account. Owners share the same access as admins
+  /// but can also add, delete, and edit your organization's portal users.
   core.List<core.String> ownerEmails;
 
   /// Output only. Whether any user from the company has accepted the latest
-  /// Terms of Service (ToS). See
-  /// TermsStatus.
+  /// Terms of Service (ToS). See TermsStatus.
   /// Possible string values are:
   /// - "TERMS_STATUS_UNSPECIFIED" : Default value. This value should never be
   /// set if the enum is present.
@@ -1660,8 +1640,7 @@ class Company {
   /// - "TERMS_STATUS_ACCEPTED" : One (or more) of the company's users has
   /// accepted the ToS.
   /// - "TERMS_STATUS_STALE" : None of the company's users has accepted the
-  /// current ToS but at least one
-  /// user accepted a previous ToS.
+  /// current ToS but at least one user accepted a previous ToS.
   core.String termsStatus;
 
   Company();
@@ -1713,15 +1692,12 @@ class Company {
 }
 
 /// A configuration collects the provisioning options for Android devices. Each
-/// configuration combines the following:
-///
-/// * The EMM device policy controller (DPC) installed on the devices.
-/// * EMM policies enforced on the devices.
-/// * Metadata displayed on the device to help users during setup.
-///
-/// Customers can add as many configurations as they need. However, zero-touch
-/// enrollment works best when a customer sets a default configuration that's
-/// applied to any new devices the organization purchases.
+/// configuration combines the following: * The EMM device policy controller
+/// (DPC) installed on the devices. * EMM policies enforced on the devices. *
+/// Metadata displayed on the device to help users during setup. Customers can
+/// add as many configurations as they need. However, zero-touch enrollment
+/// works best when a customer sets a default configuration that's applied to
+/// any new devices the organization purchases.
 class Configuration {
   /// Required. The name of the organization. Zero-touch enrollment shows this
   /// organization name to device users during device provisioning.
@@ -1756,9 +1732,7 @@ class Configuration {
 
   /// Required. The resource name of the selected DPC (device policy controller)
   /// in the format `customers/[CUSTOMER_ID]/dpcs / * `. To list the supported
-  /// DPCs,
-  /// call
-  /// `customers.dpcs.list`.
+  /// DPCs, call `customers.dpcs.list`.
   core.String dpcResourcePath;
 
   /// Required. Whether this is the default configuration that zero-touch
@@ -2076,12 +2050,9 @@ class CustomerUnclaimDeviceRequest {
 class Device {
   /// Output only. The provisioning claims for a device. Devices claimed for
   /// zero-touch enrollment have a claim with the type
-  /// `SECTION_TYPE_ZERO_TOUCH`.
-  /// Call
-  /// `partners.devices.unclaim`
-  /// or
-  /// `partners.devices.unclaimAsync`
-  /// to remove the device from zero-touch enrollment.
+  /// `SECTION_TYPE_ZERO_TOUCH`. Call `partners.devices.unclaim` or
+  /// `partners.devices.unclaimAsync` to remove the device from zero-touch
+  /// enrollment.
   core.List<DeviceClaim> claims;
 
   /// Not available to resellers.
@@ -2091,11 +2062,12 @@ class Device {
   core.String deviceId;
 
   /// The hardware IDs that identify a manufactured device. To learn more, read
-  /// [Identifiers](/zero-touch/guides/identifiers).
+  /// [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
   DeviceIdentifier deviceIdentifier;
 
   /// The metadata attached to the device. Structured as key-value pairs. To
-  /// learn more, read [Device metadata](/zero-touch/guides/metadata).
+  /// learn more, read [Device
+  /// metadata](https://developers.google.com/zero-touch/guides/metadata).
   DeviceMetadata deviceMetadata;
 
   /// Output only. The API resource name in the format
@@ -2155,8 +2127,8 @@ class Device {
 
 /// A record of a device claimed by a reseller for a customer. Devices claimed
 /// for zero-touch enrollment have a claim with the type
-/// `SECTION_TYPE_ZERO_TOUCH`. To learn more, read
-/// [Claim devices for customers](/zero-touch/guides/how-it-works#claim).
+/// `SECTION_TYPE_ZERO_TOUCH`. To learn more, read [Claim devices for
+/// customers](/zero-touch/guides/how-it-works#claim).
 class DeviceClaim {
   /// The ID of the Customer that purchased the device.
   core.String ownerCompanyId;
@@ -2221,16 +2193,16 @@ class DeviceClaim {
   }
 }
 
-/// Encapsulates hardware and product IDs to identify a manufactured device.
-/// To understand requirements on identifier sets, read
-/// [Identifiers](/zero-touch/guides/identifiers).
+/// Encapsulates hardware and product IDs to identify a manufactured device. To
+/// understand requirements on identifier sets, read
+/// [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
 class DeviceIdentifier {
   /// The device’s IMEI number. Validated on input.
   core.String imei;
 
-  /// The device manufacturer’s name. Matches the device's built-in
-  /// value returned from `android.os.Build.MANUFACTURER`. Allowed values are
-  /// listed in
+  /// The device manufacturer’s name. Matches the device's built-in value
+  /// returned from `android.os.Build.MANUFACTURER`. Allowed values are listed
+  /// in
   /// [manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
   core.String manufacturer;
 
@@ -2289,7 +2261,7 @@ class DeviceIdentifier {
 }
 
 /// Metadata entries that can be attached to a `Device`. To learn more, read
-/// [Device metadata](/zero-touch/guides/metadata).
+/// [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
 class DeviceMetadata {
   /// Metadata entries recorded as key-value pairs.
   core.Map<core.String, core.String> entries;
@@ -2313,16 +2285,12 @@ class DeviceMetadata {
 }
 
 /// A `DeviceReference` is an API abstraction that lets you supply a _device_
-/// argument to a method using one of the following identifier types:
-///
-/// * A numeric API resource ID.
-/// * Real-world hardware IDs, such as IMEI number, belonging to the
-/// manufactured
-///   device.
-///
-/// Methods that operate on devices take a `DeviceReference` as a parameter type
-/// because it's more flexible for the caller. To learn more about device
-/// identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+/// argument to a method using one of the following identifier types: * A
+/// numeric API resource ID. * Real-world hardware IDs, such as IMEI number,
+/// belonging to the manufactured device. Methods that operate on devices take a
+/// `DeviceReference` as a parameter type because it's more flexible for the
+/// caller. To learn more about device identifiers, read
+/// [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
 class DeviceReference {
   /// The ID of the device.
   core.String deviceId;
@@ -2369,9 +2337,9 @@ class DevicesLongRunningOperationMetadata {
   /// - "BATCH_PROCESS_STATUS_UNSPECIFIED" : Invalid code. Shouldn't be used.
   /// - "BATCH_PROCESS_PENDING" : Pending.
   /// - "BATCH_PROCESS_IN_PROGRESS" : In progress.
-  /// - "BATCH_PROCESS_PROCESSED" : Processed.
-  /// This doesn't mean all items were processed successfully, you should
-  /// check the `response` field for the result of every item.
+  /// - "BATCH_PROCESS_PROCESSED" : Processed. This doesn't mean all items were
+  /// processed successfully, you should check the `response` field for the
+  /// result of every item.
   core.String processingStatus;
 
   /// The processing progress of the operation. Measured as a number from 0 to
@@ -2410,11 +2378,11 @@ class DevicesLongRunningOperationMetadata {
 }
 
 /// Tracks the status of a long-running operation to claim, unclaim, or attach
-/// metadata to devices. To learn more, read
-/// [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
+/// metadata to devices. To learn more, read [Long‑running batch
+/// operations](/zero-touch/guides/how-it-works#operations).
 class DevicesLongRunningOperationResponse {
-  /// The processing status for each device in the operation.
-  /// One `PerDeviceStatus` per device. The list order matches the items in the
+  /// The processing status for each device in the operation. One
+  /// `PerDeviceStatus` per device. The list order matches the items in the
   /// original request.
   core.List<OperationPerDevice> perDeviceStatus;
 
@@ -2454,17 +2422,16 @@ class DevicesLongRunningOperationResponse {
 /// controller](http://developer.android.com/work/dpc/build-dpc.html)).
 /// Zero-touch enrollment installs a DPC (listed in the `Configuration`) on a
 /// device to maintain the customer's mobile policies. All the DPCs listed by
-/// the
-/// API support zero-touch enrollment and are available in Google Play.
+/// the API support zero-touch enrollment and are available in Google Play.
 class Dpc {
   /// Output only. The title of the DPC app in Google Play. For example, _Google
   /// Apps Device Policy_. Useful in an application's user interface.
   core.String dpcName;
 
   /// Output only. The API resource name in the format
-  /// `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by
-  /// the server. To maintain a reference to a DPC across customer accounts,
-  /// persist and match the last path component (`DPC_ID`).
+  /// `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by the server. To
+  /// maintain a reference to a DPC across customer accounts, persist and match
+  /// the last path component (`DPC_ID`).
   core.String name;
 
   /// Output only. The DPC's Android application ID that looks like a Java
@@ -2504,13 +2471,9 @@ class Dpc {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -2525,7 +2488,7 @@ class Empty {
 
 /// Request to find devices.
 class FindDevicesByDeviceIdentifierRequest {
-  /// Required. The device identifier to search for.
+  /// Required. Required. The device identifier to search for.
   DeviceIdentifier deviceIdentifier;
 
   /// Required. The maximum number of devices to show in a page of results. Must
@@ -2670,8 +2633,8 @@ class FindDevicesByOwnerResponse {
   /// The customer's devices.
   core.List<Device> devices;
 
-  /// A token used to access the next page of results.
-  /// Omitted if no further results are available.
+  /// A token used to access the next page of results. Omitted if no further
+  /// results are available.
   core.String nextPageToken;
 
   /// The total count of items in the list irrespective of pagination.
@@ -2715,8 +2678,7 @@ class ListCustomersResponse {
   core.List<Company> customers;
 
   /// A token to retrieve the next page of results. Omitted if no further
-  /// results
-  /// are available.
+  /// results are available.
   core.String nextPageToken;
 
   /// The total count of items in the list irrespective of pagination.
@@ -2760,8 +2722,7 @@ class ListVendorCustomersResponse {
   core.List<Company> customers;
 
   /// A token to retrieve the next page of results. Omitted if no further
-  /// results
-  /// are available.
+  /// results are available.
   core.String nextPageToken;
 
   /// The total count of items in the list irrespective of pagination.
@@ -2802,8 +2763,7 @@ class ListVendorCustomersResponse {
 /// Response message to list vendors of the partner.
 class ListVendorsResponse {
   /// A token to retrieve the next page of results. Omitted if no further
-  /// results
-  /// are available.
+  /// results are available.
   core.String nextPageToken;
 
   /// The total count of items in the list irrespective of pagination.
@@ -2848,8 +2808,8 @@ class ListVendorsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
@@ -2868,8 +2828,7 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
@@ -2925,8 +2884,8 @@ class Operation {
   }
 }
 
-/// A task for each device in the operation. Corresponds to each device
-/// change in the request.
+/// A task for each device in the operation. Corresponds to each device change
+/// in the request.
 class OperationPerDevice {
   /// A copy of the original device-claim request received by the server.
   PartnerClaim claim;
@@ -2982,7 +2941,7 @@ class PartnerClaim {
   /// Required. The ID of the customer for whom the device is being claimed.
   core.String customerId;
 
-  /// Required. Device identifier of the device.
+  /// Required. Required. Device identifier of the device.
   DeviceIdentifier deviceIdentifier;
 
   /// Required. The metadata to attach to the device at claim.
@@ -3034,10 +2993,10 @@ class PartnerClaim {
 
 /// Identifies one unclaim request.
 class PartnerUnclaim {
-  /// Device ID of the device.
+  /// Required. Device ID of the device.
   core.String deviceId;
 
-  /// Device identifier of the device.
+  /// Required. Device identifier of the device.
   DeviceIdentifier deviceIdentifier;
 
   /// Required. The section type of the device's provisioning record.
@@ -3047,11 +3006,11 @@ class PartnerUnclaim {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
-  /// The duration of the vacation unlock starting from when the request is
-  /// processed. (1 day is treated as 24 hours)
+  /// Optional. The duration of the vacation unlock starting from when the
+  /// request is processed. (1 day is treated as 24 hours)
   core.int vacationModeDays;
 
-  /// The expiration time of the vacation unlock.
+  /// Optional. The expiration time of the vacation unlock.
   core.String vacationModeExpireTime;
 
   PartnerUnclaim();
@@ -3111,11 +3070,10 @@ class PerDeviceStatusInBatch {
   /// The result status of the device after processing.
   /// Possible string values are:
   /// - "SINGLE_DEVICE_STATUS_UNSPECIFIED" : Invalid code. Shouldn't be used.
-  /// - "SINGLE_DEVICE_STATUS_UNKNOWN_ERROR" : Unknown error.
-  /// We don't expect this error to occur here.
-  /// - "SINGLE_DEVICE_STATUS_OTHER_ERROR" : Other error.
-  /// We know/expect this error, but there's no defined error code for the
-  /// error.
+  /// - "SINGLE_DEVICE_STATUS_UNKNOWN_ERROR" : Unknown error. We don't expect
+  /// this error to occur here.
+  /// - "SINGLE_DEVICE_STATUS_OTHER_ERROR" : Other error. We know/expect this
+  /// error, but there's no defined error code for the error.
   /// - "SINGLE_DEVICE_STATUS_SUCCESS" : Success.
   /// - "SINGLE_DEVICE_STATUS_PERMISSION_DENIED" : Permission denied.
   /// - "SINGLE_DEVICE_STATUS_INVALID_DEVICE_IDENTIFIER" : Invalid device
@@ -3164,15 +3122,14 @@ class PerDeviceStatusInBatch {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -3219,10 +3176,10 @@ class Status {
 
 /// Request message to unclaim a device.
 class UnclaimDeviceRequest {
-  /// The device ID returned by `ClaimDevice`.
+  /// Required. The device ID returned by `ClaimDevice`.
   core.String deviceId;
 
-  /// The device identifier you used when you claimed this device.
+  /// Required. The device identifier you used when you claimed this device.
   DeviceIdentifier deviceIdentifier;
 
   /// Required. The section type of the device's provisioning record.
@@ -3358,10 +3315,10 @@ class UpdateDeviceMetadataRequest {
 
 /// Identifies metadata updates to one device.
 class UpdateMetadataArguments {
-  /// Device ID of the device.
+  /// Required. Device ID of the device.
   core.String deviceId;
 
-  /// Device identifier.
+  /// Required. Device identifier.
   DeviceIdentifier deviceIdentifier;
 
   /// Required. The metadata to update.

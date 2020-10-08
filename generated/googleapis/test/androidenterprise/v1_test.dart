@@ -74,7 +74,6 @@ buildAdministratorWebToken() {
   var o = new api.AdministratorWebToken();
   buildCounterAdministratorWebToken++;
   if (buildCounterAdministratorWebToken < 3) {
-    o.kind = "foo";
     o.token = "foo";
   }
   buildCounterAdministratorWebToken--;
@@ -84,20 +83,19 @@ buildAdministratorWebToken() {
 checkAdministratorWebToken(api.AdministratorWebToken o) {
   buildCounterAdministratorWebToken++;
   if (buildCounterAdministratorWebToken < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.token, unittest.equals('foo'));
   }
   buildCounterAdministratorWebToken--;
 }
 
-buildUnnamed2327() {
+buildUnnamed2439() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2327(core.List<core.String> o) {
+checkUnnamed2439(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -108,11 +106,10 @@ buildAdministratorWebTokenSpec() {
   var o = new api.AdministratorWebTokenSpec();
   buildCounterAdministratorWebTokenSpec++;
   if (buildCounterAdministratorWebTokenSpec < 3) {
-    o.kind = "foo";
     o.managedConfigurations =
         buildAdministratorWebTokenSpecManagedConfigurations();
     o.parent = "foo";
-    o.permission = buildUnnamed2327();
+    o.permission = buildUnnamed2439();
     o.playSearch = buildAdministratorWebTokenSpecPlaySearch();
     o.privateApps = buildAdministratorWebTokenSpecPrivateApps();
     o.storeBuilder = buildAdministratorWebTokenSpecStoreBuilder();
@@ -125,11 +122,10 @@ buildAdministratorWebTokenSpec() {
 checkAdministratorWebTokenSpec(api.AdministratorWebTokenSpec o) {
   buildCounterAdministratorWebTokenSpec++;
   if (buildCounterAdministratorWebTokenSpec < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
     checkAdministratorWebTokenSpecManagedConfigurations(
         o.managedConfigurations);
     unittest.expect(o.parent, unittest.equals('foo'));
-    checkUnnamed2327(o.permission);
+    checkUnnamed2439(o.permission);
     checkAdministratorWebTokenSpecPlaySearch(o.playSearch);
     checkAdministratorWebTokenSpecPrivateApps(o.privateApps);
     checkAdministratorWebTokenSpecStoreBuilder(o.storeBuilder);
@@ -239,14 +235,14 @@ checkAdministratorWebTokenSpecWebApps(api.AdministratorWebTokenSpecWebApps o) {
   buildCounterAdministratorWebTokenSpecWebApps--;
 }
 
-buildUnnamed2328() {
+buildUnnamed2440() {
   var o = new core.List<api.AppRestrictionsSchemaRestriction>();
   o.add(buildAppRestrictionsSchemaRestriction());
   o.add(buildAppRestrictionsSchemaRestriction());
   return o;
 }
 
-checkUnnamed2328(core.List<api.AppRestrictionsSchemaRestriction> o) {
+checkUnnamed2440(core.List<api.AppRestrictionsSchemaRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppRestrictionsSchemaRestriction(o[0]);
   checkAppRestrictionsSchemaRestriction(o[1]);
@@ -258,7 +254,7 @@ buildAppRestrictionsSchema() {
   buildCounterAppRestrictionsSchema++;
   if (buildCounterAppRestrictionsSchema < 3) {
     o.kind = "foo";
-    o.restrictions = buildUnnamed2328();
+    o.restrictions = buildUnnamed2440();
   }
   buildCounterAppRestrictionsSchema--;
   return o;
@@ -268,7 +264,7 @@ checkAppRestrictionsSchema(api.AppRestrictionsSchema o) {
   buildCounterAppRestrictionsSchema++;
   if (buildCounterAppRestrictionsSchema < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2328(o.restrictions);
+    checkUnnamed2440(o.restrictions);
   }
   buildCounterAppRestrictionsSchema--;
 }
@@ -292,40 +288,40 @@ checkAppRestrictionsSchemaChangeEvent(api.AppRestrictionsSchemaChangeEvent o) {
   buildCounterAppRestrictionsSchemaChangeEvent--;
 }
 
-buildUnnamed2329() {
+buildUnnamed2441() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2329(core.List<core.String> o) {
+checkUnnamed2441(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2330() {
+buildUnnamed2442() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2330(core.List<core.String> o) {
+checkUnnamed2442(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2331() {
+buildUnnamed2443() {
   var o = new core.List<api.AppRestrictionsSchemaRestriction>();
   o.add(buildAppRestrictionsSchemaRestriction());
   o.add(buildAppRestrictionsSchemaRestriction());
   return o;
 }
 
-checkUnnamed2331(core.List<api.AppRestrictionsSchemaRestriction> o) {
+checkUnnamed2443(core.List<api.AppRestrictionsSchemaRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppRestrictionsSchemaRestriction(o[0]);
   checkAppRestrictionsSchemaRestriction(o[1]);
@@ -338,10 +334,10 @@ buildAppRestrictionsSchemaRestriction() {
   if (buildCounterAppRestrictionsSchemaRestriction < 3) {
     o.defaultValue = buildAppRestrictionsSchemaRestrictionRestrictionValue();
     o.description = "foo";
-    o.entry = buildUnnamed2329();
-    o.entryValue = buildUnnamed2330();
+    o.entry = buildUnnamed2441();
+    o.entryValue = buildUnnamed2442();
     o.key = "foo";
-    o.nestedRestriction = buildUnnamed2331();
+    o.nestedRestriction = buildUnnamed2443();
     o.restrictionType = "foo";
     o.title = "foo";
   }
@@ -354,24 +350,24 @@ checkAppRestrictionsSchemaRestriction(api.AppRestrictionsSchemaRestriction o) {
   if (buildCounterAppRestrictionsSchemaRestriction < 3) {
     checkAppRestrictionsSchemaRestrictionRestrictionValue(o.defaultValue);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed2329(o.entry);
-    checkUnnamed2330(o.entryValue);
+    checkUnnamed2441(o.entry);
+    checkUnnamed2442(o.entryValue);
     unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed2331(o.nestedRestriction);
+    checkUnnamed2443(o.nestedRestriction);
     unittest.expect(o.restrictionType, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterAppRestrictionsSchemaRestriction--;
 }
 
-buildUnnamed2332() {
+buildUnnamed2444() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2332(core.List<core.String> o) {
+checkUnnamed2444(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -385,7 +381,7 @@ buildAppRestrictionsSchemaRestrictionRestrictionValue() {
     o.type = "foo";
     o.valueBool = true;
     o.valueInteger = 42;
-    o.valueMultiselect = buildUnnamed2332();
+    o.valueMultiselect = buildUnnamed2444();
     o.valueString = "foo";
   }
   buildCounterAppRestrictionsSchemaRestrictionRestrictionValue--;
@@ -399,20 +395,20 @@ checkAppRestrictionsSchemaRestrictionRestrictionValue(
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.valueBool, unittest.isTrue);
     unittest.expect(o.valueInteger, unittest.equals(42));
-    checkUnnamed2332(o.valueMultiselect);
+    checkUnnamed2444(o.valueMultiselect);
     unittest.expect(o.valueString, unittest.equals('foo'));
   }
   buildCounterAppRestrictionsSchemaRestrictionRestrictionValue--;
 }
 
-buildUnnamed2333() {
+buildUnnamed2445() {
   var o = new core.List<api.KeyedAppState>();
   o.add(buildKeyedAppState());
   o.add(buildKeyedAppState());
   return o;
 }
 
-checkUnnamed2333(core.List<api.KeyedAppState> o) {
+checkUnnamed2445(core.List<api.KeyedAppState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkKeyedAppState(o[0]);
   checkKeyedAppState(o[1]);
@@ -423,7 +419,7 @@ buildAppState() {
   var o = new api.AppState();
   buildCounterAppState++;
   if (buildCounterAppState < 3) {
-    o.keyedAppState = buildUnnamed2333();
+    o.keyedAppState = buildUnnamed2445();
     o.packageName = "foo";
   }
   buildCounterAppState--;
@@ -433,7 +429,7 @@ buildAppState() {
 checkAppState(api.AppState o) {
   buildCounterAppState++;
   if (buildCounterAppState < 3) {
-    checkUnnamed2333(o.keyedAppState);
+    checkUnnamed2445(o.keyedAppState);
     unittest.expect(o.packageName, unittest.equals('foo'));
   }
   buildCounterAppState--;
@@ -458,14 +454,14 @@ checkAppUpdateEvent(api.AppUpdateEvent o) {
   buildCounterAppUpdateEvent--;
 }
 
-buildUnnamed2334() {
+buildUnnamed2446() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2334(core.List<core.String> o) {
+checkUnnamed2446(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -478,7 +474,7 @@ buildAppVersion() {
   if (buildCounterAppVersion < 3) {
     o.isProduction = true;
     o.track = "foo";
-    o.trackId = buildUnnamed2334();
+    o.trackId = buildUnnamed2446();
     o.versionCode = 42;
     o.versionString = "foo";
   }
@@ -491,7 +487,7 @@ checkAppVersion(api.AppVersion o) {
   if (buildCounterAppVersion < 3) {
     unittest.expect(o.isProduction, unittest.isTrue);
     unittest.expect(o.track, unittest.equals('foo'));
-    checkUnnamed2334(o.trackId);
+    checkUnnamed2446(o.trackId);
     unittest.expect(o.versionCode, unittest.equals(42));
     unittest.expect(o.versionString, unittest.equals('foo'));
   }
@@ -504,7 +500,6 @@ buildApprovalUrlInfo() {
   buildCounterApprovalUrlInfo++;
   if (buildCounterApprovalUrlInfo < 3) {
     o.approvalUrl = "foo";
-    o.kind = "foo";
   }
   buildCounterApprovalUrlInfo--;
   return o;
@@ -514,7 +509,6 @@ checkApprovalUrlInfo(api.ApprovalUrlInfo o) {
   buildCounterApprovalUrlInfo++;
   if (buildCounterApprovalUrlInfo < 3) {
     unittest.expect(o.approvalUrl, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterApprovalUrlInfo--;
 }
@@ -524,7 +518,6 @@ buildAuthenticationToken() {
   var o = new api.AuthenticationToken();
   buildCounterAuthenticationToken++;
   if (buildCounterAuthenticationToken < 3) {
-    o.kind = "foo";
     o.token = "foo";
   }
   buildCounterAuthenticationToken--;
@@ -534,7 +527,6 @@ buildAuthenticationToken() {
 checkAuthenticationToken(api.AuthenticationToken o) {
   buildCounterAuthenticationToken++;
   if (buildCounterAuthenticationToken < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.token, unittest.equals('foo'));
   }
   buildCounterAuthenticationToken--;
@@ -563,14 +555,14 @@ checkAutoInstallConstraint(api.AutoInstallConstraint o) {
   buildCounterAutoInstallConstraint--;
 }
 
-buildUnnamed2335() {
+buildUnnamed2447() {
   var o = new core.List<api.AutoInstallConstraint>();
   o.add(buildAutoInstallConstraint());
   o.add(buildAutoInstallConstraint());
   return o;
 }
 
-checkUnnamed2335(core.List<api.AutoInstallConstraint> o) {
+checkUnnamed2447(core.List<api.AutoInstallConstraint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAutoInstallConstraint(o[0]);
   checkAutoInstallConstraint(o[1]);
@@ -581,7 +573,7 @@ buildAutoInstallPolicy() {
   var o = new api.AutoInstallPolicy();
   buildCounterAutoInstallPolicy++;
   if (buildCounterAutoInstallPolicy < 3) {
-    o.autoInstallConstraint = buildUnnamed2335();
+    o.autoInstallConstraint = buildUnnamed2447();
     o.autoInstallMode = "foo";
     o.autoInstallPriority = 42;
     o.minimumVersionCode = 42;
@@ -593,7 +585,7 @@ buildAutoInstallPolicy() {
 checkAutoInstallPolicy(api.AutoInstallPolicy o) {
   buildCounterAutoInstallPolicy++;
   if (buildCounterAutoInstallPolicy < 3) {
-    checkUnnamed2335(o.autoInstallConstraint);
+    checkUnnamed2447(o.autoInstallConstraint);
     unittest.expect(o.autoInstallMode, unittest.equals('foo'));
     unittest.expect(o.autoInstallPriority, unittest.equals(42));
     unittest.expect(o.minimumVersionCode, unittest.equals(42));
@@ -601,14 +593,14 @@ checkAutoInstallPolicy(api.AutoInstallPolicy o) {
   buildCounterAutoInstallPolicy--;
 }
 
-buildUnnamed2336() {
+buildUnnamed2448() {
   var o = new core.List<api.VariableSet>();
   o.add(buildVariableSet());
   o.add(buildVariableSet());
   return o;
 }
 
-checkUnnamed2336(core.List<api.VariableSet> o) {
+checkUnnamed2448(core.List<api.VariableSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariableSet(o[0]);
   checkVariableSet(o[1]);
@@ -619,9 +611,8 @@ buildConfigurationVariables() {
   var o = new api.ConfigurationVariables();
   buildCounterConfigurationVariables++;
   if (buildCounterConfigurationVariables < 3) {
-    o.kind = "foo";
     o.mcmId = "foo";
-    o.variableSet = buildUnnamed2336();
+    o.variableSet = buildUnnamed2448();
   }
   buildCounterConfigurationVariables--;
   return o;
@@ -630,9 +621,8 @@ buildConfigurationVariables() {
 checkConfigurationVariables(api.ConfigurationVariables o) {
   buildCounterConfigurationVariables++;
   if (buildCounterConfigurationVariables < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.mcmId, unittest.equals('foo'));
-    checkUnnamed2336(o.variableSet);
+    checkUnnamed2448(o.variableSet);
   }
   buildCounterConfigurationVariables--;
 }
@@ -643,7 +633,6 @@ buildDevice() {
   buildCounterDevice++;
   if (buildCounterDevice < 3) {
     o.androidId = "foo";
-    o.kind = "foo";
     o.managementType = "foo";
     o.policy = buildPolicy();
     o.report = buildDeviceReport();
@@ -656,7 +645,6 @@ checkDevice(api.Device o) {
   buildCounterDevice++;
   if (buildCounterDevice < 3) {
     unittest.expect(o.androidId, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.managementType, unittest.equals('foo'));
     checkPolicy(o.policy);
     checkDeviceReport(o.report);
@@ -664,14 +652,14 @@ checkDevice(api.Device o) {
   buildCounterDevice--;
 }
 
-buildUnnamed2337() {
+buildUnnamed2449() {
   var o = new core.List<api.AppState>();
   o.add(buildAppState());
   o.add(buildAppState());
   return o;
 }
 
-checkUnnamed2337(core.List<api.AppState> o) {
+checkUnnamed2449(core.List<api.AppState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppState(o[0]);
   checkAppState(o[1]);
@@ -682,7 +670,7 @@ buildDeviceReport() {
   var o = new api.DeviceReport();
   buildCounterDeviceReport++;
   if (buildCounterDeviceReport < 3) {
-    o.appState = buildUnnamed2337();
+    o.appState = buildUnnamed2449();
     o.lastUpdatedTimestampMillis = "foo";
   }
   buildCounterDeviceReport--;
@@ -692,7 +680,7 @@ buildDeviceReport() {
 checkDeviceReport(api.DeviceReport o) {
   buildCounterDeviceReport++;
   if (buildCounterDeviceReport < 3) {
-    checkUnnamed2337(o.appState);
+    checkUnnamed2449(o.appState);
     unittest.expect(o.lastUpdatedTimestampMillis, unittest.equals('foo'));
   }
   buildCounterDeviceReport--;
@@ -727,7 +715,6 @@ buildDeviceState() {
   buildCounterDeviceState++;
   if (buildCounterDeviceState < 3) {
     o.accountState = "foo";
-    o.kind = "foo";
   }
   buildCounterDeviceState--;
   return o;
@@ -737,19 +724,18 @@ checkDeviceState(api.DeviceState o) {
   buildCounterDeviceState++;
   if (buildCounterDeviceState < 3) {
     unittest.expect(o.accountState, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterDeviceState--;
 }
 
-buildUnnamed2338() {
+buildUnnamed2450() {
   var o = new core.List<api.Device>();
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-checkUnnamed2338(core.List<api.Device> o) {
+checkUnnamed2450(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0]);
   checkDevice(o[1]);
@@ -760,8 +746,7 @@ buildDevicesListResponse() {
   var o = new api.DevicesListResponse();
   buildCounterDevicesListResponse++;
   if (buildCounterDevicesListResponse < 3) {
-    o.device = buildUnnamed2338();
-    o.kind = "foo";
+    o.device = buildUnnamed2450();
   }
   buildCounterDevicesListResponse--;
   return o;
@@ -770,20 +755,19 @@ buildDevicesListResponse() {
 checkDevicesListResponse(api.DevicesListResponse o) {
   buildCounterDevicesListResponse++;
   if (buildCounterDevicesListResponse < 3) {
-    checkUnnamed2338(o.device);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2450(o.device);
   }
   buildCounterDevicesListResponse--;
 }
 
-buildUnnamed2339() {
+buildUnnamed2451() {
   var o = new core.List<api.Administrator>();
   o.add(buildAdministrator());
   o.add(buildAdministrator());
   return o;
 }
 
-checkUnnamed2339(core.List<api.Administrator> o) {
+checkUnnamed2451(core.List<api.Administrator> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdministrator(o[0]);
   checkAdministrator(o[1]);
@@ -794,9 +778,8 @@ buildEnterprise() {
   var o = new api.Enterprise();
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
-    o.administrator = buildUnnamed2339();
+    o.administrator = buildUnnamed2451();
     o.id = "foo";
-    o.kind = "foo";
     o.name = "foo";
     o.primaryDomain = "foo";
   }
@@ -807,9 +790,8 @@ buildEnterprise() {
 checkEnterprise(api.Enterprise o) {
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
-    checkUnnamed2339(o.administrator);
+    checkUnnamed2451(o.administrator);
     unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.primaryDomain, unittest.equals('foo'));
   }
@@ -822,7 +804,6 @@ buildEnterpriseAccount() {
   buildCounterEnterpriseAccount++;
   if (buildCounterEnterpriseAccount < 3) {
     o.accountEmail = "foo";
-    o.kind = "foo";
   }
   buildCounterEnterpriseAccount--;
   return o;
@@ -832,19 +813,18 @@ checkEnterpriseAccount(api.EnterpriseAccount o) {
   buildCounterEnterpriseAccount++;
   if (buildCounterEnterpriseAccount < 3) {
     unittest.expect(o.accountEmail, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterEnterpriseAccount--;
 }
 
-buildUnnamed2340() {
+buildUnnamed2452() {
   var o = new core.List<api.Enterprise>();
   o.add(buildEnterprise());
   o.add(buildEnterprise());
   return o;
 }
 
-checkUnnamed2340(core.List<api.Enterprise> o) {
+checkUnnamed2452(core.List<api.Enterprise> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterprise(o[0]);
   checkEnterprise(o[1]);
@@ -855,8 +835,7 @@ buildEnterprisesListResponse() {
   var o = new api.EnterprisesListResponse();
   buildCounterEnterprisesListResponse++;
   if (buildCounterEnterprisesListResponse < 3) {
-    o.enterprise = buildUnnamed2340();
-    o.kind = "foo";
+    o.enterprise = buildUnnamed2452();
   }
   buildCounterEnterprisesListResponse--;
   return o;
@@ -865,8 +844,7 @@ buildEnterprisesListResponse() {
 checkEnterprisesListResponse(api.EnterprisesListResponse o) {
   buildCounterEnterprisesListResponse++;
   if (buildCounterEnterprisesListResponse < 3) {
-    checkUnnamed2340(o.enterprise);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2452(o.enterprise);
   }
   buildCounterEnterprisesListResponse--;
 }
@@ -898,7 +876,6 @@ buildEntitlement() {
   var o = new api.Entitlement();
   buildCounterEntitlement++;
   if (buildCounterEntitlement < 3) {
-    o.kind = "foo";
     o.productId = "foo";
     o.reason = "foo";
   }
@@ -909,21 +886,20 @@ buildEntitlement() {
 checkEntitlement(api.Entitlement o) {
   buildCounterEntitlement++;
   if (buildCounterEntitlement < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.reason, unittest.equals('foo'));
   }
   buildCounterEntitlement--;
 }
 
-buildUnnamed2341() {
+buildUnnamed2453() {
   var o = new core.List<api.Entitlement>();
   o.add(buildEntitlement());
   o.add(buildEntitlement());
   return o;
 }
 
-checkUnnamed2341(core.List<api.Entitlement> o) {
+checkUnnamed2453(core.List<api.Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntitlement(o[0]);
   checkEntitlement(o[1]);
@@ -934,8 +910,7 @@ buildEntitlementsListResponse() {
   var o = new api.EntitlementsListResponse();
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
-    o.entitlement = buildUnnamed2341();
-    o.kind = "foo";
+    o.entitlement = buildUnnamed2453();
   }
   buildCounterEntitlementsListResponse--;
   return o;
@@ -944,8 +919,7 @@ buildEntitlementsListResponse() {
 checkEntitlementsListResponse(api.EntitlementsListResponse o) {
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
-    checkUnnamed2341(o.entitlement);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2453(o.entitlement);
   }
   buildCounterEntitlementsListResponse--;
 }
@@ -957,7 +931,6 @@ buildGroupLicense() {
   if (buildCounterGroupLicense < 3) {
     o.acquisitionKind = "foo";
     o.approval = "foo";
-    o.kind = "foo";
     o.numProvisioned = 42;
     o.numPurchased = 42;
     o.permissions = "foo";
@@ -972,7 +945,6 @@ checkGroupLicense(api.GroupLicense o) {
   if (buildCounterGroupLicense < 3) {
     unittest.expect(o.acquisitionKind, unittest.equals('foo'));
     unittest.expect(o.approval, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.numProvisioned, unittest.equals(42));
     unittest.expect(o.numPurchased, unittest.equals(42));
     unittest.expect(o.permissions, unittest.equals('foo'));
@@ -981,14 +953,14 @@ checkGroupLicense(api.GroupLicense o) {
   buildCounterGroupLicense--;
 }
 
-buildUnnamed2342() {
+buildUnnamed2454() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed2342(core.List<api.User> o) {
+checkUnnamed2454(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -999,8 +971,7 @@ buildGroupLicenseUsersListResponse() {
   var o = new api.GroupLicenseUsersListResponse();
   buildCounterGroupLicenseUsersListResponse++;
   if (buildCounterGroupLicenseUsersListResponse < 3) {
-    o.kind = "foo";
-    o.user = buildUnnamed2342();
+    o.user = buildUnnamed2454();
   }
   buildCounterGroupLicenseUsersListResponse--;
   return o;
@@ -1009,20 +980,19 @@ buildGroupLicenseUsersListResponse() {
 checkGroupLicenseUsersListResponse(api.GroupLicenseUsersListResponse o) {
   buildCounterGroupLicenseUsersListResponse++;
   if (buildCounterGroupLicenseUsersListResponse < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2342(o.user);
+    checkUnnamed2454(o.user);
   }
   buildCounterGroupLicenseUsersListResponse--;
 }
 
-buildUnnamed2343() {
+buildUnnamed2455() {
   var o = new core.List<api.GroupLicense>();
   o.add(buildGroupLicense());
   o.add(buildGroupLicense());
   return o;
 }
 
-checkUnnamed2343(core.List<api.GroupLicense> o) {
+checkUnnamed2455(core.List<api.GroupLicense> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupLicense(o[0]);
   checkGroupLicense(o[1]);
@@ -1033,8 +1003,7 @@ buildGroupLicensesListResponse() {
   var o = new api.GroupLicensesListResponse();
   buildCounterGroupLicensesListResponse++;
   if (buildCounterGroupLicensesListResponse < 3) {
-    o.groupLicense = buildUnnamed2343();
-    o.kind = "foo";
+    o.groupLicense = buildUnnamed2455();
   }
   buildCounterGroupLicensesListResponse--;
   return o;
@@ -1043,8 +1012,7 @@ buildGroupLicensesListResponse() {
 checkGroupLicensesListResponse(api.GroupLicensesListResponse o) {
   buildCounterGroupLicensesListResponse++;
   if (buildCounterGroupLicensesListResponse < 3) {
-    checkUnnamed2343(o.groupLicense);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2455(o.groupLicense);
   }
   buildCounterGroupLicensesListResponse--;
 }
@@ -1055,7 +1023,6 @@ buildInstall() {
   buildCounterInstall++;
   if (buildCounterInstall < 3) {
     o.installState = "foo";
-    o.kind = "foo";
     o.productId = "foo";
     o.versionCode = 42;
   }
@@ -1067,7 +1034,6 @@ checkInstall(api.Install o) {
   buildCounterInstall++;
   if (buildCounterInstall < 3) {
     unittest.expect(o.installState, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.versionCode, unittest.equals(42));
   }
@@ -1101,14 +1067,14 @@ checkInstallFailureEvent(api.InstallFailureEvent o) {
   buildCounterInstallFailureEvent--;
 }
 
-buildUnnamed2344() {
+buildUnnamed2456() {
   var o = new core.List<api.Install>();
   o.add(buildInstall());
   o.add(buildInstall());
   return o;
 }
 
-checkUnnamed2344(core.List<api.Install> o) {
+checkUnnamed2456(core.List<api.Install> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstall(o[0]);
   checkInstall(o[1]);
@@ -1119,8 +1085,7 @@ buildInstallsListResponse() {
   var o = new api.InstallsListResponse();
   buildCounterInstallsListResponse++;
   if (buildCounterInstallsListResponse < 3) {
-    o.install = buildUnnamed2344();
-    o.kind = "foo";
+    o.install = buildUnnamed2456();
   }
   buildCounterInstallsListResponse--;
   return o;
@@ -1129,8 +1094,7 @@ buildInstallsListResponse() {
 checkInstallsListResponse(api.InstallsListResponse o) {
   buildCounterInstallsListResponse++;
   if (buildCounterInstallsListResponse < 3) {
-    checkUnnamed2344(o.install);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2456(o.install);
   }
   buildCounterInstallsListResponse--;
 }
@@ -1204,14 +1168,14 @@ checkMaintenanceWindow(api.MaintenanceWindow o) {
   buildCounterMaintenanceWindow--;
 }
 
-buildUnnamed2345() {
+buildUnnamed2457() {
   var o = new core.List<api.ManagedProperty>();
   o.add(buildManagedProperty());
   o.add(buildManagedProperty());
   return o;
 }
 
-checkUnnamed2345(core.List<api.ManagedProperty> o) {
+checkUnnamed2457(core.List<api.ManagedProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedProperty(o[0]);
   checkManagedProperty(o[1]);
@@ -1224,7 +1188,7 @@ buildManagedConfiguration() {
   if (buildCounterManagedConfiguration < 3) {
     o.configurationVariables = buildConfigurationVariables();
     o.kind = "foo";
-    o.managedProperty = buildUnnamed2345();
+    o.managedProperty = buildUnnamed2457();
     o.productId = "foo";
   }
   buildCounterManagedConfiguration--;
@@ -1236,20 +1200,20 @@ checkManagedConfiguration(api.ManagedConfiguration o) {
   if (buildCounterManagedConfiguration < 3) {
     checkConfigurationVariables(o.configurationVariables);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2345(o.managedProperty);
+    checkUnnamed2457(o.managedProperty);
     unittest.expect(o.productId, unittest.equals('foo'));
   }
   buildCounterManagedConfiguration--;
 }
 
-buildUnnamed2346() {
+buildUnnamed2458() {
   var o = new core.List<api.ManagedConfiguration>();
   o.add(buildManagedConfiguration());
   o.add(buildManagedConfiguration());
   return o;
 }
 
-checkUnnamed2346(core.List<api.ManagedConfiguration> o) {
+checkUnnamed2458(core.List<api.ManagedConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedConfiguration(o[0]);
   checkManagedConfiguration(o[1]);
@@ -1260,8 +1224,7 @@ buildManagedConfigurationsForDeviceListResponse() {
   var o = new api.ManagedConfigurationsForDeviceListResponse();
   buildCounterManagedConfigurationsForDeviceListResponse++;
   if (buildCounterManagedConfigurationsForDeviceListResponse < 3) {
-    o.kind = "foo";
-    o.managedConfigurationForDevice = buildUnnamed2346();
+    o.managedConfigurationForDevice = buildUnnamed2458();
   }
   buildCounterManagedConfigurationsForDeviceListResponse--;
   return o;
@@ -1271,20 +1234,19 @@ checkManagedConfigurationsForDeviceListResponse(
     api.ManagedConfigurationsForDeviceListResponse o) {
   buildCounterManagedConfigurationsForDeviceListResponse++;
   if (buildCounterManagedConfigurationsForDeviceListResponse < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2346(o.managedConfigurationForDevice);
+    checkUnnamed2458(o.managedConfigurationForDevice);
   }
   buildCounterManagedConfigurationsForDeviceListResponse--;
 }
 
-buildUnnamed2347() {
+buildUnnamed2459() {
   var o = new core.List<api.ManagedConfiguration>();
   o.add(buildManagedConfiguration());
   o.add(buildManagedConfiguration());
   return o;
 }
 
-checkUnnamed2347(core.List<api.ManagedConfiguration> o) {
+checkUnnamed2459(core.List<api.ManagedConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedConfiguration(o[0]);
   checkManagedConfiguration(o[1]);
@@ -1295,8 +1257,7 @@ buildManagedConfigurationsForUserListResponse() {
   var o = new api.ManagedConfigurationsForUserListResponse();
   buildCounterManagedConfigurationsForUserListResponse++;
   if (buildCounterManagedConfigurationsForUserListResponse < 3) {
-    o.kind = "foo";
-    o.managedConfigurationForUser = buildUnnamed2347();
+    o.managedConfigurationForUser = buildUnnamed2459();
   }
   buildCounterManagedConfigurationsForUserListResponse--;
   return o;
@@ -1306,8 +1267,7 @@ checkManagedConfigurationsForUserListResponse(
     api.ManagedConfigurationsForUserListResponse o) {
   buildCounterManagedConfigurationsForUserListResponse++;
   if (buildCounterManagedConfigurationsForUserListResponse < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2347(o.managedConfigurationForUser);
+    checkUnnamed2459(o.managedConfigurationForUser);
   }
   buildCounterManagedConfigurationsForUserListResponse--;
 }
@@ -1317,7 +1277,6 @@ buildManagedConfigurationsSettings() {
   var o = new api.ManagedConfigurationsSettings();
   buildCounterManagedConfigurationsSettings++;
   if (buildCounterManagedConfigurationsSettings < 3) {
-    o.kind = "foo";
     o.lastUpdatedTimestampMillis = "foo";
     o.mcmId = "foo";
     o.name = "foo";
@@ -1329,7 +1288,6 @@ buildManagedConfigurationsSettings() {
 checkManagedConfigurationsSettings(api.ManagedConfigurationsSettings o) {
   buildCounterManagedConfigurationsSettings++;
   if (buildCounterManagedConfigurationsSettings < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.lastUpdatedTimestampMillis, unittest.equals('foo'));
     unittest.expect(o.mcmId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1337,14 +1295,14 @@ checkManagedConfigurationsSettings(api.ManagedConfigurationsSettings o) {
   buildCounterManagedConfigurationsSettings--;
 }
 
-buildUnnamed2348() {
+buildUnnamed2460() {
   var o = new core.List<api.ManagedConfigurationsSettings>();
   o.add(buildManagedConfigurationsSettings());
   o.add(buildManagedConfigurationsSettings());
   return o;
 }
 
-checkUnnamed2348(core.List<api.ManagedConfigurationsSettings> o) {
+checkUnnamed2460(core.List<api.ManagedConfigurationsSettings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedConfigurationsSettings(o[0]);
   checkManagedConfigurationsSettings(o[1]);
@@ -1355,8 +1313,7 @@ buildManagedConfigurationsSettingsListResponse() {
   var o = new api.ManagedConfigurationsSettingsListResponse();
   buildCounterManagedConfigurationsSettingsListResponse++;
   if (buildCounterManagedConfigurationsSettingsListResponse < 3) {
-    o.kind = "foo";
-    o.managedConfigurationsSettings = buildUnnamed2348();
+    o.managedConfigurationsSettings = buildUnnamed2460();
   }
   buildCounterManagedConfigurationsSettingsListResponse--;
   return o;
@@ -1366,33 +1323,32 @@ checkManagedConfigurationsSettingsListResponse(
     api.ManagedConfigurationsSettingsListResponse o) {
   buildCounterManagedConfigurationsSettingsListResponse++;
   if (buildCounterManagedConfigurationsSettingsListResponse < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2348(o.managedConfigurationsSettings);
+    checkUnnamed2460(o.managedConfigurationsSettings);
   }
   buildCounterManagedConfigurationsSettingsListResponse--;
 }
 
-buildUnnamed2349() {
+buildUnnamed2461() {
   var o = new core.List<api.ManagedPropertyBundle>();
   o.add(buildManagedPropertyBundle());
   o.add(buildManagedPropertyBundle());
   return o;
 }
 
-checkUnnamed2349(core.List<api.ManagedPropertyBundle> o) {
+checkUnnamed2461(core.List<api.ManagedPropertyBundle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedPropertyBundle(o[0]);
   checkManagedPropertyBundle(o[1]);
 }
 
-buildUnnamed2350() {
+buildUnnamed2462() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2350(core.List<core.String> o) {
+checkUnnamed2462(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1406,10 +1362,10 @@ buildManagedProperty() {
     o.key = "foo";
     o.valueBool = true;
     o.valueBundle = buildManagedPropertyBundle();
-    o.valueBundleArray = buildUnnamed2349();
+    o.valueBundleArray = buildUnnamed2461();
     o.valueInteger = 42;
     o.valueString = "foo";
-    o.valueStringArray = buildUnnamed2350();
+    o.valueStringArray = buildUnnamed2462();
   }
   buildCounterManagedProperty--;
   return o;
@@ -1421,22 +1377,22 @@ checkManagedProperty(api.ManagedProperty o) {
     unittest.expect(o.key, unittest.equals('foo'));
     unittest.expect(o.valueBool, unittest.isTrue);
     checkManagedPropertyBundle(o.valueBundle);
-    checkUnnamed2349(o.valueBundleArray);
+    checkUnnamed2461(o.valueBundleArray);
     unittest.expect(o.valueInteger, unittest.equals(42));
     unittest.expect(o.valueString, unittest.equals('foo'));
-    checkUnnamed2350(o.valueStringArray);
+    checkUnnamed2462(o.valueStringArray);
   }
   buildCounterManagedProperty--;
 }
 
-buildUnnamed2351() {
+buildUnnamed2463() {
   var o = new core.List<api.ManagedProperty>();
   o.add(buildManagedProperty());
   o.add(buildManagedProperty());
   return o;
 }
 
-checkUnnamed2351(core.List<api.ManagedProperty> o) {
+checkUnnamed2463(core.List<api.ManagedProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedProperty(o[0]);
   checkManagedProperty(o[1]);
@@ -1447,7 +1403,7 @@ buildManagedPropertyBundle() {
   var o = new api.ManagedPropertyBundle();
   buildCounterManagedPropertyBundle++;
   if (buildCounterManagedPropertyBundle < 3) {
-    o.managedProperty = buildUnnamed2351();
+    o.managedProperty = buildUnnamed2463();
   }
   buildCounterManagedPropertyBundle--;
   return o;
@@ -1456,7 +1412,7 @@ buildManagedPropertyBundle() {
 checkManagedPropertyBundle(api.ManagedPropertyBundle o) {
   buildCounterManagedPropertyBundle++;
   if (buildCounterManagedPropertyBundle < 3) {
-    checkUnnamed2351(o.managedProperty);
+    checkUnnamed2463(o.managedProperty);
   }
   buildCounterManagedPropertyBundle--;
 }
@@ -1486,27 +1442,27 @@ checkNewDeviceEvent(api.NewDeviceEvent o) {
   buildCounterNewDeviceEvent--;
 }
 
-buildUnnamed2352() {
+buildUnnamed2464() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2352(core.List<core.String> o) {
+checkUnnamed2464(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2353() {
+buildUnnamed2465() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2353(core.List<core.String> o) {
+checkUnnamed2465(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1517,9 +1473,9 @@ buildNewPermissionsEvent() {
   var o = new api.NewPermissionsEvent();
   buildCounterNewPermissionsEvent++;
   if (buildCounterNewPermissionsEvent < 3) {
-    o.approvedPermissions = buildUnnamed2352();
+    o.approvedPermissions = buildUnnamed2464();
     o.productId = "foo";
-    o.requestedPermissions = buildUnnamed2353();
+    o.requestedPermissions = buildUnnamed2465();
   }
   buildCounterNewPermissionsEvent--;
   return o;
@@ -1528,9 +1484,9 @@ buildNewPermissionsEvent() {
 checkNewPermissionsEvent(api.NewPermissionsEvent o) {
   buildCounterNewPermissionsEvent++;
   if (buildCounterNewPermissionsEvent < 3) {
-    checkUnnamed2352(o.approvedPermissions);
+    checkUnnamed2464(o.approvedPermissions);
     unittest.expect(o.productId, unittest.equals('foo'));
-    checkUnnamed2353(o.requestedPermissions);
+    checkUnnamed2465(o.requestedPermissions);
   }
   buildCounterNewPermissionsEvent--;
 }
@@ -1575,14 +1531,14 @@ checkNotification(api.Notification o) {
   buildCounterNotification--;
 }
 
-buildUnnamed2354() {
+buildUnnamed2466() {
   var o = new core.List<api.Notification>();
   o.add(buildNotification());
   o.add(buildNotification());
   return o;
 }
 
-checkUnnamed2354(core.List<api.Notification> o) {
+checkUnnamed2466(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNotification(o[0]);
   checkNotification(o[1]);
@@ -1593,8 +1549,7 @@ buildNotificationSet() {
   var o = new api.NotificationSet();
   buildCounterNotificationSet++;
   if (buildCounterNotificationSet < 3) {
-    o.kind = "foo";
-    o.notification = buildUnnamed2354();
+    o.notification = buildUnnamed2466();
     o.notificationSetId = "foo";
   }
   buildCounterNotificationSet--;
@@ -1604,8 +1559,7 @@ buildNotificationSet() {
 checkNotificationSet(api.NotificationSet o) {
   buildCounterNotificationSet++;
   if (buildCounterNotificationSet < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2354(o.notification);
+    checkUnnamed2466(o.notification);
     unittest.expect(o.notificationSetId, unittest.equals('foo'));
   }
   buildCounterNotificationSet--;
@@ -1640,7 +1594,6 @@ buildPermission() {
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
     o.description = "foo";
-    o.kind = "foo";
     o.name = "foo";
     o.permissionId = "foo";
   }
@@ -1652,21 +1605,20 @@ checkPermission(api.Permission o) {
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.permissionId, unittest.equals('foo'));
   }
   buildCounterPermission--;
 }
 
-buildUnnamed2355() {
+buildUnnamed2467() {
   var o = new core.List<api.ProductPolicy>();
   o.add(buildProductPolicy());
   o.add(buildProductPolicy());
   return o;
 }
 
-checkUnnamed2355(core.List<api.ProductPolicy> o) {
+checkUnnamed2467(core.List<api.ProductPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductPolicy(o[0]);
   checkProductPolicy(o[1]);
@@ -1681,7 +1633,7 @@ buildPolicy() {
     o.deviceReportPolicy = "foo";
     o.maintenanceWindow = buildMaintenanceWindow();
     o.productAvailabilityPolicy = "foo";
-    o.productPolicy = buildUnnamed2355();
+    o.productPolicy = buildUnnamed2467();
   }
   buildCounterPolicy--;
   return o;
@@ -1694,97 +1646,97 @@ checkPolicy(api.Policy o) {
     unittest.expect(o.deviceReportPolicy, unittest.equals('foo'));
     checkMaintenanceWindow(o.maintenanceWindow);
     unittest.expect(o.productAvailabilityPolicy, unittest.equals('foo'));
-    checkUnnamed2355(o.productPolicy);
+    checkUnnamed2467(o.productPolicy);
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed2356() {
+buildUnnamed2468() {
   var o = new core.List<api.TrackInfo>();
   o.add(buildTrackInfo());
   o.add(buildTrackInfo());
   return o;
 }
 
-checkUnnamed2356(core.List<api.TrackInfo> o) {
+checkUnnamed2468(core.List<api.TrackInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrackInfo(o[0]);
   checkTrackInfo(o[1]);
 }
 
-buildUnnamed2357() {
+buildUnnamed2469() {
   var o = new core.List<api.AppVersion>();
   o.add(buildAppVersion());
   o.add(buildAppVersion());
   return o;
 }
 
-checkUnnamed2357(core.List<api.AppVersion> o) {
+checkUnnamed2469(core.List<api.AppVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppVersion(o[0]);
   checkAppVersion(o[1]);
 }
 
-buildUnnamed2358() {
+buildUnnamed2470() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2358(core.List<core.String> o) {
+checkUnnamed2470(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2359() {
+buildUnnamed2471() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2359(core.List<core.String> o) {
+checkUnnamed2471(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2360() {
+buildUnnamed2472() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2360(core.List<core.String> o) {
+checkUnnamed2472(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2361() {
+buildUnnamed2473() {
   var o = new core.List<api.ProductPermission>();
   o.add(buildProductPermission());
   o.add(buildProductPermission());
   return o;
 }
 
-checkUnnamed2361(core.List<api.ProductPermission> o) {
+checkUnnamed2473(core.List<api.ProductPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductPermission(o[0]);
   checkProductPermission(o[1]);
 }
 
-buildUnnamed2362() {
+buildUnnamed2474() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2362(core.List<core.String> o) {
+checkUnnamed2474(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1795,27 +1747,26 @@ buildProduct() {
   var o = new api.Product();
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    o.appTracks = buildUnnamed2356();
-    o.appVersion = buildUnnamed2357();
+    o.appTracks = buildUnnamed2468();
+    o.appVersion = buildUnnamed2469();
     o.authorName = "foo";
-    o.availableCountries = buildUnnamed2358();
-    o.availableTracks = buildUnnamed2359();
+    o.availableCountries = buildUnnamed2470();
+    o.availableTracks = buildUnnamed2471();
     o.category = "foo";
     o.contentRating = "foo";
     o.description = "foo";
     o.detailsUrl = "foo";
     o.distributionChannel = "foo";
-    o.features = buildUnnamed2360();
+    o.features = buildUnnamed2472();
     o.iconUrl = "foo";
-    o.kind = "foo";
     o.lastUpdatedTimestampMillis = "foo";
     o.minAndroidSdkVersion = 42;
-    o.permissions = buildUnnamed2361();
+    o.permissions = buildUnnamed2473();
     o.productId = "foo";
     o.productPricing = "foo";
     o.recentChanges = "foo";
     o.requiresContainerApp = true;
-    o.screenshotUrls = buildUnnamed2362();
+    o.screenshotUrls = buildUnnamed2474();
     o.signingCertificate = buildProductSigningCertificate();
     o.smallIconUrl = "foo";
     o.title = "foo";
@@ -1828,27 +1779,26 @@ buildProduct() {
 checkProduct(api.Product o) {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    checkUnnamed2356(o.appTracks);
-    checkUnnamed2357(o.appVersion);
+    checkUnnamed2468(o.appTracks);
+    checkUnnamed2469(o.appVersion);
     unittest.expect(o.authorName, unittest.equals('foo'));
-    checkUnnamed2358(o.availableCountries);
-    checkUnnamed2359(o.availableTracks);
+    checkUnnamed2470(o.availableCountries);
+    checkUnnamed2471(o.availableTracks);
     unittest.expect(o.category, unittest.equals('foo'));
     unittest.expect(o.contentRating, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.detailsUrl, unittest.equals('foo'));
     unittest.expect(o.distributionChannel, unittest.equals('foo'));
-    checkUnnamed2360(o.features);
+    checkUnnamed2472(o.features);
     unittest.expect(o.iconUrl, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.lastUpdatedTimestampMillis, unittest.equals('foo'));
     unittest.expect(o.minAndroidSdkVersion, unittest.equals(42));
-    checkUnnamed2361(o.permissions);
+    checkUnnamed2473(o.permissions);
     unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.productPricing, unittest.equals('foo'));
     unittest.expect(o.recentChanges, unittest.equals('foo'));
     unittest.expect(o.requiresContainerApp, unittest.isTrue);
-    checkUnnamed2362(o.screenshotUrls);
+    checkUnnamed2474(o.screenshotUrls);
     checkProductSigningCertificate(o.signingCertificate);
     unittest.expect(o.smallIconUrl, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -1920,14 +1870,14 @@ checkProductPermission(api.ProductPermission o) {
   buildCounterProductPermission--;
 }
 
-buildUnnamed2363() {
+buildUnnamed2475() {
   var o = new core.List<api.ProductPermission>();
   o.add(buildProductPermission());
   o.add(buildProductPermission());
   return o;
 }
 
-checkUnnamed2363(core.List<api.ProductPermission> o) {
+checkUnnamed2475(core.List<api.ProductPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductPermission(o[0]);
   checkProductPermission(o[1]);
@@ -1938,8 +1888,7 @@ buildProductPermissions() {
   var o = new api.ProductPermissions();
   buildCounterProductPermissions++;
   if (buildCounterProductPermissions < 3) {
-    o.kind = "foo";
-    o.permission = buildUnnamed2363();
+    o.permission = buildUnnamed2475();
     o.productId = "foo";
   }
   buildCounterProductPermissions--;
@@ -1949,34 +1898,33 @@ buildProductPermissions() {
 checkProductPermissions(api.ProductPermissions o) {
   buildCounterProductPermissions++;
   if (buildCounterProductPermissions < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2363(o.permission);
+    checkUnnamed2475(o.permission);
     unittest.expect(o.productId, unittest.equals('foo'));
   }
   buildCounterProductPermissions--;
 }
 
-buildUnnamed2364() {
+buildUnnamed2476() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2364(core.List<core.String> o) {
+checkUnnamed2476(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2365() {
+buildUnnamed2477() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2365(core.List<core.String> o) {
+checkUnnamed2477(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1990,8 +1938,8 @@ buildProductPolicy() {
     o.autoInstallPolicy = buildAutoInstallPolicy();
     o.managedConfiguration = buildManagedConfiguration();
     o.productId = "foo";
-    o.trackIds = buildUnnamed2364();
-    o.tracks = buildUnnamed2365();
+    o.trackIds = buildUnnamed2476();
+    o.tracks = buildUnnamed2477();
   }
   buildCounterProductPolicy--;
   return o;
@@ -2003,33 +1951,33 @@ checkProductPolicy(api.ProductPolicy o) {
     checkAutoInstallPolicy(o.autoInstallPolicy);
     checkManagedConfiguration(o.managedConfiguration);
     unittest.expect(o.productId, unittest.equals('foo'));
-    checkUnnamed2364(o.trackIds);
-    checkUnnamed2365(o.tracks);
+    checkUnnamed2476(o.trackIds);
+    checkUnnamed2477(o.tracks);
   }
   buildCounterProductPolicy--;
 }
 
-buildUnnamed2366() {
+buildUnnamed2478() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2366(core.List<core.String> o) {
+checkUnnamed2478(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2367() {
+buildUnnamed2479() {
   var o = new core.List<api.ProductVisibility>();
   o.add(buildProductVisibility());
   o.add(buildProductVisibility());
   return o;
 }
 
-checkUnnamed2367(core.List<api.ProductVisibility> o) {
+checkUnnamed2479(core.List<api.ProductVisibility> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductVisibility(o[0]);
   checkProductVisibility(o[1]);
@@ -2040,10 +1988,9 @@ buildProductSet() {
   var o = new api.ProductSet();
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
-    o.kind = "foo";
-    o.productId = buildUnnamed2366();
+    o.productId = buildUnnamed2478();
     o.productSetBehavior = "foo";
-    o.productVisibility = buildUnnamed2367();
+    o.productVisibility = buildUnnamed2479();
   }
   buildCounterProductSet--;
   return o;
@@ -2052,10 +1999,9 @@ buildProductSet() {
 checkProductSet(api.ProductSet o) {
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2366(o.productId);
+    checkUnnamed2478(o.productId);
     unittest.expect(o.productSetBehavior, unittest.equals('foo'));
-    checkUnnamed2367(o.productVisibility);
+    checkUnnamed2479(o.productVisibility);
   }
   buildCounterProductSet--;
 }
@@ -2081,27 +2027,27 @@ checkProductSigningCertificate(api.ProductSigningCertificate o) {
   buildCounterProductSigningCertificate--;
 }
 
-buildUnnamed2368() {
+buildUnnamed2480() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2368(core.List<core.String> o) {
+checkUnnamed2480(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2369() {
+buildUnnamed2481() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2369(core.List<core.String> o) {
+checkUnnamed2481(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2113,8 +2059,8 @@ buildProductVisibility() {
   buildCounterProductVisibility++;
   if (buildCounterProductVisibility < 3) {
     o.productId = "foo";
-    o.trackIds = buildUnnamed2368();
-    o.tracks = buildUnnamed2369();
+    o.trackIds = buildUnnamed2480();
+    o.tracks = buildUnnamed2481();
   }
   buildCounterProductVisibility--;
   return o;
@@ -2124,8 +2070,8 @@ checkProductVisibility(api.ProductVisibility o) {
   buildCounterProductVisibility++;
   if (buildCounterProductVisibility < 3) {
     unittest.expect(o.productId, unittest.equals('foo'));
-    checkUnnamed2368(o.trackIds);
-    checkUnnamed2369(o.tracks);
+    checkUnnamed2480(o.trackIds);
+    checkUnnamed2481(o.tracks);
   }
   buildCounterProductVisibility--;
 }
@@ -2171,14 +2117,14 @@ checkProductsGenerateApprovalUrlResponse(
   buildCounterProductsGenerateApprovalUrlResponse--;
 }
 
-buildUnnamed2370() {
+buildUnnamed2482() {
   var o = new core.List<api.Product>();
   o.add(buildProduct());
   o.add(buildProduct());
   return o;
 }
 
-checkUnnamed2370(core.List<api.Product> o) {
+checkUnnamed2482(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProduct(o[0]);
   checkProduct(o[1]);
@@ -2189,9 +2135,8 @@ buildProductsListResponse() {
   var o = new api.ProductsListResponse();
   buildCounterProductsListResponse++;
   if (buildCounterProductsListResponse < 3) {
-    o.kind = "foo";
     o.pageInfo = buildPageInfo();
-    o.product = buildUnnamed2370();
+    o.product = buildUnnamed2482();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterProductsListResponse--;
@@ -2201,9 +2146,8 @@ buildProductsListResponse() {
 checkProductsListResponse(api.ProductsListResponse o) {
   buildCounterProductsListResponse++;
   if (buildCounterProductsListResponse < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
     checkPageInfo(o.pageInfo);
-    checkUnnamed2370(o.product);
+    checkUnnamed2482(o.product);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterProductsListResponse--;
@@ -2215,7 +2159,6 @@ buildServiceAccount() {
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
     o.key = buildServiceAccountKey();
-    o.kind = "foo";
     o.name = "foo";
   }
   buildCounterServiceAccount--;
@@ -2226,7 +2169,6 @@ checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
     checkServiceAccountKey(o.key);
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterServiceAccount--;
@@ -2239,7 +2181,6 @@ buildServiceAccountKey() {
   if (buildCounterServiceAccountKey < 3) {
     o.data = "foo";
     o.id = "foo";
-    o.kind = "foo";
     o.publicData = "foo";
     o.type = "foo";
   }
@@ -2252,21 +2193,20 @@ checkServiceAccountKey(api.ServiceAccountKey o) {
   if (buildCounterServiceAccountKey < 3) {
     unittest.expect(o.data, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.publicData, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterServiceAccountKey--;
 }
 
-buildUnnamed2371() {
+buildUnnamed2483() {
   var o = new core.List<api.ServiceAccountKey>();
   o.add(buildServiceAccountKey());
   o.add(buildServiceAccountKey());
   return o;
 }
 
-checkUnnamed2371(core.List<api.ServiceAccountKey> o) {
+checkUnnamed2483(core.List<api.ServiceAccountKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccountKey(o[0]);
   checkServiceAccountKey(o[1]);
@@ -2277,7 +2217,7 @@ buildServiceAccountKeysListResponse() {
   var o = new api.ServiceAccountKeysListResponse();
   buildCounterServiceAccountKeysListResponse++;
   if (buildCounterServiceAccountKeysListResponse < 3) {
-    o.serviceAccountKey = buildUnnamed2371();
+    o.serviceAccountKey = buildUnnamed2483();
   }
   buildCounterServiceAccountKeysListResponse--;
   return o;
@@ -2286,7 +2226,7 @@ buildServiceAccountKeysListResponse() {
 checkServiceAccountKeysListResponse(api.ServiceAccountKeysListResponse o) {
   buildCounterServiceAccountKeysListResponse++;
   if (buildCounterServiceAccountKeysListResponse < 3) {
-    checkUnnamed2371(o.serviceAccountKey);
+    checkUnnamed2483(o.serviceAccountKey);
   }
   buildCounterServiceAccountKeysListResponse--;
 }
@@ -2314,27 +2254,27 @@ checkSignupInfo(api.SignupInfo o) {
   buildCounterSignupInfo--;
 }
 
-buildUnnamed2372() {
+buildUnnamed2484() {
   var o = new core.List<api.LocalizedText>();
   o.add(buildLocalizedText());
   o.add(buildLocalizedText());
   return o;
 }
 
-checkUnnamed2372(core.List<api.LocalizedText> o) {
+checkUnnamed2484(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedText(o[0]);
   checkLocalizedText(o[1]);
 }
 
-buildUnnamed2373() {
+buildUnnamed2485() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2373(core.List<core.String> o) {
+checkUnnamed2485(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2346,10 +2286,9 @@ buildStoreCluster() {
   buildCounterStoreCluster++;
   if (buildCounterStoreCluster < 3) {
     o.id = "foo";
-    o.kind = "foo";
-    o.name = buildUnnamed2372();
+    o.name = buildUnnamed2484();
     o.orderInPage = "foo";
-    o.productId = buildUnnamed2373();
+    o.productId = buildUnnamed2485();
   }
   buildCounterStoreCluster--;
   return o;
@@ -2359,10 +2298,9 @@ checkStoreCluster(api.StoreCluster o) {
   buildCounterStoreCluster++;
   if (buildCounterStoreCluster < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2372(o.name);
+    checkUnnamed2484(o.name);
     unittest.expect(o.orderInPage, unittest.equals('foo'));
-    checkUnnamed2373(o.productId);
+    checkUnnamed2485(o.productId);
   }
   buildCounterStoreCluster--;
 }
@@ -2373,7 +2311,6 @@ buildStoreLayout() {
   buildCounterStoreLayout++;
   if (buildCounterStoreLayout < 3) {
     o.homepageId = "foo";
-    o.kind = "foo";
     o.storeLayoutType = "foo";
   }
   buildCounterStoreLayout--;
@@ -2384,20 +2321,19 @@ checkStoreLayout(api.StoreLayout o) {
   buildCounterStoreLayout++;
   if (buildCounterStoreLayout < 3) {
     unittest.expect(o.homepageId, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.storeLayoutType, unittest.equals('foo'));
   }
   buildCounterStoreLayout--;
 }
 
-buildUnnamed2374() {
+buildUnnamed2486() {
   var o = new core.List<api.StoreCluster>();
   o.add(buildStoreCluster());
   o.add(buildStoreCluster());
   return o;
 }
 
-checkUnnamed2374(core.List<api.StoreCluster> o) {
+checkUnnamed2486(core.List<api.StoreCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStoreCluster(o[0]);
   checkStoreCluster(o[1]);
@@ -2408,8 +2344,7 @@ buildStoreLayoutClustersListResponse() {
   var o = new api.StoreLayoutClustersListResponse();
   buildCounterStoreLayoutClustersListResponse++;
   if (buildCounterStoreLayoutClustersListResponse < 3) {
-    o.cluster = buildUnnamed2374();
-    o.kind = "foo";
+    o.cluster = buildUnnamed2486();
   }
   buildCounterStoreLayoutClustersListResponse--;
   return o;
@@ -2418,20 +2353,19 @@ buildStoreLayoutClustersListResponse() {
 checkStoreLayoutClustersListResponse(api.StoreLayoutClustersListResponse o) {
   buildCounterStoreLayoutClustersListResponse++;
   if (buildCounterStoreLayoutClustersListResponse < 3) {
-    checkUnnamed2374(o.cluster);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2486(o.cluster);
   }
   buildCounterStoreLayoutClustersListResponse--;
 }
 
-buildUnnamed2375() {
+buildUnnamed2487() {
   var o = new core.List<api.StorePage>();
   o.add(buildStorePage());
   o.add(buildStorePage());
   return o;
 }
 
-checkUnnamed2375(core.List<api.StorePage> o) {
+checkUnnamed2487(core.List<api.StorePage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStorePage(o[0]);
   checkStorePage(o[1]);
@@ -2442,8 +2376,7 @@ buildStoreLayoutPagesListResponse() {
   var o = new api.StoreLayoutPagesListResponse();
   buildCounterStoreLayoutPagesListResponse++;
   if (buildCounterStoreLayoutPagesListResponse < 3) {
-    o.kind = "foo";
-    o.page = buildUnnamed2375();
+    o.page = buildUnnamed2487();
   }
   buildCounterStoreLayoutPagesListResponse--;
   return o;
@@ -2452,33 +2385,32 @@ buildStoreLayoutPagesListResponse() {
 checkStoreLayoutPagesListResponse(api.StoreLayoutPagesListResponse o) {
   buildCounterStoreLayoutPagesListResponse++;
   if (buildCounterStoreLayoutPagesListResponse < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2375(o.page);
+    checkUnnamed2487(o.page);
   }
   buildCounterStoreLayoutPagesListResponse--;
 }
 
-buildUnnamed2376() {
+buildUnnamed2488() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2376(core.List<core.String> o) {
+checkUnnamed2488(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2377() {
+buildUnnamed2489() {
   var o = new core.List<api.LocalizedText>();
   o.add(buildLocalizedText());
   o.add(buildLocalizedText());
   return o;
 }
 
-checkUnnamed2377(core.List<api.LocalizedText> o) {
+checkUnnamed2489(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedText(o[0]);
   checkLocalizedText(o[1]);
@@ -2490,9 +2422,8 @@ buildStorePage() {
   buildCounterStorePage++;
   if (buildCounterStorePage < 3) {
     o.id = "foo";
-    o.kind = "foo";
-    o.link = buildUnnamed2376();
-    o.name = buildUnnamed2377();
+    o.link = buildUnnamed2488();
+    o.name = buildUnnamed2489();
   }
   buildCounterStorePage--;
   return o;
@@ -2502,9 +2433,8 @@ checkStorePage(api.StorePage o) {
   buildCounterStorePage++;
   if (buildCounterStorePage < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2376(o.link);
-    checkUnnamed2377(o.name);
+    checkUnnamed2488(o.link);
+    checkUnnamed2489(o.name);
   }
   buildCounterStorePage--;
 }
@@ -2560,7 +2490,6 @@ buildUser() {
     o.accountType = "foo";
     o.displayName = "foo";
     o.id = "foo";
-    o.kind = "foo";
     o.managementType = "foo";
     o.primaryEmail = "foo";
   }
@@ -2575,44 +2504,20 @@ checkUser(api.User o) {
     unittest.expect(o.accountType, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.managementType, unittest.equals('foo'));
     unittest.expect(o.primaryEmail, unittest.equals('foo'));
   }
   buildCounterUser--;
 }
 
-core.int buildCounterUserToken = 0;
-buildUserToken() {
-  var o = new api.UserToken();
-  buildCounterUserToken++;
-  if (buildCounterUserToken < 3) {
-    o.kind = "foo";
-    o.token = "foo";
-    o.userId = "foo";
-  }
-  buildCounterUserToken--;
-  return o;
-}
-
-checkUserToken(api.UserToken o) {
-  buildCounterUserToken++;
-  if (buildCounterUserToken < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.token, unittest.equals('foo'));
-    unittest.expect(o.userId, unittest.equals('foo'));
-  }
-  buildCounterUserToken--;
-}
-
-buildUnnamed2378() {
+buildUnnamed2490() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed2378(core.List<api.User> o) {
+checkUnnamed2490(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -2623,8 +2528,7 @@ buildUsersListResponse() {
   var o = new api.UsersListResponse();
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    o.kind = "foo";
-    o.user = buildUnnamed2378();
+    o.user = buildUnnamed2490();
   }
   buildCounterUsersListResponse--;
   return o;
@@ -2633,8 +2537,7 @@ buildUsersListResponse() {
 checkUsersListResponse(api.UsersListResponse o) {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2378(o.user);
+    checkUnnamed2490(o.user);
   }
   buildCounterUsersListResponse--;
 }
@@ -2644,7 +2547,6 @@ buildVariableSet() {
   var o = new api.VariableSet();
   buildCounterVariableSet++;
   if (buildCounterVariableSet < 3) {
-    o.kind = "foo";
     o.placeholder = "foo";
     o.userValue = "foo";
   }
@@ -2655,21 +2557,20 @@ buildVariableSet() {
 checkVariableSet(api.VariableSet o) {
   buildCounterVariableSet++;
   if (buildCounterVariableSet < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.placeholder, unittest.equals('foo'));
     unittest.expect(o.userValue, unittest.equals('foo'));
   }
   buildCounterVariableSet--;
 }
 
-buildUnnamed2379() {
+buildUnnamed2491() {
   var o = new core.List<api.WebAppIcon>();
   o.add(buildWebAppIcon());
   o.add(buildWebAppIcon());
   return o;
 }
 
-checkUnnamed2379(core.List<api.WebAppIcon> o) {
+checkUnnamed2491(core.List<api.WebAppIcon> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebAppIcon(o[0]);
   checkWebAppIcon(o[1]);
@@ -2681,7 +2582,7 @@ buildWebApp() {
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
     o.displayMode = "foo";
-    o.icons = buildUnnamed2379();
+    o.icons = buildUnnamed2491();
     o.isPublished = true;
     o.startUrl = "foo";
     o.title = "foo";
@@ -2696,7 +2597,7 @@ checkWebApp(api.WebApp o) {
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
     unittest.expect(o.displayMode, unittest.equals('foo'));
-    checkUnnamed2379(o.icons);
+    checkUnnamed2491(o.icons);
     unittest.expect(o.isPublished, unittest.isTrue);
     unittest.expect(o.startUrl, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -2725,14 +2626,14 @@ checkWebAppIcon(api.WebAppIcon o) {
   buildCounterWebAppIcon--;
 }
 
-buildUnnamed2380() {
+buildUnnamed2492() {
   var o = new core.List<api.WebApp>();
   o.add(buildWebApp());
   o.add(buildWebApp());
   return o;
 }
 
-checkUnnamed2380(core.List<api.WebApp> o) {
+checkUnnamed2492(core.List<api.WebApp> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebApp(o[0]);
   checkWebApp(o[1]);
@@ -2743,8 +2644,7 @@ buildWebAppsListResponse() {
   var o = new api.WebAppsListResponse();
   buildCounterWebAppsListResponse++;
   if (buildCounterWebAppsListResponse < 3) {
-    o.kind = "foo";
-    o.webApp = buildUnnamed2380();
+    o.webApp = buildUnnamed2492();
   }
   buildCounterWebAppsListResponse--;
   return o;
@@ -2753,8 +2653,7 @@ buildWebAppsListResponse() {
 checkWebAppsListResponse(api.WebAppsListResponse o) {
   buildCounterWebAppsListResponse++;
   if (buildCounterWebAppsListResponse < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2380(o.webApp);
+    checkUnnamed2492(o.webApp);
   }
   buildCounterWebAppsListResponse--;
 }
@@ -3395,14 +3294,6 @@ main() {
     });
   });
 
-  unittest.group("obj-schema-UserToken", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildUserToken();
-      var od = new api.UserToken.fromJson(o.toJson());
-      checkUserToken(od);
-    });
-  });
-
   unittest.group("obj-schema-UsersListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildUsersListResponse();
@@ -3459,12 +3350,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -3540,12 +3428,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -3616,12 +3501,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -3698,12 +3580,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -3775,12 +3654,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -3863,12 +3739,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -3943,12 +3816,11 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 38),
-            unittest.equals("enterprises/acknowledgeNotificationSet"));
-        pathOffset += 38;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 59),
+            unittest.equals(
+                "androidenterprise/v1/enterprises/acknowledgeNotificationSet"));
+        pathOffset += 59;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3988,8 +3860,8 @@ main() {
       var mock = new HttpServerMock();
       api.EnterprisesResourceApi res =
           new api.AndroidenterpriseApi(mock).enterprises;
-      var arg_completionToken = "foo";
       var arg_enterpriseToken = "foo";
+      var arg_completionToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3999,12 +3871,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("enterprises/completeSignup"));
-        pathOffset += 26;
+        unittest.expect(path.substring(pathOffset, pathOffset + 47),
+            unittest.equals("androidenterprise/v1/enterprises/completeSignup"));
+        pathOffset += 47;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4024,10 +3893,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["completionToken"].first,
-            unittest.equals(arg_completionToken));
         unittest.expect(queryMap["enterpriseToken"].first,
             unittest.equals(arg_enterpriseToken));
+        unittest.expect(queryMap["completionToken"].first,
+            unittest.equals(arg_completionToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4038,8 +3907,8 @@ main() {
       }), true);
       res
           .completeSignup(
-              completionToken: arg_completionToken,
               enterpriseToken: arg_enterpriseToken,
+              completionToken: arg_completionToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEnterprise(response);
@@ -4064,12 +3933,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/createWebToken", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -4131,12 +3997,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("enterprises/enroll"));
-        pathOffset += 18;
+        unittest.expect(path.substring(pathOffset, pathOffset + 39),
+            unittest.equals("androidenterprise/v1/enterprises/enroll"));
+        pathOffset += 39;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4186,12 +4049,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("enterprises/signupUrl"));
-        pathOffset += 21;
+        unittest.expect(path.substring(pathOffset, pathOffset + 42),
+            unittest.equals("androidenterprise/v1/enterprises/signupUrl"));
+        pathOffset += 42;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4242,12 +4102,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
@@ -4300,12 +4157,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/serviceAccount", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -4366,12 +4220,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -4429,12 +4280,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("enterprises"));
-        pathOffset += 11;
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("androidenterprise/v1/enterprises"));
+        pathOffset += 32;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4484,12 +4332,11 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 31),
-            unittest.equals("enterprises/pullNotificationSet"));
-        pathOffset += 31;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 52),
+            unittest.equals(
+                "androidenterprise/v1/enterprises/pullNotificationSet"));
+        pathOffset += 52;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4541,12 +4388,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/sendTestPushNotification", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -4609,12 +4453,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/account", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -4676,12 +4517,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -4739,12 +4577,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/unenroll", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -4804,12 +4639,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -4880,12 +4712,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -4957,12 +4786,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5036,12 +4862,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5117,12 +4940,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/groupLicenses/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5183,12 +5003,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/groupLicenses", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5249,12 +5066,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/groupLicenses/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5325,12 +5139,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5410,12 +5221,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5496,12 +5304,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5584,12 +5389,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5675,12 +5477,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5763,12 +5562,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5852,12 +5648,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -5942,12 +5735,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6033,12 +5823,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6111,12 +5898,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6189,12 +5973,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6268,12 +6049,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6349,12 +6127,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6425,12 +6200,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("permissions/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/permissions/"));
+        pathOffset += 33;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals("$arg_permissionId"));
@@ -6490,12 +6262,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6562,12 +6331,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6639,12 +6405,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6709,12 +6472,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6784,12 +6544,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6846,10 +6603,10 @@ main() {
       var mock = new HttpServerMock();
       api.ProductsResourceApi res = new api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = "foo";
-      var arg_approved = true;
+      var arg_query = "foo";
       var arg_language = "foo";
       var arg_maxResults = 42;
-      var arg_query = "foo";
+      var arg_approved = true;
       var arg_token = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6860,12 +6617,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/products", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -6894,13 +6648,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["approved"].first, unittest.equals("$arg_approved"));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(
             queryMap["language"].first, unittest.equals(arg_language));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(
+            queryMap["approved"].first, unittest.equals("$arg_approved"));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -6912,10 +6666,10 @@ main() {
       }), true);
       res
           .list(arg_enterpriseId,
-              approved: arg_approved,
+              query: arg_query,
               language: arg_language,
               maxResults: arg_maxResults,
-              query: arg_query,
+              approved: arg_approved,
               token: arg_token,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -6937,12 +6691,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7010,12 +6761,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/serviceAccountKeys/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7078,12 +6826,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/serviceAccountKeys", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7141,12 +6886,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/serviceAccountKeys", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7208,12 +6950,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7284,12 +7023,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7365,12 +7101,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7439,12 +7172,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7517,12 +7247,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7596,12 +7323,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7661,12 +7385,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7731,12 +7452,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7794,12 +7512,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7862,12 +7577,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7931,12 +7643,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -7995,12 +7704,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8054,78 +7760,6 @@ main() {
       })));
     });
 
-    unittest.test("method--generateToken", () {
-      var mock = new HttpServerMock();
-      api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
-      var arg_enterpriseId = "foo";
-      var arg_userId = "foo";
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
-        index = path.indexOf("/users/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/users/"));
-        pathOffset += 7;
-        index = path.indexOf("/token", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/token"));
-        pathOffset += 6;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = convert.json.encode(buildUserToken());
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res
-          .generateToken(arg_enterpriseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUserToken(response);
-      })));
-    });
-
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
@@ -8140,12 +7774,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8206,12 +7837,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8282,12 +7910,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8345,12 +7970,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8409,12 +8031,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8466,76 +8085,6 @@ main() {
           .then(unittest.expectAsync1((_) {}));
     });
 
-    unittest.test("method--revokeToken", () {
-      var mock = new HttpServerMock();
-      api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
-      var arg_enterpriseId = "foo";
-      var arg_userId = "foo";
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
-        index = path.indexOf("/users/", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/users/"));
-        pathOffset += 7;
-        index = path.indexOf("/token", pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/token"));
-        pathOffset += 6;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res
-          .revokeToken(arg_enterpriseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
-    });
-
     unittest.test("method--setAvailableProductSet", () {
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
@@ -8554,12 +8103,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8631,12 +8177,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8700,12 +8243,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/webApps/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8764,12 +8304,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/webApps/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8833,12 +8370,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/webApps", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8895,12 +8429,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/webApps", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -8962,12 +8493,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("androidenterprise/v1/"));
-        pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("enterprises/"));
-        pathOffset += 12;
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidenterprise/v1/enterprises/"));
+        pathOffset += 33;
         index = path.indexOf("/webApps/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =

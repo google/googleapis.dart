@@ -112,12 +112,18 @@ class ComputeApi {
       new RegionDiskTypesResourceApi(_requester);
   RegionDisksResourceApi get regionDisks =>
       new RegionDisksResourceApi(_requester);
+  RegionHealthCheckServicesResourceApi get regionHealthCheckServices =>
+      new RegionHealthCheckServicesResourceApi(_requester);
   RegionHealthChecksResourceApi get regionHealthChecks =>
       new RegionHealthChecksResourceApi(_requester);
   RegionInstanceGroupManagersResourceApi get regionInstanceGroupManagers =>
       new RegionInstanceGroupManagersResourceApi(_requester);
   RegionInstanceGroupsResourceApi get regionInstanceGroups =>
       new RegionInstanceGroupsResourceApi(_requester);
+  RegionNetworkEndpointGroupsResourceApi get regionNetworkEndpointGroups =>
+      new RegionNetworkEndpointGroupsResourceApi(_requester);
+  RegionNotificationEndpointsResourceApi get regionNotificationEndpoints =>
+      new RegionNotificationEndpointsResourceApi(_requester);
   RegionOperationsResourceApi get regionOperations =>
       new RegionOperationsResourceApi(_requester);
   RegionSslCertificatesResourceApi get regionSslCertificates =>
@@ -144,6 +150,8 @@ class ComputeApi {
       new SslPoliciesResourceApi(_requester);
   SubnetworksResourceApi get subnetworks =>
       new SubnetworksResourceApi(_requester);
+  TargetGrpcProxiesResourceApi get targetGrpcProxies =>
+      new TargetGrpcProxiesResourceApi(_requester);
   TargetHttpProxiesResourceApi get targetHttpProxies =>
       new TargetHttpProxiesResourceApi(_requester);
   TargetHttpsProxiesResourceApi get targetHttpsProxies =>
@@ -240,6 +248,10 @@ class AcceleratorTypesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -257,6 +269,7 @@ class AcceleratorTypesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -282,6 +295,9 @@ class AcceleratorTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -363,7 +379,8 @@ class AcceleratorTypesResourceApi {
     return _response.then((data) => new AcceleratorType.fromJson(data));
   }
 
-  /// Retrieves a list of accelerator types available to the specified project.
+  /// Retrieves a list of accelerator types that are available to the specified
+  /// project.
   ///
   /// Request parameters:
   ///
@@ -419,6 +436,10 @@ class AcceleratorTypesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -434,6 +455,7 @@ class AcceleratorTypesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -459,6 +481,9 @@ class AcceleratorTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -545,6 +570,10 @@ class AddressesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -561,6 +590,7 @@ class AddressesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -586,6 +616,9 @@ class AddressesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -877,6 +910,10 @@ class AddressesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -892,6 +929,7 @@ class AddressesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -917,6 +955,9 @@ class AddressesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1003,6 +1044,10 @@ class AutoscalersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1019,6 +1064,7 @@ class AutoscalersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1044,6 +1090,9 @@ class AutoscalersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1338,6 +1387,10 @@ class AutoscalersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1353,6 +1406,7 @@ class AutoscalersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1378,6 +1432,9 @@ class AutoscalersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1974,6 +2031,10 @@ class BackendBucketsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1989,6 +2050,7 @@ class BackendBucketsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2011,6 +2073,9 @@ class BackendBucketsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2327,6 +2392,10 @@ class BackendServicesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2343,6 +2412,7 @@ class BackendServicesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2368,6 +2438,9 @@ class BackendServicesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2661,9 +2734,8 @@ class BackendServicesResourceApi {
   }
 
   /// Creates a BackendService resource in the specified project using the data
-  /// included in the request. There are several restrictions and guidelines to
-  /// keep in mind when creating a backend service. Read  Understanding backend
-  /// services for more information.
+  /// included in the request. For more information, see  Backend services
+  /// overview.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2784,6 +2856,10 @@ class BackendServicesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2799,6 +2875,7 @@ class BackendServicesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2822,6 +2899,9 @@ class BackendServicesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -2839,10 +2919,9 @@ class BackendServicesResourceApi {
   }
 
   /// Patches the specified BackendService resource with the data included in
-  /// the request. There are several Understanding backend services to keep in
-  /// mind when updating a backend service. Read  Understanding backend services
-  /// for more information. This method supports PATCH semantics and uses the
-  /// JSON merge patch format and processing rules.
+  /// the request. For more information, see  Backend services overview. This
+  /// method supports PATCH semantics and uses the JSON merge patch format and
+  /// processing rules.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2995,9 +3074,7 @@ class BackendServicesResourceApi {
   }
 
   /// Updates the specified BackendService resource with the data included in
-  /// the request. There are several Understanding backend services to keep in
-  /// mind when updating a backend service. Read  Understanding backend services
-  /// for more information.
+  /// the request. For more information, see Backend services overview.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3140,6 +3217,10 @@ class DiskTypesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3156,6 +3237,7 @@ class DiskTypesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3181,6 +3263,9 @@ class DiskTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3317,6 +3402,10 @@ class DiskTypesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3332,6 +3421,7 @@ class DiskTypesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3357,6 +3447,9 @@ class DiskTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3533,6 +3626,10 @@ class DisksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3549,6 +3646,7 @@ class DisksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3574,6 +3672,9 @@ class DisksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3607,7 +3708,7 @@ class DisksResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
-  /// [guestFlush] - [Input Only] Specifies to create an application consistent
+  /// [guestFlush] - [Input Only] Whether to attempt an application consistent
   /// snapshot by informing the OS to prepare for the snapshot process.
   /// Currently only supported on Windows instances using the Volume Shadow Copy
   /// Service (VSS).
@@ -3843,6 +3944,8 @@ class DisksResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3855,7 +3958,7 @@ class DisksResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
       core.String project, core.String zone, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3871,6 +3974,11 @@ class DisksResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3893,10 +4001,10 @@ class DisksResourceApi {
   }
 
   /// Creates a persistent disk in the specified project using the data in the
-  /// request. You can create a disk with a sourceImage, a sourceSnapshot, or
-  /// create an empty 500 GB data disk by omitting all properties. You can also
-  /// create a disk that is larger than the default size by specifying the
-  /// sizeGb property.
+  /// request. You can create a disk from a source (sourceImage, sourceSnapshot,
+  /// or sourceDisk) or create an empty 500 GB data disk by omitting all
+  /// properties. You can also create a disk that is larger than the default
+  /// size by specifying the sizeGb property.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4033,6 +4141,10 @@ class DisksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4048,6 +4160,7 @@ class DisksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4073,6 +4186,9 @@ class DisksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4750,6 +4866,10 @@ class ExternalVpnGatewaysResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4765,6 +4885,7 @@ class ExternalVpnGatewaysResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4787,6 +4908,9 @@ class ExternalVpnGatewaysResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5177,6 +5301,10 @@ class FirewallsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5192,6 +5320,7 @@ class FirewallsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5214,6 +5343,9 @@ class FirewallsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5453,6 +5585,10 @@ class ForwardingRulesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5469,6 +5605,7 @@ class ForwardingRulesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5494,6 +5631,9 @@ class ForwardingRulesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5788,6 +5928,10 @@ class ForwardingRulesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5803,6 +5947,7 @@ class ForwardingRulesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5828,6 +5973,9 @@ class ForwardingRulesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6272,6 +6420,10 @@ class GlobalAddressesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -6287,6 +6439,7 @@ class GlobalAddressesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6309,6 +6462,9 @@ class GlobalAddressesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6581,6 +6737,10 @@ class GlobalForwardingRulesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -6596,6 +6756,7 @@ class GlobalForwardingRulesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6618,6 +6779,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7211,6 +7375,10 @@ class GlobalNetworkEndpointGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7226,6 +7394,7 @@ class GlobalNetworkEndpointGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7248,6 +7417,9 @@ class GlobalNetworkEndpointGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7323,6 +7495,10 @@ class GlobalNetworkEndpointGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7339,6 +7515,7 @@ class GlobalNetworkEndpointGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7365,6 +7542,9 @@ class GlobalNetworkEndpointGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7453,6 +7633,10 @@ class GlobalOperationsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7469,6 +7653,7 @@ class GlobalOperationsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7494,6 +7679,9 @@ class GlobalOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7673,6 +7861,10 @@ class GlobalOperationsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7688,6 +7880,7 @@ class GlobalOperationsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7710,6 +7903,9 @@ class GlobalOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7862,6 +8058,10 @@ class HealthChecksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7878,6 +8078,7 @@ class HealthChecksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7903,6 +8104,9 @@ class HealthChecksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8167,6 +8371,10 @@ class HealthChecksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -8182,6 +8390,7 @@ class HealthChecksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -8204,6 +8413,9 @@ class HealthChecksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8631,6 +8843,10 @@ class HttpHealthChecksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -8646,6 +8862,7 @@ class HttpHealthChecksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -8668,6 +8885,9 @@ class HttpHealthChecksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9096,6 +9316,10 @@ class HttpsHealthChecksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -9111,6 +9335,7 @@ class HttpsHealthChecksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -9133,6 +9358,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9583,6 +9811,8 @@ class ImagesResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -9594,7 +9824,7 @@ class ImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String project, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -9607,6 +9837,11 @@ class ImagesResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9756,6 +9991,10 @@ class ImagesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -9771,6 +10010,7 @@ class ImagesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -9794,6 +10034,9 @@ class ImagesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -9807,6 +10050,84 @@ class ImagesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ImageList.fromJson(data));
+  }
+
+  /// Patches the specified image with the data included in the request. Only
+  /// the following fields can be modified: family, description, deprecation
+  /// status.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [image] - Name of the image resource to patch.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+      Image request, core.String project, core.String image,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (image == null) {
+      throw new core.ArgumentError("Parameter image is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/images/' +
+        commons.Escaper.ecapeVariable('$image');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -10162,6 +10483,10 @@ class InstanceGroupManagersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -10179,6 +10504,7 @@ class InstanceGroupManagersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -10204,6 +10530,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10566,6 +10895,78 @@ class InstanceGroupManagersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Deletes selected per-instance configs for the managed instance group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the managed instance group is located.
+  /// It should conform to RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group. It should
+  /// conform to RFC1035.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deletePerInstanceConfigs(
+      InstanceGroupManagersDeletePerInstanceConfigsReq request,
+      core.String project,
+      core.String zone,
+      core.String instanceGroupManager,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        '/deletePerInstanceConfigs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Returns all of the details about the specified managed instance group.
   /// Gets a list of available managed instance groups by making a list()
   /// request.
@@ -10769,6 +11170,10 @@ class InstanceGroupManagersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -10785,6 +11190,7 @@ class InstanceGroupManagersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -10811,6 +11217,9 @@ class InstanceGroupManagersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -10831,7 +11240,7 @@ class InstanceGroupManagersResourceApi {
   }
 
   /// Lists all errors thrown by actions on instances for a given managed
-  /// instance group.
+  /// instance group. The filter and orderBy query parameters are not supported.
   ///
   /// Request parameters:
   ///
@@ -10892,6 +11301,10 @@ class InstanceGroupManagersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -10908,6 +11321,7 @@ class InstanceGroupManagersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -10938,6 +11352,9 @@ class InstanceGroupManagersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -10963,7 +11380,8 @@ class InstanceGroupManagersResourceApi {
   /// the list has a currentAction, which indicates the action that the managed
   /// instance group is performing on the instance. For example, if the group is
   /// still creating an instance, the currentAction is CREATING. If a previous
-  /// action failed, the list displays the errors for that failed action.
+  /// action failed, the list displays the errors for that failed action. The
+  /// orderBy query parameter is not supported.
   ///
   /// Request parameters:
   ///
@@ -11020,6 +11438,10 @@ class InstanceGroupManagersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -11037,6 +11459,7 @@ class InstanceGroupManagersResourceApi {
           core.int maxResults,
           core.String orderBy,
           core.String pageToken,
+          core.bool returnPartialSuccess,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -11067,6 +11490,9 @@ class InstanceGroupManagersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -11086,6 +11512,142 @@ class InstanceGroupManagersResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) =>
         new InstanceGroupManagersListManagedInstancesResponse.fromJson(data));
+  }
+
+  /// Lists all of the per-instance configs defined for the managed instance
+  /// group. The orderBy query parameter is not supported.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the managed instance group is located.
+  /// It should conform to RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group. It should
+  /// conform to RFC1035.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstanceGroupManagersListPerInstanceConfigsResp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstanceGroupManagersListPerInstanceConfigsResp>
+      listPerInstanceConfigs(core.String project, core.String zone,
+          core.String instanceGroupManager,
+          {core.String filter,
+          core.int maxResults,
+          core.String orderBy,
+          core.String pageToken,
+          core.bool returnPartialSuccess,
+          core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        '/listPerInstanceConfigs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new InstanceGroupManagersListPerInstanceConfigsResp.fromJson(data));
   }
 
   /// Updates a managed instance group using the information that you specify in
@@ -11168,6 +11730,97 @@ class InstanceGroupManagersResourceApi {
         commons.Escaper.ecapeVariable('$instanceGroupManager');
 
     var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Inserts or patches per-instance configs for the managed instance group.
+  /// perInstanceConfig.name serves as a key used to distinguish whether to
+  /// perform insert or patch.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the managed instance group is located.
+  /// It should conform to RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group. It should
+  /// conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patchPerInstanceConfigs(
+      InstanceGroupManagersPatchPerInstanceConfigsReq request,
+      core.String project,
+      core.String zone,
+      core.String instanceGroupManager,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        '/patchPerInstanceConfigs';
+
+    var _response = _requester.request(_url, "POST",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -11559,6 +12212,97 @@ class InstanceGroupManagersResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Inserts or updates per-instance configs for the managed instance group.
+  /// perInstanceConfig.name serves as a key used to distinguish whether to
+  /// perform insert or patch.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the managed instance group is located.
+  /// It should conform to RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group. It should
+  /// conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updatePerInstanceConfigs(
+      InstanceGroupManagersUpdatePerInstanceConfigsReq request,
+      core.String project,
+      core.String zone,
+      core.String instanceGroupManager,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        '/updatePerInstanceConfigs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class InstanceGroupsResourceApi {
@@ -11716,6 +12460,10 @@ class InstanceGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -11732,6 +12480,7 @@ class InstanceGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -11757,6 +12506,9 @@ class InstanceGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11853,8 +12605,11 @@ class InstanceGroupsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Returns the specified instance group. Gets a list of available instance
-  /// groups by making a list() request.
+  /// Returns the specified zonal instance group. Get a list of available zonal
+  /// instance groups by making a list() request.
+  ///
+  /// For managed instance groups, use the instanceGroupManagers or
+  /// regionInstanceGroupManagers methods instead.
   ///
   /// Request parameters:
   ///
@@ -11990,8 +12745,11 @@ class InstanceGroupsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Retrieves the list of instance groups that are located in the specified
-  /// project and zone.
+  /// Retrieves the list of zonal instance group resources contained within the
+  /// specified zone.
+  ///
+  /// For managed instance groups, use the instanceGroupManagers or
+  /// regionInstanceGroupManagers methods instead.
   ///
   /// Request parameters:
   ///
@@ -12046,6 +12804,10 @@ class InstanceGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -12061,6 +12823,7 @@ class InstanceGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -12087,6 +12850,9 @@ class InstanceGroupsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -12105,7 +12871,8 @@ class InstanceGroupsResourceApi {
     return _response.then((data) => new InstanceGroupList.fromJson(data));
   }
 
-  /// Lists the instances in the specified instance group.
+  /// Lists the instances in the specified instance group. The orderBy query
+  /// parameter is not supported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12165,6 +12932,10 @@ class InstanceGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -12184,6 +12955,7 @@ class InstanceGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -12215,6 +12987,9 @@ class InstanceGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12565,6 +13340,8 @@ class InstanceTemplatesResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -12576,7 +13353,7 @@ class InstanceTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String project, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -12589,6 +13366,11 @@ class InstanceTemplatesResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12732,6 +13514,10 @@ class InstanceTemplatesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -12747,6 +13533,7 @@ class InstanceTemplatesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -12769,6 +13556,9 @@ class InstanceTemplatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13165,6 +13955,10 @@ class InstancesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -13181,6 +13975,7 @@ class InstancesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -13206,6 +14001,9 @@ class InstancesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13242,8 +14040,9 @@ class InstancesResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
-  /// [forceAttach] - Whether to force attach the disk even if it's currently
-  /// attached to another instance.
+  /// [forceAttach] - Whether to force attach the regional disk even if it's
+  /// currently attached to another instance. If you try to force attach a zonal
+  /// disk to an instance, you will receive an error.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -13734,6 +14533,8 @@ class InstancesResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -13746,7 +14547,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
       core.String project, core.String zone, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -13762,6 +14563,11 @@ class InstancesResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13783,7 +14589,7 @@ class InstancesResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns the last 1 MB of serial port output from the specified instance.
+  /// Returns the screenshot from the specified instance.
   ///
   /// Request parameters:
   ///
@@ -13798,14 +14604,88 @@ class InstancesResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Screenshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Screenshot> getScreenshot(
+      core.String project, core.String zone, core.String instance,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/screenshot';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Screenshot.fromJson(data));
+  }
+
+  /// Returns the last 1 MB of serial port output from the specified instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [instance] - Name of the instance for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
   /// [port] - Specifies which COM or serial port to retrieve data from.
   /// Value must be between "1" and "4".
   ///
-  /// [start_1] - Returns output starting from a specific byte position. Use
-  /// this to page through output when the output is too large to return in a
-  /// single request. For the initial request, leave this field unspecified. For
-  /// subsequent calls, this field should be set to the next value returned in
-  /// the previous call.
+  /// [start_1] - Specifies the starting byte position of the output to return.
+  /// To start with the first byte of output to the specified port, omit this
+  /// field or set it to `0`.
+  ///
+  /// If the output for that byte position is available, this field matches the
+  /// `start` parameter sent with the request. If the amount of serial console
+  /// output exceeds the size of the buffer (1 MB), the oldest output is
+  /// discarded and is no longer available. If the requested start position
+  /// refers to discarded output, the start position is adjusted to the oldest
+  /// output still available, and the adjusted start position is returned as the
+  /// `start` property value.
+  ///
+  /// You can also provide a negative start position, which translates to the
+  /// most recent number of bytes written to the serial port. For example, -3 is
+  /// interpreted as the most recent 3 bytes written to the serial console.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -14075,6 +14955,10 @@ class InstancesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -14090,6 +14974,7 @@ class InstancesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -14116,6 +15001,9 @@ class InstancesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -14134,9 +15022,10 @@ class InstancesResourceApi {
     return _response.then((data) => new InstanceList.fromJson(data));
   }
 
-  /// Retrieves the list of referrers to instances contained within the
-  /// specified zone. For more information, read Viewing Referrers to VM
-  /// Instances.
+  /// Retrieves a list of resources that refer to the VM instance specified in
+  /// the request. For example, if the VM instance is part of a managed instance
+  /// group, the referrers list includes the managed instance group. For more
+  /// information, read Viewing Referrers to VM Instances.
   ///
   /// Request parameters:
   ///
@@ -14197,6 +15086,10 @@ class InstancesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -14213,6 +15106,7 @@ class InstancesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -14241,6 +15135,9 @@ class InstancesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -15129,7 +16026,10 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Sets an instance's scheduling options.
+  /// Sets an instance's scheduling options. You can only call this method on a
+  /// stopped instance, that is, a VM instance that is in a `TERMINATED` state.
+  /// See Instance Life Cycle for more information on the possible instance
+  /// states.
   ///
   /// [request] - The metadata request object.
   ///
@@ -16432,6 +17332,10 @@ class InterconnectAttachmentsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -16449,6 +17353,7 @@ class InterconnectAttachmentsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -16474,6 +17379,9 @@ class InterconnectAttachmentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -16775,6 +17683,10 @@ class InterconnectAttachmentsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -16791,6 +17703,7 @@ class InterconnectAttachmentsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -16816,6 +17729,9 @@ class InterconnectAttachmentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -17045,6 +17961,10 @@ class InterconnectLocationsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -17060,6 +17980,7 @@ class InterconnectLocationsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -17082,6 +18003,9 @@ class InterconnectLocationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -17408,6 +18332,10 @@ class InterconnectsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -17423,6 +18351,7 @@ class InterconnectsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -17445,6 +18374,9 @@ class InterconnectsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -17812,6 +18744,8 @@ class LicensesResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -17823,7 +18757,7 @@ class LicensesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String project, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -17836,6 +18770,11 @@ class LicensesResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -17982,6 +18921,10 @@ class LicensesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -17997,6 +18940,7 @@ class LicensesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -18019,6 +18963,9 @@ class LicensesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -18228,6 +19175,10 @@ class MachineTypesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -18244,6 +19195,7 @@ class MachineTypesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -18269,6 +19221,9 @@ class MachineTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -18407,6 +19362,10 @@ class MachineTypesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -18422,6 +19381,7 @@ class MachineTypesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -18447,6 +19407,9 @@ class MachineTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -18534,6 +19497,10 @@ class NetworkEndpointGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -18551,6 +19518,7 @@ class NetworkEndpointGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -18576,6 +19544,9 @@ class NetworkEndpointGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -19054,6 +20025,10 @@ class NetworkEndpointGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -19070,6 +20045,7 @@ class NetworkEndpointGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -19095,6 +20071,9 @@ class NetworkEndpointGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -19177,6 +20156,10 @@ class NetworkEndpointGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -19196,6 +20179,7 @@ class NetworkEndpointGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -19228,6 +20212,9 @@ class NetworkEndpointGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -19650,6 +20637,10 @@ class NetworksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -19665,6 +20656,7 @@ class NetworksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -19687,6 +20679,9 @@ class NetworksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -19770,6 +20765,10 @@ class NetworksResourceApi {
   /// [region] - The region of the request. The response will include all subnet
   /// routes, static routes and dynamic routes in the region.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -19789,6 +20788,7 @@ class NetworksResourceApi {
       core.String pageToken,
       core.String peeringName,
       core.String region,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -19823,6 +20823,9 @@ class NetworksResourceApi {
     }
     if (region != null) {
       _queryParams["region"] = [region];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -20303,6 +21306,10 @@ class NodeGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -20319,6 +21326,7 @@ class NodeGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -20344,6 +21352,9 @@ class NodeGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -20605,6 +21616,8 @@ class NodeGroupsResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -20617,7 +21630,7 @@ class NodeGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
       core.String project, core.String zone, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -20633,6 +21646,11 @@ class NodeGroupsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -20794,6 +21812,10 @@ class NodeGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -20809,6 +21831,7 @@ class NodeGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -20834,6 +21857,9 @@ class NodeGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -20913,6 +21939,10 @@ class NodeGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -20929,6 +21959,7 @@ class NodeGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -20957,6 +21988,9 @@ class NodeGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -21360,6 +22394,10 @@ class NodeTemplatesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -21376,6 +22414,7 @@ class NodeTemplatesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -21401,6 +22440,9 @@ class NodeTemplatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -21578,6 +22620,8 @@ class NodeTemplatesResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -21590,7 +22634,7 @@ class NodeTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
       core.String project, core.String region, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -21606,6 +22650,11 @@ class NodeTemplatesResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -21760,6 +22809,10 @@ class NodeTemplatesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -21775,6 +22828,7 @@ class NodeTemplatesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -21800,6 +22854,9 @@ class NodeTemplatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -22028,6 +23085,10 @@ class NodeTypesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -22044,6 +23105,7 @@ class NodeTypesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -22069,6 +23131,9 @@ class NodeTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -22205,6 +23270,10 @@ class NodeTypesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -22220,6 +23289,7 @@ class NodeTypesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -22245,6 +23315,9 @@ class NodeTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -22332,6 +23405,10 @@ class PacketMirroringsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -22349,6 +23426,7 @@ class PacketMirroringsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -22374,6 +23452,9 @@ class PacketMirroringsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -22668,6 +23749,10 @@ class PacketMirroringsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -22684,6 +23769,7 @@ class PacketMirroringsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -22709,6 +23795,9 @@ class PacketMirroringsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -23294,6 +24383,10 @@ class ProjectsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -23309,6 +24402,7 @@ class ProjectsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -23331,6 +24425,9 @@ class ProjectsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -23402,6 +24499,10 @@ class ProjectsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -23418,6 +24519,7 @@ class ProjectsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -23443,6 +24545,9 @@ class ProjectsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -24082,6 +25187,10 @@ class RegionAutoscalersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -24098,6 +25207,7 @@ class RegionAutoscalersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -24123,6 +25233,9 @@ class RegionAutoscalersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -24536,9 +25649,8 @@ class RegionBackendServicesResourceApi {
   }
 
   /// Creates a regional BackendService resource in the specified project using
-  /// the data included in the request. There are several restrictions and
-  /// guidelines to keep in mind when creating a regional backend service. Read
-  /// Understanding backend services for more information.
+  /// the data included in the request. For more information, see  Backend
+  /// services overview.
   ///
   /// [request] - The metadata request object.
   ///
@@ -24671,6 +25783,10 @@ class RegionBackendServicesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -24686,6 +25802,7 @@ class RegionBackendServicesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -24712,6 +25829,9 @@ class RegionBackendServicesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -24731,10 +25851,9 @@ class RegionBackendServicesResourceApi {
   }
 
   /// Updates the specified regional BackendService resource with the data
-  /// included in the request. There are several Understanding backend services
-  /// to keep in mind when updating a backend service. Read  Understanding
-  /// backend services for more information. This method supports PATCH
-  /// semantics and uses the JSON merge patch format and processing rules.
+  /// included in the request. For more information, see  Understanding backend
+  /// services This method supports PATCH semantics and uses the JSON merge
+  /// patch format and processing rules.
   ///
   /// [request] - The metadata request object.
   ///
@@ -24819,9 +25938,8 @@ class RegionBackendServicesResourceApi {
   }
 
   /// Updates the specified regional BackendService resource with the data
-  /// included in the request. There are several Understanding backend services
-  /// to keep in mind when updating a backend service. Read  Understanding
-  /// backend services for more information.
+  /// included in the request. For more information, see  Backend services
+  /// overview.
   ///
   /// [request] - The metadata request object.
   ///
@@ -24973,6 +26091,10 @@ class RegionCommitmentsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -24989,6 +26111,7 @@ class RegionCommitmentsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -25014,6 +26137,9 @@ class RegionCommitmentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -25229,6 +26355,10 @@ class RegionCommitmentsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -25244,6 +26374,7 @@ class RegionCommitmentsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -25269,6 +26400,9 @@ class RegionCommitmentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -25415,6 +26549,10 @@ class RegionDiskTypesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -25430,6 +26568,7 @@ class RegionDiskTypesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -25455,6 +26594,9 @@ class RegionDiskTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -25799,6 +26941,78 @@ class RegionDisksResourceApi {
     return _response.then((data) => new Disk.fromJson(data));
   }
 
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      core.String project, core.String region, core.String resource,
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Creates a persistent regional disk in the specified project using the data
   /// included in the request.
   ///
@@ -25938,6 +27152,10 @@ class RegionDisksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -25953,6 +27171,7 @@ class RegionDisksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -25978,6 +27197,9 @@ class RegionDisksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -26171,6 +27393,76 @@ class RegionDisksResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(RegionSetPolicyRequest request,
+      core.String project, core.String region, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Sets the labels on the target regional disk.
   ///
   /// [request] - The metadata request object.
@@ -26326,6 +27618,440 @@ class RegionDisksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
+}
+
+class RegionHealthCheckServicesResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionHealthCheckServicesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes the specified regional HealthCheckService.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [healthCheckService] - Name of the HealthCheckService to delete. The name
+  /// must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String region, core.String healthCheckService,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (healthCheckService == null) {
+      throw new core.ArgumentError("Parameter healthCheckService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/healthCheckServices/' +
+        commons.Escaper.ecapeVariable('$healthCheckService');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns the specified regional HealthCheckService resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [healthCheckService] - Name of the HealthCheckService to update. The name
+  /// must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthCheckService].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthCheckService> get(
+      core.String project, core.String region, core.String healthCheckService,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (healthCheckService == null) {
+      throw new core.ArgumentError("Parameter healthCheckService is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/healthCheckServices/' +
+        commons.Escaper.ecapeVariable('$healthCheckService');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new HealthCheckService.fromJson(data));
+  }
+
+  /// Creates a regional HealthCheckService resource in the specified project
+  /// and region using the data included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+      HealthCheckService request, core.String project, core.String region,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/healthCheckServices';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists all the HealthCheckService resources that have been configured for
+  /// the specified project in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HealthCheckServicesList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HealthCheckServicesList> list(
+      core.String project, core.String region,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.bool returnPartialSuccess,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/healthCheckServices';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new HealthCheckServicesList.fromJson(data));
+  }
+
+  /// Updates the specified regional HealthCheckService resource with the data
+  /// included in the request. This method supports PATCH semantics and uses the
+  /// JSON merge patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [healthCheckService] - Name of the HealthCheckService to update. The name
+  /// must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(HealthCheckService request, core.String project,
+      core.String region, core.String healthCheckService,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (healthCheckService == null) {
+      throw new core.ArgumentError("Parameter healthCheckService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/healthCheckServices/' +
+        commons.Escaper.ecapeVariable('$healthCheckService');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 }
 
@@ -26612,6 +28338,10 @@ class RegionHealthChecksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -26627,6 +28357,7 @@ class RegionHealthChecksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -26652,6 +28383,9 @@ class RegionHealthChecksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -27292,6 +29026,78 @@ class RegionInstanceGroupManagersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Deletes selected per-instance configs for the managed instance group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request, should conform to
+  /// RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group. It should
+  /// conform to RFC1035.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deletePerInstanceConfigs(
+      RegionInstanceGroupManagerDeleteInstanceConfigReq request,
+      core.String project,
+      core.String region,
+      core.String instanceGroupManager,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        '/deletePerInstanceConfigs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Returns all of the details about the specified managed instance group.
   ///
   /// Request parameters:
@@ -27491,6 +29297,10 @@ class RegionInstanceGroupManagersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -27507,6 +29317,7 @@ class RegionInstanceGroupManagersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -27533,6 +29344,9 @@ class RegionInstanceGroupManagersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -27553,7 +29367,8 @@ class RegionInstanceGroupManagersResourceApi {
   }
 
   /// Lists all errors thrown by actions on instances for a given regional
-  /// managed instance group.
+  /// managed instance group. The filter and orderBy query parameters are not
+  /// supported.
   ///
   /// Request parameters:
   ///
@@ -27614,6 +29429,10 @@ class RegionInstanceGroupManagersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -27630,6 +29449,7 @@ class RegionInstanceGroupManagersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -27660,6 +29480,9 @@ class RegionInstanceGroupManagersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -27683,7 +29506,8 @@ class RegionInstanceGroupManagersResourceApi {
 
   /// Lists the instances in the managed instance group and instances that are
   /// scheduled to be created. The list includes any current actions that the
-  /// group has scheduled for its instances.
+  /// group has scheduled for its instances. The orderBy query parameter is not
+  /// supported.
   ///
   /// Request parameters:
   ///
@@ -27740,6 +29564,10 @@ class RegionInstanceGroupManagersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -27757,6 +29585,7 @@ class RegionInstanceGroupManagersResourceApi {
           core.int maxResults,
           core.String orderBy,
           core.String pageToken,
+          core.bool returnPartialSuccess,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -27787,6 +29616,9 @@ class RegionInstanceGroupManagersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -27806,6 +29638,142 @@ class RegionInstanceGroupManagersResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) =>
         new RegionInstanceGroupManagersListInstancesResponse.fromJson(data));
+  }
+
+  /// Lists all of the per-instance configs defined for the managed instance
+  /// group. The orderBy query parameter is not supported.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request, should conform to
+  /// RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group. It should
+  /// conform to RFC1035.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RegionInstanceGroupManagersListInstanceConfigsResp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RegionInstanceGroupManagersListInstanceConfigsResp>
+      listPerInstanceConfigs(core.String project, core.String region,
+          core.String instanceGroupManager,
+          {core.String filter,
+          core.int maxResults,
+          core.String orderBy,
+          core.String pageToken,
+          core.bool returnPartialSuccess,
+          core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        '/listPerInstanceConfigs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new RegionInstanceGroupManagersListInstanceConfigsResp.fromJson(data));
   }
 
   /// Updates a managed instance group using the information that you specify in
@@ -27887,6 +29855,97 @@ class RegionInstanceGroupManagersResourceApi {
         commons.Escaper.ecapeVariable('$instanceGroupManager');
 
     var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Insert or patch (for the ones that already exist) per-instance configs for
+  /// the managed instance group. perInstanceConfig.instance serves as a key
+  /// used to distinguish whether to perform insert or patch.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request, should conform to
+  /// RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group. It should
+  /// conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patchPerInstanceConfigs(
+      RegionInstanceGroupManagerPatchInstanceConfigReq request,
+      core.String project,
+      core.String region,
+      core.String instanceGroupManager,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        '/patchPerInstanceConfigs';
+
+    var _response = _requester.request(_url, "POST",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -28265,6 +30324,97 @@ class RegionInstanceGroupManagersResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Insert or update (for the ones that already exist) per-instance configs
+  /// for the managed instance group. perInstanceConfig.instance serves as a key
+  /// used to distinguish whether to perform insert or patch.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request, should conform to
+  /// RFC1035.
+  ///
+  /// [instanceGroupManager] - The name of the managed instance group. It should
+  /// conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updatePerInstanceConfigs(
+      RegionInstanceGroupManagerUpdateInstanceConfigReq request,
+      core.String project,
+      core.String region,
+      core.String instanceGroupManager,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager') +
+        '/updatePerInstanceConfigs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class RegionInstanceGroupsResourceApi {
@@ -28389,6 +30539,10 @@ class RegionInstanceGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -28405,6 +30559,7 @@ class RegionInstanceGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -28431,6 +30586,9 @@ class RegionInstanceGroupsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -28452,6 +30610,7 @@ class RegionInstanceGroupsResourceApi {
   /// Lists the instances in the specified instance group and displays
   /// information about the named ports. Depending on the specified options,
   /// this method can list all instances or only the instances that are running.
+  /// The orderBy query parameter is not supported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -28511,6 +30670,10 @@ class RegionInstanceGroupsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -28530,6 +30693,7 @@ class RegionInstanceGroupsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -28561,6 +30725,9 @@ class RegionInstanceGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -28668,6 +30835,715 @@ class RegionInstanceGroupsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class RegionNetworkEndpointGroupsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionNetworkEndpointGroupsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes the specified network endpoint group. Note that the NEG cannot be
+  /// deleted if it is configured as a backend of a backend service.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region where the network endpoint group is
+  /// located. It should comply with RFC1035.
+  ///
+  /// [networkEndpointGroup] - The name of the network endpoint group to delete.
+  /// It should comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String region, core.String networkEndpointGroup,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (networkEndpointGroup == null) {
+      throw new core.ArgumentError(
+          "Parameter networkEndpointGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/networkEndpointGroups/' +
+        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns the specified network endpoint group. Gets a list of available
+  /// network endpoint groups by making a list() request.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region where the network endpoint group is
+  /// located. It should comply with RFC1035.
+  ///
+  /// [networkEndpointGroup] - The name of the network endpoint group. It should
+  /// comply with RFC1035.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NetworkEndpointGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NetworkEndpointGroup> get(
+      core.String project, core.String region, core.String networkEndpointGroup,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (networkEndpointGroup == null) {
+      throw new core.ArgumentError(
+          "Parameter networkEndpointGroup is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/networkEndpointGroups/' +
+        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NetworkEndpointGroup.fromJson(data));
+  }
+
+  /// Creates a network endpoint group in the specified project using the
+  /// parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region where you want to create the network
+  /// endpoint group. It should comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+      NetworkEndpointGroup request, core.String project, core.String region,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/networkEndpointGroups';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves the list of regional network endpoint groups available to the
+  /// specified project in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region where the network endpoint group is
+  /// located. It should comply with RFC1035.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NetworkEndpointGroupList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NetworkEndpointGroupList> list(
+      core.String project, core.String region,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.bool returnPartialSuccess,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/networkEndpointGroups';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new NetworkEndpointGroupList.fromJson(data));
+  }
+}
+
+class RegionNotificationEndpointsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionNotificationEndpointsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes the specified NotificationEndpoint in the given region
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [notificationEndpoint] - Name of the NotificationEndpoint resource to
+  /// delete.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String region, core.String notificationEndpoint,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (notificationEndpoint == null) {
+      throw new core.ArgumentError(
+          "Parameter notificationEndpoint is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/notificationEndpoints/' +
+        commons.Escaper.ecapeVariable('$notificationEndpoint');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns the specified NotificationEndpoint resource in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [notificationEndpoint] - Name of the NotificationEndpoint resource to
+  /// return.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationEndpoint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationEndpoint> get(
+      core.String project, core.String region, core.String notificationEndpoint,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (notificationEndpoint == null) {
+      throw new core.ArgumentError(
+          "Parameter notificationEndpoint is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/notificationEndpoints/' +
+        commons.Escaper.ecapeVariable('$notificationEndpoint');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NotificationEndpoint.fromJson(data));
+  }
+
+  /// Create a NotificationEndpoint in the specified project in the given region
+  /// using the parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+      NotificationEndpoint request, core.String project, core.String region,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/notificationEndpoints';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists the NotificationEndpoints for a project in the given region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationEndpointList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationEndpointList> list(
+      core.String project, core.String region,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.bool returnPartialSuccess,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/notificationEndpoints';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new NotificationEndpointList.fromJson(data));
   }
 }
 
@@ -28860,6 +31736,10 @@ class RegionOperationsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -28875,6 +31755,7 @@ class RegionOperationsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -28900,6 +31781,9 @@ class RegionOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -29280,6 +32164,10 @@ class RegionSslCertificatesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -29295,6 +32183,7 @@ class RegionSslCertificatesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -29320,6 +32209,9 @@ class RegionSslCertificatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -29623,6 +32515,10 @@ class RegionTargetHttpProxiesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -29639,6 +32535,7 @@ class RegionTargetHttpProxiesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -29664,6 +32561,9 @@ class RegionTargetHttpProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -30052,6 +32952,10 @@ class RegionTargetHttpsProxiesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -30068,6 +32972,7 @@ class RegionTargetHttpsProxiesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -30093,6 +32998,9 @@ class RegionTargetHttpsProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -30550,6 +33458,10 @@ class RegionUrlMapsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -30565,6 +33477,7 @@ class RegionUrlMapsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -30590,6 +33503,9 @@ class RegionUrlMapsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -30948,6 +33864,10 @@ class RegionsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -30963,6 +33883,7 @@ class RegionsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -30985,6 +33906,9 @@ class RegionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -31068,6 +33992,10 @@ class ReservationsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -31084,6 +34012,7 @@ class ReservationsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -31109,6 +34038,9 @@ class ReservationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -31285,6 +34217,8 @@ class ReservationsResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -31297,7 +34231,7 @@ class ReservationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
       core.String project, core.String zone, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -31313,6 +34247,11 @@ class ReservationsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -31468,6 +34407,10 @@ class ReservationsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -31483,6 +34426,7 @@ class ReservationsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -31508,6 +34452,9 @@ class ReservationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -31822,6 +34769,10 @@ class ResourcePoliciesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -31838,6 +34789,7 @@ class ResourcePoliciesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -31863,6 +34815,9 @@ class ResourcePoliciesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -32039,6 +34994,8 @@ class ResourcePoliciesResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -32051,7 +35008,7 @@ class ResourcePoliciesResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
       core.String project, core.String region, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -32067,6 +35024,11 @@ class ResourcePoliciesResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -32221,6 +35183,10 @@ class ResourcePoliciesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -32236,6 +35202,7 @@ class ResourcePoliciesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -32261,6 +35228,9 @@ class ResourcePoliciesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -32489,6 +35459,10 @@ class RoutersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -32505,6 +35479,7 @@ class RoutersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -32530,6 +35505,9 @@ class RoutersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -32750,6 +35728,10 @@ class RoutersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -32766,6 +35748,7 @@ class RoutersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -32794,6 +35777,9 @@ class RoutersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -33013,6 +35999,10 @@ class RoutersResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -33028,6 +36018,7 @@ class RoutersResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -33053,6 +36044,9 @@ class RoutersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -33566,6 +36560,10 @@ class RoutesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -33581,6 +36579,7 @@ class RoutesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -33603,6 +36602,9 @@ class RoutesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -33996,6 +36998,10 @@ class SecurityPoliciesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -34011,6 +37017,7 @@ class SecurityPoliciesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -34033,6 +37040,9 @@ class SecurityPoliciesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -34104,6 +37114,10 @@ class SecurityPoliciesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -34121,6 +37135,7 @@ class SecurityPoliciesResourceApi {
           core.int maxResults,
           core.String orderBy,
           core.String pageToken,
+          core.bool returnPartialSuccess,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -34143,6 +37158,9 @@ class SecurityPoliciesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -34515,6 +37533,8 @@ class SnapshotsResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -34526,7 +37546,7 @@ class SnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String project, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -34539,6 +37559,11 @@ class SnapshotsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -34612,6 +37637,10 @@ class SnapshotsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -34627,6 +37656,7 @@ class SnapshotsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -34649,6 +37679,9 @@ class SnapshotsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -34918,6 +37951,10 @@ class SslCertificatesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -34934,6 +37971,7 @@ class SslCertificatesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -34959,6 +37997,9 @@ class SslCertificatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -35226,6 +38267,10 @@ class SslCertificatesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -35241,6 +38286,7 @@ class SslCertificatesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -35263,6 +38309,9 @@ class SslCertificatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -35531,6 +38580,10 @@ class SslPoliciesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -35546,6 +38599,7 @@ class SslPoliciesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -35568,6 +38622,9 @@ class SslPoliciesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -35638,6 +38695,10 @@ class SslPoliciesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -35654,6 +38715,7 @@ class SslPoliciesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -35676,6 +38738,9 @@ class SslPoliciesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -35836,6 +38901,10 @@ class SubnetworksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -35852,6 +38921,7 @@ class SubnetworksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -35877,6 +38947,9 @@ class SubnetworksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -36143,6 +39216,8 @@ class SubnetworksResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -36155,7 +39230,7 @@ class SubnetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
       core.String project, core.String region, core.String resource,
-      {core.String $fields}) {
+      {core.int optionsRequestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -36171,6 +39246,11 @@ class SubnetworksResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -36325,6 +39405,10 @@ class SubnetworksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -36340,6 +39424,7 @@ class SubnetworksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -36366,6 +39451,9 @@ class SubnetworksResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -36384,9 +39472,7 @@ class SubnetworksResourceApi {
     return _response.then((data) => new SubnetworkList.fromJson(data));
   }
 
-  /// Retrieves an aggregated list of all usable subnetworks in the project. The
-  /// list contains all of the subnetworks in the project and the subnetworks
-  /// that were shared by a Shared VPC host project.
+  /// Retrieves an aggregated list of all usable subnetworks in the project.
   ///
   /// Request parameters:
   ///
@@ -36439,6 +39525,10 @@ class SubnetworksResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -36454,6 +39544,7 @@ class SubnetworksResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -36476,6 +39567,9 @@ class SubnetworksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -36828,6 +39922,400 @@ class SubnetworksResourceApi {
   }
 }
 
+class TargetGrpcProxiesResourceApi {
+  final commons.ApiRequester _requester;
+
+  TargetGrpcProxiesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes the specified TargetGrpcProxy in the given scope
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [targetGrpcProxy] - Name of the TargetGrpcProxy resource to delete.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String targetGrpcProxy,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetGrpcProxy == null) {
+      throw new core.ArgumentError("Parameter targetGrpcProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/targetGrpcProxies/' +
+        commons.Escaper.ecapeVariable('$targetGrpcProxy');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns the specified TargetGrpcProxy resource in the given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [targetGrpcProxy] - Name of the TargetGrpcProxy resource to return.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TargetGrpcProxy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TargetGrpcProxy> get(
+      core.String project, core.String targetGrpcProxy,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetGrpcProxy == null) {
+      throw new core.ArgumentError("Parameter targetGrpcProxy is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/targetGrpcProxies/' +
+        commons.Escaper.ecapeVariable('$targetGrpcProxy');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetGrpcProxy.fromJson(data));
+  }
+
+  /// Creates a TargetGrpcProxy in the specified project in the given scope
+  /// using the parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(TargetGrpcProxy request, core.String project,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        commons.Escaper.ecapeVariable('$project') + '/global/targetGrpcProxies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists the TargetGrpcProxies for a project in the given scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TargetGrpcProxyList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TargetGrpcProxyList> list(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.bool returnPartialSuccess,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        commons.Escaper.ecapeVariable('$project') + '/global/targetGrpcProxies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TargetGrpcProxyList.fromJson(data));
+  }
+
+  /// Patches the specified TargetGrpcProxy resource with the data included in
+  /// the request. This method supports PATCH semantics and uses JSON merge
+  /// patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [targetGrpcProxy] - Name of the TargetGrpcProxy resource to patch.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+      TargetGrpcProxy request, core.String project, core.String targetGrpcProxy,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetGrpcProxy == null) {
+      throw new core.ArgumentError("Parameter targetGrpcProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/targetGrpcProxies/' +
+        commons.Escaper.ecapeVariable('$targetGrpcProxy');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
 class TargetHttpProxiesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -36896,6 +40384,10 @@ class TargetHttpProxiesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -36913,6 +40405,7 @@ class TargetHttpProxiesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -36938,6 +40431,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -37205,6 +40701,10 @@ class TargetHttpProxiesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -37220,6 +40720,7 @@ class TargetHttpProxiesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -37243,6 +40744,9 @@ class TargetHttpProxiesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -37257,6 +40761,85 @@ class TargetHttpProxiesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new TargetHttpProxyList.fromJson(data));
+  }
+
+  /// Patches the specified TargetHttpProxy resource with the data included in
+  /// the request. This method supports PATCH semantics and uses JSON merge
+  /// patch format and processing rules. (== suppress_warning http-rest-shadowed
+  /// ==)
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [targetHttpProxy] - Name of the TargetHttpProxy resource to patch.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+      TargetHttpProxy request, core.String project, core.String targetHttpProxy,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (targetHttpProxy == null) {
+      throw new core.ArgumentError("Parameter targetHttpProxy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/targetHttpProxies/' +
+        commons.Escaper.ecapeVariable('$targetHttpProxy');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
   /// Changes the URL map for TargetHttpProxy.
@@ -37405,6 +40988,10 @@ class TargetHttpsProxiesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -37422,6 +41009,7 @@ class TargetHttpsProxiesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -37447,6 +41035,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -37714,6 +41305,10 @@ class TargetHttpsProxiesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -37729,6 +41324,7 @@ class TargetHttpsProxiesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -37751,6 +41347,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -38153,6 +41752,10 @@ class TargetInstancesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -38169,6 +41772,7 @@ class TargetInstancesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -38194,6 +41798,9 @@ class TargetInstancesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -38489,6 +42096,10 @@ class TargetInstancesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -38504,6 +42115,7 @@ class TargetInstancesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -38529,6 +42141,9 @@ class TargetInstancesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -38789,6 +42404,10 @@ class TargetPoolsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -38805,6 +42424,7 @@ class TargetPoolsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -38830,6 +42450,9 @@ class TargetPoolsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -39197,6 +42820,10 @@ class TargetPoolsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -39212,6 +42839,7 @@ class TargetPoolsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -39237,6 +42865,9 @@ class TargetPoolsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -39780,6 +43411,10 @@ class TargetSslProxiesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -39795,6 +43430,7 @@ class TargetSslProxiesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -39817,6 +43453,9 @@ class TargetSslProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -40412,6 +44051,10 @@ class TargetTcpProxiesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -40427,6 +44070,7 @@ class TargetTcpProxiesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -40449,6 +44093,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -40696,6 +44343,10 @@ class TargetVpnGatewaysResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -40713,6 +44364,7 @@ class TargetVpnGatewaysResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -40738,6 +44390,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -41033,6 +44688,10 @@ class TargetVpnGatewaysResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -41049,6 +44708,7 @@ class TargetVpnGatewaysResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -41074,6 +44734,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -41161,6 +44824,10 @@ class UrlMapsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -41177,6 +44844,7 @@ class UrlMapsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -41202,6 +44870,9 @@ class UrlMapsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -41541,6 +45212,10 @@ class UrlMapsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -41556,6 +45231,7 @@ class UrlMapsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -41578,6 +45254,9 @@ class UrlMapsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -41879,6 +45558,10 @@ class VpnGatewaysResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -41895,6 +45578,7 @@ class VpnGatewaysResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -41920,6 +45604,9 @@ class VpnGatewaysResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -42280,6 +45967,10 @@ class VpnGatewaysResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -42295,6 +45986,7 @@ class VpnGatewaysResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -42320,6 +46012,9 @@ class VpnGatewaysResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -42564,6 +46259,10 @@ class VpnTunnelsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -42580,6 +46279,7 @@ class VpnTunnelsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -42605,6 +46305,9 @@ class VpnTunnelsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -42898,6 +46601,10 @@ class VpnTunnelsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -42913,6 +46620,7 @@ class VpnTunnelsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -42938,6 +46646,9 @@ class VpnTunnelsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -43146,6 +46857,10 @@ class ZoneOperationsResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -43161,6 +46876,7 @@ class ZoneOperationsResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -43186,6 +46902,9 @@ class ZoneOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -43396,6 +47115,10 @@ class ZonesResourceApi {
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -43411,6 +47134,7 @@ class ZonesResourceApi {
       core.int maxResults,
       core.String orderBy,
       core.String pageToken,
+      core.bool returnPartialSuccess,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -43433,6 +47157,9 @@ class ZonesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -43512,13 +47239,13 @@ class AcceleratorType {
   /// accelerator types.
   core.String kind;
 
-  /// [Output Only] Maximum accelerator cards allowed per instance.
+  /// [Output Only] Maximum number of accelerator cards allowed per instance.
   core.int maximumCardsPerInstance;
 
   /// [Output Only] Name of the resource.
   core.String name;
 
-  /// [Output Only] Server-defined fully-qualified URL for this resource.
+  /// [Output Only] Server-defined, fully qualified URL for this resource.
   core.String selfLink;
 
   /// [Output Only] The name of the zone where the accelerator type resides,
@@ -43650,6 +47377,7 @@ class AcceleratorTypeAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -43722,6 +47450,9 @@ class AcceleratorTypeAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   AcceleratorTypeAggregatedListWarning warning;
 
@@ -43744,6 +47475,9 @@ class AcceleratorTypeAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -43770,6 +47504,9 @@ class AcceleratorTypeAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -43836,6 +47573,7 @@ class AcceleratorTypeListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -44020,6 +47758,7 @@ class AcceleratorTypesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -44305,6 +48044,7 @@ class Address {
   /// - "DNS_RESOLVER"
   /// - "GCE_ENDPOINT"
   /// - "NAT_AUTO"
+  /// - "SHARED_LOADBALANCER_VIP"
   /// - "VPC_PEERING"
   core.String purpose;
 
@@ -44508,6 +48248,7 @@ class AddressAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -44579,6 +48320,9 @@ class AddressAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   AddressAggregatedListWarning warning;
 
@@ -44601,6 +48345,9 @@ class AddressAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new AddressAggregatedListWarning.fromJson(_json["warning"]);
@@ -44626,6 +48373,9 @@ class AddressAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -44692,6 +48442,7 @@ class AddressListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -44876,6 +48627,7 @@ class AddressesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -45035,7 +48787,7 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk {
   }
 }
 
-/// Properties of the SKU instances being reserved.
+/// Properties of the SKU instances being reserved. Next ID: 9
 class AllocationSpecificSKUAllocationReservedInstanceProperties {
   /// Specifies accelerator type and count.
   core.List<AcceleratorConfig> guestAccelerators;
@@ -45560,12 +49312,12 @@ class AttachedDiskInitializeParams {
 ///
 /// Example Policy with multiple AuditConfigs:
 ///
-/// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ {
+/// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ {
 /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] },
-/// { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, {
-/// "service": "sampleservice.googleapis.com" "audit_log_configs": [ {
-/// "log_type": "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members":
-/// [ "user:aliya@example.com" ] } ] } ] }
+/// { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service":
+/// "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type":
+/// "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
+/// "user:aliya@example.com" ] } ] } ] }
 ///
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
@@ -45617,7 +49369,7 @@ class AuditConfig {
 /// Provides the configuration for logging a type of permissions. Example:
 ///
 /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", } ] }
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
 /// jose@example.com from DATA_READ logging.
@@ -45939,6 +49691,7 @@ class AutoscalerAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -46010,6 +49763,9 @@ class AutoscalerAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   AutoscalerAggregatedListWarning warning;
 
@@ -46032,6 +49788,9 @@ class AutoscalerAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new AutoscalerAggregatedListWarning.fromJson(_json["warning"]);
@@ -46057,6 +49816,9 @@ class AutoscalerAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -46123,6 +49885,7 @@ class AutoscalerListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -46304,6 +50067,7 @@ class AutoscalerStatusDetails {
   /// - "MISSING_CUSTOM_METRIC_DATA_POINTS"
   /// - "MISSING_LOAD_BALANCING_DATA_POINTS"
   /// - "MODE_OFF"
+  /// - "MODE_ONLY_SCALE_OUT"
   /// - "MODE_ONLY_UP"
   /// - "MORE_THAN_ONE_BACKEND_SERVICE"
   /// - "NOT_ENOUGH_QUOTA_AVAILABLE"
@@ -46397,6 +50161,7 @@ class AutoscalersScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -46519,8 +50284,10 @@ class AutoscalingPolicy {
   /// Possible string values are:
   /// - "OFF"
   /// - "ON"
+  /// - "ONLY_SCALE_OUT"
   /// - "ONLY_UP"
   core.String mode;
+  AutoscalingPolicyScaleInControl scaleInControl;
 
   AutoscalingPolicy();
 
@@ -46553,6 +50320,10 @@ class AutoscalingPolicy {
     if (_json.containsKey("mode")) {
       mode = _json["mode"];
     }
+    if (_json.containsKey("scaleInControl")) {
+      scaleInControl =
+          new AutoscalingPolicyScaleInControl.fromJson(_json["scaleInControl"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -46579,6 +50350,9 @@ class AutoscalingPolicy {
     }
     if (mode != null) {
       _json["mode"] = mode;
+    }
+    if (scaleInControl != null) {
+      _json["scaleInControl"] = (scaleInControl).toJson();
     }
     return _json;
   }
@@ -46699,6 +50473,45 @@ class AutoscalingPolicyLoadBalancingUtilization {
   }
 }
 
+/// Configuration that allows for slower scale in so that even if Autoscaler
+/// recommends an abrupt scale in of a MIG, it will be throttled as specified by
+/// the parameters below.
+class AutoscalingPolicyScaleInControl {
+  /// Maximum allowed number (or %) of VMs that can be deducted from the peak
+  /// recommendation during the window autoscaler looks at when computing
+  /// recommendations. Possibly all these VMs can be deleted at once so user
+  /// service needs to be prepared to lose that many VMs in one step.
+  FixedOrPercent maxScaledInReplicas;
+
+  /// How long back autoscaling should look when computing recommendations to
+  /// include directives regarding slower scale in, as described above.
+  core.int timeWindowSec;
+
+  AutoscalingPolicyScaleInControl();
+
+  AutoscalingPolicyScaleInControl.fromJson(core.Map _json) {
+    if (_json.containsKey("maxScaledInReplicas")) {
+      maxScaledInReplicas =
+          new FixedOrPercent.fromJson(_json["maxScaledInReplicas"]);
+    }
+    if (_json.containsKey("timeWindowSec")) {
+      timeWindowSec = _json["timeWindowSec"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxScaledInReplicas != null) {
+      _json["maxScaledInReplicas"] = (maxScaledInReplicas).toJson();
+    }
+    if (timeWindowSec != null) {
+      _json["timeWindowSec"] = timeWindowSec;
+    }
+    return _json;
+  }
+}
+
 /// Message containing information of one individual backend.
 class Backend {
   /// Specifies the balancing mode for the backend.
@@ -46744,7 +50557,10 @@ class Backend {
   /// UTILIZATION, RATE or CONNECTION). Default value is 1, which means the
   /// group will serve up to 100% of its configured capacity (depending on
   /// balancingMode). A setting of 0 means the group is completely drained,
-  /// offering 0% of its available Capacity. Valid range is [0.0,1.0].
+  /// offering 0% of its available capacity. Valid range is 0.0 and [0.1,1.0].
+  /// You cannot configure a setting larger than 0 and smaller than 0.1. You
+  /// cannot configure a setting of 0 when there is only one backend attached to
+  /// the backend service.
   ///
   /// This cannot be used for internal load balancing.
   core.double capacityScaler;
@@ -47151,6 +50967,7 @@ class BackendBucketListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -47277,8 +51094,13 @@ class BackendBucketList {
 
 /// Represents a Backend Service resource.
 ///
-/// A backend service contains configuration values for Google Cloud Platform
-/// load balancing services.
+/// A backend service defines how Google Cloud load balancers distribute
+/// traffic. The backend service configuration contains a set of values, such as
+/// the protocol used to connect to backends, various distribution and session
+/// settings, health checks, and timeouts. These settings provide fine-grained
+/// control over how your load balancer behaves. Most of the settings have
+/// default values that allow for easy configuration if you need to get started
+/// quickly.
 ///
 /// Backend services in Google Compute Engine can be either regionally or
 /// globally scoped.
@@ -47286,13 +51108,22 @@ class BackendBucketList {
 /// * [Global](/compute/docs/reference/rest/{$api_version}/backendServices) *
 /// [Regional](/compute/docs/reference/rest/{$api_version}/regionBackendServices)
 ///
-/// For more information, read Backend Services.
+/// For more information, see Backend Services.
 ///
 /// (== resource_for {$api_version}.backendService ==)
 class BackendService {
+  /// Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme
+  /// is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is
+  /// HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or
+  /// HTTP_COOKIE.
+  ///
   /// If set to 0, the cookie is non-persistent and lasts only until the end of
   /// the browser session (or equivalent). The maximum allowed value is one day
   /// (86,400).
+  ///
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   core.int affinityCookieTtlSec;
 
   /// The list of backends that serve this BackendService.
@@ -47309,6 +51140,10 @@ class BackendService {
   /// or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
   /// - A global backend service with the load_balancing_scheme set to
   /// INTERNAL_SELF_MANAGED.
+  ///
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   CircuitBreakers circuitBreakers;
   ConnectionDraining connectionDraining;
 
@@ -47325,6 +51160,10 @@ class BackendService {
   /// or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
   /// - A global backend service with the load_balancing_scheme set to
   /// INTERNAL_SELF_MANAGED.
+  ///
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   ConsistentHashLoadBalancerSettings consistentHash;
 
   /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -47367,11 +51206,13 @@ class BackendService {
   /// The list of URLs to the healthChecks, httpHealthChecks (legacy), or
   /// httpsHealthChecks (legacy) resource for health checking this backend
   /// service. Not all backend services support legacy health checks. See  Load
-  /// balancer guide. Currently at most one health check can be specified.
-  /// Backend services with instance group or zonal NEG backends must have a
-  /// health check. Backend services with internet NEG backends must not have a
-  /// health check. A health check must
+  /// balancer guide. Currently, at most one health check can be specified for
+  /// each backend service. Backend services with instance group or zonal NEG
+  /// backends must have a health check. Backend services with internet or
+  /// serverless NEG backends must not have a health check.
   core.List<core.String> healthChecks;
+
+  /// The configurations for Identity-Aware Proxy on this resource.
   BackendServiceIAP iap;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -47413,8 +51254,8 @@ class BackendService {
   /// was redirected to the load balancer.
   /// - MAGLEV: used as a drop in replacement for the ring hash load balancer.
   /// Maglev is not as stable as ring hash but has faster table lookup build
-  /// times and host selection times. For more information about Maglev, refer
-  /// to https://ai.google/research/pubs/pub44824
+  /// times and host selection times. For more information about Maglev, see
+  /// https://ai.google/research/pubs/pub44824
   ///
   /// This field is applicable to either:
   /// - A regional backend service with the service_protocol set to HTTP, HTTPS,
@@ -47422,8 +51263,12 @@ class BackendService {
   /// - A global backend service with the load_balancing_scheme set to
   /// INTERNAL_SELF_MANAGED.
   ///
-  /// If sessionAffinity is not NONE, and this field is not set to >MAGLEV or
+  /// If sessionAffinity is not NONE, and this field is not set to MAGLEV or
   /// RING_HASH, session affinity settings will not take effect.
+  ///
+  /// Only the default ROUND_ROBIN policy is supported when the backend service
+  /// is referenced by a URL map that is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   /// Possible string values are:
   /// - "INVALID_LB_POLICY"
   /// - "LEAST_REQUEST"
@@ -47461,6 +51306,10 @@ class BackendService {
   /// or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
   /// - A global backend service with the load_balancing_scheme set to
   /// INTERNAL_SELF_MANAGED.
+  ///
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   OutlierDetection outlierDetection;
 
   /// Deprecated in favor of portName. The TCP port to connect on the backend.
@@ -47480,16 +51329,20 @@ class BackendService {
   ///
   ///
   /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP
-  /// Load Blaancing).
+  /// Load Balancing).
   core.String portName;
 
   /// The protocol this BackendService uses to communicate with backends.
   ///
-  /// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, or UDP. depending on the
-  /// chosen load balancer or Traffic Director configuration. Refer to the
-  /// documentation for the load balancer or for Traffic Director for more
+  /// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending
+  /// on the chosen load balancer or Traffic Director configuration. Refer to
+  /// the documentation for the load balancer or for Traffic Director for more
   /// information.
+  ///
+  /// Must be set to GRPC when the backend service is referenced by a URL map
+  /// that is bound to target gRPC proxy.
   /// Possible string values are:
+  /// - "GRPC"
   /// - "HTTP"
   /// - "HTTP2"
   /// - "HTTPS"
@@ -47524,6 +51377,10 @@ class BackendService {
   /// When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or
   /// INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE,
   /// HEADER_FIELD, or HTTP_COOKIE.
+  ///
+  /// Not supported when the backend service is referenced by a URL map that is
+  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// true.
   /// Possible string values are:
   /// - "CLIENT_IP"
   /// - "CLIENT_IP_PORT_PROTO"
@@ -47535,7 +51392,7 @@ class BackendService {
   core.String sessionAffinity;
 
   /// The backend service timeout has a different meaning depending on the type
-  /// of load balancer. For more information read,  Backend service settings The
+  /// of load balancer. For more information see,  Backend service settings The
   /// default is 30 seconds.
   core.int timeoutSec;
 
@@ -47796,6 +51653,7 @@ class BackendServiceAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -47867,6 +51725,9 @@ class BackendServiceAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   BackendServiceAggregatedListWarning warning;
 
@@ -47889,6 +51750,9 @@ class BackendServiceAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -47915,6 +51779,9 @@ class BackendServiceAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -48034,6 +51901,9 @@ class BackendServiceFailoverPolicy {
 }
 
 class BackendServiceGroupHealth {
+  /// Metadata defined as annotations on the network endpoint group.
+  core.Map<core.String, core.String> annotations;
+
   /// Health state of the backend instances or endpoints in requested instance
   /// or network endpoint group, determined based on configured health checks.
   core.List<HealthStatus> healthStatus;
@@ -48045,6 +51915,10 @@ class BackendServiceGroupHealth {
   BackendServiceGroupHealth();
 
   BackendServiceGroupHealth.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations =
+          (_json["annotations"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("healthStatus")) {
       healthStatus = (_json["healthStatus"] as core.List)
           .map<HealthStatus>((value) => new HealthStatus.fromJson(value))
@@ -48058,6 +51932,9 @@ class BackendServiceGroupHealth {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (annotations != null) {
+      _json["annotations"] = annotations;
+    }
     if (healthStatus != null) {
       _json["healthStatus"] =
           healthStatus.map((value) => (value).toJson()).toList();
@@ -48071,8 +51948,17 @@ class BackendServiceGroupHealth {
 
 /// Identity-Aware Proxy
 class BackendServiceIAP {
+  /// Whether the serving infrastructure will authenticate and authorize all
+  /// incoming requests. If true, the oauth2ClientId and oauth2ClientSecret
+  /// fields must be non-empty.
   core.bool enabled;
+
+  /// OAuth2 client ID to use for the authentication flow.
   core.String oauth2ClientId;
+
+  /// OAuth2 client secret to use for the authentication flow. For security
+  /// reasons, this value cannot be retrieved via the API. Instead, the SHA-256
+  /// hash of the value is returned in the oauth2ClientSecretSha256 field.
   core.String oauth2ClientSecret;
 
   /// [Output Only] SHA256 hash value for the field oauth2_client_secret above.
@@ -48172,6 +52058,7 @@ class BackendServiceListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -48415,6 +52302,7 @@ class BackendServicesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -48502,9 +52390,22 @@ class BackendServicesScopedList {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. NOTE: An unsatisfied
-  /// condition will not allow user access via current binding. Different
-  /// bindings, including their conditions, are examined independently.
+  /// A client-specified ID for this binding. Expected to be globally unique to
+  /// support the internal bindings-by-ID API.
+  core.String bindingId;
+
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request.
+  ///
+  /// If the condition evaluates to `false`, then this binding does not apply to
+  /// the current request. However, a different role binding might grant the
+  /// same role to one or more of the members in this binding.
+  ///
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -48560,6 +52461,9 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingId")) {
+      bindingId = _json["bindingId"];
+    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -48574,6 +52478,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bindingId != null) {
+      _json["bindingId"] = bindingId;
+    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -48762,6 +52669,17 @@ class CircuitBreakers {
 /// details, read Signing Up for Committed Use Discounts. (== resource_for
 /// {$api_version}.regionCommitments ==)
 class Commitment {
+  /// The category of the commitment. Category MACHINE specifies commitments
+  /// composed of machine resources such as VCPU or MEMORY, listed in resources.
+  /// Category LICENSE specifies commitments composed of software licenses,
+  /// listed in licenseResources. Note that only MACHINE commitments should have
+  /// a Type specified.
+  /// Possible string values are:
+  /// - "CATEGORY_UNSPECIFIED"
+  /// - "LICENSE"
+  /// - "MACHINE"
+  core.String category;
+
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
@@ -48779,6 +52697,9 @@ class Commitment {
   /// [Output Only] Type of the resource. Always compute#commitment for
   /// commitments.
   core.String kind;
+
+  /// The license specification required as part of a license commitment.
+  LicenseResourceCommitment licenseResource;
 
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -48830,6 +52751,9 @@ class Commitment {
   Commitment();
 
   Commitment.fromJson(core.Map _json) {
+    if (_json.containsKey("category")) {
+      category = _json["category"];
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -48844,6 +52768,10 @@ class Commitment {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("licenseResource")) {
+      licenseResource =
+          new LicenseResourceCommitment.fromJson(_json["licenseResource"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -48882,6 +52810,9 @@ class Commitment {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (category != null) {
+      _json["category"] = category;
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -48896,6 +52827,9 @@ class Commitment {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (licenseResource != null) {
+      _json["licenseResource"] = (licenseResource).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -48987,6 +52921,7 @@ class CommitmentAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -49058,6 +52993,9 @@ class CommitmentAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   CommitmentAggregatedListWarning warning;
 
@@ -49080,6 +53018,9 @@ class CommitmentAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new CommitmentAggregatedListWarning.fromJson(_json["warning"]);
@@ -49105,6 +53046,9 @@ class CommitmentAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -49171,6 +53115,7 @@ class CommitmentListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -49355,6 +53300,7 @@ class CommitmentsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -49448,6 +53394,7 @@ class Condition {
   /// - "ATTRIBUTION"
   /// - "AUTHORITY"
   /// - "CREDENTIALS_TYPE"
+  /// - "CREDS_ASSERTION"
   /// - "JUSTIFICATION_TYPE"
   /// - "NO_ATTR"
   /// - "SECURITY_REALM"
@@ -49516,6 +53463,29 @@ class Condition {
     }
     if (values != null) {
       _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
+/// A set of Confidential Instance options.
+class ConfidentialInstanceConfig {
+  /// Defines whether the instance should have confidential compute enabled.
+  core.bool enableConfidentialCompute;
+
+  ConfidentialInstanceConfig();
+
+  ConfidentialInstanceConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableConfidentialCompute")) {
+      enableConfidentialCompute = _json["enableConfidentialCompute"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enableConfidentialCompute != null) {
+      _json["enableConfidentialCompute"] = enableConfidentialCompute;
     }
     return _json;
   }
@@ -49655,13 +53625,13 @@ class CorsPolicy {
   /// Specifies the regualar expression patterns that match allowed origins. For
   /// regular expression grammar please see
   /// en.cppreference.com/w/cpp/regex/ecmascript
-  /// An origin is allowed if it matches either allow_origins or
-  /// allow_origin_regex.
+  /// An origin is allowed if it matches either an item in allowOrigins or an
+  /// item in allowOriginRegexes.
   core.List<core.String> allowOriginRegexes;
 
   /// Specifies the list of origins that will be allowed to do CORS requests.
-  /// An origin is allowed if it matches either allow_origins or
-  /// allow_origin_regex.
+  /// An origin is allowed if it matches either an item in allowOrigins or an
+  /// item in allowOriginRegexes.
   core.List<core.String> allowOrigins;
 
   /// If true, specifies the CORS policy is disabled. The default value of
@@ -49736,7 +53706,6 @@ class CorsPolicy {
   }
 }
 
-/// Represents a customer-supplied encryption key
 class CustomerEncryptionKey {
   /// The name of the encryption key that is stored in Google Cloud KMS.
   core.String kmsKeyName;
@@ -50000,8 +53969,8 @@ class Disk {
   core.String options;
 
   /// Physical block size of the persistent disk, in bytes. If not present in a
-  /// request, a default value is used. Currently supported sizes are 4096 and
-  /// 16384, other sizes may be added in the future. If an unsupported value is
+  /// request, a default value is used. The currently supported size is 4096,
+  /// other sizes may be added in the future. If an unsupported value is
   /// requested, the error message will list the supported values for the
   /// caller's project.
   core.String physicalBlockSizeBytes;
@@ -50021,14 +53990,31 @@ class Disk {
   /// [Output Only] Server-defined fully-qualified URL for this resource.
   core.String selfLink;
 
-  /// Size of the persistent disk, specified in GB. You can specify this field
-  /// when creating a persistent disk using the sourceImage or sourceSnapshot
-  /// parameter, or specify it alone to create an empty persistent disk.
+  /// Size, in GB, of the persistent disk. You can specify this field when
+  /// creating a persistent disk using the sourceImage, sourceSnapshot, or
+  /// sourceDisk parameter, or specify it alone to create an empty persistent
+  /// disk.
   ///
-  /// If you specify this field along with sourceImage or sourceSnapshot, the
-  /// value of sizeGb must not be less than the size of the sourceImage or the
-  /// size of the snapshot. Acceptable values are 1 to 65536, inclusive.
+  /// If you specify this field along with a source, the value of sizeGb must
+  /// not be less than the size of the source. Acceptable values are 1 to 65536,
+  /// inclusive.
   core.String sizeGb;
+
+  /// The source disk used to create this disk. You can provide this as a
+  /// partial or full URL to the resource. For example, the following are valid
+  /// values:
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+  /// - projects/project/zones/zone/disks/disk
+  /// - zones/zone/disks/disk
+  core.String sourceDisk;
+
+  /// [Output Only] The unique ID of the disk used to create this disk. This
+  /// value identifies the exact disk that was used to create this persistent
+  /// disk. For example, if you created the persistent disk from a disk that was
+  /// later deleted and recreated under the same name, the source disk ID would
+  /// identify the exact version of the disk that was used.
+  core.String sourceDiskId;
 
   /// The source image used to create this disk. If the source image is deleted,
   /// this field will not be set.
@@ -50099,7 +54085,7 @@ class Disk {
 
   /// URL of the disk type resource describing which disk type to use to create
   /// the disk. Provide this when creating the disk. For example:
-  /// projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+  /// projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
   core.String type;
 
   /// [Output Only] Links to the users of the disk (attached instances) in form:
@@ -50177,6 +54163,12 @@ class Disk {
     }
     if (_json.containsKey("sizeGb")) {
       sizeGb = _json["sizeGb"];
+    }
+    if (_json.containsKey("sourceDisk")) {
+      sourceDisk = _json["sourceDisk"];
+    }
+    if (_json.containsKey("sourceDiskId")) {
+      sourceDiskId = _json["sourceDiskId"];
     }
     if (_json.containsKey("sourceImage")) {
       sourceImage = _json["sourceImage"];
@@ -50276,6 +54268,12 @@ class Disk {
     if (sizeGb != null) {
       _json["sizeGb"] = sizeGb;
     }
+    if (sourceDisk != null) {
+      _json["sourceDisk"] = sourceDisk;
+    }
+    if (sourceDiskId != null) {
+      _json["sourceDiskId"] = sourceDiskId;
+    }
     if (sourceImage != null) {
       _json["sourceImage"] = sourceImage;
     }
@@ -50369,6 +54367,7 @@ class DiskAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -50440,6 +54439,9 @@ class DiskAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   DiskAggregatedListWarning warning;
 
@@ -50462,6 +54464,9 @@ class DiskAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new DiskAggregatedListWarning.fromJson(_json["warning"]);
@@ -50487,6 +54492,9 @@ class DiskAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -50628,6 +54636,7 @@ class DiskListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -50987,6 +54996,7 @@ class DiskTypeAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -51057,6 +55067,9 @@ class DiskTypeAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   DiskTypeAggregatedListWarning warning;
 
@@ -51079,6 +55092,9 @@ class DiskTypeAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new DiskTypeAggregatedListWarning.fromJson(_json["warning"]);
@@ -51104,6 +55120,9 @@ class DiskTypeAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -51170,6 +55189,7 @@ class DiskTypeListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -51354,6 +55374,7 @@ class DiskTypesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -51566,6 +55587,7 @@ class DisksScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -51884,6 +55906,7 @@ class ExchangedPeeringRoutesListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -52092,12 +56115,18 @@ class Expr {
   }
 }
 
+/// Represents an external VPN gateway.
+///
 /// External VPN gateway is the on-premises VPN gateway(s) or another cloud
-/// provider's VPN gateway that connects to your Google Cloud VPN gateway. To
-/// create a highly available VPN from Google Cloud to your on-premises side or
-/// another Cloud provider's VPN gateway, you must create a external VPN gateway
-/// resource in GCP, which provides the information to GCP about your external
-/// VPN gateway.
+/// provider's VPN gateway that connects to your Google Cloud VPN gateway.
+///
+/// To create a highly available VPN from Google Cloud Platform to your VPN
+/// gateway or another cloud provider's VPN gateway, you must create a external
+/// VPN gateway resource with information about the other gateway.
+///
+/// For more information about using external VPN gateways, see  Creating an HA
+/// VPN gateway and tunnel pair to a peer VPN. (== resource_for
+/// {$api_version}.externalVpnGateways ==)
 class ExternalVpnGateway {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -52332,6 +56361,7 @@ class ExternalVpnGatewayListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -52478,7 +56508,7 @@ class FileContentBuffer {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  ///
+  /// The file type of source file.
   /// Possible string values are:
   /// - "BIN"
   /// - "UNDEFINED"
@@ -52635,7 +56665,7 @@ class Firewall {
   core.String kind;
 
   /// This field denotes the logging options for a particular firewall rule. If
-  /// logging is enabled, logs will be exported to Stackdriver.
+  /// logging is enabled, logs will be exported to Cloud Logging.
   FirewallLogConfig logConfig;
 
   /// Name of the resource; provided by the client when the resource is created.
@@ -52911,6 +56941,7 @@ class FirewallListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -53042,11 +57073,22 @@ class FirewallLogConfig {
   /// rule.
   core.bool enable;
 
+  /// This field can only be specified for a particular firewall rule if logging
+  /// is enabled for that rule. This field denotes whether to include or exclude
+  /// metadata for firewall logs.
+  /// Possible string values are:
+  /// - "EXCLUDE_ALL_METADATA"
+  /// - "INCLUDE_ALL_METADATA"
+  core.String metadata;
+
   FirewallLogConfig();
 
   FirewallLogConfig.fromJson(core.Map _json) {
     if (_json.containsKey("enable")) {
       enable = _json["enable"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
     }
   }
 
@@ -53055,6 +57097,9 @@ class FirewallLogConfig {
         new core.Map<core.String, core.Object>();
     if (enable != null) {
       _json["enable"] = enable;
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
     }
     return _json;
   }
@@ -53149,6 +57194,9 @@ class ForwardingRule {
   /// type of IP address that you can use. For detailed information, refer to
   /// [IP address
   /// specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+  ///
+  /// Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
+  /// validateForProxyless field set to true.
   core.String IPAddress;
 
   /// The IP protocol to which this rule applies. For protocol forwarding, valid
@@ -53270,15 +57318,17 @@ class ForwardingRule {
 
   /// Opaque filter criteria used by Loadbalancer to restrict routing
   /// configuration to a limited set of xDS compliant clients. In their xDS
-  /// requests to Loadbalancer, xDS clients present node metadata. If a match
-  /// takes place, the relevant configuration is made available to those
-  /// proxies. Otherwise, all the resources (e.g. TargetHttpProxy, UrlMap)
-  /// referenced by the ForwardingRule will not be visible to those proxies.
+  /// requests to Loadbalancer, xDS clients present node metadata. When there is
+  /// a match, the relevant configuration is made available to those proxies.
+  /// Otherwise, all the resources (e.g. TargetHttpProxy, UrlMap) referenced by
+  /// the ForwardingRule will not be visible to those proxies.
   /// For each metadataFilter in this list, if its filterMatchCriteria is set to
   /// MATCH_ANY, at least one of the filterLabels must match the corresponding
   /// label provided in the metadata. If its filterMatchCriteria is set to
   /// MATCH_ALL, then all of its filterLabels must match with corresponding
-  /// labels provided in the metadata.
+  /// labels provided in the metadata. If multiple metadataFilters are
+  /// specified, all of them need to be satisfied in order to be considered a
+  /// match.
   /// metadataFilters specified here will be applifed before those specified in
   /// the UrlMap that this ForwardingRule references.
   /// metadataFilters only applies to Loadbalancers that have their
@@ -53296,10 +57346,9 @@ class ForwardingRule {
 
   /// This field is not used for external load balancing.
   ///
-  /// For INTERNAL and INTERNAL_SELF_MANAGED load balancing, this field
-  /// identifies the network that the load balanced IP should belong to for this
-  /// Forwarding Rule. If this field is not specified, the default network will
-  /// be used.
+  /// For internal load balancing, this field identifies the network that the
+  /// load balanced IP should belong to for this Forwarding Rule. If this field
+  /// is not specified, the default network will be used.
   core.String network;
 
   /// This signifies the networking tier used for configuring this load balancer
@@ -53320,8 +57369,8 @@ class ForwardingRule {
   /// that points to a target proxy or a target pool. Do not use with a
   /// forwarding rule that points to a backend service. This field is used along
   /// with the target field for TargetHttpProxy, TargetHttpsProxy,
-  /// TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool,
-  /// TargetInstance.
+  /// TargetSslProxy, TargetTcpProxy, TargetGrpcProxy, TargetVpnGateway,
+  /// TargetPool, TargetInstance.
   ///
   /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
   /// addressed to ports in the specified range will be forwarded to target.
@@ -53331,6 +57380,7 @@ class ForwardingRule {
   /// Some types of forwarding target have constraints on the acceptable ports:
   /// - TargetHttpProxy: 80, 8080
   /// - TargetHttpsProxy: 443
+  /// - TargetGrpcProxy: Any ports
   /// - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
   /// 1688, 1883, 5222
   /// - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
@@ -53383,7 +57433,7 @@ class ForwardingRule {
   /// This field is only used for internal load balancing.
   core.String serviceName;
 
-  /// This field is only used for INTERNAL load balancing.
+  /// This field is only used for internal load balancing.
   ///
   /// For internal load balancing, this field identifies the subnetwork that the
   /// load balanced IP should belong to for this Forwarding Rule.
@@ -53398,7 +57448,8 @@ class ForwardingRule {
   /// forwarding rule. For global forwarding rules, this target must be a global
   /// load balancing resource. The forwarded traffic must be of a type
   /// appropriate to the target object. For INTERNAL_SELF_MANAGED load
-  /// balancing, only targetHttpProxy is valid, not targetHttpsProxy.
+  /// balancing, only targetHttpProxy and targetGrpcProxy are valid, not
+  /// targetHttpsProxy.
   core.String target;
 
   ForwardingRule();
@@ -53624,6 +57675,7 @@ class ForwardingRuleAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -53695,6 +57747,9 @@ class ForwardingRuleAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   ForwardingRuleAggregatedListWarning warning;
 
@@ -53717,6 +57772,9 @@ class ForwardingRuleAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -53743,6 +57801,9 @@ class ForwardingRuleAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -53809,6 +57870,7 @@ class ForwardingRuleListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -54013,6 +58075,7 @@ class ForwardingRulesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -54093,6 +58156,80 @@ class ForwardingRulesScopedList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class GRPCHealthCheck {
+  /// The gRPC service name for the health check. This field is optional. The
+  /// value of grpc_service_name has the following meanings by convention:
+  /// - Empty service_name means the overall status of all services at the
+  /// backend.
+  /// - Non-empty service_name means the health of that gRPC service, as defined
+  /// by the owner of the service.
+  /// The grpc_service_name can only be ASCII.
+  core.String grpcServiceName;
+
+  /// The port number for the health check request. Must be specified if
+  /// port_name and port_specification are not set or if port_specification is
+  /// USE_FIXED_PORT. Valid values are 1 through 65535.
+  core.int port;
+
+  /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+  /// port_name are defined, port takes precedence. The port_name should conform
+  /// to RFC1035.
+  core.String portName;
+
+  /// Specifies how port is selected for health checking, can be one of
+  /// following values:
+  /// USE_FIXED_PORT: The port number in port is used for health checking.
+  /// USE_NAMED_PORT: The portName is used for health checking.
+  /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+  /// network endpoint is used for health checking. For other backends, the port
+  /// or named port specified in the Backend Service is used for health
+  /// checking.
+  ///
+  ///
+  /// If not specified, gRPC health check follows behavior specified in port and
+  /// portName fields.
+  /// Possible string values are:
+  /// - "USE_FIXED_PORT"
+  /// - "USE_NAMED_PORT"
+  /// - "USE_SERVING_PORT"
+  core.String portSpecification;
+
+  GRPCHealthCheck();
+
+  GRPCHealthCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("grpcServiceName")) {
+      grpcServiceName = _json["grpcServiceName"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("portName")) {
+      portName = _json["portName"];
+    }
+    if (_json.containsKey("portSpecification")) {
+      portSpecification = _json["portSpecification"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (grpcServiceName != null) {
+      _json["grpcServiceName"] = grpcServiceName;
+    }
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (portName != null) {
+      _json["portName"] = portName;
+    }
+    if (portSpecification != null) {
+      _json["portSpecification"] = portSpecification;
     }
     return _json;
   }
@@ -54396,6 +58533,7 @@ class GuestOsFeature {
   /// - "FEATURE_TYPE_UNSPECIFIED"
   /// - "MULTI_IP_SUBNET"
   /// - "SECURE_BOOT"
+  /// - "SEV_CAPABLE"
   /// - "UEFI_COMPATIBLE"
   /// - "VIRTIO_SCSI_MULTIQUEUE"
   /// - "WINDOWS"
@@ -54731,9 +58869,11 @@ class HTTPSHealthCheck {
 /// * [Global](/compute/docs/reference/rest/{$api_version}/healthChecks) *
 /// [Regional](/compute/docs/reference/rest/{$api_version}/regionHealthChecks)
 ///
-/// Internal HTTP(S) load balancers use regional health checks. All other types
-/// of GCP load balancers and managed instance group auto-healing use global
-/// health checks. For more information, read Health Check Concepts.
+/// Internal HTTP(S) load balancers must use regional health checks. Internal
+/// TCP/UDP load balancers can use either regional or global health checks. All
+/// other types of GCP load balancers and managed instance group auto-healing
+/// must use global health checks. For more information, read Health Check
+/// Concepts.
 ///
 /// To perform health checks on network load balancers, you must use either
 /// httpHealthChecks or httpsHealthChecks.
@@ -54748,6 +58888,7 @@ class HealthCheck {
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   core.String description;
+  GRPCHealthCheck grpcHealthCheck;
 
   /// A so-far unhealthy instance will be marked healthy after this many
   /// consecutive successes. The default value is 2.
@@ -54791,6 +58932,7 @@ class HealthCheck {
   /// protocol-specific health check field must be specified, which must match
   /// type field.
   /// Possible string values are:
+  /// - "GRPC"
   /// - "HTTP"
   /// - "HTTP2"
   /// - "HTTPS"
@@ -54814,6 +58956,9 @@ class HealthCheck {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("grpcHealthCheck")) {
+      grpcHealthCheck = new GRPCHealthCheck.fromJson(_json["grpcHealthCheck"]);
     }
     if (_json.containsKey("healthyThreshold")) {
       healthyThreshold = _json["healthyThreshold"];
@@ -54872,6 +59017,9 @@ class HealthCheck {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (grpcHealthCheck != null) {
+      _json["grpcHealthCheck"] = (grpcHealthCheck).toJson();
     }
     if (healthyThreshold != null) {
       _json["healthyThreshold"] = healthyThreshold;
@@ -54977,6 +59125,7 @@ class HealthCheckListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -55128,6 +59277,391 @@ class HealthCheckReference {
   }
 }
 
+/// Represents a Health-Check as a Service resource.
+///
+/// (== resource_for {$api_version}.regionHealthCheckServices ==)
+class HealthCheckService {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// Fingerprint of this resource. A hash of the contents stored in this
+  /// object. This field is used in optimistic locking. This field will be
+  /// ignored when inserting a HealthCheckService. An up-to-date fingerprint
+  /// must be provided in order to patch/update the HealthCheckService;
+  /// Otherwise, the request will fail with error 412 conditionNotMet. To see
+  /// the latest fingerprint, make a get() request to retrieve the
+  /// HealthCheckService.
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return convert.base64.decode(fingerprint);
+  }
+
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// List of URLs to the HealthCheck resources. Must have at least one
+  /// HealthCheck, and not more than 10. HealthCheck resources must have
+  /// portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the
+  /// HealthCheck must be regional and in the same region. For global
+  /// HealthCheckService, HealthCheck must be global. Mix of regional and global
+  /// HealthChecks is not supported. Multiple regional HealthChecks must belong
+  /// to the same region. Regional HealthChecks</code? must belong to the same
+  /// region as zones of NEGs.
+  core.List<core.String> healthChecks;
+
+  /// Optional. Policy for how the results from multiple health checks for the
+  /// same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.
+  /// - NO_AGGREGATION. An EndpointHealth message is returned for each backend
+  /// in the health check service.
+  /// - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is
+  /// the HealthState of the entire health check service. If all backend's are
+  /// healthy, the HealthState of the health check service is HEALTHY. .
+  /// Possible string values are:
+  /// - "AND"
+  /// - "NO_AGGREGATION"
+  core.String healthStatusAggregationPolicy;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output only] Type of the resource. Always compute#healthCheckServicefor
+  /// health check services.
+  core.String kind;
+
+  /// Name of the resource. The name must be 1-63 characters long, and comply
+  /// with RFC1035. Specifically, the name must be 1-63 characters long and
+  /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+  /// first character must be a lowercase letter, and all following characters
+  /// must be a dash, lowercase letter, or digit, except the last character,
+  /// which cannot be a dash.
+  core.String name;
+
+  /// List of URLs to the NetworkEndpointGroup resources. Must not have more
+  /// than 100. For regional HealthCheckService, NEGs must be in zones in the
+  /// region of the HealthCheckService.
+  core.List<core.String> networkEndpointGroups;
+
+  /// List of URLs to the NotificationEndpoint resources. Must not have more
+  /// than 10. A list of endpoints for receiving notifications of change in
+  /// health status. For regional HealthCheckService, NotificationEndpoint must
+  /// be regional and in the same region. For global HealthCheckService,
+  /// NotificationEndpoint must be global.
+  core.List<core.String> notificationEndpoints;
+
+  /// [Output Only] URL of the region where the health check service resides.
+  /// This field is not applicable to global health check services. You must
+  /// specify this field as part of the HTTP request URL. It is not settable as
+  /// a field in the request body.
+  core.String region;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  HealthCheckService();
+
+  HealthCheckService.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("healthChecks")) {
+      healthChecks = (_json["healthChecks"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("healthStatusAggregationPolicy")) {
+      healthStatusAggregationPolicy = _json["healthStatusAggregationPolicy"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("networkEndpointGroups")) {
+      networkEndpointGroups =
+          (_json["networkEndpointGroups"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("notificationEndpoints")) {
+      notificationEndpoints =
+          (_json["notificationEndpoints"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (healthChecks != null) {
+      _json["healthChecks"] = healthChecks;
+    }
+    if (healthStatusAggregationPolicy != null) {
+      _json["healthStatusAggregationPolicy"] = healthStatusAggregationPolicy;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (networkEndpointGroups != null) {
+      _json["networkEndpointGroups"] = networkEndpointGroups;
+    }
+    if (notificationEndpoints != null) {
+      _json["notificationEndpoints"] = notificationEndpoints;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/// A full or valid partial URL to a health check service. For example, the
+/// following are valid URLs:
+/// -
+/// https://www.googleapis.com/compute/beta/projects/project-id/regions/us-west1/healthCheckServices/health-check-service
+/// -
+/// projects/project-id/regions/us-west1/healthCheckServices/health-check-service
+/// - regions/us-west1/healthCheckServices/health-check-service
+class HealthCheckServiceReference {
+  core.String healthCheckService;
+
+  HealthCheckServiceReference();
+
+  HealthCheckServiceReference.fromJson(core.Map _json) {
+    if (_json.containsKey("healthCheckService")) {
+      healthCheckService = _json["healthCheckService"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (healthCheckService != null) {
+      _json["healthCheckService"] = healthCheckService;
+    }
+    return _json;
+  }
+}
+
+class HealthCheckServicesListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  HealthCheckServicesListWarningData();
+
+  HealthCheckServicesListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class HealthCheckServicesListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<HealthCheckServicesListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  HealthCheckServicesListWarning();
+
+  HealthCheckServicesListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<HealthCheckServicesListWarningData>(
+              (value) => new HealthCheckServicesListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class HealthCheckServicesList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of HealthCheckService resources.
+  core.List<HealthCheckService> items;
+
+  /// [Output Only] Type of the resource. Always compute#healthCheckServicesList
+  /// for lists of HealthCheckServices.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  HealthCheckServicesListWarning warning;
+
+  HealthCheckServicesList();
+
+  HealthCheckServicesList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<HealthCheckService>(
+              (value) => new HealthCheckService.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new HealthCheckServicesListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
 class HealthChecksAggregatedListWarningData {
   /// [Output Only] A key that provides more detail on the warning being
   /// returned. For example, for warnings where there are no results in a list
@@ -55186,6 +59720,7 @@ class HealthChecksAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -55256,6 +59791,9 @@ class HealthChecksAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   HealthChecksAggregatedListWarning warning;
 
@@ -55278,6 +59816,9 @@ class HealthChecksAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -55304,6 +59845,9 @@ class HealthChecksAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -55371,6 +59915,7 @@ class HealthChecksScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -55457,6 +60002,9 @@ class HealthChecksScopedList {
 }
 
 class HealthStatus {
+  /// Metadata defined as annotations for network endpoint.
+  core.Map<core.String, core.String> annotations;
+
   /// Health state of the instance.
   /// Possible string values are:
   /// - "HEALTHY"
@@ -55476,6 +60024,10 @@ class HealthStatus {
   HealthStatus();
 
   HealthStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations =
+          (_json["annotations"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("healthState")) {
       healthState = _json["healthState"];
     }
@@ -55493,6 +60045,9 @@ class HealthStatus {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (annotations != null) {
+      _json["annotations"] = annotations;
+    }
     if (healthState != null) {
       _json["healthState"] = healthState;
     }
@@ -55522,6 +60077,10 @@ class HealthStatusForNetworkEndpoint {
   /// endpoint.
   HealthCheckReference healthCheck;
 
+  /// URL of the health check service associated with the health state of the
+  /// network endpoint.
+  HealthCheckServiceReference healthCheckService;
+
   /// Health state of the network endpoint determined based on the health checks
   /// configured.
   /// Possible string values are:
@@ -55545,6 +60104,10 @@ class HealthStatusForNetworkEndpoint {
     if (_json.containsKey("healthCheck")) {
       healthCheck = new HealthCheckReference.fromJson(_json["healthCheck"]);
     }
+    if (_json.containsKey("healthCheckService")) {
+      healthCheckService =
+          new HealthCheckServiceReference.fromJson(_json["healthCheckService"]);
+    }
     if (_json.containsKey("healthState")) {
       healthState = _json["healthState"];
     }
@@ -55561,6 +60124,9 @@ class HealthStatusForNetworkEndpoint {
     }
     if (healthCheck != null) {
       _json["healthCheck"] = (healthCheck).toJson();
+    }
+    if (healthCheckService != null) {
+      _json["healthCheckService"] = (healthCheckService).toJson();
     }
     if (healthState != null) {
       _json["healthState"] = healthState;
@@ -55580,6 +60146,8 @@ class HostRule {
   /// optional port numbers in the format host:port. * matches any string of
   /// ([a-z0-9-.]*). In that case, * must be the first character and must be
   /// followed in the pattern by either - or ..
+  /// * based matching is not supported when the URL map is bound to target gRPC
+  /// proxy that has validateForProxyless field set to true.
   core.List<core.String> hosts;
 
   /// The name of the PathMatcher to use to match the path portion of the URL if
@@ -55801,6 +60369,14 @@ class HttpHeaderMatch {
   /// For matching against the HTTP request's authority, use a headerMatch with
   /// the header name ":authority".
   /// For matching a request's method, use the headerName ":method".
+  /// When the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true, only non-binary user-specified
+  /// custom metadata and the `content-type` header are supported. The following
+  /// transport-level headers cannot be used in header matching rules:
+  /// `:authority`, `:method`, `:path`, `:scheme`, `user-agent`,
+  /// `accept-encoding`, `content-encoding`, `grpc-accept-encoding`,
+  /// `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`,
+  /// `grpc-timeout` and `grpc-trace-bin.
   core.String headerName;
 
   /// If set to false, the headerMatch is considered a match if the match
@@ -56165,6 +60741,7 @@ class HttpHealthCheckListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -56525,6 +61102,7 @@ class HttpRetryPolicy {
 class HttpRouteAction {
   /// The specification for allowing client side cross-origin requests. Please
   /// see W3C Recommendation for Cross Origin Resource Sharing
+  /// Not supported when the URL map is bound to target gRPC proxy.
   CorsPolicy corsPolicy;
 
   /// The specification for fault injection introduced into traffic to test the
@@ -56535,15 +61113,21 @@ class HttpRouteAction {
   /// be aborted by the Loadbalancer for a percentage of requests.
   /// timeout and retry_policy will be ignored by clients that are configured
   /// with a fault_injection_policy.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   HttpFaultInjection faultInjectionPolicy;
 
   /// Specifies the policy on how requests intended for the route's backends are
   /// shadowed to a separate mirrored backend service. Loadbalancer does not
   /// wait for responses from the shadow service. Prior to sending traffic to
   /// the shadow service, the host / authority header is suffixed with -shadow.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   RequestMirrorPolicy requestMirrorPolicy;
 
   /// Specifies the retry policy associated with this route.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   HttpRetryPolicy retryPolicy;
 
   /// Specifies the timeout for the selected route. Timeout is computed from the
@@ -56551,21 +61135,27 @@ class HttpRouteAction {
   /// the response has been completely processed. Timeout includes all retries.
   /// If not specified, will use the largest timeout among all backend services
   /// associated with the route.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   Duration timeout;
 
   /// The spec to modify the URL of the request, prior to forwarding the request
   /// to the matched service.
+  /// urlRewrite is the only action supported in UrlMaps for external HTTP(S)
+  /// load balancers.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   UrlRewrite urlRewrite;
 
   /// A list of weighted backend services to send traffic to when a route match
   /// occurs. The weights determine the fraction of traffic that flows to their
   /// corresponding backend service. If all traffic needs to go to a single
   /// backend service, there must be one  weightedBackendService with weight set
-  /// to a non 0 number.
+  /// to a non-zero number.
   /// Once a backendService is identified and before forwarding the request to
-  /// the backend service, advanced routing actions like Url rewrites and header
-  /// transformations are applied depending on additional settings specified in
-  /// this HttpRouteAction.
+  /// the backend service, advanced routing actions such as URL rewrites and
+  /// header transformations are applied depending on additional settings
+  /// specified in this HttpRouteAction.
   core.List<WeightedBackendService> weightedBackendServices;
 
   HttpRouteAction();
@@ -56640,7 +61230,17 @@ class HttpRouteRule {
   /// The headerAction specified here are applied before the matching
   /// pathMatchers[].headerAction and after
   /// pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction
+  /// Note that headerAction is not supported for Loadbalancers that have their
+  /// loadBalancingScheme set to EXTERNAL.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   HttpHeaderAction headerAction;
+
+  /// The list of criteria for matching attributes of a request to this
+  /// routeRule. This list has OR semantics: the request matches this routeRule
+  /// when any of the matchRules are satisfied. However predicates within a
+  /// given matchRule have AND semantics. All predicates within a matchRule must
+  /// match for the request to match the rule.
   core.List<HttpRouteRuleMatch> matchRules;
 
   /// For routeRules within a given pathMatcher, priority determines the order
@@ -56665,6 +61265,8 @@ class HttpRouteRule {
   /// service is set, routeAction cannot contain any  weightedBackendServices.
   /// Only one of urlRedirect, service or routeAction.weightedBackendService
   /// must be set.
+  /// UrlMaps for external HTTP(S) load balancers support only the urlRewrite
+  /// action within a routeRule's routeAction.
   HttpRouteAction routeAction;
 
   /// The full or partial URL of the backend service resource to which traffic
@@ -56681,6 +61283,7 @@ class HttpRouteRule {
   /// When this rule is matched, the request is redirected to a URL specified by
   /// urlRedirect.
   /// If urlRedirect is specified, service or routeAction must not be set.
+  /// Not supported when the URL map is bound to target gRPC proxy.
   HttpRedirectAction urlRedirect;
 
   HttpRouteRule();
@@ -56759,23 +61362,28 @@ class HttpRouteRuleMatch {
   /// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
   /// The default value is false.
   /// ignoreCase must not be used with regexMatch.
+  /// Not supported when the URL map is bound to target gRPC proxy.
   core.bool ignoreCase;
 
   /// Opaque filter criteria used by Loadbalancer to restrict routing
   /// configuration to a limited set of xDS compliant clients. In their xDS
-  /// requests to Loadbalancer, xDS clients present node metadata. If a match
-  /// takes place, the relevant routing configuration is made available to those
+  /// requests to Loadbalancer, xDS clients present node metadata. When there is
+  /// a match, the relevant routing configuration is made available to those
   /// proxies.
   /// For each metadataFilter in this list, if its filterMatchCriteria is set to
   /// MATCH_ANY, at least one of the filterLabels must match the corresponding
   /// label provided in the metadata. If its filterMatchCriteria is set to
   /// MATCH_ALL, then all of its filterLabels must match with corresponding
-  /// labels provided in the metadata.
+  /// labels provided in the metadata. If multiple metadataFilters are
+  /// specified, all of them need to be satisfied in order to be considered a
+  /// match.
   /// metadataFilters specified here will be applied after those specified in
   /// ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs
   /// to.
   /// metadataFilters only applies to Loadbalancers that have their
   /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   core.List<MetadataFilter> metadataFilters;
 
   /// For satisfying the matchRule condition, the request's path must begin with
@@ -56786,6 +61394,7 @@ class HttpRouteRuleMatch {
 
   /// Specifies a list of query parameter match criteria, all of which must
   /// match corresponding query parameters in the request.
+  /// Not supported when the URL map is bound to target gRPC proxy.
   core.List<HttpQueryParameterMatch> queryParameterMatches;
 
   /// For satisfying the matchRule condition, the path of the request must
@@ -57070,6 +61679,7 @@ class HttpsHealthCheckListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -57363,11 +61973,14 @@ class Image {
   /// current or a previous instance of a given disk name.
   core.String sourceDiskId;
 
-  /// URL of the source image used to create this image. This can be a full or
-  /// valid partial URL. You must provide exactly one of:
-  /// - this property, or
-  /// - the rawDisk.source property, or
-  /// - the sourceDisk property   in order to create an image.
+  /// URL of the source image used to create this image.
+  ///
+  /// In order to create an image, you must provide the full or partial URL of
+  /// one of the following:
+  /// - The selfLink URL
+  /// - This property
+  /// - The rawDisk.source URL
+  /// - The sourceDisk URL
   core.String sourceImage;
 
   /// The customer-supplied encryption key of the source image. Required if the
@@ -57379,12 +61992,15 @@ class Image {
   /// current or a previous instance of a given image name.
   core.String sourceImageId;
 
-  /// URL of the source snapshot used to create this image. This can be a full
-  /// or valid partial URL. You must provide exactly one of:
-  /// - this property, or
-  /// - the sourceImage property, or
-  /// - the rawDisk.source property, or
-  /// - the sourceDisk property   in order to create an image.
+  /// URL of the source snapshot used to create this image.
+  ///
+  /// In order to create an image, you must provide the full or partial URL of
+  /// one of the following:
+  /// - The selfLink URL
+  /// - This property
+  /// - The sourceImage URL
+  /// - The rawDisk.source URL
+  /// - The sourceDisk URL
   core.String sourceSnapshot;
 
   /// The customer-supplied encryption key of the source snapshot. Required if
@@ -57678,6 +62294,7 @@ class ImageListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -57873,6 +62490,7 @@ class Instance {
   /// instance to forward routes. For more information, see Enabling IP
   /// Forwarding.
   core.bool canIpForward;
+  ConfidentialInstanceConfig confidentialInstanceConfig;
 
   /// [Output Only] The CPU platform used by this instance.
   core.String cpuPlatform;
@@ -57994,6 +62612,14 @@ class Instance {
   /// instance.
   core.List<NetworkInterface> networkInterfaces;
 
+  /// The private IPv6 google access type for the VM. If not specified, use
+  /// INHERIT_FROM_SUBNETWORK as default.
+  /// Possible string values are:
+  /// - "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
+  /// - "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
+  /// - "INHERIT_FROM_SUBNETWORK"
+  core.String privateIpv6GoogleAccess;
+
   /// Specifies the reservations that this instance can consume from.
   ReservationAffinity reservationAffinity;
 
@@ -58021,8 +62647,8 @@ class Instance {
   core.bool startRestricted;
 
   /// [Output Only] The status of the instance. One of the following values:
-  /// PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED,
-  /// and TERMINATED.
+  /// PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED,
+  /// REPAIRING, and TERMINATED.
   /// Possible string values are:
   /// - "DEPROVISIONING"
   /// - "PROVISIONING"
@@ -58056,6 +62682,10 @@ class Instance {
   Instance.fromJson(core.Map _json) {
     if (_json.containsKey("canIpForward")) {
       canIpForward = _json["canIpForward"];
+    }
+    if (_json.containsKey("confidentialInstanceConfig")) {
+      confidentialInstanceConfig = new ConfidentialInstanceConfig.fromJson(
+          _json["confidentialInstanceConfig"]);
     }
     if (_json.containsKey("cpuPlatform")) {
       cpuPlatform = _json["cpuPlatform"];
@@ -58119,6 +62749,9 @@ class Instance {
               (value) => new NetworkInterface.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("privateIpv6GoogleAccess")) {
+      privateIpv6GoogleAccess = _json["privateIpv6GoogleAccess"];
+    }
     if (_json.containsKey("reservationAffinity")) {
       reservationAffinity =
           new ReservationAffinity.fromJson(_json["reservationAffinity"]);
@@ -58169,6 +62802,10 @@ class Instance {
         new core.Map<core.String, core.Object>();
     if (canIpForward != null) {
       _json["canIpForward"] = canIpForward;
+    }
+    if (confidentialInstanceConfig != null) {
+      _json["confidentialInstanceConfig"] =
+          (confidentialInstanceConfig).toJson();
     }
     if (cpuPlatform != null) {
       _json["cpuPlatform"] = cpuPlatform;
@@ -58225,6 +62862,9 @@ class Instance {
     if (networkInterfaces != null) {
       _json["networkInterfaces"] =
           networkInterfaces.map((value) => (value).toJson()).toList();
+    }
+    if (privateIpv6GoogleAccess != null) {
+      _json["privateIpv6GoogleAccess"] = privateIpv6GoogleAccess;
     }
     if (reservationAffinity != null) {
       _json["reservationAffinity"] = (reservationAffinity).toJson();
@@ -58326,6 +62966,7 @@ class InstanceAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -58397,6 +63038,9 @@ class InstanceAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   InstanceAggregatedListWarning warning;
 
@@ -58419,6 +63063,9 @@ class InstanceAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new InstanceAggregatedListWarning.fromJson(_json["warning"]);
@@ -58444,6 +63091,9 @@ class InstanceAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -58690,6 +63340,7 @@ class InstanceGroupAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -58762,6 +63413,9 @@ class InstanceGroupAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   InstanceGroupAggregatedListWarning warning;
 
@@ -58784,6 +63438,9 @@ class InstanceGroupAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -58810,6 +63467,9 @@ class InstanceGroupAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -58876,6 +63536,7 @@ class InstanceGroupListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -59088,6 +63749,9 @@ class InstanceGroupManager {
   /// this URL.
   core.String selfLink;
 
+  /// Stateful configuration for this Instanced Group Manager
+  StatefulPolicy statefulPolicy;
+
   /// [Output Only] The status of this managed instance group.
   InstanceGroupManagerStatus status;
 
@@ -59175,6 +63839,9 @@ class InstanceGroupManager {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("statefulPolicy")) {
+      statefulPolicy = new StatefulPolicy.fromJson(_json["statefulPolicy"]);
+    }
     if (_json.containsKey("status")) {
       status = new InstanceGroupManagerStatus.fromJson(_json["status"]);
     }
@@ -59248,6 +63915,9 @@ class InstanceGroupManager {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (statefulPolicy != null) {
+      _json["statefulPolicy"] = (statefulPolicy).toJson();
     }
     if (status != null) {
       _json["status"] = (status).toJson();
@@ -59446,6 +64116,7 @@ class InstanceGroupManagerAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -59518,6 +64189,9 @@ class InstanceGroupManagerAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   InstanceGroupManagerAggregatedListWarning warning;
 
@@ -59541,6 +64215,9 @@ class InstanceGroupManagerAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new InstanceGroupManagerAggregatedListWarning.fromJson(
@@ -59567,6 +64244,9 @@ class InstanceGroupManagerAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -59669,6 +64349,7 @@ class InstanceGroupManagerListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -59808,6 +64489,9 @@ class InstanceGroupManagerStatus {
   /// group itself is not being modified.
   core.bool isStable;
 
+  /// [Output Only] Stateful status of the given Instance Group Manager.
+  InstanceGroupManagerStatusStateful stateful;
+
   /// [Output Only] A status of consistency of Instances' versions with their
   /// target version specified by version field on Instance Group Manager.
   InstanceGroupManagerStatusVersionTarget versionTarget;
@@ -59820,6 +64504,10 @@ class InstanceGroupManagerStatus {
     }
     if (_json.containsKey("isStable")) {
       isStable = _json["isStable"];
+    }
+    if (_json.containsKey("stateful")) {
+      stateful =
+          new InstanceGroupManagerStatusStateful.fromJson(_json["stateful"]);
     }
     if (_json.containsKey("versionTarget")) {
       versionTarget = new InstanceGroupManagerStatusVersionTarget.fromJson(
@@ -59836,8 +64524,74 @@ class InstanceGroupManagerStatus {
     if (isStable != null) {
       _json["isStable"] = isStable;
     }
+    if (stateful != null) {
+      _json["stateful"] = (stateful).toJson();
+    }
     if (versionTarget != null) {
       _json["versionTarget"] = (versionTarget).toJson();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagerStatusStateful {
+  /// [Output Only] A bit indicating whether the managed instance group has
+  /// stateful configuration, that is, if you have configured any items in a
+  /// stateful policy or in per-instance configs. The group might report that it
+  /// has no stateful config even when there is still some preserved state on a
+  /// managed instance, for example, if you have deleted all PICs but not yet
+  /// applied those deletions.
+  core.bool hasStatefulConfig;
+
+  /// [Output Only] Status of per-instance configs on the instance.
+  InstanceGroupManagerStatusStatefulPerInstanceConfigs perInstanceConfigs;
+
+  InstanceGroupManagerStatusStateful();
+
+  InstanceGroupManagerStatusStateful.fromJson(core.Map _json) {
+    if (_json.containsKey("hasStatefulConfig")) {
+      hasStatefulConfig = _json["hasStatefulConfig"];
+    }
+    if (_json.containsKey("perInstanceConfigs")) {
+      perInstanceConfigs =
+          new InstanceGroupManagerStatusStatefulPerInstanceConfigs.fromJson(
+              _json["perInstanceConfigs"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hasStatefulConfig != null) {
+      _json["hasStatefulConfig"] = hasStatefulConfig;
+    }
+    if (perInstanceConfigs != null) {
+      _json["perInstanceConfigs"] = (perInstanceConfigs).toJson();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagerStatusStatefulPerInstanceConfigs {
+  /// A bit indicating if all of the group's per-instance configs (listed in the
+  /// output of a listPerInstanceConfigs API call) have status EFFECTIVE or
+  /// there are no per-instance-configs.
+  core.bool allEffective;
+
+  InstanceGroupManagerStatusStatefulPerInstanceConfigs();
+
+  InstanceGroupManagerStatusStatefulPerInstanceConfigs.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("allEffective")) {
+      allEffective = _json["allEffective"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (allEffective != null) {
+      _json["allEffective"] = allEffective;
     }
     return _json;
   }
@@ -60179,6 +64933,30 @@ class InstanceGroupManagersDeleteInstancesRequest {
   }
 }
 
+/// InstanceGroupManagers.deletePerInstanceConfigs
+class InstanceGroupManagersDeletePerInstanceConfigsReq {
+  /// The list of instance names for which we want to delete per-instance
+  /// configs on this managed instance group.
+  core.List<core.String> names;
+
+  InstanceGroupManagersDeletePerInstanceConfigsReq();
+
+  InstanceGroupManagersDeletePerInstanceConfigsReq.fromJson(core.Map _json) {
+    if (_json.containsKey("names")) {
+      names = (_json["names"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (names != null) {
+      _json["names"] = names;
+    }
+    return _json;
+  }
+}
+
 class InstanceGroupManagersListErrorsResponse {
   /// [Output Only] The list of errors of the managed instance group.
   core.List<InstanceManagedByIgmError> items;
@@ -60250,6 +65028,196 @@ class InstanceGroupManagersListManagedInstancesResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersListPerInstanceConfigsRespWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InstanceGroupManagersListPerInstanceConfigsRespWarningData();
+
+  InstanceGroupManagersListPerInstanceConfigsRespWarningData.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InstanceGroupManagersListPerInstanceConfigsRespWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InstanceGroupManagersListPerInstanceConfigsRespWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InstanceGroupManagersListPerInstanceConfigsRespWarning();
+
+  InstanceGroupManagersListPerInstanceConfigsRespWarning.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<InstanceGroupManagersListPerInstanceConfigsRespWarningData>(
+              (value) =>
+                  new InstanceGroupManagersListPerInstanceConfigsRespWarningData
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagersListPerInstanceConfigsResp {
+  /// [Output Only] The list of PerInstanceConfig.
+  core.List<PerInstanceConfig> items;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Informational warning message.
+  InstanceGroupManagersListPerInstanceConfigsRespWarning warning;
+
+  InstanceGroupManagersListPerInstanceConfigsResp();
+
+  InstanceGroupManagersListPerInstanceConfigsResp.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<PerInstanceConfig>(
+              (value) => new PerInstanceConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("warning")) {
+      warning =
+          new InstanceGroupManagersListPerInstanceConfigsRespWarning.fromJson(
+              _json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// InstanceGroupManagers.patchPerInstanceConfigs
+class InstanceGroupManagersPatchPerInstanceConfigsReq {
+  /// The list of per-instance configs to insert or patch on this managed
+  /// instance group.
+  core.List<PerInstanceConfig> perInstanceConfigs;
+
+  InstanceGroupManagersPatchPerInstanceConfigsReq();
+
+  InstanceGroupManagersPatchPerInstanceConfigsReq.fromJson(core.Map _json) {
+    if (_json.containsKey("perInstanceConfigs")) {
+      perInstanceConfigs = (_json["perInstanceConfigs"] as core.List)
+          .map<PerInstanceConfig>(
+              (value) => new PerInstanceConfig.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (perInstanceConfigs != null) {
+      _json["perInstanceConfigs"] =
+          perInstanceConfigs.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -60337,6 +65305,7 @@ class InstanceGroupManagersScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -60496,6 +65465,34 @@ class InstanceGroupManagersSetTargetPoolsRequest {
   }
 }
 
+/// InstanceGroupManagers.updatePerInstanceConfigs
+class InstanceGroupManagersUpdatePerInstanceConfigsReq {
+  /// The list of per-instance configs to insert or patch on this managed
+  /// instance group.
+  core.List<PerInstanceConfig> perInstanceConfigs;
+
+  InstanceGroupManagersUpdatePerInstanceConfigsReq();
+
+  InstanceGroupManagersUpdatePerInstanceConfigsReq.fromJson(core.Map _json) {
+    if (_json.containsKey("perInstanceConfigs")) {
+      perInstanceConfigs = (_json["perInstanceConfigs"] as core.List)
+          .map<PerInstanceConfig>(
+              (value) => new PerInstanceConfig.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (perInstanceConfigs != null) {
+      _json["perInstanceConfigs"] =
+          perInstanceConfigs.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class InstanceGroupsAddInstancesRequest {
   /// The list of instances to add to the instance group.
   core.List<InstanceReference> instances;
@@ -60579,6 +65576,7 @@ class InstanceGroupsListInstancesWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -60817,6 +65815,7 @@ class InstanceGroupsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -61009,6 +66008,7 @@ class InstanceListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -61192,6 +66192,7 @@ class InstanceListReferrersWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -61490,7 +66491,7 @@ class InstanceMoveRequest {
 }
 
 class InstanceProperties {
-  /// Enables instances created based on this template to send packets with
+  /// Enables instances created based on these properties to send packets with
   /// source IP addresses other than their own and receive packets with
   /// destination IP addresses other than their own. If these instances will be
   /// used as an IP gateway or it will be set as the next-hop in a Route
@@ -61498,30 +66499,34 @@ class InstanceProperties {
   /// IP forwarding documentation for more information.
   core.bool canIpForward;
 
-  /// An optional text description for the instances that are created from this
-  /// instance template.
+  /// Specifies the Confidential Instance options.
+  ConfidentialInstanceConfig confidentialInstanceConfig;
+
+  /// An optional text description for the instances that are created from these
+  /// properties.
   core.String description;
 
   /// An array of disks that are associated with the instances that are created
-  /// from this template.
+  /// from these properties.
   core.List<AttachedDisk> disks;
 
   /// A list of guest accelerator cards' type and count to use for instances
-  /// created from the instance template.
+  /// created from these properties.
   core.List<AcceleratorConfig> guestAccelerators;
 
-  /// Labels to apply to instances that are created from this template.
+  /// Labels to apply to instances that are created from these properties.
   core.Map<core.String, core.String> labels;
 
-  /// The machine type to use for instances that are created from this template.
+  /// The machine type to use for instances that are created from these
+  /// properties.
   core.String machineType;
 
   /// The metadata key/value pairs to assign to instances that are created from
-  /// this template. These pairs can consist of custom metadata or predefined
+  /// these properties. These pairs can consist of custom metadata or predefined
   /// keys. See Project and instance metadata for more information.
   Metadata metadata;
 
-  /// Minimum cpu/platform to be used by this instance. The instance may be
+  /// Minimum cpu/platform to be used by instances. The instance may be
   /// scheduled on the specified or newer cpu/platform. Applicable values are
   /// the friendly names of CPU platforms, such as minCpuPlatform: "Intel
   /// Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information,
@@ -61531,26 +66536,34 @@ class InstanceProperties {
   /// An array of network access configurations for this interface.
   core.List<NetworkInterface> networkInterfaces;
 
-  /// Specifies the reservations that this instance can consume from.
+  /// The private IPv6 google access type for VMs. If not specified, use
+  /// INHERIT_FROM_SUBNETWORK as default.
+  /// Possible string values are:
+  /// - "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
+  /// - "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
+  /// - "INHERIT_FROM_SUBNETWORK"
+  core.String privateIpv6GoogleAccess;
+
+  /// Specifies the reservations that instances can consume from.
   ReservationAffinity reservationAffinity;
 
-  /// Resource policies (names, not ULRs) applied to instances created from this
-  /// template.
+  /// Resource policies (names, not ULRs) applied to instances created from
+  /// these properties.
   core.List<core.String> resourcePolicies;
 
   /// Specifies the scheduling options for the instances that are created from
-  /// this template.
+  /// these properties.
   Scheduling scheduling;
 
   /// A list of service accounts with specified scopes. Access tokens for these
-  /// service accounts are available to the instances that are created from this
-  /// template. Use metadata queries to obtain the access tokens for these
-  /// instances.
+  /// service accounts are available to the instances that are created from
+  /// these properties. Use metadata queries to obtain the access tokens for
+  /// these instances.
   core.List<ServiceAccount> serviceAccounts;
   ShieldedInstanceConfig shieldedInstanceConfig;
 
-  /// A list of tags to apply to the instances that are created from this
-  /// template. The tags identify valid sources or targets for network
+  /// A list of tags to apply to the instances that are created from these
+  /// properties. The tags identify valid sources or targets for network
   /// firewalls. The setTags method can modify this list of tags. Each tag
   /// within the list must comply with RFC1035.
   Tags tags;
@@ -61560,6 +66573,10 @@ class InstanceProperties {
   InstanceProperties.fromJson(core.Map _json) {
     if (_json.containsKey("canIpForward")) {
       canIpForward = _json["canIpForward"];
+    }
+    if (_json.containsKey("confidentialInstanceConfig")) {
+      confidentialInstanceConfig = new ConfidentialInstanceConfig.fromJson(
+          _json["confidentialInstanceConfig"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -61593,6 +66610,9 @@ class InstanceProperties {
               (value) => new NetworkInterface.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("privateIpv6GoogleAccess")) {
+      privateIpv6GoogleAccess = _json["privateIpv6GoogleAccess"];
+    }
     if (_json.containsKey("reservationAffinity")) {
       reservationAffinity =
           new ReservationAffinity.fromJson(_json["reservationAffinity"]);
@@ -61624,6 +66644,10 @@ class InstanceProperties {
     if (canIpForward != null) {
       _json["canIpForward"] = canIpForward;
     }
+    if (confidentialInstanceConfig != null) {
+      _json["confidentialInstanceConfig"] =
+          (confidentialInstanceConfig).toJson();
+    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -61649,6 +66673,9 @@ class InstanceProperties {
     if (networkInterfaces != null) {
       _json["networkInterfaces"] =
           networkInterfaces.map((value) => (value).toJson()).toList();
+    }
+    if (privateIpv6GoogleAccess != null) {
+      _json["privateIpv6GoogleAccess"] = privateIpv6GoogleAccess;
     }
     if (reservationAffinity != null) {
       _json["reservationAffinity"] = (reservationAffinity).toJson();
@@ -61869,6 +66896,7 @@ class InstanceTemplateListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -62154,6 +67182,7 @@ class InstancesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -63148,6 +68177,7 @@ class InterconnectAttachmentAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -63221,6 +68251,9 @@ class InterconnectAttachmentAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   InterconnectAttachmentAggregatedListWarning warning;
 
@@ -63244,6 +68277,9 @@ class InterconnectAttachmentAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new InterconnectAttachmentAggregatedListWarning.fromJson(
@@ -63270,6 +68306,9 @@ class InterconnectAttachmentAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -63336,6 +68375,7 @@ class InterconnectAttachmentListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -63596,6 +68636,7 @@ class InterconnectAttachmentsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -63685,7 +68726,6 @@ class InterconnectAttachmentsScopedList {
 
 /// Describes a single physical circuit between the Customer and Google.
 /// CircuitInfo objects are created by Google, so all fields are output only.
-/// Next id: 4
 class InterconnectCircuitInfo {
   /// Customer-side demarc ID for this circuit.
   core.String customerDemarcId;
@@ -64038,6 +69078,7 @@ class InterconnectListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -64414,6 +69455,7 @@ class InterconnectLocationListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -64589,7 +69631,7 @@ class InterconnectLocationRegionInfo {
   }
 }
 
-/// Description of a planned outage on this Interconnect. Next id: 9
+/// Description of a planned outage on this Interconnect.
 class InterconnectOutageNotification {
   /// If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs
   /// that will be affected.
@@ -64988,6 +70030,47 @@ class LicenseCodeLicenseAlias {
   }
 }
 
+/// Commitment for a particular license resource.
+class LicenseResourceCommitment {
+  /// The number of licenses purchased.
+  core.String amount;
+
+  /// Specifies the core range of the instance for which this license applies.
+  core.String coresPerLicense;
+
+  /// Any applicable license URI.
+  core.String license;
+
+  LicenseResourceCommitment();
+
+  LicenseResourceCommitment.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = _json["amount"];
+    }
+    if (_json.containsKey("coresPerLicense")) {
+      coresPerLicense = _json["coresPerLicense"];
+    }
+    if (_json.containsKey("license")) {
+      license = _json["license"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amount != null) {
+      _json["amount"] = amount;
+    }
+    if (coresPerLicense != null) {
+      _json["coresPerLicense"] = coresPerLicense;
+    }
+    if (license != null) {
+      _json["license"] = license;
+    }
+    return _json;
+  }
+}
+
 class LicenseResourceRequirements {
   /// Minimum number of guest cpus required to use the Instance. Enforced at
   /// Instance creation and Instance start.
@@ -65079,6 +70162,7 @@ class LicensesListResponseWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -65372,11 +70456,7 @@ class LogConfigCounterOptionsCustomField {
 
 /// Write a Data Access (Gin) log
 class LogConfigDataAccessOptions {
-  /// Whether Gin logging should happen in a fail-closed manner at the caller.
-  /// This is currently supported in the LocalIAM implementation, Stubby C++,
-  /// and Stubby Java. For Apps Framework, see go/af-audit-logging#failclosed.
-  /// TODO(b/77591626): Add support for Stubby Go. TODO(b/129671387): Add
-  /// support for Scaffolding.
+  ///
   /// Possible string values are:
   /// - "LOG_FAIL_CLOSED"
   /// - "LOG_MODE_UNSPECIFIED"
@@ -65395,6 +70475,38 @@ class LogConfigDataAccessOptions {
         new core.Map<core.String, core.Object>();
     if (logMode != null) {
       _json["logMode"] = logMode;
+    }
+    return _json;
+  }
+}
+
+class MachineTypeAccelerators {
+  /// Number of accelerator cards exposed to the guest.
+  core.int guestAcceleratorCount;
+
+  /// The accelerator type resource name, not a full URL, e.g.
+  /// 'nvidia-tesla-k80'.
+  core.String guestAcceleratorType;
+
+  MachineTypeAccelerators();
+
+  MachineTypeAccelerators.fromJson(core.Map _json) {
+    if (_json.containsKey("guestAcceleratorCount")) {
+      guestAcceleratorCount = _json["guestAcceleratorCount"];
+    }
+    if (_json.containsKey("guestAcceleratorType")) {
+      guestAcceleratorType = _json["guestAcceleratorType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (guestAcceleratorCount != null) {
+      _json["guestAcceleratorCount"] = guestAcceleratorCount;
+    }
+    if (guestAcceleratorType != null) {
+      _json["guestAcceleratorType"] = guestAcceleratorType;
     }
     return _json;
   }
@@ -65428,10 +70540,15 @@ class MachineTypeScratchDisks {
 /// performance and pricing requirements. For more information, read Machine
 /// Types. (== resource_for {$api_version}.machineTypes ==)
 class MachineType {
+  /// [Output Only] A list of accelerator configurations assigned to this
+  /// machine type.
+  core.List<MachineTypeAccelerators> accelerators;
+
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
   /// [Output Only] The deprecation status associated with this machine type.
+  /// Only applicable if the machine type is unavailable.
   DeprecationStatus deprecated;
 
   /// [Output Only] An optional textual description of the resource.
@@ -65483,6 +70600,12 @@ class MachineType {
   MachineType();
 
   MachineType.fromJson(core.Map _json) {
+    if (_json.containsKey("accelerators")) {
+      accelerators = (_json["accelerators"] as core.List)
+          .map<MachineTypeAccelerators>(
+              (value) => new MachineTypeAccelerators.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -65536,6 +70659,10 @@ class MachineType {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accelerators != null) {
+      _json["accelerators"] =
+          accelerators.map((value) => (value).toJson()).toList();
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -65644,6 +70771,7 @@ class MachineTypeAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -65715,6 +70843,9 @@ class MachineTypeAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   MachineTypeAggregatedListWarning warning;
 
@@ -65737,6 +70868,9 @@ class MachineTypeAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new MachineTypeAggregatedListWarning.fromJson(_json["warning"]);
@@ -65762,6 +70896,9 @@ class MachineTypeAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -65828,6 +70965,7 @@ class MachineTypeListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -66012,6 +71150,7 @@ class MachineTypesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -66164,6 +71303,14 @@ class ManagedInstance {
   /// instance.
   ManagedInstanceLastAttempt lastAttempt;
 
+  /// [Output Only] Preserved state applied from per-instance config for this
+  /// instance.
+  PreservedState preservedStateFromConfig;
+
+  /// [Output Only] Preserved state generated based on stateful policy for this
+  /// instance.
+  PreservedState preservedStateFromPolicy;
+
   /// [Output Only] Intended version of this instance.
   ManagedInstanceVersion version;
 
@@ -66192,6 +71339,14 @@ class ManagedInstance {
       lastAttempt =
           new ManagedInstanceLastAttempt.fromJson(_json["lastAttempt"]);
     }
+    if (_json.containsKey("preservedStateFromConfig")) {
+      preservedStateFromConfig =
+          new PreservedState.fromJson(_json["preservedStateFromConfig"]);
+    }
+    if (_json.containsKey("preservedStateFromPolicy")) {
+      preservedStateFromPolicy =
+          new PreservedState.fromJson(_json["preservedStateFromPolicy"]);
+    }
     if (_json.containsKey("version")) {
       version = new ManagedInstanceVersion.fromJson(_json["version"]);
     }
@@ -66218,6 +71373,12 @@ class ManagedInstance {
     }
     if (lastAttempt != null) {
       _json["lastAttempt"] = (lastAttempt).toJson();
+    }
+    if (preservedStateFromConfig != null) {
+      _json["preservedStateFromConfig"] = (preservedStateFromConfig).toJson();
+    }
+    if (preservedStateFromPolicy != null) {
+      _json["preservedStateFromPolicy"] = (preservedStateFromPolicy).toJson();
     }
     if (version != null) {
       _json["version"] = (version).toJson();
@@ -66628,11 +71789,17 @@ class Network {
   /// the network is created.
   core.String IPv4Range;
 
-  /// When set to true, the VPC network is created in "auto" mode. When set to
-  /// false, the VPC network is created in "custom" mode.
+  /// Must be set to create a VPC network. If not set, a legacy network is
+  /// created.
+  ///
+  /// When set to true, the VPC network is created in auto mode. When set to
+  /// false, the VPC network is created in custom mode.
   ///
   /// An auto mode VPC network starts with one subnet per region. Each subnet
   /// has a predetermined range as described in Auto mode VPC network IP ranges.
+  ///
+  /// For custom mode VPC networks, you can add subnets using the subnetworks
+  /// insert method.
   core.bool autoCreateSubnetworks;
 
   /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -66652,6 +71819,10 @@ class Network {
 
   /// [Output Only] Type of the resource. Always compute#network for networks.
   core.String kind;
+
+  /// Maximum Transmission Unit in bytes. The minimum value for this field is
+  /// 1460 and the maximum value is 1500 bytes.
+  core.int mtu;
 
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -66700,6 +71871,9 @@ class Network {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("mtu")) {
+      mtu = _json["mtu"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -66743,6 +71917,9 @@ class Network {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (mtu != null) {
+      _json["mtu"] = mtu;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -66762,8 +71939,11 @@ class Network {
   }
 }
 
-/// The network endpoint. Next ID: 7
+/// The network endpoint.
 class NetworkEndpoint {
+  /// Metadata defined as annotations on the network endpoint.
+  core.Map<core.String, core.String> annotations;
+
   /// Optional fully qualified domain name of network endpoint. This can only be
   /// specified when NetworkEndpointGroup.network_endpoint_type is
   /// NON_GCP_FQDN_PORT.
@@ -66791,6 +71971,10 @@ class NetworkEndpoint {
   NetworkEndpoint();
 
   NetworkEndpoint.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations =
+          (_json["annotations"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("fqdn")) {
       fqdn = _json["fqdn"];
     }
@@ -66808,6 +71992,9 @@ class NetworkEndpoint {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (annotations != null) {
+      _json["annotations"] = annotations;
+    }
     if (fqdn != null) {
       _json["fqdn"] = fqdn;
     }
@@ -66826,9 +72013,29 @@ class NetworkEndpoint {
 
 /// Represents a collection of network endpoints.
 ///
-/// For more information read Network endpoint groups overview. (== resource_for
-/// {$api_version}.networkEndpointGroups ==) Next ID: 21
+/// A network endpoint group (NEG) defines how a set of endpoints should be
+/// reached, whether they are reachable, and where they are located. For more
+/// information about using NEGs, see  Setting up internet NEGs,  Setting up
+/// zonal NEGs, or  Setting up serverless NEGs. (== resource_for
+/// {$api_version}.networkEndpointGroups ==) (== resource_for
+/// {$api_version}.globalNetworkEndpointGroups ==) (== resource_for
+/// {$api_version}.regionNetworkEndpointGroups ==)
 class NetworkEndpointGroup {
+  /// Metadata defined as annotations on the network endpoint group.
+  core.Map<core.String, core.String> annotations;
+
+  /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun,
+  /// appEngine or cloudFunction may be set.
+  NetworkEndpointGroupAppEngine appEngine;
+
+  /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun,
+  /// appEngine or cloudFunction may be set.
+  NetworkEndpointGroupCloudFunction cloudFunction;
+
+  /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun,
+  /// appEngine or cloudFunction may be set.
+  NetworkEndpointGroupCloudRun cloudRun;
+
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
@@ -66861,12 +72068,20 @@ class NetworkEndpointGroup {
   /// Uses "default" project network if unspecified.
   core.String network;
 
-  /// Type of network endpoints in this network endpoint group.
+  /// Type of network endpoints in this network endpoint group. Can be one of
+  /// GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,
+  /// INTERNET_IP_PORT, or SERVERLESS.
   /// Possible string values are:
   /// - "GCE_VM_IP_PORT"
   /// - "INTERNET_FQDN_PORT"
   /// - "INTERNET_IP_PORT"
+  /// - "NON_GCP_PRIVATE_IP_PORT"
+  /// - "SERVERLESS"
   core.String networkEndpointType;
+
+  /// [Output Only] The URL of the region where the network endpoint group is
+  /// located.
+  core.String region;
 
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
@@ -66885,6 +72100,21 @@ class NetworkEndpointGroup {
   NetworkEndpointGroup();
 
   NetworkEndpointGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("annotations")) {
+      annotations =
+          (_json["annotations"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("appEngine")) {
+      appEngine =
+          new NetworkEndpointGroupAppEngine.fromJson(_json["appEngine"]);
+    }
+    if (_json.containsKey("cloudFunction")) {
+      cloudFunction = new NetworkEndpointGroupCloudFunction.fromJson(
+          _json["cloudFunction"]);
+    }
+    if (_json.containsKey("cloudRun")) {
+      cloudRun = new NetworkEndpointGroupCloudRun.fromJson(_json["cloudRun"]);
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -66909,6 +72139,9 @@ class NetworkEndpointGroup {
     if (_json.containsKey("networkEndpointType")) {
       networkEndpointType = _json["networkEndpointType"];
     }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -66926,6 +72159,18 @@ class NetworkEndpointGroup {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (annotations != null) {
+      _json["annotations"] = annotations;
+    }
+    if (appEngine != null) {
+      _json["appEngine"] = (appEngine).toJson();
+    }
+    if (cloudFunction != null) {
+      _json["cloudFunction"] = (cloudFunction).toJson();
+    }
+    if (cloudRun != null) {
+      _json["cloudRun"] = (cloudRun).toJson();
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -66949,6 +72194,9 @@ class NetworkEndpointGroup {
     }
     if (networkEndpointType != null) {
       _json["networkEndpointType"] = networkEndpointType;
+    }
+    if (region != null) {
+      _json["region"] = region;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -67024,6 +72272,7 @@ class NetworkEndpointGroupAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -67096,6 +72345,9 @@ class NetworkEndpointGroupAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   NetworkEndpointGroupAggregatedListWarning warning;
 
@@ -67119,6 +72371,9 @@ class NetworkEndpointGroupAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new NetworkEndpointGroupAggregatedListWarning.fromJson(
@@ -67146,8 +72401,184 @@ class NetworkEndpointGroupAggregatedList {
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
+    }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Configuration for an App Engine network endpoint group (NEG). The service is
+/// optional, may be provided explicitly or in the URL mask. The version is
+/// optional and can only be provided explicitly or in the URL mask when service
+/// is present.
+///
+/// Note: App Engine service must be in the same project and located in the same
+/// region as the Serverless NEG.
+class NetworkEndpointGroupAppEngine {
+  /// Optional serving service.
+  ///
+  /// The service name must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// Example value: "default", "my-service".
+  core.String service;
+
+  /// A template to parse service and version fields from a request URL. URL
+  /// mask allows for routing to multiple App Engine services without having to
+  /// create multiple Network Endpoint Groups and backend services.
+  ///
+  /// For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+  /// "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG
+  /// with URL mask "-dot-appname.appspot.com/". The URL mask will parse them to
+  /// { service = "foo1", version = "v1" } and { service = "foo1", version =
+  /// "v2" } respectively.
+  core.String urlMask;
+
+  /// Optional serving version.
+  ///
+  /// The version must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// Example value: "v1", "v2".
+  core.String version;
+
+  NetworkEndpointGroupAppEngine();
+
+  NetworkEndpointGroupAppEngine.fromJson(core.Map _json) {
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+    if (_json.containsKey("urlMask")) {
+      urlMask = _json["urlMask"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (service != null) {
+      _json["service"] = service;
+    }
+    if (urlMask != null) {
+      _json["urlMask"] = urlMask;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Configuration for a Cloud Function network endpoint group (NEG). The
+/// function must be provided explicitly or in the URL mask.
+///
+/// Note: Cloud Function must be in the same project and located in the same
+/// region as the Serverless NEG.
+class NetworkEndpointGroupCloudFunction {
+  /// A user-defined name of the Cloud Function.
+  ///
+  /// The function name is case-sensitive and must be 1-63 characters long.
+  ///
+  /// Example value: "func1".
+  core.String function;
+
+  /// A template to parse function field from a request URL. URL mask allows for
+  /// routing to multiple Cloud Functions without having to create multiple
+  /// Network Endpoint Groups and backend services.
+  ///
+  /// For example, request URLs "mydomain.com/function1" and
+  /// "mydomain.com/function2" can be backed by the same Serverless NEG with URL
+  /// mask "/". The URL mask will parse them to { function = "function1" } and {
+  /// function = "function2" } respectively.
+  core.String urlMask;
+
+  NetworkEndpointGroupCloudFunction();
+
+  NetworkEndpointGroupCloudFunction.fromJson(core.Map _json) {
+    if (_json.containsKey("function")) {
+      function = _json["function"];
+    }
+    if (_json.containsKey("urlMask")) {
+      urlMask = _json["urlMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (function != null) {
+      _json["function"] = function;
+    }
+    if (urlMask != null) {
+      _json["urlMask"] = urlMask;
+    }
+    return _json;
+  }
+}
+
+/// Configuration for a Cloud Run network endpoint group (NEG). The service must
+/// be provided explicitly or in the URL mask. The tag is optional, may be
+/// provided explicitly or in the URL mask.
+///
+/// Note: Cloud Run service must be in the same project and located in the same
+/// region as the Serverless NEG.
+class NetworkEndpointGroupCloudRun {
+  /// Cloud Run service is the main resource of Cloud Run.
+  ///
+  /// The service must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// Example value: "run-service".
+  core.String service;
+
+  /// Optional Cloud Run tag represents the "named-revision" to provide
+  /// additional fine-grained traffic routing information.
+  ///
+  /// The tag must be 1-63 characters long, and comply with RFC1035.
+  ///
+  /// Example value: "revision-0010".
+  core.String tag;
+
+  /// A template to parse service and tag fields from a request URL. URL mask
+  /// allows for routing to multiple Run services without having to create
+  /// multiple network endpoint groups and backend services.
+  ///
+  /// For example, request URLs "foo1.domain.com/bar1" and
+  /// "foo1.domain.com/bar2" can be backed by the same Serverless Network
+  /// Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse
+  /// them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" }
+  /// respectively.
+  core.String urlMask;
+
+  NetworkEndpointGroupCloudRun();
+
+  NetworkEndpointGroupCloudRun.fromJson(core.Map _json) {
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"];
+    }
+    if (_json.containsKey("urlMask")) {
+      urlMask = _json["urlMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (service != null) {
+      _json["service"] = service;
+    }
+    if (tag != null) {
+      _json["tag"] = tag;
+    }
+    if (urlMask != null) {
+      _json["urlMask"] = urlMask;
     }
     return _json;
   }
@@ -67211,6 +72642,7 @@ class NetworkEndpointGroupListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -67388,7 +72820,7 @@ class NetworkEndpointGroupsDetachEndpointsRequest {
 
 class NetworkEndpointGroupsListEndpointsRequest {
   /// Optional query parameter for showing the health status of each network
-  /// endpoint. Valid options are SKIP or SHOW. If you don't specifiy this
+  /// endpoint. Valid options are SKIP or SHOW. If you don't specify this
   /// parameter, the health status of network endpoints will not be provided.
   /// Possible string values are:
   /// - "SHOW"
@@ -67472,6 +72904,7 @@ class NetworkEndpointGroupsListNetworkEndpointsWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -67650,6 +73083,7 @@ class NetworkEndpointGroupsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -67798,6 +73232,9 @@ class NetworkInterface {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
+  /// [Output Only] An IPv6 internal network address for this network interface.
+  core.String ipv6Address;
+
   /// [Output Only] Type of the resource. Always compute#networkInterface for
   /// network interfaces.
   core.String kind;
@@ -67851,6 +73288,9 @@ class NetworkInterface {
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
     }
+    if (_json.containsKey("ipv6Address")) {
+      ipv6Address = _json["ipv6Address"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -67881,6 +73321,9 @@ class NetworkInterface {
     }
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
+    }
+    if (ipv6Address != null) {
+      _json["ipv6Address"] = ipv6Address;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -67959,6 +73402,7 @@ class NetworkListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -68133,6 +73577,9 @@ class NetworkPeering {
   /// project as the current network.
   core.String network;
 
+  /// Maximum Transmission Unit in bytes.
+  core.int peerMtu;
+
   /// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The
   /// peering is `ACTIVE` when there's a matching configuration in the peer
   /// network.
@@ -68171,6 +73618,9 @@ class NetworkPeering {
     if (_json.containsKey("network")) {
       network = _json["network"];
     }
+    if (_json.containsKey("peerMtu")) {
+      peerMtu = _json["peerMtu"];
+    }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
@@ -68205,6 +73655,9 @@ class NetworkPeering {
     }
     if (network != null) {
       _json["network"] = network;
+    }
+    if (peerMtu != null) {
+      _json["peerMtu"] = peerMtu;
     }
     if (state != null) {
       _json["state"] = state;
@@ -68388,7 +73841,9 @@ class NodeGroup {
   core.String kind;
 
   /// Specifies how to handle instances when a node in the group undergoes
-  /// maintenance.
+  /// maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or
+  /// MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more
+  /// information, see  Maintenance policies.
   /// Possible string values are:
   /// - "DEFAULT"
   /// - "MAINTENANCE_POLICY_UNSPECIFIED"
@@ -68405,7 +73860,7 @@ class NodeGroup {
   /// which cannot be a dash.
   core.String name;
 
-  /// The URL of the node template to which this node group belongs.
+  /// URL of the node template to create the node group from.
   core.String nodeTemplate;
 
   /// [Output Only] Server-defined URL for the resource.
@@ -68575,6 +74030,7 @@ class NodeGroupAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -68646,6 +74102,9 @@ class NodeGroupAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   NodeGroupAggregatedListWarning warning;
 
@@ -68668,6 +74127,9 @@ class NodeGroupAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new NodeGroupAggregatedListWarning.fromJson(_json["warning"]);
@@ -68694,6 +74156,9 @@ class NodeGroupAggregatedList {
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
+    }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
     }
@@ -68708,7 +74173,8 @@ class NodeGroupAutoscalingPolicy {
   /// The minimum number of nodes that the group should have.
   core.int minNodes;
 
-  /// The autoscaling mode.
+  /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more
+  /// information, see  Autoscaler modes.
   /// Possible string values are:
   /// - "MODE_UNSPECIFIED"
   /// - "OFF"
@@ -68804,6 +74270,7 @@ class NodeGroupListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -68930,6 +74397,13 @@ class NodeGroupList {
 }
 
 class NodeGroupNode {
+  /// CPU overcommit.
+  /// Possible string values are:
+  /// - "CPU_OVERCOMMIT_TYPE_UNSPECIFIED"
+  /// - "ENABLED"
+  /// - "NONE"
+  core.String cpuOvercommitType;
+
   /// Instances scheduled on this node.
   core.List<core.String> instances;
 
@@ -68957,6 +74431,9 @@ class NodeGroupNode {
   NodeGroupNode();
 
   NodeGroupNode.fromJson(core.Map _json) {
+    if (_json.containsKey("cpuOvercommitType")) {
+      cpuOvercommitType = _json["cpuOvercommitType"];
+    }
     if (_json.containsKey("instances")) {
       instances = (_json["instances"] as core.List).cast<core.String>();
     }
@@ -68980,6 +74457,9 @@ class NodeGroupNode {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (cpuOvercommitType != null) {
+      _json["cpuOvercommitType"] = cpuOvercommitType;
+    }
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -69104,6 +74584,7 @@ class NodeGroupsListNodesWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -69288,6 +74769,7 @@ class NodeGroupsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -69400,8 +74882,15 @@ class NodeGroupsSetNodeTemplateRequest {
 ///
 /// You can use a template to define properties for nodes in a node group. For
 /// more information, read Creating node groups and instances. (== resource_for
-/// {$api_version}.nodeTemplates ==) (== NextID: 19 ==)
+/// {$api_version}.nodeTemplates ==)
 class NodeTemplate {
+  /// CPU overcommit.
+  /// Possible string values are:
+  /// - "CPU_OVERCOMMIT_TYPE_UNSPECIFIED"
+  /// - "ENABLED"
+  /// - "NONE"
+  core.String cpuOvercommitType;
+
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
@@ -69472,6 +74961,9 @@ class NodeTemplate {
   NodeTemplate();
 
   NodeTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey("cpuOvercommitType")) {
+      cpuOvercommitType = _json["cpuOvercommitType"];
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -69518,6 +75010,9 @@ class NodeTemplate {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (cpuOvercommitType != null) {
+      _json["cpuOvercommitType"] = cpuOvercommitType;
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -69619,6 +75114,7 @@ class NodeTemplateAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -69690,6 +75186,9 @@ class NodeTemplateAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   NodeTemplateAggregatedListWarning warning;
 
@@ -69712,6 +75211,9 @@ class NodeTemplateAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -69738,6 +75240,9 @@ class NodeTemplateAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -69804,6 +75309,7 @@ class NodeTemplateListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -70023,6 +75529,7 @@ class NodeTemplatesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -70299,6 +75806,7 @@ class NodeTypeAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -70370,6 +75878,9 @@ class NodeTypeAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   NodeTypeAggregatedListWarning warning;
 
@@ -70392,6 +75903,9 @@ class NodeTypeAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new NodeTypeAggregatedListWarning.fromJson(_json["warning"]);
@@ -70417,6 +75931,9 @@ class NodeTypeAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -70483,6 +76000,7 @@ class NodeTypeListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -70667,6 +76185,7 @@ class NodeTypesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -70743,6 +76262,367 @@ class NodeTypesScopedList {
         new core.Map<core.String, core.Object>();
     if (nodeTypes != null) {
       _json["nodeTypes"] = nodeTypes.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents a notification endpoint.
+///
+/// A notification endpoint resource defines an endpoint to receive
+/// notifications when there are status changes detected by the associated
+/// health check service.
+///
+/// For more information, see  Health checks overview. (== resource_for
+/// {$api_version}.notificationEndpoint ==) (== resource_for
+/// {$api_version}.regionNotificationEndpoints ==)
+class NotificationEndpoint {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// Settings of the gRPC notification endpoint including the endpoint URL and
+  /// the retry duration.
+  NotificationEndpointGrpcSettings grpcSettings;
+
+  /// [Output Only] A unique identifier for this resource type. The server
+  /// generates this identifier.
+  core.String id;
+
+  /// [Output Only] Type of the resource. Always compute#notificationEndpoint
+  /// for notification endpoints.
+  core.String kind;
+
+  /// Name of the resource. Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
+  /// lowercase letter, or digit, except the last character, which cannot be a
+  /// dash.
+  core.String name;
+
+  /// [Output Only] URL of the region where the notification endpoint resides.
+  /// This field applies only to the regional resource. You must specify this
+  /// field as part of the HTTP request URL. It is not settable as a field in
+  /// the request body.
+  core.String region;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  NotificationEndpoint();
+
+  NotificationEndpoint.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("grpcSettings")) {
+      grpcSettings =
+          new NotificationEndpointGrpcSettings.fromJson(_json["grpcSettings"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (grpcSettings != null) {
+      _json["grpcSettings"] = (grpcSettings).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/// Represents a gRPC setting that describes one gRPC notification endpoint and
+/// the retry duration attempting to send notification to this endpoint.
+class NotificationEndpointGrpcSettings {
+  /// Optional. If specified, this field is used to set the authority header by
+  /// the sender of notifications. See
+  /// https://tools.ietf.org/html/rfc7540#section-8.1.2.3
+  core.String authority;
+
+  /// Endpoint to which gRPC notifications are sent. This must be a valid gRPCLB
+  /// DNS name.
+  core.String endpoint;
+
+  /// Optional. If specified, this field is used to populate the "name" field in
+  /// gRPC requests.
+  core.String payloadName;
+
+  /// Optional. This field is used to configure how often to send a full update
+  /// of all non-healthy backends. If unspecified, full updates are not sent. If
+  /// specified, must be in the range between 600 seconds to 3600 seconds. Nanos
+  /// are disallowed.
+  Duration resendInterval;
+
+  /// How much time (in seconds) is spent attempting notification retries until
+  /// a successful response is received. Default is 30s. Limit is 20m (1200s).
+  /// Must be a positive number.
+  core.int retryDurationSec;
+
+  NotificationEndpointGrpcSettings();
+
+  NotificationEndpointGrpcSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("authority")) {
+      authority = _json["authority"];
+    }
+    if (_json.containsKey("endpoint")) {
+      endpoint = _json["endpoint"];
+    }
+    if (_json.containsKey("payloadName")) {
+      payloadName = _json["payloadName"];
+    }
+    if (_json.containsKey("resendInterval")) {
+      resendInterval = new Duration.fromJson(_json["resendInterval"]);
+    }
+    if (_json.containsKey("retryDurationSec")) {
+      retryDurationSec = _json["retryDurationSec"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (authority != null) {
+      _json["authority"] = authority;
+    }
+    if (endpoint != null) {
+      _json["endpoint"] = endpoint;
+    }
+    if (payloadName != null) {
+      _json["payloadName"] = payloadName;
+    }
+    if (resendInterval != null) {
+      _json["resendInterval"] = (resendInterval).toJson();
+    }
+    if (retryDurationSec != null) {
+      _json["retryDurationSec"] = retryDurationSec;
+    }
+    return _json;
+  }
+}
+
+class NotificationEndpointListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NotificationEndpointListWarningData();
+
+  NotificationEndpointListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NotificationEndpointListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NotificationEndpointListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NotificationEndpointListWarning();
+
+  NotificationEndpointListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NotificationEndpointListWarningData>((value) =>
+              new NotificationEndpointListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NotificationEndpointList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NotificationEndpoint resources.
+  core.List<NotificationEndpoint> items;
+
+  /// [Output Only] Type of the resource. Always compute#notificationEndpoint
+  /// for notification endpoints.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NotificationEndpointListWarning warning;
+
+  NotificationEndpointList();
+
+  NotificationEndpointList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<NotificationEndpoint>(
+              (value) => new NotificationEndpoint.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NotificationEndpointListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -70877,6 +76757,7 @@ class OperationWarnings {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -71257,6 +77138,7 @@ class OperationAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -71329,6 +77211,9 @@ class OperationAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   OperationAggregatedListWarning warning;
 
@@ -71351,6 +77236,9 @@ class OperationAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new OperationAggregatedListWarning.fromJson(_json["warning"]);
@@ -71376,6 +77264,9 @@ class OperationAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -71442,6 +77333,7 @@ class OperationListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -71627,6 +77519,7 @@ class OperationsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -71856,7 +77749,13 @@ class OutlierDetection {
   }
 }
 
-/// Represents a PacketMirroring resource.
+/// Represents a Packet Mirroring resource.
+///
+/// Packet Mirroring clones the traffic of specified instances in your Virtual
+/// Private Cloud (VPC) network and forwards it to a collector destination, such
+/// as an instance group of an internal TCP/UDP load balancer, for analysis or
+/// examination. For more information about setting up Packet Mirroring, see
+/// Using Packet Mirroring. (== resource_for {$api_version}.packetMirrorings ==)
 class PacketMirroring {
   /// The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that
   /// will be used as collector for mirrored traffic. The specified forwarding
@@ -72073,6 +77972,7 @@ class PacketMirroringAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -72144,6 +78044,9 @@ class PacketMirroringAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   PacketMirroringAggregatedListWarning warning;
 
@@ -72166,6 +78069,9 @@ class PacketMirroringAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -72192,6 +78098,9 @@ class PacketMirroringAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -72329,6 +78238,7 @@ class PacketMirroringListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -72665,6 +78575,7 @@ class PacketMirroringsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -72763,6 +78674,8 @@ class PathMatcher {
   /// defaultService is set, defaultRouteAction cannot contain any
   /// weightedBackendServices.
   /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+  /// UrlMaps for external HTTP(S) load balancers support only the urlRewrite
+  /// action within a pathMatcher's defaultRouteAction.
   HttpRouteAction defaultRouteAction;
 
   /// The full or partial URL to the BackendService resource. This will be used
@@ -72790,6 +78703,7 @@ class PathMatcher {
   /// redirected to a URL specified by defaultUrlRedirect.
   /// If defaultUrlRedirect is specified, defaultService or defaultRouteAction
   /// must not be set.
+  /// Not supported when the URL map is bound to target gRPC proxy.
   HttpRedirectAction defaultUrlRedirect;
 
   /// An optional description of this resource. Provide this property when you
@@ -72800,6 +78714,10 @@ class PathMatcher {
   /// for the selected backendService.
   /// HeaderAction specified here are applied after the matching HttpRouteRule
   /// HeaderAction and before the HeaderAction in the UrlMap
+  /// Note that headerAction is not supported for Loadbalancers that have their
+  /// loadBalancingScheme set to EXTERNAL.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   HttpHeaderAction headerAction;
 
   /// The name to which this PathMatcher is referred by the HostRule.
@@ -72904,6 +78822,8 @@ class PathRule {
   /// any  weightedBackendServices, service must not be set. Conversely if
   /// service is set, routeAction cannot contain any  weightedBackendServices.
   /// Only one of routeAction or urlRedirect must be set.
+  /// UrlMaps for external HTTP(S) load balancers support only the urlRewrite
+  /// action within a pathRule's routeAction.
   HttpRouteAction routeAction;
 
   /// The full or partial URL of the backend service resource to which traffic
@@ -72920,6 +78840,7 @@ class PathRule {
   /// When a path pattern is matched, the request is redirected to a URL
   /// specified by urlRedirect.
   /// If urlRedirect is specified, service or routeAction must not be set.
+  /// Not supported when the URL map is bound to target gRPC proxy.
   HttpRedirectAction urlRedirect;
 
   PathRule();
@@ -72981,6 +78902,21 @@ class PerInstanceConfig {
   /// either doesn't exist or is not part of the group will result in an error.
   core.String name;
 
+  /// The intended preserved state for the given instance. Does not contain
+  /// preserved state generated from a stateful policy.
+  PreservedState preservedState;
+
+  /// The status of applying this per-instance config on the corresponding
+  /// managed instance.
+  /// Possible string values are:
+  /// - "APPLYING"
+  /// - "DELETING"
+  /// - "EFFECTIVE"
+  /// - "NONE"
+  /// - "UNAPPLIED"
+  /// - "UNAPPLIED_DELETION"
+  core.String status;
+
   PerInstanceConfig();
 
   PerInstanceConfig.fromJson(core.Map _json) {
@@ -72989,6 +78925,12 @@ class PerInstanceConfig {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("preservedState")) {
+      preservedState = new PreservedState.fromJson(_json["preservedState"]);
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
     }
   }
 
@@ -73000,6 +78942,12 @@ class PerInstanceConfig {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (preservedState != null) {
+      _json["preservedState"] = (preservedState).toJson();
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }
@@ -73016,10 +78964,12 @@ class PerInstanceConfig {
 /// list of permissions; each `role` can be an IAM predefined role or a
 /// user-created custom role.
 ///
-/// Optionally, a `binding` can specify a `condition`, which is a logical
-/// expression that allows access to a resource only if the expression evaluates
-/// to `true`. A condition can add constraints based on attributes of the
-/// request, the resource, or both.
+/// For some types of Google Cloud resources, a `binding` can also specify a
+/// `condition`, which is a logical expression that allows access to a resource
+/// only if the expression evaluates to `true`. A condition can add constraints
+/// based on attributes of the request, the resource, or both. To learn which
+/// resources support conditions in their IAM policies, see the [IAM
+/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 ///
 /// **JSON example:**
 ///
@@ -73027,8 +78977,8 @@ class PerInstanceConfig {
 /// "members": [ "user:mike@example.com", "group:admins@example.com",
 /// "domain:google.com",
 /// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members":
-/// ["user:eve@example.com"], "condition": { "title": "expirable access",
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
 /// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
 /// "BwWWja0YfJA=", "version": 3 }
@@ -73108,6 +79058,10 @@ class Policy {
   ///
   /// If a policy does not include any conditions, operations on that policy may
   /// specify any valid version or leave the field unset.
+  ///
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -73191,6 +79145,96 @@ class PreconfiguredWafSet {
   }
 }
 
+/// Preserved state for a given instance.
+class PreservedState {
+  /// Preserved disks defined for this instance. This map is keyed with the
+  /// device names of the disks.
+  core.Map<core.String, PreservedStatePreservedDisk> disks;
+
+  /// Preserved metadata defined for this instance.
+  core.Map<core.String, core.String> metadata;
+
+  PreservedState();
+
+  PreservedState.fromJson(core.Map _json) {
+    if (_json.containsKey("disks")) {
+      disks = commons.mapMap<core.Map, PreservedStatePreservedDisk>(
+          _json["disks"].cast<core.String, core.Map>(),
+          (core.Map item) => new PreservedStatePreservedDisk.fromJson(item));
+    }
+    if (_json.containsKey("metadata")) {
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (disks != null) {
+      _json["disks"] = commons.mapMap<PreservedStatePreservedDisk,
+              core.Map<core.String, core.Object>>(
+          disks, (PreservedStatePreservedDisk item) => (item).toJson());
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    return _json;
+  }
+}
+
+class PreservedStatePreservedDisk {
+  /// These stateful disks will never be deleted during autohealing, update,
+  /// instance recreate operations. This flag is used to configure if the disk
+  /// should be deleted after it is no longer used by the group, e.g. when the
+  /// given instance or the whole MIG is deleted. Note: disks attached in
+  /// READ_ONLY mode cannot be auto-deleted.
+  /// Possible string values are:
+  /// - "NEVER"
+  /// - "ON_PERMANENT_INSTANCE_DELETION"
+  core.String autoDelete;
+
+  /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If
+  /// not specified, the default is to attach the disk in READ_WRITE mode.
+  /// Possible string values are:
+  /// - "READ_ONLY"
+  /// - "READ_WRITE"
+  core.String mode;
+
+  /// The URL of the disk resource that is stateful and should be attached to
+  /// the VM instance.
+  core.String source;
+
+  PreservedStatePreservedDisk();
+
+  PreservedStatePreservedDisk.fromJson(core.Map _json) {
+    if (_json.containsKey("autoDelete")) {
+      autoDelete = _json["autoDelete"];
+    }
+    if (_json.containsKey("mode")) {
+      mode = _json["mode"];
+    }
+    if (_json.containsKey("source")) {
+      source = _json["source"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (autoDelete != null) {
+      _json["autoDelete"] = autoDelete;
+    }
+    if (mode != null) {
+      _json["mode"] = mode;
+    }
+    if (source != null) {
+      _json["source"] = source;
+    }
+    return _json;
+  }
+}
+
 /// Represents a Project resource.
 ///
 /// A project is used to organize resources in a Google Cloud Platform
@@ -73244,7 +79288,8 @@ class Project {
   UsageExportLocation usageExportLocation;
 
   /// [Output Only] The role this project has in a shared VPC configuration.
-  /// Currently only HOST projects are differentiated.
+  /// Currently, only projects with the host role, which is specified by the
+  /// value HOST, are differentiated.
   /// Possible string values are:
   /// - "HOST"
   /// - "UNSPECIFIED_XPN_PROJECT_STATUS"
@@ -73493,18 +79538,22 @@ class Quota {
 
   /// [Output Only] Name of the quota metric.
   /// Possible string values are:
+  /// - "A2_CPUS"
   /// - "AFFINITY_GROUPS"
   /// - "AUTOSCALERS"
   /// - "BACKEND_BUCKETS"
   /// - "BACKEND_SERVICES"
   /// - "C2_CPUS"
   /// - "COMMITMENTS"
+  /// - "COMMITTED_A2_CPUS"
   /// - "COMMITTED_C2_CPUS"
   /// - "COMMITTED_CPUS"
   /// - "COMMITTED_LICENSES"
   /// - "COMMITTED_LOCAL_SSD_TOTAL_GB"
+  /// - "COMMITTED_MEMORY_OPTIMIZED_CPUS"
   /// - "COMMITTED_N2D_CPUS"
   /// - "COMMITTED_N2_CPUS"
+  /// - "COMMITTED_NVIDIA_A100_GPUS"
   /// - "COMMITTED_NVIDIA_K80_GPUS"
   /// - "COMMITTED_NVIDIA_P100_GPUS"
   /// - "COMMITTED_NVIDIA_P4_GPUS"
@@ -73513,6 +79562,8 @@ class Quota {
   /// - "CPUS"
   /// - "CPUS_ALL_REGIONS"
   /// - "DISKS_TOTAL_GB"
+  /// - "EXTERNAL_NETWORK_LB_FORWARDING_RULES"
+  /// - "EXTERNAL_PROTOCOL_FORWARDING_RULES"
   /// - "EXTERNAL_VPN_GATEWAYS"
   /// - "FIREWALLS"
   /// - "FORWARDING_RULES"
@@ -73529,18 +79580,23 @@ class Quota {
   /// - "INTERCONNECT_ATTACHMENTS_TOTAL_MBPS"
   /// - "INTERCONNECT_TOTAL_GBPS"
   /// - "INTERNAL_ADDRESSES"
+  /// - "INTERNAL_TRAFFIC_DIRECTOR_FORWARDING_RULES"
   /// - "IN_PLACE_SNAPSHOTS"
   /// - "IN_USE_ADDRESSES"
   /// - "IN_USE_BACKUP_SCHEDULES"
   /// - "IN_USE_SNAPSHOT_SCHEDULES"
   /// - "LOCAL_SSD_TOTAL_GB"
+  /// - "M1_CPUS"
+  /// - "M2_CPUS"
   /// - "MACHINE_IMAGES"
   /// - "N2D_CPUS"
   /// - "N2_CPUS"
   /// - "NETWORKS"
   /// - "NETWORK_ENDPOINT_GROUPS"
+  /// - "NETWORK_FIREWALL_POLICIES"
   /// - "NODE_GROUPS"
   /// - "NODE_TEMPLATES"
+  /// - "NVIDIA_A100_GPUS"
   /// - "NVIDIA_K80_GPUS"
   /// - "NVIDIA_P100_GPUS"
   /// - "NVIDIA_P100_VWS_GPUS"
@@ -73552,6 +79608,7 @@ class Quota {
   /// - "PACKET_MIRRORINGS"
   /// - "PREEMPTIBLE_CPUS"
   /// - "PREEMPTIBLE_LOCAL_SSD_GB"
+  /// - "PREEMPTIBLE_NVIDIA_A100_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_K80_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_P100_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_P100_VWS_GPUS"
@@ -73858,6 +79915,7 @@ class RegionAutoscalerListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -74040,6 +80098,7 @@ class RegionDiskTypeListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -74290,6 +80349,7 @@ class RegionInstanceGroupListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -74414,6 +80474,30 @@ class RegionInstanceGroupList {
   }
 }
 
+/// RegionInstanceGroupManagers.deletePerInstanceConfigs
+class RegionInstanceGroupManagerDeleteInstanceConfigReq {
+  /// The list of instance names for which we want to delete per-instance
+  /// configs on this managed instance group.
+  core.List<core.String> names;
+
+  RegionInstanceGroupManagerDeleteInstanceConfigReq();
+
+  RegionInstanceGroupManagerDeleteInstanceConfigReq.fromJson(core.Map _json) {
+    if (_json.containsKey("names")) {
+      names = (_json["names"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (names != null) {
+      _json["names"] = names;
+    }
+    return _json;
+  }
+}
+
 class RegionInstanceGroupManagerListWarningData {
   /// [Output Only] A key that provides more detail on the warning being
   /// returned. For example, for warnings where there are no results in a list
@@ -74472,6 +80556,7 @@ class RegionInstanceGroupManagerListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -74600,6 +80685,62 @@ class RegionInstanceGroupManagerList {
   }
 }
 
+/// RegionInstanceGroupManagers.patchPerInstanceConfigs
+class RegionInstanceGroupManagerPatchInstanceConfigReq {
+  /// The list of per-instance configs to insert or patch on this managed
+  /// instance group.
+  core.List<PerInstanceConfig> perInstanceConfigs;
+
+  RegionInstanceGroupManagerPatchInstanceConfigReq();
+
+  RegionInstanceGroupManagerPatchInstanceConfigReq.fromJson(core.Map _json) {
+    if (_json.containsKey("perInstanceConfigs")) {
+      perInstanceConfigs = (_json["perInstanceConfigs"] as core.List)
+          .map<PerInstanceConfig>(
+              (value) => new PerInstanceConfig.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (perInstanceConfigs != null) {
+      _json["perInstanceConfigs"] =
+          perInstanceConfigs.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// RegionInstanceGroupManagers.updatePerInstanceConfigs
+class RegionInstanceGroupManagerUpdateInstanceConfigReq {
+  /// The list of per-instance configs to insert or patch on this managed
+  /// instance group.
+  core.List<PerInstanceConfig> perInstanceConfigs;
+
+  RegionInstanceGroupManagerUpdateInstanceConfigReq();
+
+  RegionInstanceGroupManagerUpdateInstanceConfigReq.fromJson(core.Map _json) {
+    if (_json.containsKey("perInstanceConfigs")) {
+      perInstanceConfigs = (_json["perInstanceConfigs"] as core.List)
+          .map<PerInstanceConfig>(
+              (value) => new PerInstanceConfig.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (perInstanceConfigs != null) {
+      _json["perInstanceConfigs"] =
+          perInstanceConfigs.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class RegionInstanceGroupManagersAbandonInstancesRequest {
   /// The URLs of one or more instances to abandon. This can be a full URL or a
   /// partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
@@ -74623,7 +80764,7 @@ class RegionInstanceGroupManagersAbandonInstancesRequest {
   }
 }
 
-/// InstanceGroupManagers.applyUpdatesToInstances
+/// RegionInstanceGroupManagers.applyUpdatesToInstances
 class RegionInstanceGroupManagersApplyUpdatesRequest {
   /// The list of URLs of one or more instances for which you want to apply
   /// updates. Each URL can be a full URL or a partial URL, such as
@@ -74774,6 +80915,167 @@ class RegionInstanceGroupManagersListErrorsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupManagersListInstanceConfigsRespWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RegionInstanceGroupManagersListInstanceConfigsRespWarningData();
+
+  RegionInstanceGroupManagersListInstanceConfigsRespWarningData.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RegionInstanceGroupManagersListInstanceConfigsRespWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RegionInstanceGroupManagersListInstanceConfigsRespWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RegionInstanceGroupManagersListInstanceConfigsRespWarning();
+
+  RegionInstanceGroupManagersListInstanceConfigsRespWarning.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<RegionInstanceGroupManagersListInstanceConfigsRespWarningData>(
+              (value) =>
+                  new RegionInstanceGroupManagersListInstanceConfigsRespWarningData
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupManagersListInstanceConfigsResp {
+  /// [Output Only] The list of PerInstanceConfig.
+  core.List<PerInstanceConfig> items;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Informational warning message.
+  RegionInstanceGroupManagersListInstanceConfigsRespWarning warning;
+
+  RegionInstanceGroupManagersListInstanceConfigsResp();
+
+  RegionInstanceGroupManagersListInstanceConfigsResp.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<PerInstanceConfig>(
+              (value) => new PerInstanceConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new RegionInstanceGroupManagersListInstanceConfigsRespWarning
+          .fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -74964,6 +81266,7 @@ class RegionInstanceGroupsListInstancesWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -75231,6 +81534,7 @@ class RegionListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -75771,6 +82075,7 @@ class ReservationAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -75842,6 +82147,9 @@ class ReservationAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   ReservationAggregatedListWarning warning;
 
@@ -75864,6 +82172,9 @@ class ReservationAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new ReservationAggregatedListWarning.fromJson(_json["warning"]);
@@ -75889,6 +82200,9 @@ class ReservationAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -75955,6 +82269,7 @@ class ReservationListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -76162,6 +82477,7 @@ class ReservationsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -76382,6 +82698,7 @@ class ResourcePoliciesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -76646,6 +82963,7 @@ class ResourcePolicyAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -76719,6 +83037,9 @@ class ResourcePolicyAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   ResourcePolicyAggregatedListWarning warning;
 
@@ -76744,6 +83065,9 @@ class ResourcePolicyAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -76773,6 +83097,9 @@ class ResourcePolicyAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -76975,6 +83302,7 @@ class ResourcePolicyListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -77418,6 +83746,7 @@ class RouteWarnings {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -77735,6 +84064,7 @@ class RouteListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -77861,7 +84191,7 @@ class RouteList {
 
 /// Represents a Cloud Router resource.
 ///
-/// For more information about Cloud Router, read the the Cloud Router overview.
+/// For more information about Cloud Router, read the Cloud Router overview.
 class Router {
   /// BGP information specific to this router.
   RouterBgp bgp;
@@ -78095,6 +84425,7 @@ class RouterAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -78166,6 +84497,9 @@ class RouterAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   RouterAggregatedListWarning warning;
 
@@ -78188,6 +84522,9 @@ class RouterAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new RouterAggregatedListWarning.fromJson(_json["warning"]);
@@ -78213,6 +84550,9 @@ class RouterAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -78571,6 +84911,7 @@ class RouterListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -79127,7 +85468,7 @@ class RouterStatusBgpPeerStatus {
   }
 }
 
-/// Status of a NAT contained in this router. Next tag: 9
+/// Status of a NAT contained in this router.
 class RouterStatusNatStatus {
   /// A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]
   core.List<core.String> autoAllocatedNatIps;
@@ -79335,6 +85676,7 @@ class RoutersScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -79608,7 +85950,7 @@ class SSLHealthCheck {
   }
 }
 
-/// Sets the scheduling options for an Instance. NextID: 10
+/// Sets the scheduling options for an Instance. NextID: 13
 class Scheduling {
   /// Specifies whether the instance should be automatically restarted if it is
   /// terminated by Compute Engine (not terminated by a user). You can only set
@@ -79618,6 +85960,10 @@ class Scheduling {
   /// By default, this is set to true so an instance is automatically restarted
   /// if it is terminated by Compute Engine.
   core.bool automaticRestart;
+
+  /// The minimum number of virtual CPUs this instance will consume when running
+  /// on a sole-tenant node.
+  core.int minNodeCpus;
 
   /// A set of node affinity and anti-affinity configurations. Refer to
   /// Configuring node affinity for more information. Overrides
@@ -79634,8 +85980,9 @@ class Scheduling {
   core.String onHostMaintenance;
 
   /// Defines whether the instance is preemptible. This can only be set during
-  /// instance creation, it cannot be set or changed after the instance has been
-  /// created.
+  /// instance creation or while the instance is stopped and therefore, in a
+  /// `TERMINATED` state. See Instance Life Cycle for more information on the
+  /// possible instance states.
   core.bool preemptible;
 
   Scheduling();
@@ -79643,6 +85990,9 @@ class Scheduling {
   Scheduling.fromJson(core.Map _json) {
     if (_json.containsKey("automaticRestart")) {
       automaticRestart = _json["automaticRestart"];
+    }
+    if (_json.containsKey("minNodeCpus")) {
+      minNodeCpus = _json["minNodeCpus"];
     }
     if (_json.containsKey("nodeAffinities")) {
       nodeAffinities = (_json["nodeAffinities"] as core.List)
@@ -79663,6 +86013,9 @@ class Scheduling {
         new core.Map<core.String, core.Object>();
     if (automaticRestart != null) {
       _json["automaticRestart"] = automaticRestart;
+    }
+    if (minNodeCpus != null) {
+      _json["minNodeCpus"] = minNodeCpus;
     }
     if (nodeAffinities != null) {
       _json["nodeAffinities"] =
@@ -79720,6 +86073,39 @@ class SchedulingNodeAffinity {
     }
     if (values != null) {
       _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
+/// An instance's screenshot.
+class Screenshot {
+  /// [Output Only] The Base64-encoded screenshot data.
+  core.String contents;
+
+  /// [Output Only] Type of the resource. Always compute#screenshot for the
+  /// screenshots.
+  core.String kind;
+
+  Screenshot();
+
+  Screenshot.fromJson(core.Map _json) {
+    if (_json.containsKey("contents")) {
+      contents = _json["contents"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contents != null) {
+      _json["contents"] = contents;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -79948,6 +86334,7 @@ class SecurityPolicyListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -80213,7 +86600,7 @@ class SecurityPolicyRuleMatcher {
 }
 
 class SecurityPolicyRuleMatcherConfig {
-  /// CIDR IP address range.
+  /// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
   core.List<core.String> srcIpRanges;
 
   SecurityPolicyRuleMatcherConfig();
@@ -80243,8 +86630,10 @@ class SerialPortOutput {
   /// serial port output.
   core.String kind;
 
-  /// [Output Only] The position of the next byte of content from the serial
-  /// console output. Use this value in the next request as the start parameter.
+  /// [Output Only] The position of the next byte of content, regardless of
+  /// whether the content exists, following the output returned in the
+  /// `contents` property. Use this value in the next request as the start
+  /// parameter.
   core.String next;
 
   /// [Output Only] Server-defined URL for this resource.
@@ -80252,8 +86641,10 @@ class SerialPortOutput {
 
   /// The starting byte position of the output that was returned. This should
   /// match the start parameter sent with the request. If the serial console
-  /// output exceeds the size of the buffer, older output will be overwritten by
-  /// newer content and the start values will be mismatched.
+  /// output exceeds the size of the buffer (1 MB), older output is overwritten
+  /// by newer content. The output start value will indicate the byte position
+  /// of the output that was returned, which might be different than the `start`
+  /// value that was specified in the request.
   core.String start;
 
   SerialPortOutput();
@@ -80358,13 +86749,14 @@ class ServiceAccount {
 
 /// A set of Shielded Instance options.
 class ShieldedInstanceConfig {
-  /// Defines whether the instance has integrity monitoring enabled.
+  /// Defines whether the instance has integrity monitoring enabled. Enabled by
+  /// default.
   core.bool enableIntegrityMonitoring;
 
-  /// Defines whether the instance has Secure Boot enabled.
+  /// Defines whether the instance has Secure Boot enabled. Disabled by default.
   core.bool enableSecureBoot;
 
-  /// Defines whether the instance has the vTPM enabled.
+  /// Defines whether the instance has the vTPM enabled. Enabled by default.
   core.bool enableVtpm;
 
   ShieldedInstanceConfig();
@@ -80628,7 +87020,7 @@ class Snapshot {
   /// you do not need to provide a key to use the snapshot later.
   CustomerEncryptionKey snapshotEncryptionKey;
 
-  /// [Output Only] The source disk used to create this snapshot.
+  /// The source disk used to create this snapshot.
   core.String sourceDisk;
 
   /// The customer-supplied encryption key of the source disk. Required if the
@@ -80867,6 +87259,7 @@ class SnapshotListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -81041,13 +87434,14 @@ class SourceInstanceParams {
 /// up to five PEM-encoded certificates. The API call creates an object
 /// (sslCertificate) that holds this data. You can use SSL keys and certificates
 /// to secure connections to a load balancer. For more information, read
-/// Creating and using SSL certificates and SSL certificates quotas and limits.
-/// (== resource_for {$api_version}.sslCertificates ==) (== resource_for
+/// Creating and using SSL certificates, SSL certificates quotas and limits, and
+/// Troubleshooting SSL certificates. (== resource_for
+/// {$api_version}.sslCertificates ==) (== resource_for
 /// {$api_version}.regionSslCertificates ==)
 class SslCertificate {
-  /// A local certificate file. The certificate must be in PEM format. The
-  /// certificate chain must be no greater than 5 certs long. The chain must
-  /// include at least one intermediate cert.
+  /// A value read into memory from a certificate file. The certificate file
+  /// must be in PEM format. The certificate chain must be no greater than 5
+  /// certs long. The chain must include at least one intermediate cert.
   core.String certificate;
 
   /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -81080,7 +87474,8 @@ class SslCertificate {
   /// dash.
   core.String name;
 
-  /// A write-only private key in PEM format. Only insert requests will include
+  /// A value read into memory from a write-only private key file. The private
+  /// key file must be in PEM format. For security, only insert requests include
   /// this field.
   core.String privateKey;
 
@@ -81264,6 +87659,7 @@ class SslCertificateAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -81335,6 +87731,9 @@ class SslCertificateAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   SslCertificateAggregatedListWarning warning;
 
@@ -81357,6 +87756,9 @@ class SslCertificateAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -81383,6 +87785,9 @@ class SslCertificateAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -81449,6 +87854,7 @@ class SslCertificateListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -81718,6 +88124,7 @@ class SslCertificatesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -81861,6 +88268,7 @@ class SslPoliciesListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -82063,6 +88471,7 @@ class SslPolicyWarnings {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -82307,6 +88716,86 @@ class SslPolicyReference {
   }
 }
 
+class StatefulPolicy {
+  StatefulPolicyPreservedState preservedState;
+
+  StatefulPolicy();
+
+  StatefulPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("preservedState")) {
+      preservedState =
+          new StatefulPolicyPreservedState.fromJson(_json["preservedState"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (preservedState != null) {
+      _json["preservedState"] = (preservedState).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Configuration of preserved resources.
+class StatefulPolicyPreservedState {
+  /// Disks created on the instances that will be preserved on instance delete,
+  /// update, etc. This map is keyed with the device names of the disks.
+  core.Map<core.String, StatefulPolicyPreservedStateDiskDevice> disks;
+
+  StatefulPolicyPreservedState();
+
+  StatefulPolicyPreservedState.fromJson(core.Map _json) {
+    if (_json.containsKey("disks")) {
+      disks = commons.mapMap<core.Map, StatefulPolicyPreservedStateDiskDevice>(
+          _json["disks"].cast<core.String, core.Map>(),
+          (core.Map item) =>
+              new StatefulPolicyPreservedStateDiskDevice.fromJson(item));
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (disks != null) {
+      _json["disks"] = commons.mapMap<StatefulPolicyPreservedStateDiskDevice,
+              core.Map<core.String, core.Object>>(disks,
+          (StatefulPolicyPreservedStateDiskDevice item) => (item).toJson());
+    }
+    return _json;
+  }
+}
+
+class StatefulPolicyPreservedStateDiskDevice {
+  /// These stateful disks will never be deleted during autohealing, update or
+  /// VM instance recreate operations. This flag is used to configure if the
+  /// disk should be deleted after it is no longer used by the group, e.g. when
+  /// the given instance or the whole group is deleted. Note: disks attached in
+  /// READ_ONLY mode cannot be auto-deleted.
+  /// Possible string values are:
+  /// - "NEVER"
+  /// - "ON_PERMANENT_INSTANCE_DELETION"
+  core.String autoDelete;
+
+  StatefulPolicyPreservedStateDiskDevice();
+
+  StatefulPolicyPreservedStateDiskDevice.fromJson(core.Map _json) {
+    if (_json.containsKey("autoDelete")) {
+      autoDelete = _json["autoDelete"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (autoDelete != null) {
+      _json["autoDelete"] = autoDelete;
+    }
+    return _json;
+  }
+}
+
 /// Represents a Subnetwork resource.
 ///
 /// A subnetwork (also known as a subnet) is a logical partition of a Virtual
@@ -82323,7 +88812,8 @@ class Subnetwork {
 
   /// Whether to enable flow logging for this subnetwork. If this field is not
   /// explicitly set, it will not appear in get listings. If not set the default
-  /// behavior is to disable flow logging.
+  /// behavior is to disable flow logging. This field isn't supported with the
+  /// purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
   core.bool enableFlowLogs;
 
   /// Fingerprint of this resource. A hash of the contents stored in this
@@ -82354,17 +88844,23 @@ class Subnetwork {
 
   /// The range of internal addresses that are owned by this subnetwork. Provide
   /// this property when you create the subnetwork. For example, 10.0.0.0/8 or
-  /// 192.168.0.0/16. Ranges must be unique and non-overlapping within a
-  /// network. Only IPv4 is supported. This field can be set only at resource
-  /// creation time.
+  /// 100.64.0.0/10. Ranges must be unique and non-overlapping within a network.
+  /// Only IPv4 is supported. This field is set at resource creation time. This
+  /// may be a RFC 1918 IP range, or a privately routed, non-RFC 1918 IP range,
+  /// not belonging to Google. The range can be expanded after creation using
+  /// expandIpCidrRange.
   core.String ipCidrRange;
+
+  /// [Output Only] The range of internal IPv6 addresses that are owned by this
+  /// subnetwork.
+  core.String ipv6CidrRange;
 
   /// [Output Only] Type of the resource. Always compute#subnetwork for
   /// Subnetwork resources.
   core.String kind;
 
   /// This field denotes the VPC flow logging options for this subnetwork. If
-  /// logging is enabled, logs are exported to Stackdriver.
+  /// logging is enabled, logs are exported to Cloud Logging.
   SubnetworkLogConfig logConfig;
 
   /// The name of the resource, provided by the client when initially creating
@@ -82387,11 +88883,24 @@ class Subnetwork {
   /// time and updated using setPrivateIpGoogleAccess.
   core.bool privateIpGoogleAccess;
 
+  /// The private IPv6 google access type for the VMs in this subnet. This is an
+  /// expanded field of enablePrivateV6Access. If both fields are set,
+  /// privateIpv6GoogleAccess will take priority.
+  ///
+  /// This field can be both set at resource creation time and updated using
+  /// patch.
+  /// Possible string values are:
+  /// - "DISABLE_GOOGLE_ACCESS"
+  /// - "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
+  /// - "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
+  core.String privateIpv6GoogleAccess;
+
   /// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
   /// INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
   /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved
   /// for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults
-  /// to PRIVATE_RFC_1918.
+  /// to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the
+  /// purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
   /// Possible string values are:
   /// - "INTERNAL_HTTPS_LOAD_BALANCER"
   /// - "PRIVATE"
@@ -82458,6 +88967,9 @@ class Subnetwork {
     if (_json.containsKey("ipCidrRange")) {
       ipCidrRange = _json["ipCidrRange"];
     }
+    if (_json.containsKey("ipv6CidrRange")) {
+      ipv6CidrRange = _json["ipv6CidrRange"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -82472,6 +88984,9 @@ class Subnetwork {
     }
     if (_json.containsKey("privateIpGoogleAccess")) {
       privateIpGoogleAccess = _json["privateIpGoogleAccess"];
+    }
+    if (_json.containsKey("privateIpv6GoogleAccess")) {
+      privateIpv6GoogleAccess = _json["privateIpv6GoogleAccess"];
     }
     if (_json.containsKey("purpose")) {
       purpose = _json["purpose"];
@@ -82520,6 +89035,9 @@ class Subnetwork {
     if (ipCidrRange != null) {
       _json["ipCidrRange"] = ipCidrRange;
     }
+    if (ipv6CidrRange != null) {
+      _json["ipv6CidrRange"] = ipv6CidrRange;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -82534,6 +89052,9 @@ class Subnetwork {
     }
     if (privateIpGoogleAccess != null) {
       _json["privateIpGoogleAccess"] = privateIpGoogleAccess;
+    }
+    if (privateIpv6GoogleAccess != null) {
+      _json["privateIpv6GoogleAccess"] = privateIpv6GoogleAccess;
     }
     if (purpose != null) {
       _json["purpose"] = purpose;
@@ -82616,6 +89137,7 @@ class SubnetworkAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -82687,6 +89209,9 @@ class SubnetworkAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   SubnetworkAggregatedListWarning warning;
 
@@ -82709,6 +89234,9 @@ class SubnetworkAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new SubnetworkAggregatedListWarning.fromJson(_json["warning"]);
@@ -82734,6 +89262,9 @@ class SubnetworkAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -82800,6 +89331,7 @@ class SubnetworkListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -83023,7 +89555,8 @@ class SubnetworkSecondaryRange {
   /// The range of IP addresses belonging to this subnetwork secondary range.
   /// Provide this property when you create the subnetwork. Ranges must be
   /// unique and non-overlapping with all primary and secondary IP ranges within
-  /// a network. Only IPv4 is supported.
+  /// a network. Only IPv4 is supported. This may be a RFC 1918 IP range, or a
+  /// privately, non-RFC 1918 IP range, not belonging to Google.
   core.String ipCidrRange;
 
   /// The name associated with this subnetwork secondary range, used when adding
@@ -83138,6 +89671,7 @@ class SubnetworksScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -83383,6 +89917,331 @@ class Tags {
   }
 }
 
+/// Represents a Target gRPC Proxy resource.
+///
+/// A target gRPC proxy is a component of load balancers intended for load
+/// balancing gRPC traffic. Global forwarding rules reference a target gRPC
+/// proxy. The Target gRPC Proxy references a URL map which specifies how
+/// traffic routes to gRPC backend services. (== resource_for
+/// {$api_version}.targetGrpcProxies ==)
+class TargetGrpcProxy {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// Fingerprint of this resource. A hash of the contents stored in this
+  /// object. This field is used in optimistic locking. This field will be
+  /// ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must
+  /// be provided in order to patch/update the TargetGrpcProxy; otherwise, the
+  /// request will fail with error 412 conditionNotMet. To see the latest
+  /// fingerprint, make a get() request to retrieve the TargetGrpcProxy.
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return convert.base64.decode(fingerprint);
+  }
+
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// [Output Only] The unique identifier for the resource type. The server
+  /// generates this identifier.
+  core.String id;
+
+  /// [Output Only] Type of the resource. Always compute#targetGrpcProxy for
+  /// target grpc proxies.
+  core.String kind;
+
+  /// Name of the resource. Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
+  /// lowercase letter, or digit, except the last character, which cannot be a
+  /// dash.
+  core.String name;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  /// [Output Only] Server-defined URL with id for the resource.
+  core.String selfLinkWithId;
+
+  /// URL to the UrlMap resource that defines the mapping from URL to the
+  /// BackendService. The protocol field in the BackendService must be set to
+  /// GRPC.
+  core.String urlMap;
+
+  /// If true, indicates that the BackendServices referenced by the urlMap may
+  /// be accessed by gRPC applications without using a sidecar proxy. This will
+  /// enable configuration checks on urlMap and its referenced BackendServices
+  /// to not allow unsupported features. A gRPC application must use "xds:///"
+  /// scheme in the target URI of the service it is connecting to. If false,
+  /// indicates that the BackendServices referenced by the urlMap will be
+  /// accessed by gRPC applications via a sidecar proxy. In this case, a gRPC
+  /// application must not use "xds:///" scheme in the target URI of the service
+  /// it is connecting to
+  core.bool validateForProxyless;
+
+  TargetGrpcProxy();
+
+  TargetGrpcProxy.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("selfLinkWithId")) {
+      selfLinkWithId = _json["selfLinkWithId"];
+    }
+    if (_json.containsKey("urlMap")) {
+      urlMap = _json["urlMap"];
+    }
+    if (_json.containsKey("validateForProxyless")) {
+      validateForProxyless = _json["validateForProxyless"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (selfLinkWithId != null) {
+      _json["selfLinkWithId"] = selfLinkWithId;
+    }
+    if (urlMap != null) {
+      _json["urlMap"] = urlMap;
+    }
+    if (validateForProxyless != null) {
+      _json["validateForProxyless"] = validateForProxyless;
+    }
+    return _json;
+  }
+}
+
+class TargetGrpcProxyListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetGrpcProxyListWarningData();
+
+  TargetGrpcProxyListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetGrpcProxyListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetGrpcProxyListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetGrpcProxyListWarning();
+
+  TargetGrpcProxyListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<TargetGrpcProxyListWarningData>(
+              (value) => new TargetGrpcProxyListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class TargetGrpcProxyList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of TargetGrpcProxy resources.
+  core.List<TargetGrpcProxy> items;
+
+  /// [Output Only] Type of the resource. Always compute#targetGrpcProxy for
+  /// target grpc proxies.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  TargetGrpcProxyListWarning warning;
+
+  TargetGrpcProxyList();
+
+  TargetGrpcProxyList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<TargetGrpcProxy>((value) => new TargetGrpcProxy.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new TargetGrpcProxyListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
 class TargetHttpProxiesScopedListWarningData {
   /// [Output Only] A key that provides more detail on the warning being
   /// returned. For example, for warnings where there are no results in a list
@@ -83442,6 +90301,7 @@ class TargetHttpProxiesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -83553,6 +90413,22 @@ class TargetHttpProxy {
   /// create the resource.
   core.String description;
 
+  /// Fingerprint of this resource. A hash of the contents stored in this
+  /// object. This field is used in optimistic locking. This field will be
+  /// ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must
+  /// be provided in order to patch/update the TargetHttpProxy; otherwise, the
+  /// request will fail with error 412 conditionNotMet. To see the latest
+  /// fingerprint, make a get() request to retrieve the TargetHttpProxy.
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return convert.base64.decode(fingerprint);
+  }
+
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
   /// [Output Only] The unique identifier for the resource. This identifier is
   /// defined by the server.
   core.String id;
@@ -83590,6 +90466,9 @@ class TargetHttpProxy {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -83618,6 +90497,9 @@ class TargetHttpProxy {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
     }
     if (id != null) {
       _json["id"] = id;
@@ -83662,6 +90544,9 @@ class TargetHttpProxyAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   TargetHttpProxyAggregatedList();
 
   TargetHttpProxyAggregatedList.fromJson(core.Map _json) {
@@ -83681,6 +90566,9 @@ class TargetHttpProxyAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
   }
 
@@ -83703,6 +90591,9 @@ class TargetHttpProxyAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     return _json;
   }
@@ -83766,6 +90657,7 @@ class TargetHttpProxyListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -83950,6 +90842,7 @@ class TargetHttpsProxiesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -84308,6 +91201,7 @@ class TargetHttpsProxyAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -84379,6 +91273,9 @@ class TargetHttpsProxyAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   TargetHttpsProxyAggregatedListWarning warning;
 
@@ -84401,6 +91298,9 @@ class TargetHttpsProxyAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -84427,6 +91327,9 @@ class TargetHttpsProxyAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -84493,6 +91396,7 @@ class TargetHttpsProxyListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -84798,6 +91702,7 @@ class TargetInstanceAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -84868,6 +91773,9 @@ class TargetInstanceAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   TargetInstanceAggregatedListWarning warning;
 
@@ -84890,6 +91798,9 @@ class TargetInstanceAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -84916,6 +91827,9 @@ class TargetInstanceAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -84982,6 +91896,7 @@ class TargetInstanceListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -85165,6 +92080,7 @@ class TargetInstancesScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -85298,7 +92214,8 @@ class TargetPool {
   /// The URL of the HttpHealthCheck resource. A member instance in this pool is
   /// considered healthy if and only if the health checks pass. An empty list
   /// means all member instances will be considered healthy at all times. Only
-  /// HttpHealthChecks are supported. Only one health check may be specified.
+  /// legacy HttpHealthChecks are supported. Only one health check may be
+  /// specified.
   core.List<core.String> healthChecks;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -85488,6 +92405,7 @@ class TargetPoolAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -85559,6 +92477,9 @@ class TargetPoolAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   TargetPoolAggregatedListWarning warning;
 
@@ -85581,6 +92502,9 @@ class TargetPoolAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new TargetPoolAggregatedListWarning.fromJson(_json["warning"]);
@@ -85606,6 +92530,9 @@ class TargetPoolAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -85706,6 +92633,7 @@ class TargetPoolListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -86002,6 +92930,7 @@ class TargetPoolsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -86365,6 +93294,7 @@ class TargetSslProxyListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -86700,6 +93630,7 @@ class TargetTcpProxyListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -87022,6 +93953,7 @@ class TargetVpnGatewayAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -87093,6 +94025,9 @@ class TargetVpnGatewayAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   TargetVpnGatewayAggregatedListWarning warning;
 
@@ -87115,6 +94050,9 @@ class TargetVpnGatewayAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning =
@@ -87141,6 +94079,9 @@ class TargetVpnGatewayAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -87207,6 +94148,7 @@ class TargetVpnGatewayListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -87392,6 +94334,7 @@ class TargetVpnGatewaysScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -87480,9 +94423,17 @@ class TargetVpnGatewaysScopedList {
 }
 
 class TestFailure {
+  /// BackendService or BackendBucket returned by load balancer.
   core.String actualService;
+
+  /// Expected BackendService or BackendBucket resource the given URL should be
+  /// mapped to.
   core.String expectedService;
+
+  /// Host portion of the URL.
   core.String host;
+
+  /// Path portion including query parameters in the URL.
   core.String path;
 
   TestFailure();
@@ -87580,6 +94531,12 @@ class TestPermissionsResponse {
 /// * urlMaps are used by external HTTP(S) load balancers and Traffic Director.
 /// * regionUrlMaps are used by internal HTTP(S) load balancers.
 ///
+/// For a list of supported URL map features by load balancer type, see the
+/// Load balancing features: Routing and traffic management table.
+///
+/// For a list of supported URL map features for Traffic Director, see the
+/// Traffic Director features: Routing and traffic management table.
+///
 /// This resource defines mappings from host names and URL paths to either a
 /// backend service or a backend bucket.
 ///
@@ -87598,6 +94555,10 @@ class UrlMap {
   /// defaultService must not be set. Conversely if defaultService is set,
   /// defaultRouteAction cannot contain any  weightedBackendServices.
   /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+  /// UrlMaps for external HTTP(S) load balancers support only the urlRewrite
+  /// action within defaultRouteAction.
+  /// defaultRouteAction has no effect when the URL map is bound to target gRPC
+  /// proxy that has validateForProxyless field set to true.
   HttpRouteAction defaultRouteAction;
 
   /// The full or partial URL of the defaultService resource to which traffic is
@@ -87609,12 +94570,15 @@ class UrlMap {
   /// weightedBackendServices, service must not be specified.
   /// Only one of defaultService, defaultUrlRedirect  or
   /// defaultRouteAction.weightedBackendService must be set.
+  /// defaultService has no effect when the URL map is bound to target gRPC
+  /// proxy that has validateForProxyless field set to true.
   core.String defaultService;
 
   /// When none of the specified hostRules match, the request is redirected to a
   /// URL specified by defaultUrlRedirect.
   /// If defaultUrlRedirect is specified, defaultService or defaultRouteAction
   /// must not be set.
+  /// Not supported when the URL map is bound to target gRPC proxy.
   HttpRedirectAction defaultUrlRedirect;
 
   /// An optional description of this resource. Provide this property when you
@@ -87642,6 +94606,10 @@ class UrlMap {
   /// for the selected backendService.
   /// The headerAction specified here take effect after headerAction specified
   /// under pathMatcher.
+  /// Note that headerAction is not supported for Loadbalancers that have their
+  /// loadBalancingScheme set to EXTERNAL.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   HttpHeaderAction headerAction;
 
   /// The list of HostRules to use against the URL.
@@ -87678,6 +94646,8 @@ class UrlMap {
   /// The list of expected URL mapping tests. Request to update this UrlMap will
   /// succeed only if all of the test cases pass. You can specify a maximum of
   /// 100 tests per UrlMap.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   core.List<UrlMapTest> tests;
 
   UrlMap();
@@ -87849,6 +94819,7 @@ class UrlMapListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -87999,13 +94970,16 @@ class UrlMapTest {
   /// Description of this test case.
   core.String description;
 
-  /// Host portion of the URL.
+  /// Host portion of the URL. If headers contains a host header, then host must
+  /// also match the header value.
   core.String host;
 
   /// Path portion of the URL.
   core.String path;
 
-  /// Expected BackendService resource the given URL should be mapped to.
+  /// Expected BackendService or BackendBucket resource the given URL should be
+  /// mapped to.
+  /// service cannot be set if expectedRedirectResponseCode is set.
   core.String service;
 
   UrlMapTest();
@@ -88154,6 +95128,7 @@ class UrlMapsAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -88224,6 +95199,9 @@ class UrlMapsAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   UrlMapsAggregatedListWarning warning;
 
@@ -88246,6 +95224,9 @@ class UrlMapsAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new UrlMapsAggregatedListWarning.fromJson(_json["warning"]);
@@ -88271,6 +95252,9 @@ class UrlMapsAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -88338,6 +95322,7 @@ class UrlMapsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -88648,6 +95633,7 @@ class UsableSubnetworksAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -88988,6 +95974,7 @@ class VmEndpointNatMappingsListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -89115,7 +96102,13 @@ class VmEndpointNatMappingsList {
   }
 }
 
-/// Represents a VPN gateway resource. Next ID: 13
+/// Represents a HA VPN gateway.
+///
+/// HA VPN is a high-availability (HA) Cloud VPN solution that lets you securely
+/// connect your on-premises network to your Google Cloud Virtual Private Cloud
+/// network through an IPsec VPN connection in a single region. For more
+/// information about Cloud HA VPN solutions, see  Cloud VPN topologies . (==
+/// resource_for {$api_version}.vpnGateways ==)
 class VpnGateway {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -89318,6 +96311,7 @@ class VpnGatewayAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -89389,6 +96383,9 @@ class VpnGatewayAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   VpnGatewayAggregatedListWarning warning;
 
@@ -89411,6 +96408,9 @@ class VpnGatewayAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new VpnGatewayAggregatedListWarning.fromJson(_json["warning"]);
@@ -89436,6 +96436,9 @@ class VpnGatewayAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -89502,6 +96505,7 @@ class VpnGatewayListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -89908,6 +96912,7 @@ class VpnGatewaysScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -89995,7 +97000,7 @@ class VpnGatewaysScopedList {
 
 /// Represents a Cloud VPN Tunnel resource.
 ///
-/// For more information about VPN, read the the Cloud VPN Overview. (==
+/// For more information about VPN, read the  the Cloud VPN Overview. (==
 /// resource_for {$api_version}.vpnTunnels ==)
 class VpnTunnel {
   /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -90338,6 +97343,7 @@ class VpnTunnelAggregatedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -90408,6 +97414,9 @@ class VpnTunnelAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Unreachable resources.
+  core.List<core.String> unreachables;
+
   /// [Output Only] Informational warning message.
   VpnTunnelAggregatedListWarning warning;
 
@@ -90430,6 +97439,9 @@ class VpnTunnelAggregatedList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("unreachables")) {
+      unreachables = (_json["unreachables"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("warning")) {
       warning = new VpnTunnelAggregatedListWarning.fromJson(_json["warning"]);
@@ -90455,6 +97467,9 @@ class VpnTunnelAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (unreachables != null) {
+      _json["unreachables"] = unreachables;
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
@@ -90521,6 +97536,7 @@ class VpnTunnelListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -90704,6 +97720,7 @@ class VpnTunnelsScopedListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -90878,6 +97895,10 @@ class WeightedBackendService {
   /// for the selected backendService.
   /// headerAction specified here take effect before headerAction in the
   /// enclosing HttpRouteRule, PathMatcher and UrlMap.
+  /// Note that headerAction is not supported for Loadbalancers that have their
+  /// loadBalancingScheme set to EXTERNAL.
+  /// Not supported when the URL map is bound to target gRPC proxy that has
+  /// validateForProxyless field set to true.
   HttpHeaderAction headerAction;
 
   /// Specifies the fraction of traffic sent to backendService, computed as
@@ -90977,6 +97998,7 @@ class XpnHostListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
@@ -91310,6 +98332,7 @@ class ZoneListWarning {
   /// - "NEXT_HOP_NOT_RUNNING"
   /// - "NOT_CRITICAL_ERROR"
   /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"

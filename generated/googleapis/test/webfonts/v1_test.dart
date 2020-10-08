@@ -50,40 +50,40 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1413() {
+buildUnnamed1443() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1413(core.Map<core.String, core.String> o) {
+checkUnnamed1443(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1414() {
+buildUnnamed1444() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1414(core.List<core.String> o) {
+checkUnnamed1444(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1415() {
+buildUnnamed1445() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1415(core.List<core.String> o) {
+checkUnnamed1445(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -96,11 +96,11 @@ buildWebfont() {
   if (buildCounterWebfont < 3) {
     o.category = "foo";
     o.family = "foo";
-    o.files = buildUnnamed1413();
+    o.files = buildUnnamed1443();
     o.kind = "foo";
-    o.lastModified = core.DateTime.parse("2002-02-27T14:01:02Z");
-    o.subsets = buildUnnamed1414();
-    o.variants = buildUnnamed1415();
+    o.lastModified = "foo";
+    o.subsets = buildUnnamed1444();
+    o.variants = buildUnnamed1445();
     o.version = "foo";
   }
   buildCounterWebfont--;
@@ -112,25 +112,24 @@ checkWebfont(api.Webfont o) {
   if (buildCounterWebfont < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
     unittest.expect(o.family, unittest.equals('foo'));
-    checkUnnamed1413(o.files);
+    checkUnnamed1443(o.files);
     unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.lastModified,
-        unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
-    checkUnnamed1414(o.subsets);
-    checkUnnamed1415(o.variants);
+    unittest.expect(o.lastModified, unittest.equals('foo'));
+    checkUnnamed1444(o.subsets);
+    checkUnnamed1445(o.variants);
     unittest.expect(o.version, unittest.equals('foo'));
   }
   buildCounterWebfont--;
 }
 
-buildUnnamed1416() {
+buildUnnamed1446() {
   var o = new core.List<api.Webfont>();
   o.add(buildWebfont());
   o.add(buildWebfont());
   return o;
 }
 
-checkUnnamed1416(core.List<api.Webfont> o) {
+checkUnnamed1446(core.List<api.Webfont> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebfont(o[0]);
   checkWebfont(o[1]);
@@ -141,7 +140,7 @@ buildWebfontList() {
   var o = new api.WebfontList();
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    o.items = buildUnnamed1416();
+    o.items = buildUnnamed1446();
     o.kind = "foo";
   }
   buildCounterWebfontList--;
@@ -151,7 +150,7 @@ buildWebfontList() {
 checkWebfontList(api.WebfontList o) {
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    checkUnnamed1416(o.items);
+    checkUnnamed1446(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterWebfontList--;
@@ -188,12 +187,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("webfonts/v1/"));
-        pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("webfonts"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("v1/webfonts"));
+        pathOffset += 11;
 
         var query = (req.url).query;
         var queryOffset = 0;

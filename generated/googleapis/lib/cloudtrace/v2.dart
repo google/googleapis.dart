@@ -58,18 +58,15 @@ class ProjectsTracesResourceApi {
 
   ProjectsTracesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Sends new spans to new or existing traces. You cannot update
-  /// existing spans.
-  /// In this case, writing traces is not considered an active developer
-  /// method since traces are machine generated.
+  /// Sends new spans to new or existing traces. You cannot update existing
+  /// spans.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the project where the spans belong. The
-  /// format is
-  /// `projects/[PROJECT_ID]`.
+  /// format is `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -123,21 +120,17 @@ class ProjectsTracesSpansResourceApi {
       : _requester = client;
 
   /// Creates a new span.
-  /// In this case, writing traces is not considered an active developer
-  /// method since traces are machine generated.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the span in the following format:
-  ///
+  /// [name] - Required. The resource name of the span in the following format:
   /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
-  /// identifier for a trace within a project;
-  /// it is a 32-character hexadecimal encoding of a 16-byte array.
-  ///
-  /// [SPAN_ID] is a unique identifier for a span within a trace; it
-  /// is a 16-character hexadecimal encoding of an 8-byte array.
+  /// identifier for a trace within a project; it is a 32-character hexadecimal
+  /// encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span
+  /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte
+  /// array. It should not be zero.
   /// Value must have pattern "^projects/[^/]+/traces/[^/]+/spans/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -183,12 +176,12 @@ class ProjectsTracesSpansResourceApi {
 
 /// Text annotation with a set of attributes.
 class Annotation {
-  /// A set of attributes on the annotation. You can have up to 4 attributes
-  /// per Annotation.
+  /// A set of attributes on the annotation. You can have up to 4 attributes per
+  /// Annotation.
   Attributes attributes;
 
-  /// A user-supplied message describing the event. The maximum length for
-  /// the description is 256 bytes.
+  /// A user-supplied message describing the event. The maximum length for the
+  /// description is 256 bytes.
   TruncatableString description;
 
   Annotation();
@@ -258,13 +251,11 @@ class AttributeValue {
 
 /// A set of attributes, each in the format `[KEY]:[VALUE]`.
 class Attributes {
-  /// The set of attributes. Each attribute's key can be up to 128 bytes
-  /// long. The value can be a string up to 256 bytes, a signed 64-bit integer,
-  /// or the Boolean values `true` and `false`. For example:
-  ///
-  ///     "/instance_id": { "string_value": { "value": "my-instance" } }
-  ///     "/http/request_bytes": { "int_value": 300 }
-  ///     "abc.com/myattribute": { "bool_value": false }
+  /// The set of attributes. Each attribute's key can be up to 128 bytes long.
+  /// The value can be a string up to 256 bytes, a signed 64-bit integer, or the
+  /// Boolean values `true` and `false`. For example: "/instance_id": {
+  /// "string_value": { "value": "my-instance" } } "/http/request_bytes": {
+  /// "int_value": 300 } "abc.com/myattribute": { "bool_value": false }
   core.Map<core.String, AttributeValue> attributeMap;
 
   /// The number of attributes that were discarded. Attributes can be discarded
@@ -328,13 +319,9 @@ class BatchWriteSpansRequest {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -348,11 +335,11 @@ class Empty {
 }
 
 /// A pointer from the current span to another span in the same trace or in a
-/// different trace. For example, this can be used in batching operations,
-/// where a single batch handler processes multiple requests from different
-/// traces or when the handler receives a request from a different project.
+/// different trace. For example, this can be used in batching operations, where
+/// a single batch handler processes multiple requests from different traces or
+/// when the handler receives a request from a different project.
 class Link {
-  /// A set of attributes on the link. You have have up to  32 attributes per
+  /// A set of attributes on the link. You have have up to 32 attributes per
   /// link.
   Attributes attributes;
 
@@ -405,11 +392,11 @@ class Link {
   }
 }
 
-/// A collection of links, which are references from this span to a span
-/// in the same or different trace.
+/// A collection of links, which are references from this span to a span in the
+/// same or different trace.
 class Links {
-  /// The number of dropped links after the maximum size was enforced. If
-  /// this value is 0, then no links were dropped.
+  /// The number of dropped links after the maximum size was enforced. If this
+  /// value is 0, then no links were dropped.
   core.int droppedLinksCount;
 
   /// A collection of links.
@@ -443,17 +430,16 @@ class Links {
 
 /// An event describing a message sent/received between Spans.
 class MessageEvent {
-  /// The number of compressed bytes sent or received. If missing assumed to
-  /// be the same size as uncompressed.
+  /// The number of compressed bytes sent or received. If missing assumed to be
+  /// the same size as uncompressed.
   core.String compressedSizeBytes;
 
   /// An identifier for the MessageEvent's message that can be used to match
-  /// SENT and RECEIVED MessageEvents. It is recommended to be unique within
-  /// a Span.
+  /// SENT and RECEIVED MessageEvents. It is recommended to be unique within a
+  /// Span.
   core.String id;
 
-  /// Type of MessageEvent. Indicates whether the message was sent or
-  /// received.
+  /// Type of MessageEvent. Indicates whether the message was sent or received.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unknown event type.
   /// - "SENT" : Indicates a sent message.
@@ -501,12 +487,12 @@ class MessageEvent {
 
 /// Binary module.
 class Module {
-  /// A unique identifier for the module, usually a hash of its
-  /// contents (up to 128 bytes).
+  /// A unique identifier for the module, usually a hash of its contents (up to
+  /// 128 bytes).
   TruncatableString buildId;
 
-  /// For example: main binary, kernel modules, and dynamic libraries
-  /// such as libc.so, sharedlib.so (up to 256 bytes).
+  /// For example: main binary, kernel modules, and dynamic libraries such as
+  /// libc.so, sharedlib.so (up to 256 bytes).
   TruncatableString module;
 
   Module();
@@ -533,12 +519,11 @@ class Module {
   }
 }
 
-/// A span represents a single operation within a trace. Spans can be
-/// nested to form a trace tree. Often, a trace contains a root span
-/// that describes the end-to-end latency, and one or more subspans for
-/// its sub-operations. A trace can also contain multiple root spans,
-/// or none at all. Spans do not need to be contiguous&mdash;there may be
-/// gaps or overlaps between spans in a trace.
+/// A span represents a single operation within a trace. Spans can be nested to
+/// form a trace tree. Often, a trace contains a root span that describes the
+/// end-to-end latency, and one or more subspans for its sub-operations. A trace
+/// can also contain multiple root spans, or none at all. Spans do not need to
+/// be contiguous—there may be gaps or overlaps between spans in a trace.
 class Span {
   /// A set of attributes on the span. You can have up to 32 attributes per
   /// span.
@@ -548,82 +533,70 @@ class Span {
   /// was active. If set, allows implementation to detect missing child spans.
   core.int childSpanCount;
 
-  /// Required. A description of the span's operation (up to 128 bytes).
-  /// Stackdriver Trace displays the description in the
-  /// Google Cloud Platform Console.
-  /// For example, the display name can be a qualified method name or a file
-  /// name
+  /// Required. A description of the span's operation (up to 128 bytes). Trace
+  /// displays the description in the Google Cloud Platform Console. For
+  /// example, the display name can be a qualified method name or a file name
   /// and a line number where the operation is called. A best practice is to use
   /// the same display name within an application and at the same call point.
   /// This makes it easier to correlate spans in different traces.
   TruncatableString displayName;
 
   /// Required. The end time of the span. On the client side, this is the time
-  /// kept by
-  /// the local machine where the span execution ends. On the server side, this
-  /// is the time when the server application handler stops running.
+  /// kept by the local machine where the span execution ends. On the server
+  /// side, this is the time when the server application handler stops running.
   core.String endTime;
 
   /// Links associated with the span. You can have up to 128 links per Span.
   Links links;
 
-  /// The resource name of the span in the following format:
-  ///
+  /// Required. The resource name of the span in the following format:
   /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
-  /// identifier for a trace within a project;
-  /// it is a 32-character hexadecimal encoding of a 16-byte array.
-  ///
-  /// [SPAN_ID] is a unique identifier for a span within a trace; it
-  /// is a 16-character hexadecimal encoding of an 8-byte array.
+  /// identifier for a trace within a project; it is a 32-character hexadecimal
+  /// encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span
+  /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte
+  /// array. It should not be zero.
   core.String name;
 
-  /// The [SPAN_ID] of this span's parent span. If this is a root span,
-  /// then this field must be empty.
+  /// The [SPAN_ID] of this span's parent span. If this is a root span, then
+  /// this field must be empty.
   core.String parentSpanId;
 
-  /// Optional. Set this parameter to indicate whether this span is in
-  /// the same process as its parent. If you do not set this parameter,
-  /// Stackdriver Trace is unable to take advantage of this helpful
-  /// information.
+  /// Optional. Set this parameter to indicate whether this span is in the same
+  /// process as its parent. If you do not set this parameter, Trace is unable
+  /// to take advantage of this helpful information.
   core.bool sameProcessAsParentSpan;
 
   /// Required. The [SPAN_ID] portion of the span's resource name.
   core.String spanId;
 
-  /// Distinguishes between spans generated in a particular context. For
-  /// example,
-  /// two spans with the same name may be distinguished using `CLIENT` (caller)
-  /// and `SERVER` (callee) to identify an RPC call.
+  /// Optional. Distinguishes between spans generated in a particular context.
+  /// For example, two spans with the same name may be distinguished using
+  /// `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call.
   /// Possible string values are:
   /// - "SPAN_KIND_UNSPECIFIED" : Unspecified. Do NOT use as default.
   /// Implementations MAY assume SpanKind.INTERNAL to be default.
   /// - "INTERNAL" : Indicates that the span is used internally. Default value.
   /// - "SERVER" : Indicates that the span covers server-side handling of an RPC
-  /// or other
-  /// remote network request.
+  /// or other remote network request.
   /// - "CLIENT" : Indicates that the span covers the client-side wrapper around
-  /// an RPC or
-  /// other remote request.
+  /// an RPC or other remote request.
   /// - "PRODUCER" : Indicates that the span describes producer sending a
-  /// message to a broker.
-  /// Unlike client and  server, there is no direct critical path latency
-  /// relationship between producer and consumer spans (e.g. publishing a
-  /// message to a pubsub service).
-  /// - "CONSUMER" : Indicates that the span describes consumer recieving a
-  /// message from a
-  /// broker. Unlike client and  server, there is no direct critical path
-  /// latency relationship between producer and consumer spans (e.g. receiving
-  /// a message from a pubsub service subscription).
+  /// message to a broker. Unlike client and server, there is no direct critical
+  /// path latency relationship between producer and consumer spans (e.g.
+  /// publishing a message to a pubsub service).
+  /// - "CONSUMER" : Indicates that the span describes consumer receiving a
+  /// message from a broker. Unlike client and server, there is no direct
+  /// critical path latency relationship between producer and consumer spans
+  /// (e.g. receiving a message from a pubsub service subscription).
   core.String spanKind;
 
   /// Stack trace captured at the start of the span.
   StackTrace stackTrace;
 
   /// Required. The start time of the span. On the client side, this is the time
-  /// kept by
-  /// the local machine where the span execution starts. On the server side,
-  /// this
-  /// is the time when the server's application handler starts running.
+  /// kept by the local machine where the span execution starts. On the server
+  /// side, this is the time when the server's application handler starts
+  /// running.
   core.String startTime;
 
   /// Optional. The final status for this span.
@@ -731,16 +704,16 @@ class Span {
 
 /// Represents a single stack frame in a stack trace.
 class StackFrame {
-  /// The column number where the function call appears, if available.
-  /// This is important in JavaScript because of its anonymous functions.
+  /// The column number where the function call appears, if available. This is
+  /// important in JavaScript because of its anonymous functions.
   core.String columnNumber;
 
   /// The name of the source file where the function call appears (up to 256
   /// bytes).
   TruncatableString fileName;
 
-  /// The fully-qualified name that uniquely identifies the function or
-  /// method that is active in this frame (up to 1024 bytes).
+  /// The fully-qualified name that uniquely identifies the function or method
+  /// that is active in this frame (up to 1024 bytes).
   TruncatableString functionName;
 
   /// The line number in `file_name` where the function call appears.
@@ -750,8 +723,8 @@ class StackFrame {
   Module loadModule;
 
   /// An un-mangled function name, if `function_name` is
-  /// [mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can
-  /// be fully-qualified (up to 1024 bytes).
+  /// [mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can be
+  /// fully-qualified (up to 1024 bytes).
   TruncatableString originalFunctionName;
 
   /// The version of the deployed source code (up to 128 bytes).
@@ -814,9 +787,8 @@ class StackFrame {
 
 /// A collection of stack frames, which can be truncated.
 class StackFrames {
-  /// The number of stack frames that were dropped because there
-  /// were too many stack frames.
-  /// If this value is 0, then no stack frames were dropped.
+  /// The number of stack frames that were dropped because there were too many
+  /// stack frames. If this value is 0, then no stack frames were dropped.
   core.int droppedFramesCount;
 
   /// Stack frames in this call stack.
@@ -853,15 +825,12 @@ class StackTrace {
   /// Stack frames in this stack trace. A maximum of 128 frames are allowed.
   StackFrames stackFrames;
 
-  /// The hash ID is used to conserve network bandwidth for duplicate
-  /// stack traces within a single trace.
-  ///
-  /// Often multiple spans will have identical stack traces.
-  /// The first occurrence of a stack trace should contain both the
-  /// `stackFrame` content and a value in `stackTraceHashId`.
-  ///
-  /// Subsequent spans within the same request can refer
-  /// to that stack trace by only setting `stackTraceHashId`.
+  /// The hash ID is used to conserve network bandwidth for duplicate stack
+  /// traces within a single trace. Often multiple spans will have identical
+  /// stack traces. The first occurrence of a stack trace should contain both
+  /// the `stackFrame` content and a value in `stackTraceHashId`. Subsequent
+  /// spans within the same request can refer to that stack trace by only
+  /// setting `stackTraceHashId`.
   core.String stackTraceHashId;
 
   StackTrace();
@@ -891,15 +860,14 @@ class StackTrace {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -985,16 +953,16 @@ class TimeEvent {
   }
 }
 
-/// A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
-/// on the span, consisting of either user-supplied key:value pairs, or
-/// details of a message sent/received between Spans.
+/// A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on
+/// the span, consisting of either user-supplied key:value pairs, or details of
+/// a message sent/received between Spans.
 class TimeEvents {
-  /// The number of dropped annotations in all the included time events.
-  /// If the value is 0, then no annotations were dropped.
+  /// The number of dropped annotations in all the included time events. If the
+  /// value is 0, then no annotations were dropped.
   core.int droppedAnnotationsCount;
 
-  /// The number of dropped message events in all the included time events.
-  /// If the value is 0, then no message events were dropped.
+  /// The number of dropped message events in all the included time events. If
+  /// the value is 0, then no message events were dropped.
   core.int droppedMessageEventsCount;
 
   /// A collection of `TimeEvent`s.
@@ -1034,17 +1002,15 @@ class TimeEvents {
 
 /// Represents a string that might be shortened to a specified length.
 class TruncatableString {
-  /// The number of bytes removed from the original string. If this
-  /// value is 0, then the string was not shortened.
+  /// The number of bytes removed from the original string. If this value is 0,
+  /// then the string was not shortened.
   core.int truncatedByteCount;
 
-  /// The shortened string. For example, if the original string is 500
-  /// bytes long and the limit of the string is 128 bytes, then
-  /// `value` contains the first 128 bytes of the 500-byte string.
-  ///
-  /// Truncation always happens on a UTF8 character boundary. If there
-  /// are multi-byte characters in the string, then the length of the
-  /// shortened string might be less than the size limit.
+  /// The shortened string. For example, if the original string is 500 bytes
+  /// long and the limit of the string is 128 bytes, then `value` contains the
+  /// first 128 bytes of the 500-byte string. Truncation always happens on a
+  /// UTF8 character boundary. If there are multi-byte characters in the string,
+  /// then the length of the shortened string might be less than the size limit.
   core.String value;
 
   TruncatableString();

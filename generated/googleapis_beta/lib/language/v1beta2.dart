@@ -45,8 +45,8 @@ class DocumentsResourceApi {
   DocumentsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Finds named entities (currently proper names and common nouns) in the text
-  /// along with entity types, salience, mentions for each entity, and
-  /// other properties.
+  /// along with entity types, salience, mentions for each entity, and other
+  /// properties.
   ///
   /// [request] - The metadata request object.
   ///
@@ -323,20 +323,16 @@ class AnalyzeEntitiesRequest {
   /// The encoding type used by the API to calculate offsets.
   /// Possible string values are:
   /// - "NONE" : If `EncodingType` is not specified, encoding-dependent
-  /// information (such as
-  /// `begin_offset`) will be set at `-1`.
+  /// information (such as `begin_offset`) will be set at `-1`.
   /// - "UTF8" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-8 encoding of the input. C++ and Go are examples of languages
-  /// that use this encoding natively.
+  /// calculated based on the UTF-8 encoding of the input. C++ and Go are
+  /// examples of languages that use this encoding natively.
   /// - "UTF16" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-16 encoding of the input. Java and JavaScript are examples of
-  /// languages that use this encoding natively.
+  /// calculated based on the UTF-16 encoding of the input. Java and JavaScript
+  /// are examples of languages that use this encoding natively.
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-32 encoding of the input. Python is an example of a language
-  /// that uses this encoding natively.
+  /// calculated based on the UTF-32 encoding of the input. Python is an example
+  /// of a language that uses this encoding natively.
   core.String encodingType;
 
   AnalyzeEntitiesRequest();
@@ -407,20 +403,16 @@ class AnalyzeEntitySentimentRequest {
   /// The encoding type used by the API to calculate offsets.
   /// Possible string values are:
   /// - "NONE" : If `EncodingType` is not specified, encoding-dependent
-  /// information (such as
-  /// `begin_offset`) will be set at `-1`.
+  /// information (such as `begin_offset`) will be set at `-1`.
   /// - "UTF8" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-8 encoding of the input. C++ and Go are examples of languages
-  /// that use this encoding natively.
+  /// calculated based on the UTF-8 encoding of the input. C++ and Go are
+  /// examples of languages that use this encoding natively.
   /// - "UTF16" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-16 encoding of the input. Java and JavaScript are examples of
-  /// languages that use this encoding natively.
+  /// calculated based on the UTF-16 encoding of the input. Java and JavaScript
+  /// are examples of languages that use this encoding natively.
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-32 encoding of the input. Python is an example of a language
-  /// that uses this encoding natively.
+  /// calculated based on the UTF-32 encoding of the input. Python is an example
+  /// of a language that uses this encoding natively.
   core.String encodingType;
 
   AnalyzeEntitySentimentRequest();
@@ -492,20 +484,16 @@ class AnalyzeSentimentRequest {
   /// sentence sentiment.
   /// Possible string values are:
   /// - "NONE" : If `EncodingType` is not specified, encoding-dependent
-  /// information (such as
-  /// `begin_offset`) will be set at `-1`.
+  /// information (such as `begin_offset`) will be set at `-1`.
   /// - "UTF8" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-8 encoding of the input. C++ and Go are examples of languages
-  /// that use this encoding natively.
+  /// calculated based on the UTF-8 encoding of the input. C++ and Go are
+  /// examples of languages that use this encoding natively.
   /// - "UTF16" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-16 encoding of the input. Java and JavaScript are examples of
-  /// languages that use this encoding natively.
+  /// calculated based on the UTF-16 encoding of the input. Java and JavaScript
+  /// are examples of languages that use this encoding natively.
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-32 encoding of the input. Python is an example of a language
-  /// that uses this encoding natively.
+  /// calculated based on the UTF-32 encoding of the input. Python is an example
+  /// of a language that uses this encoding natively.
   core.String encodingType;
 
   AnalyzeSentimentRequest();
@@ -585,20 +573,16 @@ class AnalyzeSyntaxRequest {
   /// The encoding type used by the API to calculate offsets.
   /// Possible string values are:
   /// - "NONE" : If `EncodingType` is not specified, encoding-dependent
-  /// information (such as
-  /// `begin_offset`) will be set at `-1`.
+  /// information (such as `begin_offset`) will be set at `-1`.
   /// - "UTF8" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-8 encoding of the input. C++ and Go are examples of languages
-  /// that use this encoding natively.
+  /// calculated based on the UTF-8 encoding of the input. C++ and Go are
+  /// examples of languages that use this encoding natively.
   /// - "UTF16" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-16 encoding of the input. Java and JavaScript are examples of
-  /// languages that use this encoding natively.
+  /// calculated based on the UTF-16 encoding of the input. Java and JavaScript
+  /// are examples of languages that use this encoding natively.
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-32 encoding of the input. Python is an example of a language
-  /// that uses this encoding natively.
+  /// calculated based on the UTF-32 encoding of the input. Python is an example
+  /// of a language that uses this encoding natively.
   core.String encodingType;
 
   AnalyzeSyntaxRequest();
@@ -681,20 +665,16 @@ class AnnotateTextRequest {
   /// The encoding type used by the API to calculate offsets.
   /// Possible string values are:
   /// - "NONE" : If `EncodingType` is not specified, encoding-dependent
-  /// information (such as
-  /// `begin_offset`) will be set at `-1`.
+  /// information (such as `begin_offset`) will be set at `-1`.
   /// - "UTF8" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-8 encoding of the input. C++ and Go are examples of languages
-  /// that use this encoding natively.
+  /// calculated based on the UTF-8 encoding of the input. C++ and Go are
+  /// examples of languages that use this encoding natively.
   /// - "UTF16" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-16 encoding of the input. Java and JavaScript are examples of
-  /// languages that use this encoding natively.
+  /// calculated based on the UTF-16 encoding of the input. Java and JavaScript
+  /// are examples of languages that use this encoding natively.
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
-  /// calculated based
-  /// on the UTF-32 encoding of the input. Python is an example of a language
-  /// that uses this encoding natively.
+  /// calculated based on the UTF-32 encoding of the input. Python is an example
+  /// of a language that uses this encoding natively.
   core.String encodingType;
 
   /// Required. The enabled features.
@@ -754,8 +734,7 @@ class AnnotateTextResponse {
   core.List<Sentence> sentences;
 
   /// Tokens, along with their syntactic information, in the input document.
-  /// Populated if the user enables
-  /// AnnotateTextRequest.Features.extract_syntax.
+  /// Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
   core.List<Token> tokens;
 
   AnnotateTextResponse();
@@ -902,11 +881,11 @@ class ClassifyTextResponse {
 
 /// Represents dependency parse tree information for a token.
 class DependencyEdge {
-  /// Represents the head of this token in the dependency tree.
-  /// This is the index of the token which has an arc going to this token.
-  /// The index is the position of the token in the array of tokens returned
-  /// by the API method. If this token is a root token, then the
-  /// `head_token_index` is its own index.
+  /// Represents the head of this token in the dependency tree. This is the
+  /// index of the token which has an arc going to this token. The index is the
+  /// position of the token in the array of tokens returned by the API method.
+  /// If this token is a root token, then the `head_token_index` is its own
+  /// index.
   core.int headTokenIndex;
 
   /// The parse label for the token.
@@ -1022,7 +1001,6 @@ class DependencyEdge {
 }
 
 /// ################################################################ #
-///
 /// Represents the input to API methods.
 class Document {
   /// Indicates how detected boilerplate(e.g. advertisements, copyright
@@ -1032,24 +1010,22 @@ class Document {
   /// - "BOILERPLATE_HANDLING_UNSPECIFIED" : The boilerplate handling is not
   /// specified.
   /// - "SKIP_BOILERPLATE" : Do not analyze detected boilerplate. Reference web
-  /// URI is required for
-  /// detecting boilerplate.
+  /// URI is required for detecting boilerplate.
   /// - "KEEP_BOILERPLATE" : Treat boilerplate the same as content.
   core.String boilerplateHandling;
 
-  /// The content of the input in string format.
-  /// Cloud audit logging exempt since it is based on user data.
+  /// The content of the input in string format. Cloud audit logging exempt
+  /// since it is based on user data.
   core.String content;
 
-  /// The Google Cloud Storage URI where the file content is located.
-  /// This URI must be of the form: gs://bucket_name/object_name. For more
-  /// details, see https://cloud.google.com/storage/docs/reference-uris.
-  /// NOTE: Cloud Storage object versioning is not supported.
+  /// The Google Cloud Storage URI where the file content is located. This URI
+  /// must be of the form: gs://bucket_name/object_name. For more details, see
+  /// https://cloud.google.com/storage/docs/reference-uris. NOTE: Cloud Storage
+  /// object versioning is not supported.
   core.String gcsContentUri;
 
   /// The language of the document (if not specified, the language is
-  /// automatically detected). Both ISO and BCP-47 language codes are
-  /// accepted.<br>
+  /// automatically detected). Both ISO and BCP-47 language codes are accepted.
   /// [Language
   /// Support](https://cloud.google.com/natural-language/docs/languages) lists
   /// currently supported languages for each API method. If the language (either
@@ -1061,8 +1037,8 @@ class Document {
   /// fetching the content, but as a hint for analyzing the document.
   core.String referenceWebUri;
 
-  /// Required. If the type is not set or is `TYPE_UNSPECIFIED`,
-  /// returns an `INVALID_ARGUMENT` error.
+  /// Required. If the type is not set or is `TYPE_UNSPECIFIED`, returns an
+  /// `INVALID_ARGUMENT` error.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The content type is not specified.
   /// - "PLAIN_TEXT" : Plain text
@@ -1117,36 +1093,33 @@ class Document {
   }
 }
 
-/// Represents a phrase in the text that is a known entity, such as
-/// a person, an organization, or location. The API associates information, such
-/// as salience and mentions, with entities.
+/// Represents a phrase in the text that is a known entity, such as a person, an
+/// organization, or location. The API associates information, such as salience
+/// and mentions, with entities.
 class Entity {
   /// The mentions of this entity in the input document. The API currently
   /// supports proper noun mentions.
   core.List<EntityMention> mentions;
 
-  /// Metadata associated with the entity.
-  ///
-  /// For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`)
-  /// and Knowledge Graph MID (`mid`), if they are available. For the metadata
-  /// associated with other entity types, see the Type table below.
+  /// Metadata associated with the entity. For most entity types, the metadata
+  /// is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if
+  /// they are available. For the metadata associated with other entity types,
+  /// see the Type table below.
   core.Map<core.String, core.String> metadata;
 
   /// The representative name for the entity.
   core.String name;
 
-  /// The salience score associated with the entity in the [0, 1.0] range.
-  ///
-  /// The salience score for an entity provides information about the
-  /// importance or centrality of that entity to the entire document text.
-  /// Scores closer to 0 are less salient, while scores closer to 1.0 are highly
-  /// salient.
+  /// The salience score associated with the entity in the [0, 1.0] range. The
+  /// salience score for an entity provides information about the importance or
+  /// centrality of that entity to the entire document text. Scores closer to 0
+  /// are less salient, while scores closer to 1.0 are highly salient.
   core.double salience;
 
   /// For calls to AnalyzeEntitySentiment or if
-  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to
-  /// true, this field will contain the aggregate sentiment expressed for this
-  /// entity in the provided document.
+  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
+  /// field will contain the aggregate sentiment expressed for this entity in
+  /// the provided document.
   Sentiment sentiment;
 
   /// The entity type.
@@ -1159,45 +1132,25 @@ class Entity {
   /// - "WORK_OF_ART" : Artwork
   /// - "CONSUMER_GOOD" : Consumer product
   /// - "OTHER" : Other types of entities
-  /// - "PHONE_NUMBER" : Phone number
-  ///
-  /// The metadata lists the phone number, formatted according to local
-  /// convention, plus whichever additional elements appear in the text:
-  ///
-  /// * `number` - the actual number, broken down into sections as per local
-  /// convention
-  /// * `national_prefix` - country code, if detected
-  /// * `area_code` - region or area code, if detected
-  /// * `extension` - phone extension (to be dialed after connection), if
-  /// detected
-  /// - "ADDRESS" : Address
-  ///
-  /// The metadata identifies the street number and locality plus whichever
-  /// additional elements appear in the text:
-  ///
-  /// * `street_number` - street number
-  /// * `locality` - city or town
-  /// * `street_name` - street/route name, if detected
-  /// * `postal_code` - postal code, if detected
-  /// * `country` - country, if detected<
-  /// * `broad_region` - administrative area, such as the state, if detected
-  /// * `narrow_region` - smaller administrative area, such as county, if
-  /// detected
-  /// * `sublocality` - used in Asian addresses to demark a district within a
-  /// city, if detected
-  /// - "DATE" : Date
-  ///
-  /// The metadata identifies the components of the date:
-  ///
-  /// * `year` - four digit year, if detected
-  /// * `month` - two digit month number, if detected
-  /// * `day` - two digit day number, if detected
-  /// - "NUMBER" : Number
-  ///
-  /// The metadata is the number itself.
-  /// - "PRICE" : Price
-  ///
-  /// The metadata identifies the `value` and `currency`.
+  /// - "PHONE_NUMBER" : Phone number The metadata lists the phone number,
+  /// formatted according to local convention, plus whichever additional
+  /// elements appear in the text: * `number` - the actual number, broken down
+  /// into sections as per local convention * `national_prefix` - country code,
+  /// if detected * `area_code` - region or area code, if detected * `extension`
+  /// - phone extension (to be dialed after connection), if detected
+  /// - "ADDRESS" : Address The metadata identifies the street number and
+  /// locality plus whichever additional elements appear in the text: *
+  /// `street_number` - street number * `locality` - city or town *
+  /// `street_name` - street/route name, if detected * `postal_code` - postal
+  /// code, if detected * `country` - country, if detected< * `broad_region` -
+  /// administrative area, such as the state, if detected * `narrow_region` -
+  /// smaller administrative area, such as county, if detected * `sublocality` -
+  /// used in Asian addresses to demark a district within a city, if detected
+  /// - "DATE" : Date The metadata identifies the components of the date: *
+  /// `year` - four digit year, if detected * `month` - two digit month number,
+  /// if detected * `day` - two digit day number, if detected
+  /// - "NUMBER" : Number The metadata is the number itself.
+  /// - "PRICE" : Price The metadata identifies the `value` and `currency`.
   core.String type;
 
   Entity();
@@ -1255,9 +1208,9 @@ class Entity {
 /// mentions are supported.
 class EntityMention {
   /// For calls to AnalyzeEntitySentiment or if
-  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to
-  /// true, this field will contain the sentiment expressed for this mention of
-  /// the entity in the provided document.
+  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
+  /// field will contain the sentiment expressed for this mention of the entity
+  /// in the provided document.
   Sentiment sentiment;
 
   /// The mention text.
@@ -1300,13 +1253,12 @@ class EntityMention {
   }
 }
 
-/// All available features for sentiment, syntax, and semantic analysis.
-/// Setting each one to true will enable that specific analysis for the input.
-/// Next ID: 10
+/// All available features for sentiment, syntax, and semantic analysis. Setting
+/// each one to true will enable that specific analysis for the input. Next ID:
+/// 10
 class Features {
-  /// Classify the full document into categories. If this is true,
-  /// the API will use the default model which classifies into a
-  /// [predefined
+  /// Classify the full document into categories. If this is true, the API will
+  /// use the default model which classifies into a [predefined
   /// taxonomy](https://cloud.google.com/natural-language/docs/categories).
   core.bool classifyText;
 
@@ -1463,8 +1415,7 @@ class PartOfSpeech {
   /// The grammatical reciprocity.
   /// Possible string values are:
   /// - "RECIPROCITY_UNKNOWN" : Reciprocity is not applicable in the analyzed
-  /// language or is not
-  /// predicted.
+  /// language or is not predicted.
   /// - "RECIPROCAL" : Reciprocal
   /// - "NON_RECIPROCAL" : Non-reciprocal
   core.String reciprocity;
@@ -1595,8 +1546,8 @@ class PartOfSpeech {
 /// Represents a sentence in the input document.
 class Sentence {
   /// For calls to AnalyzeSentiment or if
-  /// AnnotateTextRequest.Features.extract_document_sentiment is set to
-  /// true, this field will contain the sentiment for the sentence.
+  /// AnnotateTextRequest.Features.extract_document_sentiment is set to true,
+  /// this field will contain the sentiment for the sentence.
   Sentiment sentiment;
 
   /// The sentence text.
@@ -1626,17 +1577,16 @@ class Sentence {
   }
 }
 
-/// Represents the feeling associated with the entire text or entities in
-/// the text.
-/// Next ID: 6
+/// Represents the feeling associated with the entire text or entities in the
+/// text. Next ID: 6
 class Sentiment {
-  /// A non-negative number in the [0, +inf) range, which represents
-  /// the absolute magnitude of sentiment regardless of score (positive or
+  /// A non-negative number in the [0, +inf) range, which represents the
+  /// absolute magnitude of sentiment regardless of score (positive or
   /// negative).
   core.double magnitude;
 
-  /// Sentiment score between -1.0 (negative sentiment) and 1.0
-  /// (positive sentiment).
+  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+  /// sentiment).
   core.double score;
 
   Sentiment();
@@ -1666,15 +1616,14 @@ class Sentiment {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,

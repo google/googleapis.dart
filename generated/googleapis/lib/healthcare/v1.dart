@@ -50,6 +50,112 @@ class ProjectsLocationsResourceApi {
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Location.fromJson(data));
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(core.String name,
+      {core.int pageSize,
+      core.String filter,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+  }
 }
 
 class ProjectsLocationsDatasetsResourceApi {
@@ -67,25 +173,21 @@ class ProjectsLocationsDatasetsResourceApi {
   ProjectsLocationsDatasetsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new health dataset. Results are returned through the
-  /// Operation interface which returns either an
-  /// `Operation.response` which contains a Dataset or
-  /// `Operation.error`. The metadata
-  /// field type is OperationMetadata.
-  /// A Google Cloud Platform project can contain up to 500 datasets across all
-  /// regions.
+  /// Creates a new health dataset. Results are returned through the Operation
+  /// interface which returns either an `Operation.response` which contains a
+  /// Dataset or `Operation.error`. The metadata field type is
+  /// OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - The name of the project where the server creates the dataset.
-  /// For
-  /// example, `projects/{project_id}/locations/{location_id}`.
+  /// For example, `projects/{project_id}/locations/{location_id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [datasetId] - The ID of the dataset that is being created.
-  /// The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+  /// [datasetId] - The ID of the dataset that is being created. The string must
+  /// match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -132,19 +234,13 @@ class ProjectsLocationsDatasetsResourceApi {
   }
 
   /// Creates a new dataset containing de-identified data from the source
-  /// dataset. The metadata field type
-  /// is OperationMetadata.
-  /// If the request is successful, the
-  /// response field type is
-  /// DeidentifySummary.
-  /// If errors occur, error is set.
-  /// The LRO result may still be successful if de-identification fails for some
-  /// DICOM instances. The new de-identified dataset will not contain these
-  /// failed resources. Failed resource totals are tracked in
-  /// Operation.metadata.
-  /// Error details are also logged to Stackdriver Logging. For more
-  /// information,
-  /// see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging).
+  /// dataset. The metadata field type is OperationMetadata. If the request is
+  /// successful, the response field type is DeidentifySummary. If errors occur,
+  /// error is set. The LRO result may still be successful if de-identification
+  /// fails for some DICOM instances. The new de-identified dataset will not
+  /// contain these failed resources. Failed resource totals are tracked in
+  /// Operation.metadata. Error details are also logged to Cloud Logging. For
+  /// more information, see [Viewing logs](/healthcare/docs/how-tos/logging).
   ///
   /// [request] - The metadata request object.
   ///
@@ -198,9 +294,8 @@ class ProjectsLocationsDatasetsResourceApi {
   }
 
   /// Deletes the specified health dataset and all data contained in the
-  /// dataset.
-  /// Deleting a dataset does not affect the sources from which the dataset was
-  /// imported (if any).
+  /// dataset. Deleting a dataset does not affect the sources from which the
+  /// dataset was imported (if any).
   ///
   /// Request parameters:
   ///
@@ -288,27 +383,23 @@ class ProjectsLocationsDatasetsResourceApi {
     return _response.then((data) => new Dataset.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -358,16 +449,15 @@ class ProjectsLocationsDatasetsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project whose datasets should be listed.
-  /// For example, `projects/{project_id}/locations/{location_id}`.
+  /// [parent] - The name of the project whose datasets should be listed. For
+  /// example, `projects/{project_id}/locations/{location_id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageSize] - The maximum number of items to return. Capped to 100 if not
+  /// specified. May not be larger than 1000.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of items to return. Capped to 100 if not
-  /// specified.
-  /// May not be larger than 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -380,7 +470,7 @@ class ProjectsLocationsDatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDatasetsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -391,11 +481,11 @@ class ProjectsLocationsDatasetsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -419,13 +509,12 @@ class ProjectsLocationsDatasetsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the dataset, of the form
+  /// [name] - Resource name of the dataset, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
   /// [updateMask] - The update mask applies to the resource. For the
-  /// `FieldMask` definition,
-  /// see
+  /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -472,18 +561,16 @@ class ProjectsLocationsDatasetsResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
-  ///
-  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
+  /// `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -529,21 +616,19 @@ class ProjectsLocationsDatasetsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -609,8 +694,8 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// [parent] - The name of the dataset this DICOM store belongs to.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
-  /// [dicomStoreId] - The ID of the DICOM store that is being created.
-  /// Any string value up to 256 characters in length.
+  /// [dicomStoreId] - The ID of the DICOM store that is being created. Any
+  /// string value up to 256 characters in length.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -658,18 +743,13 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   }
 
   /// De-identifies data from the source store and writes it to the destination
-  /// store. The metadata field type
-  /// is OperationMetadata.
-  /// If the request is successful, the
-  /// response field type is
-  /// DeidentifyDicomStoreSummary. If errors occur,
-  /// error is set.
-  /// The LRO result may still be successful if de-identification fails for some
-  /// DICOM instances. The output DICOM store will not contain
-  /// these failed resources. Failed resource totals are tracked in
-  /// Operation.metadata.
-  /// Error details are also logged to Stackdriver
-  /// (see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).
+  /// store. The metadata field type is OperationMetadata. If the request is
+  /// successful, the response field type is DeidentifyDicomStoreSummary. If
+  /// errors occur, error is set. The LRO result may still be successful if
+  /// de-identification fails for some DICOM instances. The output DICOM store
+  /// will not contain these failed resources. Failed resource totals are
+  /// tracked in Operation.metadata. Error details are also logged to Cloud
+  /// Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)).
   ///
   /// [request] - The metadata request object.
   ///
@@ -724,8 +804,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   }
 
   /// Deletes the specified DICOM store and removes all images that are
-  /// contained
-  /// within it.
+  /// contained within it.
   ///
   /// Request parameters:
   ///
@@ -770,11 +849,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   }
 
   /// Exports data to the specified destination by copying it from the DICOM
-  /// store.
-  /// Errors are also logged to Stackdriver Logging. For more information,
-  /// see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging).
-  /// The metadata field type is
-  /// OperationMetadata.
+  /// store. Errors are also logged to Cloud Logging. For more information, see
+  /// [Viewing logs](/healthcare/docs/how-tos/logging). The metadata field type
+  /// is OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -871,28 +948,24 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     return _response.then((data) => new DicomStore.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -939,9 +1012,8 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   }
 
   /// Imports data into the DICOM store by copying it from the specified source.
-  /// Errors are logged to Stackdriver Logging. For more information, see
-  /// [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging). The
-  /// metadata field type is
+  /// Errors are logged to Cloud Logging. For more information, see [Viewing
+  /// logs](/healthcare/docs/how-tos/logging). The metadata field type is
   /// OperationMetadata.
   ///
   /// [request] - The metadata request object.
@@ -949,8 +1021,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the DICOM store resource into which the data is
-  /// imported.
-  /// For example,
+  /// imported. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
@@ -1003,16 +1074,15 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// [parent] - Name of the dataset.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
+  /// [pageSize] - Limit on the number of DICOM stores to return in a single
+  /// response. If zero the default page size of 100 is used.
+  ///
   /// [filter] - Restricts stores returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
   /// Only filtering on labels is supported. For example, `labels.key=value`.
   ///
   /// [pageToken] - The next_page_token value returned from the previous List
   /// request, if any.
-  ///
-  /// [pageSize] - Limit on the number of DICOM stores to return in a single
-  /// response.
-  /// If zero the default page size of 100 is used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1025,9 +1095,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDicomStoresResponse> list(core.String parent,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1039,14 +1109,14 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1071,14 +1141,13 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the DICOM store, of the form
+  /// [name] - Resource name of the DICOM store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [updateMask] - The update mask applies to the resource. For the
-  /// `FieldMask` definition,
-  /// see
+  /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1124,8 +1193,15 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     return _response.then((data) => new DicomStore.fromJson(data));
   }
 
-  /// SearchForInstances returns a list of matching instances. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+  /// SearchForInstances returns a list of matching instances. See [Search
+  /// Transaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForInstances, see [Search
+  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call SearchForInstances, see [Searching for studies, series,
+  /// instances, and
+  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -1136,8 +1212,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the SearchForInstancesRequest DICOMweb
-  /// request. For example,
-  /// `instances`, `series/{series_uid}/instances`, or
+  /// request. For example, `instances`, `series/{series_uid}/instances`, or
   /// `studies/{study_uid}/instances`.
   /// Value must have pattern "^instances$".
   ///
@@ -1185,8 +1260,15 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// SearchForSeries returns a list of matching series. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+  /// SearchForSeries returns a list of matching series. See [Search
+  /// Transaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForSeries, see [Search
+  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call SearchForSeries, see [Searching for studies, series,
+  /// instances, and
+  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -1197,8 +1279,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the SearchForSeries DICOMweb request. For
-  /// example, `series` or
-  /// `studies/{study_uid}/series`.
+  /// example, `series` or `studies/{study_uid}/series`.
   /// Value must have pattern "^series$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1245,8 +1326,15 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// SearchForStudies returns a list of matching studies. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+  /// SearchForStudies returns a list of matching studies. See [Search
+  /// Transaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForStudies, see [Search
+  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call SearchForStudies, see [Searching for studies, series,
+  /// instances, and
+  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -1305,18 +1393,16 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
-  ///
-  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
+  /// `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
@@ -1364,9 +1450,13 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   }
 
   /// StoreInstances stores DICOM instances associated with study instance
-  /// unique
-  /// identifiers (SUID). See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.
+  /// unique identifiers (SUID). See [Store Transaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
+  /// For details on the implementation of StoreInstances, see [Store
+  /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call StoreInstances, see [Storing DICOM
+  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1379,8 +1469,7 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the StoreInstances DICOMweb request. For
-  /// example,
-  /// `studies/[{study_uid}]`. Note that the `study_uid` is optional.
+  /// example, `studies/[{study_uid}]`. Note that the `study_uid` is optional.
   /// Value must have pattern "^studies$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1430,21 +1519,19 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
@@ -1506,8 +1593,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
 
   /// DeleteStudy deletes all instances within the given study. Delete requests
   /// are equivalent to the GET requests specified in the Retrieve transaction.
-  /// The method returns an Operation which
-  /// will be marked successful when the deletion is complete.
+  /// The method returns an Operation which will be marked successful when the
+  /// deletion is complete. Warning: Inserting instances into a study while a
+  /// delete operation is running for that study could result in the new
+  /// instances not appearing in search results until the deletion operation
+  /// finishes. For samples that show how to call DeleteStudy, see [Deleting a
+  /// study, series, or
+  /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
   ///
   /// Request parameters:
   ///
@@ -1564,7 +1656,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
 
   /// RetrieveStudyMetadata returns instance associated with the given study
   /// presented as metadata with the bulk data removed. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+  /// [RetrieveTransaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// For details on the implementation of RetrieveStudyMetadata, see [Metadata
+  /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call RetrieveStudyMetadata, see [Retrieving
+  /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
   ///
   /// Request parameters:
   ///
@@ -1575,8 +1673,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the RetrieveStudyMetadata DICOMweb request.
-  /// For example,
-  /// `studies/{study_uid}/metadata`.
+  /// For example, `studies/{study_uid}/metadata`.
   /// Value must have pattern "^studies/[^/]+/metadata$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1624,7 +1721,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   }
 
   /// RetrieveStudy returns all instances within the given study. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+  /// [RetrieveTransaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// For details on the implementation of RetrieveStudy, see [DICOM
+  /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call RetrieveStudy, see [Retrieving DICOM
+  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
   ///
   /// Request parameters:
   ///
@@ -1635,8 +1738,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the RetrieveStudy DICOMweb request. For
-  /// example,
-  /// `studies/{study_uid}`.
+  /// example, `studies/{study_uid}`.
   /// Value must have pattern "^studies/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1683,8 +1785,15 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// SearchForInstances returns a list of matching instances. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+  /// SearchForInstances returns a list of matching instances. See [Search
+  /// Transaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForInstances, see [Search
+  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call SearchForInstances, see [Searching for studies, series,
+  /// instances, and
+  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -1695,8 +1804,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the SearchForInstancesRequest DICOMweb
-  /// request. For example,
-  /// `instances`, `series/{series_uid}/instances`, or
+  /// request. For example, `instances`, `series/{series_uid}/instances`, or
   /// `studies/{study_uid}/instances`.
   /// Value must have pattern "^studies/[^/]+/instances$".
   ///
@@ -1744,8 +1852,15 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// SearchForSeries returns a list of matching series. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+  /// SearchForSeries returns a list of matching series. See [Search
+  /// Transaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForSeries, see [Search
+  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call SearchForSeries, see [Searching for studies, series,
+  /// instances, and
+  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -1756,8 +1871,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the SearchForSeries DICOMweb request. For
-  /// example, `series` or
-  /// `studies/{study_uid}/series`.
+  /// example, `series` or `studies/{study_uid}/series`.
   /// Value must have pattern "^studies/[^/]+/series$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1805,9 +1919,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   }
 
   /// StoreInstances stores DICOM instances associated with study instance
-  /// unique
-  /// identifiers (SUID). See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.
+  /// unique identifiers (SUID). See [Store Transaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
+  /// For details on the implementation of StoreInstances, see [Store
+  /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call StoreInstances, see [Storing DICOM
+  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1820,8 +1938,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the StoreInstances DICOMweb request. For
-  /// example,
-  /// `studies/[{study_uid}]`. Note that the `study_uid` is optional.
+  /// example, `studies/[{study_uid}]`. Note that the `study_uid` is optional.
   /// Value must have pattern "^studies/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1886,9 +2003,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
 
   /// DeleteSeries deletes all instances within the given study and series.
   /// Delete requests are equivalent to the GET requests specified in the
-  /// Retrieve transaction.
-  /// The method returns an Operation which
-  /// will be marked successful when the deletion is complete.
+  /// Retrieve transaction. The method returns an Operation which will be marked
+  /// successful when the deletion is complete. Warning: Inserting instances
+  /// into a series while a delete operation is running for that series could
+  /// result in the new instances not appearing in search results until the
+  /// deletion operation finishes. For samples that show how to call
+  /// DeleteSeries, see [Deleting a study, series, or
+  /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
   ///
   /// Request parameters:
   ///
@@ -1946,9 +2067,14 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   }
 
   /// RetrieveSeriesMetadata returns instance associated with the given study
-  /// and
-  /// series, presented as metadata with the bulk data removed. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+  /// and series, presented as metadata with the bulk data removed. See
+  /// [RetrieveTransaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// For details on the implementation of RetrieveSeriesMetadata, see [Metadata
+  /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call RetrieveSeriesMetadata, see [Retrieving
+  /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
   ///
   /// Request parameters:
   ///
@@ -1959,8 +2085,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the RetrieveSeriesMetadata DICOMweb request.
-  /// For example,
-  /// `studies/{study_uid}/series/{series_uid}/metadata`.
+  /// For example, `studies/{study_uid}/series/{series_uid}/metadata`.
   /// Value must have pattern "^studies/[^/]+/series/[^/]+/metadata$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2008,8 +2133,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   }
 
   /// RetrieveSeries returns all instances within the given study and series.
-  /// See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+  /// See [RetrieveTransaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// For details on the implementation of RetrieveSeries, see [DICOM
+  /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call RetrieveSeries, see [Retrieving DICOM
+  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
   ///
   /// Request parameters:
   ///
@@ -2020,8 +2150,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the RetrieveSeries DICOMweb request. For
-  /// example,
-  /// `studies/{study_uid}/series/{series_uid}`.
+  /// example, `studies/{study_uid}/series/{series_uid}`.
   /// Value must have pattern "^studies/[^/]+/series/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2068,8 +2197,15 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// SearchForInstances returns a list of matching instances. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+  /// SearchForInstances returns a list of matching instances. See [Search
+  /// Transaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForInstances, see [Search
+  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call SearchForInstances, see [Searching for studies, series,
+  /// instances, and
+  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -2080,8 +2216,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
   ///
   /// [dicomWebPath] - The path of the SearchForInstancesRequest DICOMweb
-  /// request. For example,
-  /// `instances`, `series/{series_uid}/instances`, or
+  /// request. For example, `instances`, `series/{series_uid}/instances`, or
   /// `studies/{study_uid}/instances`.
   /// Value must have pattern "^studies/[^/]+/series/[^/]+/instances$".
   ///
@@ -2143,9 +2278,12 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
       : _requester = client;
 
   /// DeleteInstance deletes an instance associated with the given study,
-  /// series,
-  /// and SOP Instance UID. Delete requests are equivalent to the GET requests
-  /// specified in the Retrieve transaction.
+  /// series, and SOP Instance UID. Delete requests are equivalent to the GET
+  /// requests specified in the Retrieve transaction. Study and series search
+  /// results can take a few seconds to be updated after an instance is deleted
+  /// using DeleteInstance. For samples that show how to call DeleteInstance,
+  /// see [Deleting a study, series, or
+  /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
   ///
   /// Request parameters:
   ///
@@ -2203,8 +2341,15 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
   }
 
   /// RetrieveInstance returns instance associated with the given study, series,
-  /// and SOP Instance UID. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+  /// and SOP Instance UID. See [RetrieveTransaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// For details on the implementation of RetrieveInstance, see [DICOM
+  /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// and [DICOM
+  /// instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call RetrieveInstance, see [Retrieving an
+  /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
   ///
   /// Request parameters:
   ///
@@ -2265,8 +2410,14 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
 
   /// RetrieveInstanceMetadata returns instance associated with the given study,
   /// series, and SOP Instance UID presented as metadata with the bulk data
-  /// removed. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+  /// removed. See [RetrieveTransaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// For details on the implementation of RetrieveInstanceMetadata, see
+  /// [Metadata
+  /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call RetrieveInstanceMetadata, see [Retrieving
+  /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
   ///
   /// Request parameters:
   ///
@@ -2328,7 +2479,14 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
 
   /// RetrieveRenderedInstance returns instance associated with the given study,
   /// series, and SOP Instance UID in an acceptable Rendered Media Type. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+  /// [RetrieveTransaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// For details on the implementation of RetrieveRenderedInstance, see
+  /// [Rendered
+  /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call RetrieveRenderedInstance, see [Retrieving consumer image
+  /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
   ///
   /// Request parameters:
   ///
@@ -2397,8 +2555,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
       : _requester = client;
 
   /// RetrieveFrames returns instances associated with the given study, series,
-  /// SOP Instance UID and frame numbers. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+  /// SOP Instance UID and frame numbers. See [RetrieveTransaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.
+  /// For details on the implementation of RetrieveFrames, see [DICOM
+  /// frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in
+  /// the Cloud Healthcare API conformance statement. For samples that show how
+  /// to call RetrieveFrames, see [Retrieving DICOM
+  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
   ///
   /// Request parameters:
   ///
@@ -2460,8 +2623,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
 
   /// RetrieveRenderedFrames returns instances associated with the given study,
   /// series, SOP Instance UID and frame numbers in an acceptable Rendered Media
-  /// Type. See
-  /// http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+  /// Type. See [RetrieveTransaction]
+  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// For details on the implementation of RetrieveRenderedFrames, see [Rendered
+  /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call RetrieveRenderedFrames, see [Retrieving consumer image
+  /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
   ///
   /// Request parameters:
   ///
@@ -2540,8 +2708,8 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// [parent] - The name of the dataset this FHIR store belongs to.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
-  /// [fhirStoreId] - The ID of the FHIR store that is being created.
-  /// The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+  /// [fhirStoreId] - The ID of the FHIR store that is being created. The string
+  /// must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2589,14 +2757,10 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   }
 
   /// De-identifies data from the source store and writes it to the destination
-  /// store. The metadata field type
-  /// is OperationMetadata.
-  /// If the request is successful, the
-  /// response field type is
-  /// DeidentifyFhirStoreSummary. If errors occur,
-  /// error is set.
-  /// Error details are also logged to Stackdriver
-  /// (see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).
+  /// store. The metadata field type is OperationMetadata. If the request is
+  /// successful, the response field type is DeidentifyFhirStoreSummary. If
+  /// errors occur, error is set. Error details are also logged to Cloud Logging
+  /// (see [Viewing logs](/healthcare/docs/how-tos/logging)).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2694,29 +2858,21 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Export resources from the FHIR store to the specified destination.
-  ///
-  /// This method returns an Operation that can
-  /// be used to track the status of the export by calling
-  /// GetOperation.
-  ///
-  /// Immediate fatal errors appear in the
-  /// error field, errors are also logged
-  /// to Stackdriver (see [Viewing
-  /// logs](/healthcare/docs/how-tos/stackdriver-logging)).
-  /// Otherwise, when the operation finishes, a detailed response of type
-  /// ExportResourcesResponse is returned in the
-  /// response field.
-  /// The metadata field type for this
-  /// operation is OperationMetadata.
+  /// Export resources from the FHIR store to the specified destination. This
+  /// method returns an Operation that can be used to track the status of the
+  /// export by calling GetOperation. Immediate fatal errors appear in the error
+  /// field, errors are also logged to Cloud Logging (see [Viewing
+  /// logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation
+  /// finishes, a detailed response of type ExportResourcesResponse is returned
+  /// in the response field. The metadata field type for this operation is
+  /// OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the FHIR store to export resource from. The name
-  /// should be in
-  /// the format of
+  /// [name] - The name of the FHIR store to export resource from, in the format
+  /// of
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
@@ -2806,28 +2962,24 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     return _response.then((data) => new FhirStore.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2873,88 +3025,64 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Import resources to the FHIR store by loading data from the specified
+  /// Imports resources to the FHIR store by loading data from the specified
   /// sources. This method is optimized to load large quantities of data using
   /// import semantics that ignore some FHIR store configuration options and are
   /// not suitable for all use cases. It is primarily intended to load data into
   /// an empty FHIR store that is not being used by other clients. In cases
-  /// where this method is not appropriate, consider using ExecuteBundle to
-  /// load data.
-  ///
-  /// Every resource in the input must contain a client-supplied ID, and will be
-  /// stored using that ID regardless of the
-  /// enable_update_create setting on the FHIR
-  /// store.
-  ///
-  /// The import process does not enforce referential integrity, regardless of
-  /// the
-  /// disable_referential_integrity
-  /// setting on the FHIR store. This allows the import of resources with
-  /// arbitrary interdependencies without considering grouping or ordering, but
-  /// if the input data contains invalid references or if some resources fail to
-  /// be imported, the FHIR store might be left in a state that violates
-  /// referential integrity.
-  ///
-  /// The import process does not trigger PubSub notification or BigQuery
-  /// streaming update, regardless of how those are configured on the FHIR
-  /// store.
-  ///
-  /// If a resource with the specified ID already exists, the most recent
-  /// version of the resource is overwritten without creating a new historical
-  /// version, regardless of the
-  /// disable_resource_versioning
-  /// setting on the FHIR store. If transient failures occur during the import,
-  /// it is possible that successfully imported resources will be overwritten
-  /// more than once.
-  ///
-  /// The import operation is idempotent unless the input data contains multiple
-  /// valid resources with the same ID but different contents. In that case,
-  /// after the import completes, the store will contain exactly one resource
-  /// with that ID but there is no ordering guarantee on which version of the
-  /// contents it will have. The operation result counters do not count
-  /// duplicate IDs as an error and will count one success for each resource in
-  /// the input, which might result in a success count larger than the number
-  /// of resources in the FHIR store. This often occurs when importing data
-  /// organized in bundles produced by Patient-everything
-  /// where each bundle contains its own copy of a resource such as Practitioner
-  /// that might be referred to by many patients.
-  ///
-  /// If some resources fail to import, for example due to parsing errors,
-  /// successfully imported resources are not rolled back.
-  ///
-  /// The location and format of the input data is specified by the parameters
-  /// below. Note that if no format is specified, this method assumes the
-  /// `BUNDLE` format. When using the `BUNDLE` format this method ignores the
-  /// `Bundle.type` field, except that `history` bundles are rejected, and does
-  /// not apply any of the bundle processing semantics for batch or transaction
-  /// bundles. Unlike in ExecuteBundle, transaction bundles are not executed
-  /// as a single transaction and bundle-internal references are not rewritten.
-  /// The bundle is treated as a collection of resources to be written as
-  /// provided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As
-  /// an example, this allows the import of `searchset` bundles produced by a
-  /// FHIR search or
-  /// Patient-everything operation.
-  ///
-  /// This method returns an Operation that can
-  /// be used to track the status of the import by calling
-  /// GetOperation.
-  ///
-  /// Immediate fatal errors appear in the
-  /// error field, errors are also logged
-  /// to Stackdriver (see [Viewing
-  /// logs](/healthcare/docs/how-tos/stackdriver-logging)). Otherwise, when the
-  /// operation finishes, a detailed response of type ImportResourcesResponse
-  /// is returned in the response field.
-  /// The metadata field type for this
-  /// operation is OperationMetadata.
+  /// where this method is not appropriate, consider using ExecuteBundle to load
+  /// data. Every resource in the input must contain a client-supplied ID. Each
+  /// resource is stored using the supplied ID regardless of the
+  /// enable_update_create setting on the FHIR store. The import process does
+  /// not enforce referential integrity, regardless of the
+  /// disable_referential_integrity setting on the FHIR store. This allows the
+  /// import of resources with arbitrary interdependencies without considering
+  /// grouping or ordering, but if the input data contains invalid references or
+  /// if some resources fail to be imported, the FHIR store might be left in a
+  /// state that violates referential integrity. The import process does not
+  /// trigger Pub/Sub notification or BigQuery streaming update, regardless of
+  /// how those are configured on the FHIR store. If a resource with the
+  /// specified ID already exists, the most recent version of the resource is
+  /// overwritten without creating a new historical version, regardless of the
+  /// disable_resource_versioning setting on the FHIR store. If transient
+  /// failures occur during the import, it's possible that successfully imported
+  /// resources will be overwritten more than once. The import operation is
+  /// idempotent unless the input data contains multiple valid resources with
+  /// the same ID but different contents. In that case, after the import
+  /// completes, the store contains exactly one resource with that ID but there
+  /// is no ordering guarantee on which version of the contents it will have.
+  /// The operation result counters do not count duplicate IDs as an error and
+  /// count one success for each resource in the input, which might result in a
+  /// success count larger than the number of resources in the FHIR store. This
+  /// often occurs when importing data organized in bundles produced by
+  /// Patient-everything where each bundle contains its own copy of a resource
+  /// such as Practitioner that might be referred to by many patients. If some
+  /// resources fail to import, for example due to parsing errors, successfully
+  /// imported resources are not rolled back. The location and format of the
+  /// input data is specified by the parameters in ImportResourcesRequest. Note
+  /// that if no format is specified, this method assumes the `BUNDLE` format.
+  /// When using the `BUNDLE` format this method ignores the `Bundle.type`
+  /// field, except that `history` bundles are rejected, and does not apply any
+  /// of the bundle processing semantics for batch or transaction bundles.
+  /// Unlike in ExecuteBundle, transaction bundles are not executed as a single
+  /// transaction and bundle-internal references are not rewritten. The bundle
+  /// is treated as a collection of resources to be written as provided in
+  /// `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As an example,
+  /// this allows the import of `searchset` bundles produced by a FHIR search or
+  /// Patient-everything operation. This method returns an Operation that can be
+  /// used to track the status of the import by calling GetOperation. Immediate
+  /// fatal errors appear in the error field, errors are also logged to Cloud
+  /// Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise,
+  /// when the operation finishes, a detailed response of type
+  /// ImportResourcesResponse is returned in the response field. The metadata
+  /// field type for this operation is OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the FHIR store to import FHIR resources to. The name
-  /// should be
-  /// in the format of
+  /// [name] - The name of the FHIR store to import FHIR resources to, in the
+  /// format of
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
@@ -3010,13 +3138,12 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// [pageToken] - The next_page_token value returned from the previous List
   /// request, if any.
   ///
-  /// [pageSize] - Limit on the number of FHIR stores to return in a single
-  /// response.  If zero
-  /// the default page size of 100 is used.
-  ///
   /// [filter] - Restricts stores returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
   /// Only filtering on labels is supported, for example `labels.key=value`.
+  ///
+  /// [pageSize] - Limit on the number of FHIR stores to return in a single
+  /// response. If zero the default page size of 100 is used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3030,8 +3157,8 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFhirStoresResponse> list(core.String parent,
       {core.String pageToken,
-      core.int pageSize,
       core.String filter,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3046,11 +3173,11 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3081,8 +3208,7 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
   ///
   /// [updateMask] - The update mask applies to the resource. For the
-  /// `FieldMask` definition,
-  /// see
+  /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3128,136 +3254,17 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     return _response.then((data) => new FhirStore.fromJson(data));
   }
 
-  /// Searches for resources in the given FHIR store according to criteria
-  /// specified as query parameters.
-  ///
-  /// Implements the FHIR standard search interaction
-  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search),
-  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search))
-  /// using the search semantics described in the FHIR Search specification
-  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),
-  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)).
-  ///
-  /// Supports three methods of search defined by the specification:
-  ///
-  /// *  `GET [base]?[parameters]` to search across all resources.
-  /// *  `GET [base]/[type]?[parameters]` to search resources of a specified
-  /// type.
-  /// *  `POST [base]/[type]/_search?[parameters]` as an alternate form having
-  /// the same semantics as the `GET` method.
-  ///
-  /// The `GET` methods do not support compartment searches. The `POST` method
-  /// does not support `application/x-www-form-urlencoded` search parameters.
-  ///
-  /// On success, the response body will contain a JSON-encoded representation
-  /// of a `Bundle` resource of type `searchset`, containing the results of the
-  /// search.
-  /// Errors generated by the FHIR store will contain a JSON-encoded
-  /// `OperationOutcome` resource describing the reason for the error. If the
-  /// request cannot be mapped to a valid API method on a FHIR store, a generic
-  /// GCP error might be returned instead.
-  ///
-  /// The server's capability statement, retrieved through
-  /// capabilities, indicates what search parameters
-  /// are supported on each FHIR resource. A list of all search parameters
-  /// defined by the specification can be found in the FHIR Search Parameter
-  /// Registry
-  /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)).
-  /// FHIR search parameters for DSTU2 can be found on each resource's
-  /// definition
-  /// page.
-  ///
-  /// Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`,
-  /// `:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `:recurse`.
-  ///
-  /// Supported search result parameters: `_sort`, `_count`, `_include`,
-  /// `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`.
-  ///
-  /// The maximum number of search results returned defaults to 100, which can
-  /// be overridden by the `_count` parameter up to a maximum limit of 1000. If
-  /// there are additional results, the returned `Bundle` will contain
-  /// pagination links.
-  ///
-  /// Resources with a total size larger than 5MB or a field count larger than
-  /// 50,000 might not be fully searchable as the server might trim its
-  /// generated
-  /// search index in those cases.
-  ///
-  /// Note: FHIR resources are indexed asynchronously, so there might be a
-  /// slight
-  /// delay between the time a resource is created or changes and when the
-  /// change
-  /// is reflected in search results.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Name of the FHIR store to retrieve resources from.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
-  ///
-  /// [resourceType] - The FHIR resource type to search, such as Patient or
-  /// Observation. For a
-  /// complete list, see the FHIR Resource Index
-  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
-  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [HttpBody].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<HttpBody> search(core.String parent,
-      {core.String resourceType, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (resourceType != null) {
-      _queryParams["resourceType"] = [resourceType];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/fhir';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new HttpBody.fromJson(data));
-  }
-
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
-  ///
-  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
+  /// `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
   ///
@@ -3304,21 +3311,19 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
   ///
@@ -3374,21 +3379,28 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Retrieves all the resources directly referenced by a patient, as well as
-  /// all of the resources in the patient compartment.
-  ///
+  /// Retrieves a Patient resource and resources related to that patient.
   /// Implements the FHIR extended operation Patient-everything
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/patient-operations.html#everything),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/patient-operations.html#everything),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/patient-operations.html#everything)).
-  ///
   /// On success, the response body will contain a JSON-encoded representation
   /// of a `Bundle` resource of type `searchset`, containing the results of the
-  /// operation.
-  /// Errors generated by the FHIR store will contain a JSON-encoded
+  /// operation. Errors generated by the FHIR store will contain a JSON-encoded
   /// `OperationOutcome` resource describing the reason for the error. If the
   /// request cannot be mapped to a valid API method on a FHIR store, a generic
-  /// GCP error might be returned instead.
+  /// GCP error might be returned instead. The resources in scope for the
+  /// response are: * The patient resource itself. * All the resources directly
+  /// referenced by the patient resource. * Resources directly referencing the
+  /// patient resource that meet the inclusion criteria. The inclusion criteria
+  /// are based on the membership rules in the patient compartment definition
+  /// ([DSTU2](http://hl7.org/fhir/DSTU2/compartment-patient.html),
+  /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),
+  /// [R4](http://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which
+  /// details the eligible resource types and referencing search parameters. For
+  /// samples that show how to call `Patient-everything`, see [Getting all
+  /// patient compartment
+  /// resources](/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
   ///
   /// Request parameters:
   ///
@@ -3398,22 +3410,26 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Patient/[^/]+$".
   ///
   /// [end] - The response includes records prior to the end date. If no end
-  /// date is
-  /// provided, all records subsequent to the start date are in scope.
+  /// date is provided, all records subsequent to the start date are in scope.
   ///
-  /// [P_count] - Maximum number of resources in a page. Defaults to 100.
+  /// [P_pageToken] - Used to retrieve the next or previous page of results when
+  /// using pagination. Set `_page_token` to the value of _page_token set in
+  /// next or previous page links' url. Next and previous page are returned in
+  /// the response bundle's links field, where `link.relation` is "previous" or
+  /// "next". Omit `_page_token` if no previous request has been made.
+  ///
+  /// [P_type] - String of comma-delimited FHIR resource types. If provided,
+  /// only resources of the specified resource type(s) are returned.
+  ///
+  /// [P_since] - If provided, only resources updated after this time are
+  /// returned. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For
+  /// example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The
+  /// time must be specified to the second and include a time zone.
   ///
   /// [start] - The response includes records subsequent to the start date. If
-  /// no start
-  /// date is provided, all records prior to the end date are in scope.
+  /// no start date is provided, all records prior to the end date are in scope.
   ///
-  /// [P_pageToken] - Used to retrieve the next or previous page of results
-  /// when using pagination. Value should be set to the value of page_token set
-  /// in next or previous page links' urls. Next and previous page are returned
-  /// in the response bundle's links field, where `link.relation` is "previous"
-  /// or "next".
-  ///
-  /// Omit `page_token` if no previous request has been made.
+  /// [P_count] - Maximum number of resources in a page. Defaults to 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3427,9 +3443,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// this method will complete with the same error.
   async.Future<HttpBody> Patient_everything(core.String name,
       {core.String end,
-      core.int P_count,
-      core.String start,
       core.String P_pageToken,
+      core.String P_type,
+      core.String P_since,
+      core.String start,
+      core.int P_count,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3444,14 +3462,20 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     if (end != null) {
       _queryParams["end"] = [end];
     }
-    if (P_count != null) {
-      _queryParams["_count"] = ["${P_count}"];
+    if (P_pageToken != null) {
+      _queryParams["_page_token"] = [P_pageToken];
+    }
+    if (P_type != null) {
+      _queryParams["_type"] = [P_type];
+    }
+    if (P_since != null) {
+      _queryParams["_since"] = [P_since];
     }
     if (start != null) {
       _queryParams["start"] = [start];
     }
-    if (P_pageToken != null) {
-      _queryParams["_page_token"] = [P_pageToken];
+    if (P_count != null) {
+      _queryParams["_count"] = ["${P_count}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3472,9 +3496,10 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
 
   /// Deletes all the historical versions of a resource (excluding the current
   /// version) from the FHIR store. To remove all versions of a resource, first
-  /// delete the current version and then call this method.
-  ///
-  /// This is not a FHIR standard operation.
+  /// delete the current version and then call this method. This is not a FHIR
+  /// standard operation. For samples that show how to call `Resource-purge`,
+  /// see [Deleting historical versions of a FHIR
+  /// resource](/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -3524,17 +3549,14 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// or the [conformance
   /// statement](http://hl7.org/implement/standards/fhir/DSTU2/conformance.html)
   /// in the DSTU2 case for the store, which contains a description of
-  /// functionality supported by the server.
-  ///
-  /// Implements the FHIR standard capabilities interaction
+  /// functionality supported by the server. Implements the FHIR standard
+  /// capabilities interaction
   /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#capabilities),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#capabilities)),
   /// or the [conformance
   /// interaction](http://hl7.org/implement/standards/fhir/DSTU2/http.html#conformance)
-  /// in the DSTU2 case.
-  ///
-  /// On success, the response body will contain a JSON-encoded representation
-  /// of a `CapabilityStatement` resource.
+  /// in the DSTU2 case. On success, the response body will contain a
+  /// JSON-encoded representation of a `CapabilityStatement` resource.
   ///
   /// Request parameters:
   ///
@@ -3580,25 +3602,21 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// Creates a FHIR resource.
-  ///
-  /// Implements the FHIR standard create interaction
+  /// Creates a FHIR resource. Implements the FHIR standard create interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)),
-  /// which creates a new resource with a server-assigned resource ID.
-  ///
-  /// The request body must contain a JSON-encoded FHIR resource, and the
-  /// request
-  /// headers must contain `Content-Type: application/fhir+json`.
-  ///
-  /// On success, the response body will contain a JSON-encoded representation
-  /// of the resource as it was created on the server, including the
-  /// server-assigned resource ID and version ID.
-  /// Errors generated by the FHIR store will contain a JSON-encoded
-  /// `OperationOutcome` resource describing the reason for the error. If the
-  /// request cannot be mapped to a valid API method on a FHIR store, a generic
-  /// GCP error might be returned instead.
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)), which
+  /// creates a new resource with a server-assigned resource ID. The request
+  /// body must contain a JSON-encoded FHIR resource, and the request headers
+  /// must contain `Content-Type: application/fhir+json`. On success, the
+  /// response body will contain a JSON-encoded representation of the resource
+  /// as it was created on the server, including the server-assigned resource ID
+  /// and version ID. Errors generated by the FHIR store will contain a
+  /// JSON-encoded `OperationOutcome` resource describing the reason for the
+  /// error. If the request cannot be mapped to a valid API method on a FHIR
+  /// store, a generic GCP error might be returned instead. For samples that
+  /// show how to call `create`, see [Creating a FHIR
+  /// resource](/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3609,12 +3627,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
   ///
   /// [type] - The FHIR resource type to create, such as Patient or Observation.
-  /// For a
-  /// complete list, see the FHIR Resource Index
+  /// For a complete list, see the FHIR Resource Index
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
-  /// Must match the resource type in the provided content.
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must
+  /// match the resource type in the provided content.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3664,19 +3681,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// Deletes a FHIR resource.
-  ///
-  /// Implements the FHIR standard delete interaction
+  /// Deletes a FHIR resource. Implements the FHIR standard delete interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#delete),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#delete),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#delete)).
-  ///
-  /// Note: Unless resource versioning is disabled by setting the
-  /// disable_resource_versioning flag
-  /// on the FHIR store, the deleted resources will be moved to a history
-  /// repository that can still be retrieved through vread
-  /// and related methods, unless they are removed by the
-  /// purge method.
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#delete)). Note:
+  /// Unless resource versioning is disabled by setting the
+  /// disable_resource_versioning flag on the FHIR store, the deleted resources
+  /// will be moved to a history repository that can still be retrieved through
+  /// vread and related methods, unless they are removed by the purge method.
+  /// For samples that show how to call `delete`, see [Deleting a FHIR
+  /// resource](/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -3720,35 +3734,33 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// Executes all the requests in the given Bundle.
-  ///
-  /// Implements the FHIR standard batch/transaction interaction
+  /// Executes all the requests in the given Bundle. Implements the FHIR
+  /// standard batch/transaction interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#transaction),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#transaction),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#transaction)).
-  ///
   /// Supports all interactions within a bundle, except search. This method
   /// accepts Bundles of type `batch` and `transaction`, processing them
   /// according to the batch processing rules
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.1),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.1),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#brules))
-  /// and transaction processing rules
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#brules)) and
+  /// transaction processing rules
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.2),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.2),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#trules)).
-  ///
-  /// The request body must contain a JSON-encoded FHIR `Bundle` resource, and
-  /// the request headers must contain `Content-Type: application/fhir+json`.
-  ///
-  /// For a batch bundle or a successful transaction the response body will
-  /// contain a JSON-encoded representation of a `Bundle` resource of type
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#trules)). The
+  /// request body must contain a JSON-encoded FHIR `Bundle` resource, and the
+  /// request headers must contain `Content-Type: application/fhir+json`. For a
+  /// batch bundle or a successful transaction the response body will contain a
+  /// JSON-encoded representation of a `Bundle` resource of type
   /// `batch-response` or `transaction-response` containing one entry for each
   /// entry in the request, with the outcome of processing the entry. In the
   /// case of an error for a transaction bundle, the response body will contain
   /// a JSON-encoded `OperationOutcome` resource describing the reason for the
   /// error. If the request cannot be mapped to a valid API method on a FHIR
-  /// store, a generic GCP error might be returned instead.
+  /// store, a generic GCP error might be returned instead. For samples that
+  /// show how to call `executeBundle`, see [Managing FHIR resources using FHIR
+  /// bundles](/healthcare/docs/how-tos/fhir-bundles).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3799,20 +3811,19 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   }
 
   /// Lists all the versions of a resource (including the current version and
-  /// deleted versions) from the FHIR store.
-  ///
-  /// Implements the per-resource form of the FHIR standard history interaction
+  /// deleted versions) from the FHIR store. Implements the per-resource form of
+  /// the FHIR standard history interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#history),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#history),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#history)).
-  ///
-  /// On success, the response body will contain a JSON-encoded representation
-  /// of a `Bundle` resource of type `history`, containing the version history
-  /// sorted from most recent to oldest versions.
-  /// Errors generated by the FHIR store will contain a JSON-encoded
-  /// `OperationOutcome` resource describing the reason for the error. If the
-  /// request cannot be mapped to a valid API method on a FHIR store, a generic
-  /// GCP error might be returned instead.
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#history)). On
+  /// success, the response body will contain a JSON-encoded representation of a
+  /// `Bundle` resource of type `history`, containing the version history sorted
+  /// from most recent to oldest versions. Errors generated by the FHIR store
+  /// will contain a JSON-encoded `OperationOutcome` resource describing the
+  /// reason for the error. If the request cannot be mapped to a valid API
+  /// method on a FHIR store, a generic GCP error might be returned instead. For
+  /// samples that show how to call `history`, see [Listing FHIR resource
+  /// versions](/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).
   ///
   /// Request parameters:
   ///
@@ -3820,37 +3831,28 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$".
   ///
+  /// [P_pageToken] - Used to retrieve the first, previous, next, or last page
+  /// of resource versions when using pagination. Value should be set to the
+  /// value of `_page_token` set in next or previous page links' URLs. Next and
+  /// previous page are returned in the response bundle's links field, where
+  /// `link.relation` is "previous" or "next". Omit `_page_token` if no previous
+  /// request has been made.
+  ///
+  /// [P_since] - Only include resource versions that were created at or after
+  /// the given instant in time. The instant in time uses the format
+  /// YYYY-MM-DDThh:mm:ss.sss+zz:zz (for example 2015-02-07T13:28:17.239+02:00
+  /// or 2017-01-01T00:00:00Z). The time must be specified to the second and
+  /// include a time zone.
+  ///
   /// [P_count] - The maximum number of search results on a page. Defaults to
   /// 1000.
   ///
-  /// [P_since] - Only include resource versions that were created at or after
-  /// the given
-  /// instant in time. The instant in time uses the format
-  /// YYYY-MM-DDThh:mm:ss.sss+zz:zz (for example 2015-02-07T13:28:17.239+02:00
-  /// or
-  /// 2017-01-01T00:00:00Z). The time must be specified to the second and
-  /// include a time zone.
-  ///
   /// [P_at] - Only include resource versions that were current at some point
-  /// during the
-  /// time period specified in the date time value. The date parameter format is
-  /// yyyy-mm-ddThh:mm:ss[Z|(+|-)hh:mm]
-  ///
-  /// Clients may specify any of the following:
-  ///
-  /// *  An entire year: `_at=2019`
-  /// *  An entire month: `_at=2019-01`
-  /// *  A specific day: `_at=2019-01-20`
-  /// *  A specific second: `_at=2018-12-31T23:59:58Z`
-  ///
-  /// [P_pageToken] - Used to retrieve the first, previous, next, or last page
-  /// of resource
-  /// versions when using pagination. Value should be set to the value of
-  /// `_page_token` set in next or previous page links' URLs. Next and previous
-  /// page are returned in the response bundle's links field, where
-  /// `link.relation` is "previous" or "next".
-  ///
-  /// Omit `_page_token` if no previous request has been made.
+  /// during the time period specified in the date time value. The date
+  /// parameter format is yyyy-mm-ddThh:mm:ss[Z|(+|-)hh:mm] Clients may specify
+  /// any of the following: * An entire year: `_at=2019` * An entire month:
+  /// `_at=2019-01` * A specific day: `_at=2019-01-20` * A specific second:
+  /// `_at=2018-12-31T23:59:58Z`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3863,10 +3865,10 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> history(core.String name,
-      {core.int P_count,
+      {core.String P_pageToken,
       core.String P_since,
+      core.int P_count,
       core.String P_at,
-      core.String P_pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3878,17 +3880,17 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (P_count != null) {
-      _queryParams["_count"] = ["${P_count}"];
+    if (P_pageToken != null) {
+      _queryParams["_page_token"] = [P_pageToken];
     }
     if (P_since != null) {
       _queryParams["_since"] = [P_since];
     }
+    if (P_count != null) {
+      _queryParams["_count"] = ["${P_count}"];
+    }
     if (P_at != null) {
       _queryParams["_at"] = [P_at];
-    }
-    if (P_pageToken != null) {
-      _queryParams["_page_token"] = [P_pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3906,25 +3908,21 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   }
 
   /// Updates part of an existing resource by applying the operations specified
-  /// in a [JSON Patch](http://jsonpatch.com/) document.
-  ///
-  /// Implements the FHIR standard patch interaction
+  /// in a [JSON Patch](http://jsonpatch.com/) document. Implements the FHIR
+  /// standard patch interaction
   /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#patch),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#patch)).
-  ///
-  /// DSTU2 doesn't define a patch method, but the server supports it in the
-  /// same
-  /// way it supports STU3.
-  ///
-  /// The request body must contain a JSON Patch document, and the request
-  /// headers must contain `Content-Type: application/json-patch+json`.
-  ///
-  /// On success, the response body will contain a JSON-encoded representation
-  /// of the updated resource, including the server-assigned version ID.
-  /// Errors generated by the FHIR store will contain a JSON-encoded
-  /// `OperationOutcome` resource describing the reason for the error. If the
-  /// request cannot be mapped to a valid API method on a FHIR store, a generic
-  /// GCP error might be returned instead.
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#patch)). DSTU2
+  /// doesn't define a patch method, but the server supports it in the same way
+  /// it supports STU3. The request body must contain a JSON Patch document, and
+  /// the request headers must contain `Content-Type:
+  /// application/json-patch+json`. On success, the response body will contain a
+  /// JSON-encoded representation of the updated resource, including the
+  /// server-assigned version ID. Errors generated by the FHIR store will
+  /// contain a JSON-encoded `OperationOutcome` resource describing the reason
+  /// for the error. If the request cannot be mapped to a valid API method on a
+  /// FHIR store, a generic GCP error might be returned instead. For samples
+  /// that show how to call `patch`, see [Patching a FHIR
+  /// resource](/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3974,27 +3972,24 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// Gets the contents of a FHIR resource.
-  ///
-  /// Implements the FHIR standard read interaction
+  /// Gets the contents of a FHIR resource. Implements the FHIR standard read
+  /// interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#read),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#read),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#read)).
-  ///
-  /// Also supports the FHIR standard conditional read interaction
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#read)). Also
+  /// supports the FHIR standard conditional read interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#cread),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#cread),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#cread))
   /// specified by supplying an `If-Modified-Since` header with a date/time
-  /// value
-  /// or an `If-None-Match` header with an ETag value.
-  ///
-  /// On success, the response body will contain a JSON-encoded representation
-  /// of the resource.
+  /// value or an `If-None-Match` header with an ETag value. On success, the
+  /// response body will contain a JSON-encoded representation of the resource.
   /// Errors generated by the FHIR store will contain a JSON-encoded
   /// `OperationOutcome` resource describing the reason for the error. If the
   /// request cannot be mapped to a valid API method on a FHIR store, a generic
-  /// GCP error might be returned instead.
+  /// GCP error might be returned instead. For samples that show how to call
+  /// `read`, see [Getting a FHIR
+  /// resource](/healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -4039,68 +4034,49 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   }
 
   /// Searches for resources in the given FHIR store according to criteria
-  /// specified as query parameters.
-  ///
-  /// Implements the FHIR standard search interaction
+  /// specified as query parameters. Implements the FHIR standard search
+  /// interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search))
-  /// using the search semantics described in the FHIR Search specification
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search)) using
+  /// the search semantics described in the FHIR Search specification
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)).
-  ///
-  /// Supports three methods of search defined by the specification:
-  ///
-  /// *  `GET [base]?[parameters]` to search across all resources.
-  /// *  `GET [base]/[type]?[parameters]` to search resources of a specified
-  /// type.
-  /// *  `POST [base]/[type]/_search?[parameters]` as an alternate form having
-  /// the same semantics as the `GET` method.
-  ///
-  /// The `GET` methods do not support compartment searches. The `POST` method
-  /// does not support `application/x-www-form-urlencoded` search parameters.
-  ///
-  /// On success, the response body will contain a JSON-encoded representation
-  /// of a `Bundle` resource of type `searchset`, containing the results of the
-  /// search.
-  /// Errors generated by the FHIR store will contain a JSON-encoded
-  /// `OperationOutcome` resource describing the reason for the error. If the
-  /// request cannot be mapped to a valid API method on a FHIR store, a generic
-  /// GCP error might be returned instead.
-  ///
-  /// The server's capability statement, retrieved through
-  /// capabilities, indicates what search parameters
-  /// are supported on each FHIR resource. A list of all search parameters
-  /// defined by the specification can be found in the FHIR Search Parameter
-  /// Registry
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports
+  /// three methods of search defined by the specification: * `GET
+  /// [base]?[parameters]` to search across all resources. * `GET
+  /// [base]/[type]?[parameters]` to search resources of a specified type. *
+  /// `POST [base]/[type]/_search?[parameters]` as an alternate form having the
+  /// same semantics as the `GET` method. The `GET` methods do not support
+  /// compartment searches. The `POST` method does not support
+  /// `application/x-www-form-urlencoded` search parameters. On success, the
+  /// response body will contain a JSON-encoded representation of a `Bundle`
+  /// resource of type `searchset`, containing the results of the search. Errors
+  /// generated by the FHIR store will contain a JSON-encoded `OperationOutcome`
+  /// resource describing the reason for the error. If the request cannot be
+  /// mapped to a valid API method on a FHIR store, a generic GCP error might be
+  /// returned instead. The server's capability statement, retrieved through
+  /// capabilities, indicates what search parameters are supported on each FHIR
+  /// resource. A list of all search parameters defined by the specification can
+  /// be found in the FHIR Search Parameter Registry
   /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)).
   /// FHIR search parameters for DSTU2 can be found on each resource's
-  /// definition
-  /// page.
-  ///
-  /// Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`,
-  /// `:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `:recurse`.
-  ///
-  /// Supported search result parameters: `_sort`, `_count`, `_include`,
-  /// `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`.
-  ///
-  /// The maximum number of search results returned defaults to 100, which can
-  /// be overridden by the `_count` parameter up to a maximum limit of 1000. If
-  /// there are additional results, the returned `Bundle` will contain
-  /// pagination links.
-  ///
-  /// Resources with a total size larger than 5MB or a field count larger than
-  /// 50,000 might not be fully searchable as the server might trim its
-  /// generated
-  /// search index in those cases.
-  ///
-  /// Note: FHIR resources are indexed asynchronously, so there might be a
-  /// slight
-  /// delay between the time a resource is created or changes and when the
-  /// change
-  /// is reflected in search results.
+  /// definition page. Supported search modifiers: `:missing`, `:exact`,
+  /// `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
+  /// `:not`, and `:recurse`. Supported search result parameters: `_sort`,
+  /// `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and
+  /// `_elements`. The maximum number of search results returned defaults to
+  /// 100, which can be overridden by the `_count` parameter up to a maximum
+  /// limit of 1000. If there are additional results, the returned `Bundle` will
+  /// contain pagination links. Resources with a total size larger than 5MB or a
+  /// field count larger than 50,000 might not be fully searchable as the server
+  /// might trim its generated search index in those cases. Note: FHIR resources
+  /// are indexed asynchronously, so there might be a slight delay between the
+  /// time a resource is created or changes and when the change is reflected in
+  /// search results. For samples and detailed information, see [Searching for
+  /// FHIR resources](/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
+  /// search features](/healthcare/docs/how-tos/fhir-advanced-search).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4153,30 +4129,24 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     return _response.then((data) => new HttpBody.fromJson(data));
   }
 
-  /// Updates the entire contents of a resource.
-  ///
-  /// Implements the FHIR standard update interaction
+  /// Updates the entire contents of a resource. Implements the FHIR standard
+  /// update interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#update),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#update),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#update)).
-  ///
-  /// If the specified resource does
-  /// not exist and the FHIR store has
-  /// enable_update_create set, creates the
-  /// resource with the client-specified ID.
-  ///
-  /// The request body must contain a JSON-encoded FHIR resource, and the
-  /// request
-  /// headers must contain `Content-Type: application/fhir+json`. The resource
-  /// must contain an `id` element having an identical value to the ID in the
-  /// REST path of the request.
-  ///
-  /// On success, the response body will contain a JSON-encoded representation
-  /// of the updated resource, including the server-assigned version ID.
-  /// Errors generated by the FHIR store will contain a JSON-encoded
-  /// `OperationOutcome` resource describing the reason for the error. If the
-  /// request cannot be mapped to a valid API method on a FHIR store, a generic
-  /// GCP error might be returned instead.
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#update)). If the
+  /// specified resource does not exist and the FHIR store has
+  /// enable_update_create set, creates the resource with the client-specified
+  /// ID. The request body must contain a JSON-encoded FHIR resource, and the
+  /// request headers must contain `Content-Type: application/fhir+json`. The
+  /// resource must contain an `id` element having an identical value to the ID
+  /// in the REST path of the request. On success, the response body will
+  /// contain a JSON-encoded representation of the updated resource, including
+  /// the server-assigned version ID. Errors generated by the FHIR store will
+  /// contain a JSON-encoded `OperationOutcome` resource describing the reason
+  /// for the error. If the request cannot be mapped to a valid API method on a
+  /// FHIR store, a generic GCP error might be returned instead. For samples
+  /// that show how to call `update`, see [Updating a FHIR
+  /// resource](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4227,19 +4197,17 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   }
 
   /// Gets the contents of a version (current or historical) of a FHIR resource
-  /// by version ID.
-  ///
-  /// Implements the FHIR standard vread interaction
+  /// by version ID. Implements the FHIR standard vread interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#vread),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#vread),
-  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#vread)).
-  ///
-  /// On success, the response body will contain a JSON-encoded representation
-  /// of the resource.
-  /// Errors generated by the FHIR store will contain a JSON-encoded
-  /// `OperationOutcome` resource describing the reason for the error. If the
-  /// request cannot be mapped to a valid API method on a FHIR store, a generic
-  /// GCP error might be returned instead.
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#vread)). On
+  /// success, the response body will contain a JSON-encoded representation of
+  /// the resource. Errors generated by the FHIR store will contain a
+  /// JSON-encoded `OperationOutcome` resource describing the reason for the
+  /// error. If the request cannot be mapped to a valid API method on a FHIR
+  /// store, a generic GCP error might be returned instead. For samples that
+  /// show how to call `vread`, see [Retrieving a FHIR resource
+  /// version](/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version).
   ///
   /// Request parameters:
   ///
@@ -4302,8 +4270,8 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   /// [parent] - The name of the dataset this HL7v2 store belongs to.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
-  /// [hl7V2StoreId] - The ID of the HL7v2 store that is being created.
-  /// The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+  /// [hl7V2StoreId] - The ID of the HL7v2 store that is being created. The
+  /// string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4350,8 +4318,8 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
     return _response.then((data) => new Hl7V2Store.fromJson(data));
   }
 
-  /// Deletes the specified HL7v2 store and removes all messages that are
-  /// contained within it.
+  /// Deletes the specified HL7v2 store and removes all messages that it
+  /// contains.
   ///
   /// Request parameters:
   ///
@@ -4439,28 +4407,24 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
     return _response.then((data) => new Hl7V2Store.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected.
-  ///
-  /// Requests for policies with any conditional bindings must specify version
-  /// 3.
-  /// Policies without any conditional bindings may specify any valid value or
-  /// leave the field unset.
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4513,12 +4477,11 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   /// [parent] - Name of the dataset.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
+  /// [pageSize] - Limit on the number of HL7v2 stores to return in a single
+  /// response. If zero the default page size of 100 is used.
+  ///
   /// [pageToken] - The next_page_token value returned from the previous List
   /// request, if any.
-  ///
-  /// [pageSize] - Limit on the number of HL7v2 stores to return in a single
-  /// response.
-  /// If zero the default page size of 100 is used.
   ///
   /// [filter] - Restricts stores returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -4535,8 +4498,8 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHl7V2StoresResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -4549,11 +4512,11 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -4581,14 +4544,13 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Resource name of the HL7v2 store, of the form
+  /// [name] - Resource name of the HL7v2 store, of the form
   /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
   ///
   /// [updateMask] - The update mask applies to the resource. For the
-  /// `FieldMask` definition,
-  /// see
+  /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4635,18 +4597,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
-  ///
-  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-  /// PERMISSION_DENIED
+  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
+  /// `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified.
-  /// See the operation documentation for the appropriate value for this field.
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
   ///
@@ -4693,21 +4653,19 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested.
-  /// See the operation documentation for the appropriate value for this field.
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
   ///
@@ -4763,13 +4721,12 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a message and sends a notification to the Cloud Pub/Sub topic. If
-  /// configured, the MLLP adapter listens to messages created by this method
-  /// and
-  /// sends those back to the hospital. A successful response indicates the
-  /// message has been persisted to storage and a Cloud Pub/Sub notification has
-  /// been sent. Sending to the hospital by the MLLP adapter happens
-  /// asynchronously.
+  /// Parses and stores an HL7v2 message. This method triggers an asynchronous
+  /// notification to any Cloud Pub/Sub topic configured in
+  /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the
+  /// filtering matches the message. If an MLLP adapter is configured to listen
+  /// to a Cloud Pub/Sub topic, the adapter transmits the message when a
+  /// notification is received.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4873,14 +4830,15 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$".
   ///
   /// [view] - Specifies which parts of the Message resource to return in the
-  /// response.
-  /// When unspecified, equivalent to FULL.
+  /// response. When unspecified, equivalent to FULL.
   /// Possible string values are:
-  /// - "MESSAGE_VIEW_UNSPECIFIED" : A MESSAGE_VIEW_UNSPECIFIED.
-  /// - "RAW_ONLY" : A RAW_ONLY.
-  /// - "PARSED_ONLY" : A PARSED_ONLY.
-  /// - "FULL" : A FULL.
-  /// - "BASIC" : A BASIC.
+  /// - "MESSAGE_VIEW_UNSPECIFIED" : Not specified, equivalent to FULL.
+  /// - "RAW_ONLY" : Server responses include all the message fields except
+  /// parsed_data field.
+  /// - "PARSED_ONLY" : Server responses include all the message fields except
+  /// data field.
+  /// - "FULL" : Server responses include all the message fields.
+  /// - "BASIC" : Server responses include only the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4922,9 +4880,15 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
     return _response.then((data) => new Message.fromJson(data));
   }
 
-  /// Ingests a new HL7v2 message from the hospital and sends a notification to
-  /// the Cloud Pub/Sub topic. Return is an HL7v2 ACK message if the message was
-  /// successfully stored. Otherwise an error is returned.
+  /// Parses and stores an HL7v2 message. This method triggers an asynchronous
+  /// notification to any Cloud Pub/Sub topic configured in
+  /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the
+  /// filtering matches the message. If an MLLP adapter is configured to listen
+  /// to a Cloud Pub/Sub topic, the adapter transmits the message when a
+  /// notification is received. This method also generates a response containing
+  /// an HL7v2 acknowledgement (`ACK`) message when successful or a negative
+  /// acknowledgement (`NACK`) message in case of error, suitable for replying
+  /// to HL7v2 interface systems that expect these acknowledgements.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4978,12 +4942,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   }
 
   /// Lists all the messages in the given HL7v2 store with support for
-  /// filtering.
-  ///
-  /// Note: HL7v2 messages are indexed asynchronously, so there might be a
-  /// slight
-  /// delay between the time a message is created and when it can be found
-  /// through a filter.
+  /// filtering. Note: HL7v2 messages are indexed asynchronously, so there might
+  /// be a slight delay between the time a message is created and when it can be
+  /// found through a filter.
   ///
   /// Request parameters:
   ///
@@ -4991,54 +4952,46 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
   ///
-  /// [filter] - Restricts messages returned to those matching a filter. Syntax:
-  /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
-  ///
-  /// Fields/functions available for filtering are:
-  ///
-  /// *  `message_type`, from the MSH-9.1 field. For example,
-  /// `NOT message_type = "ADT"`.
-  /// *  `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in
-  /// the dataset's time_zone, from the MSH-7 segment. For example,
-  /// `send_date < "2017-01-02"`.
-  /// *  `send_time`, the timestamp when the message was sent, using the
-  /// RFC3339 time format for comparisons, from the MSH-7 segment. For example,
-  /// `send_time < "2017-01-02T00:00:00-05:00"`.
-  /// *  `send_facility`, the care center that the message came from, from the
-  /// MSH-4 segment. For example, `send_facility = "ABC"`.
-  /// *  `PatientId(value, type)`, which matches if the message lists a patient
-  /// having an ID of the given value and type in the PID-2, PID-3, or PID-4
-  /// segments. For example, `PatientId("123456", "MRN")`.
-  /// *  `labels.x`, a string value of the label with key `x` as set using the
-  /// Message.labels
-  /// map. For example, `labels."priority"="high"`. The operator `:*` can be
-  /// used
-  /// to assert the existence of a label. For example, `labels."priority":*`.
-  ///
-  /// [pageToken] - The next_page_token value returned from the previous List
-  /// request, if any.
-  ///
-  /// [pageSize] - Limit on the number of messages to return in a single
-  /// response.
-  /// If zero the default page size of 100 is used.
-  ///
   /// [view] - Specifies the parts of the Message to return in the response.
   /// When unspecified, equivalent to BASIC. Setting this to anything other than
   /// BASIC with a `page_size` larger than the default can generate a large
   /// response, which impacts the performance of this method.
   /// Possible string values are:
-  /// - "MESSAGE_VIEW_UNSPECIFIED" : A MESSAGE_VIEW_UNSPECIFIED.
-  /// - "RAW_ONLY" : A RAW_ONLY.
-  /// - "PARSED_ONLY" : A PARSED_ONLY.
-  /// - "FULL" : A FULL.
-  /// - "BASIC" : A BASIC.
+  /// - "MESSAGE_VIEW_UNSPECIFIED" : Not specified, equivalent to FULL.
+  /// - "RAW_ONLY" : Server responses include all the message fields except
+  /// parsed_data field.
+  /// - "PARSED_ONLY" : Server responses include all the message fields except
+  /// data field.
+  /// - "FULL" : Server responses include all the message fields.
+  /// - "BASIC" : Server responses include only the name field.
+  ///
+  /// [filter] - Restricts messages returned to those matching a filter. Syntax:
+  /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+  /// Fields/functions available for filtering are: * `message_type`, from the
+  /// MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or
+  /// `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's
+  /// time_zone, from the MSH-7 segment. For example, `send_date <
+  /// "2017-01-02"`. * `send_time`, the timestamp when the message was sent,
+  /// using the RFC3339 time format for comparisons, from the MSH-7 segment. For
+  /// example, `send_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the
+  /// care center that the message came from, from the MSH-4 segment. For
+  /// example, `send_facility = "ABC"`. * `PatientId(value, type)`, which
+  /// matches if the message lists a patient having an ID of the given value and
+  /// type in the PID-2, PID-3, or PID-4 segments. For example,
+  /// `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label
+  /// with key `x` as set using the Message.labels map. For example,
+  /// `labels."priority"="high"`. The operator `:*` can be used to assert the
+  /// existence of a label. For example, `labels."priority":*`.
   ///
   /// [orderBy] - Orders messages returned by the specified order_by clause.
   /// Syntax: https://cloud.google.com/apis/design/design_patterns#sorting_order
+  /// Fields available for ordering are: * `send_time`
   ///
-  /// Fields available for ordering are:
+  /// [pageToken] - The next_page_token value returned from the previous List
+  /// request, if any.
   ///
-  /// *  `send_time`
+  /// [pageSize] - Limit on the number of messages to return in a single
+  /// response. If zero the default page size of 100 is used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5051,11 +5004,11 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMessagesResponse> list(core.String parent,
-      {core.String filter,
+      {core.String view,
+      core.String filter,
+      core.String orderBy,
       core.String pageToken,
       core.int pageSize,
-      core.String view,
-      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5067,20 +5020,20 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5098,11 +5051,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
     return _response.then((data) => new ListMessagesResponse.fromJson(data));
   }
 
-  /// Update the message.
-  ///
-  /// The contents of the message in Message.data and data extracted from
-  /// the contents such as Message.create_time cannot be altered. Only the
-  /// Message.labels field is allowed to be updated. The labels in the
+  /// Update the message. The contents of the message in Message.data and data
+  /// extracted from the contents such as Message.create_time cannot be altered.
+  /// Only the Message.labels field is allowed to be updated. The labels in the
   /// request are merged with the existing set of labels. Existing labels with
   /// the same keys are updated.
   ///
@@ -5117,8 +5068,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$".
   ///
   /// [updateMask] - The update mask applies to the resource. For the
-  /// `FieldMask` definition,
-  /// see
+  /// `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5171,16 +5121,15 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
   ProjectsLocationsDatasetsOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5230,7 +5179,7 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -5277,27 +5226,25 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
   }
 
   /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5310,9 +5257,9 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5324,14 +5271,14 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5350,64 +5297,29 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
   }
 }
 
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditLogConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:jose@example.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "sampleservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:aliya@example.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// Specifies the audit configuration for a service. The configuration
+/// determines which permission types are logged, and what identities, if any,
+/// are exempted from logging. An AuditConfig must have one or more
+/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
+/// specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
+/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging. For example,
+  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
+  /// special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -5437,29 +5349,14 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:jose@example.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// jose@example.com from DATA_READ logging.
+/// Provides the configuration for logging a type of permissions. Example: {
+/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
+/// DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
+  /// permission. Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -5497,59 +5394,48 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding.
-  /// NOTE: An unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
+  /// The condition that is associated with this binding. If the condition
+  /// evaluates to `true`, then this binding applies to the current request. If
+  /// the condition evaluates to `false`, then this binding does not apply to
+  /// the current request. However, a different role binding might grant the
+  /// same role to one or more of the members in this binding. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
-  /// `members` can have the following values:
-  ///
-  /// * `allUsers`: A special identifier that represents anyone who is
-  ///    on the internet; with or without a Google account.
-  ///
-  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
-  ///    who is authenticated with a Google account or a service account.
-  ///
-  /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@example.com` .
-  ///
-  ///
-  /// * `serviceAccount:{emailid}`: An email address that represents a service
-  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  ///
-  /// * `group:{emailid}`: An email address that represents a Google group.
-  ///    For example, `admins@example.com`.
-  ///
-  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a user that has been recently deleted. For
-  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
-  /// recovered, this value reverts to `user:{emailid}` and the recovered user
-  ///    retains the role in the binding.
-  ///
-  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
-  /// (plus
-  /// unique identifier) representing a service account that has been recently
-  ///    deleted. For example,
-  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-  ///    If the service account is undeleted, this value reverts to
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
-  ///    role in the binding.
-  ///
-  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
-  ///    identifier) representing a Google group that has been recently
-  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-  /// the group is recovered, this value reverts to `group:{emailid}` and the
-  ///    recovered group retains the role in the binding.
-  ///
-  ///
-  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
-  ///    users of that domain. For example, `google.com` or `example.com`.
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`.
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`. For example, `roles/viewer`,
+  /// `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -5642,8 +5528,7 @@ class CreateMessageRequest {
 }
 
 /// Pseudonymization method that generates surrogates via cryptographic hashing.
-/// Uses SHA-256.
-/// Outputs a base64-encoded representation of the hashed output
+/// Uses SHA-256. Outputs a base64-encoded representation of the hashed output
 /// (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
 class CryptoHashConfig {
   /// An AES 128/192/256 bit key. Causes the hash to be computed based on this
@@ -5677,22 +5562,19 @@ class CryptoHashConfig {
   }
 }
 
-/// A message representing a health dataset.
-///
-/// A health dataset represents a collection of healthcare data pertaining to
-/// one
-/// or more patients. This may include multiple modalities of healthcare data,
-/// such as electronic medical records or medical imaging data.
+/// A message representing a health dataset. A health dataset represents a
+/// collection of healthcare data pertaining to one or more patients. This may
+/// include multiple modalities of healthcare data, such as electronic medical
+/// records or medical imaging data.
 class Dataset {
-  /// Output only. Resource name of the dataset, of the form
+  /// Resource name of the dataset, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   core.String name;
 
   /// The default timezone used by this dataset. Must be a either a valid IANA
   /// time zone name such as "America/New_York" or empty, which defaults to UTC.
   /// This is used for parsing times in resources, such as HL7 messages, where
-  /// no
-  /// explicit timezone is specified.
+  /// no explicit timezone is specified.
   core.String timeZone;
 
   Dataset();
@@ -5723,8 +5605,8 @@ class Dataset {
 /// consistent for a given patient and crypto key combination.
 class DateShiftConfig {
   /// An AES 128/192/256 bit key. Causes the shift to be computed based on this
-  /// key and the patient ID. A default key is generated for each
-  /// Deidentify operation and is used wherever crypto_key is not specified.
+  /// key and the patient ID. A default key is generated for each Deidentify
+  /// operation and is used wherever crypto_key is not specified.
   core.String cryptoKey;
   core.List<core.int> get cryptoKeyAsBytes {
     return convert.base64.decode(cryptoKey);
@@ -5753,10 +5635,9 @@ class DateShiftConfig {
   }
 }
 
-/// Configures de-id options specific to different types of content.
-/// Each submessage customizes the handling of an
-/// https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are
-/// applied in a nested manner at runtime.
+/// Configures de-id options specific to different types of content. Each
+/// submessage customizes the handling of an https://tools.ietf.org/html/rfc6838
+/// media type or subtype. Configs are applied in a nested manner at runtime.
 class DeidentifyConfig {
   /// Configures de-id of application/DICOM content.
   DicomConfig dicom;
@@ -5765,8 +5646,7 @@ class DeidentifyConfig {
   FhirConfig fhir;
 
   /// Configures de-identification of image pixels wherever they are found in
-  /// the
-  /// source_dataset.
+  /// the source_dataset.
   ImageConfig image;
 
   /// Configures de-identification of text wherever it is found in the
@@ -5815,11 +5695,9 @@ class DeidentifyDatasetRequest {
   DeidentifyConfig config;
 
   /// The name of the dataset resource to create and write the redacted data to.
-  ///
-  ///  * The destination dataset must not exist.
-  /// * The destination dataset must be in the same project and location as the
-  /// source dataset. De-identifying data across multiple projects or locations
-  ///  is not supported.
+  /// * The destination dataset must not exist. * The destination dataset must
+  /// be in the same project and location as the source dataset. De-identifying
+  /// data across multiple projects or locations is not supported.
   core.String destinationDataset;
 
   DeidentifyDatasetRequest();
@@ -5851,16 +5729,14 @@ class DeidentifyDicomStoreRequest {
   /// De-identify configuration.
   DeidentifyConfig config;
 
-  /// The name of the DICOM store to create and write the redacted data to.
-  /// For example,
+  /// The name of the DICOM store to create and write the redacted data to. For
+  /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
-  ///
-  ///  * The destination dataset must exist.
-  /// * The source dataset and destination dataset must both reside in the same
-  /// project. De-identifying data across multiple projects is not supported.
-  ///  * The destination DICOM store must not exist.
-  /// * The caller must have the necessary permissions to create the destination
-  ///    DICOM store.
+  /// * The destination dataset must exist. * The source dataset and destination
+  /// dataset must both reside in the same project. De-identifying data across
+  /// multiple projects is not supported. * The destination DICOM store must not
+  /// exist. * The caller must have the necessary permissions to create the
+  /// destination DICOM store.
   core.String destinationStore;
 
   /// Filter configuration.
@@ -5901,16 +5777,14 @@ class DeidentifyFhirStoreRequest {
   /// Deidentify configuration.
   DeidentifyConfig config;
 
-  /// The name of the FHIR store to create and write the redacted data to.
-  /// For example,
+  /// The name of the FHIR store to create and write the redacted data to. For
+  /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
-  ///
-  ///  * The destination dataset must exist.
-  /// * The source dataset and destination dataset must both reside in the same
-  /// project. De-identifying data across multiple projects is not supported.
-  ///  * The destination FHIR store must exist.
-  ///  * The caller must have the healthcare.fhirResources.update permission to
-  ///    write to the destination FHIR store.
+  /// * The destination dataset must exist. * The source dataset and destination
+  /// dataset must both reside in the same project. De-identifying data across
+  /// multiple projects is not supported. * The destination FHIR store must
+  /// exist. * The caller must have the healthcare.fhirResources.update
+  /// permission to write to the destination FHIR store.
   core.String destinationStore;
 
   /// A filter specifying the resources to include in the output. If not
@@ -5969,15 +5843,14 @@ class DicomConfig {
   /// - "MINIMAL_KEEP_LIST_PROFILE" : Keep only tags required to produce valid
   /// DICOM.
   /// - "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE" : Remove tags based on DICOM
-  /// Standard's Attribute Confidentiality Basic
-  /// Profile (DICOM Standard Edition 2018e)
+  /// Standard's Attribute Confidentiality Basic Profile (DICOM Standard Edition
+  /// 2018e)
   /// http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html.
   /// - "KEEP_ALL_PROFILE" : Keep all tags.
   /// - "DEIDENTIFY_TAG_CONTENTS" : Inspects within tag contents and replaces
-  /// sensitive text. The process
-  /// can be configured using the TextConfig.
-  /// Applies to all tags with the following Value Representation names:
-  /// AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+  /// sensitive text. The process can be configured using the TextConfig.
+  /// Applies to all tags with the following Value Representation names: AE, LO,
+  /// LT, PN, SH, ST, UC, UT, DA, DT, AS
   core.String filterProfile;
 
   /// List of tags to keep. Remove all other tags.
@@ -6034,14 +5907,12 @@ class DicomConfig {
 
 /// Specifies the filter configuration for DICOM resources.
 class DicomFilterConfig {
-  /// The Cloud Storage location of the filter configuration file.
-  /// The `gcs_uri` must be in the format `gs://bucket/path/to/object`.
-  /// The filter configuration file must contain a list of resource paths
-  /// separated by newline characters (\n or \r\n). Each resource path
-  /// must be in the format
-  /// "/studies/{studyUID}[/series/{seriesUID}[/instances/{instanceUID}]]"
-  ///
-  /// The Cloud Healthcare API service account must have the
+  /// The Cloud Storage location of the filter configuration file. The `gcs_uri`
+  /// must be in the format `gs://bucket/path/to/object`. The filter
+  /// configuration file must contain a list of resource paths separated by
+  /// newline characters (\n or \r\n). Each resource path must be in the format
+  /// "/studies/{studyUID}[/series/{seriesUID}[/instances/{instanceUID}]]" The
+  /// Cloud Healthcare API service account must have the
   /// `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage
   /// location.
   core.String resourcePathsGcsUri;
@@ -6066,26 +5937,21 @@ class DicomFilterConfig {
 
 /// Represents a DICOM store.
 class DicomStore {
-  /// User-supplied key-value pairs used to organize DICOM stores.
-  ///
-  /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
-  /// of maximum 128 bytes, and must conform to the
-  /// following PCRE regular expression:
-  /// \p{Ll}\p{Lo}{0,62}
-  ///
-  /// Label values are optional, must be between 1 and 63 characters long, have
-  /// a UTF-8 encoding of maximum 128 bytes, and must conform to the
-  /// following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-  ///
-  /// No more than 64 labels can be associated with a given store.
+  /// User-supplied key-value pairs used to organize DICOM stores. Label keys
+  /// must be between 1 and 63 characters long, have a UTF-8 encoding of maximum
+  /// 128 bytes, and must conform to the following PCRE regular expression:
+  /// \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63
+  /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+  /// conform to the following PCRE regular expression:
+  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with
+  /// a given store.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. Resource name of the DICOM store, of the form
+  /// Resource name of the DICOM store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   core.String name;
 
-  /// Notification destination for new DICOM instances.
-  /// Supplied by the client.
+  /// Notification destination for new DICOM instances. Supplied by the client.
   NotificationConfig notificationConfig;
 
   DicomStore();
@@ -6121,13 +5987,9 @@ class DicomStore {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -6140,26 +6002,19 @@ class Empty {
   }
 }
 
-/// Exports data from the specified DICOM store.
-/// If a given resource, such as a DICOM object with the same SOPInstance UID,
-/// already exists in the output, it is overwritten with the version
-/// in the source dataset.
-/// Exported DICOM data persists when the DICOM store from which it was
-/// exported is deleted.
+/// Exports data from the specified DICOM store. If a given resource, such as a
+/// DICOM object with the same SOPInstance UID, already exists in the output, it
+/// is overwritten with the version in the source dataset. Exported DICOM data
+/// persists when the DICOM store from which it was exported is deleted.
 class ExportDicomDataRequest {
-  /// The BigQuery output destination.
-  ///
-  /// You can only export to a BigQuery dataset that's in the same project as
-  /// the DICOM store you're exporting from.
-  ///
-  /// The BigQuery location requires two IAM roles:
-  /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.
+  /// The BigQuery output destination. You can only export to a BigQuery dataset
+  /// that's in the same project as the DICOM store you're exporting from. The
+  /// BigQuery location requires two IAM roles: `roles/bigquery.dataEditor` and
+  /// `roles/bigquery.jobUser`.
   GoogleCloudHealthcareV1DicomBigQueryDestination bigqueryDestination;
 
-  /// The Cloud Storage output destination.
-  ///
-  /// The Cloud Storage location requires the `roles/storage.objectAdmin` Cloud
-  /// IAM role.
+  /// The Cloud Storage output destination. The Cloud Storage location requires
+  /// the `roles/storage.objectAdmin` Cloud IAM role.
   GoogleCloudHealthcareV1DicomGcsDestination gcsDestination;
 
   ExportDicomDataRequest();
@@ -6204,23 +6059,16 @@ class ExportDicomDataResponse {
 
 /// Request to export resources.
 class ExportResourcesRequest {
-  /// The BigQuery output destination.
-  ///
-  /// The BigQuery location requires two IAM roles:
-  /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.
-  ///
-  /// The output will be one BigQuery table per resource type.
+  /// The BigQuery output destination. The BigQuery location requires two IAM
+  /// roles: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The
+  /// output is one BigQuery table per resource type.
   GoogleCloudHealthcareV1FhirBigQueryDestination bigqueryDestination;
 
-  /// The Cloud Storage output destination.
-  ///
-  /// The Cloud Storage location requires the `roles/storage.objectAdmin` Cloud
-  /// IAM role.
-  ///
-  /// The exported outputs are
-  /// organized by FHIR resource types. The server will create one object per
-  /// resource type. Each object contains newline delimited JSON, and each line
-  /// is a FHIR resource.
+  /// The Cloud Storage output destination. The Healthcare Service Agent account
+  /// requires the `roles/storage.objectAdmin` role on the Cloud Storage
+  /// location. The exported outputs are organized by FHIR resource types. The
+  /// server creates one object per resource type. Each object contains newline
+  /// delimited JSON, and each line is a FHIR resource.
   GoogleCloudHealthcareV1FhirGcsDestination gcsDestination;
 
   ExportResourcesRequest();
@@ -6250,10 +6098,9 @@ class ExportResourcesRequest {
   }
 }
 
-/// Response when all resources export successfully.
-/// This structure will be included in the
-/// response to describe the detailed
-/// outcome. It will only be included when the operation finishes successfully.
+/// Response when all resources export successfully. This structure is included
+/// in the response to describe the detailed outcome after the operation
+/// finishes successfully.
 class ExportResourcesResponse {
   ExportResourcesResponse();
 
@@ -6268,36 +6115,20 @@ class ExportResourcesResponse {
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec.
-///
-/// Example (Comparison):
-///
-///     title: "Summary size limit"
-///     description: "Determines if a summary is less than 100 chars"
-///     expression: "document.summary.size() < 100"
-///
-/// Example (Equality):
-///
-///     title: "Requestor is owner"
-///     description: "Determines if requestor is the document owner"
-///     expression: "document.owner == request.auth.claims.email"
-///
-/// Example (Logic):
-///
-///     title: "Public documents"
+/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
 /// description: "Determine whether the document should be publicly visible"
-///     expression: "document.type != 'private' && document.type != 'internal'"
-///
-/// Example (Data Manipulation):
-///
-///     title: "Notification string"
-///     description: "Create a notification string with a timestamp."
-///     expression: "'New message received at ' + string(document.create_time)"
-///
-/// The exact variables and functions that may be referenced within an
-/// expression
-/// are determined by the service that evaluates it. See the service
-/// documentation for additional information.
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
 class Expr {
   /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
@@ -6311,9 +6142,8 @@ class Expr {
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing
-  /// its purpose. This can be used e.g. in UIs which allow to enter the
-  /// expression.
+  /// Optional. Title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
   Expr();
@@ -6354,9 +6184,9 @@ class Expr {
 
 /// Specifies how to handle de-identification of a FHIR store.
 class FhirConfig {
-  /// Specifies FHIR paths to match and how to transform them. Any field that
-  /// is not matched by a FieldMetadata is passed through to the output
-  /// dataset unmodified. All extensions are removed in the output.
+  /// Specifies FHIR paths to match and how to transform them. Any field that is
+  /// not matched by a FieldMetadata is passed through to the output dataset
+  /// unmodified. All extensions are removed in the output.
   core.List<FieldMetadata> fieldMetadataList;
 
   FhirConfig();
@@ -6382,8 +6212,8 @@ class FhirConfig {
 
 /// Filter configuration.
 class FhirFilter {
-  /// List of resources to include in the output. If this list is empty or
-  /// not specified, all resources are included in the output.
+  /// List of resources to include in the output. If this list is empty or not
+  /// specified, all resources are included in the output.
   Resources resources;
 
   FhirFilter();
@@ -6407,23 +6237,21 @@ class FhirFilter {
 /// Represents a FHIR store.
 class FhirStore {
   /// Whether to disable referential integrity in this FHIR store. This field is
-  /// immutable after FHIR store creation.
-  /// The default value is false, meaning that the API enforces referential
-  /// integrity and fails the requests that result in inconsistent state in
-  /// the FHIR store.
-  /// When this field is set to true, the API skips referential integrity
-  /// checks. Consequently, operations that rely on references, such as
-  /// GetPatientEverything, do not return all the results if broken references
-  /// exist.
+  /// immutable after FHIR store creation. The default value is false, meaning
+  /// that the API enforces referential integrity and fails the requests that
+  /// result in inconsistent state in the FHIR store. When this field is set to
+  /// true, the API skips referential integrity checks. Consequently, operations
+  /// that rely on references, such as GetPatientEverything, do not return all
+  /// the results if broken references exist.
   core.bool disableReferentialIntegrity;
 
   /// Whether to disable resource versioning for this FHIR store. This field can
-  /// not be changed after the creation of FHIR store.
-  /// If set to false, which is the default behavior, all write operations
-  /// cause historical versions to be recorded automatically. The historical
-  /// versions can be fetched through the history APIs, but cannot be updated.
-  /// If set to true, no historical versions are kept. The server sends
-  /// errors for attempts to read the historical versions.
+  /// not be changed after the creation of FHIR store. If set to false, which is
+  /// the default behavior, all write operations cause historical versions to be
+  /// recorded automatically. The historical versions can be fetched through the
+  /// history APIs, but cannot be updated. If set to true, no historical
+  /// versions are kept. The server sends errors for attempts to read the
+  /// historical versions.
   core.bool disableResourceVersioning;
 
   /// Whether this FHIR store has the [updateCreate
@@ -6431,25 +6259,20 @@ class FhirStore {
   /// This determines if the client can use an Update operation to create a new
   /// resource with a client-specified ID. If false, all IDs are server-assigned
   /// through the Create operation and attempts to update a non-existent
-  /// resource
-  /// return errors. Please treat the audit logs with appropriate levels of
-  /// care if client-specified resource IDs contain sensitive data such as
-  /// patient identifiers, those IDs are part of the FHIR resource path
+  /// resource return errors. Please treat the audit logs with appropriate
+  /// levels of care if client-specified resource IDs contain sensitive data
+  /// such as patient identifiers, those IDs are part of the FHIR resource path
   /// recorded in Cloud audit logs and Cloud Pub/Sub notifications.
   core.bool enableUpdateCreate;
 
-  /// User-supplied key-value pairs used to organize FHIR stores.
-  ///
-  /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
-  /// of maximum 128 bytes, and must conform to the
-  /// following PCRE regular expression:
-  /// \p{Ll}\p{Lo}{0,62}
-  ///
-  /// Label values are optional, must be between 1 and 63 characters long, have
-  /// a UTF-8 encoding of maximum 128 bytes, and must conform to the
-  /// following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-  ///
-  /// No more than 64 labels can be associated with a given store.
+  /// User-supplied key-value pairs used to organize FHIR stores. Label keys
+  /// must be between 1 and 63 characters long, have a UTF-8 encoding of maximum
+  /// 128 bytes, and must conform to the following PCRE regular expression:
+  /// \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63
+  /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+  /// conform to the following PCRE regular expression:
+  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with
+  /// a given store.
   core.Map<core.String, core.String> labels;
 
   /// Output only. Resource name of the FHIR store, of the form
@@ -6457,34 +6280,32 @@ class FhirStore {
   core.String name;
 
   /// If non-empty, publish all resource modifications of this FHIR store to
-  /// this destination. The Cloud Pub/Sub message attributes contain a map
-  /// with a string describing the action that has triggered the notification.
-  /// For example, "action":"CreateResource".
+  /// this destination. The Cloud Pub/Sub message attributes contain a map with
+  /// a string describing the action that has triggered the notification. For
+  /// example, "action":"CreateResource".
   NotificationConfig notificationConfig;
 
   /// A list of streaming configs that configure the destinations of streaming
   /// export for every resource mutation in this FHIR store. Each store is
-  /// allowed to have up to 10 streaming configs.
-  /// After a new config is added, the next resource mutation is streamed to
-  /// the new location in addition to the existing ones.
-  /// When a location is removed from the list, the server stops
-  /// streaming to that location. Before adding a new config, you must add the
-  /// required
+  /// allowed to have up to 10 streaming configs. After a new config is added,
+  /// the next resource mutation is streamed to the new location in addition to
+  /// the existing ones. When a location is removed from the list, the server
+  /// stops streaming to that location. Before adding a new config, you must add
+  /// the required
   /// [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor)
-  /// role to your project's **Cloud Healthcare Service Agent**
-  /// [service account](https://cloud.google.com/iam/docs/service-accounts).
-  /// Some lag (typically on the order of dozens of seconds) is expected before
-  /// the results show up in the streaming destination.
+  /// role to your project's **Cloud Healthcare Service Agent** [service
+  /// account](https://cloud.google.com/iam/docs/service-accounts). Some lag
+  /// (typically on the order of dozens of seconds) is expected before the
+  /// results show up in the streaming destination.
   core.List<StreamConfig> streamConfigs;
 
   /// The FHIR specification version that this FHIR store supports natively.
-  /// This
-  /// field is immutable after store creation. Requests are rejected if they
-  /// contain FHIR resources of a different version.
+  /// This field is immutable after store creation. Requests are rejected if
+  /// they contain FHIR resources of a different version. Version is required
+  /// for every FHIR store.
   /// Possible string values are:
   /// - "VERSION_UNSPECIFIED" : Users must specify a version on store creation
-  /// or an error will be
-  /// returned.
+  /// or an error is returned.
   /// - "DSTU2" : Draft Standard for Trial Use, [Release
   /// 2](https://www.hl7.org/fhir/DSTU2)
   /// - "STU3" : Standard for Trial Use, [Release
@@ -6568,14 +6389,14 @@ class FieldMetadata {
   core.String action;
 
   /// List of paths to FHIR fields to be redacted. Each path is a
-  /// period-separated list where each component is either a field name or
-  /// FHIR type name, for example: Patient, HumanName.
-  /// For "choice" types (those defined in the FHIR spec with the form:
-  /// field[x]) we use two separate components. For example,
-  /// "deceasedAge.unit" is matched by "Deceased.Age.unit".
-  /// Supported types are: AdministrativeGenderCode, Code, Date, DateTime,
-  /// Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid,
-  /// Xhtml.
+  /// period-separated list where each component is either a field name or FHIR
+  /// type name, for example: Patient, HumanName. For "choice" types (those
+  /// defined in the FHIR spec with the form: field[x]) we use two separate
+  /// components. For example, "deceasedAge.unit" is matched by
+  /// "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Code,
+  /// Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid,
+  /// String, Uri, Uuid, Xhtml. Base64Binary is also supported, but may only be
+  /// kept as-is or have all the content removed.
   core.List<core.String> paths;
 
   FieldMetadata();
@@ -6633,8 +6454,8 @@ class GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary {
 /// The BigQuery table where the server writes the output.
 class GoogleCloudHealthcareV1DicomBigQueryDestination {
   /// If the destination table already exists and this flag is `TRUE`, the table
-  /// is overwritten by the contents of the DICOM store. If the flag is not
-  /// set and the destination table already exists, the export call returns an
+  /// is overwritten by the contents of the DICOM store. If the flag is not set
+  /// and the destination table already exists, the export call returns an
   /// error.
   core.bool force;
 
@@ -6669,53 +6490,35 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
 /// The Cloud Storage location where the server writes the output and the export
 /// configuration.
 class GoogleCloudHealthcareV1DicomGcsDestination {
-  /// MIME types supported by DICOM spec.
-  /// Each file is written in the following format:
+  /// MIME types supported by DICOM spec. Each file is written in the following
+  /// format:
   /// `.../{study_id}/{series_id}/{instance_id}[/{frame_number}].{extension}`
   /// The frame_number component exists only for multi-frame instances.
-  ///
   /// Supported MIME types are consistent with supported formats in DICOMweb:
   /// https://cloud.google.com/healthcare/docs/dicom#retrieve_transaction.
-  /// Specifically, the following are supported:
-  ///
-  ///   - application/dicom; transfer-syntax=1.2.840.10008.1.2.1
-  ///     (uncompressed DICOM)
-  ///   - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.50
-  ///     (DICOM with embedded JPEG Baseline)
-  ///   - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.90
-  ///     (DICOM with embedded JPEG 2000 Lossless Only)
-  ///   - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91
-  ///     (DICOM with embedded JPEG 2000)
-  ///   - application/dicom; transfer-syntax=*
-  ///     (DICOM with no transcoding)
-  ///   - application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1
-  ///     (raw uncompressed PixelData)
-  ///   - application/octet-stream; transfer-syntax=*
-  ///     (raw PixelData in whatever format it was uploaded in)
-  ///   - image/jpeg; transfer-syntax=1.2.840.10008.1.2.4.50
-  ///     (Consumer JPEG)
-  ///   - image/png
-  ///
-  /// The following extensions are used for output files:
-  ///
-  ///  - application/dicom -> .dcm
-  ///  - image/jpeg -> .jpg
-  ///  - image/png -> .png
-  ///  - application/octet-stream -> no extension
-  ///
-  /// If unspecified, the instances are exported in the original
+  /// Specifically, the following are supported: - application/dicom;
+  /// transfer-syntax=1.2.840.10008.1.2.1 (uncompressed DICOM) -
+  /// application/dicom; transfer-syntax=1.2.840.10008.1.2.4.50 (DICOM with
+  /// embedded JPEG Baseline) - application/dicom;
+  /// transfer-syntax=1.2.840.10008.1.2.4.90 (DICOM with embedded JPEG 2000
+  /// Lossless Only) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91
+  /// (DICOM with embedded JPEG 2000) - application/dicom; transfer-syntax=*
+  /// (DICOM with no transcoding) - application/octet-stream;
+  /// transfer-syntax=1.2.840.10008.1.2.1 (raw uncompressed PixelData) -
+  /// application/octet-stream; transfer-syntax=* (raw PixelData in whatever
+  /// format it was uploaded in) - image/jpeg;
+  /// transfer-syntax=1.2.840.10008.1.2.4.50 (Consumer JPEG) - image/png The
+  /// following extensions are used for output files: - application/dicom ->
+  /// .dcm - image/jpeg -> .jpg - image/png -> .png - application/octet-stream
+  /// -> no extension If unspecified, the instances are exported in the original
   /// DICOM format they were uploaded in.
   core.String mimeType;
 
-  /// The Cloud Storage destination to export to.
-  ///
-  /// URI for a Cloud Storage directory where the server writes the result
-  /// files,
-  /// in the format `gs://{bucket-id}/{path/to/destination/dir}`). If there is
-  /// no
-  /// trailing slash, the service appends one when composing the object path.
-  /// The user is responsible for creating the Cloud Storage bucket referenced
-  /// in
+  /// The Cloud Storage destination to export to. URI for a Cloud Storage
+  /// directory where the server writes the result files, in the format
+  /// `gs://{bucket-id}/{path/to/destination/dir}`). If there is no trailing
+  /// slash, the service appends one when composing the object path. The user is
+  /// responsible for creating the Cloud Storage bucket referenced in
   /// `uri_prefix`.
   core.String uriPrefix;
 
@@ -6745,22 +6548,18 @@ class GoogleCloudHealthcareV1DicomGcsDestination {
 
 /// Specifies the configuration for importing data from Cloud Storage.
 class GoogleCloudHealthcareV1DicomGcsSource {
-  /// Points to a Cloud Storage URI containing file(s) with
-  /// content only. The URI must be in the following format:
-  /// `gs://{bucket_id}/{object_id}`. The URI can include wildcards in
-  /// `object_id` and thus identify multiple files. Supported wildcards:
-  ///  '*' to match 0 or more non-separator characters
-  /// '**' to match 0 or more characters (including separators). Must be used at
-  ///       the end of a path and with no other wildcards in the
-  ///       path. Can also be used with a file extension (such as .dcm), which
-  ///       imports all files with the extension in the specified directory and
-  ///       its sub-directories. For example,
-  ///       `gs://my-bucket/my-directory / * *.dcm` imports all files with .dcm
-  ///       extensions in `my-directory/` and its sub-directories.
-  ///  '?' to match 1 character
-  /// All other URI formats are invalid.
-  /// Files matching the wildcard are expected to contain content only, no
-  /// metadata.
+  /// Points to a Cloud Storage URI containing file(s) with content only. The
+  /// URI must be in the following format: `gs://{bucket_id}/{object_id}`. The
+  /// URI can include wildcards in `object_id` and thus identify multiple files.
+  /// Supported wildcards: '*' to match 0 or more non-separator characters '**'
+  /// to match 0 or more characters (including separators). Must be used at the
+  /// end of a path and with no other wildcards in the path. Can also be used
+  /// with a file extension (such as .dcm), which imports all files with the
+  /// extension in the specified directory and its sub-directories. For example,
+  /// `gs://my-bucket/my-directory / * *.dcm` imports all files with .dcm
+  /// extensions in `my-directory/` and its sub-directories. '?' to match 1
+  /// character All other URI formats are invalid. Files matching the wildcard
+  /// are expected to contain content only, no metadata.
   core.String uri;
 
   GoogleCloudHealthcareV1DicomGcsSource();
@@ -6783,12 +6582,12 @@ class GoogleCloudHealthcareV1DicomGcsSource {
 
 /// The configuration for exporting to BigQuery.
 class GoogleCloudHealthcareV1FhirBigQueryDestination {
-  /// BigQuery URI to a dataset, up to 2000 characters long, in the format
-  /// `bq://projectId.bqDatasetId`
+  /// BigQuery URI to an existing dataset, up to 2000 characters long, in the
+  /// format `bq://projectId.bqDatasetId`.
   core.String datasetUri;
 
-  /// If this flag is `TRUE`, all tables will be deleted from the dataset before
-  /// the new exported tables are written. If the flag is not set and the
+  /// If this flag is `TRUE`, all tables are deleted from the dataset before the
+  /// new exported tables are written. If the flag is not set and the
   /// destination dataset contains tables, the export call returns an error.
   core.bool force;
 
@@ -6827,13 +6626,11 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
 
 /// The configuration for exporting to Cloud Storage.
 class GoogleCloudHealthcareV1FhirGcsDestination {
-  /// URI for a Cloud Storage directory where result files should be written (in
-  /// the format `gs://{bucket-id}/{path/to/destination/dir}`). If there is no
-  /// trailing slash, the service will append one when composing the object
-  /// path.
+  /// URI for a Cloud Storage directory where result files should be written, in
+  /// the format of `gs://{bucket-id}/{path/to/destination/dir}`. If there is no
+  /// trailing slash, the service appends one when composing the object path.
   /// The user is responsible for creating the Cloud Storage bucket referenced
-  /// in
-  /// `uri_prefix`.
+  /// in `uri_prefix`.
   core.String uriPrefix;
 
   GoogleCloudHealthcareV1FhirGcsDestination();
@@ -6856,25 +6653,18 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
 
 /// Specifies the configuration for importing data from Cloud Storage.
 class GoogleCloudHealthcareV1FhirGcsSource {
-  /// Points to a Cloud Storage URI containing file(s) to import.
-  ///
-  /// The URI must be in the following format: `gs://{bucket_id}/{object_id}`.
-  /// The URI can include wildcards in `object_id` and thus identify multiple
-  /// files. Supported wildcards:
-  ///
-  /// *  `*` to match 0 or more non-separator characters
-  /// *  `**` to match 0 or more characters (including separators). Must be used
-  /// at the end of a path and with no other wildcards in the
-  /// path. Can also be used with a file extension (such as .ndjson), which
-  /// imports all files with the extension in the specified directory and
-  /// its sub-directories. For example, `gs://my-bucket/my-directory / *
-  /// *.ndjson`
-  /// imports all files with `.ndjson` extensions in `my-directory/` and its
-  /// sub-directories.
-  /// *  `?` to match 1 character
-  ///
-  /// Files matching the wildcard are expected to contain content only, no
-  /// metadata.
+  /// Points to a Cloud Storage URI containing file(s) to import. The URI must
+  /// be in the following format: `gs://{bucket_id}/{object_id}`. The URI can
+  /// include wildcards in `object_id` and thus identify multiple files.
+  /// Supported wildcards: * `*` to match 0 or more non-separator characters *
+  /// `**` to match 0 or more characters (including separators). Must be used at
+  /// the end of a path and with no other wildcards in the path. Can also be
+  /// used with a file extension (such as .ndjson), which imports all files with
+  /// the extension in the specified directory and its sub-directories. For
+  /// example, `gs://my-bucket/my-directory / * *.ndjson` imports all files with
+  /// `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to
+  /// match 1 character Files matching the wildcard are expected to contain
+  /// content only, no metadata.
   core.String uri;
 
   GoogleCloudHealthcareV1FhirGcsSource();
@@ -6895,54 +6685,45 @@ class GoogleCloudHealthcareV1FhirGcsSource {
   }
 }
 
-/// Specifies where and whether to send notifications upon changes to a
-/// data store.
+/// Specifies where and whether to send notifications upon changes to a data
+/// store.
 class Hl7V2NotificationConfig {
   /// Restricts notifications sent for messages matching a filter. If this is
   /// empty, all messages are matched. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
-  ///
-  /// Fields/functions available for filtering are:
-  ///
-  /// *  `message_type`, from the MSH-9.1 field. For example,
-  /// `NOT message_type = "ADT"`.
-  /// *  `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in
-  /// the dataset's time_zone, from the MSH-7 segment. For example,
-  /// `send_date < "2017-01-02"`.
-  /// *  `send_time`, the timestamp when the message was sent, using the
-  /// RFC3339 time format for comparisons, from the MSH-7 segment. For example,
-  /// `send_time < "2017-01-02T00:00:00-05:00"`.
-  /// *  `send_facility`, the care center that the message came from, from the
-  /// MSH-4 segment. For example, `send_facility = "ABC"`.
-  /// *  `PatientId(value, type)`, which matches if the message lists a patient
-  /// having an ID of the given value and type in the PID-2, PID-3, or PID-4
-  /// segments. For example, `PatientId("123456", "MRN")`.
-  /// *  `labels.x`, a string value of the label with key `x` as set using the
-  /// Message.labels
-  /// map. For example, `labels."priority"="high"`. The operator `:*` can be
-  /// used to assert the existence of a label. For example,
-  /// `labels."priority":*`.
+  /// The following fields and functions are available for filtering: *
+  /// `message_type`, from the MSH-9.1 field. For example, `NOT message_type =
+  /// "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was
+  /// sent in the dataset's time_zone, from the MSH-7 segment. For example,
+  /// `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message
+  /// was sent, using the RFC3339 time format for comparisons, from the MSH-7
+  /// segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. *
+  /// `send_facility`, the care center that the message came from, from the
+  /// MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value,
+  /// type)`, which matches if the message lists a patient having an ID of the
+  /// given value and type in the PID-2, PID-3, or PID-4 segments. For example,
+  /// `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label
+  /// with key `x` as set using the Message.labels map. For example,
+  /// `labels."priority"="high"`. The operator `:*` can be used to assert the
+  /// existence of a label. For example, `labels."priority":*`.
   core.String filter;
 
-  /// The [Cloud Pubsub](https://cloud.google.com/pubsub/docs/) topic that
+  /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
   /// notifications of changes are published on. Supplied by the client. The
-  /// notification is a `PubsubMessage` with the following fields:
-  ///
-  /// *  `PubsubMessage.Data` contains the resource name.
-  /// *  `PubsubMessage.MessageId` is the ID of this notification. It is
-  /// guaranteed to be unique within the topic.
-  /// *  `PubsubMessage.PublishTime` is the time at which the message was
-  /// published.
-  ///
-  /// Note that notifications are only sent if the topic is non-empty. [Topic
-  /// names](https://cloud.google.com/pubsub/docs/overview#names) must be
-  /// scoped to a project. cloud-healthcare@system.gserviceaccount.com must
-  /// have publisher permissions on the given Pubsub topic. Not having adequate
-  /// permissions causes the calls that send notifications to fail.
-  ///
-  /// If a notification cannot be published to Cloud Pub/Sub, errors will be
-  /// logged to Stackdriver (see [Viewing logs](/healthcare/docs/how-
-  /// tos/stackdriver-logging)).
+  /// notification is a `PubsubMessage` with the following fields: *
+  /// `PubsubMessage.Data` contains the resource name. *
+  /// `PubsubMessage.MessageId` is the ID of this notification. It's guaranteed
+  /// to be unique within the topic. * `PubsubMessage.PublishTime` is the time
+  /// when the message was published. Note that notifications are only sent if
+  /// the topic is non-empty. [Topic
+  /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped
+  /// to a project. The Cloud Healthcare API service account,
+  /// service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must
+  /// have publisher permissions on the given Pub/Sub topic. Not having adequate
+  /// permissions causes the calls that send notifications to fail. If a
+  /// notification cannot be published to Cloud Pub/Sub, errors are logged to
+  /// Cloud Logging. For more information, see [Viewing error logs in Cloud
+  /// Logging](/healthcare/docs/how-tos/logging)).
   core.String pubsubTopic;
 
   Hl7V2NotificationConfig();
@@ -6971,45 +6752,39 @@ class Hl7V2NotificationConfig {
 
 /// Represents an HL7v2 store.
 class Hl7V2Store {
-  /// User-supplied key-value pairs used to organize HL7v2 stores.
-  ///
-  /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
-  /// of maximum 128 bytes, and must conform to the
-  /// following PCRE regular expression:
-  /// \p{Ll}\p{Lo}{0,62}
-  ///
-  /// Label values are optional, must be between 1 and 63 characters long, have
-  /// a UTF-8 encoding of maximum 128 bytes, and must conform to the
-  /// following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-  ///
-  /// No more than 64 labels can be associated with a given store.
+  /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys
+  /// must be between 1 and 63 characters long, have a UTF-8 encoding of maximum
+  /// 128 bytes, and must conform to the following PCRE regular expression:
+  /// \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63
+  /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+  /// conform to the following PCRE regular expression:
+  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with
+  /// a given store.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. Resource name of the HL7v2 store, of the form
+  /// Resource name of the HL7v2 store, of the form
   /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
   core.String name;
 
   /// A list of notification configs. Each configuration uses a filter to
-  /// determine whether to publish a message (both Ingest & Create) on
-  /// the corresponding notification destination. Only the message name is sent
-  /// as part of the notification. Supplied by the client.
+  /// determine whether to publish a message (both Ingest & Create) on the
+  /// corresponding notification destination. Only the message name is sent as
+  /// part of the notification. Supplied by the client.
   core.List<Hl7V2NotificationConfig> notificationConfigs;
 
   /// The configuration for the parser. It determines how the server parses the
   /// messages.
   ParserConfig parserConfig;
 
-  /// Determines whether duplicate messages should be rejected. A duplicate
-  /// message is a message with the same raw bytes as a message that has already
-  /// been ingested/created in this HL7v2 store.
-  /// The default value is false, meaning that the store accepts the duplicate
-  /// messages and it also returns the same ACK message in the
-  /// IngestMessageResponse as has been returned previously. Note that only
-  /// one resource is created in the store.
-  /// When this field is set to true,
-  /// CreateMessage/IngestMessage
-  /// requests with a duplicate message will be rejected by the store, and
-  /// IngestMessageErrorDetail returns a NACK message upon rejection.
+  /// Determines whether to reject duplicate messages. A duplicate message is a
+  /// message with the same raw bytes as a message that has already been
+  /// ingested/created in this HL7v2 store. The default value is false, meaning
+  /// that the store accepts the duplicate messages and it also returns the same
+  /// ACK message in the IngestMessageResponse as has been returned previously.
+  /// Note that only one resource is created in the store. When this field is
+  /// set to true, CreateMessage/IngestMessage requests with a duplicate message
+  /// will be rejected by the store, and IngestMessageErrorDetail returns a NACK
+  /// message upon rejection.
   core.bool rejectDuplicateMessage;
 
   Hl7V2Store();
@@ -7059,44 +6834,22 @@ class Hl7V2Store {
 }
 
 /// Message that represents an arbitrary HTTP body. It should only be used for
-/// payload formats that can't be represented as JSON, such as raw binary or
-/// an HTML page.
-///
-///
-/// This message can be used both in streaming and non-streaming API methods in
-/// the request as well as the response.
-///
-/// It can be used as a top-level request field, which is convenient if one
-/// wants to extract parameters from either the URL or HTTP template into the
-/// request fields and also want access to the raw HTTP body.
-///
-/// Example:
-///
-///     message GetResourceRequest {
-///       // A unique request id.
-///       string request_id = 1;
-///
-///       // The raw HTTP body is bound to this field.
-///       google.api.HttpBody http_body = 2;
-///     }
-///
-///     service ResourceService {
-///       rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);
-///       rpc UpdateResource(google.api.HttpBody) returns
-///       (google.protobuf.Empty);
-///     }
-///
-/// Example with streaming methods:
-///
-///     service CaldavService {
-///       rpc GetCalendar(stream google.api.HttpBody)
-///         returns (stream google.api.HttpBody);
-///       rpc UpdateCalendar(stream google.api.HttpBody)
-///         returns (stream google.api.HttpBody);
-///     }
-///
-/// Use of this type only changes how the request and response bodies are
-/// handled, all other features will continue to work unchanged.
+/// payload formats that can't be represented as JSON, such as raw binary or an
+/// HTML page. This message can be used both in streaming and non-streaming API
+/// methods in the request as well as the response. It can be used as a
+/// top-level request field, which is convenient if one wants to extract
+/// parameters from either the URL or HTTP template into the request fields and
+/// also want access to the raw HTTP body. Example: message GetResourceRequest {
+/// // A unique request id. string request_id = 1; // The raw HTTP body is bound
+/// to this field. google.api.HttpBody http_body = 2; } service ResourceService
+/// { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+/// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); }
+/// Example with streaming methods: service CaldavService { rpc
+/// GetCalendar(stream google.api.HttpBody) returns (stream
+/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
+/// (stream google.api.HttpBody); } Use of this type only changes how the
+/// request and response bodies are handled, all other features will continue to
+/// work unchanged.
 class HttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
@@ -7182,15 +6935,12 @@ class ImageConfig {
   }
 }
 
-/// Imports data into the specified DICOM store.
-/// Returns an error if any of the files to import are not DICOM files. This
-/// API accepts duplicate DICOM instances by ignoring the newly-pushed instance.
-/// It does not overwrite.
+/// Imports data into the specified DICOM store. Returns an error if any of the
+/// files to import are not DICOM files. This API accepts duplicate DICOM
+/// instances by ignoring the newly-pushed instance. It does not overwrite.
 class ImportDicomDataRequest {
-  /// Cloud Storage source data location and import configuration.
-  ///
-  /// The Cloud Storage location requires the `roles/storage.objectViewer`
-  /// Cloud IAM role.
+  /// Cloud Storage source data location and import configuration. The Cloud
+  /// Storage location requires the `roles/storage.objectViewer` Cloud IAM role.
   GoogleCloudHealthcareV1DicomGcsSource gcsSource;
 
   ImportDicomDataRequest();
@@ -7231,28 +6981,23 @@ class ImportResourcesRequest {
   /// treats the input source files as BUNDLE.
   /// Possible string values are:
   /// - "CONTENT_STRUCTURE_UNSPECIFIED" : If the content structure is not
-  /// specified, the default value `BUNDLE`
-  /// will be used.
+  /// specified, the default value `BUNDLE` is used.
   /// - "BUNDLE" : The source file contains one or more lines of
-  /// newline-delimited JSON
-  /// (ndjson). Each line is a bundle, which contains one or more resources.
-  /// Set the bundle type to `history` to import resource versions.
+  /// newline-delimited JSON (ndjson). Each line is a bundle that contains one
+  /// or more resources. Set the bundle type to `history` to import resource
+  /// versions.
   /// - "RESOURCE" : The source file contains one or more lines of
-  /// newline-delimited JSON
-  /// (ndjson). Each line is a single resource.
+  /// newline-delimited JSON (ndjson). Each line is a single resource.
   /// - "BUNDLE_PRETTY" : The entire file is one JSON bundle. The JSON can span
   /// multiple lines.
   /// - "RESOURCE_PRETTY" : The entire file is one JSON resource. The JSON can
   /// span multiple lines.
   core.String contentStructure;
 
-  /// Cloud Storage source data location and import configuration.
-  ///
-  /// The Cloud Storage location requires the `roles/storage.objectViewer`
-  /// Cloud IAM role.
-  ///
-  /// Each Cloud Storage object should be a text file that contains the format
-  /// specified in ContentStructure.
+  /// Cloud Storage source data location and import configuration. The
+  /// Healthcare Service Agent account requires the `roles/storage.objectAdmin`
+  /// role on the Cloud Storage location. Each Cloud Storage object should be a
+  /// text file that contains the format specified in ContentStructure.
   GoogleCloudHealthcareV1FhirGcsSource gcsSource;
 
   ImportResourcesRequest();
@@ -7280,10 +7025,9 @@ class ImportResourcesRequest {
   }
 }
 
-/// Final response of importing resources.
-/// This structure will be included in the
-/// response to describe the detailed
-/// outcome. It will only be included when the operation finishes successfully.
+/// Final response of importing resources. This structure is included in the
+/// response to describe the detailed outcome after the operation finishes
+/// successfully.
 class ImportResourcesResponse {
   ImportResourcesResponse();
 
@@ -7392,8 +7136,8 @@ class IngestMessageRequest {
   }
 }
 
-/// Acknowledges that a message has been ingested into the specified
-/// HL7v2 store.
+/// Acknowledges that a message has been ingested into the specified HL7v2
+/// store.
 class IngestMessageResponse {
   /// HL7v2 ACK message.
   core.String hl7Ack;
@@ -7438,8 +7182,8 @@ class ListDatasetsResponse {
   /// The first page of datasets.
   core.List<Dataset> datasets;
 
-  /// Token to retrieve the next page of results, or empty if there are no
-  /// more results in the list.
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
 
   ListDatasetsResponse();
@@ -7579,12 +7323,44 @@ class ListHl7V2StoresResponse {
   }
 }
 
+/// The response message for Locations.ListLocations.
+class ListLocationsResponse {
+  /// A list of locations that matches the specified filter in the request.
+  core.List<Location> locations;
+
+  /// The standard List next-page token.
+  core.String nextPageToken;
+
+  ListLocationsResponse();
+
+  ListLocationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("locations")) {
+      locations = (_json["locations"] as core.List)
+          .map<Location>((value) => new Location.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (locations != null) {
+      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// Lists the messages in the specified HL7v2 store.
 class ListMessagesResponse {
-  /// The returned Messages. Won't be more Messages than the value of
-  /// page_size in the request. See
-  /// view for
-  /// populated fields.
+  /// The returned Messages. Won't be more Messages than the value of page_size
+  /// in the request. See view for populated fields.
   core.List<Message> hl7V2Messages;
 
   /// Token to retrieve the next page of results or empty if there are no more
@@ -7653,8 +7429,75 @@ class ListOperationsResponse {
   }
 }
 
-/// A complete HL7v2 message.
-/// See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
+/// A resource that represents Google Cloud Platform location.
+class Location {
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
+  core.String displayName;
+
+  /// Cross-service attributes for the location. For example
+  /// {"cloud.googleapis.com/region": "us-east1"}
+  core.Map<core.String, core.String> labels;
+
+  /// The canonical id for this location. For example: `"us-east1"`.
+  core.String locationId;
+
+  /// Service-specific metadata. For example the available capacity at the given
+  /// location.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> metadata;
+
+  /// Resource name for the location, which may vary between implementations.
+  /// For example: `"projects/example-project/locations/us-east1"`
+  core.String name;
+
+  Location();
+
+  Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// A complete HL7v2 message. See [Introduction to HL7 Standards]
+/// (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details
 /// on the standard.
 class Message {
   /// Output only. The datetime when the message was created. Set by the server.
@@ -7671,18 +7514,14 @@ class Message {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// User-supplied key-value pairs used to organize HL7v2 stores.
-  ///
-  /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
-  /// of maximum 128 bytes, and must conform to the
-  /// following PCRE regular expression:
-  /// \p{Ll}\p{Lo}{0,62}
-  ///
-  /// Label values are optional, must be between 1 and 63 characters long, have
-  /// a UTF-8 encoding of maximum 128 bytes, and must conform to the
-  /// following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-  ///
-  /// No more than 64 labels can be associated with a given store.
+  /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys
+  /// must be between 1 and 63 characters long, have a UTF-8 encoding of maximum
+  /// 128 bytes, and must conform to the following PCRE regular expression:
+  /// \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63
+  /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+  /// conform to the following PCRE regular expression:
+  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with
+  /// a given store.
   core.Map<core.String, core.String> labels;
 
   /// The message type for this message. MSH-9.1.
@@ -7779,23 +7618,20 @@ class Message {
 class NotificationConfig {
   /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
   /// notifications of changes are published on. Supplied by the client.
-  /// PubsubMessage.Data contains the resource name.
-  /// PubsubMessage.MessageId is the ID of this message. It is guaranteed to be
-  /// unique within the topic.
+  /// PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is
+  /// the ID of this message. It is guaranteed to be unique within the topic.
   /// PubsubMessage.PublishTime is the time at which the message was published.
-  /// Notifications are only sent if the topic is
-  /// non-empty. [Topic
+  /// Notifications are only sent if the topic is non-empty. [Topic
   /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped
-  /// to a project. cloud-healthcare@system.gserviceaccount.com must have
-  /// publisher permissions on the given Cloud Pub/Sub topic. Not having
-  /// adequate
-  /// permissions causes the calls that send notifications to fail.
-  ///
-  /// If a notification can't be published to Cloud Pub/Sub, errors are logged
-  /// to
-  /// Stackdriver (see [Viewing
-  /// logs](/healthcare/docs/how-tos/stackdriver-logging)). If the number of
-  /// errors exceeds a certain rate, some aren't submitted.
+  /// to a project. Cloud Healthcare API service account must have publisher
+  /// permissions on the given Cloud Pub/Sub topic. Not having adequate
+  /// permissions causes the calls that send notifications to fail. If a
+  /// notification can't be published to Cloud Pub/Sub, errors are logged to
+  /// Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). If
+  /// the number of errors exceeds a certain rate, some aren't submitted. Note
+  /// that not all operations trigger notifications, see [Configuring Pub/Sub
+  /// notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
+  /// for specific details.
   core.String pubsubTopic;
 
   NotificationConfig();
@@ -7819,17 +7655,17 @@ class NotificationConfig {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation.  It typically
+  /// Service-specific metadata associated with the operation. It typically
   /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata.  Any method that returns a
+  /// Some services might not provide such metadata. Any method that returns a
   /// long-running operation should document the metadata type, if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -7837,19 +7673,17 @@ class Operation {
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -7916,8 +7750,8 @@ class OperationMetadata {
   core.String endTime;
 
   /// A link to audit and error logs in the log viewer. Error logs are generated
-  /// only by some operations, listed at
-  /// https://cloud.google.com/healthcare/docs/how-tos/stackdriver-logging.
+  /// only by some operations, listed at [Viewing
+  /// logs](/healthcare/docs/how-tos/logging).
   core.String logsUrl;
 
   OperationMetadata();
@@ -7998,8 +7832,8 @@ class ParserConfig {
   /// Determines whether messages with no header are allowed.
   core.bool allowNullHeader;
 
-  /// Byte(s) to use as the segment terminator. If this is unset, '\r' is
-  /// used as segment terminator.
+  /// Byte(s) to use as the segment terminator. If this is unset, '\r' is used
+  /// as segment terminator.
   core.String segmentTerminator;
   core.List<core.int> get segmentTerminatorAsBytes {
     return convert.base64.decode(segmentTerminator);
@@ -8067,69 +7901,34 @@ class PatientId {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources.
-///
-///
-/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts,
-/// Google groups, and domains (such as G Suite). A `role` is a named list of
-/// permissions; each `role` can be an IAM predefined role or a user-created
-/// custom role.
-///
-/// Optionally, a `binding` can specify a `condition`, which is a logical
-/// expression that allows access to a resource only if the expression evaluates
-/// to `true`. A condition can add constraints based on attributes of the
-/// request, the resource, or both.
-///
-/// **JSON example:**
-///
-///     {
-///       "bindings": [
-///         {
-///           "role": "roles/resourcemanager.organizationAdmin",
-///           "members": [
-///             "user:mike@example.com",
-///             "group:admins@example.com",
-///             "domain:google.com",
-///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-///           ]
-///         },
-///         {
-///           "role": "roles/resourcemanager.organizationViewer",
-///           "members": ["user:eve@example.com"],
-///           "condition": {
-///             "title": "expirable access",
-///             "description": "Does not grant access after Sep 2020",
-/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-///           }
-///         }
-///       ],
-///       "etag": "BwWWja0YfJA=",
-///       "version": 3
-///     }
-///
-/// **YAML example:**
-///
-///     bindings:
-///     - members:
-///       - user:mike@example.com
-///       - group:admins@example.com
-///       - domain:google.com
-///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
-///       role: roles/resourcemanager.organizationAdmin
-///     - members:
-///       - user:eve@example.com
-///       role: roles/resourcemanager.organizationViewer
-///       condition:
-///         title: expirable access
-///         description: Does not grant access after Sep 2020
-///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-///     - etag: BwWWja0YfJA=
-///     - version: 3
-///
-/// For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// controls for Google Cloud resources. A `Policy` is a collection of
+/// `bindings`. A `binding` binds one or more `members` to a single `role`.
+/// Members can be user accounts, service accounts, Google groups, and domains
+/// (such as G Suite). A `role` is a named list of permissions; each `role` can
+/// be an IAM predefined role or a user-created custom role. For some types of
+/// Google Cloud resources, a `binding` can also specify a `condition`, which is
+/// a logical expression that allows access to a resource only if the expression
+/// evaluates to `true`. A condition can add constraints based on attributes of
+/// the request, the resource, or both. To learn which resources support
+/// conditions in their IAM policies, see the [IAM
+/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// version: 3 For a description of IAM and its features, see the [IAM
+/// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -8139,21 +7938,17 @@ class Policy {
   /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
-  /// `etag` is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a policy from overwriting each other.
-  /// It is strongly suggested that systems make use of the `etag` in the
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other. It is
+  /// strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
   /// ensure that their change will be applied to the same version of the
-  /// policy.
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -8164,29 +7959,21 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Specifies the format of the policy.
-  ///
-  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-  /// are rejected.
-  ///
-  /// Any operation that affects conditional role bindings must specify version
-  /// `3`. This requirement applies to the following operations:
-  ///
-  /// * Getting a policy that includes a conditional role binding
-  /// * Adding a conditional role binding to a policy
-  /// * Changing a conditional role binding in a policy
-  /// * Removing any role binding, with or without a condition, from a policy
-  ///   that includes conditions
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field
-  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-  /// you to overwrite a version `3` policy with a version `1` policy, and all
-  /// of
-  /// the conditions in the version `3` policy are lost.
-  ///
-  /// If a policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset.
+  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+  /// Requests that specify an invalid value are rejected. Any operation that
+  /// affects conditional role bindings must specify version `3`. This
+  /// requirement applies to the following operations: * Getting a policy that
+  /// includes a conditional role binding * Adding a conditional role binding to
+  /// a policy * Changing a conditional role binding in a policy * Removing any
+  /// role binding, with or without a condition, from a policy that includes
+  /// conditions **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost. If a
+  /// policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -8271,8 +8058,8 @@ class ProgressCounter {
   }
 }
 
-/// Define how to redact sensitive values. Default behaviour is erase.
-/// For example, "My name is Jane." becomes "My name is ."
+/// Define how to redact sensitive values. Default behaviour is erase. For
+/// example, "My name is Jane." becomes "My name is ."
 class RedactConfig {
   RedactConfig();
 
@@ -8285,12 +8072,9 @@ class RedactConfig {
   }
 }
 
-/// When using the
-/// INSPECT_AND_TRANSFORM
-/// action, each match is replaced with the name of the info_type. For example,
-/// "My name is Jane" becomes "My name is [PERSON_NAME]." The
-/// TRANSFORM
-/// action is equivalent to redacting.
+/// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the
+/// name of the info_type. For example, "My name is Jane" becomes "My name is
+/// [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
 class ReplaceWithInfoTypeConfig {
   ReplaceWithInfoTypeConfig();
 
@@ -8329,19 +8113,25 @@ class Resources {
 /// Configuration for the FHIR BigQuery schema. Determines how the server
 /// generates the schema.
 class SchemaConfig {
-  /// The depth for all recursive structures in the output analytics
-  /// schema. For example, `concept` in the CodeSystem resource is a recursive
-  /// structure; when the depth is 2, the CodeSystem table will have a column
-  /// called `concept.concept` but not `concept.concept.concept`. If not
-  /// specified or set to 0, the server will use the default value 2. The
-  /// maximum depth allowed is 5.
+  /// The depth for all recursive structures in the output analytics schema. For
+  /// example, `concept` in the CodeSystem resource is a recursive structure;
+  /// when the depth is 2, the CodeSystem table will have a column called
+  /// `concept.concept` but not `concept.concept.concept`. If not specified or
+  /// set to 0, the server will use the default value 2. The maximum depth
+  /// allowed is 5.
   core.String recursiveStructureDepth;
 
-  /// Specifies the output schema type.
+  /// Specifies the output schema type. Schema type is required.
   /// Possible string values are:
-  /// - "SCHEMA_TYPE_UNSPECIFIED" : No schema type specified.
-  /// - "ANALYTICS" : Analytics schema defined by the FHIR community.
-  /// See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+  /// - "SCHEMA_TYPE_UNSPECIFIED" : No schema type specified. This type is
+  /// unsupported.
+  /// - "ANALYTICS" : Analytics schema defined by the FHIR community. See
+  /// https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md. BigQuery
+  /// only allows a maximum of 10,000 columns per table. Due to this limitation,
+  /// the server will not generate schemas for fields of type `Resource`, which
+  /// can hold any resource type. The affected fields are
+  /// `Parameters.parameter.resource`, `Bundle.entry.resource`, and
+  /// `Bundle.entry.response.outcome`.
   core.String schemaType;
 
   SchemaConfig();
@@ -8397,22 +8187,16 @@ class SearchResourcesRequest {
 
 /// A segment in a structured format.
 class Segment {
-  /// A mapping from the positional location to the value.
-  /// The key string uses zero-based indexes separated by dots to identify
-  /// Fields, components and sub-components. A bracket notation is also used to
-  /// identify different instances of a repeated field.
-  /// Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)?
-  ///
-  /// Examples of (key, value) pairs:
-  ///
-  /// * (0.1, "hemoglobin") denotes that the first component of Field 0 has the
-  ///   value "hemoglobin".
-  ///
-  /// * (1.1.2, "CBC") denotes that the second sub-component of the first
-  ///   component of Field 1 has the value "CBC".
-  ///
-  /// * (1[0].1, "HbA1c") denotes that the first component of the
-  ///   first Instance of Field 1, which is repeated, has the value "HbA1c".
+  /// A mapping from the positional location to the value. The key string uses
+  /// zero-based indexes separated by dots to identify Fields, components and
+  /// sub-components. A bracket notation is also used to identify different
+  /// instances of a repeated field. Regex for key:
+  /// (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1,
+  /// "hemoglobin") denotes that the first component of Field 0 has the value
+  /// "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of
+  /// the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c")
+  /// denotes that the first component of the first Instance of Field 1, which
+  /// is repeated, has the value "HbA1c".
   core.Map<core.String, core.String> fields;
 
   /// A string that indicates the type of segment. For example, EVN or PID.
@@ -8455,17 +8239,14 @@ class Segment {
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a
-  /// valid policy but certain Cloud Platform services (such as Projects)
-  /// might reject them.
+  /// the policy is limited to a few 10s of KB. An empty policy is a valid
+  /// policy but certain Cloud Platform services (such as Projects) might reject
+  /// them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
-  /// Only
-  /// the fields in the mask will be modified. If no mask is provided, the
-  /// following default mask is used:
-  /// paths: "bindings, etag"
-  /// This field is only used by Cloud IAM.
+  /// Only the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
 
   SetIamPolicyRequest();
@@ -8495,15 +8276,14 @@ class SetIamPolicyRequest {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -8548,47 +8328,43 @@ class Status {
   }
 }
 
-/// This structure contains configuration for streaming FHIR export.
+/// Contains configuration for streaming FHIR export.
 class StreamConfig {
-  /// The destination BigQuery structure that contains both the dataset
-  /// location and corresponding schema config.
-  ///
-  /// The output is organized in one table per resource type. The server
-  /// reuses the existing tables (if any) that are named after the resource
-  /// types, e.g. "Patient", "Observation". When there is no existing table
-  /// for a given resource type, the server attempts to create one.
-  ///
-  /// When a table schema doesn't align with the schema config, either
-  /// because of existing incompatible schema or out of band incompatible
-  /// modification, the server does not stream in new data.
-  ///
-  /// BigQuery imposes a 1 MB limit on streaming insert row size, therefore
-  /// any resource mutation that generates more than 1 MB of BigQuery data
-  /// will not be streamed.
-  ///
-  /// One resolution in this case is to delete the incompatible
-  /// table and let the server recreate one, though the newly created table
-  /// only contains data after the table recreation.
-  ///
-  /// Results are appended to the corresponding BigQuery tables. Different
-  /// versions of the same resource are distinguishable by the meta.versionId
-  /// and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that
-  /// results in the new version is recorded in the meta.tag.
-  ///
-  /// The tables contain all historical resource versions since streaming was
-  /// enabled. For query convenience, the server also creates one view per
-  /// table of the same name containing only the current resource version.
-  ///
-  /// If a resource mutation cannot be streamed to BigQuery, errors will be
-  /// logged to Stackdriver (see [Viewing logs](/healthcare/docs/how-
-  /// tos/stackdriver-logging)).
+  /// The destination BigQuery structure that contains both the dataset location
+  /// and corresponding schema config. The output is organized in one table per
+  /// resource type. The server reuses the existing tables (if any) that are
+  /// named after the resource types. For example, "Patient", "Observation".
+  /// When there is no existing table for a given resource type, the server
+  /// attempts to create one. When a table schema doesn't align with the schema
+  /// config, either because of existing incompatible schema or out of band
+  /// incompatible modification, the server does not stream in new data.
+  /// BigQuery imposes a 1 MB limit on streaming insert row size, therefore any
+  /// resource mutation that generates more than 1 MB of BigQuery data is not
+  /// streamed. One resolution in this case is to delete the incompatible table
+  /// and let the server recreate one, though the newly created table only
+  /// contains data after the table recreation. Results are appended to the
+  /// corresponding BigQuery tables. Different versions of the same resource are
+  /// distinguishable by the meta.versionId and meta.lastUpdated columns. The
+  /// operation (CREATE/UPDATE/DELETE) that results in the new version is
+  /// recorded in the meta.tag. The tables contain all historical resource
+  /// versions since streaming was enabled. For query convenience, the server
+  /// also creates one view per table of the same name containing only the
+  /// current resource version. The streamed data in the BigQuery dataset is not
+  /// guaranteed to be completely unique. The combination of the id and
+  /// meta.versionId columns should ideally identify a single unique row. But in
+  /// rare cases, duplicates may exist. At query time, users may use the SQL
+  /// select statement to keep only one of the duplicate rows given an id and
+  /// meta.versionId pair. Alternatively, the server created view mentioned
+  /// above also filters out duplicates. If a resource mutation cannot be
+  /// streamed to BigQuery, errors are logged to Cloud Logging. For more
+  /// information, see [Viewing error logs in Cloud
+  /// Logging](/healthcare/docs/how-tos/logging)).
   GoogleCloudHealthcareV1FhirBigQueryDestination bigqueryDestination;
 
-  /// Supply a FHIR resource type (such as "Patient" or "Observation").
-  /// See https://www.hl7.org/fhir/valueset-resource-types.html for a list of
-  /// all FHIR resource types.
-  /// The server treats an empty list as an intent to stream all the
-  /// supported resource types in this FHIR store.
+  /// Supply a FHIR resource type (such as "Patient" or "Observation"). See
+  /// https://www.hl7.org/fhir/valueset-resource-types.html for a list of all
+  /// FHIR resource types. The server treats an empty list as an intent to
+  /// stream all the supported resource types in this FHIR store.
   core.List<core.String> resourceTypes;
 
   StreamConfig();
@@ -8619,8 +8395,8 @@ class StreamConfig {
 
 /// List of tags to be filtered.
 class TagFilterList {
-  /// Tags to be filtered. Tags must be DICOM Data Elements, File Meta
-  /// Elements, or Directory Structuring Elements, as defined at:
+  /// Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements,
+  /// or Directory Structuring Elements, as defined at:
   /// http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.
   /// They may be provided by "Keyword" or "Tag". For example "PatientID",
   /// "00100010".
@@ -8648,8 +8424,8 @@ class TagFilterList {
 class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`. Permissions with
   /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// information see [IAM
+  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();

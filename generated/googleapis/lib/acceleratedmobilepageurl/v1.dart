@@ -35,8 +35,8 @@ class AmpUrlsResourceApi {
 
   AmpUrlsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns AMP URL(s) and equivalent
-  /// [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).
+  /// Returns AMP URL(s) and equivalent [AMP Cache
+  /// URL(s)](/amp/cache/overview#amp-cache-url-format).
   ///
   /// [request] - The metadata request object.
   ///
@@ -128,22 +128,17 @@ class AmpUrlError {
   /// Possible string values are:
   /// - "ERROR_CODE_UNSPECIFIED" : Not specified error.
   /// - "INPUT_URL_NOT_FOUND" : Indicates the requested URL is not found in the
-  /// index, possibly because
-  /// it's unable to be found, not able to be accessed by Googlebot, or some
-  /// other error.
+  /// index, possibly because it's unable to be found, not able to be accessed
+  /// by Googlebot, or some other error.
   /// - "NO_AMP_URL" : Indicates no AMP URL has been found that corresponds to
-  /// the requested
-  /// URL.
+  /// the requested URL.
   /// - "APPLICATION_ERROR" : Indicates some kind of application error occurred
-  /// at the server.
-  /// Client advised to retry.
+  /// at the server. Client advised to retry.
   /// - "URL_IS_VALID_AMP" : DEPRECATED: Indicates the requested URL is a valid
-  /// AMP URL.  This is a
-  /// non-error state, should not be relied upon as a sign of success or
-  /// failure.  It will be removed in future versions of the API.
+  /// AMP URL. This is a non-error state, should not be relied upon as a sign of
+  /// success or failure. It will be removed in future versions of the API.
   /// - "URL_IS_INVALID_AMP" : Indicates that an AMP URL has been found that
-  /// corresponds to the request
-  /// URL, but it is not valid AMP HTML.
+  /// corresponds to the request URL, but it is not valid AMP HTML.
   core.String errorCode;
 
   /// An optional descriptive error message.
@@ -187,21 +182,19 @@ class BatchGetAmpUrlsRequest {
   /// The lookup_strategy being requested.
   /// Possible string values are:
   /// - "FETCH_LIVE_DOC" : FETCH_LIVE_DOC strategy involves live document fetch
-  /// of URLs not found in
-  /// the index. Any request URL not found in the index is crawled in realtime
-  /// to validate if there is a corresponding AMP URL. This strategy has higher
-  /// coverage but with extra latency introduced by realtime crawling. This is
-  /// the default strategy. Applications using this strategy should set higher
-  /// HTTP timeouts of the API calls.
+  /// of URLs not found in the index. Any request URL not found in the index is
+  /// crawled in realtime to validate if there is a corresponding AMP URL. This
+  /// strategy has higher coverage but with extra latency introduced by realtime
+  /// crawling. This is the default strategy. Applications using this strategy
+  /// should set higher HTTP timeouts of the API calls.
   /// - "IN_INDEX_DOC" : IN_INDEX_DOC strategy skips fetching live documents of
-  /// URL(s) not found
-  /// in index. For applications which need low latency use of IN_INDEX_DOC
-  /// strategy is recommended.
+  /// URL(s) not found in index. For applications which need low latency use of
+  /// IN_INDEX_DOC strategy is recommended.
   core.String lookupStrategy;
 
-  /// List of URLs to look up for the paired AMP URLs.
-  /// The URLs are case-sensitive. Up to 50 URLs per lookup
-  /// (see [Usage Limits](/amp/cache/reference/limits)).
+  /// List of URLs to look up for the paired AMP URLs. The URLs are
+  /// case-sensitive. Up to 50 URLs per lookup (see [Usage
+  /// Limits](/amp/cache/reference/limits)).
   core.List<core.String> urls;
 
   BatchGetAmpUrlsRequest();
@@ -231,9 +224,9 @@ class BatchGetAmpUrlsRequest {
 /// Batch AMP URL response.
 class BatchGetAmpUrlsResponse {
   /// For each URL in BatchAmpUrlsRequest, the URL response. The response might
-  /// not be in the same order as URLs in the batch request.
-  /// If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated
-  /// only once.
+  /// not be in the same order as URLs in the batch request. If
+  /// BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only
+  /// once.
   core.List<AmpUrl> ampUrls;
 
   /// The errors for requested URLs that have no AMP URL.

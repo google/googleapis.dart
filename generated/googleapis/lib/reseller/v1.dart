@@ -663,7 +663,7 @@ class SubscriptionsResourceApi {
   /// Possible string values are:
   /// - "cancel" : Cancels the subscription immediately. This does not apply to
   /// a G Suite subscription.
-  /// - "transfer_to_direct" : Transfers a subscription directly to Google.  The
+  /// - "transfer_to_direct" : Transfers a subscription directly to Google.  The
   /// customer is immediately transferred to a direct billing relationship with
   /// Google and is given a short amount of time with no service interruption.
   /// The customer can then choose to set up billing directly with Google by
@@ -853,10 +853,7 @@ class SubscriptionsResourceApi {
   /// the subscription transfer. For more information, see the administrator
   /// help center.
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// customerId as a key for persistent data. If the domain name for a
-  /// customerId is changed, the Google system automatically updates.
+  /// [pageToken] - Token to specify next page in the list
   ///
   /// [customerNamePrefix] - When retrieving all of your subscriptions and
   /// filtering for specific customers, you can enter a prefix for a customer
@@ -867,12 +864,15 @@ class SubscriptionsResourceApi {
   /// to using a regular expression's asterisk, exa*.
   /// - example -- Returns example20.com and example.com.
   ///
+  /// [customerId] - Either the customer's primary domain name or the customer's
+  /// unique identifier. If using the domain name, we do not recommend using a
+  /// customerId as a key for persistent data. If the domain name for a
+  /// customerId is changed, the Google system automatically updates.
+  ///
   /// [maxResults] - When retrieving a large list, the maxResults is the maximum
   /// number of results per page. The nextPageToken value takes you to the next
   /// page. The default is 20.
   /// Value must be between "1" and "100".
-  ///
-  /// [pageToken] - Token to specify next page in the list
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -886,10 +886,10 @@ class SubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Subscriptions> list(
       {core.String customerAuthToken,
-      core.String customerId,
-      core.String customerNamePrefix,
-      core.int maxResults,
       core.String pageToken,
+      core.String customerNamePrefix,
+      core.String customerId,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -901,17 +901,17 @@ class SubscriptionsResourceApi {
     if (customerAuthToken != null) {
       _queryParams["customerAuthToken"] = [customerAuthToken];
     }
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (customerNamePrefix != null) {
       _queryParams["customerNamePrefix"] = [customerNamePrefix];
     }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

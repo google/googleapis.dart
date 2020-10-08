@@ -103,9 +103,9 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
@@ -120,8 +120,8 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -134,11 +134,11 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -166,39 +166,29 @@ class ProjectsLocationsInstancesResourceApi {
   ProjectsLocationsInstancesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a Redis instance based on the specified tier and memory size.
-  ///
-  /// By default, the instance is accessible from the project's
-  /// [default network](/compute/docs/networks-and-firewalls#networks).
-  ///
-  /// The creation is executed asynchronously and callers may check the returned
-  /// operation to track its progress. Once the operation is completed the Redis
-  /// instance will be fully functional. Completed longrunning.Operation will
-  /// contain the new instance object in the response field.
-  ///
-  /// The returned operation is automatically deleted after a few hours, so
-  /// there
-  /// is no need to call DeleteOperation.
+  /// Creates a Redis instance based on the specified tier and memory size. By
+  /// default, the instance is accessible from the project's [default
+  /// network](https://cloud.google.com/vpc/docs/vpc). The creation is executed
+  /// asynchronously and callers may check the returned operation to track its
+  /// progress. Once the operation is completed the Redis instance will be fully
+  /// functional. Completed longrunning.Operation will contain the new instance
+  /// object in the response field. The returned operation is automatically
+  /// deleted after a few hours, so there is no need to call DeleteOperation.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the instance location using the
-  /// form:
-  ///     `projects/{project_id}/locations/{location_id}`
-  /// where `location_id` refers to a GCP region.
+  /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
+  /// refers to a GCP region.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [instanceId] - Required. The logical name of the Redis instance in the
-  /// customer project
-  /// with the following restrictions:
-  ///
-  /// * Must contain only lowercase letters, numbers, and hyphens.
-  /// * Must start with a letter.
-  /// * Must be between 1-40 characters.
-  /// * Must end with a number or a letter.
-  /// * Must be unique within the customer project / location
+  /// customer project with the following restrictions: * Must contain only
+  /// lowercase letters, numbers, and hyphens. * Must start with a letter. *
+  /// Must be between 1-40 characters. * Must end with a number or a letter. *
+  /// Must be unique within the customer project / location
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -244,7 +234,7 @@ class ProjectsLocationsInstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Deletes a specific Redis instance.  Instance stops serving and data is
+  /// Deletes a specific Redis instance. Instance stops serving and data is
   /// deleted.
   ///
   /// Request parameters:
@@ -292,11 +282,9 @@ class ProjectsLocationsInstancesResourceApi {
   }
 
   /// Export Redis instance data into a Redis RDB format file in Cloud Storage.
-  ///
-  /// Redis will continue serving during this operation.
-  ///
-  /// The returned operation is automatically deleted after a few hours, so
-  /// there is no need to call DeleteOperation.
+  /// Redis will continue serving during this operation. The returned operation
+  /// is automatically deleted after a few hours, so there is no need to call
+  /// DeleteOperation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -349,7 +337,7 @@ class ProjectsLocationsInstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Initiates a failover of the master node to current replica node for a
+  /// Initiates a failover of the primary node to current replica node for a
   /// specific STANDARD tier Cloud Memorystore for Redis instance.
   ///
   /// [request] - The metadata request object.
@@ -450,13 +438,10 @@ class ProjectsLocationsInstancesResourceApi {
   }
 
   /// Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
-  ///
   /// Redis may stop serving during this operation. Instance state will be
   /// IMPORTING for entire operation. When complete, the instance will contain
-  /// only data from the imported file.
-  ///
-  /// The returned operation is automatically deleted after a few hours, so
-  /// there is no need to call DeleteOperation.
+  /// only data from the imported file. The returned operation is automatically
+  /// deleted after a few hours, so there is no need to call DeleteOperation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -510,30 +495,23 @@ class ProjectsLocationsInstancesResourceApi {
   }
 
   /// Lists all Redis instances owned by a project in either the specified
-  /// location (region) or all locations.
-  ///
-  /// The location should have the following format:
-  ///
-  /// * `projects/{project_id}/locations/{location_id}`
-  ///
-  /// If `location_id` is specified as `-` (wildcard), then all regions
-  /// available to the project are queried, and the results are aggregated.
+  /// location (region) or all locations. The location should have the following
+  /// format: * `projects/{project_id}/locations/{location_id}` If `location_id`
+  /// is specified as `-` (wildcard), then all regions available to the project
+  /// are queried, and the results are aggregated.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the instance location using the
-  /// form:
-  ///     `projects/{project_id}/locations/{location_id}`
-  /// where `location_id` refers to a GCP region.
+  /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
+  /// refers to a GCP region.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of items to return.
-  ///
-  /// If not specified, a default value of 1000 will be used by the service.
-  /// Regardless of the page_size value, the response may include a partial list
-  /// and a caller should only rely on response's
-  /// `next_page_token`
-  /// to determine if there are more instances left to be queried.
+  /// [pageSize] - The maximum number of items to return. If not specified, a
+  /// default value of 1000 will be used by the service. Regardless of the
+  /// page_size value, the response may include a partial list and a caller
+  /// should only rely on response's `next_page_token` to determine if there are
+  /// more instances left to be queried.
   ///
   /// [pageToken] - The `next_page_token` value returned from a previous
   /// ListInstances request, if any.
@@ -583,39 +561,29 @@ class ProjectsLocationsInstancesResourceApi {
   }
 
   /// Updates the metadata and configuration of a specific Redis instance.
-  ///
-  /// Completed longrunning.Operation will contain the new instance object
-  /// in the response field. The returned operation is automatically deleted
-  /// after a few hours, so there is no need to call DeleteOperation.
+  /// Completed longrunning.Operation will contain the new instance object in
+  /// the response field. The returned operation is automatically deleted after
+  /// a few hours, so there is no need to call DeleteOperation.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Unique name of the resource in this scope including
-  /// project and
-  /// location using the form:
+  /// project and location using the form:
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-  ///
   /// Note: Redis instances are managed and addressed at regional level so
   /// location_id here refers to a GCP region; however, users may choose which
   /// specific zone (or collection of zones for cross-zone instances) an
-  /// instance
-  /// should be provisioned in. Refer to location_id and
+  /// instance should be provisioned in. Refer to location_id and
   /// alternative_location_id fields for more details.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in
-  /// this field. The elements of the repeated paths field may only include
-  /// these
-  /// fields from Instance:
-  ///
-  ///  *   `displayName`
-  ///  *   `labels`
-  ///  *   `memorySizeGb`
-  ///  *   `redisConfig`
+  /// be supplied in this field. The elements of the repeated paths field may
+  /// only include these fields from Instance: * `displayName` * `labels` *
+  /// `memorySizeGb` * `redisConfig`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -721,16 +689,15 @@ class ProjectsLocationsOperationsResourceApi {
   ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
   ///
   /// Request parameters:
   ///
@@ -821,7 +788,7 @@ class ProjectsLocationsOperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
   ///
@@ -868,16 +835,14 @@ class ProjectsLocationsOperationsResourceApi {
   }
 
   /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -943,13 +908,9 @@ class ProjectsLocationsOperationsResourceApi {
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance:
-///
-///     service Foo {
-///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-///     }
-///
-/// The JSON representation for `Empty` is empty JSON object `{}`.
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
 class Empty {
   Empty();
 
@@ -988,17 +949,15 @@ class ExportInstanceRequest {
 /// Request for Failover.
 class FailoverInstanceRequest {
   /// Optional. Available data protection modes that the user can choose. If
-  /// it's
-  /// unspecified, data protection mode will be LIMITED_DATA_LOSS by default.
+  /// it's unspecified, data protection mode will be LIMITED_DATA_LOSS by
+  /// default.
   /// Possible string values are:
   /// - "DATA_PROTECTION_MODE_UNSPECIFIED" : Defaults to LIMITED_DATA_LOSS if a
-  /// data protection mode is not
-  /// specified.
+  /// data protection mode is not specified.
   /// - "LIMITED_DATA_LOSS" : Instance failover will be protected with data loss
-  /// control. More
-  /// specifically, the failover will only be performed if the current
-  /// replication offset diff between master and replica is under a certain
-  /// threshold.
+  /// control. More specifically, the failover will only be performed if the
+  /// current replication offset diff between primary and replica is under a
+  /// certain threshold.
   /// - "FORCE_DATA_LOSS" : Instance failover will be performed without data
   /// loss control.
   core.String dataProtectionMode;
@@ -1023,8 +982,8 @@ class FailoverInstanceRequest {
 
 /// The Cloud Storage location for the output content
 class GcsDestination {
-  /// Required. Data destination URI (e.g.
-  /// 'gs://my_bucket/my_object'). Existing files will be overwritten.
+  /// Required. Data destination URI (e.g. 'gs://my_bucket/my_object'). Existing
+  /// files will be overwritten.
   core.String uri;
 
   GcsDestination();
@@ -1242,37 +1201,33 @@ class InputConfig {
 class Instance {
   /// Optional. Only applicable to STANDARD_HA tier which protects the instance
   /// against zonal failures by provisioning it across two zones. If provided,
-  /// it
-  /// must be a different zone from the one provided in location_id.
+  /// it must be a different zone from the one provided in location_id.
   core.String alternativeLocationId;
 
   /// Optional. The full name of the Google Compute Engine
-  /// [network](/compute/docs/networks-and-firewalls#networks) to which the
-  /// instance is connected. If left unspecified, the `default` network
-  /// will be used.
+  /// [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is
+  /// connected. If left unspecified, the `default` network will be used.
   core.String authorizedNetwork;
 
-  /// Optional. The network connect mode of the Redis instance.
-  /// If not provided, the connect mode defaults to DIRECT_PEERING.
+  /// Optional. The network connect mode of the Redis instance. If not provided,
+  /// the connect mode defaults to DIRECT_PEERING.
   /// Possible string values are:
   /// - "CONNECT_MODE_UNSPECIFIED" : Not set.
   /// - "DIRECT_PEERING" : Connect via direct peering to the Memorystore for
   /// Redis hosted service.
   /// - "PRIVATE_SERVICE_ACCESS" : Connect your Memorystore for Redis instance
-  /// using Private Service
-  /// Access. Private services access provides an IP address range for multiple
-  /// Google Cloud services, including Memorystore.
+  /// using Private Service Access. Private services access provides an IP
+  /// address range for multiple Google Cloud services, including Memorystore.
   core.String connectMode;
 
   /// Output only. The time the instance was created.
   core.String createTime;
 
   /// Output only. The current zone where the Redis endpoint is placed. For
-  /// Basic
-  /// Tier instances, this will always be the same as the location_id
-  /// provided by the user at creation time. For Standard Tier instances,
-  /// this can be either location_id or alternative_location_id and can
-  /// change after a failover event.
+  /// Basic Tier instances, this will always be the same as the location_id
+  /// provided by the user at creation time. For Standard Tier instances, this
+  /// can be either location_id or alternative_location_id and can change after
+  /// a failover event.
   core.String currentLocationId;
 
   /// An arbitrary and optional user-provided name for the instance.
@@ -1286,10 +1241,9 @@ class Instance {
   core.Map<core.String, core.String> labels;
 
   /// Optional. The zone where the instance will be provisioned. If not
-  /// provided,
-  /// the service will choose a zone for the instance. For STANDARD_HA tier,
-  /// instances will be created across two zones for protection against zonal
-  /// failures. If alternative_location_id is also provided, it must be
+  /// provided, the service will choose a zone for the instance. For STANDARD_HA
+  /// tier, instances will be created across two zones for protection against
+  /// zonal failures. If alternative_location_id is also provided, it must be
   /// different from location_id.
   core.String locationId;
 
@@ -1299,20 +1253,17 @@ class Instance {
   /// Required. Unique name of the resource in this scope including project and
   /// location using the form:
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-  ///
   /// Note: Redis instances are managed and addressed at regional level so
   /// location_id here refers to a GCP region; however, users may choose which
   /// specific zone (or collection of zones for cross-zone instances) an
-  /// instance
-  /// should be provisioned in. Refer to location_id and
+  /// instance should be provisioned in. Refer to location_id and
   /// alternative_location_id fields for more details.
   core.String name;
 
   /// Output only. Cloud IAM identity used by import / export operations to
-  /// transfer data to/from Cloud Storage. Format is
-  /// "serviceAccount:<service_account_email>". The value may change over time
-  /// for a given instance so should be checked before each import/export
-  /// operation.
+  /// transfer data to/from Cloud Storage. Format is "serviceAccount:". The
+  /// value may change over time for a given instance so should be checked
+  /// before each import/export operation.
   core.String persistenceIamIdentity;
 
   /// Output only. The port number of the exposed Redis endpoint.
@@ -1320,39 +1271,22 @@ class Instance {
 
   /// Optional. Redis configuration parameters, according to
   /// http://redis.io/topics/config. Currently, the only supported parameters
-  /// are:
-  ///
-  ///  Redis version 3.2 and newer:
-  ///
-  ///  *   maxmemory-policy
-  ///  *   notify-keyspace-events
-  ///
-  ///  Redis version 4.0 and newer:
-  ///
-  ///  *   activedefrag
-  ///  *   lfu-decay-time
-  ///  *   lfu-log-factor
-  ///  *   maxmemory-gb
-  ///
-  ///  Redis version 5.0 and newer:
-  ///
-  ///  *   stream-node-max-bytes
-  ///  *   stream-node-max-entries
+  /// are: Redis version 3.2 and newer: * maxmemory-policy *
+  /// notify-keyspace-events Redis version 4.0 and newer: * activedefrag *
+  /// lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and
+  /// newer: * stream-node-max-bytes * stream-node-max-entries
   core.Map<core.String, core.String> redisConfigs;
 
-  /// Optional. The version of Redis software.
-  /// If not provided, latest supported version will be used. Currently, the
-  /// supported values are:
-  ///
-  ///  *   `REDIS_3_2` for Redis 3.2 compatibility
-  ///  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
-  ///  *   `REDIS_5_0` for Redis 5.0 compatibility
+  /// Optional. The version of Redis software. If not provided, latest supported
+  /// version will be used. Currently, the supported values are: * `REDIS_3_2`
+  /// for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility
+  /// (default) * `REDIS_5_0` for Redis 5.0 compatibility
   core.String redisVersion;
 
   /// Optional. The CIDR range of internal addresses that are reserved for this
   /// instance. If not provided, the service will choose an unused /29 block,
-  /// for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique
-  /// and non-overlapping with existing subnets in an authorized network.
+  /// for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique and
+  /// non-overlapping with existing subnets in an authorized network.
   core.String reservedIpRange;
 
   /// Output only. The current state of this instance.
@@ -1361,9 +1295,8 @@ class Instance {
   /// - "CREATING" : Redis instance is being created.
   /// - "READY" : Redis instance has been created and is fully usable.
   /// - "UPDATING" : Redis instance configuration is being updated. Certain
-  /// kinds of updates
-  /// may cause the instance to become unusable while the update is in
-  /// progress.
+  /// kinds of updates may cause the instance to become unusable while the
+  /// update is in progress.
   /// - "DELETING" : Redis instance is being deleted.
   /// - "REPAIRING" : Redis instance is being repaired and may be unusable.
   /// - "MAINTENANCE" : Maintenance is being performed on this Redis instance.
@@ -1514,17 +1447,14 @@ class Instance {
 
 /// Response for ListInstances.
 class ListInstancesResponse {
-  /// A list of Redis instances in the project in the specified location,
-  /// or across all locations.
-  ///
-  /// If the `location_id` in the parent field of the request is "-", all
-  /// regions
-  /// available to the project are queried, and the results aggregated.
-  /// If in such an aggregated query a location is unavailable, a dummy Redis
-  /// entry is included in the response with the `name` field set to a value of
-  /// the form `projects/{project_id}/locations/{location_id}/instances/`- and
-  /// the `status` field set to ERROR and `status_message` field set to
-  /// "location
+  /// A list of Redis instances in the project in the specified location, or
+  /// across all locations. If the `location_id` in the parent field of the
+  /// request is "-", all regions available to the project are queried, and the
+  /// results aggregated. If in such an aggregated query a location is
+  /// unavailable, a placeholder Redis entry is included in the response with
+  /// the `name` field set to a value of the form
+  /// `projects/{project_id}/locations/{location_id}/instances/`- and the
+  /// `status` field set to ERROR and `status_message` field set to "location
   /// not available for ListInstances".
   core.List<Instance> instances;
 
@@ -1638,13 +1568,12 @@ class ListOperationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  /// For example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
   core.String displayName;
 
   /// Cross-service attributes for the location. For example
-  ///
-  ///     {"cloud.googleapis.com/region": "us-east1"}
+  /// {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
   /// Resource ID for the region. For example: "us-east1".
@@ -1709,53 +1638,39 @@ class Location {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// {
-  ///
-  /// `createTime`: The time the operation was created.
-  ///
-  /// `endTime`: The time the operation finished running.
-  ///
-  /// `target`: Server-defined resource path for the target of the operation.
-  ///
-  /// `verb`: Name of the verb executed by the operation.
-  ///
-  /// `statusDetail`: Human-readable status of the operation, if any.
-  ///
+  /// { `createTime`: The time the operation was created. `endTime`: The time
+  /// the operation finished running. `target`: Server-defined resource path for
+  /// the target of the operation. `verb`: Name of the verb executed by the
+  /// operation. `statusDetail`: Human-readable status of the operation, if any.
   /// `cancelRequested`: Identifies whether the user has requested cancellation
   /// of the operation. Operations that have successfully been cancelled have
   /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// `apiVersion`: API version used to start the operation.
-  ///
-  /// }
+  /// `Code.CANCELLED`. `apiVersion`: API version used to start the operation. }
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that
-  /// originally returns it. If you use the default HTTP mapping, the
+  /// that originally returns it. If you use the default HTTP mapping, the
   /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success.  If the original
+  /// The normal response of the operation in case of success. If the original
   /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`.  If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx`
-  /// is the original method name.  For example, if the original method name
-  /// is `TakeSnapshot()`, the inferred response type is
-  /// `TakeSnapshotResponse`.
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1831,15 +1746,14 @@ class OutputConfig {
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details.
-///
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details.  There is a common set of
+  /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,

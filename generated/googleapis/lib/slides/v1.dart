@@ -65,26 +65,19 @@ class PresentationsResourceApi {
 
   PresentationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Applies one or more updates to the presentation.
-  ///
-  /// Each request is validated before
-  /// being applied. If any request is not valid, then the entire request will
-  /// fail and nothing will be applied.
-  ///
-  /// Some requests have replies to
-  /// give you some information about how they are applied. Other requests do
-  /// not need to return information; these each return an empty reply.
-  /// The order of replies matches that of the requests.
-  ///
-  /// For example, suppose you call batchUpdate with four updates, and only the
-  /// third one returns information. The response would have two empty replies:
-  /// the reply to the third request, and another empty reply, in that order.
-  ///
-  /// Because other users may be editing the presentation, the presentation
-  /// might not exactly reflect your changes: your changes may
-  /// be altered with respect to collaborator changes. If there are no
-  /// collaborators, the presentation should reflect your changes. In any case,
-  /// the updates in your request are guaranteed to be applied together
+  /// Applies one or more updates to the presentation. Each request is validated
+  /// before being applied. If any request is not valid, then the entire request
+  /// will fail and nothing will be applied. Some requests have replies to give
+  /// you some information about how they are applied. Other requests do not
+  /// need to return information; these each return an empty reply. The order of
+  /// replies matches that of the requests. For example, suppose you call
+  /// batchUpdate with four updates, and only the third one returns information.
+  /// The response would have two empty replies: the reply to the third request,
+  /// and another empty reply, in that order. Because other users may be editing
+  /// the presentation, the presentation might not exactly reflect your changes:
+  /// your changes may be altered with respect to collaborator changes. If there
+  /// are no collaborators, the presentation should reflect your changes. In any
+  /// case, the updates in your request are guaranteed to be applied together
   /// atomically.
   ///
   /// [request] - The metadata request object.
@@ -139,10 +132,9 @@ class PresentationsResourceApi {
 
   /// Creates a blank presentation using the title given in the request. If a
   /// `presentationId` is provided, it is used as the ID of the new
+  /// presentation. Otherwise, a new ID is generated. Other fields in the
+  /// request, including any provided content, are ignored. Returns the created
   /// presentation.
-  /// Otherwise, a new ID is generated. Other fields in the request, including
-  /// any provided content, are ignored.
-  /// Returns the created presentation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -289,10 +281,8 @@ class PresentationsPagesResourceApi {
   }
 
   /// Generates a thumbnail of the latest version of the specified page in the
-  /// presentation and returns a URL to the thumbnail image.
-  ///
-  /// This request counts as an [expensive read request](/slides/limits) for
-  /// quota purposes.
+  /// presentation and returns a URL to the thumbnail image. This request counts
+  /// as an [expensive read request](/slides/limits) for quota purposes.
   ///
   /// Request parameters:
   ///
@@ -301,21 +291,20 @@ class PresentationsPagesResourceApi {
   /// [pageObjectId] - The object ID of the page whose thumbnail to retrieve.
   ///
   /// [thumbnailProperties_mimeType] - The optional mime type of the thumbnail
-  /// image.
-  ///
-  /// If you don't specify the mime type, the mime type defaults to PNG.
+  /// image. If you don't specify the mime type, the mime type defaults to PNG.
   /// Possible string values are:
-  /// - "PNG" : A PNG.
+  /// - "PNG" : The default mime type.
   ///
   /// [thumbnailProperties_thumbnailSize] - The optional thumbnail image size.
-  ///
   /// If you don't specify the size, the server chooses a default size of the
   /// image.
   /// Possible string values are:
-  /// - "THUMBNAIL_SIZE_UNSPECIFIED" : A THUMBNAIL_SIZE_UNSPECIFIED.
-  /// - "LARGE" : A LARGE.
-  /// - "MEDIUM" : A MEDIUM.
-  /// - "SMALL" : A SMALL.
+  /// - "THUMBNAIL_SIZE_UNSPECIFIED" : The default thumbnail image size. The
+  /// unspecified thumbnail size implies that the server chooses the size of the
+  /// image in a way that might vary in the future.
+  /// - "LARGE" : The thumbnail image width of 1600px.
+  /// - "MEDIUM" : The thumbnail image width of 800px.
+  /// - "SMALL" : The thumbnail image width of 200px.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -375,19 +364,12 @@ class PresentationsPagesResourceApi {
   }
 }
 
-/// AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ]
-/// to transform source coordinates (x,y) into destination coordinates (x', y')
-/// according to:
-///
-///       x'  x  =   shear_y  scale_y  translate_y
-///       1  [ 1 ]
-///
-/// After transformation,
-///
-///      x' = scale_x * x + shear_x * y + translate_x;
-///      y' = scale_y * y + shear_y * x + translate_y;
-///
-/// This message is therefore composed of these six matrix elements.
+/// AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to
+/// transform source coordinates (x,y) into destination coordinates (x', y')
+/// according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After
+/// transformation, x' = scale_x * x + shear_x * y + translate_x; y' = scale_y *
+/// y + shear_y * x + translate_y; This message is therefore composed of these
+/// six matrix elements.
 class AffineTransform {
   /// The X coordinate scaling element.
   core.double scaleX;
@@ -411,8 +393,8 @@ class AffineTransform {
   /// Possible string values are:
   /// - "UNIT_UNSPECIFIED" : The units are unknown.
   /// - "EMU" : An English Metric Unit (EMU) is defined as 1/360,000 of a
-  /// centimeter
-  /// and thus there are 914,400 EMUs per inch, and 12,700 EMUs per point.
+  /// centimeter and thus there are 914,400 EMUs per inch, and 12,700 EMUs per
+  /// point.
   /// - "PT" : A point, 1/72 of an inch.
   core.String unit;
 
@@ -554,8 +536,8 @@ class BatchUpdatePresentationResponse {
   /// The presentation the updates were applied to.
   core.String presentationId;
 
-  /// The reply of the updates.  This maps 1:1 with the updates, although
-  /// replies to some requests may be empty.
+  /// The reply of the updates. This maps 1:1 with the updates, although replies
+  /// to some requests may be empty.
   core.List<Response> replies;
 
   /// The updated write control after applying the request.
@@ -670,15 +652,15 @@ class ColorScheme {
 
 /// A color and position in a gradient band.
 class ColorStop {
-  /// The alpha value of this color in the gradient band. Defaults to 1.0,
-  /// fully opaque.
+  /// The alpha value of this color in the gradient band. Defaults to 1.0, fully
+  /// opaque.
   core.double alpha;
 
   /// The color of the gradient stop.
   OpaqueColor color;
 
-  /// The relative position of the color stop in the gradient band measured
-  /// in percentage. The value should be in the interval [0.0, 1.0].
+  /// The relative position of the color stop in the gradient band measured in
+  /// percentage. The value should be in the interval [0.0, 1.0].
   core.double position;
 
   ColorStop();
@@ -713,45 +695,30 @@ class ColorStop {
 
 /// Creates an image.
 class CreateImageRequest {
-  /// The element properties for the image.
-  ///
-  /// When the aspect ratio of the provided size does not match the image aspect
-  /// ratio, the image is scaled and centered with respect to the size in order
-  /// to maintain aspect ratio. The provided transform is applied after this
-  /// operation.
-  ///
-  /// The PageElementProperties.size property is
-  /// optional. If you don't specify the size, the default size of the image is
-  /// used.
-  ///
-  /// The PageElementProperties.transform property is
-  /// optional. If you don't specify a transform, the image will be placed at
-  /// the
-  /// top left corner of the page.
+  /// The element properties for the image. When the aspect ratio of the
+  /// provided size does not match the image aspect ratio, the image is scaled
+  /// and centered with respect to the size in order to maintain aspect ratio.
+  /// The provided transform is applied after this operation. The
+  /// PageElementProperties.size property is optional. If you don't specify the
+  /// size, the default size of the image is used. The
+  /// PageElementProperties.transform property is optional. If you don't specify
+  /// a transform, the image will be placed at the top left corner of the page.
   PageElementProperties elementProperties;
 
-  /// A user-supplied object ID.
-  ///
-  /// If you specify an ID, it must be unique among all pages and page elements
-  /// in the presentation. The ID must start with an alphanumeric character or
-  /// an
-  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-  /// may include those as well as a hyphen or colon (matches regex
-  /// `[a-zA-Z0-9_-:]`).
-  /// The length of the ID must not be less than 5 or greater than 50.
-  ///
-  /// If you don't specify an ID, a unique one is generated.
+  /// A user-supplied object ID. If you specify an ID, it must be unique among
+  /// all pages and page elements in the presentation. The ID must start with an
+  /// alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`);
+  /// remaining characters may include those as well as a hyphen or colon
+  /// (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less
+  /// than 5 or greater than 50. If you don't specify an ID, a unique one is
+  /// generated.
   core.String objectId;
 
-  /// The image URL.
-  ///
-  /// The image is fetched once at insertion time and a copy is stored for
-  /// display inside the presentation. Images must be less than 50MB in size,
-  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
-  /// format.
-  ///
-  /// The provided URL can be at most 2 kB in length. The URL itself is saved
-  /// with the image, and exposed via the Image.source_url field.
+  /// The image URL. The image is fetched once at insertion time and a copy is
+  /// stored for display inside the presentation. Images must be less than 50MB
+  /// in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or
+  /// GIF format. The provided URL can be at most 2 kB in length. The URL itself
+  /// is saved with the image, and exposed via the Image.source_url field.
   core.String url;
 
   CreateImageRequest();
@@ -810,19 +777,13 @@ class CreateImageResponse {
 
 /// Creates a line.
 class CreateLineRequest {
-  /// The category of the line to be created.
-  ///
-  /// The exact line type created is
+  /// The category of the line to be created. The exact line type created is
   /// determined based on the category and how it's routed to connect to other
-  /// page elements.
-  ///
-  /// If you specify both a `category` and a `line_category`, the `category`
-  /// takes precedence.
-  ///
-  /// If you do not specify a value for `category`, but specify a value for
-  /// `line_category`, then the specified `line_category` value is used.
-  ///
-  /// If you do not specify either, then STRAIGHT is used.
+  /// page elements. If you specify both a `category` and a `line_category`, the
+  /// `category` takes precedence. If you do not specify a value for `category`,
+  /// but specify a value for `line_category`, then the specified
+  /// `line_category` value is used. If you do not specify either, then STRAIGHT
+  /// is used.
   /// Possible string values are:
   /// - "LINE_CATEGORY_UNSPECIFIED" : Unspecified line category.
   /// - "STRAIGHT" : Straight connectors, including straight connector 1.
@@ -833,35 +794,24 @@ class CreateLineRequest {
   /// The element properties for the line.
   PageElementProperties elementProperties;
 
-  /// The category of the line to be created.
-  ///
-  /// <b>Deprecated</b>: use `category` instead.
-  ///
-  /// The exact line type created is
-  /// determined based on the category and how it's routed to connect to other
-  /// page elements.
-  ///
-  /// If you specify both a `category` and a `line_category`, the `category`
-  /// takes precedence.
+  /// The category of the line to be created. *Deprecated*: use `category`
+  /// instead. The exact line type created is determined based on the category
+  /// and how it's routed to connect to other page elements. If you specify both
+  /// a `category` and a `line_category`, the `category` takes precedence.
   /// Possible string values are:
   /// - "STRAIGHT" : Straight connectors, including straight connector 1. The is
-  /// the default
-  /// category when one is not specified.
+  /// the default category when one is not specified.
   /// - "BENT" : Bent connectors, including bent connector 2 to 5.
   /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
   core.String lineCategory;
 
-  /// A user-supplied object ID.
-  ///
-  /// If you specify an ID, it must be unique among all pages and page elements
-  /// in the presentation. The ID must start with an alphanumeric character or
-  /// an
-  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-  /// may include those as well as a hyphen or colon (matches regex
-  /// `[a-zA-Z0-9_-:]`).
-  /// The length of the ID must not be less than 5 or greater than 50.
-  ///
-  /// If you don't specify an ID, a unique one is generated.
+  /// A user-supplied object ID. If you specify an ID, it must be unique among
+  /// all pages and page elements in the presentation. The ID must start with an
+  /// alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`);
+  /// remaining characters may include those as well as a hyphen or colon
+  /// (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less
+  /// than 5 or greater than 50. If you don't specify an ID, a unique one is
+  /// generated.
   core.String objectId;
 
   CreateLineRequest();
@@ -924,15 +874,11 @@ class CreateLineResponse {
   }
 }
 
-/// Creates bullets for all of the paragraphs that overlap with the given
-/// text index range.
-///
-/// The nesting level of each paragraph will be determined by counting leading
-/// tabs in front of each paragraph. To avoid excess space between the bullet
-/// and
-/// the corresponding paragraph, these leading tabs are removed by this request.
-/// This may change the indices of parts of the text.
-///
+/// Creates bullets for all of the paragraphs that overlap with the given text
+/// index range. The nesting level of each paragraph will be determined by
+/// counting leading tabs in front of each paragraph. To avoid excess space
+/// between the bullet and the corresponding paragraph, these leading tabs are
+/// removed by this request. This may change the indices of parts of the text.
 /// If the paragraph immediately before paragraphs being updated is in a list
 /// with a matching preset, the paragraphs being updated are added to that
 /// preceding list.
@@ -941,50 +887,43 @@ class CreateParagraphBulletsRequest {
   /// `BULLET_DISC_CIRCLE_SQUARE` preset.
   /// Possible string values are:
   /// - "BULLET_DISC_CIRCLE_SQUARE" : A bulleted list with a `DISC`, `CIRCLE`
-  /// and `SQUARE` bullet glyph for the
-  /// first 3 list nesting levels.
+  /// and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_DIAMONDX_ARROW3D_SQUARE" : A bulleted list with a `DIAMONDX`,
-  /// `ARROW3D` and `SQUARE` bullet glyph for
-  /// the first 3 list nesting levels.
+  /// `ARROW3D` and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_CHECKBOX" : A bulleted list with `CHECKBOX` bullet glyphs for
   /// all list nesting levels.
   /// - "BULLET_ARROW_DIAMOND_DISC" : A bulleted list with a `ARROW`, `DIAMOND`
-  /// and `DISC` bullet glyph for
-  /// the first 3 list nesting levels.
+  /// and `DISC` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_STAR_CIRCLE_SQUARE" : A bulleted list with a `STAR`, `CIRCLE`
-  /// and `SQUARE` bullet glyph for
-  /// the first 3 list nesting levels.
+  /// and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_ARROW3D_CIRCLE_SQUARE" : A bulleted list with a `ARROW3D`,
-  /// `CIRCLE` and `SQUARE` bullet glyph for
-  /// the first 3 list nesting levels.
+  /// `CIRCLE` and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "BULLET_LEFTTRIANGLE_DIAMOND_DISC" : A bulleted list with a
-  /// `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph
-  /// for the first 3 list nesting levels.
+  /// `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph for the first 3 list
+  /// nesting levels.
   /// - "BULLET_DIAMONDX_HOLLOWDIAMOND_SQUARE" : A bulleted list with a
-  /// `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet
-  /// glyph for the first 3 list nesting levels.
+  /// `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet glyph for the first 3 list
+  /// nesting levels.
   /// - "BULLET_DIAMOND_CIRCLE_SQUARE" : A bulleted list with a `DIAMOND`,
-  /// `CIRCLE` and `SQUARE` bullet glyph
-  /// for the first 3 list nesting levels.
+  /// `CIRCLE` and `SQUARE` bullet glyph for the first 3 list nesting levels.
   /// - "NUMBERED_DIGIT_ALPHA_ROMAN" : A numbered list with `DIGIT`, `ALPHA` and
-  /// `ROMAN` numeric glyphs for
-  /// the first 3 list nesting levels, followed by periods.
+  /// `ROMAN` numeric glyphs for the first 3 list nesting levels, followed by
+  /// periods.
   /// - "NUMBERED_DIGIT_ALPHA_ROMAN_PARENS" : A numbered list with `DIGIT`,
-  /// `ALPHA` and `ROMAN` numeric glyphs for
-  /// the first 3 list nesting levels, followed by parenthesis.
+  /// `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels,
+  /// followed by parenthesis.
   /// - "NUMBERED_DIGIT_NESTED" : A numbered list with `DIGIT` numeric glyphs
-  /// separated by periods, where
-  /// each nesting level uses the previous nesting level's glyph as a prefix.
-  /// For example: '1.', '1.1.', '2.', '2.2.'.
+  /// separated by periods, where each nesting level uses the previous nesting
+  /// level's glyph as a prefix. For example: '1.', '1.1.', '2.', '2.2.'.
   /// - "NUMBERED_UPPERALPHA_ALPHA_ROMAN" : A numbered list with `UPPERALPHA`,
-  /// `ALPHA` and `ROMAN` numeric glyphs for
-  /// the first 3 list nesting levels, followed by periods.
+  /// `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels,
+  /// followed by periods.
   /// - "NUMBERED_UPPERROMAN_UPPERALPHA_DIGIT" : A numbered list with
-  /// `UPPERROMAN`, `UPPERALPHA` and `DIGIT` numeric glyphs
-  /// for the first 3 list nesting levels, followed by periods.
+  /// `UPPERROMAN`, `UPPERALPHA` and `DIGIT` numeric glyphs for the first 3 list
+  /// nesting levels, followed by periods.
   /// - "NUMBERED_ZERODIGIT_ALPHA_ROMAN" : A numbered list with `ZERODIGIT`,
-  /// `ALPHA` and `ROMAN` numeric glyphs for
-  /// the first 3 list nesting levels, followed by periods.
+  /// `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels,
+  /// followed by periods.
   core.String bulletPreset;
 
   /// The optional table cell location if the text to be modified is in a table
@@ -1039,16 +978,13 @@ class CreateShapeRequest {
   /// The element properties for the shape.
   PageElementProperties elementProperties;
 
-  /// A user-supplied object ID.
-  ///
-  /// If you specify an ID, it must be unique among all pages and page elements
-  /// in the presentation. The ID must start with an alphanumeric character or
-  /// an
-  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-  /// may include those as well as a hyphen or colon (matches regex
-  /// `[a-zA-Z0-9_-:]`).
-  /// The length of the ID must not be less than 5 or greater than 50.
-  /// If empty, a unique identifier will be generated.
+  /// A user-supplied object ID. If you specify an ID, it must be unique among
+  /// all pages and page elements in the presentation. The ID must start with an
+  /// alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`);
+  /// remaining characters may include those as well as a hyphen or colon
+  /// (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less
+  /// than 5 or greater than 50. If empty, a unique identifier will be
+  /// generated.
   core.String objectId;
 
   /// The shape type.
@@ -1058,8 +994,7 @@ class CreateShapeRequest {
   /// - "RECTANGLE" : Rectangle shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'rect'.
   /// - "ROUND_RECTANGLE" : Round corner rectangle shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'roundRect'
+  /// ECMA-376 ST_ShapeType 'roundRect'
   /// - "ELLIPSE" : Ellipse shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'ellipse'
   /// - "ARC" : Curved arc shape. Corresponds to ECMA-376 ST_ShapeType 'arc'
@@ -1082,17 +1017,13 @@ class CreateShapeRequest {
   /// - "CORNER" : Corner shape. Corresponds to ECMA-376 ST_ShapeType 'corner'
   /// - "CUBE" : Cube shape. Corresponds to ECMA-376 ST_ShapeType 'cube'
   /// - "CURVED_DOWN_ARROW" : Curved down arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedDownArrow'
+  /// ST_ShapeType 'curvedDownArrow'
   /// - "CURVED_LEFT_ARROW" : Curved left arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedLeftArrow'
+  /// ST_ShapeType 'curvedLeftArrow'
   /// - "CURVED_RIGHT_ARROW" : Curved right arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedRightArrow'
+  /// ST_ShapeType 'curvedRightArrow'
   /// - "CURVED_UP_ARROW" : Curved up arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedUpArrow'
+  /// ST_ShapeType 'curvedUpArrow'
   /// - "DECAGON" : Decagon shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'decagon'
   /// - "DIAGONAL_STRIPE" : Diagonal stripe shape. Corresponds to ECMA-376
@@ -1107,8 +1038,7 @@ class CreateShapeRequest {
   /// - "DOWN_ARROW" : Down arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'downArrow'
   /// - "DOWN_ARROW_CALLOUT" : Callout down arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'downArrowCallout'
+  /// ST_ShapeType 'downArrowCallout'
   /// - "FOLDED_CORNER" : Folded corner shape. Corresponds to ECMA-376
   /// ST_ShapeType 'foldedCorner'
   /// - "FRAME" : Frame shape. Corresponds to ECMA-376 ST_ShapeType 'frame'
@@ -1122,37 +1052,29 @@ class CreateShapeRequest {
   /// - "HOME_PLATE" : Home plate shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'homePlate'
   /// - "HORIZONTAL_SCROLL" : Horizontal scroll shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'horizontalScroll'
+  /// ST_ShapeType 'horizontalScroll'
   /// - "IRREGULAR_SEAL_1" : Irregular seal 1 shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'irregularSeal1'
+  /// ST_ShapeType 'irregularSeal1'
   /// - "IRREGULAR_SEAL_2" : Irregular seal 2 shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'irregularSeal2'
+  /// ST_ShapeType 'irregularSeal2'
   /// - "LEFT_ARROW" : Left arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'leftArrow'
   /// - "LEFT_ARROW_CALLOUT" : Callout left arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'leftArrowCallout'
+  /// ST_ShapeType 'leftArrowCallout'
   /// - "LEFT_BRACE" : Left brace shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'leftBrace'
   /// - "LEFT_BRACKET" : Left bracket shape. Corresponds to ECMA-376
   /// ST_ShapeType 'leftBracket'
   /// - "LEFT_RIGHT_ARROW" : Left right arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'leftRightArrow'
+  /// ST_ShapeType 'leftRightArrow'
   /// - "LEFT_RIGHT_ARROW_CALLOUT" : Callout left right arrow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'leftRightArrowCallout'
+  /// to ECMA-376 ST_ShapeType 'leftRightArrowCallout'
   /// - "LEFT_RIGHT_UP_ARROW" : Left right up arrow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'leftRightUpArrow'
+  /// ECMA-376 ST_ShapeType 'leftRightUpArrow'
   /// - "LEFT_UP_ARROW" : Left up arrow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'leftUpArrow'
   /// - "LIGHTNING_BOLT" : Lightning bolt shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'lightningBolt'
+  /// ST_ShapeType 'lightningBolt'
   /// - "MATH_DIVIDE" : Divide math shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'mathDivide'
   /// - "MATH_EQUAL" : Equal math shape. Corresponds to ECMA-376 ST_ShapeType
@@ -1169,8 +1091,7 @@ class CreateShapeRequest {
   /// - "NO_SMOKING" : No smoking shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'noSmoking'
   /// - "NOTCHED_RIGHT_ARROW" : Notched right arrow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'notchedRightArrow'
+  /// ECMA-376 ST_ShapeType 'notchedRightArrow'
   /// - "OCTAGON" : Octagon shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'octagon'
   /// - "PARALLELOGRAM" : Parallelogram shape. Corresponds to ECMA-376
@@ -1183,45 +1104,36 @@ class CreateShapeRequest {
   /// - "QUAD_ARROW" : Quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'quadArrow'
   /// - "QUAD_ARROW_CALLOUT" : Callout quad-arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'quadArrowCallout'
+  /// ST_ShapeType 'quadArrowCallout'
   /// - "RIBBON" : Ribbon shape. Corresponds to ECMA-376 ST_ShapeType 'ribbon'
   /// - "RIBBON_2" : Ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'ribbon2'
   /// - "RIGHT_ARROW" : Right arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'rightArrow'
   /// - "RIGHT_ARROW_CALLOUT" : Callout right arrow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'rightArrowCallout'
+  /// ECMA-376 ST_ShapeType 'rightArrowCallout'
   /// - "RIGHT_BRACE" : Right brace shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'rightBrace'
   /// - "RIGHT_BRACKET" : Right bracket shape. Corresponds to ECMA-376
   /// ST_ShapeType 'rightBracket'
   /// - "ROUND_1_RECTANGLE" : One round corner rectangle shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'round1Rect'
+  /// ECMA-376 ST_ShapeType 'round1Rect'
   /// - "ROUND_2_DIAGONAL_RECTANGLE" : Two diagonal round corner rectangle
-  /// shape. Corresponds to ECMA-376
-  /// ST_ShapeType 'round2DiagRect'
+  /// shape. Corresponds to ECMA-376 ST_ShapeType 'round2DiagRect'
   /// - "ROUND_2_SAME_RECTANGLE" : Two same-side round corner rectangle shape.
-  /// Corresponds to ECMA-376
-  /// ST_ShapeType 'round2SameRect'
+  /// Corresponds to ECMA-376 ST_ShapeType 'round2SameRect'
   /// - "RIGHT_TRIANGLE" : Right triangle shape. Corresponds to ECMA-376
   /// ST_ShapeType 'rtTriangle'
   /// - "SMILEY_FACE" : Smiley face shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'smileyFace'
   /// - "SNIP_1_RECTANGLE" : One snip corner rectangle shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'snip1Rect'
+  /// ECMA-376 ST_ShapeType 'snip1Rect'
   /// - "SNIP_2_DIAGONAL_RECTANGLE" : Two diagonal snip corner rectangle shape.
-  /// Corresponds to ECMA-376
-  /// ST_ShapeType 'snip2DiagRect'
+  /// Corresponds to ECMA-376 ST_ShapeType 'snip2DiagRect'
   /// - "SNIP_2_SAME_RECTANGLE" : Two same-side snip corner rectangle shape.
-  /// Corresponds to ECMA-376
-  /// ST_ShapeType 'snip2SameRect'
+  /// Corresponds to ECMA-376 ST_ShapeType 'snip2SameRect'
   /// - "SNIP_ROUND_RECTANGLE" : One snip one round corner rectangle shape.
-  /// Corresponds to ECMA-376
-  /// ST_ShapeType 'snipRoundRect'
+  /// Corresponds to ECMA-376 ST_ShapeType 'snipRoundRect'
   /// - "STAR_10" : Ten pointed star shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'star10'
   /// - "STAR_12" : Twelve pointed star shape. Corresponds to ECMA-376
@@ -1229,11 +1141,9 @@ class CreateShapeRequest {
   /// - "STAR_16" : Sixteen pointed star shape. Corresponds to ECMA-376
   /// ST_ShapeType 'star16'
   /// - "STAR_24" : Twenty four pointed star shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'star24'
+  /// ST_ShapeType 'star24'
   /// - "STAR_32" : Thirty two pointed star shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'star32'
+  /// ST_ShapeType 'star32'
   /// - "STAR_4" : Four pointed star shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'star4'
   /// - "STAR_5" : Five pointed star shape. Corresponds to ECMA-376 ST_ShapeType
@@ -1245,8 +1155,7 @@ class CreateShapeRequest {
   /// - "STAR_8" : Eight pointed star shape. Corresponds to ECMA-376
   /// ST_ShapeType 'star8'
   /// - "STRIPED_RIGHT_ARROW" : Striped right arrow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'stripedRightArrow'
+  /// ECMA-376 ST_ShapeType 'stripedRightArrow'
   /// - "SUN" : Sun shape. Corresponds to ECMA-376 ST_ShapeType 'sun'
   /// - "TRAPEZOID" : Trapezoid shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'trapezoid'
@@ -1255,108 +1164,78 @@ class CreateShapeRequest {
   /// - "UP_ARROW" : Up arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'upArrow'
   /// - "UP_ARROW_CALLOUT" : Callout up arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'upArrowCallout'
+  /// ST_ShapeType 'upArrowCallout'
   /// - "UP_DOWN_ARROW" : Up down arrow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'upDownArrow'
   /// - "UTURN_ARROW" : U-turn arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'uturnArrow'
   /// - "VERTICAL_SCROLL" : Vertical scroll shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'verticalScroll'
+  /// ST_ShapeType 'verticalScroll'
   /// - "WAVE" : Wave shape. Corresponds to ECMA-376 ST_ShapeType 'wave'
   /// - "WEDGE_ELLIPSE_CALLOUT" : Callout wedge ellipse shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'wedgeEllipseCallout'
+  /// ECMA-376 ST_ShapeType 'wedgeEllipseCallout'
   /// - "WEDGE_RECTANGLE_CALLOUT" : Callout wedge rectangle shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'wedgeRectCallout'
+  /// to ECMA-376 ST_ShapeType 'wedgeRectCallout'
   /// - "WEDGE_ROUND_RECTANGLE_CALLOUT" : Callout wedge round rectangle shape.
-  /// Corresponds to ECMA-376 ST_ShapeType
-  /// 'wedgeRoundRectCallout'
+  /// Corresponds to ECMA-376 ST_ShapeType 'wedgeRoundRectCallout'
   /// - "FLOW_CHART_ALTERNATE_PROCESS" : Alternate process flow shape.
-  /// Corresponds to ECMA-376 ST_ShapeType
-  /// 'flowChartAlternateProcess'
+  /// Corresponds to ECMA-376 ST_ShapeType 'flowChartAlternateProcess'
   /// - "FLOW_CHART_COLLATE" : Collate flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartCollate'
+  /// ST_ShapeType 'flowChartCollate'
   /// - "FLOW_CHART_CONNECTOR" : Connector flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartConnector'
+  /// ST_ShapeType 'flowChartConnector'
   /// - "FLOW_CHART_DECISION" : Decision flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartDecision'
+  /// ST_ShapeType 'flowChartDecision'
   /// - "FLOW_CHART_DELAY" : Delay flow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'flowChartDelay'
   /// - "FLOW_CHART_DISPLAY" : Display flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartDisplay'
+  /// ST_ShapeType 'flowChartDisplay'
   /// - "FLOW_CHART_DOCUMENT" : Document flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartDocument'
+  /// ST_ShapeType 'flowChartDocument'
   /// - "FLOW_CHART_EXTRACT" : Extract flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartExtract'
+  /// ST_ShapeType 'flowChartExtract'
   /// - "FLOW_CHART_INPUT_OUTPUT" : Input output flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartInputOutput'
+  /// ECMA-376 ST_ShapeType 'flowChartInputOutput'
   /// - "FLOW_CHART_INTERNAL_STORAGE" : Internal storage flow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'flowChartInternalStorage'
+  /// to ECMA-376 ST_ShapeType 'flowChartInternalStorage'
   /// - "FLOW_CHART_MAGNETIC_DISK" : Magnetic disk flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartMagneticDisk'
+  /// ECMA-376 ST_ShapeType 'flowChartMagneticDisk'
   /// - "FLOW_CHART_MAGNETIC_DRUM" : Magnetic drum flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartMagneticDrum'
+  /// ECMA-376 ST_ShapeType 'flowChartMagneticDrum'
   /// - "FLOW_CHART_MAGNETIC_TAPE" : Magnetic tape flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartMagneticTape'
+  /// ECMA-376 ST_ShapeType 'flowChartMagneticTape'
   /// - "FLOW_CHART_MANUAL_INPUT" : Manual input flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartManualInput'
+  /// ECMA-376 ST_ShapeType 'flowChartManualInput'
   /// - "FLOW_CHART_MANUAL_OPERATION" : Manual operation flow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'flowChartManualOperation'
+  /// to ECMA-376 ST_ShapeType 'flowChartManualOperation'
   /// - "FLOW_CHART_MERGE" : Merge flow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'flowChartMerge'
   /// - "FLOW_CHART_MULTIDOCUMENT" : Multi-document flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartMultidocument'
+  /// ECMA-376 ST_ShapeType 'flowChartMultidocument'
   /// - "FLOW_CHART_OFFLINE_STORAGE" : Offline storage flow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'flowChartOfflineStorage'
+  /// to ECMA-376 ST_ShapeType 'flowChartOfflineStorage'
   /// - "FLOW_CHART_OFFPAGE_CONNECTOR" : Off-page connector flow shape.
-  /// Corresponds to ECMA-376 ST_ShapeType
-  /// 'flowChartOffpageConnector'
+  /// Corresponds to ECMA-376 ST_ShapeType 'flowChartOffpageConnector'
   /// - "FLOW_CHART_ONLINE_STORAGE" : Online storage flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartOnlineStorage'
+  /// ECMA-376 ST_ShapeType 'flowChartOnlineStorage'
   /// - "FLOW_CHART_OR" : Or flow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'flowChartOr'
   /// - "FLOW_CHART_PREDEFINED_PROCESS" : Predefined process flow shape.
-  /// Corresponds to ECMA-376 ST_ShapeType
-  /// 'flowChartPredefinedProcess'
+  /// Corresponds to ECMA-376 ST_ShapeType 'flowChartPredefinedProcess'
   /// - "FLOW_CHART_PREPARATION" : Preparation flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartPreparation'
+  /// ECMA-376 ST_ShapeType 'flowChartPreparation'
   /// - "FLOW_CHART_PROCESS" : Process flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartProcess'
+  /// ST_ShapeType 'flowChartProcess'
   /// - "FLOW_CHART_PUNCHED_CARD" : Punched card flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartPunchedCard'
+  /// ECMA-376 ST_ShapeType 'flowChartPunchedCard'
   /// - "FLOW_CHART_PUNCHED_TAPE" : Punched tape flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartPunchedTape'
+  /// ECMA-376 ST_ShapeType 'flowChartPunchedTape'
   /// - "FLOW_CHART_SORT" : Sort flow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'flowChartSort'
   /// - "FLOW_CHART_SUMMING_JUNCTION" : Summing junction flow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'flowChartSummingJunction'
+  /// to ECMA-376 ST_ShapeType 'flowChartSummingJunction'
   /// - "FLOW_CHART_TERMINATOR" : Terminator flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartTerminator'
+  /// ST_ShapeType 'flowChartTerminator'
   /// - "ARROW_EAST" : East arrow shape.
   /// - "ARROW_NORTH_EAST" : Northeast arrow shape.
   /// - "ARROW_NORTH" : North arrow shape.
@@ -1365,11 +1244,9 @@ class CreateShapeRequest {
   /// - "TEARDROP" : Teardrop shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'teardrop'
   /// - "ELLIPSE_RIBBON" : Ellipse ribbon shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'ellipseRibbon'
+  /// ST_ShapeType 'ellipseRibbon'
   /// - "ELLIPSE_RIBBON_2" : Ellipse ribbon 2 shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'ellipseRibbon2'
+  /// ST_ShapeType 'ellipseRibbon2'
   /// - "CLOUD_CALLOUT" : Callout cloud shape. Corresponds to ECMA-376
   /// ST_ShapeType 'cloudCallout'
   /// - "CUSTOM" : Custom shape.
@@ -1429,41 +1306,35 @@ class CreateShapeResponse {
   }
 }
 
-/// Creates an embedded Google Sheets chart.
-///
-/// NOTE: Chart creation requires at least one of the spreadsheets.readonly,
-/// spreadsheets, drive.readonly, drive.file, or drive OAuth scopes.
+/// Creates an embedded Google Sheets chart. NOTE: Chart creation requires at
+/// least one of the spreadsheets.readonly, spreadsheets, drive.readonly,
+/// drive.file, or drive OAuth scopes.
 class CreateSheetsChartRequest {
   /// The ID of the specific chart in the Google Sheets spreadsheet.
   core.int chartId;
 
-  /// The element properties for the chart.
-  ///
-  /// When the aspect ratio of the provided size does not match the chart aspect
-  /// ratio, the chart is scaled and centered with respect to the size in order
-  /// to maintain aspect ratio. The provided transform is applied after this
-  /// operation.
+  /// The element properties for the chart. When the aspect ratio of the
+  /// provided size does not match the chart aspect ratio, the chart is scaled
+  /// and centered with respect to the size in order to maintain aspect ratio.
+  /// The provided transform is applied after this operation.
   PageElementProperties elementProperties;
 
   /// The mode with which the chart is linked to the source spreadsheet. When
   /// not specified, the chart will be an image that is not linked.
   /// Possible string values are:
   /// - "NOT_LINKED_IMAGE" : The chart is not associated with the source
-  /// spreadsheet and cannot be
-  /// updated. A chart that is not linked will be inserted as an image.
+  /// spreadsheet and cannot be updated. A chart that is not linked will be
+  /// inserted as an image.
   /// - "LINKED" : Linking the chart allows it to be updated, and other
-  /// collaborators will
-  /// see a link to the spreadsheet.
+  /// collaborators will see a link to the spreadsheet.
   core.String linkingMode;
 
-  /// A user-supplied object ID.
-  ///
-  /// If specified, the ID must be unique among all pages and page elements in
-  /// the presentation. The ID should start with a word character [a-zA-Z0-9_]
-  /// and then followed by any number of the following characters
-  /// [a-zA-Z0-9_-:].
-  /// The length of the ID should not be less than 5 or greater than 50.
-  /// If empty, a unique identifier will be generated.
+  /// A user-supplied object ID. If specified, the ID must be unique among all
+  /// pages and page elements in the presentation. The ID should start with a
+  /// word character [a-zA-Z0-9_] and then followed by any number of the
+  /// following characters [a-zA-Z0-9_-:]. The length of the ID should not be
+  /// less than 5 or greater than 50. If empty, a unique identifier will be
+  /// generated.
   core.String objectId;
 
   /// The ID of the Google Sheets spreadsheet that contains the chart.
@@ -1537,42 +1408,32 @@ class CreateSheetsChartResponse {
 
 /// Creates a new slide.
 class CreateSlideRequest {
-  /// The optional zero-based index indicating where to insert the slides.
-  ///
-  /// If you don't specify an index, the new slide is created at the end.
+  /// The optional zero-based index indicating where to insert the slides. If
+  /// you don't specify an index, the new slide is created at the end.
   core.int insertionIndex;
 
-  /// A user-supplied object ID.
-  ///
-  /// If you specify an ID, it must be unique among all pages and page elements
-  /// in the presentation. The ID must start with an alphanumeric character or
-  /// an
-  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-  /// may include those as well as a hyphen or colon (matches regex
-  /// `[a-zA-Z0-9_-:]`).
-  /// The length of the ID must not be less than 5 or greater than 50.
-  ///
-  /// If you don't specify an ID, a unique one is generated.
+  /// A user-supplied object ID. If you specify an ID, it must be unique among
+  /// all pages and page elements in the presentation. The ID must start with an
+  /// alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`);
+  /// remaining characters may include those as well as a hyphen or colon
+  /// (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less
+  /// than 5 or greater than 50. If you don't specify an ID, a unique one is
+  /// generated.
   core.String objectId;
 
   /// An optional list of object ID mappings from the placeholder(s) on the
-  /// layout to the placeholder(s)
-  /// that will be created on the new slide from that specified layout. Can only
-  /// be used when `slide_layout_reference` is specified.
+  /// layout to the placeholder(s) that will be created on the new slide from
+  /// that specified layout. Can only be used when `slide_layout_reference` is
+  /// specified.
   core.List<LayoutPlaceholderIdMapping> placeholderIdMappings;
 
   /// Layout reference of the slide to be inserted, based on the *current
-  /// master*, which is one of the following:
-  ///
-  /// - The master of the previous slide index.
-  /// - The master of the first slide, if the insertion_index is zero.
-  /// - The first master in the presentation, if there are no slides.
-  ///
-  /// If the LayoutReference is not found in the current master, a 400 bad
-  /// request error is returned.
-  ///
-  /// If you don't specify a layout reference, then the new slide will use the
-  /// predefined layout `BLANK`.
+  /// master*, which is one of the following: - The master of the previous slide
+  /// index. - The master of the first slide, if the insertion_index is zero. -
+  /// The first master in the presentation, if there are no slides. If the
+  /// LayoutReference is not found in the current master, a 400 bad request
+  /// error is returned. If you don't specify a layout reference, then the new
+  /// slide will use the predefined layout `BLANK`.
   LayoutReference slideLayoutReference;
 
   CreateSlideRequest();
@@ -1644,26 +1505,20 @@ class CreateTableRequest {
   /// Number of columns in the table.
   core.int columns;
 
-  /// The element properties for the table.
-  ///
-  /// The table will be created at the provided size, subject to a minimum size.
-  /// If no size is provided, the table will be automatically sized.
-  ///
-  /// Table transforms must have a scale of 1 and no shear components. If no
-  /// transform is provided, the table will be centered on the page.
+  /// The element properties for the table. The table will be created at the
+  /// provided size, subject to a minimum size. If no size is provided, the
+  /// table will be automatically sized. Table transforms must have a scale of 1
+  /// and no shear components. If no transform is provided, the table will be
+  /// centered on the page.
   PageElementProperties elementProperties;
 
-  /// A user-supplied object ID.
-  ///
-  /// If you specify an ID, it must be unique among all pages and page elements
-  /// in the presentation. The ID must start with an alphanumeric character or
-  /// an
-  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-  /// may include those as well as a hyphen or colon (matches regex
-  /// `[a-zA-Z0-9_-:]`).
-  /// The length of the ID must not be less than 5 or greater than 50.
-  ///
-  /// If you don't specify an ID, a unique one is generated.
+  /// A user-supplied object ID. If you specify an ID, it must be unique among
+  /// all pages and page elements in the presentation. The ID must start with an
+  /// alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`);
+  /// remaining characters may include those as well as a hyphen or colon
+  /// (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less
+  /// than 5 or greater than 50. If you don't specify an ID, a unique one is
+  /// generated.
   core.String objectId;
 
   /// Number of rows in the table.
@@ -1729,42 +1584,32 @@ class CreateTableResponse {
   }
 }
 
-/// Creates a video.
-///
-/// NOTE: Creating a video from Google Drive requires that the requesting app
-/// have at least one of the drive, drive.readonly, or drive.file OAuth scopes.
+/// Creates a video. NOTE: Creating a video from Google Drive requires that the
+/// requesting app have at least one of the drive, drive.readonly, or drive.file
+/// OAuth scopes.
 class CreateVideoRequest {
-  /// The element properties for the video.
-  ///
-  /// The PageElementProperties.size property is
-  /// optional. If you don't specify a size, a default size is chosen by the
-  /// server.
-  ///
-  /// The PageElementProperties.transform property is
-  /// optional. The transform must not have shear components.
-  /// If you don't specify a transform, the video will be placed at the top left
-  /// corner of the page.
+  /// The element properties for the video. The PageElementProperties.size
+  /// property is optional. If you don't specify a size, a default size is
+  /// chosen by the server. The PageElementProperties.transform property is
+  /// optional. The transform must not have shear components. If you don't
+  /// specify a transform, the video will be placed at the top left corner of
+  /// the page.
   PageElementProperties elementProperties;
 
-  /// The video source's unique identifier for this video.
-  ///
-  /// e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0,
-  /// the ID is 7U3axjORYZ0. For a Google Drive video
+  /// The video source's unique identifier for this video. e.g. For YouTube
+  /// video https://www.youtube.com/watch?v=7U3axjORYZ0, the ID is 7U3axjORYZ0.
+  /// For a Google Drive video
   /// https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID
   /// is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q.
   core.String id;
 
-  /// A user-supplied object ID.
-  ///
-  /// If you specify an ID, it must be unique among all pages and page elements
-  /// in the presentation. The ID must start with an alphanumeric character or
-  /// an
-  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-  /// may include those as well as a hyphen or colon (matches regex
-  /// `[a-zA-Z0-9_-:]`).
-  /// The length of the ID must not be less than 5 or greater than 50.
-  ///
-  /// If you don't specify an ID, a unique one is generated.
+  /// A user-supplied object ID. If you specify an ID, it must be unique among
+  /// all pages and page elements in the presentation. The ID must start with an
+  /// alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`);
+  /// remaining characters may include those as well as a hyphen or colon
+  /// (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less
+  /// than 5 or greater than 50. If you don't specify an ID, a unique one is
+  /// generated.
   core.String objectId;
 
   /// The video source.
@@ -1835,26 +1680,19 @@ class CreateVideoResponse {
 }
 
 /// The crop properties of an object enclosed in a container. For example, an
-/// Image.
-///
-/// The crop properties is represented by the offsets of four edges which define
-/// a crop rectangle. The offsets are measured in percentage from the
+/// Image. The crop properties is represented by the offsets of four edges which
+/// define a crop rectangle. The offsets are measured in percentage from the
 /// corresponding edges of the object's original bounding rectangle towards
-/// inside, relative to the object's original dimensions.
-///
-/// - If the offset is in the interval (0, 1), the corresponding edge of crop
-/// rectangle is positioned inside of the object's original bounding rectangle.
-/// - If the offset is negative or greater than 1, the corresponding edge of
-/// crop
-/// rectangle is positioned outside of the object's original bounding rectangle.
-/// - If the left edge of the crop rectangle is on the right side of its right
-/// edge, the object will be flipped horizontally.
-/// - If the top edge of the crop rectangle is below its bottom edge, the object
-/// will be flipped vertically.
-/// - If all offsets and rotation angle is 0, the object is not cropped.
-///
-/// After cropping, the content in the crop rectangle will be stretched to fit
-/// its container.
+/// inside, relative to the object's original dimensions. - If the offset is in
+/// the interval (0, 1), the corresponding edge of crop rectangle is positioned
+/// inside of the object's original bounding rectangle. - If the offset is
+/// negative or greater than 1, the corresponding edge of crop rectangle is
+/// positioned outside of the object's original bounding rectangle. - If the
+/// left edge of the crop rectangle is on the right side of its right edge, the
+/// object will be flipped horizontally. - If the top edge of the crop rectangle
+/// is below its bottom edge, the object will be flipped vertically. - If all
+/// offsets and rotation angle is 0, the object is not cropped. After cropping,
+/// the content in the crop rectangle will be stretched to fit its container.
 class CropProperties {
   /// The rotation angle of the crop window around its center, in radians.
   /// Rotation angle is applied after the offset.
@@ -1862,13 +1700,11 @@ class CropProperties {
 
   /// The offset specifies the bottom edge of the crop rectangle that is located
   /// above the original bounding rectangle bottom edge, relative to the
-  /// object's
-  /// original height.
+  /// object's original height.
   core.double bottomOffset;
 
   /// The offset specifies the left edge of the crop rectangle that is located
-  /// to
-  /// the right of the original bounding rectangle left edge, relative to the
+  /// to the right of the original bounding rectangle left edge, relative to the
   /// object's original width.
   core.double leftOffset;
 
@@ -1924,17 +1760,12 @@ class CropProperties {
   }
 }
 
-/// Deletes an object, either pages or
-/// page elements, from the
-/// presentation.
+/// Deletes an object, either pages or page elements, from the presentation.
 class DeleteObjectRequest {
-  /// The object ID of the page or page element to delete.
-  ///
-  /// If after a delete operation a group contains
-  /// only 1 or no page elements, the group is also deleted.
-  ///
-  /// If a placeholder is deleted on a layout, any empty inheriting shapes are
-  /// also deleted.
+  /// The object ID of the page or page element to delete. If after a delete
+  /// operation a group contains only 1 or no page elements, the group is also
+  /// deleted. If a placeholder is deleted on a layout, any empty inheriting
+  /// shapes are also deleted.
   core.String objectId;
 
   DeleteObjectRequest();
@@ -1956,10 +1787,8 @@ class DeleteObjectRequest {
 }
 
 /// Deletes bullets from all of the paragraphs that overlap with the given text
-/// index range.
-///
-/// The nesting level of each paragraph will be visually preserved by adding
-/// indent to the start of the corresponding paragraph.
+/// index range. The nesting level of each paragraph will be visually preserved
+/// by adding indent to the start of the corresponding paragraph.
 class DeleteParagraphBulletsRequest {
   /// The optional table cell location if the text to be modified is in a table
   /// cell. If present, the object_id must refer to a table.
@@ -2004,11 +1833,10 @@ class DeleteParagraphBulletsRequest {
 
 /// Deletes a column from a table.
 class DeleteTableColumnRequest {
-  /// The reference table cell location from which a column will be deleted.
-  ///
-  /// The column this cell spans will be deleted. If this is a merged cell,
-  /// multiple columns will be deleted. If no columns remain in the table after
-  /// this deletion, the whole table is deleted.
+  /// The reference table cell location from which a column will be deleted. The
+  /// column this cell spans will be deleted. If this is a merged cell, multiple
+  /// columns will be deleted. If no columns remain in the table after this
+  /// deletion, the whole table is deleted.
   TableCellLocation cellLocation;
 
   /// The table to delete columns from.
@@ -2040,10 +1868,8 @@ class DeleteTableColumnRequest {
 
 /// Deletes a row from a table.
 class DeleteTableRowRequest {
-  /// The reference table cell location from which a row will be deleted.
-  ///
-  /// The row this cell spans will be deleted. If this is a merged cell,
-  /// multiple
+  /// The reference table cell location from which a row will be deleted. The
+  /// row this cell spans will be deleted. If this is a merged cell, multiple
   /// rows will be deleted. If no rows remain in the table after this deletion,
   /// the whole table is deleted.
   TableCellLocation cellLocation;
@@ -2084,20 +1910,17 @@ class DeleteTextRequest {
   /// The object ID of the shape or table from which the text will be deleted.
   core.String objectId;
 
-  /// The range of text to delete, based on TextElement indexes.
-  ///
-  /// There is always an implicit newline character at the end of a shape's or
-  /// table cell's text that cannot be deleted. `Range.Type.ALL` will use the
-  /// correct bounds, but care must be taken when specifying explicit bounds for
-  /// range types `FROM_START_INDEX` and `FIXED_RANGE`. For example, if the text
-  /// is "ABC", followed by an implicit newline, then the maximum value is 2 for
-  /// `text_range.start_index` and 3 for `text_range.end_index`.
-  ///
-  /// Deleting text that crosses a paragraph boundary may result in changes
-  /// to paragraph styles and lists as the two paragraphs are merged.
-  ///
-  /// Ranges that include only one code unit of a surrogate pair are expanded to
-  /// include both code units.
+  /// The range of text to delete, based on TextElement indexes. There is always
+  /// an implicit newline character at the end of a shape's or table cell's text
+  /// that cannot be deleted. `Range.Type.ALL` will use the correct bounds, but
+  /// care must be taken when specifying explicit bounds for range types
+  /// `FROM_START_INDEX` and `FIXED_RANGE`. For example, if the text is "ABC",
+  /// followed by an implicit newline, then the maximum value is 2 for
+  /// `text_range.start_index` and 3 for `text_range.end_index`. Deleting text
+  /// that crosses a paragraph boundary may result in changes to paragraph
+  /// styles and lists as the two paragraphs are merged. Ranges that include
+  /// only one code unit of a surrogate pair are expanded to include both code
+  /// units.
   Range textRange;
 
   DeleteTextRequest();
@@ -2139,8 +1962,8 @@ class Dimension {
   /// Possible string values are:
   /// - "UNIT_UNSPECIFIED" : The units are unknown.
   /// - "EMU" : An English Metric Unit (EMU) is defined as 1/360,000 of a
-  /// centimeter
-  /// and thus there are 914,400 EMUs per inch, and 12,700 EMUs per point.
+  /// centimeter and thus there are 914,400 EMUs per inch, and 12,700 EMUs per
+  /// point.
   /// - "PT" : A point, 1/72 of an inch.
   core.String unit;
 
@@ -2168,12 +1991,10 @@ class Dimension {
   }
 }
 
-/// Duplicates a slide or page element.
-///
-/// When duplicating a slide, the duplicate slide will be created immediately
-/// following the specified slide. When duplicating a page element, the
-/// duplicate
-/// will be placed on the same page at the same position as the original.
+/// Duplicates a slide or page element. When duplicating a slide, the duplicate
+/// slide will be created immediately following the specified slide. When
+/// duplicating a page element, the duplicate will be placed on the same page at
+/// the same position as the original.
 class DuplicateObjectRequest {
   /// The ID of the object to duplicate.
   core.String objectId;
@@ -2184,19 +2005,15 @@ class DuplicateObjectRequest {
   /// objects and its values are the IDs that will be assigned to the
   /// corresponding duplicate object. The ID of the source object's duplicate
   /// may be specified in this map as well, using the same value of the
-  /// `object_id` field as a key and the newly desired ID as the value.
-  ///
-  /// All keys must correspond to existing IDs in the presentation. All values
-  /// must be unique in the presentation and must start with an alphanumeric
-  /// character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining
-  /// characters may include those as well as a hyphen or colon (matches regex
+  /// `object_id` field as a key and the newly desired ID as the value. All keys
+  /// must correspond to existing IDs in the presentation. All values must be
+  /// unique in the presentation and must start with an alphanumeric character
+  /// or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may
+  /// include those as well as a hyphen or colon (matches regex
   /// `[a-zA-Z0-9_-:]`). The length of the new ID must not be less than 5 or
-  /// greater than 50.
-  ///
-  /// If any IDs of source objects are omitted from the map, a new random ID
-  /// will
-  /// be assigned. If the map is empty or unset, all duplicate objects will
-  /// receive a new random ID.
+  /// greater than 50. If any IDs of source objects are omitted from the map, a
+  /// new random ID will be assigned. If the map is empty or unset, all
+  /// duplicate objects will receive a new random ID.
   core.Map<core.String, core.String> objectIds;
 
   DuplicateObjectRequest();
@@ -2247,8 +2064,7 @@ class DuplicateObjectResponse {
   }
 }
 
-/// A PageElement kind representing a
-/// joined collection of PageElements.
+/// A PageElement kind representing a joined collection of PageElements.
 class Group {
   /// The collection of elements in the group. The minimum size of a group is 2.
   core.List<PageElement> children;
@@ -2276,24 +2092,19 @@ class Group {
 /// Groups objects to create an object group. For example, groups PageElements
 /// to create a Group on the same page as all the children.
 class GroupObjectsRequest {
-  /// The object IDs of the objects to group.
-  ///
-  /// Only page elements can be grouped. There should be at least two page
-  /// elements on the same page that are not already in another group. Some page
-  /// elements, such as videos, tables and placeholder shapes cannot be grouped.
+  /// The object IDs of the objects to group. Only page elements can be grouped.
+  /// There should be at least two page elements on the same page that are not
+  /// already in another group. Some page elements, such as videos, tables and
+  /// placeholder shapes cannot be grouped.
   core.List<core.String> childrenObjectIds;
 
-  /// A user-supplied object ID for the group to be created.
-  ///
-  /// If you specify an ID, it must be unique among all pages and page elements
-  /// in the presentation. The ID must start with an alphanumeric character or
-  /// an
-  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-  /// may include those as well as a hyphen or colon (matches regex
-  /// `[a-zA-Z0-9_-:]`).
-  /// The length of the ID must not be less than 5 or greater than 50.
-  ///
-  /// If you don't specify an ID, a unique one is generated.
+  /// A user-supplied object ID for the group to be created. If you specify an
+  /// ID, it must be unique among all pages and page elements in the
+  /// presentation. The ID must start with an alphanumeric character or an
+  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may
+  /// include those as well as a hyphen or colon (matches regex
+  /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater
+  /// than 50. If you don't specify an ID, a unique one is generated.
   core.String groupObjectId;
 
   GroupObjectsRequest();
@@ -2344,13 +2155,12 @@ class GroupObjectsResponse {
   }
 }
 
-/// A PageElement kind representing an
-/// image.
+/// A PageElement kind representing an image.
 class Image {
-  /// An URL to an image with a default lifetime of 30 minutes.
-  /// This URL is tagged with the account of the requester. Anyone with the URL
-  /// effectively accesses the image as the original requester. Access to the
-  /// image may be lost if the presentation's sharing settings change.
+  /// An URL to an image with a default lifetime of 30 minutes. This URL is
+  /// tagged with the account of the requester. Anyone with the URL effectively
+  /// accesses the image as the original requester. Access to the image may be
+  /// lost if the presentation's sharing settings change.
   core.String contentUrl;
 
   /// The properties of the image.
@@ -2415,8 +2225,7 @@ class ImageProperties {
   Recolor recolor;
 
   /// The shadow of the image. If not set, the image has no shadow. This
-  /// property
-  /// is read-only.
+  /// property is read-only.
   Shadow shadow;
 
   /// The transparency effect of the image. The value should be in the interval
@@ -2484,21 +2293,17 @@ class ImageProperties {
   }
 }
 
-/// Inserts columns into a table.
-///
-/// Other columns in the table will be resized to fit the new column.
+/// Inserts columns into a table. Other columns in the table will be resized to
+/// fit the new column.
 class InsertTableColumnsRequest {
-  /// The reference table cell location from which columns will be inserted.
-  ///
-  /// A new column will be inserted to the left (or right) of the column where
-  /// the reference cell is. If the reference cell is a merged cell, a new
-  /// column will be inserted to the left (or right) of the merged cell.
+  /// The reference table cell location from which columns will be inserted. A
+  /// new column will be inserted to the left (or right) of the column where the
+  /// reference cell is. If the reference cell is a merged cell, a new column
+  /// will be inserted to the left (or right) of the merged cell.
   TableCellLocation cellLocation;
 
   /// Whether to insert new columns to the right of the reference cell location.
-  ///
-  /// - `True`: insert to the right.
-  /// - `False`: insert to the left.
+  /// - `True`: insert to the right. - `False`: insert to the left.
   core.bool insertRight;
 
   /// The number of columns to be inserted. Maximum 20 per request.
@@ -2545,17 +2350,14 @@ class InsertTableColumnsRequest {
 
 /// Inserts rows into a table.
 class InsertTableRowsRequest {
-  /// The reference table cell location from which rows will be inserted.
-  ///
-  /// A new row will be inserted above (or below) the row where the reference
-  /// cell is. If the reference cell is a merged cell, a new row will be
-  /// inserted above (or below) the merged cell.
+  /// The reference table cell location from which rows will be inserted. A new
+  /// row will be inserted above (or below) the row where the reference cell is.
+  /// If the reference cell is a merged cell, a new row will be inserted above
+  /// (or below) the merged cell.
   TableCellLocation cellLocation;
 
-  /// Whether to insert new rows below the reference cell location.
-  ///
-  /// - `True`: insert below the cell.
-  /// - `False`: insert above the cell.
+  /// Whether to insert new rows below the reference cell location. - `True`:
+  /// insert below the cell. - `False`: insert above the cell.
   core.bool insertBelow;
 
   /// The number of rows to be inserted. Maximum 20 per request.
@@ -2603,38 +2405,29 @@ class InsertTableRowsRequest {
 /// Inserts text into a shape or a table cell.
 class InsertTextRequest {
   /// The optional table cell location if the text is to be inserted into a
-  /// table
-  /// cell. If present, the object_id must refer to a table.
+  /// table cell. If present, the object_id must refer to a table.
   TableCellLocation cellLocation;
 
-  /// The index where the text will be inserted, in Unicode code units, based
-  /// on TextElement indexes.
-  ///
-  /// The index is zero-based and is computed from the start of the string.
-  /// The index may be adjusted to prevent insertions inside Unicode grapheme
-  /// clusters. In these cases, the text will be inserted immediately after the
-  /// grapheme cluster.
+  /// The index where the text will be inserted, in Unicode code units, based on
+  /// TextElement indexes. The index is zero-based and is computed from the
+  /// start of the string. The index may be adjusted to prevent insertions
+  /// inside Unicode grapheme clusters. In these cases, the text will be
+  /// inserted immediately after the grapheme cluster.
   core.int insertionIndex;
 
   /// The object ID of the shape or table where the text will be inserted.
   core.String objectId;
 
-  /// The text to be inserted.
-  ///
-  /// Inserting a newline character will implicitly create a new
-  /// ParagraphMarker at that index.
-  /// The paragraph style of the new paragraph will be copied from the paragraph
-  /// at the current insertion index, including lists and bullets.
-  ///
-  /// Text styles for inserted text will be determined automatically, generally
-  /// preserving the styling of neighboring text. In most cases, the text will
-  /// be
-  /// added to the TextRun that exists at the
-  /// insertion index.
-  ///
-  /// Some control characters (U+0000-U+0008, U+000C-U+001F) and characters
-  /// from the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF)
-  /// will be stripped out of the inserted text.
+  /// The text to be inserted. Inserting a newline character will implicitly
+  /// create a new ParagraphMarker at that index. The paragraph style of the new
+  /// paragraph will be copied from the paragraph at the current insertion
+  /// index, including lists and bullets. Text styles for inserted text will be
+  /// determined automatically, generally preserving the styling of neighboring
+  /// text. In most cases, the text will be added to the TextRun that exists at
+  /// the insertion index. Some control characters (U+0000-U+0008,
+  /// U+000C-U+001F) and characters from the Unicode Basic Multilingual Plane
+  /// Private Use Area (U+E000-U+F8FF) will be stripped out of the inserted
+  /// text.
   core.String text;
 
   InsertTextRequest();
@@ -2677,27 +2470,23 @@ class InsertTextRequest {
 /// slide from a specified layout.
 class LayoutPlaceholderIdMapping {
   /// The placeholder on a layout that will be applied to a slide. Only type and
-  /// index are needed. For example, a
-  /// predefined `TITLE_AND_BODY` layout may usually have a TITLE placeholder
-  /// with index 0 and a BODY placeholder with index 0.
+  /// index are needed. For example, a predefined `TITLE_AND_BODY` layout may
+  /// usually have a TITLE placeholder with index 0 and a BODY placeholder with
+  /// index 0.
   Placeholder layoutPlaceholder;
 
-  /// The object ID of the placeholder on a layout that will be applied
-  /// to a slide.
+  /// The object ID of the placeholder on a layout that will be applied to a
+  /// slide.
   core.String layoutPlaceholderObjectId;
 
   /// A user-supplied object ID for the placeholder identified above that to be
-  /// created onto a slide.
-  ///
-  /// If you specify an ID, it must be unique among all pages and page elements
-  /// in the presentation. The ID must start with an alphanumeric character or
-  /// an
-  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-  /// may include those as well as a hyphen or colon (matches regex
-  /// `[a-zA-Z0-9_-:]`).
-  /// The length of the ID must not be less than 5 or greater than 50.
-  ///
-  /// If you don't specify an ID, a unique one is generated.
+  /// created onto a slide. If you specify an ID, it must be unique among all
+  /// pages and page elements in the presentation. The ID must start with an
+  /// alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`);
+  /// remaining characters may include those as well as a hyphen or colon
+  /// (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less
+  /// than 5 or greater than 50. If you don't specify an ID, a unique one is
+  /// generated.
   core.String objectId;
 
   LayoutPlaceholderIdMapping();
@@ -2730,8 +2519,7 @@ class LayoutPlaceholderIdMapping {
   }
 }
 
-/// The properties of Page are only
-/// relevant for pages with page_type LAYOUT.
+/// The properties of Page are only relevant for pages with page_type LAYOUT.
 class LayoutProperties {
   /// The human-readable name of the layout.
   core.String displayName;
@@ -2772,10 +2560,8 @@ class LayoutProperties {
   }
 }
 
-/// Slide layout reference. This may reference either:
-///
-/// - A predefined layout
-/// - One of the layouts in the presentation.
+/// Slide layout reference. This may reference either: - A predefined layout -
+/// One of the layouts in the presentation.
 class LayoutReference {
   /// Layout ID: the object ID of one of the layouts in the presentation.
   core.String layoutId;
@@ -2822,14 +2608,11 @@ class LayoutReference {
   }
 }
 
-/// A PageElement kind representing a
-/// non-connector line, straight connector, curved connector, or bent connector.
+/// A PageElement kind representing a non-connector line, straight connector,
+/// curved connector, or bent connector.
 class Line {
-  /// The category of the line.
-  ///
-  /// It matches the `category` specified in CreateLineRequest, and can be
-  /// updated with
-  /// UpdateLineCategoryRequest.
+  /// The category of the line. It matches the `category` specified in
+  /// CreateLineRequest, and can be updated with UpdateLineCategoryRequest.
   /// Possible string values are:
   /// - "LINE_CATEGORY_UNSPECIFIED" : Unspecified line category.
   /// - "STRAIGHT" : Straight connectors, including straight connector 1.
@@ -2844,35 +2627,25 @@ class Line {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : An unspecified line type.
   /// - "STRAIGHT_CONNECTOR_1" : Straight connector 1 form. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'straightConnector1'.
+  /// ECMA-376 ST_ShapeType 'straightConnector1'.
   /// - "BENT_CONNECTOR_2" : Bent connector 2 form. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'bentConnector2'.
+  /// ST_ShapeType 'bentConnector2'.
   /// - "BENT_CONNECTOR_3" : Bent connector 3 form. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'bentConnector3'.
+  /// ST_ShapeType 'bentConnector3'.
   /// - "BENT_CONNECTOR_4" : Bent connector 4 form. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'bentConnector4'.
+  /// ST_ShapeType 'bentConnector4'.
   /// - "BENT_CONNECTOR_5" : Bent connector 5 form. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'bentConnector5'.
+  /// ST_ShapeType 'bentConnector5'.
   /// - "CURVED_CONNECTOR_2" : Curved connector 2 form. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedConnector2'.
+  /// ST_ShapeType 'curvedConnector2'.
   /// - "CURVED_CONNECTOR_3" : Curved connector 3 form. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedConnector3'.
+  /// ST_ShapeType 'curvedConnector3'.
   /// - "CURVED_CONNECTOR_4" : Curved connector 4 form. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedConnector4'.
+  /// ST_ShapeType 'curvedConnector4'.
   /// - "CURVED_CONNECTOR_5" : Curved connector 5 form. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedConnector5'.
+  /// ST_ShapeType 'curvedConnector5'.
   /// - "STRAIGHT_LINE" : Straight line. Corresponds to ECMA-376 ST_ShapeType
-  /// 'line'. This line
-  /// type is not a connector.
+  /// 'line'. This line type is not a connector.
   core.String lineType;
 
   Line();
@@ -2905,26 +2678,21 @@ class Line {
   }
 }
 
-/// The properties for one end of a Line
-/// connection.
+/// The properties for one end of a Line connection.
 class LineConnection {
-  /// The object ID of the connected page element.
-  ///
-  /// Some page elements, such as groups, tables, and lines
-  /// do not have connection sites and therefore cannot be connected to a
-  /// connector line.
+  /// The object ID of the connected page element. Some page elements, such as
+  /// groups, tables, and lines do not have connection sites and therefore
+  /// cannot be connected to a connector line.
   core.String connectedObjectId;
 
-  /// The index of the connection site on the connected page element.
-  ///
-  /// In most cases, it corresponds to the predefined connection site index from
-  /// the ECMA-376 standard. More information on those connection sites can be
-  /// found in the description of the "cnx" attribute in section 20.1.9.9 and
-  /// Annex H. "Predefined DrawingML Shape and Text Geometries" of "Office Open
-  /// XML File Formats-Fundamentals and Markup Language Reference", part 1 of
-  /// [ECMA-376 5th edition]
+  /// The index of the connection site on the connected page element. In most
+  /// cases, it corresponds to the predefined connection site index from the
+  /// ECMA-376 standard. More information on those connection sites can be found
+  /// in the description of the "cnx" attribute in section 20.1.9.9 and Annex H.
+  /// "Predefined DrawingML Shape and Text Geometries" of "Office Open XML File
+  /// Formats-Fundamentals and Markup Language Reference", part 1 of [ECMA-376
+  /// 5th edition]
   /// (http://www.ecma-international.org/publications/standards/Ecma-376.htm).
-  ///
   /// The position of each connection site can also be viewed from Slides
   /// editor.
   core.int connectionSiteIndex;
@@ -2976,30 +2744,24 @@ class LineFill {
   }
 }
 
-/// The properties of the Line.
-///
-/// When unset, these fields default to values that match the appearance of
-/// new lines created in the Slides editor.
+/// The properties of the Line. When unset, these fields default to values that
+/// match the appearance of new lines created in the Slides editor.
 class LineProperties {
   /// The dash style of the line.
   /// Possible string values are:
   /// - "DASH_STYLE_UNSPECIFIED" : Unspecified dash style.
   /// - "SOLID" : Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value
-  /// 'solid'.
-  /// This is the default dash style.
+  /// 'solid'. This is the default dash style.
   /// - "DOT" : Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dot'.
   /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dash'.
   /// - "DASH_DOT" : Alternating dashes and dots. Corresponds to ECMA-376
-  /// ST_PresetLineDashVal
-  /// value 'dashDot'.
+  /// ST_PresetLineDashVal value 'dashDot'.
   /// - "LONG_DASH" : Line with large dashes. Corresponds to ECMA-376
-  /// ST_PresetLineDashVal
-  /// value 'lgDash'.
+  /// ST_PresetLineDashVal value 'lgDash'.
   /// - "LONG_DASH_DOT" : Alternating large dashes and dots. Corresponds to
-  /// ECMA-376
-  /// ST_PresetLineDashVal value 'lgDashDot'.
+  /// ECMA-376 ST_PresetLineDashVal value 'lgDashDot'.
   core.String dashStyle;
 
   /// The style of the arrow at the end of the line.
@@ -3007,8 +2769,7 @@ class LineProperties {
   /// - "ARROW_STYLE_UNSPECIFIED" : An unspecified arrow style.
   /// - "NONE" : No arrow.
   /// - "STEALTH_ARROW" : Arrow with notched back. Corresponds to ECMA-376
-  /// ST_LineEndType value
-  /// 'stealth'.
+  /// ST_LineEndType value 'stealth'.
   /// - "FILL_ARROW" : Filled arrow. Corresponds to ECMA-376 ST_LineEndType
   /// value 'triangle'.
   /// - "FILL_CIRCLE" : Filled circle. Corresponds to ECMA-376 ST_LineEndType
@@ -3023,9 +2784,8 @@ class LineProperties {
   core.String endArrow;
 
   /// The connection at the end of the line. If unset, there is no connection.
-  ///
-  /// Only lines with a Type indicating it is
-  /// a "connector" can have an `end_connection`.
+  /// Only lines with a Type indicating it is a "connector" can have an
+  /// `end_connection`.
   LineConnection endConnection;
 
   /// The fill of the line. The default line fill matches the defaults for new
@@ -3040,8 +2800,7 @@ class LineProperties {
   /// - "ARROW_STYLE_UNSPECIFIED" : An unspecified arrow style.
   /// - "NONE" : No arrow.
   /// - "STEALTH_ARROW" : Arrow with notched back. Corresponds to ECMA-376
-  /// ST_LineEndType value
-  /// 'stealth'.
+  /// ST_LineEndType value 'stealth'.
   /// - "FILL_ARROW" : Filled arrow. Corresponds to ECMA-376 ST_LineEndType
   /// value 'triangle'.
   /// - "FILL_CIRCLE" : Filled circle. Corresponds to ECMA-376 ST_LineEndType
@@ -3056,10 +2815,8 @@ class LineProperties {
   core.String startArrow;
 
   /// The connection at the beginning of the line. If unset, there is no
-  /// connection.
-  ///
-  /// Only lines with a Type indicating it is
-  /// a "connector" can have a `start_connection`.
+  /// connection. Only lines with a Type indicating it is a "connector" can have
+  /// a `start_connection`.
   LineConnection startConnection;
 
   /// The thickness of the line.
@@ -3127,8 +2884,8 @@ class LineProperties {
 
 /// A hypertext link.
 class Link {
-  /// If set, indicates this is a link to the specific page in this
-  /// presentation with this ID. A page with this ID may not exist.
+  /// If set, indicates this is a link to the specific page in this presentation
+  /// with this ID. A page with this ID may not exist.
   core.String pageObjectId;
 
   /// If set, indicates this is a link to a slide in this presentation,
@@ -3141,8 +2898,8 @@ class Link {
   /// - "LAST_SLIDE" : A link to the last slide in the presentation.
   core.String relativeLink;
 
-  /// If set, indicates this is a link to the slide at this zero-based index
-  /// in the presentation. There may not be a slide at this index.
+  /// If set, indicates this is a link to the slide at this zero-based index in
+  /// the presentation. There may not be a slide at this index.
   core.int slideIndex;
 
   /// If set, indicates this is a link to the external web page at this URL.
@@ -3224,8 +2981,8 @@ class List {
   }
 }
 
-/// The properties of Page that are only
-/// relevant for pages with page_type MASTER.
+/// The properties of Page that are only relevant for pages with page_type
+/// MASTER.
 class MasterProperties {
   /// The human-readable name of the master.
   core.String displayName;
@@ -3253,12 +3010,11 @@ class MergeTableCellsRequest {
   /// The object ID of the table.
   core.String objectId;
 
-  /// The table range specifying which cells of the table to merge.
-  ///
-  /// Any text in the cells being merged will be concatenated and stored in the
-  /// upper-left ("head") cell of the range. If the range is non-rectangular
-  /// (which can occur in some cases where the range covers cells that are
-  /// already merged), a 400 bad request error is returned.
+  /// The table range specifying which cells of the table to merge. Any text in
+  /// the cells being merged will be concatenated and stored in the upper-left
+  /// ("head") cell of the range. If the range is non-rectangular (which can
+  /// occur in some cases where the range covers cells that are already merged),
+  /// a 400 bad request error is returned.
   TableRange tableRange;
 
   MergeTableCellsRequest();
@@ -3309,16 +3065,15 @@ class NestingLevel {
   }
 }
 
-/// The properties of Page that are only
-/// relevant for pages with page_type NOTES.
+/// The properties of Page that are only relevant for pages with page_type
+/// NOTES.
 class NotesProperties {
   /// The object ID of the shape on this notes page that contains the speaker
-  /// notes for the corresponding slide.
-  /// The actual shape may not always exist on the notes page. Inserting text
-  /// using this object ID will automatically create the shape. In this case,
-  /// the
-  /// actual shape may have different object ID. The `GetPresentation` or
-  /// `GetPage` action will always return the latest object ID.
+  /// notes for the corresponding slide. The actual shape may not always exist
+  /// on the notes page. Inserting text using this object ID will automatically
+  /// create the shape. In this case, the actual shape may have different object
+  /// ID. The `GetPresentation` or `GetPage` action will always return the
+  /// latest object ID.
   core.String speakerNotesObjectId;
 
   NotesProperties();
@@ -3393,8 +3148,8 @@ class OpaqueColor {
 
 /// A color that can either be fully opaque or fully transparent.
 class OptionalColor {
-  /// If set, this will be used as an opaque color. If unset, this represents
-  /// a transparent color.
+  /// If set, this will be used as an opaque color. If unset, this represents a
+  /// transparent color.
   OpaqueColor opaqueColor;
 
   OptionalColor();
@@ -3415,62 +3170,53 @@ class OptionalColor {
   }
 }
 
-/// The outline of a PageElement.
-///
-/// If these fields are unset, they may be inherited from a parent placeholder
-/// if it exists. If there is no parent, the fields will default to the value
-/// used for new page elements created in the Slides editor, which may depend on
-/// the page element kind.
+/// The outline of a PageElement. If these fields are unset, they may be
+/// inherited from a parent placeholder if it exists. If there is no parent, the
+/// fields will default to the value used for new page elements created in the
+/// Slides editor, which may depend on the page element kind.
 class Outline {
   /// The dash style of the outline.
   /// Possible string values are:
   /// - "DASH_STYLE_UNSPECIFIED" : Unspecified dash style.
   /// - "SOLID" : Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value
-  /// 'solid'.
-  /// This is the default dash style.
+  /// 'solid'. This is the default dash style.
   /// - "DOT" : Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dot'.
   /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dash'.
   /// - "DASH_DOT" : Alternating dashes and dots. Corresponds to ECMA-376
-  /// ST_PresetLineDashVal
-  /// value 'dashDot'.
+  /// ST_PresetLineDashVal value 'dashDot'.
   /// - "LONG_DASH" : Line with large dashes. Corresponds to ECMA-376
-  /// ST_PresetLineDashVal
-  /// value 'lgDash'.
+  /// ST_PresetLineDashVal value 'lgDash'.
   /// - "LONG_DASH_DOT" : Alternating large dashes and dots. Corresponds to
-  /// ECMA-376
-  /// ST_PresetLineDashVal value 'lgDashDot'.
+  /// ECMA-376 ST_PresetLineDashVal value 'lgDashDot'.
   core.String dashStyle;
 
   /// The fill of the outline.
   OutlineFill outlineFill;
 
-  /// The outline property state.
-  ///
-  /// Updating the outline on a page element will implicitly update this field
-  /// to `RENDERED`, unless another value is specified in the same request. To
-  /// have no outline on a page element, set this field to `NOT_RENDERED`. In
-  /// this case, any other outline fields set in the same request will be
-  /// ignored.
+  /// The outline property state. Updating the outline on a page element will
+  /// implicitly update this field to `RENDERED`, unless another value is
+  /// specified in the same request. To have no outline on a page element, set
+  /// this field to `NOT_RENDERED`. In this case, any other outline fields set
+  /// in the same request will be ignored.
   /// Possible string values are:
   /// - "RENDERED" : If a property's state is RENDERED, then the element has the
-  /// corresponding
-  /// property when rendered on a page. If the element is a placeholder shape as
-  /// determined by the placeholder
-  /// field, and it inherits from a placeholder shape, the corresponding field
-  /// may be unset, meaning that the property value is inherited from a parent
-  /// placeholder. If the element does not inherit, then the field will contain
-  /// the rendered value. This is the default value.
+  /// corresponding property when rendered on a page. If the element is a
+  /// placeholder shape as determined by the placeholder field, and it inherits
+  /// from a placeholder shape, the corresponding field may be unset, meaning
+  /// that the property value is inherited from a parent placeholder. If the
+  /// element does not inherit, then the field will contain the rendered value.
+  /// This is the default value.
   /// - "NOT_RENDERED" : If a property's state is NOT_RENDERED, then the element
-  /// does not have the
-  /// corresponding property when rendered on a page. However, the field may
-  /// still be set so it can be inherited by child shapes. To remove a property
-  /// from a rendered element, set its property_state to NOT_RENDERED.
+  /// does not have the corresponding property when rendered on a page. However,
+  /// the field may still be set so it can be inherited by child shapes. To
+  /// remove a property from a rendered element, set its property_state to
+  /// NOT_RENDERED.
   /// - "INHERIT" : If a property's state is INHERIT, then the property state
-  /// uses the value of
-  /// corresponding `property_state` field on the parent shape. Elements that do
-  /// not inherit will never have an INHERIT property state.
+  /// uses the value of corresponding `property_state` field on the parent
+  /// shape. Elements that do not inherit will never have an INHERIT property
+  /// state.
   core.String propertyState;
 
   /// The thickness of the outline.
@@ -3546,9 +3292,8 @@ class Page {
   /// Notes specific properties. Only set if page_type = NOTES.
   NotesProperties notesProperties;
 
-  /// The object ID for this page. Object IDs used by
-  /// Page and
-  /// PageElement share the same namespace.
+  /// The object ID for this page. Object IDs used by Page and PageElement share
+  /// the same namespace.
   core.String objectId;
 
   /// The page elements rendered on the page.
@@ -3569,16 +3314,14 @@ class Page {
   /// The revision ID of the presentation containing this page. Can be used in
   /// update requests to assert that the presentation revision hasn't changed
   /// since the last read operation. Only populated if the user has edit access
-  /// to the presentation.
-  ///
-  /// The format of the revision ID may change over time, so it should be
-  /// treated
-  /// opaquely. A returned revision ID is only guaranteed to be valid for 24
-  /// hours after it has been returned and cannot be shared across users. If the
-  /// revision ID is unchanged between calls, then the presentation has not
-  /// changed. Conversely, a changed ID (for the same presentation and user)
-  /// usually means the presentation has been updated; however, a changed ID can
-  /// also be due to internal factors such as ID format changes.
+  /// to the presentation. The format of the revision ID may change over time,
+  /// so it should be treated opaquely. A returned revision ID is only
+  /// guaranteed to be valid for 24 hours after it has been returned and cannot
+  /// be shared across users. If the revision ID is unchanged between calls,
+  /// then the presentation has not changed. Conversely, a changed ID (for the
+  /// same presentation and user) usually means the presentation has been
+  /// updated; however, a changed ID can also be due to internal factors such as
+  /// ID format changes.
   core.String revisionId;
 
   /// Slide specific properties. Only set if page_type = SLIDE.
@@ -3657,30 +3400,28 @@ class Page {
 
 /// The page background fill.
 class PageBackgroundFill {
-  /// The background fill property state.
-  ///
-  /// Updating the fill on a page will implicitly update this field to
-  /// `RENDERED`, unless another value is specified in the same request. To
-  /// have no fill on a page, set this field to `NOT_RENDERED`. In this case,
-  /// any other fill fields set in the same request will be ignored.
+  /// The background fill property state. Updating the fill on a page will
+  /// implicitly update this field to `RENDERED`, unless another value is
+  /// specified in the same request. To have no fill on a page, set this field
+  /// to `NOT_RENDERED`. In this case, any other fill fields set in the same
+  /// request will be ignored.
   /// Possible string values are:
   /// - "RENDERED" : If a property's state is RENDERED, then the element has the
-  /// corresponding
-  /// property when rendered on a page. If the element is a placeholder shape as
-  /// determined by the placeholder
-  /// field, and it inherits from a placeholder shape, the corresponding field
-  /// may be unset, meaning that the property value is inherited from a parent
-  /// placeholder. If the element does not inherit, then the field will contain
-  /// the rendered value. This is the default value.
+  /// corresponding property when rendered on a page. If the element is a
+  /// placeholder shape as determined by the placeholder field, and it inherits
+  /// from a placeholder shape, the corresponding field may be unset, meaning
+  /// that the property value is inherited from a parent placeholder. If the
+  /// element does not inherit, then the field will contain the rendered value.
+  /// This is the default value.
   /// - "NOT_RENDERED" : If a property's state is NOT_RENDERED, then the element
-  /// does not have the
-  /// corresponding property when rendered on a page. However, the field may
-  /// still be set so it can be inherited by child shapes. To remove a property
-  /// from a rendered element, set its property_state to NOT_RENDERED.
+  /// does not have the corresponding property when rendered on a page. However,
+  /// the field may still be set so it can be inherited by child shapes. To
+  /// remove a property from a rendered element, set its property_state to
+  /// NOT_RENDERED.
   /// - "INHERIT" : If a property's state is INHERIT, then the property state
-  /// uses the value of
-  /// corresponding `property_state` field on the parent shape. Elements that do
-  /// not inherit will never have an INHERIT property state.
+  /// uses the value of corresponding `property_state` field on the parent
+  /// shape. Elements that do not inherit will never have an INHERIT property
+  /// state.
   core.String propertyState;
 
   /// Solid color fill.
@@ -3723,7 +3464,7 @@ class PageBackgroundFill {
 /// A visual element rendered on a page.
 class PageElement {
   /// The description of the page element. Combined with title to display alt
-  /// text.
+  /// text. The field is not supported for Group elements.
   core.String description;
 
   /// A collection of page elements joined as a single unit.
@@ -3736,8 +3477,8 @@ class PageElement {
   Line line;
 
   /// The object ID for this page element. Object IDs used by
-  /// google.apps.slides.v1.Page and
-  /// google.apps.slides.v1.PageElement share the same namespace.
+  /// google.apps.slides.v1.Page and google.apps.slides.v1.PageElement share the
+  /// same namespace.
   core.String objectId;
 
   /// A generic shape.
@@ -3754,20 +3495,15 @@ class PageElement {
   Table table;
 
   /// The title of the page element. Combined with description to display alt
-  /// text.
+  /// text. The field is not supported for Group elements.
   core.String title;
 
-  /// The transform of the page element.
-  ///
-  /// The visual appearance of the page element is determined by its absolute
-  /// transform. To compute the absolute transform, preconcatenate a page
-  /// element's transform with the transforms of all of its parent groups. If
-  /// the
-  /// page element is not in a group, its absolute transform is the same as the
-  /// value in this field.
-  ///
-  /// The initial transform for the newly created Group is always the identity
-  /// transform.
+  /// The transform of the page element. The visual appearance of the page
+  /// element is determined by its absolute transform. To compute the absolute
+  /// transform, preconcatenate a page element's transform with the transforms
+  /// of all of its parent groups. If the page element is not in a group, its
+  /// absolute transform is the same as the value in this field. The initial
+  /// transform for the newly created Group is always the identity transform.
   AffineTransform transform;
 
   /// A video page element.
@@ -3866,12 +3602,9 @@ class PageElement {
   }
 }
 
-/// Common properties for a page element.
-///
-/// Note: When you initially create a
-/// PageElement, the API may modify
-/// the values of both `size` and `transform`, but the
-/// visual size will be unchanged.
+/// Common properties for a page element. Note: When you initially create a
+/// PageElement, the API may modify the values of both `size` and `transform`,
+/// but the visual size will be unchanged.
 class PageElementProperties {
   /// The object ID of the page where the element is located.
   core.String pageObjectId;
@@ -3912,29 +3645,24 @@ class PageElementProperties {
   }
 }
 
-/// The properties of the Page.
-///
-/// The page will inherit properties from the parent page. Depending on the page
-/// type the hierarchy is defined in either
-/// SlideProperties or
-/// LayoutProperties.
+/// The properties of the Page. The page will inherit properties from the parent
+/// page. Depending on the page type the hierarchy is defined in either
+/// SlideProperties or LayoutProperties.
 class PageProperties {
   /// The color scheme of the page. If unset, the color scheme is inherited from
   /// a parent page. If the page has no parent, the color scheme uses a default
-  /// Slides color scheme, matching the defaults in the Slides editor.
-  ///
-  /// Only the concrete colors of the first 12 ThemeColorTypes are editable. In
-  /// addition, only
-  /// the color scheme on `Master` pages can be updated. To update the field, a
-  /// color scheme containing mappings from all the first 12 ThemeColorTypes to
-  /// their concrete colors must be provided. Colors for the remaining
-  /// ThemeColorTypes will be ignored.
+  /// Slides color scheme, matching the defaults in the Slides editor. Only the
+  /// concrete colors of the first 12 ThemeColorTypes are editable. In addition,
+  /// only the color scheme on `Master` pages can be updated. To update the
+  /// field, a color scheme containing mappings from all the first 12
+  /// ThemeColorTypes to their concrete colors must be provided. Colors for the
+  /// remaining ThemeColorTypes will be ignored.
   ColorScheme colorScheme;
 
   /// The background fill of the page. If unset, the background fill is
-  /// inherited
-  /// from a parent page if it exists. If the page has no parent, then the
-  /// background fill defaults to the corresponding fill in the Slides editor.
+  /// inherited from a parent page if it exists. If the page has no parent, then
+  /// the background fill defaults to the corresponding fill in the Slides
+  /// editor.
   PageBackgroundFill pageBackgroundFill;
 
   PageProperties();
@@ -3995,39 +3723,30 @@ class ParagraphMarker {
   }
 }
 
-/// Styles that apply to a whole paragraph.
-///
-/// If this text is contained in a shape with a parent placeholder, then these
-/// paragraph styles may be
-/// inherited from the parent. Which paragraph styles are inherited depend on
-/// the
-/// nesting level of lists:
-///
-/// * A paragraph not in a list will inherit its paragraph style from the
-/// paragraph at the 0 nesting level of the list inside the parent placeholder.
-/// * A paragraph in a list will inherit its paragraph style from the paragraph
-///   at its corresponding nesting level of the list inside the parent
-///   placeholder.
-///
-/// Inherited paragraph styles are represented as unset fields in this message.
+/// Styles that apply to a whole paragraph. If this text is contained in a shape
+/// with a parent placeholder, then these paragraph styles may be inherited from
+/// the parent. Which paragraph styles are inherited depend on the nesting level
+/// of lists: * A paragraph not in a list will inherit its paragraph style from
+/// the paragraph at the 0 nesting level of the list inside the parent
+/// placeholder. * A paragraph in a list will inherit its paragraph style from
+/// the paragraph at its corresponding nesting level of the list inside the
+/// parent placeholder. Inherited paragraph styles are represented as unset
+/// fields in this message.
 class ParagraphStyle {
   /// The text alignment for this paragraph.
   /// Possible string values are:
   /// - "ALIGNMENT_UNSPECIFIED" : The paragraph alignment is inherited from the
   /// parent.
   /// - "START" : The paragraph is aligned to the start of the line.
-  /// Left-aligned for
-  /// LTR text, right-aligned otherwise.
+  /// Left-aligned for LTR text, right-aligned otherwise.
   /// - "CENTER" : The paragraph is centered.
   /// - "END" : The paragraph is aligned to the end of the line. Right-aligned
-  /// for
-  /// LTR text, left-aligned otherwise.
+  /// for LTR text, left-aligned otherwise.
   /// - "JUSTIFIED" : The paragraph is justified.
   core.String alignment;
 
   /// The text direction of this paragraph. If unset, the value defaults to
-  /// LEFT_TO_RIGHT since
-  /// text direction is not inherited.
+  /// LEFT_TO_RIGHT since text direction is not inherited.
   /// Possible string values are:
   /// - "TEXT_DIRECTION_UNSPECIFIED" : The text direction is inherited from the
   /// parent.
@@ -4041,8 +3760,7 @@ class ParagraphStyle {
   Dimension indentEnd;
 
   /// The amount of indentation for the start of the first line of the
-  /// paragraph.
-  /// If unset, the value is inherited from the parent.
+  /// paragraph. If unset, the value is inherited from the parent.
   Dimension indentFirstLine;
 
   /// The amount indentation for the paragraph on the side that corresponds to
@@ -4142,9 +3860,9 @@ class Placeholder {
   /// the same page, they would have different index values.
   core.int index;
 
-  /// The object ID of this shape's parent placeholder.
-  /// If unset, the parent placeholder shape does not exist, so the shape does
-  /// not inherit properties from any other shape.
+  /// The object ID of this shape's parent placeholder. If unset, the parent
+  /// placeholder shape does not exist, so the shape does not inherit properties
+  /// from any other shape.
   core.String parentObjectId;
 
   /// The type of the placeholder.
@@ -4210,28 +3928,21 @@ class Presentation {
 
   /// The slide masters in the presentation. A slide master contains all common
   /// page elements and the common properties for a set of layouts. They serve
-  /// three purposes:
-  ///
-  /// - Placeholder shapes on a master contain the default text styles and shape
-  ///   properties of all placeholder shapes on pages that use that master.
-  /// - The master page properties define the common page properties inherited
-  /// by
-  ///   its layouts.
-  /// - Any other shapes on the master slide appear on all slides using that
-  ///   master, regardless of their layout.
+  /// three purposes: - Placeholder shapes on a master contain the default text
+  /// styles and shape properties of all placeholder shapes on pages that use
+  /// that master. - The master page properties define the common page
+  /// properties inherited by its layouts. - Any other shapes on the master
+  /// slide appear on all slides using that master, regardless of their layout.
   core.List<Page> masters;
 
-  /// The notes master in the presentation. It serves three purposes:
-  ///
-  /// - Placeholder shapes on a notes master contain the default text styles and
-  /// shape properties of all placeholder shapes on notes pages. Specifically,
-  ///   a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a
-  ///   `BODY` placeholder shape contains the speaker notes.
-  /// - The notes master page properties define the common page properties
-  ///   inherited by all notes pages.
-  /// - Any other shapes on the notes master appears on all notes pages.
-  ///
-  /// The notes master is read-only.
+  /// The notes master in the presentation. It serves three purposes: -
+  /// Placeholder shapes on a notes master contain the default text styles and
+  /// shape properties of all placeholder shapes on notes pages. Specifically, a
+  /// `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a `BODY`
+  /// placeholder shape contains the speaker notes. - The notes master page
+  /// properties define the common page properties inherited by all notes pages.
+  /// - Any other shapes on the notes master appears on all notes pages. The
+  /// notes master is read-only.
   Page notesMaster;
 
   /// The size of pages in the presentation.
@@ -4240,23 +3951,20 @@ class Presentation {
   /// The ID of the presentation.
   core.String presentationId;
 
-  /// The revision ID of the presentation. Can be used in update requests
-  /// to assert that the presentation revision hasn't changed since the last
-  /// read operation. Only populated if the user has edit access to the
-  /// presentation.
-  ///
+  /// The revision ID of the presentation. Can be used in update requests to
+  /// assert that the presentation revision hasn't changed since the last read
+  /// operation. Only populated if the user has edit access to the presentation.
   /// The format of the revision ID may change over time, so it should be
-  /// treated
-  /// opaquely. A returned revision ID is only guaranteed to be valid for 24
-  /// hours after it has been returned and cannot be shared across users. If the
-  /// revision ID is unchanged between calls, then the presentation has not
-  /// changed. Conversely, a changed ID (for the same presentation and user)
+  /// treated opaquely. A returned revision ID is only guaranteed to be valid
+  /// for 24 hours after it has been returned and cannot be shared across users.
+  /// If the revision ID is unchanged between calls, then the presentation has
+  /// not changed. Conversely, a changed ID (for the same presentation and user)
   /// usually means the presentation has been updated; however, a changed ID can
   /// also be due to internal factors such as ID format changes.
   core.String revisionId;
 
-  /// The slides in the presentation.
-  /// A slide inherits properties from a slide layout.
+  /// The slides in the presentation. A slide inherits properties from a slide
+  /// layout.
   core.List<Page> slides;
 
   /// The title of the presentation.
@@ -4337,27 +4045,24 @@ class Presentation {
 /// Specifies a contiguous range of an indexed collection, such as characters in
 /// text.
 class Range {
-  /// The optional zero-based index of the end of the collection.
-  /// Required for `FIXED_RANGE` ranges.
+  /// The optional zero-based index of the end of the collection. Required for
+  /// `FIXED_RANGE` ranges.
   core.int endIndex;
 
-  /// The optional zero-based index of the beginning of the collection.
-  /// Required for `FIXED_RANGE` and `FROM_START_INDEX` ranges.
+  /// The optional zero-based index of the beginning of the collection. Required
+  /// for `FIXED_RANGE` and `FROM_START_INDEX` ranges.
   core.int startIndex;
 
   /// The type of range.
   /// Possible string values are:
   /// - "RANGE_TYPE_UNSPECIFIED" : Unspecified range type. This value must not
   /// be used.
-  /// - "FIXED_RANGE" : A fixed range. Both the `start_index` and
-  /// `end_index` must be specified.
+  /// - "FIXED_RANGE" : A fixed range. Both the `start_index` and `end_index`
+  /// must be specified.
   /// - "FROM_START_INDEX" : Starts the range at `start_index` and continues
-  /// until the
-  /// end of the collection. The `end_index` must not be specified.
+  /// until the end of the collection. The `end_index` must not be specified.
   /// - "ALL" : Sets the range to be the whole length of the collection. Both
-  /// the
-  /// `start_index` and the `end_index` must not be
-  /// specified.
+  /// the `start_index` and the `end_index` must not be specified.
   core.String type;
 
   Range();
@@ -4392,87 +4097,62 @@ class Range {
 
 /// A recolor effect applied on an image.
 class Recolor {
-  /// The name of the recolor effect.
-  ///
-  /// The name is determined from the `recolor_stops` by matching the gradient
-  /// against the colors in the page's current color scheme. This property is
-  /// read-only.
+  /// The name of the recolor effect. The name is determined from the
+  /// `recolor_stops` by matching the gradient against the colors in the page's
+  /// current color scheme. This property is read-only.
   /// Possible string values are:
   /// - "NONE" : No recolor effect. The default value.
   /// - "LIGHT1" : A recolor effect that lightens the image using the page's
-  /// first available
-  /// color from its color scheme.
+  /// first available color from its color scheme.
   /// - "LIGHT2" : A recolor effect that lightens the image using the page's
-  /// second
-  /// available color from its color scheme.
+  /// second available color from its color scheme.
   /// - "LIGHT3" : A recolor effect that lightens the image using the page's
-  /// third available
-  /// color from its color scheme.
+  /// third available color from its color scheme.
   /// - "LIGHT4" : A recolor effect that lightens the image using the page's
-  /// forth available
-  /// color from its color scheme.
+  /// forth available color from its color scheme.
   /// - "LIGHT5" : A recolor effect that lightens the image using the page's
-  /// fifth available
-  /// color from its color scheme.
+  /// fifth available color from its color scheme.
   /// - "LIGHT6" : A recolor effect that lightens the image using the page's
-  /// sixth available
-  /// color from its color scheme.
+  /// sixth available color from its color scheme.
   /// - "LIGHT7" : A recolor effect that lightens the image using the page's
-  /// seventh
-  /// available color from its color scheme.
+  /// seventh available color from its color scheme.
   /// - "LIGHT8" : A recolor effect that lightens the image using the page's
-  /// eighth
-  /// available color from its color scheme.
+  /// eighth available color from its color scheme.
   /// - "LIGHT9" : A recolor effect that lightens the image using the page's
-  /// ninth available
-  /// color from its color scheme.
+  /// ninth available color from its color scheme.
   /// - "LIGHT10" : A recolor effect that lightens the image using the page's
-  /// tenth available
-  /// color from its color scheme.
+  /// tenth available color from its color scheme.
   /// - "DARK1" : A recolor effect that darkens the image using the page's first
-  /// available
-  /// color from its color scheme.
-  /// - "DARK2" : A recolor effect that darkens the image using the page's
-  /// second available
-  /// color from its color scheme.
-  /// - "DARK3" : A recolor effect that darkens the image using the page's third
-  /// available
-  /// color from its color scheme.
-  /// - "DARK4" : A recolor effect that darkens the image using the page's
-  /// fourth available
-  /// color from its color scheme.
-  /// - "DARK5" : A recolor effect that darkens the image using the page's fifth
-  /// available
-  /// color from its color scheme.
-  /// - "DARK6" : A recolor effect that darkens the image using the page's sixth
-  /// available
-  /// color from its color scheme.
-  /// - "DARK7" : A recolor effect that darkens the image using the page's
-  /// seventh
   /// available color from its color scheme.
+  /// - "DARK2" : A recolor effect that darkens the image using the page's
+  /// second available color from its color scheme.
+  /// - "DARK3" : A recolor effect that darkens the image using the page's third
+  /// available color from its color scheme.
+  /// - "DARK4" : A recolor effect that darkens the image using the page's
+  /// fourth available color from its color scheme.
+  /// - "DARK5" : A recolor effect that darkens the image using the page's fifth
+  /// available color from its color scheme.
+  /// - "DARK6" : A recolor effect that darkens the image using the page's sixth
+  /// available color from its color scheme.
+  /// - "DARK7" : A recolor effect that darkens the image using the page's
+  /// seventh available color from its color scheme.
   /// - "DARK8" : A recolor effect that darkens the image using the page's
-  /// eighth available
-  /// color from its color scheme.
+  /// eighth available color from its color scheme.
   /// - "DARK9" : A recolor effect that darkens the image using the page's ninth
-  /// available
-  /// color from its color scheme.
+  /// available color from its color scheme.
   /// - "DARK10" : A recolor effect that darkens the image using the page's
-  /// tenth available
-  /// color from its color scheme.
+  /// tenth available color from its color scheme.
   /// - "GRAYSCALE" : A recolor effect that recolors the image to grayscale.
   /// - "NEGATIVE" : A recolor effect that recolors the image to negative
   /// grayscale.
   /// - "SEPIA" : A recolor effect that recolors the image using the sepia
   /// color.
   /// - "CUSTOM" : Custom recolor effect. Refer to `recolor_stops` for the
-  /// concrete
-  /// gradient.
+  /// concrete gradient.
   core.String name;
 
   /// The recolor effect is represented by a gradient, which is a list of color
-  /// stops.
-  ///
-  /// The colors in the gradient will replace the corresponding colors at
+  /// stops. The colors in the gradient will replace the corresponding colors at
   /// the same position in the color palette and apply to the image. This
   /// property is read-only.
   core.List<ColorStop> recolorStops;
@@ -4505,10 +4185,9 @@ class Recolor {
 }
 
 /// Refreshes an embedded Google Sheets chart by replacing it with the latest
-/// version of the chart from Google Sheets.
-///
-/// NOTE: Refreshing charts requires  at least one of the spreadsheets.readonly,
-/// spreadsheets, drive.readonly, or drive OAuth scopes.
+/// version of the chart from Google Sheets. NOTE: Refreshing charts requires at
+/// least one of the spreadsheets.readonly, spreadsheets, drive.readonly, or
+/// drive OAuth scopes.
 class RefreshSheetsChartRequest {
   /// The object ID of the chart to refresh.
   core.String objectId;
@@ -4532,73 +4211,54 @@ class RefreshSheetsChartRequest {
 }
 
 /// Replaces all shapes that match the given criteria with the provided image.
-///
 /// The images replacing the shapes are rectangular after being inserted into
 /// the presentation and do not take on the forms of the shapes.
 class ReplaceAllShapesWithImageRequest {
-  /// If set, this request will replace all of the shapes that contain the
-  /// given text.
+  /// If set, this request will replace all of the shapes that contain the given
+  /// text.
   SubstringMatchCriteria containsText;
 
-  /// The image replace method.
-  ///
-  /// If you specify both a `replace_method` and an `image_replace_method`, the
-  /// `image_replace_method` takes precedence.
-  ///
-  /// If you do not specify a value for `image_replace_method`, but specify a
-  /// value for `replace_method`, then the specified `replace_method` value is
-  /// used.
-  ///
+  /// The image replace method. If you specify both a `replace_method` and an
+  /// `image_replace_method`, the `image_replace_method` takes precedence. If
+  /// you do not specify a value for `image_replace_method`, but specify a value
+  /// for `replace_method`, then the specified `replace_method` value is used.
   /// If you do not specify either, then CENTER_INSIDE is used.
   /// Possible string values are:
   /// - "IMAGE_REPLACE_METHOD_UNSPECIFIED" : Unspecified image replace method.
   /// This value must not be used.
   /// - "CENTER_INSIDE" : Scales and centers the image to fit within the bounds
-  /// of the original
-  /// shape and maintains the image's aspect ratio. The rendered size of the
-  /// image may be smaller than the size of the shape. This is the default
-  /// method when one is not specified.
+  /// of the original shape and maintains the image's aspect ratio. The rendered
+  /// size of the image may be smaller than the size of the shape. This is the
+  /// default method when one is not specified.
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
-  /// original shape.
-  /// The image may be cropped in order to fill the shape. The rendered size of
-  /// the image will be the same as that of the original shape.
+  /// original shape. The image may be cropped in order to fill the shape. The
+  /// rendered size of the image will be the same as that of the original shape.
   core.String imageReplaceMethod;
 
-  /// The image URL.
-  ///
-  /// The image is fetched once at insertion time and a copy is stored for
-  /// display inside the presentation. Images must be less than 50MB in size,
-  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
-  /// format.
-  ///
-  /// The provided URL can be at most 2 kB in length. The URL itself is saved
-  /// with the image, and exposed via the Image.source_url field.
+  /// The image URL. The image is fetched once at insertion time and a copy is
+  /// stored for display inside the presentation. Images must be less than 50MB
+  /// in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or
+  /// GIF format. The provided URL can be at most 2 kB in length. The URL itself
+  /// is saved with the image, and exposed via the Image.source_url field.
   core.String imageUrl;
 
   /// If non-empty, limits the matches to page elements only on the given pages.
-  ///
-  /// Returns a 400 bad request error if given the page object ID of a
-  /// notes page or a
-  /// notes master, or if a
-  /// page with that object ID doesn't exist in the presentation.
+  /// Returns a 400 bad request error if given the page object ID of a notes
+  /// page or a notes master, or if a page with that object ID doesn't exist in
+  /// the presentation.
   core.List<core.String> pageObjectIds;
 
-  /// The replace method.
-  ///
-  /// <b>Deprecated</b>: use `image_replace_method` instead.
-  ///
-  /// If you specify both a `replace_method` and an `image_replace_method`, the
+  /// The replace method. *Deprecated*: use `image_replace_method` instead. If
+  /// you specify both a `replace_method` and an `image_replace_method`, the
   /// `image_replace_method` takes precedence.
   /// Possible string values are:
   /// - "CENTER_INSIDE" : Scales and centers the image to fit within the bounds
-  /// of the original
-  /// shape and maintains the image's aspect ratio. The rendered size of the
-  /// image may be smaller than the size of the shape. This is the default
-  /// method when one is not specified.
+  /// of the original shape and maintains the image's aspect ratio. The rendered
+  /// size of the image may be smaller than the size of the shape. This is the
+  /// default method when one is not specified.
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
-  /// original shape.
-  /// The image may be cropped in order to fill the shape. The rendered size of
-  /// the image will be the same as that of the original shape.
+  /// original shape. The image may be cropped in order to fill the shape. The
+  /// rendered size of the image will be the same as that of the original shape.
   core.String replaceMethod;
 
   ReplaceAllShapesWithImageRequest();
@@ -4668,10 +4328,9 @@ class ReplaceAllShapesWithImageResponse {
 
 /// Replaces all shapes that match the given criteria with the provided Google
 /// Sheets chart. The chart will be scaled and centered to fit within the bounds
-/// of the original shape.
-///
-/// NOTE: Replacing shapes with a chart requires at least one of the
-/// spreadsheets.readonly, spreadsheets, drive.readonly, or drive OAuth scopes.
+/// of the original shape. NOTE: Replacing shapes with a chart requires at least
+/// one of the spreadsheets.readonly, spreadsheets, drive.readonly, or drive
+/// OAuth scopes.
 class ReplaceAllShapesWithSheetsChartRequest {
   /// The ID of the specific chart in the Google Sheets spreadsheet.
   core.int chartId;
@@ -4684,19 +4343,16 @@ class ReplaceAllShapesWithSheetsChartRequest {
   /// not specified, the chart will be an image that is not linked.
   /// Possible string values are:
   /// - "NOT_LINKED_IMAGE" : The chart is not associated with the source
-  /// spreadsheet and cannot be
-  /// updated. A chart that is not linked will be inserted as an image.
+  /// spreadsheet and cannot be updated. A chart that is not linked will be
+  /// inserted as an image.
   /// - "LINKED" : Linking the chart allows it to be updated, and other
-  /// collaborators will
-  /// see a link to the spreadsheet.
+  /// collaborators will see a link to the spreadsheet.
   core.String linkingMode;
 
   /// If non-empty, limits the matches to page elements only on the given pages.
-  ///
-  /// Returns a 400 bad request error if given the page object ID of a
-  /// notes page or a
-  /// notes master, or if a
-  /// page with that object ID doesn't exist in the presentation.
+  /// Returns a 400 bad request error if given the page object ID of a notes
+  /// page or a notes master, or if a page with that object ID doesn't exist in
+  /// the presentation.
   core.List<core.String> pageObjectIds;
 
   /// The ID of the Google Sheets spreadsheet that contains the chart.
@@ -4773,10 +4429,9 @@ class ReplaceAllTextRequest {
   SubstringMatchCriteria containsText;
 
   /// If non-empty, limits the matches to page elements only on the given pages.
-  ///
-  /// Returns a 400 bad request error if given the page object ID of a
-  /// notes master,
-  /// or if a page with that object ID doesn't exist in the presentation.
+  /// Returns a 400 bad request error if given the page object ID of a notes
+  /// master, or if a page with that object ID doesn't exist in the
+  /// presentation.
   core.List<core.String> pageObjectIds;
 
   /// The text that will replace the matched text.
@@ -4835,9 +4490,8 @@ class ReplaceAllTextResponse {
   }
 }
 
-/// Replaces an existing image with a new image.
-///
-/// Replacing an image removes some image effects from the existing image.
+/// Replaces an existing image with a new image. Replacing an image removes some
+/// image effects from the existing image.
 class ReplaceImageRequest {
   /// The ID of the existing image that will be replaced.
   core.String imageObjectId;
@@ -4847,25 +4501,19 @@ class ReplaceImageRequest {
   /// - "IMAGE_REPLACE_METHOD_UNSPECIFIED" : Unspecified image replace method.
   /// This value must not be used.
   /// - "CENTER_INSIDE" : Scales and centers the image to fit within the bounds
-  /// of the original
-  /// shape and maintains the image's aspect ratio. The rendered size of the
-  /// image may be smaller than the size of the shape. This is the default
-  /// method when one is not specified.
+  /// of the original shape and maintains the image's aspect ratio. The rendered
+  /// size of the image may be smaller than the size of the shape. This is the
+  /// default method when one is not specified.
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
-  /// original shape.
-  /// The image may be cropped in order to fill the shape. The rendered size of
-  /// the image will be the same as that of the original shape.
+  /// original shape. The image may be cropped in order to fill the shape. The
+  /// rendered size of the image will be the same as that of the original shape.
   core.String imageReplaceMethod;
 
-  /// The image URL.
-  ///
-  /// The image is fetched once at insertion time and a copy is stored for
-  /// display inside the presentation. Images must be less than 50MB in size,
-  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
-  /// format.
-  ///
-  /// The provided URL can be at most 2 kB in length. The URL itself is saved
-  /// with the image, and exposed via the Image.source_url field.
+  /// The image URL. The image is fetched once at insertion time and a copy is
+  /// stored for display inside the presentation. Images must be less than 50MB
+  /// in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or
+  /// GIF format. The provided URL can be at most 2 kB in length. The URL itself
+  /// is saved with the image, and exposed via the Image.source_url field.
   core.String url;
 
   ReplaceImageRequest();
@@ -4972,8 +4620,8 @@ class Request {
   /// Replaces an existing image with a new image.
   ReplaceImageRequest replaceImage;
 
-  /// Reroutes a line such that it's connected
-  /// at the two closest connection sites on the connected page elements.
+  /// Reroutes a line such that it's connected at the two closest connection
+  /// sites on the connected page elements.
   RerouteLineRequest rerouteLine;
 
   /// Ungroups objects, such as groups.
@@ -4991,8 +4639,7 @@ class Request {
   /// Updates the properties of a Line.
   UpdateLinePropertiesRequest updateLineProperties;
 
-  /// Updates the alt text title and/or description of a
-  /// page element.
+  /// Updates the alt text title and/or description of a page element.
   UpdatePageElementAltTextRequest updatePageElementAltText;
 
   /// Updates the transform of a page element.
@@ -5019,8 +4666,7 @@ class Request {
   /// Updates the properties of a TableCell.
   UpdateTableCellPropertiesRequest updateTableCellProperties;
 
-  /// Updates the properties of a Table
-  /// column.
+  /// Updates the properties of a Table column.
   UpdateTableColumnPropertiesRequest updateTableColumnProperties;
 
   /// Updates the properties of a Table row.
@@ -5341,12 +4987,10 @@ class Request {
   }
 }
 
-/// Reroutes a line such that it's connected at the
-/// two closest connection sites on the connected page elements.
+/// Reroutes a line such that it's connected at the two closest connection sites
+/// on the connected page elements.
 class RerouteLineRequest {
-  /// The object ID of the line to reroute.
-  ///
-  /// Only a line with a category
+  /// The object ID of the line to reroute. Only a line with a category
   /// indicating it is a "connector" can be rerouted. The start and end
   /// connections of the line must be on different page elements.
   core.String objectId;
@@ -5398,8 +5042,7 @@ class Response {
   /// The result of grouping objects.
   GroupObjectsResponse groupObjects;
 
-  /// The result of replacing all shapes matching some criteria with an
-  /// image.
+  /// The result of replacing all shapes matching some criteria with an image.
   ReplaceAllShapesWithImageResponse replaceAllShapesWithImage;
 
   /// The result of replacing all shapes matching some criteria with a Google
@@ -5542,12 +5185,10 @@ class RgbColor {
   }
 }
 
-/// The shadow properties of a page element.
-///
-/// If these fields are unset, they may be inherited from a parent placeholder
-/// if it exists. If there is no parent, the fields will default to the value
-/// used for new page elements created in the Slides editor, which may depend on
-/// the page element kind.
+/// The shadow properties of a page element. If these fields are unset, they may
+/// be inherited from a parent placeholder if it exists. If there is no parent,
+/// the fields will default to the value used for new page elements created in
+/// the Slides editor, which may depend on the page element kind.
 class Shadow {
   /// The alignment point of the shadow, that sets the origin for translate,
   /// scale and skew of the shadow. This property is read-only.
@@ -5574,30 +5215,28 @@ class Shadow {
   /// The shadow color value.
   OpaqueColor color;
 
-  /// The shadow property state.
-  ///
-  /// Updating the shadow on a page element will implicitly update this field to
-  /// `RENDERED`, unless another value is specified in the same request. To have
-  /// no shadow on a page element, set this field to `NOT_RENDERED`. In this
-  /// case, any other shadow fields set in the same request will be ignored.
+  /// The shadow property state. Updating the shadow on a page element will
+  /// implicitly update this field to `RENDERED`, unless another value is
+  /// specified in the same request. To have no shadow on a page element, set
+  /// this field to `NOT_RENDERED`. In this case, any other shadow fields set in
+  /// the same request will be ignored.
   /// Possible string values are:
   /// - "RENDERED" : If a property's state is RENDERED, then the element has the
-  /// corresponding
-  /// property when rendered on a page. If the element is a placeholder shape as
-  /// determined by the placeholder
-  /// field, and it inherits from a placeholder shape, the corresponding field
-  /// may be unset, meaning that the property value is inherited from a parent
-  /// placeholder. If the element does not inherit, then the field will contain
-  /// the rendered value. This is the default value.
+  /// corresponding property when rendered on a page. If the element is a
+  /// placeholder shape as determined by the placeholder field, and it inherits
+  /// from a placeholder shape, the corresponding field may be unset, meaning
+  /// that the property value is inherited from a parent placeholder. If the
+  /// element does not inherit, then the field will contain the rendered value.
+  /// This is the default value.
   /// - "NOT_RENDERED" : If a property's state is NOT_RENDERED, then the element
-  /// does not have the
-  /// corresponding property when rendered on a page. However, the field may
-  /// still be set so it can be inherited by child shapes. To remove a property
-  /// from a rendered element, set its property_state to NOT_RENDERED.
+  /// does not have the corresponding property when rendered on a page. However,
+  /// the field may still be set so it can be inherited by child shapes. To
+  /// remove a property from a rendered element, set its property_state to
+  /// NOT_RENDERED.
   /// - "INHERIT" : If a property's state is INHERIT, then the property state
-  /// uses the value of
-  /// corresponding `property_state` field on the parent shape. Elements that do
-  /// not inherit will never have an INHERIT property state.
+  /// uses the value of corresponding `property_state` field on the parent
+  /// shape. Elements that do not inherit will never have an INHERIT property
+  /// state.
   core.String propertyState;
 
   /// Whether the shadow should rotate with the shape. This property is
@@ -5674,16 +5313,13 @@ class Shadow {
   }
 }
 
-/// A PageElement kind representing a
-/// generic shape that does not have a more specific classification.
+/// A PageElement kind representing a generic shape that does not have a more
+/// specific classification.
 class Shape {
   /// Placeholders are shapes that are inherit from corresponding placeholders
-  /// on
-  /// layouts and masters.
-  ///
-  /// If set, the shape is a placeholder shape and any inherited properties
-  /// can be resolved by looking at the parent placeholder identified by the
-  /// Placeholder.parent_object_id field.
+  /// on layouts and masters. If set, the shape is a placeholder shape and any
+  /// inherited properties can be resolved by looking at the parent placeholder
+  /// identified by the Placeholder.parent_object_id field.
   Placeholder placeholder;
 
   /// The properties of the shape.
@@ -5696,8 +5332,7 @@ class Shape {
   /// - "RECTANGLE" : Rectangle shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'rect'.
   /// - "ROUND_RECTANGLE" : Round corner rectangle shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'roundRect'
+  /// ECMA-376 ST_ShapeType 'roundRect'
   /// - "ELLIPSE" : Ellipse shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'ellipse'
   /// - "ARC" : Curved arc shape. Corresponds to ECMA-376 ST_ShapeType 'arc'
@@ -5720,17 +5355,13 @@ class Shape {
   /// - "CORNER" : Corner shape. Corresponds to ECMA-376 ST_ShapeType 'corner'
   /// - "CUBE" : Cube shape. Corresponds to ECMA-376 ST_ShapeType 'cube'
   /// - "CURVED_DOWN_ARROW" : Curved down arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedDownArrow'
+  /// ST_ShapeType 'curvedDownArrow'
   /// - "CURVED_LEFT_ARROW" : Curved left arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedLeftArrow'
+  /// ST_ShapeType 'curvedLeftArrow'
   /// - "CURVED_RIGHT_ARROW" : Curved right arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedRightArrow'
+  /// ST_ShapeType 'curvedRightArrow'
   /// - "CURVED_UP_ARROW" : Curved up arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'curvedUpArrow'
+  /// ST_ShapeType 'curvedUpArrow'
   /// - "DECAGON" : Decagon shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'decagon'
   /// - "DIAGONAL_STRIPE" : Diagonal stripe shape. Corresponds to ECMA-376
@@ -5745,8 +5376,7 @@ class Shape {
   /// - "DOWN_ARROW" : Down arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'downArrow'
   /// - "DOWN_ARROW_CALLOUT" : Callout down arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'downArrowCallout'
+  /// ST_ShapeType 'downArrowCallout'
   /// - "FOLDED_CORNER" : Folded corner shape. Corresponds to ECMA-376
   /// ST_ShapeType 'foldedCorner'
   /// - "FRAME" : Frame shape. Corresponds to ECMA-376 ST_ShapeType 'frame'
@@ -5760,37 +5390,29 @@ class Shape {
   /// - "HOME_PLATE" : Home plate shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'homePlate'
   /// - "HORIZONTAL_SCROLL" : Horizontal scroll shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'horizontalScroll'
+  /// ST_ShapeType 'horizontalScroll'
   /// - "IRREGULAR_SEAL_1" : Irregular seal 1 shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'irregularSeal1'
+  /// ST_ShapeType 'irregularSeal1'
   /// - "IRREGULAR_SEAL_2" : Irregular seal 2 shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'irregularSeal2'
+  /// ST_ShapeType 'irregularSeal2'
   /// - "LEFT_ARROW" : Left arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'leftArrow'
   /// - "LEFT_ARROW_CALLOUT" : Callout left arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'leftArrowCallout'
+  /// ST_ShapeType 'leftArrowCallout'
   /// - "LEFT_BRACE" : Left brace shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'leftBrace'
   /// - "LEFT_BRACKET" : Left bracket shape. Corresponds to ECMA-376
   /// ST_ShapeType 'leftBracket'
   /// - "LEFT_RIGHT_ARROW" : Left right arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'leftRightArrow'
+  /// ST_ShapeType 'leftRightArrow'
   /// - "LEFT_RIGHT_ARROW_CALLOUT" : Callout left right arrow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'leftRightArrowCallout'
+  /// to ECMA-376 ST_ShapeType 'leftRightArrowCallout'
   /// - "LEFT_RIGHT_UP_ARROW" : Left right up arrow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'leftRightUpArrow'
+  /// ECMA-376 ST_ShapeType 'leftRightUpArrow'
   /// - "LEFT_UP_ARROW" : Left up arrow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'leftUpArrow'
   /// - "LIGHTNING_BOLT" : Lightning bolt shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'lightningBolt'
+  /// ST_ShapeType 'lightningBolt'
   /// - "MATH_DIVIDE" : Divide math shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'mathDivide'
   /// - "MATH_EQUAL" : Equal math shape. Corresponds to ECMA-376 ST_ShapeType
@@ -5807,8 +5429,7 @@ class Shape {
   /// - "NO_SMOKING" : No smoking shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'noSmoking'
   /// - "NOTCHED_RIGHT_ARROW" : Notched right arrow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'notchedRightArrow'
+  /// ECMA-376 ST_ShapeType 'notchedRightArrow'
   /// - "OCTAGON" : Octagon shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'octagon'
   /// - "PARALLELOGRAM" : Parallelogram shape. Corresponds to ECMA-376
@@ -5821,45 +5442,36 @@ class Shape {
   /// - "QUAD_ARROW" : Quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'quadArrow'
   /// - "QUAD_ARROW_CALLOUT" : Callout quad-arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'quadArrowCallout'
+  /// ST_ShapeType 'quadArrowCallout'
   /// - "RIBBON" : Ribbon shape. Corresponds to ECMA-376 ST_ShapeType 'ribbon'
   /// - "RIBBON_2" : Ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'ribbon2'
   /// - "RIGHT_ARROW" : Right arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'rightArrow'
   /// - "RIGHT_ARROW_CALLOUT" : Callout right arrow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'rightArrowCallout'
+  /// ECMA-376 ST_ShapeType 'rightArrowCallout'
   /// - "RIGHT_BRACE" : Right brace shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'rightBrace'
   /// - "RIGHT_BRACKET" : Right bracket shape. Corresponds to ECMA-376
   /// ST_ShapeType 'rightBracket'
   /// - "ROUND_1_RECTANGLE" : One round corner rectangle shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'round1Rect'
+  /// ECMA-376 ST_ShapeType 'round1Rect'
   /// - "ROUND_2_DIAGONAL_RECTANGLE" : Two diagonal round corner rectangle
-  /// shape. Corresponds to ECMA-376
-  /// ST_ShapeType 'round2DiagRect'
+  /// shape. Corresponds to ECMA-376 ST_ShapeType 'round2DiagRect'
   /// - "ROUND_2_SAME_RECTANGLE" : Two same-side round corner rectangle shape.
-  /// Corresponds to ECMA-376
-  /// ST_ShapeType 'round2SameRect'
+  /// Corresponds to ECMA-376 ST_ShapeType 'round2SameRect'
   /// - "RIGHT_TRIANGLE" : Right triangle shape. Corresponds to ECMA-376
   /// ST_ShapeType 'rtTriangle'
   /// - "SMILEY_FACE" : Smiley face shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'smileyFace'
   /// - "SNIP_1_RECTANGLE" : One snip corner rectangle shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'snip1Rect'
+  /// ECMA-376 ST_ShapeType 'snip1Rect'
   /// - "SNIP_2_DIAGONAL_RECTANGLE" : Two diagonal snip corner rectangle shape.
-  /// Corresponds to ECMA-376
-  /// ST_ShapeType 'snip2DiagRect'
+  /// Corresponds to ECMA-376 ST_ShapeType 'snip2DiagRect'
   /// - "SNIP_2_SAME_RECTANGLE" : Two same-side snip corner rectangle shape.
-  /// Corresponds to ECMA-376
-  /// ST_ShapeType 'snip2SameRect'
+  /// Corresponds to ECMA-376 ST_ShapeType 'snip2SameRect'
   /// - "SNIP_ROUND_RECTANGLE" : One snip one round corner rectangle shape.
-  /// Corresponds to ECMA-376
-  /// ST_ShapeType 'snipRoundRect'
+  /// Corresponds to ECMA-376 ST_ShapeType 'snipRoundRect'
   /// - "STAR_10" : Ten pointed star shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'star10'
   /// - "STAR_12" : Twelve pointed star shape. Corresponds to ECMA-376
@@ -5867,11 +5479,9 @@ class Shape {
   /// - "STAR_16" : Sixteen pointed star shape. Corresponds to ECMA-376
   /// ST_ShapeType 'star16'
   /// - "STAR_24" : Twenty four pointed star shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'star24'
+  /// ST_ShapeType 'star24'
   /// - "STAR_32" : Thirty two pointed star shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'star32'
+  /// ST_ShapeType 'star32'
   /// - "STAR_4" : Four pointed star shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'star4'
   /// - "STAR_5" : Five pointed star shape. Corresponds to ECMA-376 ST_ShapeType
@@ -5883,8 +5493,7 @@ class Shape {
   /// - "STAR_8" : Eight pointed star shape. Corresponds to ECMA-376
   /// ST_ShapeType 'star8'
   /// - "STRIPED_RIGHT_ARROW" : Striped right arrow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'stripedRightArrow'
+  /// ECMA-376 ST_ShapeType 'stripedRightArrow'
   /// - "SUN" : Sun shape. Corresponds to ECMA-376 ST_ShapeType 'sun'
   /// - "TRAPEZOID" : Trapezoid shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'trapezoid'
@@ -5893,108 +5502,78 @@ class Shape {
   /// - "UP_ARROW" : Up arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'upArrow'
   /// - "UP_ARROW_CALLOUT" : Callout up arrow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'upArrowCallout'
+  /// ST_ShapeType 'upArrowCallout'
   /// - "UP_DOWN_ARROW" : Up down arrow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'upDownArrow'
   /// - "UTURN_ARROW" : U-turn arrow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'uturnArrow'
   /// - "VERTICAL_SCROLL" : Vertical scroll shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'verticalScroll'
+  /// ST_ShapeType 'verticalScroll'
   /// - "WAVE" : Wave shape. Corresponds to ECMA-376 ST_ShapeType 'wave'
   /// - "WEDGE_ELLIPSE_CALLOUT" : Callout wedge ellipse shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'wedgeEllipseCallout'
+  /// ECMA-376 ST_ShapeType 'wedgeEllipseCallout'
   /// - "WEDGE_RECTANGLE_CALLOUT" : Callout wedge rectangle shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'wedgeRectCallout'
+  /// to ECMA-376 ST_ShapeType 'wedgeRectCallout'
   /// - "WEDGE_ROUND_RECTANGLE_CALLOUT" : Callout wedge round rectangle shape.
-  /// Corresponds to ECMA-376 ST_ShapeType
-  /// 'wedgeRoundRectCallout'
+  /// Corresponds to ECMA-376 ST_ShapeType 'wedgeRoundRectCallout'
   /// - "FLOW_CHART_ALTERNATE_PROCESS" : Alternate process flow shape.
-  /// Corresponds to ECMA-376 ST_ShapeType
-  /// 'flowChartAlternateProcess'
+  /// Corresponds to ECMA-376 ST_ShapeType 'flowChartAlternateProcess'
   /// - "FLOW_CHART_COLLATE" : Collate flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartCollate'
+  /// ST_ShapeType 'flowChartCollate'
   /// - "FLOW_CHART_CONNECTOR" : Connector flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartConnector'
+  /// ST_ShapeType 'flowChartConnector'
   /// - "FLOW_CHART_DECISION" : Decision flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartDecision'
+  /// ST_ShapeType 'flowChartDecision'
   /// - "FLOW_CHART_DELAY" : Delay flow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'flowChartDelay'
   /// - "FLOW_CHART_DISPLAY" : Display flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartDisplay'
+  /// ST_ShapeType 'flowChartDisplay'
   /// - "FLOW_CHART_DOCUMENT" : Document flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartDocument'
+  /// ST_ShapeType 'flowChartDocument'
   /// - "FLOW_CHART_EXTRACT" : Extract flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartExtract'
+  /// ST_ShapeType 'flowChartExtract'
   /// - "FLOW_CHART_INPUT_OUTPUT" : Input output flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartInputOutput'
+  /// ECMA-376 ST_ShapeType 'flowChartInputOutput'
   /// - "FLOW_CHART_INTERNAL_STORAGE" : Internal storage flow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'flowChartInternalStorage'
+  /// to ECMA-376 ST_ShapeType 'flowChartInternalStorage'
   /// - "FLOW_CHART_MAGNETIC_DISK" : Magnetic disk flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartMagneticDisk'
+  /// ECMA-376 ST_ShapeType 'flowChartMagneticDisk'
   /// - "FLOW_CHART_MAGNETIC_DRUM" : Magnetic drum flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartMagneticDrum'
+  /// ECMA-376 ST_ShapeType 'flowChartMagneticDrum'
   /// - "FLOW_CHART_MAGNETIC_TAPE" : Magnetic tape flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartMagneticTape'
+  /// ECMA-376 ST_ShapeType 'flowChartMagneticTape'
   /// - "FLOW_CHART_MANUAL_INPUT" : Manual input flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartManualInput'
+  /// ECMA-376 ST_ShapeType 'flowChartManualInput'
   /// - "FLOW_CHART_MANUAL_OPERATION" : Manual operation flow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'flowChartManualOperation'
+  /// to ECMA-376 ST_ShapeType 'flowChartManualOperation'
   /// - "FLOW_CHART_MERGE" : Merge flow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'flowChartMerge'
   /// - "FLOW_CHART_MULTIDOCUMENT" : Multi-document flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartMultidocument'
+  /// ECMA-376 ST_ShapeType 'flowChartMultidocument'
   /// - "FLOW_CHART_OFFLINE_STORAGE" : Offline storage flow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'flowChartOfflineStorage'
+  /// to ECMA-376 ST_ShapeType 'flowChartOfflineStorage'
   /// - "FLOW_CHART_OFFPAGE_CONNECTOR" : Off-page connector flow shape.
-  /// Corresponds to ECMA-376 ST_ShapeType
-  /// 'flowChartOffpageConnector'
+  /// Corresponds to ECMA-376 ST_ShapeType 'flowChartOffpageConnector'
   /// - "FLOW_CHART_ONLINE_STORAGE" : Online storage flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartOnlineStorage'
+  /// ECMA-376 ST_ShapeType 'flowChartOnlineStorage'
   /// - "FLOW_CHART_OR" : Or flow shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'flowChartOr'
   /// - "FLOW_CHART_PREDEFINED_PROCESS" : Predefined process flow shape.
-  /// Corresponds to ECMA-376 ST_ShapeType
-  /// 'flowChartPredefinedProcess'
+  /// Corresponds to ECMA-376 ST_ShapeType 'flowChartPredefinedProcess'
   /// - "FLOW_CHART_PREPARATION" : Preparation flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartPreparation'
+  /// ECMA-376 ST_ShapeType 'flowChartPreparation'
   /// - "FLOW_CHART_PROCESS" : Process flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartProcess'
+  /// ST_ShapeType 'flowChartProcess'
   /// - "FLOW_CHART_PUNCHED_CARD" : Punched card flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartPunchedCard'
+  /// ECMA-376 ST_ShapeType 'flowChartPunchedCard'
   /// - "FLOW_CHART_PUNCHED_TAPE" : Punched tape flow shape. Corresponds to
-  /// ECMA-376 ST_ShapeType
-  /// 'flowChartPunchedTape'
+  /// ECMA-376 ST_ShapeType 'flowChartPunchedTape'
   /// - "FLOW_CHART_SORT" : Sort flow shape. Corresponds to ECMA-376
   /// ST_ShapeType 'flowChartSort'
   /// - "FLOW_CHART_SUMMING_JUNCTION" : Summing junction flow shape. Corresponds
-  /// to ECMA-376 ST_ShapeType
-  /// 'flowChartSummingJunction'
+  /// to ECMA-376 ST_ShapeType 'flowChartSummingJunction'
   /// - "FLOW_CHART_TERMINATOR" : Terminator flow shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'flowChartTerminator'
+  /// ST_ShapeType 'flowChartTerminator'
   /// - "ARROW_EAST" : East arrow shape.
   /// - "ARROW_NORTH_EAST" : Northeast arrow shape.
   /// - "ARROW_NORTH" : North arrow shape.
@@ -6003,11 +5582,9 @@ class Shape {
   /// - "TEARDROP" : Teardrop shape. Corresponds to ECMA-376 ST_ShapeType
   /// 'teardrop'
   /// - "ELLIPSE_RIBBON" : Ellipse ribbon shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'ellipseRibbon'
+  /// ST_ShapeType 'ellipseRibbon'
   /// - "ELLIPSE_RIBBON_2" : Ellipse ribbon 2 shape. Corresponds to ECMA-376
-  /// ST_ShapeType
-  /// 'ellipseRibbon2'
+  /// ST_ShapeType 'ellipseRibbon2'
   /// - "CLOUD_CALLOUT" : Callout cloud shape. Corresponds to ECMA-376
   /// ST_ShapeType 'cloudCallout'
   /// - "CUSTOM" : Custom shape.
@@ -6054,30 +5631,28 @@ class Shape {
 
 /// The shape background fill.
 class ShapeBackgroundFill {
-  /// The background fill property state.
-  ///
-  /// Updating the fill on a shape will implicitly update this field to
-  /// `RENDERED`, unless another value is specified in the same request. To
-  /// have no fill on a shape, set this field to `NOT_RENDERED`. In this case,
-  /// any other fill fields set in the same request will be ignored.
+  /// The background fill property state. Updating the fill on a shape will
+  /// implicitly update this field to `RENDERED`, unless another value is
+  /// specified in the same request. To have no fill on a shape, set this field
+  /// to `NOT_RENDERED`. In this case, any other fill fields set in the same
+  /// request will be ignored.
   /// Possible string values are:
   /// - "RENDERED" : If a property's state is RENDERED, then the element has the
-  /// corresponding
-  /// property when rendered on a page. If the element is a placeholder shape as
-  /// determined by the placeholder
-  /// field, and it inherits from a placeholder shape, the corresponding field
-  /// may be unset, meaning that the property value is inherited from a parent
-  /// placeholder. If the element does not inherit, then the field will contain
-  /// the rendered value. This is the default value.
+  /// corresponding property when rendered on a page. If the element is a
+  /// placeholder shape as determined by the placeholder field, and it inherits
+  /// from a placeholder shape, the corresponding field may be unset, meaning
+  /// that the property value is inherited from a parent placeholder. If the
+  /// element does not inherit, then the field will contain the rendered value.
+  /// This is the default value.
   /// - "NOT_RENDERED" : If a property's state is NOT_RENDERED, then the element
-  /// does not have the
-  /// corresponding property when rendered on a page. However, the field may
-  /// still be set so it can be inherited by child shapes. To remove a property
-  /// from a rendered element, set its property_state to NOT_RENDERED.
+  /// does not have the corresponding property when rendered on a page. However,
+  /// the field may still be set so it can be inherited by child shapes. To
+  /// remove a property from a rendered element, set its property_state to
+  /// NOT_RENDERED.
   /// - "INHERIT" : If a property's state is INHERIT, then the property state
-  /// uses the value of
-  /// corresponding `property_state` field on the parent shape. Elements that do
-  /// not inherit will never have an INHERIT property state.
+  /// uses the value of corresponding `property_state` field on the parent
+  /// shape. Elements that do not inherit will never have an INHERIT property
+  /// state.
   core.String propertyState;
 
   /// Solid color fill.
@@ -6107,42 +5682,35 @@ class ShapeBackgroundFill {
   }
 }
 
-/// The properties of a Shape.
-///
-/// If the shape is a placeholder shape as determined by the
-/// placeholder field, then these
-/// properties may be inherited from a parent placeholder shape.
-/// Determining the rendered value of the property depends on the corresponding
-/// property_state field value.
+/// The properties of a Shape. If the shape is a placeholder shape as determined
+/// by the placeholder field, then these properties may be inherited from a
+/// parent placeholder shape. Determining the rendered value of the property
+/// depends on the corresponding property_state field value.
 class ShapeProperties {
-  /// The alignment of the content in the shape. If unspecified,
-  /// the alignment is inherited from a parent placeholder if it exists. If the
-  /// shape has no parent, the default alignment matches the alignment for new
-  /// shapes created in the Slides editor.
+  /// The alignment of the content in the shape. If unspecified, the alignment
+  /// is inherited from a parent placeholder if it exists. If the shape has no
+  /// parent, the default alignment matches the alignment for new shapes created
+  /// in the Slides editor.
   /// Possible string values are:
   /// - "CONTENT_ALIGNMENT_UNSPECIFIED" : An unspecified content alignment. The
-  /// content alignment is inherited from
-  /// the parent if it exists.
+  /// content alignment is inherited from the parent if it exists.
   /// - "CONTENT_ALIGNMENT_UNSUPPORTED" : An unsupported content alignment.
   /// - "TOP" : An alignment that aligns the content to the top of the content
-  /// holder.
-  /// Corresponds to ECMA-376 ST_TextAnchoringType 't'.
+  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 't'.
   /// - "MIDDLE" : An alignment that aligns the content to the middle of the
-  /// content
-  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
+  /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
   /// - "BOTTOM" : An alignment that aligns the content to the bottom of the
-  /// content
-  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
+  /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
   core.String contentAlignment;
 
   /// The hyperlink destination of the shape. If unset, there is no link. Links
   /// are not inherited from parent placeholders.
   Link link;
 
-  /// The outline of the shape. If unset, the outline is inherited from a
-  /// parent placeholder if it exists. If the shape has no parent, then the
-  /// default outline depends on the shape type, matching the defaults for
-  /// new shapes created in the Slides editor.
+  /// The outline of the shape. If unset, the outline is inherited from a parent
+  /// placeholder if it exists. If the shape has no parent, then the default
+  /// outline depends on the shape type, matching the defaults for new shapes
+  /// created in the Slides editor.
   Outline outline;
 
   /// The shadow properties of the shape. If unset, the shadow is inherited from
@@ -6200,8 +5768,7 @@ class ShapeProperties {
   }
 }
 
-/// A PageElement kind representing
-/// a linked chart embedded from Google Sheets.
+/// A PageElement kind representing a linked chart embedded from Google Sheets.
 class SheetsChart {
   /// The ID of the specific chart in the Google Sheets spreadsheet that is
   /// embedded.
@@ -6210,8 +5777,7 @@ class SheetsChart {
   /// The URL of an image of the embedded chart, with a default lifetime of 30
   /// minutes. This URL is tagged with the account of the requester. Anyone with
   /// the URL effectively accesses the image as the original requester. Access
-  /// to
-  /// the image may be lost if the presentation's sharing settings change.
+  /// to the image may be lost if the presentation's sharing settings change.
   core.String contentUrl;
 
   /// The properties of the Sheets chart.
@@ -6313,8 +5879,8 @@ class Size {
   }
 }
 
-/// The properties of Page that are only
-/// relevant for pages with page_type SLIDE.
+/// The properties of Page that are only relevant for pages with page_type
+/// SLIDE.
 class SlideProperties {
   /// The object ID of the layout that this slide is based on. This property is
   /// read-only.
@@ -6326,14 +5892,12 @@ class SlideProperties {
 
   /// The notes page that this slide is associated with. It defines the visual
   /// appearance of a notes page when printing or exporting slides with speaker
-  /// notes. A notes page inherits properties from the
-  /// notes master.
-  /// The placeholder shape with type BODY on the notes page contains the
-  /// speaker
+  /// notes. A notes page inherits properties from the notes master. The
+  /// placeholder shape with type BODY on the notes page contains the speaker
   /// notes for this slide. The ID of this shape is identified by the
-  /// speakerNotesObjectId field.
-  /// The notes page is read-only except for the text content and styles of the
-  /// speaker notes shape. This property is read-only.
+  /// speakerNotesObjectId field. The notes page is read-only except for the
+  /// text content and styles of the speaker notes shape. This property is
+  /// read-only.
   Page notesPage;
 
   SlideProperties();
@@ -6367,18 +5931,14 @@ class SlideProperties {
 }
 
 /// A solid color fill. The page or page element is filled entirely with the
-/// specified color value.
-///
-/// If any field is unset, its value may be inherited from a parent placeholder
-/// if it exists.
+/// specified color value. If any field is unset, its value may be inherited
+/// from a parent placeholder if it exists.
 class SolidFill {
-  /// The fraction of this `color` that should be applied to the pixel.
-  /// That is, the final pixel color is defined by the equation:
-  ///
-  ///   pixel color = alpha * (color) + (1.0 - alpha) * (background color)
-  ///
-  /// This means that a value of 1.0 corresponds to a solid color, whereas
-  /// a value of 0.0 corresponds to a completely transparent color.
+  /// The fraction of this `color` that should be applied to the pixel. That is,
+  /// the final pixel color is defined by the equation: pixel color = alpha *
+  /// (color) + (1.0 - alpha) * (background color) This means that a value of
+  /// 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a
+  /// completely transparent color.
   core.double alpha;
 
   /// The color value of the solid fill.
@@ -6411,21 +5971,14 @@ class SolidFill {
 /// The stretched picture fill. The page or page element is filled entirely with
 /// the specified picture. The picture is stretched to fit its container.
 class StretchedPictureFill {
-  /// Reading the content_url:
-  ///
-  /// An URL to a picture with a default lifetime of 30 minutes.
-  /// This URL is tagged with the account of the requester. Anyone with the URL
-  /// effectively accesses the picture as the original requester. Access to the
-  /// picture may be lost if the presentation's sharing settings change.
-  ///
-  /// Writing the content_url:
-  ///
-  /// The picture is fetched once at insertion time and a copy is stored for
-  /// display inside the presentation. Pictures must be less than 50MB in size,
-  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
-  /// format.
-  ///
-  /// The provided URL can be at most 2 kB in length.
+  /// Reading the content_url: An URL to a picture with a default lifetime of 30
+  /// minutes. This URL is tagged with the account of the requester. Anyone with
+  /// the URL effectively accesses the picture as the original requester. Access
+  /// to the picture may be lost if the presentation's sharing settings change.
+  /// Writing the content_url: The picture is fetched once at insertion time and
+  /// a copy is stored for display inside the presentation. Pictures must be
+  /// less than 50MB in size, cannot exceed 25 megapixels, and must be in one of
+  /// PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length.
   core.String contentUrl;
 
   /// The original size of the picture fill. This field is read-only.
@@ -6457,10 +6010,8 @@ class StretchedPictureFill {
 
 /// A criteria that matches a specific string of text in a shape or table.
 class SubstringMatchCriteria {
-  /// Indicates whether the search should respect case:
-  ///
-  /// - `True`: the search is case sensitive.
-  /// - `False`: the search is case insensitive.
+  /// Indicates whether the search should respect case: - `True`: the search is
+  /// case sensitive. - `False`: the search is case insensitive.
   core.bool matchCase;
 
   /// The text to search for in the shape or table.
@@ -6490,18 +6041,16 @@ class SubstringMatchCriteria {
   }
 }
 
-/// A PageElement kind representing a
-/// table.
+/// A PageElement kind representing a table.
 class Table {
   /// Number of columns in the table.
   core.int columns;
 
-  /// Properties of horizontal cell borders.
-  ///
-  /// A table's horizontal cell borders are represented as a grid. The grid has
-  /// one more row than the number of rows in the table and the same number of
-  /// columns as the table. For example, if the table is 3 x 3, its horizontal
-  /// borders will be represented as a grid with 4 rows and 3 columns.
+  /// Properties of horizontal cell borders. A table's horizontal cell borders
+  /// are represented as a grid. The grid has one more row than the number of
+  /// rows in the table and the same number of columns as the table. For
+  /// example, if the table is 3 x 3, its horizontal borders will be represented
+  /// as a grid with 4 rows and 3 columns.
   core.List<TableBorderRow> horizontalBorderRows;
 
   /// Number of rows in the table.
@@ -6510,20 +6059,15 @@ class Table {
   /// Properties of each column.
   core.List<TableColumnProperties> tableColumns;
 
-  /// Properties and contents of each row.
-  ///
-  /// Cells that span multiple rows are contained in only one of these rows and
-  /// have a row_span greater
-  /// than 1.
+  /// Properties and contents of each row. Cells that span multiple rows are
+  /// contained in only one of these rows and have a row_span greater than 1.
   core.List<TableRow> tableRows;
 
-  /// Properties of vertical cell borders.
-  ///
-  /// A table's vertical cell borders are represented as a grid. The grid has
-  /// the
-  /// same number of rows as the table and one more column than the number of
-  /// columns in the table. For example, if the table is 3 x 3, its vertical
-  /// borders will be represented as a grid with 3 rows and 4 columns.
+  /// Properties of vertical cell borders. A table's vertical cell borders are
+  /// represented as a grid. The grid has the same number of rows as the table
+  /// and one more column than the number of columns in the table. For example,
+  /// if the table is 3 x 3, its vertical borders will be represented as a grid
+  /// with 3 rows and 4 columns.
   core.List<TableBorderRow> verticalBorderRows;
 
   Table();
@@ -6642,28 +6186,23 @@ class TableBorderFill {
   }
 }
 
-/// The border styling properties of the
-/// TableBorderCell.
+/// The border styling properties of the TableBorderCell.
 class TableBorderProperties {
   /// The dash style of the border.
   /// Possible string values are:
   /// - "DASH_STYLE_UNSPECIFIED" : Unspecified dash style.
   /// - "SOLID" : Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value
-  /// 'solid'.
-  /// This is the default dash style.
+  /// 'solid'. This is the default dash style.
   /// - "DOT" : Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dot'.
   /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dash'.
   /// - "DASH_DOT" : Alternating dashes and dots. Corresponds to ECMA-376
-  /// ST_PresetLineDashVal
-  /// value 'dashDot'.
+  /// ST_PresetLineDashVal value 'dashDot'.
   /// - "LONG_DASH" : Line with large dashes. Corresponds to ECMA-376
-  /// ST_PresetLineDashVal
-  /// value 'lgDash'.
+  /// ST_PresetLineDashVal value 'lgDash'.
   /// - "LONG_DASH_DOT" : Alternating large dashes and dots. Corresponds to
-  /// ECMA-376
-  /// ST_PresetLineDashVal value 'lgDashDot'.
+  /// ECMA-376 ST_PresetLineDashVal value 'lgDashDot'.
   core.String dashStyle;
 
   /// The fill of the table border.
@@ -6791,30 +6330,28 @@ class TableCell {
 
 /// The table cell background fill.
 class TableCellBackgroundFill {
-  /// The background fill property state.
-  ///
-  /// Updating the fill on a table cell will implicitly update this field
-  /// to `RENDERED`, unless another value is specified in the same request. To
-  /// have no fill on a table cell, set this field to `NOT_RENDERED`. In this
-  /// case, any other fill fields set in the same request will be ignored.
+  /// The background fill property state. Updating the fill on a table cell will
+  /// implicitly update this field to `RENDERED`, unless another value is
+  /// specified in the same request. To have no fill on a table cell, set this
+  /// field to `NOT_RENDERED`. In this case, any other fill fields set in the
+  /// same request will be ignored.
   /// Possible string values are:
   /// - "RENDERED" : If a property's state is RENDERED, then the element has the
-  /// corresponding
-  /// property when rendered on a page. If the element is a placeholder shape as
-  /// determined by the placeholder
-  /// field, and it inherits from a placeholder shape, the corresponding field
-  /// may be unset, meaning that the property value is inherited from a parent
-  /// placeholder. If the element does not inherit, then the field will contain
-  /// the rendered value. This is the default value.
+  /// corresponding property when rendered on a page. If the element is a
+  /// placeholder shape as determined by the placeholder field, and it inherits
+  /// from a placeholder shape, the corresponding field may be unset, meaning
+  /// that the property value is inherited from a parent placeholder. If the
+  /// element does not inherit, then the field will contain the rendered value.
+  /// This is the default value.
   /// - "NOT_RENDERED" : If a property's state is NOT_RENDERED, then the element
-  /// does not have the
-  /// corresponding property when rendered on a page. However, the field may
-  /// still be set so it can be inherited by child shapes. To remove a property
-  /// from a rendered element, set its property_state to NOT_RENDERED.
+  /// does not have the corresponding property when rendered on a page. However,
+  /// the field may still be set so it can be inherited by child shapes. To
+  /// remove a property from a rendered element, set its property_state to
+  /// NOT_RENDERED.
   /// - "INHERIT" : If a property's state is INHERIT, then the property state
-  /// uses the value of
-  /// corresponding `property_state` field on the parent shape. Elements that do
-  /// not inherit will never have an INHERIT property state.
+  /// uses the value of corresponding `property_state` field on the parent
+  /// shape. Elements that do not inherit will never have an INHERIT property
+  /// state.
   core.String propertyState;
 
   /// Solid color fill.
@@ -6882,18 +6419,14 @@ class TableCellProperties {
   /// matches the alignment for newly created table cells in the Slides editor.
   /// Possible string values are:
   /// - "CONTENT_ALIGNMENT_UNSPECIFIED" : An unspecified content alignment. The
-  /// content alignment is inherited from
-  /// the parent if it exists.
+  /// content alignment is inherited from the parent if it exists.
   /// - "CONTENT_ALIGNMENT_UNSUPPORTED" : An unsupported content alignment.
   /// - "TOP" : An alignment that aligns the content to the top of the content
-  /// holder.
-  /// Corresponds to ECMA-376 ST_TextAnchoringType 't'.
+  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 't'.
   /// - "MIDDLE" : An alignment that aligns the content to the middle of the
-  /// content
-  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
+  /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
   /// - "BOTTOM" : An alignment that aligns the content to the bottom of the
-  /// content
-  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
+  /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
   core.String contentAlignment;
 
   /// The background fill of the table cell. The default fill matches the fill
@@ -6948,21 +6481,12 @@ class TableColumnProperties {
   }
 }
 
-/// A table range represents a reference to a subset of a table.
-///
-/// It's important to note that the cells specified by a table range do not
-/// necessarily form a rectangle. For example, let's say we have a 3 x 3 table
-/// where all the cells of the last row are merged together. The table looks
-/// like this:
-///
-///
-///      [             ]
-///
-/// A table range with location = (0, 0), row span = 3 and column span = 2
-/// specifies the following cells:
-///
-///       x     x
-///      [ x    x    x ]
+/// A table range represents a reference to a subset of a table. It's important
+/// to note that the cells specified by a table range do not necessarily form a
+/// rectangle. For example, let's say we have a 3 x 3 table where all the cells
+/// of the last row are merged together. The table looks like this: [ ] A table
+/// range with location = (0, 0), row span = 3 and column span = 2 specifies the
+/// following cells: x x [ x x x ]
 class TableRange {
   /// The column span of the table range.
   core.int columnSpan;
@@ -7008,12 +6532,10 @@ class TableRow {
   /// Height of a row.
   Dimension rowHeight;
 
-  /// Properties and contents of each cell.
-  ///
-  /// Cells that span multiple columns are represented only once with a
-  /// column_span greater
-  /// than 1. As a result, the length of this collection does not always match
-  /// the number of columns of the entire table.
+  /// Properties and contents of each cell. Cells that span multiple columns are
+  /// represented only once with a column_span greater than 1. As a result, the
+  /// length of this collection does not always match the number of columns of
+  /// the entire table.
   core.List<TableCell> tableCells;
 
   /// Properties of the row.
@@ -7056,9 +6578,8 @@ class TableRow {
 /// Properties of each row in a table.
 class TableRowProperties {
   /// Minimum height of the row. The row will be rendered in the Slides editor
-  /// at
-  /// a height equal to or greater than this value in order to show all the text
-  /// in the row's cell(s).
+  /// at a height equal to or greater than this value in order to show all the
+  /// text in the row's cell(s).
   Dimension minRowHeight;
 
   TableRowProperties();
@@ -7120,35 +6641,31 @@ class TextContent {
 }
 
 /// A TextElement describes the content of a range of indices in the text
-/// content
-/// of a Shape or TableCell.
+/// content of a Shape or TableCell.
 class TextElement {
-  /// A TextElement representing a spot in the text that is dynamically
-  /// replaced with content that can change over time.
+  /// A TextElement representing a spot in the text that is dynamically replaced
+  /// with content that can change over time.
   AutoText autoText;
 
   /// The zero-based end index of this text element, exclusive, in Unicode code
   /// units.
   core.int endIndex;
 
-  /// A marker representing the beginning of a new paragraph.
-  ///
-  /// The `start_index` and `end_index` of this TextElement represent the
-  /// range of the paragraph. Other TextElements with an index range contained
-  /// inside this paragraph's range are considered to be part of this
-  /// paragraph. The range of indices of two separate paragraphs will never
-  /// overlap.
+  /// A marker representing the beginning of a new paragraph. The `start_index`
+  /// and `end_index` of this TextElement represent the range of the paragraph.
+  /// Other TextElements with an index range contained inside this paragraph's
+  /// range are considered to be part of this paragraph. The range of indices of
+  /// two separate paragraphs will never overlap.
   ParagraphMarker paragraphMarker;
 
   /// The zero-based start index of this text element, in Unicode code units.
   core.int startIndex;
 
-  /// A TextElement representing a run of text where all of the characters
-  /// in the run have the same TextStyle.
-  ///
-  /// The `start_index` and `end_index` of TextRuns will always be fully
-  /// contained in the index range of a single `paragraph_marker` TextElement.
-  /// In other words, a TextRun will never span multiple paragraphs.
+  /// A TextElement representing a run of text where all of the characters in
+  /// the run have the same TextStyle. The `start_index` and `end_index` of
+  /// TextRuns will always be fully contained in the index range of a single
+  /// `paragraph_marker` TextElement. In other words, a TextRun will never span
+  /// multiple paragraphs.
   TextRun textRun;
 
   TextElement();
@@ -7226,35 +6743,27 @@ class TextRun {
   }
 }
 
-/// Represents the styling that can be applied to a TextRun.
-///
-/// If this text is contained in a shape with a parent placeholder, then these
-/// text styles may be
-/// inherited from the parent. Which text styles are inherited depend on the
-/// nesting level of lists:
-///
-/// * A text run in a paragraph that is not in a list will inherit its text
-/// style
-///   from the the newline character in the paragraph at the 0 nesting level of
-///   the list inside the parent placeholder.
-/// * A text run in a paragraph that is in a list will inherit its text style
-///   from the newline character in the paragraph at its corresponding nesting
-///   level of the list inside the parent placeholder.
-///
-/// Inherited text styles are represented as unset fields in this message. If
-/// text is contained in a shape without a parent placeholder, unsetting these
-/// fields will revert the style to a value matching the defaults in the Slides
-/// editor.
+/// Represents the styling that can be applied to a TextRun. If this text is
+/// contained in a shape with a parent placeholder, then these text styles may
+/// be inherited from the parent. Which text styles are inherited depend on the
+/// nesting level of lists: * A text run in a paragraph that is not in a list
+/// will inherit its text style from the the newline character in the paragraph
+/// at the 0 nesting level of the list inside the parent placeholder. * A text
+/// run in a paragraph that is in a list will inherit its text style from the
+/// newline character in the paragraph at its corresponding nesting level of the
+/// list inside the parent placeholder. Inherited text styles are represented as
+/// unset fields in this message. If text is contained in a shape without a
+/// parent placeholder, unsetting these fields will revert the style to a value
+/// matching the defaults in the Slides editor.
 class TextStyle {
   /// The background color of the text. If set, the color is either opaque or
   /// transparent, depending on if the `opaque_color` field in it is set.
   OptionalColor backgroundColor;
 
-  /// The text's vertical offset from its normal position.
-  ///
-  /// Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically
-  /// rendered in a smaller font size, computed based on the `font_size` field.
-  /// The `font_size` itself is not affected by changes in this field.
+  /// The text's vertical offset from its normal position. Text with
+  /// `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in
+  /// a smaller font size, computed based on the `font_size` field. The
+  /// `font_size` itself is not affected by changes in this field.
   /// Possible string values are:
   /// - "BASELINE_OFFSET_UNSPECIFIED" : The text's baseline offset is inherited
   /// from the parent.
@@ -7266,15 +6775,11 @@ class TextStyle {
   /// Whether or not the text is rendered as bold.
   core.bool bold;
 
-  /// The font family of the text.
-  ///
-  /// The font family can be any font from the Font menu in Slides or from
-  /// [Google Fonts] (https://fonts.google.com/). If the font name is
-  /// unrecognized, the text is rendered in `Arial`.
-  ///
-  /// Some fonts can affect the weight of the text. If an update request
-  /// specifies values for both `font_family` and `bold`, the explicitly-set
-  /// `bold` value is used.
+  /// The font family of the text. The font family can be any font from the Font
+  /// menu in Slides or from [Google Fonts] (https://fonts.google.com/). If the
+  /// font name is unrecognized, the text is rendered in `Arial`. Some fonts can
+  /// affect the weight of the text. If an update request specifies values for
+  /// both `font_family` and `bold`, the explicitly-set `bold` value is used.
   core.String fontFamily;
 
   /// The size of the text's font. When read, the `font_size` will specified in
@@ -7289,26 +6794,20 @@ class TextStyle {
   core.bool italic;
 
   /// The hyperlink destination of the text. If unset, there is no link. Links
-  /// are not inherited from parent text.
-  ///
-  /// Changing the link in an update request causes some other changes to the
-  /// text style of the range:
-  ///
-  /// * When setting a link, the text foreground color will be set to
-  ///   ThemeColorType.HYPERLINK and the text will
-  ///   be underlined. If these fields are modified in the same
-  ///   request, those values will be used instead of the link defaults.
-  /// * Setting a link on a text range that overlaps with an existing link will
-  ///   also update the existing link to point to the new URL.
-  /// * Links are not settable on newline characters. As a result, setting a
-  /// link
-  /// on a text range that crosses a paragraph boundary, such as `"ABC\n123"`,
-  ///   will separate the newline character(s) into their own text runs. The
-  /// link will be applied separately to the runs before and after the newline.
-  /// * Removing a link will update the text style of the range to match the
-  /// style of the preceding text (or the default text styles if the preceding
-  ///   text is another link) unless different styles are being set in the same
-  ///   request.
+  /// are not inherited from parent text. Changing the link in an update request
+  /// causes some other changes to the text style of the range: * When setting a
+  /// link, the text foreground color will be set to ThemeColorType.HYPERLINK
+  /// and the text will be underlined. If these fields are modified in the same
+  /// request, those values will be used instead of the link defaults. * Setting
+  /// a link on a text range that overlaps with an existing link will also
+  /// update the existing link to point to the new URL. * Links are not settable
+  /// on newline characters. As a result, setting a link on a text range that
+  /// crosses a paragraph boundary, such as `"ABC\n123"`, will separate the
+  /// newline character(s) into their own text runs. The link will be applied
+  /// separately to the runs before and after the newline. * Removing a link
+  /// will update the text style of the range to match the style of the
+  /// preceding text (or the default text styles if the preceding text is
+  /// another link) unless different styles are being set in the same request.
   Link link;
 
   /// Whether or not the text is in small capital letters.
@@ -7320,37 +6819,28 @@ class TextStyle {
   /// Whether or not the text is underlined.
   core.bool underline;
 
-  /// The font family and rendered weight of the text.
-  ///
-  /// This field is an extension of `font_family` meant to support explicit font
-  /// weights without breaking backwards compatibility. As such, when reading
-  /// the
-  /// style of a range of text, the value of `weighted_font_family#font_family`
-  /// will always be equal to that of `font_family`. However, when writing, if
-  /// both fields are included in the field mask (either explicitly or through
-  /// the wildcard `"*"`), their values are reconciled as follows:
-  ///
-  /// * If `font_family` is set and `weighted_font_family` is not, the value of
-  ///   `font_family` is applied with weight `400` ("normal").
-  /// * If both fields are set, the value of `font_family` must match that of
-  /// `weighted_font_family#font_family`. If so, the font family and weight of
-  /// `weighted_font_family` is applied. Otherwise, a 400 bad request error is
-  ///   returned.
-  /// * If `weighted_font_family` is set and `font_family` is not, the font
-  ///   family and weight of `weighted_font_family` is applied.
-  /// * If neither field is set, the font family and weight of the text inherit
-  ///   from the parent. Note that these properties cannot inherit separately
-  ///   from each other.
-  ///
-  /// If an update request specifies values for both `weighted_font_family` and
-  /// `bold`, the `weighted_font_family` is applied first, then `bold`.
-  ///
-  /// If `weighted_font_family#weight` is not set, it defaults to `400`.
-  ///
-  /// If `weighted_font_family` is set, then `weighted_font_family#font_family`
+  /// The font family and rendered weight of the text. This field is an
+  /// extension of `font_family` meant to support explicit font weights without
+  /// breaking backwards compatibility. As such, when reading the style of a
+  /// range of text, the value of `weighted_font_family#font_family` will always
+  /// be equal to that of `font_family`. However, when writing, if both fields
+  /// are included in the field mask (either explicitly or through the wildcard
+  /// `"*"`), their values are reconciled as follows: * If `font_family` is set
+  /// and `weighted_font_family` is not, the value of `font_family` is applied
+  /// with weight `400` ("normal"). * If both fields are set, the value of
+  /// `font_family` must match that of `weighted_font_family#font_family`. If
+  /// so, the font family and weight of `weighted_font_family` is applied.
+  /// Otherwise, a 400 bad request error is returned. * If
+  /// `weighted_font_family` is set and `font_family` is not, the font family
+  /// and weight of `weighted_font_family` is applied. * If neither field is
+  /// set, the font family and weight of the text inherit from the parent. Note
+  /// that these properties cannot inherit separately from each other. If an
+  /// update request specifies values for both `weighted_font_family` and
+  /// `bold`, the `weighted_font_family` is applied first, then `bold`. If
+  /// `weighted_font_family#weight` is not set, it defaults to `400`. If
+  /// `weighted_font_family` is set, then `weighted_font_family#font_family`
   /// must also be set with a non-empty value. Otherwise, a 400 bad request
-  /// error
-  /// is returned.
+  /// error is returned.
   WeightedFontFamily weightedFontFamily;
 
   TextStyle();
@@ -7492,14 +6982,12 @@ class ThemeColorPair {
 
 /// The thumbnail of a page.
 class Thumbnail {
-  /// The content URL of the thumbnail image.
-  ///
-  /// The URL to the image has a default lifetime of 30 minutes.
-  /// This URL is tagged with the account of the requester. Anyone with the URL
-  /// effectively accesses the image as the original requester. Access to the
-  /// image may be lost if the presentation's sharing settings change.
-  /// The mime type of the thumbnail image is the same as specified in the
-  /// `GetPageThumbnailRequest`.
+  /// The content URL of the thumbnail image. The URL to the image has a default
+  /// lifetime of 30 minutes. This URL is tagged with the account of the
+  /// requester. Anyone with the URL effectively accesses the image as the
+  /// original requester. Access to the image may be lost if the presentation's
+  /// sharing settings change. The mime type of the thumbnail image is the same
+  /// as specified in the `GetPageThumbnailRequest`.
   core.String contentUrl;
 
   /// The positive height in pixels of the thumbnail image.
@@ -7540,12 +7028,10 @@ class Thumbnail {
 
 /// Ungroups objects, such as groups.
 class UngroupObjectsRequest {
-  /// The object IDs of the objects to ungroup.
-  ///
-  /// Only groups that are not inside other
-  /// groups can be ungrouped. All the groups
-  /// should be on the same page. The group itself is deleted. The visual sizes
-  /// and positions of all the children are preserved.
+  /// The object IDs of the objects to ungroup. Only groups that are not inside
+  /// other groups can be ungrouped. All the groups should be on the same page.
+  /// The group itself is deleted. The visual sizes and positions of all the
+  /// children are preserved.
   core.List<core.String> objectIds;
 
   UngroupObjectsRequest();
@@ -7571,14 +7057,12 @@ class UnmergeTableCellsRequest {
   /// The object ID of the table.
   core.String objectId;
 
-  /// The table range specifying which cells of the table to unmerge.
-  ///
-  /// All merged cells in this range will be unmerged, and cells that are
-  /// already
-  /// unmerged will not be affected. If the range has no merged cells, the
-  /// request will do nothing. If there is text in any of the merged cells, the
-  /// text will remain in the upper-left ("head") cell of the resulting block of
-  /// unmerged cells.
+  /// The table range specifying which cells of the table to unmerge. All merged
+  /// cells in this range will be unmerged, and cells that are already unmerged
+  /// will not be affected. If the range has no merged cells, the request will
+  /// do nothing. If there is text in any of the merged cells, the text will
+  /// remain in the upper-left ("head") cell of the resulting block of unmerged
+  /// cells.
   TableRange tableRange;
 
   UnmergeTableCellsRequest();
@@ -7607,17 +7091,13 @@ class UnmergeTableCellsRequest {
 
 /// Update the properties of an Image.
 class UpdateImagePropertiesRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `imageProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the image outline color, set `fields` to
-  /// `"outline.outlineFill.solidFill.color"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `imageProperties` is implied and should not be specified. A
+  /// single `"*"` can be used as short-hand for listing every field. For
+  /// example to update the image outline color, set `fields` to
+  /// `"outline.outlineFill.solidFill.color"`. To reset a property to its
+  /// default value, include its field name in the field mask but leave the
+  /// field itself unset.
   core.String fields;
 
   /// The image properties to update.
@@ -7658,10 +7138,8 @@ class UpdateImagePropertiesRequest {
 
 /// Updates the category of a line.
 class UpdateLineCategoryRequest {
-  /// The line category to update to.
-  ///
-  /// The exact line type is determined based
-  /// on the category to update to and how it's routed to connect to other page
+  /// The line category to update to. The exact line type is determined based on
+  /// the category to update to and how it's routed to connect to other page
   /// elements.
   /// Possible string values are:
   /// - "LINE_CATEGORY_UNSPECIFIED" : Unspecified line category.
@@ -7670,12 +7148,9 @@ class UpdateLineCategoryRequest {
   /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
   core.String lineCategory;
 
-  /// The object ID of the line the update is applied to.
-  ///
-  /// Only a line with a category
-  /// indicating it is a "connector" can be updated.
-  ///
-  /// The line may be rerouted after updating its category.
+  /// The object ID of the line the update is applied to. Only a line with a
+  /// category indicating it is a "connector" can be updated. The line may be
+  /// rerouted after updating its category.
   core.String objectId;
 
   UpdateLineCategoryRequest();
@@ -7704,17 +7179,12 @@ class UpdateLineCategoryRequest {
 
 /// Updates the properties of a Line.
 class UpdateLinePropertiesRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `lineProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the line solid fill color, set `fields` to
-  /// `"lineFill.solidFill.color"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `lineProperties` is implied and should not be specified. A single
+  /// `"*"` can be used as short-hand for listing every field. For example to
+  /// update the line solid fill color, set `fields` to
+  /// `"lineFill.solidFill.color"`. To reset a property to its default value,
+  /// include its field name in the field mask but leave the field itself unset.
   core.String fields;
 
   /// The line properties to update.
@@ -7753,23 +7223,21 @@ class UpdateLinePropertiesRequest {
   }
 }
 
-/// Updates the alt text title and/or description of a
-/// page element.
+/// Updates the alt text title and/or description of a page element.
 class UpdatePageElementAltTextRequest {
   /// The updated alt text description of the page element. If unset the
-  /// existing
-  /// value will be maintained. The description is exposed to screen readers
-  /// and other accessibility interfaces. Only use human readable values related
-  /// to the content of the page element.
+  /// existing value will be maintained. The description is exposed to screen
+  /// readers and other accessibility interfaces. Only use human readable values
+  /// related to the content of the page element.
   core.String description;
 
   /// The object ID of the page element the updates are applied to.
   core.String objectId;
 
-  /// The updated alt text title of the page element. If unset the
-  /// existing value will be maintained. The title is exposed to screen readers
-  /// and other accessibility interfaces. Only use human readable values related
-  /// to the content of the page element.
+  /// The updated alt text title of the page element. If unset the existing
+  /// value will be maintained. The title is exposed to screen readers and other
+  /// accessibility interfaces. Only use human readable values related to the
+  /// content of the page element.
   core.String title;
 
   UpdatePageElementAltTextRequest();
@@ -7802,18 +7270,16 @@ class UpdatePageElementAltTextRequest {
   }
 }
 
-/// Updates the transform of a page element.
-///
-/// Updating the transform of a group will change the absolute transform of the
-/// page elements in that group, which can change their visual appearance. See
-/// the documentation for PageElement.transform for more details.
+/// Updates the transform of a page element. Updating the transform of a group
+/// will change the absolute transform of the page elements in that group, which
+/// can change their visual appearance. See the documentation for
+/// PageElement.transform for more details.
 class UpdatePageElementTransformRequest {
   /// The apply mode of the transform update.
   /// Possible string values are:
   /// - "APPLY_MODE_UNSPECIFIED" : Unspecified mode.
   /// - "RELATIVE" : Applies the new AffineTransform matrix to the existing one,
-  /// and
-  /// replaces the existing one with the resulting concatenation.
+  /// and replaces the existing one with the resulting concatenation.
   /// - "ABSOLUTE" : Replaces the existing AffineTransform matrix with the new
   /// one.
   core.String applyMode;
@@ -7858,25 +7324,22 @@ class UpdatePageElementTransformRequest {
 /// on the page from back to front. The page element in the front may cover the
 /// elements that are behind it.
 class UpdatePageElementsZOrderRequest {
-  /// The Z-order operation to apply on the page elements.
-  ///
-  /// When applying the operation on multiple page elements, the relative
-  /// Z-orders within these page elements before the operation is maintained.
+  /// The Z-order operation to apply on the page elements. When applying the
+  /// operation on multiple page elements, the relative Z-orders within these
+  /// page elements before the operation is maintained.
   /// Possible string values are:
   /// - "Z_ORDER_OPERATION_UNSPECIFIED" : Unspecified operation.
   /// - "BRING_TO_FRONT" : Brings the page elements to the front of the page.
   /// - "BRING_FORWARD" : Brings the page elements forward on the page by one
-  /// element relative to the
-  /// forwardmost one in the specified page elements.
+  /// element relative to the forwardmost one in the specified page elements.
   /// - "SEND_BACKWARD" : Sends the page elements backward on the page by one
-  /// element relative to the
-  /// furthest behind one in the specified page elements.
+  /// element relative to the furthest behind one in the specified page
+  /// elements.
   /// - "SEND_TO_BACK" : Sends the page elements to the back of the page.
   core.String operation;
 
-  /// The object IDs of the page elements to update.
-  ///
-  /// All the page elements must be on the same page and must not be grouped.
+  /// The object IDs of the page elements to update. All the page elements must
+  /// be on the same page and must not be grouped.
   core.List<core.String> pageElementObjectIds;
 
   UpdatePageElementsZOrderRequest();
@@ -7906,17 +7369,13 @@ class UpdatePageElementsZOrderRequest {
 
 /// Updates the properties of a Page.
 class UpdatePagePropertiesRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `pageProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the page background solid fill color, set `fields`
-  /// to `"pageBackgroundFill.solidFill.color"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `pageProperties` is implied and should not be specified. A single
+  /// `"*"` can be used as short-hand for listing every field. For example to
+  /// update the page background solid fill color, set `fields` to
+  /// `"pageBackgroundFill.solidFill.color"`. To reset a property to its default
+  /// value, include its field name in the field mask but leave the field itself
+  /// unset.
   core.String fields;
 
   /// The object ID of the page the update is applied to.
@@ -7960,21 +7419,15 @@ class UpdatePagePropertiesRequest {
 class UpdateParagraphStyleRequest {
   /// The location of the cell in the table containing the paragraph(s) to
   /// style. If `object_id` refers to a table, `cell_location` must have a
-  /// value.
-  /// Otherwise, it must not.
+  /// value. Otherwise, it must not.
   TableCellLocation cellLocation;
 
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `style` is implied and
-  /// should not be specified. A single `"*"` can be used as short-hand for
-  /// listing every field.
-  ///
-  /// For example, to update the paragraph alignment, set `fields` to
-  /// `"alignment"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `style` is implied and should not be specified. A single `"*"`
+  /// can be used as short-hand for listing every field. For example, to update
+  /// the paragraph alignment, set `fields` to `"alignment"`. To reset a
+  /// property to its default value, include its field name in the field mask
+  /// but leave the field itself unset.
   core.String fields;
 
   /// The object ID of the shape or table with the text to be styled.
@@ -8030,17 +7483,13 @@ class UpdateParagraphStyleRequest {
 
 /// Update the properties of a Shape.
 class UpdateShapePropertiesRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `shapeProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the shape background solid fill color, set `fields`
-  /// to `"shapeBackgroundFill.solidFill.color"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `shapeProperties` is implied and should not be specified. A
+  /// single `"*"` can be used as short-hand for listing every field. For
+  /// example to update the shape background solid fill color, set `fields` to
+  /// `"shapeBackgroundFill.solidFill.color"`. To reset a property to its
+  /// default value, include its field name in the field mask but leave the
+  /// field itself unset.
   core.String fields;
 
   /// The object ID of the shape the updates are applied to.
@@ -8086,9 +7535,8 @@ class UpdateSlidesPositionRequest {
   /// number of slides in the presentation, inclusive.
   core.int insertionIndex;
 
-  /// The IDs of the slides in the presentation that should be moved.
-  /// The slides in this list must be in existing presentation order, without
-  /// duplicates.
+  /// The IDs of the slides in the presentation that should be moved. The slides
+  /// in this list must be in existing presentation order, without duplicates.
   core.List<core.String> slideObjectIds;
 
   UpdateSlidesPositionRequest();
@@ -8133,17 +7581,13 @@ class UpdateTableBorderPropertiesRequest {
   /// - "TOP" : Borders at the top of the range.
   core.String borderPosition;
 
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `tableBorderProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the table border solid fill color, set
-  /// `fields` to `"tableBorderFill.solidFill.color"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `tableBorderProperties` is implied and should not be specified. A
+  /// single `"*"` can be used as short-hand for listing every field. For
+  /// example to update the table border solid fill color, set `fields` to
+  /// `"tableBorderFill.solidFill.color"`. To reset a property to its default
+  /// value, include its field name in the field mask but leave the field itself
+  /// unset.
   core.String fields;
 
   /// The object ID of the table.
@@ -8202,17 +7646,13 @@ class UpdateTableBorderPropertiesRequest {
 
 /// Update the properties of a TableCell.
 class UpdateTableCellPropertiesRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `tableCellProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the table cell background solid fill color, set
-  /// `fields` to `"tableCellBackgroundFill.solidFill.color"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `tableCellProperties` is implied and should not be specified. A
+  /// single `"*"` can be used as short-hand for listing every field. For
+  /// example to update the table cell background solid fill color, set `fields`
+  /// to `"tableCellBackgroundFill.solidFill.color"`. To reset a property to its
+  /// default value, include its field name in the field mask but leave the
+  /// field itself unset.
   core.String fields;
 
   /// The object ID of the table.
@@ -8269,25 +7709,20 @@ class UpdateTableColumnPropertiesRequest {
   /// indices are provided, all columns in the table will be updated.
   core.List<core.int> columnIndices;
 
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `tableColumnProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the column width, set `fields` to `"column_width"`.
-  ///
-  /// If '"column_width"' is included in the field mask but the property is left
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `tableColumnProperties` is implied and should not be specified. A
+  /// single `"*"` can be used as short-hand for listing every field. For
+  /// example to update the column width, set `fields` to `"column_width"`. If
+  /// '"column_width"' is included in the field mask but the property is left
   /// unset, the column width will default to 406,400 EMU (32 points).
   core.String fields;
 
   /// The object ID of the table.
   core.String objectId;
 
-  /// The table column properties to update.
-  ///
-  /// If the value of `table_column_properties#column_width` in the request is
-  /// less than 406,400 EMU (32 points), a 400 bad request error is returned.
+  /// The table column properties to update. If the value of
+  /// `table_column_properties#column_width` in the request is less than 406,400
+  /// EMU (32 points), a 400 bad request error is returned.
   TableColumnProperties tableColumnProperties;
 
   UpdateTableColumnPropertiesRequest();
@@ -8329,17 +7764,12 @@ class UpdateTableColumnPropertiesRequest {
 
 /// Updates the properties of a Table row.
 class UpdateTableRowPropertiesRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `tableRowProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the minimum row height, set `fields` to
-  /// `"min_row_height"`.
-  ///
-  /// If '"min_row_height"' is included in the field mask but the property is
-  /// left unset, the minimum row height will default to 0.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `tableRowProperties` is implied and should not be specified. A
+  /// single `"*"` can be used as short-hand for listing every field. For
+  /// example to update the minimum row height, set `fields` to
+  /// `"min_row_height"`. If '"min_row_height"' is included in the field mask
+  /// but the property is left unset, the minimum row height will default to 0.
   core.String fields;
 
   /// The object ID of the table.
@@ -8389,44 +7819,33 @@ class UpdateTableRowPropertiesRequest {
   }
 }
 
-/// Update the styling of text in a Shape or
-/// Table.
+/// Update the styling of text in a Shape or Table.
 class UpdateTextStyleRequest {
   /// The location of the cell in the table containing the text to style. If
   /// `object_id` refers to a table, `cell_location` must have a value.
   /// Otherwise, it must not.
   TableCellLocation cellLocation;
 
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `style` is implied and
-  /// should not be specified. A single `"*"` can be used as short-hand for
-  /// listing every field.
-  ///
-  /// For example, to update the text style to bold, set `fields` to `"bold"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `style` is implied and should not be specified. A single `"*"`
+  /// can be used as short-hand for listing every field. For example, to update
+  /// the text style to bold, set `fields` to `"bold"`. To reset a property to
+  /// its default value, include its field name in the field mask but leave the
+  /// field itself unset.
   core.String fields;
 
   /// The object ID of the shape or table with the text to be styled.
   core.String objectId;
 
-  /// The style(s) to set on the text.
-  ///
-  /// If the value for a particular style matches that of the parent, that style
-  /// will be set to inherit.
-  ///
-  /// Certain text style changes may cause other changes meant to mirror the
-  /// behavior of the Slides editor. See the documentation of
-  /// TextStyle for more information.
+  /// The style(s) to set on the text. If the value for a particular style
+  /// matches that of the parent, that style will be set to inherit. Certain
+  /// text style changes may cause other changes meant to mirror the behavior of
+  /// the Slides editor. See the documentation of TextStyle for more
+  /// information.
   TextStyle style;
 
-  /// The range of text to style.
-  ///
-  /// The range may be extended to include adjacent newlines.
-  ///
-  /// If the range fully contains a paragraph belonging to a list, the
+  /// The range of text to style. The range may be extended to include adjacent
+  /// newlines. If the range fully contains a paragraph belonging to a list, the
   /// paragraph's bullet is also updated with the matching text style.
   Range textRange;
 
@@ -8474,17 +7893,13 @@ class UpdateTextStyleRequest {
 
 /// Update the properties of a Video.
 class UpdateVideoPropertiesRequest {
-  /// The fields that should be updated.
-  ///
-  /// At least one field must be specified. The root `videoProperties` is
-  /// implied and should not be specified. A single `"*"` can be used as
-  /// short-hand for listing every field.
-  ///
-  /// For example to update the video outline color, set `fields` to
-  /// `"outline.outlineFill.solidFill.color"`.
-  ///
-  /// To reset a property to its default value, include its field name in the
-  /// field mask but leave the field itself unset.
+  /// The fields that should be updated. At least one field must be specified.
+  /// The root `videoProperties` is implied and should not be specified. A
+  /// single `"*"` can be used as short-hand for listing every field. For
+  /// example to update the video outline color, set `fields` to
+  /// `"outline.outlineFill.solidFill.color"`. To reset a property to its
+  /// default value, include its field name in the field mask but leave the
+  /// field itself unset.
   core.String fields;
 
   /// The object ID of the video the updates are applied to.
@@ -8523,8 +7938,7 @@ class UpdateVideoPropertiesRequest {
   }
 }
 
-/// A PageElement kind representing a
-/// video.
+/// A PageElement kind representing a video.
 class Video {
   /// The video source's unique identifier for this video.
   core.String id;
@@ -8586,10 +8000,9 @@ class VideoProperties {
   core.bool autoPlay;
 
   /// The time at which to end playback, measured in seconds from the beginning
-  /// of the video.
-  /// If set, the end time should be after the start time.
-  /// If not set or if you set this to a value that exceeds the video's length,
-  /// the video will be played until its end.
+  /// of the video. If set, the end time should be after the start time. If not
+  /// set or if you set this to a value that exceeds the video's length, the
+  /// video will be played until its end.
   core.int end;
 
   /// Whether to mute the audio during video playback. Defaults to false.
@@ -8600,12 +8013,10 @@ class VideoProperties {
   Outline outline;
 
   /// The time at which to start playback, measured in seconds from the
-  /// beginning
-  /// of the video.
-  /// If set, the start time should be before the end time.
-  /// If you set this to a value that exceeds the video's length in seconds, the
-  /// video will be played from the last second.
-  /// If not set, the video will be played from the beginning.
+  /// beginning of the video. If set, the start time should be before the end
+  /// time. If you set this to a value that exceeds the video's length in
+  /// seconds, the video will be played from the last second. If not set, the
+  /// video will be played from the beginning.
   core.int start;
 
   VideoProperties();
@@ -8652,21 +8063,19 @@ class VideoProperties {
 
 /// Represents a font family and weight used to style a TextRun.
 class WeightedFontFamily {
-  /// The font family of the text.
-  ///
-  /// The font family can be any font from the Font menu in Slides or from
-  /// [Google Fonts] (https://fonts.google.com/). If the font name is
-  /// unrecognized, the text is rendered in `Arial`.
+  /// The font family of the text. The font family can be any font from the Font
+  /// menu in Slides or from [Google Fonts] (https://fonts.google.com/). If the
+  /// font name is unrecognized, the text is rendered in `Arial`.
   core.String fontFamily;
 
   /// The rendered weight of the text. This field can have any value that is a
   /// multiple of `100` between `100` and `900`, inclusive. This range
   /// corresponds to the numerical values described in the CSS 2.1
-  /// Specification,
-  /// [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness),
-  /// with non-numerical values disallowed. Weights greater than or equal to
-  /// `700` are considered bold, and weights less than `700`are not bold. The
-  /// default value is `400` ("normal").
+  /// Specification, [section
+  /// 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with
+  /// non-numerical values disallowed. Weights greater than or equal to `700`
+  /// are considered bold, and weights less than `700`are not bold. The default
+  /// value is `400` ("normal").
   core.int weight;
 
   WeightedFontFamily();
@@ -8693,8 +8102,7 @@ class WeightedFontFamily {
   }
 }
 
-/// A PageElement kind representing
-/// word art.
+/// A PageElement kind representing word art.
 class WordArt {
   /// The text rendered as word art.
   core.String renderedText;
@@ -8722,8 +8130,7 @@ class WriteControl {
   /// The revision ID of the presentation required for the write request. If
   /// specified and the `required_revision_id` doesn't exactly match the
   /// presentation's current `revision_id`, the request will not be processed
-  /// and
-  /// will return a 400 bad request error.
+  /// and will return a 400 bad request error.
   core.String requiredRevisionId;
 
   WriteControl();

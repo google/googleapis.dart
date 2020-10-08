@@ -123,14 +123,14 @@ checkCreateManagedShortLinkRequest(api.CreateManagedShortLinkRequest o) {
   buildCounterCreateManagedShortLinkRequest--;
 }
 
-buildUnnamed98() {
+buildUnnamed79() {
   var o = new core.List<api.DynamicLinkWarning>();
   o.add(buildDynamicLinkWarning());
   o.add(buildDynamicLinkWarning());
   return o;
 }
 
-checkUnnamed98(core.List<api.DynamicLinkWarning> o) {
+checkUnnamed79(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -143,7 +143,7 @@ buildCreateManagedShortLinkResponse() {
   if (buildCounterCreateManagedShortLinkResponse < 3) {
     o.managedShortLink = buildManagedShortLink();
     o.previewLink = "foo";
-    o.warning = buildUnnamed98();
+    o.warning = buildUnnamed79();
   }
   buildCounterCreateManagedShortLinkResponse--;
   return o;
@@ -154,7 +154,7 @@ checkCreateManagedShortLinkResponse(api.CreateManagedShortLinkResponse o) {
   if (buildCounterCreateManagedShortLinkResponse < 3) {
     checkManagedShortLink(o.managedShortLink);
     unittest.expect(o.previewLink, unittest.equals('foo'));
-    checkUnnamed98(o.warning);
+    checkUnnamed79(o.warning);
   }
   buildCounterCreateManagedShortLinkResponse--;
 }
@@ -184,14 +184,14 @@ checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest--;
 }
 
-buildUnnamed99() {
+buildUnnamed80() {
   var o = new core.List<api.DynamicLinkWarning>();
   o.add(buildDynamicLinkWarning());
   o.add(buildDynamicLinkWarning());
   return o;
 }
 
-checkUnnamed99(core.List<api.DynamicLinkWarning> o) {
+checkUnnamed80(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -204,7 +204,7 @@ buildCreateShortDynamicLinkResponse() {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     o.previewLink = "foo";
     o.shortLink = "foo";
-    o.warning = buildUnnamed99();
+    o.warning = buildUnnamed80();
   }
   buildCounterCreateShortDynamicLinkResponse--;
   return o;
@@ -215,7 +215,7 @@ checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     unittest.expect(o.previewLink, unittest.equals('foo'));
     unittest.expect(o.shortLink, unittest.equals('foo'));
-    checkUnnamed99(o.warning);
+    checkUnnamed80(o.warning);
   }
   buildCounterCreateShortDynamicLinkResponse--;
 }
@@ -328,14 +328,14 @@ checkDynamicLinkInfo(api.DynamicLinkInfo o) {
   buildCounterDynamicLinkInfo--;
 }
 
-buildUnnamed100() {
+buildUnnamed81() {
   var o = new core.List<api.DynamicLinkEventStat>();
   o.add(buildDynamicLinkEventStat());
   o.add(buildDynamicLinkEventStat());
   return o;
 }
 
-checkUnnamed100(core.List<api.DynamicLinkEventStat> o) {
+checkUnnamed81(core.List<api.DynamicLinkEventStat> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkEventStat(o[0]);
   checkDynamicLinkEventStat(o[1]);
@@ -346,7 +346,7 @@ buildDynamicLinkStats() {
   var o = new api.DynamicLinkStats();
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    o.linkEventStats = buildUnnamed100();
+    o.linkEventStats = buildUnnamed81();
   }
   buildCounterDynamicLinkStats--;
   return o;
@@ -355,7 +355,7 @@ buildDynamicLinkStats() {
 checkDynamicLinkStats(api.DynamicLinkStats o) {
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    checkUnnamed100(o.linkEventStats);
+    checkUnnamed81(o.linkEventStats);
   }
   buildCounterDynamicLinkStats--;
 }
@@ -610,14 +610,14 @@ checkIosInfo(api.IosInfo o) {
   buildCounterIosInfo--;
 }
 
-buildUnnamed101() {
+buildUnnamed82() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed101(core.List<core.String> o) {
+checkUnnamed82(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -629,7 +629,7 @@ buildManagedShortLink() {
   buildCounterManagedShortLink++;
   if (buildCounterManagedShortLink < 3) {
     o.creationTime = "foo";
-    o.flaggedAttribute = buildUnnamed101();
+    o.flaggedAttribute = buildUnnamed82();
     o.info = buildDynamicLinkInfo();
     o.link = "foo";
     o.linkName = "foo";
@@ -643,7 +643,7 @@ checkManagedShortLink(api.ManagedShortLink o) {
   buildCounterManagedShortLink++;
   if (buildCounterManagedShortLink < 3) {
     unittest.expect(o.creationTime, unittest.equals('foo'));
-    checkUnnamed101(o.flaggedAttribute);
+    checkUnnamed82(o.flaggedAttribute);
     checkDynamicLinkInfo(o.info);
     unittest.expect(o.link, unittest.equals('foo'));
     unittest.expect(o.linkName, unittest.equals('foo'));
