@@ -73,14 +73,14 @@ checkTaskLinks(api.TaskLinks o) {
   buildCounterTaskLinks--;
 }
 
-buildUnnamed564() {
+buildUnnamed565() {
   var o = new core.List<api.TaskLinks>();
   o.add(buildTaskLinks());
   o.add(buildTaskLinks());
   return o;
 }
 
-checkUnnamed564(core.List<api.TaskLinks> o) {
+checkUnnamed565(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskLinks(o[0]);
   checkTaskLinks(o[1]);
@@ -98,7 +98,7 @@ buildTask() {
     o.hidden = true;
     o.id = "foo";
     o.kind = "foo";
-    o.links = buildUnnamed564();
+    o.links = buildUnnamed565();
     o.notes = "foo";
     o.parent = "foo";
     o.position = "foo";
@@ -121,7 +121,7 @@ checkTask(api.Task o) {
     unittest.expect(o.hidden, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed564(o.links);
+    checkUnnamed565(o.links);
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.position, unittest.equals('foo'));
@@ -162,14 +162,14 @@ checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-buildUnnamed565() {
+buildUnnamed566() {
   var o = new core.List<api.TaskList>();
   o.add(buildTaskList());
   o.add(buildTaskList());
   return o;
 }
 
-checkUnnamed565(core.List<api.TaskList> o) {
+checkUnnamed566(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskList(o[0]);
   checkTaskList(o[1]);
@@ -181,7 +181,7 @@ buildTaskLists() {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed565();
+    o.items = buildUnnamed566();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -193,21 +193,21 @@ checkTaskLists(api.TaskLists o) {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed565(o.items);
+    checkUnnamed566(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterTaskLists--;
 }
 
-buildUnnamed566() {
+buildUnnamed567() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed566(core.List<api.Task> o) {
+checkUnnamed567(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -219,7 +219,7 @@ buildTasks() {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed566();
+    o.items = buildUnnamed567();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -231,7 +231,7 @@ checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed566(o.items);
+    checkUnnamed567(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -797,8 +797,8 @@ main() {
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_request = buildTask();
       var arg_tasklist = "foo";
-      var arg_parent = "foo";
       var arg_previous = "foo";
+      var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
@@ -842,9 +842,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(
             queryMap["previous"].first, unittest.equals(arg_previous));
+        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -855,7 +855,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_tasklist,
-              parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
+              previous: arg_previous, parent: arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
@@ -865,16 +865,16 @@ main() {
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
-      var arg_pageToken = "foo";
-      var arg_maxResults = 42;
-      var arg_showHidden = true;
       var arg_completedMin = "foo";
-      var arg_showDeleted = true;
       var arg_showCompleted = true;
+      var arg_maxResults = 42;
       var arg_completedMax = "foo";
-      var arg_updatedMin = "foo";
       var arg_dueMin = "foo";
+      var arg_showDeleted = true;
+      var arg_updatedMin = "foo";
       var arg_dueMax = "foo";
+      var arg_pageToken = "foo";
+      var arg_showHidden = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -916,23 +916,23 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["completedMin"].first, unittest.equals(arg_completedMin));
+        unittest.expect(queryMap["showCompleted"].first,
+            unittest.equals("$arg_showCompleted"));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
-        unittest.expect(
-            queryMap["completedMin"].first, unittest.equals(arg_completedMin));
+            queryMap["completedMax"].first, unittest.equals(arg_completedMax));
+        unittest.expect(queryMap["dueMin"].first, unittest.equals(arg_dueMin));
         unittest.expect(
             queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(queryMap["showCompleted"].first,
-            unittest.equals("$arg_showCompleted"));
-        unittest.expect(
-            queryMap["completedMax"].first, unittest.equals(arg_completedMax));
         unittest.expect(
             queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
-        unittest.expect(queryMap["dueMin"].first, unittest.equals(arg_dueMin));
         unittest.expect(queryMap["dueMax"].first, unittest.equals(arg_dueMax));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -943,16 +943,16 @@ main() {
       }), true);
       res
           .list(arg_tasklist,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
-              showHidden: arg_showHidden,
               completedMin: arg_completedMin,
-              showDeleted: arg_showDeleted,
               showCompleted: arg_showCompleted,
+              maxResults: arg_maxResults,
               completedMax: arg_completedMax,
-              updatedMin: arg_updatedMin,
               dueMin: arg_dueMin,
+              showDeleted: arg_showDeleted,
+              updatedMin: arg_updatedMin,
               dueMax: arg_dueMax,
+              pageToken: arg_pageToken,
+              showHidden: arg_showHidden,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTasks(response);
@@ -964,8 +964,8 @@ main() {
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
       var arg_task = "foo";
-      var arg_previous = "foo";
       var arg_parent = "foo";
+      var arg_previous = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1015,9 +1015,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(
             queryMap["previous"].first, unittest.equals(arg_previous));
-        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1028,7 +1028,7 @@ main() {
       }), true);
       res
           .move(arg_tasklist, arg_task,
-              previous: arg_previous, parent: arg_parent, $fields: arg_$fields)
+              parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));

@@ -527,10 +527,10 @@ class UsersDataSourcesDatasetsResourceApi {
   /// nanoseconds from the epoch. The ID is formatted like: "startTime-endTime"
   /// where startTime and endTime are 64 bit integers.
   ///
-  /// [modifiedTimeMillis] - When the operation was performed on the client.
-  ///
   /// [currentTimeMillis] - The client's current time in milliseconds since
   /// epoch.
+  ///
+  /// [modifiedTimeMillis] - When the operation was performed on the client.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -542,8 +542,8 @@ class UsersDataSourcesDatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(
       core.String userId, core.String dataSourceId, core.String datasetId,
-      {core.String modifiedTimeMillis,
-      core.String currentTimeMillis,
+      {core.String currentTimeMillis,
+      core.String modifiedTimeMillis,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -561,11 +561,11 @@ class UsersDataSourcesDatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-    if (modifiedTimeMillis != null) {
-      _queryParams["modifiedTimeMillis"] = [modifiedTimeMillis];
-    }
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
+    }
+    if (modifiedTimeMillis != null) {
+      _queryParams["modifiedTimeMillis"] = [modifiedTimeMillis];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -878,6 +878,17 @@ class UsersSessionsResourceApi {
   /// [userId] - List sessions for the person identified. Use me to indicate the
   /// authenticated user. Only me is supported at this time.
   ///
+  /// [endTime] - An RFC3339 timestamp. Only sessions ending between the start
+  /// and end times will be included in the response. If this time is omitted
+  /// but startTime is specified, all sessions from startTime to the end of time
+  /// will be returned.
+  ///
+  /// [activityType] - If non-empty, only sessions with these activity types
+  /// should be returned.
+  ///
+  /// [includeDeleted] - If true, and if both startTime and endTime are omitted,
+  /// session deletions will be returned.
+  ///
   /// [pageToken] - The continuation token, which is used for incremental
   /// syncing. To get the next batch of changes, set this parameter to the value
   /// of nextPageToken from the previous response. The page token is ignored if
@@ -885,21 +896,10 @@ class UsersSessionsResourceApi {
   /// and the page token is specified, sessions modified in the last 30 days are
   /// returned.
   ///
-  /// [includeDeleted] - If true, and if both startTime and endTime are omitted,
-  /// session deletions will be returned.
-  ///
-  /// [endTime] - An RFC3339 timestamp. Only sessions ending between the start
-  /// and end times will be included in the response. If this time is omitted
-  /// but startTime is specified, all sessions from startTime to the end of time
-  /// will be returned.
-  ///
   /// [startTime] - An RFC3339 timestamp. Only sessions ending between the start
   /// and end times will be included in the response. If this time is omitted
   /// but endTime is specified, all sessions from the start of time up to
   /// endTime will be returned.
-  ///
-  /// [activityType] - If non-empty, only sessions with these activity types
-  /// should be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -912,11 +912,11 @@ class UsersSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String userId,
-      {core.String pageToken,
-      core.bool includeDeleted,
-      core.String endTime,
-      core.String startTime,
+      {core.String endTime,
       core.List<core.int> activityType,
+      core.bool includeDeleted,
+      core.String pageToken,
+      core.String startTime,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -928,21 +928,21 @@ class UsersSessionsResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
-    }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
-    }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
     }
     if (activityType != null) {
       _queryParams["activityType"] =
           activityType.map((item) => "${item}").toList();
+    }
+    if (includeDeleted != null) {
+      _queryParams["includeDeleted"] = ["${includeDeleted}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

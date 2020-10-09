@@ -290,11 +290,6 @@ class PresentationsPagesResourceApi {
   ///
   /// [pageObjectId] - The object ID of the page whose thumbnail to retrieve.
   ///
-  /// [thumbnailProperties_mimeType] - The optional mime type of the thumbnail
-  /// image. If you don't specify the mime type, the mime type defaults to PNG.
-  /// Possible string values are:
-  /// - "PNG" : The default mime type.
-  ///
   /// [thumbnailProperties_thumbnailSize] - The optional thumbnail image size.
   /// If you don't specify the size, the server chooses a default size of the
   /// image.
@@ -305,6 +300,11 @@ class PresentationsPagesResourceApi {
   /// - "LARGE" : The thumbnail image width of 1600px.
   /// - "MEDIUM" : The thumbnail image width of 800px.
   /// - "SMALL" : The thumbnail image width of 200px.
+  ///
+  /// [thumbnailProperties_mimeType] - The optional mime type of the thumbnail
+  /// image. If you don't specify the mime type, the mime type defaults to PNG.
+  /// Possible string values are:
+  /// - "PNG" : The default mime type.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -318,8 +318,8 @@ class PresentationsPagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Thumbnail> getThumbnail(
       core.String presentationId, core.String pageObjectId,
-      {core.String thumbnailProperties_mimeType,
-      core.String thumbnailProperties_thumbnailSize,
+      {core.String thumbnailProperties_thumbnailSize,
+      core.String thumbnailProperties_mimeType,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -334,14 +334,14 @@ class PresentationsPagesResourceApi {
     if (pageObjectId == null) {
       throw new core.ArgumentError("Parameter pageObjectId is required.");
     }
-    if (thumbnailProperties_mimeType != null) {
-      _queryParams["thumbnailProperties.mimeType"] = [
-        thumbnailProperties_mimeType
-      ];
-    }
     if (thumbnailProperties_thumbnailSize != null) {
       _queryParams["thumbnailProperties.thumbnailSize"] = [
         thumbnailProperties_thumbnailSize
+      ];
+    }
+    if (thumbnailProperties_mimeType != null) {
+      _queryParams["thumbnailProperties.mimeType"] = [
+        thumbnailProperties_mimeType
       ];
     }
     if ($fields != null) {

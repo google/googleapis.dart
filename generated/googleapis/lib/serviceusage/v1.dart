@@ -211,11 +211,11 @@ class OperationsResourceApi {
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [name] - The name of the operation's parent resource.
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [name] - The name of the operation's parent resource.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -229,9 +229,9 @@ class OperationsResourceApi {
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
       {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
       core.String name,
+      core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -243,14 +243,14 @@ class OperationsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (name != null) {
-      _queryParams["name"] = [name];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -566,14 +566,14 @@ class ServicesResourceApi {
   /// `projects/123` where `123` is the project number.
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
-  /// [filter] - Only list services that conform to the given filter. The
-  /// allowed filter strings are `state:ENABLED` and `state:DISABLED`.
+  /// [pageSize] - Requested size of the next page of data. Requested page size
+  /// cannot exceed 200. If not set, the default page size is 50.
   ///
   /// [pageToken] - Token identifying which result to start with, which is
   /// returned by a previous list call.
   ///
-  /// [pageSize] - Requested size of the next page of data. Requested page size
-  /// cannot exceed 200. If not set, the default page size is 50.
+  /// [filter] - Only list services that conform to the given filter. The
+  /// allowed filter strings are `state:ENABLED` and `state:DISABLED`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -586,9 +586,9 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String parent,
-      {core.String filter,
+      {core.int pageSize,
       core.String pageToken,
-      core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -600,14 +600,14 @@ class ServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

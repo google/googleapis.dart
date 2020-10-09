@@ -105,9 +105,9 @@ class ProjectsLocationsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -121,8 +121,8 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
       {core.String pageToken,
-      core.String filter,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -137,11 +137,11 @@ class ProjectsLocationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -851,9 +851,9 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -867,8 +867,8 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
       {core.String pageToken,
-      core.int pageSize,
       core.String filter,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -883,11 +883,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

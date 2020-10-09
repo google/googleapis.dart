@@ -680,6 +680,12 @@ The Network Management API provides a collection of network performance monitori
 
 Official API documentation: https://cloud.google.com/
 
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google OAuth2 API - oauth2 v2
+
+Obtains end-user authorization grants for use with other Google APIs.
+
+Official API documentation: https://developers.google.com/identity/protocols/oauth2/
+
 #### OS Config API - osconfig v1
 
 OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.

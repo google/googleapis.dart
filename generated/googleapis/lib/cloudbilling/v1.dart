@@ -219,13 +219,6 @@ class BillingAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Options for how to filter the returned billing accounts.
-  /// Currently this only supports filtering for
-  /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
-  /// single provided reseller billing account. (e.g.
-  /// "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean
-  /// algebra and other fields are not currently supported.
-  ///
   /// [pageToken] - A token identifying a page of results to return. This should
   /// be a `next_page_token` value returned from a previous
   /// `ListBillingAccounts` call. If unspecified, the first page of results is
@@ -233,6 +226,13 @@ class BillingAccountsResourceApi {
   ///
   /// [pageSize] - Requested page size. The maximum page size is 100; this is
   /// also the default.
+  ///
+  /// [filter] - Options for how to filter the returned billing accounts.
+  /// Currently this only supports filtering for
+  /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
+  /// single provided reseller billing account. (e.g.
+  /// "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean
+  /// algebra and other fields are not currently supported.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -245,9 +245,9 @@ class BillingAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBillingAccountsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -256,14 +256,14 @@ class BillingAccountsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -729,13 +729,6 @@ class ServicesSkusResourceApi {
   /// "services/DA34-426B-A397"
   /// Value must have pattern "^services/[^/]+$".
   ///
-  /// [endTime] - Optional exclusive end time of the time range for which the
-  /// pricing versions will be returned. Timestamps in the future are not
-  /// allowed. The time range has to be within a single calendar month in
-  /// America/Los_Angeles timezone. Time range as a whole is optional. If not
-  /// specified, the latest pricing will be returned (up to 12 hours old at
-  /// most).
-  ///
   /// [currencyCode] - The ISO 4217 currency code for the pricing info in the
   /// response proto. Will use the conversion rate as of start_time. Optional.
   /// If not specified USD will be used.
@@ -744,6 +737,8 @@ class ServicesSkusResourceApi {
   /// be a `next_page_token` value returned from a previous `ListSkus` call. If
   /// unspecified, the first page of results is returned.
   ///
+  /// [pageSize] - Requested page size. Defaults to 5000.
+  ///
   /// [startTime] - Optional inclusive start time of the time range for which
   /// the pricing versions will be returned. Timestamps in the future are not
   /// allowed. The time range has to be within a single calendar month in
@@ -751,7 +746,12 @@ class ServicesSkusResourceApi {
   /// specified, the latest pricing will be returned (up to 12 hours old at
   /// most).
   ///
-  /// [pageSize] - Requested page size. Defaults to 5000.
+  /// [endTime] - Optional exclusive end time of the time range for which the
+  /// pricing versions will be returned. Timestamps in the future are not
+  /// allowed. The time range has to be within a single calendar month in
+  /// America/Los_Angeles timezone. Time range as a whole is optional. If not
+  /// specified, the latest pricing will be returned (up to 12 hours old at
+  /// most).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -764,11 +764,11 @@ class ServicesSkusResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSkusResponse> list(core.String parent,
-      {core.String endTime,
-      core.String currencyCode,
+      {core.String currencyCode,
       core.String pageToken,
-      core.String startTime,
       core.int pageSize,
+      core.String startTime,
+      core.String endTime,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -780,20 +780,20 @@ class ServicesSkusResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
     if (currencyCode != null) {
       _queryParams["currencyCode"] = [currencyCode];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

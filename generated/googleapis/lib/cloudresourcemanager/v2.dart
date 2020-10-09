@@ -272,8 +272,8 @@ class FoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. The maximum number of Folders to return in the
-  /// response.
+  /// [showDeleted] - Optional. Controls whether Folders in the DELETE_REQUESTED
+  /// state should be returned. Defaults to false.
   ///
   /// [parent] - Required. The resource name of the Organization or Folder whose
   /// Folders are being listed. Must be of the form `folders/{folder_id}` or
@@ -283,8 +283,8 @@ class FoldersResourceApi {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListFolders` that indicates where this listing should continue from.
   ///
-  /// [showDeleted] - Optional. Controls whether Folders in the DELETE_REQUESTED
-  /// state should be returned. Defaults to false.
+  /// [pageSize] - Optional. The maximum number of Folders to return in the
+  /// response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -297,10 +297,10 @@ class FoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFoldersResponse> list(
-      {core.int pageSize,
+      {core.bool showDeleted,
       core.String parent,
       core.String pageToken,
-      core.bool showDeleted,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -309,8 +309,8 @@ class FoldersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
@@ -318,8 +318,8 @@ class FoldersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

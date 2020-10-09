@@ -203,11 +203,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -220,9 +220,9 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -234,14 +234,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -276,6 +276,11 @@ class ServicesResourceApi {
   /// 'service.googleapis.com'.
   /// Value must have pattern "^services/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results returned by this
+  /// request. Currently, the default maximum is set to 1000. If `page_size`
+  /// isn't provided or the size provided is a number larger than 1000, it's
+  /// automatically set to 1000.
+  ///
   /// [pageToken] - Optional. The continuation token, which is used to page
   /// through large result sets. To get the next page of results, set this
   /// parameter to the value of `nextPageToken` from the previous response.
@@ -293,11 +298,6 @@ class ServicesResourceApi {
   /// included in the result set. For example, `tenant_resources.tag=xyz AND
   /// tenant_resources.resource=projects/123456`
   ///
-  /// [pageSize] - Optional. The maximum number of results returned by this
-  /// request. Currently, the default maximum is set to 1000. If `page_size`
-  /// isn't provided or the size provided is a number larger than 1000, it's
-  /// automatically set to 1000.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -309,9 +309,9 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<SearchTenancyUnitsResponse> search(core.String parent,
-      {core.String pageToken,
+      {core.int pageSize,
+      core.String pageToken,
       core.String query,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -323,14 +323,14 @@ class ServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (query != null) {
       _queryParams["query"] = [query];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -723,12 +723,12 @@ class ServicesTenancyUnitsResourceApi {
   /// [filter] - Optional. Filter expression over tenancy resources field.
   /// Optional.
   ///
+  /// [pageSize] - Optional. The maximum number of results returned by this
+  /// request.
+  ///
   /// [pageToken] - Optional. The continuation token, which is used to page
   /// through large result sets. To get the next page of results, set this
   /// parameter to the value of `nextPageToken` from the previous response.
-  ///
-  /// [pageSize] - Optional. The maximum number of results returned by this
-  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -742,8 +742,8 @@ class ServicesTenancyUnitsResourceApi {
   /// call, this method will complete with the same error.
   async.Future<ListTenancyUnitsResponse> list(core.String parent,
       {core.String filter,
-      core.String pageToken,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -758,11 +758,11 @@ class ServicesTenancyUnitsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

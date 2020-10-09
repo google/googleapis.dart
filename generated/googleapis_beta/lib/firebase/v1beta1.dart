@@ -66,14 +66,14 @@ class AvailableProjectsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - Token returned from a previous call to
+  /// `ListAvailableProjects` indicating where in the set of Projects to resume
+  /// listing.
+  ///
   /// [pageSize] - The maximum number of Projects to return in the response. The
   /// server may return fewer than this value at its discretion. If no value is
   /// specified (or too large a value is specified), the server will impose its
   /// own limit. This value cannot be negative.
-  ///
-  /// [pageToken] - Token returned from a previous call to
-  /// `ListAvailableProjects` indicating where in the set of Projects to resume
-  /// listing.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -86,7 +86,7 @@ class AvailableProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAvailableProjectsResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -94,11 +94,11 @@ class AvailableProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -706,6 +706,13 @@ class ProjectsResourceApi {
   /// PROJECT_IDENTIFIER values.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - A query string compatible with Google's
+  /// [AIP-160](https://google.aip.dev/160) standard. Use any of the following
+  /// fields in a query: *
+  /// [`appId`](../projects.apps#FirebaseProjectInfo.FIELDS.app_id) *
+  /// [`namespace`](../projects.apps#FirebaseProjectInfo.FIELDS.namespace) *
+  /// [`platform`](../projects.apps#FirebaseProjectInfo.FIELDS.platform)
+  ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this value at its discretion. If no value is
   /// specified (or too large a value is specified), then the server will impose
@@ -713,13 +720,6 @@ class ProjectsResourceApi {
   ///
   /// [pageToken] - Token returned from a previous call to `SearchFirebaseApps`
   /// indicating where in the set of Apps to resume listing.
-  ///
-  /// [filter] - A query string compatible with Google's
-  /// [AIP-160](https://google.aip.dev/160) standard. Use any of the following
-  /// fields in a query: *
-  /// [`appId`](../projects.apps#FirebaseProjectInfo.FIELDS.app_id) *
-  /// [`namespace`](../projects.apps#FirebaseProjectInfo.FIELDS.namespace) *
-  /// [`platform`](../projects.apps#FirebaseProjectInfo.FIELDS.platform)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -732,9 +732,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchFirebaseAppsResponse> searchApps(core.String parent,
-      {core.int pageSize,
+      {core.String filter,
+      core.int pageSize,
       core.String pageToken,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -746,14 +746,14 @@ class ProjectsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -952,13 +952,13 @@ class ProjectsAndroidAppsResourceApi {
   /// PROJECT_IDENTIFIER values.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Token returned from a previous call to `ListAndroidApps`
+  /// indicating where in the set of Apps to resume listing.
+  ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this at its discretion. If no value is
   /// specified (or too large a value is specified), then the server will impose
   /// its own limit.
-  ///
-  /// [pageToken] - Token returned from a previous call to `ListAndroidApps`
-  /// indicating where in the set of Apps to resume listing.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -971,7 +971,7 @@ class ProjectsAndroidAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAndroidAppsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -982,11 +982,11 @@ class ProjectsAndroidAppsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1271,14 +1271,14 @@ class ProjectsAvailableLocationsResourceApi {
   /// org-specific or project-specific location restrictions.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Token returned from a previous call to
+  /// `ListAvailableLocations` indicating where in the list of locations to
+  /// resume listing.
+  ///
   /// [pageSize] - The maximum number of locations to return in the response.
   /// The server may return fewer than this value at its discretion. If no value
   /// is specified (or too large a value is specified), then the server will
   /// impose its own limit. This value cannot be negative.
-  ///
-  /// [pageToken] - Token returned from a previous call to
-  /// `ListAvailableLocations` indicating where in the list of locations to
-  /// resume listing.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1291,7 +1291,7 @@ class ProjectsAvailableLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAvailableLocationsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1302,11 +1302,11 @@ class ProjectsAvailableLocationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

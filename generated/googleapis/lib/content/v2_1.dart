@@ -2728,6 +2728,58 @@ class OrderreturnsResourceApi {
         .then((data) => new OrderreturnsAcknowledgeResponse.fromJson(data));
   }
 
+  /// Create return in your Merchant Center account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrderreturnsCreateOrderReturnResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrderreturnsCreateOrderReturnResponse> createorderreturn(
+      OrderreturnsCreateOrderReturnRequest request, core.String merchantId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/orderreturns/createOrderReturn';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new OrderreturnsCreateOrderReturnResponse.fromJson(data));
+  }
+
   /// Retrieves an order return from your Merchant Center account.
   ///
   /// Request parameters:
@@ -14524,6 +14576,135 @@ class OrderreturnsAcknowledgeResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class OrderreturnsCreateOrderReturnRequest {
+  /// The list of line items to return.
+  core.List<OrderreturnsLineItem> lineItems;
+
+  /// The ID of the operation. Unique across all operations for a given order.
+  core.String operationId;
+
+  /// The ID of the order.
+  core.String orderId;
+
+  /// The way of the package being returned.
+  core.String returnMethodType;
+
+  OrderreturnsCreateOrderReturnRequest();
+
+  OrderreturnsCreateOrderReturnRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("lineItems")) {
+      lineItems = (_json["lineItems"] as core.List)
+          .map<OrderreturnsLineItem>(
+              (value) => new OrderreturnsLineItem.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("operationId")) {
+      operationId = _json["operationId"];
+    }
+    if (_json.containsKey("orderId")) {
+      orderId = _json["orderId"];
+    }
+    if (_json.containsKey("returnMethodType")) {
+      returnMethodType = _json["returnMethodType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lineItems != null) {
+      _json["lineItems"] = lineItems.map((value) => (value).toJson()).toList();
+    }
+    if (operationId != null) {
+      _json["operationId"] = operationId;
+    }
+    if (orderId != null) {
+      _json["orderId"] = orderId;
+    }
+    if (returnMethodType != null) {
+      _json["returnMethodType"] = returnMethodType;
+    }
+    return _json;
+  }
+}
+
+class OrderreturnsCreateOrderReturnResponse {
+  /// The status of the execution.
+  ///
+  /// Acceptable values are:
+  /// - "`duplicate`"
+  /// - "`executed`"
+  core.String executionStatus;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#orderreturnsCreateOrderReturnResponse".
+  core.String kind;
+
+  /// Created order return.
+  MerchantOrderReturn orderReturn;
+
+  OrderreturnsCreateOrderReturnResponse();
+
+  OrderreturnsCreateOrderReturnResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executionStatus")) {
+      executionStatus = _json["executionStatus"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("orderReturn")) {
+      orderReturn = new MerchantOrderReturn.fromJson(_json["orderReturn"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executionStatus != null) {
+      _json["executionStatus"] = executionStatus;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (orderReturn != null) {
+      _json["orderReturn"] = (orderReturn).toJson();
+    }
+    return _json;
+  }
+}
+
+class OrderreturnsLineItem {
+  /// The ID of the line item. This value is assigned by Google when an order is
+  /// created.
+  core.String lineItemId;
+
+  /// The quantity of this line item.
+  core.int quantity;
+
+  OrderreturnsLineItem();
+
+  OrderreturnsLineItem.fromJson(core.Map _json) {
+    if (_json.containsKey("lineItemId")) {
+      lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lineItemId != null) {
+      _json["lineItemId"] = lineItemId;
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
     }
     return _json;
   }

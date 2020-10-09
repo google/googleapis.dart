@@ -39,24 +39,24 @@ class EntitiesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [types] - Restricts returned entities with these types, e.g. Person (as
-  /// defined in http://schema.org/Person). If multiple types are specified,
-  /// returned entities will contain one or more of these types.
-  ///
-  /// [languages] - The list of language codes (defined in ISO 693) to run the
-  /// query with, e.g. 'en'.
-  ///
-  /// [limit] - Limits the number of entities to be returned.
-  ///
   /// [ids] - The list of entity id to be used for search instead of query
   /// string. To specify multiple ids in the HTTP request, repeat the parameter
   /// in the URL as in ...?ids=A&ids=B
   ///
-  /// [indent] - Enables indenting of json results.
+  /// [types] - Restricts returned entities with these types, e.g. Person (as
+  /// defined in http://schema.org/Person). If multiple types are specified,
+  /// returned entities will contain one or more of these types.
   ///
   /// [query] - The literal query string for search.
   ///
   /// [prefix] - Enables prefix match against names and aliases of entities
+  ///
+  /// [indent] - Enables indenting of json results.
+  ///
+  /// [limit] - Limits the number of entities to be returned.
+  ///
+  /// [languages] - The list of language codes (defined in ISO 693) to run the
+  /// query with, e.g. 'en'.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -69,13 +69,13 @@ class EntitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchResponse> search(
-      {core.List<core.String> types,
-      core.List<core.String> languages,
-      core.int limit,
-      core.List<core.String> ids,
-      core.bool indent,
+      {core.List<core.String> ids,
+      core.List<core.String> types,
       core.String query,
       core.bool prefix,
+      core.bool indent,
+      core.int limit,
+      core.List<core.String> languages,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -84,26 +84,26 @@ class EntitiesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (types != null) {
-      _queryParams["types"] = types;
-    }
-    if (languages != null) {
-      _queryParams["languages"] = languages;
-    }
-    if (limit != null) {
-      _queryParams["limit"] = ["${limit}"];
-    }
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
-    if (indent != null) {
-      _queryParams["indent"] = ["${indent}"];
+    if (types != null) {
+      _queryParams["types"] = types;
     }
     if (query != null) {
       _queryParams["query"] = [query];
     }
     if (prefix != null) {
       _queryParams["prefix"] = ["${prefix}"];
+    }
+    if (indent != null) {
+      _queryParams["indent"] = ["${indent}"];
+    }
+    if (limit != null) {
+      _queryParams["limit"] = ["${limit}"];
+    }
+    if (languages != null) {
+      _queryParams["languages"] = languages;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -90,9 +90,9 @@ class ApisResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [preferred] - Return only the preferred version of an API.
-  ///
   /// [name] - Only include APIs with the given name.
+  ///
+  /// [preferred] - Return only the preferred version of an API.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -105,7 +105,7 @@ class ApisResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DirectoryList> list(
-      {core.bool preferred, core.String name, core.String $fields}) {
+      {core.String name, core.bool preferred, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -113,11 +113,11 @@ class ApisResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (preferred != null) {
-      _queryParams["preferred"] = ["${preferred}"];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
+    }
+    if (preferred != null) {
+      _queryParams["preferred"] = ["${preferred}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

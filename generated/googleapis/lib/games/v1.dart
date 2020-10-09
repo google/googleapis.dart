@@ -61,13 +61,13 @@ class AchievementDefinitionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
   /// [maxResults] - The maximum number of achievement resources to return in
   /// the response, used for paging. For any response, the actual number of
   /// achievement resources returned may be less than the specified
   /// `maxResults`.
+  ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -82,8 +82,8 @@ class AchievementDefinitionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementDefinitionsListResponse> list(
-      {core.String language,
-      core.int maxResults,
+      {core.int maxResults,
+      core.String language,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -93,11 +93,11 @@ class AchievementDefinitionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -193,13 +193,6 @@ class AchievementsResourceApi {
   /// [playerId] - A player ID. A value of `me` may be used in place of the
   /// authenticated player's ID.
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [maxResults] - The maximum number of achievement resources to return in
-  /// the response, used for paging. For any response, the actual number of
-  /// achievement resources returned may be less than the specified
-  /// `maxResults`.
-  ///
   /// [state] - Tells the server to return only achievements with the specified
   /// state. If this parameter isn't specified, all achievements are returned.
   /// Possible string values are:
@@ -207,6 +200,13 @@ class AchievementsResourceApi {
   /// - "HIDDEN" : List only hidden achievements.
   /// - "REVEALED" : List only revealed achievements.
   /// - "UNLOCKED" : List only unlocked achievements.
+  ///
+  /// [maxResults] - The maximum number of achievement resources to return in
+  /// the response, used for paging. For any response, the actual number of
+  /// achievement resources returned may be less than the specified
+  /// `maxResults`.
+  ///
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
@@ -222,9 +222,9 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerAchievementListResponse> list(core.String playerId,
-      {core.String pageToken,
+      {core.String state,
       core.int maxResults,
-      core.String state,
+      core.String pageToken,
       core.String language,
       core.String $fields}) {
     var _url;
@@ -237,14 +237,14 @@ class AchievementsResourceApi {
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (state != null) {
+      _queryParams["state"] = [state];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (state != null) {
-      _queryParams["state"] = [state];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -691,11 +691,11 @@ class EventsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [maxResults] - The maximum number of event definitions to return in the
   /// response, used for paging. For any response, the actual number of event
   /// definitions to return may be less than the specified `maxResults`.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -709,8 +709,8 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future<EventDefinitionListResponse> listDefinitions(
       {core.String language,
-      core.int maxResults,
       core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -722,11 +722,11 @@ class EventsResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -854,11 +854,11 @@ class LeaderboardsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [maxResults] - The maximum number of leaderboards to return in the
   /// response. For any response, the actual number of leaderboards returned may
   /// be less than the specified `maxResults`.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
@@ -874,8 +874,8 @@ class LeaderboardsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardListResponse> list(
-      {core.int maxResults,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int maxResults,
       core.String language,
       core.String $fields}) {
     var _url;
@@ -885,11 +885,11 @@ class LeaderboardsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1101,11 +1101,11 @@ class PlayersResourceApi {
   /// - "FRIENDS_ALL" : Retrieve a list of players who are friends of the user
   /// in alphabetical order.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [maxResults] - The maximum number of player resources to return in the
   /// response, used for paging. For any response, the actual number of player
   /// resources returned may be less than the specified `maxResults`.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
@@ -1121,8 +1121,8 @@ class PlayersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerListResponse> list(core.String collection,
-      {core.int maxResults,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int maxResults,
       core.String language,
       core.String $fields}) {
     var _url;
@@ -1135,11 +1135,11 @@ class PlayersResourceApi {
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1243,8 +1243,9 @@ class ScoresResourceApi {
   /// - "WEEKLY" : List the top scores for the current day.
   /// - "DAILY" : List the top scores for the current week.
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
+  /// [maxResults] - The maximum number of leaderboard scores to return in the
+  /// response. For any response, the actual number of leaderboard scores
+  /// returned may be less than the specified `maxResults`.
   ///
   /// [includeRankType] - The types of ranks to return. If the parameter is
   /// omitted, no ranks will be returned.
@@ -1257,11 +1258,10 @@ class ScoresResourceApi {
   /// - "SOCIAL" : (Obsolete) Retrieve the social rank.
   /// - "FRIENDS" : Retrieve the rank on the friends collection.
   ///
-  /// [maxResults] - The maximum number of leaderboard scores to return in the
-  /// response. For any response, the actual number of leaderboard scores
-  /// returned may be less than the specified `maxResults`.
-  ///
   /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1275,10 +1275,10 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<PlayerLeaderboardScoreListResponse> get(
       core.String playerId, core.String leaderboardId, core.String timeSpan,
-      {core.String language,
+      {core.int maxResults,
       core.String includeRankType,
-      core.int maxResults,
       core.String pageToken,
+      core.String language,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1296,17 +1296,17 @@ class ScoresResourceApi {
     if (timeSpan == null) {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
-    if (language != null) {
-      _queryParams["language"] = [language];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (includeRankType != null) {
       _queryParams["includeRankType"] = [includeRankType];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1351,12 +1351,12 @@ class ScoresResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
+  ///
   /// [maxResults] - The maximum number of leaderboard scores to return in the
   /// response. For any response, the actual number of leaderboard scores
   /// returned may be less than the specified `maxResults`.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1371,8 +1371,8 @@ class ScoresResourceApi {
   async.Future<LeaderboardScores> list(
       core.String leaderboardId, core.String collection, core.String timeSpan,
       {core.String pageToken,
-      core.int maxResults,
       core.String language,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1394,11 +1394,11 @@ class ScoresResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1438,22 +1438,22 @@ class ScoresResourceApi {
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
   ///
-  /// [maxResults] - The maximum number of leaderboard scores to return in the
-  /// response. For any response, the actual number of leaderboard scores
-  /// returned may be less than the specified `maxResults`.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [resultsAbove] - The preferred number of scores to return above the
   /// player's score. More scores may be returned if the player is at the bottom
   /// of the leaderboard; fewer may be returned if the player is at the top.
   /// Must be less than or equal to maxResults.
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
   /// [returnTopIfAbsent] - True if the top scores should be returned when the
   /// player is not in the leaderboard. Defaults to true.
+  ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
+  ///
+  /// [maxResults] - The maximum number of leaderboard scores to return in the
+  /// response. For any response, the actual number of leaderboard scores
+  /// returned may be less than the specified `maxResults`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1467,11 +1467,11 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardScores> listWindow(
       core.String leaderboardId, core.String collection, core.String timeSpan,
-      {core.int maxResults,
-      core.String language,
+      {core.String pageToken,
       core.int resultsAbove,
-      core.String pageToken,
       core.bool returnTopIfAbsent,
+      core.String language,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1490,20 +1490,20 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (resultsAbove != null) {
       _queryParams["resultsAbove"] = ["${resultsAbove}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (returnTopIfAbsent != null) {
       _queryParams["returnTopIfAbsent"] = ["${returnTopIfAbsent}"];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1536,13 +1536,13 @@ class ScoresResourceApi {
   /// value. For time, the score represents elapsed time in milliseconds. For
   /// currency, the score represents a value in micro units.
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
   /// [scoreTag] - Additional information about the score you're submitting.
   /// Values must contain no more than 64 URI-safe characters as defined by
   /// section 2.3 of RFC 3986.
   /// Value must have pattern "[a-zA-Z0-9-._~]{0,64}".
+  ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1556,7 +1556,7 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<PlayerScoreResponse> submit(
       core.String leaderboardId, core.String score,
-      {core.String language, core.String scoreTag, core.String $fields}) {
+      {core.String scoreTag, core.String language, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1571,11 +1571,11 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter score is required.");
     }
     _queryParams["score"] = [score];
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
     if (scoreTag != null) {
       _queryParams["scoreTag"] = [scoreTag];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1708,11 +1708,11 @@ class SnapshotsResourceApi {
   /// [playerId] - A player ID. A value of `me` may be used in place of the
   /// authenticated player's ID.
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
   /// [maxResults] - The maximum number of snapshot resources to return in the
   /// response, used for paging. For any response, the actual number of snapshot
   /// resources returned may be less than the specified `maxResults`.
+  ///
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
@@ -1728,8 +1728,8 @@ class SnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SnapshotListResponse> list(core.String playerId,
-      {core.String pageToken,
-      core.int maxResults,
+      {core.int maxResults,
+      core.String pageToken,
       core.String language,
       core.String $fields}) {
     var _url;
@@ -1742,11 +1742,11 @@ class SnapshotsResourceApi {
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];

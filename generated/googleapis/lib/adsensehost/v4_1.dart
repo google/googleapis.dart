@@ -204,13 +204,13 @@ class AccountsAdclientsResourceApi {
   ///
   /// [accountId] - Account for which to list ad clients.
   ///
-  /// [pageToken] - A continuation token, used to page through ad clients. To
-  /// retrieve the next page, set this parameter to the value of "nextPageToken"
-  /// from the previous response.
-  ///
   /// [maxResults] - The maximum number of ad clients to include in the
   /// response, used for paging.
   /// Value must be between "0" and "10000".
+  ///
+  /// [pageToken] - A continuation token, used to page through ad clients. To
+  /// retrieve the next page, set this parameter to the value of "nextPageToken"
+  /// from the previous response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -223,7 +223,7 @@ class AccountsAdclientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdClients> list(core.String accountId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -234,11 +234,11 @@ class AccountsAdclientsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -726,29 +726,29 @@ class AccountsReportsResourceApi {
   /// Value must have pattern
   /// "\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)".
   ///
-  /// [sort] - The name of a dimension or metric to sort the resulting report
-  /// on, optionally prefixed with "+" to sort ascending or "-" to sort
-  /// descending. If no prefix is specified, the column is sorted ascending.
-  /// Value must have pattern "(\+|-)?[a-zA-Z_]+".
-  ///
-  /// [startIndex] - Index of the first row of report data to return.
-  /// Value must be between "0" and "5000".
-  ///
   /// [filter] - Filters to be run on the report.
   /// Value must have pattern "[a-zA-Z_]+(==|=@).+".
   ///
-  /// [metric] - Numeric columns to include in the report.
-  /// Value must have pattern "[a-zA-Z_]+".
+  /// [startIndex] - Index of the first row of report data to return.
+  /// Value must be between "0" and "5000".
   ///
   /// [locale] - Optional locale to use for translating report output to a local
   /// language. Defaults to "en_US" if not specified.
   /// Value must have pattern "[a-zA-Z_]+".
   ///
-  /// [dimension] - Dimensions to base the report on.
+  /// [metric] - Numeric columns to include in the report.
   /// Value must have pattern "[a-zA-Z_]+".
+  ///
+  /// [sort] - The name of a dimension or metric to sort the resulting report
+  /// on, optionally prefixed with "+" to sort ascending or "-" to sort
+  /// descending. If no prefix is specified, the column is sorted ascending.
+  /// Value must have pattern "(\+|-)?[a-zA-Z_]+".
   ///
   /// [maxResults] - The maximum number of rows of report data to return.
   /// Value must be between "0" and "50000".
+  ///
+  /// [dimension] - Dimensions to base the report on.
+  /// Value must have pattern "[a-zA-Z_]+".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -762,13 +762,13 @@ class AccountsReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Report> generate(
       core.String accountId, core.String startDate, core.String endDate,
-      {core.List<core.String> sort,
+      {core.List<core.String> filter,
       core.int startIndex,
-      core.List<core.String> filter,
-      core.List<core.String> metric,
       core.String locale,
-      core.List<core.String> dimension,
+      core.List<core.String> metric,
+      core.List<core.String> sort,
       core.int maxResults,
+      core.List<core.String> dimension,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -788,26 +788,26 @@ class AccountsReportsResourceApi {
       throw new core.ArgumentError("Parameter endDate is required.");
     }
     _queryParams["endDate"] = [endDate];
-    if (sort != null) {
-      _queryParams["sort"] = sort;
+    if (filter != null) {
+      _queryParams["filter"] = filter;
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = filter;
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
     }
     if (metric != null) {
       _queryParams["metric"] = metric;
     }
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
-    }
-    if (dimension != null) {
-      _queryParams["dimension"] = dimension;
+    if (sort != null) {
+      _queryParams["sort"] = sort;
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (dimension != null) {
+      _queryParams["dimension"] = dimension;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -943,11 +943,11 @@ class AssociationsessionsResourceApi {
   ///
   /// [userLocale] - The preferred locale of the user.
   ///
+  /// [websiteLocale] - The locale of the user's hosted website.
+  ///
   /// [callbackUrl] - The URL to redirect the user to once association is
   /// completed. It receives a token parameter that can then be used to retrieve
   /// the associated account.
-  ///
-  /// [websiteLocale] - The locale of the user's hosted website.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -962,8 +962,8 @@ class AssociationsessionsResourceApi {
   async.Future<AssociationSession> start(
       core.List<core.String> productCode, core.String websiteUrl,
       {core.String userLocale,
-      core.String callbackUrl,
       core.String websiteLocale,
+      core.String callbackUrl,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -983,11 +983,11 @@ class AssociationsessionsResourceApi {
     if (userLocale != null) {
       _queryParams["userLocale"] = [userLocale];
     }
-    if (callbackUrl != null) {
-      _queryParams["callbackUrl"] = [callbackUrl];
-    }
     if (websiteLocale != null) {
       _queryParams["websiteLocale"] = [websiteLocale];
+    }
+    if (callbackUrl != null) {
+      _queryParams["callbackUrl"] = [callbackUrl];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1400,21 +1400,14 @@ class ReportsResourceApi {
   /// Value must have pattern
   /// "\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)".
   ///
-  /// [filter] - Filters to be run on the report.
-  /// Value must have pattern "[a-zA-Z_]+(==|=@).+".
+  /// [dimension] - Dimensions to base the report on.
+  /// Value must have pattern "[a-zA-Z_]+".
   ///
   /// [metric] - Numeric columns to include in the report.
   /// Value must have pattern "[a-zA-Z_]+".
   ///
-  /// [dimension] - Dimensions to base the report on.
-  /// Value must have pattern "[a-zA-Z_]+".
-  ///
-  /// [locale] - Optional locale to use for translating report output to a local
-  /// language. Defaults to "en_US" if not specified.
-  /// Value must have pattern "[a-zA-Z_]+".
-  ///
-  /// [startIndex] - Index of the first row of report data to return.
-  /// Value must be between "0" and "5000".
+  /// [filter] - Filters to be run on the report.
+  /// Value must have pattern "[a-zA-Z_]+(==|=@).+".
   ///
   /// [maxResults] - The maximum number of rows of report data to return.
   /// Value must be between "0" and "50000".
@@ -1423,6 +1416,13 @@ class ReportsResourceApi {
   /// on, optionally prefixed with "+" to sort ascending or "-" to sort
   /// descending. If no prefix is specified, the column is sorted ascending.
   /// Value must have pattern "(\+|-)?[a-zA-Z_]+".
+  ///
+  /// [locale] - Optional locale to use for translating report output to a local
+  /// language. Defaults to "en_US" if not specified.
+  /// Value must have pattern "[a-zA-Z_]+".
+  ///
+  /// [startIndex] - Index of the first row of report data to return.
+  /// Value must be between "0" and "5000".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1435,13 +1435,13 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Report> generate(core.String startDate, core.String endDate,
-      {core.List<core.String> filter,
+      {core.List<core.String> dimension,
       core.List<core.String> metric,
-      core.List<core.String> dimension,
-      core.String locale,
-      core.int startIndex,
+      core.List<core.String> filter,
       core.int maxResults,
       core.List<core.String> sort,
+      core.String locale,
+      core.int startIndex,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1458,26 +1458,26 @@ class ReportsResourceApi {
       throw new core.ArgumentError("Parameter endDate is required.");
     }
     _queryParams["endDate"] = [endDate];
-    if (filter != null) {
-      _queryParams["filter"] = filter;
+    if (dimension != null) {
+      _queryParams["dimension"] = dimension;
     }
     if (metric != null) {
       _queryParams["metric"] = metric;
     }
-    if (dimension != null) {
-      _queryParams["dimension"] = dimension;
-    }
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+    if (filter != null) {
+      _queryParams["filter"] = filter;
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (sort != null) {
       _queryParams["sort"] = sort;
+    }
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1608,13 +1608,13 @@ class UrlchannelsResourceApi {
   ///
   /// [adClientId] - Ad client for which to list URL channels.
   ///
-  /// [maxResults] - The maximum number of URL channels to include in the
-  /// response, used for paging.
-  /// Value must be between "0" and "10000".
-  ///
   /// [pageToken] - A continuation token, used to page through URL channels. To
   /// retrieve the next page, set this parameter to the value of "nextPageToken"
   /// from the previous response.
+  ///
+  /// [maxResults] - The maximum number of URL channels to include in the
+  /// response, used for paging.
+  /// Value must be between "0" and "10000".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1627,7 +1627,7 @@ class UrlchannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UrlChannels> list(core.String adClientId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1638,11 +1638,11 @@ class UrlchannelsResourceApi {
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

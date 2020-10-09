@@ -2857,6 +2857,16 @@ class ProductsResourceApi {
   ///
   /// [enterpriseId] - The ID of the enterprise.
   ///
+  /// [approved] - Specifies whether to search among all products (false) or
+  /// among only products that have been approved (true). Only "true" is
+  /// supported, and should be specified.
+  ///
+  /// [maxResults] - Defines how many results the list operation should return.
+  /// The default number depends on the resource collection.
+  ///
+  /// [token] - Defines the token of the page to return, usually taken from
+  /// TokenPagination. This can only be used if token paging is enabled.
+  ///
   /// [query] - The search query as typed in the Google Play store search box.
   /// If omitted, all approved apps will be returned (using the pagination
   /// parameters), including apps that are not available in the store (e.g.
@@ -2865,16 +2875,6 @@ class ProductsResourceApi {
   /// [language] - The BCP47 tag for the user's preferred language (e.g.
   /// "en-US", "de"). Results are returned in the language best matching the
   /// preferred language.
-  ///
-  /// [maxResults] - Defines how many results the list operation should return.
-  /// The default number depends on the resource collection.
-  ///
-  /// [approved] - Specifies whether to search among all products (false) or
-  /// among only products that have been approved (true). Only "true" is
-  /// supported, and should be specified.
-  ///
-  /// [token] - Defines the token of the page to return, usually taken from
-  /// TokenPagination. This can only be used if token paging is enabled.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2887,11 +2887,11 @@ class ProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProductsListResponse> list(core.String enterpriseId,
-      {core.String query,
-      core.String language,
+      {core.bool approved,
       core.int maxResults,
-      core.bool approved,
       core.String token,
+      core.String query,
+      core.String language,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2903,20 +2903,20 @@ class ProductsResourceApi {
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
     }
+    if (approved != null) {
+      _queryParams["approved"] = ["${approved}"];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (token != null) {
+      _queryParams["token"] = [token];
+    }
     if (query != null) {
       _queryParams["query"] = [query];
     }
     if (language != null) {
       _queryParams["language"] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (approved != null) {
-      _queryParams["approved"] = ["${approved}"];
-    }
-    if (token != null) {
-      _queryParams["token"] = [token];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

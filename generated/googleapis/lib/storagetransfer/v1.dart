@@ -148,7 +148,7 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [jobName] - " Required. The job to get.
+  /// [jobName] - Required. " The job to get.
   /// Value must have pattern "^transferJobs/.*$".
   ///
   /// [projectId] - Required. The ID of the Google Cloud Platform Console
@@ -337,6 +337,8 @@ class TransferOperationsResourceApi {
   /// compute a new delta with the five files that were not copied today plus
   /// any new files discovered tomorrow.
   ///
+  /// [request] - The metadata request object.
+  ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
@@ -352,7 +354,8 @@ class TransferOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(core.String name, {core.String $fields}) {
+  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
+      {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -360,6 +363,9 @@ class TransferOperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
@@ -632,9 +638,9 @@ class AwsAccessKey {
 /// An AwsS3Data resource can be a data source, but not a data sink. In an
 /// AwsS3Data resource, an object's name is the S3 object's key name.
 class AwsS3Data {
-  /// Required. AWS access key used to sign the API requests to the AWS S3
-  /// bucket. Permissions on the bucket must be granted to the access ID of the
-  /// AWS access key.
+  /// Required. Input only. AWS access key used to sign the API requests to the
+  /// AWS S3 bucket. Permissions on the bucket must be granted to the access ID
+  /// of the AWS access key.
   AwsAccessKey awsAccessKey;
 
   /// Required. S3 Bucket name (see [Creating a
@@ -673,7 +679,8 @@ class AwsS3Data {
 /// Storage blob's key
 /// name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
 class AzureBlobStorageData {
-  /// Required. Credentials used to authenticate API requests to Azure.
+  /// Required. Input only. Credentials used to authenticate API requests to
+  /// Azure.
   AzureCredentials azureCredentials;
 
   /// Required. The container to transfer from the Azure Storage account.
@@ -734,6 +741,19 @@ class AzureCredentials {
     if (sasToken != null) {
       _json["sasToken"] = sasToken;
     }
+    return _json;
+  }
+}
+
+/// The request message for Operations.CancelOperation.
+class CancelOperationRequest {
+  CancelOperationRequest();
+
+  CancelOperationRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2069,9 +2089,9 @@ class TransferSpec {
   /// "last modification time" do not exclude objects in a data sink.
   ObjectConditions objectConditions;
 
-  /// If the option delete_objects_unique_in_sink is `true`, object conditions
-  /// based on objects' "last modification time" are ignored and do not exclude
-  /// objects in a data source or a data sink.
+  /// If the option delete_objects_unique_in_sink is `true` and time-based
+  /// object conditions such as 'last modification time' are specified, the
+  /// request fails with an INVALID_ARGUMENT error.
   TransferOptions transferOptions;
 
   TransferSpec();

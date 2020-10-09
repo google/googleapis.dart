@@ -437,11 +437,11 @@ class AccountsAdunitsResourceApi {
   ///
   /// [adClientId] - Ad client for which to list ad units.
   ///
+  /// [includeInactive] - Whether to include inactive ad units. Default: true.
+  ///
   /// [pageToken] - A continuation token, used to page through ad units. To
   /// retrieve the next page, set this parameter to the value of "nextPageToken"
   /// from the previous response.
-  ///
-  /// [includeInactive] - Whether to include inactive ad units. Default: true.
   ///
   /// [maxResults] - The maximum number of ad units to include in the response,
   /// used for paging.
@@ -458,8 +458,8 @@ class AccountsAdunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdUnits> list(core.String accountId, core.String adClientId,
-      {core.String pageToken,
-      core.bool includeInactive,
+      {core.bool includeInactive,
+      core.String pageToken,
       core.int maxResults,
       core.String $fields}) {
     var _url;
@@ -475,11 +475,11 @@ class AccountsAdunitsResourceApi {
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -848,15 +848,15 @@ class AccountsCustomchannelsAdunitsResourceApi {
   ///
   /// [customChannelId] - Custom channel for which to list ad units.
   ///
-  /// [pageToken] - A continuation token, used to page through ad units. To
-  /// retrieve the next page, set this parameter to the value of "nextPageToken"
-  /// from the previous response.
-  ///
   /// [includeInactive] - Whether to include inactive ad units. Default: true.
   ///
   /// [maxResults] - The maximum number of ad units to include in the response,
   /// used for paging.
   /// Value must be between "0" and "10000".
+  ///
+  /// [pageToken] - A continuation token, used to page through ad units. To
+  /// retrieve the next page, set this parameter to the value of "nextPageToken"
+  /// from the previous response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -870,9 +870,9 @@ class AccountsCustomchannelsAdunitsResourceApi {
   /// this method will complete with the same error.
   async.Future<AdUnits> list(core.String accountId, core.String adClientId,
       core.String customChannelId,
-      {core.String pageToken,
-      core.bool includeInactive,
+      {core.bool includeInactive,
       core.int maxResults,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -890,14 +890,14 @@ class AccountsCustomchannelsAdunitsResourceApi {
     if (customChannelId == null) {
       throw new core.ArgumentError("Parameter customChannelId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -997,23 +997,6 @@ class AccountsReportsResourceApi {
   /// Value must have pattern
   /// "\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)".
   ///
-  /// [metric] - Numeric columns to include in the report.
-  /// Value must have pattern "[a-zA-Z_]+".
-  ///
-  /// [sort] - The name of a dimension or metric to sort the resulting report
-  /// on, optionally prefixed with "+" to sort ascending or "-" to sort
-  /// descending. If no prefix is specified, the column is sorted ascending.
-  /// Value must have pattern "(\+|-)?[a-zA-Z_]+".
-  ///
-  /// [startIndex] - Index of the first row of report data to return.
-  /// Value must be between "0" and "5000".
-  ///
-  /// [dimension] - Dimensions to base the report on.
-  /// Value must have pattern "[a-zA-Z_]+".
-  ///
-  /// [filter] - Filters to be run on the report.
-  /// Value must have pattern "[a-zA-Z_]+(==|=@).+".
-  ///
   /// [useTimezoneReporting] - Whether the report should be generated in the
   /// AdSense account's local timezone. If false default PST/PDT timezone will
   /// be used.
@@ -1022,12 +1005,29 @@ class AccountsReportsResourceApi {
   /// language. Defaults to "en_US" if not specified.
   /// Value must have pattern "[a-zA-Z_]+".
   ///
-  /// [maxResults] - The maximum number of rows of report data to return.
-  /// Value must be between "0" and "50000".
-  ///
   /// [currency] - Optional currency to use when reporting on monetary metrics.
   /// Defaults to the account's currency if not set.
   /// Value must have pattern "[a-zA-Z]+".
+  ///
+  /// [filter] - Filters to be run on the report.
+  /// Value must have pattern "[a-zA-Z_]+(==|=@).+".
+  ///
+  /// [maxResults] - The maximum number of rows of report data to return.
+  /// Value must be between "0" and "50000".
+  ///
+  /// [sort] - The name of a dimension or metric to sort the resulting report
+  /// on, optionally prefixed with "+" to sort ascending or "-" to sort
+  /// descending. If no prefix is specified, the column is sorted ascending.
+  /// Value must have pattern "(\+|-)?[a-zA-Z_]+".
+  ///
+  /// [dimension] - Dimensions to base the report on.
+  /// Value must have pattern "[a-zA-Z_]+".
+  ///
+  /// [metric] - Numeric columns to include in the report.
+  /// Value must have pattern "[a-zA-Z_]+".
+  ///
+  /// [startIndex] - Index of the first row of report data to return.
+  /// Value must be between "0" and "5000".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1050,15 +1050,15 @@ class AccountsReportsResourceApi {
   /// this method will complete with the same error.
   async.Future generate(
       core.String accountId, core.String startDate, core.String endDate,
-      {core.List<core.String> metric,
-      core.List<core.String> sort,
-      core.int startIndex,
-      core.List<core.String> dimension,
-      core.List<core.String> filter,
-      core.bool useTimezoneReporting,
+      {core.bool useTimezoneReporting,
       core.String locale,
-      core.int maxResults,
       core.String currency,
+      core.List<core.String> filter,
+      core.int maxResults,
+      core.List<core.String> sort,
+      core.List<core.String> dimension,
+      core.List<core.String> metric,
+      core.int startIndex,
       core.String $fields,
       commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
@@ -1080,32 +1080,32 @@ class AccountsReportsResourceApi {
       throw new core.ArgumentError("Parameter endDate is required.");
     }
     _queryParams["endDate"] = [endDate];
-    if (metric != null) {
-      _queryParams["metric"] = metric;
-    }
-    if (sort != null) {
-      _queryParams["sort"] = sort;
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
-    }
-    if (dimension != null) {
-      _queryParams["dimension"] = dimension;
-    }
-    if (filter != null) {
-      _queryParams["filter"] = filter;
-    }
     if (useTimezoneReporting != null) {
       _queryParams["useTimezoneReporting"] = ["${useTimezoneReporting}"];
     }
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
+    if (currency != null) {
+      _queryParams["currency"] = [currency];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = filter;
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (currency != null) {
-      _queryParams["currency"] = [currency];
+    if (sort != null) {
+      _queryParams["sort"] = sort;
+    }
+    if (dimension != null) {
+      _queryParams["dimension"] = dimension;
+    }
+    if (metric != null) {
+      _queryParams["metric"] = metric;
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1147,15 +1147,15 @@ class AccountsReportsSavedResourceApi {
   ///
   /// [savedReportId] - The saved report to retrieve.
   ///
-  /// [maxResults] - The maximum number of rows of report data to return.
-  /// Value must be between "0" and "50000".
+  /// [startIndex] - Index of the first row of report data to return.
+  /// Value must be between "0" and "5000".
   ///
   /// [locale] - Optional locale to use for translating report output to a local
   /// language. Defaults to "en_US" if not specified.
   /// Value must have pattern "[a-zA-Z_]+".
   ///
-  /// [startIndex] - Index of the first row of report data to return.
-  /// Value must be between "0" and "5000".
+  /// [maxResults] - The maximum number of rows of report data to return.
+  /// Value must be between "0" and "50000".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1169,9 +1169,9 @@ class AccountsReportsSavedResourceApi {
   /// this method will complete with the same error.
   async.Future<AdsenseReportsGenerateResponse> generate(
       core.String accountId, core.String savedReportId,
-      {core.int maxResults,
+      {core.int startIndex,
       core.String locale,
-      core.int startIndex,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1186,14 +1186,14 @@ class AccountsReportsSavedResourceApi {
     if (savedReportId == null) {
       throw new core.ArgumentError("Parameter savedReportId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
     }
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1220,13 +1220,13 @@ class AccountsReportsSavedResourceApi {
   ///
   /// [accountId] - Account to which the saved reports belong.
   ///
-  /// [maxResults] - The maximum number of saved reports to include in the
-  /// response, used for paging.
-  /// Value must be between "0" and "100".
-  ///
   /// [pageToken] - A continuation token, used to page through saved reports. To
   /// retrieve the next page, set this parameter to the value of "nextPageToken"
   /// from the previous response.
+  ///
+  /// [maxResults] - The maximum number of saved reports to include in the
+  /// response, used for paging.
+  /// Value must be between "0" and "100".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1239,7 +1239,7 @@ class AccountsReportsSavedResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SavedReports> list(core.String accountId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1250,11 +1250,11 @@ class AccountsReportsSavedResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1338,13 +1338,13 @@ class AccountsSavedadstylesResourceApi {
   ///
   /// [accountId] - Account for which to list saved ad styles.
   ///
-  /// [pageToken] - A continuation token, used to page through saved ad styles.
-  /// To retrieve the next page, set this parameter to the value of
-  /// "nextPageToken" from the previous response.
-  ///
   /// [maxResults] - The maximum number of saved ad styles to include in the
   /// response, used for paging.
   /// Value must be between "0" and "10000".
+  ///
+  /// [pageToken] - A continuation token, used to page through saved ad styles.
+  /// To retrieve the next page, set this parameter to the value of
+  /// "nextPageToken" from the previous response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1357,7 +1357,7 @@ class AccountsSavedadstylesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SavedAdStyles> list(core.String accountId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1368,11 +1368,11 @@ class AccountsSavedadstylesResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1936,13 +1936,13 @@ class CustomchannelsResourceApi {
   ///
   /// [adClientId] - Ad client for which to list custom channels.
   ///
-  /// [maxResults] - The maximum number of custom channels to include in the
-  /// response, used for paging.
-  /// Value must be between "0" and "10000".
-  ///
   /// [pageToken] - A continuation token, used to page through custom channels.
   /// To retrieve the next page, set this parameter to the value of
   /// "nextPageToken" from the previous response.
+  ///
+  /// [maxResults] - The maximum number of custom channels to include in the
+  /// response, used for paging.
+  /// Value must be between "0" and "10000".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1955,7 +1955,7 @@ class CustomchannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomChannels> list(core.String adClientId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1966,11 +1966,11 @@ class CustomchannelsResourceApi {
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2004,15 +2004,15 @@ class CustomchannelsAdunitsResourceApi {
   ///
   /// [customChannelId] - Custom channel for which to list ad units.
   ///
-  /// [maxResults] - The maximum number of ad units to include in the response,
-  /// used for paging.
-  /// Value must be between "0" and "10000".
-  ///
-  /// [includeInactive] - Whether to include inactive ad units. Default: true.
-  ///
   /// [pageToken] - A continuation token, used to page through ad units. To
   /// retrieve the next page, set this parameter to the value of "nextPageToken"
   /// from the previous response.
+  ///
+  /// [includeInactive] - Whether to include inactive ad units. Default: true.
+  ///
+  /// [maxResults] - The maximum number of ad units to include in the response,
+  /// used for paging.
+  /// Value must be between "0" and "10000".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2026,9 +2026,9 @@ class CustomchannelsAdunitsResourceApi {
   /// this method will complete with the same error.
   async.Future<AdUnits> list(
       core.String adClientId, core.String customChannelId,
-      {core.int maxResults,
+      {core.String pageToken,
       core.bool includeInactive,
-      core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2043,14 +2043,14 @@ class CustomchannelsAdunitsResourceApi {
     if (customChannelId == null) {
       throw new core.ArgumentError("Parameter customChannelId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2236,28 +2236,10 @@ class ReportsResourceApi {
   /// Value must have pattern
   /// "\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)|(latest-(\d{2})-(\d{2})(-\d+y)?)|(latest-latest-(\d{2})(-\d+m)?)".
   ///
-  /// [dimension] - Dimensions to base the report on.
+  /// [metric] - Numeric columns to include in the report.
   /// Value must have pattern "[a-zA-Z_]+".
   ///
-  /// [startIndex] - Index of the first row of report data to return.
-  /// Value must be between "0" and "5000".
-  ///
-  /// [filter] - Filters to be run on the report.
-  /// Value must have pattern "[a-zA-Z_]+(==|=@).+".
-  ///
   /// [accountId] - Accounts upon which to report.
-  ///
-  /// [useTimezoneReporting] - Whether the report should be generated in the
-  /// AdSense account's local timezone. If false default PST/PDT timezone will
-  /// be used.
-  ///
-  /// [sort] - The name of a dimension or metric to sort the resulting report
-  /// on, optionally prefixed with "+" to sort ascending or "-" to sort
-  /// descending. If no prefix is specified, the column is sorted ascending.
-  /// Value must have pattern "(\+|-)?[a-zA-Z_]+".
-  ///
-  /// [maxResults] - The maximum number of rows of report data to return.
-  /// Value must be between "0" and "50000".
   ///
   /// [currency] - Optional currency to use when reporting on monetary metrics.
   /// Defaults to the account's currency if not set.
@@ -2267,8 +2249,26 @@ class ReportsResourceApi {
   /// language. Defaults to "en_US" if not specified.
   /// Value must have pattern "[a-zA-Z_]+".
   ///
-  /// [metric] - Numeric columns to include in the report.
+  /// [useTimezoneReporting] - Whether the report should be generated in the
+  /// AdSense account's local timezone. If false default PST/PDT timezone will
+  /// be used.
+  ///
+  /// [startIndex] - Index of the first row of report data to return.
+  /// Value must be between "0" and "5000".
+  ///
+  /// [maxResults] - The maximum number of rows of report data to return.
+  /// Value must be between "0" and "50000".
+  ///
+  /// [sort] - The name of a dimension or metric to sort the resulting report
+  /// on, optionally prefixed with "+" to sort ascending or "-" to sort
+  /// descending. If no prefix is specified, the column is sorted ascending.
+  /// Value must have pattern "(\+|-)?[a-zA-Z_]+".
+  ///
+  /// [dimension] - Dimensions to base the report on.
   /// Value must have pattern "[a-zA-Z_]+".
+  ///
+  /// [filter] - Filters to be run on the report.
+  /// Value must have pattern "[a-zA-Z_]+(==|=@).+".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2290,16 +2290,16 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future generate(core.String startDate, core.String endDate,
-      {core.List<core.String> dimension,
-      core.int startIndex,
-      core.List<core.String> filter,
+      {core.List<core.String> metric,
       core.List<core.String> accountId,
-      core.bool useTimezoneReporting,
-      core.List<core.String> sort,
-      core.int maxResults,
       core.String currency,
       core.String locale,
-      core.List<core.String> metric,
+      core.bool useTimezoneReporting,
+      core.int startIndex,
+      core.int maxResults,
+      core.List<core.String> sort,
+      core.List<core.String> dimension,
+      core.List<core.String> filter,
       core.String $fields,
       commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
@@ -2318,26 +2318,11 @@ class ReportsResourceApi {
       throw new core.ArgumentError("Parameter endDate is required.");
     }
     _queryParams["endDate"] = [endDate];
-    if (dimension != null) {
-      _queryParams["dimension"] = dimension;
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = filter;
+    if (metric != null) {
+      _queryParams["metric"] = metric;
     }
     if (accountId != null) {
       _queryParams["accountId"] = accountId;
-    }
-    if (useTimezoneReporting != null) {
-      _queryParams["useTimezoneReporting"] = ["${useTimezoneReporting}"];
-    }
-    if (sort != null) {
-      _queryParams["sort"] = sort;
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (currency != null) {
       _queryParams["currency"] = [currency];
@@ -2345,8 +2330,23 @@ class ReportsResourceApi {
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
-    if (metric != null) {
-      _queryParams["metric"] = metric;
+    if (useTimezoneReporting != null) {
+      _queryParams["useTimezoneReporting"] = ["${useTimezoneReporting}"];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (sort != null) {
+      _queryParams["sort"] = sort;
+    }
+    if (dimension != null) {
+      _queryParams["dimension"] = dimension;
+    }
+    if (filter != null) {
+      _queryParams["filter"] = filter;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2387,12 +2387,12 @@ class ReportsSavedResourceApi {
   /// [startIndex] - Index of the first row of report data to return.
   /// Value must be between "0" and "5000".
   ///
+  /// [maxResults] - The maximum number of rows of report data to return.
+  /// Value must be between "0" and "50000".
+  ///
   /// [locale] - Optional locale to use for translating report output to a local
   /// language. Defaults to "en_US" if not specified.
   /// Value must have pattern "[a-zA-Z_]+".
-  ///
-  /// [maxResults] - The maximum number of rows of report data to return.
-  /// Value must be between "0" and "50000".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2407,8 +2407,8 @@ class ReportsSavedResourceApi {
   async.Future<AdsenseReportsGenerateResponse> generate(
       core.String savedReportId,
       {core.int startIndex,
-      core.String locale,
       core.int maxResults,
+      core.String locale,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2423,11 +2423,11 @@ class ReportsSavedResourceApi {
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
-    if (locale != null) {
-      _queryParams["locale"] = [locale];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2449,13 +2449,13 @@ class ReportsSavedResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - The maximum number of saved reports to include in the
-  /// response, used for paging.
-  /// Value must be between "0" and "100".
-  ///
   /// [pageToken] - A continuation token, used to page through saved reports. To
   /// retrieve the next page, set this parameter to the value of "nextPageToken"
   /// from the previous response.
+  ///
+  /// [maxResults] - The maximum number of saved reports to include in the
+  /// response, used for paging.
+  /// Value must be between "0" and "100".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2468,7 +2468,7 @@ class ReportsSavedResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SavedReports> list(
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2476,11 +2476,11 @@ class ReportsSavedResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2550,13 +2550,13 @@ class SavedadstylesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - The maximum number of saved ad styles to include in the
-  /// response, used for paging.
-  /// Value must be between "0" and "10000".
-  ///
   /// [pageToken] - A continuation token, used to page through saved ad styles.
   /// To retrieve the next page, set this parameter to the value of
   /// "nextPageToken" from the previous response.
+  ///
+  /// [maxResults] - The maximum number of saved ad styles to include in the
+  /// response, used for paging.
+  /// Value must be between "0" and "10000".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2569,7 +2569,7 @@ class SavedadstylesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SavedAdStyles> list(
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2577,11 +2577,11 @@ class SavedadstylesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

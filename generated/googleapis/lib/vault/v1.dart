@@ -295,17 +295,6 @@ class MattersResourceApi {
   ///
   /// [pageToken] - The pagination token as returned in the response.
   ///
-  /// [view] - Specifies which parts of the matter to return in response.
-  /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : There is no specified view.
-  /// - "BASIC" : Response includes the matter_id, name, description, and state.
-  /// Default choice.
-  /// - "FULL" : Full representation of matter is returned. Everything above and
-  /// including MatterPermissions list.
-  ///
-  /// [pageSize] - The number of matters to return in the response. Default and
-  /// maximum are 100.
-  ///
   /// [state] - If set, list only matters with that specific state. The default
   /// is listing matters of all states.
   /// Possible string values are:
@@ -313,6 +302,17 @@ class MattersResourceApi {
   /// - "OPEN" : This matter is open.
   /// - "CLOSED" : This matter is closed.
   /// - "DELETED" : This matter is deleted.
+  ///
+  /// [pageSize] - The number of matters to return in the response. Default and
+  /// maximum are 100.
+  ///
+  /// [view] - Specifies which parts of the matter to return in response.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : There is no specified view.
+  /// - "BASIC" : Response includes the matter_id, name, description, and state.
+  /// Default choice.
+  /// - "FULL" : Full representation of matter is returned. Everything above and
+  /// including MatterPermissions list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -326,9 +326,9 @@ class MattersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListMattersResponse> list(
       {core.String pageToken,
-      core.String view,
-      core.int pageSize,
       core.String state,
+      core.int pageSize,
+      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -340,14 +340,14 @@ class MattersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (state != null) {
+      _queryParams["state"] = [state];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (state != null) {
-      _queryParams["state"] = [state];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1021,6 +1021,9 @@ class MattersHoldsResourceApi {
   /// 100 inclusive. Leaving this empty, or as 0, is the same as page_size =
   /// 100.
   ///
+  /// [pageToken] - The pagination token as returned in the response. An empty
+  /// token means start from the beginning.
+  ///
   /// [view] - Specifies which parts of the Hold to return.
   /// Possible string values are:
   /// - "HOLD_VIEW_UNSPECIFIED" : There is no specified view. Defaults to
@@ -1030,9 +1033,6 @@ class MattersHoldsResourceApi {
   /// - "FULL_HOLD" : Full representation of a Hold. Response includes all
   /// fields of 'BASIC' and the entities the Hold applies to, such as accounts,
   /// or OU.
-  ///
-  /// [pageToken] - The pagination token as returned in the response. An empty
-  /// token means start from the beginning.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1046,8 +1046,8 @@ class MattersHoldsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListHoldsResponse> list(core.String matterId,
       {core.int pageSize,
-      core.String view,
       core.String pageToken,
+      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1062,11 +1062,11 @@ class MattersHoldsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1559,10 +1559,10 @@ class MattersSavedQueriesResourceApi {
   /// [matterId] - The matter ID of the parent matter for which the saved
   /// queries are to be retrieved.
   ///
+  /// [pageSize] - The maximum number of saved queries to return.
+  ///
   /// [pageToken] - The pagination token as returned in the previous response.
   /// An empty token means start from the beginning.
-  ///
-  /// [pageSize] - The maximum number of saved queries to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1575,7 +1575,7 @@ class MattersSavedQueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSavedQueriesResponse> list(core.String matterId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1586,11 +1586,11 @@ class MattersSavedQueriesResourceApi {
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

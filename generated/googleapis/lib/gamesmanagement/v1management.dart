@@ -277,11 +277,11 @@ class ApplicationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [maxResults] - The maximum number of player resources to return in the
   /// response, used for paging. For any response, the actual number of player
   /// resources returned may be less than the specified `maxResults`.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,7 +294,7 @@ class ApplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HiddenPlayerList> listHidden(core.String applicationId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -305,11 +305,11 @@ class ApplicationsResourceApi {
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

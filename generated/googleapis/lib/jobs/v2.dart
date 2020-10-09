@@ -180,15 +180,15 @@ class CompaniesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Optional. The starting indicator from which to return
-  /// results.
-  ///
   /// [mustHaveOpenJobs] - Optional. Set to true if the companies request must
   /// have open jobs. Defaults to false. If true, at most page_size of companies
   /// are fetched, among which only those with open jobs are returned.
   ///
   /// [pageSize] - Optional. The maximum number of companies to be returned, at
   /// most 100. Default is 100 if a non-positive number is provided.
+  ///
+  /// [pageToken] - Optional. The starting indicator from which to return
+  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -201,9 +201,9 @@ class CompaniesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCompaniesResponse> list(
-      {core.String pageToken,
-      core.bool mustHaveOpenJobs,
+      {core.bool mustHaveOpenJobs,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -212,14 +212,14 @@ class CompaniesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (mustHaveOpenJobs != null) {
       _queryParams["mustHaveOpenJobs"] = ["${mustHaveOpenJobs}"];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -317,9 +317,14 @@ class CompaniesJobsResourceApi {
   /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".
   /// Value must have pattern "^companies/[^/]+$".
   ///
-  /// [idsOnly] - Optional. If set to `true`, only job ID, job requisition ID
-  /// and language code will be returned. A typical use is to synchronize job
-  /// repositories. Defaults to false.
+  /// [includeJobsCount] - Deprecated. Please DO NOT use this field except for
+  /// small companies. Suggest counting jobs page by page instead. Optional. Set
+  /// to true if the total number of open jobs is to be returned. Defaults to
+  /// false.
+  ///
+  /// [jobRequisitionId] - Optional. The requisition ID, also known as posting
+  /// ID, assigned by the company to the job. The maximum number of allowable
+  /// characters is 225.
   ///
   /// [pageSize] - Optional. The maximum number of jobs to be returned per page
   /// of results. If ids_only is set to true, the maximum allowed page size is
@@ -328,14 +333,9 @@ class CompaniesJobsResourceApi {
   ///
   /// [pageToken] - Optional. The starting point of a query result.
   ///
-  /// [jobRequisitionId] - Optional. The requisition ID, also known as posting
-  /// ID, assigned by the company to the job. The maximum number of allowable
-  /// characters is 225.
-  ///
-  /// [includeJobsCount] - Deprecated. Please DO NOT use this field except for
-  /// small companies. Suggest counting jobs page by page instead. Optional. Set
-  /// to true if the total number of open jobs is to be returned. Defaults to
-  /// false.
+  /// [idsOnly] - Optional. If set to `true`, only job ID, job requisition ID
+  /// and language code will be returned. A typical use is to synchronize job
+  /// repositories. Defaults to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -348,11 +348,11 @@ class CompaniesJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCompanyJobsResponse> list(core.String companyName,
-      {core.bool idsOnly,
+      {core.bool includeJobsCount,
+      core.String jobRequisitionId,
       core.int pageSize,
       core.String pageToken,
-      core.String jobRequisitionId,
-      core.bool includeJobsCount,
+      core.bool idsOnly,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -364,8 +364,11 @@ class CompaniesJobsResourceApi {
     if (companyName == null) {
       throw new core.ArgumentError("Parameter companyName is required.");
     }
-    if (idsOnly != null) {
-      _queryParams["idsOnly"] = ["${idsOnly}"];
+    if (includeJobsCount != null) {
+      _queryParams["includeJobsCount"] = ["${includeJobsCount}"];
+    }
+    if (jobRequisitionId != null) {
+      _queryParams["jobRequisitionId"] = [jobRequisitionId];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -373,11 +376,8 @@ class CompaniesJobsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (jobRequisitionId != null) {
-      _queryParams["jobRequisitionId"] = [jobRequisitionId];
-    }
-    if (includeJobsCount != null) {
-      _queryParams["includeJobsCount"] = ["${includeJobsCount}"];
+    if (idsOnly != null) {
+      _queryParams["idsOnly"] = ["${idsOnly}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -685,7 +685,10 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Optional. The starting point of a query result.
+  /// [pageSize] - Optional. The maximum number of jobs to be returned per page
+  /// of results. If ids_only is set to true, the maximum allowed page size is
+  /// 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if
+  /// empty or a number < 1 is specified.
   ///
   /// [filter] - Required. The filter string specifies the jobs to be
   /// enumerated. Supported operator: =, AND The fields eligible for filtering
@@ -693,14 +696,11 @@ class JobsResourceApi {
   /// * companyName = "companies/123" * companyName = "companies/123" AND
   /// requisitionId = "req-1"
   ///
-  /// [pageSize] - Optional. The maximum number of jobs to be returned per page
-  /// of results. If ids_only is set to true, the maximum allowed page size is
-  /// 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if
-  /// empty or a number < 1 is specified.
-  ///
   /// [idsOnly] - Optional. If set to `true`, only Job.name, Job.requisition_id
   /// and Job.language_code will be returned. A typical use case is to
   /// synchronize job repositories. Defaults to false.
+  ///
+  /// [pageToken] - Optional. The starting point of a query result.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -713,10 +713,10 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
-      {core.String pageToken,
+      {core.int pageSize,
       core.String filter,
-      core.int pageSize,
       core.bool idsOnly,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -725,17 +725,17 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (idsOnly != null) {
       _queryParams["idsOnly"] = ["${idsOnly}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -910,14 +910,6 @@ class V2ResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [companyName] - Optional. If provided, restricts completion to the
-  /// specified company.
-  ///
-  /// [pageSize] - Required. Completion result count. The maximum allowed page
-  /// size is 10.
-  ///
-  /// [query] - Required. The query used to generate suggestions.
-  ///
   /// [languageCode] - Required. The language of the query. This is the BCP-47
   /// language code, such as "en-US" or "sr-Latn". For more information, see
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). For
@@ -926,6 +918,11 @@ class V2ResourceApi {
   /// jobs with same language_code are returned. For CompletionType.COMBINED
   /// type, only open jobs with same language_code or companies having open jobs
   /// with same language_code are returned.
+  ///
+  /// [query] - Required. The query used to generate suggestions.
+  ///
+  /// [pageSize] - Required. Completion result count. The maximum allowed page
+  /// size is 10.
   ///
   /// [type] - Optional. The completion topic. The default is
   /// CompletionType.COMBINED.
@@ -944,6 +941,9 @@ class V2ResourceApi {
   /// - "PUBLIC" : Suggestions are based on all jobs data in the system that's
   /// visible to the client
   ///
+  /// [companyName] - Optional. If provided, restricts completion to the
+  /// specified company.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -955,12 +955,12 @@ class V2ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete(
-      {core.String companyName,
-      core.int pageSize,
+      {core.String languageCode,
       core.String query,
-      core.String languageCode,
+      core.int pageSize,
       core.String type,
       core.String scope,
+      core.String companyName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -969,23 +969,23 @@ class V2ResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (companyName != null) {
-      _queryParams["companyName"] = [companyName];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if (query != null) {
       _queryParams["query"] = [query];
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (type != null) {
       _queryParams["type"] = [type];
     }
     if (scope != null) {
       _queryParams["scope"] = [scope];
+    }
+    if (companyName != null) {
+      _queryParams["companyName"] = [companyName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

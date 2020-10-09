@@ -357,6 +357,8 @@ class V1ResourceApi {
   /// "projects/12345").
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
+  /// [readTimeWindow_startTime] - Start time of the time window (exclusive).
+  ///
   /// [contentType] - Optional. The content type.
   /// Possible string values are:
   /// - "CONTENT_TYPE_UNSPECIFIED" : Unspecified content type.
@@ -366,17 +368,15 @@ class V1ResourceApi {
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
   ///
+  /// [readTimeWindow_endTime] - End time of the time window (inclusive). If not
+  /// specified, the current timestamp is used instead.
+  ///
   /// [assetNames] - A list of the full names of the assets. See:
   /// https://cloud.google.com/asset-inventory/docs/resource-name-format
   /// Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
   /// The request becomes a no-op if the asset name list is empty, and the max
   /// size of the asset name list is 100 in one request.
-  ///
-  /// [readTimeWindow_endTime] - End time of the time window (inclusive). If not
-  /// specified, the current timestamp is used instead.
-  ///
-  /// [readTimeWindow_startTime] - Start time of the time window (exclusive).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -390,10 +390,10 @@ class V1ResourceApi {
   /// this method will complete with the same error.
   async.Future<BatchGetAssetsHistoryResponse> batchGetAssetsHistory(
       core.String parent,
-      {core.String contentType,
-      core.List<core.String> assetNames,
+      {core.String readTimeWindow_startTime,
+      core.String contentType,
       core.String readTimeWindow_endTime,
-      core.String readTimeWindow_startTime,
+      core.List<core.String> assetNames,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -405,17 +405,17 @@ class V1ResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (readTimeWindow_startTime != null) {
+      _queryParams["readTimeWindow.startTime"] = [readTimeWindow_startTime];
+    }
     if (contentType != null) {
       _queryParams["contentType"] = [contentType];
-    }
-    if (assetNames != null) {
-      _queryParams["assetNames"] = assetNames;
     }
     if (readTimeWindow_endTime != null) {
       _queryParams["readTimeWindow.endTime"] = [readTimeWindow_endTime];
     }
-    if (readTimeWindow_startTime != null) {
-      _queryParams["readTimeWindow.startTime"] = [readTimeWindow_startTime];
+    if (assetNames != null) {
+      _queryParams["assetNames"] = assetNames;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -517,6 +517,17 @@ class V1ResourceApi {
   /// organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
+  /// [pageSize] - Optional. The page size for search result pagination. Page
+  /// size is capped at 500 even if a larger value is given. If set to zero,
+  /// server will pick an appropriate default. Returned results may be fewer
+  /// than requested. When this happens, there could be more results as long as
+  /// `next_page_token` is returned.
+  ///
+  /// [pageToken] - Optional. If present, retrieve the next batch of results
+  /// from the preceding call to this method. `page_token` must be the value of
+  /// `next_page_token` from the previous response. The values of all other
+  /// method parameters must be identical to those in the previous call.
+  ///
   /// [query] - Optional. The query statement. See [how to construct a
   /// query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
@@ -538,17 +549,6 @@ class V1ResourceApi {
   /// that are set on resources "instance1" or "instance2" and also specify user
   /// "amy".
   ///
-  /// [pageSize] - Optional. The page size for search result pagination. Page
-  /// size is capped at 500 even if a larger value is given. If set to zero,
-  /// server will pick an appropriate default. Returned results may be fewer
-  /// than requested. When this happens, there could be more results as long as
-  /// `next_page_token` is returned.
-  ///
-  /// [pageToken] - Optional. If present, retrieve the next batch of results
-  /// from the preceding call to this method. `page_token` must be the value of
-  /// `next_page_token` from the previous response. The values of all other
-  /// method parameters must be identical to those in the previous call.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -561,9 +561,9 @@ class V1ResourceApi {
   /// this method will complete with the same error.
   async.Future<SearchAllIamPoliciesResponse> searchAllIamPolicies(
       core.String scope,
-      {core.String query,
-      core.int pageSize,
+      {core.int pageSize,
       core.String pageToken,
+      core.String query,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -575,14 +575,14 @@ class V1ResourceApi {
     if (scope == null) {
       throw new core.ArgumentError("Parameter scope is required.");
     }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -620,6 +620,19 @@ class V1ResourceApi {
   /// organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
+  /// [assetTypes] - Optional. A list of asset types that this request searches
+  /// for. If empty, it will search all the [searchable asset
+  /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  ///
+  /// [orderBy] - Optional. A comma separated list of fields specifying the
+  /// sorting order of the results. The default order is ascending. Add " DESC"
+  /// after the field name to indicate descending order. Redundant space
+  /// characters are ignored. Example: "location DESC, name". Only string fields
+  /// in the response are sortable, including `name`, `displayName`,
+  /// `description`, `location`. All the other fields such as repeated fields
+  /// (e.g., `networkTags`), map fields (e.g., `labels`) and struct fields
+  /// (e.g., `additionalAttributes`) are not supported.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. `page_token` must be the
   /// value of `next_page_token` from the previous response. The values of all
@@ -652,19 +665,6 @@ class V1ResourceApi {
   /// searchable fields and are also located in the "us-west1" region or the
   /// "global" location.
   ///
-  /// [orderBy] - Optional. A comma separated list of fields specifying the
-  /// sorting order of the results. The default order is ascending. Add " DESC"
-  /// after the field name to indicate descending order. Redundant space
-  /// characters are ignored. Example: "location DESC, name". Only string fields
-  /// in the response are sortable, including `name`, `displayName`,
-  /// `description`, `location`. All the other fields such as repeated fields
-  /// (e.g., `networkTags`), map fields (e.g., `labels`) and struct fields
-  /// (e.g., `additionalAttributes`) are not supported.
-  ///
-  /// [assetTypes] - Optional. A list of asset types that this request searches
-  /// for. If empty, it will search all the [searchable asset
-  /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
-  ///
   /// [pageSize] - Optional. The page size for search result pagination. Page
   /// size is capped at 500 even if a larger value is given. If set to zero,
   /// server will pick an appropriate default. Returned results may be fewer
@@ -682,10 +682,10 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchAllResourcesResponse> searchAllResources(core.String scope,
-      {core.String pageToken,
-      core.String query,
+      {core.List<core.String> assetTypes,
       core.String orderBy,
-      core.List<core.String> assetTypes,
+      core.String pageToken,
+      core.String query,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -698,17 +698,17 @@ class V1ResourceApi {
     if (scope == null) {
       throw new core.ArgumentError("Parameter scope is required.");
     }
+    if (assetTypes != null) {
+      _queryParams["assetTypes"] = assetTypes;
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (query != null) {
       _queryParams["query"] = [query];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (assetTypes != null) {
-      _queryParams["assetTypes"] = assetTypes;
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];

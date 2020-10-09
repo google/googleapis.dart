@@ -292,11 +292,11 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - Optional. The page token, returned by a previous call, to
-  /// request the next page of results.
-  ///
   /// [pageSize] - Optional. The maximum number of results to return in each
   /// response. Must be less than or equal to 1000. Defaults to 100.
+  ///
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -309,7 +309,7 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAutoscalingPoliciesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -320,11 +320,11 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1404,11 +1404,11 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
   ///
-  /// [pageToken] - Optional. The page token, returned by a previous call, to
-  /// request the next page of results.
-  ///
   /// [pageSize] - Optional. The maximum number of results to return in each
   /// response. Must be less than or equal to 1000. Defaults to 100.
+  ///
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1421,7 +1421,7 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAutoscalingPoliciesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1432,11 +1432,11 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1725,9 +1725,6 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [clusterName] - Required. The cluster name.
   ///
-  /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
-  /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
-  ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
   /// server receives two DeleteClusterRequest requests with the same id, then
   /// the second request will be ignored and the first
@@ -1736,6 +1733,9 @@ class ProjectsRegionsClustersResourceApi {
   /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
+  /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1749,7 +1749,7 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String projectId, core.String region, core.String clusterName,
-      {core.String clusterUuid, core.String requestId, core.String $fields}) {
+      {core.String requestId, core.String clusterUuid, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1766,11 +1766,11 @@ class ProjectsRegionsClustersResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
-    if (clusterUuid != null) {
-      _queryParams["clusterUuid"] = [clusterUuid];
-    }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if (clusterUuid != null) {
+      _queryParams["clusterUuid"] = [clusterUuid];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1987,6 +1987,8 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [region] - Required. The Dataproc region in which to handle the request.
   ///
+  /// [pageToken] - Optional. The standard List page token.
+  ///
   /// [pageSize] - Optional. The standard List page size.
   ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
@@ -2001,8 +2003,6 @@ class ProjectsRegionsClustersResourceApi {
   /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
   /// = mycluster AND labels.env = staging AND labels.starred = *
   ///
-  /// [pageToken] - Optional. The standard List page token.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2015,9 +2015,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2032,14 +2032,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2075,6 +2075,15 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [clusterName] - Required. The cluster name.
   ///
+  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// server receives two UpdateClusterRequest requests with the same id, then
+  /// the second request will be ignored and the first
+  /// google.longrunning.Operation created and stored in the backend is
+  /// returned.It is recommended to always set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
   /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
   /// decomissioning. Graceful decommissioning allows removing nodes from the
   /// cluster without interrupting jobs in progress. Timeout specifies how long
@@ -2084,15 +2093,6 @@ class ProjectsRegionsClustersResourceApi {
   /// representation of Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only
   /// supported on Dataproc image versions 1.2 and higher.
-  ///
-  /// [requestId] - Optional. A unique id used to identify the request. If the
-  /// server receives two UpdateClusterRequest requests with the same id, then
-  /// the second request will be ignored and the first
-  /// google.longrunning.Operation created and stored in the backend is
-  /// returned.It is recommended to always set this value to a UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
-  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
-  /// hyphens (-). The maximum length is 40 characters.
   ///
   /// [updateMask] - Required. Specifies the path, relative to Cluster, of the
   /// field to update. For example, to change the number of workers in a cluster
@@ -2122,8 +2122,8 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Cluster request, core.String projectId,
       core.String region, core.String clusterName,
-      {core.String gracefulDecommissionTimeout,
-      core.String requestId,
+      {core.String requestId,
+      core.String gracefulDecommissionTimeout,
       core.String updateMask,
       core.String $fields}) {
     var _url;
@@ -2145,13 +2145,13 @@ class ProjectsRegionsClustersResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
     if (gracefulDecommissionTimeout != null) {
       _queryParams["gracefulDecommissionTimeout"] = [
         gracefulDecommissionTimeout
       ];
-    }
-    if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -2553,19 +2553,8 @@ class ProjectsRegionsJobsResourceApi {
   ///
   /// [region] - Required. The Dataproc region in which to handle the request.
   ///
-  /// [pageSize] - Optional. The number of results to return in each response.
-  ///
   /// [pageToken] - Optional. The page token, returned by a previous call, to
   /// request the next page of results.
-  ///
-  /// [filter] - Optional. A filter constraining the jobs to list. Filters are
-  /// case-sensitive and have the following syntax:field = value AND field =
-  /// value ...where field is status.state or labels.[KEY], and [KEY] is a label
-  /// key. value can be * to match all values. status.state can be either ACTIVE
-  /// or NON_ACTIVE. Only the logical AND operator is supported; space-separated
-  /// items are treated as having an implicit AND operator.Example
-  /// filter:status.state = ACTIVE AND labels.env = staging AND labels.starred =
-  /// *
   ///
   /// [clusterName] - Optional. If set, the returned jobs list includes only
   /// jobs that were submitted to the named cluster.
@@ -2580,6 +2569,17 @@ class ProjectsRegionsJobsResourceApi {
   /// - "NON_ACTIVE" : Only match jobs in terminal states: CANCELLED, DONE, or
   /// ERROR.
   ///
+  /// [filter] - Optional. A filter constraining the jobs to list. Filters are
+  /// case-sensitive and have the following syntax:field = value AND field =
+  /// value ...where field is status.state or labels.[KEY], and [KEY] is a label
+  /// key. value can be * to match all values. status.state can be either ACTIVE
+  /// or NON_ACTIVE. Only the logical AND operator is supported; space-separated
+  /// items are treated as having an implicit AND operator.Example
+  /// filter:status.state = ACTIVE AND labels.env = staging AND labels.starred =
+  /// *
+  ///
+  /// [pageSize] - Optional. The number of results to return in each response.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2591,11 +2591,11 @@ class ProjectsRegionsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
+      {core.String pageToken,
       core.String clusterName,
       core.String jobStateMatcher,
+      core.String filter,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2610,20 +2610,20 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if (clusterName != null) {
       _queryParams["clusterName"] = [clusterName];
     }
     if (jobStateMatcher != null) {
       _queryParams["jobStateMatcher"] = [jobStateMatcher];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3170,11 +3170,11 @@ class ProjectsRegionsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3187,9 +3187,9 @@ class ProjectsRegionsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3201,14 +3201,14 @@ class ProjectsRegionsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

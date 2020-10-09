@@ -97,13 +97,13 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [name] - The name of the operation's parent resource.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [name] - The name of the operation's parent resource.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -116,10 +116,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.String filter,
+      {core.String name,
+      core.String filter,
       core.int pageSize,
       core.String pageToken,
-      core.String name,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -128,6 +128,9 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (name != null) {
+      _queryParams["name"] = [name];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -136,9 +139,6 @@ class OperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (name != null) {
-      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -242,11 +242,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -259,9 +259,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -273,14 +273,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

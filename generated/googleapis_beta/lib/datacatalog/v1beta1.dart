@@ -108,13 +108,6 @@ class EntriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [linkedResource] - The full name of the Google Cloud Platform resource the
-  /// Data Catalog entry represents. See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name.
-  /// Full names are case-sensitive. Examples: *
-  /// //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
-  /// * //pubsub.googleapis.com/projects/projectId/topics/topicId
-  ///
   /// [sqlResource] - The SQL name of the entry. SQL names are case-sensitive.
   /// Examples: * `pubsub.project_id.topic_id` *
   /// ``pubsub.project_id.`topic.id.with.dots` `` *
@@ -123,6 +116,13 @@ class EntriesResourceApi {
   /// `datacatalog.entry.project_id.location_id.entry_group_id.entry_id` `*_id`s
   /// shoud satisfy the standard SQL rules for identifiers.
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
+  ///
+  /// [linkedResource] - The full name of the Google Cloud Platform resource the
+  /// Data Catalog entry represents. See:
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name.
+  /// Full names are case-sensitive. Examples: *
+  /// //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+  /// * //pubsub.googleapis.com/projects/projectId/topics/topicId
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -135,8 +135,8 @@ class EntriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Entry> lookup(
-      {core.String linkedResource,
-      core.String sqlResource,
+      {core.String sqlResource,
+      core.String linkedResource,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -145,11 +145,11 @@ class EntriesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (linkedResource != null) {
-      _queryParams["linkedResource"] = [linkedResource];
-    }
     if (sqlResource != null) {
       _queryParams["sqlResource"] = [sqlResource];
+    }
+    if (linkedResource != null) {
+      _queryParams["linkedResource"] = [linkedResource];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -450,11 +450,11 @@ class ProjectsLocationsEntryGroupsResourceApi {
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - Optional. Token that specifies which page is requested. If
-  /// empty, the first page is returned.
-  ///
   /// [pageSize] - Optional. The maximum number of items to return. Default is
   /// 10. Max limit is 1000. Throws an invalid argument for `page_size > 1000`.
+  ///
+  /// [pageToken] - Optional. Token that specifies which page is requested. If
+  /// empty, the first page is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -468,8 +468,8 @@ class ProjectsLocationsEntryGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse> list(
       core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -481,11 +481,11 @@ class ProjectsLocationsEntryGroupsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -943,9 +943,6 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of items to return. Default is 10. Max
-  /// limit is 1000. Throws an invalid argument for `page_size > 1000`.
-  ///
   /// [pageToken] - Token that specifies which page is requested. If empty, the
   /// first page is returned.
   ///
@@ -953,6 +950,9 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   /// fields are returned. For example, setting read_mask to contain only one
   /// path "name" will cause ListEntries to return a list of Entries with only
   /// "name" field.
+  ///
+  /// [pageSize] - The maximum number of items to return. Default is 10. Max
+  /// limit is 1000. Throws an invalid argument for `page_size > 1000`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -966,9 +966,9 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListEntriesResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
       core.String readMask,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -980,14 +980,14 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (readMask != null) {
       _queryParams["readMask"] = [readMask];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1267,11 +1267,11 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of tags to return. Default is 10. Max
-  /// limit is 1000.
-  ///
   /// [pageToken] - Token that specifies which page is requested. If empty, the
   /// first page is returned.
+  ///
+  /// [pageSize] - The maximum number of tags to return. Default is 10. Max
+  /// limit is 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1285,8 +1285,8 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListTagsResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1298,11 +1298,11 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2509,9 +2509,9 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// exported will share.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [serializedTaxonomies] - Export taxonomies as serialized taxonomies.
-  ///
   /// [taxonomies] - Required. Resource names of the taxonomies to be exported.
+  ///
+  /// [serializedTaxonomies] - Export taxonomies as serialized taxonomies.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2525,8 +2525,8 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse> export(
       core.String parent,
-      {core.bool serializedTaxonomies,
-      core.List<core.String> taxonomies,
+      {core.List<core.String> taxonomies,
+      core.bool serializedTaxonomies,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2538,11 +2538,11 @@ class ProjectsLocationsTaxonomiesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (serializedTaxonomies != null) {
-      _queryParams["serializedTaxonomies"] = ["${serializedTaxonomies}"];
-    }
     if (taxonomies != null) {
       _queryParams["taxonomies"] = taxonomies;
+    }
+    if (serializedTaxonomies != null) {
+      _queryParams["serializedTaxonomies"] = ["${serializedTaxonomies}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2731,11 +2731,11 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// of.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of items to return. Must be a value
-  /// between 1 and 1000. If not set, defaults to 50.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any. If not set, defaults to an empty string.
+  ///
+  /// [pageSize] - The maximum number of items to return. Must be a value
+  /// between 1 and 1000. If not set, defaults to 50.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2749,8 +2749,8 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2762,11 +2762,11 @@ class ProjectsLocationsTaxonomiesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4857,7 +4857,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   /// Unreachable locations. Search result does not include data from those
   /// locations. Users can get additional information on the error by repeating
   /// the search request with a more restrictive parameter -- setting the value
-  /// for `SearchDataCatalogRequest.scope.include_locations`.
+  /// for `SearchDataCatalogRequest.scope.restricted_locations`.
   core.List<core.String> unreachable;
 
   GoogleCloudDatacatalogV1beta1SearchCatalogResponse();

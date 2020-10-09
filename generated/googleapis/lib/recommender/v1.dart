@@ -131,17 +131,17 @@ class ProjectsLocationsInsightTypesInsightsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+$".
   ///
-  /// [pageToken] - Optional. If present, retrieves the next batch of results
-  /// from the preceding call to this method. `page_token` must be the value of
-  /// `next_page_token` from the previous response. The values of other method
-  /// parameters must be identical to those in the previous call.
-  ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
   /// Supported filter fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
   /// will determine the number of results to return.
+  ///
+  /// [pageToken] - Optional. If present, retrieves the next batch of results
+  /// from the preceding call to this method. `page_token` must be the value of
+  /// `next_page_token` from the previous response. The values of other method
+  /// parameters must be identical to those in the previous call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -155,9 +155,9 @@ class ProjectsLocationsInsightTypesInsightsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListInsightsResponse> list(
       core.String parent,
-      {core.String pageToken,
-      core.String filter,
+      {core.String filter,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -169,14 +169,14 @@ class ProjectsLocationsInsightTypesInsightsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -334,6 +334,10 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+$".
   ///
+  /// [filter] - Filter expression to restrict the recommendations returned.
+  /// Supported filter fields: state_info.state Eg:
+  /// `state_info.state:"DISMISSED" or state_info.state:"FAILED"
+  ///
   /// [pageToken] - Optional. If present, retrieves the next batch of results
   /// from the preceding call to this method. `page_token` must be the value of
   /// `next_page_token` from the previous response. The values of other method
@@ -342,10 +346,6 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. If not specified, the server
   /// will determine the number of results to return.
-  ///
-  /// [filter] - Filter expression to restrict the recommendations returned.
-  /// Supported filter fields: state_info.state Eg:
-  /// `state_info.state:"DISMISSED" or state_info.state:"FAILED"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -359,9 +359,9 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
       core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -373,14 +373,14 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -182,10 +182,10 @@ class SpreadsheetsResourceApi {
   ///
   /// [spreadsheetId] - The spreadsheet to request.
   ///
+  /// [ranges] - The ranges to retrieve from the spreadsheet.
+  ///
   /// [includeGridData] - True if grid data should be returned. This parameter
   /// is ignored if a field mask was set in the request.
-  ///
-  /// [ranges] - The ranges to retrieve from the spreadsheet.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -198,8 +198,8 @@ class SpreadsheetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Spreadsheet> get(core.String spreadsheetId,
-      {core.bool includeGridData,
-      core.List<core.String> ranges,
+      {core.List<core.String> ranges,
+      core.bool includeGridData,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -211,11 +211,11 @@ class SpreadsheetsResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (includeGridData != null) {
-      _queryParams["includeGridData"] = ["${includeGridData}"];
-    }
     if (ranges != null) {
       _queryParams["ranges"] = ranges;
+    }
+    if (includeGridData != null) {
+      _queryParams["includeGridData"] = ["${includeGridData}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -505,6 +505,22 @@ class SpreadsheetsValuesResourceApi {
   /// [range] - The A1 notation of a range to search for a logical table of
   /// data. Values are appended after the last row of the table.
   ///
+  /// [responseValueRenderOption] - Determines how values in the response should
+  /// be rendered. The default render option is
+  /// ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
+  /// according to the cell's formatting. Formatting is based on the
+  /// spreadsheet's locale, not the requesting user's locale. For example, if
+  /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
+  /// would return `"$1.23"`.
+  /// - "UNFORMATTED_VALUE" : Values will be calculated, but not formatted in
+  /// the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
+  /// as currency, then `A2` would return the number `1.23`.
+  /// - "FORMULA" : Values will not be calculated. The reply will include the
+  /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
+  /// as currency, then A2 would return `"=A1"`.
+  ///
   /// [responseDateTimeRenderOption] - Determines how dates, times, and
   /// durations in the response should be rendered. This is ignored if
   /// response_value_render_option is FORMATTED_VALUE. The default dateTime
@@ -525,22 +541,6 @@ class SpreadsheetsValuesResourceApi {
   /// [includeValuesInResponse] - Determines if the update response should
   /// include the values of the cells that were appended. By default, responses
   /// do not include the updated values.
-  ///
-  /// [responseValueRenderOption] - Determines how values in the response should
-  /// be rendered. The default render option is
-  /// ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
-  /// spreadsheet's locale, not the requesting user's locale. For example, if
-  /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
-  /// would return `"$1.23"`.
-  /// - "UNFORMATTED_VALUE" : Values will be calculated, but not formatted in
-  /// the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then `A2` would return the number `1.23`.
-  /// - "FORMULA" : Values will not be calculated. The reply will include the
-  /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
   ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
@@ -572,9 +572,9 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<AppendValuesResponse> append(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String responseDateTimeRenderOption,
+      {core.String responseValueRenderOption,
+      core.String responseDateTimeRenderOption,
       core.bool includeValuesInResponse,
-      core.String responseValueRenderOption,
       core.String valueInputOption,
       core.String insertDataOption,
       core.String $fields}) {
@@ -594,6 +594,9 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
     if (responseDateTimeRenderOption != null) {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
@@ -601,9 +604,6 @@ class SpreadsheetsValuesResourceApi {
     }
     if (includeValuesInResponse != null) {
       _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
@@ -1079,6 +1079,21 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to retrieve.
   ///
+  /// [valueRenderOption] - How values should be represented in the output. The
+  /// default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
+  /// according to the cell's formatting. Formatting is based on the
+  /// spreadsheet's locale, not the requesting user's locale. For example, if
+  /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
+  /// would return `"$1.23"`.
+  /// - "UNFORMATTED_VALUE" : Values will be calculated, but not formatted in
+  /// the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
+  /// as currency, then `A2` would return the number `1.23`.
+  /// - "FORMULA" : Values will not be calculated. The reply will include the
+  /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
+  /// as currency, then A2 would return `"=A1"`.
+  ///
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output. This is ignored if value_render_option is
   /// FORMATTED_VALUE. The default dateTime render option is
@@ -1106,21 +1121,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
   ///
-  /// [valueRenderOption] - How values should be represented in the output. The
-  /// default render option is ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
-  /// spreadsheet's locale, not the requesting user's locale. For example, if
-  /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
-  /// would return `"$1.23"`.
-  /// - "UNFORMATTED_VALUE" : Values will be calculated, but not formatted in
-  /// the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then `A2` would return the number `1.23`.
-  /// - "FORMULA" : Values will not be calculated. The reply will include the
-  /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1132,9 +1132,9 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ValueRange> get(core.String spreadsheetId, core.String range,
-      {core.String dateTimeRenderOption,
+      {core.String valueRenderOption,
+      core.String dateTimeRenderOption,
       core.String majorDimension,
-      core.String valueRenderOption,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1149,14 +1149,14 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
+    }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
     if (majorDimension != null) {
       _queryParams["majorDimension"] = [majorDimension];
-    }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1186,23 +1186,6 @@ class SpreadsheetsValuesResourceApi {
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
   /// [range] - The A1 notation of the values to update.
-  ///
-  /// [valueInputOption] - How the input data should be interpreted.
-  /// Possible string values are:
-  /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : Default input value. This value must
-  /// not be used.
-  /// - "RAW" : The values the user has entered will not be parsed and will be
-  /// stored as-is.
-  /// - "USER_ENTERED" : The values will be parsed as if the user typed them
-  /// into the UI. Numbers will stay as numbers, but strings may be converted to
-  /// numbers, dates, etc. following the same rules that are applied when
-  /// entering text into a cell via the Google Sheets UI.
-  ///
-  /// [includeValuesInResponse] - Determines if the update response should
-  /// include the values of the cells that were updated. By default, responses
-  /// do not include the updated values. If the range to write was larger than
-  /// the range actually written, the response includes all values in the
-  /// requested range (excluding trailing empty rows and columns).
   ///
   /// [responseDateTimeRenderOption] - Determines how dates, times, and
   /// durations in the response should be rendered. This is ignored if
@@ -1237,6 +1220,23 @@ class SpreadsheetsValuesResourceApi {
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
   /// as currency, then A2 would return `"=A1"`.
   ///
+  /// [valueInputOption] - How the input data should be interpreted.
+  /// Possible string values are:
+  /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : Default input value. This value must
+  /// not be used.
+  /// - "RAW" : The values the user has entered will not be parsed and will be
+  /// stored as-is.
+  /// - "USER_ENTERED" : The values will be parsed as if the user typed them
+  /// into the UI. Numbers will stay as numbers, but strings may be converted to
+  /// numbers, dates, etc. following the same rules that are applied when
+  /// entering text into a cell via the Google Sheets UI.
+  ///
+  /// [includeValuesInResponse] - Determines if the update response should
+  /// include the values of the cells that were updated. By default, responses
+  /// do not include the updated values. If the range to write was larger than
+  /// the range actually written, the response includes all values in the
+  /// requested range (excluding trailing empty rows and columns).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1249,10 +1249,10 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<UpdateValuesResponse> update(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String valueInputOption,
-      core.bool includeValuesInResponse,
-      core.String responseDateTimeRenderOption,
+      {core.String responseDateTimeRenderOption,
       core.String responseValueRenderOption,
+      core.String valueInputOption,
+      core.bool includeValuesInResponse,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1270,12 +1270,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (valueInputOption != null) {
-      _queryParams["valueInputOption"] = [valueInputOption];
-    }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
     if (responseDateTimeRenderOption != null) {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
@@ -1283,6 +1277,12 @@ class SpreadsheetsValuesResourceApi {
     }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
+    if (valueInputOption != null) {
+      _queryParams["valueInputOption"] = [valueInputOption];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

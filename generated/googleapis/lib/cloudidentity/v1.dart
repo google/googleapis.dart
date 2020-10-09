@@ -291,6 +291,33 @@ class DevicesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Optional. The maximum number of Devices to return. If
+  /// unspecified, at most 20 Devices will be returned. The maximum value is
+  /// 100; values above 100 will be coerced to 100.
+  ///
+  /// [filter] - Optional. Additional restrictions when fetching list of
+  /// devices. [Help Center article
+  /// link](https://support.google.com/a/answer/7549103)
+  ///
+  /// [orderBy] - Optional. Order specification for devices in the response.
+  /// Only one of the following field names may be used to specify the order:
+  /// `create_time`, `last_sync_time`, `model`, `os_version`, `device_type` and
+  /// `serial_number`. `desc` may be specified optionally at the end to specify
+  /// results to be sorted in descending order. Default order is ascending.
+  ///
+  /// [customer] - Required. [Resource
+  /// name](https://cloud.google.com/apis/design/resource_names) of the customer
+  /// in the format: `customers/{customer_id}`, where customer_id is the
+  /// customer to whom the device belongs. If you're using this API for your own
+  /// organization, use `customers/my_customer`. If you're using this API to
+  /// manage another organization, use `customers/{customer_id}`, where
+  /// customer_id is the customer to whom the device belongs.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDevices` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListDevices` must match the
+  /// call that provided the page token.
+  ///
   /// [view] - Optional. The view to use for the List request.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default value. The value is unused.
@@ -301,33 +328,6 @@ class DevicesResourceApi {
   /// - "USER_ASSIGNED_DEVICES" : This view contains all devices with at least
   /// one user registered on the device. Each device in the response contains
   /// all device information, except for asset tags.
-  ///
-  /// [pageSize] - Optional. The maximum number of Devices to return. If
-  /// unspecified, at most 20 Devices will be returned. The maximum value is
-  /// 100; values above 100 will be coerced to 100.
-  ///
-  /// [pageToken] - Optional. A page token, received from a previous
-  /// `ListDevices` call. Provide this to retrieve the subsequent page. When
-  /// paginating, all other parameters provided to `ListDevices` must match the
-  /// call that provided the page token.
-  ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the customer
-  /// in the format: `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs. If you're using this API for your own
-  /// organization, use `customers/my_customer`. If you're using this API to
-  /// manage another organization, use `customers/{customer_id}`, where
-  /// customer_id is the customer to whom the device belongs.
-  ///
-  /// [orderBy] - Optional. Order specification for devices in the response.
-  /// Only one of the following field names may be used to specify the order:
-  /// `create_time`, `last_sync_time`, `model`, `os_version`, `device_type` and
-  /// `serial_number`. `desc` may be specified optionally at the end to specify
-  /// results to be sorted in descending order. Default order is ascending.
-  ///
-  /// [filter] - Optional. Additional restrictions when fetching list of
-  /// devices. [Help Center article
-  /// link](https://support.google.com/a/answer/7549103)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -340,12 +340,12 @@ class DevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1ListDevicesResponse> list(
-      {core.String view,
-      core.int pageSize,
-      core.String pageToken,
-      core.String customer,
-      core.String orderBy,
+      {core.int pageSize,
       core.String filter,
+      core.String orderBy,
+      core.String customer,
+      core.String pageToken,
+      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -354,23 +354,23 @@ class DevicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (customer != null) {
-      _queryParams["customer"] = [customer];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (customer != null) {
+      _queryParams["customer"] = [customer];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -753,6 +753,12 @@ class DevicesDeviceUsersResourceApi {
   /// paginating, all other parameters provided to `ListBooks` must match the
   /// call that provided the page token.
   ///
+  /// [pageSize] - Optional. The maximum number of DeviceUsers to return. If
+  /// unspecified, at most 5 DeviceUsers will be returned. The maximum value is
+  /// 20; values above 20 will be coerced to 20.
+  ///
+  /// [orderBy] - Optional. Order specification for devices in the response.
+  ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// customer. If you're using this API for your own organization, use
@@ -760,14 +766,8 @@ class DevicesDeviceUsersResourceApi {
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
   ///
-  /// [pageSize] - Optional. The maximum number of DeviceUsers to return. If
-  /// unspecified, at most 5 DeviceUsers will be returned. The maximum value is
-  /// 20; values above 20 will be coerced to 20.
-  ///
   /// [filter] - Optional. Additional restrictions when fetching list of
   /// devices. [HC article](https://support.google.com/a/answer/7549103)
-  ///
-  /// [orderBy] - Optional. Order specification for devices in the response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -783,10 +783,10 @@ class DevicesDeviceUsersResourceApi {
   async.Future<GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse> list(
       core.String parent,
       {core.String pageToken,
-      core.String customer,
       core.int pageSize,
-      core.String filter,
       core.String orderBy,
+      core.String customer,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -801,17 +801,17 @@ class DevicesDeviceUsersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (customer != null) {
-      _queryParams["customer"] = [customer];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
+    }
+    if (customer != null) {
+      _queryParams["customer"] = [customer];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -866,12 +866,12 @@ class DevicesDeviceUsersResourceApi {
   /// other parameters provided to `LookupDeviceUsers` must match the call that
   /// provided the page token.
   ///
+  /// [androidId] - Android Id returned by
+  /// [Settings.Secure#ANDROID_ID](https://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID).
+  ///
   /// [pageSize] - The maximum number of DeviceUsers to return. If unspecified,
   /// at most 20 DeviceUsers will be returned. The maximum value is 20; values
   /// above 20 will be coerced to 20.
-  ///
-  /// [androidId] - Android Id returned by
-  /// [Settings.Secure#ANDROID_ID](https://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -889,8 +889,8 @@ class DevicesDeviceUsersResourceApi {
           {core.String rawResourceId,
           core.String userId,
           core.String pageToken,
-          core.int pageSize,
           core.String androidId,
+          core.int pageSize,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -911,11 +911,11 @@ class DevicesDeviceUsersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (androidId != null) {
       _queryParams["androidId"] = [androidId];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1076,12 +1076,8 @@ class DevicesDeviceUsersClientStatesResourceApi {
   /// devices/{device}/deviceUsers/{deviceUser}
   /// Value must have pattern "^devices/[^/]+/deviceUsers/[^/]+$".
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
-  /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs.
+  /// [orderBy] - Optional. Order specification for client states in the
+  /// response.
   ///
   /// [filter] - Optional. Additional restrictions when fetching list of client
   /// states.
@@ -1091,8 +1087,12 @@ class DevicesDeviceUsersClientStatesResourceApi {
   /// When paginating, all other parameters provided to `ListClientStates` must
   /// match the call that provided the page token.
   ///
-  /// [orderBy] - Optional. Order specification for client states in the
-  /// response.
+  /// [customer] - Required. [Resource
+  /// name](https://cloud.google.com/apis/design/resource_names) of the
+  /// customer. If you're using this API for your own organization, use
+  /// `customers/my_customer` If you're using this API to manage another
+  /// organization, use `customers/{customer_id}`, where customer_id is the
+  /// customer to whom the device belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1107,10 +1107,10 @@ class DevicesDeviceUsersClientStatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1ListClientStatesResponse> list(
       core.String parent,
-      {core.String customer,
+      {core.String orderBy,
       core.String filter,
       core.String pageToken,
-      core.String orderBy,
+      core.String customer,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1122,8 +1122,8 @@ class DevicesDeviceUsersClientStatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (customer != null) {
-      _queryParams["customer"] = [customer];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -1131,8 +1131,8 @@ class DevicesDeviceUsersClientStatesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (customer != null) {
+      _queryParams["customer"] = [customer];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1178,16 +1178,16 @@ class DevicesDeviceUsersClientStatesResourceApi {
   /// Value must have pattern
   /// "^devices/[^/]+/deviceUsers/[^/]+/clientStates/[^/]+$".
   ///
+  /// [updateMask] - Optional. Comma-separated list of fully qualified names of
+  /// fields to be updated. If not specified, all updatable fields in
+  /// ClientState are updated.
+  ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
-  ///
-  /// [updateMask] - Optional. Comma-separated list of fully qualified names of
-  /// fields to be updated. If not specified, all updatable fields in
-  /// ClientState are updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1201,7 +1201,7 @@ class DevicesDeviceUsersClientStatesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       GoogleAppsCloudidentityDevicesV1ClientState request, core.String name,
-      {core.String customer, core.String updateMask, core.String $fields}) {
+      {core.String updateMask, core.String customer, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1215,11 +1215,11 @@ class DevicesDeviceUsersClientStatesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (customer != null) {
-      _queryParams["customer"] = [customer];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (customer != null) {
+      _queryParams["customer"] = [customer];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1399,9 +1399,6 @@ class GroupsResourceApi {
   /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
   /// and 50 (max 500) for the FULL view.
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request, if any.
-  ///
   /// [view] - Group resource view to be returned. Defaults to [View.BASIC]().
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
@@ -1409,6 +1406,9 @@ class GroupsResourceApi {
   /// - "FULL" : Full representation of the resource.
   ///
   /// [parent] - Required. Customer ID to list all groups from.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1422,9 +1422,9 @@ class GroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(
       {core.int pageSize,
-      core.String pageToken,
       core.String view,
       core.String parent,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1436,14 +1436,14 @@ class GroupsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1578,22 +1578,22 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The next_page_token value returned from a previous search
-  /// request, if any.
+  /// [view] - Group resource view to be returned. Defaults to [View.BASIC]().
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
+  /// - "BASIC" : Server responses only include basic information.
+  /// - "FULL" : Full representation of the resource.
   ///
   /// [query] - Required. `Required`. Query string for performing search on
   /// groups. Users can search on parent and label attributes of groups. EXACT
   /// match ('==') is supported on parent, and CONTAINS match ('in') is
   /// supported on labels.
   ///
+  /// [pageToken] - The next_page_token value returned from a previous search
+  /// request, if any.
+  ///
   /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
   /// and 50 (max 500) for the FULL view.
-  ///
-  /// [view] - Group resource view to be returned. Defaults to [View.BASIC]().
-  /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
-  /// - "BASIC" : Server responses only include basic information.
-  /// - "FULL" : Full representation of the resource.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1606,10 +1606,10 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchGroupsResponse> search(
-      {core.String pageToken,
+      {core.String view,
       core.String query,
+      core.String pageToken,
       core.int pageSize,
-      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1618,17 +1618,17 @@ class GroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (query != null) {
       _queryParams["query"] = [query];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1812,14 +1812,14 @@ class GroupsMembershipsResourceApi {
   /// the unique ID assigned to the Group.
   /// Value must have pattern "^groups/[^/]+$".
   ///
+  /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
+  /// and 50 (max 500) for the FULL view.
+  ///
   /// [view] - Membership resource view to be returned. Defaults to View.BASIC.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
   /// - "BASIC" : Server responses only include basic information.
   /// - "FULL" : Full representation of the resource.
-  ///
-  /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
-  /// and 50 (max 500) for the FULL view.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
@@ -1835,8 +1835,8 @@ class GroupsMembershipsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMembershipsResponse> list(core.String parent,
-      {core.String view,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String view,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -1849,11 +1849,11 @@ class GroupsMembershipsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];

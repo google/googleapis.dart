@@ -101,11 +101,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -118,9 +118,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String filter,
-      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -132,14 +132,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -385,6 +385,17 @@ class ProjectsLocationsQueuesResourceApi {
   /// `projects/PROJECT_ID/locations/LOCATION_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageToken] - A token identifying the page of results to return. To
+  /// request the first page results, page_token must be empty. To request the
+  /// next page of results, page_token must be the value of next_page_token
+  /// returned from the previous call to ListQueues method. It is an error to
+  /// switch the value of the filter while iterating through pages.
+  ///
+  /// [pageSize] - Requested page size. The maximum page size is 9800. If
+  /// unspecified, the page size will be the maximum. Fewer queues than
+  /// requested might be returned, even if more queues exist; use the
+  /// next_page_token in the response to determine if more queues exist.
+  ///
   /// [filter] - `filter` can be used to specify a subset of queues. Any Queue
   /// field can be used as a filter and several operators as supported. For
   /// example: `<=, <, >=, >, !=, =, :`. The filter syntax is the same as
@@ -392,17 +403,6 @@ class ProjectsLocationsQueuesResourceApi {
   /// Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
   /// Sample filter "state: PAUSED". Note that using filters might cause fewer
   /// queues than the requested page_size to be returned.
-  ///
-  /// [pageSize] - Requested page size. The maximum page size is 9800. If
-  /// unspecified, the page size will be the maximum. Fewer queues than
-  /// requested might be returned, even if more queues exist; use the
-  /// next_page_token in the response to determine if more queues exist.
-  ///
-  /// [pageToken] - A token identifying the page of results to return. To
-  /// request the first page results, page_token must be empty. To request the
-  /// next page of results, page_token must be the value of next_page_token
-  /// returned from the previous call to ListQueues method. It is an error to
-  /// switch the value of the filter while iterating through pages.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -415,9 +415,9 @@ class ProjectsLocationsQueuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQueuesResponse> list(core.String parent,
-      {core.String filter,
+      {core.String pageToken,
       core.int pageSize,
-      core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -429,14 +429,14 @@ class ProjectsLocationsQueuesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -992,12 +992,6 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
   ///
-  /// [pageToken] - A token identifying the page of results to return. To
-  /// request the first page results, page_token must be empty. To request the
-  /// next page of results, page_token must be the value of next_page_token
-  /// returned from the previous call to ListTasks method. The page token is
-  /// valid for only 2 hours.
-  ///
   /// [responseView] - The response_view specifies which subset of the Task will
   /// be returned. By default response_view is BASIC; not all information is
   /// retrieved by default because some data, such as payloads, might be
@@ -1016,6 +1010,12 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
   /// permission on the Queue resource.
   ///
+  /// [pageToken] - A token identifying the page of results to return. To
+  /// request the first page results, page_token must be empty. To request the
+  /// next page of results, page_token must be the value of next_page_token
+  /// returned from the previous call to ListTasks method. The page token is
+  /// valid for only 2 hours.
+  ///
   /// [pageSize] - Maximum page size. Fewer tasks than requested might be
   /// returned, even if more tasks exist; use next_page_token in the response to
   /// determine if more tasks exist. The maximum page size is 1000. If
@@ -1032,8 +1032,8 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTasksResponse> list(core.String parent,
-      {core.String pageToken,
-      core.String responseView,
+      {core.String responseView,
+      core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -1046,11 +1046,11 @@ class ProjectsLocationsQueuesTasksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (responseView != null) {
       _queryParams["responseView"] = [responseView];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];

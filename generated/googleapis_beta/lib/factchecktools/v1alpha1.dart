@@ -47,27 +47,27 @@ class ClaimsResourceApi {
   /// page. All other fields must have the same values as in the previous
   /// request.
   ///
+  /// [pageSize] - The pagination size. We will return up to that many results.
+  /// Defaults to 10 if not set.
+  ///
+  /// [maxAgeDays] - The maximum age of the returned search results, in days.
+  /// Age is determined by either claim date or review date, whichever is newer.
+  ///
+  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// Can be used to restrict results by language, though we do not currently
+  /// consider the region.
+  ///
   /// [offset] - An integer that specifies the current offset (that is, starting
   /// result location) in search results. This field is only considered if
   /// `page_token` is unset. For example, 0 means to return results starting
   /// from the first matching result, and 10 means to return from the 11th
   /// result.
   ///
-  /// [reviewPublisherSiteFilter] - The review publisher site to filter results
-  /// by, e.g. nytimes.com.
-  ///
-  /// [maxAgeDays] - The maximum age of the returned search results, in days.
-  /// Age is determined by either claim date or review date, whichever is newer.
-  ///
-  /// [pageSize] - The pagination size. We will return up to that many results.
-  /// Defaults to 10 if not set.
-  ///
   /// [query] - Textual query string. Required unless
   /// `review_publisher_site_filter` is specified.
   ///
-  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// Can be used to restrict results by language, though we do not currently
-  /// consider the region.
+  /// [reviewPublisherSiteFilter] - The review publisher site to filter results
+  /// by, e.g. nytimes.com.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -84,12 +84,12 @@ class ClaimsResourceApi {
           GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>
       search(
           {core.String pageToken,
-          core.int offset,
-          core.String reviewPublisherSiteFilter,
-          core.int maxAgeDays,
           core.int pageSize,
-          core.String query,
+          core.int maxAgeDays,
           core.String languageCode,
+          core.int offset,
+          core.String query,
+          core.String reviewPublisherSiteFilter,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -101,23 +101,23 @@ class ClaimsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (offset != null) {
-      _queryParams["offset"] = ["${offset}"];
-    }
-    if (reviewPublisherSiteFilter != null) {
-      _queryParams["reviewPublisherSiteFilter"] = [reviewPublisherSiteFilter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (maxAgeDays != null) {
       _queryParams["maxAgeDays"] = ["${maxAgeDays}"];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
+    }
+    if (offset != null) {
+      _queryParams["offset"] = ["${offset}"];
     }
     if (query != null) {
       _queryParams["query"] = [query];
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+    if (reviewPublisherSiteFilter != null) {
+      _queryParams["reviewPublisherSiteFilter"] = [reviewPublisherSiteFilter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -288,27 +288,27 @@ class PagesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The pagination size. We will return up to that many results.
-  /// Defaults to 10 if not set. Has no effect if a URL is requested.
-  ///
-  /// [organization] - The organization for which we want to fetch markups for.
-  /// For instance, "site.com". Cannot be specified along with an URL.
-  ///
   /// [url] - The URL from which to get `ClaimReview` markup. There will be at
   /// most one result. If markup is associated with a more canonical version of
   /// the URL provided, we will return that URL instead. Cannot be specified
   /// along with an organization.
   ///
-  /// [pageToken] - The pagination token. You may provide the `next_page_token`
-  /// returned from a previous List request, if any, in order to get the next
-  /// page. All other fields must have the same values as in the previous
-  /// request.
+  /// [pageSize] - The pagination size. We will return up to that many results.
+  /// Defaults to 10 if not set. Has no effect if a URL is requested.
   ///
   /// [offset] - An integer that specifies the current offset (that is, starting
   /// result location) in search results. This field is only considered if
   /// `page_token` is unset, and if the request is not for a specific URL. For
   /// example, 0 means to return results starting from the first matching
   /// result, and 10 means to return from the 11th result.
+  ///
+  /// [organization] - The organization for which we want to fetch markups for.
+  /// For instance, "site.com". Cannot be specified along with an URL.
+  ///
+  /// [pageToken] - The pagination token. You may provide the `next_page_token`
+  /// returned from a previous List request, if any, in order to get the next
+  /// page. All other fields must have the same values as in the previous
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -324,11 +324,11 @@ class PagesResourceApi {
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>
       list(
-          {core.int pageSize,
-          core.String organization,
-          core.String url,
-          core.String pageToken,
+          {core.String url,
+          core.int pageSize,
           core.int offset,
+          core.String organization,
+          core.String pageToken,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -337,20 +337,20 @@ class PagesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (url != null) {
+      _queryParams["url"] = [url];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (offset != null) {
+      _queryParams["offset"] = ["${offset}"];
     }
     if (organization != null) {
       _queryParams["organization"] = [organization];
     }
-    if (url != null) {
-      _queryParams["url"] = [url];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (offset != null) {
-      _queryParams["offset"] = ["${offset}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

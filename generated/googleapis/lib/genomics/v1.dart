@@ -152,11 +152,6 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [pageSize] - The maximum number of results to return. The maximum value is
-  /// 256.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [filter] - A string for filtering Operations. In v2alpha1, the following
   /// filter fields are supported: * createTime: The time this job was created *
   /// events: The set of event (names) that have occurred while running the
@@ -177,6 +172,11 @@ class OperationsResourceApi {
   /// = my-project AND labels.color = *` * `projectId = my-project AND
   /// labels.color = red`
   ///
+  /// [pageSize] - The maximum number of results to return. The maximum value is
+  /// 256.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -188,9 +188,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String filter,
+      core.int pageSize,
       core.String pageToken,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -202,14 +202,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

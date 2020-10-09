@@ -96,11 +96,11 @@ class CustomersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of customers to return in the response.
-  ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListCustomers method that indicates where this listing should continue
   /// from.
+  ///
+  /// [pageSize] - The maximum number of customers to return in the response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -113,7 +113,7 @@ class CustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListCustomersResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -121,11 +121,11 @@ class CustomersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -377,12 +377,12 @@ class CustomersDeploymentsDevicesResourceApi {
   /// [parent] - Required. The name of the parent resource.
   /// Value must have pattern "^customers/[^/]+/deployments/[^/]+$".
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListDevices that indicates where this listing should continue from.
-  ///
   /// [filter] - The filter expression. The filter should have one of the
   /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
   /// to serial_number of the device. The filter is case insensitive.
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListDevices that indicates where this listing should continue from.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
@@ -398,8 +398,8 @@ class CustomersDeploymentsDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.String filter,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -412,11 +412,11 @@ class CustomersDeploymentsDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -696,12 +696,12 @@ class CustomersDevicesResourceApi {
   /// [parent] - Required. The name of the parent resource.
   /// Value must have pattern "^customers/[^/]+$".
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListDevices that indicates where this listing should continue from.
+  ///
   /// [filter] - The filter expression. The filter should have one of the
   /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
   /// to serial_number of the device. The filter is case insensitive.
-  ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListDevices that indicates where this listing should continue from.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
@@ -717,8 +717,8 @@ class CustomersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -731,11 +731,11 @@ class CustomersDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1343,10 +1343,10 @@ class CustomersNodesNodesResourceApi {
   /// [parent] - Required. The parent resource name, for example, "nodes/1".
   /// Value must have pattern "^customers/[^/]+/nodes/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of nodes to return in the response.
+  ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListNodes method that indicates where this listing should continue from.
-  ///
-  /// [pageSize] - The maximum number of nodes to return in the response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1359,7 +1359,7 @@ class CustomersNodesNodesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListNodesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1370,11 +1370,11 @@ class CustomersNodesNodesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2035,15 +2035,15 @@ class NodesDeploymentsDevicesResourceApi {
   /// [parent] - Required. The name of the parent resource.
   /// Value must have pattern "^nodes/[^/]+/deployments/[^/]+$".
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListDevices that indicates where this listing should continue from.
+  ///
   /// [filter] - The filter expression. The filter should have one of the
   /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
-  ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListDevices that indicates where this listing should continue from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2056,9 +2056,9 @@ class NodesDeploymentsDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(core.String parent,
-      {core.String filter,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2070,14 +2070,14 @@ class NodesDeploymentsDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2356,12 +2356,12 @@ class NodesDevicesResourceApi {
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListDevices that indicates where this listing should continue from.
-  ///
   /// [filter] - The filter expression. The filter should have one of the
   /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
   /// to serial_number of the device. The filter is case insensitive.
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListDevices that indicates where this listing should continue from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2375,8 +2375,8 @@ class NodesDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(core.String parent,
       {core.int pageSize,
-      core.String pageToken,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2391,11 +2391,11 @@ class NodesDevicesResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2780,10 +2780,10 @@ class NodesNodesResourceApi {
   /// [parent] - Required. The parent resource name, for example, "nodes/1".
   /// Value must have pattern "^nodes/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of nodes to return in the response.
+  ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListNodes method that indicates where this listing should continue from.
-  ///
-  /// [pageSize] - The maximum number of nodes to return in the response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2796,7 +2796,7 @@ class NodesNodesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListNodesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2807,11 +2807,11 @@ class NodesNodesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3107,15 +3107,15 @@ class NodesNodesDevicesResourceApi {
   /// [parent] - Required. The name of the parent resource.
   /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
   ///
+  /// [filter] - The filter expression. The filter should have one of the
+  /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
+  /// to serial_number of the device. The filter is case insensitive.
+  ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
-  ///
-  /// [filter] - The filter expression. The filter should have one of the
-  /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
-  /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3128,9 +3128,9 @@ class NodesNodesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String filter,
+      core.int pageSize,
       core.String pageToken,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3142,14 +3142,14 @@ class NodesNodesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

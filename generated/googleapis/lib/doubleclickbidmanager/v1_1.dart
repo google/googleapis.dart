@@ -276,10 +276,10 @@ class QueriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Optional pagination token.
-  ///
   /// [pageSize] - Maximum number of results per page. Must be between 1 and
   /// 100. Defaults to 100 if unspecified.
+  ///
+  /// [pageToken] - Optional pagination token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -292,7 +292,7 @@ class QueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQueriesResponse> listqueries(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -300,11 +300,11 @@ class QueriesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -386,10 +386,10 @@ class ReportsResourceApi {
   ///
   /// [queryId] - Query ID with which the reports are associated.
   ///
-  /// [pageToken] - Optional pagination token.
-  ///
   /// [pageSize] - Maximum number of results per page. Must be between 1 and
   /// 100. Defaults to 100 if unspecified.
+  ///
+  /// [pageToken] - Optional pagination token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -402,7 +402,7 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReportsResponse> listreports(core.String queryId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -413,11 +413,11 @@ class ReportsResourceApi {
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1398,7 +1398,7 @@ class PathQueryOptions {
   }
 }
 
-/// Dimension Filter for a Path Filter.
+/// Dimension Filter on path events.
 class PathQueryOptionsFilter {
   /// Dimension the filter is applied to.
   /// Possible string values are:

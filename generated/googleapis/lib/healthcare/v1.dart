@@ -101,11 +101,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -118,9 +118,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -132,14 +132,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1077,12 +1077,12 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// [pageSize] - Limit on the number of DICOM stores to return in a single
   /// response. If zero the default page size of 100 is used.
   ///
+  /// [pageToken] - The next_page_token value returned from the previous List
+  /// request, if any.
+  ///
   /// [filter] - Restricts stores returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
   /// Only filtering on labels is supported. For example, `labels.key=value`.
-  ///
-  /// [pageToken] - The next_page_token value returned from the previous List
-  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1096,8 +1096,8 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDicomStoresResponse> list(core.String parent,
       {core.int pageSize,
-      core.String filter,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1112,11 +1112,11 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3135,15 +3135,15 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// [parent] - Name of the dataset.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from the previous List
-  /// request, if any.
+  /// [pageSize] - Limit on the number of FHIR stores to return in a single
+  /// response. If zero the default page size of 100 is used.
   ///
   /// [filter] - Restricts stores returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
   /// Only filtering on labels is supported, for example `labels.key=value`.
   ///
-  /// [pageSize] - Limit on the number of FHIR stores to return in a single
-  /// response. If zero the default page size of 100 is used.
+  /// [pageToken] - The next_page_token value returned from the previous List
+  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3156,9 +3156,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFhirStoresResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String filter,
-      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3170,14 +3170,14 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3409,6 +3409,19 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Patient/[^/]+$".
   ///
+  /// [P_type] - String of comma-delimited FHIR resource types. If provided,
+  /// only resources of the specified resource type(s) are returned.
+  ///
+  /// [P_count] - Maximum number of resources in a page. Defaults to 100.
+  ///
+  /// [start] - The response includes records subsequent to the start date. If
+  /// no start date is provided, all records prior to the end date are in scope.
+  ///
+  /// [P_since] - If provided, only resources updated after this time are
+  /// returned. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For
+  /// example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The
+  /// time must be specified to the second and include a time zone.
+  ///
   /// [end] - The response includes records prior to the end date. If no end
   /// date is provided, all records subsequent to the start date are in scope.
   ///
@@ -3417,19 +3430,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// next or previous page links' url. Next and previous page are returned in
   /// the response bundle's links field, where `link.relation` is "previous" or
   /// "next". Omit `_page_token` if no previous request has been made.
-  ///
-  /// [P_type] - String of comma-delimited FHIR resource types. If provided,
-  /// only resources of the specified resource type(s) are returned.
-  ///
-  /// [P_since] - If provided, only resources updated after this time are
-  /// returned. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For
-  /// example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The
-  /// time must be specified to the second and include a time zone.
-  ///
-  /// [start] - The response includes records subsequent to the start date. If
-  /// no start date is provided, all records prior to the end date are in scope.
-  ///
-  /// [P_count] - Maximum number of resources in a page. Defaults to 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3442,12 +3442,12 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> Patient_everything(core.String name,
-      {core.String end,
-      core.String P_pageToken,
-      core.String P_type,
-      core.String P_since,
-      core.String start,
+      {core.String P_type,
       core.int P_count,
+      core.String start,
+      core.String P_since,
+      core.String end,
+      core.String P_pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3459,23 +3459,23 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (P_type != null) {
+      _queryParams["_type"] = [P_type];
+    }
+    if (P_count != null) {
+      _queryParams["_count"] = ["${P_count}"];
+    }
+    if (start != null) {
+      _queryParams["start"] = [start];
+    }
+    if (P_since != null) {
+      _queryParams["_since"] = [P_since];
+    }
     if (end != null) {
       _queryParams["end"] = [end];
     }
     if (P_pageToken != null) {
       _queryParams["_page_token"] = [P_pageToken];
-    }
-    if (P_type != null) {
-      _queryParams["_type"] = [P_type];
-    }
-    if (P_since != null) {
-      _queryParams["_since"] = [P_since];
-    }
-    if (start != null) {
-      _queryParams["start"] = [start];
-    }
-    if (P_count != null) {
-      _queryParams["_count"] = ["${P_count}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3838,21 +3838,21 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// `link.relation` is "previous" or "next". Omit `_page_token` if no previous
   /// request has been made.
   ///
-  /// [P_since] - Only include resource versions that were created at or after
-  /// the given instant in time. The instant in time uses the format
-  /// YYYY-MM-DDThh:mm:ss.sss+zz:zz (for example 2015-02-07T13:28:17.239+02:00
-  /// or 2017-01-01T00:00:00Z). The time must be specified to the second and
-  /// include a time zone.
-  ///
-  /// [P_count] - The maximum number of search results on a page. Defaults to
-  /// 1000.
-  ///
   /// [P_at] - Only include resource versions that were current at some point
   /// during the time period specified in the date time value. The date
   /// parameter format is yyyy-mm-ddThh:mm:ss[Z|(+|-)hh:mm] Clients may specify
   /// any of the following: * An entire year: `_at=2019` * An entire month:
   /// `_at=2019-01` * A specific day: `_at=2019-01-20` * A specific second:
   /// `_at=2018-12-31T23:59:58Z`
+  ///
+  /// [P_count] - The maximum number of search results on a page. Defaults to
+  /// 1000.
+  ///
+  /// [P_since] - Only include resource versions that were created at or after
+  /// the given instant in time. The instant in time uses the format
+  /// YYYY-MM-DDThh:mm:ss.sss+zz:zz (for example 2015-02-07T13:28:17.239+02:00
+  /// or 2017-01-01T00:00:00Z). The time must be specified to the second and
+  /// include a time zone.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3866,9 +3866,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   /// this method will complete with the same error.
   async.Future<HttpBody> history(core.String name,
       {core.String P_pageToken,
-      core.String P_since,
-      core.int P_count,
       core.String P_at,
+      core.int P_count,
+      core.String P_since,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3883,14 +3883,14 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
     if (P_pageToken != null) {
       _queryParams["_page_token"] = [P_pageToken];
     }
-    if (P_since != null) {
-      _queryParams["_since"] = [P_since];
+    if (P_at != null) {
+      _queryParams["_at"] = [P_at];
     }
     if (P_count != null) {
       _queryParams["_count"] = ["${P_count}"];
     }
-    if (P_at != null) {
-      _queryParams["_at"] = [P_at];
+    if (P_since != null) {
+      _queryParams["_since"] = [P_since];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4477,15 +4477,15 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   /// [parent] - Name of the dataset.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
   ///
-  /// [pageSize] - Limit on the number of HL7v2 stores to return in a single
-  /// response. If zero the default page size of 100 is used.
+  /// [filter] - Restricts stores returned to those matching a filter. Syntax:
+  /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+  /// Only filtering on labels is supported. For example, `labels.key=value`.
   ///
   /// [pageToken] - The next_page_token value returned from the previous List
   /// request, if any.
   ///
-  /// [filter] - Restricts stores returned to those matching a filter. Syntax:
-  /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
-  /// Only filtering on labels is supported. For example, `labels.key=value`.
+  /// [pageSize] - Limit on the number of HL7v2 stores to return in a single
+  /// response. If zero the default page size of 100 is used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4498,9 +4498,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHl7V2StoresResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String filter,
       core.String pageToken,
-      core.String filter,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4512,14 +4512,14 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4965,6 +4965,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   /// - "FULL" : Server responses include all the message fields.
   /// - "BASIC" : Server responses include only the name field.
   ///
+  /// [pageToken] - The next_page_token value returned from the previous List
+  /// request, if any.
+  ///
   /// [filter] - Restricts messages returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
   /// Fields/functions available for filtering are: * `message_type`, from the
@@ -4983,15 +4986,12 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   /// `labels."priority"="high"`. The operator `:*` can be used to assert the
   /// existence of a label. For example, `labels."priority":*`.
   ///
+  /// [pageSize] - Limit on the number of messages to return in a single
+  /// response. If zero the default page size of 100 is used.
+  ///
   /// [orderBy] - Orders messages returned by the specified order_by clause.
   /// Syntax: https://cloud.google.com/apis/design/design_patterns#sorting_order
   /// Fields available for ordering are: * `send_time`
-  ///
-  /// [pageToken] - The next_page_token value returned from the previous List
-  /// request, if any.
-  ///
-  /// [pageSize] - Limit on the number of messages to return in a single
-  /// response. If zero the default page size of 100 is used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5005,10 +5005,10 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListMessagesResponse> list(core.String parent,
       {core.String view,
-      core.String filter,
-      core.String orderBy,
       core.String pageToken,
+      core.String filter,
       core.int pageSize,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5023,17 +5023,17 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

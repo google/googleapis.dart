@@ -201,10 +201,10 @@ class ProjectsModelsResourceApi {
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
+  /// [pageSize] - The maximum number of items to return
+  ///
   /// [filter] - A filter for the list e.g. 'tags: abc' to list models which are
   /// tagged with "abc"
-  ///
-  /// [pageSize] - The maximum number of items to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -218,8 +218,8 @@ class ProjectsModelsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListModelsResponse> list(core.String parent,
       {core.String pageToken,
-      core.String filter,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -234,11 +234,11 @@ class ProjectsModelsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
