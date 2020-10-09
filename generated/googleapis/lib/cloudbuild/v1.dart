@@ -343,14 +343,14 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - Required. ID of the project.
   ///
-  /// [pageSize] - Number of results to return in the list.
-  ///
-  /// [filter] - The raw filter text to constrain the results.
-  ///
   /// [parent] - The parent of the collection of `Builds`. Format:
   /// `projects/{project}/locations/location`
   ///
+  /// [filter] - The raw filter text to constrain the results.
+  ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [pageSize] - Number of results to return in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -363,10 +363,10 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.int pageSize,
+      {core.String parent,
       core.String filter,
-      core.String parent,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -378,17 +378,17 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (parent != null) {
-      _queryParams["parent"] = [parent];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -617,9 +617,9 @@ class ProjectsLocationsBuildsResourceApi {
   /// `projects/{project}/locations/{location}/builds/{build}`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/builds/[^/]+$".
   ///
-  /// [projectId] - Required. ID of the project.
-  ///
   /// [id] - Required. ID of the build.
+  ///
+  /// [projectId] - Required. ID of the project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -632,7 +632,7 @@ class ProjectsLocationsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Build> get(core.String name,
-      {core.String projectId, core.String id, core.String $fields}) {
+      {core.String id, core.String projectId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -643,11 +643,11 @@ class ProjectsLocationsBuildsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (id != null) {
       _queryParams["id"] = [id];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -673,13 +673,13 @@ class ProjectsLocationsBuildsResourceApi {
   /// `projects/{project}/locations/location`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - Number of results to return in the list.
+  /// [projectId] - Required. ID of the project.
   ///
-  /// [filter] - The raw filter text to constrain the results.
+  /// [pageSize] - Number of results to return in the list.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
-  /// [projectId] - Required. ID of the project.
+  /// [filter] - The raw filter text to constrain the results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -692,10 +692,10 @@ class ProjectsLocationsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
+      {core.String projectId,
+      core.int pageSize,
       core.String pageToken,
-      core.String projectId,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -707,17 +707,17 @@ class ProjectsLocationsBuildsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

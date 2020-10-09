@@ -191,24 +191,24 @@ class ActivitiesResourceApi {
   /// forth. If you set *part=snippet*, the API response will also contain all
   /// of those nested properties.
   ///
-  /// [home] - null
+  /// [publishedAfter] - null
   ///
   /// [mine] - null
   ///
-  /// [regionCode] - null
+  /// [channelId] - null
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
   ///
   /// [publishedBefore] - null
+  ///
+  /// [regionCode] - null
+  ///
+  /// [home] - null
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [channelId] - null
-  ///
-  /// [publishedAfter] - null
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -221,14 +221,14 @@ class ActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ActivityListResponse> list(core.List<core.String> part,
-      {core.bool home,
+      {core.String publishedAfter,
       core.bool mine,
-      core.String regionCode,
-      core.String publishedBefore,
-      core.String pageToken,
       core.String channelId,
-      core.String publishedAfter,
       core.int maxResults,
+      core.String publishedBefore,
+      core.String regionCode,
+      core.bool home,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -241,29 +241,29 @@ class ActivitiesResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (home != null) {
-      _queryParams["home"] = ["${home}"];
+    if (publishedAfter != null) {
+      _queryParams["publishedAfter"] = [publishedAfter];
     }
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
     }
-    if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (publishedBefore != null) {
       _queryParams["publishedBefore"] = [publishedBefore];
     }
+    if (regionCode != null) {
+      _queryParams["regionCode"] = [regionCode];
+    }
+    if (home != null) {
+      _queryParams["home"] = ["${home}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
-    }
-    if (publishedAfter != null) {
-      _queryParams["publishedAfter"] = [publishedAfter];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -292,6 +292,9 @@ class CaptionsResourceApi {
   ///
   /// [id] - null
   ///
+  /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
+  /// be on behalf of
+  ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
   /// indicates that the request's authorization credentials identify a YouTube
@@ -303,9 +306,6 @@ class CaptionsResourceApi {
   /// individual channel. The actual CMS account that the user authenticates
   /// with must be linked to the specified YouTube content owner.
   ///
-  /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
-  /// be on behalf of
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -315,8 +315,8 @@ class CaptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOf,
+      {core.String onBehalfOf,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -329,11 +329,11 @@ class CaptionsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -451,12 +451,6 @@ class CaptionsResourceApi {
   /// [part] - The *part* parameter specifies the caption resource parts that
   /// the API response will include. Set the parameter value to snippet.
   ///
-  /// [sync] - Extra parameter to allow automatically syncing the uploaded
-  /// caption/transcript with the audio.
-  ///
-  /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
-  /// be on behalf of
-  ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
   /// indicates that the request's authorization credentials identify a YouTube
@@ -467,6 +461,12 @@ class CaptionsResourceApi {
   /// data, without having to provide authentication credentials for each
   /// individual channel. The actual CMS account that the user authenticates
   /// with must be linked to the specified YouTube content owner.
+  ///
+  /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
+  /// be on behalf of
+  ///
+  /// [sync] - Extra parameter to allow automatically syncing the uploaded
+  /// caption/transcript with the audio.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -485,9 +485,9 @@ class CaptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Caption> insert(Caption request, core.List<core.String> part,
-      {core.bool sync,
+      {core.String onBehalfOfContentOwner,
       core.String onBehalfOf,
-      core.String onBehalfOfContentOwner,
+      core.bool sync,
       core.String $fields,
       commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
@@ -505,14 +505,14 @@ class CaptionsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (sync != null) {
-      _queryParams["sync"] = ["${sync}"];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
     }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    if (sync != null) {
+      _queryParams["sync"] = ["${sync}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -548,8 +548,6 @@ class CaptionsResourceApi {
   /// more caption resource parts that the API response will include. The part
   /// names that you can include in the parameter value are id and snippet.
   ///
-  /// [id] - Returns the captions with the given IDs for Stubby or Apiary.
-  ///
   /// [onBehalfOf] - ID of the Google+ Page for the channel that the request is
   /// on behalf of.
   ///
@@ -564,6 +562,8 @@ class CaptionsResourceApi {
   /// individual channel. The actual CMS account that the user authenticates
   /// with must be linked to the specified YouTube content owner.
   ///
+  /// [id] - Returns the captions with the given IDs for Stubby or Apiary.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -576,9 +576,9 @@ class CaptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<CaptionListResponse> list(
       core.String videoId, core.List<core.String> part,
-      {core.List<core.String> id,
-      core.String onBehalfOf,
+      {core.String onBehalfOf,
       core.String onBehalfOfContentOwner,
+      core.List<core.String> id,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -595,14 +595,14 @@ class CaptionsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (id != null) {
-      _queryParams["id"] = id;
-    }
     if (onBehalfOf != null) {
       _queryParams["onBehalfOf"] = [onBehalfOf];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -728,9 +728,6 @@ class ChannelBannersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [channelId] - Unused, channel_id is currently derived from the security
-  /// context of the requestor.
-  ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
   /// indicates that the request's authorization credentials identify a YouTube
@@ -741,6 +738,9 @@ class ChannelBannersResourceApi {
   /// data, without having to provide authentication credentials for each
   /// individual channel. The actual CMS account that the user authenticates
   /// with must be linked to the specified YouTube content owner.
+  ///
+  /// [channelId] - Unused, channel_id is currently derived from the security
+  /// context of the requestor.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
@@ -776,8 +776,8 @@ class ChannelBannersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChannelBannerResource> insert(ChannelBannerResource request,
-      {core.String channelId,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
+      core.String channelId,
       core.String onBehalfOfContentOwnerChannel,
       core.String $fields,
       commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
@@ -792,11 +792,11 @@ class ChannelBannersResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
     }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
@@ -998,10 +998,12 @@ class ChannelSectionsResourceApi {
   ///
   /// [id] - Return the ChannelSections with the given IDs for Stubby or Apiary.
   ///
-  /// [hl] - Return content in specified language
+  /// [mine] - Return the ChannelSections owned by the authenticated user.
   ///
   /// [channelId] - Return the ChannelSections owned by the specified channel
   /// ID.
+  ///
+  /// [hl] - Return content in specified language
   ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
@@ -1013,8 +1015,6 @@ class ChannelSectionsResourceApi {
   /// data, without having to provide authentication credentials for each
   /// individual channel. The CMS account that the user authenticates with must
   /// be linked to the specified YouTube content owner.
-  ///
-  /// [mine] - Return the ChannelSections owned by the authenticated user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1028,10 +1028,10 @@ class ChannelSectionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ChannelSectionListResponse> list(core.List<core.String> part,
       {core.List<core.String> id,
-      core.String hl,
-      core.String channelId,
-      core.String onBehalfOfContentOwner,
       core.bool mine,
+      core.String channelId,
+      core.String hl,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1047,17 +1047,17 @@ class ChannelSectionsResourceApi {
     if (id != null) {
       _queryParams["id"] = id;
     }
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
     }
     if (channelId != null) {
       _queryParams["channelId"] = [channelId];
     }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
+    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1160,15 +1160,18 @@ class ChannelsResourceApi {
   /// such as the uploads properties. As such, if you set *part=contentDetails*,
   /// the API response will also contain all of those nested properties.
   ///
-  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
+  /// [id] - Return the channels with the specified IDs.
+  ///
+  /// [categoryId] - Return the channels within the specified guide category ID.
   ///
   /// [hl] - Stands for "host language". Specifies the localization language of
   /// the metadata to be filled into snippet.localized. The field is filled with
   /// the default metadata if there is no localization in the specified
   /// language. The parameter value must be a language code included in the list
   /// returned by the i18nLanguages.list method (e.g. en_US, es_MX).
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
   ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
@@ -1181,20 +1184,17 @@ class ChannelsResourceApi {
   /// individual channel. The CMS account that the user authenticates with must
   /// be linked to the specified YouTube content owner.
   ///
+  /// [forUsername] - Return the channel associated with a YouTube username.
+  ///
   /// [managedByMe] - Return the channels managed by the authenticated user.
   ///
-  /// [categoryId] - Return the channels within the specified guide category ID.
-  ///
-  /// [mySubscribers] - Return the channels subscribed to the authenticated user
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  ///
-  /// [forUsername] - Return the channel associated with a YouTube username.
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
   ///
   /// [mine] - Return the ids of channels owned by the authenticated user.
   ///
-  /// [id] - Return the channels with the specified IDs.
+  /// [mySubscribers] - Return the channels subscribed to the authenticated user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1207,16 +1207,16 @@ class ChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChannelListResponse> list(core.List<core.String> part,
-      {core.String pageToken,
-      core.String hl,
-      core.String onBehalfOfContentOwner,
-      core.bool managedByMe,
+      {core.List<core.String> id,
       core.String categoryId,
-      core.bool mySubscribers,
+      core.String hl,
       core.int maxResults,
+      core.String onBehalfOfContentOwner,
       core.String forUsername,
+      core.bool managedByMe,
+      core.String pageToken,
       core.bool mine,
-      core.List<core.String> id,
+      core.bool mySubscribers,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1229,35 +1229,35 @@ class ChannelsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (managedByMe != null) {
-      _queryParams["managedByMe"] = ["${managedByMe}"];
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if (categoryId != null) {
       _queryParams["categoryId"] = [categoryId];
     }
-    if (mySubscribers != null) {
-      _queryParams["mySubscribers"] = ["${mySubscribers}"];
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if (forUsername != null) {
       _queryParams["forUsername"] = [forUsername];
+    }
+    if (managedByMe != null) {
+      _queryParams["managedByMe"] = ["${managedByMe}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
     }
-    if (id != null) {
-      _queryParams["id"] = id;
+    if (mySubscribers != null) {
+      _queryParams["mySubscribers"] = ["${mySubscribers}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1408,18 +1408,19 @@ class CommentThreadsResourceApi {
   /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more commentThread resource properties that the API response will include.
   ///
-  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [textFormat] - The requested text format for the returned comments.
+  /// [order] - null
   /// Possible string values are:
-  /// - "textFormatUnspecified"
-  /// - "html" : Returns the comments in HTML format. This is the default value.
-  /// - "plainText" : Returns the comments in plain text format.
+  /// - "orderUnspecified"
+  /// - "time" : Order by time.
+  /// - "relevance" : Order by relevance.
   ///
-  /// [searchTerms] - Limits the returned comment threads to those matching the
-  /// specified key words. Not compatible with the 'id' filter.
+  /// [videoId] - Returns the comment threads of the specified video.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [id] - Returns the comment threads with the given IDs for Stubby or
+  /// Apiary.
   ///
   /// [moderationStatus] - Limits the returned comment threads to those with the
   /// specified moderation status. Not compatible with the 'id' filter. Valid
@@ -1433,22 +1434,21 @@ class CommentThreadsResourceApi {
   /// [channelId] - Returns the comment threads for all the channel comments (ie
   /// does not include comments left on videos).
   ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [searchTerms] - Limits the returned comment threads to those matching the
+  /// specified key words. Not compatible with the 'id' filter.
+  ///
   /// [allThreadsRelatedToChannelId] - Returns the comment threads of all videos
   /// of the channel and the channel comments as well.
   ///
-  /// [id] - Returns the comment threads with the given IDs for Stubby or
-  /// Apiary.
-  ///
-  /// [videoId] - Returns the comment threads of the specified video.
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  ///
-  /// [order] - null
+  /// [textFormat] - The requested text format for the returned comments.
   /// Possible string values are:
-  /// - "orderUnspecified"
-  /// - "time" : Order by time.
-  /// - "relevance" : Order by relevance.
+  /// - "textFormatUnspecified"
+  /// - "html" : Returns the comments in HTML format. This is the default value.
+  /// - "plainText" : Returns the comments in plain text format.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1461,16 +1461,16 @@ class CommentThreadsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentThreadListResponse> list(core.List<core.String> part,
-      {core.String pageToken,
-      core.String textFormat,
-      core.String searchTerms,
-      core.String moderationStatus,
-      core.String channelId,
-      core.String allThreadsRelatedToChannelId,
-      core.List<core.String> id,
+      {core.String order,
       core.String videoId,
       core.int maxResults,
-      core.String order,
+      core.List<core.String> id,
+      core.String moderationStatus,
+      core.String channelId,
+      core.String pageToken,
+      core.String searchTerms,
+      core.String allThreadsRelatedToChannelId,
+      core.String textFormat,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1483,28 +1483,8 @@ class CommentThreadsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (textFormat != null) {
-      _queryParams["textFormat"] = [textFormat];
-    }
-    if (searchTerms != null) {
-      _queryParams["searchTerms"] = [searchTerms];
-    }
-    if (moderationStatus != null) {
-      _queryParams["moderationStatus"] = [moderationStatus];
-    }
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
-    }
-    if (allThreadsRelatedToChannelId != null) {
-      _queryParams["allThreadsRelatedToChannelId"] = [
-        allThreadsRelatedToChannelId
-      ];
-    }
-    if (id != null) {
-      _queryParams["id"] = id;
+    if (order != null) {
+      _queryParams["order"] = [order];
     }
     if (videoId != null) {
       _queryParams["videoId"] = [videoId];
@@ -1512,8 +1492,28 @@ class CommentThreadsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (order != null) {
-      _queryParams["order"] = [order];
+    if (id != null) {
+      _queryParams["id"] = id;
+    }
+    if (moderationStatus != null) {
+      _queryParams["moderationStatus"] = [moderationStatus];
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchTerms != null) {
+      _queryParams["searchTerms"] = [searchTerms];
+    }
+    if (allThreadsRelatedToChannelId != null) {
+      _queryParams["allThreadsRelatedToChannelId"] = [
+        allThreadsRelatedToChannelId
+      ];
+    }
+    if (textFormat != null) {
+      _queryParams["textFormat"] = [textFormat];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1691,16 +1691,14 @@ class CommentsResourceApi {
   /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more comment resource properties that the API response will include.
   ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  ///
-  /// [parentId] - Returns replies to the specified comment. Note, currently
-  /// YouTube features only one level of replies (ie replies to top level
-  /// comments). However replies to replies may be supported in the future.
+  /// [id] - Returns the comments with the given IDs for One Platform.
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
   ///
   /// [textFormat] - The requested text format for the returned comments.
   /// Possible string values are:
@@ -1708,7 +1706,9 @@ class CommentsResourceApi {
   /// - "html" : Returns the comments in HTML format. This is the default value.
   /// - "plainText" : Returns the comments in plain text format.
   ///
-  /// [id] - Returns the comments with the given IDs for One Platform.
+  /// [parentId] - Returns replies to the specified comment. Note, currently
+  /// YouTube features only one level of replies (ie replies to top level
+  /// comments). However replies to replies may be supported in the future.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1721,11 +1721,11 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentListResponse> list(core.List<core.String> part,
-      {core.int maxResults,
-      core.String parentId,
+      {core.List<core.String> id,
       core.String pageToken,
+      core.int maxResults,
       core.String textFormat,
-      core.List<core.String> id,
+      core.String parentId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1738,20 +1738,20 @@ class CommentsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (parentId != null) {
-      _queryParams["parentId"] = [parentId];
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (textFormat != null) {
       _queryParams["textFormat"] = [textFormat];
     }
-    if (id != null) {
-      _queryParams["id"] = id;
+    if (parentId != null) {
+      _queryParams["parentId"] = [parentId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2063,6 +2063,19 @@ class LiveBroadcastsResourceApi {
   /// The part names that you can include in the parameter value are id,
   /// snippet, contentDetails, and status.
   ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [streamId] - Stream to bind, if not set unbind the current one.
+  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
   /// exclusively for YouTube content partners. The
@@ -2080,19 +2093,6 @@ class LiveBroadcastsResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
-  /// [streamId] - Stream to bind, if not set unbind the current one.
-  ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2104,9 +2104,9 @@ class LiveBroadcastsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> bind(core.String id, core.List<core.String> part,
-      {core.String onBehalfOfContentOwnerChannel,
+      {core.String onBehalfOfContentOwner,
       core.String streamId,
-      core.String onBehalfOfContentOwner,
+      core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2123,16 +2123,16 @@ class LiveBroadcastsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams["onBehalfOfContentOwnerChannel"] = [
-        onBehalfOfContentOwnerChannel
-      ];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if (streamId != null) {
       _queryParams["streamId"] = [streamId];
     }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    if (onBehalfOfContentOwnerChannel != null) {
+      _queryParams["onBehalfOfContentOwnerChannel"] = [
+        onBehalfOfContentOwnerChannel
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2162,26 +2162,7 @@ class LiveBroadcastsResourceApi {
   /// The part names that you can include in the parameter value are id,
   /// snippet, contentDetails, and status.
   ///
-  /// [offsetTimeMs] - The exact time when the actions (e.g. slate on) are
-  /// executed. It is an offset from the first frame of the monitor stream. If
-  /// not set, it means "now" or ASAP. This field should not be set if the
-  /// monitor stream is disabled, otherwise an error will be returned.
-  ///
   /// [displaySlate] - Whether display or hide slate.
-  ///
-  /// [walltime] - The wall clock time at which the action should be executed.
-  /// Only one of offset_time_ms and walltime may be set at a time.
-  ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
@@ -2200,6 +2181,25 @@ class LiveBroadcastsResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
+  /// [walltime] - The wall clock time at which the action should be executed.
+  /// Only one of offset_time_ms and walltime may be set at a time.
+  ///
+  /// [offsetTimeMs] - The exact time when the actions (e.g. slate on) are
+  /// executed. It is an offset from the first frame of the monitor stream. If
+  /// not set, it means "now" or ASAP. This field should not be set if the
+  /// monitor stream is disabled, otherwise an error will be returned.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2212,11 +2212,11 @@ class LiveBroadcastsResourceApi {
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> control(
       core.String id, core.List<core.String> part,
-      {core.String offsetTimeMs,
-      core.bool displaySlate,
-      core.String walltime,
-      core.String onBehalfOfContentOwner,
+      {core.bool displaySlate,
       core.String onBehalfOfContentOwnerChannel,
+      core.String walltime,
+      core.String offsetTimeMs,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2233,22 +2233,22 @@ class LiveBroadcastsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (offsetTimeMs != null) {
-      _queryParams["offsetTimeMs"] = [offsetTimeMs];
-    }
     if (displaySlate != null) {
       _queryParams["displaySlate"] = ["${displaySlate}"];
-    }
-    if (walltime != null) {
-      _queryParams["walltime"] = [walltime];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
+    }
+    if (walltime != null) {
+      _queryParams["walltime"] = [walltime];
+    }
+    if (offsetTimeMs != null) {
+      _queryParams["offsetTimeMs"] = [offsetTimeMs];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2271,6 +2271,17 @@ class LiveBroadcastsResourceApi {
   ///
   /// [id] - Broadcast to delete.
   ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
   /// exclusively for YouTube content partners. The
@@ -2288,17 +2299,6 @@ class LiveBroadcastsResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2308,8 +2308,8 @@ class LiveBroadcastsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwnerChannel,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
+      core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2322,13 +2322,13 @@ class LiveBroadcastsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2448,6 +2448,9 @@ class LiveBroadcastsResourceApi {
   /// The part names that you can include in the parameter value are id,
   /// snippet, contentDetails, status and statistics.
   ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
   /// exclusively for YouTube content partners. The
@@ -2472,24 +2475,6 @@ class LiveBroadcastsResourceApi {
   /// - "event" : Return only scheduled event broadcasts.
   /// - "persistent" : Return only persistent broadcasts.
   ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  ///
-  /// [mine] - null
-  ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
-  /// [id] - Return broadcasts with the given ids from Stubby or Apiary.
-  ///
   /// [broadcastStatus] - Return broadcasts with a certain status, e.g. active
   /// broadcasts.
   /// Possible string values are:
@@ -2503,6 +2488,21 @@ class LiveBroadcastsResourceApi {
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
   ///
+  /// [mine] - null
+  ///
+  /// [id] - Return broadcasts with the given ids from Stubby or Apiary.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2514,14 +2514,14 @@ class LiveBroadcastsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveBroadcastListResponse> list(core.List<core.String> part,
-      {core.String onBehalfOfContentOwnerChannel,
+      {core.int maxResults,
+      core.String onBehalfOfContentOwnerChannel,
       core.String broadcastType,
-      core.int maxResults,
-      core.bool mine,
-      core.String onBehalfOfContentOwner,
-      core.List<core.String> id,
       core.String broadcastStatus,
       core.String pageToken,
+      core.bool mine,
+      core.List<core.String> id,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2534,6 +2534,9 @@ class LiveBroadcastsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
@@ -2542,23 +2545,20 @@ class LiveBroadcastsResourceApi {
     if (broadcastType != null) {
       _queryParams["broadcastType"] = [broadcastType];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (id != null) {
-      _queryParams["id"] = id;
-    }
     if (broadcastStatus != null) {
       _queryParams["broadcastStatus"] = [broadcastStatus];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
+    }
+    if (id != null) {
+      _queryParams["id"] = id;
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2599,17 +2599,6 @@ class LiveBroadcastsResourceApi {
   /// The part names that you can include in the parameter value are id,
   /// snippet, contentDetails, and status.
   ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
   /// exclusively for YouTube content partners. The
@@ -2627,6 +2616,17 @@ class LiveBroadcastsResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2639,8 +2639,8 @@ class LiveBroadcastsResourceApi {
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> transition(
       core.String id, core.String broadcastStatus, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+      {core.String onBehalfOfContentOwnerChannel,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2661,13 +2661,13 @@ class LiveBroadcastsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2704,6 +2704,17 @@ class LiveBroadcastsResourceApi {
   /// value, the existing privacy setting will be removed and the broadcast will
   /// revert to the default privacy setting.
   ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
   /// exclusively for YouTube content partners. The
@@ -2721,17 +2732,6 @@ class LiveBroadcastsResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2744,8 +2744,8 @@ class LiveBroadcastsResourceApi {
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> update(
       LiveBroadcast request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwnerChannel,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
+      core.String onBehalfOfContentOwnerChannel,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2761,13 +2761,13 @@ class LiveBroadcastsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2998,18 +2998,18 @@ class LiveChatMessagesResourceApi {
   /// [part] - The *part* parameter specifies the liveChatComment resource parts
   /// that the API response will include. Supported values are id and snippet.
   ///
-  /// [hl] - Specifies the localization language in which the system messages
-  /// should be returned.
-  ///
-  /// [profileImageSize] - Specifies the size of the profile image that should
-  /// be returned for each user.
-  ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// property identify other pages that could be retrieved.
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  ///
+  /// [profileImageSize] - Specifies the size of the profile image that should
+  /// be returned for each user.
+  ///
+  /// [hl] - Specifies the localization language in which the system messages
+  /// should be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3023,10 +3023,10 @@ class LiveChatMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<LiveChatMessageListResponse> list(
       core.String liveChatId, core.List<core.String> part,
-      {core.String hl,
-      core.int profileImageSize,
-      core.String pageToken,
+      {core.String pageToken,
       core.int maxResults,
+      core.int profileImageSize,
+      core.String hl,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3043,17 +3043,17 @@ class LiveChatMessagesResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
-    }
-    if (profileImageSize != null) {
-      _queryParams["profileImageSize"] = ["${profileImageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (profileImageSize != null) {
+      _queryParams["profileImageSize"] = ["${profileImageSize}"];
+    }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3185,12 +3185,12 @@ class LiveChatModeratorsResourceApi {
   /// parts that the API response will include. Supported values are id and
   /// snippet.
   ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3204,7 +3204,7 @@ class LiveChatModeratorsResourceApi {
   /// this method will complete with the same error.
   async.Future<LiveChatModeratorListResponse> list(
       core.String liveChatId, core.List<core.String> part,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3220,11 +3220,11 @@ class LiveChatModeratorsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3430,25 +3430,7 @@ class LiveStreamsResourceApi {
   /// The part names that you can include in the parameter value are id,
   /// snippet, cdn, and status.
   ///
-  /// [mine] - null
-  ///
-  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
+  /// [id] - Return LiveStreams with the given ids from Stubby or Apiary.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
@@ -3467,7 +3449,25 @@ class LiveStreamsResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
-  /// [id] - Return LiveStreams with the given ids from Stubby or Apiary.
+  /// [mine] - null
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3480,12 +3480,12 @@ class LiveStreamsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveStreamListResponse> list(core.List<core.String> part,
-      {core.bool mine,
+      {core.List<core.String> id,
+      core.String onBehalfOfContentOwnerChannel,
+      core.bool mine,
+      core.int maxResults,
       core.String pageToken,
       core.String onBehalfOfContentOwner,
-      core.int maxResults,
-      core.String onBehalfOfContentOwnerChannel,
-      core.List<core.String> id,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3498,25 +3498,25 @@ class LiveStreamsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
     }
-    if (id != null) {
-      _queryParams["id"] = id;
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3548,17 +3548,6 @@ class LiveStreamsResourceApi {
   /// value specifies. If the request body does not specify a value for a
   /// mutable property, the existing value for that property will be removed.
   ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
   /// exclusively for YouTube content partners. The
@@ -3576,6 +3565,17 @@ class LiveStreamsResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3588,8 +3588,8 @@ class LiveStreamsResourceApi {
   /// this method will complete with the same error.
   async.Future<LiveStream> update(
       LiveStream request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
+      {core.String onBehalfOfContentOwnerChannel,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3605,13 +3605,13 @@ class LiveStreamsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3641,18 +3641,12 @@ class MembersResourceApi {
   /// [part] - The *part* parameter specifies the member resource parts that the
   /// API response will include. Set the parameter value to snippet.
   ///
-  /// [hasAccessToLevel] - Filter members in the results set to the ones that
-  /// have access to a level.
+  /// [filterByMemberChannelId] - Comma separated list of channel IDs. Only data
+  /// about members that are part of this list will be included in the response.
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  ///
-  /// [filterByMemberChannelId] - Comma separated list of channel IDs. Only data
-  /// about members that are part of this list will be included in the response.
   ///
   /// [mode] - Parameter that specifies which channel members to return.
   /// Possible string values are:
@@ -3660,6 +3654,12 @@ class MembersResourceApi {
   /// - "updates" : Return only members that joined after the first call with
   /// this mode was made.
   /// - "all_current" : Return all current members, from newest to oldest.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [hasAccessToLevel] - Filter members in the results set to the ones that
+  /// have access to a level.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3672,11 +3672,11 @@ class MembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MemberListResponse> list(core.List<core.String> part,
-      {core.String hasAccessToLevel,
+      {core.String filterByMemberChannelId,
       core.String pageToken,
-      core.int maxResults,
-      core.String filterByMemberChannelId,
       core.String mode,
+      core.int maxResults,
+      core.String hasAccessToLevel,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3689,20 +3689,20 @@ class MembersResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (hasAccessToLevel != null) {
-      _queryParams["hasAccessToLevel"] = [hasAccessToLevel];
+    if (filterByMemberChannelId != null) {
+      _queryParams["filterByMemberChannelId"] = [filterByMemberChannelId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (mode != null) {
+      _queryParams["mode"] = [mode];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (filterByMemberChannelId != null) {
-      _queryParams["filterByMemberChannelId"] = [filterByMemberChannelId];
-    }
-    if (mode != null) {
-      _queryParams["mode"] = [mode];
+    if (hasAccessToLevel != null) {
+      _queryParams["hasAccessToLevel"] = [hasAccessToLevel];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3919,8 +3919,6 @@ class PlaylistItemsResourceApi {
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
   ///
-  /// [id] - null
-  ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
   /// indicates that the request's authorization credentials identify a YouTube
@@ -3932,13 +3930,15 @@ class PlaylistItemsResourceApi {
   /// individual channel. The CMS account that the user authenticates with must
   /// be linked to the specified YouTube content owner.
   ///
+  /// [playlistId] - Return the playlist items within the given playlist.
+  ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
   ///
   /// [videoId] - Return the playlist items associated with the given video ID.
   ///
-  /// [playlistId] - Return the playlist items within the given playlist.
+  /// [id] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3952,11 +3952,11 @@ class PlaylistItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<PlaylistItemListResponse> list(core.List<core.String> part,
       {core.int maxResults,
-      core.List<core.String> id,
       core.String onBehalfOfContentOwner,
+      core.String playlistId,
       core.String pageToken,
       core.String videoId,
-      core.String playlistId,
+      core.List<core.String> id,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3972,11 +3972,11 @@ class PlaylistItemsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (id != null) {
-      _queryParams["id"] = id;
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (playlistId != null) {
+      _queryParams["playlistId"] = [playlistId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -3984,8 +3984,8 @@ class PlaylistItemsResourceApi {
     if (videoId != null) {
       _queryParams["videoId"] = [videoId];
     }
-    if (playlistId != null) {
-      _queryParams["playlistId"] = [playlistId];
+    if (id != null) {
+      _queryParams["id"] = id;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4244,6 +4244,17 @@ class PlaylistsResourceApi {
   /// title, description, tags, and timeCreated. As such, if you set
   /// *part=snippet*, the API response will contain all of those properties.
   ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
   /// exclusively for YouTube content partners. The
@@ -4261,31 +4272,20 @@ class PlaylistsResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
   ///
+  /// [hl] - Returen content in specified language
+  ///
   /// [id] - Return the playlists with the given IDs for Stubby or Apiary.
+  ///
+  /// [mine] - Return the playlists owned by the authenticated user.
   ///
   /// [channelId] - Return the playlists owned by the specified channel ID.
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [hl] - Returen content in specified language
-  ///
-  /// [mine] - Return the playlists owned by the authenticated user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4298,14 +4298,14 @@ class PlaylistsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlaylistListResponse> list(core.List<core.String> part,
-      {core.String onBehalfOfContentOwnerChannel,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
+      core.String onBehalfOfContentOwnerChannel,
       core.int maxResults,
+      core.String hl,
       core.List<core.String> id,
+      core.bool mine,
       core.String channelId,
       core.String pageToken,
-      core.String hl,
-      core.bool mine,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4318,31 +4318,31 @@ class PlaylistsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
     }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
+    }
     if (id != null) {
       _queryParams["id"] = id;
+    }
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
     }
     if (channelId != null) {
       _queryParams["channelId"] = [channelId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
-    }
-    if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4444,30 +4444,42 @@ class SearchResourceApi {
   /// more search resource properties that the API response will include. Set
   /// the parameter value to snippet.
   ///
-  /// [videoCaption] - Filter on the presence of captions on the videos.
+  /// [videoType] - Filter on videos of a specific type.
   /// Possible string values are:
-  /// - "videoCaptionUnspecified"
-  /// - "any" : Do not filter results based on caption availability.
-  /// - "closedCaption" : Only include videos that have captions.
-  /// - "none" : Only include videos that do not have captions.
+  /// - "videoTypeUnspecified"
+  /// - "any" : Return all videos.
+  /// - "movie" : Only retrieve movies.
+  /// - "episode" : Only retrieve episodes of shows.
   ///
-  /// [locationRadius] - Filter on distance from the location (specified above).
-  ///
-  /// [relevanceLanguage] - Return results relevant to this language.
-  ///
-  /// [forMine] - Search for the private videos of the authenticated user.
-  ///
-  /// [channelType] - Add a filter on the channel search.
+  /// [videoDimension] - Filter on 3d videos.
   /// Possible string values are:
-  /// - "channelTypeUnspecified"
-  /// - "any" : Return all channels.
-  /// - "show" : Only retrieve shows.
+  /// - "any"
+  /// - "2d" : Restrict search results to exclude 3D videos.
+  /// - "3d" : Restrict search results to only include 3D videos.
   ///
-  /// [videoDefinition] - Filter on the definition of the videos.
+  /// [forDeveloper] - Restrict the search to only retrieve videos uploaded
+  /// using the project id of the authenticated user.
+  ///
+  /// [videoCategoryId] - Filter on videos in a specific category.
+  ///
+  /// [forContentOwner] - Search owned by a content owner.
+  ///
+  /// [videoLicense] - Filter on the license of the videos.
   /// Possible string values are:
-  /// - "any" : Return all videos, regardless of their resolution.
-  /// - "standard" : Only retrieve videos in standard definition.
-  /// - "high" : Only retrieve HD videos.
+  /// - "any" : Return all videos, regardless of which license they have, that
+  /// match the query parameters.
+  /// - "youtube" : Only return videos that have the standard YouTube license.
+  /// - "creativeCommon" : Only return videos that have a Creative Commons
+  /// license. Users can reuse videos with this license in other videos that
+  /// they create. Learn more.
+  ///
+  /// [regionCode] - Display the content as seen by viewers in this country.
+  ///
+  /// [videoSyndicated] - Filter on syndicated videos.
+  /// Possible string values are:
+  /// - "videoSyndicatedUnspecified"
+  /// - "any" : Return all videos, syndicated or not.
+  /// - "true" : Only retrieve syndicated videos.
   ///
   /// [eventType] - Filter on the livestream status of the videos.
   /// Possible string values are:
@@ -4476,21 +4488,9 @@ class SearchResourceApi {
   /// - "live" : The live broadcast is active.
   /// - "completed" : The live broadcast has been completed.
   ///
-  /// [topicId] - Restrict results to a particular topic.
+  /// [forMine] - Search for the private videos of the authenticated user.
   ///
-  /// [forDeveloper] - Restrict the search to only retrieve videos uploaded
-  /// using the project id of the authenticated user.
-  ///
-  /// [videoType] - Filter on videos of a specific type.
-  /// Possible string values are:
-  /// - "videoTypeUnspecified"
-  /// - "any" : Return all videos.
-  /// - "movie" : Only retrieve movies.
-  /// - "episode" : Only retrieve episodes of shows.
-  ///
-  /// [relatedToVideoId] - Search related to a resource.
-  ///
-  /// [q] - Textual search terms to match.
+  /// [publishedBefore] - Filter on resources published before this date.
   ///
   /// [safeSearch] - Indicates whether the search results should include
   /// restricted content as well as standard content.
@@ -4505,60 +4505,13 @@ class SearchResourceApi {
   /// search result set. Based on their content, search results could be removed
   /// from search results or demoted in search results.
   ///
-  /// [videoEmbeddable] - Filter on embeddable videos.
-  /// Possible string values are:
-  /// - "videoEmbeddableUnspecified"
-  /// - "any" : Return all videos, embeddable or not.
-  /// - "true" : Only retrieve embeddable videos.
-  ///
-  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [videoLicense] - Filter on the license of the videos.
-  /// Possible string values are:
-  /// - "any" : Return all videos, regardless of which license they have, that
-  /// match the query parameters.
-  /// - "youtube" : Only return videos that have the standard YouTube license.
-  /// - "creativeCommon" : Only return videos that have a Creative Commons
-  /// license. Users can reuse videos with this license in other videos that
-  /// they create. Learn more.
-  ///
-  /// [publishedBefore] - Filter on resources published before this date.
-  ///
-  /// [videoSyndicated] - Filter on syndicated videos.
-  /// Possible string values are:
-  /// - "videoSyndicatedUnspecified"
-  /// - "any" : Return all videos, syndicated or not.
-  /// - "true" : Only retrieve syndicated videos.
-  ///
-  /// [videoCategoryId] - Filter on videos in a specific category.
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  ///
-  /// [channelId] - Filter on resources belonging to this channelId.
-  ///
-  /// [videoDimension] - Filter on 3d videos.
-  /// Possible string values are:
-  /// - "any"
-  /// - "2d" : Restrict search results to exclude 3D videos.
-  /// - "3d" : Restrict search results to only include 3D videos.
-  ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
+  /// [q] - Textual search terms to match.
   ///
   /// [location] - Filter on location of the video
   ///
-  /// [regionCode] - Display the content as seen by viewers in this country.
+  /// [relatedToVideoId] - Search related to a resource.
+  ///
+  /// [locationRadius] - Filter on distance from the location (specified above).
   ///
   /// [order] - Sort order of the results.
   /// Possible string values are:
@@ -4574,9 +4527,6 @@ class SearchResourceApi {
   /// - "videoCount" : Channels are sorted in descending order of their number
   /// of uploaded videos.
   ///
-  /// [type] - Restrict results to a particular set of resource types from One
-  /// Platform.
-  ///
   /// [videoDuration] - Filter on the duration of the videos.
   /// Possible string values are:
   /// - "videoDurationUnspecified"
@@ -4587,9 +4537,59 @@ class SearchResourceApi {
   /// (inclusive).
   /// - "long" : Only include videos longer than 20 minutes.
   ///
-  /// [forContentOwner] - Search owned by a content owner.
+  /// [videoDefinition] - Filter on the definition of the videos.
+  /// Possible string values are:
+  /// - "any" : Return all videos, regardless of their resolution.
+  /// - "standard" : Only retrieve videos in standard definition.
+  /// - "high" : Only retrieve HD videos.
+  ///
+  /// [channelType] - Add a filter on the channel search.
+  /// Possible string values are:
+  /// - "channelTypeUnspecified"
+  /// - "any" : Return all channels.
+  /// - "show" : Only retrieve shows.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
+  /// [channelId] - Filter on resources belonging to this channelId.
+  ///
+  /// [relevanceLanguage] - Return results relevant to this language.
   ///
   /// [publishedAfter] - Filter on resources published after this date.
+  ///
+  /// [type] - Restrict results to a particular set of resource types from One
+  /// Platform.
+  ///
+  /// [videoCaption] - Filter on the presence of captions on the videos.
+  /// Possible string values are:
+  /// - "videoCaptionUnspecified"
+  /// - "any" : Do not filter results based on caption availability.
+  /// - "closedCaption" : Only include videos that have captions.
+  /// - "none" : Only include videos that do not have captions.
+  ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [topicId] - Restrict results to a particular topic.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  ///
+  /// [videoEmbeddable] - Filter on embeddable videos.
+  /// Possible string values are:
+  /// - "videoEmbeddableUnspecified"
+  /// - "any" : Return all videos, embeddable or not.
+  /// - "true" : Only retrieve embeddable videos.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4602,36 +4602,36 @@ class SearchResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchListResponse> list(core.List<core.String> part,
-      {core.String videoCaption,
-      core.String locationRadius,
-      core.String relevanceLanguage,
-      core.bool forMine,
-      core.String channelType,
-      core.String videoDefinition,
-      core.String eventType,
-      core.String topicId,
-      core.bool forDeveloper,
-      core.String videoType,
-      core.String relatedToVideoId,
-      core.String q,
-      core.String safeSearch,
-      core.String videoEmbeddable,
-      core.String pageToken,
-      core.String videoLicense,
-      core.String publishedBefore,
-      core.String videoSyndicated,
-      core.String videoCategoryId,
-      core.int maxResults,
-      core.String channelId,
+      {core.String videoType,
       core.String videoDimension,
-      core.String onBehalfOfContentOwner,
-      core.String location,
-      core.String regionCode,
-      core.String order,
-      core.List<core.String> type,
-      core.String videoDuration,
+      core.bool forDeveloper,
+      core.String videoCategoryId,
       core.bool forContentOwner,
+      core.String videoLicense,
+      core.String regionCode,
+      core.String videoSyndicated,
+      core.String eventType,
+      core.bool forMine,
+      core.String publishedBefore,
+      core.String safeSearch,
+      core.String q,
+      core.String location,
+      core.String relatedToVideoId,
+      core.String locationRadius,
+      core.String order,
+      core.String videoDuration,
+      core.String videoDefinition,
+      core.String channelType,
+      core.String onBehalfOfContentOwner,
+      core.String channelId,
+      core.String relevanceLanguage,
       core.String publishedAfter,
+      core.List<core.String> type,
+      core.String videoCaption,
+      core.String pageToken,
+      core.String topicId,
+      core.int maxResults,
+      core.String videoEmbeddable,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4644,95 +4644,95 @@ class SearchResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (videoCaption != null) {
-      _queryParams["videoCaption"] = [videoCaption];
-    }
-    if (locationRadius != null) {
-      _queryParams["locationRadius"] = [locationRadius];
-    }
-    if (relevanceLanguage != null) {
-      _queryParams["relevanceLanguage"] = [relevanceLanguage];
-    }
-    if (forMine != null) {
-      _queryParams["forMine"] = ["${forMine}"];
-    }
-    if (channelType != null) {
-      _queryParams["channelType"] = [channelType];
-    }
-    if (videoDefinition != null) {
-      _queryParams["videoDefinition"] = [videoDefinition];
-    }
-    if (eventType != null) {
-      _queryParams["eventType"] = [eventType];
-    }
-    if (topicId != null) {
-      _queryParams["topicId"] = [topicId];
-    }
-    if (forDeveloper != null) {
-      _queryParams["forDeveloper"] = ["${forDeveloper}"];
-    }
     if (videoType != null) {
       _queryParams["videoType"] = [videoType];
-    }
-    if (relatedToVideoId != null) {
-      _queryParams["relatedToVideoId"] = [relatedToVideoId];
-    }
-    if (q != null) {
-      _queryParams["q"] = [q];
-    }
-    if (safeSearch != null) {
-      _queryParams["safeSearch"] = [safeSearch];
-    }
-    if (videoEmbeddable != null) {
-      _queryParams["videoEmbeddable"] = [videoEmbeddable];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (videoLicense != null) {
-      _queryParams["videoLicense"] = [videoLicense];
-    }
-    if (publishedBefore != null) {
-      _queryParams["publishedBefore"] = [publishedBefore];
-    }
-    if (videoSyndicated != null) {
-      _queryParams["videoSyndicated"] = [videoSyndicated];
-    }
-    if (videoCategoryId != null) {
-      _queryParams["videoCategoryId"] = [videoCategoryId];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
     }
     if (videoDimension != null) {
       _queryParams["videoDimension"] = [videoDimension];
     }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    if (forDeveloper != null) {
+      _queryParams["forDeveloper"] = ["${forDeveloper}"];
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
-    if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
-    }
-    if (order != null) {
-      _queryParams["order"] = [order];
-    }
-    if (type != null) {
-      _queryParams["type"] = type;
-    }
-    if (videoDuration != null) {
-      _queryParams["videoDuration"] = [videoDuration];
+    if (videoCategoryId != null) {
+      _queryParams["videoCategoryId"] = [videoCategoryId];
     }
     if (forContentOwner != null) {
       _queryParams["forContentOwner"] = ["${forContentOwner}"];
     }
+    if (videoLicense != null) {
+      _queryParams["videoLicense"] = [videoLicense];
+    }
+    if (regionCode != null) {
+      _queryParams["regionCode"] = [regionCode];
+    }
+    if (videoSyndicated != null) {
+      _queryParams["videoSyndicated"] = [videoSyndicated];
+    }
+    if (eventType != null) {
+      _queryParams["eventType"] = [eventType];
+    }
+    if (forMine != null) {
+      _queryParams["forMine"] = ["${forMine}"];
+    }
+    if (publishedBefore != null) {
+      _queryParams["publishedBefore"] = [publishedBefore];
+    }
+    if (safeSearch != null) {
+      _queryParams["safeSearch"] = [safeSearch];
+    }
+    if (q != null) {
+      _queryParams["q"] = [q];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
+    if (relatedToVideoId != null) {
+      _queryParams["relatedToVideoId"] = [relatedToVideoId];
+    }
+    if (locationRadius != null) {
+      _queryParams["locationRadius"] = [locationRadius];
+    }
+    if (order != null) {
+      _queryParams["order"] = [order];
+    }
+    if (videoDuration != null) {
+      _queryParams["videoDuration"] = [videoDuration];
+    }
+    if (videoDefinition != null) {
+      _queryParams["videoDefinition"] = [videoDefinition];
+    }
+    if (channelType != null) {
+      _queryParams["channelType"] = [channelType];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
+    if (relevanceLanguage != null) {
+      _queryParams["relevanceLanguage"] = [relevanceLanguage];
+    }
     if (publishedAfter != null) {
       _queryParams["publishedAfter"] = [publishedAfter];
+    }
+    if (type != null) {
+      _queryParams["type"] = type;
+    }
+    if (videoCaption != null) {
+      _queryParams["videoCaption"] = [videoCaption];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (topicId != null) {
+      _queryParams["topicId"] = [topicId];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (videoEmbeddable != null) {
+      _queryParams["videoEmbeddable"] = [videoEmbeddable];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4939,15 +4939,6 @@ class SubscriptionsResourceApi {
   /// such as a display title for the subscription. If you set *part=snippet*,
   /// the API response will also contain all of those nested properties.
   ///
-  /// [order] - The order of the returned subscriptions
-  /// Possible string values are:
-  /// - "subscriptionOrderUnspecified"
-  /// - "relevance" : Sort by relevance.
-  /// - "unread" : Sort by order of activity.
-  /// - "alphabetical" : Sort alphabetically.
-  ///
-  /// [mySubscribers] - Return the subscribers of the given channel owner.
-  ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
   /// indicates that the request's authorization credentials identify a YouTube
@@ -4958,6 +4949,16 @@ class SubscriptionsResourceApi {
   /// data, without having to provide authentication credentials for each
   /// individual channel. The CMS account that the user authenticates with must
   /// be linked to the specified YouTube content owner.
+  ///
+  /// [mine] - Flag for returning the subscriptions of the authenticated user.
+  ///
+  /// [channelId] - Return the subscriptions of the given channel owner.
+  ///
+  /// [forChannelId] - Return the subscriptions to the subset of these channels
+  /// that the authenticated user is subscribed to.
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
@@ -4976,23 +4977,22 @@ class SubscriptionsResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
-  /// [forChannelId] - Return the subscriptions to the subset of these channels
-  /// that the authenticated user is subscribed to.
+  /// [order] - The order of the returned subscriptions
+  /// Possible string values are:
+  /// - "subscriptionOrderUnspecified"
+  /// - "relevance" : Sort by relevance.
+  /// - "unread" : Sort by order of activity.
+  /// - "alphabetical" : Sort alphabetically.
+  ///
+  /// [id] - Return the subscriptions with the given IDs for Stubby or Apiary.
+  ///
+  /// [myRecentSubscribers] - null
+  ///
+  /// [mySubscribers] - Return the subscribers of the given channel owner.
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
   /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [mine] - Flag for returning the subscriptions of the authenticated user.
-  ///
-  /// [myRecentSubscribers] - null
-  ///
-  /// [channelId] - Return the subscriptions of the given channel owner.
-  ///
-  /// [id] - Return the subscriptions with the given IDs for Stubby or Apiary.
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5005,17 +5005,17 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SubscriptionListResponse> list(core.List<core.String> part,
-      {core.String order,
-      core.bool mySubscribers,
-      core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String forChannelId,
-      core.String pageToken,
+      {core.String onBehalfOfContentOwner,
       core.bool mine,
-      core.bool myRecentSubscribers,
       core.String channelId,
-      core.List<core.String> id,
+      core.String forChannelId,
       core.int maxResults,
+      core.String onBehalfOfContentOwnerChannel,
+      core.String order,
+      core.List<core.String> id,
+      core.bool myRecentSubscribers,
+      core.bool mySubscribers,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5028,40 +5028,40 @@ class SubscriptionsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (order != null) {
-      _queryParams["order"] = [order];
-    }
-    if (mySubscribers != null) {
-      _queryParams["mySubscribers"] = ["${mySubscribers}"];
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if (mine != null) {
+      _queryParams["mine"] = ["${mine}"];
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
+    }
+    if (forChannelId != null) {
+      _queryParams["forChannelId"] = [forChannelId];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
     }
-    if (forChannelId != null) {
-      _queryParams["forChannelId"] = [forChannelId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (mine != null) {
-      _queryParams["mine"] = ["${mine}"];
-    }
-    if (myRecentSubscribers != null) {
-      _queryParams["myRecentSubscribers"] = ["${myRecentSubscribers}"];
-    }
-    if (channelId != null) {
-      _queryParams["channelId"] = [channelId];
+    if (order != null) {
+      _queryParams["order"] = [order];
     }
     if (id != null) {
       _queryParams["id"] = id;
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (myRecentSubscribers != null) {
+      _queryParams["myRecentSubscribers"] = ["${myRecentSubscribers}"];
+    }
+    if (mySubscribers != null) {
+      _queryParams["mySubscribers"] = ["${mySubscribers}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5092,14 +5092,14 @@ class SuperChatEventsResourceApi {
   /// [part] - The *part* parameter specifies the superChatEvent resource parts
   /// that the API response will include. Supported values are id and snippet.
   ///
-  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
+  /// [hl] - Return rendered funding amounts in specified language.
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
   ///
-  /// [hl] - Return rendered funding amounts in specified language.
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5112,9 +5112,9 @@ class SuperChatEventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SuperChatEventListResponse> list(core.List<core.String> part,
-      {core.String pageToken,
+      {core.String hl,
       core.int maxResults,
-      core.String hl,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5127,14 +5127,14 @@ class SuperChatEventsResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5793,23 +5793,7 @@ class VideosResourceApi {
   /// modify. If the parameter value specifies a part that does not contain
   /// mutable values, that part will still be included in the API response.
   ///
-  /// [stabilize] - Should stabilize be applied to the upload.
-  ///
   /// [autoLevels] - Should auto-levels be applied to the upload.
-  ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
-  /// [notifySubscribers] - Notify the channel subscribers about the new video.
-  /// As default, the notification is enabled.
   ///
   /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
   /// properly authorized request. *Note:* This parameter is intended
@@ -5828,6 +5812,22 @@ class VideosResourceApi {
   /// actions on behalf of the channel specified in the parameter value, without
   /// having to provide authentication credentials for each separate channel.
   ///
+  /// [stabilize] - Should stabilize be applied to the upload.
+  ///
+  /// [notifySubscribers] - Notify the channel subscribers about the new video.
+  /// As default, the notification is enabled.
+  ///
+  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
+  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
+  /// indicates that the request's authorization credentials identify a YouTube
+  /// CMS user who is acting on behalf of the content owner specified in the
+  /// parameter value. This parameter is intended for YouTube content partners
+  /// that own and manage many different YouTube channels. It allows content
+  /// owners to authenticate once and get access to all their video and channel
+  /// data, without having to provide authentication credentials for each
+  /// individual channel. The CMS account that the user authenticates with must
+  /// be linked to the specified YouTube content owner.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5845,11 +5845,11 @@ class VideosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Video> insert(Video request, core.List<core.String> part,
-      {core.bool stabilize,
-      core.bool autoLevels,
-      core.String onBehalfOfContentOwner,
-      core.bool notifySubscribers,
+      {core.bool autoLevels,
       core.String onBehalfOfContentOwnerChannel,
+      core.bool stabilize,
+      core.bool notifySubscribers,
+      core.String onBehalfOfContentOwner,
       core.String $fields,
       commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
@@ -5867,22 +5867,22 @@ class VideosResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (stabilize != null) {
-      _queryParams["stabilize"] = ["${stabilize}"];
-    }
     if (autoLevels != null) {
       _queryParams["autoLevels"] = ["${autoLevels}"];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
-    if (notifySubscribers != null) {
-      _queryParams["notifySubscribers"] = ["${notifySubscribers}"];
     }
     if (onBehalfOfContentOwnerChannel != null) {
       _queryParams["onBehalfOfContentOwnerChannel"] = [
         onBehalfOfContentOwnerChannel
       ];
+    }
+    if (stabilize != null) {
+      _queryParams["stabilize"] = ["${stabilize}"];
+    }
+    if (notifySubscribers != null) {
+      _queryParams["notifySubscribers"] = ["${notifySubscribers}"];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5920,6 +5920,36 @@ class VideosResourceApi {
   /// tags, and categoryId properties. As such, if you set *part=snippet*, the
   /// API response will contain all of those properties.
   ///
+  /// [maxWidth] - Return the player with maximum height specified in
+  ///
+  /// [chart] - Return the videos that are in the specified chart.
+  /// Possible string values are:
+  /// - "chartUnspecified"
+  /// - "mostPopular" : Return the most popular videos for the specified content
+  /// region and video category.
+  ///
+  /// [maxHeight] - null
+  ///
+  /// [myRating] - Return videos liked/disliked by the authenticated user. Does
+  /// not support RateType.RATED_TYPE_NONE.
+  /// Possible string values are:
+  /// - "none"
+  /// - "like" : The entity is liked.
+  /// - "dislike" : The entity is disliked.
+  ///
+  /// [regionCode] - Use a chart that is specific to the specified region
+  ///
+  /// [id] - Return videos with the given ids.
+  ///
+  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
+  /// *Note:* This parameter is supported for use in conjunction with the
+  /// myRating and chart parameters, but it is not supported for use in
+  /// conjunction with the id parameter.
+  ///
+  /// [locale] - null
+  ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
   /// indicates that the request's authorization credentials identify a YouTube
@@ -5931,49 +5961,19 @@ class VideosResourceApi {
   /// individual channel. The CMS account that the user authenticates with must
   /// be linked to the specified YouTube content owner.
   ///
-  /// [maxHeight] - null
-  ///
-  /// [myRating] - Return videos liked/disliked by the authenticated user. Does
-  /// not support RateType.RATED_TYPE_NONE.
-  /// Possible string values are:
-  /// - "none"
-  /// - "like" : The entity is liked.
-  /// - "dislike" : The entity is disliked.
-  ///
   /// [videoCategoryId] - Use chart that is specific to the specified video
   /// category
-  ///
-  /// [id] - Return videos with the given ids.
-  ///
-  /// [regionCode] - Use a chart that is specific to the specified region
-  ///
-  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
-  /// *Note:* This parameter is supported for use in conjunction with the
-  /// myRating and chart parameters, but it is not supported for use in
-  /// conjunction with the id parameter.
-  ///
-  /// [locale] - null
-  ///
-  /// [chart] - Return the videos that are in the specified chart.
-  /// Possible string values are:
-  /// - "chartUnspecified"
-  /// - "mostPopular" : Return the most popular videos for the specified content
-  /// region and video category.
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set. *Note:* This parameter is
-  /// supported for use in conjunction with the myRating and chart parameters,
-  /// but it is not supported for use in conjunction with the id parameter.
-  ///
-  /// [maxWidth] - Return the player with maximum height specified in
   ///
   /// [hl] - Stands for "host language". Specifies the localization language of
   /// the metadata to be filled into snippet.localized. The field is filled with
   /// the default metadata if there is no localization in the specified
   /// language. The parameter value must be a language code included in the list
   /// returned by the i18nLanguages.list method (e.g. en_US, es_MX).
+  ///
+  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
+  /// items that should be returned in the result set. *Note:* This parameter is
+  /// supported for use in conjunction with the myRating and chart parameters,
+  /// but it is not supported for use in conjunction with the id parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5986,18 +5986,18 @@ class VideosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VideoListResponse> list(core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
+      {core.int maxWidth,
+      core.String chart,
       core.int maxHeight,
       core.String myRating,
-      core.String videoCategoryId,
-      core.List<core.String> id,
       core.String regionCode,
+      core.List<core.String> id,
       core.String pageToken,
       core.String locale,
-      core.String chart,
-      core.int maxResults,
-      core.int maxWidth,
+      core.String onBehalfOfContentOwner,
+      core.String videoCategoryId,
       core.String hl,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6010,8 +6010,11 @@ class VideosResourceApi {
       throw new core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    if (maxWidth != null) {
+      _queryParams["maxWidth"] = ["${maxWidth}"];
+    }
+    if (chart != null) {
+      _queryParams["chart"] = [chart];
     }
     if (maxHeight != null) {
       _queryParams["maxHeight"] = ["${maxHeight}"];
@@ -6019,14 +6022,11 @@ class VideosResourceApi {
     if (myRating != null) {
       _queryParams["myRating"] = [myRating];
     }
-    if (videoCategoryId != null) {
-      _queryParams["videoCategoryId"] = [videoCategoryId];
+    if (regionCode != null) {
+      _queryParams["regionCode"] = [regionCode];
     }
     if (id != null) {
       _queryParams["id"] = id;
-    }
-    if (regionCode != null) {
-      _queryParams["regionCode"] = [regionCode];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -6034,17 +6034,17 @@ class VideosResourceApi {
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
-    if (chart != null) {
-      _queryParams["chart"] = [chart];
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (maxWidth != null) {
-      _queryParams["maxWidth"] = ["${maxWidth}"];
+    if (videoCategoryId != null) {
+      _queryParams["videoCategoryId"] = [videoCategoryId];
     }
     if (hl != null) {
       _queryParams["hl"] = [hl];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8879,7 +8879,8 @@ class ChannelSnippet {
   /// channel thumbnail URLs will only be available in the https domain, which
   /// is how the URLs appear in API responses. After that time, you might see
   /// broken images in your application if it tries to load YouTube images from
-  /// the http domain.
+  /// the http domain. Thumbnail images might be empty for newly created
+  /// channels and might take up to one day to populate.
   ThumbnailDetails thumbnails;
 
   /// The channel's title.

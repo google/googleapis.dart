@@ -48,10 +48,10 @@ class CustomersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A token specifying which result page to return.
-  ///
   /// [pageSize] - The maximum number of customers to show in a page of results.
   /// A number between 1 and 100 (inclusive).
+  ///
+  /// [pageToken] - A token specifying which result page to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -64,7 +64,7 @@ class CustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomerListCustomersResponse> list(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -72,11 +72,11 @@ class CustomersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1436,10 +1436,10 @@ class PartnersVendorsCustomersResourceApi {
   /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`.
   /// Value must have pattern "^partners/[^/]+/vendors/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of results to be returned.
+  ///
   /// [pageToken] - A token identifying a page of results returned by the
   /// server.
-  ///
-  /// [pageSize] - The maximum number of results to be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1452,7 +1452,7 @@ class PartnersVendorsCustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVendorCustomersResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1463,11 +1463,11 @@ class PartnersVendorsCustomersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

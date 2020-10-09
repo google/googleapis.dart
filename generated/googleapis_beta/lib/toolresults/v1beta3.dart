@@ -504,12 +504,12 @@ class ProjectsHistoriesExecutionsResourceApi {
   ///
   /// [historyId] - A History id. Required.
   ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  /// Optional.
-  ///
   /// [pageSize] - The maximum number of Executions to fetch. Default value: 25.
   /// The server will use this default if the field is not set or has a value of
   /// 0. Optional.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -523,7 +523,7 @@ class ProjectsHistoriesExecutionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListExecutionsResponse> list(
       core.String projectId, core.String historyId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -537,11 +537,11 @@ class ProjectsHistoriesExecutionsResourceApi {
     if (historyId == null) {
       throw new core.ArgumentError("Parameter historyId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -868,11 +868,11 @@ class ProjectsHistoriesExecutionsEnvironmentsResourceApi {
   ///
   /// [executionId] - Required. An Execution id.
   ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  ///
   /// [pageSize] - The maximum number of Environments to fetch. Default value:
   /// 25. The server will use this default if the field is not set or has a
   /// value of 0.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -886,7 +886,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListEnvironmentsResponse> list(
       core.String projectId, core.String historyId, core.String executionId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -903,11 +903,11 @@ class ProjectsHistoriesExecutionsEnvironmentsResourceApi {
     if (executionId == null) {
       throw new core.ArgumentError("Parameter executionId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2111,12 +2111,12 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
   /// [stepId] - A Step id. Note: This step must include a TestExecutionStep.
   /// Required.
   ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  /// Optional.
-  ///
   /// [pageSize] - The maximum number of TestCases to fetch. Default value: 100.
   /// The server will use this default if the field is not set or has a value of
   /// 0. Optional.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2130,7 +2130,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTestCasesResponse> list(core.String projectId,
       core.String historyId, core.String executionId, core.String stepId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2150,11 +2150,11 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

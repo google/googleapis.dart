@@ -94,12 +94,12 @@ class ApplicationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - Maximum number of results to return. Default is 100.
-  /// Value must be between "1" and "500".
-  ///
   /// [pageToken] - Token to specify next page in the list.
   ///
   /// [customerId] - Immutable ID of the Google Apps account.
+  ///
+  /// [maxResults] - Maximum number of results to return. Default is 100.
+  /// Value must be between "1" and "500".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -112,9 +112,9 @@ class ApplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApplicationsListResponse> list(
-      {core.int maxResults,
-      core.String pageToken,
+      {core.String pageToken,
       core.String customerId,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -123,14 +123,14 @@ class ApplicationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -247,18 +247,18 @@ class TransfersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [status] - Status of the transfer.
-  ///
-  /// [newOwnerUserId] - Destination user's profile ID.
+  /// [customerId] - Immutable ID of the Google Apps account.
   ///
   /// [pageToken] - Token to specify the next page in the list.
   ///
-  /// [oldOwnerUserId] - Source user's profile ID.
-  ///
-  /// [customerId] - Immutable ID of the Google Apps account.
+  /// [newOwnerUserId] - Destination user's profile ID.
   ///
   /// [maxResults] - Maximum number of results to return. Default is 100.
   /// Value must be between "1" and "500".
+  ///
+  /// [status] - Status of the transfer.
+  ///
+  /// [oldOwnerUserId] - Source user's profile ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -271,12 +271,12 @@ class TransfersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DataTransfersListResponse> list(
-      {core.String status,
-      core.String newOwnerUserId,
+      {core.String customerId,
       core.String pageToken,
-      core.String oldOwnerUserId,
-      core.String customerId,
+      core.String newOwnerUserId,
       core.int maxResults,
+      core.String status,
+      core.String oldOwnerUserId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -285,23 +285,23 @@ class TransfersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (status != null) {
-      _queryParams["status"] = [status];
-    }
-    if (newOwnerUserId != null) {
-      _queryParams["newOwnerUserId"] = [newOwnerUserId];
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (oldOwnerUserId != null) {
-      _queryParams["oldOwnerUserId"] = [oldOwnerUserId];
-    }
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
+    if (newOwnerUserId != null) {
+      _queryParams["newOwnerUserId"] = [newOwnerUserId];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (status != null) {
+      _queryParams["status"] = [status];
+    }
+    if (oldOwnerUserId != null) {
+      _queryParams["oldOwnerUserId"] = [oldOwnerUserId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -1191,11 +1191,11 @@ class AccountsContainersMoveFoldersResourceApi {
   ///
   /// [folderId] - The GTM Folder ID.
   ///
+  /// [variableId] - The variables to be moved to the folder.
+  ///
   /// [tagId] - The tags to be moved to the folder.
   ///
   /// [triggerId] - The triggers to be moved to the folder.
-  ///
-  /// [variableId] - The variables to be moved to the folder.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1207,9 +1207,9 @@ class AccountsContainersMoveFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future update(Folder request, core.String accountId,
       core.String containerId, core.String folderId,
-      {core.List<core.String> tagId,
+      {core.List<core.String> variableId,
+      core.List<core.String> tagId,
       core.List<core.String> triggerId,
-      core.List<core.String> variableId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1230,14 +1230,14 @@ class AccountsContainersMoveFoldersResourceApi {
     if (folderId == null) {
       throw new core.ArgumentError("Parameter folderId is required.");
     }
+    if (variableId != null) {
+      _queryParams["variableId"] = variableId;
+    }
     if (tagId != null) {
       _queryParams["tagId"] = tagId;
     }
     if (triggerId != null) {
       _queryParams["triggerId"] = triggerId;
-    }
-    if (variableId != null) {
-      _queryParams["variableId"] = variableId;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

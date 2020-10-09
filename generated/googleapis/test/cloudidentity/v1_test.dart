@@ -276,20 +276,20 @@ checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse--;
 }
 
-buildUnnamed2686() {
+buildUnnamed2690() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2686(core.List<core.String> o) {
+checkUnnamed2690(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2687() {
+buildUnnamed2691() {
   var o = new core.Map<core.String,
       api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>();
   o["x"] = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
@@ -297,7 +297,7 @@ buildUnnamed2687() {
   return o;
 }
 
-checkUnnamed2687(
+checkUnnamed2691(
     core.Map<core.String,
             api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>
         o) {
@@ -311,13 +311,13 @@ buildGoogleAppsCloudidentityDevicesV1ClientState() {
   var o = new api.GoogleAppsCloudidentityDevicesV1ClientState();
   buildCounterGoogleAppsCloudidentityDevicesV1ClientState++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ClientState < 3) {
-    o.assetTags = buildUnnamed2686();
+    o.assetTags = buildUnnamed2690();
     o.complianceState = "foo";
     o.createTime = "foo";
     o.customId = "foo";
     o.etag = "foo";
     o.healthScore = "foo";
-    o.keyValuePairs = buildUnnamed2687();
+    o.keyValuePairs = buildUnnamed2691();
     o.lastUpdateTime = "foo";
     o.managed = "foo";
     o.name = "foo";
@@ -332,13 +332,13 @@ checkGoogleAppsCloudidentityDevicesV1ClientState(
     api.GoogleAppsCloudidentityDevicesV1ClientState o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ClientState++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ClientState < 3) {
-    checkUnnamed2686(o.assetTags);
+    checkUnnamed2690(o.assetTags);
     unittest.expect(o.complianceState, unittest.equals('foo'));
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.customId, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.healthScore, unittest.equals('foo'));
-    checkUnnamed2687(o.keyValuePairs);
+    checkUnnamed2691(o.keyValuePairs);
     unittest.expect(o.lastUpdateTime, unittest.equals('foo'));
     unittest.expect(o.managed, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -372,27 +372,27 @@ checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
   buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue--;
 }
 
-buildUnnamed2688() {
+buildUnnamed2692() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2688(core.List<core.String> o) {
+checkUnnamed2692(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2689() {
+buildUnnamed2693() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2689(core.List<core.String> o) {
+checkUnnamed2693(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -426,12 +426,12 @@ buildGoogleAppsCloudidentityDevicesV1Device() {
     o.name = "foo";
     o.networkOperator = "foo";
     o.osVersion = "foo";
-    o.otherAccounts = buildUnnamed2688();
+    o.otherAccounts = buildUnnamed2692();
     o.ownerType = "foo";
     o.releaseVersion = "foo";
     o.securityPatchTime = "foo";
     o.serialNumber = "foo";
-    o.wifiMacAddresses = buildUnnamed2689();
+    o.wifiMacAddresses = buildUnnamed2693();
   }
   buildCounterGoogleAppsCloudidentityDevicesV1Device--;
   return o;
@@ -464,12 +464,12 @@ checkGoogleAppsCloudidentityDevicesV1Device(
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.networkOperator, unittest.equals('foo'));
     unittest.expect(o.osVersion, unittest.equals('foo'));
-    checkUnnamed2688(o.otherAccounts);
+    checkUnnamed2692(o.otherAccounts);
     unittest.expect(o.ownerType, unittest.equals('foo'));
     unittest.expect(o.releaseVersion, unittest.equals('foo'));
     unittest.expect(o.securityPatchTime, unittest.equals('foo'));
     unittest.expect(o.serialNumber, unittest.equals('foo'));
-    checkUnnamed2689(o.wifiMacAddresses);
+    checkUnnamed2693(o.wifiMacAddresses);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1Device--;
 }
@@ -512,14 +512,14 @@ checkGoogleAppsCloudidentityDevicesV1DeviceUser(
   buildCounterGoogleAppsCloudidentityDevicesV1DeviceUser--;
 }
 
-buildUnnamed2690() {
+buildUnnamed2694() {
   var o = new core.List<api.GoogleAppsCloudidentityDevicesV1ClientState>();
   o.add(buildGoogleAppsCloudidentityDevicesV1ClientState());
   o.add(buildGoogleAppsCloudidentityDevicesV1ClientState());
   return o;
 }
 
-checkUnnamed2690(core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> o) {
+checkUnnamed2694(core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCloudidentityDevicesV1ClientState(o[0]);
   checkGoogleAppsCloudidentityDevicesV1ClientState(o[1]);
@@ -532,7 +532,7 @@ buildGoogleAppsCloudidentityDevicesV1ListClientStatesResponse() {
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse <
       3) {
-    o.clientStates = buildUnnamed2690();
+    o.clientStates = buildUnnamed2694();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse--;
@@ -544,20 +544,20 @@ checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse <
       3) {
-    checkUnnamed2690(o.clientStates);
+    checkUnnamed2694(o.clientStates);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse--;
 }
 
-buildUnnamed2691() {
+buildUnnamed2695() {
   var o = new core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser>();
   o.add(buildGoogleAppsCloudidentityDevicesV1DeviceUser());
   o.add(buildGoogleAppsCloudidentityDevicesV1DeviceUser());
   return o;
 }
 
-checkUnnamed2691(core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> o) {
+checkUnnamed2695(core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCloudidentityDevicesV1DeviceUser(o[0]);
   checkGoogleAppsCloudidentityDevicesV1DeviceUser(o[1]);
@@ -569,7 +569,7 @@ buildGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse() {
   var o = new api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse < 3) {
-    o.deviceUsers = buildUnnamed2691();
+    o.deviceUsers = buildUnnamed2695();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse--;
@@ -580,20 +580,20 @@ checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(
     api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse < 3) {
-    checkUnnamed2691(o.deviceUsers);
+    checkUnnamed2695(o.deviceUsers);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse--;
 }
 
-buildUnnamed2692() {
+buildUnnamed2696() {
   var o = new core.List<api.GoogleAppsCloudidentityDevicesV1Device>();
   o.add(buildGoogleAppsCloudidentityDevicesV1Device());
   o.add(buildGoogleAppsCloudidentityDevicesV1Device());
   return o;
 }
 
-checkUnnamed2692(core.List<api.GoogleAppsCloudidentityDevicesV1Device> o) {
+checkUnnamed2696(core.List<api.GoogleAppsCloudidentityDevicesV1Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCloudidentityDevicesV1Device(o[0]);
   checkGoogleAppsCloudidentityDevicesV1Device(o[1]);
@@ -604,7 +604,7 @@ buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse() {
   var o = new api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse < 3) {
-    o.devices = buildUnnamed2692();
+    o.devices = buildUnnamed2696();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse--;
@@ -615,20 +615,20 @@ checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(
     api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse < 3) {
-    checkUnnamed2692(o.devices);
+    checkUnnamed2696(o.devices);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse--;
 }
 
-buildUnnamed2693() {
+buildUnnamed2697() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2693(core.List<core.String> o) {
+checkUnnamed2697(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -644,7 +644,7 @@ buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse() {
   if (buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse <
       3) {
     o.customer = "foo";
-    o.names = buildUnnamed2693();
+    o.names = buildUnnamed2697();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse--;
@@ -657,7 +657,7 @@ checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(
   if (buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse <
       3) {
     unittest.expect(o.customer, unittest.equals('foo'));
-    checkUnnamed2693(o.names);
+    checkUnnamed2697(o.names);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse--;
@@ -743,14 +743,14 @@ checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse--;
 }
 
-buildUnnamed2694() {
+buildUnnamed2698() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed2694(core.Map<core.String, core.String> o) {
+checkUnnamed2698(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -765,7 +765,7 @@ buildGroup() {
     o.description = "foo";
     o.displayName = "foo";
     o.groupKey = buildEntityKey();
-    o.labels = buildUnnamed2694();
+    o.labels = buildUnnamed2698();
     o.name = "foo";
     o.parent = "foo";
     o.updateTime = "foo";
@@ -781,7 +781,7 @@ checkGroup(api.Group o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     checkEntityKey(o.groupKey);
-    checkUnnamed2694(o.labels);
+    checkUnnamed2698(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -789,14 +789,14 @@ checkGroup(api.Group o) {
   buildCounterGroup--;
 }
 
-buildUnnamed2695() {
+buildUnnamed2699() {
   var o = new core.List<api.Group>();
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed2695(core.List<api.Group> o) {
+checkUnnamed2699(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -807,7 +807,7 @@ buildListGroupsResponse() {
   var o = new api.ListGroupsResponse();
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
-    o.groups = buildUnnamed2695();
+    o.groups = buildUnnamed2699();
     o.nextPageToken = "foo";
   }
   buildCounterListGroupsResponse--;
@@ -817,20 +817,20 @@ buildListGroupsResponse() {
 checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
-    checkUnnamed2695(o.groups);
+    checkUnnamed2699(o.groups);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListGroupsResponse--;
 }
 
-buildUnnamed2696() {
+buildUnnamed2700() {
   var o = new core.List<api.Membership>();
   o.add(buildMembership());
   o.add(buildMembership());
   return o;
 }
 
-checkUnnamed2696(core.List<api.Membership> o) {
+checkUnnamed2700(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -841,7 +841,7 @@ buildListMembershipsResponse() {
   var o = new api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed2696();
+    o.memberships = buildUnnamed2700();
     o.nextPageToken = "foo";
   }
   buildCounterListMembershipsResponse--;
@@ -851,7 +851,7 @@ buildListMembershipsResponse() {
 checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed2696(o.memberships);
+    checkUnnamed2700(o.memberships);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMembershipsResponse--;
@@ -895,14 +895,14 @@ checkLookupMembershipNameResponse(api.LookupMembershipNameResponse o) {
   buildCounterLookupMembershipNameResponse--;
 }
 
-buildUnnamed2697() {
+buildUnnamed2701() {
   var o = new core.List<api.MembershipRole>();
   o.add(buildMembershipRole());
   o.add(buildMembershipRole());
   return o;
 }
 
-checkUnnamed2697(core.List<api.MembershipRole> o) {
+checkUnnamed2701(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
@@ -916,7 +916,7 @@ buildMembership() {
     o.createTime = "foo";
     o.name = "foo";
     o.preferredMemberKey = buildEntityKey();
-    o.roles = buildUnnamed2697();
+    o.roles = buildUnnamed2701();
     o.type = "foo";
     o.updateTime = "foo";
   }
@@ -930,7 +930,7 @@ checkMembership(api.Membership o) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkEntityKey(o.preferredMemberKey);
-    checkUnnamed2697(o.roles);
+    checkUnnamed2701(o.roles);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
@@ -956,27 +956,27 @@ checkMembershipRole(api.MembershipRole o) {
   buildCounterMembershipRole--;
 }
 
-buildUnnamed2698() {
+buildUnnamed2702() {
   var o = new core.List<api.MembershipRole>();
   o.add(buildMembershipRole());
   o.add(buildMembershipRole());
   return o;
 }
 
-checkUnnamed2698(core.List<api.MembershipRole> o) {
+checkUnnamed2702(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
 }
 
-buildUnnamed2699() {
+buildUnnamed2703() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2699(core.List<core.String> o) {
+checkUnnamed2703(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -987,8 +987,8 @@ buildModifyMembershipRolesRequest() {
   var o = new api.ModifyMembershipRolesRequest();
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    o.addRoles = buildUnnamed2698();
-    o.removeRoles = buildUnnamed2699();
+    o.addRoles = buildUnnamed2702();
+    o.removeRoles = buildUnnamed2703();
   }
   buildCounterModifyMembershipRolesRequest--;
   return o;
@@ -997,8 +997,8 @@ buildModifyMembershipRolesRequest() {
 checkModifyMembershipRolesRequest(api.ModifyMembershipRolesRequest o) {
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    checkUnnamed2698(o.addRoles);
-    checkUnnamed2699(o.removeRoles);
+    checkUnnamed2702(o.addRoles);
+    checkUnnamed2703(o.removeRoles);
   }
   buildCounterModifyMembershipRolesRequest--;
 }
@@ -1022,7 +1022,7 @@ checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
   buildCounterModifyMembershipRolesResponse--;
 }
 
-buildUnnamed2700() {
+buildUnnamed2704() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1037,7 +1037,7 @@ buildUnnamed2700() {
   return o;
 }
 
-checkUnnamed2700(core.Map<core.String, core.Object> o) {
+checkUnnamed2704(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1051,7 +1051,7 @@ checkUnnamed2700(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2701() {
+buildUnnamed2705() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1066,7 +1066,7 @@ buildUnnamed2701() {
   return o;
 }
 
-checkUnnamed2701(core.Map<core.String, core.Object> o) {
+checkUnnamed2705(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1087,9 +1087,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed2700();
+    o.metadata = buildUnnamed2704();
     o.name = "foo";
-    o.response = buildUnnamed2701();
+    o.response = buildUnnamed2705();
   }
   buildCounterOperation--;
   return o;
@@ -1100,21 +1100,21 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed2700(o.metadata);
+    checkUnnamed2704(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2701(o.response);
+    checkUnnamed2705(o.response);
   }
   buildCounterOperation--;
 }
 
-buildUnnamed2702() {
+buildUnnamed2706() {
   var o = new core.List<api.Group>();
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed2702(core.List<api.Group> o) {
+checkUnnamed2706(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -1125,7 +1125,7 @@ buildSearchGroupsResponse() {
   var o = new api.SearchGroupsResponse();
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    o.groups = buildUnnamed2702();
+    o.groups = buildUnnamed2706();
     o.nextPageToken = "foo";
   }
   buildCounterSearchGroupsResponse--;
@@ -1135,13 +1135,13 @@ buildSearchGroupsResponse() {
 checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    checkUnnamed2702(o.groups);
+    checkUnnamed2706(o.groups);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSearchGroupsResponse--;
 }
 
-buildUnnamed2703() {
+buildUnnamed2707() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1156,7 +1156,7 @@ buildUnnamed2703() {
   return o;
 }
 
-checkUnnamed2703(core.Map<core.String, core.Object> o) {
+checkUnnamed2707(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1170,17 +1170,17 @@ checkUnnamed2703(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2704() {
+buildUnnamed2708() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed2703());
-  o.add(buildUnnamed2703());
+  o.add(buildUnnamed2707());
+  o.add(buildUnnamed2707());
   return o;
 }
 
-checkUnnamed2704(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed2708(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2703(o[0]);
-  checkUnnamed2703(o[1]);
+  checkUnnamed2707(o[0]);
+  checkUnnamed2707(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1189,7 +1189,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2704();
+    o.details = buildUnnamed2708();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -1200,7 +1200,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed2704(o.details);
+    checkUnnamed2708(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -1773,12 +1773,12 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.DevicesResourceApi res = new api.CloudidentityApi(mock).devices;
-      var arg_view = "foo";
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
-      var arg_customer = "foo";
-      var arg_orderBy = "foo";
       var arg_filter = "foo";
+      var arg_orderBy = "foo";
+      var arg_customer = "foo";
+      var arg_pageToken = "foo";
+      var arg_view = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1810,16 +1810,16 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
             queryMap["customer"].first, unittest.equals(arg_customer));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1831,12 +1831,12 @@ main() {
       }), true);
       res
           .list(
-              view: arg_view,
               pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              customer: arg_customer,
-              orderBy: arg_orderBy,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              customer: arg_customer,
+              pageToken: arg_pageToken,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(response);
@@ -2197,10 +2197,10 @@ main() {
           new api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
-      var arg_customer = "foo";
       var arg_pageSize = 42;
-      var arg_filter = "foo";
       var arg_orderBy = "foo";
+      var arg_customer = "foo";
+      var arg_filter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2235,13 +2235,13 @@ main() {
         }
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["customer"].first, unittest.equals(arg_customer));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["customer"].first, unittest.equals(arg_customer));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2254,10 +2254,10 @@ main() {
       res
           .list(arg_parent,
               pageToken: arg_pageToken,
-              customer: arg_customer,
               pageSize: arg_pageSize,
-              filter: arg_filter,
               orderBy: arg_orderBy,
+              customer: arg_customer,
+              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(response);
@@ -2272,8 +2272,8 @@ main() {
       var arg_rawResourceId = "foo";
       var arg_userId = "foo";
       var arg_pageToken = "foo";
-      var arg_pageSize = 42;
       var arg_androidId = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2311,10 +2311,10 @@ main() {
         unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["androidId"].first, unittest.equals(arg_androidId));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2329,8 +2329,8 @@ main() {
               rawResourceId: arg_rawResourceId,
               userId: arg_userId,
               pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               androidId: arg_androidId,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(
@@ -2460,10 +2460,10 @@ main() {
       api.DevicesDeviceUsersClientStatesResourceApi res =
           new api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
       var arg_parent = "foo";
-      var arg_customer = "foo";
+      var arg_orderBy = "foo";
       var arg_filter = "foo";
       var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
+      var arg_customer = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2497,12 +2497,12 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["customer"].first, unittest.equals(arg_customer));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["customer"].first, unittest.equals(arg_customer));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2514,10 +2514,10 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              customer: arg_customer,
+              orderBy: arg_orderBy,
               filter: arg_filter,
               pageToken: arg_pageToken,
-              orderBy: arg_orderBy,
+              customer: arg_customer,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(response);
@@ -2530,8 +2530,8 @@ main() {
           new api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
       var arg_request = buildGoogleAppsCloudidentityDevicesV1ClientState();
       var arg_name = "foo";
-      var arg_customer = "foo";
       var arg_updateMask = "foo";
+      var arg_customer = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
@@ -2569,9 +2569,9 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["customer"].first, unittest.equals(arg_customer));
-        unittest.expect(
             queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(
+            queryMap["customer"].first, unittest.equals(arg_customer));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2582,8 +2582,8 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_name,
-              customer: arg_customer,
               updateMask: arg_updateMask,
+              customer: arg_customer,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperation(response);
@@ -2755,9 +2755,9 @@ main() {
       var mock = new HttpServerMock();
       api.GroupsResourceApi res = new api.CloudidentityApi(mock).groups;
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
       var arg_view = "foo";
       var arg_parent = "foo";
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2791,10 +2791,10 @@ main() {
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2806,9 +2806,9 @@ main() {
       res
           .list(
               pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
               view: arg_view,
               parent: arg_parent,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListGroupsResponse(response);
@@ -2935,10 +2935,10 @@ main() {
     unittest.test("method--search", () {
       var mock = new HttpServerMock();
       api.GroupsResourceApi res = new api.CloudidentityApi(mock).groups;
-      var arg_pageToken = "foo";
-      var arg_query = "foo";
-      var arg_pageSize = 42;
       var arg_view = "foo";
+      var arg_query = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2970,12 +2970,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2986,10 +2986,10 @@ main() {
       }), true);
       res
           .search(
-              pageToken: arg_pageToken,
-              query: arg_query,
-              pageSize: arg_pageSize,
               view: arg_view,
+              query: arg_query,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSearchGroupsResponse(response);
@@ -3163,8 +3163,8 @@ main() {
       api.GroupsMembershipsResourceApi res =
           new api.CloudidentityApi(mock).groups.memberships;
       var arg_parent = "foo";
-      var arg_view = "foo";
       var arg_pageSize = 42;
+      var arg_view = "foo";
       var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3198,9 +3198,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3213,8 +3213,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              view: arg_view,
               pageSize: arg_pageSize,
+              view: arg_view,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

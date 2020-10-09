@@ -2,17 +2,17 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/compute.readonly": {
-                    "description": "View your Google Compute Engine resources"
-                },
-                "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
-                },
                 "https://www.googleapis.com/auth/compute": {
                     "description": "View and manage your Google Compute Engine resources"
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
                     "description": "View your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/compute.readonly": {
+                    "description": "View your Google Compute Engine resources"
+                },
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
                 }
             }
         }
@@ -34,29 +34,8 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -76,13 +55,8 @@
             "location": "query",
             "type": "string"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
         },
@@ -91,8 +65,29 @@
             "location": "query",
             "type": "string"
         },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
         "access_token": {
             "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -106,6 +101,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         }
@@ -122,18 +122,6 @@
                         "name"
                     ],
                     "parameters": {
-                        "name": {
-                            "description": "Required. The unique ID for the user in format `users/{user}`.",
-                            "location": "path",
-                            "pattern": "^users/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "projectId": {
-                            "description": "The project ID of the Google Cloud Platform project.",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "operatingSystemType": {
                             "description": "The type of operating system associated with the account.",
                             "enum": [
@@ -147,6 +135,18 @@
                                 "Windows user account information."
                             ],
                             "location": "query",
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "description": "The project ID of the Google Cloud Platform project.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Required. The unique ID for the user in format `users/{user}`.",
+                            "location": "path",
+                            "pattern": "^users/[^/]+$",
+                            "required": true,
                             "type": "string"
                         },
                         "systemId": {
@@ -174,16 +174,16 @@
                         "parent"
                     ],
                     "parameters": {
-                        "projectId": {
-                            "description": "The project ID of the Google Cloud Platform project.",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "parent": {
                             "description": "The unique ID for the user in format `users/{user}`.",
                             "location": "path",
                             "pattern": "^users/[^/]+$",
                             "required": true,
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "description": "The project ID of the Google Cloud Platform project.",
+                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -201,45 +201,35 @@
                 }
             },
             "resources": {
-                "sshPublicKeys": {
+                "projects": {
                     "methods": {
-                        "get": {
-                            "description": "Retrieves an SSH public key.",
-                            "httpMethod": "GET",
-                            "id": "oslogin.users.sshPublicKeys.get",
-                            "parameterOrder": [
-                                "name"
-                            ],
-                            "parameters": {
-                                "name": {
-                                    "description": "Required. The fingerprint of the public key to retrieve. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.",
-                                    "location": "path",
-                                    "pattern": "^users/[^/]+/sshPublicKeys/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1alpha/{+name}",
-                            "response": {
-                                "$ref": "SshPublicKey"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
-                                "https://www.googleapis.com/auth/compute"
-                            ]
-                        },
                         "delete": {
-                            "description": "Deletes an SSH public key.",
+                            "description": "Deletes a POSIX account.",
                             "httpMethod": "DELETE",
-                            "id": "oslogin.users.sshPublicKeys.delete",
+                            "id": "oslogin.users.projects.delete",
                             "parameterOrder": [
                                 "name"
                             ],
                             "parameters": {
+                                "operatingSystemType": {
+                                    "description": "The type of operating system associated with the account.",
+                                    "enum": [
+                                        "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
+                                        "LINUX",
+                                        "WINDOWS"
+                                    ],
+                                    "enumDescriptions": [
+                                        "The operating system type associated with the user account information is unspecified.",
+                                        "Linux user account information.",
+                                        "Windows user account information."
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "name": {
-                                    "description": "Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.",
+                                    "description": "Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`.",
                                     "location": "path",
-                                    "pattern": "^users/[^/]+/sshPublicKeys/[^/]+$",
+                                    "pattern": "^users/[^/]+/projects/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
@@ -252,7 +242,11 @@
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/compute"
                             ]
-                        },
+                        }
+                    }
+                },
+                "sshPublicKeys": {
+                    "methods": {
                         "patch": {
                             "description": "Updates an SSH public key and returns the profile information. This method supports patch semantics.",
                             "httpMethod": "PATCH",
@@ -286,45 +280,51 @@
                                 "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/compute"
                             ]
-                        }
-                    }
-                },
-                "projects": {
-                    "methods": {
+                        },
                         "delete": {
-                            "description": "Deletes a POSIX account.",
+                            "description": "Deletes an SSH public key.",
                             "httpMethod": "DELETE",
-                            "id": "oslogin.users.projects.delete",
+                            "id": "oslogin.users.sshPublicKeys.delete",
                             "parameterOrder": [
                                 "name"
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`.",
+                                    "description": "Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.",
                                     "location": "path",
-                                    "pattern": "^users/[^/]+/projects/[^/]+$",
+                                    "pattern": "^users/[^/]+/sshPublicKeys/[^/]+$",
                                     "required": true,
-                                    "type": "string"
-                                },
-                                "operatingSystemType": {
-                                    "description": "The type of operating system associated with the account.",
-                                    "enum": [
-                                        "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
-                                        "LINUX",
-                                        "WINDOWS"
-                                    ],
-                                    "enumDescriptions": [
-                                        "The operating system type associated with the user account information is unspecified.",
-                                        "Linux user account information.",
-                                        "Windows user account information."
-                                    ],
-                                    "location": "query",
                                     "type": "string"
                                 }
                             },
                             "path": "v1alpha/{+name}",
                             "response": {
                                 "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/compute"
+                            ]
+                        },
+                        "get": {
+                            "description": "Retrieves an SSH public key.",
+                            "httpMethod": "GET",
+                            "id": "oslogin.users.sshPublicKeys.get",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. The fingerprint of the public key to retrieve. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.",
+                                    "location": "path",
+                                    "pattern": "^users/[^/]+/sshPublicKeys/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1alpha/{+name}",
+                            "response": {
+                                "$ref": "SshPublicKey"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
@@ -348,6 +348,11 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "expirationTimeUsec": {
+                    "description": "An expiration time in microseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "key": {
                     "description": "Public key text in SSH format, defined by RFC4253 section 6.6.",
                     "type": "string"
@@ -356,36 +361,77 @@
                     "description": "Output only. The SHA-256 fingerprint of the SSH public key.",
                     "readOnly": true,
                     "type": "string"
-                },
-                "expirationTimeUsec": {
-                    "description": "An expiration time in microseconds since epoch.",
-                    "format": "int64",
-                    "type": "string"
                 }
             },
             "type": "object"
         },
-        "LoginProfile": {
-            "description": "The user profile information used for logging in to a virtual machine on Google Compute Engine.",
-            "id": "LoginProfile",
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "PosixAccount": {
+            "description": "The POSIX account information associated with a Google account.",
+            "id": "PosixAccount",
             "properties": {
-                "name": {
-                    "description": "Required. A unique user ID.",
+                "username": {
+                    "description": "The username of the POSIX account.",
                     "type": "string"
                 },
-                "posixAccounts": {
-                    "description": "The list of POSIX accounts associated with the user.",
-                    "items": {
-                        "$ref": "PosixAccount"
-                    },
-                    "type": "array"
+                "gecos": {
+                    "description": "The GECOS (user information) entry for this account.",
+                    "type": "string"
                 },
-                "sshPublicKeys": {
-                    "additionalProperties": {
-                        "$ref": "SshPublicKey"
-                    },
-                    "description": "A map from SSH public key fingerprint to the associated key object.",
-                    "type": "object"
+                "primary": {
+                    "description": "Only one POSIX account can be marked as primary.",
+                    "type": "boolean"
+                },
+                "homeDirectory": {
+                    "description": "The path to the home directory for this account.",
+                    "type": "string"
+                },
+                "gid": {
+                    "description": "The default group ID.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. The canonical resource name.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "shell": {
+                    "description": "The path to the logic shell for this account.",
+                    "type": "string"
+                },
+                "systemId": {
+                    "description": "System identifier for which account the username or uid applies to. By default, the empty value is used.",
+                    "type": "string"
+                },
+                "accountId": {
+                    "description": "Output only. A POSIX account identifier.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "The user ID.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "operatingSystemType": {
+                    "description": "The operating system type where this account applies.",
+                    "enum": [
+                        "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
+                        "LINUX",
+                        "WINDOWS"
+                    ],
+                    "enumDescriptions": [
+                        "The operating system type associated with the user account information is unspecified.",
+                        "Linux user account information.",
+                        "Windows user account information."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -405,73 +451,27 @@
             },
             "type": "object"
         },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
-            "id": "Empty",
-            "properties": {},
-            "type": "object"
-        },
-        "PosixAccount": {
-            "description": "The POSIX account information associated with a Google account.",
-            "id": "PosixAccount",
+        "LoginProfile": {
+            "description": "The user profile information used for logging in to a virtual machine on Google Compute Engine.",
+            "id": "LoginProfile",
             "properties": {
-                "gecos": {
-                    "description": "The GECOS (user information) entry for this account.",
-                    "type": "string"
-                },
-                "username": {
-                    "description": "The username of the POSIX account.",
-                    "type": "string"
-                },
-                "uid": {
-                    "description": "The user ID.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "accountId": {
-                    "description": "Output only. A POSIX account identifier.",
-                    "readOnly": true,
-                    "type": "string"
-                },
-                "operatingSystemType": {
-                    "description": "The operating system type where this account applies.",
-                    "enum": [
-                        "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
-                        "LINUX",
-                        "WINDOWS"
-                    ],
-                    "enumDescriptions": [
-                        "The operating system type associated with the user account information is unspecified.",
-                        "Linux user account information.",
-                        "Windows user account information."
-                    ],
-                    "type": "string"
-                },
-                "systemId": {
-                    "description": "System identifier for which account the username or uid applies to. By default, the empty value is used.",
-                    "type": "string"
-                },
-                "shell": {
-                    "description": "The path to the logic shell for this account.",
-                    "type": "string"
+                "posixAccounts": {
+                    "description": "The list of POSIX accounts associated with the user.",
+                    "items": {
+                        "$ref": "PosixAccount"
+                    },
+                    "type": "array"
                 },
                 "name": {
-                    "description": "Output only. The canonical resource name.",
-                    "readOnly": true,
+                    "description": "Required. A unique user ID.",
                     "type": "string"
                 },
-                "homeDirectory": {
-                    "description": "The path to the home directory for this account.",
-                    "type": "string"
-                },
-                "gid": {
-                    "description": "The default group ID.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "primary": {
-                    "description": "Only one POSIX account can be marked as primary.",
-                    "type": "boolean"
+                "sshPublicKeys": {
+                    "additionalProperties": {
+                        "$ref": "SshPublicKey"
+                    },
+                    "description": "A map from SSH public key fingerprint to the associated key object.",
+                    "type": "object"
                 }
             },
             "type": "object"

@@ -2184,8 +2184,8 @@ main() {
           new api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeployment();
       var arg_project = "foo";
-      var arg_preview = true;
       var arg_createPolicy = "foo";
+      var arg_preview = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Deployment.fromJson(json);
@@ -2218,9 +2218,9 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["preview"].first, unittest.equals("$arg_preview"));
-        unittest.expect(
             queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
+        unittest.expect(
+            queryMap["preview"].first, unittest.equals("$arg_preview"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2231,8 +2231,8 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_project,
-              preview: arg_preview,
               createPolicy: arg_createPolicy,
+              preview: arg_preview,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperation(response);
@@ -2244,10 +2244,10 @@ main() {
       api.DeploymentsResourceApi res =
           new api.DeploymentmanagerApi(mock).deployments;
       var arg_project = "foo";
-      var arg_filter = "foo";
-      var arg_pageToken = "foo";
-      var arg_maxResults = 42;
       var arg_orderBy = "foo";
+      var arg_maxResults = 42;
+      var arg_pageToken = "foo";
+      var arg_filter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2276,13 +2276,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2293,10 +2293,10 @@ main() {
       }), true);
       res
           .list(arg_project,
-              filter: arg_filter,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               orderBy: arg_orderBy,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDeploymentsListResponse(response);
@@ -2311,8 +2311,8 @@ main() {
       var arg_project = "foo";
       var arg_deployment = "foo";
       var arg_deletePolicy = "foo";
-      var arg_createPolicy = "foo";
       var arg_preview = true;
+      var arg_createPolicy = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Deployment.fromJson(json);
@@ -2347,9 +2347,9 @@ main() {
         unittest.expect(
             queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
         unittest.expect(
-            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
-        unittest.expect(
             queryMap["preview"].first, unittest.equals("$arg_preview"));
+        unittest.expect(
+            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2361,8 +2361,8 @@ main() {
       res
           .patch(arg_request, arg_project, arg_deployment,
               deletePolicy: arg_deletePolicy,
-              createPolicy: arg_createPolicy,
               preview: arg_preview,
+              createPolicy: arg_createPolicy,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperation(response);
@@ -2537,8 +2537,8 @@ main() {
       var arg_request = buildDeployment();
       var arg_project = "foo";
       var arg_deployment = "foo";
-      var arg_deletePolicy = "foo";
       var arg_createPolicy = "foo";
+      var arg_deletePolicy = "foo";
       var arg_preview = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2572,9 +2572,9 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
-        unittest.expect(
             queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
+        unittest.expect(
+            queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
         unittest.expect(
             queryMap["preview"].first, unittest.equals("$arg_preview"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2587,8 +2587,8 @@ main() {
       }), true);
       res
           .update(arg_request, arg_project, arg_deployment,
-              deletePolicy: arg_deletePolicy,
               createPolicy: arg_createPolicy,
+              deletePolicy: arg_deletePolicy,
               preview: arg_preview,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2655,9 +2655,9 @@ main() {
       var arg_project = "foo";
       var arg_deployment = "foo";
       var arg_maxResults = 42;
-      var arg_pageToken = "foo";
       var arg_filter = "foo";
       var arg_orderBy = "foo";
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2688,11 +2688,11 @@ main() {
         }
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2704,9 +2704,9 @@ main() {
       res
           .list(arg_project, arg_deployment,
               maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
               filter: arg_filter,
               orderBy: arg_orderBy,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkManifestsListResponse(response);
@@ -2769,10 +2769,10 @@ main() {
       api.OperationsResourceApi res =
           new api.DeploymentmanagerApi(mock).operations;
       var arg_project = "foo";
-      var arg_pageToken = "foo";
-      var arg_orderBy = "foo";
       var arg_filter = "foo";
+      var arg_orderBy = "foo";
       var arg_maxResults = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2801,13 +2801,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2818,10 +2818,10 @@ main() {
       }), true);
       res
           .list(arg_project,
-              pageToken: arg_pageToken,
-              orderBy: arg_orderBy,
               filter: arg_filter,
+              orderBy: arg_orderBy,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperationsListResponse(response);
@@ -2886,10 +2886,10 @@ main() {
           new api.DeploymentmanagerApi(mock).resources;
       var arg_project = "foo";
       var arg_deployment = "foo";
-      var arg_pageToken = "foo";
       var arg_filter = "foo";
       var arg_orderBy = "foo";
       var arg_maxResults = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2918,13 +2918,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2935,10 +2935,10 @@ main() {
       }), true);
       res
           .list(arg_project, arg_deployment,
-              pageToken: arg_pageToken,
               filter: arg_filter,
               orderBy: arg_orderBy,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkResourcesListResponse(response);
@@ -2951,10 +2951,10 @@ main() {
       var mock = new HttpServerMock();
       api.TypesResourceApi res = new api.DeploymentmanagerApi(mock).types;
       var arg_project = "foo";
-      var arg_orderBy = "foo";
       var arg_pageToken = "foo";
-      var arg_maxResults = 42;
       var arg_filter = "foo";
+      var arg_orderBy = "foo";
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2984,12 +2984,12 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3000,10 +3000,10 @@ main() {
       }), true);
       res
           .list(arg_project,
-              orderBy: arg_orderBy,
               pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTypesListResponse(response);

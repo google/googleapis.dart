@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 0.56.0
+    version: 0.56.1
     author: Dart Team <misc@dartlang.org>
     homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
@@ -10,6 +10,7 @@ packages:
     changelog: resources/googleapis/CHANGELOG.md
     example: resources/googleapis/examples/main.dart
     apis:
+    - oauth2:v2 # Note: this is used many places and sometimes the document is missing
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/
     - adexchangebuyer:v1.3 # https://developers.google.com/ad-exchange/buyer-rest/

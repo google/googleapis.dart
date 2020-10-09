@@ -75,13 +75,13 @@ class ConversionResourceApi {
   /// [startRow] - The 0-based starting index for retrieving conversions
   /// results.
   ///
-  /// [adId] - Numeric ID of the ad.
+  /// [adGroupId] - Numeric ID of the ad group.
   ///
   /// [criterionId] - Numeric ID of the criterion.
   ///
-  /// [adGroupId] - Numeric ID of the ad group.
-  ///
   /// [campaignId] - Numeric ID of the campaign.
+  ///
+  /// [adId] - Numeric ID of the ad.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -101,10 +101,10 @@ class ConversionResourceApi {
       core.int rowCount,
       core.int startDate,
       core.int startRow,
-      {core.String adId,
+      {core.String adGroupId,
       core.String criterionId,
-      core.String adGroupId,
       core.String campaignId,
+      core.String adId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -138,17 +138,17 @@ class ConversionResourceApi {
       throw new core.ArgumentError("Parameter startRow is required.");
     }
     _queryParams["startRow"] = ["${startRow}"];
-    if (adId != null) {
-      _queryParams["adId"] = [adId];
+    if (adGroupId != null) {
+      _queryParams["adGroupId"] = [adGroupId];
     }
     if (criterionId != null) {
       _queryParams["criterionId"] = [criterionId];
     }
-    if (adGroupId != null) {
-      _queryParams["adGroupId"] = [adGroupId];
-    }
     if (campaignId != null) {
       _queryParams["campaignId"] = [campaignId];
+    }
+    if (adId != null) {
+      _queryParams["adId"] = [adId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

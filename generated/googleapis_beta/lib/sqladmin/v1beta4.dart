@@ -237,10 +237,10 @@ class BackupRunsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [maxResults] - Maximum number of backup runs per response.
+  ///
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
-  ///
-  /// [maxResults] - Maximum number of backup runs per response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -254,7 +254,7 @@ class BackupRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<BackupRunsListResponse> list(
       core.String project, core.String instance,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -268,11 +268,11 @@ class BackupRunsResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1976,12 +1976,12 @@ class OperationsResourceApi {
   ///
   /// [project] - Project ID of the project that contains the instance.
   ///
-  /// [maxResults] - Maximum number of operations per response.
-  ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
+  ///
+  /// [maxResults] - Maximum number of operations per response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1994,9 +1994,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OperationsListResponse> list(core.String project,
-      {core.int maxResults,
-      core.String instance,
+      {core.String instance,
       core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2008,14 +2008,14 @@ class OperationsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (instance != null) {
       _queryParams["instance"] = [instance];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2183,8 +2183,6 @@ class ProjectsInstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
-  /// [verifyConnectionOnly] - Flag to enable verifying connection only
-  ///
   /// [syncMode] - External sync mode
   /// Possible string values are:
   /// - "EXTERNAL_SYNC_MODE_UNSPECIFIED" : Unknown external sync mode, will be
@@ -2193,6 +2191,8 @@ class ProjectsInstancesResourceApi {
   /// data external sync
   /// - "OFFLINE" : Offline external sync only dumps and loads a one-time
   /// snapshot of the primary instance's data
+  ///
+  /// [verifyConnectionOnly] - Flag to enable verifying connection only
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2206,8 +2206,8 @@ class ProjectsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<SqlInstancesVerifyExternalSyncSettingsResponse>
       verifyExternalSyncSettings(core.String project, core.String instance,
-          {core.bool verifyConnectionOnly,
-          core.String syncMode,
+          {core.String syncMode,
+          core.bool verifyConnectionOnly,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2222,11 +2222,11 @@ class ProjectsInstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-    if (verifyConnectionOnly != null) {
-      _queryParams["verifyConnectionOnly"] = ["${verifyConnectionOnly}"];
-    }
     if (syncMode != null) {
       _queryParams["syncMode"] = [syncMode];
+    }
+    if (verifyConnectionOnly != null) {
+      _queryParams["verifyConnectionOnly"] = ["${verifyConnectionOnly}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2790,9 +2790,9 @@ class UsersResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
-  /// [name] - Name of the user in the instance.
-  ///
   /// [host] - Optional. Host of the user in the instance.
+  ///
+  /// [name] - Name of the user in the instance.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2806,7 +2806,7 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       User request, core.String project, core.String instance,
-      {core.String name, core.String host, core.String $fields}) {
+      {core.String host, core.String name, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2823,11 +2823,11 @@ class UsersResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-    if (name != null) {
-      _queryParams["name"] = [name];
-    }
     if (host != null) {
       _queryParams["host"] = [host];
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

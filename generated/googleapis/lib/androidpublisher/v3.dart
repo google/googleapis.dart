@@ -2651,11 +2651,11 @@ class InappproductsResourceApi {
   ///
   /// [packageName] - Package name of the app.
   ///
+  /// [token] - Pagination token. If empty, list starts at the first product.
+  ///
   /// [maxResults] - How many results the list operation should return.
   ///
   /// [startIndex] - The index of the first element to return.
-  ///
-  /// [token] - Pagination token. If empty, list starts at the first product.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2668,9 +2668,9 @@ class InappproductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InappproductsListResponse> list(core.String packageName,
-      {core.int maxResults,
+      {core.String token,
+      core.int maxResults,
       core.int startIndex,
-      core.String token,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2682,14 +2682,14 @@ class InappproductsResourceApi {
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
+    if (token != null) {
+      _queryParams["token"] = [token];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
-    }
-    if (token != null) {
-      _queryParams["token"] = [token];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3624,18 +3624,14 @@ class PurchasesVoidedpurchasesResourceApi {
   /// [packageName] - The package name of the application for which voided
   /// purchases need to be returned (for example, 'com.some.thing').
   ///
+  /// [startIndex] - Defines the index of the first element to return. This can
+  /// only be used if indexed paging is enabled.
+  ///
   /// [maxResults] - Defines how many results the list operation should return.
   /// The default number depends on the resource collection.
   ///
-  /// [type] - The type of voided purchases that you want to see in the
-  /// response. Possible values are: 0. Only voided in-app product purchases
-  /// will be returned in the response. This is the default value. 1. Both
-  /// voided in-app purchases and voided subscription purchases will be returned
-  /// in the response. Note: Before requesting to receive voided subscription
-  /// purchases, you must switch to use orderId in the response which uniquely
-  /// identifies one-time purchases and subscriptions. Otherwise, you will
-  /// receive multiple subscription orders with the same PurchaseToken, because
-  /// subscription renewal orders share the same PurchaseToken.
+  /// [token] - Defines the token of the page to return, usually taken from
+  /// TokenPagination. This can only be used if token paging is enabled.
   ///
   /// [startTime] - The time, in milliseconds since the Epoch, of the oldest
   /// voided purchase that you want to see in the response. The value of this
@@ -3651,11 +3647,15 @@ class PurchasesVoidedpurchasesResourceApi {
   /// is applied on the time at which the record is seen as voided by our
   /// systems and not the actual voided time returned in the response.
   ///
-  /// [startIndex] - Defines the index of the first element to return. This can
-  /// only be used if indexed paging is enabled.
-  ///
-  /// [token] - Defines the token of the page to return, usually taken from
-  /// TokenPagination. This can only be used if token paging is enabled.
+  /// [type] - The type of voided purchases that you want to see in the
+  /// response. Possible values are: 0. Only voided in-app product purchases
+  /// will be returned in the response. This is the default value. 1. Both
+  /// voided in-app purchases and voided subscription purchases will be returned
+  /// in the response. Note: Before requesting to receive voided subscription
+  /// purchases, you must switch to use orderId in the response which uniquely
+  /// identifies one-time purchases and subscriptions. Otherwise, you will
+  /// receive multiple subscription orders with the same PurchaseToken, because
+  /// subscription renewal orders share the same PurchaseToken.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3668,12 +3668,12 @@ class PurchasesVoidedpurchasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VoidedPurchasesListResponse> list(core.String packageName,
-      {core.int maxResults,
-      core.int type,
+      {core.int startIndex,
+      core.int maxResults,
+      core.String token,
       core.String startTime,
       core.String endTime,
-      core.int startIndex,
-      core.String token,
+      core.int type,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3685,11 +3685,14 @@ class PurchasesVoidedpurchasesResourceApi {
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (type != null) {
-      _queryParams["type"] = ["${type}"];
+    if (token != null) {
+      _queryParams["token"] = [token];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
@@ -3697,11 +3700,8 @@ class PurchasesVoidedpurchasesResourceApi {
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
-    }
-    if (token != null) {
-      _queryParams["token"] = [token];
+    if (type != null) {
+      _queryParams["type"] = ["${type}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

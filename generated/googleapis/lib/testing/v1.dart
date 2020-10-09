@@ -1972,6 +1972,48 @@ class IosDeviceCatalog {
   }
 }
 
+/// A file or directory to install on the device before the test starts.
+class IosDeviceFile {
+  /// The bundle id of the app where this file lives. iOS apps sandbox their own
+  /// filesystem, so app files must specify which app installed on the device.
+  core.String bundleId;
+
+  /// The source file
+  FileReference content;
+
+  /// Location of the file on the device, inside the app's sandboxed filesystem
+  core.String devicePath;
+
+  IosDeviceFile();
+
+  IosDeviceFile.fromJson(core.Map _json) {
+    if (_json.containsKey("bundleId")) {
+      bundleId = _json["bundleId"];
+    }
+    if (_json.containsKey("content")) {
+      content = new FileReference.fromJson(_json["content"]);
+    }
+    if (_json.containsKey("devicePath")) {
+      devicePath = _json["devicePath"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bundleId != null) {
+      _json["bundleId"] = bundleId;
+    }
+    if (content != null) {
+      _json["content"] = (content).toJson();
+    }
+    if (devicePath != null) {
+      _json["devicePath"] = devicePath;
+    }
+    return _json;
+  }
+}
+
 /// A list of iOS device configurations in which the test is to be executed.
 class IosDeviceList {
   /// Required. A list of iOS devices.
@@ -2196,6 +2238,15 @@ class IosTestSetup {
   /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   core.String networkProfile;
 
+  /// List of directories on the device to upload to Cloud Storage at the end of
+  /// the test. Directories should either be in a shared directory (e.g.
+  /// /private/var/mobile/Media) or within an accessible directory inside the
+  /// app's filesystem (e.g. /Documents) by specifying the bundle id.
+  core.List<IosDeviceFile> pullDirectories;
+
+  /// List of files to push to the device before starting the test.
+  core.List<IosDeviceFile> pushFiles;
+
   IosTestSetup();
 
   IosTestSetup.fromJson(core.Map _json) {
@@ -2206,6 +2257,16 @@ class IosTestSetup {
     }
     if (_json.containsKey("networkProfile")) {
       networkProfile = _json["networkProfile"];
+    }
+    if (_json.containsKey("pullDirectories")) {
+      pullDirectories = (_json["pullDirectories"] as core.List)
+          .map<IosDeviceFile>((value) => new IosDeviceFile.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("pushFiles")) {
+      pushFiles = (_json["pushFiles"] as core.List)
+          .map<IosDeviceFile>((value) => new IosDeviceFile.fromJson(value))
+          .toList();
     }
   }
 
@@ -2218,6 +2279,13 @@ class IosTestSetup {
     }
     if (networkProfile != null) {
       _json["networkProfile"] = networkProfile;
+    }
+    if (pullDirectories != null) {
+      _json["pullDirectories"] =
+          pullDirectories.map((value) => (value).toJson()).toList();
+    }
+    if (pushFiles != null) {
+      _json["pushFiles"] = pushFiles.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

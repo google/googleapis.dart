@@ -119,14 +119,14 @@ checkAdminSdkConfig(api.AdminSdkConfig o) {
   buildCounterAdminSdkConfig--;
 }
 
-buildUnnamed6614() {
+buildUnnamed6593() {
   var o = new core.List<api.StreamMapping>();
   o.add(buildStreamMapping());
   o.add(buildStreamMapping());
   return o;
 }
 
-checkUnnamed6614(core.List<api.StreamMapping> o) {
+checkUnnamed6593(core.List<api.StreamMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStreamMapping(o[0]);
   checkStreamMapping(o[1]);
@@ -138,7 +138,7 @@ buildAnalyticsDetails() {
   buildCounterAnalyticsDetails++;
   if (buildCounterAnalyticsDetails < 3) {
     o.analyticsProperty = buildAnalyticsProperty();
-    o.streamMappings = buildUnnamed6614();
+    o.streamMappings = buildUnnamed6593();
   }
   buildCounterAnalyticsDetails--;
   return o;
@@ -148,7 +148,7 @@ checkAnalyticsDetails(api.AnalyticsDetails o) {
   buildCounterAnalyticsDetails++;
   if (buildCounterAnalyticsDetails < 3) {
     checkAnalyticsProperty(o.analyticsProperty);
-    checkUnnamed6614(o.streamMappings);
+    checkUnnamed6593(o.streamMappings);
   }
   buildCounterAnalyticsDetails--;
 }
@@ -387,14 +387,14 @@ checkIosAppConfig(api.IosAppConfig o) {
   buildCounterIosAppConfig--;
 }
 
-buildUnnamed6615() {
+buildUnnamed6594() {
   var o = new core.List<api.AndroidApp>();
   o.add(buildAndroidApp());
   o.add(buildAndroidApp());
   return o;
 }
 
-checkUnnamed6615(core.List<api.AndroidApp> o) {
+checkUnnamed6594(core.List<api.AndroidApp> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAndroidApp(o[0]);
   checkAndroidApp(o[1]);
@@ -405,7 +405,7 @@ buildListAndroidAppsResponse() {
   var o = new api.ListAndroidAppsResponse();
   buildCounterListAndroidAppsResponse++;
   if (buildCounterListAndroidAppsResponse < 3) {
-    o.apps = buildUnnamed6615();
+    o.apps = buildUnnamed6594();
     o.nextPageToken = "foo";
   }
   buildCounterListAndroidAppsResponse--;
@@ -415,20 +415,20 @@ buildListAndroidAppsResponse() {
 checkListAndroidAppsResponse(api.ListAndroidAppsResponse o) {
   buildCounterListAndroidAppsResponse++;
   if (buildCounterListAndroidAppsResponse < 3) {
-    checkUnnamed6615(o.apps);
+    checkUnnamed6594(o.apps);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAndroidAppsResponse--;
 }
 
-buildUnnamed6616() {
+buildUnnamed6595() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed6616(core.List<api.Location> o) {
+checkUnnamed6595(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -439,7 +439,7 @@ buildListAvailableLocationsResponse() {
   var o = new api.ListAvailableLocationsResponse();
   buildCounterListAvailableLocationsResponse++;
   if (buildCounterListAvailableLocationsResponse < 3) {
-    o.locations = buildUnnamed6616();
+    o.locations = buildUnnamed6595();
     o.nextPageToken = "foo";
   }
   buildCounterListAvailableLocationsResponse--;
@@ -449,20 +449,20 @@ buildListAvailableLocationsResponse() {
 checkListAvailableLocationsResponse(api.ListAvailableLocationsResponse o) {
   buildCounterListAvailableLocationsResponse++;
   if (buildCounterListAvailableLocationsResponse < 3) {
-    checkUnnamed6616(o.locations);
+    checkUnnamed6595(o.locations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAvailableLocationsResponse--;
 }
 
-buildUnnamed6617() {
+buildUnnamed6596() {
   var o = new core.List<api.ProjectInfo>();
   o.add(buildProjectInfo());
   o.add(buildProjectInfo());
   return o;
 }
 
-checkUnnamed6617(core.List<api.ProjectInfo> o) {
+checkUnnamed6596(core.List<api.ProjectInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProjectInfo(o[0]);
   checkProjectInfo(o[1]);
@@ -474,7 +474,7 @@ buildListAvailableProjectsResponse() {
   buildCounterListAvailableProjectsResponse++;
   if (buildCounterListAvailableProjectsResponse < 3) {
     o.nextPageToken = "foo";
-    o.projectInfo = buildUnnamed6617();
+    o.projectInfo = buildUnnamed6596();
   }
   buildCounterListAvailableProjectsResponse--;
   return o;
@@ -484,19 +484,19 @@ checkListAvailableProjectsResponse(api.ListAvailableProjectsResponse o) {
   buildCounterListAvailableProjectsResponse++;
   if (buildCounterListAvailableProjectsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6617(o.projectInfo);
+    checkUnnamed6596(o.projectInfo);
   }
   buildCounterListAvailableProjectsResponse--;
 }
 
-buildUnnamed6618() {
+buildUnnamed6597() {
   var o = new core.List<api.FirebaseProject>();
   o.add(buildFirebaseProject());
   o.add(buildFirebaseProject());
   return o;
 }
 
-checkUnnamed6618(core.List<api.FirebaseProject> o) {
+checkUnnamed6597(core.List<api.FirebaseProject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFirebaseProject(o[0]);
   checkFirebaseProject(o[1]);
@@ -508,7 +508,7 @@ buildListFirebaseProjectsResponse() {
   buildCounterListFirebaseProjectsResponse++;
   if (buildCounterListFirebaseProjectsResponse < 3) {
     o.nextPageToken = "foo";
-    o.results = buildUnnamed6618();
+    o.results = buildUnnamed6597();
   }
   buildCounterListFirebaseProjectsResponse--;
   return o;
@@ -518,19 +518,19 @@ checkListFirebaseProjectsResponse(api.ListFirebaseProjectsResponse o) {
   buildCounterListFirebaseProjectsResponse++;
   if (buildCounterListFirebaseProjectsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6618(o.results);
+    checkUnnamed6597(o.results);
   }
   buildCounterListFirebaseProjectsResponse--;
 }
 
-buildUnnamed6619() {
+buildUnnamed6598() {
   var o = new core.List<api.IosApp>();
   o.add(buildIosApp());
   o.add(buildIosApp());
   return o;
 }
 
-checkUnnamed6619(core.List<api.IosApp> o) {
+checkUnnamed6598(core.List<api.IosApp> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIosApp(o[0]);
   checkIosApp(o[1]);
@@ -541,7 +541,7 @@ buildListIosAppsResponse() {
   var o = new api.ListIosAppsResponse();
   buildCounterListIosAppsResponse++;
   if (buildCounterListIosAppsResponse < 3) {
-    o.apps = buildUnnamed6619();
+    o.apps = buildUnnamed6598();
     o.nextPageToken = "foo";
   }
   buildCounterListIosAppsResponse--;
@@ -551,20 +551,20 @@ buildListIosAppsResponse() {
 checkListIosAppsResponse(api.ListIosAppsResponse o) {
   buildCounterListIosAppsResponse++;
   if (buildCounterListIosAppsResponse < 3) {
-    checkUnnamed6619(o.apps);
+    checkUnnamed6598(o.apps);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListIosAppsResponse--;
 }
 
-buildUnnamed6620() {
+buildUnnamed6599() {
   var o = new core.List<api.ShaCertificate>();
   o.add(buildShaCertificate());
   o.add(buildShaCertificate());
   return o;
 }
 
-checkUnnamed6620(core.List<api.ShaCertificate> o) {
+checkUnnamed6599(core.List<api.ShaCertificate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkShaCertificate(o[0]);
   checkShaCertificate(o[1]);
@@ -575,7 +575,7 @@ buildListShaCertificatesResponse() {
   var o = new api.ListShaCertificatesResponse();
   buildCounterListShaCertificatesResponse++;
   if (buildCounterListShaCertificatesResponse < 3) {
-    o.certificates = buildUnnamed6620();
+    o.certificates = buildUnnamed6599();
   }
   buildCounterListShaCertificatesResponse--;
   return o;
@@ -584,19 +584,19 @@ buildListShaCertificatesResponse() {
 checkListShaCertificatesResponse(api.ListShaCertificatesResponse o) {
   buildCounterListShaCertificatesResponse++;
   if (buildCounterListShaCertificatesResponse < 3) {
-    checkUnnamed6620(o.certificates);
+    checkUnnamed6599(o.certificates);
   }
   buildCounterListShaCertificatesResponse--;
 }
 
-buildUnnamed6621() {
+buildUnnamed6600() {
   var o = new core.List<api.WebApp>();
   o.add(buildWebApp());
   o.add(buildWebApp());
   return o;
 }
 
-checkUnnamed6621(core.List<api.WebApp> o) {
+checkUnnamed6600(core.List<api.WebApp> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebApp(o[0]);
   checkWebApp(o[1]);
@@ -607,7 +607,7 @@ buildListWebAppsResponse() {
   var o = new api.ListWebAppsResponse();
   buildCounterListWebAppsResponse++;
   if (buildCounterListWebAppsResponse < 3) {
-    o.apps = buildUnnamed6621();
+    o.apps = buildUnnamed6600();
     o.nextPageToken = "foo";
   }
   buildCounterListWebAppsResponse--;
@@ -617,20 +617,20 @@ buildListWebAppsResponse() {
 checkListWebAppsResponse(api.ListWebAppsResponse o) {
   buildCounterListWebAppsResponse++;
   if (buildCounterListWebAppsResponse < 3) {
-    checkUnnamed6621(o.apps);
+    checkUnnamed6600(o.apps);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListWebAppsResponse--;
 }
 
-buildUnnamed6622() {
+buildUnnamed6601() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6622(core.List<core.String> o) {
+checkUnnamed6601(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -641,7 +641,7 @@ buildLocation() {
   var o = new api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.features = buildUnnamed6622();
+    o.features = buildUnnamed6601();
     o.locationId = "foo";
     o.type = "foo";
   }
@@ -652,7 +652,7 @@ buildLocation() {
 checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    checkUnnamed6622(o.features);
+    checkUnnamed6601(o.features);
     unittest.expect(o.locationId, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -674,7 +674,7 @@ checkMessageSet(api.MessageSet o) {
   buildCounterMessageSet--;
 }
 
-buildUnnamed6623() {
+buildUnnamed6602() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -689,7 +689,7 @@ buildUnnamed6623() {
   return o;
 }
 
-checkUnnamed6623(core.Map<core.String, core.Object> o) {
+checkUnnamed6602(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -703,7 +703,7 @@ checkUnnamed6623(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed6624() {
+buildUnnamed6603() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -718,7 +718,7 @@ buildUnnamed6624() {
   return o;
 }
 
-checkUnnamed6624(core.Map<core.String, core.Object> o) {
+checkUnnamed6603(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -739,9 +739,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed6623();
+    o.metadata = buildUnnamed6602();
     o.name = "foo";
-    o.response = buildUnnamed6624();
+    o.response = buildUnnamed6603();
   }
   buildCounterOperation--;
   return o;
@@ -752,9 +752,9 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed6623(o.metadata);
+    checkUnnamed6602(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed6624(o.response);
+    checkUnnamed6603(o.response);
   }
   buildCounterOperation--;
 }
@@ -801,14 +801,14 @@ checkRemoveAnalyticsRequest(api.RemoveAnalyticsRequest o) {
   buildCounterRemoveAnalyticsRequest--;
 }
 
-buildUnnamed6625() {
+buildUnnamed6604() {
   var o = new core.List<api.FirebaseAppInfo>();
   o.add(buildFirebaseAppInfo());
   o.add(buildFirebaseAppInfo());
   return o;
 }
 
-checkUnnamed6625(core.List<api.FirebaseAppInfo> o) {
+checkUnnamed6604(core.List<api.FirebaseAppInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFirebaseAppInfo(o[0]);
   checkFirebaseAppInfo(o[1]);
@@ -819,7 +819,7 @@ buildSearchFirebaseAppsResponse() {
   var o = new api.SearchFirebaseAppsResponse();
   buildCounterSearchFirebaseAppsResponse++;
   if (buildCounterSearchFirebaseAppsResponse < 3) {
-    o.apps = buildUnnamed6625();
+    o.apps = buildUnnamed6604();
     o.nextPageToken = "foo";
   }
   buildCounterSearchFirebaseAppsResponse--;
@@ -829,7 +829,7 @@ buildSearchFirebaseAppsResponse() {
 checkSearchFirebaseAppsResponse(api.SearchFirebaseAppsResponse o) {
   buildCounterSearchFirebaseAppsResponse++;
   if (buildCounterSearchFirebaseAppsResponse < 3) {
-    checkUnnamed6625(o.apps);
+    checkUnnamed6604(o.apps);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSearchFirebaseAppsResponse--;
@@ -858,7 +858,7 @@ checkShaCertificate(api.ShaCertificate o) {
   buildCounterShaCertificate--;
 }
 
-buildUnnamed6626() {
+buildUnnamed6605() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -873,7 +873,7 @@ buildUnnamed6626() {
   return o;
 }
 
-checkUnnamed6626(core.Map<core.String, core.Object> o) {
+checkUnnamed6605(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -887,17 +887,17 @@ checkUnnamed6626(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed6627() {
+buildUnnamed6606() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed6626());
-  o.add(buildUnnamed6626());
+  o.add(buildUnnamed6605());
+  o.add(buildUnnamed6605());
   return o;
 }
 
-checkUnnamed6627(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed6606(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6626(o[0]);
-  checkUnnamed6626(o[1]);
+  checkUnnamed6605(o[0]);
+  checkUnnamed6605(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -906,7 +906,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed6627();
+    o.details = buildUnnamed6606();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -917,7 +917,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed6627(o.details);
+    checkUnnamed6606(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -973,14 +973,14 @@ checkStreamMapping(api.StreamMapping o) {
   buildCounterStreamMapping--;
 }
 
-buildUnnamed6628() {
+buildUnnamed6607() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6628(core.List<core.String> o) {
+checkUnnamed6607(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -992,7 +992,7 @@ buildWebApp() {
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
     o.appId = "foo";
-    o.appUrls = buildUnnamed6628();
+    o.appUrls = buildUnnamed6607();
     o.displayName = "foo";
     o.name = "foo";
     o.projectId = "foo";
@@ -1006,7 +1006,7 @@ checkWebApp(api.WebApp o) {
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
     unittest.expect(o.appId, unittest.equals('foo'));
-    checkUnnamed6628(o.appUrls);
+    checkUnnamed6607(o.appUrls);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
@@ -1320,8 +1320,8 @@ main() {
       var mock = new HttpServerMock();
       api.AvailableProjectsResourceApi res =
           new api.FirebaseApi(mock).availableProjects;
-      var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1353,10 +1353,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1367,8 +1367,8 @@ main() {
       }), true);
       res
           .list(
-              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAvailableProjectsResponse(response);
@@ -1869,9 +1869,9 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.FirebaseApi(mock).projects;
       var arg_parent = "foo";
+      var arg_filter = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
-      var arg_filter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1904,11 +1904,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1919,9 +1919,9 @@ main() {
       }), true);
       res
           .searchApps(arg_parent,
+              filter: arg_filter,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSearchFirebaseAppsResponse(response);
@@ -2095,8 +2095,8 @@ main() {
       api.ProjectsAndroidAppsResourceApi res =
           new api.FirebaseApi(mock).projects.androidApps;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2129,10 +2129,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2143,8 +2143,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAndroidAppsResponse(response);
@@ -2380,8 +2380,8 @@ main() {
       api.ProjectsAvailableLocationsResourceApi res =
           new api.FirebaseApi(mock).projects.availableLocations;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2414,10 +2414,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2428,8 +2428,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAvailableLocationsResponse(response);

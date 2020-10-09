@@ -221,10 +221,6 @@ class OrganizationsAssetsResourceApi {
   /// format is "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageToken] - The value returned by the last `ListAssetsResponse`;
-  /// indicates that this is a continuation of a prior `ListAssets` call, and
-  /// that the system should return the next page of data.
-  ///
   /// [orderBy] - Expression that defines what fields and order to use for
   /// sorting. The string value should follow SQL syntax: comma separated list
   /// of fields. For example: "name,resource_properties.a_property". The default
@@ -244,32 +240,6 @@ class OrganizationsAssetsResourceApi {
   ///
   /// [fieldMask] - A field mask to specify the ListAssetsResult fields to be
   /// listed in the response. An empty field mask will list all fields.
-  ///
-  /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
-  /// "state_change" attribute is updated to indicate whether the asset was
-  /// added, removed, or remained present during the compare_duration period of
-  /// time that precedes the read_time. This is the time between (read_time -
-  /// compare_duration) and read_time. The state_change value is derived based
-  /// on the presence of the asset at the two points in time. Intermediate state
-  /// changes between the two times don't affect the result. For example, the
-  /// results aren't affected if the asset is removed and re-created again.
-  /// Possible "state_change" values when compare_duration is specified: *
-  /// "ADDED": indicates that the asset was not present at the start of
-  /// compare_duration, but present at read_time. * "REMOVED": indicates that
-  /// the asset was present at the start of compare_duration, but not present at
-  /// read_time. * "ACTIVE": indicates that the asset was present at both the
-  /// start and the end of the time period defined by compare_duration and
-  /// read_time. If compare_duration is not specified, then the only possible
-  /// state_change is "UNUSED", which will be the state_change set for all
-  /// assets present at read_time.
-  ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
-  ///
-  /// [readTime] - Time used as a reference point when filtering assets. The
-  /// filter is limited to assets existing at the supplied time and their values
-  /// are those at that specific time. Absence of this field will default to the
-  /// API's version of NOW.
   ///
   /// [filter] - Expression that defines the filter to apply across assets. The
   /// expression is a list of zero or more restrictions combined via logical
@@ -305,6 +275,36 @@ class OrganizationsAssetsResourceApi {
   /// empty string to filter based on a property not existing:
   /// `-resource_properties.my_property : ""`
   ///
+  /// [pageToken] - The value returned by the last `ListAssetsResponse`;
+  /// indicates that this is a continuation of a prior `ListAssets` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
+  /// "state_change" attribute is updated to indicate whether the asset was
+  /// added, removed, or remained present during the compare_duration period of
+  /// time that precedes the read_time. This is the time between (read_time -
+  /// compare_duration) and read_time. The state_change value is derived based
+  /// on the presence of the asset at the two points in time. Intermediate state
+  /// changes between the two times don't affect the result. For example, the
+  /// results aren't affected if the asset is removed and re-created again.
+  /// Possible "state_change" values when compare_duration is specified: *
+  /// "ADDED": indicates that the asset was not present at the start of
+  /// compare_duration, but present at read_time. * "REMOVED": indicates that
+  /// the asset was present at the start of compare_duration, but not present at
+  /// read_time. * "ACTIVE": indicates that the asset was present at both the
+  /// start and the end of the time period defined by compare_duration and
+  /// read_time. If compare_duration is not specified, then the only possible
+  /// state_change is "UNUSED", which will be the state_change set for all
+  /// assets present at read_time.
+  ///
+  /// [readTime] - Time used as a reference point when filtering assets. The
+  /// filter is limited to assets existing at the supplied time and their values
+  /// are those at that specific time. Absence of this field will default to the
+  /// API's version of NOW.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -316,13 +316,13 @@ class OrganizationsAssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAssetsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.String orderBy,
+      {core.String orderBy,
       core.String fieldMask,
-      core.String compareDuration,
-      core.int pageSize,
-      core.String readTime,
       core.String filter,
+      core.String pageToken,
+      core.String compareDuration,
+      core.String readTime,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -334,26 +334,26 @@ class OrganizationsAssetsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
     if (fieldMask != null) {
       _queryParams["fieldMask"] = [fieldMask];
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (compareDuration != null) {
       _queryParams["compareDuration"] = [compareDuration];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (readTime != null) {
       _queryParams["readTime"] = [readTime];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -440,14 +440,14 @@ class OrganizationsAssetsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/assets/[^/]+/securityMarks$".
   ///
+  /// [startTime] - The time at which the updated SecurityMarks take effect. If
+  /// not set uses current server time. Updates will be applied to the
+  /// SecurityMarks that are active immediately preceding this time.
+  ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
   /// set to "marks", all marks will be replaced. Individual marks can be
   /// updated using "marks.".
-  ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect. If
-  /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -461,7 +461,7 @@ class OrganizationsAssetsResourceApi {
   /// this method will complete with the same error.
   async.Future<SecurityMarks> updateSecurityMarks(
       SecurityMarks request, core.String name,
-      {core.String updateMask, core.String startTime, core.String $fields}) {
+      {core.String startTime, core.String updateMask, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -475,11 +475,11 @@ class OrganizationsAssetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -940,9 +940,9 @@ class OrganizationsOperationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -956,8 +956,8 @@ class OrganizationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
       {core.String filter,
-      core.String pageToken,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -972,11 +972,11 @@ class OrganizationsOperationsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1160,12 +1160,12 @@ class OrganizationsSourcesResourceApi {
   /// format should be "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
-  ///
   /// [pageToken] - The value returned by the last `ListSourcesResponse`;
   /// indicates that this is a continuation of a prior `ListSources` call, and
   /// that the system should return the next page of data.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1178,7 +1178,7 @@ class OrganizationsSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSourcesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1189,11 +1189,11 @@ class OrganizationsSourcesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1512,6 +1512,10 @@ class OrganizationsSourcesFindingsResourceApi {
   /// organizations/{organization_id}/sources/-
   /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
   ///
+  /// [pageToken] - The value returned by the last `ListFindingsResponse`;
+  /// indicates that this is a continuation of a prior `ListFindings` call, and
+  /// that the system should return the next page of data.
+  ///
   /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
   /// "state_change" attribute is updated to indicate whether the finding had
   /// its state changed, the finding's state remained unchanged, or if the
@@ -1535,6 +1539,9 @@ class OrganizationsSourcesFindingsResourceApi {
   /// "UNUSED", which will be the state_change set for all findings present at
   /// read_time.
   ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
   /// [orderBy] - Expression that defines what fields and order to use for
   /// sorting. The string value should follow SQL syntax: comma separated list
   /// of fields. For example: "name,resource_properties.a_property". The default
@@ -1545,21 +1552,6 @@ class OrganizationsSourcesFindingsResourceApi {
   /// name desc , source_properties.a_property " are equivalent. The following
   /// fields are supported: name parent state category resource_name event_time
   /// source_properties security_marks.marks
-  ///
-  /// [readTime] - Time used as a reference point when filtering findings. The
-  /// filter is limited to findings existing at the supplied time and their
-  /// values are those at that specific time. Absence of this field will default
-  /// to the API's version of NOW.
-  ///
-  /// [pageToken] - The value returned by the last `ListFindingsResponse`;
-  /// indicates that this is a continuation of a prior `ListFindings` call, and
-  /// that the system should return the next page of data.
-  ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
-  ///
-  /// [fieldMask] - A field mask to specify the Finding fields to be listed in
-  /// the response. An empty field mask will list all fields.
   ///
   /// [filter] - Expression that defines the filter to apply across findings.
   /// The expression is a list of one or more restrictions combined via logical
@@ -1583,6 +1575,14 @@ class OrganizationsSourcesFindingsResourceApi {
   /// partial match on the empty string to filter based on a property not
   /// existing: `-source_properties.my_property : ""`
   ///
+  /// [readTime] - Time used as a reference point when filtering findings. The
+  /// filter is limited to findings existing at the supplied time and their
+  /// values are those at that specific time. Absence of this field will default
+  /// to the API's version of NOW.
+  ///
+  /// [fieldMask] - A field mask to specify the Finding fields to be listed in
+  /// the response. An empty field mask will list all fields.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1594,13 +1594,13 @@ class OrganizationsSourcesFindingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFindingsResponse> list(core.String parent,
-      {core.String compareDuration,
-      core.String orderBy,
-      core.String readTime,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String compareDuration,
       core.int pageSize,
-      core.String fieldMask,
+      core.String orderBy,
       core.String filter,
+      core.String readTime,
+      core.String fieldMask,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1612,26 +1612,26 @@ class OrganizationsSourcesFindingsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (compareDuration != null) {
-      _queryParams["compareDuration"] = [compareDuration];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (readTime != null) {
-      _queryParams["readTime"] = [readTime];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (compareDuration != null) {
+      _queryParams["compareDuration"] = [compareDuration];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (fieldMask != null) {
-      _queryParams["fieldMask"] = [fieldMask];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (readTime != null) {
+      _queryParams["readTime"] = [readTime];
+    }
+    if (fieldMask != null) {
+      _queryParams["fieldMask"] = [fieldMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1780,14 +1780,14 @@ class OrganizationsSourcesFindingsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$".
   ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect. If
-  /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
-  ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
   /// set to "marks", all marks will be replaced. Individual marks can be
   /// updated using "marks.".
+  ///
+  /// [startTime] - The time at which the updated SecurityMarks take effect. If
+  /// not set uses current server time. Updates will be applied to the
+  /// SecurityMarks that are active immediately preceding this time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1801,7 +1801,7 @@ class OrganizationsSourcesFindingsResourceApi {
   /// this method will complete with the same error.
   async.Future<SecurityMarks> updateSecurityMarks(
       SecurityMarks request, core.String name,
-      {core.String startTime, core.String updateMask, core.String $fields}) {
+      {core.String updateMask, core.String startTime, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1815,11 +1815,11 @@ class OrganizationsSourcesFindingsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -294,15 +294,6 @@ class AlertsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alerts are associated with. Inferred from the
-  /// caller identity if not provided.
-  ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return. If empty, a new iteration is started. To continue an
-  /// iteration, pass in the value from the previous ListAlertsResponse's
-  /// next_page_token field.
-  ///
   /// [pageSize] - Optional. The requested page size. Server may return fewer
   /// items than requested. If unspecified, server picks an appropriate default.
   ///
@@ -311,6 +302,15 @@ class AlertsResourceApi {
   /// descending order based on the creation timestamp using
   /// `order_by="create_time desc"`. Currently, supported sorting are
   /// `create_time asc`, `create_time desc`, `update_time desc`
+  ///
+  /// [customerId] - Optional. The unique identifier of the G Suite organization
+  /// account of the customer the alerts are associated with. Inferred from the
+  /// caller identity if not provided.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. If empty, a new iteration is started. To continue an
+  /// iteration, pass in the value from the previous ListAlertsResponse's
+  /// next_page_token field.
   ///
   /// [filter] - Optional. A query string for filtering alert results. For more
   /// details, see [Query filters](/admin-sdk/alertcenter/guides/query-filters)
@@ -328,10 +328,10 @@ class AlertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertsResponse> list(
-      {core.String customerId,
-      core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String orderBy,
+      core.String customerId,
+      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -341,17 +341,17 @@ class AlertsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
+    }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -501,15 +501,15 @@ class AlertsFeedbackResourceApi {
   /// [alertId] - Required. The alert identifier. The "-" wildcard could be used
   /// to represent all alerts.
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alert feedback are associated with. Inferred
-  /// from the caller identity if not provided.
-  ///
   /// [filter] - Optional. A query string for filtering alert feedback results.
   /// For more details, see [Query
   /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query
   /// filter
   /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
+  ///
+  /// [customerId] - Optional. The unique identifier of the G Suite organization
+  /// account of the customer the alert feedback are associated with. Inferred
+  /// from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -522,7 +522,7 @@ class AlertsFeedbackResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertFeedbackResponse> list(core.String alertId,
-      {core.String customerId, core.String filter, core.String $fields}) {
+      {core.String filter, core.String customerId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -533,11 +533,11 @@ class AlertsFeedbackResourceApi {
     if (alertId == null) {
       throw new core.ArgumentError("Parameter alertId is required.");
     }
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -2134,10 +2134,10 @@ main() {
       var mock = new HttpServerMock();
       api.AclResourceApi res = new api.CalendarApi(mock).acl;
       var arg_calendarId = "foo";
-      var arg_syncToken = "foo";
       var arg_pageToken = "foo";
-      var arg_showDeleted = true;
+      var arg_syncToken = "foo";
       var arg_maxResults = 42;
+      var arg_showDeleted = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2182,13 +2182,13 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2199,10 +2199,10 @@ main() {
       }), true);
       res
           .list(arg_calendarId,
-              syncToken: arg_syncToken,
               pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
+              syncToken: arg_syncToken,
               maxResults: arg_maxResults,
+              showDeleted: arg_showDeleted,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAcl(response);
@@ -2362,10 +2362,10 @@ main() {
       api.AclResourceApi res = new api.CalendarApi(mock).acl;
       var arg_request = buildChannel();
       var arg_calendarId = "foo";
-      var arg_maxResults = 42;
-      var arg_syncToken = "foo";
-      var arg_pageToken = "foo";
       var arg_showDeleted = true;
+      var arg_pageToken = "foo";
+      var arg_syncToken = "foo";
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Channel.fromJson(json);
@@ -2412,14 +2412,14 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
+            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2430,10 +2430,10 @@ main() {
       }), true);
       res
           .watch(arg_request, arg_calendarId,
-              maxResults: arg_maxResults,
-              syncToken: arg_syncToken,
-              pageToken: arg_pageToken,
               showDeleted: arg_showDeleted,
+              pageToken: arg_pageToken,
+              syncToken: arg_syncToken,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannel(response);
@@ -2617,9 +2617,9 @@ main() {
       api.CalendarListResourceApi res = new api.CalendarApi(mock).calendarList;
       var arg_maxResults = 42;
       var arg_showDeleted = true;
-      var arg_syncToken = "foo";
-      var arg_minAccessRole = "foo";
       var arg_showHidden = true;
+      var arg_minAccessRole = "foo";
+      var arg_syncToken = "foo";
       var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2660,11 +2660,11 @@ main() {
         unittest.expect(
             queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
+            queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
         unittest.expect(queryMap["minAccessRole"].first,
             unittest.equals(arg_minAccessRole));
         unittest.expect(
-            queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
+            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2679,9 +2679,9 @@ main() {
           .list(
               maxResults: arg_maxResults,
               showDeleted: arg_showDeleted,
-              syncToken: arg_syncToken,
-              minAccessRole: arg_minAccessRole,
               showHidden: arg_showHidden,
+              minAccessRole: arg_minAccessRole,
+              syncToken: arg_syncToken,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2821,12 +2821,12 @@ main() {
       var mock = new HttpServerMock();
       api.CalendarListResourceApi res = new api.CalendarApi(mock).calendarList;
       var arg_request = buildChannel();
-      var arg_syncToken = "foo";
-      var arg_maxResults = 42;
-      var arg_showHidden = true;
-      var arg_showDeleted = true;
-      var arg_minAccessRole = "foo";
       var arg_pageToken = "foo";
+      var arg_showHidden = true;
+      var arg_minAccessRole = "foo";
+      var arg_syncToken = "foo";
+      var arg_showDeleted = true;
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Channel.fromJson(json);
@@ -2865,17 +2865,17 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
-        unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
         unittest.expect(queryMap["minAccessRole"].first,
             unittest.equals(arg_minAccessRole));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
+        unittest.expect(
+            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2886,12 +2886,12 @@ main() {
       }), true);
       res
           .watch(arg_request,
-              syncToken: arg_syncToken,
-              maxResults: arg_maxResults,
-              showHidden: arg_showHidden,
-              showDeleted: arg_showDeleted,
-              minAccessRole: arg_minAccessRole,
               pageToken: arg_pageToken,
+              showHidden: arg_showHidden,
+              minAccessRole: arg_minAccessRole,
+              syncToken: arg_syncToken,
+              showDeleted: arg_showDeleted,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannel(response);
@@ -3434,9 +3434,9 @@ main() {
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_calendarId = "foo";
       var arg_eventId = "foo";
-      var arg_alwaysIncludeEmail = true;
       var arg_timeZone = "foo";
       var arg_maxAttendees = 42;
+      var arg_alwaysIncludeEmail = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3483,12 +3483,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
         unittest.expect(
             queryMap["timeZone"].first, unittest.equals(arg_timeZone));
         unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
             unittest.equals(arg_maxAttendees));
+        unittest.expect(queryMap["alwaysIncludeEmail"].first,
+            unittest.equals("$arg_alwaysIncludeEmail"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3499,9 +3499,9 @@ main() {
       }), true);
       res
           .get(arg_calendarId, arg_eventId,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
               timeZone: arg_timeZone,
               maxAttendees: arg_maxAttendees,
+              alwaysIncludeEmail: arg_alwaysIncludeEmail,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEvent(response);
@@ -3513,8 +3513,8 @@ main() {
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = "foo";
-      var arg_supportsAttachments = true;
       var arg_conferenceDataVersion = 42;
+      var arg_supportsAttachments = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Event.fromJson(json);
@@ -3561,10 +3561,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["supportsAttachments"].first,
-            unittest.equals("$arg_supportsAttachments"));
         unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
             unittest.equals(arg_conferenceDataVersion));
+        unittest.expect(queryMap["supportsAttachments"].first,
+            unittest.equals("$arg_supportsAttachments"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3575,8 +3575,8 @@ main() {
       }), true);
       res
           .import(arg_request, arg_calendarId,
-              supportsAttachments: arg_supportsAttachments,
               conferenceDataVersion: arg_conferenceDataVersion,
+              supportsAttachments: arg_supportsAttachments,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEvent(response);
@@ -3588,10 +3588,10 @@ main() {
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = "foo";
-      var arg_sendUpdates = "foo";
-      var arg_sendNotifications = true;
-      var arg_maxAttendees = 42;
       var arg_conferenceDataVersion = 42;
+      var arg_sendUpdates = "foo";
+      var arg_maxAttendees = 42;
+      var arg_sendNotifications = true;
       var arg_supportsAttachments = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3639,14 +3639,14 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
         unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
             unittest.equals(arg_conferenceDataVersion));
+        unittest.expect(
+            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
+        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
+            unittest.equals(arg_maxAttendees));
+        unittest.expect(queryMap["sendNotifications"].first,
+            unittest.equals("$arg_sendNotifications"));
         unittest.expect(queryMap["supportsAttachments"].first,
             unittest.equals("$arg_supportsAttachments"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3659,10 +3659,10 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_calendarId,
-              sendUpdates: arg_sendUpdates,
-              sendNotifications: arg_sendNotifications,
-              maxAttendees: arg_maxAttendees,
               conferenceDataVersion: arg_conferenceDataVersion,
+              sendUpdates: arg_sendUpdates,
+              maxAttendees: arg_maxAttendees,
+              sendNotifications: arg_sendNotifications,
               supportsAttachments: arg_supportsAttachments,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3676,14 +3676,14 @@ main() {
       var arg_calendarId = "foo";
       var arg_eventId = "foo";
       var arg_timeMin = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_timeMax = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_alwaysIncludeEmail = true;
-      var arg_maxResults = 42;
-      var arg_originalStart = "foo";
-      var arg_showDeleted = true;
-      var arg_pageToken = "foo";
       var arg_maxAttendees = 42;
+      var arg_showDeleted = true;
+      var arg_originalStart = "foo";
+      var arg_pageToken = "foo";
+      var arg_timeMax = core.DateTime.parse("2002-02-27T14:01:02");
       var arg_timeZone = "foo";
+      var arg_maxResults = 42;
+      var arg_alwaysIncludeEmail = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3738,22 +3738,22 @@ main() {
         }
         unittest.expect(core.DateTime.parse(queryMap["timeMin"].first),
             unittest.equals(arg_timeMin));
-        unittest.expect(core.DateTime.parse(queryMap["timeMax"].first),
-            unittest.equals(arg_timeMax));
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["originalStart"].first,
-            unittest.equals(arg_originalStart));
-        unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
             unittest.equals(arg_maxAttendees));
         unittest.expect(
+            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+        unittest.expect(queryMap["originalStart"].first,
+            unittest.equals(arg_originalStart));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.DateTime.parse(queryMap["timeMax"].first),
+            unittest.equals(arg_timeMax));
+        unittest.expect(
             queryMap["timeZone"].first, unittest.equals(arg_timeZone));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["alwaysIncludeEmail"].first,
+            unittest.equals("$arg_alwaysIncludeEmail"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3765,14 +3765,14 @@ main() {
       res
           .instances(arg_calendarId, arg_eventId,
               timeMin: arg_timeMin,
-              timeMax: arg_timeMax,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
-              maxResults: arg_maxResults,
-              originalStart: arg_originalStart,
-              showDeleted: arg_showDeleted,
-              pageToken: arg_pageToken,
               maxAttendees: arg_maxAttendees,
+              showDeleted: arg_showDeleted,
+              originalStart: arg_originalStart,
+              pageToken: arg_pageToken,
+              timeMax: arg_timeMax,
               timeZone: arg_timeZone,
+              maxResults: arg_maxResults,
+              alwaysIncludeEmail: arg_alwaysIncludeEmail,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEvents(response);
@@ -3783,23 +3783,23 @@ main() {
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_calendarId = "foo";
-      var arg_alwaysIncludeEmail = true;
-      var arg_singleEvents = true;
-      var arg_sharedExtendedProperty = buildUnnamed36();
-      var arg_iCalUID = "foo";
-      var arg_maxAttendees = 42;
-      var arg_showDeleted = true;
-      var arg_privateExtendedProperty = buildUnnamed37();
-      var arg_syncToken = "foo";
-      var arg_timeMin = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_q = "foo";
       var arg_timeMax = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_timeZone = "foo";
+      var arg_showDeleted = true;
+      var arg_alwaysIncludeEmail = true;
       var arg_updatedMin = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_orderBy = "foo";
-      var arg_maxResults = 42;
-      var arg_pageToken = "foo";
+      var arg_timeZone = "foo";
+      var arg_sharedExtendedProperty = buildUnnamed36();
+      var arg_privateExtendedProperty = buildUnnamed37();
+      var arg_timeMin = core.DateTime.parse("2002-02-27T14:01:02");
+      var arg_iCalUID = "foo";
       var arg_showHiddenInvitations = true;
+      var arg_maxResults = 42;
+      var arg_syncToken = "foo";
+      var arg_pageToken = "foo";
+      var arg_q = "foo";
+      var arg_singleEvents = true;
+      var arg_orderBy = "foo";
+      var arg_maxAttendees = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3843,39 +3843,39 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
-        unittest.expect(queryMap["singleEvents"].first,
-            unittest.equals("$arg_singleEvents"));
-        unittest.expect(queryMap["sharedExtendedProperty"],
-            unittest.equals(arg_sharedExtendedProperty));
-        unittest.expect(
-            queryMap["iCalUID"].first, unittest.equals(arg_iCalUID));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
-        unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(queryMap["privateExtendedProperty"],
-            unittest.equals(arg_privateExtendedProperty));
-        unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(core.DateTime.parse(queryMap["timeMin"].first),
-            unittest.equals(arg_timeMin));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(core.DateTime.parse(queryMap["timeMax"].first),
             unittest.equals(arg_timeMax));
         unittest.expect(
-            queryMap["timeZone"].first, unittest.equals(arg_timeZone));
+            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+        unittest.expect(queryMap["alwaysIncludeEmail"].first,
+            unittest.equals("$arg_alwaysIncludeEmail"));
         unittest.expect(core.DateTime.parse(queryMap["updatedMin"].first),
             unittest.equals(arg_updatedMin));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["timeZone"].first, unittest.equals(arg_timeZone));
+        unittest.expect(queryMap["sharedExtendedProperty"],
+            unittest.equals(arg_sharedExtendedProperty));
+        unittest.expect(queryMap["privateExtendedProperty"],
+            unittest.equals(arg_privateExtendedProperty));
+        unittest.expect(core.DateTime.parse(queryMap["timeMin"].first),
+            unittest.equals(arg_timeMin));
+        unittest.expect(
+            queryMap["iCalUID"].first, unittest.equals(arg_iCalUID));
+        unittest.expect(queryMap["showHiddenInvitations"].first,
+            unittest.equals("$arg_showHiddenInvitations"));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
+            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["showHiddenInvitations"].first,
-            unittest.equals("$arg_showHiddenInvitations"));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
+        unittest.expect(queryMap["singleEvents"].first,
+            unittest.equals("$arg_singleEvents"));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
+            unittest.equals(arg_maxAttendees));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3886,23 +3886,23 @@ main() {
       }), true);
       res
           .list(arg_calendarId,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
-              singleEvents: arg_singleEvents,
-              sharedExtendedProperty: arg_sharedExtendedProperty,
-              iCalUID: arg_iCalUID,
-              maxAttendees: arg_maxAttendees,
-              showDeleted: arg_showDeleted,
-              privateExtendedProperty: arg_privateExtendedProperty,
-              syncToken: arg_syncToken,
-              timeMin: arg_timeMin,
-              q: arg_q,
               timeMax: arg_timeMax,
-              timeZone: arg_timeZone,
+              showDeleted: arg_showDeleted,
+              alwaysIncludeEmail: arg_alwaysIncludeEmail,
               updatedMin: arg_updatedMin,
-              orderBy: arg_orderBy,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
+              timeZone: arg_timeZone,
+              sharedExtendedProperty: arg_sharedExtendedProperty,
+              privateExtendedProperty: arg_privateExtendedProperty,
+              timeMin: arg_timeMin,
+              iCalUID: arg_iCalUID,
               showHiddenInvitations: arg_showHiddenInvitations,
+              maxResults: arg_maxResults,
+              syncToken: arg_syncToken,
+              pageToken: arg_pageToken,
+              q: arg_q,
+              singleEvents: arg_singleEvents,
+              orderBy: arg_orderBy,
+              maxAttendees: arg_maxAttendees,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEvents(response);
@@ -3999,12 +3999,12 @@ main() {
       var arg_request = buildEvent();
       var arg_calendarId = "foo";
       var arg_eventId = "foo";
-      var arg_supportsAttachments = true;
-      var arg_sendNotifications = true;
       var arg_sendUpdates = "foo";
-      var arg_maxAttendees = 42;
-      var arg_conferenceDataVersion = 42;
       var arg_alwaysIncludeEmail = true;
+      var arg_sendNotifications = true;
+      var arg_conferenceDataVersion = 42;
+      var arg_maxAttendees = 42;
+      var arg_supportsAttachments = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Event.fromJson(json);
@@ -4054,18 +4054,18 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["supportsAttachments"].first,
-            unittest.equals("$arg_supportsAttachments"));
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
         unittest.expect(
             queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
-        unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
-            unittest.equals(arg_conferenceDataVersion));
         unittest.expect(queryMap["alwaysIncludeEmail"].first,
             unittest.equals("$arg_alwaysIncludeEmail"));
+        unittest.expect(queryMap["sendNotifications"].first,
+            unittest.equals("$arg_sendNotifications"));
+        unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
+            unittest.equals(arg_conferenceDataVersion));
+        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
+            unittest.equals(arg_maxAttendees));
+        unittest.expect(queryMap["supportsAttachments"].first,
+            unittest.equals("$arg_supportsAttachments"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4076,12 +4076,12 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_calendarId, arg_eventId,
-              supportsAttachments: arg_supportsAttachments,
-              sendNotifications: arg_sendNotifications,
               sendUpdates: arg_sendUpdates,
-              maxAttendees: arg_maxAttendees,
-              conferenceDataVersion: arg_conferenceDataVersion,
               alwaysIncludeEmail: arg_alwaysIncludeEmail,
+              sendNotifications: arg_sendNotifications,
+              conferenceDataVersion: arg_conferenceDataVersion,
+              maxAttendees: arg_maxAttendees,
+              supportsAttachments: arg_supportsAttachments,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEvent(response);
@@ -4167,12 +4167,12 @@ main() {
       var arg_request = buildEvent();
       var arg_calendarId = "foo";
       var arg_eventId = "foo";
-      var arg_conferenceDataVersion = 42;
-      var arg_sendNotifications = true;
-      var arg_sendUpdates = "foo";
-      var arg_supportsAttachments = true;
       var arg_alwaysIncludeEmail = true;
+      var arg_conferenceDataVersion = 42;
+      var arg_supportsAttachments = true;
+      var arg_sendNotifications = true;
       var arg_maxAttendees = 42;
+      var arg_sendUpdates = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Event.fromJson(json);
@@ -4222,18 +4222,18 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
-            unittest.equals(arg_conferenceDataVersion));
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
-        unittest.expect(
-            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
-        unittest.expect(queryMap["supportsAttachments"].first,
-            unittest.equals("$arg_supportsAttachments"));
         unittest.expect(queryMap["alwaysIncludeEmail"].first,
             unittest.equals("$arg_alwaysIncludeEmail"));
+        unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
+            unittest.equals(arg_conferenceDataVersion));
+        unittest.expect(queryMap["supportsAttachments"].first,
+            unittest.equals("$arg_supportsAttachments"));
+        unittest.expect(queryMap["sendNotifications"].first,
+            unittest.equals("$arg_sendNotifications"));
         unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
             unittest.equals(arg_maxAttendees));
+        unittest.expect(
+            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4244,12 +4244,12 @@ main() {
       }), true);
       res
           .update(arg_request, arg_calendarId, arg_eventId,
-              conferenceDataVersion: arg_conferenceDataVersion,
-              sendNotifications: arg_sendNotifications,
-              sendUpdates: arg_sendUpdates,
-              supportsAttachments: arg_supportsAttachments,
               alwaysIncludeEmail: arg_alwaysIncludeEmail,
+              conferenceDataVersion: arg_conferenceDataVersion,
+              supportsAttachments: arg_supportsAttachments,
+              sendNotifications: arg_sendNotifications,
               maxAttendees: arg_maxAttendees,
+              sendUpdates: arg_sendUpdates,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEvent(response);
@@ -4261,23 +4261,23 @@ main() {
       api.EventsResourceApi res = new api.CalendarApi(mock).events;
       var arg_request = buildChannel();
       var arg_calendarId = "foo";
-      var arg_maxResults = 42;
-      var arg_sharedExtendedProperty = buildUnnamed38();
-      var arg_maxAttendees = 42;
-      var arg_orderBy = "foo";
-      var arg_iCalUID = "foo";
-      var arg_showDeleted = true;
-      var arg_pageToken = "foo";
-      var arg_singleEvents = true;
-      var arg_showHiddenInvitations = true;
-      var arg_syncToken = "foo";
       var arg_q = "foo";
-      var arg_privateExtendedProperty = buildUnnamed39();
-      var arg_timeZone = "foo";
-      var arg_timeMin = core.DateTime.parse("2002-02-27T14:01:02");
-      var arg_alwaysIncludeEmail = true;
       var arg_timeMax = core.DateTime.parse("2002-02-27T14:01:02");
+      var arg_pageToken = "foo";
+      var arg_alwaysIncludeEmail = true;
+      var arg_sharedExtendedProperty = buildUnnamed38();
+      var arg_iCalUID = "foo";
+      var arg_showHiddenInvitations = true;
+      var arg_timeZone = "foo";
+      var arg_orderBy = "foo";
+      var arg_syncToken = "foo";
+      var arg_privateExtendedProperty = buildUnnamed39();
+      var arg_showDeleted = true;
       var arg_updatedMin = core.DateTime.parse("2002-02-27T14:01:02");
+      var arg_maxResults = 42;
+      var arg_maxAttendees = 42;
+      var arg_singleEvents = true;
+      var arg_timeMin = core.DateTime.parse("2002-02-27T14:01:02");
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Channel.fromJson(json);
@@ -4324,39 +4324,39 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["sharedExtendedProperty"],
-            unittest.equals(arg_sharedExtendedProperty));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["iCalUID"].first, unittest.equals(arg_iCalUID));
-        unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
+        unittest.expect(core.DateTime.parse(queryMap["timeMax"].first),
+            unittest.equals(arg_timeMax));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["singleEvents"].first,
-            unittest.equals("$arg_singleEvents"));
+        unittest.expect(queryMap["alwaysIncludeEmail"].first,
+            unittest.equals("$arg_alwaysIncludeEmail"));
+        unittest.expect(queryMap["sharedExtendedProperty"],
+            unittest.equals(arg_sharedExtendedProperty));
+        unittest.expect(
+            queryMap["iCalUID"].first, unittest.equals(arg_iCalUID));
         unittest.expect(queryMap["showHiddenInvitations"].first,
             unittest.equals("$arg_showHiddenInvitations"));
         unittest.expect(
+            queryMap["timeZone"].first, unittest.equals(arg_timeZone));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
             queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["privateExtendedProperty"],
             unittest.equals(arg_privateExtendedProperty));
         unittest.expect(
-            queryMap["timeZone"].first, unittest.equals(arg_timeZone));
-        unittest.expect(core.DateTime.parse(queryMap["timeMin"].first),
-            unittest.equals(arg_timeMin));
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
-        unittest.expect(core.DateTime.parse(queryMap["timeMax"].first),
-            unittest.equals(arg_timeMax));
+            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
         unittest.expect(core.DateTime.parse(queryMap["updatedMin"].first),
             unittest.equals(arg_updatedMin));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
+            unittest.equals(arg_maxAttendees));
+        unittest.expect(queryMap["singleEvents"].first,
+            unittest.equals("$arg_singleEvents"));
+        unittest.expect(core.DateTime.parse(queryMap["timeMin"].first),
+            unittest.equals(arg_timeMin));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4367,23 +4367,23 @@ main() {
       }), true);
       res
           .watch(arg_request, arg_calendarId,
-              maxResults: arg_maxResults,
-              sharedExtendedProperty: arg_sharedExtendedProperty,
-              maxAttendees: arg_maxAttendees,
-              orderBy: arg_orderBy,
-              iCalUID: arg_iCalUID,
-              showDeleted: arg_showDeleted,
-              pageToken: arg_pageToken,
-              singleEvents: arg_singleEvents,
-              showHiddenInvitations: arg_showHiddenInvitations,
-              syncToken: arg_syncToken,
               q: arg_q,
-              privateExtendedProperty: arg_privateExtendedProperty,
-              timeZone: arg_timeZone,
-              timeMin: arg_timeMin,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
               timeMax: arg_timeMax,
+              pageToken: arg_pageToken,
+              alwaysIncludeEmail: arg_alwaysIncludeEmail,
+              sharedExtendedProperty: arg_sharedExtendedProperty,
+              iCalUID: arg_iCalUID,
+              showHiddenInvitations: arg_showHiddenInvitations,
+              timeZone: arg_timeZone,
+              orderBy: arg_orderBy,
+              syncToken: arg_syncToken,
+              privateExtendedProperty: arg_privateExtendedProperty,
+              showDeleted: arg_showDeleted,
               updatedMin: arg_updatedMin,
+              maxResults: arg_maxResults,
+              maxAttendees: arg_maxAttendees,
+              singleEvents: arg_singleEvents,
+              timeMin: arg_timeMin,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannel(response);
@@ -4509,9 +4509,9 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.SettingsResourceApi res = new api.CalendarApi(mock).settings;
+      var arg_pageToken = "foo";
       var arg_maxResults = 42;
       var arg_syncToken = "foo";
-      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4546,12 +4546,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4562,9 +4562,9 @@ main() {
       }), true);
       res
           .list(
+              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
               syncToken: arg_syncToken,
-              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSettings(response);
@@ -4575,9 +4575,9 @@ main() {
       var mock = new HttpServerMock();
       api.SettingsResourceApi res = new api.CalendarApi(mock).settings;
       var arg_request = buildChannel();
-      var arg_maxResults = 42;
-      var arg_syncToken = "foo";
       var arg_pageToken = "foo";
+      var arg_syncToken = "foo";
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Channel.fromJson(json);
@@ -4615,12 +4615,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4631,9 +4631,9 @@ main() {
       }), true);
       res
           .watch(arg_request,
-              maxResults: arg_maxResults,
-              syncToken: arg_syncToken,
               pageToken: arg_pageToken,
+              syncToken: arg_syncToken,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannel(response);

@@ -64,10 +64,10 @@ class EnterprisesResourceApi {
   /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
   ///
+  /// [enterpriseToken] - The enterprise token appended to the callback URL.
+  ///
   /// [signupUrlName] - The name of the SignupUrl used to sign up for the
   /// enterprise.
-  ///
-  /// [enterpriseToken] - The enterprise token appended to the callback URL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -81,8 +81,8 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<Enterprise> create(Enterprise request,
       {core.String projectId,
-      core.String signupUrlName,
       core.String enterpriseToken,
+      core.String signupUrlName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -97,11 +97,11 @@ class EnterprisesResourceApi {
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
-    if (signupUrlName != null) {
-      _queryParams["signupUrlName"] = [signupUrlName];
-    }
     if (enterpriseToken != null) {
       _queryParams["enterpriseToken"] = [enterpriseToken];
+    }
+    if (signupUrlName != null) {
+      _queryParams["signupUrlName"] = [signupUrlName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -725,11 +725,11 @@ class EnterprisesDevicesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+/operations$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -742,9 +742,9 @@ class EnterprisesDevicesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.String filter,
+      {core.String filter,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -756,14 +756,14 @@ class EnterprisesDevicesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -989,11 +989,11 @@ class EnterprisesPoliciesResourceApi {
   /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results returned by the
-  /// server.
-  ///
   /// [pageSize] - The requested page size. The actual page size may be fixed to
   /// a min or max value.
+  ///
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1006,7 +1006,7 @@ class EnterprisesPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPoliciesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1017,11 +1017,11 @@ class EnterprisesPoliciesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1249,11 +1249,11 @@ class EnterprisesWebAppsResourceApi {
   /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results returned by the
-  /// server.
-  ///
   /// [pageSize] - The requested page size. The actual page size may be fixed to
   /// a min or max value.
+  ///
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1266,7 +1266,7 @@ class EnterprisesWebAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListWebAppsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1277,11 +1277,11 @@ class EnterprisesWebAppsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1424,15 +1424,15 @@ class SignupUrlsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The ID of the Google Cloud Platform project which will own
-  /// the enterprise.
-  ///
   /// [callbackUrl] - The callback URL that the admin will be redirected to
   /// after successfully creating an enterprise. Before redirecting there the
   /// system will add a query parameter to this URL named enterpriseToken which
   /// will contain an opaque token to be used for the create enterprise request.
   /// The URL will be parsed then reformatted in order to add the
   /// enterpriseToken parameter, so there may be some minor formatting changes.
+  ///
+  /// [projectId] - The ID of the Google Cloud Platform project which will own
+  /// the enterprise.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1445,7 +1445,7 @@ class SignupUrlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SignupUrl> create(
-      {core.String projectId, core.String callbackUrl, core.String $fields}) {
+      {core.String callbackUrl, core.String projectId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1453,11 +1453,11 @@ class SignupUrlsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (callbackUrl != null) {
       _queryParams["callbackUrl"] = [callbackUrl];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

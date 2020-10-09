@@ -56,7 +56,7 @@ class AssetlinksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [target_web_site] - Web assets are identified by a URL that contains only
+  /// [source_web_site] - Web assets are identified by a URL that contains only
   /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
   /// must be fully qualified: they must end in a single period ("`.`"). Only
   /// the schemes "http" and "https" are currently allowed. Port numbers are
@@ -75,6 +75,21 @@ class AssetlinksResourceApi {
   /// [target_androidApp_packageName] - Android App assets are naturally
   /// identified by their Java package name. For example, the Google Maps app
   /// uses the package name `com.google.android.apps.maps`. REQUIRED
+  ///
+  /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
+  /// fingerprint of the certificate. From the PEM certificate, it can be
+  /// acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256:
+  /// SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
+  /// 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in
+  /// $CERTFILE -noout -fingerprint -sha256 SHA256
+  /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
+  /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the
+  /// contents of this field would be `14:6D:E9:83:C5:73:
+  /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
+  /// 44:E5`. If these tools are not available to you, you can convert the PEM
+  /// certificate into the DER format, compute the SHA-256 hash of that string
+  /// and represent the result as a hexstring (that is, uppercase hexadecimal
+  /// representations of each octet, separated by colons).
   ///
   /// [relation] - Query string for the relation. We identify relations with
   /// strings of the format `/`, where `` must be one of a set of pre-defined
@@ -101,11 +116,7 @@ class AssetlinksResourceApi {
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
   ///
-  /// [source_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name. For example, the Google Maps app
-  /// uses the package name `com.google.android.apps.maps`. REQUIRED
-  ///
-  /// [source_web_site] - Web assets are identified by a URL that contains only
+  /// [target_web_site] - Web assets are identified by a URL that contains only
   /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
   /// must be fully qualified: they must end in a single period ("`.`"). Only
   /// the schemes "http" and "https" are currently allowed. Port numbers are
@@ -121,20 +132,9 @@ class AssetlinksResourceApi {
   /// scheme) * `https://google.com/` (hostname does not match) *
   /// `https://www.google.com:444/` (port does not match) REQUIRED
   ///
-  /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
-  /// fingerprint of the certificate. From the PEM certificate, it can be
-  /// acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256:
-  /// SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
-  /// 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in
-  /// $CERTFILE -noout -fingerprint -sha256 SHA256
-  /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
-  /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the
-  /// contents of this field would be `14:6D:E9:83:C5:73:
-  /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:
-  /// 44:E5`. If these tools are not available to you, you can convert the PEM
-  /// certificate into the DER format, compute the SHA-256 hash of that string
-  /// and represent the result as a hexstring (that is, uppercase hexadecimal
-  /// representations of each octet, separated by colons).
+  /// [source_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name. For example, the Google Maps app
+  /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -147,13 +147,13 @@ class AssetlinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckResponse> check(
-      {core.String target_web_site,
+      {core.String source_web_site,
       core.String target_androidApp_packageName,
+      core.String source_androidApp_certificate_sha256Fingerprint,
       core.String relation,
       core.String target_androidApp_certificate_sha256Fingerprint,
+      core.String target_web_site,
       core.String source_androidApp_packageName,
-      core.String source_web_site,
-      core.String source_androidApp_certificate_sha256Fingerprint,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -162,12 +162,17 @@ class AssetlinksResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (target_web_site != null) {
-      _queryParams["target.web.site"] = [target_web_site];
+    if (source_web_site != null) {
+      _queryParams["source.web.site"] = [source_web_site];
     }
     if (target_androidApp_packageName != null) {
       _queryParams["target.androidApp.packageName"] = [
         target_androidApp_packageName
+      ];
+    }
+    if (source_androidApp_certificate_sha256Fingerprint != null) {
+      _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
+        source_androidApp_certificate_sha256Fingerprint
       ];
     }
     if (relation != null) {
@@ -178,17 +183,12 @@ class AssetlinksResourceApi {
         target_androidApp_certificate_sha256Fingerprint
       ];
     }
+    if (target_web_site != null) {
+      _queryParams["target.web.site"] = [target_web_site];
+    }
     if (source_androidApp_packageName != null) {
       _queryParams["source.androidApp.packageName"] = [
         source_androidApp_packageName
-      ];
-    }
-    if (source_web_site != null) {
-      _queryParams["source.web.site"] = [source_web_site];
-    }
-    if (source_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [
-        source_androidApp_certificate_sha256Fingerprint
       ];
     }
     if ($fields != null) {
@@ -229,19 +229,6 @@ class StatementsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [source_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name. For example, the Google Maps app
-  /// uses the package name `com.google.android.apps.maps`. REQUIRED
-  ///
-  /// [relation] - Use only associations that match the specified relation. See
-  /// the [`Statement`](#Statement) message for a detailed definition of
-  /// relation strings. For a query to match a statement, one of the following
-  /// must be true: * both the query's and the statement's relation strings
-  /// match exactly, or * the query's relation string is empty or missing.
-  /// Example: A query with relation
-  /// `delegate_permission/common.handle_all_urls` matches an asset link with
-  /// relation `delegate_permission/common.handle_all_urls`.
-  ///
   /// [source_web_site] - Web assets are identified by a URL that contains only
   /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
   /// must be fully qualified: they must end in a single period ("`.`"). Only
@@ -257,6 +244,19 @@ class StatementsResourceApi {
   /// But it does not contain these URLs: * `http://www.google.com/` (wrong
   /// scheme) * `https://google.com/` (hostname does not match) *
   /// `https://www.google.com:444/` (port does not match) REQUIRED
+  ///
+  /// [source_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name. For example, the Google Maps app
+  /// uses the package name `com.google.android.apps.maps`. REQUIRED
+  ///
+  /// [relation] - Use only associations that match the specified relation. See
+  /// the [`Statement`](#Statement) message for a detailed definition of
+  /// relation strings. For a query to match a statement, one of the following
+  /// must be true: * both the query's and the statement's relation strings
+  /// match exactly, or * the query's relation string is empty or missing.
+  /// Example: A query with relation
+  /// `delegate_permission/common.handle_all_urls` matches an asset link with
+  /// relation `delegate_permission/common.handle_all_urls`.
   ///
   /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
   /// fingerprint of the certificate. From the PEM certificate, it can be
@@ -284,9 +284,9 @@ class StatementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListResponse> list(
-      {core.String source_androidApp_packageName,
+      {core.String source_web_site,
+      core.String source_androidApp_packageName,
       core.String relation,
-      core.String source_web_site,
       core.String source_androidApp_certificate_sha256Fingerprint,
       core.String $fields}) {
     var _url;
@@ -296,6 +296,9 @@ class StatementsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (source_web_site != null) {
+      _queryParams["source.web.site"] = [source_web_site];
+    }
     if (source_androidApp_packageName != null) {
       _queryParams["source.androidApp.packageName"] = [
         source_androidApp_packageName
@@ -303,9 +306,6 @@ class StatementsResourceApi {
     }
     if (relation != null) {
       _queryParams["relation"] = [relation];
-    }
-    if (source_web_site != null) {
-      _queryParams["source.web.site"] = [source_web_site];
     }
     if (source_androidApp_certificate_sha256Fingerprint != null) {
       _queryParams["source.androidApp.certificate.sha256Fingerprint"] = [

@@ -186,10 +186,10 @@ class AccountsProductsResourceApi {
   /// The ID of the Manufacturer Center account.
   /// Value must have pattern "^accounts/[^/]+$".
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [include] - The information to be included in the response. Only sections
   /// listed here will be returned.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [pageSize] - Maximum number of product statuses to return in the response,
   /// used for paging.
@@ -205,8 +205,8 @@ class AccountsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProductsResponse> list(core.String parent,
-      {core.List<core.String> include,
-      core.String pageToken,
+      {core.String pageToken,
+      core.List<core.String> include,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -219,11 +219,11 @@ class AccountsProductsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (include != null) {
-      _queryParams["include"] = include;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (include != null) {
+      _queryParams["include"] = include;
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];

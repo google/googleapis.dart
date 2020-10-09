@@ -149,12 +149,6 @@ class PhotoResourceApi {
   ///
   /// [photoId] - Required. ID of the Photo.
   ///
-  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
-  /// language_code is unspecified, the user's language preference for Google
-  /// services is used.
-  ///
   /// [view] - Required. Specifies if a download URL for the photo bytes should
   /// be returned in the Photo response.
   /// Possible string values are:
@@ -162,6 +156,12 @@ class PhotoResourceApi {
   /// bytes. The default value.
   /// - "INCLUDE_DOWNLOAD_URL" : Server responses include the download URL for
   /// the photo bytes.
+  ///
+  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
+  /// language_code is unspecified, the user's language preference for Google
+  /// services is used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -174,7 +174,7 @@ class PhotoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Photo> get(core.String photoId,
-      {core.String languageCode, core.String view, core.String $fields}) {
+      {core.String view, core.String languageCode, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -185,11 +185,11 @@ class PhotoResourceApi {
     if (photoId == null) {
       throw new core.ArgumentError("Parameter photoId is required.");
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -396,6 +396,14 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [view] - Required. Specifies if a download URL for the photo bytes should
+  /// be returned in the Photo response.
+  /// Possible string values are:
+  /// - "BASIC" : Server reponses do not include the download URL for the photo
+  /// bytes. The default value.
+  /// - "INCLUDE_DOWNLOAD_URL" : Server responses include the download URL for
+  /// the photo bytes.
+  ///
   /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
@@ -404,14 +412,6 @@ class PhotosResourceApi {
   ///
   /// [photoIds] - Required. IDs of the Photos. For HTTP GET requests, the URL
   /// query parameter should be `photoIds=&photoIds=&...`.
-  ///
-  /// [view] - Required. Specifies if a download URL for the photo bytes should
-  /// be returned in the Photo response.
-  /// Possible string values are:
-  /// - "BASIC" : Server reponses do not include the download URL for the photo
-  /// bytes. The default value.
-  /// - "INCLUDE_DOWNLOAD_URL" : Server responses include the download URL for
-  /// the photo bytes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -424,9 +424,9 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetPhotosResponse> batchGet(
-      {core.String languageCode,
+      {core.String view,
+      core.String languageCode,
       core.List<core.String> photoIds,
-      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -435,14 +435,14 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
     }
     if (photoIds != null) {
       _queryParams["photoIds"] = photoIds;
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -521,9 +521,8 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Required. The filter expression. For example:
-  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The only filter supported at the
-  /// moment is `placeId`.
+  /// [pageToken] - The nextPageToken value returned from a previous ListPhotos
+  /// request, if any.
   ///
   /// [pageSize] - The maximum number of photos to return. `pageSize` must be
   /// non-negative. If `pageSize` is zero or is not provided, the default page
@@ -531,14 +530,15 @@ class PhotosResourceApi {
   /// less than `pageSize` if the number of photos that belong to the user is
   /// less than `pageSize`.
   ///
+  /// [filter] - Required. The filter expression. For example:
+  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The only filter supported at the
+  /// moment is `placeId`.
+  ///
   /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
   /// language_code is unspecified, the user's language preference for Google
   /// services is used.
-  ///
-  /// [pageToken] - The nextPageToken value returned from a previous ListPhotos
-  /// request, if any.
   ///
   /// [view] - Required. Specifies if a download URL for the photos bytes should
   /// be returned in the Photos response.
@@ -559,10 +559,10 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPhotosResponse> list(
-      {core.String filter,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String languageCode,
-      core.String pageToken,
       core.String view,
       core.String $fields}) {
     var _url;
@@ -572,17 +572,17 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (view != null) {
       _queryParams["view"] = [view];

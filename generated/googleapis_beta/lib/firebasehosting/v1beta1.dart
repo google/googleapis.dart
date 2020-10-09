@@ -388,12 +388,12 @@ class ProjectsSitesChannelsResourceApi {
   /// [parent] - Required. The site from which to list channels.
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
   ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
   /// [pageSize] - The maximum number of versions to return. The service may
   /// return fewer than this value. If unspecified, at most 25 channels will be
   /// returned. The maximum value is 100; valuupdateses above 100 will be
   /// coerced to 100
-  ///
-  /// [pageToken] - The next_page_token from a previous request, if provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -406,7 +406,7 @@ class ProjectsSitesChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListChannelsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -417,11 +417,11 @@ class ProjectsSitesChannelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -775,9 +775,9 @@ class ProjectsSitesDomainsResourceApi {
   /// sites/ site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token from a previous request, if provided.
-  ///
   /// [pageSize] - The page size to return. Defaults to 50.
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -790,7 +790,7 @@ class ProjectsSitesDomainsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDomainsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -801,11 +801,11 @@ class ProjectsSitesDomainsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1181,17 +1181,17 @@ class ProjectsSitesVersionsResourceApi {
   /// sites/site-name
   /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of versions to return. The service may
-  /// return fewer than this value. If unspecified, at most 25 versions will be
-  /// returned. The maximum value is 100; values above 100 will be coerced to
-  /// 100
-  ///
-  /// [pageToken] - The next_page_token from a previous request, if provided.
-  ///
   /// [filter] - The filter string used to return a subset of versions in the
   /// response. Currently supported fields for filtering are: name, status, and
   /// create_time. Filter processing will be implemented in accordance with
   /// go/filtering.
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [pageSize] - The maximum number of versions to return. The service may
+  /// return fewer than this value. If unspecified, at most 25 versions will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1204,9 +1204,9 @@ class ProjectsSitesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String filter,
       core.String pageToken,
-      core.String filter,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1218,14 +1218,14 @@ class ProjectsSitesVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2405,11 +2405,11 @@ class SitesVersionsResourceApi {
   /// sites/ site-name
   /// Value must have pattern "^sites/[^/]+$".
   ///
-  /// [sizeBytes] - The self-reported size of the version. This value is used
-  /// for a pre-emptive quota check for legacy version uploads.
-  ///
   /// [versionId] - A unique id for the new version. This is was only specified
   /// for legacy version creations, and should be blank.
+  ///
+  /// [sizeBytes] - The self-reported size of the version. This value is used
+  /// for a pre-emptive quota check for legacy version uploads.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2422,7 +2422,7 @@ class SitesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Version> create(Version request, core.String parent,
-      {core.String sizeBytes, core.String versionId, core.String $fields}) {
+      {core.String versionId, core.String sizeBytes, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2436,11 +2436,11 @@ class SitesVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (sizeBytes != null) {
-      _queryParams["sizeBytes"] = [sizeBytes];
-    }
     if (versionId != null) {
       _queryParams["versionId"] = [versionId];
+    }
+    if (sizeBytes != null) {
+      _queryParams["sizeBytes"] = [sizeBytes];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2512,17 +2512,17 @@ class SitesVersionsResourceApi {
   /// sites/site-name
   /// Value must have pattern "^sites/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of versions to return. The service may
+  /// return fewer than this value. If unspecified, at most 25 versions will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100
+  ///
   /// [pageToken] - The next_page_token from a previous request, if provided.
   ///
   /// [filter] - The filter string used to return a subset of versions in the
   /// response. Currently supported fields for filtering are: name, status, and
   /// create_time. Filter processing will be implemented in accordance with
   /// go/filtering.
-  ///
-  /// [pageSize] - The maximum number of versions to return. The service may
-  /// return fewer than this value. If unspecified, at most 25 versions will be
-  /// returned. The maximum value is 100; values above 100 will be coerced to
-  /// 100
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2535,9 +2535,9 @@ class SitesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2549,14 +2549,14 @@ class SitesVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2709,6 +2709,12 @@ class SitesVersionsFilesResourceApi {
   /// sites/site-name /versions/versionID
   /// Value must have pattern "^sites/[^/]+/versions/[^/]+$".
   ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  /// This will be the encoded version of a
+  /// firebase.hosting.proto.metadata.ListFilesPageToken.
+  ///
+  /// [pageSize] - The page size to return. Defaults to 1000.
+  ///
   /// [status] - The type of files in the version that should be listed.
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : The default status; should not be intentionally
@@ -2716,12 +2722,6 @@ class SitesVersionsFilesResourceApi {
   /// - "EXPECTED" : The file has been included in the version and is expected
   /// to be uploaded in the near future.
   /// - "ACTIVE" : The file has already been uploaded to Firebase Hosting.
-  ///
-  /// [pageToken] - The next_page_token from a previous request, if provided.
-  /// This will be the encoded version of a
-  /// firebase.hosting.proto.metadata.ListFilesPageToken.
-  ///
-  /// [pageSize] - The page size to return. Defaults to 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2734,9 +2734,9 @@ class SitesVersionsFilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVersionFilesResponse> list(core.String parent,
-      {core.String status,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String status,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2748,14 +2748,14 @@ class SitesVersionsFilesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (status != null) {
-      _queryParams["status"] = [status];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (status != null) {
+      _queryParams["status"] = [status];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

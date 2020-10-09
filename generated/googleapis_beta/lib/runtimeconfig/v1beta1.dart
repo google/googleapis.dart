@@ -284,12 +284,12 @@ class ProjectsConfigsResourceApi {
   /// for this request, in the format `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Specifies the number of results to return per page. If there
+  /// are fewer elements than the specified number, returns all elements.
+  ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
-  ///
-  /// [pageSize] - Specifies the number of results to return per page. If there
-  /// are fewer elements than the specified number, returns all elements.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -302,7 +302,7 @@ class ProjectsConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConfigsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -313,11 +313,11 @@ class ProjectsConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -801,9 +801,6 @@ class ProjectsConfigsVariablesResourceApi {
   /// example:
   /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
   ///
-  /// [pageSize] - Specifies the number of results to return per page. If there
-  /// are fewer elements than the specified number, returns all elements.
-  ///
   /// [returnValues] - The flag indicates whether the user wants to return
   /// values of variables. If true, then only those variables that user has IAM
   /// GetVariable permission will be returned along with their values.
@@ -811,6 +808,9 @@ class ProjectsConfigsVariablesResourceApi {
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
+  ///
+  /// [pageSize] - Specifies the number of results to return per page. If there
+  /// are fewer elements than the specified number, returns all elements.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -824,9 +824,9 @@ class ProjectsConfigsVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(core.String parent,
       {core.String filter,
-      core.int pageSize,
       core.bool returnValues,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -841,14 +841,14 @@ class ProjectsConfigsVariablesResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (returnValues != null) {
       _queryParams["returnValues"] = ["${returnValues}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

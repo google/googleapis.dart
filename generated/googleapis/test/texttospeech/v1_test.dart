@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4158() {
+buildUnnamed4165() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4158(core.List<core.String> o) {
+checkUnnamed4165(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +69,7 @@ buildAudioConfig() {
   buildCounterAudioConfig++;
   if (buildCounterAudioConfig < 3) {
     o.audioEncoding = "foo";
-    o.effectsProfileId = buildUnnamed4158();
+    o.effectsProfileId = buildUnnamed4165();
     o.pitch = 42.0;
     o.sampleRateHertz = 42;
     o.speakingRate = 42.0;
@@ -83,7 +83,7 @@ checkAudioConfig(api.AudioConfig o) {
   buildCounterAudioConfig++;
   if (buildCounterAudioConfig < 3) {
     unittest.expect(o.audioEncoding, unittest.equals('foo'));
-    checkUnnamed4158(o.effectsProfileId);
+    checkUnnamed4165(o.effectsProfileId);
     unittest.expect(o.pitch, unittest.equals(42.0));
     unittest.expect(o.sampleRateHertz, unittest.equals(42));
     unittest.expect(o.speakingRate, unittest.equals(42.0));
@@ -92,14 +92,14 @@ checkAudioConfig(api.AudioConfig o) {
   buildCounterAudioConfig--;
 }
 
-buildUnnamed4159() {
+buildUnnamed4166() {
   var o = new core.List<api.Voice>();
   o.add(buildVoice());
   o.add(buildVoice());
   return o;
 }
 
-checkUnnamed4159(core.List<api.Voice> o) {
+checkUnnamed4166(core.List<api.Voice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoice(o[0]);
   checkVoice(o[1]);
@@ -110,7 +110,7 @@ buildListVoicesResponse() {
   var o = new api.ListVoicesResponse();
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    o.voices = buildUnnamed4159();
+    o.voices = buildUnnamed4166();
   }
   buildCounterListVoicesResponse--;
   return o;
@@ -119,7 +119,7 @@ buildListVoicesResponse() {
 checkListVoicesResponse(api.ListVoicesResponse o) {
   buildCounterListVoicesResponse++;
   if (buildCounterListVoicesResponse < 3) {
-    checkUnnamed4159(o.voices);
+    checkUnnamed4166(o.voices);
   }
   buildCounterListVoicesResponse--;
 }
@@ -187,14 +187,14 @@ checkSynthesizeSpeechResponse(api.SynthesizeSpeechResponse o) {
   buildCounterSynthesizeSpeechResponse--;
 }
 
-buildUnnamed4160() {
+buildUnnamed4167() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4160(core.List<core.String> o) {
+checkUnnamed4167(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -205,7 +205,7 @@ buildVoice() {
   var o = new api.Voice();
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    o.languageCodes = buildUnnamed4160();
+    o.languageCodes = buildUnnamed4167();
     o.name = "foo";
     o.naturalSampleRateHertz = 42;
     o.ssmlGender = "foo";
@@ -217,7 +217,7 @@ buildVoice() {
 checkVoice(api.Voice o) {
   buildCounterVoice++;
   if (buildCounterVoice < 3) {
-    checkUnnamed4160(o.languageCodes);
+    checkUnnamed4167(o.languageCodes);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.naturalSampleRateHertz, unittest.equals(42));
     unittest.expect(o.ssmlGender, unittest.equals('foo'));

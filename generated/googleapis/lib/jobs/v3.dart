@@ -58,19 +58,6 @@ class ProjectsResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [scope] - Optional. The scope of the completion. The defaults is
-  /// CompletionScope.PUBLIC.
-  /// Possible string values are:
-  /// - "COMPLETION_SCOPE_UNSPECIFIED" : Default value.
-  /// - "TENANT" : Suggestions are based only on the data provided by the
-  /// client.
-  /// - "PUBLIC" : Suggestions are based on all jobs data in the system that's
-  /// visible to the client
-  ///
-  /// [companyName] - Optional. If provided, restricts completion to specified
-  /// company. The format is "projects/{project_id}/companies/{company_id}", for
-  /// example, "projects/api-test-project/companies/foo".
-  ///
   /// [languageCode] - Deprecated. Use language_codes instead. Optional. The
   /// language of the query. This is the BCP-47 language code, such as "en-US"
   /// or "sr-Latn". For more information, see [Tags for Identifying
@@ -81,20 +68,6 @@ class ProjectsResourceApi {
   /// CompletionType.COMBINED type, only open jobs with the same language_code
   /// or companies having open jobs with the same language_code are returned.
   /// The maximum number of allowed characters is 255.
-  ///
-  /// [query] - Required. The query used to generate suggestions. The maximum
-  /// number of allowed characters is 255.
-  ///
-  /// [pageSize] - Required. Completion result count. The maximum allowed page
-  /// size is 10.
-  ///
-  /// [type] - Optional. The completion topic. The default is
-  /// CompletionType.COMBINED.
-  /// Possible string values are:
-  /// - "COMPLETION_TYPE_UNSPECIFIED" : Default value.
-  /// - "JOB_TITLE" : Only suggest job titles.
-  /// - "COMPANY_NAME" : Only suggest company names.
-  /// - "COMBINED" : Suggest both job titles and company names.
   ///
   /// [languageCodes] - Optional. The list of languages of the query. This is
   /// the BCP-47 language code, such as "en-US" or "sr-Latn". For more
@@ -107,6 +80,33 @@ class ProjectsResourceApi {
   /// or companies having open jobs with the same language_codes are returned.
   /// The maximum number of allowed characters is 255.
   ///
+  /// [companyName] - Optional. If provided, restricts completion to specified
+  /// company. The format is "projects/{project_id}/companies/{company_id}", for
+  /// example, "projects/api-test-project/companies/foo".
+  ///
+  /// [query] - Required. The query used to generate suggestions. The maximum
+  /// number of allowed characters is 255.
+  ///
+  /// [pageSize] - Required. Completion result count. The maximum allowed page
+  /// size is 10.
+  ///
+  /// [scope] - Optional. The scope of the completion. The defaults is
+  /// CompletionScope.PUBLIC.
+  /// Possible string values are:
+  /// - "COMPLETION_SCOPE_UNSPECIFIED" : Default value.
+  /// - "TENANT" : Suggestions are based only on the data provided by the
+  /// client.
+  /// - "PUBLIC" : Suggestions are based on all jobs data in the system that's
+  /// visible to the client
+  ///
+  /// [type] - Optional. The completion topic. The default is
+  /// CompletionType.COMBINED.
+  /// Possible string values are:
+  /// - "COMPLETION_TYPE_UNSPECIFIED" : Default value.
+  /// - "JOB_TITLE" : Only suggest job titles.
+  /// - "COMPANY_NAME" : Only suggest company names.
+  /// - "COMBINED" : Suggest both job titles and company names.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -118,13 +118,13 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete(core.String name,
-      {core.String scope,
+      {core.String languageCode,
+      core.List<core.String> languageCodes,
       core.String companyName,
-      core.String languageCode,
       core.String query,
       core.int pageSize,
+      core.String scope,
       core.String type,
-      core.List<core.String> languageCodes,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -136,14 +136,14 @@ class ProjectsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (scope != null) {
-      _queryParams["scope"] = [scope];
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
+    }
+    if (languageCodes != null) {
+      _queryParams["languageCodes"] = languageCodes;
     }
     if (companyName != null) {
       _queryParams["companyName"] = [companyName];
-    }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
     }
     if (query != null) {
       _queryParams["query"] = [query];
@@ -151,11 +151,11 @@ class ProjectsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (scope != null) {
+      _queryParams["scope"] = [scope];
+    }
     if (type != null) {
       _queryParams["type"] = [type];
-    }
-    if (languageCodes != null) {
-      _queryParams["languageCodes"] = languageCodes;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -395,15 +395,15 @@ class ProjectsCompaniesResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of companies to be returned, at
-  /// most 100. Default is 100 if a non-positive number is provided.
+  /// [pageToken] - Optional. The starting indicator from which to return
+  /// results.
   ///
   /// [requireOpenJobs] - Optional. Set to true if the companies requested must
   /// have open jobs. Defaults to false. If true, at most page_size of companies
   /// are fetched, among which only those with open jobs are returned.
   ///
-  /// [pageToken] - Optional. The starting indicator from which to return
-  /// results.
+  /// [pageSize] - Optional. The maximum number of companies to be returned, at
+  /// most 100. Default is 100 if a non-positive number is provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -416,9 +416,9 @@ class ProjectsCompaniesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCompaniesResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
       core.bool requireOpenJobs,
-      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -430,14 +430,14 @@ class ProjectsCompaniesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (requireOpenJobs != null) {
       _queryParams["requireOpenJobs"] = ["${requireOpenJobs}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -722,18 +722,18 @@ class ProjectsJobsResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - Required. The filter string specifies the jobs to be
-  /// enumerated. Supported operator: =, AND The fields eligible for filtering
-  /// are: * `companyName` (Required) * `requisitionId` (Optional) Sample Query:
-  /// * companyName = "projects/api-test-project/companies/123" * companyName =
-  /// "projects/api-test-project/companies/123" AND requisitionId = "req-1"
-  ///
   /// [pageToken] - Optional. The starting point of a query result.
   ///
   /// [pageSize] - Optional. The maximum number of jobs to be returned per page
   /// of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum
   /// allowed page size is 1000. Otherwise, the maximum allowed page size is
   /// 100. Default is 100 if empty or a number < 1 is specified.
+  ///
+  /// [filter] - Required. The filter string specifies the jobs to be
+  /// enumerated. Supported operator: =, AND The fields eligible for filtering
+  /// are: * `companyName` (Required) * `requisitionId` (Optional) Sample Query:
+  /// * companyName = "projects/api-test-project/companies/123" * companyName =
+  /// "projects/api-test-project/companies/123" AND requisitionId = "req-1"
   ///
   /// [jobView] - Optional. The desired job attributes returned for jobs in the
   /// search response. Defaults to JobView.JOB_VIEW_FULL if no value is
@@ -763,9 +763,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String jobView,
       core.String $fields}) {
     var _url;
@@ -778,14 +778,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (jobView != null) {
       _queryParams["jobView"] = [jobView];

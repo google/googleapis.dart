@@ -370,7 +370,7 @@ class FoldersApprovalRequestsResourceApi {
   /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^folders/[^/]+$".
   ///
-  /// [pageToken] - A token identifying the page of results to return.
+  /// [pageSize] - Requested page size.
   ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
   /// one of the following values: * [not set]: Requests that are pending or
@@ -379,7 +379,7 @@ class FoldersApprovalRequestsResourceApi {
   /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
   /// and dismissed (including expired) requests.
   ///
-  /// [pageSize] - Requested page size.
+  /// [pageToken] - A token identifying the page of results to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -392,9 +392,9 @@ class FoldersApprovalRequestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String filter,
-      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -406,14 +406,14 @@ class FoldersApprovalRequestsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1166,8 +1166,6 @@ class ProjectsApprovalRequestsResourceApi {
   /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - A token identifying the page of results to return.
-  ///
   /// [pageSize] - Requested page size.
   ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
@@ -1176,6 +1174,8 @@ class ProjectsApprovalRequestsResourceApi {
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
   /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
   /// and dismissed (including expired) requests.
+  ///
+  /// [pageToken] - A token identifying the page of results to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1188,9 +1188,9 @@ class ProjectsApprovalRequestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1202,14 +1202,14 @@ class ProjectsApprovalRequestsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -367,16 +367,16 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   /// projects/{project_number/id}/brands/{brand}.
   /// Value must have pattern "^projects/[^/]+/brands/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of clients to return. The service may
-  /// return fewer than this value. If unspecified, at most 100 clients will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
-  ///
   /// [pageToken] - A page token, received from a previous
   /// `ListIdentityAwareProxyClients` call. Provide this to retrieve the
   /// subsequent page. When paginating, all other parameters provided to
   /// `ListIdentityAwareProxyClients` must match the call that provided the page
   /// token.
+  ///
+  /// [pageSize] - The maximum number of clients to return. The service may
+  /// return fewer than this value. If unspecified, at most 100 clients will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -389,7 +389,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIdentityAwareProxyClientsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -400,11 +400,11 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

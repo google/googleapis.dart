@@ -113,9 +113,6 @@ class ActivitiesResourceApi {
   /// - "chrome" : The Chrome activity reports return information about unsafe
   /// events reported in the context of the WebProtect features of BeyondCorp.
   ///
-  /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
-  ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
   /// summary using the IP address of the user whose activity is being reported.
@@ -123,36 +120,6 @@ class ActivitiesResourceApi {
   /// example, the IP address can be the user's proxy server's address or a
   /// virtual private network (VPN) address. This parameter supports both IPv4
   /// and IPv6 address versions.
-  ///
-  /// [eventName] - The name of the event being queried by the API. Each
-  /// eventName is related to a specific G Suite service or feature which the
-  /// API organizes into types of events. An example is the Google Calendar
-  /// events in the Admin console application's reports. The Calendar Settings
-  /// type structure has all of the Calendar eventName activities reported by
-  /// the API. When an administrator changes a Calendar setting, the API reports
-  /// this activity in the Calendar Settings type and eventName parameters. For
-  /// more information about eventName query strings and parameters, see the
-  /// list of event names for various applications above in applicationName.
-  ///
-  /// [pageToken] - The token to specify next page. A report with multiple pages
-  /// has a nextPageToken property in the response. In your follow-on request
-  /// getting the next page of the report, enter the nextPageToken value in the
-  /// pageToken query string.
-  ///
-  /// [startTime] - Sets the beginning of the range of time shown in the report.
-  /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
-  /// The report returns all activities from startTime until endTime. The
-  /// startTime must be before the endTime (if specified) and the current time
-  /// when the request is made, or the API returns an error.
-  /// Value must have pattern
-  /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
-  ///
-  /// [maxResults] - Determines how many activity records are shown on each
-  /// response page. For example, if the request sets maxResults=1 and the
-  /// report has two activities, the report has two pages. The response's
-  /// nextPageToken property has the token to the second page. The maxResults
-  /// query string is optional in the request. The default value is 1000.
-  /// Value must be between "1" and "1000".
   ///
   /// [filters] - The filters query string is a comma-separated list. The list
   /// is composed of event parameters that are manipulated by relational
@@ -188,6 +155,14 @@ class ActivitiesResourceApi {
   /// Value must have pattern
   /// "(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)".
   ///
+  /// [startTime] - Sets the beginning of the range of time shown in the report.
+  /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
+  /// The report returns all activities from startTime until endTime. The
+  /// startTime must be before the endTime (if specified) and the current time
+  /// when the request is made, or the API returns an error.
+  /// Value must have pattern
+  /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
+  ///
   /// [orgUnitID] - ID of the organizational unit to report on. Activity records
   /// will be shown only for users who belong to the specified organizational
   /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
@@ -210,6 +185,31 @@ class ActivitiesResourceApi {
   /// Value must have pattern
   /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
   ///
+  /// [pageToken] - The token to specify next page. A report with multiple pages
+  /// has a nextPageToken property in the response. In your follow-on request
+  /// getting the next page of the report, enter the nextPageToken value in the
+  /// pageToken query string.
+  ///
+  /// [maxResults] - Determines how many activity records are shown on each
+  /// response page. For example, if the request sets maxResults=1 and the
+  /// report has two activities, the report has two pages. The response's
+  /// nextPageToken property has the token to the second page. The maxResults
+  /// query string is optional in the request. The default value is 1000.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [customerId] - The unique ID of the customer to retrieve data for.
+  /// Value must have pattern "C.+".
+  ///
+  /// [eventName] - The name of the event being queried by the API. Each
+  /// eventName is related to a specific G Suite service or feature which the
+  /// API organizes into types of events. An example is the Google Calendar
+  /// events in the Admin console application's reports. The Calendar Settings
+  /// type structure has all of the Calendar eventName activities reported by
+  /// the API. When an administrator changes a Calendar setting, the API reports
+  /// this activity in the Calendar Settings type and eventName parameters. For
+  /// more information about eventName query strings and parameters, see the
+  /// list of event names for various applications above in applicationName.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -222,15 +222,15 @@ class ActivitiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Activities> list(
       core.String userKey, core.String applicationName,
-      {core.String customerId,
-      core.String actorIpAddress,
-      core.String eventName,
-      core.String pageToken,
-      core.String startTime,
-      core.int maxResults,
+      {core.String actorIpAddress,
       core.String filters,
+      core.String startTime,
       core.String orgUnitID,
       core.String endTime,
+      core.String pageToken,
+      core.int maxResults,
+      core.String customerId,
+      core.String eventName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -245,32 +245,32 @@ class ActivitiesResourceApi {
     if (applicationName == null) {
       throw new core.ArgumentError("Parameter applicationName is required.");
     }
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
-    }
     if (actorIpAddress != null) {
       _queryParams["actorIpAddress"] = [actorIpAddress];
     }
-    if (eventName != null) {
-      _queryParams["eventName"] = [eventName];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filters != null) {
+      _queryParams["filters"] = [filters];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (filters != null) {
-      _queryParams["filters"] = [filters];
     }
     if (orgUnitID != null) {
       _queryParams["orgUnitID"] = [orgUnitID];
     }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
+    }
+    if (eventName != null) {
+      _queryParams["eventName"] = [eventName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -351,24 +351,6 @@ class ActivitiesResourceApi {
   /// - "chrome" : The Chrome activity reports return information about unsafe
   /// events reported in the context of the WebProtect features of BeyondCorp.
   ///
-  /// [maxResults] - Determines how many activity records are shown on each
-  /// response page. For example, if the request sets maxResults=1 and the
-  /// report has two activities, the report has two pages. The response's
-  /// nextPageToken property has the token to the second page. The maxResults
-  /// query string is optional in the request. The default value is 1000.
-  /// Value must be between "1" and "1000".
-  ///
-  /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
-  ///
-  /// [startTime] - Sets the beginning of the range of time shown in the report.
-  /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
-  /// The report returns all activities from startTime until endTime. The
-  /// startTime must be before the endTime (if specified) and the current time
-  /// when the request is made, or the API returns an error.
-  /// Value must have pattern
-  /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
-  ///
   /// [eventName] - The name of the event being queried by the API. Each
   /// eventName is related to a specific G Suite service or feature which the
   /// API organizes into types of events. An example is the Google Calendar
@@ -378,6 +360,31 @@ class ActivitiesResourceApi {
   /// this activity in the Calendar Settings type and eventName parameters. For
   /// more information about eventName query strings and parameters, see the
   /// list of event names for various applications above in applicationName.
+  ///
+  /// [customerId] - The unique ID of the customer to retrieve data for.
+  /// Value must have pattern "C.+".
+  ///
+  /// [orgUnitID] - ID of the organizational unit to report on. Activity records
+  /// will be shown only for users who belong to the specified organizational
+  /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
+  /// Value must have pattern "(id:[a-z0-9]+)".
+  ///
+  /// [endTime] - Sets the end of the range of time shown in the report. The
+  /// date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The
+  /// default value is the approximate time of the API request. An API report
+  /// has three basic time concepts: - *Date of the API's request for a report*:
+  /// When the API created and retrieved the report. - *Report's start time*:
+  /// The beginning of the timespan shown in the report. The startTime must be
+  /// before the endTime (if specified) and the current time when the request is
+  /// made, or the API returns an error. - *Report's end time*: The end of the
+  /// timespan shown in the report. For example, the timespan of events
+  /// summarized in a report can start in April and end in May. The report
+  /// itself can be requested in August. If the endTime is not specified, the
+  /// report returns all activities from the startTime until the current time or
+  /// the most recent 180 days if the startTime is more than 180 days in the
+  /// past.
+  /// Value must have pattern
+  /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
   ///
   /// [filters] - The filters query string is a comma-separated list. The list
   /// is composed of event parameters that are manipulated by relational
@@ -413,6 +420,18 @@ class ActivitiesResourceApi {
   /// Value must have pattern
   /// "(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)".
   ///
+  /// [maxResults] - Determines how many activity records are shown on each
+  /// response page. For example, if the request sets maxResults=1 and the
+  /// report has two activities, the report has two pages. The response's
+  /// nextPageToken property has the token to the second page. The maxResults
+  /// query string is optional in the request. The default value is 1000.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [pageToken] - The token to specify next page. A report with multiple pages
+  /// has a nextPageToken property in the response. In your follow-on request
+  /// getting the next page of the report, enter the nextPageToken value in the
+  /// pageToken query string.
+  ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
   /// summary using the IP address of the user whose activity is being reported.
@@ -421,30 +440,11 @@ class ActivitiesResourceApi {
   /// virtual private network (VPN) address. This parameter supports both IPv4
   /// and IPv6 address versions.
   ///
-  /// [orgUnitID] - ID of the organizational unit to report on. Activity records
-  /// will be shown only for users who belong to the specified organizational
-  /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
-  /// Value must have pattern "(id:[a-z0-9]+)".
-  ///
-  /// [pageToken] - The token to specify next page. A report with multiple pages
-  /// has a nextPageToken property in the response. In your follow-on request
-  /// getting the next page of the report, enter the nextPageToken value in the
-  /// pageToken query string.
-  ///
-  /// [endTime] - Sets the end of the range of time shown in the report. The
-  /// date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The
-  /// default value is the approximate time of the API request. An API report
-  /// has three basic time concepts: - *Date of the API's request for a report*:
-  /// When the API created and retrieved the report. - *Report's start time*:
-  /// The beginning of the timespan shown in the report. The startTime must be
-  /// before the endTime (if specified) and the current time when the request is
-  /// made, or the API returns an error. - *Report's end time*: The end of the
-  /// timespan shown in the report. For example, the timespan of events
-  /// summarized in a report can start in April and end in May. The report
-  /// itself can be requested in August. If the endTime is not specified, the
-  /// report returns all activities from the startTime until the current time or
-  /// the most recent 180 days if the startTime is more than 180 days in the
-  /// past.
+  /// [startTime] - Sets the beginning of the range of time shown in the report.
+  /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
+  /// The report returns all activities from startTime until endTime. The
+  /// startTime must be before the endTime (if specified) and the current time
+  /// when the request is made, or the API returns an error.
   /// Value must have pattern
   /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
   ///
@@ -460,15 +460,15 @@ class ActivitiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Channel> watch(
       Channel request, core.String userKey, core.String applicationName,
-      {core.int maxResults,
+      {core.String eventName,
       core.String customerId,
-      core.String startTime,
-      core.String eventName,
-      core.String filters,
-      core.String actorIpAddress,
       core.String orgUnitID,
-      core.String pageToken,
       core.String endTime,
+      core.String filters,
+      core.int maxResults,
+      core.String pageToken,
+      core.String actorIpAddress,
+      core.String startTime,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -486,32 +486,32 @@ class ActivitiesResourceApi {
     if (applicationName == null) {
       throw new core.ArgumentError("Parameter applicationName is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (eventName != null) {
+      _queryParams["eventName"] = [eventName];
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
+    if (orgUnitID != null) {
+      _queryParams["orgUnitID"] = [orgUnitID];
     }
-    if (eventName != null) {
-      _queryParams["eventName"] = [eventName];
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
     }
     if (filters != null) {
       _queryParams["filters"] = [filters];
     }
-    if (actorIpAddress != null) {
-      _queryParams["actorIpAddress"] = [actorIpAddress];
-    }
-    if (orgUnitID != null) {
-      _queryParams["orgUnitID"] = [orgUnitID];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
+    if (actorIpAddress != null) {
+      _queryParams["actorIpAddress"] = [actorIpAddress];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -599,6 +599,9 @@ class CustomerUsageReportsResourceApi {
   /// for this.
   /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
   ///
+  /// [customerId] - The unique ID of the customer to retrieve data for.
+  /// Value must have pattern "C.+".
+  ///
   /// [parameters] - The parameters query string is a comma-separated list of
   /// event parameters that refine a report's results. The parameter is
   /// associated with a specific application. The application values for the
@@ -622,9 +625,6 @@ class CustomerUsageReportsResourceApi {
   /// getting all of the report's pages, enter the nextPageToken value in the
   /// pageToken query string.
   ///
-  /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -636,9 +636,9 @@ class CustomerUsageReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UsageReports> get(core.String date,
-      {core.String parameters,
+      {core.String customerId,
+      core.String parameters,
       core.String pageToken,
-      core.String customerId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -650,14 +650,14 @@ class CustomerUsageReportsResourceApi {
     if (date == null) {
       throw new core.ArgumentError("Parameter date is required.");
     }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
+    }
     if (parameters != null) {
       _queryParams["parameters"] = [parameters];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -708,20 +708,6 @@ class EntityUsageReportsResourceApi {
   /// for this.
   /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
   ///
-  /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
-  ///
-  /// [pageToken] - Token to specify next page. A report with multiple pages has
-  /// a nextPageToken property in the response. In your follow-on request
-  /// getting the next page of the report, enter the nextPageToken value in the
-  /// pageToken query string.
-  ///
-  /// [maxResults] - Determines how many activity records are shown on each
-  /// response page. For example, if the request sets maxResults=1 and the
-  /// report has two activities, the report has two pages. The response's
-  /// nextPageToken property has the token to the second page.
-  /// Value must be between "1" and "1000".
-  ///
   /// [filters] - The filters query string is a comma-separated list of an
   /// application's event parameters where the parameter's value is manipulated
   /// by a relational operator. The filters query string includes the name of
@@ -741,6 +727,12 @@ class EntityUsageReportsResourceApi {
   /// Value must have pattern
   /// "(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
   ///
+  /// [maxResults] - Determines how many activity records are shown on each
+  /// response page. For example, if the request sets maxResults=1 and the
+  /// report has two activities, the report has two pages. The response's
+  /// nextPageToken property has the token to the second page.
+  /// Value must be between "1" and "1000".
+  ///
   /// [parameters] - The parameters query string is a comma-separated list of
   /// event parameters that refine a report's results. The parameter is
   /// associated with a specific application. The application values for the
@@ -756,6 +748,14 @@ class EntityUsageReportsResourceApi {
   /// are requested, all parameters are returned.
   /// Value must have pattern "(((gplus)):[^,]+,)*(((gplus)):[^,]+)".
   ///
+  /// [pageToken] - Token to specify next page. A report with multiple pages has
+  /// a nextPageToken property in the response. In your follow-on request
+  /// getting the next page of the report, enter the nextPageToken value in the
+  /// pageToken query string.
+  ///
+  /// [customerId] - The unique ID of the customer to retrieve data for.
+  /// Value must have pattern "C.+".
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -768,11 +768,11 @@ class EntityUsageReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<UsageReports> get(
       core.String entityType, core.String entityKey, core.String date,
-      {core.String customerId,
-      core.String pageToken,
+      {core.String filters,
       core.int maxResults,
-      core.String filters,
       core.String parameters,
+      core.String pageToken,
+      core.String customerId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -790,20 +790,20 @@ class EntityUsageReportsResourceApi {
     if (date == null) {
       throw new core.ArgumentError("Parameter date is required.");
     }
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filters != null) {
+      _queryParams["filters"] = [filters];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (filters != null) {
-      _queryParams["filters"] = [filters];
-    }
     if (parameters != null) {
       _queryParams["parameters"] = [parameters];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -847,13 +847,20 @@ class UserUsageReportResourceApi {
   /// for this.
   /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
   ///
+  /// [maxResults] - Determines how many activity records are shown on each
+  /// response page. For example, if the request sets maxResults=1 and the
+  /// report has two activities, the report has two pages. The response's
+  /// nextPageToken property has the token to the second page. The maxResults
+  /// query string is optional.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [customerId] - The unique ID of the customer to retrieve data for.
+  /// Value must have pattern "C.+".
+  ///
   /// [orgUnitID] - ID of the organizational unit to report on. User activity
   /// will be shown only for users who belong to the specified organizational
   /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
   /// Value must have pattern "(id:[a-z0-9]+)".
-  ///
-  /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
   ///
   /// [parameters] - The parameters query string is a comma-separated list of
   /// event parameters that refine a report's results. The parameter is
@@ -872,6 +879,11 @@ class UserUsageReportResourceApi {
   /// parameters are returned.
   /// Value must have pattern
   /// "(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)".
+  ///
+  /// [pageToken] - Token to specify next page. A report with multiple pages has
+  /// a nextPageToken property in the response. In your follow-on request
+  /// getting the next page of the report, enter the nextPageToken value in the
+  /// pageToken query string.
   ///
   /// [filters] - The filters query string is a comma-separated list of an
   /// application's event parameters where the parameter's value is manipulated
@@ -892,18 +904,6 @@ class UserUsageReportResourceApi {
   /// Value must have pattern
   /// "(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
   ///
-  /// [pageToken] - Token to specify next page. A report with multiple pages has
-  /// a nextPageToken property in the response. In your follow-on request
-  /// getting the next page of the report, enter the nextPageToken value in the
-  /// pageToken query string.
-  ///
-  /// [maxResults] - Determines how many activity records are shown on each
-  /// response page. For example, if the request sets maxResults=1 and the
-  /// report has two activities, the report has two pages. The response's
-  /// nextPageToken property has the token to the second page. The maxResults
-  /// query string is optional.
-  /// Value must be between "1" and "1000".
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -915,12 +915,12 @@ class UserUsageReportResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UsageReports> get(core.String userKey, core.String date,
-      {core.String orgUnitID,
+      {core.int maxResults,
       core.String customerId,
+      core.String orgUnitID,
       core.String parameters,
-      core.String filters,
       core.String pageToken,
-      core.int maxResults,
+      core.String filters,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -935,23 +935,23 @@ class UserUsageReportResourceApi {
     if (date == null) {
       throw new core.ArgumentError("Parameter date is required.");
     }
-    if (orgUnitID != null) {
-      _queryParams["orgUnitID"] = [orgUnitID];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
     }
+    if (orgUnitID != null) {
+      _queryParams["orgUnitID"] = [orgUnitID];
+    }
     if (parameters != null) {
       _queryParams["parameters"] = [parameters];
-    }
-    if (filters != null) {
-      _queryParams["filters"] = [filters];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (filters != null) {
+      _queryParams["filters"] = [filters];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

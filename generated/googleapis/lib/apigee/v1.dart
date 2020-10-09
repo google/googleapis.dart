@@ -31,6 +31,7 @@ class ApigeeApi {
   HybridResourceApi get hybrid => new HybridResourceApi(_requester);
   OrganizationsResourceApi get organizations =>
       new OrganizationsResourceApi(_requester);
+  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   ApigeeApi(http.Client client,
       {core.String rootUrl = "https://apigee.googleapis.com/",
@@ -132,6 +133,8 @@ class OrganizationsResourceApi {
       new OrganizationsReportsResourceApi(_requester);
   OrganizationsSharedflowsResourceApi get sharedflows =>
       new OrganizationsSharedflowsResourceApi(_requester);
+  OrganizationsSitesResourceApi get sites =>
+      new OrganizationsSitesResourceApi(_requester);
 
   OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -244,6 +247,19 @@ class OrganizationsResourceApi {
   /// in the following format: 'organizations/{org}/deployedIngressConfig'.
   /// Value must have pattern "^organizations/[^/]+/deployedIngressConfig$".
   ///
+  /// [view] - When set to FULL, additional details about the specific
+  /// deployments receiving traffic will be included in the IngressConfig
+  /// response's RoutingRules.
+  /// Possible string values are:
+  /// - "INGRESS_CONFIG_VIEW_UNSPECIFIED" : The default/unset value. The API
+  /// will default to the BASIC view.
+  /// - "BASIC" : Include all ingress config data necessary for the runtime to
+  /// configure ingress, but no more. Routing rules will include only basepath
+  /// and destination environment. This the default value.
+  /// - "FULL" : Include all ingress config data, including internal debug info
+  /// for each routing rule such as the proxy claiming a particular basepath and
+  /// when the routing rule first appeared in the env group.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -256,7 +272,8 @@ class OrganizationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1IngressConfig> getDeployedIngressConfig(
       core.String name,
-      {core.String $fields}) {
+      {core.String view,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -266,6 +283,9 @@ class OrganizationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1096,20 +1116,20 @@ class OrganizationsApiproductsResourceApi {
   /// form: organizations/organization_ID
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [count] - Enter the number of API products you want returned in the API
-  /// call. The limit is 1000.
-  ///
-  /// [attributename] - The name of the attribute to search.
+  /// [expand] - Set to `true` to get expanded details about each API.
   ///
   /// [attributevalue] - The value of the attribute.
-  ///
-  /// [expand] - Set to `true` to get expanded details about each API.
   ///
   /// [startKey] - Gets a list of API products starting with a specific API
   /// product in the list. For example, if you're returning 50 API products at a
   /// time (using the `count` query parameter), you can view products 50-99 by
   /// entering the name of the 50th API product in the first API (without using
   /// `startKey`). Product name is case sensitive.
+  ///
+  /// [count] - Enter the number of API products you want returned in the API
+  /// call. The limit is 1000.
+  ///
+  /// [attributename] - The name of the attribute to search.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1123,11 +1143,11 @@ class OrganizationsApiproductsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListApiProductsResponse> list(
       core.String parent,
-      {core.String count,
-      core.String attributename,
+      {core.bool expand,
       core.String attributevalue,
-      core.bool expand,
       core.String startKey,
+      core.String count,
+      core.String attributename,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1139,20 +1159,20 @@ class OrganizationsApiproductsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (expand != null) {
+      _queryParams["expand"] = ["${expand}"];
+    }
+    if (attributevalue != null) {
+      _queryParams["attributevalue"] = [attributevalue];
+    }
+    if (startKey != null) {
+      _queryParams["startKey"] = [startKey];
+    }
     if (count != null) {
       _queryParams["count"] = [count];
     }
     if (attributename != null) {
       _queryParams["attributename"] = [attributename];
-    }
-    if (attributevalue != null) {
-      _queryParams["attributevalue"] = [attributevalue];
-    }
-    if (expand != null) {
-      _queryParams["expand"] = ["${expand}"];
-    }
-    if (startKey != null) {
-      _queryParams["startKey"] = [startKey];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1475,6 +1495,9 @@ class OrganizationsApisResourceApi {
   /// `organizations/{org}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [name] - Name of the API proxy. Restrict the characters used to:
+  /// A-Za-z0-9._-
+  ///
   /// [validate] - Ignored. All uploads are validated regardless of the value of
   /// this field. Maintained for compatibility with Apigee Edge API.
   ///
@@ -1482,9 +1505,6 @@ class OrganizationsApisResourceApi {
   /// bundle. Set this parameter to one of the following values: * `import` to
   /// import the API proxy configuration bundle. * `validate` to validate the
   /// API proxy configuration bundle without importing it.
-  ///
-  /// [name] - Name of the API proxy. Restrict the characters used to:
-  /// A-Za-z0-9._-
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1498,9 +1518,9 @@ class OrganizationsApisResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProxyRevision> create(
       GoogleApiHttpBody request, core.String parent,
-      {core.bool validate,
+      {core.String name,
+      core.bool validate,
       core.String action,
-      core.String name,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1515,14 +1535,14 @@ class OrganizationsApisResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (name != null) {
+      _queryParams["name"] = [name];
+    }
     if (validate != null) {
       _queryParams["validate"] = ["${validate}"];
     }
     if (action != null) {
       _queryParams["action"] = [action];
-    }
-    if (name != null) {
-      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2169,21 +2189,21 @@ class OrganizationsAppsResourceApi {
   /// [expand] - Optional. Flag that specifies whether to return an expanded
   /// list of apps for the organization. Defaults to `false`.
   ///
-  /// [apiProduct] - API product.
-  ///
-  /// [apptype] - Optional. Filter by the type of the app. Valid values are
-  /// `company` or `developer`. Defaults to `developer`.
-  ///
   /// [includeCred] - Optional. Flag that specifies whether to include
   /// credentials in the response.
+  ///
+  /// [rows] - Optional. Maximum number of app IDs to return. Defaults to 10000.
   ///
   /// [status] - Optional. Filter by the status of the app. Valid values are
   /// `approved` or `revoked`. Defaults to `approved`.
   ///
-  /// [rows] - Optional. Maximum number of app IDs to return. Defaults to 10000.
-  ///
   /// [keyStatus] - Optional. Key status of the app. Valid values include
   /// `approved` or `revoked`. Defaults to `approved`.
+  ///
+  /// [apptype] - Optional. Filter by the type of the app. Valid values are
+  /// `company` or `developer`. Defaults to `developer`.
+  ///
+  /// [apiProduct] - API product.
   ///
   /// [ids] - Optional. Comma-separated list of app IDs on which to filter.
   ///
@@ -2200,12 +2220,12 @@ class OrganizationsAppsResourceApi {
   async.Future<GoogleCloudApigeeV1ListAppsResponse> list(core.String parent,
       {core.String startKey,
       core.bool expand,
-      core.String apiProduct,
-      core.String apptype,
       core.bool includeCred,
-      core.String status,
       core.String rows,
+      core.String status,
       core.String keyStatus,
+      core.String apptype,
+      core.String apiProduct,
       core.String ids,
       core.String $fields}) {
     var _url;
@@ -2224,23 +2244,23 @@ class OrganizationsAppsResourceApi {
     if (expand != null) {
       _queryParams["expand"] = ["${expand}"];
     }
-    if (apiProduct != null) {
-      _queryParams["apiProduct"] = [apiProduct];
-    }
-    if (apptype != null) {
-      _queryParams["apptype"] = [apptype];
-    }
     if (includeCred != null) {
       _queryParams["includeCred"] = ["${includeCred}"];
-    }
-    if (status != null) {
-      _queryParams["status"] = [status];
     }
     if (rows != null) {
       _queryParams["rows"] = [rows];
     }
+    if (status != null) {
+      _queryParams["status"] = [status];
+    }
     if (keyStatus != null) {
       _queryParams["keyStatus"] = [keyStatus];
+    }
+    if (apptype != null) {
+      _queryParams["apptype"] = [apptype];
+    }
+    if (apiProduct != null) {
+      _queryParams["apiProduct"] = [apiProduct];
     }
     if (ids != null) {
       _queryParams["ids"] = [ids];
@@ -2581,11 +2601,12 @@ class OrganizationsDevelopersResourceApi {
   /// structure in your request: `organizations/{org}`.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [count] - Optional. Number of developers to return in the API call. Use
-  /// with the `startKey` parameter to provide more targeted filtering. The
-  /// limit is 1000.
+  /// [expand] - Specifies whether to expand the results. Set to `true` to
+  /// expand the results. This query parameter is not valid if you use the
+  /// `count` or `startKey` query parameters.
   ///
-  /// [ids] - Optional. List of IDs to include, separated by commas.
+  /// [includeCompany] - Flag that specifies whether to include company details
+  /// in the response.
   ///
   /// [startKey] - **Note**: Must be used in conjunction with the `count`
   /// parameter. Email address of the developer from which to start displaying
@@ -2594,12 +2615,11 @@ class OrganizationsDevelopersResourceApi {
   /// your `startKey` is `fezzik@example.com`, the list returned will be ```
   /// fezzik@example.com buttercup@example.com ```
   ///
-  /// [includeCompany] - Flag that specifies whether to include company details
-  /// in the response.
+  /// [ids] - Optional. List of IDs to include, separated by commas.
   ///
-  /// [expand] - Specifies whether to expand the results. Set to `true` to
-  /// expand the results. This query parameter is not valid if you use the
-  /// `count` or `startKey` query parameters.
+  /// [count] - Optional. Number of developers to return in the API call. Use
+  /// with the `startKey` parameter to provide more targeted filtering. The
+  /// limit is 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2613,11 +2633,11 @@ class OrganizationsDevelopersResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListOfDevelopersResponse> list(
       core.String parent,
-      {core.String count,
-      core.String ids,
-      core.String startKey,
+      {core.bool expand,
       core.bool includeCompany,
-      core.bool expand,
+      core.String startKey,
+      core.String ids,
+      core.String count,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2629,20 +2649,20 @@ class OrganizationsDevelopersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (count != null) {
-      _queryParams["count"] = [count];
-    }
-    if (ids != null) {
-      _queryParams["ids"] = [ids];
-    }
-    if (startKey != null) {
-      _queryParams["startKey"] = [startKey];
+    if (expand != null) {
+      _queryParams["expand"] = ["${expand}"];
     }
     if (includeCompany != null) {
       _queryParams["includeCompany"] = ["${includeCompany}"];
     }
-    if (expand != null) {
-      _queryParams["expand"] = ["${expand}"];
+    if (startKey != null) {
+      _queryParams["startKey"] = [startKey];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = [ids];
+    }
+    if (count != null) {
+      _queryParams["count"] = [count];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3050,15 +3070,15 @@ class OrganizationsDevelopersAppsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$".
   ///
-  /// [entity] - **Note**: Must be used in conjunction with the `query`
-  /// parameter. Set to `apiresources` to return the number of API resources
-  /// that have been approved for access by a developer app in the specified
-  /// Apigee organization.
-  ///
   /// [query] - **Note**: Must be used in conjunction with the `entity`
   /// parameter. Set to `count` to return the number of API resources that have
   /// been approved for access by a developer app in the specified Apigee
   /// organization.
+  ///
+  /// [entity] - **Note**: Must be used in conjunction with the `query`
+  /// parameter. Set to `apiresources` to return the number of API resources
+  /// that have been approved for access by a developer app in the specified
+  /// Apigee organization.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3071,7 +3091,7 @@ class OrganizationsDevelopersAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperApp> get(core.String name,
-      {core.String entity, core.String query, core.String $fields}) {
+      {core.String query, core.String entity, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3082,11 +3102,11 @@ class OrganizationsDevelopersAppsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (entity != null) {
-      _queryParams["entity"] = [entity];
-    }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if (entity != null) {
+      _queryParams["entity"] = [entity];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3116,6 +3136,16 @@ class OrganizationsDevelopersAppsResourceApi {
   /// your request: `organizations/{org}/developers/{developer_email}`
   /// Value must have pattern "^organizations/[^/]+/developers/[^/]+$".
   ///
+  /// [startKey] - **Note**: Must be used in conjunction with the `count`
+  /// parameter. Name of the developer app from which to start displaying the
+  /// list of developer apps. For example, if you're returning 50 developer apps
+  /// at a time (using the `count` query parameter), you can view developer apps
+  /// 50-99 by entering the name of the 50th developer app. The developer app
+  /// name is case sensitive.
+  ///
+  /// [shallowExpand] - Optional. Specifies whether to expand the results in
+  /// shallow mode. Set to `true` to expand the results in shallow mode.
+  ///
   /// [expand] - Optional. Specifies whether to expand the results. Set to
   /// `true` to expand the results. This query parameter is not valid if you use
   /// the `count` or `startKey` query parameters.
@@ -3123,16 +3153,6 @@ class OrganizationsDevelopersAppsResourceApi {
   /// [count] - Number of developer apps to return in the API call. Use with the
   /// `startKey` parameter to provide more targeted filtering. The limit is
   /// 1000.
-  ///
-  /// [shallowExpand] - Optional. Specifies whether to expand the results in
-  /// shallow mode. Set to `true` to expand the results in shallow mode.
-  ///
-  /// [startKey] - **Note**: Must be used in conjunction with the `count`
-  /// parameter. Name of the developer app from which to start displaying the
-  /// list of developer apps. For example, if you're returning 50 developer apps
-  /// at a time (using the `count` query parameter), you can view developer apps
-  /// 50-99 by entering the name of the 50th developer app. The developer app
-  /// name is case sensitive.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3146,10 +3166,10 @@ class OrganizationsDevelopersAppsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeveloperAppsResponse> list(
       core.String parent,
-      {core.bool expand,
-      core.String count,
+      {core.String startKey,
       core.bool shallowExpand,
-      core.String startKey,
+      core.bool expand,
+      core.String count,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3161,17 +3181,17 @@ class OrganizationsDevelopersAppsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (startKey != null) {
+      _queryParams["startKey"] = [startKey];
+    }
+    if (shallowExpand != null) {
+      _queryParams["shallowExpand"] = ["${shallowExpand}"];
+    }
     if (expand != null) {
       _queryParams["expand"] = ["${expand}"];
     }
     if (count != null) {
       _queryParams["count"] = [count];
-    }
-    if (shallowExpand != null) {
-      _queryParams["shallowExpand"] = ["${shallowExpand}"];
-    }
-    if (startKey != null) {
-      _queryParams["startKey"] = [startKey];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4340,11 +4360,11 @@ class OrganizationsEnvgroupsResourceApi {
   /// environment groups in the following format: `organizations/{org}`.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of environment groups to return. The page size
-  /// defaults to 25.
-  ///
   /// [pageToken] - Page token, returned from a previous ListEnvironmentGroups
   /// call, that you can use to retrieve the next page.
+  ///
+  /// [pageSize] - Maximum number of environment groups to return. The page size
+  /// defaults to 25.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4358,8 +4378,8 @@ class OrganizationsEnvgroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListEnvironmentGroupsResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4371,11 +4391,11 @@ class OrganizationsEnvgroupsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5769,6 +5789,12 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+$".
   ///
+  /// [override] - Flag that specifies whether the new deployment replaces other
+  /// deployed revisions of the API proxy in the environment. Set override to
+  /// true to replace other deployed revisions. By default, override is false
+  /// and the deployment is rejected if other revisions of the API proxy are
+  /// deployed in the environment.
+  ///
   /// [sequencedRollout] - If true, a best-effort attempt will be made to roll
   /// out the routing rules corresponding to this deployment and the environment
   /// changes to add this deployment in a safe order. This reduces the risk of
@@ -5781,12 +5807,6 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
   /// changes before issuing the deployment request, and its response will
   /// indicate if a sequenced rollout is recommended for the deployment.
   ///
-  /// [override] - Flag that specifies whether the new deployment replaces other
-  /// deployed revisions of the API proxy in the environment. Set override to
-  /// true to replace other deployed revisions. By default, override is false
-  /// and the deployment is rejected if other revisions of the API proxy are
-  /// deployed in the environment.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5798,7 +5818,7 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Deployment> deploy(core.String name,
-      {core.bool sequencedRollout, core.bool override, core.String $fields}) {
+      {core.bool override, core.bool sequencedRollout, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -5809,11 +5829,11 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (sequencedRollout != null) {
-      _queryParams["sequencedRollout"] = ["${sequencedRollout}"];
-    }
     if (override != null) {
       _queryParams["override"] = ["${override}"];
+    }
+    if (sequencedRollout != null) {
+      _queryParams["sequencedRollout"] = ["${sequencedRollout}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6130,11 +6150,11 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of debug sessions to return. The page size
-  /// defaults to 25.
-  ///
   /// [pageToken] - Page token, returned from a previous ListDebugSessions call,
   /// that you can use to retrieve the next page.
+  ///
+  /// [pageSize] - Maximum number of debug sessions to return. The page size
+  /// defaults to 25.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6148,8 +6168,8 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDebugSessionsResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6161,11 +6181,11 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6851,22 +6871,22 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+$".
   ///
-  /// [ignoreNewlineValidation] - If `true`, do not throw an error when the file
-  /// contains a chain with no newline between each certificate. By default, a
-  /// newline is needed between each certificate in a chain.
-  ///
-  /// [format] - Required. The format of the data. Must be either
-  /// `selfsignedcert`, `keycertfile`, or `pkcs12`.
-  ///
   /// [alias] - The alias for the key, certificate pair. Values must match
   /// regular expression `[\w\s-.]{1,255}`. This must be provided for all
   /// formats except 'selfsignedcert'; self-signed certs may specify the alias
   /// in either this parameter or the JSON body.
   ///
+  /// [ignoreNewlineValidation] - If `true`, do not throw an error when the file
+  /// contains a chain with no newline between each certificate. By default, a
+  /// newline is needed between each certificate in a chain.
+  ///
+  /// [P_password] - The password for the private key file, if it exists.
+  ///
   /// [ignoreExpiryValidation] - If `true`, no expiry validation will be
   /// performed.
   ///
-  /// [P_password] - The password for the private key file, if it exists.
+  /// [format] - Required. The format of the data. Must be either
+  /// `selfsignedcert`, `keycertfile`, or `pkcs12`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6880,11 +6900,11 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Alias> create(
       GoogleApiHttpBody request, core.String parent,
-      {core.bool ignoreNewlineValidation,
-      core.String format,
-      core.String alias,
-      core.bool ignoreExpiryValidation,
+      {core.String alias,
+      core.bool ignoreNewlineValidation,
       core.String P_password,
+      core.bool ignoreExpiryValidation,
+      core.String format,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6899,20 +6919,20 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (alias != null) {
+      _queryParams["alias"] = [alias];
+    }
     if (ignoreNewlineValidation != null) {
       _queryParams["ignoreNewlineValidation"] = ["${ignoreNewlineValidation}"];
     }
-    if (format != null) {
-      _queryParams["format"] = [format];
-    }
-    if (alias != null) {
-      _queryParams["alias"] = [alias];
+    if (P_password != null) {
+      _queryParams["_password"] = [P_password];
     }
     if (ignoreExpiryValidation != null) {
       _queryParams["ignoreExpiryValidation"] = ["${ignoreExpiryValidation}"];
     }
-    if (P_password != null) {
-      _queryParams["_password"] = [P_password];
+    if (format != null) {
+      _queryParams["format"] = [format];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7129,12 +7149,12 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+/aliases/[^/]+$".
   ///
-  /// [ignoreExpiryValidation] - Required. If `true`, no expiry validation will
-  /// be performed.
-  ///
   /// [ignoreNewlineValidation] - If `true`, do not throw an error when the file
   /// contains a chain with no newline between each certificate. By default, a
   /// newline is needed between each certificate in a chain.
+  ///
+  /// [ignoreExpiryValidation] - Required. If `true`, no expiry validation will
+  /// be performed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7148,8 +7168,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Alias> update(
       GoogleApiHttpBody request, core.String name,
-      {core.bool ignoreExpiryValidation,
-      core.bool ignoreNewlineValidation,
+      {core.bool ignoreNewlineValidation,
+      core.bool ignoreExpiryValidation,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7164,11 +7184,11 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (ignoreExpiryValidation != null) {
-      _queryParams["ignoreExpiryValidation"] = ["${ignoreExpiryValidation}"];
-    }
     if (ignoreNewlineValidation != null) {
       _queryParams["ignoreNewlineValidation"] = ["${ignoreNewlineValidation}"];
+    }
+    if (ignoreExpiryValidation != null) {
+      _queryParams["ignoreExpiryValidation"] = ["${ignoreExpiryValidation}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7321,48 +7341,48 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/optimizedStats/.*$".
   ///
-  /// [timeUnit] - A value of second, minute, hour, day, week, month. Time Unit
-  /// specifies the granularity of metrics returned.
-  ///
-  /// [topk] - Take 'top k' results from results, for example, to return the top
-  /// 5 results 'topk=5'.
+  /// [offset] - Use offset with limit to enable pagination of results. For
+  /// example, to display results 11-20, set limit to '10' and offset to '10'.
   ///
   /// [sonar] - This parameter routes the query to api monitoring service for
   /// last hour.
   ///
+  /// [accuracy] - Legacy field: not used anymore.
+  ///
+  /// [limit] - This parameter is used to limit the number of result items.
+  /// Default and the max value is 14400.
+  ///
+  /// [timeUnit] - A value of second, minute, hour, day, week, month. Time Unit
+  /// specifies the granularity of metrics returned.
+  ///
+  /// [sort] - This parameter specifies if the sort order should be ascending or
+  /// descending Supported values are DESC and ASC.
+  ///
   /// [realtime] - Legacy field: not used anymore.
-  ///
-  /// [filter] - Enables drill-down on specific dimension values.
-  ///
-  /// [sortby] - Comma separated list of columns to sort the final result.
-  ///
-  /// [tsAscending] - Lists timestamps in ascending order if set to true.
-  /// Recommend setting this value to true if you are using sortby with
-  /// sort=DESC.
   ///
   /// [aggTable] - If customers want to query custom aggregate tables, then this
   /// parameter can be used to specify the table name. If this parameter is
   /// skipped, then Edge Query will try to retrieve the data from fact tables
   /// which will be expensive.
   ///
-  /// [sort] - This parameter specifies if the sort order should be ascending or
-  /// descending Supported values are DESC and ASC.
+  /// [timeRange] - Required. Time interval for the interactive query. Time
+  /// range is specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
   ///
-  /// [offset] - Use offset with limit to enable pagination of results. For
-  /// example, to display results 11-20, set limit to '10' and offset to '10'.
+  /// [tzo] - This parameters contains the timezone offset value.
+  ///
+  /// [sortby] - Comma separated list of columns to sort the final result.
+  ///
+  /// [topk] - Take 'top k' results from results, for example, to return the top
+  /// 5 results 'topk=5'.
   ///
   /// [select] - Required. The select parameter contains a comma separated list
   /// of metrics. E.g. sum(message_count),sum(error_count)
   ///
-  /// [timeRange] - Required. Time interval for the interactive query. Time
-  /// range is specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
+  /// [tsAscending] - Lists timestamps in ascending order if set to true.
+  /// Recommend setting this value to true if you are using sortby with
+  /// sort=DESC.
   ///
-  /// [limit] - This parameter is used to limit the number of result items.
-  /// Default and the max value is 14400.
-  ///
-  /// [tzo] - This parameters contains the timezone offset value.
-  ///
-  /// [accuracy] - Legacy field: not used anymore.
+  /// [filter] - Enables drill-down on specific dimension values.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7375,21 +7395,21 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1OptimizedStats> get(core.String name,
-      {core.String timeUnit,
-      core.String topk,
+      {core.String offset,
       core.bool sonar,
-      core.bool realtime,
-      core.String filter,
-      core.String sortby,
-      core.bool tsAscending,
-      core.String aggTable,
-      core.String sort,
-      core.String offset,
-      core.String select,
-      core.String timeRange,
-      core.String limit,
-      core.String tzo,
       core.String accuracy,
+      core.String limit,
+      core.String timeUnit,
+      core.String sort,
+      core.bool realtime,
+      core.String aggTable,
+      core.String timeRange,
+      core.String tzo,
+      core.String sortby,
+      core.String topk,
+      core.String select,
+      core.bool tsAscending,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7401,50 +7421,50 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (timeUnit != null) {
-      _queryParams["timeUnit"] = [timeUnit];
-    }
-    if (topk != null) {
-      _queryParams["topk"] = [topk];
+    if (offset != null) {
+      _queryParams["offset"] = [offset];
     }
     if (sonar != null) {
       _queryParams["sonar"] = ["${sonar}"];
     }
-    if (realtime != null) {
-      _queryParams["realtime"] = ["${realtime}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (sortby != null) {
-      _queryParams["sortby"] = [sortby];
-    }
-    if (tsAscending != null) {
-      _queryParams["tsAscending"] = ["${tsAscending}"];
-    }
-    if (aggTable != null) {
-      _queryParams["aggTable"] = [aggTable];
-    }
-    if (sort != null) {
-      _queryParams["sort"] = [sort];
-    }
-    if (offset != null) {
-      _queryParams["offset"] = [offset];
-    }
-    if (select != null) {
-      _queryParams["select"] = [select];
-    }
-    if (timeRange != null) {
-      _queryParams["timeRange"] = [timeRange];
+    if (accuracy != null) {
+      _queryParams["accuracy"] = [accuracy];
     }
     if (limit != null) {
       _queryParams["limit"] = [limit];
     }
+    if (timeUnit != null) {
+      _queryParams["timeUnit"] = [timeUnit];
+    }
+    if (sort != null) {
+      _queryParams["sort"] = [sort];
+    }
+    if (realtime != null) {
+      _queryParams["realtime"] = ["${realtime}"];
+    }
+    if (aggTable != null) {
+      _queryParams["aggTable"] = [aggTable];
+    }
+    if (timeRange != null) {
+      _queryParams["timeRange"] = [timeRange];
+    }
     if (tzo != null) {
       _queryParams["tzo"] = [tzo];
     }
-    if (accuracy != null) {
-      _queryParams["accuracy"] = [accuracy];
+    if (sortby != null) {
+      _queryParams["sortby"] = [sortby];
+    }
+    if (topk != null) {
+      _queryParams["topk"] = [topk];
+    }
+    if (select != null) {
+      _queryParams["select"] = [select];
+    }
+    if (tsAscending != null) {
+      _queryParams["tsAscending"] = ["${tsAscending}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7633,22 +7653,22 @@ class OrganizationsEnvironmentsQueriesResourceApi {
   /// `organizations/{org}/environments/{env}`.
   /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
   ///
-  /// [to] - Filter response list by returning asynchronous queries that created
-  /// before this date time. Time must be in ISO date-time format like
-  /// '2011-12-03T10:16:30Z'.
-  ///
   /// [submittedBy] - Filter response list by user who submitted queries.
-  ///
-  /// [dataset] - Filter response list by dataset. Example: `api`, `mint`
-  ///
-  /// [inclQueriesWithoutReport] - Flag to include asynchronous queries that
-  /// don't have a report denifition.
   ///
   /// [from] - Filter response list by returning asynchronous queries that
   /// created after this date time. Time must be in ISO date-time format like
   /// '2011-12-03T10:15:30Z'.
   ///
+  /// [inclQueriesWithoutReport] - Flag to include asynchronous queries that
+  /// don't have a report denifition.
+  ///
+  /// [to] - Filter response list by returning asynchronous queries that created
+  /// before this date time. Time must be in ISO date-time format like
+  /// '2011-12-03T10:16:30Z'.
+  ///
   /// [status] - Filter response list by asynchronous query status.
+  ///
+  /// [dataset] - Filter response list by dataset. Example: `api`, `mint`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7662,12 +7682,12 @@ class OrganizationsEnvironmentsQueriesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListAsyncQueriesResponse> list(
       core.String parent,
-      {core.String to,
-      core.String submittedBy,
-      core.String dataset,
-      core.String inclQueriesWithoutReport,
+      {core.String submittedBy,
       core.String from,
+      core.String inclQueriesWithoutReport,
+      core.String to,
       core.String status,
+      core.String dataset,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7679,23 +7699,23 @@ class OrganizationsEnvironmentsQueriesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (to != null) {
-      _queryParams["to"] = [to];
-    }
     if (submittedBy != null) {
       _queryParams["submittedBy"] = [submittedBy];
-    }
-    if (dataset != null) {
-      _queryParams["dataset"] = [dataset];
-    }
-    if (inclQueriesWithoutReport != null) {
-      _queryParams["inclQueriesWithoutReport"] = [inclQueriesWithoutReport];
     }
     if (from != null) {
       _queryParams["from"] = [from];
     }
+    if (inclQueriesWithoutReport != null) {
+      _queryParams["inclQueriesWithoutReport"] = [inclQueriesWithoutReport];
+    }
+    if (to != null) {
+      _queryParams["to"] = [to];
+    }
     if (status != null) {
       _queryParams["status"] = [status];
+    }
+    if (dataset != null) {
+      _queryParams["dataset"] = [dataset];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8595,49 +8615,49 @@ class OrganizationsEnvironmentsStatsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/stats/.*$".
   ///
-  /// [tsAscending] - Lists timestamps in ascending order if set to true.
-  /// Recommend setting this value to true if you are using sortby with
-  /// sort=DESC.
+  /// [realtime] - Legacy field: not used anymore.
   ///
-  /// [timeRange] - Time interval for the interactive query. Time range is
-  /// specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
+  /// [timeUnit] - A value of second, minute, hour, day, week, month. Time Unit
+  /// specifies the granularity of metrics returned.
   ///
-  /// [topk] - Take 'top k' results from results, for example, to return the top
-  /// 5 results 'topk=5'.
+  /// [sortby] - Comma separated list of columns to sort the final result.
   ///
   /// [accuracy] - Legacy field: not used anymore. This field is present to
   /// support UI calls which still use this parameter.
   ///
+  /// [filter] - Enables drill-down on specific dimension values
+  ///
+  /// [tzo] - This parameters contains the timezone offset value.
+  ///
+  /// [sort] - This parameter specifies if the sort order should be ascending or
+  /// descending Supported values are DESC and ASC.
+  ///
   /// [select] - The select parameter contains a comma separated list of
   /// metrics. E.g. sum(message_count),sum(error_count)
+  ///
+  /// [offset] - Use offset with limit to enable pagination of results. For
+  /// example, to display results 11-20, set limit to '10' and offset to '10'.
   ///
   /// [limit] - This parameter is used to limit the number of result items.
   /// Default and the max value is 14400.
   ///
-  /// [sortby] - Comma separated list of columns to sort the final result.
+  /// [sonar] - This parameter routes the query to api monitoring service for
+  /// last hour.
   ///
-  /// [filter] - Enables drill-down on specific dimension values
+  /// [topk] - Take 'top k' results from results, for example, to return the top
+  /// 5 results 'topk=5'.
+  ///
+  /// [timeRange] - Time interval for the interactive query. Time range is
+  /// specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
+  ///
+  /// [tsAscending] - Lists timestamps in ascending order if set to true.
+  /// Recommend setting this value to true if you are using sortby with
+  /// sort=DESC.
   ///
   /// [aggTable] - If customers want to query custom aggregate tables, then this
   /// parameter can be used to specify the table name. If this parameter is
   /// skipped, then Edge Query will try to retrieve the data from fact tables
   /// which will be expensive.
-  ///
-  /// [sonar] - This parameter routes the query to api monitoring service for
-  /// last hour.
-  ///
-  /// [timeUnit] - A value of second, minute, hour, day, week, month. Time Unit
-  /// specifies the granularity of metrics returned.
-  ///
-  /// [offset] - Use offset with limit to enable pagination of results. For
-  /// example, to display results 11-20, set limit to '10' and offset to '10'.
-  ///
-  /// [sort] - This parameter specifies if the sort order should be ascending or
-  /// descending Supported values are DESC and ASC.
-  ///
-  /// [realtime] - Legacy field: not used anymore.
-  ///
-  /// [tzo] - This parameters contains the timezone offset value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8650,21 +8670,21 @@ class OrganizationsEnvironmentsStatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Stats> get(core.String name,
-      {core.bool tsAscending,
-      core.String timeRange,
-      core.String topk,
-      core.String accuracy,
-      core.String select,
-      core.String limit,
-      core.String sortby,
-      core.String filter,
-      core.String aggTable,
-      core.bool sonar,
+      {core.bool realtime,
       core.String timeUnit,
-      core.String offset,
-      core.String sort,
-      core.bool realtime,
+      core.String sortby,
+      core.String accuracy,
+      core.String filter,
       core.String tzo,
+      core.String sort,
+      core.String select,
+      core.String offset,
+      core.String limit,
+      core.bool sonar,
+      core.String topk,
+      core.String timeRange,
+      core.bool tsAscending,
+      core.String aggTable,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -8676,50 +8696,50 @@ class OrganizationsEnvironmentsStatsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (tsAscending != null) {
-      _queryParams["tsAscending"] = ["${tsAscending}"];
-    }
-    if (timeRange != null) {
-      _queryParams["timeRange"] = [timeRange];
-    }
-    if (topk != null) {
-      _queryParams["topk"] = [topk];
-    }
-    if (accuracy != null) {
-      _queryParams["accuracy"] = [accuracy];
-    }
-    if (select != null) {
-      _queryParams["select"] = [select];
-    }
-    if (limit != null) {
-      _queryParams["limit"] = [limit];
-    }
-    if (sortby != null) {
-      _queryParams["sortby"] = [sortby];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (aggTable != null) {
-      _queryParams["aggTable"] = [aggTable];
-    }
-    if (sonar != null) {
-      _queryParams["sonar"] = ["${sonar}"];
+    if (realtime != null) {
+      _queryParams["realtime"] = ["${realtime}"];
     }
     if (timeUnit != null) {
       _queryParams["timeUnit"] = [timeUnit];
     }
-    if (offset != null) {
-      _queryParams["offset"] = [offset];
+    if (sortby != null) {
+      _queryParams["sortby"] = [sortby];
+    }
+    if (accuracy != null) {
+      _queryParams["accuracy"] = [accuracy];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (tzo != null) {
+      _queryParams["tzo"] = [tzo];
     }
     if (sort != null) {
       _queryParams["sort"] = [sort];
     }
-    if (realtime != null) {
-      _queryParams["realtime"] = ["${realtime}"];
+    if (select != null) {
+      _queryParams["select"] = [select];
     }
-    if (tzo != null) {
-      _queryParams["tzo"] = [tzo];
+    if (offset != null) {
+      _queryParams["offset"] = [offset];
+    }
+    if (limit != null) {
+      _queryParams["limit"] = [limit];
+    }
+    if (sonar != null) {
+      _queryParams["sonar"] = ["${sonar}"];
+    }
+    if (topk != null) {
+      _queryParams["topk"] = [topk];
+    }
+    if (timeRange != null) {
+      _queryParams["timeRange"] = [timeRange];
+    }
+    if (tsAscending != null) {
+      _queryParams["tsAscending"] = ["${tsAscending}"];
+    }
+    if (aggTable != null) {
+      _queryParams["aggTable"] = [aggTable];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9127,10 +9147,10 @@ class OrganizationsInstancesResourceApi {
   /// in your request: `organizations/{org}`.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - Maximum number of instances to return. Defaults to 25.
+  ///
   /// [pageToken] - Page token, returned from a previous ListInstances call,
   /// that you can use to retrieve the next page of content.
-  ///
-  /// [pageSize] - Maximum number of instances to return. Defaults to 25.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9144,8 +9164,8 @@ class OrganizationsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListInstancesResponse> list(
       core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -9157,11 +9177,11 @@ class OrganizationsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9403,11 +9423,11 @@ class OrganizationsInstancesAttachmentsResourceApi {
   /// in your request: `organizations/{org}/instances/{instance}`
   /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of instance attachments to return. Defaults to
-  /// 25.
-  ///
   /// [pageToken] - Page token, returned by a previous ListInstanceAttachments
   /// call, that you can use to retrieve the next page of content.
+  ///
+  /// [pageSize] - Maximum number of instance attachments to return. Defaults to
+  /// 25.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9421,8 +9441,8 @@ class OrganizationsInstancesAttachmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListInstanceAttachmentsResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -9434,11 +9454,11 @@ class OrganizationsInstancesAttachmentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9634,11 +9654,11 @@ class OrganizationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9651,9 +9671,9 @@ class OrganizationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String filter,
+      core.int pageSize,
       core.String pageToken,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -9665,14 +9685,14 @@ class OrganizationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9984,9 +10004,9 @@ class OrganizationsSharedflowsResourceApi {
   /// `organizations/{organization_id}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [name] - Required. The name to give the shared flow
-  ///
   /// [action] - Required. Must be set to either `import` or `validate`.
+  ///
+  /// [name] - Required. The name to give the shared flow
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10000,7 +10020,7 @@ class OrganizationsSharedflowsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SharedFlowRevision> create(
       GoogleApiHttpBody request, core.String parent,
-      {core.String name, core.String action, core.String $fields}) {
+      {core.String action, core.String name, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -10014,11 +10034,11 @@ class OrganizationsSharedflowsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (name != null) {
-      _queryParams["name"] = [name];
-    }
     if (action != null) {
       _queryParams["action"] = [action];
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10490,6 +10510,338 @@ class OrganizationsSharedflowsRevisionsDeploymentsResourceApi {
   }
 }
 
+class OrganizationsSitesResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSitesApicategoriesResourceApi get apicategories =>
+      new OrganizationsSitesApicategoriesResourceApi(_requester);
+
+  OrganizationsSitesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsSitesApicategoriesResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSitesApicategoriesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new category on the portal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the portal. Use the following structure in
+  /// your request: `organizations/{org}/sites/{site}`
+  /// Value must have pattern "^organizations/[^/]+/sites/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiCategory].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiCategory> create(
+      GoogleCloudApigeeV1ApiCategoryData request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/apicategories';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1ApiCategory.fromJson(data));
+  }
+
+  /// Deletes a category from the portal.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the category. Use the following structure in
+  /// your request:
+  /// `organizations/{org}/sites/{site}/apicategories/{apicategory}`
+  /// Value must have pattern
+  /// "^organizations/[^/]+/sites/[^/]+/apicategories/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiResponseWrapper].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiResponseWrapper> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GoogleCloudApigeeV1ApiResponseWrapper.fromJson(data));
+  }
+
+  /// Gets a category on the portal.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the category. Use the following structure in
+  /// your request:
+  /// `organizations/{org}/sites/{site}/apicategories/{apicategory}`
+  /// Value must have pattern
+  /// "^organizations/[^/]+/sites/[^/]+/apicategories/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiCategory].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiCategory> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1ApiCategory.fromJson(data));
+  }
+
+  /// Lists the categories on the portal.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the portal. Use the following structure in
+  /// your request: `organizations/{org}/sites/{site}`
+  /// Value must have pattern "^organizations/[^/]+/sites/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListApiCategoriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListApiCategoriesResponse> list(
+      core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/apicategories';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(data));
+  }
+
+  /// Updates a category on the portal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the category. Use the following structure in
+  /// your request:
+  /// `organizations/{org}/sites/{site}/apicategories/{apicategory}`
+  /// Value must have pattern
+  /// "^organizations/[^/]+/sites/[^/]+/apicategories/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiCategory].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiCategory> patch(
+      GoogleCloudApigeeV1ApiCategoryData request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1ApiCategory.fromJson(data));
+  }
+}
+
+class ProjectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Provisions a new Apigee organization with a functioning runtime. This is
+  /// the standard way to create trial organizations for a free Apigee trial.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Name of the GCP project with which to associate the
+  /// Apigee organization.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> provisionOrganization(
+      GoogleCloudApigeeV1ProvisionOrganizationRequest request,
+      core.String project,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$project') +
+        ':provisionOrganization';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+}
+
 /// Message that represents an arbitrary HTTP body. It should only be used for
 /// payload formats that can't be represented as JSON, such as raw binary or an
 /// HTML page. This message can be used both in streaming and non-streaming API
@@ -10783,6 +11135,115 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// the Api category resource wrapped with response status, error_code etc.
+class GoogleCloudApigeeV1ApiCategory {
+  /// Details of category.
+  GoogleCloudApigeeV1ApiCategoryData data;
+
+  /// ID that can be used to find errors in the log files.
+  core.String errorCode;
+
+  /// Description of the operation.
+  core.String message;
+
+  /// ID that can be used to find request details in the log files.
+  core.String requestId;
+
+  /// Status of the operation.
+  core.String status;
+
+  GoogleCloudApigeeV1ApiCategory();
+
+  GoogleCloudApigeeV1ApiCategory.fromJson(core.Map _json) {
+    if (_json.containsKey("data")) {
+      data = new GoogleCloudApigeeV1ApiCategoryData.fromJson(_json["data"]);
+    }
+    if (_json.containsKey("errorCode")) {
+      errorCode = _json["errorCode"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (data != null) {
+      _json["data"] = (data).toJson();
+    }
+    if (errorCode != null) {
+      _json["errorCode"] = errorCode;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+/// the Api category resource.
+class GoogleCloudApigeeV1ApiCategoryData {
+  /// ID of the category (a UUID).
+  core.String id;
+
+  /// Name of the category.
+  core.String name;
+
+  /// Name of the portal.
+  core.String siteId;
+
+  /// Time the category was last modified in milliseconds since epoch.
+  core.String updateTime;
+
+  GoogleCloudApigeeV1ApiCategoryData();
+
+  GoogleCloudApigeeV1ApiCategoryData.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("siteId")) {
+      siteId = _json["siteId"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (siteId != null) {
+      _json["siteId"] = siteId;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     return _json;
   }
@@ -11316,6 +11777,55 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class GoogleCloudApigeeV1ApiResponseWrapper {
+  /// ID that can be used to find errors in the log files.
+  core.String errorCode;
+
+  /// Description of the operation.
+  core.String message;
+
+  /// ID that can be used to find request details in the log files.
+  core.String requestId;
+
+  /// Status of the operation.
+  core.String status;
+
+  GoogleCloudApigeeV1ApiResponseWrapper();
+
+  GoogleCloudApigeeV1ApiResponseWrapper.fromJson(core.Map _json) {
+    if (_json.containsKey("errorCode")) {
+      errorCode = _json["errorCode"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (errorCode != null) {
+      _json["errorCode"] = errorCode;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }
@@ -14407,6 +14917,15 @@ class GoogleCloudApigeeV1Instance {
   /// Output only. Port number of the exposed Apigee endpoint.
   core.String port;
 
+  /// Output only. State of the instance. Values other than ACTIVE means the
+  /// resource is not ready to use.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Resource is in an unspecified state.
+  /// - "CREATING" : Resource is being created.
+  /// - "ACTIVE" : Resource is provisioned and ready to use.
+  /// - "DELETING" : The resource is being deleted.
+  core.String state;
+
   GoogleCloudApigeeV1Instance();
 
   GoogleCloudApigeeV1Instance.fromJson(core.Map _json) {
@@ -14436,6 +14955,9 @@ class GoogleCloudApigeeV1Instance {
     }
     if (_json.containsKey("port")) {
       port = _json["port"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
     }
   }
 
@@ -14468,6 +14990,9 @@ class GoogleCloudApigeeV1Instance {
     }
     if (port != null) {
       _json["port"] = port;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     return _json;
   }
@@ -14783,6 +15308,68 @@ class GoogleCloudApigeeV1KeystoreConfig {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// the response for ListApiCategoriesRequest.
+class GoogleCloudApigeeV1ListApiCategoriesResponse {
+  /// Details of categories.
+  core.List<GoogleCloudApigeeV1ApiCategoryData> data;
+
+  /// ID that can be used to find errors in the log files.
+  core.String errorCode;
+
+  /// Description of the operation.
+  core.String message;
+
+  /// ID that can be used to find request details in the log files.
+  core.String requestId;
+
+  /// Status of the operation.
+  core.String status;
+
+  GoogleCloudApigeeV1ListApiCategoriesResponse();
+
+  GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<GoogleCloudApigeeV1ApiCategoryData>(
+              (value) => new GoogleCloudApigeeV1ApiCategoryData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("errorCode")) {
+      errorCode = _json["errorCode"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (errorCode != null) {
+      _json["errorCode"] = errorCode;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }
@@ -16142,6 +16729,52 @@ class GoogleCloudApigeeV1Property {
   }
 }
 
+/// Request for ProvisionOrganization.
+class GoogleCloudApigeeV1ProvisionOrganizationRequest {
+  /// Primary Cloud Platform region for analytics data storage. For valid
+  /// values, see [Create an
+  /// organization](https://docs.apigee.com/hybrid/latest/precog-provision).
+  /// Defaults to us-west1.
+  core.String analyticsRegion;
+
+  /// Name of the customer project's VPC network. If provided, the network needs
+  /// to be peered through Service Networking. If none is provided, the
+  /// organization will have access only to the public internet.
+  core.String authorizedNetwork;
+
+  /// Cloud Platform location for the runtime instance. Defaults to us-west1-a.
+  core.String runtimeLocation;
+
+  GoogleCloudApigeeV1ProvisionOrganizationRequest();
+
+  GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("analyticsRegion")) {
+      analyticsRegion = _json["analyticsRegion"];
+    }
+    if (_json.containsKey("authorizedNetwork")) {
+      authorizedNetwork = _json["authorizedNetwork"];
+    }
+    if (_json.containsKey("runtimeLocation")) {
+      runtimeLocation = _json["runtimeLocation"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (analyticsRegion != null) {
+      _json["analyticsRegion"] = analyticsRegion;
+    }
+    if (authorizedNetwork != null) {
+      _json["authorizedNetwork"] = authorizedNetwork;
+    }
+    if (runtimeLocation != null) {
+      _json["runtimeLocation"] = runtimeLocation;
+    }
+    return _json;
+  }
+}
+
 class GoogleCloudApigeeV1Query {
   /// Delimiter used in the CSV file, if `outputFormat` is set to `csv`.
   /// Defaults to the `,` (comma) character. Supported delimiter characters
@@ -16973,9 +17606,29 @@ class GoogleCloudApigeeV1RoutingRule {
   /// `*` character will match any string.
   core.String basepath;
 
+  /// The env group config revision_id when this rule was added or last updated.
+  /// This value is set when the rule is created and will only update if the the
+  /// environment_id changes. It is used to determine if the runtime is up to
+  /// date with respect to this rule. This field is omitted from the
+  /// IngressConfig unless the GetDeployedIngressConfig API is called with
+  /// debug=true.
+  core.String envGroupRevision;
+
   /// Name of an environment bound to the environment group in the following
   /// format: `organizations/{org}/environments/{env}`.
   core.String environment;
+
+  /// The resource name of the proxy revision that is receiving this basepath in
+  /// the following format: `organizations/{org}/apis/{api}/revisions/{rev}`.
+  /// This field is omitted from the IngressConfig unless the
+  /// GetDeployedIngressConfig API is called with debug=true.
+  core.String receiver;
+
+  /// The unix timestamp when this rule was updated. This is updated whenever
+  /// env_group_revision is updated. This field is omitted from the
+  /// IngressConfig unless the GetDeployedIngressConfig API is called with
+  /// debug=true.
+  core.String updateTime;
 
   GoogleCloudApigeeV1RoutingRule();
 
@@ -16983,8 +17636,17 @@ class GoogleCloudApigeeV1RoutingRule {
     if (_json.containsKey("basepath")) {
       basepath = _json["basepath"];
     }
+    if (_json.containsKey("envGroupRevision")) {
+      envGroupRevision = _json["envGroupRevision"];
+    }
     if (_json.containsKey("environment")) {
       environment = _json["environment"];
+    }
+    if (_json.containsKey("receiver")) {
+      receiver = _json["receiver"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
     }
   }
 
@@ -16994,8 +17656,17 @@ class GoogleCloudApigeeV1RoutingRule {
     if (basepath != null) {
       _json["basepath"] = basepath;
     }
+    if (envGroupRevision != null) {
+      _json["envGroupRevision"] = envGroupRevision;
+    }
     if (environment != null) {
       _json["environment"] = environment;
+    }
+    if (receiver != null) {
+      _json["receiver"] = receiver;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     return _json;
   }
@@ -18020,7 +18691,8 @@ class GoogleCloudApigeeV1TlsInfo {
   /// The TLS Common Name of the certificate.
   GoogleCloudApigeeV1TlsInfoCommonName commonName;
 
-  /// Required. Enables one-way TLS.
+  /// Required. Enables TLS. If false, neither one-way nor two-way TLS will be
+  /// enabled.
   core.bool enabled;
 
   /// If true, Edge ignores TLS certificate errors. Valid when configuring TLS

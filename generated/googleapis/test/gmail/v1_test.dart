@@ -73,51 +73,6 @@ checkAutoForwarding(api.AutoForwarding o) {
   buildCounterAutoForwarding--;
 }
 
-buildUnnamed2297() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed2297(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterBatchDeleteMessagesRequest = 0;
-buildBatchDeleteMessagesRequest() {
-  var o = new api.BatchDeleteMessagesRequest();
-  buildCounterBatchDeleteMessagesRequest++;
-  if (buildCounterBatchDeleteMessagesRequest < 3) {
-    o.ids = buildUnnamed2297();
-  }
-  buildCounterBatchDeleteMessagesRequest--;
-  return o;
-}
-
-checkBatchDeleteMessagesRequest(api.BatchDeleteMessagesRequest o) {
-  buildCounterBatchDeleteMessagesRequest++;
-  if (buildCounterBatchDeleteMessagesRequest < 3) {
-    checkUnnamed2297(o.ids);
-  }
-  buildCounterBatchDeleteMessagesRequest--;
-}
-
-buildUnnamed2298() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed2298(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 buildUnnamed2299() {
   var o = new core.List<core.String>();
   o.add("foo");
@@ -129,6 +84,25 @@ checkUnnamed2299(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterBatchDeleteMessagesRequest = 0;
+buildBatchDeleteMessagesRequest() {
+  var o = new api.BatchDeleteMessagesRequest();
+  buildCounterBatchDeleteMessagesRequest++;
+  if (buildCounterBatchDeleteMessagesRequest < 3) {
+    o.ids = buildUnnamed2299();
+  }
+  buildCounterBatchDeleteMessagesRequest--;
+  return o;
+}
+
+checkBatchDeleteMessagesRequest(api.BatchDeleteMessagesRequest o) {
+  buildCounterBatchDeleteMessagesRequest++;
+  if (buildCounterBatchDeleteMessagesRequest < 3) {
+    checkUnnamed2299(o.ids);
+  }
+  buildCounterBatchDeleteMessagesRequest--;
 }
 
 buildUnnamed2300() {
@@ -144,14 +118,40 @@ checkUnnamed2300(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+buildUnnamed2301() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed2301(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed2302() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed2302(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterBatchModifyMessagesRequest = 0;
 buildBatchModifyMessagesRequest() {
   var o = new api.BatchModifyMessagesRequest();
   buildCounterBatchModifyMessagesRequest++;
   if (buildCounterBatchModifyMessagesRequest < 3) {
-    o.addLabelIds = buildUnnamed2298();
-    o.ids = buildUnnamed2299();
-    o.removeLabelIds = buildUnnamed2300();
+    o.addLabelIds = buildUnnamed2300();
+    o.ids = buildUnnamed2301();
+    o.removeLabelIds = buildUnnamed2302();
   }
   buildCounterBatchModifyMessagesRequest--;
   return o;
@@ -160,9 +160,9 @@ buildBatchModifyMessagesRequest() {
 checkBatchModifyMessagesRequest(api.BatchModifyMessagesRequest o) {
   buildCounterBatchModifyMessagesRequest++;
   if (buildCounterBatchModifyMessagesRequest < 3) {
-    checkUnnamed2298(o.addLabelIds);
-    checkUnnamed2299(o.ids);
-    checkUnnamed2300(o.removeLabelIds);
+    checkUnnamed2300(o.addLabelIds);
+    checkUnnamed2301(o.ids);
+    checkUnnamed2302(o.removeLabelIds);
   }
   buildCounterBatchModifyMessagesRequest--;
 }
@@ -232,27 +232,27 @@ checkFilter(api.Filter o) {
   buildCounterFilter--;
 }
 
-buildUnnamed2301() {
+buildUnnamed2303() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2301(core.List<core.String> o) {
+checkUnnamed2303(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2302() {
+buildUnnamed2304() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2302(core.List<core.String> o) {
+checkUnnamed2304(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -263,9 +263,9 @@ buildFilterAction() {
   var o = new api.FilterAction();
   buildCounterFilterAction++;
   if (buildCounterFilterAction < 3) {
-    o.addLabelIds = buildUnnamed2301();
+    o.addLabelIds = buildUnnamed2303();
     o.forward = "foo";
-    o.removeLabelIds = buildUnnamed2302();
+    o.removeLabelIds = buildUnnamed2304();
   }
   buildCounterFilterAction--;
   return o;
@@ -274,9 +274,9 @@ buildFilterAction() {
 checkFilterAction(api.FilterAction o) {
   buildCounterFilterAction++;
   if (buildCounterFilterAction < 3) {
-    checkUnnamed2301(o.addLabelIds);
+    checkUnnamed2303(o.addLabelIds);
     unittest.expect(o.forward, unittest.equals('foo'));
-    checkUnnamed2302(o.removeLabelIds);
+    checkUnnamed2304(o.removeLabelIds);
   }
   buildCounterFilterAction--;
 }
@@ -337,66 +337,66 @@ checkForwardingAddress(api.ForwardingAddress o) {
   buildCounterForwardingAddress--;
 }
 
-buildUnnamed2303() {
+buildUnnamed2305() {
   var o = new core.List<api.HistoryLabelAdded>();
   o.add(buildHistoryLabelAdded());
   o.add(buildHistoryLabelAdded());
   return o;
 }
 
-checkUnnamed2303(core.List<api.HistoryLabelAdded> o) {
+checkUnnamed2305(core.List<api.HistoryLabelAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelAdded(o[0]);
   checkHistoryLabelAdded(o[1]);
 }
 
-buildUnnamed2304() {
+buildUnnamed2306() {
   var o = new core.List<api.HistoryLabelRemoved>();
   o.add(buildHistoryLabelRemoved());
   o.add(buildHistoryLabelRemoved());
   return o;
 }
 
-checkUnnamed2304(core.List<api.HistoryLabelRemoved> o) {
+checkUnnamed2306(core.List<api.HistoryLabelRemoved> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelRemoved(o[0]);
   checkHistoryLabelRemoved(o[1]);
 }
 
-buildUnnamed2305() {
+buildUnnamed2307() {
   var o = new core.List<api.Message>();
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed2305(core.List<api.Message> o) {
+checkUnnamed2307(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-buildUnnamed2306() {
+buildUnnamed2308() {
   var o = new core.List<api.HistoryMessageAdded>();
   o.add(buildHistoryMessageAdded());
   o.add(buildHistoryMessageAdded());
   return o;
 }
 
-checkUnnamed2306(core.List<api.HistoryMessageAdded> o) {
+checkUnnamed2308(core.List<api.HistoryMessageAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageAdded(o[0]);
   checkHistoryMessageAdded(o[1]);
 }
 
-buildUnnamed2307() {
+buildUnnamed2309() {
   var o = new core.List<api.HistoryMessageDeleted>();
   o.add(buildHistoryMessageDeleted());
   o.add(buildHistoryMessageDeleted());
   return o;
 }
 
-checkUnnamed2307(core.List<api.HistoryMessageDeleted> o) {
+checkUnnamed2309(core.List<api.HistoryMessageDeleted> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageDeleted(o[0]);
   checkHistoryMessageDeleted(o[1]);
@@ -408,11 +408,11 @@ buildHistory() {
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     o.id = "foo";
-    o.labelsAdded = buildUnnamed2303();
-    o.labelsRemoved = buildUnnamed2304();
-    o.messages = buildUnnamed2305();
-    o.messagesAdded = buildUnnamed2306();
-    o.messagesDeleted = buildUnnamed2307();
+    o.labelsAdded = buildUnnamed2305();
+    o.labelsRemoved = buildUnnamed2306();
+    o.messages = buildUnnamed2307();
+    o.messagesAdded = buildUnnamed2308();
+    o.messagesDeleted = buildUnnamed2309();
   }
   buildCounterHistory--;
   return o;
@@ -422,23 +422,23 @@ checkHistory(api.History o) {
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed2303(o.labelsAdded);
-    checkUnnamed2304(o.labelsRemoved);
-    checkUnnamed2305(o.messages);
-    checkUnnamed2306(o.messagesAdded);
-    checkUnnamed2307(o.messagesDeleted);
+    checkUnnamed2305(o.labelsAdded);
+    checkUnnamed2306(o.labelsRemoved);
+    checkUnnamed2307(o.messages);
+    checkUnnamed2308(o.messagesAdded);
+    checkUnnamed2309(o.messagesDeleted);
   }
   buildCounterHistory--;
 }
 
-buildUnnamed2308() {
+buildUnnamed2310() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2308(core.List<core.String> o) {
+checkUnnamed2310(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -449,7 +449,7 @@ buildHistoryLabelAdded() {
   var o = new api.HistoryLabelAdded();
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    o.labelIds = buildUnnamed2308();
+    o.labelIds = buildUnnamed2310();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelAdded--;
@@ -459,20 +459,20 @@ buildHistoryLabelAdded() {
 checkHistoryLabelAdded(api.HistoryLabelAdded o) {
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    checkUnnamed2308(o.labelIds);
+    checkUnnamed2310(o.labelIds);
     checkMessage(o.message);
   }
   buildCounterHistoryLabelAdded--;
 }
 
-buildUnnamed2309() {
+buildUnnamed2311() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2309(core.List<core.String> o) {
+checkUnnamed2311(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -483,7 +483,7 @@ buildHistoryLabelRemoved() {
   var o = new api.HistoryLabelRemoved();
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    o.labelIds = buildUnnamed2309();
+    o.labelIds = buildUnnamed2311();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelRemoved--;
@@ -493,7 +493,7 @@ buildHistoryLabelRemoved() {
 checkHistoryLabelRemoved(api.HistoryLabelRemoved o) {
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    checkUnnamed2309(o.labelIds);
+    checkUnnamed2311(o.labelIds);
     checkMessage(o.message);
   }
   buildCounterHistoryLabelRemoved--;
@@ -639,14 +639,14 @@ checkLanguageSettings(api.LanguageSettings o) {
   buildCounterLanguageSettings--;
 }
 
-buildUnnamed2310() {
+buildUnnamed2312() {
   var o = new core.List<api.Delegate>();
   o.add(buildDelegate());
   o.add(buildDelegate());
   return o;
 }
 
-checkUnnamed2310(core.List<api.Delegate> o) {
+checkUnnamed2312(core.List<api.Delegate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDelegate(o[0]);
   checkDelegate(o[1]);
@@ -657,7 +657,7 @@ buildListDelegatesResponse() {
   var o = new api.ListDelegatesResponse();
   buildCounterListDelegatesResponse++;
   if (buildCounterListDelegatesResponse < 3) {
-    o.delegates = buildUnnamed2310();
+    o.delegates = buildUnnamed2312();
   }
   buildCounterListDelegatesResponse--;
   return o;
@@ -666,19 +666,19 @@ buildListDelegatesResponse() {
 checkListDelegatesResponse(api.ListDelegatesResponse o) {
   buildCounterListDelegatesResponse++;
   if (buildCounterListDelegatesResponse < 3) {
-    checkUnnamed2310(o.delegates);
+    checkUnnamed2312(o.delegates);
   }
   buildCounterListDelegatesResponse--;
 }
 
-buildUnnamed2311() {
+buildUnnamed2313() {
   var o = new core.List<api.Draft>();
   o.add(buildDraft());
   o.add(buildDraft());
   return o;
 }
 
-checkUnnamed2311(core.List<api.Draft> o) {
+checkUnnamed2313(core.List<api.Draft> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDraft(o[0]);
   checkDraft(o[1]);
@@ -689,7 +689,7 @@ buildListDraftsResponse() {
   var o = new api.ListDraftsResponse();
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    o.drafts = buildUnnamed2311();
+    o.drafts = buildUnnamed2313();
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
   }
@@ -700,21 +700,21 @@ buildListDraftsResponse() {
 checkListDraftsResponse(api.ListDraftsResponse o) {
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    checkUnnamed2311(o.drafts);
+    checkUnnamed2313(o.drafts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
   }
   buildCounterListDraftsResponse--;
 }
 
-buildUnnamed2312() {
+buildUnnamed2314() {
   var o = new core.List<api.Filter>();
   o.add(buildFilter());
   o.add(buildFilter());
   return o;
 }
 
-checkUnnamed2312(core.List<api.Filter> o) {
+checkUnnamed2314(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilter(o[0]);
   checkFilter(o[1]);
@@ -725,7 +725,7 @@ buildListFiltersResponse() {
   var o = new api.ListFiltersResponse();
   buildCounterListFiltersResponse++;
   if (buildCounterListFiltersResponse < 3) {
-    o.filter = buildUnnamed2312();
+    o.filter = buildUnnamed2314();
   }
   buildCounterListFiltersResponse--;
   return o;
@@ -734,19 +734,19 @@ buildListFiltersResponse() {
 checkListFiltersResponse(api.ListFiltersResponse o) {
   buildCounterListFiltersResponse++;
   if (buildCounterListFiltersResponse < 3) {
-    checkUnnamed2312(o.filter);
+    checkUnnamed2314(o.filter);
   }
   buildCounterListFiltersResponse--;
 }
 
-buildUnnamed2313() {
+buildUnnamed2315() {
   var o = new core.List<api.ForwardingAddress>();
   o.add(buildForwardingAddress());
   o.add(buildForwardingAddress());
   return o;
 }
 
-checkUnnamed2313(core.List<api.ForwardingAddress> o) {
+checkUnnamed2315(core.List<api.ForwardingAddress> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkForwardingAddress(o[0]);
   checkForwardingAddress(o[1]);
@@ -757,7 +757,7 @@ buildListForwardingAddressesResponse() {
   var o = new api.ListForwardingAddressesResponse();
   buildCounterListForwardingAddressesResponse++;
   if (buildCounterListForwardingAddressesResponse < 3) {
-    o.forwardingAddresses = buildUnnamed2313();
+    o.forwardingAddresses = buildUnnamed2315();
   }
   buildCounterListForwardingAddressesResponse--;
   return o;
@@ -766,19 +766,19 @@ buildListForwardingAddressesResponse() {
 checkListForwardingAddressesResponse(api.ListForwardingAddressesResponse o) {
   buildCounterListForwardingAddressesResponse++;
   if (buildCounterListForwardingAddressesResponse < 3) {
-    checkUnnamed2313(o.forwardingAddresses);
+    checkUnnamed2315(o.forwardingAddresses);
   }
   buildCounterListForwardingAddressesResponse--;
 }
 
-buildUnnamed2314() {
+buildUnnamed2316() {
   var o = new core.List<api.History>();
   o.add(buildHistory());
   o.add(buildHistory());
   return o;
 }
 
-checkUnnamed2314(core.List<api.History> o) {
+checkUnnamed2316(core.List<api.History> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistory(o[0]);
   checkHistory(o[1]);
@@ -789,7 +789,7 @@ buildListHistoryResponse() {
   var o = new api.ListHistoryResponse();
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    o.history = buildUnnamed2314();
+    o.history = buildUnnamed2316();
     o.historyId = "foo";
     o.nextPageToken = "foo";
   }
@@ -800,21 +800,21 @@ buildListHistoryResponse() {
 checkListHistoryResponse(api.ListHistoryResponse o) {
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    checkUnnamed2314(o.history);
+    checkUnnamed2316(o.history);
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListHistoryResponse--;
 }
 
-buildUnnamed2315() {
+buildUnnamed2317() {
   var o = new core.List<api.Label>();
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed2315(core.List<api.Label> o) {
+checkUnnamed2317(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
@@ -825,7 +825,7 @@ buildListLabelsResponse() {
   var o = new api.ListLabelsResponse();
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    o.labels = buildUnnamed2315();
+    o.labels = buildUnnamed2317();
   }
   buildCounterListLabelsResponse--;
   return o;
@@ -834,19 +834,19 @@ buildListLabelsResponse() {
 checkListLabelsResponse(api.ListLabelsResponse o) {
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    checkUnnamed2315(o.labels);
+    checkUnnamed2317(o.labels);
   }
   buildCounterListLabelsResponse--;
 }
 
-buildUnnamed2316() {
+buildUnnamed2318() {
   var o = new core.List<api.Message>();
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed2316(core.List<api.Message> o) {
+checkUnnamed2318(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
@@ -857,7 +857,7 @@ buildListMessagesResponse() {
   var o = new api.ListMessagesResponse();
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    o.messages = buildUnnamed2316();
+    o.messages = buildUnnamed2318();
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
   }
@@ -868,21 +868,21 @@ buildListMessagesResponse() {
 checkListMessagesResponse(api.ListMessagesResponse o) {
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    checkUnnamed2316(o.messages);
+    checkUnnamed2318(o.messages);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
   }
   buildCounterListMessagesResponse--;
 }
 
-buildUnnamed2317() {
+buildUnnamed2319() {
   var o = new core.List<api.SendAs>();
   o.add(buildSendAs());
   o.add(buildSendAs());
   return o;
 }
 
-checkUnnamed2317(core.List<api.SendAs> o) {
+checkUnnamed2319(core.List<api.SendAs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSendAs(o[0]);
   checkSendAs(o[1]);
@@ -893,7 +893,7 @@ buildListSendAsResponse() {
   var o = new api.ListSendAsResponse();
   buildCounterListSendAsResponse++;
   if (buildCounterListSendAsResponse < 3) {
-    o.sendAs = buildUnnamed2317();
+    o.sendAs = buildUnnamed2319();
   }
   buildCounterListSendAsResponse--;
   return o;
@@ -902,19 +902,19 @@ buildListSendAsResponse() {
 checkListSendAsResponse(api.ListSendAsResponse o) {
   buildCounterListSendAsResponse++;
   if (buildCounterListSendAsResponse < 3) {
-    checkUnnamed2317(o.sendAs);
+    checkUnnamed2319(o.sendAs);
   }
   buildCounterListSendAsResponse--;
 }
 
-buildUnnamed2318() {
+buildUnnamed2320() {
   var o = new core.List<api.SmimeInfo>();
   o.add(buildSmimeInfo());
   o.add(buildSmimeInfo());
   return o;
 }
 
-checkUnnamed2318(core.List<api.SmimeInfo> o) {
+checkUnnamed2320(core.List<api.SmimeInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSmimeInfo(o[0]);
   checkSmimeInfo(o[1]);
@@ -925,7 +925,7 @@ buildListSmimeInfoResponse() {
   var o = new api.ListSmimeInfoResponse();
   buildCounterListSmimeInfoResponse++;
   if (buildCounterListSmimeInfoResponse < 3) {
-    o.smimeInfo = buildUnnamed2318();
+    o.smimeInfo = buildUnnamed2320();
   }
   buildCounterListSmimeInfoResponse--;
   return o;
@@ -934,19 +934,19 @@ buildListSmimeInfoResponse() {
 checkListSmimeInfoResponse(api.ListSmimeInfoResponse o) {
   buildCounterListSmimeInfoResponse++;
   if (buildCounterListSmimeInfoResponse < 3) {
-    checkUnnamed2318(o.smimeInfo);
+    checkUnnamed2320(o.smimeInfo);
   }
   buildCounterListSmimeInfoResponse--;
 }
 
-buildUnnamed2319() {
+buildUnnamed2321() {
   var o = new core.List<api.Thread>();
   o.add(buildThread());
   o.add(buildThread());
   return o;
 }
 
-checkUnnamed2319(core.List<api.Thread> o) {
+checkUnnamed2321(core.List<api.Thread> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThread(o[0]);
   checkThread(o[1]);
@@ -959,7 +959,7 @@ buildListThreadsResponse() {
   if (buildCounterListThreadsResponse < 3) {
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
-    o.threads = buildUnnamed2319();
+    o.threads = buildUnnamed2321();
   }
   buildCounterListThreadsResponse--;
   return o;
@@ -970,19 +970,19 @@ checkListThreadsResponse(api.ListThreadsResponse o) {
   if (buildCounterListThreadsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
-    checkUnnamed2319(o.threads);
+    checkUnnamed2321(o.threads);
   }
   buildCounterListThreadsResponse--;
 }
 
-buildUnnamed2320() {
+buildUnnamed2322() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2320(core.List<core.String> o) {
+checkUnnamed2322(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -996,7 +996,7 @@ buildMessage() {
     o.historyId = "foo";
     o.id = "foo";
     o.internalDate = "foo";
-    o.labelIds = buildUnnamed2320();
+    o.labelIds = buildUnnamed2322();
     o.payload = buildMessagePart();
     o.raw = "foo";
     o.sizeEstimate = 42;
@@ -1013,7 +1013,7 @@ checkMessage(api.Message o) {
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.internalDate, unittest.equals('foo'));
-    checkUnnamed2320(o.labelIds);
+    checkUnnamed2322(o.labelIds);
     checkMessagePart(o.payload);
     unittest.expect(o.raw, unittest.equals('foo'));
     unittest.expect(o.sizeEstimate, unittest.equals(42));
@@ -1023,27 +1023,27 @@ checkMessage(api.Message o) {
   buildCounterMessage--;
 }
 
-buildUnnamed2321() {
+buildUnnamed2323() {
   var o = new core.List<api.MessagePartHeader>();
   o.add(buildMessagePartHeader());
   o.add(buildMessagePartHeader());
   return o;
 }
 
-checkUnnamed2321(core.List<api.MessagePartHeader> o) {
+checkUnnamed2323(core.List<api.MessagePartHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePartHeader(o[0]);
   checkMessagePartHeader(o[1]);
 }
 
-buildUnnamed2322() {
+buildUnnamed2324() {
   var o = new core.List<api.MessagePart>();
   o.add(buildMessagePart());
   o.add(buildMessagePart());
   return o;
 }
 
-checkUnnamed2322(core.List<api.MessagePart> o) {
+checkUnnamed2324(core.List<api.MessagePart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePart(o[0]);
   checkMessagePart(o[1]);
@@ -1056,10 +1056,10 @@ buildMessagePart() {
   if (buildCounterMessagePart < 3) {
     o.body = buildMessagePartBody();
     o.filename = "foo";
-    o.headers = buildUnnamed2321();
+    o.headers = buildUnnamed2323();
     o.mimeType = "foo";
     o.partId = "foo";
-    o.parts = buildUnnamed2322();
+    o.parts = buildUnnamed2324();
   }
   buildCounterMessagePart--;
   return o;
@@ -1070,10 +1070,10 @@ checkMessagePart(api.MessagePart o) {
   if (buildCounterMessagePart < 3) {
     checkMessagePartBody(o.body);
     unittest.expect(o.filename, unittest.equals('foo'));
-    checkUnnamed2321(o.headers);
+    checkUnnamed2323(o.headers);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.partId, unittest.equals('foo'));
-    checkUnnamed2322(o.parts);
+    checkUnnamed2324(o.parts);
   }
   buildCounterMessagePart--;
 }
@@ -1122,53 +1122,6 @@ checkMessagePartHeader(api.MessagePartHeader o) {
   buildCounterMessagePartHeader--;
 }
 
-buildUnnamed2323() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed2323(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed2324() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed2324(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterModifyMessageRequest = 0;
-buildModifyMessageRequest() {
-  var o = new api.ModifyMessageRequest();
-  buildCounterModifyMessageRequest++;
-  if (buildCounterModifyMessageRequest < 3) {
-    o.addLabelIds = buildUnnamed2323();
-    o.removeLabelIds = buildUnnamed2324();
-  }
-  buildCounterModifyMessageRequest--;
-  return o;
-}
-
-checkModifyMessageRequest(api.ModifyMessageRequest o) {
-  buildCounterModifyMessageRequest++;
-  if (buildCounterModifyMessageRequest < 3) {
-    checkUnnamed2323(o.addLabelIds);
-    checkUnnamed2324(o.removeLabelIds);
-  }
-  buildCounterModifyMessageRequest--;
-}
-
 buildUnnamed2325() {
   var o = new core.List<core.String>();
   o.add("foo");
@@ -1195,13 +1148,60 @@ checkUnnamed2326(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.int buildCounterModifyMessageRequest = 0;
+buildModifyMessageRequest() {
+  var o = new api.ModifyMessageRequest();
+  buildCounterModifyMessageRequest++;
+  if (buildCounterModifyMessageRequest < 3) {
+    o.addLabelIds = buildUnnamed2325();
+    o.removeLabelIds = buildUnnamed2326();
+  }
+  buildCounterModifyMessageRequest--;
+  return o;
+}
+
+checkModifyMessageRequest(api.ModifyMessageRequest o) {
+  buildCounterModifyMessageRequest++;
+  if (buildCounterModifyMessageRequest < 3) {
+    checkUnnamed2325(o.addLabelIds);
+    checkUnnamed2326(o.removeLabelIds);
+  }
+  buildCounterModifyMessageRequest--;
+}
+
+buildUnnamed2327() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed2327(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed2328() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed2328(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterModifyThreadRequest = 0;
 buildModifyThreadRequest() {
   var o = new api.ModifyThreadRequest();
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    o.addLabelIds = buildUnnamed2325();
-    o.removeLabelIds = buildUnnamed2326();
+    o.addLabelIds = buildUnnamed2327();
+    o.removeLabelIds = buildUnnamed2328();
   }
   buildCounterModifyThreadRequest--;
   return o;
@@ -1210,8 +1210,8 @@ buildModifyThreadRequest() {
 checkModifyThreadRequest(api.ModifyThreadRequest o) {
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    checkUnnamed2325(o.addLabelIds);
-    checkUnnamed2326(o.removeLabelIds);
+    checkUnnamed2327(o.addLabelIds);
+    checkUnnamed2328(o.removeLabelIds);
   }
   buildCounterModifyThreadRequest--;
 }
@@ -1355,14 +1355,14 @@ checkSmtpMsa(api.SmtpMsa o) {
   buildCounterSmtpMsa--;
 }
 
-buildUnnamed2327() {
+buildUnnamed2329() {
   var o = new core.List<api.Message>();
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed2327(core.List<api.Message> o) {
+checkUnnamed2329(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
@@ -1375,7 +1375,7 @@ buildThread() {
   if (buildCounterThread < 3) {
     o.historyId = "foo";
     o.id = "foo";
-    o.messages = buildUnnamed2327();
+    o.messages = buildUnnamed2329();
     o.snippet = "foo";
   }
   buildCounterThread--;
@@ -1387,7 +1387,7 @@ checkThread(api.Thread o) {
   if (buildCounterThread < 3) {
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed2327(o.messages);
+    checkUnnamed2329(o.messages);
     unittest.expect(o.snippet, unittest.equals('foo'));
   }
   buildCounterThread--;
@@ -1426,14 +1426,14 @@ checkVacationSettings(api.VacationSettings o) {
   buildCounterVacationSettings--;
 }
 
-buildUnnamed2328() {
+buildUnnamed2330() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2328(core.List<core.String> o) {
+checkUnnamed2330(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1445,7 +1445,7 @@ buildWatchRequest() {
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
     o.labelFilterAction = "foo";
-    o.labelIds = buildUnnamed2328();
+    o.labelIds = buildUnnamed2330();
     o.topicName = "foo";
   }
   buildCounterWatchRequest--;
@@ -1456,7 +1456,7 @@ checkWatchRequest(api.WatchRequest o) {
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
     unittest.expect(o.labelFilterAction, unittest.equals('foo'));
-    checkUnnamed2328(o.labelIds);
+    checkUnnamed2330(o.labelIds);
     unittest.expect(o.topicName, unittest.equals('foo'));
   }
   buildCounterWatchRequest--;
@@ -1481,32 +1481,6 @@ checkWatchResponse(api.WatchResponse o) {
     unittest.expect(o.historyId, unittest.equals('foo'));
   }
   buildCounterWatchResponse--;
-}
-
-buildUnnamed2329() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed2329(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed2330() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed2330(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 buildUnnamed2331() {
@@ -1543,6 +1517,32 @@ buildUnnamed2333() {
 }
 
 checkUnnamed2333(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed2334() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed2334(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed2335() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed2335(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2271,10 +2271,10 @@ main() {
       var mock = new HttpServerMock();
       api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
       var arg_userId = "foo";
-      var arg_q = "foo";
       var arg_includeSpamTrash = true;
       var arg_pageToken = "foo";
       var arg_maxResults = 42;
+      var arg_q = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2315,13 +2315,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["includeSpamTrash"].first,
             unittest.equals("$arg_includeSpamTrash"));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2332,10 +2332,10 @@ main() {
       }), true);
       res
           .list(arg_userId,
-              q: arg_q,
               includeSpamTrash: arg_includeSpamTrash,
               pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              q: arg_q,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDraftsResponse(response);
@@ -2484,9 +2484,9 @@ main() {
       var mock = new HttpServerMock();
       api.UsersHistoryResourceApi res = new api.GmailApi(mock).users.history;
       var arg_userId = "foo";
-      var arg_historyTypes = buildUnnamed2329();
-      var arg_pageToken = "foo";
+      var arg_historyTypes = buildUnnamed2331();
       var arg_labelId = "foo";
+      var arg_pageToken = "foo";
       var arg_maxResults = 42;
       var arg_startHistoryId = "foo";
       var arg_$fields = "foo";
@@ -2532,9 +2532,9 @@ main() {
         unittest.expect(
             queryMap["historyTypes"], unittest.equals(arg_historyTypes));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["labelId"].first, unittest.equals(arg_labelId));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(queryMap["startHistoryId"].first,
@@ -2550,8 +2550,8 @@ main() {
       res
           .list(arg_userId,
               historyTypes: arg_historyTypes,
-              pageToken: arg_pageToken,
               labelId: arg_labelId,
+              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
               startHistoryId: arg_startHistoryId,
               $fields: arg_$fields)
@@ -3132,7 +3132,7 @@ main() {
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_id = "foo";
-      var arg_metadataHeaders = buildUnnamed2330();
+      var arg_metadataHeaders = buildUnnamed2332();
       var arg_format = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3207,9 +3207,9 @@ main() {
       var arg_request = buildMessage();
       var arg_userId = "foo";
       var arg_processForCalendar = true;
-      var arg_deleted = true;
-      var arg_neverMarkSpam = true;
       var arg_internalDateSource = "foo";
+      var arg_neverMarkSpam = true;
+      var arg_deleted = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Message.fromJson(json);
@@ -3255,12 +3255,12 @@ main() {
         }
         unittest.expect(queryMap["processForCalendar"].first,
             unittest.equals("$arg_processForCalendar"));
-        unittest.expect(
-            queryMap["deleted"].first, unittest.equals("$arg_deleted"));
-        unittest.expect(queryMap["neverMarkSpam"].first,
-            unittest.equals("$arg_neverMarkSpam"));
         unittest.expect(queryMap["internalDateSource"].first,
             unittest.equals(arg_internalDateSource));
+        unittest.expect(queryMap["neverMarkSpam"].first,
+            unittest.equals("$arg_neverMarkSpam"));
+        unittest.expect(
+            queryMap["deleted"].first, unittest.equals("$arg_deleted"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3272,9 +3272,9 @@ main() {
       res
           .import(arg_request, arg_userId,
               processForCalendar: arg_processForCalendar,
-              deleted: arg_deleted,
-              neverMarkSpam: arg_neverMarkSpam,
               internalDateSource: arg_internalDateSource,
+              neverMarkSpam: arg_neverMarkSpam,
+              deleted: arg_deleted,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMessage(response);
@@ -3289,8 +3289,8 @@ main() {
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = "foo";
-      var arg_internalDateSource = "foo";
       var arg_deleted = true;
+      var arg_internalDateSource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Message.fromJson(json);
@@ -3334,10 +3334,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["internalDateSource"].first,
-            unittest.equals(arg_internalDateSource));
         unittest.expect(
             queryMap["deleted"].first, unittest.equals("$arg_deleted"));
+        unittest.expect(queryMap["internalDateSource"].first,
+            unittest.equals(arg_internalDateSource));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3348,8 +3348,8 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_userId,
-              internalDateSource: arg_internalDateSource,
               deleted: arg_deleted,
+              internalDateSource: arg_internalDateSource,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMessage(response);
@@ -3360,11 +3360,11 @@ main() {
       var mock = new HttpServerMock();
       api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
-      var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      var arg_includeSpamTrash = true;
-      var arg_labelIds = buildUnnamed2331();
       var arg_q = "foo";
+      var arg_includeSpamTrash = true;
+      var arg_labelIds = buildUnnamed2333();
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3405,14 +3405,14 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["includeSpamTrash"].first,
             unittest.equals("$arg_includeSpamTrash"));
         unittest.expect(queryMap["labelIds"], unittest.equals(arg_labelIds));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3423,11 +3423,11 @@ main() {
       }), true);
       res
           .list(arg_userId,
-              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              q: arg_q,
               includeSpamTrash: arg_includeSpamTrash,
               labelIds: arg_labelIds,
-              q: arg_q,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListMessagesResponse(response);
@@ -6051,8 +6051,8 @@ main() {
       api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_id = "foo";
+      var arg_metadataHeaders = buildUnnamed2334();
       var arg_format = "foo";
-      var arg_metadataHeaders = buildUnnamed2332();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6096,9 +6096,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(
             queryMap["metadataHeaders"], unittest.equals(arg_metadataHeaders));
+        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6109,8 +6109,8 @@ main() {
       }), true);
       res
           .get(arg_userId, arg_id,
-              format: arg_format,
               metadataHeaders: arg_metadataHeaders,
+              format: arg_format,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkThread(response);
@@ -6121,11 +6121,11 @@ main() {
       var mock = new HttpServerMock();
       api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
+      var arg_labelIds = buildUnnamed2335();
       var arg_q = "foo";
-      var arg_labelIds = buildUnnamed2333();
       var arg_pageToken = "foo";
-      var arg_maxResults = 42;
       var arg_includeSpamTrash = true;
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6166,14 +6166,14 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["labelIds"], unittest.equals(arg_labelIds));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["includeSpamTrash"].first,
             unittest.equals("$arg_includeSpamTrash"));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6184,11 +6184,11 @@ main() {
       }), true);
       res
           .list(arg_userId,
-              q: arg_q,
               labelIds: arg_labelIds,
+              q: arg_q,
               pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               includeSpamTrash: arg_includeSpamTrash,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListThreadsResponse(response);

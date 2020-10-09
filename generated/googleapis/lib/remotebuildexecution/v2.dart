@@ -64,10 +64,10 @@ class ActionResultsResourceApi {
   ///
   /// [sizeBytes] - The size of the blob, in bytes.
   ///
-  /// [inlineStderr] - A hint to the server to request inlining stderr in the
+  /// [inlineStdout] - A hint to the server to request inlining stdout in the
   /// ActionResult message.
   ///
-  /// [inlineStdout] - A hint to the server to request inlining stdout in the
+  /// [inlineStderr] - A hint to the server to request inlining stderr in the
   /// ActionResult message.
   ///
   /// [inlineOutputFiles] - A hint to the server to inline the contents of the
@@ -86,8 +86,8 @@ class ActionResultsResourceApi {
   /// this method will complete with the same error.
   async.Future<BuildBazelRemoteExecutionV2ActionResult> get(
       core.String instanceName, core.String hash, core.String sizeBytes,
-      {core.bool inlineStderr,
-      core.bool inlineStdout,
+      {core.bool inlineStdout,
+      core.bool inlineStderr,
       core.List<core.String> inlineOutputFiles,
       core.String $fields}) {
     var _url;
@@ -106,11 +106,11 @@ class ActionResultsResourceApi {
     if (sizeBytes == null) {
       throw new core.ArgumentError("Parameter sizeBytes is required.");
     }
-    if (inlineStderr != null) {
-      _queryParams["inlineStderr"] = ["${inlineStderr}"];
-    }
     if (inlineStdout != null) {
       _queryParams["inlineStdout"] = ["${inlineStdout}"];
+    }
+    if (inlineStderr != null) {
+      _queryParams["inlineStderr"] = ["${inlineStderr}"];
     }
     if (inlineOutputFiles != null) {
       _queryParams["inlineOutputFiles"] = inlineOutputFiles;
@@ -566,15 +566,15 @@ class BlobsResourceApi {
   ///
   /// [sizeBytes] - The size of the blob, in bytes.
   ///
+  /// [pageToken] - A page token, which must be a value received in a previous
+  /// GetTreeResponse. If present, the server will use that token as an offset,
+  /// returning only that page and the ones that succeed it.
+  ///
   /// [pageSize] - A maximum page size to request. If present, the server will
   /// request no more than this many items. Regardless of whether a page size is
   /// specified, the server may place its own limit on the number of items to be
   /// returned and require the client to retrieve more items using a subsequent
   /// request.
-  ///
-  /// [pageToken] - A page token, which must be a value received in a previous
-  /// GetTreeResponse. If present, the server will use that token as an offset,
-  /// returning only that page and the ones that succeed it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -588,7 +588,7 @@ class BlobsResourceApi {
   /// this method will complete with the same error.
   async.Future<BuildBazelRemoteExecutionV2GetTreeResponse> getTree(
       core.String instanceName, core.String hash, core.String sizeBytes,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -605,11 +605,11 @@ class BlobsResourceApi {
     if (sizeBytes == null) {
       throw new core.ArgumentError("Parameter sizeBytes is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3192,6 +3192,9 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
   /// the Docker image (false) for this command.
   core.bool dockerCacheHit;
 
+  /// Docker Image name.
+  core.String dockerImageName;
+
   /// The input cache miss ratio.
   core.double inputCacheMiss;
 
@@ -3206,6 +3209,9 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
   GoogleDevtoolsRemotebuildbotCommandEvents.fromJson(core.Map _json) {
     if (_json.containsKey("dockerCacheHit")) {
       dockerCacheHit = _json["dockerCacheHit"];
+    }
+    if (_json.containsKey("dockerImageName")) {
+      dockerImageName = _json["dockerImageName"];
     }
     if (_json.containsKey("inputCacheMiss")) {
       inputCacheMiss = _json["inputCacheMiss"].toDouble();
@@ -3223,6 +3229,9 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
         new core.Map<core.String, core.Object>();
     if (dockerCacheHit != null) {
       _json["dockerCacheHit"] = dockerCacheHit;
+    }
+    if (dockerImageName != null) {
+      _json["dockerImageName"] = dockerImageName;
     }
     if (inputCacheMiss != null) {
       _json["inputCacheMiss"] = inputCacheMiss;

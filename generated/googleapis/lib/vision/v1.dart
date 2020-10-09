@@ -480,9 +480,9 @@ class OperationsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -496,8 +496,8 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
       {core.String pageToken,
-      core.int pageSize,
       core.String filter,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -512,11 +512,11 @@ class OperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1606,11 +1606,11 @@ class ProjectsLocationsProductSetsProductsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token returned from a previous List request,
-  /// if any.
-  ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
+  ///
+  /// [pageToken] - The next_page_token returned from a previous List request,
+  /// if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1623,7 +1623,7 @@ class ProjectsLocationsProductSetsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProductsInProductSetResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1634,11 +1634,11 @@ class ProjectsLocationsProductSetsProductsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1830,11 +1830,11 @@ class ProjectsLocationsProductsResourceApi {
   /// be listed. Format: `projects/PROJECT_ID/locations/LOC_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token returned from a previous List request,
-  /// if any.
-  ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
+  ///
+  /// [pageToken] - The next_page_token returned from a previous List request,
+  /// if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1847,7 +1847,7 @@ class ProjectsLocationsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProductsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1858,11 +1858,11 @@ class ProjectsLocationsProductsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2204,12 +2204,12 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of items to return. Default 10, maximum
+  /// 100.
+  ///
   /// [pageToken] - A token identifying a page of results to be returned. This
   /// is the value of `nextPageToken` returned in a previous reference image
   /// list request. Defaults to the first page if not specified.
-  ///
-  /// [pageSize] - The maximum number of items to return. Default 10, maximum
-  /// 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2222,7 +2222,7 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReferenceImagesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2233,11 +2233,11 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -321,10 +321,10 @@ class ProjectsNotesResourceApi {
   /// of `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
   /// [pageSize] - Number of notes to return in the list. Must be positive. Max
   /// allowed page size is 1000. If not specified, page size defaults to 20.
-  ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [filter] - The filter expression.
   ///
@@ -339,8 +339,8 @@ class ProjectsNotesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNotesResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -353,11 +353,11 @@ class ProjectsNotesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -569,11 +569,11 @@ class ProjectsNotesOccurrencesResourceApi {
   /// form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
   ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
   /// [pageSize] - Number of occurrences to return in the list.
   ///
   /// [filter] - The filter expression.
-  ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -586,9 +586,9 @@ class ProjectsNotesOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNoteOccurrencesResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -600,14 +600,14 @@ class ProjectsNotesOccurrencesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -998,13 +998,13 @@ class ProjectsOccurrencesResourceApi {
   /// the form of `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The filter expression.
-  ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
-  ///
   /// [pageSize] - Number of occurrences to return in the list. Must be
   /// positive. Max allowed page size is 1000. If not specified, page size
   /// defaults to 20.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [filter] - The filter expression.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1017,9 +1017,9 @@ class ProjectsOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOccurrencesResponse> list(core.String parent,
-      {core.String filter,
+      {core.int pageSize,
       core.String pageToken,
-      core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1031,14 +1031,14 @@ class ProjectsOccurrencesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1291,9 +1291,9 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// [pageSize] - The number of scan configs to return in the list.
   ///
-  /// [filter] - Required. The filter expression.
-  ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [filter] - Required. The filter expression.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1307,8 +1307,8 @@ class ProjectsScanConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListScanConfigsResponse> list(core.String parent,
       {core.int pageSize,
-      core.String filter,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1323,11 +1323,11 @@ class ProjectsScanConfigsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

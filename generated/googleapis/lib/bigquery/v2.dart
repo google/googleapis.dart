@@ -247,13 +247,13 @@ class DatasetsResourceApi {
   ///
   /// [projectId] - Project ID of the datasets to be listed
   ///
+  /// [all] - Whether to list all datasets, including hidden ones
+  ///
   /// [filter] - An expression for filtering the results of the request by
   /// label. The syntax is "labels.<name>[:<value>]". Multiple filters can be
   /// ANDed together by connecting with a space. Example:
   /// "labels.department:receiving labels.active". See Filtering datasets using
   /// labels for details.
-  ///
-  /// [all] - Whether to list all datasets, including hidden ones
   ///
   /// [maxResults] - The maximum number of results to return
   ///
@@ -271,8 +271,8 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DatasetList> list(core.String projectId,
-      {core.String filter,
-      core.bool all,
+      {core.bool all,
+      core.String filter,
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
@@ -286,11 +286,11 @@ class DatasetsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (all != null) {
       _queryParams["all"] = ["${all}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -569,17 +569,17 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the query job
   ///
+  /// [maxResults] - Maximum number of results to read
+  ///
+  /// [startIndex] - Zero-based index of the starting row
+  ///
   /// [timeoutMs] - How long to wait for the query to complete, in milliseconds,
   /// before returning. Default is 10 seconds. If the timeout passes before the
   /// job completes, the 'jobComplete' field in the response will be false
   ///
-  /// [startIndex] - Zero-based index of the starting row
-  ///
   /// [location] - The geographic location where the job should run. Required
   /// except for US and EU. See details at
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
-  ///
-  /// [maxResults] - Maximum number of results to read
   ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
@@ -596,10 +596,10 @@ class JobsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetQueryResultsResponse> getQueryResults(
       core.String projectId, core.String jobId,
-      {core.int timeoutMs,
+      {core.int maxResults,
       core.String startIndex,
+      core.int timeoutMs,
       core.String location,
-      core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -615,17 +615,17 @@ class JobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (timeoutMs != null) {
-      _queryParams["timeoutMs"] = ["${timeoutMs}"];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = [startIndex];
     }
+    if (timeoutMs != null) {
+      _queryParams["timeoutMs"] = ["${timeoutMs}"];
+    }
     if (location != null) {
       _queryParams["location"] = [location];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -728,13 +728,13 @@ class JobsResourceApi {
   ///
   /// [projectId] - Project ID of the jobs to list
   ///
+  /// [maxCreationTime] - Max value for job creation time, in milliseconds since
+  /// the POSIX epoch. If set, only jobs created before or at this timestamp are
+  /// returned
+  ///
+  /// [maxResults] - Maximum number of results to return
+  ///
   /// [stateFilter] - Filter for job state
-  ///
-  /// [allUsers] - Whether to display jobs owned by all users in the project.
-  /// Default false
-  ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
   ///
   /// [minCreationTime] - Min value for job creation time, in milliseconds since
   /// the POSIX epoch. If set, only jobs created after or at this timestamp are
@@ -743,16 +743,16 @@ class JobsResourceApi {
   /// [parentJobId] - If set, retrieves only jobs whose parent is this job.
   /// Otherwise, retrieves only jobs which have no parent
   ///
-  /// [maxCreationTime] - Max value for job creation time, in milliseconds since
-  /// the POSIX epoch. If set, only jobs created before or at this timestamp are
-  /// returned
-  ///
   /// [projection] - Restrict information returned to a set of selected fields
   /// Possible string values are:
   /// - "full" : Includes all job data
   /// - "minimal" : Does not include the job configuration
   ///
-  /// [maxResults] - Maximum number of results to return
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
+  ///
+  /// [allUsers] - Whether to display jobs owned by all users in the project.
+  /// Default false
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -765,14 +765,14 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<JobList> list(core.String projectId,
-      {core.List<core.String> stateFilter,
-      core.bool allUsers,
-      core.String pageToken,
+      {core.String maxCreationTime,
+      core.int maxResults,
+      core.List<core.String> stateFilter,
       core.String minCreationTime,
       core.String parentJobId,
-      core.String maxCreationTime,
       core.String projection,
-      core.int maxResults,
+      core.String pageToken,
+      core.bool allUsers,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -784,14 +784,14 @@ class JobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (maxCreationTime != null) {
+      _queryParams["maxCreationTime"] = [maxCreationTime];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (stateFilter != null) {
       _queryParams["stateFilter"] = stateFilter;
-    }
-    if (allUsers != null) {
-      _queryParams["allUsers"] = ["${allUsers}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (minCreationTime != null) {
       _queryParams["minCreationTime"] = [minCreationTime];
@@ -799,14 +799,14 @@ class JobsResourceApi {
     if (parentJobId != null) {
       _queryParams["parentJobId"] = [parentJobId];
     }
-    if (maxCreationTime != null) {
-      _queryParams["maxCreationTime"] = [maxCreationTime];
-    }
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (allUsers != null) {
+      _queryParams["allUsers"] = ["${allUsers}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1197,10 +1197,10 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - Maximum number of results to return
-  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
+  ///
+  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1213,7 +1213,7 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProjectList> list(
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1221,11 +1221,11 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1458,14 +1458,14 @@ class RoutinesResourceApi {
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
   ///
+  /// [maxResults] - The maximum number of results to return in a single
+  /// response page. Leverage the page tokens to iterate through the entire
+  /// collection.
+  ///
   /// [filter] - If set, then only the Routines matching this filter are
   /// returned. The current supported form is either "routine_type:" or
   /// "routineType:", where is a RoutineType enum. Example:
   /// "routineType:SCALAR_FUNCTION".
-  ///
-  /// [maxResults] - The maximum number of results to return in a single
-  /// response page. Leverage the page tokens to iterate through the entire
-  /// collection.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1481,8 +1481,8 @@ class RoutinesResourceApi {
       core.String projectId, core.String datasetId,
       {core.String readMask,
       core.String pageToken,
-      core.String filter,
       core.int maxResults,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1503,11 +1503,11 @@ class RoutinesResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1683,15 +1683,15 @@ class TabledataResourceApi {
   ///
   /// [tableId] - Table ID of the table to read
   ///
-  /// [pageToken] - Page token, returned by a previous call, identifying the
-  /// result set
-  ///
   /// [maxResults] - Maximum number of results to return
   ///
   /// [selectedFields] - List of fields to return (comma-separated). If
   /// unspecified, all fields are returned
   ///
   /// [startIndex] - Zero-based index of the starting row to read
+  ///
+  /// [pageToken] - Page token, returned by a previous call, identifying the
+  /// result set
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1705,10 +1705,10 @@ class TabledataResourceApi {
   /// this method will complete with the same error.
   async.Future<TableDataList> list(
       core.String projectId, core.String datasetId, core.String tableId,
-      {core.String pageToken,
-      core.int maxResults,
+      {core.int maxResults,
       core.String selectedFields,
       core.String startIndex,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1726,9 +1726,6 @@ class TabledataResourceApi {
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
@@ -1737,6 +1734,9 @@ class TabledataResourceApi {
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = [startIndex];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2012,10 +2012,10 @@ class TablesResourceApi {
   ///
   /// [datasetId] - Dataset ID of the tables to list
   ///
-  /// [maxResults] - Maximum number of results to return
-  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
+  ///
+  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2028,7 +2028,7 @@ class TablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TableList> list(core.String projectId, core.String datasetId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2042,11 +2042,11 @@ class TablesResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

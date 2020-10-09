@@ -117,10 +117,6 @@ class ProjectsResourceApi {
   /// can be used, otherwise an INVALID_ARGUMENT (400) error is returned.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [displayLanguageCode] - Optional. The language to use to return localized,
-  /// human readable names of supported languages. If missing, then display
-  /// names are not returned in a response.
-  ///
   /// [model] - Optional. Get supported languages of this model. The format
   /// depends on model type: - AutoML Translation models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
@@ -129,6 +125,10 @@ class ProjectsResourceApi {
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
   /// Returns languages supported by the specified model. If missing, we get
   /// supported languages of Google general base (PBMT) model.
+  ///
+  /// [displayLanguageCode] - Optional. The language to use to return localized,
+  /// human readable names of supported languages. If missing, then display
+  /// names are not returned in a response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -141,8 +141,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SupportedLanguages> getSupportedLanguages(core.String parent,
-      {core.String displayLanguageCode,
-      core.String model,
+      {core.String model,
+      core.String displayLanguageCode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -154,11 +154,11 @@ class ProjectsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (displayLanguageCode != null) {
-      _queryParams["displayLanguageCode"] = [displayLanguageCode];
-    }
     if (model != null) {
       _queryParams["model"] = [model];
+    }
+    if (displayLanguageCode != null) {
+      _queryParams["displayLanguageCode"] = [displayLanguageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -425,6 +425,10 @@ class ProjectsLocationsResourceApi {
   /// can be used, otherwise an INVALID_ARGUMENT (400) error is returned.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [displayLanguageCode] - Optional. The language to use to return localized,
+  /// human readable names of supported languages. If missing, then display
+  /// names are not returned in a response.
+  ///
   /// [model] - Optional. Get supported languages of this model. The format
   /// depends on model type: - AutoML Translation models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
@@ -433,10 +437,6 @@ class ProjectsLocationsResourceApi {
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
   /// Returns languages supported by the specified model. If missing, we get
   /// supported languages of Google general base (PBMT) model.
-  ///
-  /// [displayLanguageCode] - Optional. The language to use to return localized,
-  /// human readable names of supported languages. If missing, then display
-  /// names are not returned in a response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -449,8 +449,8 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SupportedLanguages> getSupportedLanguages(core.String parent,
-      {core.String model,
-      core.String displayLanguageCode,
+      {core.String displayLanguageCode,
+      core.String model,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -462,11 +462,11 @@ class ProjectsLocationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (model != null) {
-      _queryParams["model"] = [model];
-    }
     if (displayLanguageCode != null) {
       _queryParams["displayLanguageCode"] = [displayLanguageCode];
+    }
+    if (model != null) {
+      _queryParams["model"] = [model];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -492,11 +492,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -509,9 +509,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -523,14 +523,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -764,6 +764,12 @@ class ProjectsLocationsGlossariesResourceApi {
   /// glossaries.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of
+  /// [ListGlossariesResponse.next_page_token] returned from the previous call
+  /// to `ListGlossaries` method. The first page is returned if `page_token`is
+  /// empty or missing.
+  ///
   /// [filter] - Optional. Filter specifying constraints of a list operation.
   /// Specify the constraint by the format of "key=value", where key must be
   /// "src" or "tgt", and the value must be a valid language code. For multiple
@@ -784,12 +790,6 @@ class ProjectsLocationsGlossariesResourceApi {
   /// glossaries than requested. If unspecified, the server picks an appropriate
   /// default.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return. Typically, this is the value of
-  /// [ListGlossariesResponse.next_page_token] returned from the previous call
-  /// to `ListGlossaries` method. The first page is returned if `page_token`is
-  /// empty or missing.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -801,9 +801,9 @@ class ProjectsLocationsGlossariesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGlossariesResponse> list(core.String parent,
-      {core.String filter,
+      {core.String pageToken,
+      core.String filter,
       core.int pageSize,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -815,14 +815,14 @@ class ProjectsLocationsGlossariesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1016,9 +1016,9 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1032,8 +1032,8 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
       {core.String filter,
-      core.int pageSize,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1048,11 +1048,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

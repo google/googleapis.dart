@@ -62,8 +62,6 @@ class UsersResourceApi {
   /// [name] - Required. The unique ID for the user in format `users/{user}`.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [projectId] - The project ID of the Google Cloud Platform project.
-  ///
   /// [operatingSystemType] - The type of operating system associated with the
   /// account.
   /// Possible string values are:
@@ -71,6 +69,8 @@ class UsersResourceApi {
   /// associated with the user account information is unspecified.
   /// - "LINUX" : Linux user account information.
   /// - "WINDOWS" : Windows user account information.
+  ///
+  /// [projectId] - The project ID of the Google Cloud Platform project.
   ///
   /// [systemId] - A system ID for filtering the results of the request.
   ///
@@ -85,8 +85,8 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LoginProfile> getLoginProfile(core.String name,
-      {core.String projectId,
-      core.String operatingSystemType,
+      {core.String operatingSystemType,
+      core.String projectId,
       core.String systemId,
       core.String $fields}) {
     var _url;
@@ -99,11 +99,11 @@ class UsersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (operatingSystemType != null) {
       _queryParams["operatingSystemType"] = [operatingSystemType];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if (systemId != null) {
       _queryParams["systemId"] = [systemId];

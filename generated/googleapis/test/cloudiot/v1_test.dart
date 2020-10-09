@@ -2075,14 +2075,14 @@ main() {
       api.ProjectsLocationsRegistriesDevicesResourceApi res =
           new api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_parent = "foo";
-      var arg_deviceIds = buildUnnamed116();
-      var arg_gatewayListOptions_associationsDeviceId = "foo";
-      var arg_pageSize = 42;
       var arg_gatewayListOptions_gatewayType = "foo";
       var arg_fieldMask = "foo";
+      var arg_gatewayListOptions_associationsDeviceId = "foo";
       var arg_gatewayListOptions_associationsGatewayId = "foo";
-      var arg_deviceNumIds = buildUnnamed117();
+      var arg_pageSize = 42;
+      var arg_deviceNumIds = buildUnnamed116();
       var arg_pageToken = "foo";
+      var arg_deviceIds = buildUnnamed117();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2115,23 +2115,23 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["deviceIds"], unittest.equals(arg_deviceIds));
-        unittest.expect(
-            queryMap["gatewayListOptions.associationsDeviceId"].first,
-            unittest.equals(arg_gatewayListOptions_associationsDeviceId));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["gatewayListOptions.gatewayType"].first,
             unittest.equals(arg_gatewayListOptions_gatewayType));
         unittest.expect(
             queryMap["fieldMask"].first, unittest.equals(arg_fieldMask));
         unittest.expect(
+            queryMap["gatewayListOptions.associationsDeviceId"].first,
+            unittest.equals(arg_gatewayListOptions_associationsDeviceId));
+        unittest.expect(
             queryMap["gatewayListOptions.associationsGatewayId"].first,
             unittest.equals(arg_gatewayListOptions_associationsGatewayId));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["deviceNumIds"], unittest.equals(arg_deviceNumIds));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["deviceIds"], unittest.equals(arg_deviceIds));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2142,17 +2142,17 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              deviceIds: arg_deviceIds,
-              gatewayListOptions_associationsDeviceId:
-                  arg_gatewayListOptions_associationsDeviceId,
-              pageSize: arg_pageSize,
               gatewayListOptions_gatewayType:
                   arg_gatewayListOptions_gatewayType,
               fieldMask: arg_fieldMask,
+              gatewayListOptions_associationsDeviceId:
+                  arg_gatewayListOptions_associationsDeviceId,
               gatewayListOptions_associationsGatewayId:
                   arg_gatewayListOptions_associationsGatewayId,
+              pageSize: arg_pageSize,
               deviceNumIds: arg_deviceNumIds,
               pageToken: arg_pageToken,
+              deviceIds: arg_deviceIds,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDevicesResponse(response);
@@ -2642,14 +2642,14 @@ main() {
               .groups
               .devices;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
-      var arg_deviceIds = buildUnnamed118();
-      var arg_pageToken = "foo";
-      var arg_deviceNumIds = buildUnnamed119();
-      var arg_gatewayListOptions_gatewayType = "foo";
-      var arg_gatewayListOptions_associationsDeviceId = "foo";
-      var arg_fieldMask = "foo";
       var arg_gatewayListOptions_associationsGatewayId = "foo";
+      var arg_gatewayListOptions_gatewayType = "foo";
+      var arg_deviceIds = buildUnnamed118();
+      var arg_gatewayListOptions_associationsDeviceId = "foo";
+      var arg_deviceNumIds = buildUnnamed119();
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      var arg_fieldMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2682,23 +2682,23 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["deviceIds"], unittest.equals(arg_deviceIds));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["deviceNumIds"], unittest.equals(arg_deviceNumIds));
+            queryMap["gatewayListOptions.associationsGatewayId"].first,
+            unittest.equals(arg_gatewayListOptions_associationsGatewayId));
         unittest.expect(queryMap["gatewayListOptions.gatewayType"].first,
             unittest.equals(arg_gatewayListOptions_gatewayType));
+        unittest.expect(queryMap["deviceIds"], unittest.equals(arg_deviceIds));
         unittest.expect(
             queryMap["gatewayListOptions.associationsDeviceId"].first,
             unittest.equals(arg_gatewayListOptions_associationsDeviceId));
         unittest.expect(
-            queryMap["fieldMask"].first, unittest.equals(arg_fieldMask));
+            queryMap["deviceNumIds"], unittest.equals(arg_deviceNumIds));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["gatewayListOptions.associationsGatewayId"].first,
-            unittest.equals(arg_gatewayListOptions_associationsGatewayId));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["fieldMask"].first, unittest.equals(arg_fieldMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2709,17 +2709,17 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
-              deviceIds: arg_deviceIds,
-              pageToken: arg_pageToken,
-              deviceNumIds: arg_deviceNumIds,
-              gatewayListOptions_gatewayType:
-                  arg_gatewayListOptions_gatewayType,
-              gatewayListOptions_associationsDeviceId:
-                  arg_gatewayListOptions_associationsDeviceId,
-              fieldMask: arg_fieldMask,
               gatewayListOptions_associationsGatewayId:
                   arg_gatewayListOptions_associationsGatewayId,
+              gatewayListOptions_gatewayType:
+                  arg_gatewayListOptions_gatewayType,
+              deviceIds: arg_deviceIds,
+              gatewayListOptions_associationsDeviceId:
+                  arg_gatewayListOptions_associationsDeviceId,
+              deviceNumIds: arg_deviceNumIds,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              fieldMask: arg_fieldMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDevicesResponse(response);

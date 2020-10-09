@@ -127,14 +127,14 @@ checkAnnotationLayerSummary(api.AnnotationLayerSummary o) {
   buildCounterAnnotationLayerSummary--;
 }
 
-buildUnnamed3298() {
+buildUnnamed3302() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3298(core.List<core.String> o) {
+checkUnnamed3302(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -157,7 +157,7 @@ buildAnnotation() {
     o.kind = "foo";
     o.layerId = "foo";
     o.layerSummary = buildAnnotationLayerSummary();
-    o.pageIds = buildUnnamed3298();
+    o.pageIds = buildUnnamed3302();
     o.selectedText = "foo";
     o.selfLink = "foo";
     o.updated = "foo";
@@ -182,7 +182,7 @@ checkAnnotation(api.Annotation o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.layerId, unittest.equals('foo'));
     checkAnnotationLayerSummary(o.layerSummary);
-    checkUnnamed3298(o.pageIds);
+    checkUnnamed3302(o.pageIds);
     unittest.expect(o.selectedText, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.updated, unittest.equals('foo'));
@@ -191,14 +191,14 @@ checkAnnotation(api.Annotation o) {
   buildCounterAnnotation--;
 }
 
-buildUnnamed3299() {
+buildUnnamed3303() {
   var o = new core.List<api.Annotation>();
   o.add(buildAnnotation());
   o.add(buildAnnotation());
   return o;
 }
 
-checkUnnamed3299(core.List<api.Annotation> o) {
+checkUnnamed3303(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0]);
   checkAnnotation(o[1]);
@@ -209,7 +209,7 @@ buildAnnotations() {
   var o = new api.Annotations();
   buildCounterAnnotations++;
   if (buildCounterAnnotations < 3) {
-    o.items = buildUnnamed3299();
+    o.items = buildUnnamed3303();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -221,7 +221,7 @@ buildAnnotations() {
 checkAnnotations(api.Annotations o) {
   buildCounterAnnotations++;
   if (buildCounterAnnotations < 3) {
-    checkUnnamed3299(o.items);
+    checkUnnamed3303(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -256,14 +256,14 @@ checkAnnotationsSummaryLayers(api.AnnotationsSummaryLayers o) {
   buildCounterAnnotationsSummaryLayers--;
 }
 
-buildUnnamed3300() {
+buildUnnamed3304() {
   var o = new core.List<api.AnnotationsSummaryLayers>();
   o.add(buildAnnotationsSummaryLayers());
   o.add(buildAnnotationsSummaryLayers());
   return o;
 }
 
-checkUnnamed3300(core.List<api.AnnotationsSummaryLayers> o) {
+checkUnnamed3304(core.List<api.AnnotationsSummaryLayers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotationsSummaryLayers(o[0]);
   checkAnnotationsSummaryLayers(o[1]);
@@ -275,7 +275,7 @@ buildAnnotationsSummary() {
   buildCounterAnnotationsSummary++;
   if (buildCounterAnnotationsSummary < 3) {
     o.kind = "foo";
-    o.layers = buildUnnamed3300();
+    o.layers = buildUnnamed3304();
   }
   buildCounterAnnotationsSummary--;
   return o;
@@ -285,19 +285,19 @@ checkAnnotationsSummary(api.AnnotationsSummary o) {
   buildCounterAnnotationsSummary++;
   if (buildCounterAnnotationsSummary < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3300(o.layers);
+    checkUnnamed3304(o.layers);
   }
   buildCounterAnnotationsSummary--;
 }
 
-buildUnnamed3301() {
+buildUnnamed3305() {
   var o = new core.List<api.GeoAnnotationdata>();
   o.add(buildGeoAnnotationdata());
   o.add(buildGeoAnnotationdata());
   return o;
 }
 
-checkUnnamed3301(core.List<api.GeoAnnotationdata> o) {
+checkUnnamed3305(core.List<api.GeoAnnotationdata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGeoAnnotationdata(o[0]);
   checkGeoAnnotationdata(o[1]);
@@ -308,7 +308,7 @@ buildAnnotationsdata() {
   var o = new api.Annotationsdata();
   buildCounterAnnotationsdata++;
   if (buildCounterAnnotationsdata < 3) {
-    o.items = buildUnnamed3301();
+    o.items = buildUnnamed3305();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -320,7 +320,7 @@ buildAnnotationsdata() {
 checkAnnotationsdata(api.Annotationsdata o) {
   buildCounterAnnotationsdata++;
   if (buildCounterAnnotationsdata < 3) {
-    checkUnnamed3301(o.items);
+    checkUnnamed3305(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -435,14 +435,14 @@ checkBookshelf(api.Bookshelf o) {
   buildCounterBookshelf--;
 }
 
-buildUnnamed3302() {
+buildUnnamed3306() {
   var o = new core.List<api.Bookshelf>();
   o.add(buildBookshelf());
   o.add(buildBookshelf());
   return o;
 }
 
-checkUnnamed3302(core.List<api.Bookshelf> o) {
+checkUnnamed3306(core.List<api.Bookshelf> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBookshelf(o[0]);
   checkBookshelf(o[1]);
@@ -453,7 +453,7 @@ buildBookshelves() {
   var o = new api.Bookshelves();
   buildCounterBookshelves++;
   if (buildCounterBookshelves < 3) {
-    o.items = buildUnnamed3302();
+    o.items = buildUnnamed3306();
     o.kind = "foo";
   }
   buildCounterBookshelves--;
@@ -463,7 +463,7 @@ buildBookshelves() {
 checkBookshelves(api.Bookshelves o) {
   buildCounterBookshelves++;
   if (buildCounterBookshelves < 3) {
-    checkUnnamed3302(o.items);
+    checkUnnamed3306(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBookshelves--;
@@ -492,14 +492,14 @@ checkCategoryItems(api.CategoryItems o) {
   buildCounterCategoryItems--;
 }
 
-buildUnnamed3303() {
+buildUnnamed3307() {
   var o = new core.List<api.CategoryItems>();
   o.add(buildCategoryItems());
   o.add(buildCategoryItems());
   return o;
 }
 
-checkUnnamed3303(core.List<api.CategoryItems> o) {
+checkUnnamed3307(core.List<api.CategoryItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCategoryItems(o[0]);
   checkCategoryItems(o[1]);
@@ -510,7 +510,7 @@ buildCategory() {
   var o = new api.Category();
   buildCounterCategory++;
   if (buildCounterCategory < 3) {
-    o.items = buildUnnamed3303();
+    o.items = buildUnnamed3307();
     o.kind = "foo";
   }
   buildCounterCategory--;
@@ -520,7 +520,7 @@ buildCategory() {
 checkCategory(api.Category o) {
   buildCounterCategory++;
   if (buildCounterCategory < 3) {
-    checkUnnamed3303(o.items);
+    checkUnnamed3307(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterCategory--;
@@ -684,14 +684,14 @@ checkDictlayerdataDictWordsDerivatives(
   buildCounterDictlayerdataDictWordsDerivatives--;
 }
 
-buildUnnamed3304() {
+buildUnnamed3308() {
   var o = new core.List<api.DictlayerdataDictWordsDerivatives>();
   o.add(buildDictlayerdataDictWordsDerivatives());
   o.add(buildDictlayerdataDictWordsDerivatives());
   return o;
 }
 
-checkUnnamed3304(core.List<api.DictlayerdataDictWordsDerivatives> o) {
+checkUnnamed3308(core.List<api.DictlayerdataDictWordsDerivatives> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsDerivatives(o[0]);
   checkDictlayerdataDictWordsDerivatives(o[1]);
@@ -740,14 +740,14 @@ checkDictlayerdataDictWordsExamples(api.DictlayerdataDictWordsExamples o) {
   buildCounterDictlayerdataDictWordsExamples--;
 }
 
-buildUnnamed3305() {
+buildUnnamed3309() {
   var o = new core.List<api.DictlayerdataDictWordsExamples>();
   o.add(buildDictlayerdataDictWordsExamples());
   o.add(buildDictlayerdataDictWordsExamples());
   return o;
 }
 
-checkUnnamed3305(core.List<api.DictlayerdataDictWordsExamples> o) {
+checkUnnamed3309(core.List<api.DictlayerdataDictWordsExamples> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsExamples(o[0]);
   checkDictlayerdataDictWordsExamples(o[1]);
@@ -775,14 +775,14 @@ checkDictlayerdataDictWordsSensesConjugations(
   buildCounterDictlayerdataDictWordsSensesConjugations--;
 }
 
-buildUnnamed3306() {
+buildUnnamed3310() {
   var o = new core.List<api.DictlayerdataDictWordsSensesConjugations>();
   o.add(buildDictlayerdataDictWordsSensesConjugations());
   o.add(buildDictlayerdataDictWordsSensesConjugations());
   return o;
 }
 
-checkUnnamed3306(core.List<api.DictlayerdataDictWordsSensesConjugations> o) {
+checkUnnamed3310(core.List<api.DictlayerdataDictWordsSensesConjugations> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesConjugations(o[0]);
   checkDictlayerdataDictWordsSensesConjugations(o[1]);
@@ -832,14 +832,14 @@ checkDictlayerdataDictWordsSensesDefinitionsExamples(
   buildCounterDictlayerdataDictWordsSensesDefinitionsExamples--;
 }
 
-buildUnnamed3307() {
+buildUnnamed3311() {
   var o = new core.List<api.DictlayerdataDictWordsSensesDefinitionsExamples>();
   o.add(buildDictlayerdataDictWordsSensesDefinitionsExamples());
   o.add(buildDictlayerdataDictWordsSensesDefinitionsExamples());
   return o;
 }
 
-checkUnnamed3307(
+checkUnnamed3311(
     core.List<api.DictlayerdataDictWordsSensesDefinitionsExamples> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesDefinitionsExamples(o[0]);
@@ -852,7 +852,7 @@ buildDictlayerdataDictWordsSensesDefinitions() {
   buildCounterDictlayerdataDictWordsSensesDefinitions++;
   if (buildCounterDictlayerdataDictWordsSensesDefinitions < 3) {
     o.definition = "foo";
-    o.examples = buildUnnamed3307();
+    o.examples = buildUnnamed3311();
   }
   buildCounterDictlayerdataDictWordsSensesDefinitions--;
   return o;
@@ -863,19 +863,19 @@ checkDictlayerdataDictWordsSensesDefinitions(
   buildCounterDictlayerdataDictWordsSensesDefinitions++;
   if (buildCounterDictlayerdataDictWordsSensesDefinitions < 3) {
     unittest.expect(o.definition, unittest.equals('foo'));
-    checkUnnamed3307(o.examples);
+    checkUnnamed3311(o.examples);
   }
   buildCounterDictlayerdataDictWordsSensesDefinitions--;
 }
 
-buildUnnamed3308() {
+buildUnnamed3312() {
   var o = new core.List<api.DictlayerdataDictWordsSensesDefinitions>();
   o.add(buildDictlayerdataDictWordsSensesDefinitions());
   o.add(buildDictlayerdataDictWordsSensesDefinitions());
   return o;
 }
 
-checkUnnamed3308(core.List<api.DictlayerdataDictWordsSensesDefinitions> o) {
+checkUnnamed3312(core.List<api.DictlayerdataDictWordsSensesDefinitions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesDefinitions(o[0]);
   checkDictlayerdataDictWordsSensesDefinitions(o[1]);
@@ -947,14 +947,14 @@ checkDictlayerdataDictWordsSensesSynonyms(
   buildCounterDictlayerdataDictWordsSensesSynonyms--;
 }
 
-buildUnnamed3309() {
+buildUnnamed3313() {
   var o = new core.List<api.DictlayerdataDictWordsSensesSynonyms>();
   o.add(buildDictlayerdataDictWordsSensesSynonyms());
   o.add(buildDictlayerdataDictWordsSensesSynonyms());
   return o;
 }
 
-checkUnnamed3309(core.List<api.DictlayerdataDictWordsSensesSynonyms> o) {
+checkUnnamed3313(core.List<api.DictlayerdataDictWordsSensesSynonyms> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSensesSynonyms(o[0]);
   checkDictlayerdataDictWordsSensesSynonyms(o[1]);
@@ -965,14 +965,14 @@ buildDictlayerdataDictWordsSenses() {
   var o = new api.DictlayerdataDictWordsSenses();
   buildCounterDictlayerdataDictWordsSenses++;
   if (buildCounterDictlayerdataDictWordsSenses < 3) {
-    o.conjugations = buildUnnamed3306();
-    o.definitions = buildUnnamed3308();
+    o.conjugations = buildUnnamed3310();
+    o.definitions = buildUnnamed3312();
     o.partOfSpeech = "foo";
     o.pronunciation = "foo";
     o.pronunciationUrl = "foo";
     o.source = buildDictlayerdataDictWordsSensesSource();
     o.syllabification = "foo";
-    o.synonyms = buildUnnamed3309();
+    o.synonyms = buildUnnamed3313();
   }
   buildCounterDictlayerdataDictWordsSenses--;
   return o;
@@ -981,26 +981,26 @@ buildDictlayerdataDictWordsSenses() {
 checkDictlayerdataDictWordsSenses(api.DictlayerdataDictWordsSenses o) {
   buildCounterDictlayerdataDictWordsSenses++;
   if (buildCounterDictlayerdataDictWordsSenses < 3) {
-    checkUnnamed3306(o.conjugations);
-    checkUnnamed3308(o.definitions);
+    checkUnnamed3310(o.conjugations);
+    checkUnnamed3312(o.definitions);
     unittest.expect(o.partOfSpeech, unittest.equals('foo'));
     unittest.expect(o.pronunciation, unittest.equals('foo'));
     unittest.expect(o.pronunciationUrl, unittest.equals('foo'));
     checkDictlayerdataDictWordsSensesSource(o.source);
     unittest.expect(o.syllabification, unittest.equals('foo'));
-    checkUnnamed3309(o.synonyms);
+    checkUnnamed3313(o.synonyms);
   }
   buildCounterDictlayerdataDictWordsSenses--;
 }
 
-buildUnnamed3310() {
+buildUnnamed3314() {
   var o = new core.List<api.DictlayerdataDictWordsSenses>();
   o.add(buildDictlayerdataDictWordsSenses());
   o.add(buildDictlayerdataDictWordsSenses());
   return o;
 }
 
-checkUnnamed3310(core.List<api.DictlayerdataDictWordsSenses> o) {
+checkUnnamed3314(core.List<api.DictlayerdataDictWordsSenses> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWordsSenses(o[0]);
   checkDictlayerdataDictWordsSenses(o[1]);
@@ -1032,9 +1032,9 @@ buildDictlayerdataDictWords() {
   var o = new api.DictlayerdataDictWords();
   buildCounterDictlayerdataDictWords++;
   if (buildCounterDictlayerdataDictWords < 3) {
-    o.derivatives = buildUnnamed3304();
-    o.examples = buildUnnamed3305();
-    o.senses = buildUnnamed3310();
+    o.derivatives = buildUnnamed3308();
+    o.examples = buildUnnamed3309();
+    o.senses = buildUnnamed3314();
     o.source = buildDictlayerdataDictWordsSource();
   }
   buildCounterDictlayerdataDictWords--;
@@ -1044,22 +1044,22 @@ buildDictlayerdataDictWords() {
 checkDictlayerdataDictWords(api.DictlayerdataDictWords o) {
   buildCounterDictlayerdataDictWords++;
   if (buildCounterDictlayerdataDictWords < 3) {
-    checkUnnamed3304(o.derivatives);
-    checkUnnamed3305(o.examples);
-    checkUnnamed3310(o.senses);
+    checkUnnamed3308(o.derivatives);
+    checkUnnamed3309(o.examples);
+    checkUnnamed3314(o.senses);
     checkDictlayerdataDictWordsSource(o.source);
   }
   buildCounterDictlayerdataDictWords--;
 }
 
-buildUnnamed3311() {
+buildUnnamed3315() {
   var o = new core.List<api.DictlayerdataDictWords>();
   o.add(buildDictlayerdataDictWords());
   o.add(buildDictlayerdataDictWords());
   return o;
 }
 
-checkUnnamed3311(core.List<api.DictlayerdataDictWords> o) {
+checkUnnamed3315(core.List<api.DictlayerdataDictWords> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDictlayerdataDictWords(o[0]);
   checkDictlayerdataDictWords(o[1]);
@@ -1071,7 +1071,7 @@ buildDictlayerdataDict() {
   buildCounterDictlayerdataDict++;
   if (buildCounterDictlayerdataDict < 3) {
     o.source = buildDictlayerdataDictSource();
-    o.words = buildUnnamed3311();
+    o.words = buildUnnamed3315();
   }
   buildCounterDictlayerdataDict--;
   return o;
@@ -1081,7 +1081,7 @@ checkDictlayerdataDict(api.DictlayerdataDict o) {
   buildCounterDictlayerdataDict++;
   if (buildCounterDictlayerdataDict < 3) {
     checkDictlayerdataDictSource(o.source);
-    checkUnnamed3311(o.words);
+    checkUnnamed3315(o.words);
   }
   buildCounterDictlayerdataDict--;
 }
@@ -1139,14 +1139,14 @@ checkDiscoveryclustersClustersBannerWithContentContainer(
   buildCounterDiscoveryclustersClustersBannerWithContentContainer--;
 }
 
-buildUnnamed3312() {
+buildUnnamed3316() {
   var o = new core.List<api.Volume>();
   o.add(buildVolume());
   o.add(buildVolume());
   return o;
 }
 
-checkUnnamed3312(core.List<api.Volume> o) {
+checkUnnamed3316(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -1163,7 +1163,7 @@ buildDiscoveryclustersClusters() {
     o.title = "foo";
     o.totalVolumes = 42;
     o.uid = "foo";
-    o.volumes = buildUnnamed3312();
+    o.volumes = buildUnnamed3316();
   }
   buildCounterDiscoveryclustersClusters--;
   return o;
@@ -1178,19 +1178,19 @@ checkDiscoveryclustersClusters(api.DiscoveryclustersClusters o) {
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.totalVolumes, unittest.equals(42));
     unittest.expect(o.uid, unittest.equals('foo'));
-    checkUnnamed3312(o.volumes);
+    checkUnnamed3316(o.volumes);
   }
   buildCounterDiscoveryclustersClusters--;
 }
 
-buildUnnamed3313() {
+buildUnnamed3317() {
   var o = new core.List<api.DiscoveryclustersClusters>();
   o.add(buildDiscoveryclustersClusters());
   o.add(buildDiscoveryclustersClusters());
   return o;
 }
 
-checkUnnamed3313(core.List<api.DiscoveryclustersClusters> o) {
+checkUnnamed3317(core.List<api.DiscoveryclustersClusters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDiscoveryclustersClusters(o[0]);
   checkDiscoveryclustersClusters(o[1]);
@@ -1201,7 +1201,7 @@ buildDiscoveryclusters() {
   var o = new api.Discoveryclusters();
   buildCounterDiscoveryclusters++;
   if (buildCounterDiscoveryclusters < 3) {
-    o.clusters = buildUnnamed3313();
+    o.clusters = buildUnnamed3317();
     o.kind = "foo";
     o.totalClusters = 42;
   }
@@ -1212,7 +1212,7 @@ buildDiscoveryclusters() {
 checkDiscoveryclusters(api.Discoveryclusters o) {
   buildCounterDiscoveryclusters++;
   if (buildCounterDiscoveryclusters < 3) {
-    checkUnnamed3313(o.clusters);
+    checkUnnamed3317(o.clusters);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.totalClusters, unittest.equals(42));
   }
@@ -1260,14 +1260,14 @@ checkDownloadAccessRestriction(api.DownloadAccessRestriction o) {
   buildCounterDownloadAccessRestriction--;
 }
 
-buildUnnamed3314() {
+buildUnnamed3318() {
   var o = new core.List<api.DownloadAccessRestriction>();
   o.add(buildDownloadAccessRestriction());
   o.add(buildDownloadAccessRestriction());
   return o;
 }
 
-checkUnnamed3314(core.List<api.DownloadAccessRestriction> o) {
+checkUnnamed3318(core.List<api.DownloadAccessRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDownloadAccessRestriction(o[0]);
   checkDownloadAccessRestriction(o[1]);
@@ -1278,7 +1278,7 @@ buildDownloadAccesses() {
   var o = new api.DownloadAccesses();
   buildCounterDownloadAccesses++;
   if (buildCounterDownloadAccesses < 3) {
-    o.downloadAccessList = buildUnnamed3314();
+    o.downloadAccessList = buildUnnamed3318();
     o.kind = "foo";
   }
   buildCounterDownloadAccesses--;
@@ -1288,7 +1288,7 @@ buildDownloadAccesses() {
 checkDownloadAccesses(api.DownloadAccesses o) {
   buildCounterDownloadAccesses++;
   if (buildCounterDownloadAccesses < 3) {
-    checkUnnamed3314(o.downloadAccessList);
+    checkUnnamed3318(o.downloadAccessList);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterDownloadAccesses--;
@@ -1419,14 +1419,14 @@ checkGeolayerdataCommon(api.GeolayerdataCommon o) {
   buildCounterGeolayerdataCommon--;
 }
 
-buildUnnamed3315() {
+buildUnnamed3319() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3315(core.List<core.String> o) {
+checkUnnamed3319(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1500,7 +1500,7 @@ buildGeolayerdataGeo() {
   var o = new api.GeolayerdataGeo();
   buildCounterGeolayerdataGeo++;
   if (buildCounterGeolayerdataGeo < 3) {
-    o.boundary = buildUnnamed3315();
+    o.boundary = buildUnnamed3319();
     o.cachePolicy = "foo";
     o.countryCode = "foo";
     o.latitude = 42.0;
@@ -1516,7 +1516,7 @@ buildGeolayerdataGeo() {
 checkGeolayerdataGeo(api.GeolayerdataGeo o) {
   buildCounterGeolayerdataGeo++;
   if (buildCounterGeolayerdataGeo < 3) {
-    checkUnnamed3315(o.boundary);
+    checkUnnamed3319(o.boundary);
     unittest.expect(o.cachePolicy, unittest.equals('foo'));
     unittest.expect(o.countryCode, unittest.equals('foo'));
     unittest.expect(o.latitude, unittest.equals(42.0));
@@ -1551,14 +1551,14 @@ checkGeolayerdata(api.Geolayerdata o) {
   buildCounterGeolayerdata--;
 }
 
-buildUnnamed3316() {
+buildUnnamed3320() {
   var o = new core.List<api.Layersummary>();
   o.add(buildLayersummary());
   o.add(buildLayersummary());
   return o;
 }
 
-checkUnnamed3316(core.List<api.Layersummary> o) {
+checkUnnamed3320(core.List<api.Layersummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLayersummary(o[0]);
   checkLayersummary(o[1]);
@@ -1569,7 +1569,7 @@ buildLayersummaries() {
   var o = new api.Layersummaries();
   buildCounterLayersummaries++;
   if (buildCounterLayersummaries < 3) {
-    o.items = buildUnnamed3316();
+    o.items = buildUnnamed3320();
     o.kind = "foo";
     o.totalItems = 42;
   }
@@ -1580,21 +1580,21 @@ buildLayersummaries() {
 checkLayersummaries(api.Layersummaries o) {
   buildCounterLayersummaries++;
   if (buildCounterLayersummaries < 3) {
-    checkUnnamed3316(o.items);
+    checkUnnamed3320(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
   }
   buildCounterLayersummaries--;
 }
 
-buildUnnamed3317() {
+buildUnnamed3321() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3317(core.List<core.String> o) {
+checkUnnamed3321(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1606,7 +1606,7 @@ buildLayersummary() {
   buildCounterLayersummary++;
   if (buildCounterLayersummary < 3) {
     o.annotationCount = 42;
-    o.annotationTypes = buildUnnamed3317();
+    o.annotationTypes = buildUnnamed3321();
     o.annotationsDataLink = "foo";
     o.annotationsLink = "foo";
     o.contentVersion = "foo";
@@ -1627,7 +1627,7 @@ checkLayersummary(api.Layersummary o) {
   buildCounterLayersummary++;
   if (buildCounterLayersummary < 3) {
     unittest.expect(o.annotationCount, unittest.equals(42));
-    checkUnnamed3317(o.annotationTypes);
+    checkUnnamed3321(o.annotationTypes);
     unittest.expect(o.annotationsDataLink, unittest.equals('foo'));
     unittest.expect(o.annotationsLink, unittest.equals('foo'));
     unittest.expect(o.contentVersion, unittest.equals('foo'));
@@ -1670,14 +1670,14 @@ checkMetadataItems(api.MetadataItems o) {
   buildCounterMetadataItems--;
 }
 
-buildUnnamed3318() {
+buildUnnamed3322() {
   var o = new core.List<api.MetadataItems>();
   o.add(buildMetadataItems());
   o.add(buildMetadataItems());
   return o;
 }
 
-checkUnnamed3318(core.List<api.MetadataItems> o) {
+checkUnnamed3322(core.List<api.MetadataItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetadataItems(o[0]);
   checkMetadataItems(o[1]);
@@ -1688,7 +1688,7 @@ buildMetadata() {
   var o = new api.Metadata();
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    o.items = buildUnnamed3318();
+    o.items = buildUnnamed3322();
     o.kind = "foo";
   }
   buildCounterMetadata--;
@@ -1698,20 +1698,20 @@ buildMetadata() {
 checkMetadata(api.Metadata o) {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
-    checkUnnamed3318(o.items);
+    checkUnnamed3322(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterMetadata--;
 }
 
-buildUnnamed3319() {
+buildUnnamed3323() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3319(core.List<core.String> o) {
+checkUnnamed3323(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1723,7 +1723,7 @@ buildNotification() {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
     o.body = "foo";
-    o.crmExperimentIds = buildUnnamed3319();
+    o.crmExperimentIds = buildUnnamed3323();
     o.docId = "foo";
     o.docType = "foo";
     o.dontShowNotification = true;
@@ -1747,7 +1747,7 @@ checkNotification(api.Notification o) {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
     unittest.expect(o.body, unittest.equals('foo'));
-    checkUnnamed3319(o.crmExperimentIds);
+    checkUnnamed3323(o.crmExperimentIds);
     unittest.expect(o.docId, unittest.equals('foo'));
     unittest.expect(o.docType, unittest.equals('foo'));
     unittest.expect(o.dontShowNotification, unittest.isTrue);
@@ -1795,14 +1795,14 @@ checkOffersItemsItems(api.OffersItemsItems o) {
   buildCounterOffersItemsItems--;
 }
 
-buildUnnamed3320() {
+buildUnnamed3324() {
   var o = new core.List<api.OffersItemsItems>();
   o.add(buildOffersItemsItems());
   o.add(buildOffersItemsItems());
   return o;
 }
 
-checkUnnamed3320(core.List<api.OffersItemsItems> o) {
+checkUnnamed3324(core.List<api.OffersItemsItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOffersItemsItems(o[0]);
   checkOffersItemsItems(o[1]);
@@ -1816,7 +1816,7 @@ buildOffersItems() {
     o.artUrl = "foo";
     o.gservicesKey = "foo";
     o.id = "foo";
-    o.items = buildUnnamed3320();
+    o.items = buildUnnamed3324();
   }
   buildCounterOffersItems--;
   return o;
@@ -1828,19 +1828,19 @@ checkOffersItems(api.OffersItems o) {
     unittest.expect(o.artUrl, unittest.equals('foo'));
     unittest.expect(o.gservicesKey, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3320(o.items);
+    checkUnnamed3324(o.items);
   }
   buildCounterOffersItems--;
 }
 
-buildUnnamed3321() {
+buildUnnamed3325() {
   var o = new core.List<api.OffersItems>();
   o.add(buildOffersItems());
   o.add(buildOffersItems());
   return o;
 }
 
-checkUnnamed3321(core.List<api.OffersItems> o) {
+checkUnnamed3325(core.List<api.OffersItems> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOffersItems(o[0]);
   checkOffersItems(o[1]);
@@ -1851,7 +1851,7 @@ buildOffers() {
   var o = new api.Offers();
   buildCounterOffers++;
   if (buildCounterOffers < 3) {
-    o.items = buildUnnamed3321();
+    o.items = buildUnnamed3325();
     o.kind = "foo";
   }
   buildCounterOffers--;
@@ -1861,7 +1861,7 @@ buildOffers() {
 checkOffers(api.Offers o) {
   buildCounterOffers++;
   if (buildCounterOffers < 3) {
-    checkUnnamed3321(o.items);
+    checkUnnamed3325(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterOffers--;
@@ -2127,14 +2127,14 @@ checkSeriesSeries(api.SeriesSeries o) {
   buildCounterSeriesSeries--;
 }
 
-buildUnnamed3322() {
+buildUnnamed3326() {
   var o = new core.List<api.SeriesSeries>();
   o.add(buildSeriesSeries());
   o.add(buildSeriesSeries());
   return o;
 }
 
-checkUnnamed3322(core.List<api.SeriesSeries> o) {
+checkUnnamed3326(core.List<api.SeriesSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSeriesSeries(o[0]);
   checkSeriesSeries(o[1]);
@@ -2146,7 +2146,7 @@ buildSeries() {
   buildCounterSeries++;
   if (buildCounterSeries < 3) {
     o.kind = "foo";
-    o.series = buildUnnamed3322();
+    o.series = buildUnnamed3326();
   }
   buildCounterSeries--;
   return o;
@@ -2156,19 +2156,19 @@ checkSeries(api.Series o) {
   buildCounterSeries++;
   if (buildCounterSeries < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3322(o.series);
+    checkUnnamed3326(o.series);
   }
   buildCounterSeries--;
 }
 
-buildUnnamed3323() {
+buildUnnamed3327() {
   var o = new core.List<api.Volume>();
   o.add(buildVolume());
   o.add(buildVolume());
   return o;
 }
 
-checkUnnamed3323(core.List<api.Volume> o) {
+checkUnnamed3327(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -2180,7 +2180,7 @@ buildSeriesmembership() {
   buildCounterSeriesmembership++;
   if (buildCounterSeriesmembership < 3) {
     o.kind = "foo";
-    o.member = buildUnnamed3323();
+    o.member = buildUnnamed3327();
     o.nextPageToken = "foo";
   }
   buildCounterSeriesmembership--;
@@ -2191,7 +2191,7 @@ checkSeriesmembership(api.Seriesmembership o) {
   buildCounterSeriesmembership++;
   if (buildCounterSeriesmembership < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3323(o.member);
+    checkUnnamed3327(o.member);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSeriesmembership--;
@@ -2480,14 +2480,14 @@ checkVolumeLayerInfoLayers(api.VolumeLayerInfoLayers o) {
   buildCounterVolumeLayerInfoLayers--;
 }
 
-buildUnnamed3324() {
+buildUnnamed3328() {
   var o = new core.List<api.VolumeLayerInfoLayers>();
   o.add(buildVolumeLayerInfoLayers());
   o.add(buildVolumeLayerInfoLayers());
   return o;
 }
 
-checkUnnamed3324(core.List<api.VolumeLayerInfoLayers> o) {
+checkUnnamed3328(core.List<api.VolumeLayerInfoLayers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeLayerInfoLayers(o[0]);
   checkVolumeLayerInfoLayers(o[1]);
@@ -2498,7 +2498,7 @@ buildVolumeLayerInfo() {
   var o = new api.VolumeLayerInfo();
   buildCounterVolumeLayerInfo++;
   if (buildCounterVolumeLayerInfo < 3) {
-    o.layers = buildUnnamed3324();
+    o.layers = buildUnnamed3328();
   }
   buildCounterVolumeLayerInfo--;
   return o;
@@ -2507,7 +2507,7 @@ buildVolumeLayerInfo() {
 checkVolumeLayerInfo(api.VolumeLayerInfo o) {
   buildCounterVolumeLayerInfo++;
   if (buildCounterVolumeLayerInfo < 3) {
-    checkUnnamed3324(o.layers);
+    checkUnnamed3328(o.layers);
   }
   buildCounterVolumeLayerInfo--;
 }
@@ -2643,14 +2643,14 @@ checkVolumeSaleInfoOffers(api.VolumeSaleInfoOffers o) {
   buildCounterVolumeSaleInfoOffers--;
 }
 
-buildUnnamed3325() {
+buildUnnamed3329() {
   var o = new core.List<api.VolumeSaleInfoOffers>();
   o.add(buildVolumeSaleInfoOffers());
   o.add(buildVolumeSaleInfoOffers());
   return o;
 }
 
-checkUnnamed3325(core.List<api.VolumeSaleInfoOffers> o) {
+checkUnnamed3329(core.List<api.VolumeSaleInfoOffers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeSaleInfoOffers(o[0]);
   checkVolumeSaleInfoOffers(o[1]);
@@ -2686,7 +2686,7 @@ buildVolumeSaleInfo() {
     o.country = "foo";
     o.isEbook = true;
     o.listPrice = buildVolumeSaleInfoListPrice();
-    o.offers = buildUnnamed3325();
+    o.offers = buildUnnamed3329();
     o.onSaleDate = "foo";
     o.retailPrice = buildVolumeSaleInfoRetailPrice();
     o.saleability = "foo";
@@ -2702,7 +2702,7 @@ checkVolumeSaleInfo(api.VolumeSaleInfo o) {
     unittest.expect(o.country, unittest.equals('foo'));
     unittest.expect(o.isEbook, unittest.isTrue);
     checkVolumeSaleInfoListPrice(o.listPrice);
-    checkUnnamed3325(o.offers);
+    checkUnnamed3329(o.offers);
     unittest.expect(o.onSaleDate, unittest.equals('foo'));
     checkVolumeSaleInfoRetailPrice(o.retailPrice);
     unittest.expect(o.saleability, unittest.equals('foo'));
@@ -2873,27 +2873,27 @@ checkVolumeUserInfo(api.VolumeUserInfo o) {
   buildCounterVolumeUserInfo--;
 }
 
-buildUnnamed3326() {
+buildUnnamed3330() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3326(core.List<core.String> o) {
+checkUnnamed3330(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3327() {
+buildUnnamed3331() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3327(core.List<core.String> o) {
+checkUnnamed3331(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2973,14 +2973,14 @@ checkVolumeVolumeInfoIndustryIdentifiers(
   buildCounterVolumeVolumeInfoIndustryIdentifiers--;
 }
 
-buildUnnamed3328() {
+buildUnnamed3332() {
   var o = new core.List<api.VolumeVolumeInfoIndustryIdentifiers>();
   o.add(buildVolumeVolumeInfoIndustryIdentifiers());
   o.add(buildVolumeVolumeInfoIndustryIdentifiers());
   return o;
 }
 
-checkUnnamed3328(core.List<api.VolumeVolumeInfoIndustryIdentifiers> o) {
+checkUnnamed3332(core.List<api.VolumeVolumeInfoIndustryIdentifiers> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeVolumeInfoIndustryIdentifiers(o[0]);
   checkVolumeVolumeInfoIndustryIdentifiers(o[1]);
@@ -3039,16 +3039,16 @@ buildVolumeVolumeInfo() {
   buildCounterVolumeVolumeInfo++;
   if (buildCounterVolumeVolumeInfo < 3) {
     o.allowAnonLogging = true;
-    o.authors = buildUnnamed3326();
+    o.authors = buildUnnamed3330();
     o.averageRating = 42.0;
     o.canonicalVolumeLink = "foo";
-    o.categories = buildUnnamed3327();
+    o.categories = buildUnnamed3331();
     o.comicsContent = true;
     o.contentVersion = "foo";
     o.description = "foo";
     o.dimensions = buildVolumeVolumeInfoDimensions();
     o.imageLinks = buildVolumeVolumeInfoImageLinks();
-    o.industryIdentifiers = buildUnnamed3328();
+    o.industryIdentifiers = buildUnnamed3332();
     o.infoLink = "foo";
     o.language = "foo";
     o.mainCategory = "foo";
@@ -3075,16 +3075,16 @@ checkVolumeVolumeInfo(api.VolumeVolumeInfo o) {
   buildCounterVolumeVolumeInfo++;
   if (buildCounterVolumeVolumeInfo < 3) {
     unittest.expect(o.allowAnonLogging, unittest.isTrue);
-    checkUnnamed3326(o.authors);
+    checkUnnamed3330(o.authors);
     unittest.expect(o.averageRating, unittest.equals(42.0));
     unittest.expect(o.canonicalVolumeLink, unittest.equals('foo'));
-    checkUnnamed3327(o.categories);
+    checkUnnamed3331(o.categories);
     unittest.expect(o.comicsContent, unittest.isTrue);
     unittest.expect(o.contentVersion, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     checkVolumeVolumeInfoDimensions(o.dimensions);
     checkVolumeVolumeInfoImageLinks(o.imageLinks);
-    checkUnnamed3328(o.industryIdentifiers);
+    checkUnnamed3332(o.industryIdentifiers);
     unittest.expect(o.infoLink, unittest.equals('foo'));
     unittest.expect(o.language, unittest.equals('foo'));
     unittest.expect(o.mainCategory, unittest.equals('foo'));
@@ -3145,14 +3145,14 @@ checkVolume(api.Volume o) {
   buildCounterVolume--;
 }
 
-buildUnnamed3329() {
+buildUnnamed3333() {
   var o = new core.List<api.Volume>();
   o.add(buildVolume());
   o.add(buildVolume());
   return o;
 }
 
-checkUnnamed3329(core.List<api.Volume> o) {
+checkUnnamed3333(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -3163,7 +3163,7 @@ buildVolume2() {
   var o = new api.Volume2();
   buildCounterVolume2++;
   if (buildCounterVolume2 < 3) {
-    o.items = buildUnnamed3329();
+    o.items = buildUnnamed3333();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -3174,7 +3174,7 @@ buildVolume2() {
 checkVolume2(api.Volume2 o) {
   buildCounterVolume2++;
   if (buildCounterVolume2 < 3) {
-    checkUnnamed3329(o.items);
+    checkUnnamed3333(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -3206,14 +3206,14 @@ checkVolumeannotationContentRanges(api.VolumeannotationContentRanges o) {
   buildCounterVolumeannotationContentRanges--;
 }
 
-buildUnnamed3330() {
+buildUnnamed3334() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3330(core.List<core.String> o) {
+checkUnnamed3334(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3233,7 +3233,7 @@ buildVolumeannotation() {
     o.id = "foo";
     o.kind = "foo";
     o.layerId = "foo";
-    o.pageIds = buildUnnamed3330();
+    o.pageIds = buildUnnamed3334();
     o.selectedText = "foo";
     o.selfLink = "foo";
     o.updated = "foo";
@@ -3255,7 +3255,7 @@ checkVolumeannotation(api.Volumeannotation o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.layerId, unittest.equals('foo'));
-    checkUnnamed3330(o.pageIds);
+    checkUnnamed3334(o.pageIds);
     unittest.expect(o.selectedText, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.updated, unittest.equals('foo'));
@@ -3264,14 +3264,14 @@ checkVolumeannotation(api.Volumeannotation o) {
   buildCounterVolumeannotation--;
 }
 
-buildUnnamed3331() {
+buildUnnamed3335() {
   var o = new core.List<api.Volumeannotation>();
   o.add(buildVolumeannotation());
   o.add(buildVolumeannotation());
   return o;
 }
 
-checkUnnamed3331(core.List<api.Volumeannotation> o) {
+checkUnnamed3335(core.List<api.Volumeannotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeannotation(o[0]);
   checkVolumeannotation(o[1]);
@@ -3282,7 +3282,7 @@ buildVolumeannotations() {
   var o = new api.Volumeannotations();
   buildCounterVolumeannotations++;
   if (buildCounterVolumeannotations < 3) {
-    o.items = buildUnnamed3331();
+    o.items = buildUnnamed3335();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -3295,7 +3295,7 @@ buildVolumeannotations() {
 checkVolumeannotations(api.Volumeannotations o) {
   buildCounterVolumeannotations++;
   if (buildCounterVolumeannotations < 3) {
-    checkUnnamed3331(o.items);
+    checkUnnamed3335(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -3304,14 +3304,14 @@ checkVolumeannotations(api.Volumeannotations o) {
   buildCounterVolumeannotations--;
 }
 
-buildUnnamed3332() {
+buildUnnamed3336() {
   var o = new core.List<api.Volume>();
   o.add(buildVolume());
   o.add(buildVolume());
   return o;
 }
 
-checkUnnamed3332(core.List<api.Volume> o) {
+checkUnnamed3336(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolume(o[0]);
   checkVolume(o[1]);
@@ -3322,7 +3322,7 @@ buildVolumes() {
   var o = new api.Volumes();
   buildCounterVolumes++;
   if (buildCounterVolumes < 3) {
-    o.items = buildUnnamed3332();
+    o.items = buildUnnamed3336();
     o.kind = "foo";
     o.totalItems = 42;
   }
@@ -3333,7 +3333,7 @@ buildVolumes() {
 checkVolumes(api.Volumes o) {
   buildCounterVolumes++;
   if (buildCounterVolumes < 3) {
-    checkUnnamed3332(o.items);
+    checkUnnamed3336(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
   }
@@ -3362,14 +3362,14 @@ checkVolumeseriesinfoVolumeSeriesIssue(
   buildCounterVolumeseriesinfoVolumeSeriesIssue--;
 }
 
-buildUnnamed3333() {
+buildUnnamed3337() {
   var o = new core.List<api.VolumeseriesinfoVolumeSeriesIssue>();
   o.add(buildVolumeseriesinfoVolumeSeriesIssue());
   o.add(buildVolumeseriesinfoVolumeSeriesIssue());
   return o;
 }
 
-checkUnnamed3333(core.List<api.VolumeseriesinfoVolumeSeriesIssue> o) {
+checkUnnamed3337(core.List<api.VolumeseriesinfoVolumeSeriesIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeseriesinfoVolumeSeriesIssue(o[0]);
   checkVolumeseriesinfoVolumeSeriesIssue(o[1]);
@@ -3380,7 +3380,7 @@ buildVolumeseriesinfoVolumeSeries() {
   var o = new api.VolumeseriesinfoVolumeSeries();
   buildCounterVolumeseriesinfoVolumeSeries++;
   if (buildCounterVolumeseriesinfoVolumeSeries < 3) {
-    o.issue = buildUnnamed3333();
+    o.issue = buildUnnamed3337();
     o.orderNumber = 42;
     o.seriesBookType = "foo";
     o.seriesId = "foo";
@@ -3392,7 +3392,7 @@ buildVolumeseriesinfoVolumeSeries() {
 checkVolumeseriesinfoVolumeSeries(api.VolumeseriesinfoVolumeSeries o) {
   buildCounterVolumeseriesinfoVolumeSeries++;
   if (buildCounterVolumeseriesinfoVolumeSeries < 3) {
-    checkUnnamed3333(o.issue);
+    checkUnnamed3337(o.issue);
     unittest.expect(o.orderNumber, unittest.equals(42));
     unittest.expect(o.seriesBookType, unittest.equals('foo'));
     unittest.expect(o.seriesId, unittest.equals('foo'));
@@ -3400,14 +3400,14 @@ checkVolumeseriesinfoVolumeSeries(api.VolumeseriesinfoVolumeSeries o) {
   buildCounterVolumeseriesinfoVolumeSeries--;
 }
 
-buildUnnamed3334() {
+buildUnnamed3338() {
   var o = new core.List<api.VolumeseriesinfoVolumeSeries>();
   o.add(buildVolumeseriesinfoVolumeSeries());
   o.add(buildVolumeseriesinfoVolumeSeries());
   return o;
 }
 
-checkUnnamed3334(core.List<api.VolumeseriesinfoVolumeSeries> o) {
+checkUnnamed3338(core.List<api.VolumeseriesinfoVolumeSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVolumeseriesinfoVolumeSeries(o[0]);
   checkVolumeseriesinfoVolumeSeries(o[1]);
@@ -3421,7 +3421,7 @@ buildVolumeseriesinfo() {
     o.bookDisplayNumber = "foo";
     o.kind = "foo";
     o.shortSeriesBookTitle = "foo";
-    o.volumeSeries = buildUnnamed3334();
+    o.volumeSeries = buildUnnamed3338();
   }
   buildCounterVolumeseriesinfo--;
   return o;
@@ -3433,61 +3433,9 @@ checkVolumeseriesinfo(api.Volumeseriesinfo o) {
     unittest.expect(o.bookDisplayNumber, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.shortSeriesBookTitle, unittest.equals('foo'));
-    checkUnnamed3334(o.volumeSeries);
+    checkUnnamed3338(o.volumeSeries);
   }
   buildCounterVolumeseriesinfo--;
-}
-
-buildUnnamed3335() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed3335(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed3336() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed3336(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed3337() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed3337(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed3338() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed3338(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 buildUnnamed3339() {
@@ -3589,6 +3537,58 @@ buildUnnamed3346() {
 }
 
 checkUnnamed3346(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3347() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3347(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3348() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3348(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3349() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3349(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3350() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3350(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4648,9 +4648,9 @@ main() {
       var arg_userId = "foo";
       var arg_shelf = "foo";
       var arg_startIndex = 42;
-      var arg_showPreorders = true;
       var arg_source = "foo";
       var arg_maxResults = 42;
+      var arg_showPreorders = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4702,11 +4702,11 @@ main() {
         }
         unittest.expect(core.int.parse(queryMap["startIndex"].first),
             unittest.equals(arg_startIndex));
-        unittest.expect(queryMap["showPreorders"].first,
-            unittest.equals("$arg_showPreorders"));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["showPreorders"].first,
+            unittest.equals("$arg_showPreorders"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4718,9 +4718,9 @@ main() {
       res
           .list(arg_userId, arg_shelf,
               startIndex: arg_startIndex,
-              showPreorders: arg_showPreorders,
               source: arg_source,
               maxResults: arg_maxResults,
+              showPreorders: arg_showPreorders,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVolumes(response);
@@ -4732,10 +4732,10 @@ main() {
     unittest.test("method--addBook", () {
       var mock = new HttpServerMock();
       api.CloudloadingResourceApi res = new api.BooksApi(mock).cloudloading;
+      var arg_name = "foo";
       var arg_driveDocumentId = "foo";
       var arg_mimeType = "foo";
       var arg_uploadClientToken = "foo";
-      var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4767,13 +4767,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(queryMap["drive_document_id"].first,
             unittest.equals(arg_driveDocumentId));
         unittest.expect(
             queryMap["mime_type"].first, unittest.equals(arg_mimeType));
         unittest.expect(queryMap["upload_client_token"].first,
             unittest.equals(arg_uploadClientToken));
-        unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4784,10 +4784,10 @@ main() {
       }), true);
       res
           .addBook(
+              name: arg_name,
               driveDocumentId: arg_driveDocumentId,
               mimeType: arg_mimeType,
               uploadClientToken: arg_uploadClientToken,
-              name: arg_name,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBooksCloudloadingResource(response);
@@ -5010,8 +5010,8 @@ main() {
       var mock = new HttpServerMock();
       api.FamilysharingResourceApi res = new api.BooksApi(mock).familysharing;
       var arg_source = "foo";
-      var arg_volumeId = "foo";
       var arg_docId = "foo";
+      var arg_volumeId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5044,9 +5044,9 @@ main() {
           }
         }
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["docId"].first, unittest.equals(arg_docId));
         unittest.expect(
             queryMap["volumeId"].first, unittest.equals(arg_volumeId));
-        unittest.expect(queryMap["docId"].first, unittest.equals(arg_docId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5058,8 +5058,8 @@ main() {
       res
           .share(
               source: arg_source,
-              volumeId: arg_volumeId,
               docId: arg_docId,
+              volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
@@ -5069,8 +5069,8 @@ main() {
     unittest.test("method--unshare", () {
       var mock = new HttpServerMock();
       api.FamilysharingResourceApi res = new api.BooksApi(mock).familysharing;
-      var arg_volumeId = "foo";
       var arg_docId = "foo";
+      var arg_volumeId = "foo";
       var arg_source = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5103,9 +5103,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["docId"].first, unittest.equals(arg_docId));
         unittest.expect(
             queryMap["volumeId"].first, unittest.equals(arg_volumeId));
-        unittest.expect(queryMap["docId"].first, unittest.equals(arg_docId));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -5117,8 +5117,8 @@ main() {
       }), true);
       res
           .unshare(
-              volumeId: arg_volumeId,
               docId: arg_docId,
+              volumeId: arg_volumeId,
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -5133,8 +5133,8 @@ main() {
       api.LayersResourceApi res = new api.BooksApi(mock).layers;
       var arg_volumeId = "foo";
       var arg_summaryId = "foo";
-      var arg_contentVersion = "foo";
       var arg_source = "foo";
+      var arg_contentVersion = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5178,9 +5178,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["contentVersion"].first,
             unittest.equals(arg_contentVersion));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5191,8 +5191,8 @@ main() {
       }), true);
       res
           .get(arg_volumeId, arg_summaryId,
-              contentVersion: arg_contentVersion,
               source: arg_source,
+              contentVersion: arg_contentVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLayersummary(response);
@@ -5203,10 +5203,10 @@ main() {
       var mock = new HttpServerMock();
       api.LayersResourceApi res = new api.BooksApi(mock).layers;
       var arg_volumeId = "foo";
-      var arg_pageToken = "foo";
-      var arg_contentVersion = "foo";
       var arg_maxResults = 42;
+      var arg_pageToken = "foo";
       var arg_source = "foo";
+      var arg_contentVersion = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5247,13 +5247,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["contentVersion"].first,
-            unittest.equals(arg_contentVersion));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["contentVersion"].first,
+            unittest.equals(arg_contentVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5264,10 +5264,10 @@ main() {
       }), true);
       res
           .list(arg_volumeId,
-              pageToken: arg_pageToken,
-              contentVersion: arg_contentVersion,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               source: arg_source,
+              contentVersion: arg_contentVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLayersummaries(response);
@@ -5283,13 +5283,13 @@ main() {
       var arg_volumeId = "foo";
       var arg_layerId = "foo";
       var arg_annotationDataId = "foo";
-      var arg_contentVersion = "foo";
+      var arg_allowWebDefinitions = true;
+      var arg_source = "foo";
       var arg_locale = "foo";
+      var arg_scale = 42;
       var arg_h = 42;
       var arg_w = 42;
-      var arg_allowWebDefinitions = true;
-      var arg_scale = 42;
-      var arg_source = "foo";
+      var arg_contentVersion = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5342,18 +5342,18 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["contentVersion"].first,
-            unittest.equals(arg_contentVersion));
+        unittest.expect(queryMap["allowWebDefinitions"].first,
+            unittest.equals("$arg_allowWebDefinitions"));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
+        unittest.expect(core.int.parse(queryMap["scale"].first),
+            unittest.equals(arg_scale));
         unittest.expect(
             core.int.parse(queryMap["h"].first), unittest.equals(arg_h));
         unittest.expect(
             core.int.parse(queryMap["w"].first), unittest.equals(arg_w));
-        unittest.expect(queryMap["allowWebDefinitions"].first,
-            unittest.equals("$arg_allowWebDefinitions"));
-        unittest.expect(core.int.parse(queryMap["scale"].first),
-            unittest.equals(arg_scale));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["contentVersion"].first,
+            unittest.equals(arg_contentVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5364,13 +5364,13 @@ main() {
       }), true);
       res
           .get(arg_volumeId, arg_layerId, arg_annotationDataId,
-              contentVersion: arg_contentVersion,
+              allowWebDefinitions: arg_allowWebDefinitions,
+              source: arg_source,
               locale: arg_locale,
+              scale: arg_scale,
               h: arg_h,
               w: arg_w,
-              allowWebDefinitions: arg_allowWebDefinitions,
-              scale: arg_scale,
-              source: arg_source,
+              contentVersion: arg_contentVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDictionaryAnnotationdata(response);
@@ -5383,17 +5383,17 @@ main() {
           new api.BooksApi(mock).layers.annotationData;
       var arg_volumeId = "foo";
       var arg_layerId = "foo";
-      var arg_scale = 42;
-      var arg_pageToken = "foo";
-      var arg_locale = "foo";
       var arg_w = 42;
-      var arg_h = 42;
-      var arg_updatedMax = "foo";
+      var arg_scale = 42;
       var arg_updatedMin = "foo";
-      var arg_contentVersion = "foo";
       var arg_maxResults = 42;
-      var arg_annotationDataId = buildUnnamed3335();
+      var arg_locale = "foo";
+      var arg_pageToken = "foo";
       var arg_source = "foo";
+      var arg_contentVersion = "foo";
+      var arg_annotationDataId = buildUnnamed3339();
+      var arg_updatedMax = "foo";
+      var arg_h = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5443,26 +5443,26 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            core.int.parse(queryMap["w"].first), unittest.equals(arg_w));
         unittest.expect(core.int.parse(queryMap["scale"].first),
             unittest.equals(arg_scale));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(
-            core.int.parse(queryMap["w"].first), unittest.equals(arg_w));
-        unittest.expect(
-            core.int.parse(queryMap["h"].first), unittest.equals(arg_h));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["contentVersion"].first,
+            unittest.equals(arg_contentVersion));
+        unittest.expect(queryMap["annotationDataId"],
+            unittest.equals(arg_annotationDataId));
         unittest.expect(
             queryMap["updatedMax"].first, unittest.equals(arg_updatedMax));
         unittest.expect(
-            queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
-        unittest.expect(queryMap["contentVersion"].first,
-            unittest.equals(arg_contentVersion));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["annotationDataId"],
-            unittest.equals(arg_annotationDataId));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+            core.int.parse(queryMap["h"].first), unittest.equals(arg_h));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5473,17 +5473,17 @@ main() {
       }), true);
       res
           .list(arg_volumeId, arg_layerId,
-              scale: arg_scale,
-              pageToken: arg_pageToken,
-              locale: arg_locale,
               w: arg_w,
-              h: arg_h,
-              updatedMax: arg_updatedMax,
+              scale: arg_scale,
               updatedMin: arg_updatedMin,
-              contentVersion: arg_contentVersion,
               maxResults: arg_maxResults,
-              annotationDataId: arg_annotationDataId,
+              locale: arg_locale,
+              pageToken: arg_pageToken,
               source: arg_source,
+              contentVersion: arg_contentVersion,
+              annotationDataId: arg_annotationDataId,
+              updatedMax: arg_updatedMax,
+              h: arg_h,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAnnotationsdata(response);
@@ -5577,19 +5577,19 @@ main() {
           new api.BooksApi(mock).layers.volumeAnnotations;
       var arg_volumeId = "foo";
       var arg_layerId = "foo";
-      var arg_locale = "foo";
-      var arg_maxResults = 42;
-      var arg_updatedMax = "foo";
-      var arg_pageToken = "foo";
-      var arg_contentVersion = "foo";
-      var arg_endPosition = "foo";
       var arg_updatedMin = "foo";
-      var arg_showDeleted = true;
-      var arg_source = "foo";
-      var arg_startOffset = "foo";
-      var arg_endOffset = "foo";
+      var arg_contentVersion = "foo";
       var arg_startPosition = "foo";
+      var arg_endPosition = "foo";
+      var arg_startOffset = "foo";
+      var arg_updatedMax = "foo";
       var arg_volumeAnnotationsVersion = "foo";
+      var arg_source = "foo";
+      var arg_endOffset = "foo";
+      var arg_maxResults = 42;
+      var arg_locale = "foo";
+      var arg_showDeleted = true;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5633,30 +5633,30 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["updatedMax"].first, unittest.equals(arg_updatedMax));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
         unittest.expect(queryMap["contentVersion"].first,
             unittest.equals(arg_contentVersion));
+        unittest.expect(queryMap["startPosition"].first,
+            unittest.equals(arg_startPosition));
         unittest.expect(
             queryMap["endPosition"].first, unittest.equals(arg_endPosition));
         unittest.expect(
-            queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
-        unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
-        unittest.expect(
             queryMap["startOffset"].first, unittest.equals(arg_startOffset));
         unittest.expect(
-            queryMap["endOffset"].first, unittest.equals(arg_endOffset));
-        unittest.expect(queryMap["startPosition"].first,
-            unittest.equals(arg_startPosition));
+            queryMap["updatedMax"].first, unittest.equals(arg_updatedMax));
         unittest.expect(queryMap["volumeAnnotationsVersion"].first,
             unittest.equals(arg_volumeAnnotationsVersion));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(
+            queryMap["endOffset"].first, unittest.equals(arg_endOffset));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
+        unittest.expect(
+            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5667,19 +5667,19 @@ main() {
       }), true);
       res
           .list(arg_volumeId, arg_layerId,
-              locale: arg_locale,
-              maxResults: arg_maxResults,
-              updatedMax: arg_updatedMax,
-              pageToken: arg_pageToken,
-              contentVersion: arg_contentVersion,
-              endPosition: arg_endPosition,
               updatedMin: arg_updatedMin,
-              showDeleted: arg_showDeleted,
-              source: arg_source,
-              startOffset: arg_startOffset,
-              endOffset: arg_endOffset,
+              contentVersion: arg_contentVersion,
               startPosition: arg_startPosition,
+              endPosition: arg_endPosition,
+              startOffset: arg_startOffset,
+              updatedMax: arg_updatedMax,
               volumeAnnotationsVersion: arg_volumeAnnotationsVersion,
+              source: arg_source,
+              endOffset: arg_endOffset,
+              maxResults: arg_maxResults,
+              locale: arg_locale,
+              showDeleted: arg_showDeleted,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVolumeannotations(response);
@@ -5743,10 +5743,10 @@ main() {
     unittest.test("method--releaseDownloadAccess", () {
       var mock = new HttpServerMock();
       api.MyconfigResourceApi res = new api.BooksApi(mock).myconfig;
+      var arg_cpksver = "foo";
       var arg_locale = "foo";
       var arg_source = "foo";
-      var arg_volumeIds = buildUnnamed3336();
-      var arg_cpksver = "foo";
+      var arg_volumeIds = buildUnnamed3340();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5778,11 +5778,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["cpksver"].first, unittest.equals(arg_cpksver));
         unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["volumeIds"], unittest.equals(arg_volumeIds));
-        unittest.expect(
-            queryMap["cpksver"].first, unittest.equals(arg_cpksver));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5793,10 +5793,10 @@ main() {
       }), true);
       res
           .releaseDownloadAccess(
+              cpksver: arg_cpksver,
               locale: arg_locale,
               source: arg_source,
               volumeIds: arg_volumeIds,
-              cpksver: arg_cpksver,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDownloadAccesses(response);
@@ -5806,11 +5806,11 @@ main() {
     unittest.test("method--requestAccess", () {
       var mock = new HttpServerMock();
       api.MyconfigResourceApi res = new api.BooksApi(mock).myconfig;
-      var arg_licenseTypes = "foo";
-      var arg_locale = "foo";
       var arg_source = "foo";
+      var arg_locale = "foo";
       var arg_nonce = "foo";
       var arg_cpksver = "foo";
+      var arg_licenseTypes = "foo";
       var arg_volumeId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5843,13 +5843,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["licenseTypes"].first, unittest.equals(arg_licenseTypes));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(queryMap["nonce"].first, unittest.equals(arg_nonce));
         unittest.expect(
             queryMap["cpksver"].first, unittest.equals(arg_cpksver));
+        unittest.expect(
+            queryMap["licenseTypes"].first, unittest.equals(arg_licenseTypes));
         unittest.expect(
             queryMap["volumeId"].first, unittest.equals(arg_volumeId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5862,11 +5862,11 @@ main() {
       }), true);
       res
           .requestAccess(
-              licenseTypes: arg_licenseTypes,
-              locale: arg_locale,
               source: arg_source,
+              locale: arg_locale,
               nonce: arg_nonce,
               cpksver: arg_cpksver,
+              licenseTypes: arg_licenseTypes,
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -5879,12 +5879,12 @@ main() {
       api.MyconfigResourceApi res = new api.BooksApi(mock).myconfig;
       var arg_cpksver = "foo";
       var arg_source = "foo";
-      var arg_volumeIds = buildUnnamed3337();
-      var arg_nonce = "foo";
-      var arg_showPreorders = true;
       var arg_locale = "foo";
+      var arg_showPreorders = true;
       var arg_includeNonComicsSeries = true;
-      var arg_features = buildUnnamed3338();
+      var arg_features = buildUnnamed3341();
+      var arg_nonce = "foo";
+      var arg_volumeIds = buildUnnamed3342();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5919,14 +5919,14 @@ main() {
         unittest.expect(
             queryMap["cpksver"].first, unittest.equals(arg_cpksver));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
-        unittest.expect(queryMap["volumeIds"], unittest.equals(arg_volumeIds));
-        unittest.expect(queryMap["nonce"].first, unittest.equals(arg_nonce));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(queryMap["showPreorders"].first,
             unittest.equals("$arg_showPreorders"));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(queryMap["includeNonComicsSeries"].first,
             unittest.equals("$arg_includeNonComicsSeries"));
         unittest.expect(queryMap["features"], unittest.equals(arg_features));
+        unittest.expect(queryMap["nonce"].first, unittest.equals(arg_nonce));
+        unittest.expect(queryMap["volumeIds"], unittest.equals(arg_volumeIds));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5939,12 +5939,12 @@ main() {
           .syncVolumeLicenses(
               cpksver: arg_cpksver,
               source: arg_source,
-              volumeIds: arg_volumeIds,
-              nonce: arg_nonce,
-              showPreorders: arg_showPreorders,
               locale: arg_locale,
+              showPreorders: arg_showPreorders,
               includeNonComicsSeries: arg_includeNonComicsSeries,
               features: arg_features,
+              nonce: arg_nonce,
+              volumeIds: arg_volumeIds,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVolumes(response);
@@ -6067,9 +6067,9 @@ main() {
       api.MylibraryAnnotationsResourceApi res =
           new api.BooksApi(mock).mylibrary.annotations;
       var arg_request = buildAnnotation();
-      var arg_showOnlySummaryInResponse = true;
-      var arg_source = "foo";
       var arg_annotationId = "foo";
+      var arg_source = "foo";
+      var arg_showOnlySummaryInResponse = true;
       var arg_country = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6105,11 +6105,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["showOnlySummaryInResponse"].first,
-            unittest.equals("$arg_showOnlySummaryInResponse"));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(
             queryMap["annotationId"].first, unittest.equals(arg_annotationId));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["showOnlySummaryInResponse"].first,
+            unittest.equals("$arg_showOnlySummaryInResponse"));
         unittest.expect(
             queryMap["country"].first, unittest.equals(arg_country));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -6122,9 +6122,9 @@ main() {
       }), true);
       res
           .insert(arg_request,
-              showOnlySummaryInResponse: arg_showOnlySummaryInResponse,
-              source: arg_source,
               annotationId: arg_annotationId,
+              source: arg_source,
+              showOnlySummaryInResponse: arg_showOnlySummaryInResponse,
               country: arg_country,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -6136,16 +6136,16 @@ main() {
       var mock = new HttpServerMock();
       api.MylibraryAnnotationsResourceApi res =
           new api.BooksApi(mock).mylibrary.annotations;
-      var arg_updatedMin = "foo";
-      var arg_volumeId = "foo";
+      var arg_source = "foo";
+      var arg_layerIds = buildUnnamed3343();
       var arg_layerId = "foo";
-      var arg_layerIds = buildUnnamed3339();
-      var arg_contentVersion = "foo";
-      var arg_maxResults = 42;
-      var arg_pageToken = "foo";
       var arg_updatedMax = "foo";
       var arg_showDeleted = true;
-      var arg_source = "foo";
+      var arg_volumeId = "foo";
+      var arg_updatedMin = "foo";
+      var arg_pageToken = "foo";
+      var arg_maxResults = 42;
+      var arg_contentVersion = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6177,24 +6177,24 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
-        unittest.expect(
-            queryMap["volumeId"].first, unittest.equals(arg_volumeId));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["layerIds"], unittest.equals(arg_layerIds));
         unittest.expect(
             queryMap["layerId"].first, unittest.equals(arg_layerId));
-        unittest.expect(queryMap["layerIds"], unittest.equals(arg_layerIds));
-        unittest.expect(queryMap["contentVersion"].first,
-            unittest.equals(arg_contentVersion));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["updatedMax"].first, unittest.equals(arg_updatedMax));
         unittest.expect(
             queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(
+            queryMap["volumeId"].first, unittest.equals(arg_volumeId));
+        unittest.expect(
+            queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["contentVersion"].first,
+            unittest.equals(arg_contentVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6205,16 +6205,16 @@ main() {
       }), true);
       res
           .list(
-              updatedMin: arg_updatedMin,
-              volumeId: arg_volumeId,
-              layerId: arg_layerId,
+              source: arg_source,
               layerIds: arg_layerIds,
-              contentVersion: arg_contentVersion,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
+              layerId: arg_layerId,
               updatedMax: arg_updatedMax,
               showDeleted: arg_showDeleted,
-              source: arg_source,
+              volumeId: arg_volumeId,
+              updatedMin: arg_updatedMin,
+              pageToken: arg_pageToken,
+              maxResults: arg_maxResults,
+              contentVersion: arg_contentVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAnnotations(response);
@@ -6225,8 +6225,8 @@ main() {
       var mock = new HttpServerMock();
       api.MylibraryAnnotationsResourceApi res =
           new api.BooksApi(mock).mylibrary.annotations;
+      var arg_layerIds = buildUnnamed3344();
       var arg_volumeId = "foo";
-      var arg_layerIds = buildUnnamed3340();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6258,9 +6258,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["layerIds"], unittest.equals(arg_layerIds));
         unittest.expect(
             queryMap["volumeId"].first, unittest.equals(arg_volumeId));
-        unittest.expect(queryMap["layerIds"], unittest.equals(arg_layerIds));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6271,8 +6271,8 @@ main() {
       }), true);
       res
           .summary(
-              volumeId: arg_volumeId,
               layerIds: arg_layerIds,
+              volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAnnotationsSummary(response);
@@ -6347,9 +6347,9 @@ main() {
       api.MylibraryBookshelvesResourceApi res =
           new api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = "foo";
-      var arg_volumeId = "foo";
       var arg_source = "foo";
       var arg_reason = "foo";
+      var arg_volumeId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6390,10 +6390,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["volumeId"].first, unittest.equals(arg_volumeId));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["reason"].first, unittest.equals(arg_reason));
+        unittest.expect(
+            queryMap["volumeId"].first, unittest.equals(arg_volumeId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6404,9 +6404,9 @@ main() {
       }), true);
       res
           .addVolume(arg_shelf,
-              volumeId: arg_volumeId,
               source: arg_source,
               reason: arg_reason,
+              volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
@@ -6589,8 +6589,8 @@ main() {
           new api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = "foo";
       var arg_volumeId = "foo";
-      var arg_volumePosition = 42;
       var arg_source = "foo";
+      var arg_volumePosition = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6633,9 +6633,9 @@ main() {
         }
         unittest.expect(
             queryMap["volumeId"].first, unittest.equals(arg_volumeId));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(core.int.parse(queryMap["volumePosition"].first),
             unittest.equals(arg_volumePosition));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6647,8 +6647,8 @@ main() {
       res
           .moveVolume(arg_shelf,
               volumeId: arg_volumeId,
-              volumePosition: arg_volumePosition,
               source: arg_source,
+              volumePosition: arg_volumePosition,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
@@ -6733,12 +6733,12 @@ main() {
       api.MylibraryBookshelvesVolumesResourceApi res =
           new api.BooksApi(mock).mylibrary.bookshelves.volumes;
       var arg_shelf = "foo";
+      var arg_maxResults = 42;
       var arg_source = "foo";
       var arg_country = "foo";
-      var arg_q = "foo";
       var arg_projection = "foo";
       var arg_showPreorders = true;
-      var arg_maxResults = 42;
+      var arg_q = "foo";
       var arg_startIndex = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6780,16 +6780,16 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(
             queryMap["country"].first, unittest.equals(arg_country));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
         unittest.expect(queryMap["showPreorders"].first,
             unittest.equals("$arg_showPreorders"));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(core.int.parse(queryMap["startIndex"].first),
             unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -6802,12 +6802,12 @@ main() {
       }), true);
       res
           .list(arg_shelf,
+              maxResults: arg_maxResults,
               source: arg_source,
               country: arg_country,
-              q: arg_q,
               projection: arg_projection,
               showPreorders: arg_showPreorders,
-              maxResults: arg_maxResults,
+              q: arg_q,
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -6822,8 +6822,8 @@ main() {
       api.MylibraryReadingpositionsResourceApi res =
           new api.BooksApi(mock).mylibrary.readingpositions;
       var arg_volumeId = "foo";
-      var arg_contentVersion = "foo";
       var arg_source = "foo";
+      var arg_contentVersion = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6858,9 +6858,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["contentVersion"].first,
             unittest.equals(arg_contentVersion));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6871,8 +6871,8 @@ main() {
       }), true);
       res
           .get(arg_volumeId,
-              contentVersion: arg_contentVersion,
               source: arg_source,
+              contentVersion: arg_contentVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkReadingPosition(response);
@@ -6884,12 +6884,12 @@ main() {
       api.MylibraryReadingpositionsResourceApi res =
           new api.BooksApi(mock).mylibrary.readingpositions;
       var arg_volumeId = "foo";
-      var arg_timestamp = "foo";
-      var arg_contentVersion = "foo";
-      var arg_action = "foo";
-      var arg_source = "foo";
       var arg_position = "foo";
       var arg_deviceCookie = "foo";
+      var arg_source = "foo";
+      var arg_contentVersion = "foo";
+      var arg_timestamp = "foo";
+      var arg_action = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6931,15 +6931,15 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["timestamp"].first, unittest.equals(arg_timestamp));
-        unittest.expect(queryMap["contentVersion"].first,
-            unittest.equals(arg_contentVersion));
-        unittest.expect(queryMap["action"].first, unittest.equals(arg_action));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
-        unittest.expect(
             queryMap["position"].first, unittest.equals(arg_position));
         unittest.expect(
             queryMap["deviceCookie"].first, unittest.equals(arg_deviceCookie));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["contentVersion"].first,
+            unittest.equals(arg_contentVersion));
+        unittest.expect(
+            queryMap["timestamp"].first, unittest.equals(arg_timestamp));
+        unittest.expect(queryMap["action"].first, unittest.equals(arg_action));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6950,12 +6950,12 @@ main() {
       }), true);
       res
           .setPosition(arg_volumeId,
-              timestamp: arg_timestamp,
-              contentVersion: arg_contentVersion,
-              action: arg_action,
-              source: arg_source,
               position: arg_position,
               deviceCookie: arg_deviceCookie,
+              source: arg_source,
+              contentVersion: arg_contentVersion,
+              timestamp: arg_timestamp,
+              action: arg_action,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
@@ -6967,9 +6967,9 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.NotificationResourceApi res = new api.BooksApi(mock).notification;
-      var arg_notificationId = "foo";
-      var arg_locale = "foo";
       var arg_source = "foo";
+      var arg_locale = "foo";
+      var arg_notificationId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7001,10 +7001,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(queryMap["notification_id"].first,
             unittest.equals(arg_notificationId));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7015,9 +7015,9 @@ main() {
       }), true);
       res
           .get(
-              notificationId: arg_notificationId,
-              locale: arg_locale,
               source: arg_source,
+              locale: arg_locale,
+              notificationId: arg_notificationId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkNotification(response);
@@ -7080,11 +7080,11 @@ main() {
     unittest.test("method--listCategoryVolumes", () {
       var mock = new HttpServerMock();
       api.OnboardingResourceApi res = new api.BooksApi(mock).onboarding;
-      var arg_categoryId = buildUnnamed3341();
-      var arg_pageSize = 42;
       var arg_locale = "foo";
-      var arg_maxAllowedMaturityRating = "foo";
+      var arg_categoryId = buildUnnamed3345();
       var arg_pageToken = "foo";
+      var arg_maxAllowedMaturityRating = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7116,15 +7116,15 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(
             queryMap["categoryId"], unittest.equals(arg_categoryId));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
-        unittest.expect(queryMap["maxAllowedMaturityRating"].first,
-            unittest.equals(arg_maxAllowedMaturityRating));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["maxAllowedMaturityRating"].first,
+            unittest.equals(arg_maxAllowedMaturityRating));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7135,11 +7135,11 @@ main() {
       }), true);
       res
           .listCategoryVolumes(
-              categoryId: arg_categoryId,
-              pageSize: arg_pageSize,
               locale: arg_locale,
-              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
+              categoryId: arg_categoryId,
               pageToken: arg_pageToken,
+              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVolume2(response);
@@ -7214,14 +7214,14 @@ main() {
     unittest.test("method--accept", () {
       var mock = new HttpServerMock();
       api.PromoofferResourceApi res = new api.BooksApi(mock).promooffer;
-      var arg_volumeId = "foo";
       var arg_offerId = "foo";
-      var arg_serial = "foo";
-      var arg_androidId = "foo";
-      var arg_model = "foo";
-      var arg_device = "foo";
       var arg_manufacturer = "foo";
       var arg_product = "foo";
+      var arg_model = "foo";
+      var arg_volumeId = "foo";
+      var arg_device = "foo";
+      var arg_androidId = "foo";
+      var arg_serial = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7254,18 +7254,18 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["volumeId"].first, unittest.equals(arg_volumeId));
-        unittest.expect(
             queryMap["offerId"].first, unittest.equals(arg_offerId));
-        unittest.expect(queryMap["serial"].first, unittest.equals(arg_serial));
-        unittest.expect(
-            queryMap["androidId"].first, unittest.equals(arg_androidId));
-        unittest.expect(queryMap["model"].first, unittest.equals(arg_model));
-        unittest.expect(queryMap["device"].first, unittest.equals(arg_device));
         unittest.expect(
             queryMap["manufacturer"].first, unittest.equals(arg_manufacturer));
         unittest.expect(
             queryMap["product"].first, unittest.equals(arg_product));
+        unittest.expect(queryMap["model"].first, unittest.equals(arg_model));
+        unittest.expect(
+            queryMap["volumeId"].first, unittest.equals(arg_volumeId));
+        unittest.expect(queryMap["device"].first, unittest.equals(arg_device));
+        unittest.expect(
+            queryMap["androidId"].first, unittest.equals(arg_androidId));
+        unittest.expect(queryMap["serial"].first, unittest.equals(arg_serial));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7276,14 +7276,14 @@ main() {
       }), true);
       res
           .accept(
-              volumeId: arg_volumeId,
               offerId: arg_offerId,
-              serial: arg_serial,
-              androidId: arg_androidId,
-              model: arg_model,
-              device: arg_device,
               manufacturer: arg_manufacturer,
               product: arg_product,
+              model: arg_model,
+              volumeId: arg_volumeId,
+              device: arg_device,
+              androidId: arg_androidId,
+              serial: arg_serial,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
@@ -7294,12 +7294,12 @@ main() {
       var mock = new HttpServerMock();
       api.PromoofferResourceApi res = new api.BooksApi(mock).promooffer;
       var arg_androidId = "foo";
-      var arg_serial = "foo";
       var arg_product = "foo";
+      var arg_serial = "foo";
       var arg_model = "foo";
-      var arg_manufacturer = "foo";
-      var arg_device = "foo";
       var arg_offerId = "foo";
+      var arg_device = "foo";
+      var arg_manufacturer = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7333,15 +7333,15 @@ main() {
         }
         unittest.expect(
             queryMap["androidId"].first, unittest.equals(arg_androidId));
-        unittest.expect(queryMap["serial"].first, unittest.equals(arg_serial));
         unittest.expect(
             queryMap["product"].first, unittest.equals(arg_product));
+        unittest.expect(queryMap["serial"].first, unittest.equals(arg_serial));
         unittest.expect(queryMap["model"].first, unittest.equals(arg_model));
         unittest.expect(
-            queryMap["manufacturer"].first, unittest.equals(arg_manufacturer));
+            queryMap["offerId"].first, unittest.equals(arg_offerId));
         unittest.expect(queryMap["device"].first, unittest.equals(arg_device));
         unittest.expect(
-            queryMap["offerId"].first, unittest.equals(arg_offerId));
+            queryMap["manufacturer"].first, unittest.equals(arg_manufacturer));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7353,12 +7353,12 @@ main() {
       res
           .dismiss(
               androidId: arg_androidId,
-              serial: arg_serial,
               product: arg_product,
+              serial: arg_serial,
               model: arg_model,
-              manufacturer: arg_manufacturer,
-              device: arg_device,
               offerId: arg_offerId,
+              device: arg_device,
+              manufacturer: arg_manufacturer,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
@@ -7369,11 +7369,11 @@ main() {
       var mock = new HttpServerMock();
       api.PromoofferResourceApi res = new api.BooksApi(mock).promooffer;
       var arg_serial = "foo";
+      var arg_androidId = "foo";
+      var arg_manufacturer = "foo";
       var arg_model = "foo";
       var arg_device = "foo";
-      var arg_manufacturer = "foo";
       var arg_product = "foo";
-      var arg_androidId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7406,14 +7406,14 @@ main() {
           }
         }
         unittest.expect(queryMap["serial"].first, unittest.equals(arg_serial));
+        unittest.expect(
+            queryMap["androidId"].first, unittest.equals(arg_androidId));
+        unittest.expect(
+            queryMap["manufacturer"].first, unittest.equals(arg_manufacturer));
         unittest.expect(queryMap["model"].first, unittest.equals(arg_model));
         unittest.expect(queryMap["device"].first, unittest.equals(arg_device));
         unittest.expect(
-            queryMap["manufacturer"].first, unittest.equals(arg_manufacturer));
-        unittest.expect(
             queryMap["product"].first, unittest.equals(arg_product));
-        unittest.expect(
-            queryMap["androidId"].first, unittest.equals(arg_androidId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7425,11 +7425,11 @@ main() {
       res
           .get(
               serial: arg_serial,
+              androidId: arg_androidId,
+              manufacturer: arg_manufacturer,
               model: arg_model,
               device: arg_device,
-              manufacturer: arg_manufacturer,
               product: arg_product,
-              androidId: arg_androidId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOffers(response);
@@ -7441,7 +7441,7 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.SeriesResourceApi res = new api.BooksApi(mock).series;
-      var arg_seriesId = buildUnnamed3342();
+      var arg_seriesId = buildUnnamed3346();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7495,9 +7495,9 @@ main() {
       var mock = new HttpServerMock();
       api.SeriesMembershipResourceApi res =
           new api.BooksApi(mock).series.membership;
+      var arg_pageSize = 42;
       var arg_pageToken = "foo";
       var arg_seriesId = "foo";
-      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7529,12 +7529,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(core.int.parse(queryMap["page_size"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["page_token"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["series_id"].first, unittest.equals(arg_seriesId));
-        unittest.expect(core.int.parse(queryMap["page_size"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7545,9 +7545,9 @@ main() {
       }), true);
       res
           .get(
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               seriesId: arg_seriesId,
-              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSeriesmembership(response);
@@ -7560,12 +7560,12 @@ main() {
       var mock = new HttpServerMock();
       api.VolumesResourceApi res = new api.BooksApi(mock).volumes;
       var arg_volumeId = "foo";
-      var arg_includeNonComicsSeries = true;
-      var arg_userLibraryConsistentRead = true;
-      var arg_partner = "foo";
       var arg_country = "foo";
-      var arg_source = "foo";
       var arg_projection = "foo";
+      var arg_partner = "foo";
+      var arg_includeNonComicsSeries = true;
+      var arg_source = "foo";
+      var arg_userLibraryConsistentRead = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7600,17 +7600,17 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["includeNonComicsSeries"].first,
-            unittest.equals("$arg_includeNonComicsSeries"));
-        unittest.expect(queryMap["user_library_consistent_read"].first,
-            unittest.equals("$arg_userLibraryConsistentRead"));
-        unittest.expect(
-            queryMap["partner"].first, unittest.equals(arg_partner));
         unittest.expect(
             queryMap["country"].first, unittest.equals(arg_country));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(
+            queryMap["partner"].first, unittest.equals(arg_partner));
+        unittest.expect(queryMap["includeNonComicsSeries"].first,
+            unittest.equals("$arg_includeNonComicsSeries"));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["user_library_consistent_read"].first,
+            unittest.equals("$arg_userLibraryConsistentRead"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7621,12 +7621,12 @@ main() {
       }), true);
       res
           .get(arg_volumeId,
-              includeNonComicsSeries: arg_includeNonComicsSeries,
-              userLibraryConsistentRead: arg_userLibraryConsistentRead,
-              partner: arg_partner,
               country: arg_country,
-              source: arg_source,
               projection: arg_projection,
+              partner: arg_partner,
+              includeNonComicsSeries: arg_includeNonComicsSeries,
+              source: arg_source,
+              userLibraryConsistentRead: arg_userLibraryConsistentRead,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVolume(response);
@@ -7636,20 +7636,20 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.VolumesResourceApi res = new api.BooksApi(mock).volumes;
-      var arg_startIndex = 42;
-      var arg_q = "foo";
-      var arg_maxResults = 42;
-      var arg_maxAllowedMaturityRating = "foo";
-      var arg_showPreorders = true;
-      var arg_langRestrict = "foo";
       var arg_partner = "foo";
+      var arg_startIndex = 42;
+      var arg_libraryRestrict = "foo";
+      var arg_maxResults = 42;
+      var arg_source = "foo";
+      var arg_filter = "foo";
+      var arg_showPreorders = true;
       var arg_projection = "foo";
       var arg_printType = "foo";
-      var arg_orderBy = "foo";
-      var arg_source = "foo";
-      var arg_libraryRestrict = "foo";
+      var arg_maxAllowedMaturityRating = "foo";
       var arg_download = "foo";
-      var arg_filter = "foo";
+      var arg_langRestrict = "foo";
+      var arg_orderBy = "foo";
+      var arg_q = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7681,31 +7681,31 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["startIndex"].first),
-            unittest.equals(arg_startIndex));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["maxAllowedMaturityRating"].first,
-            unittest.equals(arg_maxAllowedMaturityRating));
-        unittest.expect(queryMap["showPreorders"].first,
-            unittest.equals("$arg_showPreorders"));
-        unittest.expect(
-            queryMap["langRestrict"].first, unittest.equals(arg_langRestrict));
         unittest.expect(
             queryMap["partner"].first, unittest.equals(arg_partner));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
+        unittest.expect(queryMap["libraryRestrict"].first,
+            unittest.equals(arg_libraryRestrict));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["showPreorders"].first,
+            unittest.equals("$arg_showPreorders"));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
         unittest.expect(
             queryMap["printType"].first, unittest.equals(arg_printType));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
-        unittest.expect(queryMap["libraryRestrict"].first,
-            unittest.equals(arg_libraryRestrict));
+        unittest.expect(queryMap["maxAllowedMaturityRating"].first,
+            unittest.equals(arg_maxAllowedMaturityRating));
         unittest.expect(
             queryMap["download"].first, unittest.equals(arg_download));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["langRestrict"].first, unittest.equals(arg_langRestrict));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7716,20 +7716,20 @@ main() {
       }), true);
       res
           .list(
-              startIndex: arg_startIndex,
-              q: arg_q,
-              maxResults: arg_maxResults,
-              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
-              showPreorders: arg_showPreorders,
-              langRestrict: arg_langRestrict,
               partner: arg_partner,
+              startIndex: arg_startIndex,
+              libraryRestrict: arg_libraryRestrict,
+              maxResults: arg_maxResults,
+              source: arg_source,
+              filter: arg_filter,
+              showPreorders: arg_showPreorders,
               projection: arg_projection,
               printType: arg_printType,
-              orderBy: arg_orderBy,
-              source: arg_source,
-              libraryRestrict: arg_libraryRestrict,
+              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
               download: arg_download,
-              filter: arg_filter,
+              langRestrict: arg_langRestrict,
+              orderBy: arg_orderBy,
+              q: arg_q,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVolumes(response);
@@ -7743,10 +7743,10 @@ main() {
       api.VolumesAssociatedResourceApi res =
           new api.BooksApi(mock).volumes.associated;
       var arg_volumeId = "foo";
-      var arg_association = "foo";
-      var arg_maxAllowedMaturityRating = "foo";
       var arg_source = "foo";
       var arg_locale = "foo";
+      var arg_association = "foo";
+      var arg_maxAllowedMaturityRating = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7787,12 +7787,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(
             queryMap["association"].first, unittest.equals(arg_association));
         unittest.expect(queryMap["maxAllowedMaturityRating"].first,
             unittest.equals(arg_maxAllowedMaturityRating));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7803,10 +7803,10 @@ main() {
       }), true);
       res
           .list(arg_volumeId,
-              association: arg_association,
-              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
               source: arg_source,
               locale: arg_locale,
+              association: arg_association,
+              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVolumes(response);
@@ -7819,13 +7819,13 @@ main() {
       var mock = new HttpServerMock();
       api.VolumesMybooksResourceApi res =
           new api.BooksApi(mock).volumes.mybooks;
-      var arg_startIndex = 42;
-      var arg_country = "foo";
-      var arg_acquireMethod = buildUnnamed3343();
-      var arg_locale = "foo";
+      var arg_processingState = buildUnnamed3347();
       var arg_maxResults = 42;
       var arg_source = "foo";
-      var arg_processingState = buildUnnamed3344();
+      var arg_locale = "foo";
+      var arg_acquireMethod = buildUnnamed3348();
+      var arg_country = "foo";
+      var arg_startIndex = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7857,18 +7857,18 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["startIndex"].first),
-            unittest.equals(arg_startIndex));
         unittest.expect(
-            queryMap["country"].first, unittest.equals(arg_country));
-        unittest.expect(
-            queryMap["acquireMethod"], unittest.equals(arg_acquireMethod));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
+            queryMap["processingState"], unittest.equals(arg_processingState));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(
-            queryMap["processingState"], unittest.equals(arg_processingState));
+            queryMap["acquireMethod"], unittest.equals(arg_acquireMethod));
+        unittest.expect(
+            queryMap["country"].first, unittest.equals(arg_country));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7879,13 +7879,13 @@ main() {
       }), true);
       res
           .list(
-              startIndex: arg_startIndex,
-              country: arg_country,
-              acquireMethod: arg_acquireMethod,
-              locale: arg_locale,
+              processingState: arg_processingState,
               maxResults: arg_maxResults,
               source: arg_source,
-              processingState: arg_processingState,
+              locale: arg_locale,
+              acquireMethod: arg_acquireMethod,
+              country: arg_country,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVolumes(response);
@@ -7898,8 +7898,8 @@ main() {
       var mock = new HttpServerMock();
       api.VolumesRecommendedResourceApi res =
           new api.BooksApi(mock).volumes.recommended;
-      var arg_maxAllowedMaturityRating = "foo";
       var arg_source = "foo";
+      var arg_maxAllowedMaturityRating = "foo";
       var arg_locale = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7932,9 +7932,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["maxAllowedMaturityRating"].first,
             unittest.equals(arg_maxAllowedMaturityRating));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -7946,8 +7946,8 @@ main() {
       }), true);
       res
           .list(
-              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
               source: arg_source,
+              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
               locale: arg_locale,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -7959,10 +7959,10 @@ main() {
       var mock = new HttpServerMock();
       api.VolumesRecommendedResourceApi res =
           new api.BooksApi(mock).volumes.recommended;
+      var arg_volumeId = "foo";
+      var arg_rating = "foo";
       var arg_locale = "foo";
       var arg_source = "foo";
-      var arg_rating = "foo";
-      var arg_volumeId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7994,11 +7994,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
-        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
-        unittest.expect(queryMap["rating"].first, unittest.equals(arg_rating));
         unittest.expect(
             queryMap["volumeId"].first, unittest.equals(arg_volumeId));
+        unittest.expect(queryMap["rating"].first, unittest.equals(arg_rating));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
+        unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8010,10 +8010,10 @@ main() {
       }), true);
       res
           .rate(
+              volumeId: arg_volumeId,
+              rating: arg_rating,
               locale: arg_locale,
               source: arg_source,
-              rating: arg_rating,
-              volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBooksVolumesRecommendedRateResponse(response);
@@ -8026,11 +8026,11 @@ main() {
       var mock = new HttpServerMock();
       api.VolumesUseruploadedResourceApi res =
           new api.BooksApi(mock).volumes.useruploaded;
-      var arg_startIndex = 42;
+      var arg_processingState = buildUnnamed3349();
       var arg_locale = "foo";
+      var arg_volumeId = buildUnnamed3350();
+      var arg_startIndex = 42;
       var arg_maxResults = 42;
-      var arg_processingState = buildUnnamed3345();
-      var arg_volumeId = buildUnnamed3346();
       var arg_source = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8063,14 +8063,14 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["startIndex"].first),
-            unittest.equals(arg_startIndex));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["processingState"], unittest.equals(arg_processingState));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(queryMap["volumeId"], unittest.equals(arg_volumeId));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["source"].first, unittest.equals(arg_source));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -8082,11 +8082,11 @@ main() {
       }), true);
       res
           .list(
-              startIndex: arg_startIndex,
-              locale: arg_locale,
-              maxResults: arg_maxResults,
               processingState: arg_processingState,
+              locale: arg_locale,
               volumeId: arg_volumeId,
+              startIndex: arg_startIndex,
+              maxResults: arg_maxResults,
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

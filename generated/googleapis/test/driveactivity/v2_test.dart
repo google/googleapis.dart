@@ -228,14 +228,14 @@ checkAssignment(api.Assignment o) {
   buildCounterAssignment--;
 }
 
-buildUnnamed4101() {
+buildUnnamed4108() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed4101(core.List<api.User> o) {
+checkUnnamed4108(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -247,7 +247,7 @@ buildComment() {
   buildCounterComment++;
   if (buildCounterComment < 3) {
     o.assignment = buildAssignment();
-    o.mentionedUsers = buildUnnamed4101();
+    o.mentionedUsers = buildUnnamed4108();
     o.post = buildPost();
     o.suggestion = buildSuggestion();
   }
@@ -259,7 +259,7 @@ checkComment(api.Comment o) {
   buildCounterComment++;
   if (buildCounterComment < 3) {
     checkAssignment(o.assignment);
-    checkUnnamed4101(o.mentionedUsers);
+    checkUnnamed4108(o.mentionedUsers);
     checkPost(o.post);
     checkSuggestion(o.suggestion);
   }
@@ -426,40 +426,40 @@ checkDrive(api.Drive o) {
   buildCounterDrive--;
 }
 
-buildUnnamed4102() {
+buildUnnamed4109() {
   var o = new core.List<api.Action>();
   o.add(buildAction());
   o.add(buildAction());
   return o;
 }
 
-checkUnnamed4102(core.List<api.Action> o) {
+checkUnnamed4109(core.List<api.Action> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAction(o[0]);
   checkAction(o[1]);
 }
 
-buildUnnamed4103() {
+buildUnnamed4110() {
   var o = new core.List<api.Actor>();
   o.add(buildActor());
   o.add(buildActor());
   return o;
 }
 
-checkUnnamed4103(core.List<api.Actor> o) {
+checkUnnamed4110(core.List<api.Actor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActor(o[0]);
   checkActor(o[1]);
 }
 
-buildUnnamed4104() {
+buildUnnamed4111() {
   var o = new core.List<api.Target>();
   o.add(buildTarget());
   o.add(buildTarget());
   return o;
 }
 
-checkUnnamed4104(core.List<api.Target> o) {
+checkUnnamed4111(core.List<api.Target> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTarget(o[0]);
   checkTarget(o[1]);
@@ -470,10 +470,10 @@ buildDriveActivity() {
   var o = new api.DriveActivity();
   buildCounterDriveActivity++;
   if (buildCounterDriveActivity < 3) {
-    o.actions = buildUnnamed4102();
-    o.actors = buildUnnamed4103();
+    o.actions = buildUnnamed4109();
+    o.actors = buildUnnamed4110();
     o.primaryActionDetail = buildActionDetail();
-    o.targets = buildUnnamed4104();
+    o.targets = buildUnnamed4111();
     o.timeRange = buildTimeRange();
     o.timestamp = "foo";
   }
@@ -484,10 +484,10 @@ buildDriveActivity() {
 checkDriveActivity(api.DriveActivity o) {
   buildCounterDriveActivity++;
   if (buildCounterDriveActivity < 3) {
-    checkUnnamed4102(o.actions);
-    checkUnnamed4103(o.actors);
+    checkUnnamed4109(o.actions);
+    checkUnnamed4110(o.actors);
     checkActionDetail(o.primaryActionDetail);
-    checkUnnamed4104(o.targets);
+    checkUnnamed4111(o.targets);
     checkTimeRange(o.timeRange);
     unittest.expect(o.timestamp, unittest.equals('foo'));
   }
@@ -761,27 +761,27 @@ checkLegacy(api.Legacy o) {
   buildCounterLegacy--;
 }
 
-buildUnnamed4105() {
+buildUnnamed4112() {
   var o = new core.List<api.TargetReference>();
   o.add(buildTargetReference());
   o.add(buildTargetReference());
   return o;
 }
 
-checkUnnamed4105(core.List<api.TargetReference> o) {
+checkUnnamed4112(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetReference(o[0]);
   checkTargetReference(o[1]);
 }
 
-buildUnnamed4106() {
+buildUnnamed4113() {
   var o = new core.List<api.TargetReference>();
   o.add(buildTargetReference());
   o.add(buildTargetReference());
   return o;
 }
 
-checkUnnamed4106(core.List<api.TargetReference> o) {
+checkUnnamed4113(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetReference(o[0]);
   checkTargetReference(o[1]);
@@ -792,8 +792,8 @@ buildMove() {
   var o = new api.Move();
   buildCounterMove++;
   if (buildCounterMove < 3) {
-    o.addedParents = buildUnnamed4105();
-    o.removedParents = buildUnnamed4106();
+    o.addedParents = buildUnnamed4112();
+    o.removedParents = buildUnnamed4113();
   }
   buildCounterMove--;
   return o;
@@ -802,8 +802,8 @@ buildMove() {
 checkMove(api.Move o) {
   buildCounterMove++;
   if (buildCounterMove < 3) {
-    checkUnnamed4105(o.addedParents);
-    checkUnnamed4106(o.removedParents);
+    checkUnnamed4112(o.addedParents);
+    checkUnnamed4113(o.removedParents);
   }
   buildCounterMove--;
 }
@@ -892,27 +892,27 @@ checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-buildUnnamed4107() {
+buildUnnamed4114() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed4107(core.List<api.Permission> o) {
+checkUnnamed4114(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
 }
 
-buildUnnamed4108() {
+buildUnnamed4115() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed4108(core.List<api.Permission> o) {
+checkUnnamed4115(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -923,8 +923,8 @@ buildPermissionChange() {
   var o = new api.PermissionChange();
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
-    o.addedPermissions = buildUnnamed4107();
-    o.removedPermissions = buildUnnamed4108();
+    o.addedPermissions = buildUnnamed4114();
+    o.removedPermissions = buildUnnamed4115();
   }
   buildCounterPermissionChange--;
   return o;
@@ -933,8 +933,8 @@ buildPermissionChange() {
 checkPermissionChange(api.PermissionChange o) {
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
-    checkUnnamed4107(o.addedPermissions);
-    checkUnnamed4108(o.removedPermissions);
+    checkUnnamed4114(o.addedPermissions);
+    checkUnnamed4115(o.removedPermissions);
   }
   buildCounterPermissionChange--;
 }
@@ -987,14 +987,14 @@ checkQueryDriveActivityRequest(api.QueryDriveActivityRequest o) {
   buildCounterQueryDriveActivityRequest--;
 }
 
-buildUnnamed4109() {
+buildUnnamed4116() {
   var o = new core.List<api.DriveActivity>();
   o.add(buildDriveActivity());
   o.add(buildDriveActivity());
   return o;
 }
 
-checkUnnamed4109(core.List<api.DriveActivity> o) {
+checkUnnamed4116(core.List<api.DriveActivity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDriveActivity(o[0]);
   checkDriveActivity(o[1]);
@@ -1005,7 +1005,7 @@ buildQueryDriveActivityResponse() {
   var o = new api.QueryDriveActivityResponse();
   buildCounterQueryDriveActivityResponse++;
   if (buildCounterQueryDriveActivityResponse < 3) {
-    o.activities = buildUnnamed4109();
+    o.activities = buildUnnamed4116();
     o.nextPageToken = "foo";
   }
   buildCounterQueryDriveActivityResponse--;
@@ -1015,7 +1015,7 @@ buildQueryDriveActivityResponse() {
 checkQueryDriveActivityResponse(api.QueryDriveActivityResponse o) {
   buildCounterQueryDriveActivityResponse++;
   if (buildCounterQueryDriveActivityResponse < 3) {
-    checkUnnamed4109(o.activities);
+    checkUnnamed4116(o.activities);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterQueryDriveActivityResponse--;
@@ -1082,14 +1082,14 @@ checkRestrictionChange(api.RestrictionChange o) {
   buildCounterRestrictionChange--;
 }
 
-buildUnnamed4110() {
+buildUnnamed4117() {
   var o = new core.List<api.RestrictionChange>();
   o.add(buildRestrictionChange());
   o.add(buildRestrictionChange());
   return o;
 }
 
-checkUnnamed4110(core.List<api.RestrictionChange> o) {
+checkUnnamed4117(core.List<api.RestrictionChange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestrictionChange(o[0]);
   checkRestrictionChange(o[1]);
@@ -1100,7 +1100,7 @@ buildSettingsChange() {
   var o = new api.SettingsChange();
   buildCounterSettingsChange++;
   if (buildCounterSettingsChange < 3) {
-    o.restrictionChanges = buildUnnamed4110();
+    o.restrictionChanges = buildUnnamed4117();
   }
   buildCounterSettingsChange--;
   return o;
@@ -1109,7 +1109,7 @@ buildSettingsChange() {
 checkSettingsChange(api.SettingsChange o) {
   buildCounterSettingsChange++;
   if (buildCounterSettingsChange < 3) {
-    checkUnnamed4110(o.restrictionChanges);
+    checkUnnamed4117(o.restrictionChanges);
   }
   buildCounterSettingsChange--;
 }

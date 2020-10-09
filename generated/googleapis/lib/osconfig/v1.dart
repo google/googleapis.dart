@@ -428,14 +428,14 @@ class ProjectsPatchJobsResourceApi {
   /// [parent] - Required. In the form of `projects / * `
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by patch jobs to be included in the response. Currently, filtering is only
-  /// available on the patch_deployment field.
-  ///
   /// [pageSize] - The maximum number of instance status to return.
   ///
   /// [pageToken] - A pagination token returned from a previous call that
   /// indicates where this listing should continue from.
+  ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by patch jobs to be included in the response. Currently, filtering is only
+  /// available on the patch_deployment field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -448,9 +448,9 @@ class ProjectsPatchJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPatchJobsResponse> list(core.String parent,
-      {core.String filter,
-      core.int pageSize,
+      {core.int pageSize,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -462,14 +462,14 @@ class ProjectsPatchJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -502,15 +502,15 @@ class ProjectsPatchJobsInstanceDetailsResourceApi {
   /// `projects / * /patchJobs / * `.
   /// Value must have pattern "^projects/[^/]+/patchJobs/[^/]+$".
   ///
-  /// [pageToken] - A pagination token returned from a previous call that
-  /// indicates where this listing should continue from.
+  /// [filter] - A filter expression that filters results listed in the
+  /// response. This field supports filtering results by instance zone, name,
+  /// state, or `failure_reason`.
   ///
   /// [pageSize] - The maximum number of instance details records to return.
   /// Default is 100.
   ///
-  /// [filter] - A filter expression that filters results listed in the
-  /// response. This field supports filtering results by instance zone, name,
-  /// state, or `failure_reason`.
+  /// [pageToken] - A pagination token returned from a previous call that
+  /// indicates where this listing should continue from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -523,9 +523,9 @@ class ProjectsPatchJobsInstanceDetailsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPatchJobInstanceDetailsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -537,14 +537,14 @@ class ProjectsPatchJobsInstanceDetailsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
