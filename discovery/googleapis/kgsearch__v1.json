@@ -15,21 +15,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -46,11 +31,20 @@
             "location": "query",
             "type": "string"
         },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
-            "type": "boolean"
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
         },
         "$.xgafv": {
             "description": "V1 error format.",
@@ -65,8 +59,8 @@
             "location": "query",
             "type": "string"
         },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -75,20 +69,26 @@
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -101,34 +101,17 @@
                     "id": "kgsearch.entities.search",
                     "parameterOrder": [],
                     "parameters": {
-                        "types": {
-                            "description": "Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types.",
-                            "location": "query",
-                            "repeated": true,
-                            "type": "string"
-                        },
-                        "languages": {
-                            "description": "The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.",
-                            "location": "query",
-                            "repeated": true,
-                            "type": "string"
-                        },
-                        "limit": {
-                            "description": "Limits the number of entities to be returned.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
                         "ids": {
                             "description": "The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B",
                             "location": "query",
                             "repeated": true,
                             "type": "string"
                         },
-                        "indent": {
-                            "description": "Enables indenting of json results.",
+                        "types": {
+                            "description": "Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types.",
                             "location": "query",
-                            "type": "boolean"
+                            "repeated": true,
+                            "type": "string"
                         },
                         "query": {
                             "description": "The literal query string for search.",
@@ -139,6 +122,23 @@
                             "description": "Enables prefix match against names and aliases of entities",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "indent": {
+                            "description": "Enables indenting of json results.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "limit": {
+                            "description": "Limits the number of entities to be returned.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "languages": {
+                            "description": "The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.",
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
                         }
                     },
                     "path": "v1/entities:search",
@@ -156,16 +156,16 @@
             "description": "Response message includes the context and a list of matching results which contain the detail of associated entities.",
             "id": "SearchResponse",
             "properties": {
+                "@type": {
+                    "description": "The schema type of top-level JSON-LD object, e.g. ItemList.",
+                    "type": "any"
+                },
                 "itemListElement": {
                     "description": "The item list of search results.",
                     "items": {
                         "type": "any"
                     },
                     "type": "array"
-                },
-                "@type": {
-                    "description": "The schema type of top-level JSON-LD object, e.g. ItemList.",
-                    "type": "any"
                 },
                 "@context": {
                     "description": "The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld/#context-definitions.",

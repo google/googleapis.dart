@@ -25,26 +25,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
@@ -55,8 +35,27 @@
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
             "location": "query",
             "type": "string"
         },
@@ -76,27 +75,28 @@
             "location": "query",
             "type": "string"
         },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
-            "type": "boolean"
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
         },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         }
@@ -149,16 +149,33 @@
             }
         }
     },
-    "revision": "20200921",
+    "revision": "20201002",
     "rootUrl": "https://texttospeech.googleapis.com/",
     "schemas": {
-        "SynthesizeSpeechResponse": {
-            "description": "The message returned to the client by the `SynthesizeSpeech` method.",
-            "id": "SynthesizeSpeechResponse",
+        "ListVoicesResponse": {
+            "description": "The message returned to the client by the `ListVoices` method.",
+            "id": "ListVoicesResponse",
             "properties": {
-                "audioContent": {
-                    "description": "The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64.",
-                    "format": "byte",
+                "voices": {
+                    "description": "The list of voices.",
+                    "items": {
+                        "$ref": "Voice"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SynthesisInput": {
+            "description": "Contains text input to be synthesized. Either `text` or `ssml` must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 characters.",
+            "id": "SynthesisInput",
+            "properties": {
+                "text": {
+                    "description": "The raw text to be synthesized.",
+                    "type": "string"
+                },
+                "ssml": {
+                    "description": "The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see [SSML](https://cloud.google.com/text-to-speech/docs/ssml).",
                     "type": "string"
                 }
             },
@@ -184,27 +201,13 @@
                     ],
                     "type": "string"
                 },
-                "languageCode": {
-                    "description": "Required. The language (and potentially also the region) of the voice expressed as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. \"en-US\". This should not include a script tag (e.g. use \"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred from the input provided in the SynthesisInput. The TTS service will use this parameter to help choose an appropriate voice. Note that the TTS service may choose a voice with a slightly different language code than the one selected; it may substitute a different region (e.g. using en-US rather than en-CA if there isn't a Canadian voice available), or even a different language, e.g. using \"nb\" (Norwegian Bokmal) instead of \"no\" (Norwegian)\".",
-                    "type": "string"
-                },
                 "name": {
                     "description": "The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and gender.",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListVoicesResponse": {
-            "description": "The message returned to the client by the `ListVoices` method.",
-            "id": "ListVoicesResponse",
-            "properties": {
-                "voices": {
-                    "description": "The list of voices.",
-                    "items": {
-                        "$ref": "Voice"
-                    },
-                    "type": "array"
+                },
+                "languageCode": {
+                    "description": "Required. The language (and potentially also the region) of the voice expressed as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. \"en-US\". This should not include a script tag (e.g. use \"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred from the input provided in the SynthesisInput. The TTS service will use this parameter to help choose an appropriate voice. Note that the TTS service may choose a voice with a slightly different language code than the one selected; it may substitute a different region (e.g. using en-US rather than en-CA if there isn't a Canadian voice available), or even a different language, e.g. using \"nb\" (Norwegian Bokmal) instead of \"no\" (Norwegian)\".",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -213,10 +216,6 @@
             "description": "The top-level message sent by the client for the `SynthesizeSpeech` method.",
             "id": "SynthesizeSpeechRequest",
             "properties": {
-                "input": {
-                    "$ref": "SynthesisInput",
-                    "description": "Required. The Synthesizer requires either plain text or SSML as input."
-                },
                 "audioConfig": {
                     "$ref": "AudioConfig",
                     "description": "Required. The configuration of the synthesized audio."
@@ -224,6 +223,10 @@
                 "voice": {
                     "$ref": "VoiceSelectionParams",
                     "description": "Required. The desired voice of the synthesized audio."
+                },
+                "input": {
+                    "$ref": "SynthesisInput",
+                    "description": "Required. The Synthesizer requires either plain text or SSML as input."
                 }
             },
             "type": "object"
@@ -232,15 +235,15 @@
             "description": "Description of audio data to be synthesized.",
             "id": "AudioConfig",
             "properties": {
-                "pitch": {
-                    "description": "Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.",
+                "speakingRate": {
+                    "description": "Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.",
                     "format": "double",
                     "type": "number"
                 },
-                "sampleRateHertz": {
-                    "description": "Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will fail the request and return google.rpc.Code.INVALID_ARGUMENT.",
-                    "format": "int32",
-                    "type": "integer"
+                "volumeGainDb": {
+                    "description": "Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.",
+                    "format": "double",
+                    "type": "number"
                 },
                 "audioEncoding": {
                     "description": "Required. The format of the audio byte stream.",
@@ -258,10 +261,15 @@
                     ],
                     "type": "string"
                 },
-                "volumeGainDb": {
-                    "description": "Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.",
+                "pitch": {
+                    "description": "Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.",
                     "format": "double",
                     "type": "number"
+                },
+                "sampleRateHertz": {
+                    "description": "Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will fail the request and return google.rpc.Code.INVALID_ARGUMENT.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "effectsProfileId": {
                     "description": "Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See [audio profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile ids.",
@@ -269,11 +277,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "speakingRate": {
-                    "description": "Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.",
-                    "format": "double",
-                    "type": "number"
                 }
             },
             "type": "object"
@@ -282,6 +285,15 @@
             "description": "Description of a voice supported by the TTS service.",
             "id": "Voice",
             "properties": {
+                "name": {
+                    "description": "The name of this voice. Each distinct voice has a unique name.",
+                    "type": "string"
+                },
+                "naturalSampleRateHertz": {
+                    "description": "The natural sample rate (in hertz) for this voice.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "ssmlGender": {
                     "description": "The gender of this voice.",
                     "enum": [
@@ -304,29 +316,17 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "name": {
-                    "description": "The name of this voice. Each distinct voice has a unique name.",
-                    "type": "string"
-                },
-                "naturalSampleRateHertz": {
-                    "description": "The natural sample rate (in hertz) for this voice.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
         },
-        "SynthesisInput": {
-            "description": "Contains text input to be synthesized. Either `text` or `ssml` must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 characters.",
-            "id": "SynthesisInput",
+        "SynthesizeSpeechResponse": {
+            "description": "The message returned to the client by the `SynthesizeSpeech` method.",
+            "id": "SynthesizeSpeechResponse",
             "properties": {
-                "text": {
-                    "description": "The raw text to be synthesized.",
-                    "type": "string"
-                },
-                "ssml": {
-                    "description": "The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see [SSML](https://cloud.google.com/text-to-speech/docs/ssml).",
+                "audioContent": {
+                    "description": "The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64.",
+                    "format": "byte",
                     "type": "string"
                 }
             },

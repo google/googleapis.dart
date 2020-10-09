@@ -16,42 +16,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -68,8 +32,44 @@
             "location": "query",
             "type": "string"
         },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -86,8 +86,8 @@
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         }
@@ -113,28 +113,9 @@
             }
         }
     },
-    "revision": "20201005",
+    "revision": "20201007",
     "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
     "schemas": {
-        "AmpUrl": {
-            "description": "AMP URL response for a requested URL.",
-            "id": "AmpUrl",
-            "properties": {
-                "ampUrl": {
-                    "description": "The AMP URL pointing to the publisher's web server.",
-                    "type": "string"
-                },
-                "originalUrl": {
-                    "description": "The original non-AMP URL.",
-                    "type": "string"
-                },
-                "cdnAmpUrl": {
-                    "description": "The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "BatchGetAmpUrlsRequest": {
             "description": "AMP URL request for a batch of URLs.",
             "id": "BatchGetAmpUrlsRequest",
@@ -186,14 +167,6 @@
             "description": "AMP URL Error resource for a requested URL that couldn't be found.",
             "id": "AmpUrlError",
             "properties": {
-                "errorMessage": {
-                    "description": "An optional descriptive error message.",
-                    "type": "string"
-                },
-                "originalUrl": {
-                    "description": "The original non-AMP URL.",
-                    "type": "string"
-                },
                 "errorCode": {
                     "description": "The error code of an API call.",
                     "enum": [
@@ -212,6 +185,33 @@
                         "DEPRECATED: Indicates the requested URL is a valid AMP URL. This is a non-error state, should not be relied upon as a sign of success or failure. It will be removed in future versions of the API.",
                         "Indicates that an AMP URL has been found that corresponds to the request URL, but it is not valid AMP HTML."
                     ],
+                    "type": "string"
+                },
+                "errorMessage": {
+                    "description": "An optional descriptive error message.",
+                    "type": "string"
+                },
+                "originalUrl": {
+                    "description": "The original non-AMP URL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AmpUrl": {
+            "description": "AMP URL response for a requested URL.",
+            "id": "AmpUrl",
+            "properties": {
+                "ampUrl": {
+                    "description": "The AMP URL pointing to the publisher's web server.",
+                    "type": "string"
+                },
+                "originalUrl": {
+                    "description": "The original non-AMP URL.",
+                    "type": "string"
+                },
+                "cdnAmpUrl": {
+                    "description": "The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache.",
                     "type": "string"
                 }
             },

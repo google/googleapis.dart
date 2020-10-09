@@ -2,11 +2,11 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/monitoring": {
-                    "description": "View and write monitoring data for all of your Google and third-party Cloud and API projects"
-                },
                 "https://www.googleapis.com/auth/monitoring.write": {
                     "description": "Publish metric data to your Google Cloud projects"
+                },
+                "https://www.googleapis.com/auth/monitoring": {
+                    "description": "View and write monitoring data for all of your Google and third-party Cloud and API projects"
                 },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
@@ -31,18 +31,19 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -62,34 +63,13 @@
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -105,6 +85,26 @@
             ],
             "location": "query",
             "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -113,10 +113,10 @@
             "resources": {
                 "profiles": {
                     "methods": {
-                        "createOffline": {
-                            "description": "CreateOfflineProfile creates a new profile resource in the offline mode. The client provides the profile to create along with the profile bytes, the server records it.",
+                        "create": {
+                            "description": "CreateProfile creates a new profile resource in the online mode. The server ensures that the new profiles are created at a constant rate per deployment, so the creation request may hang for some time until the next profile session is available. The request may fail with ABORTED error if the creation is not available within ~1m, the response will indicate the duration of the backoff the client should take before attempting creating a profile again. The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as a binary-serialized proto in the trailing metadata item named \"google.rpc.retryinfo-bin\".",
                             "httpMethod": "POST",
-                            "id": "cloudprofiler.projects.profiles.createOffline",
+                            "id": "cloudprofiler.projects.profiles.create",
                             "parameterOrder": [
                                 "parent"
                             ],
@@ -129,9 +129,9 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "v2/{+parent}/profiles:createOffline",
+                            "path": "v2/{+parent}/profiles",
                             "request": {
-                                "$ref": "Profile"
+                                "$ref": "CreateProfileRequest"
                             },
                             "response": {
                                 "$ref": "Profile"
@@ -177,10 +177,10 @@
                                 "https://www.googleapis.com/auth/monitoring.write"
                             ]
                         },
-                        "create": {
-                            "description": "CreateProfile creates a new profile resource in the online mode. The server ensures that the new profiles are created at a constant rate per deployment, so the creation request may hang for some time until the next profile session is available. The request may fail with ABORTED error if the creation is not available within ~1m, the response will indicate the duration of the backoff the client should take before attempting creating a profile again. The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as a binary-serialized proto in the trailing metadata item named \"google.rpc.retryinfo-bin\".",
+                        "createOffline": {
+                            "description": "CreateOfflineProfile creates a new profile resource in the offline mode. The client provides the profile to create along with the profile bytes, the server records it.",
                             "httpMethod": "POST",
-                            "id": "cloudprofiler.projects.profiles.create",
+                            "id": "cloudprofiler.projects.profiles.createOffline",
                             "parameterOrder": [
                                 "parent"
                             ],
@@ -193,9 +193,9 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "v2/{+parent}/profiles",
+                            "path": "v2/{+parent}/profiles:createOffline",
                             "request": {
-                                "$ref": "CreateProfileRequest"
+                                "$ref": "Profile"
                             },
                             "response": {
                                 "$ref": "Profile"
@@ -211,21 +211,28 @@
             }
         }
     },
-    "revision": "20200927",
+    "revision": "20201003",
     "rootUrl": "https://cloudprofiler.googleapis.com/",
     "schemas": {
         "Profile": {
             "description": "Profile resource.",
             "id": "Profile",
             "properties": {
-                "name": {
-                    "description": "Output only. Opaque, server-assigned, unique ID for this profile.",
-                    "type": "string"
-                },
                 "profileBytes": {
                     "description": "Input only. Profile bytes, as a gzip compressed serialized proto, the format is https://github.com/google/pprof/blob/master/proto/profile.proto.",
                     "format": "byte",
                     "type": "string"
+                },
+                "deployment": {
+                    "$ref": "Deployment",
+                    "description": "Deployment this profile corresponds to."
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Input only. Labels associated to this specific profile. These labels will get merged with the deployment labels for the final data set. See documentation on deployment labels for validation rules and limits.",
+                    "type": "object"
                 },
                 "profileType": {
                     "description": "Type of profile. For offline mode, this must be specified when creating the profile. For online mode it is assigned and returned by the server.",
@@ -251,21 +258,14 @@
                     ],
                     "type": "string"
                 },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Input only. Labels associated to this specific profile. These labels will get merged with the deployment labels for the final data set. See documentation on deployment labels for validation rules and limits.",
-                    "type": "object"
-                },
                 "duration": {
                     "description": "Duration of the profiling session. Input (for the offline mode) or output (for the online mode). The field represents requested profiling duration. It may slightly differ from the effective profiling duration, which is recorded in the profile data, in case the profiling can't be stopped immediately (e.g. in case stopping the profiling is handled asynchronously).",
                     "format": "google-duration",
                     "type": "string"
                 },
-                "deployment": {
-                    "$ref": "Deployment",
-                    "description": "Deployment this profile corresponds to."
+                "name": {
+                    "description": "Output only. Opaque, server-assigned, unique ID for this profile.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -312,8 +312,8 @@
             "description": "Deployment contains the deployment identification information.",
             "id": "Deployment",
             "properties": {
-                "projectId": {
-                    "description": "Project ID is the ID of a cloud project. Validation regex: `^a-z{4,61}[a-z0-9]$`.",
+                "target": {
+                    "description": "Target is the service name used to group related deployments: * Service name for GAE Flex / Standard. * Cluster and container name for GKE. * User-specified string for direct GCE profiling (e.g. Java). * Job name for Dataflow. Validation regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.",
                     "type": "string"
                 },
                 "labels": {
@@ -323,8 +323,8 @@
                     "description": "Labels identify the deployment within the user universe and same target. Validation regex for label names: `^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$`. Value for an individual label must be <= 512 bytes, the total size of all label names and values must be <= 1024 bytes. Label named \"language\" can be used to record the programming language of the profiled deployment. The standard choices for the value include \"java\", \"go\", \"python\", \"ruby\", \"nodejs\", \"php\", \"dotnet\". For deployments running on Google Cloud Platform, \"zone\" or \"region\" label should be present describing the deployment location. An example of a zone is \"us-central1-a\", an example of a region is \"us-central1\" or \"us-central\".",
                     "type": "object"
                 },
-                "target": {
-                    "description": "Target is the service name used to group related deployments: * Service name for GAE Flex / Standard. * Cluster and container name for GKE. * User-specified string for direct GCE profiling (e.g. Java). * Job name for Dataflow. Validation regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.",
+                "projectId": {
+                    "description": "Project ID is the ID of a cloud project. Validation regex: `^a-z{4,61}[a-z0-9]$`.",
                     "type": "string"
                 }
             },
