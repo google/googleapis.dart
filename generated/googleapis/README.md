@@ -110,19 +110,13 @@ Views Ad Experience Report data, and gets a list of sites that have a significan
 
 Official API documentation: https://developers.google.com/ad-experience-report/
 
-#### Admin SDK - admin datatransfer_v1
+#### Admin SDK API - admin directory_v1
 
 Admin SDK lets administrators of enterprise domains to view and manage resources like user, groups etc. It also provides audit and usage reports of domain.
 
 Official API documentation: http://developers.google.com/admin-sdk/
 
-#### Admin SDK - admin directory_v1
-
-Admin SDK lets administrators of enterprise domains to view and manage resources like user, groups etc. It also provides audit and usage reports of domain.
-
-Official API documentation: http://developers.google.com/admin-sdk/
-
-#### Admin SDK - admin reports_v1
+#### Admin SDK API - admin reports_v1
 
 Admin SDK lets administrators of enterprise domains to view and manage resources like user, groups etc. It also provides audit and usage reports of domain.
 
@@ -374,11 +368,11 @@ Builds and manages container-based applications, powered by the open source Kube
 
 Official API documentation: https://cloud.google.com/container-engine/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Content API for Shopping - content v2.1
+#### Content API for Shopping - content v2.1
 
-Manages product items, inventory, and Merchant Center accounts for Google Shopping.
+Manage your product listings and accounts for Google Shopping
 
-Official API documentation: https://developers.google.com/shopping-content
+Official API documentation: https://developers.google.com/shopping-content/v2/
 
 #### Custom Search API - customsearch v1
 
@@ -398,13 +392,13 @@ Accesses the schemaless NoSQL database to provide fully managed, robust, scalabl
 
 Official API documentation: https://cloud.google.com/datastore/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud Deployment Manager API - deploymentmanager v2
+#### Cloud Deployment Manager V2 API - deploymentmanager v2
 
-Declares, configures, and deploys complex solutions on Google Cloud Platform.
+The Google Cloud Deployment Manager v2 API provides services for configuring, deploying, and viewing Google Cloud services and APIs via templates which specify deployments of Cloud resources.
 
-Official API documentation: https://cloud.google.com/deployment-manager/
+Official API documentation: https://cloud.google.com/deployment-manager
 
-#### DCM/DFA Reporting And Trafficking API - dfareporting v3.4
+#### Campaign Manager 360 API - dfareporting v3.4
 
 Manage your DoubleClick Campaign Manager ad campaigns and reports.
 
@@ -444,7 +438,7 @@ Official API documentation: https://cloud.google.com/dlp/docs/
 
 
 
-Official API documentation: http://developers.google.com/cloud-dns
+Official API documentation: https://cloud.google.com/dns/docs
 
 #### Google Docs API - docs v1
 
@@ -580,13 +574,13 @@ Official API documentation: https://developers.google.com/actions/smarthome/crea
 
 #### Identity and Access Management (IAM) API - iam v1
 
- Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls. *Note:* This API is tied to the IAM service account credentials API ( iamcredentials.googleapis.com). Enabling or disabling this API will also enable or disable the IAM service account credentials API. 
+Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls. 
 
 Official API documentation: https://cloud.google.com/iam/
 
 #### IAM Service Account Credentials API - iamcredentials v1
 
- Creates short-lived credentials for impersonating IAM service accounts. *Note:* This API is tied to the IAM API (iam.googleapis.com). Enabling or disabling this API will also enable or disable the IAM API. 
+Creates short-lived credentials for impersonating IAM service accounts. To enable this API, you must enable the IAM API (iam.googleapis.com). 
 
 Official API documentation: https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
 
@@ -607,12 +601,6 @@ Official API documentation: https://developers.google.com/identity-toolkit/v3/
 Notifies Google when your web pages change.
 
 Official API documentation: https://developers.google.com/search/apis/indexing-api/
-
-#### Cloud Talent Solution API - jobs v2
-
-Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters. 
-
-Official API documentation: https://cloud.google.com/talent-solution/job-search/docs/
 
 #### Cloud Talent Solution API - jobs v3
 
@@ -724,8 +712,7 @@ Official API documentation: https://cloud.google.com/iam/
 
 #### Poly API - poly v1
 
-The Poly API provides read access to assets hosted on <a href="https://poly.google.com">poly.google.com</a> to all, and upload access to <a href="https://poly.google.com">poly.google.com</a> for whitelisted accounts.
-
+The Poly API provides read access to assets hosted on poly.google.com to all, and upload access to poly.google.com for whitelisted accounts. 
 
 Official API documentation: https://developers.google.com/poly/
 
@@ -753,9 +740,9 @@ Supplies a Remote Execution API service for tools such as bazel.
 
 Official API documentation: https://cloud.google.com/remote-build-execution/docs/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Enterprise Apps Reseller API - reseller v1
+#### Google Workspace Reseller API - reseller v1
 
-Creates and manages your customers and their subscriptions.
+Perform common functions that are available on the Channel Services console at scale, like placing orders and viewing customer information
 
 Official API documentation: https://developers.google.com/google-apps/reseller/
 
@@ -809,7 +796,7 @@ Official API documentation: https://cloud.google.com/service-consumer-management
 
 #### Service Control API - servicecontrol v1
 
-Provides control plane functionality to managed services, such as logging, monitoring, and status checks.
+Provides admission control and telemetry reporting for services integrated with Service Infrastructure. 
 
 Official API documentation: https://cloud.google.com/service-control/
 

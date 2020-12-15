@@ -950,6 +950,14 @@ class SearchAnalyticsQueryRequest {
   /// - "BY_PAGE"
   core.String aggregationType;
 
+  /// The data state to be fetched, can be full or all, the latter including
+  /// full and partial data.
+  /// Possible string values are:
+  /// - "DATA_STATE_UNSPECIFIED" : Default value, should not be used.
+  /// - "FINAL" : Include full final data only, without partial.
+  /// - "ALL" : Include all data, full and partial.
+  core.String dataState;
+
   /// [Optional] Zero or more filters to apply to the dimension grouping values;
   /// for example, 'query contains \"buy\"' to see only data where the query
   /// string contains the substring \"buy\" (not case-sensitive). You can filter
@@ -976,6 +984,7 @@ class SearchAnalyticsQueryRequest {
   /// - "WEB"
   /// - "IMAGE"
   /// - "VIDEO"
+  /// - "NEWS"
   core.String searchType;
 
   /// [Required] Start date of the requested date range, in YYYY-MM-DD format,
@@ -992,6 +1001,9 @@ class SearchAnalyticsQueryRequest {
   SearchAnalyticsQueryRequest.fromJson(core.Map _json) {
     if (_json.containsKey("aggregationType")) {
       aggregationType = _json["aggregationType"];
+    }
+    if (_json.containsKey("dataState")) {
+      dataState = _json["dataState"];
     }
     if (_json.containsKey("dimensionFilterGroups")) {
       dimensionFilterGroups = (_json["dimensionFilterGroups"] as core.List)
@@ -1024,6 +1036,9 @@ class SearchAnalyticsQueryRequest {
         new core.Map<core.String, core.Object>();
     if (aggregationType != null) {
       _json["aggregationType"] = aggregationType;
+    }
+    if (dataState != null) {
+      _json["dataState"] = dataState;
     }
     if (dimensionFilterGroups != null) {
       _json["dimensionFilterGroups"] =

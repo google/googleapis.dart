@@ -50,8 +50,6 @@ class InfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [locationId] - Deprecated. This field has no effect.
-  ///
   /// [languageCode] - BCP-47 language code for localized infoType friendly
   /// names. If omitted, or if localized strings are not available, en-US
   /// strings will be returned.
@@ -61,6 +59,8 @@ class InfoTypesResourceApi {
   ///
   /// [parent] - The parent resource name. The format of this value is as
   /// follows: locations/ LOCATION_ID
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -73,10 +73,10 @@ class InfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list(
-      {core.String locationId,
-      core.String languageCode,
+      {core.String languageCode,
       core.String filter,
       core.String parent,
+      core.String locationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -85,9 +85,6 @@ class InfoTypesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
-    }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
     }
@@ -96,6 +93,9 @@ class InfoTypesResourceApi {
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -139,14 +139,14 @@ class LocationsInfoTypesResourceApi {
   /// follows: locations/ LOCATION_ID
   /// Value must have pattern "^locations/[^/]+$".
   ///
-  /// [filter] - filter to only return infoTypes supported by certain parts of
-  /// the API. Defaults to supported_by=INSPECT.
-  ///
-  /// [locationId] - Deprecated. This field has no effect.
-  ///
   /// [languageCode] - BCP-47 language code for localized infoType friendly
   /// names. If omitted, or if localized strings are not available, en-US
   /// strings will be returned.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [filter] - filter to only return infoTypes supported by certain parts of
+  /// the API. Defaults to supported_by=INSPECT.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -159,9 +159,9 @@ class LocationsInfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list(core.String parent,
-      {core.String filter,
+      {core.String languageCode,
       core.String locationId,
-      core.String languageCode,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -173,14 +173,14 @@ class LocationsInfoTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -416,13 +416,13 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   /// to time the template was last updated. - `name`: corresponds to template's
   /// name. - `display_name`: corresponds to template's display name.
   ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns a page of max size 100.
+  ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListDeidentifyTemplates`.
-  ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -437,9 +437,9 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
       core.String parent,
       {core.String orderBy,
+      core.int pageSize,
       core.String locationId,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -454,14 +454,14 @@ class OrganizationsDeidentifyTemplatesResourceApi {
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -731,6 +731,9 @@ class OrganizationsInspectTemplatesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListInspectTemplates`.
+  ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
@@ -744,9 +747,6 @@ class OrganizationsInspectTemplatesResourceApi {
   /// [pageSize] - Size of the page, can be limited by server. If zero server
   /// returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListInspectTemplates`.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -759,10 +759,10 @@ class OrganizationsInspectTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
       core.String parent,
-      {core.String locationId,
+      {core.String pageToken,
+      core.String locationId,
       core.String orderBy,
       core.int pageSize,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -774,6 +774,9 @@ class OrganizationsInspectTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
     }
@@ -782,9 +785,6 @@ class OrganizationsInspectTemplatesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -865,8 +865,12 @@ class OrganizationsLocationsResourceApi {
   OrganizationsLocationsDeidentifyTemplatesResourceApi
       get deidentifyTemplates =>
           new OrganizationsLocationsDeidentifyTemplatesResourceApi(_requester);
+  OrganizationsLocationsDlpJobsResourceApi get dlpJobs =>
+      new OrganizationsLocationsDlpJobsResourceApi(_requester);
   OrganizationsLocationsInspectTemplatesResourceApi get inspectTemplates =>
       new OrganizationsLocationsInspectTemplatesResourceApi(_requester);
+  OrganizationsLocationsJobTriggersResourceApi get jobTriggers =>
+      new OrganizationsLocationsJobTriggersResourceApi(_requester);
   OrganizationsLocationsStoredInfoTypesResourceApi get storedInfoTypes =>
       new OrganizationsLocationsStoredInfoTypesResourceApi(_requester);
 
@@ -1070,9 +1074,6 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListDeidentifyTemplates`.
-  ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
@@ -1081,10 +1082,13 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
   /// to time the template was last updated. - `name`: corresponds to template's
   /// name. - `display_name`: corresponds to template's display name.
   ///
-  /// [locationId] - Deprecated. This field has no effect.
-  ///
   /// [pageSize] - Size of the page, can be limited by server. If zero server
   /// returns a page of max size 100.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListDeidentifyTemplates`.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1098,10 +1102,10 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
       core.String parent,
-      {core.String pageToken,
-      core.String orderBy,
-      core.String locationId,
+      {core.String orderBy,
       core.int pageSize,
+      core.String pageToken,
+      core.String locationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1113,17 +1117,17 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1198,6 +1202,133 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then(
         (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+  }
+}
+
+class OrganizationsLocationsDlpJobsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsDlpJobsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists DlpJobs that match the specified filter in the request. See
+  /// https://cloud.google.com/dlp/docs/inspecting-storage and
+  /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on whether you have [specified a processing
+  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
+  /// Projects scope, location specified:
+  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// following example `parent` string specifies a parent project with the
+  /// identifier `example-project`, and specifies the `europe-west3` location
+  /// for processing data:
+  /// parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
+  /// Possible string values are:
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Unused
+  /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
+  /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
+  ///
+  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// or `desc` postfix. This list is case-insensitive, default sorting order is
+  /// ascending, redundant space characters are insignificant. Example: `name
+  /// asc, end_time asc, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to time the job was created. - `end_time`:
+  /// corresponds to time the job ended. - `name`: corresponds to job's name. -
+  /// `state`: corresponds to `state`
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
+  /// made up of one or more restrictions. * Restrictions can be combined by
+  /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
+  /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
+  /// * Supported fields/values for inspect jobs: - `state` -
+  /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
+  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of
+  /// the trigger that created job. - 'end_time` - Corresponds to time the job
+  /// finished. - 'start_time` - Corresponds to time the job finished. *
+  /// Supported fields for risk analysis jobs: - `state` -
+  /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the
+  /// job finished. - 'start_time` - Corresponds to time the job finished. * The
+  /// operator must be `=` or `!=`. Examples: * inspected_storage =
+  /// cloud_storage AND state = done * inspected_storage = cloud_storage OR
+  /// inspected_storage = bigquery * inspected_storage = cloud_storage AND
+  /// (state = done OR state = canceled) * end_time >
+  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
+  /// than 500 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListDlpJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(core.String parent,
+      {core.int pageSize,
+      core.String pageToken,
+      core.String type,
+      core.String orderBy,
+      core.String locationId,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (type != null) {
+      _queryParams["type"] = [type];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(data));
   }
 }
 
@@ -1396,6 +1527,9 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns a page of max size 100.
+  ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
@@ -1405,9 +1539,6 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
   /// name. - `display_name`: corresponds to template's display name.
   ///
   /// [locationId] - Deprecated. This field has no effect.
-  ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListInspectTemplates`.
@@ -1424,9 +1555,9 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
       core.String parent,
-      {core.String orderBy,
+      {core.int pageSize,
+      core.String orderBy,
       core.String locationId,
-      core.int pageSize,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -1439,14 +1570,14 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1522,6 +1653,338 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+  }
+}
+
+class OrganizationsLocationsJobTriggersResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsJobTriggersResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a job trigger to run DLP actions such as scanning storage for
+  /// sensitive information on a set schedule. See
+  /// https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on whether you have [specified a processing
+  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
+  /// Projects scope, location specified:
+  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// following example `parent` string specifies a parent project with the
+  /// identifier `example-project`, and specifies the `europe-west3` location
+  /// for processing data:
+  /// parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2JobTrigger> create(
+      GooglePrivacyDlpV2CreateJobTriggerRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/jobTriggers';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+  }
+
+  /// Deletes a job trigger. See
+  /// https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets a job trigger. See
+  /// https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2JobTrigger> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+  }
+
+  /// Lists job triggers. See
+  /// https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on whether you have [specified a processing
+  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
+  /// Projects scope, location specified:
+  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// following example `parent` string specifies a parent project with the
+  /// identifier `example-project`, and specifies the `europe-west3` location
+  /// for processing data:
+  /// parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
+  ///
+  /// [pageSize] - Size of the page, can be limited by a server.
+  ///
+  /// [orderBy] - Comma separated list of triggeredJob fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant. Example: `name asc,update_time, create_time desc` Supported
+  /// fields are: - `create_time`: corresponds to time the JobTrigger was
+  /// created. - `update_time`: corresponds to time the JobTrigger was last
+  /// updated. - `last_run_time`: corresponds to the last time the JobTrigger
+  /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`:
+  /// corresponds to JobTrigger's display name. - `status`: corresponds to
+  /// JobTrigger's status.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
+  /// made up of one or more restrictions. * Restrictions can be combined by
+  /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
+  /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
+  /// * Supported fields/values for inspect jobs: - `status` -
+  /// HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
+  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+  /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
+  /// 'error_count' - Number of errors that have occurred while running. * The
+  /// operator must be `=` or `!=` for status and inspected_storage. Examples: *
+  /// inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage
+  /// = cloud_storage OR inspected_storage = bigquery * inspected_storage =
+  /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time >
+  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
+  /// than 500 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListJobTriggersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListJobTriggersResponse> list(
+      core.String parent,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String orderBy,
+      core.String locationId,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/jobTriggers';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(data));
+  }
+
+  /// Updates a job trigger. See
+  /// https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2JobTrigger> patch(
+      GooglePrivacyDlpV2UpdateJobTriggerRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
   }
 }
 
@@ -1717,6 +2180,14 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
   ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns a page of max size 100.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListStoredInfoTypes`.
+  ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
@@ -1725,14 +2196,6 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
   /// was created. - `state`: corresponds to the state of the resource. -
   /// `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
-  ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
-  ///
-  /// [locationId] - Deprecated. This field has no effect.
-  ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListStoredInfoTypes`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1746,10 +2209,10 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
       core.String parent,
-      {core.String orderBy,
+      {core.String locationId,
       core.int pageSize,
-      core.String locationId,
       core.String pageToken,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1761,17 +2224,17 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2038,14 +2501,6 @@ class OrganizationsStoredInfoTypesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
-  ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListStoredInfoTypes`.
-  ///
-  /// [locationId] - Deprecated. This field has no effect.
-  ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
@@ -2054,6 +2509,14 @@ class OrganizationsStoredInfoTypesResourceApi {
   /// was created. - `state`: corresponds to the state of the resource. -
   /// `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListStoredInfoTypes`.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns a page of max size 100.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2067,10 +2530,10 @@ class OrganizationsStoredInfoTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
       core.String parent,
-      {core.int pageSize,
+      {core.String orderBy,
       core.String pageToken,
+      core.int pageSize,
       core.String locationId,
-      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2082,17 +2545,17 @@ class OrganizationsStoredInfoTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2589,14 +3052,6 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListDeidentifyTemplates`.
-  ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
-  ///
-  /// [locationId] - Deprecated. This field has no effect.
-  ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
@@ -2604,6 +3059,14 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// corresponds to time the template was created. - `update_time`: corresponds
   /// to time the template was last updated. - `name`: corresponds to template's
   /// name. - `display_name`: corresponds to template's display name.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListDeidentifyTemplates`.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns a page of max size 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2617,10 +3080,10 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
       core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.String orderBy,
+      core.String pageToken,
       core.String locationId,
-      core.String orderBy,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2632,17 +3095,17 @@ class ProjectsDeidentifyTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2955,7 +3418,7 @@ class ProjectsDlpJobsResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [locationId] - Deprecated. This field has no effect.
+  /// [pageToken] - The standard list page token.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
@@ -2992,7 +3455,7 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3005,12 +3468,12 @@ class ProjectsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(core.String parent,
-      {core.String locationId,
+      {core.String pageToken,
       core.String orderBy,
       core.String type,
       core.String filter,
       core.int pageSize,
-      core.String pageToken,
+      core.String locationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3022,8 +3485,8 @@ class ProjectsDlpJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -3037,8 +3500,8 @@ class ProjectsDlpJobsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3324,7 +3787,13 @@ class ProjectsInspectTemplatesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns a page of max size 100.
+  ///
   /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListInspectTemplates`.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
@@ -3333,12 +3802,6 @@ class ProjectsInspectTemplatesResourceApi {
   /// corresponds to time the template was created. - `update_time`: corresponds
   /// to time the template was last updated. - `name`: corresponds to template's
   /// name. - `display_name`: corresponds to template's display name.
-  ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
-  ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListInspectTemplates`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3352,10 +3815,10 @@ class ProjectsInspectTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
       core.String parent,
-      {core.String locationId,
-      core.String orderBy,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String locationId,
       core.String pageToken,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3367,17 +3830,17 @@ class ProjectsInspectTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3685,22 +4148,6 @@ class ProjectsJobTriggersResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [orderBy] - Comma separated list of triggeredJob fields to order by,
-  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
-  /// default sorting order is ascending, redundant space characters are
-  /// insignificant. Example: `name asc,update_time, create_time desc` Supported
-  /// fields are: - `create_time`: corresponds to time the JobTrigger was
-  /// created. - `update_time`: corresponds to time the JobTrigger was last
-  /// updated. - `last_run_time`: corresponds to the last time the JobTrigger
-  /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`:
-  /// corresponds to JobTrigger's display name. - `status`: corresponds to
-  /// JobTrigger's status.
-  ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
-  ///
-  /// [locationId] - Deprecated. This field has no effect.
-  ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
@@ -3717,7 +4164,23 @@ class ProjectsJobTriggersResourceApi {
   /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
   /// than 500 characters.
   ///
+  /// [orderBy] - Comma separated list of triggeredJob fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant. Example: `name asc,update_time, create_time desc` Supported
+  /// fields are: - `create_time`: corresponds to time the JobTrigger was
+  /// created. - `update_time`: corresponds to time the JobTrigger was last
+  /// updated. - `last_run_time`: corresponds to the last time the JobTrigger
+  /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`:
+  /// corresponds to JobTrigger's display name. - `status`: corresponds to
+  /// JobTrigger's status.
+  ///
   /// [pageSize] - Size of the page, can be limited by a server.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3731,11 +4194,11 @@ class ProjectsJobTriggersResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListJobTriggersResponse> list(
       core.String parent,
-      {core.String orderBy,
-      core.String pageToken,
-      core.String locationId,
-      core.String filter,
+      {core.String filter,
+      core.String orderBy,
       core.int pageSize,
+      core.String locationId,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3747,20 +4210,20 @@ class ProjectsJobTriggersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4257,8 +4720,7 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListDeidentifyTemplates`.
@@ -4271,7 +4733,8 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
   /// to time the template was last updated. - `name`: corresponds to template's
   /// name. - `display_name`: corresponds to template's display name.
   ///
-  /// [locationId] - Deprecated. This field has no effect.
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns a page of max size 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4285,10 +4748,10 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
       core.String parent,
-      {core.int pageSize,
+      {core.String locationId,
       core.String pageToken,
       core.String orderBy,
-      core.String locationId,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4300,8 +4763,8 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4309,8 +4772,8 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4661,9 +5124,9 @@ class ProjectsLocationsDlpJobsResourceApi {
         .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
   }
 
-  /// Inspect hybrid content and store findings to a job. To review the findings
-  /// inspect the job. Inspection will occur asynchronously. Early access
-  /// feature is in a pre-release state and might change or have limited
+  /// Inspect hybrid content and store findings to a job. To review the
+  /// findings, inspect the job. Inspection will occur asynchronously. Early
+  /// access feature is in a pre-release state and might change or have limited
   /// support. For more information, see
   /// https://cloud.google.com/products#product-launch-stages.
   ///
@@ -4737,16 +5200,6 @@ class ProjectsLocationsDlpJobsResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc, end_time asc, create_time desc` Supported fields are: -
-  /// `create_time`: corresponds to time the job was created. - `end_time`:
-  /// corresponds to time the job ended. - `name`: corresponds to job's name. -
-  /// `state`: corresponds to `state`
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
@@ -4766,15 +5219,25 @@ class ProjectsLocationsDlpJobsResourceApi {
   /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
   /// than 500 characters.
   ///
-  /// [locationId] - Deprecated. This field has no effect.
-  ///
-  /// [pageSize] - The standard list page size.
+  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// or `desc` postfix. This list is case-insensitive, default sorting order is
+  /// ascending, redundant space characters are insignificant. Example: `name
+  /// asc, end_time asc, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to time the job was created. - `end_time`:
+  /// corresponds to time the job ended. - `name`: corresponds to job's name. -
+  /// `state`: corresponds to `state`
   ///
   /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
   /// Possible string values are:
   /// - "DLP_JOB_TYPE_UNSPECIFIED" : Unused
   /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
   /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4787,12 +5250,12 @@ class ProjectsLocationsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(core.String parent,
-      {core.String orderBy,
-      core.String pageToken,
-      core.String filter,
-      core.String locationId,
-      core.int pageSize,
+      {core.String filter,
+      core.String orderBy,
       core.String type,
+      core.int pageSize,
+      core.String locationId,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4804,23 +5267,23 @@ class ProjectsLocationsDlpJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (locationId != null) {
-      _queryParams["locationId"] = [locationId];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (type != null) {
+      _queryParams["type"] = [type];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (type != null) {
-      _queryParams["type"] = [type];
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5109,8 +5572,8 @@ class ProjectsLocationsInspectTemplatesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListInspectTemplates`.
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns a page of max size 100.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
@@ -5120,10 +5583,10 @@ class ProjectsLocationsInspectTemplatesResourceApi {
   /// to time the template was last updated. - `name`: corresponds to template's
   /// name. - `display_name`: corresponds to template's display name.
   ///
-  /// [locationId] - Deprecated. This field has no effect.
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListInspectTemplates`.
   ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
+  /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5137,10 +5600,10 @@ class ProjectsLocationsInspectTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
       core.String parent,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String orderBy,
+      core.String pageToken,
       core.String locationId,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5152,17 +5615,17 @@ class ProjectsLocationsInspectTemplatesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5534,6 +5997,9 @@ class ProjectsLocationsJobTriggersResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
+  ///
   /// [pageSize] - Size of the page, can be limited by a server.
   ///
   /// [orderBy] - Comma separated list of triggeredJob fields to order by,
@@ -5548,9 +6014,6 @@ class ProjectsLocationsJobTriggersResourceApi {
   /// JobTrigger's status.
   ///
   /// [locationId] - Deprecated. This field has no effect.
-  ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
   ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
   /// made up of one or more restrictions. * Restrictions can be combined by
@@ -5580,10 +6043,10 @@ class ProjectsLocationsJobTriggersResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListJobTriggersResponse> list(
       core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String orderBy,
       core.String locationId,
-      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -5596,6 +6059,9 @@ class ProjectsLocationsJobTriggersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -5604,9 +6070,6 @@ class ProjectsLocationsJobTriggersResourceApi {
     }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -5876,14 +6339,6 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
   /// parent=projects/example-project/locations/europe-west3
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListStoredInfoTypes`.
-  ///
-  /// [pageSize] - Size of the page, can be limited by server. If zero server
-  /// returns a page of max size 100.
-  ///
-  /// [locationId] - Deprecated. This field has no effect.
-  ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case-insensitive, default sorting order is
   /// ascending, redundant space characters are insignificant. Example: `name
@@ -5892,6 +6347,14 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
   /// was created. - `state`: corresponds to the state of the resource. -
   /// `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns a page of max size 100.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListStoredInfoTypes`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5905,10 +6368,10 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
       core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.String orderBy,
       core.String locationId,
-      core.String orderBy,
+      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5920,17 +6383,17 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (locationId != null) {
       _queryParams["locationId"] = [locationId];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7821,7 +8284,7 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
 /// Request message for CreateDlpJobRequest. Used to initiate long running jobs
 /// such as calculating risk metrics or inspecting Google Cloud Storage.
 class GooglePrivacyDlpV2CreateDlpJobRequest {
-  /// Set to control what and how to inspect.
+  /// An inspection job scans a storage repository for InfoTypes.
   GooglePrivacyDlpV2InspectJobConfig inspectJob;
 
   /// The job id can contain uppercase and lowercase letters, numbers, and
@@ -7833,7 +8296,8 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
   /// Deprecated. This field has no effect.
   core.String locationId;
 
-  /// Set to choose what metric to calculate.
+  /// A risk analysis job calculates re-identification risk metrics for a
+  /// BigQuery table.
   GooglePrivacyDlpV2RiskAnalysisJobConfig riskJob;
 
   GooglePrivacyDlpV2CreateDlpJobRequest();
@@ -9583,6 +10047,9 @@ class GooglePrivacyDlpV2Finding {
   /// Timestamp when finding was detected.
   core.String createTime;
 
+  /// The unique finding id.
+  core.String findingId;
+
   /// The type of content that might have been found. Provided if
   /// `excluded_types` is false.
   GooglePrivacyDlpV2InfoType infoType;
@@ -9643,6 +10110,9 @@ class GooglePrivacyDlpV2Finding {
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
+    if (_json.containsKey("findingId")) {
+      findingId = _json["findingId"];
+    }
     if (_json.containsKey("infoType")) {
       infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
@@ -9683,6 +10153,9 @@ class GooglePrivacyDlpV2Finding {
         new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
+    }
+    if (findingId != null) {
+      _json["findingId"] = findingId;
     }
     if (infoType != null) {
       _json["infoType"] = (infoType).toJson();
@@ -10673,7 +11146,7 @@ class GooglePrivacyDlpV2InspectDataSourceDetails {
   /// The configuration used for this job.
   GooglePrivacyDlpV2RequestedOptions requestedOptions;
 
-  /// A summary of the outcome of this inspect job.
+  /// A summary of the outcome of this inspection job.
   GooglePrivacyDlpV2Result result;
 
   GooglePrivacyDlpV2InspectDataSourceDetails();
@@ -14390,22 +14863,26 @@ class GooglePrivacyDlpV2TimespanConfig {
   /// the execution of the last run of the JobTrigger.
   core.bool enableAutoPopulationOfTimespanConfig;
 
-  /// Exclude files or rows newer than this value. If set to zero, no upper time
-  /// limit is applied.
+  /// Exclude files, tables, or rows newer than this value. If not set, no upper
+  /// time limit is applied.
   core.String endTime;
 
-  /// Exclude files or rows older than this value.
+  /// Exclude files, tables, or rows older than this value. If not set, no lower
+  /// time limit is applied.
   core.String startTime;
 
   /// Specification of the field containing the timestamp of scanned items. Used
-  /// for data sources like Datastore and BigQuery. For BigQuery: Required to
-  /// filter out rows based on the given start and end times. If not specified
-  /// and the table was modified between the given start and end times, the
-  /// entire table will be scanned. The valid data types of the timestamp field
-  /// are: `INTEGER`, `DATE`, `TIMESTAMP`, or `DATETIME` BigQuery column. For
-  /// Datastore. Valid data types of the timestamp field are: `TIMESTAMP`.
-  /// Datastore entity will be scanned if the timestamp property does not exist
-  /// or its value is empty or invalid.
+  /// for data sources like Datastore and BigQuery. For BigQuery: If this value
+  /// is not specified and the table was modified between the given start and
+  /// end times, the entire table will be scanned. If this value is specified,
+  /// then rows are filtered based on the given start and end times. Rows with a
+  /// `NULL` value in the provided BigQuery column are skipped. Valid data types
+  /// of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and
+  /// `DATETIME`. For Datastore: If this value is specified, then entities are
+  /// filtered based on the given start and end times. If an entity does not
+  /// contain the provided timestamp property or contains empty or invalid
+  /// values, then it is included. Valid data types of the provided timestamp
+  /// property are: `TIMESTAMP`.
   GooglePrivacyDlpV2FieldId timestampField;
 
   GooglePrivacyDlpV2TimespanConfig();
@@ -15070,25 +15547,25 @@ class GoogleRpcStatus {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day and time zone are either specified elsewhere or are not significant. The
-/// date is relative to the Proleptic Gregorian Calendar. This can represent: *
-/// A full date, with non-zero year, month and day values * A month and day
-/// value, with a zero year, e.g. an anniversary * A year on its own, with zero
-/// month and day values * A year and month value, with a zero day, e.g. a
-/// credit card expiration date Related types are google.type.TimeOfDay and
-/// `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, such as a birthday. The time of
+/// day and time zone are either specified elsewhere or are insignificant. The
+/// date is relative to the Gregorian Calendar. This can represent one of the
+/// following: * A full date, with non-zero year, month, and day values * A
+/// month and day value, with a zero year, such as an anniversary * A year on
+/// its own, with zero month and day values * A year and month value, with a
+/// zero day, such as a credit card expiration date Related types are
+/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class GoogleTypeDate {
-  /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year by itself or a year and month where the day is not
+  /// Day of a month. Must be from 1 to 31 and valid for the year and month, or
+  /// 0 to specify a year by itself or a year and month where the day isn't
   /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
   /// month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
+  /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
   /// year.
   core.int year;
 

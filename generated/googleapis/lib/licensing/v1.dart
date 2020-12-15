@@ -29,7 +29,7 @@ class LicensingApi {
       new LicenseAssignmentsResourceApi(_requester);
 
   LicensingApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
+      {core.String rootUrl = "https://licensing.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -53,19 +53,21 @@ class LicenseAssignmentsResourceApi {
   ///
   /// [userId] - The user's current primary email address. If the user's email
   /// address changes, use the new email address in your API requests. Since a
-  /// userId is subject to change, do not use a userId value as a key for
+  /// `userId` is subject to change, do not use a `userId` value as a key for
   /// persistent data. This key could break if the current user's email address
-  /// changes. If the userId is suspended, the license status changes.
+  /// changes. If the `userId` is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
+  ///
+  /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<Empty> delete(
       core.String productId, core.String skuId, core.String userId,
       {core.String $fields}) {
     var _url;
@@ -88,8 +90,6 @@ class LicenseAssignmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'apps/licensing/v1/product/' +
         commons.Escaper.ecapeVariable('$productId') +
         '/sku/' +
@@ -103,7 +103,7 @@ class LicenseAssignmentsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 
   /// Get a specific user's license by product SKU.
@@ -118,9 +118,9 @@ class LicenseAssignmentsResourceApi {
   ///
   /// [userId] - The user's current primary email address. If the user's email
   /// address changes, use the new email address in your API requests. Since a
-  /// userId is subject to change, do not use a userId value as a key for
+  /// `userId` is subject to change, do not use a `userId` value as a key for
   /// persistent data. This key could break if the current user's email address
-  /// changes. If the userId is suspended, the license status changes.
+  /// changes. If the `userId` is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -238,18 +238,18 @@ class LicenseAssignmentsResourceApi {
   /// [productId] - A product's unique identifier. For more information about
   /// products in this version of the API, see Products and SKUs.
   ///
-  /// [customerId] - Customer's customerId. A previous version of this API
+  /// [customerId] - Customer's `customerId`. A previous version of this API
   /// accepted the primary domain name as a value for this field. If the
   /// customer is suspended, the server returns an error.
   ///
-  /// [pageToken] - Token to fetch the next page of data. The maxResults query
-  /// string is related to the pageToken since maxResults determines how many
-  /// entries are returned on each page. This is an optional query string. If
-  /// not specified, the server returns the first page.
+  /// [pageToken] - Token to fetch the next page of data. The `maxResults` query
+  /// string is related to the `pageToken` since `maxResults` determines how
+  /// many entries are returned on each page. This is an optional query string.
+  /// If not specified, the server returns the first page.
   ///
-  /// [maxResults] - The maxResults query string determines how many entries are
-  /// returned on each page of a large response. This is an optional parameter.
-  /// The value must be a positive number.
+  /// [maxResults] - The `maxResults` query string determines how many entries
+  /// are returned on each page of a large response. This is an optional
+  /// parameter. The value must be a positive number.
   /// Value must be between "1" and "1000".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -312,19 +312,19 @@ class LicenseAssignmentsResourceApi {
   /// [skuId] - A product SKU's unique identifier. For more information about
   /// available SKUs in this version of the API, see Products and SKUs.
   ///
-  /// [customerId] - Customer's customerId. A previous version of this API
+  /// [customerId] - Customer's `customerId`. A previous version of this API
   /// accepted the primary domain name as a value for this field. If the
   /// customer is suspended, the server returns an error.
   ///
-  /// [pageToken] - Token to fetch the next page of data. The maxResults query
-  /// string is related to the pageToken since maxResults determines how many
-  /// entries are returned on each page. This is an optional query string. If
-  /// not specified, the server returns the first page.
-  ///
-  /// [maxResults] - The maxResults query string determines how many entries are
-  /// returned on each page of a large response. This is an optional parameter.
-  /// The value must be a positive number.
+  /// [maxResults] - The `maxResults` query string determines how many entries
+  /// are returned on each page of a large response. This is an optional
+  /// parameter. The value must be a positive number.
   /// Value must be between "1" and "1000".
+  ///
+  /// [pageToken] - Token to fetch the next page of data. The `maxResults` query
+  /// string is related to the `pageToken` since `maxResults` determines how
+  /// many entries are returned on each page. This is an optional query string.
+  /// If not specified, the server returns the first page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -338,7 +338,7 @@ class LicenseAssignmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<LicenseAssignmentList> listForProductAndSku(
       core.String productId, core.String skuId, core.String customerId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -356,11 +356,11 @@ class LicenseAssignmentsResourceApi {
       throw new core.ArgumentError("Parameter customerId is required.");
     }
     _queryParams["customerId"] = [customerId];
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -381,7 +381,8 @@ class LicenseAssignmentsResourceApi {
     return _response.then((data) => new LicenseAssignmentList.fromJson(data));
   }
 
-  /// Patch a Licensing info via Apiary Patch Orchestration
+  /// Reassign a user's product SKU with a different SKU in the same product.
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -395,9 +396,9 @@ class LicenseAssignmentsResourceApi {
   ///
   /// [userId] - The user's current primary email address. If the user's email
   /// address changes, use the new email address in your API requests. Since a
-  /// userId is subject to change, do not use a userId value as a key for
+  /// `userId` is subject to change, do not use a `userId` value as a key for
   /// persistent data. This key could break if the current user's email address
-  /// changes. If the userId is suspended, the license status changes.
+  /// changes. If the `userId` is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -465,9 +466,9 @@ class LicenseAssignmentsResourceApi {
   ///
   /// [userId] - The user's current primary email address. If the user's email
   /// address changes, use the new email address in your API requests. Since a
-  /// userId is subject to change, do not use a userId value as a key for
+  /// `userId` is subject to change, do not use a `userId` value as a key for
   /// persistent data. This key could break if the current user's email address
-  /// changes. If the userId is suspended, the license status changes.
+  /// changes. If the `userId` is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -522,12 +523,30 @@ class LicenseAssignmentsResourceApi {
   }
 }
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance: service Foo { rpc
+/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
+/// representation for `Empty` is empty JSON object `{}`.
+class Empty {
+  Empty();
+
+  Empty.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Representation of a license assignment.
 class LicenseAssignment {
   /// ETag of the resource.
   core.String etags;
 
-  /// Identifies the resource as a LicenseAssignment.
+  /// Identifies the resource as a LicenseAssignment, which is
+  /// `licensing#licenseAssignment`.
   core.String kind;
 
   /// A product's unique identifier. For more information about products in this
@@ -548,10 +567,10 @@ class LicenseAssignment {
   core.String skuName;
 
   /// The user's current primary email address. If the user's email address
-  /// changes, use the new email address in your API requests. Since a userId is
-  /// subject to change, do not use a userId value as a key for persistent data.
-  /// This key could break if the current user's email address changes. If the
-  /// userId is suspended, the license status changes.
+  /// changes, use the new email address in your API requests. Since a `userId`
+  /// is subject to change, do not use a `userId` value as a key for persistent
+  /// data. This key could break if the current user's email address changes. If
+  /// the `userId` is suspended, the license status changes.
   core.String userId;
 
   LicenseAssignment();
@@ -648,9 +667,9 @@ class LicenseAssignmentList {
   core.String kind;
 
   /// The token that you must submit in a subsequent request to retrieve
-  /// additional license results matching your query parameters. The maxResults
-  /// query string is related to the nextPageToken since maxResults determines
-  /// how many entries are returned on each next page.
+  /// additional license results matching your query parameters. The
+  /// `maxResults` query string is related to the `nextPageToken` since
+  /// `maxResults` determines how many entries are returned on each next page.
   core.String nextPageToken;
 
   LicenseAssignmentList();

@@ -85,10 +85,13 @@ class BillingAccountsResourceApi {
 class BillingAccountsBucketsResourceApi {
   final commons.ApiRequester _requester;
 
+  BillingAccountsBucketsViewsResourceApi get views =>
+      new BillingAccountsBucketsViewsResourceApi(_requester);
+
   BillingAccountsBucketsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets a bucket (Beta).
+  /// Gets a bucket.
   ///
   /// Request parameters:
   ///
@@ -134,6 +137,60 @@ class BillingAccountsBucketsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new LogBucket.fromJson(data));
+  }
+}
+
+class BillingAccountsBucketsViewsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsBucketsViewsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the policy:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^billingAccounts/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
   }
 }
 
@@ -431,10 +488,119 @@ class BillingAccountsLocationsResourceApi {
 
   BillingAccountsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern "^billingAccounts/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Location.fromJson(data));
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern "^billingAccounts/[^/]+$".
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(core.String name,
+      {core.int pageSize,
+      core.String pageToken,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+  }
 }
 
 class BillingAccountsLocationsBucketsResourceApi {
   final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsBucketsViewsResourceApi get views =>
+      new BillingAccountsLocationsBucketsViewsResourceApi(_requester);
 
   BillingAccountsLocationsBucketsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -550,7 +716,7 @@ class BillingAccountsLocationsBucketsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Lists buckets (Beta).
+  /// Lists buckets.
   ///
   /// Request parameters:
   ///
@@ -563,14 +729,14 @@ class BillingAccountsLocationsBucketsResourceApi {
   /// of LOCATION_ID will return all buckets.
   /// Value must have pattern "^billingAccounts/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -583,7 +749,7 @@ class BillingAccountsLocationsBucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -594,11 +760,11 @@ class BillingAccountsLocationsBucketsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -621,7 +787,7 @@ class BillingAccountsLocationsBucketsResourceApi {
   /// retention period is decreased and the bucket is locked,
   /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
   /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
-  /// may not be modified after it is created. This method is in Beta.
+  /// may not be modified after it is created.
   ///
   /// [request] - The metadata request object.
   ///
@@ -745,6 +911,244 @@ class BillingAccountsLocationsBucketsResourceApi {
   }
 }
 
+class BillingAccountsLocationsBucketsViewsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsBucketsViewsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+  /// views.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket in which to create the view
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// Value must have pattern
+  /// "^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [viewId] - Required. The id to use for this view.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> create(LogView request, core.String parent,
+      {core.String viewId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (viewId != null) {
+      _queryParams["viewId"] = [viewId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+
+  /// Deletes a view from a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to delete:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Lists views on a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket whose views are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Value must have pattern
+  /// "^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListViewsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListViewsResponse.fromJson(data));
+  }
+
+  /// Updates a view. This method replaces the following fields in the existing
+  /// view with values from the new view: filter.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to update
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in view that
+  /// need an update. A field will be overwritten if, and only if, it is in the
+  /// update mask. name and output only fields cannot be updated.For a detailed
+  /// FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> patch(LogView request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+}
+
 class BillingAccountsLogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -823,6 +1227,15 @@ class BillingAccountsLogsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
+  /// support legacy queries, it could also be: "projects/PROJECT_ID"
+  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
+  /// "folders/FOLDER_ID"
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -834,7 +1247,10 @@ class BillingAccountsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.List<core.String> resourceNames,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -850,6 +1266,9 @@ class BillingAccountsLogsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1049,14 +1468,14 @@ class BillingAccountsSinksResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1069,7 +1488,7 @@ class BillingAccountsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1080,11 +1499,11 @@ class BillingAccountsSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1323,6 +1742,50 @@ class EntriesResourceApi {
     return _response.then((data) => new ListLogEntriesResponse.fromJson(data));
   }
 
+  /// Streaming read of log entries as they are ingested. Until the stream is
+  /// terminated, it will continue reading logs.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TailLogEntriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TailLogEntriesResponse> tail(TailLogEntriesRequest request,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/entries:tail';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TailLogEntriesResponse.fromJson(data));
+  }
+
   /// Writes log entries to Logging. This API method is the only way to send log
   /// entries to Logging. This method is used, directly or indirectly, by the
   /// Logging agent (fluentd) and all logging libraries configured to use
@@ -1537,14 +2000,14 @@ class ExclusionsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1557,7 +2020,7 @@ class ExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1568,11 +2031,11 @@ class ExclusionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1836,14 +2299,14 @@ class FoldersExclusionsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^folders/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1856,7 +2319,7 @@ class FoldersExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1867,11 +2330,11 @@ class FoldersExclusionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1963,10 +2426,119 @@ class FoldersLocationsResourceApi {
 
   FoldersLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern "^folders/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Location.fromJson(data));
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern "^folders/[^/]+$".
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(core.String name,
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+  }
 }
 
 class FoldersLocationsBucketsResourceApi {
   final commons.ApiRequester _requester;
+
+  FoldersLocationsBucketsViewsResourceApi get views =>
+      new FoldersLocationsBucketsViewsResourceApi(_requester);
 
   FoldersLocationsBucketsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2081,7 +2653,7 @@ class FoldersLocationsBucketsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets a bucket (Beta).
+  /// Gets a bucket.
   ///
   /// Request parameters:
   ///
@@ -2129,7 +2701,7 @@ class FoldersLocationsBucketsResourceApi {
     return _response.then((data) => new LogBucket.fromJson(data));
   }
 
-  /// Lists buckets (Beta).
+  /// Lists buckets.
   ///
   /// Request parameters:
   ///
@@ -2200,7 +2772,7 @@ class FoldersLocationsBucketsResourceApi {
   /// retention period is decreased and the bucket is locked,
   /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
   /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
-  /// may not be modified after it is created. This method is in Beta.
+  /// may not be modified after it is created.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2322,6 +2894,289 @@ class FoldersLocationsBucketsResourceApi {
   }
 }
 
+class FoldersLocationsBucketsViewsResourceApi {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsBucketsViewsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+  /// views.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket in which to create the view
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// Value must have pattern "^folders/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [viewId] - Required. The id to use for this view.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> create(LogView request, core.String parent,
+      {core.String viewId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (viewId != null) {
+      _queryParams["viewId"] = [viewId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+
+  /// Deletes a view from a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to delete:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^folders/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the policy:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^folders/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+
+  /// Lists views on a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket whose views are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Value must have pattern "^folders/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListViewsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListViewsResponse.fromJson(data));
+  }
+
+  /// Updates a view. This method replaces the following fields in the existing
+  /// view with values from the new view: filter.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to update
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^folders/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in view that
+  /// need an update. A field will be overwritten if, and only if, it is in the
+  /// update mask. name and output only fields cannot be updated.For a detailed
+  /// FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> patch(LogView request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+}
+
 class FoldersLogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2399,6 +3254,15 @@ class FoldersLogsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
+  /// support legacy queries, it could also be: "projects/PROJECT_ID"
+  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
+  /// "folders/FOLDER_ID"
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2410,7 +3274,10 @@ class FoldersLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.List<core.String> resourceNames,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2426,6 +3293,9 @@ class FoldersLogsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2624,14 +3494,14 @@ class FoldersSinksResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^folders/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2644,7 +3514,7 @@ class FoldersSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2655,11 +3525,11 @@ class FoldersSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2854,10 +3724,119 @@ class LocationsResourceApi {
       new LocationsBucketsResourceApi(_requester);
 
   LocationsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Location.fromJson(data));
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(core.String name,
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+  }
 }
 
 class LocationsBucketsResourceApi {
   final commons.ApiRequester _requester;
+
+  LocationsBucketsViewsResourceApi get views =>
+      new LocationsBucketsViewsResourceApi(_requester);
 
   LocationsBucketsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2972,7 +3951,7 @@ class LocationsBucketsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets a bucket (Beta).
+  /// Gets a bucket.
   ///
   /// Request parameters:
   ///
@@ -3020,7 +3999,7 @@ class LocationsBucketsResourceApi {
     return _response.then((data) => new LogBucket.fromJson(data));
   }
 
-  /// Lists buckets (Beta).
+  /// Lists buckets.
   ///
   /// Request parameters:
   ///
@@ -3033,14 +4012,14 @@ class LocationsBucketsResourceApi {
   /// of LOCATION_ID will return all buckets.
   /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3053,7 +4032,7 @@ class LocationsBucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3064,11 +4043,11 @@ class LocationsBucketsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3091,7 +4070,7 @@ class LocationsBucketsResourceApi {
   /// retention period is decreased and the bucket is locked,
   /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
   /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
-  /// may not be modified after it is created. This method is in Beta.
+  /// may not be modified after it is created.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3213,6 +4192,289 @@ class LocationsBucketsResourceApi {
   }
 }
 
+class LocationsBucketsViewsResourceApi {
+  final commons.ApiRequester _requester;
+
+  LocationsBucketsViewsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+  /// views.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket in which to create the view
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [viewId] - Required. The id to use for this view.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> create(LogView request, core.String parent,
+      {core.String viewId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (viewId != null) {
+      _queryParams["viewId"] = [viewId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+
+  /// Deletes a view from a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to delete:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the policy:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+
+  /// Lists views on a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket whose views are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListViewsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListViewsResponse.fromJson(data));
+  }
+
+  /// Updates a view. This method replaces the following fields in the existing
+  /// view with values from the new view: filter.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to update
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in view that
+  /// need an update. A field will be overwritten if, and only if, it is in the
+  /// update mask. name and output only fields cannot be updated.For a detailed
+  /// FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> patch(LogView request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+}
+
 class LogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -3281,14 +4543,23 @@ class LogsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
+  /// support legacy queries, it could also be: "projects/PROJECT_ID"
+  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
+  /// "folders/FOLDER_ID"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3301,7 +4572,10 @@ class LogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.List<core.String> resourceNames,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3312,11 +4586,14 @@ class LogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3344,14 +4621,14 @@ class MonitoredResourceDescriptorsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3364,7 +4641,7 @@ class MonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3372,11 +4649,11 @@ class MonitoredResourceDescriptorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3710,14 +4987,14 @@ class OrganizationsExclusionsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3730,7 +5007,7 @@ class OrganizationsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3741,11 +5018,11 @@ class OrganizationsExclusionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3837,10 +5114,119 @@ class OrganizationsLocationsResourceApi {
 
   OrganizationsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Location.fromJson(data));
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(core.String name,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+  }
 }
 
 class OrganizationsLocationsBucketsResourceApi {
   final commons.ApiRequester _requester;
+
+  OrganizationsLocationsBucketsViewsResourceApi get views =>
+      new OrganizationsLocationsBucketsViewsResourceApi(_requester);
 
   OrganizationsLocationsBucketsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -3956,7 +5342,7 @@ class OrganizationsLocationsBucketsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets a bucket (Beta).
+  /// Gets a bucket.
   ///
   /// Request parameters:
   ///
@@ -4005,7 +5391,7 @@ class OrganizationsLocationsBucketsResourceApi {
     return _response.then((data) => new LogBucket.fromJson(data));
   }
 
-  /// Lists buckets (Beta).
+  /// Lists buckets.
   ///
   /// Request parameters:
   ///
@@ -4018,14 +5404,14 @@ class OrganizationsLocationsBucketsResourceApi {
   /// of LOCATION_ID will return all buckets.
   /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4038,7 +5424,7 @@ class OrganizationsLocationsBucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -4049,11 +5435,11 @@ class OrganizationsLocationsBucketsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4076,7 +5462,7 @@ class OrganizationsLocationsBucketsResourceApi {
   /// retention period is decreased and the bucket is locked,
   /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
   /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
-  /// may not be modified after it is created. This method is in Beta.
+  /// may not be modified after it is created.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4200,6 +5586,291 @@ class OrganizationsLocationsBucketsResourceApi {
   }
 }
 
+class OrganizationsLocationsBucketsViewsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsBucketsViewsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+  /// views.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket in which to create the view
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [viewId] - Required. The id to use for this view.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> create(LogView request, core.String parent,
+      {core.String viewId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (viewId != null) {
+      _queryParams["viewId"] = [viewId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+
+  /// Deletes a view from a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to delete:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the policy:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+
+  /// Lists views on a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket whose views are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListViewsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListViewsResponse.fromJson(data));
+  }
+
+  /// Updates a view. This method replaces the following fields in the existing
+  /// view with values from the new view: filter.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to update
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in view that
+  /// need an update. A field will be overwritten if, and only if, it is in the
+  /// update mask. name and output only fields cannot be updated.For a detailed
+  /// FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> patch(LogView request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+}
+
 class OrganizationsLogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -4269,6 +5940,15 @@ class OrganizationsLogsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
+  /// support legacy queries, it could also be: "projects/PROJECT_ID"
+  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
+  /// "folders/FOLDER_ID"
+  ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
@@ -4289,7 +5969,10 @@ class OrganizationsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.List<core.String> resourceNames,
+      core.int pageSize,
+      core.String pageToken,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -4299,6 +5982,9 @@ class OrganizationsLogsResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -4504,14 +6190,14 @@ class OrganizationsSinksResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4524,7 +6210,7 @@ class OrganizationsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -4535,11 +6221,11 @@ class OrganizationsSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4574,15 +6260,6 @@ class OrganizationsSinksResourceApi {
   /// "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
   ///
-  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
-  /// this field. When updating a sink, the effect of this field on the value of
-  /// writer_identity in the updated sink depends on both the old and new values
-  /// of this field: If the old and new values of this field are both false or
-  /// both true, then there is no change to the sink's writer_identity. If the
-  /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
-  ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
@@ -4592,6 +6269,15 @@ class OrganizationsSinksResourceApi {
   /// updateMask will be an error.For a detailed FieldMask definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
+  ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field: If the old and new values of this field are both false or
+  /// both true, then there is no change to the sink's writer_identity. If the
+  /// old value is false and the new value is true, then writer_identity is
+  /// changed to a unique service account. It is an error if the old value is
+  /// true and the new value is set to false or defaulted to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4604,8 +6290,8 @@ class OrganizationsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> patch(LogSink request, core.String sinkName,
-      {core.bool uniqueWriterIdentity,
-      core.String updateMask,
+      {core.String updateMask,
+      core.bool uniqueWriterIdentity,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4620,11 +6306,11 @@ class OrganizationsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4659,6 +6345,15 @@ class OrganizationsSinksResourceApi {
   /// "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
   ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field: If the old and new values of this field are both false or
+  /// both true, then there is no change to the sink's writer_identity. If the
+  /// old value is false and the new value is true, then writer_identity is
+  /// changed to a unique service account. It is an error if the old value is
+  /// true and the new value is set to false or defaulted to false.
+  ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
@@ -4668,15 +6363,6 @@ class OrganizationsSinksResourceApi {
   /// updateMask will be an error.For a detailed FieldMask definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
-  ///
-  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
-  /// this field. When updating a sink, the effect of this field on the value of
-  /// writer_identity in the updated sink depends on both the old and new values
-  /// of this field: If the old and new values of this field are both false or
-  /// both true, then there is no change to the sink's writer_identity. If the
-  /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4689,8 +6375,8 @@ class OrganizationsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> update(LogSink request, core.String sinkName,
-      {core.String updateMask,
-      core.bool uniqueWriterIdentity,
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4705,11 +6391,11 @@ class OrganizationsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (uniqueWriterIdentity != null) {
       _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5037,10 +6723,119 @@ class ProjectsLocationsResourceApi {
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Location.fromJson(data));
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(core.String name,
+      {core.int pageSize,
+      core.String pageToken,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLocationsResponse.fromJson(data));
+  }
 }
 
 class ProjectsLocationsBucketsResourceApi {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsViewsResourceApi get views =>
+      new ProjectsLocationsBucketsViewsResourceApi(_requester);
 
   ProjectsLocationsBucketsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -5155,7 +6950,7 @@ class ProjectsLocationsBucketsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets a bucket (Beta).
+  /// Gets a bucket.
   ///
   /// Request parameters:
   ///
@@ -5203,7 +6998,7 @@ class ProjectsLocationsBucketsResourceApi {
     return _response.then((data) => new LogBucket.fromJson(data));
   }
 
-  /// Lists buckets (Beta).
+  /// Lists buckets.
   ///
   /// Request parameters:
   ///
@@ -5274,7 +7069,7 @@ class ProjectsLocationsBucketsResourceApi {
   /// retention period is decreased and the bucket is locked,
   /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
   /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
-  /// may not be modified after it is created. This method is in Beta.
+  /// may not be modified after it is created.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5396,6 +7191,289 @@ class ProjectsLocationsBucketsResourceApi {
   }
 }
 
+class ProjectsLocationsBucketsViewsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsViewsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+  /// views.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket in which to create the view
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-logging-project/locations/my-location/buckets/my-bucket"
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [viewId] - Required. The id to use for this view.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> create(LogView request, core.String parent,
+      {core.String viewId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (viewId != null) {
+      _queryParams["viewId"] = [viewId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+
+  /// Deletes a view from a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to delete:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the policy:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+
+  /// Lists views on a bucket.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The bucket whose views are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListViewsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListViewsResponse.fromJson(data));
+  }
+
+  /// Updates a view. This method replaces the following fields in the existing
+  /// view with values from the new view: filter.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the view to update
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$".
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in view that
+  /// need an update. A field will be overwritten if, and only if, it is in the
+  /// update mask. name and output only fields cannot be updated.For a detailed
+  /// FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogView> patch(LogView request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogView.fromJson(data));
+  }
+}
+
 class ProjectsLogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -5464,14 +7542,23 @@ class ProjectsLogsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
+  /// [resourceNames] - Optional. The resource name that owns the logs:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDTo
+  /// support legacy queries, it could also be: "projects/PROJECT_ID"
+  /// "organizations/ORGANIZATION_ID" "billingAccounts/BILLING_ACCOUNT_ID"
+  /// "folders/FOLDER_ID"
   ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5484,7 +7571,10 @@ class ProjectsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.List<core.String> resourceNames,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -5495,11 +7585,14 @@ class ProjectsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6028,6 +8121,15 @@ class ProjectsSinksResourceApi {
   /// "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field: If the old and new values of this field are both false or
+  /// both true, then there is no change to the sink's writer_identity. If the
+  /// old value is false and the new value is true, then writer_identity is
+  /// changed to a unique service account. It is an error if the old value is
+  /// true and the new value is set to false or defaulted to false.
+  ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
@@ -6037,15 +8139,6 @@ class ProjectsSinksResourceApi {
   /// updateMask will be an error.For a detailed FieldMask definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
-  ///
-  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
-  /// this field. When updating a sink, the effect of this field on the value of
-  /// writer_identity in the updated sink depends on both the old and new values
-  /// of this field: If the old and new values of this field are both false or
-  /// both true, then there is no change to the sink's writer_identity. If the
-  /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6058,8 +8151,8 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> patch(LogSink request, core.String sinkName,
-      {core.String updateMask,
-      core.bool uniqueWriterIdentity,
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6074,11 +8167,11 @@ class ProjectsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (uniqueWriterIdentity != null) {
       _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6432,15 +8525,6 @@ class SinksResourceApi {
   /// "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^[^/]+/[^/]+/sinks/[^/]+$".
   ///
-  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
-  /// this field. When updating a sink, the effect of this field on the value of
-  /// writer_identity in the updated sink depends on both the old and new values
-  /// of this field: If the old and new values of this field are both false or
-  /// both true, then there is no change to the sink's writer_identity. If the
-  /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
-  ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
@@ -6450,6 +8534,15 @@ class SinksResourceApi {
   /// updateMask will be an error.For a detailed FieldMask definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
+  ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field: If the old and new values of this field are both false or
+  /// both true, then there is no change to the sink's writer_identity. If the
+  /// old value is false and the new value is true, then writer_identity is
+  /// changed to a unique service account. It is an error if the old value is
+  /// true and the new value is set to false or defaulted to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6462,8 +8555,8 @@ class SinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> update(LogSink request, core.String sinkName,
-      {core.bool uniqueWriterIdentity,
-      core.String updateMask,
+      {core.String updateMask,
+      core.bool uniqueWriterIdentity,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6478,11 +8571,11 @@ class SinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6933,7 +9026,8 @@ class HttpRequest {
   core.String referer;
 
   /// The IP address (IPv4 or IPv6) of the client that issued the HTTP request.
-  /// Examples: "192.168.1.1", "FE80::0202:B3FF:FE1E:8329".
+  /// This field can include port information. Examples: "192.168.1.1",
+  /// "10.0.0.1:80", "FE80::0202:B3FF:FE1E:8329".
   core.String remoteIp;
 
   /// The request method. Examples: "GET", "HEAD", "PUT", "POST".
@@ -6953,7 +9047,8 @@ class HttpRequest {
   core.String responseSize;
 
   /// The IP address (IPv4 or IPv6) of the origin server that the request was
-  /// sent to.
+  /// sent to. This field can include port information. Examples: "192.168.1.1",
+  /// "10.0.0.1:80", "FE80::0202:B3FF:FE1E:8329".
   core.String serverIp;
 
   /// The response code indicating the status of response. Examples: 200, 404.
@@ -7156,7 +9251,7 @@ class Linear {
   }
 }
 
-/// The response from ListBuckets (Beta).
+/// The response from ListBuckets.
 class ListBucketsResponse {
   /// A list of buckets.
   core.List<LogBucket> buckets;
@@ -7229,6 +9324,40 @@ class ListExclusionsResponse {
   }
 }
 
+/// The response message for Locations.ListLocations.
+class ListLocationsResponse {
+  /// A list of locations that matches the specified filter in the request.
+  core.List<Location> locations;
+
+  /// The standard List next-page token.
+  core.String nextPageToken;
+
+  ListLocationsResponse();
+
+  ListLocationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("locations")) {
+      locations = (_json["locations"] as core.List)
+          .map<Location>((value) => new Location.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (locations != null) {
+      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// The parameters to ListLogEntries.
 class ListLogEntriesRequest {
   /// Optional. A filter that chooses which log entries to return. See Advanced
@@ -7268,7 +9397,12 @@ class ListLogEntriesRequest {
 
   /// Required. Names of one or more parent resources from which to retrieve log
   /// entries: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Projects
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" May
+  /// alternatively be one or more views
+  /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+  /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDProjects
   /// listed in the project_ids field are added to this list.
   core.List<core.String> resourceNames;
 
@@ -7509,7 +9643,110 @@ class ListSinksResponse {
   }
 }
 
-/// Describes a repository of logs (Beta).
+/// The response from ListViews.
+class ListViewsResponse {
+  /// If there might be more results than appear in this response, then
+  /// nextPageToken is included. To get the next set of results, call the same
+  /// method again using the value of nextPageToken as pageToken.
+  core.String nextPageToken;
+
+  /// A list of views.
+  core.List<LogView> views;
+
+  ListViewsResponse();
+
+  ListViewsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("views")) {
+      views = (_json["views"] as core.List)
+          .map<LogView>((value) => new LogView.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (views != null) {
+      _json["views"] = views.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A resource that represents Google Cloud Platform location.
+class Location {
+  /// The friendly name for this location, typically a nearby city name. For
+  /// example, "Tokyo".
+  core.String displayName;
+
+  /// Cross-service attributes for the location. For example
+  /// {"cloud.googleapis.com/region": "us-east1"}
+  core.Map<core.String, core.String> labels;
+
+  /// The canonical id for this location. For example: "us-east1".
+  core.String locationId;
+
+  /// Service-specific metadata. For example the available capacity at the given
+  /// location.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> metadata;
+
+  /// Resource name for the location, which may vary between implementations.
+  /// For example: "projects/example-project/locations/us-east1"
+  core.String name;
+
+  Location();
+
+  Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Describes a repository of logs.
 class LogBucket {
   /// Output only. The creation timestamp of the bucket. This is not set for any
   /// of the default buckets.
@@ -7532,7 +9769,7 @@ class LogBucket {
   /// empty.
   core.bool locked;
 
-  /// The resource name of the bucket. For example:
+  /// Output only. The resource name of the bucket. For example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id The
   /// supported locations are: "global"For the location of global it is
   /// unspecified where logs are actually stored. Once a bucket has been
@@ -8107,8 +10344,8 @@ class LogLine {
 }
 
 /// Describes a logs-based metric. The value of the metric is the number of log
-/// entries that match a logs filter in a given time interval.Logs-based metric
-/// can also be used to extract values from logs and create a a distribution of
+/// entries that match a logs filter in a given time interval.Logs-based metrics
+/// can also be used to extract values from logs and create a distribution of
 /// the values. The distribution records the statistics of the extracted values
 /// along with an optional histogram of the values as specified by the bucket
 /// options.
@@ -8448,15 +10685,73 @@ class LogSink {
   }
 }
 
+/// Describes a view over logs in a bucket.
+class LogView {
+  /// Output only. The creation timestamp of the view.
+  core.String createTime;
+
+  /// Describes this view.
+  core.String description;
+
+  /// Filter that restricts which log entries in a bucket are visible in this
+  /// view. Filters are restricted to be a logical AND of ==/!= of any of the
+  /// following: originating project/folder/organization/billing account.
+  /// resource type log id Example: SOURCE("projects/myproject") AND
+  /// resource.type = "gce_instance" AND LOG_ID("stdout")
+  core.String filter;
+
+  /// The resource name of the view. For example
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
+  core.String name;
+
+  /// Output only. The last update timestamp of the view.
+  core.String updateTime;
+
+  LogView();
+
+  LogView.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
 /// Defines a metric type and its schema. Once a metric descriptor is created,
 /// deleting or altering it stops data collection and makes the metric type's
-/// existing data unusable.The following are specific rules for service defined
-/// Monitoring metric descriptors: type, metric_kind, value_type and description
-/// fields are all required. The unit field must be specified if the value_type
-/// is any of DOUBLE, INT64, DISTRIBUTION. Maximum of default 500 metric
-/// descriptors per service is allowed. Maximum of default 10 labels per metric
-/// descriptor is allowed.The default maximum limit can be overridden. Please
-/// follow https://cloud.google.com/monitoring/quotas
+/// existing data unusable.
 class MetricDescriptor {
   /// A detailed description of the metric, which can be used in documentation.
   core.String description;
@@ -8468,10 +10763,7 @@ class MetricDescriptor {
   core.String displayName;
 
   /// The set of labels that can be used to describe a specific instance of this
-  /// metric type.The label key name must follow: Only upper and lower-case
-  /// letters, digits and underscores (_) are allowed. Label name must start
-  /// with a letter or digit. The maximum length of a label name is 100
-  /// characters.For example, the
+  /// metric type. For example, the
   /// appengine.googleapis.com/http/server/response_latencies metric type has a
   /// label for the HTTP response code, response_code, so you can look at
   /// latencies for successful responses or just for responses that failed.
@@ -8493,7 +10785,7 @@ class MetricDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -8537,15 +10829,9 @@ class MetricDescriptor {
   core.String name;
 
   /// The metric type, including its DNS name prefix. The type is not
-  /// URL-encoded.All service defined metrics must be prefixed with the service
-  /// name, in the format of {service name}/{relative metric name}, such as
-  /// cloudsql.googleapis.com/database/cpu/utilization. The relative metric name
-  /// must follow: Only upper and lower-case letters, digits, '/' and
-  /// underscores '_' are allowed. The maximum number of characters allowed for
-  /// the relative_metric_name is 100.All user-defined metric types have the DNS
-  /// name custom.googleapis.com, external.googleapis.com, or
-  /// logging.googleapis.com/user/.Metric types should use a natural
-  /// hierarchical grouping. For example:
+  /// URL-encoded. All user-defined metric types have the DNS name
+  /// custom.googleapis.com or external.googleapis.com. Metric types should use
+  /// a natural hierarchical grouping. For example:
   /// "custom.googleapis.com/invoice/paid/amount"
   /// "external.googleapis.com/prometheus/up"
   /// "appengine.googleapis.com/http/server/response_latencies"
@@ -8717,7 +11003,7 @@ class MetricDescriptorMetadata {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -8821,16 +11107,9 @@ class MonitoredResource {
 /// type name and a set of labels. For example, the monitored resource
 /// descriptor for Google Compute Engine VM instances has a type of
 /// "gce_instance" and specifies the use of the labels "instance_id" and "zone"
-/// to identify particular VM instances.Different services can support different
-/// monitored resource types.The following are specific rules to service defined
-/// monitored resources for Monitoring and Logging: The type, display_name,
-/// description, labels and launch_stage fields are all required. The first
-/// label of the monitored resource descriptor must be resource_container. There
-/// are legacy monitored resource descritptors start with project_id. It must
-/// include a location label. Maximum of default 5 service defined monitored
-/// resource descriptors is allowed per service. Maximum of default 10 labels
-/// per monitored resource is allowed.The default maximum limit can be
-/// overridden. Please follow https://cloud.google.com/monitoring/quotas
+/// to identify particular VM instances.Different APIs can support different
+/// monitored resource types. APIs generally provide a list method that returns
+/// the monitored resource descriptors used by the API.
 class MonitoredResourceDescriptor {
   /// Optional. A detailed description of the monitored resource type that might
   /// be used in documentation.
@@ -8843,11 +11122,8 @@ class MonitoredResourceDescriptor {
   core.String displayName;
 
   /// Required. A set of labels used to describe instances of this monitored
-  /// resource type. The label key name must follow: Only upper and lower-case
-  /// letters, digits and underscores (_) are allowed. Label name must start
-  /// with a letter or digit. The maximum length of a label name is 100
-  /// characters.For example, an individual Google Cloud SQL database is
-  /// identified by values for the labels database_id and location.
+  /// resource type. For example, an individual Google Cloud SQL database is
+  /// identified by values for the labels "database_id" and "zone".
   core.List<LabelDescriptor> labels;
 
   /// Optional. The launch stage of the monitored resource definition.
@@ -8866,7 +11142,7 @@ class MonitoredResourceDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -8894,14 +11170,7 @@ class MonitoredResourceDescriptor {
   core.String name;
 
   /// Required. The monitored resource type. For example, the type
-  /// cloudsql_database represents databases in Google Cloud SQL.All service
-  /// defined monitored resource types must be prefixed with the service name,
-  /// in the format of {service name}/{relative resource name}. The relative
-  /// resource name must follow: Only upper and lower-case letters and digits
-  /// are allowed. It must start with upper case character and is recommended to
-  /// use Upper Camel Case style. The maximum number of characters allowed for
-  /// the relative_resource_name is 100.Note there are legacy service monitored
-  /// resources not following this rule.
+  /// "cloudsql_database" represents databases in Google Cloud SQL.
   core.String type;
 
   MonitoredResourceDescriptor();
@@ -9410,6 +11679,146 @@ class SourceReference {
     }
     if (revisionId != null) {
       _json["revisionId"] = revisionId;
+    }
+    return _json;
+  }
+}
+
+/// Information about entries that were omitted from the session.
+class SuppressionInfo {
+  /// The reason that entries were omitted from the session.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Unexpected default.
+  /// - "RATE_LIMIT" : Indicates suppression occurred due to relevant entries
+  /// being received in excess of rate limits. For quotas and limits, see
+  /// Logging API quotas and limits
+  /// (https://cloud.google.com/logging/quotas#api-limits).
+  /// - "NOT_CONSUMED" : Indicates suppression occurred due to the client not
+  /// consuming responses quickly enough.
+  core.String reason;
+
+  /// A lower bound on the count of entries omitted due to reason.
+  core.int suppressedCount;
+
+  SuppressionInfo();
+
+  SuppressionInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+    if (_json.containsKey("suppressedCount")) {
+      suppressedCount = _json["suppressedCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    if (suppressedCount != null) {
+      _json["suppressedCount"] = suppressedCount;
+    }
+    return _json;
+  }
+}
+
+/// The parameters to TailLogEntries.
+class TailLogEntriesRequest {
+  /// Optional. The amount of time to buffer log entries at the server before
+  /// being returned to prevent out of order results due to late arriving log
+  /// entries. Valid values are between 0-60000 milliseconds. Defaults to 2000
+  /// milliseconds.
+  core.String bufferWindow;
+
+  /// Optional. A filter that chooses which log entries to return. See Advanced
+  /// Logs Filters
+  /// (https://cloud.google.com/logging/docs/view/advanced_filters). Only log
+  /// entries that match the filter are returned. An empty filter matches all
+  /// log entries in the resources listed in resource_names. Referencing a
+  /// parent resource that is not in resource_names will cause the filter to
+  /// return no results. The maximum length of the filter is 20000 characters.
+  core.String filter;
+
+  /// Required. Name of a parent resource from which to retrieve log entries:
+  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" May
+  /// alternatively be one or more views:
+  /// "projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID"
+  /// "organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID"
+  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID"
+  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID"
+  core.List<core.String> resourceNames;
+
+  TailLogEntriesRequest();
+
+  TailLogEntriesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("bufferWindow")) {
+      bufferWindow = _json["bufferWindow"];
+    }
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+    if (_json.containsKey("resourceNames")) {
+      resourceNames = (_json["resourceNames"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bufferWindow != null) {
+      _json["bufferWindow"] = bufferWindow;
+    }
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (resourceNames != null) {
+      _json["resourceNames"] = resourceNames;
+    }
+    return _json;
+  }
+}
+
+/// Result returned from TailLogEntries.
+class TailLogEntriesResponse {
+  /// A list of log entries. Each response in the stream will order entries with
+  /// increasing values of LogEntry.timestamp. Ordering is not guaranteed
+  /// between separate responses.
+  core.List<LogEntry> entries;
+
+  /// If entries that otherwise would have been included in the session were not
+  /// sent back to the client, counts of relevant entries omitted from the
+  /// session with the reason that they were not included. There will be at most
+  /// one of each reason per response. The counts represent the number of
+  /// suppressed entries since the last streamed response.
+  core.List<SuppressionInfo> suppressionInfo;
+
+  TailLogEntriesResponse();
+
+  TailLogEntriesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = (_json["entries"] as core.List)
+          .map<LogEntry>((value) => new LogEntry.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("suppressionInfo")) {
+      suppressionInfo = (_json["suppressionInfo"] as core.List)
+          .map<SuppressionInfo>((value) => new SuppressionInfo.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    if (suppressionInfo != null) {
+      _json["suppressionInfo"] =
+          suppressionInfo.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

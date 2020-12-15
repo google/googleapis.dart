@@ -49,13 +49,13 @@ class FoldersResourceApi {
   /// success the Operation.response field will be populated with the created
   /// Folder. In order to succeed, the addition of this new Folder must not
   /// violate the Folder naming, height or fanout constraints. + The Folder's
-  /// display_name must be distinct from all other Folder's that share its
+  /// display_name must be distinct from all other Folders that share its
   /// parent. + The addition of the Folder must not cause the active Folder
-  /// hierarchy to exceed a height of 4. Note, the full active + deleted Folder
-  /// hierarchy is allowed to reach a height of 8; this provides additional
+  /// hierarchy to exceed a height of 10. Note, the full active + deleted Folder
+  /// hierarchy is allowed to reach a height of 20; this provides additional
   /// headroom when moving folders that contain deleted folders. + The addition
   /// of the Folder must not cause the total number of Folders under its parent
-  /// to exceed 100. If the operation fails due to a folder constraint
+  /// to exceed 300. If the operation fails due to a folder constraint
   /// violation, some errors may be returned by the CreateFolder request, with
   /// status code FAILED_PRECONDITION and an error description. Other folder
   /// constraint violations will be communicated in the Operation, with the
@@ -272,19 +272,19 @@ class FoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [showDeleted] - Optional. Controls whether Folders in the DELETE_REQUESTED
-  /// state should be returned. Defaults to false.
+  /// [pageToken] - Optional. A pagination token returned from a previous call
+  /// to `ListFolders` that indicates where this listing should continue from.
+  ///
+  /// [pageSize] - Optional. The maximum number of Folders to return in the
+  /// response.
   ///
   /// [parent] - Required. The resource name of the Organization or Folder whose
   /// Folders are being listed. Must be of the form `folders/{folder_id}` or
   /// `organizations/{org_id}`. Access to this method is controlled by checking
   /// the `resourcemanager.folders.list` permission on the `parent`.
   ///
-  /// [pageToken] - Optional. A pagination token returned from a previous call
-  /// to `ListFolders` that indicates where this listing should continue from.
-  ///
-  /// [pageSize] - Optional. The maximum number of Folders to return in the
-  /// response.
+  /// [showDeleted] - Optional. Controls whether Folders in the DELETE_REQUESTED
+  /// state should be returned. Defaults to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -297,10 +297,10 @@ class FoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFoldersResponse> list(
-      {core.bool showDeleted,
-      core.String parent,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String parent,
+      core.bool showDeleted,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -309,17 +309,17 @@ class FoldersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
-    if (parent != null) {
-      _queryParams["parent"] = [parent];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -403,10 +403,10 @@ class FoldersResourceApi {
   /// formatting rules or naming constraints described in the CreateFolder
   /// documentation. The Folder's display name must start and end with a letter
   /// or digit, may contain letters, digits, spaces, hyphens and underscores and
-  /// can be no longer than 30 characters. This is captured by the regular
-  /// expression: [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller
-  /// must have `resourcemanager.folders.update` permission on the identified
-  /// folder. If the update fails due to the unique name constraint then a
+  /// can be between 3 and 30 characters. This is captured by the regular
+  /// expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have
+  /// `resourcemanager.folders.update` permission on the identified folder. If
+  /// the update fails due to the unique name constraint then a
   /// PreconditionFailure explaining this violation will be returned in the
   /// Status.details field.
   ///
@@ -831,10 +831,6 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -882,9 +878,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -899,9 +892,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -911,6 +901,292 @@ class Binding {
     if (role != null) {
       _json["role"] = role;
     }
+    return _json;
+  }
+}
+
+/// Metadata describing a long running folder operation
+class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
+  /// The resource name of the folder or organization we are either creating the
+  /// folder under or moving the folder to.
+  core.String destinationParent;
+
+  /// The display name of the folder.
+  core.String displayName;
+
+  /// The type of this operation.
+  /// Possible string values are:
+  /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
+  /// - "CREATE" : A create folder operation.
+  /// - "MOVE" : A move folder operation.
+  core.String operationType;
+
+  /// The resource name of the folder's parent. Only applicable when the
+  /// operation_type is MOVE.
+  core.String sourceParent;
+
+  CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation();
+
+  CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("destinationParent")) {
+      destinationParent = _json["destinationParent"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("sourceParent")) {
+      sourceParent = _json["sourceParent"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (destinationParent != null) {
+      _json["destinationParent"] = destinationParent;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (sourceParent != null) {
+      _json["sourceParent"] = sourceParent;
+    }
+    return _json;
+  }
+}
+
+/// Metadata describing a long running folder operation
+class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
+  /// The resource name of the folder or organization we are either creating the
+  /// folder under or moving the folder to.
+  core.String destinationParent;
+
+  /// The display name of the folder.
+  core.String displayName;
+
+  /// The type of this operation.
+  /// Possible string values are:
+  /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
+  /// - "CREATE" : A create folder operation.
+  /// - "MOVE" : A move folder operation.
+  core.String operationType;
+
+  /// The resource name of the folder's parent. Only applicable when the
+  /// operation_type is MOVE.
+  core.String sourceParent;
+
+  CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation();
+
+  CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("destinationParent")) {
+      destinationParent = _json["destinationParent"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("sourceParent")) {
+      sourceParent = _json["sourceParent"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (destinationParent != null) {
+      _json["destinationParent"] = destinationParent;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (sourceParent != null) {
+      _json["sourceParent"] = sourceParent;
+    }
+    return _json;
+  }
+}
+
+/// Metadata pertaining to the Folder creation process.
+class CreateFolderMetadata {
+  /// The display name of the folder.
+  core.String displayName;
+
+  /// The resource name of the folder or organization we are creating the folder
+  /// under.
+  core.String parent;
+
+  CreateFolderMetadata();
+
+  CreateFolderMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("parent")) {
+      parent = _json["parent"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (parent != null) {
+      _json["parent"] = parent;
+    }
+    return _json;
+  }
+}
+
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by CreateProject. It provides insight for when significant phases
+/// of Project creation have completed.
+class CreateProjectMetadata {
+  /// Creation time of the project creation workflow.
+  core.String createTime;
+
+  /// True if the project can be retrieved using GetProject. No other operations
+  /// on the project are guaranteed to work until the project creation is
+  /// complete.
+  core.bool gettable;
+
+  /// True if the project creation process is complete.
+  core.bool ready;
+
+  CreateProjectMetadata();
+
+  CreateProjectMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("gettable")) {
+      gettable = _json["gettable"];
+    }
+    if (_json.containsKey("ready")) {
+      ready = _json["ready"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (gettable != null) {
+      _json["gettable"] = gettable;
+    }
+    if (ready != null) {
+      _json["ready"] = ready;
+    }
+    return _json;
+  }
+}
+
+/// Runtime operation information for creating a TagKey.
+class CreateTagKeyMetadata {
+  CreateTagKeyMetadata();
+
+  CreateTagKeyMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Runtime operation information for creating a TagValue.
+class CreateTagValueMetadata {
+  CreateTagValueMetadata();
+
+  CreateTagValueMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by DeleteFolder.
+class DeleteFolderMetadata {
+  DeleteFolderMetadata();
+
+  DeleteFolderMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by DeleteOrganization.
+class DeleteOrganizationMetadata {
+  DeleteOrganizationMetadata();
+
+  DeleteOrganizationMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by DeleteProject.
+class DeleteProjectMetadata {
+  DeleteProjectMetadata();
+
+  DeleteProjectMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Runtime operation information for deleting a TagKey.
+class DeleteTagKeyMetadata {
+  DeleteTagKeyMetadata();
+
+  DeleteTagKeyMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Runtime operation information for deleting a TagValue.
+class DeleteTagValueMetadata {
+  DeleteTagValueMetadata();
+
+  DeleteTagValueMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -991,12 +1267,12 @@ class Folder {
   /// server.
   core.String createTime;
 
-  /// The folder’s display name. A folder’s display name must be unique amongst
+  /// The folder's display name. A folder's display name must be unique amongst
   /// its siblings, e.g. no two folders with the same parent can share the same
   /// display name. The display name must start and end with a letter or digit,
   /// may contain letters, digits, spaces, hyphens and underscores and can be no
   /// longer than 30 characters. This is captured by the regular expression:
-  /// [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?.
+  /// `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
   core.String displayName;
 
   /// Output only. The lifecycle state of the folder. Updates to the
@@ -1012,7 +1288,7 @@ class Folder {
   /// `folders/{folder_id}`, for example: "folders/1234".
   core.String name;
 
-  /// Required. The Folder’s parent's resource name. Updates to the folder's
+  /// Required. The Folder's parent's resource name. Updates to the folder's
   /// parent must be performed via MoveFolder.
   core.String parent;
 
@@ -1247,6 +1523,47 @@ class ListFoldersResponse {
   }
 }
 
+/// Metadata pertaining to the Folder move process.
+class MoveFolderMetadata {
+  /// The resource name of the folder or organization to move the folder to.
+  core.String destinationParent;
+
+  /// The display name of the folder.
+  core.String displayName;
+
+  /// The resource name of the folder's parent.
+  core.String sourceParent;
+
+  MoveFolderMetadata();
+
+  MoveFolderMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("destinationParent")) {
+      destinationParent = _json["destinationParent"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("sourceParent")) {
+      sourceParent = _json["sourceParent"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (destinationParent != null) {
+      _json["destinationParent"] = destinationParent;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (sourceParent != null) {
+      _json["sourceParent"] = sourceParent;
+    }
+    return _json;
+  }
+}
+
 /// The MoveFolder request message.
 class MoveFolderRequest {
   /// Required. The resource name of the Folder or Organization to reparent the
@@ -1268,6 +1585,20 @@ class MoveFolderRequest {
     if (destinationParent != null) {
       _json["destinationParent"] = destinationParent;
     }
+    return _json;
+  }
+}
+
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by MoveProject.
+class MoveProjectMetadata {
+  MoveProjectMetadata();
+
+  MoveProjectMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -1748,11 +2079,107 @@ class TestIamPermissionsResponse {
   }
 }
 
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by UndeleteFolder.
+class UndeleteFolderMetadata {
+  UndeleteFolderMetadata();
+
+  UndeleteFolderMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// The UndeleteFolder request message.
 class UndeleteFolderRequest {
   UndeleteFolderRequest();
 
   UndeleteFolderRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by UndeleteOrganization.
+class UndeleteOrganizationMetadata {
+  UndeleteOrganizationMetadata();
+
+  UndeleteOrganizationMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by UndeleteProject.
+class UndeleteProjectMetadata {
+  UndeleteProjectMetadata();
+
+  UndeleteProjectMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by UpdateFolder.
+class UpdateFolderMetadata {
+  UpdateFolderMetadata();
+
+  UpdateFolderMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A status object which is used as the `metadata` field for the Operation
+/// returned by UpdateProject.
+class UpdateProjectMetadata {
+  UpdateProjectMetadata();
+
+  UpdateProjectMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Runtime operation information for updating a TagKey.
+class UpdateTagKeyMetadata {
+  UpdateTagKeyMetadata();
+
+  UpdateTagKeyMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Runtime operation information for updating a TagValue.
+class UpdateTagValueMetadata {
+  UpdateTagValueMetadata();
+
+  UpdateTagValueMetadata.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =

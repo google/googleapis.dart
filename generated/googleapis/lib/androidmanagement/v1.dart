@@ -61,13 +61,13 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [signupUrlName] - The name of the SignupUrl used to sign up for the
+  /// enterprise.
+  ///
   /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
   ///
   /// [enterpriseToken] - The enterprise token appended to the callback URL.
-  ///
-  /// [signupUrlName] - The name of the SignupUrl used to sign up for the
-  /// enterprise.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -80,9 +80,9 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> create(Enterprise request,
-      {core.String projectId,
+      {core.String signupUrlName,
+      core.String projectId,
       core.String enterpriseToken,
-      core.String signupUrlName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -94,14 +94,14 @@ class EnterprisesResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
+    if (signupUrlName != null) {
+      _queryParams["signupUrlName"] = [signupUrlName];
+    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
     if (enterpriseToken != null) {
       _queryParams["enterpriseToken"] = [enterpriseToken];
-    }
-    if (signupUrlName != null) {
-      _queryParams["signupUrlName"] = [signupUrlName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -295,11 +295,11 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}/devices/{deviceId}.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
+  /// [wipeDataFlags] - Optional flags that control the device wiping behavior.
+  ///
   /// [wipeReasonMessage] - Optional. A short message displayed to the user
   /// before wiping the work profile on personal devices. This has no effect on
   /// company owned devices. The maximum message length is 200 characters.
-  ///
-  /// [wipeDataFlags] - Optional flags that control the device wiping behavior.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -312,8 +312,8 @@ class EnterprisesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name,
-      {core.String wipeReasonMessage,
-      core.List<core.String> wipeDataFlags,
+      {core.List<core.String> wipeDataFlags,
+      core.String wipeReasonMessage,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -325,11 +325,11 @@ class EnterprisesDevicesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (wipeReasonMessage != null) {
-      _queryParams["wipeReasonMessage"] = [wipeReasonMessage];
-    }
     if (wipeDataFlags != null) {
       _queryParams["wipeDataFlags"] = wipeDataFlags;
+    }
+    if (wipeReasonMessage != null) {
+      _queryParams["wipeReasonMessage"] = [wipeReasonMessage];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -452,11 +452,11 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
-  /// [pageSize] - The requested page size. The actual page size may be fixed to
-  /// a min or max value.
-  ///
   /// [pageToken] - A token identifying a page of results returned by the
   /// server.
+  ///
+  /// [pageSize] - The requested page size. The actual page size may be fixed to
+  /// a min or max value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -469,7 +469,7 @@ class EnterprisesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -480,11 +480,11 @@ class EnterprisesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -725,9 +725,9 @@ class EnterprisesDevicesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+/operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
   ///
@@ -742,8 +742,8 @@ class EnterprisesDevicesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -756,11 +756,11 @@ class EnterprisesDevicesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -989,11 +989,11 @@ class EnterprisesPoliciesResourceApi {
   /// enterprises/{enterpriseId}.
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
-  /// [pageSize] - The requested page size. The actual page size may be fixed to
-  /// a min or max value.
-  ///
   /// [pageToken] - A token identifying a page of results returned by the
   /// server.
+  ///
+  /// [pageSize] - The requested page size. The actual page size may be fixed to
+  /// a min or max value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1006,7 +1006,7 @@ class EnterprisesPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPoliciesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1017,11 +1017,11 @@ class EnterprisesPoliciesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1479,6 +1479,23 @@ class SignupUrlsResourceApi {
 /// security posture of a device, we don't recommend overriding any of the
 /// default values.
 class AdvancedSecurityOverrides {
+  /// Controls Common Criteria Mode—security standards defined in the Common
+  /// Criteria for Information Technology Security Evaluation
+  /// (https://www.commoncriteriaportal.org/) (CC). Enabling Common Criteria
+  /// Mode increases certain security components on a device, including AES-GCM
+  /// encryption of Bluetooth Long Term Keys, and Wi-Fi configuration
+  /// stores.Warning: Common Criteria Mode enforces a strict security model
+  /// typically only required for IT products used in national security systems
+  /// and other highly sensitive organizations. Standard device use may be
+  /// affected. Only enabled if required.
+  /// Possible string values are:
+  /// - "COMMON_CRITERIA_MODE_UNSPECIFIED" : Unspecified. Defaults to
+  /// COMMON_CRITERIA_MODE_DISABLED.
+  /// - "COMMON_CRITERIA_MODE_DISABLED" : Default. Disables Common Criteria
+  /// Mode.
+  /// - "COMMON_CRITERIA_MODE_ENABLED" : Enables Common Criteria Mode.
+  core.String commonCriteriaMode;
+
   /// The policy for untrusted apps (apps from unknown sources) enforced on the
   /// device. Replaces install_unknown_sources_allowed (deprecated).
   /// Possible string values are:
@@ -1496,6 +1513,9 @@ class AdvancedSecurityOverrides {
   AdvancedSecurityOverrides();
 
   AdvancedSecurityOverrides.fromJson(core.Map _json) {
+    if (_json.containsKey("commonCriteriaMode")) {
+      commonCriteriaMode = _json["commonCriteriaMode"];
+    }
     if (_json.containsKey("untrustedAppsPolicy")) {
       untrustedAppsPolicy = _json["untrustedAppsPolicy"];
     }
@@ -1504,6 +1524,9 @@ class AdvancedSecurityOverrides {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (commonCriteriaMode != null) {
+      _json["commonCriteriaMode"] = commonCriteriaMode;
+    }
     if (untrustedAppsPolicy != null) {
       _json["untrustedAppsPolicy"] = untrustedAppsPolicy;
     }
@@ -1769,6 +1792,15 @@ class ApplicationPolicy {
   /// about each track are available in AppTrackInfo.
   core.List<core.String> accessibleTrackIds;
 
+  /// This feature is not generally available.
+  /// Possible string values are:
+  /// - "AUTO_UPDATE_MODE_UNSPECIFIED" : This feature is not generally
+  /// available.
+  /// - "AUTO_UPDATE_DEFAULT" : This feature is not generally available.
+  /// - "AUTO_UPDATE_POSTPONED" : This feature is not generally available.
+  /// - "AUTO_UPDATE_HIGH_PRIORITY" : This feature is not generally available.
+  core.String autoUpdateMode;
+
   /// Controls whether the app can communicate with itself across a device’s
   /// work and personal profiles, subject to user consent.
   /// Possible string values are:
@@ -1867,6 +1899,9 @@ class ApplicationPolicy {
       accessibleTrackIds =
           (_json["accessibleTrackIds"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("autoUpdateMode")) {
+      autoUpdateMode = _json["autoUpdateMode"];
+    }
     if (_json.containsKey("connectedWorkAndPersonalApp")) {
       connectedWorkAndPersonalApp = _json["connectedWorkAndPersonalApp"];
     }
@@ -1912,6 +1947,9 @@ class ApplicationPolicy {
         new core.Map<core.String, core.Object>();
     if (accessibleTrackIds != null) {
       _json["accessibleTrackIds"] = accessibleTrackIds;
+    }
+    if (autoUpdateMode != null) {
+      _json["autoUpdateMode"] = autoUpdateMode;
     }
     if (connectedWorkAndPersonalApp != null) {
       _json["connectedWorkAndPersonalApp"] = connectedWorkAndPersonalApp;
@@ -2246,6 +2284,11 @@ class Command {
   /// - "RESET_PASSWORD" : Reset the user's password.
   /// - "REBOOT" : Reboot the device. Only supported on fully managed devices
   /// running Android 7.0 (API level 24) or higher.
+  /// - "RELINQUISH_OWNERSHIP" : Removes the work profile and all policies from
+  /// a company-owned Android 8.0+ device, relinquishing the device for personal
+  /// use. Apps and data associated with the personal profile(s) are preserved.
+  /// The device will be deleted from the server after it acknowledges the
+  /// command.
   core.String type;
 
   /// The resource name of the user that owns the device in the form
@@ -2303,6 +2346,39 @@ class Command {
     }
     if (userName != null) {
       _json["userName"] = userName;
+    }
+    return _json;
+  }
+}
+
+/// Information about Common Criteria Mode—security standards defined in the
+/// Common Criteria for Information Technology Security Evaluation
+/// (https://www.commoncriteriaportal.org/) (CC).This information is only
+/// available if statusReportingSettings.commonCriteriaModeEnabled is true in
+/// the device's policy.
+class CommonCriteriaModeInfo {
+  /// Whether Common Criteria Mode is enabled.
+  /// Possible string values are:
+  /// - "COMMON_CRITERIA_MODE_STATUS_UNKNOWN" : Unknown status.
+  /// - "COMMON_CRITERIA_MODE_DISABLED" : Common Criteria Mode is currently
+  /// disabled.
+  /// - "COMMON_CRITERIA_MODE_ENABLED" : Common Criteria Mode is currently
+  /// enabled.
+  core.String commonCriteriaModeStatus;
+
+  CommonCriteriaModeInfo();
+
+  CommonCriteriaModeInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("commonCriteriaModeStatus")) {
+      commonCriteriaModeStatus = _json["commonCriteriaModeStatus"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (commonCriteriaModeStatus != null) {
+      _json["commonCriteriaModeStatus"] = commonCriteriaModeStatus;
     }
     return _json;
   }
@@ -2373,25 +2449,25 @@ class ComplianceRule {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day and time zone are either specified elsewhere or are not significant. The
-/// date is relative to the Proleptic Gregorian Calendar. This can represent: A
-/// full date, with non-zero year, month and day values A month and day value,
-/// with a zero year, e.g. an anniversary A year on its own, with zero month and
-/// day values A year and month value, with a zero day, e.g. a credit card
-/// expiration dateRelated types are google.type.TimeOfDay and
+/// Represents a whole or partial calendar date, such as a birthday. The time of
+/// day and time zone are either specified elsewhere or are insignificant. The
+/// date is relative to the Gregorian Calendar. This can represent one of the
+/// following: A full date, with non-zero year, month, and day values A month
+/// and day value, with a zero year, such as an anniversary A year on its own,
+/// with zero month and day values A year and month value, with a zero day, such
+/// as a credit card expiration dateRelated types are google.type.TimeOfDay and
 /// google.protobuf.Timestamp.
 class Date {
-  /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year by itself or a year and month where the day is not
+  /// Day of a month. Must be from 1 to 31 and valid for the year and month, or
+  /// 0 to specify a year by itself or a year and month where the day isn't
   /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
   /// month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
+  /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
   /// year.
   core.int year;
 
@@ -2452,6 +2528,13 @@ class Device {
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
   core.String appliedState;
+
+  /// Information about Common Criteria Mode—security standards defined in the
+  /// Common Criteria for Information Technology Security Evaluation
+  /// (https://www.commoncriteriaportal.org/) (CC).This information is only
+  /// available if statusReportingSettings.commonCriteriaModeEnabled is true in
+  /// the device's policy.
+  CommonCriteriaModeInfo commonCriteriaModeInfo;
 
   /// Device settings information. This information is only available if
   /// deviceSettingsEnabled is true in the device's policy.
@@ -2607,6 +2690,10 @@ class Device {
     if (_json.containsKey("appliedState")) {
       appliedState = _json["appliedState"];
     }
+    if (_json.containsKey("commonCriteriaModeInfo")) {
+      commonCriteriaModeInfo =
+          new CommonCriteriaModeInfo.fromJson(_json["commonCriteriaModeInfo"]);
+    }
     if (_json.containsKey("deviceSettings")) {
       deviceSettings = new DeviceSettings.fromJson(_json["deviceSettings"]);
     }
@@ -2725,6 +2812,9 @@ class Device {
     }
     if (appliedState != null) {
       _json["appliedState"] = appliedState;
+    }
+    if (commonCriteriaModeInfo != null) {
+      _json["commonCriteriaModeInfo"] = (commonCriteriaModeInfo).toJson();
     }
     if (deviceSettings != null) {
       _json["deviceSettings"] = (deviceSettings).toJson();
@@ -4219,6 +4309,11 @@ class NetworkInfo {
   /// Alphabetic name of current registered operator. For example, Vodafone.
   core.String networkOperatorName;
 
+  /// Provides telephony information associated with each SIM card on the
+  /// device. Only supported on fully managed devices starting from Android API
+  /// level 23 and above.
+  core.List<TelephonyInfo> telephonyInfos;
+
   /// Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11.
   core.String wifiMacAddress;
 
@@ -4233,6 +4328,11 @@ class NetworkInfo {
     }
     if (_json.containsKey("networkOperatorName")) {
       networkOperatorName = _json["networkOperatorName"];
+    }
+    if (_json.containsKey("telephonyInfos")) {
+      telephonyInfos = (_json["telephonyInfos"] as core.List)
+          .map<TelephonyInfo>((value) => new TelephonyInfo.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("wifiMacAddress")) {
       wifiMacAddress = _json["wifiMacAddress"];
@@ -4250,6 +4350,10 @@ class NetworkInfo {
     }
     if (networkOperatorName != null) {
       _json["networkOperatorName"] = networkOperatorName;
+    }
+    if (telephonyInfos != null) {
+      _json["telephonyInfos"] =
+          telephonyInfos.map((value) => (value).toJson()).toList();
     }
     if (wifiMacAddress != null) {
       _json["wifiMacAddress"] = wifiMacAddress;
@@ -4833,10 +4937,10 @@ class PersistentPreferredActivity {
 class PersonalApplicationPolicy {
   /// The type of installation to perform.
   /// Possible string values are:
-  /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. The default behavior is that
-  /// all installs are allowed.
+  /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. Defaults to AVAILABLE.
   /// - "BLOCKED" : The app is blocked and can't be installed in the personal
   /// profile.
+  /// - "AVAILABLE" : The app is available to install in the personal profile.
   core.String installType;
 
   /// The package name of the application.
@@ -4881,13 +4985,19 @@ class PersonalUsagePolicies {
   /// Policy applied to applications in the personal profile.
   core.List<PersonalApplicationPolicy> personalApplications;
 
-  /// Used together with personal_applications to control how apps in the
+  /// Used together with personalApplications to control how apps in the
   /// personal profile are allowed or blocked.
   /// Possible string values are:
-  /// - "PLAY_STORE_MODE_UNSPECIFIED" : Unspecified. Default behavior is to
-  /// allow all installs.
-  /// - "BLACKLIST" : All Play Store apps are available, except those whose
-  /// install_type is BLOCKED in personal_applications.
+  /// - "PLAY_STORE_MODE_UNSPECIFIED" : Unspecified. Defaults to BLOCKLIST.
+  /// - "BLACKLIST" : All Play Store apps are available for installation in the
+  /// personal profile, except those whose installType is BLOCKED in
+  /// personalApplications.
+  /// - "BLOCKLIST" : All Play Store apps are available for installation in the
+  /// personal profile, except those whose installType is BLOCKED in
+  /// personalApplications.
+  /// - "ALLOWLIST" : Only apps explicitly specified in personalApplications
+  /// with installType set to AVAILABLE are allowed to be installed in the
+  /// personal profile.
   core.String personalPlayStoreMode;
 
   /// Whether screen capture is disabled.
@@ -4988,8 +5098,20 @@ class Policy {
   /// Policy applied to apps.
   core.List<ApplicationPolicy> applications;
 
+  /// Whether auto date, time, and time zone are enabled on a company-owned
+  /// device. If this is set, then autoTimeRequired is ignored.
+  /// Possible string values are:
+  /// - "AUTO_DATE_AND_TIME_ZONE_UNSPECIFIED" : Unspecified. Defaults to
+  /// AUTO_DATE_AND_TIME_ZONE_USER_CHOICE.
+  /// - "AUTO_DATE_AND_TIME_ZONE_USER_CHOICE" : Auto date, time, and time zone
+  /// are left to user's choice.
+  /// - "AUTO_DATE_AND_TIME_ZONE_ENFORCED" : Enforce auto date, time, and time
+  /// zone on the device.
+  core.String autoDateAndTimeZone;
+
   /// Whether auto time is required, which prevents the user from manually
-  /// setting the date and time.
+  /// setting the date and time. If autoDateAndTimeZone is set, this field is
+  /// ignored.
   core.bool autoTimeRequired;
 
   /// Whether applications other than the ones configured in applications are
@@ -5104,15 +5226,23 @@ class Policy {
   /// the policy with installType KIOSK.
   KioskCustomization kioskCustomization;
 
-  /// The degree of location detection enabled. The user may change the value
-  /// unless the user is otherwise blocked from accessing device settings.
+  /// The degree of location detection enabled.
   /// Possible string values are:
-  /// - "LOCATION_MODE_UNSPECIFIED" : The current device value is not modified.
-  /// - "HIGH_ACCURACY" : All location detection methods are enabled, including
-  /// GPS, networks, and other sensors.
-  /// - "SENSORS_ONLY" : Only GPS and other sensors are enabled.
-  /// - "BATTERY_SAVING" : Only the network location provider is enabled.
-  /// - "OFF" : Location detection is disabled.
+  /// - "LOCATION_MODE_UNSPECIFIED" : Defaults to LOCATION_USER_CHOICE.
+  /// - "HIGH_ACCURACY" : On Android 8 and below, all location detection methods
+  /// are enabled, including GPS, networks, and other sensors. On Android 9 and
+  /// above, this is equivalent to LOCATION_ENFORCED.
+  /// - "SENSORS_ONLY" : On Android 8 and below, only GPS and other sensors are
+  /// enabled. On Android 9 and above, this is equivalent to LOCATION_ENFORCED.
+  /// - "BATTERY_SAVING" : On Android 8 and below, only the network location
+  /// provider is enabled. On Android 9 and above, this is equivalent to
+  /// LOCATION_ENFORCED.
+  /// - "OFF" : On Android 8 and below, location setting and accuracy are
+  /// disabled. On Android 9 and above, this is equivalent to LOCATION_DISABLED.
+  /// - "LOCATION_USER_CHOICE" : Location setting is not restricted on the
+  /// device. No specific behavior is set or enforced.
+  /// - "LOCATION_ENFORCED" : Enable location setting on the device.
+  /// - "LOCATION_DISABLED" : Disable location setting on the device.
   core.String locationMode;
 
   /// A message displayed to the user in the device administators settings
@@ -5340,6 +5470,9 @@ class Policy {
           .map<ApplicationPolicy>(
               (value) => new ApplicationPolicy.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("autoDateAndTimeZone")) {
+      autoDateAndTimeZone = _json["autoDateAndTimeZone"];
     }
     if (_json.containsKey("autoTimeRequired")) {
       autoTimeRequired = _json["autoTimeRequired"];
@@ -5624,6 +5757,9 @@ class Policy {
     if (applications != null) {
       _json["applications"] =
           applications.map((value) => (value).toJson()).toList();
+    }
+    if (autoDateAndTimeZone != null) {
+      _json["autoDateAndTimeZone"] = autoDateAndTimeZone;
     }
     if (autoTimeRequired != null) {
       _json["autoTimeRequired"] = autoTimeRequired;
@@ -6424,6 +6560,9 @@ class StatusReportingSettings {
   /// Whether app reports are enabled.
   core.bool applicationReportsEnabled;
 
+  /// Whether Common Criteria Mode reporting is enabled.
+  core.bool commonCriteriaModeEnabled;
+
   /// Whether device settings reporting is enabled.
   core.bool deviceSettingsEnabled;
 
@@ -6461,6 +6600,9 @@ class StatusReportingSettings {
     if (_json.containsKey("applicationReportsEnabled")) {
       applicationReportsEnabled = _json["applicationReportsEnabled"];
     }
+    if (_json.containsKey("commonCriteriaModeEnabled")) {
+      commonCriteriaModeEnabled = _json["commonCriteriaModeEnabled"];
+    }
     if (_json.containsKey("deviceSettingsEnabled")) {
       deviceSettingsEnabled = _json["deviceSettingsEnabled"];
     }
@@ -6496,6 +6638,9 @@ class StatusReportingSettings {
     }
     if (applicationReportsEnabled != null) {
       _json["applicationReportsEnabled"] = applicationReportsEnabled;
+    }
+    if (commonCriteriaModeEnabled != null) {
+      _json["commonCriteriaModeEnabled"] = commonCriteriaModeEnabled;
     }
     if (deviceSettingsEnabled != null) {
       _json["deviceSettingsEnabled"] = deviceSettingsEnabled;
@@ -6638,6 +6783,40 @@ class SystemUpdateInfo {
     }
     if (updateStatus != null) {
       _json["updateStatus"] = updateStatus;
+    }
+    return _json;
+  }
+}
+
+/// Telephony information associated with a given SIM card on the device. Only
+/// supported on fully managed devices starting from Android API level 23 and
+/// above.
+class TelephonyInfo {
+  /// The carrier name associated with this SIM card.
+  core.String carrierName;
+
+  /// The phone number associated with this SIM card.
+  core.String phoneNumber;
+
+  TelephonyInfo();
+
+  TelephonyInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("carrierName")) {
+      carrierName = _json["carrierName"];
+    }
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (carrierName != null) {
+      _json["carrierName"] = carrierName;
+    }
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
     }
     return _json;
   }

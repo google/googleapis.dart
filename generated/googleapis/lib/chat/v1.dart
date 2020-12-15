@@ -28,7 +28,9 @@ const core.String USER_AGENT = 'dart-api-client chat/v1';
 class ChatApi {
   final commons.ApiRequester _requester;
 
+  DmsResourceApi get dms => new DmsResourceApi(_requester);
   MediaResourceApi get media => new MediaResourceApi(_requester);
+  RoomsResourceApi get rooms => new RoomsResourceApi(_requester);
   SpacesResourceApi get spaces => new SpacesResourceApi(_requester);
 
   ChatApi(http.Client client,
@@ -36,6 +38,150 @@ class ChatApi {
       core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+}
+
+class DmsResourceApi {
+  final commons.ApiRequester _requester;
+
+  DmsConversationsResourceApi get conversations =>
+      new DmsConversationsResourceApi(_requester);
+
+  DmsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Legacy path for creating message. Calling these will result in a
+  /// BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern "^dms/[^/]+$".
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> messages(Message request, core.String parent,
+      {core.String threadKey, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (threadKey != null) {
+      _queryParams["threadKey"] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Message.fromJson(data));
+  }
+}
+
+class DmsConversationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  DmsConversationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Legacy path for creating message. Calling these will result in a
+  /// BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern "^dms/[^/]+/conversations/[^/]+$".
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> messages(Message request, core.String parent,
+      {core.String threadKey, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (threadKey != null) {
+      _queryParams["threadKey"] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Message.fromJson(data));
+  }
 }
 
 class MediaResourceApi {
@@ -104,6 +250,150 @@ class MediaResourceApi {
     } else {
       return _response;
     }
+  }
+}
+
+class RoomsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RoomsConversationsResourceApi get conversations =>
+      new RoomsConversationsResourceApi(_requester);
+
+  RoomsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Legacy path for creating message. Calling these will result in a
+  /// BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern "^rooms/[^/]+$".
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> messages(Message request, core.String parent,
+      {core.String threadKey, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (threadKey != null) {
+      _queryParams["threadKey"] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Message.fromJson(data));
+  }
+}
+
+class RoomsConversationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RoomsConversationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Legacy path for creating message. Calling these will result in a
+  /// BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern "^rooms/[^/]+/conversations/[^/]+$".
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> messages(Message request, core.String parent,
+      {core.String threadKey, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (threadKey != null) {
+      _queryParams["threadKey"] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Message.fromJson(data));
   }
 }
 
@@ -272,12 +562,12 @@ class SpacesMembersResourceApi {
   /// spaces/AAAAMpdlehY
   /// Value must have pattern "^spaces/[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
-  ///
   /// [pageSize] - Requested page size. The value is capped at 1000. Server may
   /// return fewer results than requested. If unspecified, server will default
   /// to 100.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -290,7 +580,7 @@ class SpacesMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMembershipsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -301,11 +591,11 @@ class SpacesMembersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2110,6 +2400,9 @@ class User {
   /// Obfuscated domain information.
   core.String domainId;
 
+  /// True when the user is deleted or the user's proifle is not visible.
+  core.bool isAnonymous;
+
   /// Resource name, in the format "users / * ".
   core.String name;
 
@@ -2129,6 +2422,9 @@ class User {
     if (_json.containsKey("domainId")) {
       domainId = _json["domainId"];
     }
+    if (_json.containsKey("isAnonymous")) {
+      isAnonymous = _json["isAnonymous"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2145,6 +2441,9 @@ class User {
     }
     if (domainId != null) {
       _json["domainId"] = domainId;
+    }
+    if (isAnonymous != null) {
+      _json["isAnonymous"] = isAnonymous;
     }
     if (name != null) {
       _json["name"] = name;

@@ -330,15 +330,15 @@ class ProjectsLocationsRegistriesResourceApi {
   /// `projects/example-project/locations/us-central1`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of registries to return in the response.
-  /// If this value is zero, the service will select a default size. A call may
-  /// return fewer objects than requested. A non-empty `next_page_token` in the
-  /// response indicates that more data is available.
-  ///
   /// [pageToken] - The value returned by the last
   /// `ListDeviceRegistriesResponse`; indicates that this is a continuation of a
   /// prior `ListDeviceRegistries` call and the system should return the next
   /// page of data.
+  ///
+  /// [pageSize] - The maximum number of registries to return in the response.
+  /// If this value is zero, the service will select a default size. A call may
+  /// return fewer objects than requested. A non-empty `next_page_token` in the
+  /// response indicates that more data is available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -351,7 +351,7 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDeviceRegistriesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -362,11 +362,11 @@ class ProjectsLocationsRegistriesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -792,6 +792,22 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
   ///
+  /// [pageToken] - The value returned by the last `ListDevicesResponse`;
+  /// indicates that this is a continuation of a prior `ListDevices` call and
+  /// the system should return the next page of data.
+  ///
+  /// [deviceIds] - A list of device string IDs. For example, `['device0',
+  /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
+  ///
+  /// [fieldMask] - The fields of the `Device` resource to be returned in the
+  /// response. The fields `id` and `num_id` are always returned, along with any
+  /// other fields specified.
+  ///
+  /// [pageSize] - The maximum number of devices to return in the response. If
+  /// this value is zero, the service will select a default size. A call may
+  /// return fewer objects than requested. A non-empty `next_page_token` in the
+  /// response indicates that more data is available.
+  ///
   /// [gatewayListOptions_gatewayType] - If `GATEWAY` is specified, only
   /// gateways are returned. If `NON_GATEWAY` is specified, only non-gateway
   /// devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` is specified, all
@@ -802,36 +818,20 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// - "GATEWAY" : The device is a gateway.
   /// - "NON_GATEWAY" : The device is not a gateway.
   ///
-  /// [fieldMask] - The fields of the `Device` resource to be returned in the
-  /// response. The fields `id` and `num_id` are always returned, along with any
-  /// other fields specified.
-  ///
   /// [gatewayListOptions_associationsDeviceId] - If set, returns only the
   /// gateways with which the specified device is associated. The device ID can
   /// be numeric (`num_id`) or the user-defined string (`id`). For example, if
   /// `456` is specified, returns only the gateways to which the device with
   /// `num_id` 456 is bound.
   ///
+  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
+  /// ignored. Maximum IDs: 10,000.
+  ///
   /// [gatewayListOptions_associationsGatewayId] - If set, only devices
   /// associated with the specified gateway are returned. The gateway ID can be
   /// numeric (`num_id`) or the user-defined string (`id`). For example, if
   /// `123` is specified, only devices bound to the gateway with `num_id` 123
   /// are returned.
-  ///
-  /// [pageSize] - The maximum number of devices to return in the response. If
-  /// this value is zero, the service will select a default size. A call may
-  /// return fewer objects than requested. A non-empty `next_page_token` in the
-  /// response indicates that more data is available.
-  ///
-  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
-  /// ignored. Maximum IDs: 10,000.
-  ///
-  /// [pageToken] - The value returned by the last `ListDevicesResponse`;
-  /// indicates that this is a continuation of a prior `ListDevices` call and
-  /// the system should return the next page of data.
-  ///
-  /// [deviceIds] - A list of device string IDs. For example, `['device0',
-  /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -844,14 +844,14 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String gatewayListOptions_gatewayType,
-      core.String fieldMask,
-      core.String gatewayListOptions_associationsDeviceId,
-      core.String gatewayListOptions_associationsGatewayId,
-      core.int pageSize,
-      core.List<core.String> deviceNumIds,
-      core.String pageToken,
+      {core.String pageToken,
       core.List<core.String> deviceIds,
+      core.String fieldMask,
+      core.int pageSize,
+      core.String gatewayListOptions_gatewayType,
+      core.String gatewayListOptions_associationsDeviceId,
+      core.List<core.String> deviceNumIds,
+      core.String gatewayListOptions_associationsGatewayId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -863,35 +863,35 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (deviceIds != null) {
+      _queryParams["deviceIds"] = deviceIds;
+    }
+    if (fieldMask != null) {
+      _queryParams["fieldMask"] = [fieldMask];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (gatewayListOptions_gatewayType != null) {
       _queryParams["gatewayListOptions.gatewayType"] = [
         gatewayListOptions_gatewayType
       ];
-    }
-    if (fieldMask != null) {
-      _queryParams["fieldMask"] = [fieldMask];
     }
     if (gatewayListOptions_associationsDeviceId != null) {
       _queryParams["gatewayListOptions.associationsDeviceId"] = [
         gatewayListOptions_associationsDeviceId
       ];
     }
+    if (deviceNumIds != null) {
+      _queryParams["deviceNumIds"] = deviceNumIds;
+    }
     if (gatewayListOptions_associationsGatewayId != null) {
       _queryParams["gatewayListOptions.associationsGatewayId"] = [
         gatewayListOptions_associationsGatewayId
       ];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (deviceIds != null) {
-      _queryParams["deviceIds"] = deviceIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1427,11 +1427,16 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
   ///
-  /// [gatewayListOptions_associationsGatewayId] - If set, only devices
-  /// associated with the specified gateway are returned. The gateway ID can be
-  /// numeric (`num_id`) or the user-defined string (`id`). For example, if
-  /// `123` is specified, only devices bound to the gateway with `num_id` 123
-  /// are returned.
+  /// [pageToken] - The value returned by the last `ListDevicesResponse`;
+  /// indicates that this is a continuation of a prior `ListDevices` call and
+  /// the system should return the next page of data.
+  ///
+  /// [fieldMask] - The fields of the `Device` resource to be returned in the
+  /// response. The fields `id` and `num_id` are always returned, along with any
+  /// other fields specified.
+  ///
+  /// [deviceIds] - A list of device string IDs. For example, `['device0',
+  /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
   ///
   /// [gatewayListOptions_gatewayType] - If `GATEWAY` is specified, only
   /// gateways are returned. If `NON_GATEWAY` is specified, only non-gateway
@@ -1443,8 +1448,11 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// - "GATEWAY" : The device is a gateway.
   /// - "NON_GATEWAY" : The device is not a gateway.
   ///
-  /// [deviceIds] - A list of device string IDs. For example, `['device0',
-  /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
+  /// [gatewayListOptions_associationsGatewayId] - If set, only devices
+  /// associated with the specified gateway are returned. The gateway ID can be
+  /// numeric (`num_id`) or the user-defined string (`id`). For example, if
+  /// `123` is specified, only devices bound to the gateway with `num_id` 123
+  /// are returned.
   ///
   /// [gatewayListOptions_associationsDeviceId] - If set, returns only the
   /// gateways with which the specified device is associated. The device ID can
@@ -1460,14 +1468,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// return fewer objects than requested. A non-empty `next_page_token` in the
   /// response indicates that more data is available.
   ///
-  /// [pageToken] - The value returned by the last `ListDevicesResponse`;
-  /// indicates that this is a continuation of a prior `ListDevices` call and
-  /// the system should return the next page of data.
-  ///
-  /// [fieldMask] - The fields of the `Device` resource to be returned in the
-  /// response. The fields `id` and `num_id` are always returned, along with any
-  /// other fields specified.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1479,14 +1479,14 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String gatewayListOptions_associationsGatewayId,
-      core.String gatewayListOptions_gatewayType,
+      {core.String pageToken,
+      core.String fieldMask,
       core.List<core.String> deviceIds,
+      core.String gatewayListOptions_gatewayType,
+      core.String gatewayListOptions_associationsGatewayId,
       core.String gatewayListOptions_associationsDeviceId,
       core.List<core.String> deviceNumIds,
       core.int pageSize,
-      core.String pageToken,
-      core.String fieldMask,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1498,18 +1498,24 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (gatewayListOptions_associationsGatewayId != null) {
-      _queryParams["gatewayListOptions.associationsGatewayId"] = [
-        gatewayListOptions_associationsGatewayId
-      ];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (fieldMask != null) {
+      _queryParams["fieldMask"] = [fieldMask];
+    }
+    if (deviceIds != null) {
+      _queryParams["deviceIds"] = deviceIds;
     }
     if (gatewayListOptions_gatewayType != null) {
       _queryParams["gatewayListOptions.gatewayType"] = [
         gatewayListOptions_gatewayType
       ];
     }
-    if (deviceIds != null) {
-      _queryParams["deviceIds"] = deviceIds;
+    if (gatewayListOptions_associationsGatewayId != null) {
+      _queryParams["gatewayListOptions.associationsGatewayId"] = [
+        gatewayListOptions_associationsGatewayId
+      ];
     }
     if (gatewayListOptions_associationsDeviceId != null) {
       _queryParams["gatewayListOptions.associationsDeviceId"] = [
@@ -1521,12 +1527,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (fieldMask != null) {
-      _queryParams["fieldMask"] = [fieldMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1595,10 +1595,6 @@ class BindDeviceToGatewayResponse {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -1646,9 +1642,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1663,9 +1656,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }

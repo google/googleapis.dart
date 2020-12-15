@@ -102,12 +102,12 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of operations to return. If unspecified,
-  /// defaults to 50. The maximum value is 100.
+  /// [pageToken] - The standard list page token.
   ///
   /// [name] - Not used.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageSize] - The maximum number of operations to return. If unspecified,
+  /// defaults to 50. The maximum value is 100.
   ///
   /// [filter] - A string for filtering Operations. The following filter fields
   /// are supported: * serviceName: Required. Only `=` operator is allowed. *
@@ -134,9 +134,9 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.int pageSize,
+      {core.String pageToken,
       core.String name,
-      core.String pageToken,
+      core.int pageSize,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -146,14 +146,14 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (name != null) {
       _queryParams["name"] = [name];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -565,17 +565,17 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Token identifying which result to start with; returned by a
-  /// previous list call.
+  /// [consumerId] - Include services consumed by the specified consumer. The
+  /// Google Service Management implementation accepts the following forms: -
+  /// project:
+  ///
+  /// [producerProjectId] - Include services produced by the specified project.
   ///
   /// [pageSize] - The max number of items to include in the response list. Page
   /// size is 50 if not specified. Maximum value is 100.
   ///
-  /// [producerProjectId] - Include services produced by the specified project.
-  ///
-  /// [consumerId] - Include services consumed by the specified consumer. The
-  /// Google Service Management implementation accepts the following forms: -
-  /// project:
+  /// [pageToken] - Token identifying which result to start with; returned by a
+  /// previous list call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -588,10 +588,10 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
+      {core.String consumerId,
       core.String producerProjectId,
-      core.String consumerId,
+      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -600,17 +600,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (consumerId != null) {
+      _queryParams["consumerId"] = [consumerId];
     }
     if (producerProjectId != null) {
       _queryParams["producerProjectId"] = [producerProjectId];
     }
-    if (consumerId != null) {
-      _queryParams["consumerId"] = [consumerId];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1347,17 +1347,17 @@ class ServicesRolloutsResourceApi {
   /// [overview](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
+  /// [pageSize] - The max number of items to include in the response list. Page
+  /// size is 50 if not specified. Maximum value is 100.
+  ///
+  /// [pageToken] - The token of the page to retrieve.
+  ///
   /// [filter] - Required. Use `filter` to return subset of rollouts. The
   /// following filters are supported: -- To limit the results to only those in
   /// [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
   /// filter='status=SUCCESS' -- To limit the results to those in
   /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or
   /// 'FAILED', use filter='status=CANCELLED OR status=FAILED'
-  ///
-  /// [pageSize] - The max number of items to include in the response list. Page
-  /// size is 50 if not specified. Maximum value is 100.
-  ///
-  /// [pageToken] - The token of the page to retrieve.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1370,9 +1370,9 @@ class ServicesRolloutsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServiceRolloutsResponse> list(core.String serviceName,
-      {core.String filter,
-      core.int pageSize,
+      {core.int pageSize,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1384,14 +1384,14 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1676,7 +1676,7 @@ class AuthProvider {
   /// [OpenID
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
   /// Optional if the key set document: - can be retrieved from [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of
   /// the issuer. - can be inferred from the email domain of the issuer (e.g. a
   /// Google service account). Example:
   /// https://www.googleapis.com/oauth2/v1/certs
@@ -1836,7 +1836,8 @@ class Authentication {
 /// kind of credential in a single request. If a method doesn't have any auth
 /// requirements, request credentials will be ignored.
 class AuthenticationRule {
-  /// If true, the service accepts API keys without any other credential.
+  /// If true, the service accepts API keys without any other credential. This
+  /// flag only applies to HTTP and gRPC requests.
   core.bool allowWithoutCredential;
 
   /// The requirements for OAuth credentials.
@@ -2458,7 +2459,7 @@ class ConfigSource {
 /// google.rpc.context.OriginContext The above specifies that all methods in the
 /// API request `google.rpc.context.ProjectContext` and
 /// `google.rpc.context.OriginContext`. Available context types are defined in
-/// package `google.rpc.context`. This also provides mechanism to whitelist any
+/// package `google.rpc.context`. This also provides mechanism to allowlist any
 /// protobuf message extension that can be sent in grpc metadata using
 /// “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any
 /// service specific protobuf types that can appear in grpc metadata as follows
@@ -3705,10 +3706,6 @@ class HttpRule {
   /// may only be one level deep).
   core.List<HttpRule> additionalBindings;
 
-  /// When this flag is set to true, HTTP requests will be allowed to invoke a
-  /// half-duplex streaming method.
-  core.bool allowHalfDuplex;
-
   /// The name of the request field whose value is mapped to the HTTP request
   /// body, or `*` for mapping all request fields not captured by the path
   /// pattern to the HTTP body, or omitted for not having any HTTP request body.
@@ -3756,9 +3753,6 @@ class HttpRule {
           .map<HttpRule>((value) => new HttpRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("allowHalfDuplex")) {
-      allowHalfDuplex = _json["allowHalfDuplex"];
-    }
     if (_json.containsKey("body")) {
       body = _json["body"];
     }
@@ -3794,9 +3788,6 @@ class HttpRule {
     if (additionalBindings != null) {
       _json["additionalBindings"] =
           additionalBindings.map((value) => (value).toJson()).toList();
-    }
-    if (allowHalfDuplex != null) {
-      _json["allowHalfDuplex"] = allowHalfDuplex;
     }
     if (body != null) {
       _json["body"] = body;
@@ -4366,7 +4357,7 @@ class MetricDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -4588,7 +4579,7 @@ class MetricDescriptorMetadata {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -4781,7 +4772,7 @@ class MonitoredResourceDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -5725,10 +5716,7 @@ class Service {
   /// Billing configuration.
   Billing billing;
 
-  /// The semantic version of the service configuration. The config version
-  /// affects the interpretation of the service configuration. For example,
-  /// certain features are enabled by default for certain config versions. The
-  /// latest config version is `3`.
+  /// This field is obsolete. Its value must be set to `3`.
   core.int configVersion;
 
   /// Context configuration.
@@ -6007,54 +5995,6 @@ class Service {
     }
     if (usage != null) {
       _json["usage"] = (usage).toJson();
-    }
-    return _json;
-  }
-}
-
-/// The per-product per-project service identity for a service. Use this field
-/// to configure per-product per-project service identity. Example of a service
-/// identity configuration. usage: service_identity: - service_account_parent:
-/// "projects/123456789" display_name: "Cloud XXX Service Agent" description:
-/// "Used as the identity of Cloud XXX to access resources"
-class ServiceIdentity {
-  /// Optional. A user-specified opaque description of the service account. Must
-  /// be less than or equal to 256 UTF-8 bytes.
-  core.String description;
-
-  /// Optional. A user-specified name for the service account. Must be less than
-  /// or equal to 100 UTF-8 bytes.
-  core.String displayName;
-
-  /// A service account project that hosts the service accounts. An example name
-  /// would be: `projects/123456789`
-  core.String serviceAccountParent;
-
-  ServiceIdentity();
-
-  ServiceIdentity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
-    }
-    if (_json.containsKey("serviceAccountParent")) {
-      serviceAccountParent = _json["serviceAccountParent"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (displayName != null) {
-      _json["displayName"] = displayName;
-    }
-    if (serviceAccountParent != null) {
-      _json["serviceAccountParent"] = serviceAccountParent;
     }
     return _json;
   }
@@ -6631,9 +6571,6 @@ class Usage {
   /// service configuration rules follow "last one wins" order.
   core.List<UsageRule> rules;
 
-  /// The configuration of a per-product per-project service identity.
-  ServiceIdentity serviceIdentity;
-
   Usage();
 
   Usage.fromJson(core.Map _json) {
@@ -6648,9 +6585,6 @@ class Usage {
           .map<UsageRule>((value) => new UsageRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("serviceIdentity")) {
-      serviceIdentity = new ServiceIdentity.fromJson(_json["serviceIdentity"]);
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6664,9 +6598,6 @@ class Usage {
     }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
-    }
-    if (serviceIdentity != null) {
-      _json["serviceIdentity"] = (serviceIdentity).toJson();
     }
     return _json;
   }

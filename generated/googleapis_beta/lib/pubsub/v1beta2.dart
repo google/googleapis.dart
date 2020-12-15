@@ -884,11 +884,11 @@ class ProjectsTopicsResourceApi {
   /// [project] - The name of the cloud project that topics belong to.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of topics to return.
-  ///
   /// [pageToken] - The value returned by the last `ListTopicsResponse`;
   /// indicates that this is a continuation of a prior `ListTopics` call, and
   /// that the system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of topics to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -901,7 +901,7 @@ class ProjectsTopicsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTopicsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -912,11 +912,11 @@ class ProjectsTopicsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1198,10 +1198,6 @@ class AcknowledgeRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -1249,9 +1245,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1266,9 +1259,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }

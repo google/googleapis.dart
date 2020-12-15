@@ -66,14 +66,14 @@ class AvailableProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Token returned from a previous call to
-  /// `ListAvailableProjects` indicating where in the set of Projects to resume
-  /// listing.
-  ///
   /// [pageSize] - The maximum number of Projects to return in the response. The
   /// server may return fewer than this value at its discretion. If no value is
   /// specified (or too large a value is specified), the server will impose its
   /// own limit. This value cannot be negative.
+  ///
+  /// [pageToken] - Token returned from a previous call to
+  /// `ListAvailableProjects` indicating where in the set of Projects to resume
+  /// listing.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -86,7 +86,7 @@ class AvailableProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAvailableProjectsResponse> list(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -94,11 +94,11 @@ class AvailableProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -706,13 +706,6 @@ class ProjectsResourceApi {
   /// PROJECT_IDENTIFIER values.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - A query string compatible with Google's
-  /// [AIP-160](https://google.aip.dev/160) standard. Use any of the following
-  /// fields in a query: *
-  /// [`appId`](../projects.apps#FirebaseProjectInfo.FIELDS.app_id) *
-  /// [`namespace`](../projects.apps#FirebaseProjectInfo.FIELDS.namespace) *
-  /// [`platform`](../projects.apps#FirebaseProjectInfo.FIELDS.platform)
-  ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this value at its discretion. If no value is
   /// specified (or too large a value is specified), then the server will impose
@@ -720,6 +713,27 @@ class ProjectsResourceApi {
   ///
   /// [pageToken] - Token returned from a previous call to `SearchFirebaseApps`
   /// indicating where in the set of Apps to resume listing.
+  ///
+  /// [filter] - A query string compatible with Google's
+  /// [AIP-160](https://google.aip.dev/160) standard. Use any of the following
+  /// fields in a query: *
+  /// [`app_id`](../projects.apps#FirebaseAppInfo.FIELDS.app_id) *
+  /// [`namespace`](../projects.apps#FirebaseAppInfo.FIELDS.namespace) *
+  /// [`platform`](../projects.apps#FirebaseAppInfo.FIELDS.platform) We also
+  /// support the following "virtual" fields (fields which are not actually part
+  /// of the returned resource object, but can be queried as if they are
+  /// pre-populated with specific values): * `sha1_hash`: This field is
+  /// considered to be a repeated `string` field, populated with the list of all
+  /// SHA-1 certificate fingerprints registered with the app. This list is empty
+  /// if the app is not an Android app. * `sha256_hash`: This field is
+  /// considered to be a repeated `string` field, populated with the list of all
+  /// SHA-256 certificate fingerprints registered with the app. This list is
+  /// empty if the app is not an Android app. * `app_store_id`: This field is
+  /// considered to be a singular `string` field, populated with the Apple App
+  /// Store ID registered with the app. This field is empty if the app is not an
+  /// iOS app. * `team_id`: This field is considered to be a singular `string`
+  /// field, populated with the Apple team ID registered with the app. This
+  /// field is empty if the app is not an iOS app.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -732,9 +746,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchFirebaseAppsResponse> searchApps(core.String parent,
-      {core.String filter,
-      core.int pageSize,
+      {core.int pageSize,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -746,14 +760,14 @@ class ProjectsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -952,13 +966,13 @@ class ProjectsAndroidAppsResourceApi {
   /// PROJECT_IDENTIFIER values.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Token returned from a previous call to `ListAndroidApps`
-  /// indicating where in the set of Apps to resume listing.
-  ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this at its discretion. If no value is
   /// specified (or too large a value is specified), then the server will impose
   /// its own limit.
+  ///
+  /// [pageToken] - Token returned from a previous call to `ListAndroidApps`
+  /// indicating where in the set of Apps to resume listing.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -971,7 +985,7 @@ class ProjectsAndroidAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAndroidAppsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -982,11 +996,11 @@ class ProjectsAndroidAppsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1589,13 +1603,13 @@ class ProjectsIosAppsResourceApi {
   /// PROJECT_IDENTIFIER values.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Token returned from a previous call to `ListIosApps`
-  /// indicating where in the set of Apps to resume listing.
-  ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this at its discretion. If no value is
   /// specified (or too large a value is specified), the server will impose its
   /// own limit.
+  ///
+  /// [pageToken] - Token returned from a previous call to `ListIosApps`
+  /// indicating where in the set of Apps to resume listing.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1608,7 +1622,7 @@ class ProjectsIosAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIosAppsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1619,11 +1633,11 @@ class ProjectsIosAppsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

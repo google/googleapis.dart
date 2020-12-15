@@ -478,11 +478,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -495,9 +495,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String filter,
-      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -509,14 +509,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1606,11 +1606,11 @@ class ProjectsLocationsProductSetsProductsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of items to return. Default 10, maximum
-  /// 100.
-  ///
   /// [pageToken] - The next_page_token returned from a previous List request,
   /// if any.
+  ///
+  /// [pageSize] - The maximum number of items to return. Default 10, maximum
+  /// 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1623,7 +1623,7 @@ class ProjectsLocationsProductSetsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProductsInProductSetResponse> list(core.String name,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1634,11 +1634,11 @@ class ProjectsLocationsProductSetsProductsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -15343,8 +15343,8 @@ class Landmark {
   }
 }
 
-/// An object representing a latitude/longitude pair. This is expressed as a
-/// pair of doubles representing degrees latitude and degrees longitude. Unless
+/// An object that represents a latitude/longitude pair. This is expressed as a
+/// pair of doubles to represent degrees latitude and degrees longitude. Unless
 /// specified otherwise, this must conform to the WGS84 standard. Values must be
 /// within normalized ranges.
 class LatLng {

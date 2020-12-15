@@ -343,14 +343,18 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - Required. ID of the project.
   ///
+  /// [filter] - The raw filter text to constrain the results.
+  ///
+  /// [pageSize] - Number of results to return in the list.
+  ///
   /// [parent] - The parent of the collection of `Builds`. Format:
   /// `projects/{project}/locations/location`
   ///
-  /// [filter] - The raw filter text to constrain the results.
-  ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
-  ///
-  /// [pageSize] - Number of results to return in the list.
+  /// [pageToken] - The page token for the next page of Builds. If unspecified,
+  /// the first page of results is returned. If the token is rejected for any
+  /// reason, INVALID_ARGUMENT will be thrown. In this case, the token should be
+  /// discarded, and pagination should be restarted from the first page of
+  /// results. See https://google.aip.dev/158 for more.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -363,10 +367,10 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.String parent,
-      core.String filter,
-      core.String pageToken,
+      {core.String filter,
       core.int pageSize,
+      core.String parent,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -378,17 +382,17 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (parent != null) {
-      _queryParams["parent"] = [parent];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -505,7 +509,7 @@ class ProjectsLocationsBuildsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the `Build` to retrieve. Format:
+  /// [name] - The name of the `Build` to cancel. Format:
   /// `projects/{project}/locations/{location}/builds/{build}`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/builds/[^/]+$".
   ///
@@ -617,9 +621,9 @@ class ProjectsLocationsBuildsResourceApi {
   /// `projects/{project}/locations/{location}/builds/{build}`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/builds/[^/]+$".
   ///
-  /// [id] - Required. ID of the build.
-  ///
   /// [projectId] - Required. ID of the project.
+  ///
+  /// [id] - Required. ID of the build.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -632,7 +636,7 @@ class ProjectsLocationsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Build> get(core.String name,
-      {core.String id, core.String projectId, core.String $fields}) {
+      {core.String projectId, core.String id, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -643,11 +647,11 @@ class ProjectsLocationsBuildsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (id != null) {
-      _queryParams["id"] = [id];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (id != null) {
+      _queryParams["id"] = [id];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -673,13 +677,17 @@ class ProjectsLocationsBuildsResourceApi {
   /// `projects/{project}/locations/location`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [filter] - The raw filter text to constrain the results.
+  ///
+  /// [pageToken] - The page token for the next page of Builds. If unspecified,
+  /// the first page of results is returned. If the token is rejected for any
+  /// reason, INVALID_ARGUMENT will be thrown. In this case, the token should be
+  /// discarded, and pagination should be restarted from the first page of
+  /// results. See https://google.aip.dev/158 for more.
+  ///
   /// [projectId] - Required. ID of the project.
   ///
   /// [pageSize] - Number of results to return in the list.
-  ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
-  ///
-  /// [filter] - The raw filter text to constrain the results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -692,10 +700,10 @@ class ProjectsLocationsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String parent,
-      {core.String projectId,
-      core.int pageSize,
+      {core.String filter,
       core.String pageToken,
-      core.String filter,
+      core.String projectId,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -707,17 +715,17 @@ class ProjectsLocationsBuildsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1078,9 +1086,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// [projectId] - Required. ID of the project for which to list BuildTriggers.
   ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
-  ///
   /// [pageSize] - Number of results to return in the list.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1093,7 +1101,7 @@ class ProjectsTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildTriggersResponse> list(core.String projectId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1104,11 +1112,11 @@ class ProjectsTriggersResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1738,6 +1746,8 @@ class BuildOptions {
   /// - "UNSPECIFIED" : Standard machine type.
   /// - "N1_HIGHCPU_8" : Highcpu machine with 8 CPUs.
   /// - "N1_HIGHCPU_32" : Highcpu machine with 32 CPUs.
+  /// - "E2_HIGHCPU_8" : Highcpu e2 machine with 8 CPUs.
+  /// - "E2_HIGHCPU_32" : Highcpu e2 machine with 32 CPUs.
   core.String machineType;
 
   /// Requested verifiability options.
@@ -2249,7 +2259,7 @@ class CancelBuildRequest {
   /// Required. ID of the build.
   core.String id;
 
-  /// The name of the `Build` to retrieve. Format:
+  /// The name of the `Build` to cancel. Format:
   /// `projects/{project}/locations/{location}/builds/{build}`
   core.String name;
 
@@ -2511,7 +2521,8 @@ class ListBuildsResponse {
   /// Builds will be sorted by `create_time`, descending.
   core.List<Build> builds;
 
-  /// Token to receive the next page of results.
+  /// Token to receive the next page of results. This will be absent if the end
+  /// of the response list has been reached.
   core.String nextPageToken;
 
   ListBuildsResponse();

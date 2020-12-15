@@ -370,16 +370,18 @@ class FoldersApprovalRequestsResourceApi {
   /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^folders/[^/]+$".
   ///
-  /// [pageSize] - Requested page size.
+  /// [pageToken] - A token identifying the page of results to return.
   ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
   /// one of the following values: * [not set]: Requests that are pending or
   /// have active approvals. * ALL: All requests. * PENDING: Only pending
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
-  /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
-  /// and dismissed (including expired) requests.
+  /// DISMISSED: Only requests that have been dismissed, or requests that . are
+  /// not approved and past expiration. * EXPIRED: Only requests that have been
+  /// approved, and the approval has expired. * HISTORY: Active, dismissed and
+  /// expired requests.
   ///
-  /// [pageToken] - A token identifying the page of results to return.
+  /// [pageSize] - Requested page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -392,9 +394,9 @@ class FoldersApprovalRequestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
       core.String filter,
-      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -406,14 +408,14 @@ class FoldersApprovalRequestsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -768,16 +770,18 @@ class OrganizationsApprovalRequestsResourceApi {
   /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageToken] - A token identifying the page of results to return.
-  ///
   /// [pageSize] - Requested page size.
   ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
   /// one of the following values: * [not set]: Requests that are pending or
   /// have active approvals. * ALL: All requests. * PENDING: Only pending
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
-  /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
-  /// and dismissed (including expired) requests.
+  /// DISMISSED: Only requests that have been dismissed, or requests that . are
+  /// not approved and past expiration. * EXPIRED: Only requests that have been
+  /// approved, and the approval has expired. * HISTORY: Active, dismissed and
+  /// expired requests.
+  ///
+  /// [pageToken] - A token identifying the page of results to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -790,9 +794,9 @@ class OrganizationsApprovalRequestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -804,14 +808,14 @@ class OrganizationsApprovalRequestsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1172,8 +1176,10 @@ class ProjectsApprovalRequestsResourceApi {
   /// one of the following values: * [not set]: Requests that are pending or
   /// have active approvals. * ALL: All requests. * PENDING: Only pending
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
-  /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
-  /// and dismissed (including expired) requests.
+  /// DISMISSED: Only requests that have been dismissed, or requests that . are
+  /// not approved and past expiration. * EXPIRED: Only requests that have been
+  /// approved, and the approval has expired. * HISTORY: Active, dismissed and
+  /// expired requests.
   ///
   /// [pageToken] - A token identifying the page of results to return.
   ///
@@ -1620,21 +1626,19 @@ class Empty {
 /// Represents the enrollment of a cloud resource into a specific service.
 class EnrolledService {
   /// The product for which Access Approval will be enrolled. Allowed values are
-  /// listed below (case-sensitive): * all * GA * App Engine * BigQuery * Cloud
+  /// listed below (case-sensitive): * all * App Engine * BigQuery * Cloud
   /// Bigtable * Cloud Key Management Service * Compute Engine * Cloud Dataflow
   /// * Cloud Identity and Access Management * Cloud Pub/Sub * Cloud Storage *
   /// Persistent Disk Note: These values are supported as input for legacy
-  /// purposes, but will not be returned from the API. * all * ga-only *
+  /// purposes, but will not be returned from the API. * all *
   /// appengine.googleapis.com * bigquery.googleapis.com *
   /// bigtable.googleapis.com * cloudkms.googleapis.com * compute.googleapis.com
   /// * dataflow.googleapis.com * iam.googleapis.com * pubsub.googleapis.com *
-  /// storage.googleapis.com Calls to UpdateAccessApprovalSettings using 'all',
-  /// 'ga-only', or any of the XXX.googleapis.com will be translated to the
-  /// associated product name ('all', 'GA', 'App Engine', etc.). Note: 'all'
-  /// will enroll the resource in all products supported at both 'GA' and
-  /// 'Preview' levels. 'ga-only'/'GA' will only enroll the resource in products
-  /// supported at 'GA' level. More information about levels of support is
-  /// available at
+  /// storage.googleapis.com Calls to UpdateAccessApprovalSettings using 'all'
+  /// or any of the XXX.googleapis.com will be translated to the associated
+  /// product name ('all', 'App Engine', etc.). Note: 'all' will enroll the
+  /// resource in all products supported at both 'GA' and 'Preview' levels. More
+  /// information about levels of support is available at
   /// https://cloud.google.com/access-approval/docs/supported-services
   core.String cloudProduct;
 

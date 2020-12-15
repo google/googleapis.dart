@@ -16,8 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client content/v2.1';
 
-/// Manages product items, inventory, and Merchant Center accounts for Google
-/// Shopping.
+/// Manage your product listings and accounts for Google Shopping
 class ContentApi {
   /// Manage your product listings and accounts for Google Shopping
   static const ContentScope = "https://www.googleapis.com/auth/content";
@@ -28,6 +27,7 @@ class ContentApi {
   AccountstatusesResourceApi get accountstatuses =>
       new AccountstatusesResourceApi(_requester);
   AccounttaxResourceApi get accounttax => new AccounttaxResourceApi(_requester);
+  CssesResourceApi get csses => new CssesResourceApi(_requester);
   DatafeedsResourceApi get datafeeds => new DatafeedsResourceApi(_requester);
   DatafeedstatusesResourceApi get datafeedstatuses =>
       new DatafeedstatusesResourceApi(_requester);
@@ -42,6 +42,8 @@ class ContentApi {
   OrderreturnsResourceApi get orderreturns =>
       new OrderreturnsResourceApi(_requester);
   OrdersResourceApi get orders => new OrdersResourceApi(_requester);
+  OrdertrackingsignalsResourceApi get ordertrackingsignals =>
+      new OrdertrackingsignalsResourceApi(_requester);
   PosResourceApi get pos => new PosResourceApi(_requester);
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
   ProductstatusesResourceApi get productstatuses =>
@@ -50,6 +52,9 @@ class ContentApi {
       new PubsubnotificationsettingsResourceApi(_requester);
   RegionalinventoryResourceApi get regionalinventory =>
       new RegionalinventoryResourceApi(_requester);
+  RegionsResourceApi get regions => new RegionsResourceApi(_requester);
+  RepricingrulesResourceApi get repricingrules =>
+      new RepricingrulesResourceApi(_requester);
   ReturnaddressResourceApi get returnaddress =>
       new ReturnaddressResourceApi(_requester);
   ReturnpolicyResourceApi get returnpolicy =>
@@ -62,14 +67,17 @@ class ContentApi {
       new ShippingsettingsResourceApi(_requester);
 
   ContentApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "content/v2.1/"})
+      {core.String rootUrl = "https://shoppingcontent.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AccountsResourceApi {
   final commons.ApiRequester _requester;
+
+  AccountsLabelsResourceApi get labels =>
+      new AccountsLabelsResourceApi(_requester);
 
   AccountsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -99,7 +107,7 @@ class AccountsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'accounts/authinfo';
+    _url = 'content/v2.1/accounts/authinfo';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -158,7 +166,8 @@ class AccountsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/claimwebsite';
@@ -207,7 +216,7 @@ class AccountsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'accounts/batch';
+    _url = 'content/v2.1/accounts/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -263,7 +272,8 @@ class AccountsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -289,8 +299,8 @@ class AccountsResourceApi {
   /// [view] - Controls which fields will be populated. Acceptable values are:
   /// "merchant" and "css". The default value is "merchant".
   /// Possible string values are:
-  /// - "css"
-  /// - "merchant"
+  /// - "MERCHANT"
+  /// - "CSS"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -324,7 +334,8 @@ class AccountsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -375,7 +386,9 @@ class AccountsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/accounts';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -432,7 +445,8 @@ class AccountsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/link';
@@ -453,19 +467,19 @@ class AccountsResourceApi {
   /// [merchantId] - The ID of the managing account. This must be a multi-client
   /// account.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [label] - If view is set to "css", only return accounts that are assigned
   /// label with given ID.
-  ///
-  /// [maxResults] - The maximum number of accounts to return in the response,
-  /// used for paging.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [view] - Controls which fields will be populated. Acceptable values are:
   /// "merchant" and "css". The default value is "merchant".
   /// Possible string values are:
-  /// - "css"
-  /// - "merchant"
+  /// - "MERCHANT"
+  /// - "CSS"
+  ///
+  /// [maxResults] - The maximum number of accounts to return in the response,
+  /// used for paging.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -478,10 +492,10 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountsListResponse> list(core.String merchantId,
-      {core.String label,
-      core.int maxResults,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String label,
       core.String view,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -493,23 +507,25 @@ class AccountsResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
-    if (label != null) {
-      _queryParams["label"] = [label];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (label != null) {
+      _queryParams["label"] = [label];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/accounts';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -530,10 +546,10 @@ class AccountsResourceApi {
   ///
   /// [accountId] - The ID of the account for which to list links.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [maxResults] - The maximum number of links to return in the response, used
   /// for pagination.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -547,7 +563,7 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountsListLinksResponse> listlinks(
       core.String merchantId, core.String accountId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -561,17 +577,18 @@ class AccountsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/listlinks';
@@ -632,7 +649,8 @@ class AccountsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -691,7 +709,8 @@ class AccountsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/updatelabels';
@@ -704,6 +723,232 @@ class AccountsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new AccountsUpdateLabelsResponse.fromJson(data));
+  }
+}
+
+class AccountsLabelsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsLabelsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new label, not assigned to any account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Required. The id of the account this label belongs to.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccountLabel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccountLabel> create(AccountLabel request, core.String accountId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/labels';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountLabel.fromJson(data));
+  }
+
+  /// Deletes a label and removes it from all accounts to which it was assigned.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Required. The id of the account that owns the label.
+  ///
+  /// [labelId] - Required. The id of the label to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String accountId, core.String labelId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (labelId == null) {
+      throw new core.ArgumentError("Parameter labelId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'content/v2.1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/labels/' +
+        commons.Escaper.ecapeVariable('$labelId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Lists the labels assigned to an account.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Required. The account id for whose labels are to be listed.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListAccountLabels`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListAccountLabels` must match the call that
+  /// provided the page token.
+  ///
+  /// [pageSize] - The maximum number of labels to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 labels will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAccountLabelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAccountLabelsResponse> list(core.String accountId,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/labels';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListAccountLabelsResponse.fromJson(data));
+  }
+
+  /// Updates a label.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Required. The id of the account this label belongs to.
+  ///
+  /// [labelId] - Required. The id of the label to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccountLabel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccountLabel> patch(
+      AccountLabel request, core.String accountId, core.String labelId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (labelId == null) {
+      throw new core.ArgumentError("Parameter labelId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/labels/' +
+        commons.Escaper.ecapeVariable('$labelId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AccountLabel.fromJson(data));
   }
 }
 
@@ -745,7 +990,7 @@ class AccountstatusesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'accountstatuses/batch';
+    _url = 'content/v2.1/accountstatuses/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -803,7 +1048,8 @@ class AccountstatusesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accountstatuses/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -823,13 +1069,13 @@ class AccountstatusesResourceApi {
   /// [merchantId] - The ID of the managing account. This must be a multi-client
   /// account.
   ///
-  /// [destinations] - If set, only issues for the specified destinations are
-  /// returned, otherwise only issues for the Shopping destination.
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [maxResults] - The maximum number of account statuses to return in the
   /// response, used for paging.
   ///
-  /// [pageToken] - The token returned by the previous request.
+  /// [destinations] - If set, only issues for the specified destinations are
+  /// returned, otherwise only issues for the Shopping destination.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -842,9 +1088,9 @@ class AccountstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountstatusesListResponse> list(core.String merchantId,
-      {core.List<core.String> destinations,
+      {core.String pageToken,
       core.int maxResults,
-      core.String pageToken,
+      core.List<core.String> destinations,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -856,20 +1102,22 @@ class AccountstatusesResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
-    if (destinations != null) {
-      _queryParams["destinations"] = destinations;
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (destinations != null) {
+      _queryParams["destinations"] = destinations;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountstatuses';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/accountstatuses';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -921,7 +1169,7 @@ class AccounttaxResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'accounttax/batch';
+    _url = 'content/v2.1/accounttax/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -973,7 +1221,8 @@ class AccounttaxResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accounttax/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -994,10 +1243,10 @@ class AccounttaxResourceApi {
   /// [merchantId] - The ID of the managing account. This must be a multi-client
   /// account.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [maxResults] - The maximum number of tax settings to return in the
   /// response, used for paging.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1010,7 +1259,7 @@ class AccounttaxResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccounttaxListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1021,17 +1270,19 @@ class AccounttaxResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/accounttax';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1089,7 +1340,8 @@ class AccounttaxResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/accounttax/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -1100,6 +1352,185 @@ class AccounttaxResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new AccountTax.fromJson(data));
+  }
+}
+
+class CssesResourceApi {
+  final commons.ApiRequester _requester;
+
+  CssesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves a single CSS domain by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [cssGroupId] - Required. The ID of the managing account. If this parameter
+  /// is not the same as [cssDomainId](#cssDomainId), then this ID must be a CSS
+  /// group ID and `cssDomainId` must be the ID of a CSS domain affiliated with
+  /// this group.
+  ///
+  /// [cssDomainId] - Required. The ID of the CSS domain to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Css].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Css> get(core.String cssGroupId, core.String cssDomainId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (cssGroupId == null) {
+      throw new core.ArgumentError("Parameter cssGroupId is required.");
+    }
+    if (cssDomainId == null) {
+      throw new core.ArgumentError("Parameter cssDomainId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$cssGroupId') +
+        '/csses/' +
+        commons.Escaper.ecapeVariable('$cssDomainId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Css.fromJson(data));
+  }
+
+  /// Lists CSS domains affiliated with a CSS group.
+  ///
+  /// Request parameters:
+  ///
+  /// [cssGroupId] - Required. The CSS group ID of CSS domains to be listed.
+  ///
+  /// [pageSize] - The maximum number of CSS domains to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 CSS domains will
+  /// be returned. The maximum value is 1000; values above 1000 will be coerced
+  /// to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListCsses` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListCsses` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCssesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCssesResponse> list(core.String cssGroupId,
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (cssGroupId == null) {
+      throw new core.ArgumentError("Parameter cssGroupId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$cssGroupId') +
+        '/csses';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListCssesResponse.fromJson(data));
+  }
+
+  /// Updates labels that are assigned to a CSS domain by its CSS group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [cssGroupId] - Required. The CSS group ID of the updated CSS domain.
+  ///
+  /// [cssDomainId] - Required. The ID of the updated CSS domain.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Css].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Css> updatelabels(
+      LabelIds request, core.String cssGroupId, core.String cssDomainId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (cssGroupId == null) {
+      throw new core.ArgumentError("Parameter cssGroupId is required.");
+    }
+    if (cssDomainId == null) {
+      throw new core.ArgumentError("Parameter cssDomainId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$cssGroupId') +
+        '/csses/' +
+        commons.Escaper.ecapeVariable('$cssDomainId') +
+        '/updatelabels';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Css.fromJson(data));
   }
 }
 
@@ -1142,7 +1573,7 @@ class DatafeedsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'datafeeds/batch';
+    _url = 'content/v2.1/datafeeds/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1192,7 +1623,8 @@ class DatafeedsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId');
 
@@ -1205,7 +1637,9 @@ class DatafeedsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Invokes a fetch for the datafeed in your Merchant Center account.
+  /// Invokes a fetch for the datafeed in your Merchant Center account. If you
+  /// need to call this method more than once per day, we recommend you use the
+  /// Products service to update your product data.
   ///
   /// Request parameters:
   ///
@@ -1244,7 +1678,8 @@ class DatafeedsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId') +
         '/fetchNow';
@@ -1297,7 +1732,8 @@ class DatafeedsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId');
 
@@ -1348,7 +1784,9 @@ class DatafeedsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/datafeeds';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1403,7 +1841,9 @@ class DatafeedsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/datafeeds';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1459,7 +1899,8 @@ class DatafeedsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId');
 
@@ -1512,7 +1953,7 @@ class DatafeedstatusesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'datafeedstatuses/batch';
+    _url = 'content/v2.1/datafeedstatuses/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1533,13 +1974,13 @@ class DatafeedstatusesResourceApi {
   ///
   /// [datafeedId] - The ID of the datafeed.
   ///
-  /// [country] - The country for which to get the datafeed status. If this
-  /// parameter is provided then language must also be provided. Note that this
+  /// [language] - The language for which to get the datafeed status. If this
+  /// parameter is provided then country must also be provided. Note that this
   /// parameter is required for feeds targeting multiple countries and
   /// languages, since a feed may have a different status for each target.
   ///
-  /// [language] - The language for which to get the datafeed status. If this
-  /// parameter is provided then country must also be provided. Note that this
+  /// [country] - The country for which to get the datafeed status. If this
+  /// parameter is provided then language must also be provided. Note that this
   /// parameter is required for feeds targeting multiple countries and
   /// languages, since a feed may have a different status for each target.
   ///
@@ -1555,7 +1996,7 @@ class DatafeedstatusesResourceApi {
   /// this method will complete with the same error.
   async.Future<DatafeedStatus> get(
       core.String merchantId, core.String datafeedId,
-      {core.String country, core.String language, core.String $fields}) {
+      {core.String language, core.String country, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1569,17 +2010,18 @@ class DatafeedstatusesResourceApi {
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
     }
-    if (country != null) {
-      _queryParams["country"] = [country];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if (country != null) {
+      _queryParams["country"] = [country];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeedstatuses/' +
         commons.Escaper.ecapeVariable('$datafeedId');
 
@@ -1636,7 +2078,9 @@ class DatafeedstatusesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeedstatuses';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/datafeedstatuses';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1688,7 +2132,7 @@ class LiasettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liasettings/batch';
+    _url = 'content/v2.1/liasettings/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1740,7 +2184,8 @@ class LiasettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -1794,7 +2239,8 @@ class LiasettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/accessiblegmbaccounts';
@@ -1817,10 +2263,10 @@ class LiasettingsResourceApi {
   /// [merchantId] - The ID of the managing account. This must be a multi-client
   /// account.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [maxResults] - The maximum number of LIA settings to return in the
   /// response, used for paging.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1833,7 +2279,7 @@ class LiasettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiasettingsListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1844,17 +2290,19 @@ class LiasettingsResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/liasettings';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/liasettings';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1893,7 +2341,7 @@ class LiasettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'liasettings/posdataproviders';
+    _url = 'content/v2.1/liasettings/posdataproviders';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1951,7 +2399,8 @@ class LiasettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/requestgmbaccess';
@@ -2013,7 +2462,8 @@ class LiasettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/requestinventoryverification/' +
@@ -2040,13 +2490,13 @@ class LiasettingsResourceApi {
   /// [accountId] - The ID of the account that manages the order. This cannot be
   /// a multi-client account.
   ///
-  /// [contactEmail] - The email of the inventory verification contact.
-  ///
-  /// [contactName] - The name of the inventory verification contact.
-  ///
   /// [country] - The country for which inventory verification is requested.
   ///
   /// [language] - The language for which inventory verification is requested.
+  ///
+  /// [contactName] - The name of the inventory verification contact.
+  ///
+  /// [contactEmail] - The email of the inventory verification contact.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2062,10 +2512,10 @@ class LiasettingsResourceApi {
       setinventoryverificationcontact(
           core.String merchantId,
           core.String accountId,
-          core.String contactEmail,
-          core.String contactName,
           core.String country,
           core.String language,
+          core.String contactName,
+          core.String contactEmail,
           {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2080,14 +2530,6 @@ class LiasettingsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (contactEmail == null) {
-      throw new core.ArgumentError("Parameter contactEmail is required.");
-    }
-    _queryParams["contactEmail"] = [contactEmail];
-    if (contactName == null) {
-      throw new core.ArgumentError("Parameter contactName is required.");
-    }
-    _queryParams["contactName"] = [contactName];
     if (country == null) {
       throw new core.ArgumentError("Parameter country is required.");
     }
@@ -2096,11 +2538,20 @@ class LiasettingsResourceApi {
       throw new core.ArgumentError("Parameter language is required.");
     }
     _queryParams["language"] = [language];
+    if (contactName == null) {
+      throw new core.ArgumentError("Parameter contactName is required.");
+    }
+    _queryParams["contactName"] = [contactName];
+    if (contactEmail == null) {
+      throw new core.ArgumentError("Parameter contactEmail is required.");
+    }
+    _queryParams["contactEmail"] = [contactEmail];
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/setinventoryverificationcontact';
@@ -2175,7 +2626,8 @@ class LiasettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/setposdataprovider';
@@ -2237,7 +2689,8 @@ class LiasettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -2290,7 +2743,7 @@ class LocalinventoryResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'localinventory/batch';
+    _url = 'content/v2.1/localinventory/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2347,7 +2800,8 @@ class LocalinventoryResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
         '/localinventory';
@@ -2414,7 +2868,8 @@ class OrderinvoicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orderinvoices/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/createChargeInvoice';
@@ -2479,7 +2934,8 @@ class OrderinvoicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orderinvoices/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/createRefundInvoice';
@@ -2507,16 +2963,16 @@ class OrderreportsResourceApi {
   /// [merchantId] - The ID of the account that manages the order. This cannot
   /// be a multi-client account.
   ///
-  /// [disbursementStartDate] - The first date which disbursements occurred. In
-  /// ISO 8601 format.
-  ///
-  /// [disbursementEndDate] - The last date which disbursements occurred. In ISO
-  /// 8601 format. Default: current date.
-  ///
   /// [maxResults] - The maximum number of disbursements to return in the
   /// response, used for paging.
   ///
+  /// [disbursementStartDate] - The first date which disbursements occurred. In
+  /// ISO 8601 format.
+  ///
   /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [disbursementEndDate] - The last date which disbursements occurred. In ISO
+  /// 8601 format. Default: current date.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2529,10 +2985,11 @@ class OrderreportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrderreportsListDisbursementsResponse> listdisbursements(
-      core.String merchantId, core.String disbursementStartDate,
-      {core.String disbursementEndDate,
-      core.int maxResults,
+      core.String merchantId,
+      {core.int maxResults,
+      core.String disbursementStartDate,
       core.String pageToken,
+      core.String disbursementEndDate,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2544,25 +3001,24 @@ class OrderreportsResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
-    if (disbursementStartDate == null) {
-      throw new core.ArgumentError(
-          "Parameter disbursementStartDate is required.");
-    }
-    _queryParams["disbursementStartDate"] = [disbursementStartDate];
-    if (disbursementEndDate != null) {
-      _queryParams["disbursementEndDate"] = [disbursementEndDate];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (disbursementStartDate != null) {
+      _queryParams["disbursementStartDate"] = [disbursementStartDate];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (disbursementEndDate != null) {
+      _queryParams["disbursementEndDate"] = [disbursementEndDate];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreports/disbursements';
 
     var _response = _requester.request(_url, "GET",
@@ -2586,16 +3042,16 @@ class OrderreportsResourceApi {
   /// [disbursementId] - The Google-provided ID of the disbursement (found in
   /// Wallet).
   ///
-  /// [transactionStartDate] - The first date in which transaction occurred. In
-  /// ISO 8601 format.
-  ///
   /// [maxResults] - The maximum number of disbursements to return in the
   /// response, used for paging.
   ///
-  /// [pageToken] - The token returned by the previous request.
+  /// [transactionStartDate] - The first date in which transaction occurred. In
+  /// ISO 8601 format.
   ///
   /// [transactionEndDate] - The last date in which transaction occurred. In ISO
   /// 8601 format. Default: current date.
+  ///
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2608,12 +3064,11 @@ class OrderreportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrderreportsListTransactionsResponse> listtransactions(
-      core.String merchantId,
-      core.String disbursementId,
-      core.String transactionStartDate,
+      core.String merchantId, core.String disbursementId,
       {core.int maxResults,
-      core.String pageToken,
+      core.String transactionStartDate,
       core.String transactionEndDate,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2628,25 +3083,24 @@ class OrderreportsResourceApi {
     if (disbursementId == null) {
       throw new core.ArgumentError("Parameter disbursementId is required.");
     }
-    if (transactionStartDate == null) {
-      throw new core.ArgumentError(
-          "Parameter transactionStartDate is required.");
-    }
-    _queryParams["transactionStartDate"] = [transactionStartDate];
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (transactionStartDate != null) {
+      _queryParams["transactionStartDate"] = [transactionStartDate];
     }
     if (transactionEndDate != null) {
       _queryParams["transactionEndDate"] = [transactionEndDate];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreports/disbursements/' +
         commons.Escaper.ecapeVariable('$disbursementId') +
         '/transactions';
@@ -2713,7 +3167,8 @@ class OrderreturnsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns/' +
         commons.Escaper.ecapeVariable('$returnId') +
         '/acknowledge';
@@ -2767,7 +3222,8 @@ class OrderreturnsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns/createOrderReturn';
 
     var _response = _requester.request(_url, "POST",
@@ -2819,7 +3275,8 @@ class OrderreturnsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns/' +
         commons.Escaper.ecapeVariable('$returnId');
 
@@ -2843,13 +3300,17 @@ class OrderreturnsResourceApi {
   /// status. When set to true, obtains order returns that have been
   /// acknowledged. When false, obtains order returns that have not been
   /// acknowledged. When not provided, obtains order returns regardless of their
-  /// acknowledgement status.
-  /// We recommend using this filter set to `false`, in conjunction with the
-  /// `acknowledge` call, such that only un-acknowledged order returns are
-  /// returned.
+  /// acknowledgement status. We recommend using this filter set to `false`, in
+  /// conjunction with the `acknowledge` call, such that only un-acknowledged
+  /// order returns are returned.
   ///
-  /// [createdEndDate] - Obtains order returns created before this date
-  /// (inclusively), in ISO 8601 format.
+  /// [maxResults] - The maximum number of order returns to return in the
+  /// response, used for paging. The default value is 25 returns per page, and
+  /// the maximum allowed value is 250 returns per page.
+  ///
+  /// [shipmentStates] - Obtains order returns that match any shipment state
+  /// provided in this parameter. When this parameter is not provided, order
+  /// returns are obtained regardless of their shipment states.
   ///
   /// [createdStartDate] - Obtains order returns created after this date
   /// (inclusively), in ISO 8601 format.
@@ -2857,37 +3318,32 @@ class OrderreturnsResourceApi {
   /// [googleOrderIds] - Obtains order returns with the specified order ids. If
   /// this parameter is provided, createdStartDate, createdEndDate,
   /// shipmentType, shipmentStatus, shipmentState and acknowledged parameters
-  /// must be not set.
-  /// Note: if googleOrderId and shipmentTrackingNumber parameters are provided,
-  /// the obtained results will include all order returns that either match the
-  /// specified order id or the specified tracking number.
+  /// must be not set. Note: if googleOrderId and shipmentTrackingNumber
+  /// parameters are provided, the obtained results will include all order
+  /// returns that either match the specified order id or the specified tracking
+  /// number.
   ///
-  /// [maxResults] - The maximum number of order returns to return in the
-  /// response, used for paging. The default value is 25 returns per page, and
-  /// the maximum allowed value is 250 returns per page.
-  ///
-  /// [orderBy] - Return the results in the specified order.
-  /// Possible string values are:
-  /// - "returnCreationTimeAsc"
-  /// - "returnCreationTimeDesc"
+  /// [createdEndDate] - Obtains order returns created before this date
+  /// (inclusively), in ISO 8601 format.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
-  /// [shipmentStates] - Obtains order returns that match any shipment state
-  /// provided in this parameter. When this parameter is not provided, order
-  /// returns are obtained regardless of their shipment states.
+  /// [shipmentTrackingNumbers] - Obtains order returns with the specified
+  /// tracking numbers. If this parameter is provided, createdStartDate,
+  /// createdEndDate, shipmentType, shipmentStatus, shipmentState and
+  /// acknowledged parameters must be not set. Note: if googleOrderId and
+  /// shipmentTrackingNumber parameters are provided, the obtained results will
+  /// include all order returns that either match the specified order id or the
+  /// specified tracking number.
   ///
   /// [shipmentStatus] - Obtains order returns that match any shipment status
   /// provided in this parameter. When this parameter is not provided, order
   /// returns are obtained regardless of their shipment statuses.
   ///
-  /// [shipmentTrackingNumbers] - Obtains order returns with the specified
-  /// tracking numbers. If this parameter is provided, createdStartDate,
-  /// createdEndDate, shipmentType, shipmentStatus, shipmentState and
-  /// acknowledged parameters must be not set.
-  /// Note: if googleOrderId and shipmentTrackingNumber parameters are provided,
-  /// the obtained results will include all order returns that either match the
-  /// specified order id or the specified tracking number.
+  /// [orderBy] - Return the results in the specified order.
+  /// Possible string values are:
+  /// - "RETURN_CREATION_TIME_DESC"
+  /// - "RETURN_CREATION_TIME_ASC"
   ///
   /// [shipmentTypes] - Obtains order returns that match any shipment type
   /// provided in this parameter. When this parameter is not provided, order
@@ -2905,15 +3361,15 @@ class OrderreturnsResourceApi {
   /// this method will complete with the same error.
   async.Future<OrderreturnsListResponse> list(core.String merchantId,
       {core.bool acknowledged,
-      core.String createdEndDate,
+      core.int maxResults,
+      core.List<core.String> shipmentStates,
       core.String createdStartDate,
       core.List<core.String> googleOrderIds,
-      core.int maxResults,
-      core.String orderBy,
+      core.String createdEndDate,
       core.String pageToken,
-      core.List<core.String> shipmentStates,
-      core.List<core.String> shipmentStatus,
       core.List<core.String> shipmentTrackingNumbers,
+      core.List<core.String> shipmentStatus,
+      core.String orderBy,
       core.List<core.String> shipmentTypes,
       core.String $fields}) {
     var _url;
@@ -2929,8 +3385,11 @@ class OrderreturnsResourceApi {
     if (acknowledged != null) {
       _queryParams["acknowledged"] = ["${acknowledged}"];
     }
-    if (createdEndDate != null) {
-      _queryParams["createdEndDate"] = [createdEndDate];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (shipmentStates != null) {
+      _queryParams["shipmentStates"] = shipmentStates;
     }
     if (createdStartDate != null) {
       _queryParams["createdStartDate"] = [createdStartDate];
@@ -2938,23 +3397,20 @@ class OrderreturnsResourceApi {
     if (googleOrderIds != null) {
       _queryParams["googleOrderIds"] = googleOrderIds;
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (createdEndDate != null) {
+      _queryParams["createdEndDate"] = [createdEndDate];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (shipmentStates != null) {
-      _queryParams["shipmentStates"] = shipmentStates;
+    if (shipmentTrackingNumbers != null) {
+      _queryParams["shipmentTrackingNumbers"] = shipmentTrackingNumbers;
     }
     if (shipmentStatus != null) {
       _queryParams["shipmentStatus"] = shipmentStatus;
     }
-    if (shipmentTrackingNumbers != null) {
-      _queryParams["shipmentTrackingNumbers"] = shipmentTrackingNumbers;
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (shipmentTypes != null) {
       _queryParams["shipmentTypes"] = shipmentTypes;
@@ -2963,7 +3419,9 @@ class OrderreturnsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/orderreturns';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/orderreturns';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3021,7 +3479,8 @@ class OrderreturnsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns/' +
         commons.Escaper.ecapeVariable('$returnId') +
         '/process';
@@ -3088,7 +3547,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/acknowledge';
@@ -3143,7 +3603,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/testorders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/advance';
@@ -3202,7 +3663,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/cancel';
@@ -3262,7 +3724,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/cancelLineItem';
@@ -3322,7 +3785,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/testorders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/cancelByCustomer';
@@ -3376,7 +3840,9 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/testorders';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/testorders';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -3434,7 +3900,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/testreturn';
@@ -3487,7 +3954,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId');
 
@@ -3539,7 +4007,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/ordersbymerchantid/' +
         commons.Escaper.ecapeVariable('$merchantOrderId');
 
@@ -3563,12 +4032,12 @@ class OrdersResourceApi {
   ///
   /// [templateName] - The name of the template to retrieve.
   /// Possible string values are:
-  /// - "template1"
-  /// - "template1a"
-  /// - "template1b"
-  /// - "template2"
-  /// - "template3"
-  /// - "template4"
+  /// - "TEMPLATE1"
+  /// - "TEMPLATE2"
+  /// - "TEMPLATE1A"
+  /// - "TEMPLATE1B"
+  /// - "TEMPLATE3"
+  /// - "TEMPLATE4"
   ///
   /// [country] - The country of the template to retrieve. Defaults to `US`.
   ///
@@ -3605,7 +4074,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/testordertemplates/' +
         commons.Escaper.ecapeVariable('$templateName');
 
@@ -3621,13 +4091,13 @@ class OrdersResourceApi {
 
   /// Deprecated. Notifies that item return and refund was handled directly by
   /// merchant outside of Google payments processing (e.g. cash refund done in
-  /// store).
-  /// Note: We recommend calling the returnrefundlineitem method to refund
-  /// in-store returns. We will issue the refund directly to the customer. This
-  /// helps to prevent possible differences arising between merchant and Google
-  /// transaction records. We also recommend having the point of sale system
-  /// communicate with Google to ensure that customers do not receive a double
-  /// refund by first refunding via Google then via an in-store return.
+  /// store). Note: We recommend calling the returnrefundlineitem method to
+  /// refund in-store returns. We will issue the refund directly to the
+  /// customer. This helps to prevent possible differences arising between
+  /// merchant and Google transaction records. We also recommend having the
+  /// point of sale system communicate with Google to ensure that customers do
+  /// not receive a double refund by first refunding via Google then via an
+  /// in-store return.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3673,7 +4143,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/inStoreRefundLineItem';
@@ -3695,22 +4166,8 @@ class OrdersResourceApi {
   /// [merchantId] - The ID of the account that manages the order. This cannot
   /// be a multi-client account.
   ///
-  /// [acknowledged] - Obtains orders that match the acknowledgement status.
-  /// When set to true, obtains orders that have been acknowledged. When false,
-  /// obtains orders that have not been acknowledged.
-  /// We recommend using this filter set to `false`, in conjunction with the
-  /// `acknowledge` call, such that only un-acknowledged orders are returned.
-  ///
-  /// [maxResults] - The maximum number of orders to return in the response,
-  /// used for paging. The default value is 25 orders per page, and the maximum
-  /// allowed value is 250 orders per page.
-  ///
   /// [orderBy] - Order results by placement date in descending or ascending
-  /// order.
-  ///
-  /// Acceptable values are:
-  /// - placedDateAsc
-  /// - placedDateDesc
+  /// order. Acceptable values are: - placedDateAsc - placedDateDesc
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -3726,6 +4183,16 @@ class OrdersResourceApi {
   /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and
   /// `canceled`.
   ///
+  /// [acknowledged] - Obtains orders that match the acknowledgement status.
+  /// When set to true, obtains orders that have been acknowledged. When false,
+  /// obtains orders that have not been acknowledged. We recommend using this
+  /// filter set to `false`, in conjunction with the `acknowledge` call, such
+  /// that only un-acknowledged orders are returned.
+  ///
+  /// [maxResults] - The maximum number of orders to return in the response,
+  /// used for paging. The default value is 25 orders per page, and the maximum
+  /// allowed value is 250 orders per page.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3737,13 +4204,13 @@ class OrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrdersListResponse> list(core.String merchantId,
-      {core.bool acknowledged,
-      core.int maxResults,
-      core.String orderBy,
+      {core.String orderBy,
       core.String pageToken,
       core.String placedDateEnd,
       core.String placedDateStart,
       core.List<core.String> statuses,
+      core.bool acknowledged,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3754,12 +4221,6 @@ class OrdersResourceApi {
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
-    }
-    if (acknowledged != null) {
-      _queryParams["acknowledged"] = ["${acknowledged}"];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -3776,11 +4237,19 @@ class OrdersResourceApi {
     if (statuses != null) {
       _queryParams["statuses"] = statuses;
     }
+    if (acknowledged != null) {
+      _queryParams["acknowledged"] = ["${acknowledged}"];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/orders';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/orders';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3837,7 +4306,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/refunditem';
@@ -3898,7 +4368,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/refundorder';
@@ -3959,7 +4430,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/rejectReturnLineItem';
@@ -4026,7 +4498,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/returnRefundLineItem';
@@ -4091,7 +4564,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/setLineItemMetadata';
@@ -4152,7 +4626,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/shipLineItems';
@@ -4214,7 +4689,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/updateLineItemShippingDetails';
@@ -4275,7 +4751,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/updateMerchantOrderId';
@@ -4336,7 +4813,8 @@ class OrdersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
         '/updateShipment';
@@ -4349,6 +4827,65 @@ class OrdersResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new OrdersUpdateShipmentResponse.fromJson(data));
+  }
+}
+
+class OrdertrackingsignalsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrdertrackingsignalsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates new order tracking signal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the merchant for which the order signal is
+  /// created.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OrderTrackingSignal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OrderTrackingSignal> create(
+      OrderTrackingSignal request, core.String merchantId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/ordertrackingsignals';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new OrderTrackingSignal.fromJson(data));
   }
 }
 
@@ -4390,7 +4927,7 @@ class PosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'pos/batch';
+    _url = 'content/v2.1/pos/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -4444,7 +4981,8 @@ class PosResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/store/' +
@@ -4502,7 +5040,8 @@ class PosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/store/' +
@@ -4560,7 +5099,8 @@ class PosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/store';
@@ -4617,7 +5157,8 @@ class PosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/inventory';
@@ -4669,7 +5210,8 @@ class PosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/store';
@@ -4726,7 +5268,8 @@ class PosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/sale';
@@ -4779,7 +5322,7 @@ class ProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'products/batch';
+    _url = 'content/v2.1/products/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -4834,7 +5377,8 @@ class ProductsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
 
@@ -4885,7 +5429,8 @@ class ProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
 
@@ -4943,7 +5488,9 @@ class ProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/products';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/products';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5000,7 +5547,9 @@ class ProductsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/products';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/products';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5014,6 +5563,9 @@ class ProductsResourceApi {
 
 class ProductstatusesResourceApi {
   final commons.ApiRequester _requester;
+
+  ProductstatusesRepricingreportsResourceApi get repricingreports =>
+      new ProductstatusesRepricingreportsResourceApi(_requester);
 
   ProductstatusesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -5050,7 +5602,7 @@ class ProductstatusesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'productstatuses/batch';
+    _url = 'content/v2.1/productstatuses/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5106,7 +5658,8 @@ class ProductstatusesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/productstatuses/' +
         commons.Escaper.ecapeVariable('$productId');
 
@@ -5172,7 +5725,9 @@ class ProductstatusesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/productstatuses';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/productstatuses';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5182,6 +5737,112 @@ class ProductstatusesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ProductstatusesListResponse.fromJson(data));
+  }
+}
+
+class ProductstatusesRepricingreportsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProductstatusesRepricingreportsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the metrics report for a given Repricing product. Reports of the
+  /// last 3 days may not be complete.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. Id of the merchant who owns the Repricing rule.
+  ///
+  /// [productId] - Required. Id of the Repricing product. Also known as the
+  /// [REST_ID](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.id)
+  ///
+  /// [pageSize] - Maximum number of days of reports to return. There can be
+  /// more than one rule report returned per day. For example, if 3 rule types
+  /// got applied to the same product within a 24-hour period, then a page_size
+  /// of 1 will return 3 rule reports. The page size defaults to 50 and values
+  /// above 1000 are coerced to 1000. This service may return fewer days of
+  /// reports than this value, for example, if the time between your start and
+  /// end date is less than the page size.
+  ///
+  /// [ruleId] - Id of the Repricing rule. If specified, only gets this rule's
+  /// reports.
+  ///
+  /// [pageToken] - Token (if provided) to retrieve the subsequent page. All
+  /// other parameters must match the original call that provided the page
+  /// token.
+  ///
+  /// [startDate] - Gets Repricing reports on and after this date in the
+  /// merchant's timezone, up to one year ago. Do not use a start date later
+  /// than 3 days ago (default). Format is YYYY-MM-DD.
+  ///
+  /// [endDate] - Gets Repricing reports on and before this date in the
+  /// merchant's timezone. You can only retrieve data up to 3 days ago (default)
+  /// or earlier. Format is YYYY-MM-DD.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRepricingProductReportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRepricingProductReportsResponse> list(
+      core.String merchantId, core.String productId,
+      {core.int pageSize,
+      core.String ruleId,
+      core.String pageToken,
+      core.String startDate,
+      core.String endDate,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (productId == null) {
+      throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (ruleId != null) {
+      _queryParams["ruleId"] = [ruleId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (startDate != null) {
+      _queryParams["startDate"] = [startDate];
+    }
+    if (endDate != null) {
+      _queryParams["endDate"] = [endDate];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/productstatuses/' +
+        commons.Escaper.ecapeVariable('$productId') +
+        '/repricingreports';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListRepricingProductReportsResponse.fromJson(data));
   }
 }
 
@@ -5224,7 +5885,8 @@ class PubsubnotificationsettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/pubsubnotificationsettings';
 
     var _response = _requester.request(_url, "GET",
@@ -5276,7 +5938,8 @@ class PubsubnotificationsettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/pubsubnotificationsettings';
 
     var _response = _requester.request(_url, "PUT",
@@ -5330,7 +5993,7 @@ class RegionalinventoryResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'regionalinventory/batch';
+    _url = 'content/v2.1/regionalinventory/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5389,7 +6052,8 @@ class RegionalinventoryResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
         '/regionalinventory';
@@ -5401,6 +6065,704 @@ class RegionalinventoryResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new RegionalInventory.fromJson(data));
+  }
+}
+
+class RegionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a region definition in your Merchant Center account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to create region
+  /// definition.
+  ///
+  /// [regionId] - Required. The id of the region to create.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Region].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Region> create(Region request, core.String merchantId,
+      {core.String regionId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (regionId != null) {
+      _queryParams["regionId"] = [regionId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/regions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Region.fromJson(data));
+  }
+
+  /// Deletes a region definition from your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to delete region
+  /// definition.
+  ///
+  /// [regionId] - Required. The id of the region to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String merchantId, core.String regionId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (regionId == null) {
+      throw new core.ArgumentError("Parameter regionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$regionId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Retrieves a region defined in your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to retrieve
+  /// region definition.
+  ///
+  /// [regionId] - Required. The id of the region to retrieve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Region].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Region> get(core.String merchantId, core.String regionId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (regionId == null) {
+      throw new core.ArgumentError("Parameter regionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$regionId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Region.fromJson(data));
+  }
+
+  /// Lists the regions in your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to list region
+  /// definitions.
+  ///
+  /// [pageSize] - The maximum number of regions to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 rules will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListRegions` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListRegions` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRegionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRegionsResponse> list(core.String merchantId,
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/regions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListRegionsResponse.fromJson(data));
+  }
+
+  /// Updates a region definition in your Merchant Center account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant for which to update region
+  /// definition.
+  ///
+  /// [regionId] - Required. The id of the region to update.
+  ///
+  /// [updateMask] - Optional. The field mask indicating the fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Region].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Region> patch(
+      Region request, core.String merchantId, core.String regionId,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (regionId == null) {
+      throw new core.ArgumentError("Parameter regionId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$regionId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Region.fromJson(data));
+  }
+}
+
+class RepricingrulesResourceApi {
+  final commons.ApiRequester _requester;
+
+  RepricingrulesRepricingreportsResourceApi get repricingreports =>
+      new RepricingrulesRepricingreportsResourceApi(_requester);
+
+  RepricingrulesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a repricing rule for your Merchant Center account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant who owns the repricing
+  /// rule.
+  ///
+  /// [ruleId] - Required. The id of the rule to create.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RepricingRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RepricingRule> create(
+      RepricingRule request, core.String merchantId,
+      {core.String ruleId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (ruleId != null) {
+      _queryParams["ruleId"] = [ruleId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/repricingrules';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new RepricingRule.fromJson(data));
+  }
+
+  /// Deletes a repricing rule in your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant who owns the repricing
+  /// rule.
+  ///
+  /// [ruleId] - Required. The id of the rule to Delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String merchantId, core.String ruleId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (ruleId == null) {
+      throw new core.ArgumentError("Parameter ruleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/repricingrules/' +
+        commons.Escaper.ecapeVariable('$ruleId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Retrieves a repricing rule from your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant who owns the repricing
+  /// rule.
+  ///
+  /// [ruleId] - Required. The id of the rule to retrieve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RepricingRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RepricingRule> get(core.String merchantId, core.String ruleId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (ruleId == null) {
+      throw new core.ArgumentError("Parameter ruleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/repricingrules/' +
+        commons.Escaper.ecapeVariable('$ruleId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new RepricingRule.fromJson(data));
+  }
+
+  /// Lists the repricing rules in your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant who owns the repricing
+  /// rule.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListRepricingRules`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListRepricingRules` must match the call that
+  /// provided the page token.
+  ///
+  /// [pageSize] - The maximum number of repricing rules to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 rules will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [countryCode] - CLDR country code (e.g. "US"), used as a filter on
+  /// repricing rules.
+  ///
+  /// [languageCode] - The two-letter ISO 639-1 language code associated with
+  /// the repricing rule, used as a filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRepricingRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRepricingRulesResponse> list(core.String merchantId,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String countryCode,
+      core.String languageCode,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (countryCode != null) {
+      _queryParams["countryCode"] = [countryCode];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/repricingrules';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListRepricingRulesResponse.fromJson(data));
+  }
+
+  /// Updates a repricing rule in your Merchant Center account. All mutable
+  /// fields will be overwritten in each update request. In each update, you
+  /// must provide all required mutable fields, or an error will be thrown. If
+  /// you do not provide an optional field in the update request, if that field
+  /// currently exists, it will be deleted from the rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The id of the merchant who owns the repricing
+  /// rule.
+  ///
+  /// [ruleId] - Required. The id of the rule to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RepricingRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RepricingRule> patch(
+      RepricingRule request, core.String merchantId, core.String ruleId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (ruleId == null) {
+      throw new core.ArgumentError("Parameter ruleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/repricingrules/' +
+        commons.Escaper.ecapeVariable('$ruleId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new RepricingRule.fromJson(data));
+  }
+}
+
+class RepricingrulesRepricingreportsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RepricingrulesRepricingreportsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the metrics report for a given Repricing rule. Reports of the last 3
+  /// days may not be complete.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. Id of the merchant who owns the Repricing rule.
+  ///
+  /// [ruleId] - Required. Id of the Repricing rule.
+  ///
+  /// [pageSize] - Maximum number of daily reports to return. Each report
+  /// includes data from a single 24-hour period. The page size defaults to 50
+  /// and values above 1000 are coerced to 1000. This service may return fewer
+  /// days than this value, for example, if the time between your start and end
+  /// date is less than page size.
+  ///
+  /// [pageToken] - Token (if provided) to retrieve the subsequent page. All
+  /// other parameters must match the original call that provided the page
+  /// token.
+  ///
+  /// [startDate] - Gets Repricing reports on and after this date in the
+  /// merchant's timezone, up to one year ago. Do not use a start date later
+  /// than 3 days ago (default). Format: YYYY-MM-DD.
+  ///
+  /// [endDate] - Gets Repricing reports on and before this date in the
+  /// merchant's timezone. You can only retrieve data up to 3 days ago (default)
+  /// or earlier. Format: YYYY-MM-DD.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRepricingRuleReportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRepricingRuleReportsResponse> list(
+      core.String merchantId, core.String ruleId,
+      {core.int pageSize,
+      core.String pageToken,
+      core.String startDate,
+      core.String endDate,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (ruleId == null) {
+      throw new core.ArgumentError("Parameter ruleId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (startDate != null) {
+      _queryParams["startDate"] = [startDate];
+    }
+    if (endDate != null) {
+      _queryParams["endDate"] = [endDate];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/repricingrules/' +
+        commons.Escaper.ecapeVariable('$ruleId') +
+        '/repricingreports';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListRepricingRuleReportsResponse.fromJson(data));
   }
 }
 
@@ -5442,7 +6804,7 @@ class ReturnaddressResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'returnaddress/batch';
+    _url = 'content/v2.1/returnaddress/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5492,7 +6854,8 @@ class ReturnaddressResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/returnaddress/' +
         commons.Escaper.ecapeVariable('$returnAddressId');
 
@@ -5543,7 +6906,8 @@ class ReturnaddressResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/returnaddress/' +
         commons.Escaper.ecapeVariable('$returnAddressId');
 
@@ -5594,7 +6958,9 @@ class ReturnaddressResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/returnaddress';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/returnaddress';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5611,11 +6977,11 @@ class ReturnaddressResourceApi {
   ///
   /// [merchantId] - The Merchant Center account to list return addresses for.
   ///
-  /// [country] - List only return addresses applicable to the given country of
-  /// sale. When omitted, all return addresses are listed.
-  ///
   /// [maxResults] - The maximum number of addresses in the response, used for
   /// paging.
+  ///
+  /// [country] - List only return addresses applicable to the given country of
+  /// sale. When omitted, all return addresses are listed.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -5630,8 +6996,8 @@ class ReturnaddressResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReturnaddressListResponse> list(core.String merchantId,
-      {core.String country,
-      core.int maxResults,
+      {core.int maxResults,
+      core.String country,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -5644,11 +7010,11 @@ class ReturnaddressResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
-    if (country != null) {
-      _queryParams["country"] = [country];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (country != null) {
+      _queryParams["country"] = [country];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -5657,7 +7023,9 @@ class ReturnaddressResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/returnaddress';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/returnaddress';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5708,7 +7076,7 @@ class ReturnpolicyResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'returnpolicy/batch';
+    _url = 'content/v2.1/returnpolicy/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5758,7 +7126,8 @@ class ReturnpolicyResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/returnpolicy/' +
         commons.Escaper.ecapeVariable('$returnPolicyId');
 
@@ -5809,7 +7178,8 @@ class ReturnpolicyResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/returnpolicy/' +
         commons.Escaper.ecapeVariable('$returnPolicyId');
 
@@ -5860,7 +7230,9 @@ class ReturnpolicyResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/returnpolicy';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/returnpolicy';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5903,7 +7275,9 @@ class ReturnpolicyResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/returnpolicy';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/returnpolicy';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5960,7 +7334,8 @@ class SettlementreportsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/settlementreports/' +
         commons.Escaper.ecapeVariable('$settlementId');
 
@@ -5979,16 +7354,16 @@ class SettlementreportsResourceApi {
   ///
   /// [merchantId] - The Merchant Center account to list settlements for.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [transferStartDate] - Obtains settlements which have transactions after
+  /// this date (inclusively), in ISO 8601 format.
+  ///
   /// [maxResults] - The maximum number of settlements to return in the
   /// response, used for paging. The default value is 200 returns per page, and
   /// the maximum allowed value is 5000 returns per page.
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
   /// [transferEndDate] - Obtains settlements which have transactions before
-  /// this date (inclusively), in ISO 8601 format.
-  ///
-  /// [transferStartDate] - Obtains settlements which have transactions after
   /// this date (inclusively), in ISO 8601 format.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6002,10 +7377,10 @@ class SettlementreportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SettlementreportsListResponse> list(core.String merchantId,
-      {core.int maxResults,
-      core.String pageToken,
-      core.String transferEndDate,
+      {core.String pageToken,
       core.String transferStartDate,
+      core.int maxResults,
+      core.String transferEndDate,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6017,23 +7392,25 @@ class SettlementreportsResourceApi {
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (transferEndDate != null) {
-      _queryParams["transferEndDate"] = [transferEndDate];
-    }
     if (transferStartDate != null) {
       _queryParams["transferStartDate"] = [transferStartDate];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (transferEndDate != null) {
+      _queryParams["transferEndDate"] = [transferEndDate];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/settlementreports';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/settlementreports';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -6060,14 +7437,14 @@ class SettlementtransactionsResourceApi {
   ///
   /// [settlementId] - The Google-provided ID of the settlement.
   ///
+  /// [transactionIds] - The list of transactions to return. If not set, all
+  /// transactions will be returned.
+  ///
   /// [maxResults] - The maximum number of transactions to return in the
   /// response, used for paging. The default value is 200 transactions per page,
   /// and the maximum allowed value is 5000 transactions per page.
   ///
   /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [transactionIds] - The list of transactions to return. If not set, all
-  /// transactions will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6081,9 +7458,9 @@ class SettlementtransactionsResourceApi {
   /// this method will complete with the same error.
   async.Future<SettlementtransactionsListResponse> list(
       core.String merchantId, core.String settlementId,
-      {core.int maxResults,
+      {core.List<core.String> transactionIds,
+      core.int maxResults,
       core.String pageToken,
-      core.List<core.String> transactionIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6098,20 +7475,21 @@ class SettlementtransactionsResourceApi {
     if (settlementId == null) {
       throw new core.ArgumentError("Parameter settlementId is required.");
     }
+    if (transactionIds != null) {
+      _queryParams["transactionIds"] = transactionIds;
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (transactionIds != null) {
-      _queryParams["transactionIds"] = transactionIds;
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/settlementreports/' +
         commons.Escaper.ecapeVariable('$settlementId') +
         '/transactions';
@@ -6167,7 +7545,7 @@ class ShippingsettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'shippingsettings/batch';
+    _url = 'content/v2.1/shippingsettings/batch';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -6220,7 +7598,8 @@ class ShippingsettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/shippingsettings/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -6266,7 +7645,9 @@ class ShippingsettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/supportedCarriers';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/supportedCarriers';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -6311,7 +7692,9 @@ class ShippingsettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/supportedHolidays';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/supportedHolidays';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -6357,7 +7740,8 @@ class ShippingsettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/supportedPickupServices';
 
     var _response = _requester.request(_url, "GET",
@@ -6415,7 +7799,9 @@ class ShippingsettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') + '/shippingsettings';
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
+        '/shippingsettings';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -6474,7 +7860,8 @@ class ShippingsettingsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
+    _url = 'content/v2.1/' +
+        commons.Escaper.ecapeVariable('$merchantId') +
         '/shippingsettings/' +
         commons.Escaper.ecapeVariable('$accountId');
 
@@ -6710,17 +8097,13 @@ class AccountAdsLink {
   /// Status of the link between this Merchant Center account and the Ads
   /// account. Upon retrieval, it represents the actual status of the link and
   /// can be either `active` if it was approved in Google Ads or `pending` if
-  /// it's pending approval. Upon insertion, it represents the intended status
+  /// it's pending approval. Upon insertion, it represents the *intended* status
   /// of the link. Re-uploading a link with status `active` when it's still
   /// pending or with status `pending` when it's already active will have no
   /// effect: the status will remain unchanged. Re-uploading a link with
   /// deprecated status `inactive` is equivalent to not submitting the link at
   /// all and will delete the link if it was active or cancel the link request
-  /// if it was pending.
-  ///
-  /// Acceptable values are:
-  /// - "`active`"
-  /// - "`pending`"
+  /// if it was pending. Acceptable values are: - "`active`" - "`pending`"
   core.String status;
 
   AccountAdsLink();
@@ -6840,11 +8223,7 @@ class AccountGoogleMyBusinessLink {
   core.String gmbEmail;
 
   /// Status of the link between this Merchant Center account and the GMB
-  /// account.
-  ///
-  /// Acceptable values are:
-  /// - "`active`"
-  /// - "`pending`"
+  /// account. Acceptable values are: - "`active`" - "`pending`"
   core.String status;
 
   AccountGoogleMyBusinessLink();
@@ -6904,6 +8283,56 @@ class AccountIdentifier {
     }
     if (merchantId != null) {
       _json["merchantId"] = merchantId;
+    }
+    return _json;
+  }
+}
+
+/// Label assigned by CSS domain or CSS group to one of its sub-accounts.
+class AccountLabel {
+  /// Immutable. The ID of account this label belongs to.
+  core.String accountId;
+
+  /// The description of this label.
+  core.String description;
+
+  /// Output only. The ID of the label.
+  core.String labelId;
+
+  /// The display name of this label.
+  core.String name;
+
+  AccountLabel();
+
+  AccountLabel.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("labelId")) {
+      labelId = _json["labelId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (labelId != null) {
+      _json["labelId"] = labelId;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -6995,12 +8424,8 @@ class AccountStatusAccountLevelIssue {
   /// Issue identifier.
   core.String id;
 
-  /// Severity of the issue.
-  ///
-  /// Acceptable values are:
-  /// - "`critical`"
-  /// - "`error`"
-  /// - "`suggestion`"
+  /// Severity of the issue. Acceptable values are: - "`critical`" - "`error`" -
+  /// "`suggestion`"
   core.String severity;
 
   /// Short description of the issue.
@@ -7146,11 +8571,8 @@ class AccountStatusItemLevelIssue {
 }
 
 class AccountStatusProducts {
-  /// The channel the data applies to.
-  ///
-  /// Acceptable values are:
-  /// - "`local`"
-  /// - "`online`"
+  /// The channel the data applies to. Acceptable values are: - "`local`" -
+  /// "`online`"
   core.String channel;
 
   /// The country the data applies to.
@@ -7435,12 +8857,12 @@ class AccountYouTubeChannelLink {
   /// channel. Upon retrieval, it represents the actual status of the link and
   /// can be either `active` if it was approved in YT Creator Studio or
   /// `pending` if it's pending approval. Upon insertion, it represents the
-  /// intended status of the link. Re-uploading a link with status `active` when
-  /// it's still pending or with status `pending` when it's already active will
-  /// have no effect: the status will remain unchanged. Re-uploading a link with
-  /// deprecated status `inactive` is equivalent to not submitting the link at
-  /// all and will delete the link if it was active or cancel the link request
-  /// if it was pending.
+  /// *intended* status of the link. Re-uploading a link with status `active`
+  /// when it's still pending or with status `pending` when it's already active
+  /// will have no effect: the status will remain unchanged. Re-uploading a link
+  /// with deprecated status `inactive` is equivalent to not submitting the link
+  /// at all and will delete the link if it was active or cancel the link
+  /// request if it was pending.
   core.String status;
 
   AccountYouTubeChannelLink();
@@ -7468,11 +8890,10 @@ class AccountYouTubeChannelLink {
 }
 
 class AccountsAuthInfoResponse {
-  /// The account identifiers corresponding to the authenticated user.
-  /// - For an individual account: only the merchant ID is defined
-  /// - For an aggregator: only the aggregator ID is defined
-  /// - For a subaccount of an MCA: both the merchant ID and the aggregator ID
-  /// are defined.
+  /// The account identifiers corresponding to the authenticated user. - For an
+  /// individual account: only the merchant ID is defined - For an aggregator:
+  /// only the aggregator ID is defined - For a subaccount of an MCA: both the
+  /// merchant ID and the aggregator ID are defined.
   core.List<AccountIdentifier> accountIdentifiers;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -7581,15 +9002,8 @@ class AccountsCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`claimWebsite`"
-  /// - "`delete`"
-  /// - "`get`"
-  /// - "`insert`"
-  /// - "`link`"
-  /// - "`update`"
+  /// The method of the batch entry. Acceptable values are: - "`claimWebsite`" -
+  /// "`delete`" - "`get`" - "`insert`" - "`link`" - "`update`"
   core.String method;
 
   /// Only applicable if the method is `claimwebsite`. Indicates whether or not
@@ -7674,25 +9088,21 @@ class AccountsCustomBatchRequestEntry {
 
 class AccountsCustomBatchRequestEntryLinkRequest {
   /// Action to perform for this link. The `"request"` action is only available
-  /// to select merchants.
-  ///
-  /// Acceptable values are:
-  /// - "`approve`"
-  /// - "`remove`"
-  /// - "`request`"
+  /// to select merchants. Acceptable values are: - "`approve`" - "`remove`" -
+  /// "`request`"
   core.String action;
 
-  /// Type of the link between the two accounts.
-  ///
-  /// Acceptable values are:
-  /// - "`channelPartner`"
-  /// - "`eCommercePlatform`"
+  /// Type of the link between the two accounts. Acceptable values are: -
+  /// "`channelPartner`" - "`eCommercePlatform`"
   core.String linkType;
 
   /// The ID of the linked account.
   core.String linkedAccountId;
 
-  /// List of provided services.
+  /// Provided services. Acceptable values are: -
+  /// "`shoppingAdsProductManagement`" - "`shoppingAdsOther`" -
+  /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
+  /// - "`shoppingActionsOther`"
   core.List<core.String> services;
 
   AccountsCustomBatchRequestEntryLinkRequest();
@@ -7820,19 +9230,12 @@ class AccountsCustomBatchResponseEntry {
 
 class AccountsLinkRequest {
   /// Action to perform for this link. The `"request"` action is only available
-  /// to select merchants.
-  ///
-  /// Acceptable values are:
-  /// - "`approve`"
-  /// - "`remove`"
-  /// - "`request`"
+  /// to select merchants. Acceptable values are: - "`approve`" - "`remove`" -
+  /// "`request`"
   core.String action;
 
-  /// Type of the link between the two accounts.
-  ///
-  /// Acceptable values are:
-  /// - "`channelPartner`"
-  /// - "`eCommercePlatform`"
+  /// Type of the link between the two accounts. Acceptable values are: -
+  /// "`channelPartner`" - "`eCommercePlatform`"
   core.String linkType;
 
   /// The ID of the linked account.
@@ -8069,10 +9472,7 @@ class AccountstatusesCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`get`"
+  /// The method of the batch entry. Acceptable values are: - "`get`"
   core.String method;
 
   AccountstatusesCustomBatchRequestEntry();
@@ -8275,11 +9675,8 @@ class AccounttaxCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`get`"
-  /// - "`update`"
+  /// The method of the batch entry. Acceptable values are: - "`get`" -
+  /// "`update`"
   core.String method;
 
   AccounttaxCustomBatchRequestEntry();
@@ -8620,6 +10017,77 @@ class CarriersCarrier {
   }
 }
 
+/// Information about CSS domain.
+class Css {
+  /// Output only. Immutable. The CSS domain ID.
+  core.String cssDomainId;
+
+  /// Output only. Immutable. The ID of the CSS group this CSS domain is
+  /// affiliated with. Only populated for CSS group users.
+  core.String cssGroupId;
+
+  /// Output only. Immutable. The CSS domain's display name, used when space is
+  /// constrained.
+  core.String displayName;
+
+  /// Output only. Immutable. The CSS domain's full name.
+  core.String fullName;
+
+  /// Output only. Immutable. The CSS domain's homepage.
+  core.String homepageUri;
+
+  /// A list of label IDs that are assigned to this CSS domain by its CSS group.
+  /// Only populated for CSS group users.
+  core.List<core.String> labelIds;
+
+  Css();
+
+  Css.fromJson(core.Map _json) {
+    if (_json.containsKey("cssDomainId")) {
+      cssDomainId = _json["cssDomainId"];
+    }
+    if (_json.containsKey("cssGroupId")) {
+      cssGroupId = _json["cssGroupId"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("fullName")) {
+      fullName = _json["fullName"];
+    }
+    if (_json.containsKey("homepageUri")) {
+      homepageUri = _json["homepageUri"];
+    }
+    if (_json.containsKey("labelIds")) {
+      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cssDomainId != null) {
+      _json["cssDomainId"] = cssDomainId;
+    }
+    if (cssGroupId != null) {
+      _json["cssGroupId"] = cssGroupId;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (fullName != null) {
+      _json["fullName"] = fullName;
+    }
+    if (homepageUri != null) {
+      _json["homepageUri"] = homepageUri;
+    }
+    if (labelIds != null) {
+      _json["labelIds"] = labelIds;
+    }
+    return _json;
+  }
+}
+
 class CustomAttribute {
   /// Subattributes within this attribute group. Exactly one of value or
   /// groupValues must be provided.
@@ -8669,23 +10137,11 @@ class CustomerReturnReason {
   /// Description of the reason.
   core.String description;
 
-  /// Code of the return reason.
-  ///
-  /// Acceptable values are:
-  /// - "`betterPriceFound`"
-  /// - "`changedMind`"
-  /// - "`damagedOrDefectiveItem`"
-  /// - "`didNotMatchDescription`"
-  /// - "`doesNotFit`"
-  /// - "`expiredItem`"
-  /// - "`incorrectItemReceived`"
-  /// - "`noLongerNeeded`"
-  /// - "`notSpecified`"
-  /// - "`orderedWrongItem`"
-  /// - "`other`"
-  /// - "`qualityNotExpected`"
-  /// - "`receivedTooLate`"
-  /// - "`undeliverable`"
+  /// Code of the return reason. Acceptable values are: - "`betterPriceFound`" -
+  /// "`changedMind`" - "`damagedOrDefectiveItem`" - "`didNotMatchDescription`"
+  /// - "`doesNotFit`" - "`expiredItem`" - "`incorrectItemReceived`" -
+  /// "`noLongerNeeded`" - "`notSpecified`" - "`orderedWrongItem`" - "`other`" -
+  /// "`qualityNotExpected`" - "`receivedTooLate`" - "`undeliverable`"
   core.String reasonCode;
 
   CustomerReturnReason();
@@ -8722,7 +10178,7 @@ class CutoffTime {
   core.int minute;
 
   /// Timezone identifier for the cutoff time. A list of identifiers can be
-  /// found in  the AdWords API documentation. E.g. "Europe/Zurich". Required.
+  /// found in the AdWords API documentation. E.g. "Europe/Zurich". Required.
   core.String timezone;
 
   CutoffTime();
@@ -8762,12 +10218,8 @@ class Datafeed {
   core.String attributeLanguage;
 
   /// Required. The type of data feed. For product inventory feeds, only feeds
-  /// for local stores, not online stores, are supported.
-  ///
-  /// Acceptable values are:
-  /// - "`local products`"
-  /// - "`product inventory`"
-  /// - "`products`"
+  /// for local stores, not online stores, are supported. Acceptable values are:
+  /// - "`local products`" - "`product inventory`" - "`products`"
   core.String contentType;
 
   /// Fetch schedule for the feed file.
@@ -8894,16 +10346,9 @@ class DatafeedFetchSchedule {
   /// An optional user name for fetch_url.
   core.String username;
 
-  /// The day of the week the feed file should be fetched.
-  ///
-  /// Acceptable values are:
-  /// - "`monday`"
-  /// - "`tuesday`"
-  /// - "`wednesday`"
-  /// - "`thursday`"
-  /// - "`friday`"
-  /// - "`saturday`"
-  /// - "`sunday`"
+  /// The day of the week the feed file should be fetched. Acceptable values
+  /// are: - "`monday`" - "`tuesday`" - "`wednesday`" - "`thursday`" -
+  /// "`friday`" - "`saturday`" - "`sunday`"
   core.String weekday;
 
   DatafeedFetchSchedule();
@@ -8975,31 +10420,18 @@ class DatafeedFetchSchedule {
 class DatafeedFormat {
   /// Delimiter for the separation of values in a delimiter-separated values
   /// feed. If not specified, the delimiter will be auto-detected. Ignored for
-  /// non-DSV data feeds.
-  ///
-  /// Acceptable values are:
-  /// - "`pipe`"
-  /// - "`tab`"
-  /// - "`tilde`"
+  /// non-DSV data feeds. Acceptable values are: - "`pipe`" - "`tab`" -
+  /// "`tilde`"
   core.String columnDelimiter;
 
   /// Character encoding scheme of the data feed. If not specified, the encoding
-  /// will be auto-detected.
-  ///
-  /// Acceptable values are:
-  /// - "`latin-1`"
-  /// - "`utf-16be`"
-  /// - "`utf-16le`"
-  /// - "`utf-8`"
-  /// - "`windows-1252`"
+  /// will be auto-detected. Acceptable values are: - "`latin-1`" - "`utf-16be`"
+  /// - "`utf-16le`" - "`utf-8`" - "`windows-1252`"
   core.String fileEncoding;
 
   /// Specifies how double quotes are interpreted. If not specified, the mode
-  /// will be auto-detected. Ignored for non-DSV data feeds.
-  ///
-  /// Acceptable values are:
-  /// - "`normal character`"
-  /// - "`value quoting`"
+  /// will be auto-detected. Ignored for non-DSV data feeds. Acceptable values
+  /// are: - "`normal character`" - "`value quoting`"
   core.String quotingMode;
 
   DatafeedFormat();
@@ -9035,7 +10467,7 @@ class DatafeedFormat {
 /// The status of a datafeed, i.e., the result of the last retrieval of the
 /// datafeed computed asynchronously when the feed processing is finished.
 class DatafeedStatus {
-  /// The country for which the status is reported, represented as a  CLDR
+  /// The country for which the status is reported, represented as a CLDR
   /// territory code.
   core.String country;
 
@@ -9061,16 +10493,12 @@ class DatafeedStatus {
   /// The last date at which the feed was uploaded.
   core.String lastUploadDate;
 
-  /// The processing status of the feed.
-  ///
-  /// Acceptable values are:
-  /// - "`"`failure`": The feed could not be processed or all items had
-  /// errors.`"
-  /// - "`in progress`": The feed is being processed.
-  /// - "`none`": The feed has not yet been processed. For example, a feed that
-  /// has never been uploaded will have this processing status.
-  /// - "`success`": The feed was processed successfully, though some items
-  /// might have had errors.
+  /// The processing status of the feed. Acceptable values are: - "`"`failure`":
+  /// The feed could not be processed or all items had errors.`" - "`in
+  /// progress`": The feed is being processed. - "`none`": The feed has not yet
+  /// been processed. For example, a feed that has never been uploaded will have
+  /// this processing status. - "`success`": The feed was processed
+  /// successfully, though some items might have had errors.
   core.String processingStatus;
 
   /// The list of errors occurring in the feed.
@@ -9250,7 +10678,7 @@ class DatafeedStatusExample {
 
 class DatafeedTarget {
   /// The country where the items in the feed will be included in the search
-  /// index, represented as a  CLDR territory code.
+  /// index, represented as a CLDR territory code.
   core.String country;
 
   /// The list of destinations to exclude for this target (corresponds to
@@ -9259,13 +10687,9 @@ class DatafeedTarget {
 
   /// The list of destinations to include for this target (corresponds to
   /// checked check boxes in Merchant Center). Default destinations are always
-  /// included unless provided in `excludedDestinations`.
-  ///
-  /// List of supported destinations (if available to the account):
-  /// - DisplayAds
-  /// - Shopping
-  /// - ShoppingActions
-  /// - SurfacesAcrossGoogle
+  /// included unless provided in `excludedDestinations`. List of supported
+  /// destinations (if available to the account): - DisplayAds - Shopping -
+  /// ShoppingActions - SurfacesAcrossGoogle
   core.List<core.String> includedDestinations;
 
   /// The two-letter ISO 639-1 language of the items in the feed. Must be a
@@ -9349,14 +10773,8 @@ class DatafeedsCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`delete`"
-  /// - "`fetchNow`"
-  /// - "`get`"
-  /// - "`insert`"
-  /// - "`update`"
+  /// The method of the batch entry. Acceptable values are: - "`delete`" -
+  /// "`fetchNow`" - "`get`" - "`insert`" - "`update`"
   core.String method;
 
   DatafeedsCustomBatchRequestEntry();
@@ -9588,10 +11006,7 @@ class DatafeedstatusesCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`get`"
+  /// The method of the batch entry. Acceptable values are: - "`get`"
   core.String method;
 
   DatafeedstatusesCustomBatchRequestEntry();
@@ -9755,6 +11170,175 @@ class DatafeedstatusesListResponse {
     }
     if (resources != null) {
       _json["resources"] = resources.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Represents a whole or partial calendar date, such as a birthday. The time of
+/// day and time zone are either specified elsewhere or are insignificant. The
+/// date is relative to the Gregorian Calendar. This can represent one of the
+/// following: * A full date, with non-zero year, month, and day values * A
+/// month and day value, with a zero year, such as an anniversary * A year on
+/// its own, with zero month and day values * A year and month value, with a
+/// zero day, such as a credit card expiration date Related types are
+/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+class Date {
+  /// Day of a month. Must be from 1 to 31 and valid for the year and month, or
+  /// 0 to specify a year by itself or a year and month where the day isn't
+  /// significant.
+  core.int day;
+
+  /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+  /// month and day.
+  core.int month;
+
+  /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+  /// year.
+  core.int year;
+
+  Date();
+
+  Date.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("month")) {
+      month = _json["month"];
+    }
+    if (_json.containsKey("year")) {
+      year = _json["year"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (month != null) {
+      _json["month"] = month;
+    }
+    if (year != null) {
+      _json["year"] = year;
+    }
+    return _json;
+  }
+}
+
+/// Represents civil time (or occasionally physical time). This type can
+/// represent a civil time in one of a few possible ways: * When utc_offset is
+/// set and time_zone is unset: a civil time on a calendar day with a particular
+/// offset from UTC. * When time_zone is set and utc_offset is unset: a civil
+/// time on a calendar day in a particular time zone. * When neither time_zone
+/// nor utc_offset is set: a civil time on a calendar day in local time. The
+/// date is relative to the Proleptic Gregorian Calendar. If year is 0, the
+/// DateTime is considered not to have a specific year. month and day must have
+/// valid, non-zero values. This type may also be used to represent a physical
+/// time if all the date and time fields are set and either case of the
+/// `time_offset` oneof is set. Consider using `Timestamp` message for physical
+/// time instead. If your use case also would like to store the user's timezone,
+/// that can be done in another field. This type is more flexible than some
+/// applications may want. Make sure to document and validate your application's
+/// limitations.
+class DateTime {
+  /// Required. Day of month. Must be from 1 to 31 and valid for the year and
+  /// month.
+  core.int day;
+
+  /// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API
+  /// may choose to allow the value "24:00:00" for scenarios like business
+  /// closing time.
+  core.int hours;
+
+  /// Required. Minutes of hour of day. Must be from 0 to 59.
+  core.int minutes;
+
+  /// Required. Month of year. Must be from 1 to 12.
+  core.int month;
+
+  /// Required. Fractions of seconds in nanoseconds. Must be from 0 to
+  /// 999,999,999.
+  core.int nanos;
+
+  /// Required. Seconds of minutes of the time. Must normally be from 0 to 59.
+  /// An API may allow the value 60 if it allows leap-seconds.
+  core.int seconds;
+
+  /// Time zone.
+  TimeZone timeZone;
+
+  /// UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
+  /// example, a UTC offset of -4:00 would be represented as { seconds: -14400
+  /// }.
+  core.String utcOffset;
+
+  /// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a
+  /// datetime without a year.
+  core.int year;
+
+  DateTime();
+
+  DateTime.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("hours")) {
+      hours = _json["hours"];
+    }
+    if (_json.containsKey("minutes")) {
+      minutes = _json["minutes"];
+    }
+    if (_json.containsKey("month")) {
+      month = _json["month"];
+    }
+    if (_json.containsKey("nanos")) {
+      nanos = _json["nanos"];
+    }
+    if (_json.containsKey("seconds")) {
+      seconds = _json["seconds"];
+    }
+    if (_json.containsKey("timeZone")) {
+      timeZone = new TimeZone.fromJson(_json["timeZone"]);
+    }
+    if (_json.containsKey("utcOffset")) {
+      utcOffset = _json["utcOffset"];
+    }
+    if (_json.containsKey("year")) {
+      year = _json["year"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (hours != null) {
+      _json["hours"] = hours;
+    }
+    if (minutes != null) {
+      _json["minutes"] = minutes;
+    }
+    if (month != null) {
+      _json["month"] = month;
+    }
+    if (nanos != null) {
+      _json["nanos"] = nanos;
+    }
+    if (seconds != null) {
+      _json["seconds"] = seconds;
+    }
+    if (timeZone != null) {
+      _json["timeZone"] = (timeZone).toJson();
+    }
+    if (utcOffset != null) {
+      _json["utcOffset"] = utcOffset;
+    }
+    if (year != null) {
+      _json["year"] = year;
     }
     return _json;
   }
@@ -10050,8 +11634,8 @@ class Headers {
 
   /// A list of inclusive number of items upper bounds. The last value can be
   /// `"infinity"`. For example `["10", "50", "infinity"]` represents the
-  /// headers "<= 10 items", " 50 items". Must be non-empty. Can only be set if
-  /// all other fields are not set.
+  /// headers "<= 10 items", "<= 50 items", and "> 50 items". Must be non-empty.
+  /// Can only be set if all other fields are not set.
   core.List<core.String> numberOfItems;
 
   /// A list of postal group names. The last value can be `"all other
@@ -10064,17 +11648,17 @@ class Headers {
   /// A list of inclusive order price upper bounds. The last price's value can
   /// be `"infinity"`. For example `[{"value": "10", "currency": "USD"},
   /// {"value": "500", "currency": "USD"}, {"value": "infinity", "currency":
-  /// "USD"}]` represents the headers "<= $10", " $500". All prices within a
-  /// service must have the same currency. Must be non-empty. Can only be set if
-  /// all other fields are not set.
+  /// "USD"}]` represents the headers "<= $10", "<= $500", and "> $500". All
+  /// prices within a service must have the same currency. Must be non-empty.
+  /// Can only be set if all other fields are not set.
   core.List<Price> prices;
 
   /// A list of inclusive order weight upper bounds. The last weight's value can
   /// be `"infinity"`. For example `[{"value": "10", "unit": "kg"}, {"value":
   /// "50", "unit": "kg"}, {"value": "infinity", "unit": "kg"}]` represents the
-  /// headers "<= 10kg", " 50kg". All weights within a service must have the
-  /// same unit. Must be non-empty. Can only be set if all other fields are not
-  /// set.
+  /// headers "<= 10kg", "<= 50kg", and "> 50kg". All weights within a service
+  /// must have the same unit. Must be non-empty. Can only be set if all other
+  /// fields are not set.
   core.List<Weight> weights;
 
   Headers();
@@ -10137,7 +11721,7 @@ class HolidayCutoff {
   core.int deadlineHour;
 
   /// Timezone identifier for the deadline hour. A list of identifiers can be
-  /// found in  the AdWords API documentation. E.g. "Europe/Zurich". Required.
+  /// found in the AdWords API documentation. E.g. "Europe/Zurich". Required.
   core.String deadlineTimezone;
 
   /// Unique identifier for the holiday. Required.
@@ -10212,17 +11796,9 @@ class HolidaysHoliday {
   /// cutoffs. Always present.
   core.String id;
 
-  /// The holiday type. Always present.
-  ///
-  /// Acceptable values are:
-  /// - "`Christmas`"
-  /// - "`Easter`"
-  /// - "`Father's Day`"
-  /// - "`Halloween`"
-  /// - "`Independence Day (USA)`"
-  /// - "`Mother's Day`"
-  /// - "`Thanksgiving`"
-  /// - "`Valentine's Day`"
+  /// The holiday type. Always present. Acceptable values are: - "`Christmas`" -
+  /// "`Easter`" - "`Father's Day`" - "`Halloween`" - "`Independence Day (USA)`"
+  /// - "`Mother's Day`" - "`Thanksgiving`" - "`Valentine's Day`"
   core.String type;
 
   HolidaysHoliday();
@@ -10268,6 +11844,51 @@ class HolidaysHoliday {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// Map of inapplicability details.
+class InapplicabilityDetails {
+  /// Count of this inapplicable reason code.
+  core.String inapplicableCount;
+
+  /// Reason code this rule was not applicable.
+  /// Possible string values are:
+  /// - "INAPPLICABLE_REASON_UNSPECIFIED" : Default value. Should not be used.
+  /// - "CANNOT_BEAT_BUYBOX_WINNER" : The rule set for this product cannot beat
+  /// the buybox winner.
+  /// - "ALREADY_WINNING_BUYBOX" : This product can already win the buybox
+  /// without rule.
+  /// - "TRIUMPHED_OVER_BY_SAME_TYPE_RULE" : Another rule of the same type takes
+  /// precedence over this one.
+  /// - "TRIUMPHED_OVER_BY_OTHER_RULE_ON_OFFER" : Another rule of a different
+  /// type takes precedence over this one.
+  /// - "RESTRICTIONS_NOT_MET" : The rule restrictions are not met. For example,
+  /// this may be the case if the calculated rule price is lower than floor
+  /// price in the restriction.
+  core.String inapplicableReason;
+
+  InapplicabilityDetails();
+
+  InapplicabilityDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("inapplicableCount")) {
+      inapplicableCount = _json["inapplicableCount"];
+    }
+    if (_json.containsKey("inapplicableReason")) {
+      inapplicableReason = _json["inapplicableReason"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (inapplicableCount != null) {
+      _json["inapplicableCount"] = inapplicableCount;
+    }
+    if (inapplicableReason != null) {
+      _json["inapplicableReason"] = inapplicableReason;
     }
     return _json;
   }
@@ -10344,10 +11965,8 @@ class InvoiceSummaryAdditionalChargeSummary {
   /// [required] Total additional charge for this type.
   Amount totalAmount;
 
-  /// [required] Type of the additional charge.
-  ///
-  /// Acceptable values are:
-  /// - "`shipping`"
+  /// [required] Type of the additional charge. Acceptable values are: -
+  /// "`shipping`"
   core.String type;
 
   InvoiceSummaryAdditionalChargeSummary();
@@ -10374,13 +11993,32 @@ class InvoiceSummaryAdditionalChargeSummary {
   }
 }
 
+/// The IDs of labels that should be assigned to the CSS domain.
+class LabelIds {
+  /// The list of label IDs.
+  core.List<core.String> labelIds;
+
+  LabelIds();
+
+  LabelIds.fromJson(core.Map _json) {
+    if (_json.containsKey("labelIds")) {
+      labelIds = (_json["labelIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (labelIds != null) {
+      _json["labelIds"] = labelIds;
+    }
+    return _json;
+  }
+}
+
 class LiaAboutPageSettings {
-  /// The status of the verification process for the About page.
-  ///
-  /// Acceptable values are:
-  /// - "`active`"
-  /// - "`inactive`"
-  /// - "`pending`"
+  /// The status of the verification process for the About page. Acceptable
+  /// values are: - "`active`" - "`inactive`" - "`pending`"
   core.String status;
 
   /// The URL for the About page.
@@ -10495,20 +12133,12 @@ class LiaInventorySettings {
   /// The name of the contact for the inventory verification process.
   core.String inventoryVerificationContactName;
 
-  /// The status of the verification contact.
-  ///
-  /// Acceptable values are:
-  /// - "`active`"
-  /// - "`inactive`"
-  /// - "`pending`"
+  /// The status of the verification contact. Acceptable values are: -
+  /// "`active`" - "`inactive`" - "`pending`"
   core.String inventoryVerificationContactStatus;
 
-  /// The status of the inventory verification process.
-  ///
-  /// Acceptable values are:
-  /// - "`active`"
-  /// - "`inactive`"
-  /// - "`pending`"
+  /// The status of the inventory verification process. Acceptable values are: -
+  /// "`active`" - "`inactive`" - "`pending`"
   core.String status;
 
   LiaInventorySettings();
@@ -10557,12 +12187,8 @@ class LiaOnDisplayToOrderSettings {
   /// Shipping cost and policy URL.
   core.String shippingCostPolicyUrl;
 
-  /// The status of the ?On display to order? feature.
-  ///
-  /// Acceptable values are:
-  /// - "`active`"
-  /// - "`inactive`"
-  /// - "`pending`"
+  /// The status of the ?On display to order? feature. Acceptable values are: -
+  /// "`active`" - "`inactive`" - "`pending`"
   core.String status;
 
   LiaOnDisplayToOrderSettings();
@@ -10721,15 +12347,10 @@ class LiasettingsCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`get`"
-  /// - "`getAccessibleGmbAccounts`"
-  /// - "`requestGmbAccess`"
-  /// - "`requestInventoryVerification`"
-  /// - "`setInventoryVerificationContact`"
-  /// - "`update`"
+  /// The method of the batch entry. Acceptable values are: - "`get`" -
+  /// "`getAccessibleGmbAccounts`" - "`requestGmbAccess`" -
+  /// "`requestInventoryVerification`" - "`setInventoryVerificationContact`" -
+  /// "`update`"
   core.String method;
 
   /// The ID of POS data provider. Required only for SetPosProvider.
@@ -10858,7 +12479,7 @@ class LiasettingsCustomBatchResponseEntry {
   /// A list of errors defined if, and only if, the request failed.
   Errors errors;
 
-  /// The the list of accessible GMB accounts.
+  /// The list of accessible GMB accounts.
   GmbAccounts gmbAccounts;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -11138,20 +12759,13 @@ class LiasettingsSetPosDataProviderResponse {
 }
 
 class LinkService {
-  /// Service provided to or by the linked account.
-  ///
-  /// Acceptable values are:
-  /// - "`shoppingActionsOrderManagement`"
-  /// - "`shoppingActionsProductManagement`"
+  /// Service provided to or by the linked account. Acceptable values are: -
+  /// "`shoppingActionsOrderManagement`" - "`shoppingActionsProductManagement`"
   /// - "`shoppingAdsProductManagement`"
   core.String service;
 
-  /// Status of the link
-  ///
-  /// Acceptable values are:
-  /// - "`active`"
-  /// - "`inactive`"
-  /// - "`pending`"
+  /// Status of the link Acceptable values are: - "`active`" - "`inactive`" -
+  /// "`pending`"
   core.String status;
 
   LinkService();
@@ -11211,10 +12825,227 @@ class LinkedAccount {
   }
 }
 
+/// Response message for the `ListAccountLabels` method.
+class ListAccountLabelsResponse {
+  /// The labels from the specified account.
+  core.List<AccountLabel> accountLabels;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page. If
+  /// this field is omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  ListAccountLabelsResponse();
+
+  ListAccountLabelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("accountLabels")) {
+      accountLabels = (_json["accountLabels"] as core.List)
+          .map<AccountLabel>((value) => new AccountLabel.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountLabels != null) {
+      _json["accountLabels"] =
+          accountLabels.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// The response message for the `ListCsses` method
+class ListCssesResponse {
+  /// The CSS domains affiliated with the specified CSS group.
+  core.List<Css> csses;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page. If
+  /// this field is omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  ListCssesResponse();
+
+  ListCssesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("csses")) {
+      csses = (_json["csses"] as core.List)
+          .map<Css>((value) => new Css.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (csses != null) {
+      _json["csses"] = csses.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `ListRegions` method.
+class ListRegionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page. If
+  /// this field is omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  /// The regions from the specified merchant.
+  core.List<Region> regions;
+
+  ListRegionsResponse();
+
+  ListRegionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("regions")) {
+      regions = (_json["regions"] as core.List)
+          .map<Region>((value) => new Region.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (regions != null) {
+      _json["regions"] = regions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the ListRepricingProductReports method.
+class ListRepricingProductReportsResponse {
+  /// A token for retrieving the next page. Its absence means there is no
+  /// subsequent page.
+  core.String nextPageToken;
+
+  /// Periodic reports for the given Repricing product.
+  core.List<RepricingProductReport> repricingProductReports;
+
+  ListRepricingProductReportsResponse();
+
+  ListRepricingProductReportsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("repricingProductReports")) {
+      repricingProductReports = (_json["repricingProductReports"] as core.List)
+          .map<RepricingProductReport>(
+              (value) => new RepricingProductReport.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (repricingProductReports != null) {
+      _json["repricingProductReports"] =
+          repricingProductReports.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the ListRepricingRuleReports method.
+class ListRepricingRuleReportsResponse {
+  /// A token for retrieving the next page. Its absence means there is no
+  /// subsequent page.
+  core.String nextPageToken;
+
+  /// Daily reports for the given Repricing rule.
+  core.List<RepricingRuleReport> repricingRuleReports;
+
+  ListRepricingRuleReportsResponse();
+
+  ListRepricingRuleReportsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("repricingRuleReports")) {
+      repricingRuleReports = (_json["repricingRuleReports"] as core.List)
+          .map<RepricingRuleReport>(
+              (value) => new RepricingRuleReport.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (repricingRuleReports != null) {
+      _json["repricingRuleReports"] =
+          repricingRuleReports.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `ListRepricingRules` method.
+class ListRepricingRulesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page. If
+  /// this field is omitted, there are no subsequent pages.
+  core.String nextPageToken;
+
+  /// The rules from the specified merchant.
+  core.List<RepricingRule> repricingRules;
+
+  ListRepricingRulesResponse();
+
+  ListRepricingRulesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("repricingRules")) {
+      repricingRules = (_json["repricingRules"] as core.List)
+          .map<RepricingRule>((value) => new RepricingRule.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (repricingRules != null) {
+      _json["repricingRules"] =
+          repricingRules.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Local inventory resource. For accepted attribute values, see the local
 /// product inventory feed specification.
 class LocalInventory {
-  /// Availability of the product.
+  /// Availability of the product. For accepted attribute values, see the local
+  /// product inventory feed specification.
   core.String availability;
 
   /// In-store product location.
@@ -11225,11 +13056,14 @@ class LocalInventory {
   core.String kind;
 
   /// Supported pickup method for this offer. Unless the value is "not
-  /// supported", this field must be submitted together with `pickupSla`.
+  /// supported", this field must be submitted together with `pickupSla`. For
+  /// accepted attribute values, see the local product inventory feed //
+  /// specification.
   core.String pickupMethod;
 
   /// Expected date that an order will be ready for pickup relative to the order
-  /// date. Must be submitted together with `pickupMethod`.
+  /// date. Must be submitted together with `pickupMethod`. For accepted
+  /// attribute values, see the local product inventory feed specification.
   core.String pickupSla;
 
   /// Price of the product.
@@ -11357,10 +13191,7 @@ class LocalinventoryCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// Method of the batch request entry.
-  ///
-  /// Acceptable values are:
-  /// - "`insert`"
+  /// Method of the batch request entry. Acceptable values are: - "`insert`"
   core.String method;
 
   /// The ID of the product for which to update local inventory.
@@ -11672,14 +13503,8 @@ class MerchantOrderReturnItem {
   /// with invoice support.
   core.String shipmentUnitId;
 
-  /// State of the item.
-  ///
-  /// Acceptable values are:
-  /// - "`canceled`"
-  /// - "`new`"
-  /// - "`received`"
-  /// - "`refunded`"
-  /// - "`rejected`"
+  /// State of the item. Acceptable values are: - "`canceled`" - "`new`" -
+  /// "`received`" - "`refunded`" - "`rejected`"
   core.String state;
 
   MerchantOrderReturnItem();
@@ -11892,8 +13717,7 @@ class MonetaryAmount {
 }
 
 /// Order. Production access (all methods) requires the order manager role.
-/// Sandbox access does not. (== resource_for v2.orders ==) (== resource_for
-/// v2.1.orders ==)
+/// Sandbox access does not.
 class Order {
   /// Whether the order was acknowledged.
   core.bool acknowledged;
@@ -11934,13 +13758,8 @@ class Order {
   /// field across all lineItems and refunds.
   Price netTaxAmount;
 
-  /// The status of the payment.
-  ///
-  /// Acceptable values are:
-  /// - "`paymentCaptured`"
-  /// - "`paymentRejected`"
-  /// - "`paymentSecured`"
-  /// - "`pendingAuthorization`"
+  /// The status of the payment. Acceptable values are: - "`paymentCaptured`" -
+  /// "`paymentRejected`" - "`paymentSecured`" - "`pendingAuthorization`"
   core.String paymentStatus;
 
   /// Pickup details for shipments of type `pickup`.
@@ -11949,30 +13768,24 @@ class Order {
   /// The date when the order was placed, in ISO 8601 format.
   core.String placedDate;
 
-  /// Promotions associated with the order.
-  ///
-  /// To determine which promotions apply to which products, check the
-  /// `Promotions[].appliedItems[].lineItemId` field against the
-  /// `LineItems[].id` field for each promotion. If a promotion is applied to
-  /// more than 1 offerId, divide the discount value by the number of affected
-  /// offers to determine how much discount to apply to each offerId.
-  ///
-  /// Examples:
-  /// - To calculate price paid by the customer for a single line item including
-  /// the discount: For each promotion, subtract the
+  /// Promotions associated with the order. To determine which promotions apply
+  /// to which products, check the `Promotions[].appliedItems[].lineItemId`
+  /// field against the `LineItems[].id` field for each promotion. If a
+  /// promotion is applied to more than 1 offerId, divide the discount value by
+  /// the number of affected offers to determine how much discount to apply to
+  /// each offerId. Examples: 1. To calculate price paid by the customer for a
+  /// single line item including the discount: For each promotion, subtract the
   /// `LineItems[].adjustments[].priceAdjustment.value` amount from the
-  /// `LineItems[].Price.value`.
-  /// - To calculate price paid by the customer for a single line item including
-  /// the discount in case of multiple quantity: For each promotion, divide the
+  /// `LineItems[].Price.value`. 2. To calculate price paid by the customer for
+  /// a single line item including the discount in case of multiple quantity:
+  /// For each promotion, divide the
   /// `LineItems[].adjustments[].priceAdjustment.value` by the quantity of
   /// products then subtract the resulting value from the
-  /// `LineItems[].Product.Price.value` for each quantity item.
-  ///
-  /// Only 1 promotion can be applied to an offerId in a given order. To refund
-  /// an item which had a promotion applied to it, make sure to refund the
-  /// amount after first subtracting the promotion discount from the item price.
-  ///
-  /// More details about the program are here.
+  /// `LineItems[].Product.Price.value` for each quantity item. Only 1 promotion
+  /// can be applied to an offerId in a given order. To refund an item which had
+  /// a promotion applied to it, make sure to refund the amount after first
+  /// subtracting the promotion discount from the item price. More details about
+  /// the program are here.
   core.List<OrderPromotion> promotions;
 
   /// Refunds for the order.
@@ -11987,25 +13800,14 @@ class Order {
   /// The tax for the total shipping cost.
   Price shippingCostTax;
 
-  /// The status of the order.
-  ///
-  /// Acceptable values are:
-  /// - "`canceled`"
-  /// - "`delivered`"
-  /// - "`inProgress`"
-  /// - "`partiallyDelivered`"
-  /// - "`partiallyReturned`"
-  /// - "`partiallyShipped`"
-  /// - "`pendingShipment`"
-  /// - "`returned`"
-  /// - "`shipped`"
+  /// The status of the order. Acceptable values are: - "`canceled`" -
+  /// "`delivered`" - "`inProgress`" - "`partiallyDelivered`" -
+  /// "`partiallyReturned`" - "`partiallyShipped`" - "`pendingShipment`" -
+  /// "`returned`" - "`shipped`"
   core.String status;
 
-  /// The party responsible for collecting and remitting taxes.
-  ///
-  /// Acceptable values are:
-  /// - "`marketplaceFacilitator`"
-  /// - "`merchant`"
+  /// The party responsible for collecting and remitting taxes. Acceptable
+  /// values are: - "`marketplaceFacilitator`" - "`merchant`"
   core.String taxCollector;
 
   Order();
@@ -12171,10 +13973,7 @@ class OrderAddress {
   core.String country;
 
   /// Strings representing the lines of the printed label for mailing the order,
-  /// for example:
-  /// John Smith
-  /// 1600 Amphitheatre Parkway
-  /// Mountain View, CA, 94043
+  /// for example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043
   /// United States
   core.List<core.String> fullAddress;
 
@@ -12259,15 +14058,9 @@ class OrderAddress {
 }
 
 class OrderCancellation {
-  /// The actor that created the cancellation.
-  ///
-  /// Acceptable values are:
-  /// - "`customer`"
-  /// - "`googleBot`"
-  /// - "`googleCustomerService`"
-  /// - "`googlePayments`"
-  /// - "`googleSabre`"
-  /// - "`merchant`"
+  /// The actor that created the cancellation. Acceptable values are: -
+  /// "`customer`" - "`googleBot`" - "`googleCustomerService`" -
+  /// "`googlePayments`" - "`googleSabre`" - "`merchant`"
   core.String actor;
 
   /// Date on which the cancellation has been created, in ISO 8601 format.
@@ -12277,39 +14070,21 @@ class OrderCancellation {
   core.int quantity;
 
   /// The reason for the cancellation. Orders that are canceled with a
-  /// noInventory reason will lead to the removal of the product from Shopping
-  /// Actions until you make an update to that product. This will not affect
-  /// your Shopping ads.
-  ///
-  /// Acceptable values are:
-  /// - "`autoPostInternal`"
-  /// - "`autoPostInvalidBillingAddress`"
-  /// - "`autoPostNoInventory`"
-  /// - "`autoPostPriceError`"
-  /// - "`autoPostUndeliverableShippingAddress`"
-  /// - "`couponAbuse`"
-  /// - "`customerCanceled`"
-  /// - "`customerInitiatedCancel`"
-  /// - "`customerSupportRequested`"
-  /// - "`failToPushOrderGoogleError`"
-  /// - "`failToPushOrderMerchantError`"
-  /// - "`failToPushOrderMerchantFulfillmentError`"
-  /// - "`failToPushOrderToMerchant`"
-  /// - "`failToPushOrderToMerchantOutOfStock`"
-  /// - "`invalidCoupon`"
-  /// - "`malformedShippingAddress`"
-  /// - "`merchantDidNotShipOnTime`"
-  /// - "`noInventory`"
-  /// - "`orderTimeout`"
-  /// - "`other`"
-  /// - "`paymentAbuse`"
-  /// - "`paymentDeclined`"
-  /// - "`priceError`"
-  /// - "`returnRefundAbuse`"
-  /// - "`shippingPriceError`"
-  /// - "`taxError`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
+  /// noInventory reason will lead to the removal of the product from Buy on
+  /// Google until you make an update to that product. This will not affect your
+  /// Shopping ads. Acceptable values are: - "`autoPostInternal`" -
+  /// "`autoPostInvalidBillingAddress`" - "`autoPostNoInventory`" -
+  /// "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" -
+  /// "`couponAbuse`" - "`customerCanceled`" - "`customerInitiatedCancel`" -
+  /// "`customerSupportRequested`" - "`failToPushOrderGoogleError`" -
+  /// "`failToPushOrderMerchantError`" -
+  /// "`failToPushOrderMerchantFulfillmentError`" -
+  /// "`failToPushOrderToMerchant`" - "`failToPushOrderToMerchantOutOfStock`" -
+  /// "`invalidCoupon`" - "`malformedShippingAddress`" -
+  /// "`merchantDidNotShipOnTime`" - "`noInventory`" - "`orderTimeout`" -
+  /// "`other`" - "`paymentAbuse`" - "`paymentDeclined`" - "`priceError`" -
+  /// "`returnRefundAbuse`" - "`shippingPriceError`" - "`taxError`" -
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
   core.String reason;
 
   /// The explanation of the reason.
@@ -12363,8 +14138,8 @@ class OrderCustomer {
 
   /// Email address for the merchant to send value-added tax or invoice
   /// documentation of the order. Only the last document sent is made available
-  /// to the customer. For more information, see  About automated VAT invoicing
-  /// for Shopping Actions.
+  /// to the customer. For more information, see About automated VAT invoicing
+  /// for Buy on Google.
   core.String invoiceReceivingEmail;
 
   /// Loyalty program information.
@@ -12449,11 +14224,8 @@ class OrderCustomerMarketingRightsInfo {
   /// cases this selection might not be known, so this field would be empty. If
   /// a customer selected `granted` in their most recent order, they can be
   /// subscribed to marketing emails. Customers who have chosen `denied` must
-  /// not be subscribed, or must be unsubscribed if already opted-in.
-  ///
-  /// Acceptable values are:
-  /// - "`denied`"
-  /// - "`granted`"
+  /// not be subscribed, or must be unsubscribed if already opted-in. Acceptable
+  /// values are: - "`denied`" - "`granted`"
   core.String explicitMarketingPreference;
 
   /// Timestamp when last time marketing preference was updated. Could be empty,
@@ -12728,10 +14500,7 @@ class OrderLineItemAdjustment {
   /// Adjustment for total tax of the line item.
   Price taxAdjustment;
 
-  /// Type of this adjustment.
-  ///
-  /// Acceptable values are:
-  /// - "`promotion`"
+  /// Type of this adjustment. Acceptable values are: - "`promotion`"
   core.String type;
 
   OrderLineItemAdjustment();
@@ -12768,12 +14537,8 @@ class OrderLineItemProduct {
   /// Brand of the item.
   core.String brand;
 
-  /// Condition or state of the item.
-  ///
-  /// Acceptable values are:
-  /// - "`new`"
-  /// - "`refurbished`"
-  /// - "`used`"
+  /// Condition or state of the item. Acceptable values are: - "`new`" -
+  /// "`refurbished`" - "`used`"
   core.String condition;
 
   /// The two-letter ISO 639-1 language code for the item.
@@ -12806,7 +14571,7 @@ class OrderLineItemProduct {
   /// URL to the cached image shown to the user when order was placed.
   core.String shownImage;
 
-  /// The CLDR territory code of the target country of the product.
+  /// The CLDR territory // code of the target country of the product.
   core.String targetCountry;
 
   /// The title of the product.
@@ -13043,11 +14808,8 @@ class OrderLineItemShippingDetails {
   core.String shipByDate;
 
   /// Type of shipment. Indicates whether `deliveryDetails` or `pickupDetails`
-  /// is applicable for this shipment.
-  ///
-  /// Acceptable values are:
-  /// - "`delivery`"
-  /// - "`pickup`"
+  /// is applicable for this shipment. Acceptable values are: - "`delivery`" -
+  /// "`pickup`"
   core.String type;
 
   OrderLineItemShippingDetails();
@@ -13218,14 +14980,9 @@ class OrderPickupDetails {
   /// ID of the pickup location.
   core.String locationId;
 
-  /// The pickup type of this order.
-  ///
-  /// Acceptable values are:
-  /// - "`merchantStore`"
-  /// - "`merchantStoreCurbside`"
-  /// - "`merchantStoreLocker`"
-  /// - "`thirdPartyPickupPoint`"
-  /// - "`thirdPartyLocker`"
+  /// The pickup type of this order. Acceptable values are: - "`merchantStore`"
+  /// - "`merchantStoreCurbside`" - "`merchantStoreLocker`" -
+  /// "`thirdPartyPickupPoint`" - "`thirdPartyLocker`"
   core.String pickupType;
 
   OrderPickupDetails();
@@ -13316,11 +15073,8 @@ class OrderPromotion {
   core.String endTime;
 
   /// Required. The party funding the promotion. Only `merchant` is supported
-  /// for `orders.createtestorder`.
-  ///
-  /// Acceptable values are:
-  /// - "`google`"
-  /// - "`merchant`"
+  /// for `orders.createtestorder`. Acceptable values are: - "`google`" -
+  /// "`merchant`"
   core.String funder;
 
   /// Required. This field is used to identify promotions within merchants' own
@@ -13340,22 +15094,11 @@ class OrderPromotion {
   core.String startTime;
 
   /// Required. The category of the promotion. Only `moneyOff` is supported for
-  /// `orders.createtestorder`.
-  ///
-  /// Acceptable values are:
-  /// - "`buyMGetMoneyOff`"
-  /// - "`buyMGetNMoneyOff`"
-  /// - "`buyMGetNPercentOff`"
-  /// - "`buyMGetPercentOff`"
-  /// - "`freeGift`"
-  /// - "`freeGiftWithItemId`"
-  /// - "`freeGiftWithValue`"
-  /// - "`freeShippingOvernight`"
-  /// - "`freeShippingStandard`"
-  /// - "`freeShippingTwoDay`"
-  /// - "`moneyOff`"
-  /// - "`percentOff`"
-  /// - "`rewardPoints`"
+  /// `orders.createtestorder`. Acceptable values are: - "`buyMGetMoneyOff`" -
+  /// "`buyMGetNMoneyOff`" - "`buyMGetNPercentOff`" - "`buyMGetPercentOff`" -
+  /// "`freeGift`" - "`freeGiftWithItemId`" - "`freeGiftWithValue`" -
+  /// "`freeShippingOvernight`" - "`freeShippingStandard`" -
+  /// "`freeShippingTwoDay`" - "`moneyOff`" - "`percentOff`" - "`rewardPoints`"
   /// - "`salePrice`"
   core.String subtype;
 
@@ -13367,11 +15110,8 @@ class OrderPromotion {
   core.String title;
 
   /// Required. The scope of the promotion. Only `product` is supported for
-  /// `orders.createtestorder`.
-  ///
-  /// Acceptable values are:
-  /// - "`product`"
-  /// - "`shipping`"
+  /// `orders.createtestorder`. Acceptable values are: - "`product`" -
+  /// "`shipping`"
   core.String type;
 
   OrderPromotion();
@@ -13518,15 +15258,9 @@ class OrderPromotionItem {
 }
 
 class OrderRefund {
-  /// The actor that created the refund.
-  ///
-  /// Acceptable values are:
-  /// - "`customer`"
-  /// - "`googleBot`"
-  /// - "`googleCustomerService`"
-  /// - "`googlePayments`"
-  /// - "`googleSabre`"
-  /// - "`merchant`"
+  /// The actor that created the refund. Acceptable values are: - "`customer`" -
+  /// "`googleBot`" - "`googleCustomerService`" - "`googlePayments`" -
+  /// "`googleSabre`" - "`merchant`"
   core.String actor;
 
   /// The amount that is refunded.
@@ -13535,53 +15269,26 @@ class OrderRefund {
   /// Date on which the item has been created, in ISO 8601 format.
   core.String creationDate;
 
-  /// The reason for the refund.
-  ///
-  /// Acceptable values are:
-  /// - "`adjustment`"
-  /// - "`autoPostInternal`"
-  /// - "`autoPostInvalidBillingAddress`"
-  /// - "`autoPostNoInventory`"
-  /// - "`autoPostPriceError`"
-  /// - "`autoPostUndeliverableShippingAddress`"
-  /// - "`couponAbuse`"
-  /// - "`courtesyAdjustment`"
-  /// - "`customerCanceled`"
-  /// - "`customerDiscretionaryReturn`"
-  /// - "`customerInitiatedMerchantCancel`"
-  /// - "`customerSupportRequested`"
-  /// - "`deliveredLateByCarrier`"
-  /// - "`deliveredTooLate`"
-  /// - "`expiredItem`"
-  /// - "`failToPushOrderGoogleError`"
-  /// - "`failToPushOrderMerchantError`"
-  /// - "`failToPushOrderMerchantFulfillmentError`"
-  /// - "`failToPushOrderToMerchant`"
-  /// - "`failToPushOrderToMerchantOutOfStock`"
-  /// - "`feeAdjustment`"
-  /// - "`invalidCoupon`"
-  /// - "`lateShipmentCredit`"
-  /// - "`malformedShippingAddress`"
-  /// - "`merchantDidNotShipOnTime`"
-  /// - "`noInventory`"
-  /// - "`orderTimeout`"
-  /// - "`other`"
-  /// - "`paymentAbuse`"
-  /// - "`paymentDeclined`"
-  /// - "`priceAdjustment`"
-  /// - "`priceError`"
-  /// - "`productArrivedDamaged`"
-  /// - "`productNotAsDescribed`"
-  /// - "`promoReallocation`"
-  /// - "`qualityNotAsExpected`"
-  /// - "`returnRefundAbuse`"
-  /// - "`shippingCostAdjustment`"
-  /// - "`shippingPriceError`"
-  /// - "`taxAdjustment`"
-  /// - "`taxError`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
-  /// - "`wrongProductShipped`"
+  /// The reason for the refund. Acceptable values are: - "`adjustment`" -
+  /// "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
+  /// "`autoPostNoInventory`" - "`autoPostPriceError`" -
+  /// "`autoPostUndeliverableShippingAddress`" - "`couponAbuse`" -
+  /// "`courtesyAdjustment`" - "`customerCanceled`" -
+  /// "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+  /// "`customerSupportRequested`" - "`deliveredLateByCarrier`" -
+  /// "`deliveredTooLate`" - "`expiredItem`" - "`failToPushOrderGoogleError`" -
+  /// "`failToPushOrderMerchantError`" -
+  /// "`failToPushOrderMerchantFulfillmentError`" -
+  /// "`failToPushOrderToMerchant`" - "`failToPushOrderToMerchantOutOfStock`" -
+  /// "`feeAdjustment`" - "`invalidCoupon`" - "`lateShipmentCredit`" -
+  /// "`malformedShippingAddress`" - "`merchantDidNotShipOnTime`" -
+  /// "`noInventory`" - "`orderTimeout`" - "`other`" - "`paymentAbuse`" -
+  /// "`paymentDeclined`" - "`priceAdjustment`" - "`priceError`" -
+  /// "`productArrivedDamaged`" - "`productNotAsDescribed`" -
+  /// "`promoReallocation`" - "`qualityNotAsExpected`" - "`returnRefundAbuse`" -
+  /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" -
+  /// "`taxError`" - "`undeliverableShippingAddress`" -
+  /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
   core.String reason;
 
   /// The explanation of the reason.
@@ -13629,8 +15336,7 @@ class OrderRefund {
   }
 }
 
-/// Order disbursement. All methods require the payment analyst role. (==
-/// resource_for v2.orderreports ==) (== resource_for v2.1.orderreports ==)
+/// Order disbursement. All methods require the payment analyst role.
 class OrderReportDisbursement {
   /// The disbursement amount.
   Price disbursementAmount;
@@ -13784,15 +15490,9 @@ class OrderReportTransaction {
 }
 
 class OrderReturn {
-  /// The actor that created the refund.
-  ///
-  /// Acceptable values are:
-  /// - "`customer`"
-  /// - "`googleBot`"
-  /// - "`googleCustomerService`"
-  /// - "`googlePayments`"
-  /// - "`googleSabre`"
-  /// - "`merchant`"
+  /// The actor that created the refund. Acceptable values are: - "`customer`" -
+  /// "`googleBot`" - "`googleCustomerService`" - "`googlePayments`" -
+  /// "`googleSabre`" - "`merchant`"
   core.String actor;
 
   /// Date on which the item has been created, in ISO 8601 format.
@@ -13801,22 +15501,13 @@ class OrderReturn {
   /// Quantity that is returned.
   core.int quantity;
 
-  /// The reason for the return.
-  ///
-  /// Acceptable values are:
-  /// - "`customerDiscretionaryReturn`"
-  /// - "`customerInitiatedMerchantCancel`"
-  /// - "`deliveredTooLate`"
-  /// - "`expiredItem`"
-  /// - "`invalidCoupon`"
-  /// - "`malformedShippingAddress`"
-  /// - "`other`"
-  /// - "`productArrivedDamaged`"
-  /// - "`productNotAsDescribed`"
-  /// - "`qualityNotAsExpected`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
-  /// - "`wrongProductShipped`"
+  /// The reason for the return. Acceptable values are: -
+  /// "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+  /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" -
+  /// "`malformedShippingAddress`" - "`other`" - "`productArrivedDamaged`" -
+  /// "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" -
+  /// "`wrongProductShipped`"
   core.String reason;
 
   /// The explanation of the reason.
@@ -13865,60 +15556,35 @@ class OrderReturn {
 }
 
 class OrderShipment {
-  /// The carrier handling the shipment.
-  ///
-  /// For supported carriers, Google includes the carrier name and tracking URL
-  /// in emails to customers. For select supported carriers, Google also
-  /// automatically updates the shipment status based on the provided shipment
-  /// ID. Note: You can also use unsupported carriers, but emails to customers
-  /// will not include the carrier name or tracking URL, and there will be no
-  /// automatic order status updates.
-  /// Supported carriers for US are:
-  /// - "`ups`" (United Parcel Service) automatic status updates
-  /// - "`usps`" (United States Postal Service) automatic status updates
-  /// - "`fedex`" (FedEx) automatic status updates
-  /// - "`dhl`" (DHL eCommerce) automatic status updates (US only)
-  /// - "`ontrac`" (OnTrac) automatic status updates
-  /// - "`dhl express`" (DHL Express)
-  /// - "`deliv`" (Deliv)
-  /// - "`dynamex`" (TForce)
-  /// - "`lasership`" (LaserShip)
-  /// - "`mpx`" (Military Parcel Xpress)
-  /// - "`uds`" (United Delivery Service)
-  /// - "`efw`" (Estes Forwarding Worldwide)
-  /// - "`jd logistics`" (JD Logistics)
-  /// - "`yunexpress`" (YunExpress)
-  /// - "`china post`" (China Post)
-  /// - "`china ems`" (China Post Express Mail Service)
-  /// - "`singapore post`" (Singapore Post)
-  /// - "`pos malaysia`" (Pos Malaysia)
-  /// - "`postnl`" (PostNL)
-  /// - "`ptt`" (PTT Turkish Post)
-  /// - "`eub`" (ePacket)
-  /// - "`chukou1`" (Chukou1 Logistics)
-  /// - "`bestex`" (Best Express)
-  /// - "`canada post`" (Canada Post)
-  /// - "`purolator`" (Purolator)
-  /// - "`canpar`" (Canpar)
-  /// - "`india post`" (India Post)
-  /// - "`blue dart`" (Blue Dart)
-  /// - "`delhivery`" (Delhivery)
-  /// - "`dtdc`" (DTDC)
-  /// - "`tpc india`" (TPC India)
-  /// Supported carriers for FR are:
-  /// - "`la poste`" (La Poste) automatic status updates
-  /// - "`colissimo`" (Colissimo by La Poste) automatic status updates
-  /// - "`ups`" (United Parcel Service) automatic status updates
-  /// - "`chronopost`" (Chronopost by La Poste)
-  /// - "`gls`" (General Logistics Systems France)
-  /// - "`dpd`" (DPD Group by GeoPost)
-  /// - "`bpost`" (Belgian Post Group)
-  /// - "`colis prive`" (Colis Privé)
-  /// - "`boxtal`" (Boxtal)
-  /// - "`geodis`" (GEODIS)
-  /// - "`tnt`" (TNT)
-  /// - "`db schenker`" (DB Schenker)
-  /// - "`aramex`" (Aramex)
+  /// The carrier handling the shipment. For supported carriers, Google includes
+  /// the carrier name and tracking URL in emails to customers. For select
+  /// supported carriers, Google also automatically updates the shipment status
+  /// based on the provided shipment ID. *Note:* You can also use unsupported
+  /// carriers, but emails to customers will not include the carrier name or
+  /// tracking URL, and there will be no automatic order status updates.
+  /// Supported carriers for US are: - "`ups`" (United Parcel Service)
+  /// *automatic status updates* - "`usps`" (United States Postal Service)
+  /// *automatic status updates* - "`fedex`" (FedEx) *automatic status updates *
+  /// - "`dhl`" (DHL eCommerce) *automatic status updates* (US only) -
+  /// "`ontrac`" (OnTrac) *automatic status updates * - "`dhl express`" (DHL
+  /// Express) - "`deliv`" (Deliv) - "`dynamex`" (TForce) - "`lasership`"
+  /// (LaserShip) - "`mpx`" (Military Parcel Xpress) - "`uds`" (United Delivery
+  /// Service) - "`efw`" (Estes Forwarding Worldwide) - "`jd logistics`" (JD
+  /// Logistics) - "`yunexpress`" (YunExpress) - "`china post`" (China Post) -
+  /// "`china ems`" (China Post Express Mail Service) - "`singapore post`"
+  /// (Singapore Post) - "`pos malaysia`" (Pos Malaysia) - "`postnl`" (PostNL) -
+  /// "`ptt`" (PTT Turkish Post) - "`eub`" (ePacket) - "`chukou1`" (Chukou1
+  /// Logistics) - "`bestex`" (Best Express) - "`canada post`" (Canada Post) -
+  /// "`purolator`" (Purolator) - "`canpar`" (Canpar) - "`india post`" (India
+  /// Post) - "`blue dart`" (Blue Dart) - "`delhivery`" (Delhivery) - "`dtdc`"
+  /// (DTDC) - "`tpc india`" (TPC India) Supported carriers for FR are: - "`la
+  /// poste`" (La Poste) *automatic status updates * - "`colissimo`" (Colissimo
+  /// by La Poste) *automatic status updates* - "`ups`" (United Parcel Service)
+  /// *automatic status updates * - "`chronopost`" (Chronopost by La Poste) -
+  /// "`gls`" (General Logistics Systems France) - "`dpd`" (DPD Group by
+  /// GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`" (Colis Privé)
+  /// - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db
+  /// schenker`" (DB Schenker) - "`aramex`" (Aramex)
   core.String carrier;
 
   /// Date on which the shipment has been created, in ISO 8601 format.
@@ -13941,13 +15607,8 @@ class OrderShipment {
   /// request.
   core.String shipmentGroupId;
 
-  /// The status of the shipment.
-  ///
-  /// Acceptable values are:
-  /// - "`delivered`"
-  /// - "`readyForPickup`"
-  /// - "`shipped`"
-  /// - "`undeliverable`"
+  /// The status of the shipment. Acceptable values are: - "`delivered`" -
+  /// "`readyForPickup`" - "`shipped`" - "`undeliverable`"
   core.String status;
 
   /// The tracking ID for the shipment.
@@ -14099,6 +15760,368 @@ class OrderShipmentScheduledDeliveryDetails {
   }
 }
 
+/// Represents a merchant trade from which signals are extracted, e.g. shipping.
+class OrderTrackingSignal {
+  /// The shipping fee of the order; this value should be set to zero in the
+  /// case of free shipping.
+  PriceAmount customerShippingFee;
+
+  /// Required. The delivery postal code, as a continuous string without spaces
+  /// or dashes, e.g. "95016".
+  core.String deliveryPostalCode;
+
+  /// Required. The [CLDR territory code]
+  /// (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) for the
+  /// shipping destination.
+  core.String deliveryRegionCode;
+
+  /// Information about line items in the order.
+  core.List<OrderTrackingSignalLineItemDetails> lineItems;
+
+  /// The Google merchant ID of this order tracking signal. This value is
+  /// optional. If left unset, the caller's merchant ID is used. You must
+  /// request access in order to provide data on behalf of another merchant. For
+  /// more information, see [Submitting Order Tracking
+  /// Signals](/shopping-content/guides/order-tracking-signals).
+  core.String merchantId;
+
+  /// Required. The time when the order was created on the merchant side.
+  /// Include the year and timezone string, if available.
+  DateTime orderCreatedTime;
+
+  /// Required. The ID of the order on the merchant side.
+  core.String orderId;
+
+  /// Output only. The ID that uniquely identifies this order tracking signal.
+  core.String orderTrackingSignalId;
+
+  /// The mapping of the line items to the shipment information.
+  core.List<OrderTrackingSignalShipmentLineItemMapping> shipmentLineItemMapping;
+
+  /// The shipping information for the order.
+  core.List<OrderTrackingSignalShippingInfo> shippingInfo;
+
+  OrderTrackingSignal();
+
+  OrderTrackingSignal.fromJson(core.Map _json) {
+    if (_json.containsKey("customerShippingFee")) {
+      customerShippingFee =
+          new PriceAmount.fromJson(_json["customerShippingFee"]);
+    }
+    if (_json.containsKey("deliveryPostalCode")) {
+      deliveryPostalCode = _json["deliveryPostalCode"];
+    }
+    if (_json.containsKey("deliveryRegionCode")) {
+      deliveryRegionCode = _json["deliveryRegionCode"];
+    }
+    if (_json.containsKey("lineItems")) {
+      lineItems = (_json["lineItems"] as core.List)
+          .map<OrderTrackingSignalLineItemDetails>(
+              (value) => new OrderTrackingSignalLineItemDetails.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("merchantId")) {
+      merchantId = _json["merchantId"];
+    }
+    if (_json.containsKey("orderCreatedTime")) {
+      orderCreatedTime = new DateTime.fromJson(_json["orderCreatedTime"]);
+    }
+    if (_json.containsKey("orderId")) {
+      orderId = _json["orderId"];
+    }
+    if (_json.containsKey("orderTrackingSignalId")) {
+      orderTrackingSignalId = _json["orderTrackingSignalId"];
+    }
+    if (_json.containsKey("shipmentLineItemMapping")) {
+      shipmentLineItemMapping = (_json["shipmentLineItemMapping"] as core.List)
+          .map<OrderTrackingSignalShipmentLineItemMapping>((value) =>
+              new OrderTrackingSignalShipmentLineItemMapping.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("shippingInfo")) {
+      shippingInfo = (_json["shippingInfo"] as core.List)
+          .map<OrderTrackingSignalShippingInfo>(
+              (value) => new OrderTrackingSignalShippingInfo.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customerShippingFee != null) {
+      _json["customerShippingFee"] = (customerShippingFee).toJson();
+    }
+    if (deliveryPostalCode != null) {
+      _json["deliveryPostalCode"] = deliveryPostalCode;
+    }
+    if (deliveryRegionCode != null) {
+      _json["deliveryRegionCode"] = deliveryRegionCode;
+    }
+    if (lineItems != null) {
+      _json["lineItems"] = lineItems.map((value) => (value).toJson()).toList();
+    }
+    if (merchantId != null) {
+      _json["merchantId"] = merchantId;
+    }
+    if (orderCreatedTime != null) {
+      _json["orderCreatedTime"] = (orderCreatedTime).toJson();
+    }
+    if (orderId != null) {
+      _json["orderId"] = orderId;
+    }
+    if (orderTrackingSignalId != null) {
+      _json["orderTrackingSignalId"] = orderTrackingSignalId;
+    }
+    if (shipmentLineItemMapping != null) {
+      _json["shipmentLineItemMapping"] =
+          shipmentLineItemMapping.map((value) => (value).toJson()).toList();
+    }
+    if (shippingInfo != null) {
+      _json["shippingInfo"] =
+          shippingInfo.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The line items of the order.
+class OrderTrackingSignalLineItemDetails {
+  /// The Global Trade Item Number.
+  core.String gtin;
+
+  /// Required. The ID for this line item.
+  core.String lineItemId;
+
+  /// The manufacturer part number.
+  core.String mpn;
+
+  /// Required. The Content API REST ID of the product, in the form
+  /// channel:contentLanguage:targetCountry:offerId.
+  core.String productId;
+
+  /// Required. The quantity of the line item in the order.
+  core.String quantity;
+
+  OrderTrackingSignalLineItemDetails();
+
+  OrderTrackingSignalLineItemDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("gtin")) {
+      gtin = _json["gtin"];
+    }
+    if (_json.containsKey("lineItemId")) {
+      lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("mpn")) {
+      mpn = _json["mpn"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (gtin != null) {
+      _json["gtin"] = gtin;
+    }
+    if (lineItemId != null) {
+      _json["lineItemId"] = lineItemId;
+    }
+    if (mpn != null) {
+      _json["mpn"] = mpn;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
+    }
+    return _json;
+  }
+}
+
+/// Represents how many items are in the shipment for the given shipment_id and
+/// line_item_id.
+class OrderTrackingSignalShipmentLineItemMapping {
+  /// Required. The line item ID.
+  core.String lineItemId;
+
+  /// Required. The line item quantity in the shipment.
+  core.String quantity;
+
+  /// Required. The shipment ID.
+  core.String shipmentId;
+
+  OrderTrackingSignalShipmentLineItemMapping();
+
+  OrderTrackingSignalShipmentLineItemMapping.fromJson(core.Map _json) {
+    if (_json.containsKey("lineItemId")) {
+      lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
+    }
+    if (_json.containsKey("shipmentId")) {
+      shipmentId = _json["shipmentId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lineItemId != null) {
+      _json["lineItemId"] = lineItemId;
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
+    }
+    if (shipmentId != null) {
+      _json["shipmentId"] = shipmentId;
+    }
+    return _json;
+  }
+}
+
+/// The shipping information for the order.
+class OrderTrackingSignalShippingInfo {
+  /// The time when the shipment was actually delivered. Include the year and
+  /// timezone string, if available. This field is required, if one of the
+  /// following fields is absent: tracking_id or carrier_name.
+  DateTime actualDeliveryTime;
+
+  /// The name of the shipping carrier for the delivery. This field is required
+  /// if one of the following fields is absent: earliest_delivery_promise_time,
+  /// latest_delivery_promise_time, and actual_delivery_time.
+  core.String carrierName;
+
+  /// The service type for fulfillment, e.g., GROUND, FIRST_CLASS, etc.
+  core.String carrierServiceName;
+
+  /// The earliest delivery promised time. Include the year and timezone string,
+  /// if available. This field is required, if one of the following fields is
+  /// absent: tracking_id or carrier_name.
+  DateTime earliestDeliveryPromiseTime;
+
+  /// The latest delivery promised time. Include the year and timezone string,
+  /// if available. This field is required, if one of the following fields is
+  /// absent: tracking_id or carrier_name.
+  DateTime latestDeliveryPromiseTime;
+
+  /// The origin postal code, as a continuous string without spaces or dashes,
+  /// e.g. "95016".
+  core.String originPostalCode;
+
+  /// The [CLDR territory code]
+  /// (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) for the
+  /// shipping origin.
+  core.String originRegionCode;
+
+  /// Required. The shipment ID.
+  core.String shipmentId;
+
+  /// The time when the shipment was shipped. Include the year and timezone
+  /// string, if available.
+  DateTime shippedTime;
+
+  /// The status of the shipment.
+  /// Possible string values are:
+  /// - "SHIPPING_STATE_UNSPECIFIED" : The shipping status is not known to
+  /// merchant.
+  /// - "SHIPPED" : All items are shipped.
+  /// - "DELIVERED" : The shipment is already delivered.
+  core.String shippingStatus;
+
+  /// The tracking ID of the shipment. This field is required if one of the
+  /// following fields is absent: earliest_delivery_promise_time,
+  /// latest_delivery_promise_time, and actual_delivery_time.
+  core.String trackingId;
+
+  OrderTrackingSignalShippingInfo();
+
+  OrderTrackingSignalShippingInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("actualDeliveryTime")) {
+      actualDeliveryTime = new DateTime.fromJson(_json["actualDeliveryTime"]);
+    }
+    if (_json.containsKey("carrierName")) {
+      carrierName = _json["carrierName"];
+    }
+    if (_json.containsKey("carrierServiceName")) {
+      carrierServiceName = _json["carrierServiceName"];
+    }
+    if (_json.containsKey("earliestDeliveryPromiseTime")) {
+      earliestDeliveryPromiseTime =
+          new DateTime.fromJson(_json["earliestDeliveryPromiseTime"]);
+    }
+    if (_json.containsKey("latestDeliveryPromiseTime")) {
+      latestDeliveryPromiseTime =
+          new DateTime.fromJson(_json["latestDeliveryPromiseTime"]);
+    }
+    if (_json.containsKey("originPostalCode")) {
+      originPostalCode = _json["originPostalCode"];
+    }
+    if (_json.containsKey("originRegionCode")) {
+      originRegionCode = _json["originRegionCode"];
+    }
+    if (_json.containsKey("shipmentId")) {
+      shipmentId = _json["shipmentId"];
+    }
+    if (_json.containsKey("shippedTime")) {
+      shippedTime = new DateTime.fromJson(_json["shippedTime"]);
+    }
+    if (_json.containsKey("shippingStatus")) {
+      shippingStatus = _json["shippingStatus"];
+    }
+    if (_json.containsKey("trackingId")) {
+      trackingId = _json["trackingId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (actualDeliveryTime != null) {
+      _json["actualDeliveryTime"] = (actualDeliveryTime).toJson();
+    }
+    if (carrierName != null) {
+      _json["carrierName"] = carrierName;
+    }
+    if (carrierServiceName != null) {
+      _json["carrierServiceName"] = carrierServiceName;
+    }
+    if (earliestDeliveryPromiseTime != null) {
+      _json["earliestDeliveryPromiseTime"] =
+          (earliestDeliveryPromiseTime).toJson();
+    }
+    if (latestDeliveryPromiseTime != null) {
+      _json["latestDeliveryPromiseTime"] = (latestDeliveryPromiseTime).toJson();
+    }
+    if (originPostalCode != null) {
+      _json["originPostalCode"] = originPostalCode;
+    }
+    if (originRegionCode != null) {
+      _json["originRegionCode"] = originRegionCode;
+    }
+    if (shipmentId != null) {
+      _json["shipmentId"] = shipmentId;
+    }
+    if (shippedTime != null) {
+      _json["shippedTime"] = (shippedTime).toJson();
+    }
+    if (shippingStatus != null) {
+      _json["shippingStatus"] = shippingStatus;
+    }
+    if (trackingId != null) {
+      _json["trackingId"] = trackingId;
+    }
+    return _json;
+  }
+}
+
 class OrderinvoicesCreateChargeInvoiceRequest {
   /// [required] The ID of the invoice.
   core.String invoiceId;
@@ -14165,11 +16188,8 @@ class OrderinvoicesCreateChargeInvoiceRequest {
 }
 
 class OrderinvoicesCreateChargeInvoiceResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -14272,11 +16292,8 @@ class OrderinvoicesCreateRefundInvoiceRequest {
 }
 
 class OrderinvoicesCreateRefundInvoiceResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -14311,53 +16328,26 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
   /// Optional description of the refund reason.
   core.String description;
 
-  /// [required] Reason for the refund.
-  ///
-  /// Acceptable values are:
-  /// - "`adjustment`"
-  /// - "`autoPostInternal`"
-  /// - "`autoPostInvalidBillingAddress`"
-  /// - "`autoPostNoInventory`"
-  /// - "`autoPostPriceError`"
-  /// - "`autoPostUndeliverableShippingAddress`"
-  /// - "`couponAbuse`"
-  /// - "`courtesyAdjustment`"
-  /// - "`customerCanceled`"
-  /// - "`customerDiscretionaryReturn`"
-  /// - "`customerInitiatedMerchantCancel`"
-  /// - "`customerSupportRequested`"
-  /// - "`deliveredLateByCarrier`"
-  /// - "`deliveredTooLate`"
-  /// - "`expiredItem`"
-  /// - "`failToPushOrderGoogleError`"
-  /// - "`failToPushOrderMerchantError`"
-  /// - "`failToPushOrderMerchantFulfillmentError`"
-  /// - "`failToPushOrderToMerchant`"
-  /// - "`failToPushOrderToMerchantOutOfStock`"
-  /// - "`feeAdjustment`"
-  /// - "`invalidCoupon`"
-  /// - "`lateShipmentCredit`"
-  /// - "`malformedShippingAddress`"
-  /// - "`merchantDidNotShipOnTime`"
-  /// - "`noInventory`"
-  /// - "`orderTimeout`"
-  /// - "`other`"
-  /// - "`paymentAbuse`"
-  /// - "`paymentDeclined`"
-  /// - "`priceAdjustment`"
-  /// - "`priceError`"
-  /// - "`productArrivedDamaged`"
-  /// - "`productNotAsDescribed`"
-  /// - "`promoReallocation`"
-  /// - "`qualityNotAsExpected`"
-  /// - "`returnRefundAbuse`"
-  /// - "`shippingCostAdjustment`"
-  /// - "`shippingPriceError`"
-  /// - "`taxAdjustment`"
-  /// - "`taxError`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
-  /// - "`wrongProductShipped`"
+  /// [required] Reason for the refund. Acceptable values are: - "`adjustment`"
+  /// - "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
+  /// "`autoPostNoInventory`" - "`autoPostPriceError`" -
+  /// "`autoPostUndeliverableShippingAddress`" - "`couponAbuse`" -
+  /// "`courtesyAdjustment`" - "`customerCanceled`" -
+  /// "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+  /// "`customerSupportRequested`" - "`deliveredLateByCarrier`" -
+  /// "`deliveredTooLate`" - "`expiredItem`" - "`failToPushOrderGoogleError`" -
+  /// "`failToPushOrderMerchantError`" -
+  /// "`failToPushOrderMerchantFulfillmentError`" -
+  /// "`failToPushOrderToMerchant`" - "`failToPushOrderToMerchantOutOfStock`" -
+  /// "`feeAdjustment`" - "`invalidCoupon`" - "`lateShipmentCredit`" -
+  /// "`malformedShippingAddress`" - "`merchantDidNotShipOnTime`" -
+  /// "`noInventory`" - "`orderTimeout`" - "`other`" - "`paymentAbuse`" -
+  /// "`paymentDeclined`" - "`priceAdjustment`" - "`priceError`" -
+  /// "`productArrivedDamaged`" - "`productNotAsDescribed`" -
+  /// "`promoReallocation`" - "`qualityNotAsExpected`" - "`returnRefundAbuse`" -
+  /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" -
+  /// "`taxError`" - "`undeliverableShippingAddress`" -
+  /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
   core.String reason;
 
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption();
@@ -14389,22 +16379,13 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
   /// Optional description of the return reason.
   core.String description;
 
-  /// [required] Reason for the return.
-  ///
-  /// Acceptable values are:
-  /// - "`customerDiscretionaryReturn`"
-  /// - "`customerInitiatedMerchantCancel`"
-  /// - "`deliveredTooLate`"
-  /// - "`expiredItem`"
-  /// - "`invalidCoupon`"
-  /// - "`malformedShippingAddress`"
-  /// - "`other`"
-  /// - "`productArrivedDamaged`"
-  /// - "`productNotAsDescribed`"
-  /// - "`qualityNotAsExpected`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
-  /// - "`wrongProductShipped`"
+  /// [required] Reason for the return. Acceptable values are: -
+  /// "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+  /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" -
+  /// "`malformedShippingAddress`" - "`other`" - "`productArrivedDamaged`" -
+  /// "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" -
+  /// "`wrongProductShipped`"
   core.String reason;
 
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption();
@@ -14546,11 +16527,8 @@ class OrderreturnsAcknowledgeRequest {
 }
 
 class OrderreturnsAcknowledgeResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -14634,11 +16612,8 @@ class OrderreturnsCreateOrderReturnRequest {
 }
 
 class OrderreturnsCreateOrderReturnResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -14841,11 +16816,8 @@ class OrderreturnsProcessRequest {
 }
 
 class OrderreturnsProcessResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -15036,11 +17008,8 @@ class OrdersAcknowledgeRequest {
 }
 
 class OrdersAcknowledgeResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -15109,19 +17078,11 @@ class OrdersCancelLineItemRequest {
   /// The quantity to cancel.
   core.int quantity;
 
-  /// The reason for the cancellation.
-  ///
-  /// Acceptable values are:
-  /// - "`customerInitiatedCancel`"
-  /// - "`invalidCoupon`"
-  /// - "`malformedShippingAddress`"
-  /// - "`noInventory`"
-  /// - "`other`"
-  /// - "`priceError`"
-  /// - "`shippingPriceError`"
-  /// - "`taxError`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
+  /// The reason for the cancellation. Acceptable values are: -
+  /// "`customerInitiatedCancel`" - "`invalidCoupon`" -
+  /// "`malformedShippingAddress`" - "`noInventory`" - "`other`" -
+  /// "`priceError`" - "`shippingPriceError`" - "`taxError`" -
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
   core.String reason;
 
   /// The explanation of the reason.
@@ -15176,11 +17137,8 @@ class OrdersCancelLineItemRequest {
 }
 
 class OrdersCancelLineItemResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -15215,19 +17173,11 @@ class OrdersCancelRequest {
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
 
-  /// The reason for the cancellation.
-  ///
-  /// Acceptable values are:
-  /// - "`customerInitiatedCancel`"
-  /// - "`invalidCoupon`"
-  /// - "`malformedShippingAddress`"
-  /// - "`noInventory`"
-  /// - "`other`"
-  /// - "`priceError`"
-  /// - "`shippingPriceError`"
-  /// - "`taxError`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
+  /// The reason for the cancellation. Acceptable values are: -
+  /// "`customerInitiatedCancel`" - "`invalidCoupon`" -
+  /// "`malformedShippingAddress`" - "`noInventory`" - "`other`" -
+  /// "`priceError`" - "`shippingPriceError`" - "`taxError`" -
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
   core.String reason;
 
   /// The explanation of the reason.
@@ -15264,11 +17214,8 @@ class OrdersCancelRequest {
 }
 
 class OrdersCancelResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -15300,12 +17247,8 @@ class OrdersCancelResponse {
 }
 
 class OrdersCancelTestOrderByCustomerRequest {
-  /// The reason for the cancellation.
-  ///
-  /// Acceptable values are:
-  /// - "`changedMind`"
-  /// - "`orderedWrongItem`"
-  /// - "`other`"
+  /// The reason for the cancellation. Acceptable values are: - "`changedMind`"
+  /// - "`orderedWrongItem`" - "`other`"
   core.String reason;
 
   OrdersCancelTestOrderByCustomerRequest();
@@ -15350,25 +17293,16 @@ class OrdersCancelTestOrderByCustomerResponse {
 }
 
 class OrdersCreateTestOrderRequest {
-  /// The  CLDR territory code of the country of the test order to create.
+  /// The CLDR territory code of the country of the test order to create.
   /// Affects the currency and addresses of orders created via `template_name`,
-  /// or the addresses of orders created via `test_order`.
-  ///
-  /// Acceptable values are:
-  /// - "`US`"
-  /// - "`FR`"  Defaults to `US`.
+  /// or the addresses of orders created via `test_order`. Acceptable values
+  /// are: - "`US`" - "`FR`" Defaults to `US`.
   core.String country;
 
   /// The test order template to use. Specify as an alternative to `testOrder`
   /// as a shortcut for retrieving a template and then creating an order using
-  /// that template.
-  ///
-  /// Acceptable values are:
-  /// - "`template1`"
-  /// - "`template1a`"
-  /// - "`template1b`"
-  /// - "`template2`"
-  /// - "`template3`"
+  /// that template. Acceptable values are: - "`template1`" - "`template1a`" -
+  /// "`template1b`" - "`template2`" - "`template3`"
   core.String templateName;
 
   /// The test order to create.
@@ -15624,8 +17558,8 @@ class OrdersCustomBatchRequestEntryRefundItemShipping {
 }
 
 class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
-  /// The carrier handling the shipment. See `shipments[].carrier` in the
-  /// Orders resource representation for a list of acceptable values.
+  /// The carrier handling the shipment. See `shipments[].carrier` in the Orders
+  /// resource representation for a list of acceptable values.
   core.String carrier;
 
   /// Required. The ID of the shipment. This is assigned by the merchant and is
@@ -15661,6 +17595,40 @@ class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
     }
     if (trackingId != null) {
       _json["trackingId"] = trackingId;
+    }
+    return _json;
+  }
+}
+
+/// ScheduledDeliveryDetails used to update the scheduled delivery order.
+class OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails {
+  /// The phone number of the carrier fulfilling the delivery. The phone number
+  /// should be formatted as the international notation in
+  core.String carrierPhoneNumber;
+
+  /// The date a shipment is scheduled for delivery, in ISO 8601 format.
+  core.String scheduledDate;
+
+  OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails();
+
+  OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("carrierPhoneNumber")) {
+      carrierPhoneNumber = _json["carrierPhoneNumber"];
+    }
+    if (_json.containsKey("scheduledDate")) {
+      scheduledDate = _json["scheduledDate"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (carrierPhoneNumber != null) {
+      _json["carrierPhoneNumber"] = carrierPhoneNumber;
+    }
+    if (scheduledDate != null) {
+      _json["scheduledDate"] = scheduledDate;
     }
     return _json;
   }
@@ -15749,22 +17717,13 @@ class OrdersInStoreRefundLineItemRequest {
   /// The quantity to return and refund.
   core.int quantity;
 
-  /// The reason for the return.
-  ///
-  /// Acceptable values are:
-  /// - "`customerDiscretionaryReturn`"
-  /// - "`customerInitiatedMerchantCancel`"
-  /// - "`deliveredTooLate`"
-  /// - "`expiredItem`"
-  /// - "`invalidCoupon`"
-  /// - "`malformedShippingAddress`"
-  /// - "`other`"
-  /// - "`productArrivedDamaged`"
-  /// - "`productNotAsDescribed`"
-  /// - "`qualityNotAsExpected`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
-  /// - "`wrongProductShipped`"
+  /// The reason for the return. Acceptable values are: -
+  /// "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+  /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" -
+  /// "`malformedShippingAddress`" - "`other`" - "`productArrivedDamaged`" -
+  /// "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" -
+  /// "`wrongProductShipped`"
   core.String reason;
 
   /// The explanation of the reason.
@@ -15834,11 +17793,8 @@ class OrdersInStoreRefundLineItemRequest {
 }
 
 class OrdersInStoreRefundLineItemResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -15918,23 +17874,13 @@ class OrdersRefundItemRequest {
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
 
-  /// The reason for the refund.
-  ///
-  /// Acceptable values are:
-  /// - "`shippingCostAdjustment`"
-  /// - "`priceAdjustment`"
-  /// - "`taxAdjustment`"
-  /// - "`feeAdjustment`"
-  /// - "`courtesyAdjustment`"
-  /// - "`adjustment`"
-  /// - "`customerCancelled`"
-  /// - "`noInventory`"
-  /// - "`productNotAsDescribed`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`wrongProductShipped`"
-  /// - "`lateShipmentCredit`"
-  /// - "`deliveredLateByCarrier`"
-  /// - "`productArrivedDamaged`"
+  /// The reason for the refund. Acceptable values are: -
+  /// "`shippingCostAdjustment`" - "`priceAdjustment`" - "`taxAdjustment`" -
+  /// "`feeAdjustment`" - "`courtesyAdjustment`" - "`adjustment`" -
+  /// "`customerCancelled`" - "`noInventory`" - "`productNotAsDescribed`" -
+  /// "`undeliverableShippingAddress`" - "`wrongProductShipped`" -
+  /// "`lateShipmentCredit`" - "`deliveredLateByCarrier`" -
+  /// "`productArrivedDamaged`"
   core.String reason;
 
   /// The explanation of the reason.
@@ -15991,11 +17937,8 @@ class OrdersRefundItemRequest {
 }
 
 class OrdersRefundItemResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16038,10 +17981,7 @@ class OrdersRefundOrderRequest {
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
 
-  /// The reason for the refund.
-  ///
-  /// Acceptable values are:
-  /// - "`courtesyAdjustment`"
+  /// The reason for the refund. Acceptable values are: - "`courtesyAdjustment`"
   /// - "`other`"
   core.String reason;
 
@@ -16091,11 +18031,8 @@ class OrdersRefundOrderRequest {
 }
 
 class OrdersRefundOrderResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16141,14 +18078,8 @@ class OrdersRejectReturnLineItemRequest {
   /// The quantity to return and refund.
   core.int quantity;
 
-  /// The reason for the return.
-  ///
-  /// Acceptable values are:
-  /// - "`damagedOrUsed`"
-  /// - "`missingComponent`"
-  /// - "`notEligible`"
-  /// - "`other`"
-  /// - "`outOfReturnWindow`"
+  /// The reason for the return. Acceptable values are: - "`damagedOrUsed`" -
+  /// "`missingComponent`" - "`notEligible`" - "`other`" - "`outOfReturnWindow`"
   core.String reason;
 
   /// The explanation of the reason.
@@ -16203,11 +18134,8 @@ class OrdersRejectReturnLineItemRequest {
 }
 
 class OrdersRejectReturnLineItemResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16257,22 +18185,13 @@ class OrdersReturnRefundLineItemRequest {
   /// The quantity to return and refund.
   core.int quantity;
 
-  /// The reason for the return.
-  ///
-  /// Acceptable values are:
-  /// - "`customerDiscretionaryReturn`"
-  /// - "`customerInitiatedMerchantCancel`"
-  /// - "`deliveredTooLate`"
-  /// - "`expiredItem`"
-  /// - "`invalidCoupon`"
-  /// - "`malformedShippingAddress`"
-  /// - "`other`"
-  /// - "`productArrivedDamaged`"
-  /// - "`productNotAsDescribed`"
-  /// - "`qualityNotAsExpected`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
-  /// - "`wrongProductShipped`"
+  /// The reason for the return. Acceptable values are: -
+  /// "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+  /// "`deliveredTooLate`" - "`expiredItem`" - "`invalidCoupon`" -
+  /// "`malformedShippingAddress`" - "`other`" - "`productArrivedDamaged`" -
+  /// "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
+  /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" -
+  /// "`wrongProductShipped`"
   core.String reason;
 
   /// The explanation of the reason.
@@ -16343,11 +18262,8 @@ class OrdersReturnRefundLineItemRequest {
 }
 
 class OrdersReturnRefundLineItemResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16433,11 +18349,8 @@ class OrdersSetLineItemMetadataRequest {
 }
 
 class OrdersSetLineItemMetadataResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16530,11 +18443,8 @@ class OrdersShipLineItemsRequest {
 }
 
 class OrdersShipLineItemsResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16567,10 +18477,8 @@ class OrdersShipLineItemsResponse {
 
 class OrdersUpdateLineItemShippingDetailsRequest {
   /// Updated delivery by date, in ISO 8601 format. If not specified only ship
-  /// by date is updated.
-  ///
-  /// Provided date should be within 1 year timeframe and can not be a date in
-  /// the past.
+  /// by date is updated. Provided date should be within 1 year timeframe and
+  /// can not be a date in the past.
   core.String deliverByDate;
 
   /// The ID of the line item to set metadata. Either lineItemId or productId is
@@ -16585,10 +18493,8 @@ class OrdersUpdateLineItemShippingDetailsRequest {
   core.String productId;
 
   /// Updated ship by date, in ISO 8601 format. If not specified only deliver by
-  /// date is updated.
-  ///
-  /// Provided date should be within 1 year timeframe and can not be a date in
-  /// the past.
+  /// date is updated. Provided date should be within 1 year timeframe and can
+  /// not be a date in the past.
   core.String shipByDate;
 
   OrdersUpdateLineItemShippingDetailsRequest();
@@ -16634,11 +18540,8 @@ class OrdersUpdateLineItemShippingDetailsRequest {
 }
 
 class OrdersUpdateLineItemShippingDetailsResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16702,11 +18605,8 @@ class OrdersUpdateMerchantOrderIdRequest {
 }
 
 class OrdersUpdateMerchantOrderIdResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16739,7 +18639,7 @@ class OrdersUpdateMerchantOrderIdResponse {
 
 class OrdersUpdateShipmentRequest {
   /// The carrier handling the shipment. Not updated if missing. See
-  /// `shipments[].carrier` in the  Orders resource representation for a list of
+  /// `shipments[].carrier` in the Orders resource representation for a list of
   /// acceptable values.
   core.String carrier;
 
@@ -16759,15 +18659,15 @@ class OrdersUpdateShipmentRequest {
   /// Optional and can be provided only if `status` is `ready for pickup`.
   core.String readyPickupDate;
 
+  /// Delivery details of the shipment if scheduling is needed.
+  OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails
+      scheduledDeliveryDetails;
+
   /// The ID of the shipment.
   core.String shipmentId;
 
-  /// New status for the shipment. Not updated if missing.
-  ///
-  /// Acceptable values are:
-  /// - "`delivered`"
-  /// - "`undeliverable`"
-  /// - "`readyForPickup`"
+  /// New status for the shipment. Not updated if missing. Acceptable values
+  /// are: - "`delivered`" - "`undeliverable`" - "`readyForPickup`"
   core.String status;
 
   /// The tracking ID for the shipment. Not updated if missing.
@@ -16794,6 +18694,11 @@ class OrdersUpdateShipmentRequest {
     }
     if (_json.containsKey("readyPickupDate")) {
       readyPickupDate = _json["readyPickupDate"];
+    }
+    if (_json.containsKey("scheduledDeliveryDetails")) {
+      scheduledDeliveryDetails =
+          new OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails
+              .fromJson(_json["scheduledDeliveryDetails"]);
     }
     if (_json.containsKey("shipmentId")) {
       shipmentId = _json["shipmentId"];
@@ -16827,6 +18732,9 @@ class OrdersUpdateShipmentRequest {
     if (readyPickupDate != null) {
       _json["readyPickupDate"] = readyPickupDate;
     }
+    if (scheduledDeliveryDetails != null) {
+      _json["scheduledDeliveryDetails"] = (scheduledDeliveryDetails).toJson();
+    }
     if (shipmentId != null) {
       _json["shipmentId"] = shipmentId;
     }
@@ -16844,11 +18752,8 @@ class OrdersUpdateShipmentRequest {
 }
 
 class OrdersUpdateShipmentResponse {
-  /// The status of the execution.
-  ///
-  /// Acceptable values are:
-  /// - "`duplicate`"
-  /// - "`executed`"
+  /// The status of the execution. Acceptable values are: - "`duplicate`" -
+  /// "`executed`"
   core.String executionStatus;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -16979,29 +18884,27 @@ class PosCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int batchId;
 
-  /// The inventory to submit. Set this only if the method is `inventory`.
+  /// The inventory to submit. This should be set only if the method is
+  /// `inventory`.
   PosInventory inventory;
 
   /// The ID of the POS data provider.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`delete`"
-  /// - "`get`"
-  /// - "`insert`"
-  /// - "`inventory`"
-  /// - "`sale`"
+  /// The method of the batch entry. Acceptable values are: - "`delete`" -
+  /// "`get`" - "`insert`" - "`inventory`" - "`sale`"
   core.String method;
 
-  /// The sale information to submit. Set this only if the method is `sale`.
+  /// The sale information to submit. This should be set only if the method is
+  /// `sale`.
   PosSale sale;
 
-  /// The store information to submit. Set this only if the method is `insert`.
+  /// The store information to submit. This should be set only if the method is
+  /// `insert`.
   PosStore store;
 
-  /// The store code. Set this only if the method is `delete` or `get`.
+  /// The store code. This should be set only if the method is `delete` or
+  /// `get`.
   core.String storeCode;
 
   /// The ID of the account for which to get/submit data.
@@ -18021,13 +19924,42 @@ class Price {
   }
 }
 
+/// The price represented as a number and currency.
+class PriceAmount {
+  /// The currency of the price.
+  core.String currency;
+
+  /// The price represented as a number.
+  core.String value;
+
+  PriceAmount();
+
+  PriceAmount.fromJson(core.Map _json) {
+    if (_json.containsKey("currency")) {
+      currency = _json["currency"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (currency != null) {
+      _json["currency"] = currency;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// Required product attributes are primarily defined by the products data
-/// specification. See the  Products Data Specification Help Center article for
-/// information.
-///
-/// Some attributes are country-specific, so make sure you select the
-/// appropriate country in the drop-down selector at the top of the page.
-///
+/// specification. See the Products Data Specification Help Center article for
+/// information. Some attributes are country-specific, so make sure you select
+/// the appropriate country in the drop-down selector at the top of the page.
 /// Product data. After inserting, updating, or deleting a product, it may take
 /// several minutes before changes take effect.
 class Product {
@@ -18045,7 +19977,7 @@ class Product {
   /// within the context of Product Ads.
   core.String adsRedirect;
 
-  /// Set to true if the item is targeted towards adults.
+  /// Should be set to true if the item is targeted towards adults.
   core.bool adult;
 
   /// Target age group of the item.
@@ -18064,11 +19996,8 @@ class Product {
   /// URL for the canonical version of your item's landing page.
   core.String canonicalLink;
 
-  /// Required. The item's channel (online or local).
-  ///
-  /// Acceptable values are:
-  /// - "`local`"
-  /// - "`online`"
+  /// Required. The item's channel (online or local). Acceptable values are: -
+  /// "`local`" - "`online`"
   core.String channel;
 
   /// Color of the item.
@@ -18087,7 +20016,8 @@ class Product {
   /// submitting any attribute of the feed specification in its generic form
   /// (e.g., `{ "name": "size type", "value": "regular" }`). This is useful for
   /// submitting attributes not explicitly exposed by the API, such as
-  /// additional attributes used for Shopping Actions.
+  /// additional attributes used for Buy on Google (formerly known as Shopping
+  /// Actions).
   core.List<CustomAttribute> customAttributes;
 
   /// Custom label 0 for custom grouping of items in a Shopping campaign.
@@ -18147,9 +20077,8 @@ class Product {
   core.String gtin;
 
   /// The REST ID of the product. Content API methods that operate on products
-  /// take this as their `productId` parameter.
-  /// The REST ID for a product is of the form
-  /// channel:contentLanguage:targetCountry: offerId.
+  /// take this as their `productId` parameter. The REST ID for a product is of
+  /// the form channel:contentLanguage: targetCountry: offerId.
   core.String id;
 
   /// False when the item does not have unique product identifiers appropriate
@@ -18213,9 +20142,9 @@ class Product {
   /// Required. A unique identifier for the item. Leading and trailing
   /// whitespaces are stripped and multiple whitespaces are replaced by a single
   /// whitespace upon submission. Only valid unicode characters are accepted.
-  /// See the products feed specification for details.
-  /// Note: Content API methods that operate on products take the REST ID of the
-  /// product, not this identifier.
+  /// See the products feed specification for details. *Note:* Content API
+  /// methods that operate on products take the REST ID of the product, *not*
+  /// this identifier.
   core.String offerId;
 
   /// The item's pattern (e.g. polka dots).
@@ -18240,7 +20169,7 @@ class Product {
   Price salePrice;
 
   /// Date range during which the item is on sale (see products data
-  /// specification).
+  /// specification ).
   core.String salePriceEffectiveDate;
 
   /// The quantity of the product that is available for selling on Google.
@@ -18282,12 +20211,8 @@ class Product {
   /// value (see size definition).
   core.List<core.String> sizes;
 
-  /// The source of the offer, i.e., how the offer was created.
-  ///
-  /// Acceptable values are:
-  /// - "`api`"
-  /// - "`crawl`"
-  /// - "`feed`"
+  /// The source of the offer, i.e., how the offer was created. Acceptable
+  /// values are: - "`api`" - "`crawl`" - "`feed`"
   core.String source;
 
   /// Number of periods (months or years) and amount of payment per period for
@@ -19381,7 +21306,7 @@ class ProductTax {
   /// The geographic region to which the tax rate applies.
   core.String region;
 
-  /// Set to true if tax is charged on shipping.
+  /// Should be set to true if tax is charged on shipping.
   core.bool taxShip;
 
   ProductTax();
@@ -19530,12 +21455,8 @@ class ProductsCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`delete`"
-  /// - "`get`"
-  /// - "`insert`"
+  /// The method of the batch entry. Acceptable values are: - "`delete`" -
+  /// "`get`" - "`insert`"
   core.String method;
 
   /// The product to insert. Only required if the method is `insert`.
@@ -19759,10 +21680,7 @@ class ProductstatusesCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`get`"
+  /// The method of the batch entry. Acceptable values are: - "`get`"
   core.String method;
 
   /// The ID of the product whose status to get.
@@ -19944,8 +21862,7 @@ class ProductstatusesListResponse {
 }
 
 /// Settings for Pub/Sub notifications, all methods require that the caller is a
-/// direct user of the merchant center account. (== resource_for
-/// v2.1.pubsubnotificationsettings ==)
+/// direct user of the merchant center account.
 class PubsubNotificationSettings {
   /// Cloud pub/sub topic to which notifications are sent (read-only).
   core.String cloudTopicName;
@@ -19954,10 +21871,7 @@ class PubsubNotificationSettings {
   /// "`content#pubsubNotificationSettings`"
   core.String kind;
 
-  /// List of event types.
-  ///
-  /// Acceptable values are:
-  /// - "`orderPendingShipment`"
+  /// List of event types. Acceptable values are: - "`orderPendingShipment`"
   core.List<core.String> registeredEvents;
 
   PubsubNotificationSettings();
@@ -20076,53 +21990,26 @@ class RefundReason {
   /// Description of the reason.
   core.String description;
 
-  /// Code of the refund reason.
-  ///
-  /// Acceptable values are:
-  /// - "`adjustment`"
-  /// - "`autoPostInternal`"
-  /// - "`autoPostInvalidBillingAddress`"
-  /// - "`autoPostNoInventory`"
-  /// - "`autoPostPriceError`"
-  /// - "`autoPostUndeliverableShippingAddress`"
-  /// - "`couponAbuse`"
-  /// - "`courtesyAdjustment`"
-  /// - "`customerCanceled`"
-  /// - "`customerDiscretionaryReturn`"
-  /// - "`customerInitiatedMerchantCancel`"
-  /// - "`customerSupportRequested`"
-  /// - "`deliveredLateByCarrier`"
-  /// - "`deliveredTooLate`"
-  /// - "`expiredItem`"
-  /// - "`failToPushOrderGoogleError`"
-  /// - "`failToPushOrderMerchantError`"
-  /// - "`failToPushOrderMerchantFulfillmentError`"
-  /// - "`failToPushOrderToMerchant`"
-  /// - "`failToPushOrderToMerchantOutOfStock`"
-  /// - "`feeAdjustment`"
-  /// - "`invalidCoupon`"
-  /// - "`lateShipmentCredit`"
-  /// - "`malformedShippingAddress`"
-  /// - "`merchantDidNotShipOnTime`"
-  /// - "`noInventory`"
-  /// - "`orderTimeout`"
-  /// - "`other`"
-  /// - "`paymentAbuse`"
-  /// - "`paymentDeclined`"
-  /// - "`priceAdjustment`"
-  /// - "`priceError`"
-  /// - "`productArrivedDamaged`"
-  /// - "`productNotAsDescribed`"
-  /// - "`promoReallocation`"
-  /// - "`qualityNotAsExpected`"
-  /// - "`returnRefundAbuse`"
-  /// - "`shippingCostAdjustment`"
-  /// - "`shippingPriceError`"
-  /// - "`taxAdjustment`"
-  /// - "`taxError`"
-  /// - "`undeliverableShippingAddress`"
-  /// - "`unsupportedPoBoxAddress`"
-  /// - "`wrongProductShipped`"
+  /// Code of the refund reason. Acceptable values are: - "`adjustment`" -
+  /// "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
+  /// "`autoPostNoInventory`" - "`autoPostPriceError`" -
+  /// "`autoPostUndeliverableShippingAddress`" - "`couponAbuse`" -
+  /// "`courtesyAdjustment`" - "`customerCanceled`" -
+  /// "`customerDiscretionaryReturn`" - "`customerInitiatedMerchantCancel`" -
+  /// "`customerSupportRequested`" - "`deliveredLateByCarrier`" -
+  /// "`deliveredTooLate`" - "`expiredItem`" - "`failToPushOrderGoogleError`" -
+  /// "`failToPushOrderMerchantError`" -
+  /// "`failToPushOrderMerchantFulfillmentError`" -
+  /// "`failToPushOrderToMerchant`" - "`failToPushOrderToMerchantOutOfStock`" -
+  /// "`feeAdjustment`" - "`invalidCoupon`" - "`lateShipmentCredit`" -
+  /// "`malformedShippingAddress`" - "`merchantDidNotShipOnTime`" -
+  /// "`noInventory`" - "`orderTimeout`" - "`other`" - "`paymentAbuse`" -
+  /// "`paymentDeclined`" - "`priceAdjustment`" - "`priceError`" -
+  /// "`productArrivedDamaged`" - "`productNotAsDescribed`" -
+  /// "`promoReallocation`" - "`qualityNotAsExpected`" - "`returnRefundAbuse`" -
+  /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" -
+  /// "`taxError`" - "`undeliverableShippingAddress`" -
+  /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
   core.String reasonCode;
 
   RefundReason();
@@ -20144,6 +22031,194 @@ class RefundReason {
     }
     if (reasonCode != null) {
       _json["reasonCode"] = reasonCode;
+    }
+    return _json;
+  }
+}
+
+/// Represents a geographic region that you can use as a target with both the
+/// `RegionalInventory` and `ShippingSettings` services. You can define regions
+/// as collections of either postal codes or, in some countries, using
+/// predefined geotargets.
+class Region {
+  /// The display name of the region.
+  core.String displayName;
+
+  /// A list of geotargets that defines the region area.
+  RegionGeoTargetArea geotargetArea;
+
+  /// Output only. Immutable. Merchant that owns the region.
+  core.String merchantId;
+
+  /// A list of postal codes that defines the region area.
+  RegionPostalCodeArea postalCodeArea;
+
+  /// Output only. Immutable. The ID uniquely identifying each region.
+  core.String regionId;
+
+  /// Output only. Indicates if the region is eligible to use in the Regional
+  /// Inventory configuration.
+  core.bool regionalInventoryEligible;
+
+  /// Output only. Indicates if the region is eligible to use in the Shipping
+  /// Services configuration.
+  core.bool shippingEligible;
+
+  Region();
+
+  Region.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("geotargetArea")) {
+      geotargetArea = new RegionGeoTargetArea.fromJson(_json["geotargetArea"]);
+    }
+    if (_json.containsKey("merchantId")) {
+      merchantId = _json["merchantId"];
+    }
+    if (_json.containsKey("postalCodeArea")) {
+      postalCodeArea =
+          new RegionPostalCodeArea.fromJson(_json["postalCodeArea"]);
+    }
+    if (_json.containsKey("regionId")) {
+      regionId = _json["regionId"];
+    }
+    if (_json.containsKey("regionalInventoryEligible")) {
+      regionalInventoryEligible = _json["regionalInventoryEligible"];
+    }
+    if (_json.containsKey("shippingEligible")) {
+      shippingEligible = _json["shippingEligible"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (geotargetArea != null) {
+      _json["geotargetArea"] = (geotargetArea).toJson();
+    }
+    if (merchantId != null) {
+      _json["merchantId"] = merchantId;
+    }
+    if (postalCodeArea != null) {
+      _json["postalCodeArea"] = (postalCodeArea).toJson();
+    }
+    if (regionId != null) {
+      _json["regionId"] = regionId;
+    }
+    if (regionalInventoryEligible != null) {
+      _json["regionalInventoryEligible"] = regionalInventoryEligible;
+    }
+    if (shippingEligible != null) {
+      _json["shippingEligible"] = shippingEligible;
+    }
+    return _json;
+  }
+}
+
+/// A list of geotargets that defines the region area.
+class RegionGeoTargetArea {
+  /// Required. A non-empty list of [location
+  /// IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting).
+  /// They must all be of the same location type (e.g., state).
+  core.List<core.String> geotargetCriteriaIds;
+
+  RegionGeoTargetArea();
+
+  RegionGeoTargetArea.fromJson(core.Map _json) {
+    if (_json.containsKey("geotargetCriteriaIds")) {
+      geotargetCriteriaIds =
+          (_json["geotargetCriteriaIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (geotargetCriteriaIds != null) {
+      _json["geotargetCriteriaIds"] = geotargetCriteriaIds;
+    }
+    return _json;
+  }
+}
+
+/// A list of postal codes that defines the region area. Note: All regions
+/// defined using postal codes are accessible via the account's
+/// `ShippingSettings.postalCodeGroups` resource.
+class RegionPostalCodeArea {
+  /// Required. A range of postal codes.
+  core.List<RegionPostalCodeAreaPostalCodeRange> postalCodes;
+
+  /// Required. CLDR territory code or the country the postal code group applies
+  /// to.
+  core.String regionCode;
+
+  RegionPostalCodeArea();
+
+  RegionPostalCodeArea.fromJson(core.Map _json) {
+    if (_json.containsKey("postalCodes")) {
+      postalCodes = (_json["postalCodes"] as core.List)
+          .map<RegionPostalCodeAreaPostalCodeRange>((value) =>
+              new RegionPostalCodeAreaPostalCodeRange.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("regionCode")) {
+      regionCode = _json["regionCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (postalCodes != null) {
+      _json["postalCodes"] =
+          postalCodes.map((value) => (value).toJson()).toList();
+    }
+    if (regionCode != null) {
+      _json["regionCode"] = regionCode;
+    }
+    return _json;
+  }
+}
+
+/// A range of postal codes that defines the region area.
+class RegionPostalCodeAreaPostalCodeRange {
+  /// Required. A postal code or a pattern of the form prefix* denoting the
+  /// inclusive lower bound of the range defining the area. Examples values:
+  /// "94108", "9410*", "9*".
+  core.String begin;
+
+  /// Optional. A postal code or a pattern of the form prefix* denoting the
+  /// inclusive upper bound of the range defining the area. It must have the
+  /// same length as postalCodeRangeBegin: if postalCodeRangeBegin is a postal
+  /// code then postalCodeRangeEnd must be a postal code too; if
+  /// postalCodeRangeBegin is a pattern then postalCodeRangeEnd must be a
+  /// pattern with the same prefix length. Optional: if not set, then the area
+  /// is defined as being all the postal codes matching postalCodeRangeBegin.
+  core.String end;
+
+  RegionPostalCodeAreaPostalCodeRange();
+
+  RegionPostalCodeAreaPostalCodeRange.fromJson(core.Map _json) {
+    if (_json.containsKey("begin")) {
+      begin = _json["begin"];
+    }
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (begin != null) {
+      _json["begin"] = begin;
+    }
+    if (end != null) {
+      _json["end"] = end;
     }
     return _json;
   }
@@ -20267,10 +22342,7 @@ class RegionalinventoryCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// Method of the batch request entry.
-  ///
-  /// Acceptable values are:
-  /// - "`insert`"
+  /// Method of the batch request entry. Acceptable values are: - "`insert`"
   core.String method;
 
   /// The ID of the product for which to update price and availability.
@@ -20404,6 +22476,794 @@ class RegionalinventoryCustomBatchResponseEntry {
     }
     if (regionalInventory != null) {
       _json["regionalInventory"] = (regionalInventory).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Resource that represents a daily Repricing product report. Each report
+/// contains stats for a single type of Repricing rule for a single product on a
+/// given day. If there are multiple rules of the same type for the product on
+/// that day, the report lists all the rules by rule ids, combines the stats,
+/// and paginates the results by date. To retrieve the stats of a particular
+/// rule, provide the rule_id in the request.
+class RepricingProductReport {
+  /// Total count of Repricer applications. This value captures how many times
+  /// the rule of this type was applied to this product during this reporting
+  /// period.
+  core.String applicationCount;
+
+  /// Stats specific to buybox winning rules for product report.
+  RepricingProductReportBuyboxWinningProductStats buyboxWinningProductStats;
+
+  /// Date of the stats in this report. The report starts and ends according to
+  /// the merchant's timezone.
+  Date date;
+
+  /// Maximum displayed price after repriced during this reporting period.
+  PriceAmount highWatermark;
+
+  /// List of all reasons the rule did not apply to the product during the
+  /// specified reporting period.
+  core.List<InapplicabilityDetails> inapplicabilityDetails;
+
+  /// Minimum displayed price after repriced during this reporting period.
+  PriceAmount lowWatermark;
+
+  /// Total unit count of impacted products ordered while the rule was active on
+  /// the date of the report. This count includes all orders that were started
+  /// while the rule was active, even if the rule was no longer active when the
+  /// order was completed.
+  core.int orderItemCount;
+
+  /// Ids of the Repricing rule for this report.
+  core.List<core.String> ruleIds;
+
+  /// Total GMV generated by impacted products while the rule was active on the
+  /// date of the report. This value includes all orders that were started while
+  /// the rule was active, even if the rule was no longer active when the order
+  /// was completed.
+  PriceAmount totalGmv;
+
+  /// Type of the rule.
+  /// Possible string values are:
+  /// - "REPRICING_RULE_TYPE_UNSPECIFIED" : Unused.
+  /// - "TYPE_WIN_BUY_BOX" : Buy Box winning price-based rules. In Buy on
+  /// Google, the Buy Box refers to the offer for a product shown at the top of
+  /// the Product Detail Page (PDP) with an "Add to Cart" button. If this rule
+  /// is chosen, your offer price will be lowered within the range you set to
+  /// help increase the likelihood that you will win the Buy Box. There is no
+  /// RuleDefinition needed for this type. Deprecated: cannot create rules with
+  /// this type anymore.
+  /// - "TYPE_STATS_BASED" : Statistical measurement based rules among Google SA
+  /// merchants. If this rule is chosen, repricer will adjust the offer price
+  /// based on statistical metrics (i.e. mean, median, min) among other
+  /// merchants who sell the same product. Details need to be provdided in the
+  /// RuleDefinition.
+  /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
+  /// the offer price based on the offer's sale cost which is provided by the
+  /// merchant.
+  core.String type;
+
+  RepricingProductReport();
+
+  RepricingProductReport.fromJson(core.Map _json) {
+    if (_json.containsKey("applicationCount")) {
+      applicationCount = _json["applicationCount"];
+    }
+    if (_json.containsKey("buyboxWinningProductStats")) {
+      buyboxWinningProductStats =
+          new RepricingProductReportBuyboxWinningProductStats.fromJson(
+              _json["buyboxWinningProductStats"]);
+    }
+    if (_json.containsKey("date")) {
+      date = new Date.fromJson(_json["date"]);
+    }
+    if (_json.containsKey("highWatermark")) {
+      highWatermark = new PriceAmount.fromJson(_json["highWatermark"]);
+    }
+    if (_json.containsKey("inapplicabilityDetails")) {
+      inapplicabilityDetails = (_json["inapplicabilityDetails"] as core.List)
+          .map<InapplicabilityDetails>(
+              (value) => new InapplicabilityDetails.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("lowWatermark")) {
+      lowWatermark = new PriceAmount.fromJson(_json["lowWatermark"]);
+    }
+    if (_json.containsKey("orderItemCount")) {
+      orderItemCount = _json["orderItemCount"];
+    }
+    if (_json.containsKey("ruleIds")) {
+      ruleIds = (_json["ruleIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("totalGmv")) {
+      totalGmv = new PriceAmount.fromJson(_json["totalGmv"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (applicationCount != null) {
+      _json["applicationCount"] = applicationCount;
+    }
+    if (buyboxWinningProductStats != null) {
+      _json["buyboxWinningProductStats"] = (buyboxWinningProductStats).toJson();
+    }
+    if (date != null) {
+      _json["date"] = (date).toJson();
+    }
+    if (highWatermark != null) {
+      _json["highWatermark"] = (highWatermark).toJson();
+    }
+    if (inapplicabilityDetails != null) {
+      _json["inapplicabilityDetails"] =
+          inapplicabilityDetails.map((value) => (value).toJson()).toList();
+    }
+    if (lowWatermark != null) {
+      _json["lowWatermark"] = (lowWatermark).toJson();
+    }
+    if (orderItemCount != null) {
+      _json["orderItemCount"] = orderItemCount;
+    }
+    if (ruleIds != null) {
+      _json["ruleIds"] = ruleIds;
+    }
+    if (totalGmv != null) {
+      _json["totalGmv"] = (totalGmv).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// Stats specific to buybox winning rules for product report.
+class RepricingProductReportBuyboxWinningProductStats {
+  /// Number of times this product won the buybox with these rules during this
+  /// time period.
+  core.int buyboxWinsCount;
+
+  RepricingProductReportBuyboxWinningProductStats();
+
+  RepricingProductReportBuyboxWinningProductStats.fromJson(core.Map _json) {
+    if (_json.containsKey("buyboxWinsCount")) {
+      buyboxWinsCount = _json["buyboxWinsCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (buyboxWinsCount != null) {
+      _json["buyboxWinsCount"] = buyboxWinsCount;
+    }
+    return _json;
+  }
+}
+
+/// Represents a repricing rule. A repricing rule is used by shopping serving to
+/// adjust transactable offer prices if conditions are met. Next ID: 24
+class RepricingRule {
+  /// The rule definition for TYPE_COGS_BASED. Required when the rule type is
+  /// TYPE_COGS_BASED.
+  RepricingRuleCostOfGoodsSaleRule cogsBasedRule;
+
+  /// Required. Immutable. CLDR country code (e.g. "US").
+  core.String countryCode;
+
+  /// Required. Time period when the rule should take effect.
+  RepricingRuleEffectiveTime effectiveTimePeriod;
+
+  /// Required. Match criteria for the eligible offers.
+  RepricingRuleEligibleOfferMatcher eligibleOfferMatcher;
+
+  /// Required. Immutable. The two-letter ISO 639-1 language code associated
+  /// with the repricing rule.
+  core.String languageCode;
+
+  /// Output only. Immutable. Merchant that owns the repricing rule.
+  core.String merchantId;
+
+  /// Represents whether a rule is paused. A paused rule will behave like a
+  /// non-paused rule within CRUD operations, with the major difference that a
+  /// paused rule will not be evaluated and will have no effect on offers.
+  core.bool paused;
+
+  /// Required. Restriction of the rule appliance.
+  RepricingRuleRestriction restriction;
+
+  /// Output only. Immutable. The ID to uniquely identify each repricing rule.
+  core.String ruleId;
+
+  /// The rule definition for TYPE_STATS_BASED. Required when the rule type is
+  /// TYPE_STATS_BASED.
+  RepricingRuleStatsBasedRule statsBasedRule;
+
+  /// The title for the rule.
+  core.String title;
+
+  /// Required. Immutable. The type of the rule.
+  /// Possible string values are:
+  /// - "REPRICING_RULE_TYPE_UNSPECIFIED" : Unused.
+  /// - "TYPE_WIN_BUY_BOX" : Buy Box winning price-based rules. In Buy on
+  /// Google, the Buy Box refers to the offer for a product shown at the top of
+  /// the Product Detail Page (PDP) with an "Add to Cart" button. If this rule
+  /// is chosen, your offer price will be lowered within the range you set to
+  /// help increase the likelihood that you will win the Buy Box. There is no
+  /// RuleDefinition needed for this type. Deprecated: cannot create rules with
+  /// this type anymore.
+  /// - "TYPE_STATS_BASED" : Statistical measurement based rules among Google SA
+  /// merchants. If this rule is chosen, repricer will adjust the offer price
+  /// based on statistical metrics (i.e. mean, median, min) among other
+  /// merchants who sell the same product. Details need to be provdided in the
+  /// RuleDefinition.
+  /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
+  /// the offer price based on the offer's sale cost which is provided by the
+  /// merchant.
+  core.String type;
+
+  RepricingRule();
+
+  RepricingRule.fromJson(core.Map _json) {
+    if (_json.containsKey("cogsBasedRule")) {
+      cogsBasedRule =
+          new RepricingRuleCostOfGoodsSaleRule.fromJson(_json["cogsBasedRule"]);
+    }
+    if (_json.containsKey("countryCode")) {
+      countryCode = _json["countryCode"];
+    }
+    if (_json.containsKey("effectiveTimePeriod")) {
+      effectiveTimePeriod =
+          new RepricingRuleEffectiveTime.fromJson(_json["effectiveTimePeriod"]);
+    }
+    if (_json.containsKey("eligibleOfferMatcher")) {
+      eligibleOfferMatcher = new RepricingRuleEligibleOfferMatcher.fromJson(
+          _json["eligibleOfferMatcher"]);
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+    if (_json.containsKey("merchantId")) {
+      merchantId = _json["merchantId"];
+    }
+    if (_json.containsKey("paused")) {
+      paused = _json["paused"];
+    }
+    if (_json.containsKey("restriction")) {
+      restriction = new RepricingRuleRestriction.fromJson(_json["restriction"]);
+    }
+    if (_json.containsKey("ruleId")) {
+      ruleId = _json["ruleId"];
+    }
+    if (_json.containsKey("statsBasedRule")) {
+      statsBasedRule =
+          new RepricingRuleStatsBasedRule.fromJson(_json["statsBasedRule"]);
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cogsBasedRule != null) {
+      _json["cogsBasedRule"] = (cogsBasedRule).toJson();
+    }
+    if (countryCode != null) {
+      _json["countryCode"] = countryCode;
+    }
+    if (effectiveTimePeriod != null) {
+      _json["effectiveTimePeriod"] = (effectiveTimePeriod).toJson();
+    }
+    if (eligibleOfferMatcher != null) {
+      _json["eligibleOfferMatcher"] = (eligibleOfferMatcher).toJson();
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    if (merchantId != null) {
+      _json["merchantId"] = merchantId;
+    }
+    if (paused != null) {
+      _json["paused"] = paused;
+    }
+    if (restriction != null) {
+      _json["restriction"] = (restriction).toJson();
+    }
+    if (ruleId != null) {
+      _json["ruleId"] = ruleId;
+    }
+    if (statsBasedRule != null) {
+      _json["statsBasedRule"] = (statsBasedRule).toJson();
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// A repricing rule that changes the sale price based on cost of goods sale.
+class RepricingRuleCostOfGoodsSaleRule {
+  /// The percent change against the COGS. Ex: 20 would mean to set the adjusted
+  /// price 1.2X of the COGS data.
+  core.int percentageDelta;
+
+  /// The price delta against the COGS. E.g. 2 means $2 more of the COGS.
+  core.String priceDelta;
+
+  RepricingRuleCostOfGoodsSaleRule();
+
+  RepricingRuleCostOfGoodsSaleRule.fromJson(core.Map _json) {
+    if (_json.containsKey("percentageDelta")) {
+      percentageDelta = _json["percentageDelta"];
+    }
+    if (_json.containsKey("priceDelta")) {
+      priceDelta = _json["priceDelta"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (percentageDelta != null) {
+      _json["percentageDelta"] = percentageDelta;
+    }
+    if (priceDelta != null) {
+      _json["priceDelta"] = priceDelta;
+    }
+    return _json;
+  }
+}
+
+class RepricingRuleEffectiveTime {
+  /// A list of fixed time periods combined with OR. The maximum number of
+  /// entries is limited to 5.
+  core.List<RepricingRuleEffectiveTimeFixedTimePeriod> fixedTimePeriods;
+
+  RepricingRuleEffectiveTime();
+
+  RepricingRuleEffectiveTime.fromJson(core.Map _json) {
+    if (_json.containsKey("fixedTimePeriods")) {
+      fixedTimePeriods = (_json["fixedTimePeriods"] as core.List)
+          .map<RepricingRuleEffectiveTimeFixedTimePeriod>((value) =>
+              new RepricingRuleEffectiveTimeFixedTimePeriod.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fixedTimePeriods != null) {
+      _json["fixedTimePeriods"] =
+          fixedTimePeriods.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Definition of a fixed time period.
+class RepricingRuleEffectiveTimeFixedTimePeriod {
+  /// The end time (exclusive) of the period. It can only be hour granularity.
+  core.String endTime;
+
+  /// The start time (inclusive) of the period. It can only be hour granularity.
+  core.String startTime;
+
+  RepricingRuleEffectiveTimeFixedTimePeriod();
+
+  RepricingRuleEffectiveTimeFixedTimePeriod.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+/// Matcher that specifies eligible offers. When the USE_FEED_ATTRIBUTE option
+/// is selected, only the repricing_rule_id attribute on the product feed is
+/// used to specify offer-rule mapping. When the CUSTOM_FILTER option is
+/// selected, only the *_matcher fields are used to filter the offers for
+/// offer-rule mapping. If the CUSTOM_FILTER option is selected, an offer needs
+/// to satisfy each custom filter matcher to be eligible for a rule. Size limit:
+/// the sum of the number of entries in all the matchers should not exceed 20.
+/// For example, there can be 15 product ids and 5 brands, but not 10 product
+/// ids and 11 brands.
+class RepricingRuleEligibleOfferMatcher {
+  /// Filter by the brand.
+  RepricingRuleEligibleOfferMatcherStringMatcher brandMatcher;
+
+  /// Filter by the item group id.
+  RepricingRuleEligibleOfferMatcherStringMatcher itemGroupIdMatcher;
+
+  /// Determines whether to use the custom matchers or the product feed
+  /// attribute "repricing_rule_id" to specify offer-rule mapping.
+  /// Possible string values are:
+  /// - "MATCHER_OPTION_UNSPECIFIED" : Unused.
+  /// - "MATCHER_OPTION_CUSTOM_FILTER" : Use custom filters.
+  /// - "MATCHER_OPTION_USE_FEED_ATTRIBUTE" : Use repricing_rule_id feed
+  /// attribute on the product resource to specify offer-rule mapping.
+  /// - "MATCHER_OPTION_ALL_PRODUCTS" : Matching all products.
+  core.String matcherOption;
+
+  /// Filter by the offer id.
+  RepricingRuleEligibleOfferMatcherStringMatcher offerIdMatcher;
+
+  /// When true, the rule won't be applied to offers with active promotions.
+  core.bool skipWhenOnPromotion;
+
+  RepricingRuleEligibleOfferMatcher();
+
+  RepricingRuleEligibleOfferMatcher.fromJson(core.Map _json) {
+    if (_json.containsKey("brandMatcher")) {
+      brandMatcher =
+          new RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
+              _json["brandMatcher"]);
+    }
+    if (_json.containsKey("itemGroupIdMatcher")) {
+      itemGroupIdMatcher =
+          new RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
+              _json["itemGroupIdMatcher"]);
+    }
+    if (_json.containsKey("matcherOption")) {
+      matcherOption = _json["matcherOption"];
+    }
+    if (_json.containsKey("offerIdMatcher")) {
+      offerIdMatcher =
+          new RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
+              _json["offerIdMatcher"]);
+    }
+    if (_json.containsKey("skipWhenOnPromotion")) {
+      skipWhenOnPromotion = _json["skipWhenOnPromotion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (brandMatcher != null) {
+      _json["brandMatcher"] = (brandMatcher).toJson();
+    }
+    if (itemGroupIdMatcher != null) {
+      _json["itemGroupIdMatcher"] = (itemGroupIdMatcher).toJson();
+    }
+    if (matcherOption != null) {
+      _json["matcherOption"] = matcherOption;
+    }
+    if (offerIdMatcher != null) {
+      _json["offerIdMatcher"] = (offerIdMatcher).toJson();
+    }
+    if (skipWhenOnPromotion != null) {
+      _json["skipWhenOnPromotion"] = skipWhenOnPromotion;
+    }
+    return _json;
+  }
+}
+
+/// Matcher by string attributes.
+class RepricingRuleEligibleOfferMatcherStringMatcher {
+  /// String attributes, as long as such attribute of an offer is one of the
+  /// string attribute values, the offer is considered as passing the matcher.
+  /// The string matcher checks an offer for inclusivity in the string
+  /// attributes, not equality. Only literal string matching is supported, no
+  /// regex.
+  core.List<core.String> strAttributes;
+
+  RepricingRuleEligibleOfferMatcherStringMatcher();
+
+  RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(core.Map _json) {
+    if (_json.containsKey("strAttributes")) {
+      strAttributes = (_json["strAttributes"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (strAttributes != null) {
+      _json["strAttributes"] = strAttributes;
+    }
+    return _json;
+  }
+}
+
+/// Resource that represents a daily Repricing rule report. Next ID: 11
+class RepricingRuleReport {
+  /// Stats specific to buybox winning rules for rule report.
+  RepricingRuleReportBuyboxWinningRuleStats buyboxWinningRuleStats;
+
+  /// Date of the stats in this report. The report starts and ends according to
+  /// the merchant's timezone.
+  Date date;
+
+  /// List of product ids that are impacted by this rule during this reporting
+  /// period. Out of stock products and products not searched for by customers
+  /// are examples of non-impacted products.
+  core.List<core.String> impactedProducts;
+
+  /// List of all reasons the rule did not apply to the inapplicable products
+  /// during the specified reporting period.
+  core.List<InapplicabilityDetails> inapplicabilityDetails;
+
+  /// List of product ids that are inapplicable to this rule during this
+  /// reporting period. To get the inapplicable reason for a specific product,
+  /// see RepricingProductReport.
+  core.List<core.String> inapplicableProducts;
+
+  /// Total unit count of impacted products ordered while the rule was active on
+  /// the date of the report. This count includes all orders that were started
+  /// while the rule was active, even if the rule was no longer active when the
+  /// order was completed.
+  core.int orderItemCount;
+
+  /// Id of the Repricing rule for this report.
+  core.String ruleId;
+
+  /// Total GMV generated by impacted products while the rule was active on the
+  /// date of the report. This value includes all orders that were started while
+  /// the rule was active, even if the rule was no longer active when the order
+  /// was completed.
+  PriceAmount totalGmv;
+
+  /// Type of the rule.
+  /// Possible string values are:
+  /// - "REPRICING_RULE_TYPE_UNSPECIFIED" : Unused.
+  /// - "TYPE_WIN_BUY_BOX" : Buy Box winning price-based rules. In Buy on
+  /// Google, the Buy Box refers to the offer for a product shown at the top of
+  /// the Product Detail Page (PDP) with an "Add to Cart" button. If this rule
+  /// is chosen, your offer price will be lowered within the range you set to
+  /// help increase the likelihood that you will win the Buy Box. There is no
+  /// RuleDefinition needed for this type. Deprecated: cannot create rules with
+  /// this type anymore.
+  /// - "TYPE_STATS_BASED" : Statistical measurement based rules among Google SA
+  /// merchants. If this rule is chosen, repricer will adjust the offer price
+  /// based on statistical metrics (i.e. mean, median, min) among other
+  /// merchants who sell the same product. Details need to be provdided in the
+  /// RuleDefinition.
+  /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
+  /// the offer price based on the offer's sale cost which is provided by the
+  /// merchant.
+  core.String type;
+
+  RepricingRuleReport();
+
+  RepricingRuleReport.fromJson(core.Map _json) {
+    if (_json.containsKey("buyboxWinningRuleStats")) {
+      buyboxWinningRuleStats =
+          new RepricingRuleReportBuyboxWinningRuleStats.fromJson(
+              _json["buyboxWinningRuleStats"]);
+    }
+    if (_json.containsKey("date")) {
+      date = new Date.fromJson(_json["date"]);
+    }
+    if (_json.containsKey("impactedProducts")) {
+      impactedProducts =
+          (_json["impactedProducts"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("inapplicabilityDetails")) {
+      inapplicabilityDetails = (_json["inapplicabilityDetails"] as core.List)
+          .map<InapplicabilityDetails>(
+              (value) => new InapplicabilityDetails.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("inapplicableProducts")) {
+      inapplicableProducts =
+          (_json["inapplicableProducts"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("orderItemCount")) {
+      orderItemCount = _json["orderItemCount"];
+    }
+    if (_json.containsKey("ruleId")) {
+      ruleId = _json["ruleId"];
+    }
+    if (_json.containsKey("totalGmv")) {
+      totalGmv = new PriceAmount.fromJson(_json["totalGmv"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (buyboxWinningRuleStats != null) {
+      _json["buyboxWinningRuleStats"] = (buyboxWinningRuleStats).toJson();
+    }
+    if (date != null) {
+      _json["date"] = (date).toJson();
+    }
+    if (impactedProducts != null) {
+      _json["impactedProducts"] = impactedProducts;
+    }
+    if (inapplicabilityDetails != null) {
+      _json["inapplicabilityDetails"] =
+          inapplicabilityDetails.map((value) => (value).toJson()).toList();
+    }
+    if (inapplicableProducts != null) {
+      _json["inapplicableProducts"] = inapplicableProducts;
+    }
+    if (orderItemCount != null) {
+      _json["orderItemCount"] = orderItemCount;
+    }
+    if (ruleId != null) {
+      _json["ruleId"] = ruleId;
+    }
+    if (totalGmv != null) {
+      _json["totalGmv"] = (totalGmv).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// Stats specific to buybox winning rules for rule report.
+class RepricingRuleReportBuyboxWinningRuleStats {
+  /// Number of unique products that won the buybox with this rule during this
+  /// period of time.
+  core.int buyboxWonProductCount;
+
+  RepricingRuleReportBuyboxWinningRuleStats();
+
+  RepricingRuleReportBuyboxWinningRuleStats.fromJson(core.Map _json) {
+    if (_json.containsKey("buyboxWonProductCount")) {
+      buyboxWonProductCount = _json["buyboxWonProductCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (buyboxWonProductCount != null) {
+      _json["buyboxWonProductCount"] = buyboxWonProductCount;
+    }
+    return _json;
+  }
+}
+
+/// Definition of a rule restriction. At least one of the following needs to be
+/// true: (1) use_auto_pricing_min_price is true (2) floor.price_delta exists
+/// (3) floor.percentage_delta exists If floor.price_delta and
+/// floor.percentage_delta are both set on a rule, the highest value will be
+/// chosen by the Repricer. In other words, for a product with a price of $50,
+/// if the `floor.percentage_delta` is "-10" and the floor.price_delta is "-12",
+/// the offer price will only be lowered $5 (10% lower than the original offer
+/// price).
+class RepricingRuleRestriction {
+  /// The inclusive floor lower bound. The repricing rule only applies when new
+  /// price >= floor.
+  RepricingRuleRestrictionBoundary floor;
+
+  /// If true, use the AUTO_PRICING_MIN_PRICE offer attribute as the lower bound
+  /// of the rule. If use_auto_pricing_min_price is true, then only offers with
+  /// `AUTO_PRICING_MIN_PRICE` existing on the offer will get Repricer
+  /// treatment, even if a floor value is set on the rule. Also, if
+  /// use_auto_pricing_min_price is true, the floor restriction will be ignored.
+  core.bool useAutoPricingMinPrice;
+
+  RepricingRuleRestriction();
+
+  RepricingRuleRestriction.fromJson(core.Map _json) {
+    if (_json.containsKey("floor")) {
+      floor = new RepricingRuleRestrictionBoundary.fromJson(_json["floor"]);
+    }
+    if (_json.containsKey("useAutoPricingMinPrice")) {
+      useAutoPricingMinPrice = _json["useAutoPricingMinPrice"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (floor != null) {
+      _json["floor"] = (floor).toJson();
+    }
+    if (useAutoPricingMinPrice != null) {
+      _json["useAutoPricingMinPrice"] = useAutoPricingMinPrice;
+    }
+    return _json;
+  }
+}
+
+/// Definition of a boundary.
+class RepricingRuleRestrictionBoundary {
+  /// The percentage delta relative to the offer selling price. This field is
+  /// signed. It must be negative in floor. When it is used in floor, it should
+  /// be > -100. For example, if an offer is selling at $10 and this field is
+  /// -30 in floor, the repricing rule only applies if the calculated new price
+  /// is >= $7.
+  core.int percentageDelta;
+
+  /// The price micros relative to the offer selling price. This field is
+  /// signed. It must be negative in floor. For example, if an offer is selling
+  /// at $10 and this field is -$2 in floor, the repricing rule only applies if
+  /// the calculated new price is >= $8.
+  core.String priceDelta;
+
+  RepricingRuleRestrictionBoundary();
+
+  RepricingRuleRestrictionBoundary.fromJson(core.Map _json) {
+    if (_json.containsKey("percentageDelta")) {
+      percentageDelta = _json["percentageDelta"];
+    }
+    if (_json.containsKey("priceDelta")) {
+      priceDelta = _json["priceDelta"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (percentageDelta != null) {
+      _json["percentageDelta"] = percentageDelta;
+    }
+    if (priceDelta != null) {
+      _json["priceDelta"] = priceDelta;
+    }
+    return _json;
+  }
+}
+
+/// Definition of stats based rule.
+class RepricingRuleStatsBasedRule {
+  /// The percent change against the price target. Valid from 0 to 100
+  /// inclusively.
+  core.int percentageDelta;
+
+  /// The price delta against the above price target. A positive value means the
+  /// price should be adjusted to be above statistical measure, and a negative
+  /// value means below. Currency code must not be included.
+  core.String priceDelta;
+
+  RepricingRuleStatsBasedRule();
+
+  RepricingRuleStatsBasedRule.fromJson(core.Map _json) {
+    if (_json.containsKey("percentageDelta")) {
+      percentageDelta = _json["percentageDelta"];
+    }
+    if (_json.containsKey("priceDelta")) {
+      priceDelta = _json["priceDelta"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (percentageDelta != null) {
+      _json["percentageDelta"] = percentageDelta;
+    }
+    if (priceDelta != null) {
+      _json["priceDelta"] = priceDelta;
     }
     return _json;
   }
@@ -20662,13 +23522,8 @@ class ReturnPolicyPolicy {
   /// for most items a minimum of 30 days is required for returns. Exceptions
   /// may be made for electronics or non-returnable items such as food,
   /// perishables, and living things. A policy of less than 30 days can only be
-  /// applied to those items.
-  ///
-  /// Acceptable values are:
-  /// - "`lastReturnDate`"
-  /// - "`lifetimeReturns`"
-  /// - "`noReturns`"
-  /// - "`numberOfDaysAfterDelivery`"
+  /// applied to those items. Acceptable values are: - "`lastReturnDate`" -
+  /// "`lifetimeReturns`" - "`noReturns`" - "`numberOfDaysAfterDelivery`"
   core.String type;
 
   ReturnPolicyPolicy();
@@ -20828,12 +23683,8 @@ class ReturnShipment {
   /// The date of delivery of the shipment, in ISO 8601 format.
   core.String deliveryDate;
 
-  /// Type of the return method.
-  ///
-  /// Acceptable values are:
-  /// - "`byMail`"
-  /// - "`contactCustomerSupport`"
-  /// - "`returnless`"
+  /// Type of the return method. Acceptable values are: - "`byMail`" -
+  /// "`contactCustomerSupport`" - "`returnless`" - "`inStore`"
   core.String returnMethodType;
 
   /// Shipment ID generated by Google.
@@ -20846,14 +23697,8 @@ class ReturnShipment {
   /// The date of shipping of the shipment, in ISO 8601 format.
   core.String shippingDate;
 
-  /// State of the shipment.
-  ///
-  /// Acceptable values are:
-  /// - "`completed`"
-  /// - "`new`"
-  /// - "`shipped`"
-  /// - "`undeliverable`"
-  /// - "`pending`"
+  /// State of the shipment. Acceptable values are: - "`completed`" - "`new`" -
+  /// "`shipped`" - "`undeliverable`" - "`pending`"
   core.String state;
 
   ReturnShipment();
@@ -20946,18 +23791,16 @@ class ReturnaddressCustomBatchRequestEntry {
   /// The Merchant Center account ID.
   core.String merchantId;
 
-  /// Method of the batch request entry.
-  ///
-  /// Acceptable values are:
-  /// - "`delete`"
-  /// - "`get`"
-  /// - "`insert`"
+  /// Method of the batch request entry. Acceptable values are: - "`delete`" -
+  /// "`get`" - "`insert`"
   core.String method;
 
-  /// The return address to submit. Set this only if the method is `insert`.
+  /// The return address to submit. This should be set only if the method is
+  /// `insert`.
   ReturnAddress returnAddress;
 
-  /// The return address ID. Set this only if the method is `delete` or `get`.
+  /// The return address ID. This should be set only if the method is `delete`
+  /// or `get`.
   core.String returnAddressId;
 
   ReturnaddressCustomBatchRequestEntry();
@@ -21160,18 +24003,16 @@ class ReturnpolicyCustomBatchRequestEntry {
   /// The Merchant Center account ID.
   core.String merchantId;
 
-  /// Method of the batch request entry.
-  ///
-  /// Acceptable values are:
-  /// - "`delete`"
-  /// - "`get`"
-  /// - "`insert`"
+  /// Method of the batch request entry. Acceptable values are: - "`delete`" -
+  /// "`get`" - "`insert`"
   core.String method;
 
-  /// The return policy to submit. Set this only if the method is `insert`.
+  /// The return policy to submit. This should be set only if the method is
+  /// `insert`.
   ReturnPolicy returnPolicy;
 
-  /// The return policy ID. Set this only if the method is `delete` or `get`.
+  /// The return policy ID. This should be set only if the method is `delete` or
+  /// `get`.
   core.String returnPolicyId;
 
   ReturnpolicyCustomBatchRequestEntry();
@@ -21375,12 +24216,8 @@ class Service {
   /// Required.
   DeliveryTime deliveryTime;
 
-  /// Eligibility for this service.
-  ///
-  /// Acceptable values are:
-  /// - "`All scenarios`"
-  /// - "`All scenarios except Shopping Actions`"
-  /// - "`Shopping Actions`"
+  /// Eligibility for this service. Acceptable values are: - "`All scenarios`" -
+  /// "`All scenarios except Shopping Actions`" - "`Shopping Actions`"
   core.String eligibility;
 
   /// Minimum order value for this service. If set, indicates that customers
@@ -21408,11 +24245,8 @@ class Service {
   /// `applicableShippingLabels` must not overlap.
   core.List<RateGroup> rateGroups;
 
-  /// Type of locations this service ships orders to.
-  ///
-  /// Acceptable values are:
-  /// - "`delivery`"
-  /// - "`pickup`"
+  /// Type of locations this service ships orders to. Acceptable values are: -
+  /// "`delivery`" - "`pickup`"
   core.String shipmentType;
 
   Service();
@@ -21591,8 +24425,7 @@ class SettlementReport {
   }
 }
 
-/// Settlement transactions give a detailed breakdown of the  settlement report.
-/// (== resource_for v2.1.settlementtransactions ==)
+/// Settlement transactions give a detailed breakdown of the settlement report.
 class SettlementTransaction {
   /// The amount for the transaction.
   SettlementTransactionAmount amount;
@@ -21648,65 +24481,31 @@ class SettlementTransaction {
 class SettlementTransactionAmount {
   SettlementTransactionAmountCommission commission;
 
-  /// The description of the event.
-  ///
-  /// Acceptable values are:
-  /// - "`taxWithhold`"
-  /// - "`principal`"
-  /// - "`principalAdjustment`"
-  /// - "`shippingFee`"
-  /// - "`merchantRemittedSalesTax`"
-  /// - "`googleRemittedSalesTax`"
-  /// - "`merchantCoupon`"
-  /// - "`merchantCouponTax`"
-  /// - "`merchantRemittedDisposalTax`"
-  /// - "`googleRemittedDisposalTax`"
-  /// - "`merchantRemittedRedemptionFee`"
-  /// - "`googleRemittedRedemptionFee`"
-  /// - "`eeeEcoFee`"
-  /// - "`furnitureEcoFee`"
-  /// - "`copyPrivateFee`"
-  /// - "`eeeEcoFeeCommission`"
-  /// - "`furnitureEcoFeeCommission`"
-  /// - "`copyPrivateFeeCommission`"
-  /// - "`principalRefund`"
-  /// - "`principalRefundTax`"
-  /// - "`itemCommission`"
-  /// - "`adjustmentCommission`"
-  /// - "`shippingFeeCommission`"
-  /// - "`commissionRefund`"
-  /// - "`damaged`"
-  /// - "`damagedOrDefectiveItem`"
-  /// - "`expiredItem`"
-  /// - "`faultyItem`"
-  /// - "`incorrectItemReceived`"
-  /// - "`itemMissing`"
-  /// - "`qualityNotExpected`"
-  /// - "`receivedTooLate`"
-  /// - "`storePackageMissing`"
-  /// - "`transitPackageMissing`"
-  /// - "`unsuccessfulDeliveryUndeliverable`"
-  /// - "`wrongChargeInStore`"
-  /// - "`wrongItem`"
-  /// - "`returns`"
-  /// - "`undeliverable`"
-  /// - "`refundFromMerchant`"
-  /// - "`returnLabelShippingFee`"
+  /// The description of the event. Acceptable values are: - "`taxWithhold`" -
+  /// "`principal`" - "`principalAdjustment`" - "`shippingFee`" -
+  /// "`merchantRemittedSalesTax`" - "`googleRemittedSalesTax`" -
+  /// "`merchantCoupon`" - "`merchantCouponTax`" -
+  /// "`merchantRemittedDisposalTax`" - "`googleRemittedDisposalTax`" -
+  /// "`merchantRemittedRedemptionFee`" - "`googleRemittedRedemptionFee`" -
+  /// "`eeeEcoFee`" - "`furnitureEcoFee`" - "`copyPrivateFee`" -
+  /// "`eeeEcoFeeCommission`" - "`furnitureEcoFeeCommission`" -
+  /// "`copyPrivateFeeCommission`" - "`principalRefund`" -
+  /// "`principalRefundTax`" - "`itemCommission`" - "`adjustmentCommission`" -
+  /// "`shippingFeeCommission`" - "`commissionRefund`" - "`damaged`" -
+  /// "`damagedOrDefectiveItem`" - "`expiredItem`" - "`faultyItem`" -
+  /// "`incorrectItemReceived`" - "`itemMissing`" - "`qualityNotExpected`" -
+  /// "`receivedTooLate`" - "`storePackageMissing`" - "`transitPackageMissing`"
+  /// - "`unsuccessfulDeliveryUndeliverable`" - "`wrongChargeInStore`" -
+  /// "`wrongItem`" - "`returns`" - "`undeliverable`" - "`refundFromMerchant`" -
+  /// "`returnLabelShippingFee`" - "`pspFee`"
   core.String description;
 
   /// The amount that contributes to the line item price.
   Price transactionAmount;
 
-  /// The type of the amount.
-  ///
-  /// Acceptable values are:
-  /// - "`itemPrice`"
-  /// - "`orderPrice`"
-  /// - "`refund`"
-  /// - "`earlyRefund`"
-  /// - "`courtesyRefund`"
-  /// - "`returnRefund`"
-  /// - "`returnLabelShippingFeeAmount`"
+  /// The type of the amount. Acceptable values are: - "`itemPrice`" -
+  /// "`orderPrice`" - "`refund`" - "`earlyRefund`" - "`courtesyRefund`" -
+  /// "`returnRefund`" - "`returnLabelShippingFeeAmount`"
   core.String type;
 
   SettlementTransactionAmount();
@@ -21747,52 +24546,23 @@ class SettlementTransactionAmount {
 }
 
 class SettlementTransactionAmountCommission {
-  /// The category of the commission.
-  ///
-  /// Acceptable values are:
-  /// - "`animalsAndPetSupplies`"
-  /// - "`dogCatFoodAndCatLitter`"
-  /// - "`apparelAndAccessories`"
-  /// - "`shoesHandbagsAndSunglasses`"
-  /// - "`costumesAndAccessories`"
-  /// - "`jewelry`"
-  /// - "`watches`"
-  /// - "`hobbiesArtsAndCrafts`"
-  /// - "`homeAndGarden`"
-  /// - "`entertainmentCollectibles`"
-  /// - "`collectibleCoins`"
-  /// - "`sportsCollectibles`"
-  /// - "`sportingGoods`"
-  /// - "`toysAndGames`"
-  /// - "`musicalInstruments`"
-  /// - "`giftCards`"
-  /// - "`babyAndToddler`"
-  /// - "`babyFoodWipesAndDiapers`"
-  /// - "`businessAndIndustrial`"
-  /// - "`camerasOpticsAndPhotography`"
-  /// - "`consumerElectronics`"
-  /// - "`electronicsAccessories`"
-  /// - "`personalComputers`"
-  /// - "`videoGameConsoles`"
-  /// - "`foodAndGrocery`"
-  /// - "`beverages`"
-  /// - "`tobaccoProducts`"
-  /// - "`furniture`"
-  /// - "`hardware`"
-  /// - "`buildingMaterials`"
-  /// - "`tools`"
-  /// - "`healthAndPersonalCare`"
-  /// - "`beauty`"
-  /// - "`householdSupplies`"
-  /// - "`kitchenAndDining`"
-  /// - "`majorAppliances`"
-  /// - "`luggageAndBags`"
-  /// - "`media`"
-  /// - "`officeSupplies`"
-  /// - "`softwareAndVideoGames`"
-  /// - "`vehiclePartsAndAccessories`"
-  /// - "`vehicleTiresAndWheels`"
-  /// - "`vehicles`"
+  /// The category of the commission. Acceptable values are: -
+  /// "`animalsAndPetSupplies`" - "`dogCatFoodAndCatLitter`" -
+  /// "`apparelAndAccessories`" - "`shoesHandbagsAndSunglasses`" -
+  /// "`costumesAndAccessories`" - "`jewelry`" - "`watches`" -
+  /// "`hobbiesArtsAndCrafts`" - "`homeAndGarden`" -
+  /// "`entertainmentCollectibles`" - "`collectibleCoins`" -
+  /// "`sportsCollectibles`" - "`sportingGoods`" - "`toysAndGames`" -
+  /// "`musicalInstruments`" - "`giftCards`" - "`babyAndToddler`" -
+  /// "`babyFoodWipesAndDiapers`" - "`businessAndIndustrial`" -
+  /// "`camerasOpticsAndPhotography`" - "`consumerElectronics`" -
+  /// "`electronicsAccessories`" - "`personalComputers`" - "`videoGameConsoles`"
+  /// - "`foodAndGrocery`" - "`beverages`" - "`tobaccoProducts`" - "`furniture`"
+  /// - "`hardware`" - "`buildingMaterials`" - "`tools`" -
+  /// "`healthAndPersonalCare`" - "`beauty`" - "`householdSupplies`" -
+  /// "`kitchenAndDining`" - "`majorAppliances`" - "`luggageAndBags`" -
+  /// "`media`" - "`officeSupplies`" - "`softwareAndVideoGames`" -
+  /// "`vehiclePartsAndAccessories`" - "`vehicleTiresAndWheels`" - "`vehicles`"
   /// - "`everythingElse`"
   core.String category;
 
@@ -21894,17 +24664,12 @@ class SettlementTransactionTransaction {
   /// The time on which the event occurred in ISO 8601 format.
   core.String postDate;
 
-  /// The type of the transaction that occurred.
-  ///
-  /// Acceptable values are:
-  /// - "`order`"
-  /// - "`reversal`"
-  /// - "`orderRefund`"
-  /// - "`reversalRefund`"
-  /// - "`issueRelatedRefundAndReplacement`"
-  /// - "`returnLabelShippingFeeTransaction`"
-  /// - "`reversalIssueRelatedRefundAndReplacement`"
-  /// - "`reversalReturnLabelShippingFeeTransaction`"
+  /// The type of the transaction that occurred. Acceptable values are: -
+  /// "`order`" - "`reversal`" - "`orderRefund`" - "`reversalRefund`" -
+  /// "`issueRelatedRefundAndReplacement`" -
+  /// "`returnLabelShippingFeeTransaction`" -
+  /// "`reversalIssueRelatedRefundAndReplacement`" -
+  /// "`reversalReturnLabelShippingFeeTransaction`"
   core.String type;
 
   SettlementTransactionTransaction();
@@ -22116,39 +24881,13 @@ class ShipmentInvoiceLineItemInvoice {
 }
 
 class ShipmentTrackingInfo {
-  /// The shipping carrier that handles the package.
-  ///
-  /// Acceptable values are:
-  /// - "`boxtal`"
-  /// - "`bpost`"
-  /// - "`chronopost`"
-  /// - "`colisPrive`"
-  /// - "`colissimo`"
-  /// - "`cxt`"
-  /// - "`deliv`"
-  /// - "`dhl`"
-  /// - "`dpd`"
-  /// - "`dynamex`"
-  /// - "`eCourier`"
-  /// - "`easypost`"
-  /// - "`efw`"
-  /// - "`fedex`"
-  /// - "`fedexSmartpost`"
-  /// - "`geodis`"
-  /// - "`gls`"
-  /// - "`googleCourier`"
-  /// - "`gsx`"
-  /// - "`jdLogistics`"
-  /// - "`laPoste`"
-  /// - "`lasership`"
-  /// - "`manual`"
-  /// - "`mpx`"
-  /// - "`onTrac`"
-  /// - "`other`"
-  /// - "`tnt`"
-  /// - "`uds`"
-  /// - "`ups`"
-  /// - "`usps`"
+  /// The shipping carrier that handles the package. Acceptable values are: -
+  /// "`boxtal`" - "`bpost`" - "`chronopost`" - "`colisPrive`" - "`colissimo`" -
+  /// "`cxt`" - "`deliv`" - "`dhl`" - "`dpd`" - "`dynamex`" - "`eCourier`" -
+  /// "`easypost`" - "`efw`" - "`fedex`" - "`fedexSmartpost`" - "`geodis`" -
+  /// "`gls`" - "`googleCourier`" - "`gsx`" - "`jdLogistics`" - "`laPoste`" -
+  /// "`lasership`" - "`manual`" - "`mpx`" - "`onTrac`" - "`other`" - "`tnt`" -
+  /// "`uds`" - "`ups`" - "`usps`"
   core.String carrier;
 
   /// The tracking number for the package.
@@ -22263,11 +25002,8 @@ class ShippingsettingsCustomBatchRequestEntry {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// The method of the batch entry.
-  ///
-  /// Acceptable values are:
-  /// - "`get`"
-  /// - "`update`"
+  /// The method of the batch entry. Acceptable values are: - "`get`" -
+  /// "`update`"
   core.String method;
 
   /// The account shipping settings to update. Only defined if the method is
@@ -22624,38 +25360,22 @@ class TestOrder {
   /// Overrides the predefined pickup details if provided.
   TestOrderPickupDetails pickupDetails;
 
-  /// Required. The billing address.
-  ///
-  /// Acceptable values are:
-  /// - "`dwight`"
-  /// - "`jim`"
-  /// - "`pam`"
+  /// Required. The billing address. Acceptable values are: - "`dwight`" -
+  /// "`jim`" - "`pam`"
   core.String predefinedBillingAddress;
 
   /// Required. Identifier of one of the predefined delivery addresses for the
-  /// delivery.
-  ///
-  /// Acceptable values are:
-  /// - "`dwight`"
-  /// - "`jim`"
-  /// - "`pam`"
+  /// delivery. Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"
   core.String predefinedDeliveryAddress;
 
-  /// Required. Email address of the customer.
-  ///
-  /// Acceptable values are:
-  /// - "`pog.dwight.schrute@gmail.com`"
-  /// - "`pog.jim.halpert@gmail.com`"
-  /// - "`penpog.pam.beesly@gmail.comding`"
+  /// Required. Email address of the customer. Acceptable values are: -
+  /// "`pog.dwight.schrute@gmail.com`" - "`pog.jim.halpert@gmail.com`" -
+  /// "`penpog.pam.beesly@gmail.comding`"
   core.String predefinedEmail;
 
   /// Identifier of one of the predefined pickup details. Required for orders
-  /// containing line items with shipping type `pickup`.
-  ///
-  /// Acceptable values are:
-  /// - "`dwight`"
-  /// - "`jim`"
-  /// - "`pam`"
+  /// containing line items with shipping type `pickup`. Acceptable values are:
+  /// - "`dwight`" - "`jim`" - "`pam`"
   core.String predefinedPickupDetails;
 
   /// Promotions associated with the order.
@@ -22667,15 +25387,9 @@ class TestOrder {
   /// Note that shipping is not taxed in certain states.
   Price shippingCost;
 
-  /// Required. The requested shipping option.
-  ///
-  /// Acceptable values are:
-  /// - "`economy`"
-  /// - "`expedited`"
-  /// - "`oneDay`"
-  /// - "`sameDay`"
-  /// - "`standard`"
-  /// - "`twoDay`"
+  /// Required. The requested shipping option. Acceptable values are: -
+  /// "`economy`" - "`expedited`" - "`oneDay`" - "`sameDay`" - "`standard`" -
+  /// "`twoDay`"
   core.String shippingOption;
 
   TestOrder();
@@ -22781,10 +25495,7 @@ class TestOrderAddress {
   core.String country;
 
   /// Strings representing the lines of the printed label for mailing the order,
-  /// for example:
-  /// John Smith
-  /// 1600 Amphitheatre Parkway
-  /// Mountain View, CA, 94043
+  /// for example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043
   /// United States
   core.List<core.String> fullAddress;
 
@@ -22872,6 +25583,9 @@ class TestOrderDeliveryDetails {
   /// The delivery address
   TestOrderAddress address;
 
+  /// Whether the order is scheduled delivery order.
+  core.bool isScheduledDelivery;
+
   /// The phone number of the person receiving the delivery.
   core.String phoneNumber;
 
@@ -22880,6 +25594,9 @@ class TestOrderDeliveryDetails {
   TestOrderDeliveryDetails.fromJson(core.Map _json) {
     if (_json.containsKey("address")) {
       address = new TestOrderAddress.fromJson(_json["address"]);
+    }
+    if (_json.containsKey("isScheduledDelivery")) {
+      isScheduledDelivery = _json["isScheduledDelivery"];
     }
     if (_json.containsKey("phoneNumber")) {
       phoneNumber = _json["phoneNumber"];
@@ -22891,6 +25608,9 @@ class TestOrderDeliveryDetails {
         new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = (address).toJson();
+    }
+    if (isScheduledDelivery != null) {
+      _json["isScheduledDelivery"] = isScheduledDelivery;
     }
     if (phoneNumber != null) {
       _json["phoneNumber"] = phoneNumber;
@@ -22953,17 +25673,11 @@ class TestOrderLineItemProduct {
   /// Required. Brand of the item.
   core.String brand;
 
-  /// Required. Condition or state of the item.
-  ///
-  /// Acceptable values are:
-  /// - "`new`"
+  /// Required. Condition or state of the item. Acceptable values are: - "`new`"
   core.String condition;
 
-  /// Required. The two-letter ISO 639-1 language code for the item.
-  ///
-  /// Acceptable values are:
-  /// - "`en`"
-  /// - "`fr`"
+  /// Required. The two-letter ISO 639-1 language code for the item. Acceptable
+  /// values are: - "`en`" - "`fr`"
   core.String contentLanguage;
 
   /// Fees for the item. Optional.
@@ -22989,7 +25703,7 @@ class TestOrderLineItemProduct {
   /// tax settings from Merchant Center are applied.
   Price price;
 
-  /// Required. The CLDR territory code of the target country of the product.
+  /// Required. The CLDR territory // code of the target country of the product.
   core.String targetCountry;
 
   /// Required. The title of the product.
@@ -23102,12 +25816,8 @@ class TestOrderPickupDetails {
   /// Required. Pickup location address.
   TestOrderAddress pickupLocationAddress;
 
-  /// Pickup location type.
-  ///
-  /// Acceptable values are:
-  /// - "`locker`"
-  /// - "`store`"
-  /// - "`curbside`"
+  /// Pickup location type. Acceptable values are: - "`locker`" - "`store`" -
+  /// "`curbside`"
   core.String pickupLocationType;
 
   /// Required. all pickup persons set by users.
@@ -23180,6 +25890,39 @@ class TestOrderPickupDetailsPickupPerson {
     }
     if (phoneNumber != null) {
       _json["phoneNumber"] = phoneNumber;
+    }
+    return _json;
+  }
+}
+
+/// Represents a time zone from the [IANA Time Zone
+/// Database](https://www.iana.org/time-zones).
+class TimeZone {
+  /// IANA Time Zone Database time zone, e.g. "America/New_York".
+  core.String id;
+
+  /// Optional. IANA Time Zone Database version number, e.g. "2019a".
+  core.String version;
+
+  TimeZone();
+
+  TimeZone.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }
@@ -23341,10 +26084,8 @@ class UnitInvoiceAdditionalCharge {
   /// [required] Amount of the additional charge.
   Amount additionalChargeAmount;
 
-  /// [required] Type of the additional charge.
-  ///
-  /// Acceptable values are:
-  /// - "`shipping`"
+  /// [required] Type of the additional charge. Acceptable values are: -
+  /// "`shipping`"
   core.String type;
 
   UnitInvoiceAdditionalCharge();
@@ -23380,12 +26121,8 @@ class UnitInvoiceTaxLine {
   /// is `otherFeeTax`.
   core.String taxName;
 
-  /// [required] Type of the tax.
-  ///
-  /// Acceptable values are:
-  /// - "`otherFee`"
-  /// - "`otherFeeTax`"
-  /// - "`sales`"
+  /// [required] Type of the tax. Acceptable values are: - "`otherFee`" -
+  /// "`otherFeeTax`" - "`sales`"
   core.String taxType;
 
   UnitInvoiceTaxLine();
@@ -23484,11 +26221,7 @@ class Value {
 }
 
 class Weight {
-  /// Required. The weight unit.
-  ///
-  /// Acceptable values are:
-  /// - "`kg`"
-  /// - "`lb`"
+  /// Required. The weight unit. Acceptable values are: - "`kg`" - "`lb`"
   core.String unit;
 
   /// Required. The weight represented as a number.

@@ -323,7 +323,7 @@ class AccountsProductsResourceApi {
 }
 
 /// Attributes of the product. For more information, see
-/// https://support.google.com/manufacturers/answer/6124116.
+/// https://support.google.com/manufacturers/answer/6124116. Next tag: 47
 class Attributes {
   /// The additional images of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#addlimage.

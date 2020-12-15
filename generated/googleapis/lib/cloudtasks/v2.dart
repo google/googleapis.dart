@@ -101,11 +101,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageToken] - The standard list page token.
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -118,9 +118,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
       core.String filter,
-      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -132,14 +132,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -992,6 +992,11 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
   ///
+  /// [pageSize] - Maximum page size. Fewer tasks than requested might be
+  /// returned, even if more tasks exist; use next_page_token in the response to
+  /// determine if more tasks exist. The maximum page size is 1000. If
+  /// unspecified, the page size will be the maximum.
+  ///
   /// [responseView] - The response_view specifies which subset of the Task will
   /// be returned. By default response_view is BASIC; not all information is
   /// retrieved by default because some data, such as payloads, might be
@@ -1016,11 +1021,6 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// returned from the previous call to ListTasks method. The page token is
   /// valid for only 2 hours.
   ///
-  /// [pageSize] - Maximum page size. Fewer tasks than requested might be
-  /// returned, even if more tasks exist; use next_page_token in the response to
-  /// determine if more tasks exist. The maximum page size is 1000. If
-  /// unspecified, the page size will be the maximum.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1032,9 +1032,9 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTasksResponse> list(core.String parent,
-      {core.String responseView,
+      {core.int pageSize,
+      core.String responseView,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1046,14 +1046,14 @@ class ProjectsLocationsQueuesTasksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (responseView != null) {
       _queryParams["responseView"] = [responseView];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1427,10 +1427,6 @@ class Attempt {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -1478,9 +1474,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1495,9 +1488,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }

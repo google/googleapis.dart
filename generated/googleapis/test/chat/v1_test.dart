@@ -192,27 +192,27 @@ checkButton(api.Button o) {
   buildCounterButton--;
 }
 
-buildUnnamed3525() {
+buildUnnamed3341() {
   var o = new core.List<api.CardAction>();
   o.add(buildCardAction());
   o.add(buildCardAction());
   return o;
 }
 
-checkUnnamed3525(core.List<api.CardAction> o) {
+checkUnnamed3341(core.List<api.CardAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCardAction(o[0]);
   checkCardAction(o[1]);
 }
 
-buildUnnamed3526() {
+buildUnnamed3342() {
   var o = new core.List<api.Section>();
   o.add(buildSection());
   o.add(buildSection());
   return o;
 }
 
-checkUnnamed3526(core.List<api.Section> o) {
+checkUnnamed3342(core.List<api.Section> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSection(o[0]);
   checkSection(o[1]);
@@ -223,10 +223,10 @@ buildCard() {
   var o = new api.Card();
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    o.cardActions = buildUnnamed3525();
+    o.cardActions = buildUnnamed3341();
     o.header = buildCardHeader();
     o.name = "foo";
-    o.sections = buildUnnamed3526();
+    o.sections = buildUnnamed3342();
   }
   buildCounterCard--;
   return o;
@@ -235,10 +235,10 @@ buildCard() {
 checkCard(api.Card o) {
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    checkUnnamed3525(o.cardActions);
+    checkUnnamed3341(o.cardActions);
     checkCardHeader(o.header);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3526(o.sections);
+    checkUnnamed3342(o.sections);
   }
   buildCounterCard--;
 }
@@ -358,14 +358,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed3527() {
+buildUnnamed3343() {
   var o = new core.List<api.ActionParameter>();
   o.add(buildActionParameter());
   o.add(buildActionParameter());
   return o;
 }
 
-checkUnnamed3527(core.List<api.ActionParameter> o) {
+checkUnnamed3343(core.List<api.ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActionParameter(o[0]);
   checkActionParameter(o[1]);
@@ -377,7 +377,7 @@ buildFormAction() {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     o.actionMethodName = "foo";
-    o.parameters = buildUnnamed3527();
+    o.parameters = buildUnnamed3343();
   }
   buildCounterFormAction--;
   return o;
@@ -387,7 +387,7 @@ checkFormAction(api.FormAction o) {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     unittest.expect(o.actionMethodName, unittest.equals('foo'));
-    checkUnnamed3527(o.parameters);
+    checkUnnamed3343(o.parameters);
   }
   buildCounterFormAction--;
 }
@@ -473,14 +473,14 @@ checkKeyValue(api.KeyValue o) {
   buildCounterKeyValue--;
 }
 
-buildUnnamed3528() {
+buildUnnamed3344() {
   var o = new core.List<api.Membership>();
   o.add(buildMembership());
   o.add(buildMembership());
   return o;
 }
 
-checkUnnamed3528(core.List<api.Membership> o) {
+checkUnnamed3344(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -491,7 +491,7 @@ buildListMembershipsResponse() {
   var o = new api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed3528();
+    o.memberships = buildUnnamed3344();
     o.nextPageToken = "foo";
   }
   buildCounterListMembershipsResponse--;
@@ -501,20 +501,20 @@ buildListMembershipsResponse() {
 checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed3528(o.memberships);
+    checkUnnamed3344(o.memberships);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMembershipsResponse--;
 }
 
-buildUnnamed3529() {
+buildUnnamed3345() {
   var o = new core.List<api.Space>();
   o.add(buildSpace());
   o.add(buildSpace());
   return o;
 }
 
-checkUnnamed3529(core.List<api.Space> o) {
+checkUnnamed3345(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0]);
   checkSpace(o[1]);
@@ -526,7 +526,7 @@ buildListSpacesResponse() {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     o.nextPageToken = "foo";
-    o.spaces = buildUnnamed3529();
+    o.spaces = buildUnnamed3345();
   }
   buildCounterListSpacesResponse--;
   return o;
@@ -536,7 +536,7 @@ checkListSpacesResponse(api.ListSpacesResponse o) {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3529(o.spaces);
+    checkUnnamed3345(o.spaces);
   }
   buildCounterListSpacesResponse--;
 }
@@ -585,40 +585,40 @@ checkMembership(api.Membership o) {
   buildCounterMembership--;
 }
 
-buildUnnamed3530() {
+buildUnnamed3346() {
   var o = new core.List<api.Annotation>();
   o.add(buildAnnotation());
   o.add(buildAnnotation());
   return o;
 }
 
-checkUnnamed3530(core.List<api.Annotation> o) {
+checkUnnamed3346(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0]);
   checkAnnotation(o[1]);
 }
 
-buildUnnamed3531() {
+buildUnnamed3347() {
   var o = new core.List<api.Attachment>();
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-checkUnnamed3531(core.List<api.Attachment> o) {
+checkUnnamed3347(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0]);
   checkAttachment(o[1]);
 }
 
-buildUnnamed3532() {
+buildUnnamed3348() {
   var o = new core.List<api.Card>();
   o.add(buildCard());
   o.add(buildCard());
   return o;
 }
 
-checkUnnamed3532(core.List<api.Card> o) {
+checkUnnamed3348(core.List<api.Card> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCard(o[0]);
   checkCard(o[1]);
@@ -630,10 +630,10 @@ buildMessage() {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     o.actionResponse = buildActionResponse();
-    o.annotations = buildUnnamed3530();
+    o.annotations = buildUnnamed3346();
     o.argumentText = "foo";
-    o.attachment = buildUnnamed3531();
-    o.cards = buildUnnamed3532();
+    o.attachment = buildUnnamed3347();
+    o.cards = buildUnnamed3348();
     o.createTime = "foo";
     o.fallbackText = "foo";
     o.name = "foo";
@@ -652,10 +652,10 @@ checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     checkActionResponse(o.actionResponse);
-    checkUnnamed3530(o.annotations);
+    checkUnnamed3346(o.annotations);
     unittest.expect(o.argumentText, unittest.equals('foo'));
-    checkUnnamed3531(o.attachment);
-    checkUnnamed3532(o.cards);
+    checkUnnamed3347(o.attachment);
+    checkUnnamed3348(o.cards);
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.fallbackText, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -709,14 +709,14 @@ checkOpenLink(api.OpenLink o) {
   buildCounterOpenLink--;
 }
 
-buildUnnamed3533() {
+buildUnnamed3349() {
   var o = new core.List<api.WidgetMarkup>();
   o.add(buildWidgetMarkup());
   o.add(buildWidgetMarkup());
   return o;
 }
 
-checkUnnamed3533(core.List<api.WidgetMarkup> o) {
+checkUnnamed3349(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0]);
   checkWidgetMarkup(o[1]);
@@ -728,7 +728,7 @@ buildSection() {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = "foo";
-    o.widgets = buildUnnamed3533();
+    o.widgets = buildUnnamed3349();
   }
   buildCounterSection--;
   return o;
@@ -738,7 +738,7 @@ checkSection(api.Section o) {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     unittest.expect(o.header, unittest.equals('foo'));
-    checkUnnamed3533(o.widgets);
+    checkUnnamed3349(o.widgets);
   }
   buildCounterSection--;
 }
@@ -882,6 +882,7 @@ buildUser() {
   if (buildCounterUser < 3) {
     o.displayName = "foo";
     o.domainId = "foo";
+    o.isAnonymous = true;
     o.name = "foo";
     o.type = "foo";
   }
@@ -894,6 +895,7 @@ checkUser(api.User o) {
   if (buildCounterUser < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.domainId, unittest.equals('foo'));
+    unittest.expect(o.isAnonymous, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -921,14 +923,14 @@ checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-buildUnnamed3534() {
+buildUnnamed3350() {
   var o = new core.List<api.Button>();
   o.add(buildButton());
   o.add(buildButton());
   return o;
 }
 
-checkUnnamed3534(core.List<api.Button> o) {
+checkUnnamed3350(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0]);
   checkButton(o[1]);
@@ -939,7 +941,7 @@ buildWidgetMarkup() {
   var o = new api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed3534();
+    o.buttons = buildUnnamed3350();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -951,7 +953,7 @@ buildWidgetMarkup() {
 checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed3534(o.buttons);
+    checkUnnamed3350(o.buttons);
     checkImage(o.image);
     checkKeyValue(o.keyValue);
     checkTextParagraph(o.textParagraph);
@@ -1224,6 +1226,129 @@ main() {
     });
   });
 
+  unittest.group("resource-DmsResourceApi", () {
+    unittest.test("method--messages", () {
+      var mock = new HttpServerMock();
+      api.DmsResourceApi res = new api.ChatApi(mock).dms;
+      var arg_request = buildMessage();
+      var arg_parent = "foo";
+      var arg_threadKey = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.Message.fromJson(json);
+        checkMessage(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildMessage());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .messages(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-DmsConversationsResourceApi", () {
+    unittest.test("method--messages", () {
+      var mock = new HttpServerMock();
+      api.DmsConversationsResourceApi res =
+          new api.ChatApi(mock).dms.conversations;
+      var arg_request = buildMessage();
+      var arg_parent = "foo";
+      var arg_threadKey = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.Message.fromJson(json);
+        checkMessage(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildMessage());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .messages(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response);
+      })));
+    });
+  });
+
   unittest.group("resource-MediaResourceApi", () {
     unittest.test("method--download", () {
       // TODO: Implement tests for media upload;
@@ -1276,6 +1401,129 @@ main() {
           .download(arg_resourceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMedia(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-RoomsResourceApi", () {
+    unittest.test("method--messages", () {
+      var mock = new HttpServerMock();
+      api.RoomsResourceApi res = new api.ChatApi(mock).rooms;
+      var arg_request = buildMessage();
+      var arg_parent = "foo";
+      var arg_threadKey = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.Message.fromJson(json);
+        checkMessage(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildMessage());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .messages(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-RoomsConversationsResourceApi", () {
+    unittest.test("method--messages", () {
+      var mock = new HttpServerMock();
+      api.RoomsConversationsResourceApi res =
+          new api.ChatApi(mock).rooms.conversations;
+      var arg_request = buildMessage();
+      var arg_parent = "foo";
+      var arg_threadKey = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.Message.fromJson(json);
+        checkMessage(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildMessage());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .messages(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response);
       })));
     });
   });
@@ -1447,8 +1695,8 @@ main() {
       var mock = new HttpServerMock();
       api.SpacesMembersResourceApi res = new api.ChatApi(mock).spaces.members;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1481,10 +1729,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1495,8 +1743,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListMembershipsResponse(response);

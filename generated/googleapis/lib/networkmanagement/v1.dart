@@ -409,12 +409,10 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
   /// `projects/{project_id}/locations/global`
   /// Value must have pattern "^projects/[^/]+/locations/global$".
   ///
-  /// [pageToken] - Page token from an earlier query, as returned in
-  /// `next_page_token`.
-  ///
   /// [pageSize] - Number of `ConnectivityTests` to return.
   ///
-  /// [orderBy] - Field to use to sort the list.
+  /// [pageToken] - Page token from an earlier query, as returned in
+  /// `next_page_token`.
   ///
   /// [filter] - Lists the `ConnectivityTests` that match the filter expression.
   /// A filter expression filters the resources listed in the response. The
@@ -427,6 +425,8 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
   /// labels: - Resources that have a key called `foo` labels.foo:* - Resources
   /// that have a key called `foo` whose value is `bar` labels.foo = bar
   ///
+  /// [orderBy] - Field to use to sort the list.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -438,10 +438,10 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConnectivityTestsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String orderBy,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -453,17 +453,17 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1112,6 +1112,8 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
+  core.String bindingId;
+
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -1159,6 +1161,9 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingId")) {
+      bindingId = _json["bindingId"];
+    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1173,6 +1178,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bindingId != null) {
+      _json["bindingId"] = bindingId;
+    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }

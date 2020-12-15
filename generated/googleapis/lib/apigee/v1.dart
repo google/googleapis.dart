@@ -115,6 +115,8 @@ class OrganizationsResourceApi {
       new OrganizationsApisResourceApi(_requester);
   OrganizationsAppsResourceApi get apps =>
       new OrganizationsAppsResourceApi(_requester);
+  OrganizationsDatacollectorsResourceApi get datacollectors =>
+      new OrganizationsDatacollectorsResourceApi(_requester);
   OrganizationsDeploymentsResourceApi get deployments =>
       new OrganizationsDeploymentsResourceApi(_requester);
   OrganizationsDevelopersResourceApi get developers =>
@@ -123,12 +125,18 @@ class OrganizationsResourceApi {
       new OrganizationsEnvgroupsResourceApi(_requester);
   OrganizationsEnvironmentsResourceApi get environments =>
       new OrganizationsEnvironmentsResourceApi(_requester);
+  OrganizationsHostQueriesResourceApi get hostQueries =>
+      new OrganizationsHostQueriesResourceApi(_requester);
+  OrganizationsHostStatsResourceApi get hostStats =>
+      new OrganizationsHostStatsResourceApi(_requester);
   OrganizationsInstancesResourceApi get instances =>
       new OrganizationsInstancesResourceApi(_requester);
   OrganizationsKeyvaluemapsResourceApi get keyvaluemaps =>
       new OrganizationsKeyvaluemapsResourceApi(_requester);
   OrganizationsOperationsResourceApi get operations =>
       new OrganizationsOperationsResourceApi(_requester);
+  OrganizationsOptimizedHostStatsResourceApi get optimizedHostStats =>
+      new OrganizationsOptimizedHostStatsResourceApi(_requester);
   OrganizationsReportsResourceApi get reports =>
       new OrganizationsReportsResourceApi(_requester);
   OrganizationsSharedflowsResourceApi get sharedflows =>
@@ -183,6 +191,52 @@ class OrganizationsResourceApi {
     _url = 'v1/organizations';
 
     var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
+  /// Delete an Apigee organization. Only supported for SubscriptionType TRIAL.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the organization. Use the following structure
+  /// in your request: `organizations/{org}`
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -873,8 +927,8 @@ class OrganizationsApiproductsResourceApi {
   /// current list of attributes with the attributes specified in the request
   /// body. In this way, you can update existing attributes, add new attributes,
   /// or delete existing attributes by omitting them from the request body.
-  /// OAuth access tokens and Key Management Service (KMS) entities (apps,
-  /// developers, and API products) are cached for 180 seconds (current
+  /// **Note**: OAuth access tokens and Key Management Service (KMS) entities
+  /// (apps, developers, and API products) are cached for 180 seconds (current
   /// default). Any custom attributes associated with entities also get cached
   /// for at least 180 seconds after entity is accessed during runtime. In this
   /// case, the `ExpiresIn` element on the OAuthV2 policy won't be able to
@@ -884,8 +938,8 @@ class OrganizationsApiproductsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - **Required.** API product name in the following form:
-  /// organizations/organization_ID/apiproducts/api_product_name
+  /// [name] - Required. Name of the API product. Use the following structure in
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
   /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -943,19 +997,19 @@ class OrganizationsApiproductsResourceApi {
   /// to start testing your APIs. After you have authentication and
   /// authorization working against a simple API product, you can iterate to
   /// create finer grained API products, defining different sets of API
-  /// resources for each API product. *WARNING:* - If you don't specify an API
+  /// resources for each API product. **WARNING:** - If you don't specify an API
   /// proxy in the request body, *any* app associated with the product can make
   /// calls to *any* API in your entire organization. - If you don't specify an
   /// environment in the request body, the product allows access to all
-  /// environments. For more information, see {{what_api_product}}
+  /// environments. For more information, see What is an API product?
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent organization name under which the API
-  /// product will be created. Must be in the following form:
-  /// organizations/organization_ID
+  /// [parent] - Required. Name of the organization in which the API product
+  /// will be created. Use the following structure in your request:
+  /// `organizations/{org}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1013,8 +1067,8 @@ class OrganizationsApiproductsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. API product name in the following form:
-  /// organizations/organization_ID/apiproducts/api_product_name
+  /// [name] - Required. Name of the API product. Use the following structure in
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
   /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1063,8 +1117,8 @@ class OrganizationsApiproductsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - **Required.** API product name in the following form:
-  /// organizations/organization_ID/apiproducts/api_product_name
+  /// [name] - Required. Name of the API product. Use the following structure in
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
   /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1112,13 +1166,16 @@ class OrganizationsApiproductsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - **Required.** The parent organization name in the following
-  /// form: organizations/organization_ID
+  /// [parent] - Required. Name of the organization. Use the following structure
+  /// in your request: `organizations/{org}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [expand] - Set to `true` to get expanded details about each API.
+  /// [expand] - Flag that specifies whether to expand the results. Set to
+  /// `true` to get expanded details about each API.
   ///
-  /// [attributevalue] - The value of the attribute.
+  /// [attributevalue] - Value of the attribute used to filter the search.
+  ///
+  /// [attributename] - Name of the attribute used to filter the search.
   ///
   /// [startKey] - Gets a list of API products starting with a specific API
   /// product in the list. For example, if you're returning 50 API products at a
@@ -1128,8 +1185,6 @@ class OrganizationsApiproductsResourceApi {
   ///
   /// [count] - Enter the number of API products you want returned in the API
   /// call. The limit is 1000.
-  ///
-  /// [attributename] - The name of the attribute to search.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1145,9 +1200,9 @@ class OrganizationsApiproductsResourceApi {
       core.String parent,
       {core.bool expand,
       core.String attributevalue,
+      core.String attributename,
       core.String startKey,
       core.String count,
-      core.String attributename,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1165,14 +1220,14 @@ class OrganizationsApiproductsResourceApi {
     if (attributevalue != null) {
       _queryParams["attributevalue"] = [attributevalue];
     }
+    if (attributename != null) {
+      _queryParams["attributename"] = [attributename];
+    }
     if (startKey != null) {
       _queryParams["startKey"] = [startKey];
     }
     if (count != null) {
       _queryParams["count"] = [count];
-    }
-    if (attributename != null) {
-      _queryParams["attributename"] = [attributename];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1203,8 +1258,8 @@ class OrganizationsApiproductsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - **Required.** API product name in the following form:
-  /// organizations/organization_ID/apiproducts/api_product_name
+  /// [name] - Required. Name of the API product. Use the following structure in
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
   /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1260,8 +1315,9 @@ class OrganizationsApiproductsAttributesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - **Required.** API product name in the following form:
-  /// organizations/organization_ID/apiproducts/api_product_name/attributes/attribute_name
+  /// [name] - Required. Name of the API product attribute. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/apiproducts/{apiproduct}/attributes/{attribute}`
   /// Value must have pattern
   /// "^organizations/[^/]+/apiproducts/[^/]+/attributes/[^/]+$".
   ///
@@ -1303,12 +1359,13 @@ class OrganizationsApiproductsAttributesResourceApi {
         .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 
-  /// Returns the value of an API product attribute.
+  /// Gets the value of an API product attribute.
   ///
   /// Request parameters:
   ///
-  /// [name] - **Required.** API product name in the following form:
-  /// organizations/organization_ID/apiproducts/api_product_name/attributes/attribute_name
+  /// [name] - Required. Name of the API product attribute. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/apiproducts/{apiproduct}/attributes/{attribute}`
   /// Value must have pattern
   /// "^organizations/[^/]+/apiproducts/[^/]+/attributes/[^/]+$".
   ///
@@ -1350,12 +1407,12 @@ class OrganizationsApiproductsAttributesResourceApi {
         .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 
-  /// Returns a list of all API product attributes.
+  /// Lists all API product attributes.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent organization name. Must be in the
-  /// following form: organizations/organization_ID/apiproducts/api_product_name
+  /// [parent] - Required. Name of the API product. Use the following structure
+  /// in your request: `organizations/{org}/apiproducts/{apiproduct}`
   /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1398,9 +1455,9 @@ class OrganizationsApiproductsAttributesResourceApi {
         .then((data) => new GoogleCloudApigeeV1Attributes.fromJson(data));
   }
 
-  /// Updates the value of an API product attribute. Limitations are: OAuth
-  /// access tokens and Key Management Service (KMS) entities (apps, developers,
-  /// and API products) are cached for 180 seconds (current default). Any custom
+  /// Updates the value of an API product attribute. **Note**: OAuth access
+  /// tokens and Key Management Service (KMS) entities (apps, developers, and
+  /// API products) are cached for 180 seconds (current default). Any custom
   /// attributes associated with entities also get cached for at least 180
   /// seconds after entity is accessed during runtime. In this case, the
   /// `ExpiresIn` element on the OAuthV2 policy won't be able to expire an
@@ -1410,8 +1467,8 @@ class OrganizationsApiproductsAttributesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - **Required.** API product name in the following form:
-  /// organizations/organization_ID/apiproducts/api_product_name
+  /// [name] - Required. Name of the API product. Use the following structure in
+  /// your request: `organizations/{org}/apiproducts/{apiproduct}`
   /// Value must have pattern
   /// "^organizations/[^/]+/apiproducts/[^/]+/attributes/[^/]+$".
   ///
@@ -1498,13 +1555,13 @@ class OrganizationsApisResourceApi {
   /// [name] - Name of the API proxy. Restrict the characters used to:
   /// A-Za-z0-9._-
   ///
-  /// [validate] - Ignored. All uploads are validated regardless of the value of
-  /// this field. Maintained for compatibility with Apigee Edge API.
-  ///
   /// [action] - Action to perform when importing an API proxy configuration
   /// bundle. Set this parameter to one of the following values: * `import` to
   /// import the API proxy configuration bundle. * `validate` to validate the
   /// API proxy configuration bundle without importing it.
+  ///
+  /// [validate] - Ignored. All uploads are validated regardless of the value of
+  /// this field. Maintained for compatibility with Apigee Edge API.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1519,8 +1576,8 @@ class OrganizationsApisResourceApi {
   async.Future<GoogleCloudApigeeV1ApiProxyRevision> create(
       GoogleApiHttpBody request, core.String parent,
       {core.String name,
-      core.bool validate,
       core.String action,
+      core.bool validate,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1538,11 +1595,11 @@ class OrganizationsApisResourceApi {
     if (name != null) {
       _queryParams["name"] = [name];
     }
-    if (validate != null) {
-      _queryParams["validate"] = ["${validate}"];
-    }
     if (action != null) {
       _queryParams["action"] = [action];
+    }
+    if (validate != null) {
+      _queryParams["validate"] = ["${validate}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2184,28 +2241,28 @@ class OrganizationsAppsResourceApi {
   /// `organizations/{org}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [startKey] - Returns the list of apps starting from the specified app ID.
+  /// [ids] - Optional. Comma-separated list of app IDs on which to filter.
+  ///
+  /// [rows] - Optional. Maximum number of app IDs to return. Defaults to 10000.
   ///
   /// [expand] - Optional. Flag that specifies whether to return an expanded
   /// list of apps for the organization. Defaults to `false`.
   ///
-  /// [includeCred] - Optional. Flag that specifies whether to include
-  /// credentials in the response.
-  ///
-  /// [rows] - Optional. Maximum number of app IDs to return. Defaults to 10000.
-  ///
-  /// [status] - Optional. Filter by the status of the app. Valid values are
-  /// `approved` or `revoked`. Defaults to `approved`.
-  ///
-  /// [keyStatus] - Optional. Key status of the app. Valid values include
-  /// `approved` or `revoked`. Defaults to `approved`.
+  /// [apiProduct] - API product.
   ///
   /// [apptype] - Optional. Filter by the type of the app. Valid values are
   /// `company` or `developer`. Defaults to `developer`.
   ///
-  /// [apiProduct] - API product.
+  /// [status] - Optional. Filter by the status of the app. Valid values are
+  /// `approved` or `revoked`. Defaults to `approved`.
   ///
-  /// [ids] - Optional. Comma-separated list of app IDs on which to filter.
+  /// [startKey] - Returns the list of apps starting from the specified app ID.
+  ///
+  /// [includeCred] - Optional. Flag that specifies whether to include
+  /// credentials in the response.
+  ///
+  /// [keyStatus] - Optional. Key status of the app. Valid values include
+  /// `approved` or `revoked`. Defaults to `approved`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2218,15 +2275,15 @@ class OrganizationsAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListAppsResponse> list(core.String parent,
-      {core.String startKey,
-      core.bool expand,
-      core.bool includeCred,
+      {core.String ids,
       core.String rows,
-      core.String status,
-      core.String keyStatus,
-      core.String apptype,
+      core.bool expand,
       core.String apiProduct,
-      core.String ids,
+      core.String apptype,
+      core.String status,
+      core.String startKey,
+      core.bool includeCred,
+      core.String keyStatus,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2238,32 +2295,32 @@ class OrganizationsAppsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (startKey != null) {
-      _queryParams["startKey"] = [startKey];
-    }
-    if (expand != null) {
-      _queryParams["expand"] = ["${expand}"];
-    }
-    if (includeCred != null) {
-      _queryParams["includeCred"] = ["${includeCred}"];
+    if (ids != null) {
+      _queryParams["ids"] = [ids];
     }
     if (rows != null) {
       _queryParams["rows"] = [rows];
     }
-    if (status != null) {
-      _queryParams["status"] = [status];
-    }
-    if (keyStatus != null) {
-      _queryParams["keyStatus"] = [keyStatus];
-    }
-    if (apptype != null) {
-      _queryParams["apptype"] = [apptype];
+    if (expand != null) {
+      _queryParams["expand"] = ["${expand}"];
     }
     if (apiProduct != null) {
       _queryParams["apiProduct"] = [apiProduct];
     }
-    if (ids != null) {
-      _queryParams["ids"] = [ids];
+    if (apptype != null) {
+      _queryParams["apptype"] = [apptype];
+    }
+    if (status != null) {
+      _queryParams["status"] = [status];
+    }
+    if (startKey != null) {
+      _queryParams["startKey"] = [startKey];
+    }
+    if (includeCred != null) {
+      _queryParams["includeCred"] = ["${includeCred}"];
+    }
+    if (keyStatus != null) {
+      _queryParams["keyStatus"] = [keyStatus];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2279,6 +2336,284 @@ class OrganizationsAppsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new GoogleCloudApigeeV1ListAppsResponse.fromJson(data));
+  }
+}
+
+class OrganizationsDatacollectorsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsDatacollectorsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new data collector.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization in which to create the data
+  /// collector in the following format: `organizations/{org}`.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [dataCollectorId] - ID of the data collector. Overrides any ID in the data
+  /// collector resource. Must begin with `dc_`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DataCollector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DataCollector> create(
+      GoogleCloudApigeeV1DataCollector request, core.String parent,
+      {core.String dataCollectorId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (dataCollectorId != null) {
+      _queryParams["dataCollectorId"] = [dataCollectorId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/datacollectors';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1DataCollector.fromJson(data));
+  }
+
+  /// Deletes a data collector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the data collector in the following format:
+  /// `organizations/{org}/datacollectors/{data_collector_id}`.
+  /// Value must have pattern "^organizations/[^/]+/datacollectors/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets a data collector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the data collector in the following format:
+  /// `organizations/{org}/datacollectors/{data_collector_id}`.
+  /// Value must have pattern "^organizations/[^/]+/datacollectors/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DataCollector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DataCollector> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1DataCollector.fromJson(data));
+  }
+
+  /// Lists all data collectors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization for which to list data
+  /// collectors in the following format: `organizations/{org}`.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [pageSize] - Maximum number of data collectors to return. The page size
+  /// defaults to 25.
+  ///
+  /// [pageToken] - Page token, returned from a previous ListDataCollectors
+  /// call, that you can use to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListDataCollectorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListDataCollectorsResponse> list(
+      core.String parent,
+      {core.int pageSize,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/datacollectors';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(data));
+  }
+
+  /// Updates a data collector.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the data collector in the following format:
+  /// `organizations/{org}/datacollectors/{data_collector_id}`.
+  /// Value must have pattern "^organizations/[^/]+/datacollectors/[^/]+$".
+  ///
+  /// [updateMask] - List of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DataCollector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DataCollector> patch(
+      GoogleCloudApigeeV1DataCollector request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1DataCollector.fromJson(data));
   }
 }
 
@@ -2601,12 +2936,19 @@ class OrganizationsDevelopersResourceApi {
   /// structure in your request: `organizations/{org}`.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [includeCompany] - Flag that specifies whether to include company details
+  /// in the response.
+  ///
+  /// [app] - Optional. List only Developers that are associated with the app.
+  /// Note that start_key, count are not applicable for this filter criteria.
+  ///
   /// [expand] - Specifies whether to expand the results. Set to `true` to
   /// expand the results. This query parameter is not valid if you use the
   /// `count` or `startKey` query parameters.
   ///
-  /// [includeCompany] - Flag that specifies whether to include company details
-  /// in the response.
+  /// [count] - Optional. Number of developers to return in the API call. Use
+  /// with the `startKey` parameter to provide more targeted filtering. The
+  /// limit is 1000.
   ///
   /// [startKey] - **Note**: Must be used in conjunction with the `count`
   /// parameter. Email address of the developer from which to start displaying
@@ -2616,10 +2958,6 @@ class OrganizationsDevelopersResourceApi {
   /// fezzik@example.com buttercup@example.com ```
   ///
   /// [ids] - Optional. List of IDs to include, separated by commas.
-  ///
-  /// [count] - Optional. Number of developers to return in the API call. Use
-  /// with the `startKey` parameter to provide more targeted filtering. The
-  /// limit is 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2633,11 +2971,12 @@ class OrganizationsDevelopersResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListOfDevelopersResponse> list(
       core.String parent,
-      {core.bool expand,
-      core.bool includeCompany,
+      {core.bool includeCompany,
+      core.String app,
+      core.bool expand,
+      core.String count,
       core.String startKey,
       core.String ids,
-      core.String count,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2649,20 +2988,23 @@ class OrganizationsDevelopersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (includeCompany != null) {
+      _queryParams["includeCompany"] = ["${includeCompany}"];
+    }
+    if (app != null) {
+      _queryParams["app"] = [app];
+    }
     if (expand != null) {
       _queryParams["expand"] = ["${expand}"];
     }
-    if (includeCompany != null) {
-      _queryParams["includeCompany"] = ["${includeCompany}"];
+    if (count != null) {
+      _queryParams["count"] = [count];
     }
     if (startKey != null) {
       _queryParams["startKey"] = [startKey];
     }
     if (ids != null) {
       _queryParams["ids"] = [ids];
-    }
-    if (count != null) {
-      _queryParams["count"] = [count];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3143,16 +3485,16 @@ class OrganizationsDevelopersAppsResourceApi {
   /// 50-99 by entering the name of the 50th developer app. The developer app
   /// name is case sensitive.
   ///
-  /// [shallowExpand] - Optional. Specifies whether to expand the results in
-  /// shallow mode. Set to `true` to expand the results in shallow mode.
+  /// [count] - Number of developer apps to return in the API call. Use with the
+  /// `startKey` parameter to provide more targeted filtering. The limit is
+  /// 1000.
   ///
   /// [expand] - Optional. Specifies whether to expand the results. Set to
   /// `true` to expand the results. This query parameter is not valid if you use
   /// the `count` or `startKey` query parameters.
   ///
-  /// [count] - Number of developer apps to return in the API call. Use with the
-  /// `startKey` parameter to provide more targeted filtering. The limit is
-  /// 1000.
+  /// [shallowExpand] - Optional. Specifies whether to expand the results in
+  /// shallow mode. Set to `true` to expand the results in shallow mode.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3167,9 +3509,9 @@ class OrganizationsDevelopersAppsResourceApi {
   async.Future<GoogleCloudApigeeV1ListDeveloperAppsResponse> list(
       core.String parent,
       {core.String startKey,
-      core.bool shallowExpand,
-      core.bool expand,
       core.String count,
+      core.bool expand,
+      core.bool shallowExpand,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3184,14 +3526,14 @@ class OrganizationsDevelopersAppsResourceApi {
     if (startKey != null) {
       _queryParams["startKey"] = [startKey];
     }
-    if (shallowExpand != null) {
-      _queryParams["shallowExpand"] = ["${shallowExpand}"];
+    if (count != null) {
+      _queryParams["count"] = [count];
     }
     if (expand != null) {
       _queryParams["expand"] = ["${expand}"];
     }
-    if (count != null) {
-      _queryParams["count"] = [count];
+    if (shallowExpand != null) {
+      _queryParams["shallowExpand"] = ["${shallowExpand}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5330,12 +5672,12 @@ class OrganizationsEnvironmentsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/debugmask$".
   ///
-  /// [updateMask] - Field debug mask to support partial updates.
-  ///
   /// [replaceRepeatedFields] - Boolean flag that specifies whether to replace
   /// existing values in the debug mask when doing an update. Set to true to
   /// replace existing values. The default behavior is to append the values
   /// (false).
+  ///
+  /// [updateMask] - Field debug mask to support partial updates.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5349,8 +5691,8 @@ class OrganizationsEnvironmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DebugMask> updateDebugmask(
       GoogleCloudApigeeV1DebugMask request, core.String name,
-      {core.String updateMask,
-      core.bool replaceRepeatedFields,
+      {core.bool replaceRepeatedFields,
+      core.String updateMask,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5365,11 +5707,11 @@ class OrganizationsEnvironmentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (replaceRepeatedFields != null) {
       _queryParams["replaceRepeatedFields"] = ["${replaceRepeatedFields}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6855,12 +7197,13 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// request is controlled by the `format` query parameter: * `keycertfile` -
   /// Separate PEM-encoded key and certificate files are uploaded. The request
   /// must have `Content-Type: multipart/form-data` and include fields `keyFile`
-  /// and `certFile`. If uploading to a truststore, omit `keyFile`. * `pkcs12` -
-  /// A PKCS12 file is uploaded. The request must have `Content-Type:
-  /// multipart/form-data` with the file provided in the only field. *
-  /// `selfsignedcert` - A new private key and certificate are generated. The
-  /// request must have `Content-Type: application/json` and a body of
-  /// CertificateGenerationSpec.
+  /// and `certFile`. If uploading to a truststore, omit `keyFile`. A `password`
+  /// field should be provided for encrypted keys. * `pkcs12` - A PKCS12 file is
+  /// uploaded. The request must have `Content-Type: multipart/form-data` with
+  /// the file provided in the `file` field and a `password` field if the file
+  /// is encrypted. * `selfsignedcert` - A new private key and certificate are
+  /// generated. The request must have `Content-Type: application/json` and a
+  /// body of CertificateGenerationSpec.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6871,22 +7214,25 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+$".
   ///
-  /// [alias] - The alias for the key, certificate pair. Values must match
-  /// regular expression `[\w\s-.]{1,255}`. This must be provided for all
-  /// formats except 'selfsignedcert'; self-signed certs may specify the alias
-  /// in either this parameter or the JSON body.
+  /// [format] - Required. The format of the data. Must be either
+  /// `selfsignedcert`, `keycertfile`, or `pkcs12`.
+  ///
+  /// [ignoreExpiryValidation] - If `true`, no expiry validation will be
+  /// performed.
+  ///
+  /// [P_password] - DEPRECATED: For improved security, send the password in the
+  /// body instead of using this query param. To send it in the body, use a
+  /// multipart/form-data part with name "password". The password for the
+  /// private key file, if it exists.
   ///
   /// [ignoreNewlineValidation] - If `true`, do not throw an error when the file
   /// contains a chain with no newline between each certificate. By default, a
   /// newline is needed between each certificate in a chain.
   ///
-  /// [P_password] - The password for the private key file, if it exists.
-  ///
-  /// [ignoreExpiryValidation] - If `true`, no expiry validation will be
-  /// performed.
-  ///
-  /// [format] - Required. The format of the data. Must be either
-  /// `selfsignedcert`, `keycertfile`, or `pkcs12`.
+  /// [alias] - The alias for the key, certificate pair. Values must match
+  /// regular expression `[\w\s-.]{1,255}`. This must be provided for all
+  /// formats except 'selfsignedcert'; self-signed certs may specify the alias
+  /// in either this parameter or the JSON body.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6900,11 +7246,11 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Alias> create(
       GoogleApiHttpBody request, core.String parent,
-      {core.String alias,
-      core.bool ignoreNewlineValidation,
-      core.String P_password,
+      {core.String format,
       core.bool ignoreExpiryValidation,
-      core.String format,
+      core.String P_password,
+      core.bool ignoreNewlineValidation,
+      core.String alias,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6919,20 +7265,20 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (alias != null) {
-      _queryParams["alias"] = [alias];
-    }
-    if (ignoreNewlineValidation != null) {
-      _queryParams["ignoreNewlineValidation"] = ["${ignoreNewlineValidation}"];
-    }
-    if (P_password != null) {
-      _queryParams["_password"] = [P_password];
+    if (format != null) {
+      _queryParams["format"] = [format];
     }
     if (ignoreExpiryValidation != null) {
       _queryParams["ignoreExpiryValidation"] = ["${ignoreExpiryValidation}"];
     }
-    if (format != null) {
-      _queryParams["format"] = [format];
+    if (P_password != null) {
+      _queryParams["_password"] = [P_password];
+    }
+    if (ignoreNewlineValidation != null) {
+      _queryParams["ignoreNewlineValidation"] = ["${ignoreNewlineValidation}"];
+    }
+    if (alias != null) {
+      _queryParams["alias"] = [alias];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7149,12 +7495,12 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+/aliases/[^/]+$".
   ///
+  /// [ignoreExpiryValidation] - Required. If `true`, no expiry validation will
+  /// be performed.
+  ///
   /// [ignoreNewlineValidation] - If `true`, do not throw an error when the file
   /// contains a chain with no newline between each certificate. By default, a
   /// newline is needed between each certificate in a chain.
-  ///
-  /// [ignoreExpiryValidation] - Required. If `true`, no expiry validation will
-  /// be performed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7168,8 +7514,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Alias> update(
       GoogleApiHttpBody request, core.String name,
-      {core.bool ignoreNewlineValidation,
-      core.bool ignoreExpiryValidation,
+      {core.bool ignoreExpiryValidation,
+      core.bool ignoreNewlineValidation,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7184,11 +7530,11 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (ignoreNewlineValidation != null) {
-      _queryParams["ignoreNewlineValidation"] = ["${ignoreNewlineValidation}"];
-    }
     if (ignoreExpiryValidation != null) {
       _queryParams["ignoreExpiryValidation"] = ["${ignoreExpiryValidation}"];
+    }
+    if (ignoreNewlineValidation != null) {
+      _queryParams["ignoreNewlineValidation"] = ["${ignoreNewlineValidation}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7341,48 +7687,48 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/optimizedStats/.*$".
   ///
-  /// [offset] - Use offset with limit to enable pagination of results. For
-  /// example, to display results 11-20, set limit to '10' and offset to '10'.
-  ///
-  /// [sonar] - This parameter routes the query to api monitoring service for
-  /// last hour.
-  ///
-  /// [accuracy] - Legacy field: not used anymore.
-  ///
-  /// [limit] - This parameter is used to limit the number of result items.
-  /// Default and the max value is 14400.
-  ///
-  /// [timeUnit] - A value of second, minute, hour, day, week, month. Time Unit
-  /// specifies the granularity of metrics returned.
-  ///
-  /// [sort] - This parameter specifies if the sort order should be ascending or
-  /// descending Supported values are DESC and ASC.
-  ///
-  /// [realtime] - Legacy field: not used anymore.
-  ///
-  /// [aggTable] - If customers want to query custom aggregate tables, then this
-  /// parameter can be used to specify the table name. If this parameter is
-  /// skipped, then Edge Query will try to retrieve the data from fact tables
-  /// which will be expensive.
+  /// [filter] - Enables drill-down on specific dimension values.
   ///
   /// [timeRange] - Required. Time interval for the interactive query. Time
   /// range is specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
   ///
-  /// [tzo] - This parameters contains the timezone offset value.
-  ///
   /// [sortby] - Comma separated list of columns to sort the final result.
+  ///
+  /// [select] - Required. The select parameter contains a comma separated list
+  /// of metrics. E.g. sum(message_count),sum(error_count)
   ///
   /// [topk] - Take 'top k' results from results, for example, to return the top
   /// 5 results 'topk=5'.
   ///
-  /// [select] - Required. The select parameter contains a comma separated list
-  /// of metrics. E.g. sum(message_count),sum(error_count)
+  /// [timeUnit] - A value of second, minute, hour, day, week, month. Time Unit
+  /// specifies the granularity of metrics returned.
+  ///
+  /// [offset] - Use offset with limit to enable pagination of results. For
+  /// example, to display results 11-20, set limit to '10' and offset to '10'.
+  ///
+  /// [limit] - This parameter is used to limit the number of result items.
+  /// Default and the max value is 14400.
   ///
   /// [tsAscending] - Lists timestamps in ascending order if set to true.
   /// Recommend setting this value to true if you are using sortby with
   /// sort=DESC.
   ///
-  /// [filter] - Enables drill-down on specific dimension values.
+  /// [accuracy] - Legacy field: not used anymore.
+  ///
+  /// [tzo] - This parameters contains the timezone offset value.
+  ///
+  /// [realtime] - Legacy field: not used anymore.
+  ///
+  /// [sort] - This parameter specifies if the sort order should be ascending or
+  /// descending Supported values are DESC and ASC.
+  ///
+  /// [sonar] - This parameter routes the query to api monitoring service for
+  /// last hour.
+  ///
+  /// [aggTable] - If customers want to query custom aggregate tables, then this
+  /// parameter can be used to specify the table name. If this parameter is
+  /// skipped, then Edge Query will try to retrieve the data from fact tables
+  /// which will be expensive.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7395,21 +7741,21 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1OptimizedStats> get(core.String name,
-      {core.String offset,
-      core.bool sonar,
-      core.String accuracy,
-      core.String limit,
-      core.String timeUnit,
-      core.String sort,
-      core.bool realtime,
-      core.String aggTable,
+      {core.String filter,
       core.String timeRange,
-      core.String tzo,
       core.String sortby,
-      core.String topk,
       core.String select,
+      core.String topk,
+      core.String timeUnit,
+      core.String offset,
+      core.String limit,
       core.bool tsAscending,
-      core.String filter,
+      core.String accuracy,
+      core.String tzo,
+      core.bool realtime,
+      core.String sort,
+      core.bool sonar,
+      core.String aggTable,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7421,50 +7767,50 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (offset != null) {
-      _queryParams["offset"] = [offset];
-    }
-    if (sonar != null) {
-      _queryParams["sonar"] = ["${sonar}"];
-    }
-    if (accuracy != null) {
-      _queryParams["accuracy"] = [accuracy];
-    }
-    if (limit != null) {
-      _queryParams["limit"] = [limit];
-    }
-    if (timeUnit != null) {
-      _queryParams["timeUnit"] = [timeUnit];
-    }
-    if (sort != null) {
-      _queryParams["sort"] = [sort];
-    }
-    if (realtime != null) {
-      _queryParams["realtime"] = ["${realtime}"];
-    }
-    if (aggTable != null) {
-      _queryParams["aggTable"] = [aggTable];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (timeRange != null) {
       _queryParams["timeRange"] = [timeRange];
     }
-    if (tzo != null) {
-      _queryParams["tzo"] = [tzo];
-    }
     if (sortby != null) {
       _queryParams["sortby"] = [sortby];
-    }
-    if (topk != null) {
-      _queryParams["topk"] = [topk];
     }
     if (select != null) {
       _queryParams["select"] = [select];
     }
+    if (topk != null) {
+      _queryParams["topk"] = [topk];
+    }
+    if (timeUnit != null) {
+      _queryParams["timeUnit"] = [timeUnit];
+    }
+    if (offset != null) {
+      _queryParams["offset"] = [offset];
+    }
+    if (limit != null) {
+      _queryParams["limit"] = [limit];
+    }
     if (tsAscending != null) {
       _queryParams["tsAscending"] = ["${tsAscending}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (accuracy != null) {
+      _queryParams["accuracy"] = [accuracy];
+    }
+    if (tzo != null) {
+      _queryParams["tzo"] = [tzo];
+    }
+    if (realtime != null) {
+      _queryParams["realtime"] = ["${realtime}"];
+    }
+    if (sort != null) {
+      _queryParams["sort"] = [sort];
+    }
+    if (sonar != null) {
+      _queryParams["sonar"] = ["${sonar}"];
+    }
+    if (aggTable != null) {
+      _queryParams["aggTable"] = [aggTable];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7655,20 +8001,20 @@ class OrganizationsEnvironmentsQueriesResourceApi {
   ///
   /// [submittedBy] - Filter response list by user who submitted queries.
   ///
-  /// [from] - Filter response list by returning asynchronous queries that
-  /// created after this date time. Time must be in ISO date-time format like
-  /// '2011-12-03T10:15:30Z'.
-  ///
-  /// [inclQueriesWithoutReport] - Flag to include asynchronous queries that
-  /// don't have a report denifition.
+  /// [dataset] - Filter response list by dataset. Example: `api`, `mint`
   ///
   /// [to] - Filter response list by returning asynchronous queries that created
   /// before this date time. Time must be in ISO date-time format like
   /// '2011-12-03T10:16:30Z'.
   ///
+  /// [from] - Filter response list by returning asynchronous queries that
+  /// created after this date time. Time must be in ISO date-time format like
+  /// '2011-12-03T10:15:30Z'.
+  ///
   /// [status] - Filter response list by asynchronous query status.
   ///
-  /// [dataset] - Filter response list by dataset. Example: `api`, `mint`
+  /// [inclQueriesWithoutReport] - Flag to include asynchronous queries that
+  /// don't have a report denifition.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7683,11 +8029,11 @@ class OrganizationsEnvironmentsQueriesResourceApi {
   async.Future<GoogleCloudApigeeV1ListAsyncQueriesResponse> list(
       core.String parent,
       {core.String submittedBy,
-      core.String from,
-      core.String inclQueriesWithoutReport,
-      core.String to,
-      core.String status,
       core.String dataset,
+      core.String to,
+      core.String from,
+      core.String status,
+      core.String inclQueriesWithoutReport,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7702,20 +8048,20 @@ class OrganizationsEnvironmentsQueriesResourceApi {
     if (submittedBy != null) {
       _queryParams["submittedBy"] = [submittedBy];
     }
-    if (from != null) {
-      _queryParams["from"] = [from];
-    }
-    if (inclQueriesWithoutReport != null) {
-      _queryParams["inclQueriesWithoutReport"] = [inclQueriesWithoutReport];
+    if (dataset != null) {
+      _queryParams["dataset"] = [dataset];
     }
     if (to != null) {
       _queryParams["to"] = [to];
     }
+    if (from != null) {
+      _queryParams["from"] = [from];
+    }
     if (status != null) {
       _queryParams["status"] = [status];
     }
-    if (dataset != null) {
-      _queryParams["dataset"] = [dataset];
+    if (inclQueriesWithoutReport != null) {
+      _queryParams["inclQueriesWithoutReport"] = [inclQueriesWithoutReport];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7956,7 +8302,7 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   /// Creates a resource file. Specify the `Content-Type` as
   /// `application/octet-stream` or `multipart/form-data`. For more information
   /// about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
   ///
   /// [request] - The metadata request object.
   ///
@@ -8023,7 +8369,8 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   }
 
   /// Deletes a resource file. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// [Resource
+  /// files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -8087,7 +8434,8 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   }
 
   /// Gets the contents of a resource file. For more information about resource
-  /// files, see [Resource files](/api-platform/develop/resource-files).
+  /// files, see [Resource
+  /// files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -8149,8 +8497,9 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
     return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
   }
 
-  /// Lists all resource files. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// Lists all resource files, optionally filtering by type. For more
+  /// information about resource files, see [Resource
+  /// files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -8206,8 +8555,9 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
         new GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(data));
   }
 
-  /// Lists all resource files. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// Lists all resource files, optionally filtering by type. For more
+  /// information about resource files, see [Resource
+  /// files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -8266,7 +8616,7 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   /// Updates a resource file. Specify the `Content-Type` as
   /// `application/octet-stream` or `multipart/form-data`. For more information
   /// about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
   ///
   /// [request] - The metadata request object.
   ///
@@ -8615,49 +8965,49 @@ class OrganizationsEnvironmentsStatsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/environments/[^/]+/stats/.*$".
   ///
+  /// [tsAscending] - Lists timestamps in ascending order if set to true.
+  /// Recommend setting this value to true if you are using sortby with
+  /// sort=DESC.
+  ///
+  /// [limit] - This parameter is used to limit the number of result items.
+  /// Default and the max value is 14400.
+  ///
+  /// [topk] - Take 'top k' results from results, for example, to return the top
+  /// 5 results 'topk=5'.
+  ///
+  /// [accuracy] - Legacy field: not used anymore. This field is present to
+  /// support UI calls which still use this parameter.
+  ///
+  /// [tzo] - This parameters contains the timezone offset value.
+  ///
+  /// [sonar] - This parameter routes the query to api monitoring service for
+  /// last hour.
+  ///
+  /// [filter] - Enables drill-down on specific dimension values
+  ///
+  /// [offset] - Use offset with limit to enable pagination of results. For
+  /// example, to display results 11-20, set limit to '10' and offset to '10'.
+  ///
   /// [realtime] - Legacy field: not used anymore.
+  ///
+  /// [aggTable] - If customers want to query custom aggregate tables, then this
+  /// parameter can be used to specify the table name. If this parameter is
+  /// skipped, then Edge Query will try to retrieve the data from fact tables
+  /// which will be expensive.
+  ///
+  /// [sort] - This parameter specifies if the sort order should be ascending or
+  /// descending Supported values are DESC and ASC.
   ///
   /// [timeUnit] - A value of second, minute, hour, day, week, month. Time Unit
   /// specifies the granularity of metrics returned.
   ///
   /// [sortby] - Comma separated list of columns to sort the final result.
   ///
-  /// [accuracy] - Legacy field: not used anymore. This field is present to
-  /// support UI calls which still use this parameter.
-  ///
-  /// [filter] - Enables drill-down on specific dimension values
-  ///
-  /// [tzo] - This parameters contains the timezone offset value.
-  ///
-  /// [sort] - This parameter specifies if the sort order should be ascending or
-  /// descending Supported values are DESC and ASC.
-  ///
-  /// [select] - The select parameter contains a comma separated list of
-  /// metrics. E.g. sum(message_count),sum(error_count)
-  ///
-  /// [offset] - Use offset with limit to enable pagination of results. For
-  /// example, to display results 11-20, set limit to '10' and offset to '10'.
-  ///
-  /// [limit] - This parameter is used to limit the number of result items.
-  /// Default and the max value is 14400.
-  ///
-  /// [sonar] - This parameter routes the query to api monitoring service for
-  /// last hour.
-  ///
-  /// [topk] - Take 'top k' results from results, for example, to return the top
-  /// 5 results 'topk=5'.
-  ///
   /// [timeRange] - Time interval for the interactive query. Time range is
   /// specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
   ///
-  /// [tsAscending] - Lists timestamps in ascending order if set to true.
-  /// Recommend setting this value to true if you are using sortby with
-  /// sort=DESC.
-  ///
-  /// [aggTable] - If customers want to query custom aggregate tables, then this
-  /// parameter can be used to specify the table name. If this parameter is
-  /// skipped, then Edge Query will try to retrieve the data from fact tables
-  /// which will be expensive.
+  /// [select] - The select parameter contains a comma separated list of
+  /// metrics. E.g. sum(message_count),sum(error_count)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8670,21 +9020,21 @@ class OrganizationsEnvironmentsStatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Stats> get(core.String name,
-      {core.bool realtime,
+      {core.bool tsAscending,
+      core.String limit,
+      core.String topk,
+      core.String accuracy,
+      core.String tzo,
+      core.bool sonar,
+      core.String filter,
+      core.String offset,
+      core.bool realtime,
+      core.String aggTable,
+      core.String sort,
       core.String timeUnit,
       core.String sortby,
-      core.String accuracy,
-      core.String filter,
-      core.String tzo,
-      core.String sort,
-      core.String select,
-      core.String offset,
-      core.String limit,
-      core.bool sonar,
-      core.String topk,
       core.String timeRange,
-      core.bool tsAscending,
-      core.String aggTable,
+      core.String select,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -8696,8 +9046,38 @@ class OrganizationsEnvironmentsStatsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (tsAscending != null) {
+      _queryParams["tsAscending"] = ["${tsAscending}"];
+    }
+    if (limit != null) {
+      _queryParams["limit"] = [limit];
+    }
+    if (topk != null) {
+      _queryParams["topk"] = [topk];
+    }
+    if (accuracy != null) {
+      _queryParams["accuracy"] = [accuracy];
+    }
+    if (tzo != null) {
+      _queryParams["tzo"] = [tzo];
+    }
+    if (sonar != null) {
+      _queryParams["sonar"] = ["${sonar}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (offset != null) {
+      _queryParams["offset"] = [offset];
+    }
     if (realtime != null) {
       _queryParams["realtime"] = ["${realtime}"];
+    }
+    if (aggTable != null) {
+      _queryParams["aggTable"] = [aggTable];
+    }
+    if (sort != null) {
+      _queryParams["sort"] = [sort];
     }
     if (timeUnit != null) {
       _queryParams["timeUnit"] = [timeUnit];
@@ -8705,41 +9085,11 @@ class OrganizationsEnvironmentsStatsResourceApi {
     if (sortby != null) {
       _queryParams["sortby"] = [sortby];
     }
-    if (accuracy != null) {
-      _queryParams["accuracy"] = [accuracy];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (tzo != null) {
-      _queryParams["tzo"] = [tzo];
-    }
-    if (sort != null) {
-      _queryParams["sort"] = [sort];
-    }
-    if (select != null) {
-      _queryParams["select"] = [select];
-    }
-    if (offset != null) {
-      _queryParams["offset"] = [offset];
-    }
-    if (limit != null) {
-      _queryParams["limit"] = [limit];
-    }
-    if (sonar != null) {
-      _queryParams["sonar"] = ["${sonar}"];
-    }
-    if (topk != null) {
-      _queryParams["topk"] = [topk];
-    }
     if (timeRange != null) {
       _queryParams["timeRange"] = [timeRange];
     }
-    if (tsAscending != null) {
-      _queryParams["tsAscending"] = ["${tsAscending}"];
-    }
-    if (aggTable != null) {
-      _queryParams["aggTable"] = [aggTable];
+    if (select != null) {
+      _queryParams["select"] = [select];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8979,11 +9329,474 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
   }
 }
 
+class OrganizationsHostQueriesResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsHostQueriesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Submit a query at host level to be processed in the background. If the
+  /// submission of the query succeeds, the API returns a 201 status and an ID
+  /// that refer to the query. In addition to the HTTP status 201, the `state`
+  /// of "enqueued" means that the request succeeded.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Must be of the form
+  /// `organizations/{org}`.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AsyncQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AsyncQuery> create(
+      GoogleCloudApigeeV1Query request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/hostQueries';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1AsyncQuery.fromJson(data));
+  }
+
+  /// Get status of a query submitted at host level. If the query is still in
+  /// progress, the `state` is set to "running" After the query has completed
+  /// successfully, `state` is set to "completed"
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the asynchronous query to get. Must be of the
+  /// form `organizations/{org}/queries/{queryId}`.
+  /// Value must have pattern "^organizations/[^/]+/hostQueries/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AsyncQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AsyncQuery> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1AsyncQuery.fromJson(data));
+  }
+
+  /// After the query is completed, use this API to retrieve the results. If the
+  /// request succeeds, and there is a non-zero result set, the result is
+  /// downloaded to the client as a zipped JSON file. The name of the downloaded
+  /// file will be: OfflineQueryResult-.zip Example:
+  /// `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the asynchronous query result to get. Must be
+  /// of the form `organizations/{org}/queries/{queryId}/result`.
+  /// Value must have pattern "^organizations/[^/]+/hostQueries/[^/]+/result$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> getResult(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+  }
+
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the asynchronous query result view to get. Must
+  /// be of the form `organizations/{org}/queries/{queryId}/resultView`.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/hostQueries/[^/]+/resultView$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AsyncQueryResultView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AsyncQueryResultView> getResultView(
+      core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GoogleCloudApigeeV1AsyncQueryResultView.fromJson(data));
+  }
+
+  /// Return a list of Asynchronous Queries at host level.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. Must be of the form
+  /// `organizations/{org}`.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [from] - Filter response list by returning asynchronous queries that
+  /// created after this date time. Time must be in ISO date-time format like
+  /// '2011-12-03T10:15:30Z'.
+  ///
+  /// [inclQueriesWithoutReport] - Flag to include asynchronous queries that
+  /// don't have a report denifition.
+  ///
+  /// [envgroupHostname] - Required. Filter response list by hostname.
+  ///
+  /// [to] - Filter response list by returning asynchronous queries that created
+  /// before this date time. Time must be in ISO date-time format like
+  /// '2011-12-03T10:16:30Z'.
+  ///
+  /// [dataset] - Filter response list by dataset. Example: `api`, `mint`
+  ///
+  /// [submittedBy] - Filter response list by user who submitted queries.
+  ///
+  /// [status] - Filter response list by asynchronous query status.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListAsyncQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListAsyncQueriesResponse> list(
+      core.String parent,
+      {core.String from,
+      core.String inclQueriesWithoutReport,
+      core.String envgroupHostname,
+      core.String to,
+      core.String dataset,
+      core.String submittedBy,
+      core.String status,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (from != null) {
+      _queryParams["from"] = [from];
+    }
+    if (inclQueriesWithoutReport != null) {
+      _queryParams["inclQueriesWithoutReport"] = [inclQueriesWithoutReport];
+    }
+    if (envgroupHostname != null) {
+      _queryParams["envgroupHostname"] = [envgroupHostname];
+    }
+    if (to != null) {
+      _queryParams["to"] = [to];
+    }
+    if (dataset != null) {
+      _queryParams["dataset"] = [dataset];
+    }
+    if (submittedBy != null) {
+      _queryParams["submittedBy"] = [submittedBy];
+    }
+    if (status != null) {
+      _queryParams["status"] = [status];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/hostQueries';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(data));
+  }
+}
+
+class OrganizationsHostStatsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsHostStatsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieve metrics grouped by dimensions in host level. The types of metrics
+  /// you can retrieve include traffic, message counts, API call latency,
+  /// response size, and cache hits and counts. Dimensions let you view metrics
+  /// in meaningful groups. The stats api does accept dimensions as path params.
+  /// The dimensions are optional in which case the metrics are computed on the
+  /// entire data for the given timerange.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name for which the interactive query will
+  /// be executed. Must be of the form
+  /// `organizations/{organization_id}/stats/{dimensions}`. Dimensions let you
+  /// view metrics in meaningful groupings. E.g. apiproxy, target_host. The
+  /// value of dimensions should be comma separated list as shown below
+  /// `organizations/{org}/stats/apiproxy,request_verb`
+  /// Value must have pattern "^organizations/[^/]+/hostStats/.*$".
+  ///
+  /// [envgroupHostname] - Required. The hostname for which the interactive
+  /// query will be executed.
+  ///
+  /// [offset] - Use offset with limit to enable pagination of results. For
+  /// example, to display results 11-20, set limit to '10' and offset to '10'.
+  ///
+  /// [topk] - Take 'top k' results from results, for example, to return the top
+  /// 5 results 'topk=5'.
+  ///
+  /// [sortby] - Comma separated list of columns to sort the final result.
+  ///
+  /// [select] - The select parameter contains a comma separated list of
+  /// metrics. E.g. sum(message_count),sum(error_count)
+  ///
+  /// [filter] - Enables drill-down on specific dimension values.
+  ///
+  /// [limit] - This parameter is used to limit the number of result items.
+  /// Default and the max value is 14400.
+  ///
+  /// [timeRange] - Time interval for the interactive query. Time range is
+  /// specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
+  ///
+  /// [sort] - This parameter specifies if the sort order should be ascending or
+  /// descending Supported values are DESC and ASC.
+  ///
+  /// [accuracy] - Legacy field: not used anymore.
+  ///
+  /// [tsAscending] - Lists timestamps in ascending order if set to true.
+  /// Recommend setting this value to true if you are using sortby with
+  /// sort=DESC.
+  ///
+  /// [tzo] - This parameters contains the timezone offset value.
+  ///
+  /// [realtime] - Legacy field: not used anymore.
+  ///
+  /// [timeUnit] - A value of second, minute, hour, day, week, month. Time Unit
+  /// specifies the granularity of metrics returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1Stats].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1Stats> get(core.String name,
+      {core.String envgroupHostname,
+      core.String offset,
+      core.String topk,
+      core.String sortby,
+      core.String select,
+      core.String filter,
+      core.String limit,
+      core.String timeRange,
+      core.String sort,
+      core.String accuracy,
+      core.bool tsAscending,
+      core.String tzo,
+      core.bool realtime,
+      core.String timeUnit,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (envgroupHostname != null) {
+      _queryParams["envgroupHostname"] = [envgroupHostname];
+    }
+    if (offset != null) {
+      _queryParams["offset"] = [offset];
+    }
+    if (topk != null) {
+      _queryParams["topk"] = [topk];
+    }
+    if (sortby != null) {
+      _queryParams["sortby"] = [sortby];
+    }
+    if (select != null) {
+      _queryParams["select"] = [select];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (limit != null) {
+      _queryParams["limit"] = [limit];
+    }
+    if (timeRange != null) {
+      _queryParams["timeRange"] = [timeRange];
+    }
+    if (sort != null) {
+      _queryParams["sort"] = [sort];
+    }
+    if (accuracy != null) {
+      _queryParams["accuracy"] = [accuracy];
+    }
+    if (tsAscending != null) {
+      _queryParams["tsAscending"] = ["${tsAscending}"];
+    }
+    if (tzo != null) {
+      _queryParams["tzo"] = [tzo];
+    }
+    if (realtime != null) {
+      _queryParams["realtime"] = ["${realtime}"];
+    }
+    if (timeUnit != null) {
+      _queryParams["timeUnit"] = [timeUnit];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1Stats.fromJson(data));
+  }
+}
+
 class OrganizationsInstancesResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsInstancesAttachmentsResourceApi get attachments =>
       new OrganizationsInstancesAttachmentsResourceApi(_requester);
+  OrganizationsInstancesCanaryevaluationsResourceApi get canaryevaluations =>
+      new OrganizationsInstancesCanaryevaluationsResourceApi(_requester);
+  OrganizationsInstancesNatAddressesResourceApi get natAddresses =>
+      new OrganizationsInstancesNatAddressesResourceApi(_requester);
 
   OrganizationsInstancesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -9050,7 +9863,7 @@ class OrganizationsInstancesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the instance. Use the following structure in
-  /// your request: `organizations/{org}/instance/{instance}`.
+  /// your request: `organizations/{org}/instances/{instance}`.
   /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -9423,11 +10236,11 @@ class OrganizationsInstancesAttachmentsResourceApi {
   /// in your request: `organizations/{org}/instances/{instance}`
   /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
   ///
-  /// [pageToken] - Page token, returned by a previous ListInstanceAttachments
-  /// call, that you can use to retrieve the next page of content.
-  ///
   /// [pageSize] - Maximum number of instance attachments to return. Defaults to
   /// 25.
+  ///
+  /// [pageToken] - Page token, returned by a previous ListInstanceAttachments
+  /// call, that you can use to retrieve the next page of content.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9440,6 +10253,398 @@ class OrganizationsInstancesAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListInstanceAttachmentsResponse> list(
+      core.String parent,
+      {core.int pageSize,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/attachments';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(data));
+  }
+}
+
+class OrganizationsInstancesCanaryevaluationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsInstancesCanaryevaluationsResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new canary evaluation for an organization.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization. Use the following structure
+  /// in your request: `organizations/{org}/instances/{instance}`.
+  /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+      GoogleCloudApigeeV1CanaryEvaluation request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/canaryevaluations';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
+  /// Gets a CanaryEvaluation for an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the CanaryEvaluation. Use the following
+  /// structure in your request: `organizations/{org}/instances / *
+  /// /canaryevaluations/{evaluation}`
+  /// Value must have pattern
+  /// "^organizations/[^/]+/instances/[^/]+/canaryevaluations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1CanaryEvaluation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1CanaryEvaluation> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1CanaryEvaluation.fromJson(data));
+  }
+}
+
+class OrganizationsInstancesNatAddressesResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsInstancesNatAddressesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Activates the NAT address. The Apigee instance can now use this for
+  /// Internet egress traffic. **Note:** Not supported for Apigee hybrid.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the nat address. Use the following structure in
+  /// your request:
+  /// `organizations/{org}/instances/{instances}/natAddresses/{nataddress}``
+  /// Value must have pattern
+  /// "^organizations/[^/]+/instances/[^/]+/natAddresses/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> activate(
+      GoogleCloudApigeeV1ActivateNatAddressRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
+  /// Creates a NAT address. The address is created in the RESERVED state and a
+  /// static external IP address will be provisioned. At this time, the instance
+  /// will not use this IP address for Internet egress traffic. The address can
+  /// be activated for use once any required firewall IP whitelisting has been
+  /// completed. **Note:** Not supported for Apigee hybrid.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the instance. Use the following structure in
+  /// your request: `organizations/{org}/instances/{instance}`
+  /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+      GoogleCloudApigeeV1NatAddress request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/natAddresses';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
+  /// Deletes the NAT address. Connections that are actively using the address
+  /// are drained before it is removed. **Note:** Not supported for Apigee
+  /// hybrid.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the nat address. Use the following structure in
+  /// your request:
+  /// `organizations/{org}/instances/{instances}/natAddresses/{nataddress}``
+  /// Value must have pattern
+  /// "^organizations/[^/]+/instances/[^/]+/natAddresses/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
+  /// Gets the details of a NAT address. **Note:** Not supported for Apigee
+  /// hybrid.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the nat address. Use the following structure in
+  /// your request:
+  /// `organizations/{org}/instances/{instances}/natAddresses/{nataddress}`
+  /// Value must have pattern
+  /// "^organizations/[^/]+/instances/[^/]+/natAddresses/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1NatAddress].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1NatAddress> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1NatAddress.fromJson(data));
+  }
+
+  /// Lists the NAT addresses for an Apigee instance. **Note:** Not supported
+  /// for Apigee hybrid.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the instance. Use the following structure in
+  /// your request: `organizations/{org}/instances/{instance}`
+  /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
+  ///
+  /// [pageToken] - Page token, returned from a previous ListNatAddresses call,
+  /// that you can use to retrieve the next page of content.
+  ///
+  /// [pageSize] - Maximum number of natAddresses to return. Defaults to 25.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListNatAddressesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListNatAddressesResponse> list(
       core.String parent,
       {core.String pageToken,
       core.int pageSize,
@@ -9466,7 +10671,7 @@ class OrganizationsInstancesAttachmentsResourceApi {
 
     _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
-        '/attachments';
+        '/natAddresses';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -9475,7 +10680,7 @@ class OrganizationsInstancesAttachmentsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) =>
-        new GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(data));
+        new GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(data));
   }
 }
 
@@ -9654,11 +10859,11 @@ class OrganizationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9671,9 +10876,9 @@ class OrganizationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.int pageSize,
+      {core.int pageSize,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -9685,14 +10890,14 @@ class OrganizationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9709,6 +10914,158 @@ class OrganizationsOperationsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then(
         (data) => new GoogleLongrunningListOperationsResponse.fromJson(data));
+  }
+}
+
+class OrganizationsOptimizedHostStatsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsOptimizedHostStatsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// This api is similar to GetHostStats except that the response is less
+  /// verbose.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name for which the interactive query will
+  /// be executed. Must be of the form
+  /// `organizations/{organization_id}/stats/{dimensions}`. Dimensions let you
+  /// view metrics in meaningful groupings. E.g. apiproxy, target_host. The
+  /// value of dimensions should be comma separated list as shown below
+  /// `organizations/{org}/stats/apiproxy,request_verb`
+  /// Value must have pattern "^organizations/[^/]+/optimizedHostStats/.*$".
+  ///
+  /// [tsAscending] - Lists timestamps in ascending order if set to true.
+  /// Recommend setting this value to true if you are using sortby with
+  /// sort=DESC.
+  ///
+  /// [realtime] - Legacy field: not used anymore.
+  ///
+  /// [timeUnit] - A value of second, minute, hour, day, week, month. Time Unit
+  /// specifies the granularity of metrics returned.
+  ///
+  /// [tzo] - This parameters contains the timezone offset value.
+  ///
+  /// [envgroupHostname] - Required. The hostname for which the interactive
+  /// query will be executed.
+  ///
+  /// [sort] - This parameter specifies if the sort order should be ascending or
+  /// descending Supported values are DESC and ASC.
+  ///
+  /// [sortby] - Comma separated list of columns to sort the final result.
+  ///
+  /// [limit] - This parameter is used to limit the number of result items.
+  /// Default and the max value is 14400.
+  ///
+  /// [topk] - Take 'top k' results from results, for example, to return the top
+  /// 5 results 'topk=5'.
+  ///
+  /// [select] - Required. The select parameter contains a comma separated list
+  /// of metrics. E.g. sum(message_count),sum(error_count)
+  ///
+  /// [filter] - Enables drill-down on specific dimension values.
+  ///
+  /// [offset] - Use offset with limit to enable pagination of results. For
+  /// example, to display results 11-20, set limit to '10' and offset to '10'.
+  ///
+  /// [accuracy] - Legacy field: not used anymore.
+  ///
+  /// [timeRange] - Required. Time interval for the interactive query. Time
+  /// range is specified as start~end. E.g 04/15/2017 00:00~05/15/2017 23:59.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1OptimizedStats].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1OptimizedStats> get(core.String name,
+      {core.bool tsAscending,
+      core.bool realtime,
+      core.String timeUnit,
+      core.String tzo,
+      core.String envgroupHostname,
+      core.String sort,
+      core.String sortby,
+      core.String limit,
+      core.String topk,
+      core.String select,
+      core.String filter,
+      core.String offset,
+      core.String accuracy,
+      core.String timeRange,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (tsAscending != null) {
+      _queryParams["tsAscending"] = ["${tsAscending}"];
+    }
+    if (realtime != null) {
+      _queryParams["realtime"] = ["${realtime}"];
+    }
+    if (timeUnit != null) {
+      _queryParams["timeUnit"] = [timeUnit];
+    }
+    if (tzo != null) {
+      _queryParams["tzo"] = [tzo];
+    }
+    if (envgroupHostname != null) {
+      _queryParams["envgroupHostname"] = [envgroupHostname];
+    }
+    if (sort != null) {
+      _queryParams["sort"] = [sort];
+    }
+    if (sortby != null) {
+      _queryParams["sortby"] = [sortby];
+    }
+    if (limit != null) {
+      _queryParams["limit"] = [limit];
+    }
+    if (topk != null) {
+      _queryParams["topk"] = [topk];
+    }
+    if (select != null) {
+      _queryParams["select"] = [select];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (offset != null) {
+      _queryParams["offset"] = [offset];
+    }
+    if (accuracy != null) {
+      _queryParams["accuracy"] = [accuracy];
+    }
+    if (timeRange != null) {
+      _queryParams["timeRange"] = [timeRange];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudApigeeV1OptimizedStats.fromJson(data));
   }
 }
 
@@ -10004,9 +11361,9 @@ class OrganizationsSharedflowsResourceApi {
   /// `organizations/{organization_id}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [action] - Required. Must be set to either `import` or `validate`.
-  ///
   /// [name] - Required. The name to give the shared flow
+  ///
+  /// [action] - Required. Must be set to either `import` or `validate`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10020,7 +11377,7 @@ class OrganizationsSharedflowsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SharedFlowRevision> create(
       GoogleApiHttpBody request, core.String parent,
-      {core.String action, core.String name, core.String $fields}) {
+      {core.String name, core.String action, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -10034,11 +11391,11 @@ class OrganizationsSharedflowsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (action != null) {
-      _queryParams["action"] = [action];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
+    }
+    if (action != null) {
+      _queryParams["action"] = [action];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10159,10 +11516,10 @@ class OrganizationsSharedflowsResourceApi {
   /// get shared flows. Must be of the form: `organizations/{organization_id}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [includeMetaData] - Indicates whether to include shared flow metadata in
+  /// [includeRevisions] - Indicates whether to include a list of revisions in
   /// the response.
   ///
-  /// [includeRevisions] - Indicates whether to include a list of revisions in
+  /// [includeMetaData] - Indicates whether to include shared flow metadata in
   /// the response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -10177,8 +11534,8 @@ class OrganizationsSharedflowsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListSharedFlowsResponse> list(
       core.String parent,
-      {core.bool includeMetaData,
-      core.bool includeRevisions,
+      {core.bool includeRevisions,
+      core.bool includeMetaData,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -10190,11 +11547,11 @@ class OrganizationsSharedflowsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (includeMetaData != null) {
-      _queryParams["includeMetaData"] = ["${includeMetaData}"];
-    }
     if (includeRevisions != null) {
       _queryParams["includeRevisions"] = ["${includeRevisions}"];
+    }
+    if (includeMetaData != null) {
+      _queryParams["includeMetaData"] = ["${includeMetaData}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11047,6 +12404,19 @@ class GoogleCloudApigeeV1AccessSet {
   }
 }
 
+/// Request for ActivateNatAddressRequest. Activate the nat address request.
+class GoogleCloudApigeeV1ActivateNatAddressRequest {
+  GoogleCloudApigeeV1ActivateNatAddressRequest();
+
+  GoogleCloudApigeeV1ActivateNatAddressRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// A reference to a certificate or key, certificate pair.
 class GoogleCloudApigeeV1Alias {
   /// The resource ID for this alias. Values must match regular expression
@@ -11250,31 +12620,15 @@ class GoogleCloudApigeeV1ApiCategoryData {
 }
 
 class GoogleCloudApigeeV1ApiProduct {
-  /// Comma-separated list of API resources to be bundled in the API Product. By
-  /// default, the resource paths are mapped from the `proxy.pathsuffix`
-  /// variable. The proxy path suffix is defined as the URI fragment following
-  /// the ProxyEndpoint base path. For example, if the `apiResources` element is
-  /// defined to be `/forecastrss` and the base path defined for the API proxy
-  /// is `/weather`, then only requests to `/weather/forecastrss` are permitted
-  /// by the API product. You can select a specific path, or you can select all
-  /// subpaths with the following wildcard: -  / * *: Indicates that all
-  /// sub-URIs are included. -  / *  : Indicates that only URIs one level down
-  /// are included. By default, / supports the same resources as  / * * as well
-  /// as the base path defined by the API proxy. For example, if the base path
-  /// of the API proxy is `/v1/weatherapikey`, then the API product supports
-  /// requests to `/v1/weatherapikey` and to any sub-URIs, such as
-  /// `/v1/weatherapikey/forecastrss`, `/v1/weatherapikey/region/CA`, and so on.
-  /// For more information, see: - Manage API products - Managing a transaction
-  /// recording policy using the API
   core.List<core.String> apiResources;
 
-  /// Specifies how API keys are approved to access the APIs defined by the API
-  /// product. If set to `manual`, the consumer key is generated and returned in
-  /// "pending" state. In this case, the API keys won't work until they have
-  /// been explicitly approved. If set to `auto`, the consumer key is generated
-  /// and returned in "approved" state and can be used immediately. *NOTE:*
-  /// Typically, `auto` is used to provide access to free or trial API products
-  /// that provide limited quota or capabilities.
+  /// Flag that specifies how API keys are approved to access the APIs defined
+  /// by the API product. If set to `manual`, the consumer key is generated and
+  /// returned in "pending" state. In this case, the API keys won't work until
+  /// they have been explicitly approved. If set to `auto`, the consumer key is
+  /// generated and returned in "approved" state and can be used immediately.
+  /// **Note:** Typically, `auto` is used to provide access to free or trial API
+  /// products that provide limited quota or capabilities.
   core.String approvalType;
 
   /// Array of attributes that may be used to extend the default API product
@@ -11284,79 +12638,91 @@ class GoogleCloudApigeeV1ApiProduct {
   /// `public` are available to developers in the Apigee developer portal. For
   /// example, you can set a product to `internal` while it is in development
   /// and then change access to `public` when it is ready to release on the
-  /// portal. API products marked as `private` do not appear on the portal but
-  /// can be accessed by external developers. For monetization, you can use the
-  /// attributes field to: - Specify transaction success criteria - Specify
-  /// custom attributes on which you base rate plan charges.
+  /// portal. API products marked as `private` do not appear on the portal, but
+  /// can be accessed by external developers.
   core.List<GoogleCloudApigeeV1Attribute> attributes;
 
   /// Response only. Creation time of this environment as milliseconds since
   /// epoch.
   core.String createdAt;
 
-  /// An overview of the API product. Include key information about the API
-  /// product that is not captured by other fields.
+  /// Description of the API product. Include key information about the API
+  /// product that is not captured by other fields. Comma-separated list of API
+  /// resources to be bundled in the API product. By default, the resource paths
+  /// are mapped from the `proxy.pathsuffix` variable. The proxy path suffix is
+  /// defined as the URI fragment following the ProxyEndpoint base path. For
+  /// example, if the `apiResources` element is defined to be `/forecastrss` and
+  /// the base path defined for the API proxy is `/weather`, then only requests
+  /// to `/weather/forecastrss` are permitted by the API product. You can select
+  /// a specific path, or you can select all subpaths with the following
+  /// wildcard: - ` / * *`: Indicates that all sub-URIs are included. - ` / * `
+  /// : Indicates that only URIs one level down are included. By default, /
+  /// supports the same resources as  / * * as well as the base path defined by
+  /// the API proxy. For example, if the base path of the API proxy is
+  /// `/v1/weatherapikey`, then the API product supports requests to
+  /// `/v1/weatherapikey` and to any sub-URIs, such as
+  /// `/v1/weatherapikey/forecastrss`, `/v1/weatherapikey/region/CA`, and so on.
+  /// For more information, see Managing API products.
   core.String description;
 
-  /// The name to be displayed in the UI or developer portal to developers
-  /// registering for API access.
+  /// Name displayed in the UI or developer portal to developers registering for
+  /// API access.
   core.String displayName;
 
-  /// A comma-separated list of environment names to which the API product is
+  /// Comma-separated list of environment names to which the API product is
   /// bound. Requests to environments that are not listed are rejected. By
   /// specifying one or more environments, you can bind the resources listed in
   /// the API product to a specific environment, preventing developers from
   /// accessing those resources through API proxies deployed in another
   /// environment. This setting is used, for example, to prevent resources
-  /// associated with API proxies in 'prod' from being accessed by API proxies
-  /// deployed in 'test'.
+  /// associated with API proxies in `prod` from being accessed by API proxies
+  /// deployed in `test`.
   core.List<core.String> environments;
 
   /// Response only. Modified time of this environment as milliseconds since
   /// epoch.
   core.String lastModifiedAt;
 
-  /// The internal name of the API Product. Characters you can use in the name
-  /// are restricted to: A-Z0-9._\-$ %. *NOTE:* The internal name cannot be
+  /// Internal name of the API product. Characters you can use in the name are
+  /// restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be
   /// edited when updating the API product.
   core.String name;
 
-  /// The operation_group enables api product creators to group Apigee proxies
-  /// or remote services with resources, method types and quotas. The resource
-  /// refers to the resource URI(excluding the base path). With this grouping,
-  /// API product creator is able to finetune and give precise control over
-  /// which REST methods have access to which resources, and how many such calls
-  /// can be made (via Quota). Note that api_resources cannot be specified at
-  /// both the API product level as well as within the operation_group. If
-  /// configured that way, the call will fail. Please refer
-  /// go/api-product-with-methods for additional details.
+  /// Configuration used to group Apigee proxies or remote services with
+  /// resources, method types, and quotas. The resource refers to the resource
+  /// URI (excluding the base path). With this grouping, the API product creator
+  /// is able to fine-tune and give precise control over which REST methods have
+  /// access to specific resources and how many calls can be made (using the
+  /// `quota` setting). **Note:** The `api_resources` setting cannot be
+  /// specified for both the API product and operation group; otherwise the call
+  /// will fail.
   GoogleCloudApigeeV1OperationGroup operationGroup;
 
-  /// A comma-separated list of API proxy names to which this API product is
+  /// Comma-separated list of API proxy names to which this API product is
   /// bound. By specifying API proxies, you can associate resources in the API
   /// product with specific API proxies, preventing developers from accessing
-  /// those resources through other API proxies. Edge rejects requests to API
-  /// proxies that are not listed. *NOTE:* The API proxy names must already
+  /// those resources through other API proxies. Apigee rejects requests to API
+  /// proxies that are not listed. **Note:** The API proxy names must already
   /// exist in the specified environment as they will be validated upon
   /// creation.
   core.List<core.String> proxies;
 
-  /// The number of request messages permitted per app by this API product for
-  /// the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota`
-  /// of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50
+  /// Number of request messages permitted per app by this API product for the
+  /// specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of
+  /// 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50
   /// requests are allowed every 12 hours.
   core.String quota;
 
-  /// The time interval over which the number of request messages is calculated.
+  /// Time interval over which the number of request messages is calculated.
   core.String quotaInterval;
 
-  /// The time unit defined for the `quotaInterval`. Valid values include
-  /// minute, hour, day, or month.
+  /// Time unit defined for the `quotaInterval`. Valid values include `minute`,
+  /// `hour`, `day`, or `month`.
   core.String quotaTimeUnit;
 
-  /// A comma-separated list of OAuth scopes that are validated at runtime. Edge
+  /// Comma-separated list of OAuth scopes that are validated at runtime. Apigee
   /// validates that the scopes in any access token presented match the scopes
-  /// defined in the OAuth policy assoicated with the API product.
+  /// defined in the OAuth policy associated with the API product.
   core.List<core.String> scopes;
 
   GoogleCloudApigeeV1ApiProduct();
@@ -11982,6 +13348,9 @@ class GoogleCloudApigeeV1AsyncQuery {
   /// Creation time of the query.
   core.String created;
 
+  /// Hostname is available only when query is executed at host level.
+  core.String envgroupHostname;
+
   /// Error is set when query fails.
   core.String error;
 
@@ -12008,6 +13377,8 @@ class GoogleCloudApigeeV1AsyncQuery {
 
   /// Self link of the query. Example:
   /// `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+  /// or following format if query is running at host level:
+  /// `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   core.String self;
 
   /// Query state could be "enqueued", "running", "completed", "failed".
@@ -12021,6 +13392,9 @@ class GoogleCloudApigeeV1AsyncQuery {
   GoogleCloudApigeeV1AsyncQuery.fromJson(core.Map _json) {
     if (_json.containsKey("created")) {
       created = _json["created"];
+    }
+    if (_json.containsKey("envgroupHostname")) {
+      envgroupHostname = _json["envgroupHostname"];
     }
     if (_json.containsKey("error")) {
       error = _json["error"];
@@ -12065,6 +13439,9 @@ class GoogleCloudApigeeV1AsyncQuery {
     if (created != null) {
       _json["created"] = created;
     }
+    if (envgroupHostname != null) {
+      _json["envgroupHostname"] = envgroupHostname;
+    }
     if (error != null) {
       _json["error"] = error;
     }
@@ -12108,6 +13485,8 @@ class GoogleCloudApigeeV1AsyncQueryResult {
 
   /// Self link of the query results. Example:
   /// `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+  /// or following format if query is running at host level:
+  /// `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
   core.String self;
 
   GoogleCloudApigeeV1AsyncQueryResult();
@@ -12129,6 +13508,70 @@ class GoogleCloudApigeeV1AsyncQueryResult {
     }
     if (self != null) {
       _json["self"] = self;
+    }
+    return _json;
+  }
+}
+
+class GoogleCloudApigeeV1AsyncQueryResultView {
+  /// Error code when there is a failure.
+  core.int code;
+
+  /// Error message when there is a failure.
+  core.String error;
+
+  /// Metadata contains information like metrics, dimenstions etc of the
+  /// AsyncQuery.
+  GoogleCloudApigeeV1QueryMetadata metadata;
+
+  /// Rows of query result. Each row is a JSON object. Example:
+  /// {sum(message_count): 1, developer_app: "(not set)",…}
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object> rows;
+
+  /// State of retrieving ResultView.
+  core.String state;
+
+  GoogleCloudApigeeV1AsyncQueryResultView();
+
+  GoogleCloudApigeeV1AsyncQueryResultView.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("error")) {
+      error = _json["error"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata =
+          new GoogleCloudApigeeV1QueryMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("rows")) {
+      rows = (_json["rows"] as core.List).cast<core.Object>();
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (error != null) {
+      _json["error"] = error;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (rows != null) {
+      _json["rows"] = rows;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     return _json;
   }
@@ -12186,6 +13629,156 @@ class GoogleCloudApigeeV1Attributes {
         new core.Map<core.String, core.Object>();
     if (attribute != null) {
       _json["attribute"] = attribute.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// CanaryEvaluation represents the canary analysis between two versions of the
+/// runtime that is serving requests.
+class GoogleCloudApigeeV1CanaryEvaluation {
+  /// Required. The stable version that is serving requests.
+  core.String control;
+
+  /// Output only. Create time of the canary evaluation.
+  core.String createTime;
+
+  /// Required. End time for the evaluation's analysis.
+  core.String endTime;
+
+  /// Required. Labels used to filter the metrics used for a canary evaluation.
+  GoogleCloudApigeeV1CanaryEvaluationMetricLabels metricLabels;
+
+  /// Output only. Name of the canary evalution.
+  core.String name;
+
+  /// Required. Start time for the canary evaluation's analysis.
+  core.String startTime;
+
+  /// Output only. The current state of the canary evaluation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state has been specified.
+  /// - "RUNNING" : The canary evaluation is still in progress.
+  /// - "SUCCEEDED" : The canary evaluation has finished.
+  core.String state;
+
+  /// Required. The newer version that is serving requests.
+  core.String treatment;
+
+  /// Output only. The resulting verdict of the canary evaluations: NONE, PASS,
+  /// or FAIL.
+  /// Possible string values are:
+  /// - "VERDICT_UNSPECIFIED" : Verdict is not available yet.
+  /// - "NONE" : No verdict reached.
+  /// - "FAIL" : Evaluation is not good.
+  /// - "PASS" : Evaluation is good.
+  core.String verdict;
+
+  GoogleCloudApigeeV1CanaryEvaluation();
+
+  GoogleCloudApigeeV1CanaryEvaluation.fromJson(core.Map _json) {
+    if (_json.containsKey("control")) {
+      control = _json["control"];
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("metricLabels")) {
+      metricLabels =
+          new GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(
+              _json["metricLabels"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("treatment")) {
+      treatment = _json["treatment"];
+    }
+    if (_json.containsKey("verdict")) {
+      verdict = _json["verdict"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (control != null) {
+      _json["control"] = control;
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (metricLabels != null) {
+      _json["metricLabels"] = (metricLabels).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (treatment != null) {
+      _json["treatment"] = treatment;
+    }
+    if (verdict != null) {
+      _json["verdict"] = verdict;
+    }
+    return _json;
+  }
+}
+
+/// Labels that can be used to filter Apigee metrics.
+class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
+  /// The environment ID associated with the metrics.
+  core.String env;
+
+  /// Required. The instance ID associated with the metrics. In Apigee Hybrid,
+  /// the value is configured during installation.
+  core.String instanceId;
+
+  /// Required. The location associated with the metrics.
+  core.String location;
+
+  GoogleCloudApigeeV1CanaryEvaluationMetricLabels();
+
+  GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(core.Map _json) {
+    if (_json.containsKey("env")) {
+      env = _json["env"];
+    }
+    if (_json.containsKey("instance_id")) {
+      instanceId = _json["instance_id"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (env != null) {
+      _json["env"] = env;
+    }
+    if (instanceId != null) {
+      _json["instance_id"] = instanceId;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     return _json;
   }
@@ -12738,6 +14331,74 @@ class GoogleCloudApigeeV1CustomReportMetric {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Data collector configuration.
+class GoogleCloudApigeeV1DataCollector {
+  /// Output only. The time at which the data collector was created in
+  /// milliseconds since the epoch.
+  core.String createdAt;
+
+  /// A description of the data collector.
+  core.String description;
+
+  /// Output only. The time at which the Data Collector was last updated in
+  /// milliseconds since the epoch.
+  core.String lastModifiedAt;
+
+  /// ID of the data collector. Must begin with `dc_`.
+  core.String name;
+
+  /// Immutable. The type of data this data collector will collect.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : For future compatibility.
+  /// - "INTEGER" : For integer values.
+  /// - "FLOAT" : For float values.
+  /// - "STRING" : For string values.
+  /// - "BOOLEAN" : For boolean values.
+  /// - "DATETIME" : For datetime values.
+  core.String type;
+
+  GoogleCloudApigeeV1DataCollector();
+
+  GoogleCloudApigeeV1DataCollector.fromJson(core.Map _json) {
+    if (_json.containsKey("createdAt")) {
+      createdAt = _json["createdAt"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("lastModifiedAt")) {
+      lastModifiedAt = _json["lastModifiedAt"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createdAt != null) {
+      _json["createdAt"] = createdAt;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (lastModifiedAt != null) {
+      _json["lastModifiedAt"] = lastModifiedAt;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -15047,7 +16708,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
       deployedRevisions;
 
   /// The current routes deployed in the ingress routing table. A route which is
-  /// missing will be shown with no destination environment.
+  /// missing will appear in missing_routes.
   core.List<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>
       deployedRoutes;
 
@@ -15500,6 +17161,43 @@ class GoogleCloudApigeeV1ListCustomReportsResponse {
   }
 }
 
+/// Response for ListDataCollectors.
+class GoogleCloudApigeeV1ListDataCollectorsResponse {
+  /// Data collectors in the specified organization.
+  core.List<GoogleCloudApigeeV1DataCollector> dataCollectors;
+
+  /// Page token that you can include in a ListDataCollectors request to
+  /// retrieve the next page. If omitted, no subsequent pages exist.
+  core.String nextPageToken;
+
+  GoogleCloudApigeeV1ListDataCollectorsResponse();
+
+  GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("dataCollectors")) {
+      dataCollectors = (_json["dataCollectors"] as core.List)
+          .map<GoogleCloudApigeeV1DataCollector>(
+              (value) => new GoogleCloudApigeeV1DataCollector.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataCollectors != null) {
+      _json["dataCollectors"] =
+          dataCollectors.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// The response for ListDatastores
 class GoogleCloudApigeeV1ListDatastoresResponse {
   /// A list of datastores
@@ -15842,6 +17540,43 @@ class GoogleCloudApigeeV1ListInstancesResponse {
   }
 }
 
+/// Response for ListNatAddresses.
+class GoogleCloudApigeeV1ListNatAddressesResponse {
+  /// List of NAT Addresses for the instance.
+  core.List<GoogleCloudApigeeV1NatAddress> natAddresses;
+
+  /// Page token that you can include in a ListNatAddresses request to retrieve
+  /// the next page of content. If omitted, no subsequent pages exist.
+  core.String nextPageToken;
+
+  GoogleCloudApigeeV1ListNatAddressesResponse();
+
+  GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("natAddresses")) {
+      natAddresses = (_json["natAddresses"] as core.List)
+          .map<GoogleCloudApigeeV1NatAddress>(
+              (value) => new GoogleCloudApigeeV1NatAddress.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (natAddresses != null) {
+      _json["natAddresses"] =
+          natAddresses.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 class GoogleCloudApigeeV1ListOfDevelopersResponse {
   /// List of developers.
   core.List<GoogleCloudApigeeV1Developer> developer;
@@ -15993,6 +17728,55 @@ class GoogleCloudApigeeV1Metric {
   }
 }
 
+/// Apigee NAT(network address translation) address. A NAT address is a static
+/// external IP address used for Internet egress traffic.
+class GoogleCloudApigeeV1NatAddress {
+  /// Required. The static IPV4 address.
+  core.String ipAddress;
+
+  /// Required. Resource ID of the NAT address.
+  core.String name;
+
+  /// Required. State of the nat address.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The resource is in an unspecified state.
+  /// - "CREATING" : The NAT address is being created.
+  /// - "RESERVED" : The NAT address is reserved but not yet used for Internet
+  /// egress.
+  /// - "ACTIVE" : The NAT address is active and used for Internet egress.
+  /// - "DELETING" : The NAT address is being deleted.
+  core.String state;
+
+  GoogleCloudApigeeV1NatAddress();
+
+  GoogleCloudApigeeV1NatAddress.fromJson(core.Map _json) {
+    if (_json.containsKey("ipAddress")) {
+      ipAddress = _json["ipAddress"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipAddress != null) {
+      _json["ipAddress"] = ipAddress;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
 /// Operation represents the pairing of REST resource path and the actions
 /// (verbs) allowed on the resource path.
 class GoogleCloudApigeeV1Operation {
@@ -16032,20 +17816,21 @@ class GoogleCloudApigeeV1Operation {
 /// OperationConfig binds the resources in a proxy or remote service with the
 /// allowed REST methods and its associated quota enforcement.
 class GoogleCloudApigeeV1OperationConfig {
-  /// Required. api_source represents either a proxy or remote service name for
-  /// which the resources, methods and quota are associated with.
+  /// Required. API proxy or remote service name with which the resources,
+  /// methods, and quota are associated.
   core.String apiSource;
 
-  /// custom attribute associated with the operation.
+  /// Custom attributes associated with the operation.
   core.List<GoogleCloudApigeeV1Attribute> attributes;
 
-  /// operations is the list of resource/methods pair, belonging to proxy/remote
-  /// service, upon which quota will applied on. Note that currently we allow
-  /// only a single operation. The call will fail if more than one is provided.
+  /// List of resource/method pairs for the proxy/remote service, upon which
+  /// quota will applied. **Note**: Currently, you can specify only a single
+  /// resource/method pair. The call will fail if more than one resource/method
+  /// pair is provided.
   core.List<GoogleCloudApigeeV1Operation> operations;
 
   /// Quota parameters to be enforced for the resources, methods, api_source
-  /// combination. If none specified, quota enforcement will not be done.
+  /// combination. If none are specified, quota enforcement will not be done.
   GoogleCloudApigeeV1Quota quota;
 
   GoogleCloudApigeeV1OperationConfig();
@@ -16092,19 +17877,19 @@ class GoogleCloudApigeeV1OperationConfig {
   }
 }
 
-/// The OperationGroup contains a list of configuration details associated with
-/// Apigee proxies or Remote services. Remote services are non-Apigee Edge
-/// proxies. eg, Istio-Envoy.
+/// List of operation configuration details associated with Apigee API proxies
+/// or remote services. Remote services are non-Apigee proxies, such as
+/// Istio-Envoy.
 class GoogleCloudApigeeV1OperationGroup {
-  /// Identfies whether the configuration is for Apigee proxy or a remote
-  /// service. Possible values are "proxy" and "remoteservice". If none
-  /// specified, the default is "proxy". "proxy" is used when Apigee proxies are
-  /// associated with the API product. "remoteservice" is used when non-Apigee
-  /// proxy like Envoy is used, and is associated with the API product.
+  /// Flag that specifes whether the configuration is for Apigee API proxy or a
+  /// remote service. Valid values are `proxy` or `remoteservice`. Defaults to
+  /// `proxy`. Set to `proxy` when Apigee API proxies are associated with the
+  /// API product. Set to `remoteservice` when non-Apigee proxies like
+  /// Istio-Envoy are associated with the API product.
   core.String operationConfigType;
 
-  /// Required. A list of OperationConfig for either Apigee proxies or other
-  /// other remote services, that are associated with this API product.
+  /// Required. List of operation configurations for either Apigee API proxies
+  /// or other remote services that are associated with this API product.
   core.List<GoogleCloudApigeeV1OperationConfig> operationConfigs;
 
   GoogleCloudApigeeV1OperationGroup();
@@ -16359,6 +18144,14 @@ class GoogleCloudApigeeV1Organization {
   /// Properties defined in the Apigee organization profile.
   GoogleCloudApigeeV1Properties properties;
 
+  /// Cloud KMS key name used for encrypting the data that is stored and
+  /// replicated across runtime instances. Update is not allowed after the
+  /// organization is created. If not specified, a Google-Managed encryption key
+  /// will be used. Valid only when [RuntimeType] is CLOUD. For example:
+  /// "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not
+  /// supported for Apigee hybrid.
+  core.String runtimeDatabaseEncryptionKeyName;
+
   /// Required. Runtime type of the Apigee organization based on the Apigee
   /// subscription purchased.
   /// Possible string values are:
@@ -16431,6 +18224,10 @@ class GoogleCloudApigeeV1Organization {
       properties =
           new GoogleCloudApigeeV1Properties.fromJson(_json["properties"]);
     }
+    if (_json.containsKey("runtimeDatabaseEncryptionKeyName")) {
+      runtimeDatabaseEncryptionKeyName =
+          _json["runtimeDatabaseEncryptionKeyName"];
+    }
     if (_json.containsKey("runtimeType")) {
       runtimeType_ = _json["runtimeType"];
     }
@@ -16483,6 +18280,10 @@ class GoogleCloudApigeeV1Organization {
     }
     if (properties != null) {
       _json["properties"] = (properties).toJson();
+    }
+    if (runtimeDatabaseEncryptionKeyName != null) {
+      _json["runtimeDatabaseEncryptionKeyName"] =
+          runtimeDatabaseEncryptionKeyName;
     }
     if (runtimeType_ != null) {
       _json["runtimeType"] = runtimeType_;
@@ -16785,6 +18586,11 @@ class GoogleCloudApigeeV1Query {
   /// https://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions
   core.List<core.String> dimensions;
 
+  /// Hostname needs to be specified if query intends to run at host level. This
+  /// field is only allowed when query is submitted by CreateHostAsyncQuery
+  /// where analytics data will be grouped by organization and hostname.
+  core.String envgroupHostname;
+
   /// Boolean expression that can be used to filter data. Filter expressions can
   /// be combined using AND/OR terms and should be fully parenthesized to avoid
   /// ambiguity. See Analytics metrics, dimensions, and filters reference
@@ -16839,6 +18645,9 @@ class GoogleCloudApigeeV1Query {
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("envgroupHostname")) {
+      envgroupHostname = _json["envgroupHostname"];
+    }
     if (_json.containsKey("filter")) {
       filter = _json["filter"];
     }
@@ -16876,6 +18685,9 @@ class GoogleCloudApigeeV1Query {
     }
     if (dimensions != null) {
       _json["dimensions"] = dimensions;
+    }
+    if (envgroupHostname != null) {
+      _json["envgroupHostname"] = envgroupHostname;
     }
     if (filter != null) {
       _json["filter"] = filter;
@@ -17039,18 +18851,17 @@ class GoogleCloudApigeeV1QueryMetric {
 /// API product. While setting of Quota is optional, setting it prevents
 /// requests from exceeding the provisioned parameters.
 class GoogleCloudApigeeV1Quota {
-  /// Required. The time interval over which the number of request messages is
+  /// Required. Time interval over which the number of request messages is
   /// calculated.
   core.String interval;
 
-  /// Required. Limit represents the upper bound count allowed for the time
-  /// interval and time unit specified. Requests exceeding this limit will get
-  /// rejected.
+  /// Required. Upper limit allowed for the time interval and time unit
+  /// specified. Requests exceeding this limit will be rejected.
   core.String limit;
 
-  /// The time unit defined for the `interval`. Valid values include minute,
-  /// hour, day, or month. The default value is empty. If limit and interval are
-  /// valid, the default value is "hour".
+  /// Time unit defined for the `interval`. Valid values include `minute`,
+  /// `hour`, `day`, or `month`. If `limit` and `interval` are valid, the
+  /// default value is `hour`; otherwise, the default is null.
   core.String timeUnit;
 
   GoogleCloudApigeeV1Quota();
@@ -17611,7 +19422,7 @@ class GoogleCloudApigeeV1RoutingRule {
   /// environment_id changes. It is used to determine if the runtime is up to
   /// date with respect to this rule. This field is omitted from the
   /// IngressConfig unless the GetDeployedIngressConfig API is called with
-  /// debug=true.
+  /// view=FULL.
   core.String envGroupRevision;
 
   /// Name of an environment bound to the environment group in the following
@@ -17621,13 +19432,13 @@ class GoogleCloudApigeeV1RoutingRule {
   /// The resource name of the proxy revision that is receiving this basepath in
   /// the following format: `organizations/{org}/apis/{api}/revisions/{rev}`.
   /// This field is omitted from the IngressConfig unless the
-  /// GetDeployedIngressConfig API is called with debug=true.
+  /// GetDeployedIngressConfig API is called with view=FULL.
   core.String receiver;
 
   /// The unix timestamp when this rule was updated. This is updated whenever
   /// env_group_revision is updated. This field is omitted from the
   /// IngressConfig unless the GetDeployedIngressConfig API is called with
-  /// debug=true.
+  /// view=FULL.
   core.String updateTime;
 
   GoogleCloudApigeeV1RoutingRule();
@@ -17785,7 +19596,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig samplingConfig;
 
   /// Unique ID for the configuration override. The ID will only change if the
-  /// override is deleted and recreated.
+  /// override is deleted and recreated. Corresponds to name's "override" field.
   core.String uid;
 
   GoogleCloudApigeeV1RuntimeTraceConfigOverride();
@@ -17838,56 +19649,28 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   }
 }
 
-/// NEXT ID: 6 RuntimeTraceSamplingConfig represents the detail settings of
+/// NEXT ID: 3 RuntimeTraceSamplingConfig represents the detail settings of
 /// distributed tracing. Only the fields that are defined in the distributed
 /// trace configuration can be overridden using the distribute trace
 /// configuration override APIs.
 class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
-  /// Error sources from which to capture errors. If none are specified, error
-  /// codes are captured from all sources.
-  core.List<core.String> errorSources;
-
-  /// List of response code ranges.
-  core.List<GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange>
-      responseCodeRanges;
-
-  /// List of single response codes.
-  core.List<core.int> responseCodes;
-
   /// Sampler of distributed tracing. OFF is the default value.
   /// Possible string values are:
   /// - "SAMPLER_UNSPECIFIED" : Sampler unspecified.
   /// - "OFF" : OFF means distributed trace is disabled, or the sampling
   /// probability is 0.
-  /// - "ON" : ON means distributed trace is enabled always for all api calls,
-  /// and sampling probability is 0.5.
   /// - "PROBABILITY" : PROBABILITY means traces are captured on a probability
   /// that defined by sampling_rate. The sampling rate is limited to 0 to 0.5
   /// when this is set.
   core.String sampler;
 
-  /// Field sampling rate. This value is only valid when is only applicable when
-  /// sampling value is probabilistic(PROBABILITY). The supported values are > 0
-  /// and <= 0.5.
+  /// Field sampling rate. This value is only applicable when using the
+  /// PROBABILITY sampler. The supported values are > 0 and <= 0.5.
   core.double samplingRate;
 
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig();
 
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("errorSources")) {
-      errorSources = (_json["errorSources"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("responseCodeRanges")) {
-      responseCodeRanges = (_json["responseCodeRanges"] as core.List)
-          .map<GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange>(
-              (value) =>
-                  new GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
-                      .fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("responseCodes")) {
-      responseCodes = (_json["responseCodes"] as core.List).cast<core.int>();
-    }
     if (_json.containsKey("sampler")) {
       sampler = _json["sampler"];
     }
@@ -17899,57 +19682,11 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (errorSources != null) {
-      _json["errorSources"] = errorSources;
-    }
-    if (responseCodeRanges != null) {
-      _json["responseCodeRanges"] =
-          responseCodeRanges.map((value) => (value).toJson()).toList();
-    }
-    if (responseCodes != null) {
-      _json["responseCodes"] = responseCodes;
-    }
     if (sampler != null) {
       _json["sampler"] = sampler;
     }
     if (samplingRate != null) {
       _json["samplingRate"] = samplingRate;
-    }
-    return _json;
-  }
-}
-
-/// ResponseCodeRange represents a group of response codes to capture, from the
-/// first response code to the last response code. Each range is a close
-/// interval. For example, if an interval is [400, 403], then that means 400,
-/// 401, 402, 403 will be all captured.
-class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange {
-  /// The first response code to capture.
-  core.int firstResponseCode;
-
-  /// The last response code to capture.
-  core.int lastResponseCode;
-
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange();
-
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange.fromJson(
-      core.Map _json) {
-    if (_json.containsKey("firstResponseCode")) {
-      firstResponseCode = _json["firstResponseCode"];
-    }
-    if (_json.containsKey("lastResponseCode")) {
-      lastResponseCode = _json["lastResponseCode"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (firstResponseCode != null) {
-      _json["firstResponseCode"] = firstResponseCode;
-    }
-    if (lastResponseCode != null) {
-      _json["lastResponseCode"] = lastResponseCode;
     }
     return _json;
   }
@@ -18350,6 +20087,9 @@ class GoogleCloudApigeeV1Stats {
   /// This field contains a list of query results on environment level.
   core.List<GoogleCloudApigeeV1StatsEnvironmentStats> environments;
 
+  /// This field contains a list of query results grouped by host.
+  core.List<GoogleCloudApigeeV1StatsHostStats> hosts;
+
   /// This field contains the metadata information.
   GoogleCloudApigeeV1Metadata metaData;
 
@@ -18360,6 +20100,12 @@ class GoogleCloudApigeeV1Stats {
       environments = (_json["environments"] as core.List)
           .map<GoogleCloudApigeeV1StatsEnvironmentStats>((value) =>
               new GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("hosts")) {
+      hosts = (_json["hosts"] as core.List)
+          .map<GoogleCloudApigeeV1StatsHostStats>(
+              (value) => new GoogleCloudApigeeV1StatsHostStats.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metaData")) {
@@ -18373,6 +20119,9 @@ class GoogleCloudApigeeV1Stats {
     if (environments != null) {
       _json["environments"] =
           environments.map((value) => (value).toJson()).toList();
+    }
+    if (hosts != null) {
+      _json["hosts"] = hosts.map((value) => (value).toJson()).toList();
     }
     if (metaData != null) {
       _json["metaData"] = (metaData).toJson();
@@ -18438,6 +20187,65 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
   }
 }
 
+/// This message type encapsulates the hostname wrapper: "hosts": [ { "metrics":
+/// [ { "name": "sum(message_count)", "values": [ "2.52056245E8" ] } ], "name":
+/// "example.com" } ]
+class GoogleCloudApigeeV1StatsHostStats {
+  /// This field contains the list of metrics grouped under dimensions.
+  core.List<GoogleCloudApigeeV1DimensionMetric> dimensions;
+
+  /// In the final response, only one of the following fields will be present
+  /// based on the dimensions provided. If no dimensions are provided, then only
+  /// a top level metrics is provided. If dimensions are included, then there
+  /// will be a top level dimensions field under hostnames which will contain
+  /// metrics values and the dimension name. Example: "hosts": [ { "dimensions":
+  /// [ { "metrics": [ { "name": "sum(message_count)", "values": [
+  /// "2.14049521E8" ] } ], "name": "nit_proxy" } ], "name": "example.com" } ]
+  /// OR "hosts": [ { "metrics": [ { "name": "sum(message_count)", "values": [
+  /// "2.19026331E8" ] } ], "name": "example.com" } ] This field contains the
+  /// list of metric values.
+  core.List<GoogleCloudApigeeV1Metric> metrics;
+
+  /// This field contains the hostname used in query.
+  core.String name;
+
+  GoogleCloudApigeeV1StatsHostStats();
+
+  GoogleCloudApigeeV1StatsHostStats.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensions")) {
+      dimensions = (_json["dimensions"] as core.List)
+          .map<GoogleCloudApigeeV1DimensionMetric>(
+              (value) => new GoogleCloudApigeeV1DimensionMetric.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("metrics")) {
+      metrics = (_json["metrics"] as core.List)
+          .map<GoogleCloudApigeeV1Metric>(
+              (value) => new GoogleCloudApigeeV1Metric.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dimensions != null) {
+      _json["dimensions"] =
+          dimensions.map((value) => (value).toJson()).toList();
+    }
+    if (metrics != null) {
+      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 /// Pub/Sub subscription of an environment.
 class GoogleCloudApigeeV1Subscription {
   /// Full name of the Pub/Sub subcription. Use the following structure in your
@@ -18465,13 +20273,13 @@ class GoogleCloudApigeeV1Subscription {
 class GoogleCloudApigeeV1SyncAuthorization {
   /// Entity tag (ETag) used for optimistic concurrency control as a way to help
   /// prevent simultaneous updates from overwriting each other. For example,
-  /// when you call [getSyncAuthorization](getSyncAuthorization) an ETag is
-  /// returned in the response. Pass that ETag when calling the
-  /// [setSyncAuthorization](setSyncAuthorization) to ensure that you are
-  /// updating the correct version. If you don't pass the ETag in the call to
-  /// `setSyncAuthorization`, then the existing authorization is overwritten
-  /// indiscriminately. **Note**: We strongly recommend that you use the ETag in
-  /// the read-modify-write cycle to avoid race conditions.
+  /// when you call [getSyncAuthorization](organizations/getSyncAuthorization)
+  /// an ETag is returned in the response. Pass that ETag when calling the
+  /// [setSyncAuthorization](organizations/setSyncAuthorization) to ensure that
+  /// you are updating the correct version. If you don't pass the ETag in the
+  /// call to `setSyncAuthorization`, then the existing authorization is
+  /// overwritten indiscriminately. **Note**: We strongly recommend that you use
+  /// the ETag in the read-modify-write cycle to avoid race conditions.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);

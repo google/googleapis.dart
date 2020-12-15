@@ -286,15 +286,15 @@ class ProjectsHistoriesResourceApi {
   ///
   /// [projectId] - A Project id. Required.
   ///
-  /// [filterByName] - If set, only return histories with the given name.
-  /// Optional.
-  ///
   /// [pageToken] - A continuation token to resume the query at the next item.
   /// Optional.
   ///
   /// [pageSize] - The maximum number of Histories to fetch. Default value: 20.
   /// The server will use this default if the field is not set or has a value of
   /// 0. Any value greater than 100 will be treated as 100. Optional.
+  ///
+  /// [filterByName] - If set, only return histories with the given name.
+  /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -307,9 +307,9 @@ class ProjectsHistoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHistoriesResponse> list(core.String projectId,
-      {core.String filterByName,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filterByName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -321,14 +321,14 @@ class ProjectsHistoriesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filterByName != null) {
-      _queryParams["filterByName"] = [filterByName];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filterByName != null) {
+      _queryParams["filterByName"] = [filterByName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1246,11 +1246,11 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// [executionId] - A Execution id. Required.
   ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  /// Optional.
-  ///
   /// [pageSize] - The maximum number of Steps to fetch. Default value: 25. The
   /// server will use this default if the field is not set or has a value of 0.
+  /// Optional.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
   /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1265,7 +1265,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStepsResponse> list(
       core.String projectId, core.String historyId, core.String executionId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1282,11 +1282,11 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     if (executionId == null) {
       throw new core.ArgumentError("Parameter executionId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1929,12 +1929,12 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
   ///
   /// [sampleSeriesId] - A sample series id
   ///
-  /// [pageToken] - Optional, the next_page_token returned in the previous
-  /// response
-  ///
   /// [pageSize] - The default page size is 500 samples, and the maximum size is
   /// 5000. If the page_size is greater than 5000, the effective page size will
   /// be 5000
+  ///
+  /// [pageToken] - Optional, the next_page_token returned in the previous
+  /// response
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1952,8 +1952,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
       core.String executionId,
       core.String stepId,
       core.String sampleSeriesId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1977,11 +1977,11 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
     if (sampleSeriesId == null) {
       throw new core.ArgumentError("Parameter sampleSeriesId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2111,12 +2111,12 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
   /// [stepId] - A Step id. Note: This step must include a TestExecutionStep.
   /// Required.
   ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  /// Optional.
+  ///
   /// [pageSize] - The maximum number of TestCases to fetch. Default value: 100.
   /// The server will use this default if the field is not set or has a value of
   /// 0. Optional.
-  ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2130,7 +2130,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTestCasesResponse> list(core.String projectId,
       core.String historyId, core.String executionId, core.String stepId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2150,11 +2150,11 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2203,12 +2203,12 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   ///
   /// [stepId] - A Step id. Required.
   ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  /// Optional.
-  ///
   /// [pageSize] - The maximum number of thumbnails to fetch. Default value: 50.
   /// The server will use this default if the field is not set or has a value of
   /// 0. Optional.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2222,7 +2222,7 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStepThumbnailsResponse> list(core.String projectId,
       core.String historyId, core.String executionId, core.String stepId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2242,11 +2242,11 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2873,6 +2873,19 @@ class CrashDialogError {
     if (crashPackage != null) {
       _json["crashPackage"] = crashPackage;
     }
+    return _json;
+  }
+}
+
+/// A warning that device ran out of memory
+class DeviceOutOfMemory {
+  DeviceOutOfMemory();
+
+  DeviceOutOfMemory.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -6577,6 +6590,7 @@ class TestIssue {
   /// crawl
   /// - "unityException" : An uncaught Unity exception was detected (these don't
   /// crash apps).
+  /// - "deviceOutOfMemory" : Device running out of memory was detected
   core.String type;
 
   /// Warning message with additional details of the issue. Should always be a

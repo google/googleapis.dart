@@ -67,6 +67,8 @@ class ComputeApi {
       new GlobalNetworkEndpointGroupsResourceApi(_requester);
   GlobalOperationsResourceApi get globalOperations =>
       new GlobalOperationsResourceApi(_requester);
+  GlobalOrganizationOperationsResourceApi get globalOrganizationOperations =>
+      new GlobalOrganizationOperationsResourceApi(_requester);
   HealthChecksResourceApi get healthChecks =>
       new HealthChecksResourceApi(_requester);
   HttpHealthChecksResourceApi get httpHealthChecks =>
@@ -176,7 +178,7 @@ class ComputeApi {
 
   ComputeApi(http.Client client,
       {core.String rootUrl = "https://compute.googleapis.com/",
-      core.String servicePath = "compute/v1/projects/"})
+      core.String servicePath = "compute/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -303,7 +305,8 @@ class AcceleratorTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/acceleratorTypes';
 
     var _response = _requester.request(_url, "GET",
@@ -364,7 +367,8 @@ class AcceleratorTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/acceleratorTypes/' +
@@ -489,7 +493,8 @@ class AcceleratorTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/acceleratorTypes';
@@ -624,7 +629,9 @@ class AddressesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/addresses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/addresses';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -699,7 +706,8 @@ class AddressesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/addresses/' +
@@ -762,7 +770,8 @@ class AddressesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/addresses/' +
@@ -840,7 +849,8 @@ class AddressesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/addresses';
@@ -963,7 +973,8 @@ class AddressesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/addresses';
@@ -1098,8 +1109,9 @@ class AutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/autoscalers';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/autoscalers';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1175,7 +1187,8 @@ class AutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers/' +
@@ -1239,7 +1252,8 @@ class AutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers/' +
@@ -1317,7 +1331,8 @@ class AutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers';
@@ -1440,7 +1455,8 @@ class AutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers';
@@ -1525,7 +1541,8 @@ class AutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers';
@@ -1609,7 +1626,8 @@ class AutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers';
@@ -1692,7 +1710,8 @@ class BackendBucketsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket') +
         '/addSignedUrlKey';
@@ -1763,7 +1782,8 @@ class BackendBucketsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
 
@@ -1840,7 +1860,8 @@ class BackendBucketsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket') +
         '/deleteSignedUrlKey';
@@ -1897,7 +1918,8 @@ class BackendBucketsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
 
@@ -1966,7 +1988,9 @@ class BackendBucketsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/backendBuckets';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2081,7 +2105,9 @@ class BackendBucketsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/backendBuckets';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2157,7 +2183,8 @@ class BackendBucketsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
 
@@ -2234,7 +2261,8 @@ class BackendBucketsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
 
@@ -2316,7 +2344,8 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
         '/addSignedUrlKey';
@@ -2446,7 +2475,8 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/backendServices';
 
     var _response = _requester.request(_url, "GET",
@@ -2517,7 +2547,8 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
 
@@ -2594,7 +2625,8 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
         '/deleteSignedUrlKey';
@@ -2651,7 +2683,8 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
 
@@ -2718,7 +2751,8 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
         '/getHealth';
@@ -2790,8 +2824,9 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/backendServices';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/backendServices';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -2906,8 +2941,9 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/backendServices';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/backendServices';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2984,7 +3020,8 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
 
@@ -3059,7 +3096,8 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
         '/setSecurityPolicy';
@@ -3137,7 +3175,8 @@ class BackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
 
@@ -3271,7 +3310,9 @@ class DiskTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/diskTypes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/diskTypes';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3331,7 +3372,8 @@ class DiskTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/diskTypes/' +
@@ -3455,7 +3497,8 @@ class DiskTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/diskTypes';
@@ -3549,7 +3592,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -3680,7 +3724,9 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/disks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/disks';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -3768,7 +3814,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -3849,7 +3896,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -3913,7 +3961,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -3984,7 +4033,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4071,7 +4121,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks';
@@ -4194,7 +4245,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks';
@@ -4281,7 +4333,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4367,7 +4420,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4437,7 +4491,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4523,7 +4578,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4595,7 +4651,8 @@ class DisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4675,7 +4732,8 @@ class ExternalVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$externalVpnGateway');
 
@@ -4730,7 +4788,8 @@ class ExternalVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$externalVpnGateway');
 
@@ -4800,7 +4859,8 @@ class ExternalVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways';
 
     var _response = _requester.request(_url, "POST",
@@ -4916,7 +4976,8 @@ class ExternalVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways';
 
     var _response = _requester.request(_url, "GET",
@@ -4976,7 +5037,8 @@ class ExternalVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setLabels';
@@ -5037,7 +5099,8 @@ class ExternalVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -5114,7 +5177,8 @@ class FirewallsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
 
@@ -5168,7 +5232,8 @@ class FirewallsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
 
@@ -5237,7 +5302,9 @@ class FirewallsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/firewalls';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -5351,7 +5418,9 @@ class FirewallsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/firewalls';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -5427,7 +5496,8 @@ class FirewallsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
 
@@ -5505,7 +5575,8 @@ class FirewallsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
 
@@ -5639,7 +5710,8 @@ class ForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/forwardingRules';
 
     var _response = _requester.request(_url, "GET",
@@ -5716,7 +5788,8 @@ class ForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules/' +
@@ -5779,7 +5852,8 @@ class ForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules/' +
@@ -5857,7 +5931,8 @@ class ForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules';
@@ -5981,7 +6056,8 @@ class ForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules';
@@ -6067,7 +6143,8 @@ class ForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules/' +
@@ -6153,7 +6230,8 @@ class ForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules/' +
@@ -6232,7 +6310,8 @@ class GlobalAddressesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/addresses/' +
         commons.Escaper.ecapeVariable('$address');
 
@@ -6287,7 +6366,8 @@ class GlobalAddressesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/addresses/' +
         commons.Escaper.ecapeVariable('$address');
 
@@ -6356,7 +6436,9 @@ class GlobalAddressesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/addresses';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -6470,7 +6552,9 @@ class GlobalAddressesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/addresses';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -6546,7 +6630,8 @@ class GlobalForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule');
 
@@ -6602,7 +6687,8 @@ class GlobalForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule');
 
@@ -6671,8 +6757,9 @@ class GlobalForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/forwardingRules';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -6787,8 +6874,9 @@ class GlobalForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/forwardingRules';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -6865,7 +6953,8 @@ class GlobalForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule');
 
@@ -6943,7 +7032,8 @@ class GlobalForwardingRulesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule') +
         '/setTarget';
@@ -7030,7 +7120,8 @@ class GlobalNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup') +
         '/attachNetworkEndpoints';
@@ -7103,7 +7194,8 @@ class GlobalNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup');
 
@@ -7182,7 +7274,8 @@ class GlobalNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup') +
         '/detachNetworkEndpoints';
@@ -7239,7 +7332,8 @@ class GlobalNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup');
 
@@ -7309,7 +7403,8 @@ class GlobalNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups';
 
     var _response = _requester.request(_url, "POST",
@@ -7425,7 +7520,8 @@ class GlobalNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups';
 
     var _response = _requester.request(_url, "GET",
@@ -7550,7 +7646,8 @@ class GlobalNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup') +
         '/listNetworkEndpoints';
@@ -7687,7 +7784,9 @@ class GlobalOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/operations';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/operations';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -7739,7 +7838,8 @@ class GlobalOperationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
@@ -7794,7 +7894,8 @@ class GlobalOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
@@ -7911,7 +8012,9 @@ class GlobalOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/operations';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -7976,7 +8079,8 @@ class GlobalOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation') +
         '/wait';
@@ -7988,6 +8092,230 @@ class GlobalOperationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class GlobalOrganizationOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  GlobalOrganizationOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes the specified Operations resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [operation] - Name of the Operations resource to delete.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [parentId] - Parent ID for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String operation,
+      {core.String parentId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (operation == null) {
+      throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if (parentId != null) {
+      _queryParams["parentId"] = [parentId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'locations/global/operations/' +
+        commons.Escaper.ecapeVariable('$operation');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Retrieves the specified Operations resource. Gets a list of operations by
+  /// making a `list()` request.
+  ///
+  /// Request parameters:
+  ///
+  /// [operation] - Name of the Operations resource to return.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [parentId] - Parent ID for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String operation,
+      {core.String parentId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (operation == null) {
+      throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if (parentId != null) {
+      _queryParams["parentId"] = [parentId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'locations/global/operations/' +
+        commons.Escaper.ecapeVariable('$operation');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves a list of Operation resources contained within the specified
+  /// organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [parentId] - Parent ID for this request.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OperationList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OperationList> list(
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String parentId,
+      core.bool returnPartialSuccess,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (parentId != null) {
+      _queryParams["parentId"] = [parentId];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams["returnPartialSuccess"] = ["${returnPartialSuccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'locations/global/operations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new OperationList.fromJson(data));
   }
 }
 
@@ -8112,8 +8440,9 @@ class HealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/healthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/healthChecks';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -8182,7 +8511,8 @@ class HealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
 
@@ -8237,7 +8567,8 @@ class HealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
 
@@ -8306,7 +8637,9 @@ class HealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/healthChecks';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -8421,7 +8754,9 @@ class HealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/healthChecks';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -8497,7 +8832,8 @@ class HealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
 
@@ -8574,7 +8910,8 @@ class HealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
 
@@ -8652,7 +8989,8 @@ class HttpHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -8708,7 +9046,8 @@ class HttpHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -8777,8 +9116,9 @@ class HttpHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/httpHealthChecks';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -8893,8 +9233,9 @@ class HttpHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/httpHealthChecks';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -8970,7 +9311,8 @@ class HttpHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -9047,7 +9389,8 @@ class HttpHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -9125,7 +9468,8 @@ class HttpsHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
 
@@ -9181,7 +9525,8 @@ class HttpsHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
 
@@ -9250,8 +9595,9 @@ class HttpsHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/httpsHealthChecks';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -9366,8 +9712,9 @@ class HttpsHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/httpsHealthChecks';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -9443,7 +9790,8 @@ class HttpsHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
 
@@ -9520,7 +9868,8 @@ class HttpsHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
 
@@ -9596,7 +9945,8 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image');
 
@@ -9674,7 +10024,8 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image') +
         '/deprecate';
@@ -9730,7 +10081,8 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image');
 
@@ -9785,7 +10137,8 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/family/' +
         commons.Escaper.ecapeVariable('$family');
 
@@ -9847,7 +10200,8 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
@@ -9922,7 +10276,9 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/images';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -10041,7 +10397,9 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/images';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -10117,7 +10475,8 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image');
 
@@ -10178,7 +10537,8 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
@@ -10240,7 +10600,8 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setLabels';
@@ -10301,7 +10662,8 @@ class ImagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -10406,7 +10768,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -10538,7 +10901,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/instanceGroupManagers';
 
     var _response = _requester.request(_url, "GET",
@@ -10608,7 +10972,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -10701,7 +11066,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -10781,7 +11147,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -10879,7 +11246,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -10951,7 +11319,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11015,7 +11384,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11100,7 +11470,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers';
@@ -11224,7 +11595,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers';
@@ -11359,7 +11731,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11497,7 +11870,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11633,7 +12007,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11723,7 +12098,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11813,7 +12189,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11911,7 +12288,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12016,7 +12394,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12034,7 +12413,8 @@ class InstanceGroupManagersResourceApi {
 
   /// Specifies the instance template to use when creating new instances in this
   /// group. The templates for existing instances in the group do not change
-  /// unless you recreate them.
+  /// unless you run recreateInstances, run applyUpdatesToInstances, or set the
+  /// group's updatePolicy.type to PROACTIVE.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12105,7 +12485,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12197,7 +12578,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12288,7 +12670,8 @@ class InstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12383,7 +12766,8 @@ class InstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -12514,7 +12898,8 @@ class InstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/instanceGroups';
 
     var _response = _requester.request(_url, "GET",
@@ -12590,7 +12975,8 @@ class InstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -12654,7 +13040,8 @@ class InstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -12731,7 +13118,8 @@ class InstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups';
@@ -12857,7 +13245,8 @@ class InstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups';
@@ -12995,7 +13384,8 @@ class InstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -13088,7 +13478,8 @@ class InstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -13175,7 +13566,8 @@ class InstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -13258,7 +13650,8 @@ class InstanceTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$instanceTemplate');
 
@@ -13314,7 +13707,8 @@ class InstanceTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$instanceTemplate');
 
@@ -13376,7 +13770,8 @@ class InstanceTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
@@ -13448,8 +13843,9 @@ class InstanceTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/instanceTemplates';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -13564,8 +13960,9 @@ class InstanceTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/instanceTemplates';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -13624,7 +14021,8 @@ class InstanceTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
@@ -13685,7 +14083,8 @@ class InstanceTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -13786,7 +14185,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -13877,7 +14277,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14009,7 +14410,9 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/instances';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/instances';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -14099,7 +14502,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14180,7 +14584,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14276,7 +14681,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14363,7 +14769,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14428,7 +14835,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14501,7 +14909,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14573,7 +14982,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14637,7 +15047,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14726,7 +15137,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14790,7 +15202,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -14885,7 +15298,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances';
@@ -15008,7 +15422,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances';
@@ -15023,9 +15438,9 @@ class InstancesResourceApi {
   }
 
   /// Retrieves a list of resources that refer to the VM instance specified in
-  /// the request. For example, if the VM instance is part of a managed instance
-  /// group, the referrers list includes the managed instance group. For more
-  /// information, read Viewing Referrers to VM Instances.
+  /// the request. For example, if the VM instance is part of a managed or
+  /// unmanaged instance group, the referrers list includes the instance group.
+  /// For more information, read Viewing referrers to VM instances.
   ///
   /// Request parameters:
   ///
@@ -15143,7 +15558,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15232,7 +15648,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15313,7 +15730,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15401,7 +15819,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15501,7 +15920,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15571,7 +15991,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15657,7 +16078,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15747,7 +16169,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15833,7 +16256,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15919,7 +16343,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16010,7 +16435,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16098,7 +16524,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16188,7 +16615,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16279,7 +16707,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16365,7 +16794,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16429,7 +16859,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16510,7 +16941,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16600,7 +17032,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16685,7 +17118,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16757,7 +17191,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16876,7 +17311,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16974,7 +17410,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17060,7 +17497,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17157,7 +17595,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17248,7 +17687,8 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17387,7 +17827,8 @@ class InterconnectAttachmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/interconnectAttachments';
 
     var _response = _requester.request(_url, "GET",
@@ -17465,7 +17906,8 @@ class InterconnectAttachmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments/' +
@@ -17529,7 +17971,8 @@ class InterconnectAttachmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments/' +
@@ -17612,7 +18055,8 @@ class InterconnectAttachmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments';
@@ -17737,7 +18181,8 @@ class InterconnectAttachmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments';
@@ -17828,7 +18273,8 @@ class InterconnectAttachmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments/' +
@@ -17894,7 +18340,8 @@ class InterconnectLocationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnectLocations/' +
         commons.Escaper.ecapeVariable('$interconnectLocation');
 
@@ -18011,7 +18458,8 @@ class InterconnectLocationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnectLocations';
 
     var _response = _requester.request(_url, "GET",
@@ -18087,7 +18535,8 @@ class InterconnectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect');
 
@@ -18142,7 +18591,8 @@ class InterconnectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect');
 
@@ -18197,7 +18647,8 @@ class InterconnectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect') +
         '/getDiagnostics';
@@ -18268,7 +18719,9 @@ class InterconnectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/interconnects';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnects';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -18382,7 +18835,9 @@ class InterconnectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/interconnects';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnects';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -18458,7 +18913,8 @@ class InterconnectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect');
 
@@ -18521,7 +18977,8 @@ class LicenseCodesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenseCodes/' +
         commons.Escaper.ecapeVariable('$licenseCode');
 
@@ -18583,7 +19040,8 @@ class LicenseCodesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenseCodes/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -18661,7 +19119,8 @@ class LicensesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$license');
 
@@ -18717,7 +19176,8 @@ class LicensesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$license');
 
@@ -18780,7 +19240,8 @@ class LicensesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
@@ -18851,7 +19312,9 @@ class LicensesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/licenses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/licenses';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -18971,7 +19434,9 @@ class LicensesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/licenses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/licenses';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -19031,7 +19496,8 @@ class LicensesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
@@ -19094,7 +19560,8 @@ class LicensesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -19229,8 +19696,9 @@ class MachineTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/machineTypes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/machineTypes';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -19291,7 +19759,8 @@ class MachineTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/machineTypes/' +
@@ -19415,7 +19884,8 @@ class MachineTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/machineTypes';
@@ -19552,7 +20022,8 @@ class NetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/networkEndpointGroups';
 
     var _response = _requester.request(_url, "GET",
@@ -19639,7 +20110,8 @@ class NetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -19722,7 +20194,8 @@ class NetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -19811,7 +20284,8 @@ class NetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -19876,7 +20350,8 @@ class NetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -19954,7 +20429,8 @@ class NetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups';
@@ -20079,7 +20555,8 @@ class NetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups';
@@ -20220,7 +20697,8 @@ class NetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -20293,7 +20771,8 @@ class NetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -20378,7 +20857,8 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/addPeering';
@@ -20449,7 +20929,8 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network');
 
@@ -20504,7 +20985,8 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network');
 
@@ -20573,7 +21055,9 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/networks';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -20687,7 +21171,9 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/networks';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -20831,7 +21317,8 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/listPeeringRoutes';
@@ -20910,7 +21397,8 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network');
 
@@ -20986,7 +21474,8 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/removePeering';
@@ -21058,7 +21547,8 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/switchToCustomMode';
@@ -21139,7 +21629,8 @@ class NetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/updatePeering';
@@ -21228,7 +21719,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -21360,7 +21852,9 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/nodeGroups';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/nodeGroups';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -21435,7 +21929,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -21519,7 +22014,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -21585,7 +22081,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -21656,7 +22153,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -21741,7 +22239,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups';
@@ -21865,7 +22364,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups';
@@ -21996,7 +22496,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -22081,7 +22582,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -22150,7 +22652,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -22239,7 +22742,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -22311,7 +22815,8 @@ class NodeGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -22448,8 +22953,9 @@ class NodeTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/nodeTemplates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/nodeTemplates';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -22525,7 +23031,8 @@ class NodeTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -22589,7 +23096,8 @@ class NodeTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -22660,7 +23168,8 @@ class NodeTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -22739,7 +23248,8 @@ class NodeTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates';
@@ -22862,7 +23372,8 @@ class NodeTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates';
@@ -22930,7 +23441,8 @@ class NodeTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -23002,7 +23514,8 @@ class NodeTemplatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -23139,7 +23652,9 @@ class NodeTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/nodeTypes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/nodeTypes';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -23199,7 +23714,8 @@ class NodeTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeTypes/' +
@@ -23323,7 +23839,8 @@ class NodeTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeTypes';
@@ -23460,7 +23977,8 @@ class PacketMirroringsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/packetMirrorings';
 
     var _response = _requester.request(_url, "GET",
@@ -23537,7 +24055,8 @@ class PacketMirroringsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings/' +
@@ -23600,7 +24119,8 @@ class PacketMirroringsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings/' +
@@ -23678,7 +24198,8 @@ class PacketMirroringsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings';
@@ -23803,7 +24324,8 @@ class PacketMirroringsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings';
@@ -23888,7 +24410,8 @@ class PacketMirroringsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings/' +
@@ -23959,7 +24482,8 @@ class PacketMirroringsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings/' +
@@ -24031,7 +24555,9 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnHost';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/disableXpnHost';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -24099,7 +24625,9 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnResource';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/disableXpnResource';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -24160,7 +24688,9 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnHost';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/enableXpnHost';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -24229,7 +24759,9 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnResource';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/enableXpnResource';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -24273,7 +24805,7 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -24318,7 +24850,8 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/getXpnHost';
+    _url =
+        'projects/' + commons.Escaper.ecapeVariable('$project') + '/getXpnHost';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -24433,7 +24966,9 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/getXpnResources';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/getXpnResources';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -24553,7 +25088,9 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/listXpnHosts';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/listXpnHosts';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -24619,7 +25156,8 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/moveDisk';
+    _url =
+        'projects/' + commons.Escaper.ecapeVariable('$project') + '/moveDisk';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -24687,7 +25225,9 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/moveInstance';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/moveInstance';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -24755,7 +25295,8 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/setCommonInstanceMetadata';
 
     var _response = _requester.request(_url, "POST",
@@ -24825,7 +25366,9 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/setDefaultNetworkTier';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/setDefaultNetworkTier';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -24894,7 +25437,9 @@ class ProjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/setUsageExportBucket';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/setUsageExportBucket';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -24976,7 +25521,8 @@ class RegionAutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers/' +
@@ -25039,7 +25585,8 @@ class RegionAutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers/' +
@@ -25117,7 +25664,8 @@ class RegionAutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers';
@@ -25241,7 +25789,8 @@ class RegionAutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers';
@@ -25326,7 +25875,8 @@ class RegionAutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers';
@@ -25410,7 +25960,8 @@ class RegionAutoscalersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers';
@@ -25495,7 +26046,8 @@ class RegionBackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -25558,7 +26110,8 @@ class RegionBackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -25631,7 +26184,8 @@ class RegionBackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -25712,7 +26266,8 @@ class RegionBackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices';
@@ -25836,7 +26391,8 @@ class RegionBackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices';
@@ -25922,7 +26478,8 @@ class RegionBackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -26008,7 +26565,8 @@ class RegionBackendServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -26145,8 +26703,9 @@ class RegionCommitmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/commitments';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/commitments';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -26207,7 +26766,8 @@ class RegionCommitmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/commitments/' +
@@ -26285,7 +26845,8 @@ class RegionCommitmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/commitments';
@@ -26408,7 +26969,8 @@ class RegionCommitmentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/commitments';
@@ -26477,7 +27039,8 @@ class RegionDiskTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/diskTypes/' +
@@ -26602,7 +27165,8 @@ class RegionDiskTypesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/diskTypes';
@@ -26697,7 +27261,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -26782,7 +27347,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -26863,7 +27429,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -26926,7 +27493,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -26997,7 +27565,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -27081,7 +27650,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks';
@@ -27205,7 +27775,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks';
@@ -27292,7 +27863,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -27377,7 +27949,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -27447,7 +28020,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -27532,7 +28106,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -27604,7 +28179,8 @@ class RegionDisksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -27690,7 +28266,8 @@ class RegionHealthCheckServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices/' +
@@ -27752,7 +28329,8 @@ class RegionHealthCheckServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices/' +
@@ -27830,7 +28408,8 @@ class RegionHealthCheckServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices';
@@ -27955,7 +28534,8 @@ class RegionHealthCheckServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices';
@@ -28039,7 +28619,8 @@ class RegionHealthCheckServicesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices/' +
@@ -28125,7 +28706,8 @@ class RegionHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks/' +
@@ -28189,7 +28771,8 @@ class RegionHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks/' +
@@ -28267,7 +28850,8 @@ class RegionHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks';
@@ -28391,7 +28975,8 @@ class RegionHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks';
@@ -28476,7 +29061,8 @@ class RegionHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks/' +
@@ -28561,7 +29147,8 @@ class RegionHealthChecksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks/' +
@@ -28667,7 +29254,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -28739,7 +29327,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -28832,7 +29421,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -28911,7 +29501,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -29010,7 +29601,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -29082,7 +29674,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -29144,7 +29737,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -29227,7 +29821,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers';
@@ -29351,7 +29946,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers';
@@ -29487,7 +30083,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -29623,7 +30220,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -29759,7 +30357,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -29848,7 +30447,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -29863,9 +30463,9 @@ class RegionInstanceGroupManagersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Insert or patch (for the ones that already exist) per-instance configs for
-  /// the managed instance group. perInstanceConfig.instance serves as a key
-  /// used to distinguish whether to perform insert or patch.
+  /// Inserts or patches per-instance configs for the managed instance group.
+  /// perInstanceConfig.name serves as a key used to distinguish whether to
+  /// perform insert or patch.
   ///
   /// [request] - The metadata request object.
   ///
@@ -29938,7 +30538,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -30036,7 +30637,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -30133,7 +30735,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -30221,7 +30824,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -30309,7 +30913,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -30325,9 +30930,9 @@ class RegionInstanceGroupManagersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Insert or update (for the ones that already exist) per-instance configs
-  /// for the managed instance group. perInstanceConfig.instance serves as a key
-  /// used to distinguish whether to perform insert or patch.
+  /// Inserts or updates per-instance configs for the managed instance group.
+  /// perInstanceConfig.name serves as a key used to distinguish whether to
+  /// perform insert or patch.
   ///
   /// [request] - The metadata request object.
   ///
@@ -30400,7 +31005,8 @@ class RegionInstanceGroupManagersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -30468,7 +31074,8 @@ class RegionInstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroups/' +
@@ -30593,7 +31200,8 @@ class RegionInstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroups';
@@ -30733,7 +31341,8 @@ class RegionInstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroups/' +
@@ -30821,7 +31430,8 @@ class RegionInstanceGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroups/' +
@@ -30909,7 +31519,8 @@ class RegionNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/networkEndpointGroups/' +
@@ -30973,7 +31584,8 @@ class RegionNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/networkEndpointGroups/' +
@@ -31051,7 +31663,8 @@ class RegionNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/networkEndpointGroups';
@@ -31176,7 +31789,8 @@ class RegionNetworkEndpointGroupsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/networkEndpointGroups';
@@ -31264,7 +31878,8 @@ class RegionNotificationEndpointsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/notificationEndpoints/' +
@@ -31329,7 +31944,8 @@ class RegionNotificationEndpointsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/notificationEndpoints/' +
@@ -31407,7 +32023,8 @@ class RegionNotificationEndpointsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/notificationEndpoints';
@@ -31531,7 +32148,8 @@ class RegionNotificationEndpointsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/notificationEndpoints';
@@ -31601,7 +32219,8 @@ class RegionOperationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/operations/' +
@@ -31664,7 +32283,8 @@ class RegionOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/operations/' +
@@ -31789,7 +32409,8 @@ class RegionOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/operations';
@@ -31864,7 +32485,8 @@ class RegionOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/operations/' +
@@ -31951,7 +32573,8 @@ class RegionSslCertificatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/sslCertificates/' +
@@ -32015,7 +32638,8 @@ class RegionSslCertificatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/sslCertificates/' +
@@ -32093,7 +32717,8 @@ class RegionSslCertificatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/sslCertificates';
@@ -32217,7 +32842,8 @@ class RegionSslCertificatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/sslCertificates';
@@ -32302,7 +32928,8 @@ class RegionTargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies/' +
@@ -32366,7 +32993,8 @@ class RegionTargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies/' +
@@ -32444,7 +33072,8 @@ class RegionTargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies';
@@ -32569,7 +33198,8 @@ class RegionTargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies';
@@ -32652,7 +33282,8 @@ class RegionTargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies/' +
@@ -32739,7 +33370,8 @@ class RegionTargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies/' +
@@ -32803,7 +33435,8 @@ class RegionTargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies/' +
@@ -32881,7 +33514,8 @@ class RegionTargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies';
@@ -33006,7 +33640,8 @@ class RegionTargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies';
@@ -33094,7 +33729,8 @@ class RegionTargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies/' +
@@ -33179,7 +33815,8 @@ class RegionTargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies/' +
@@ -33255,7 +33892,8 @@ class RegionUrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -33319,7 +33957,8 @@ class RegionUrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -33387,7 +34026,8 @@ class RegionUrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps';
@@ -33511,7 +34151,8 @@ class RegionUrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps';
@@ -33586,7 +34227,8 @@ class RegionUrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -33661,7 +34303,8 @@ class RegionUrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -33734,7 +34377,8 @@ class RegionUrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -33798,7 +34442,8 @@ class RegionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region');
 
@@ -33914,7 +34559,7 @@ class RegionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/regions';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/regions';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -34046,8 +34691,9 @@ class ReservationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/reservations';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/reservations';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -34123,7 +34769,8 @@ class ReservationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -34186,7 +34833,8 @@ class ReservationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -34257,7 +34905,8 @@ class ReservationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -34336,7 +34985,8 @@ class ReservationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations';
@@ -34460,7 +35110,8 @@ class ReservationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations';
@@ -34543,7 +35194,8 @@ class ReservationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -34613,7 +35265,8 @@ class ReservationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -34685,7 +35338,8 @@ class ReservationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -34823,7 +35477,8 @@ class ResourcePoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/resourcePolicies';
 
     var _response = _requester.request(_url, "GET",
@@ -34900,7 +35555,8 @@ class ResourcePoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -34963,7 +35619,8 @@ class ResourcePoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -35034,7 +35691,8 @@ class ResourcePoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -35112,7 +35770,8 @@ class ResourcePoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies';
@@ -35236,7 +35895,8 @@ class ResourcePoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies';
@@ -35304,7 +35964,8 @@ class ResourcePoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -35376,7 +36037,8 @@ class ResourcePoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -35513,7 +36175,9 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/routers';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/routers';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -35588,7 +36252,8 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -35652,7 +36317,8 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -35785,7 +36451,8 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -35850,7 +36517,8 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -35929,7 +36597,8 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers';
@@ -36052,7 +36721,8 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers';
@@ -36137,7 +36807,8 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -36206,7 +36877,8 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -36294,7 +36966,8 @@ class RoutersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -36372,7 +37045,8 @@ class RoutesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/routes/' +
         commons.Escaper.ecapeVariable('$route');
 
@@ -36427,7 +37101,8 @@ class RoutesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/routes/' +
         commons.Escaper.ecapeVariable('$route');
 
@@ -36496,7 +37171,9 @@ class RoutesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/routes';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -36610,7 +37287,9 @@ class RoutesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/routes';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -36675,7 +37354,8 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
         '/addRule';
@@ -36747,7 +37427,8 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy');
 
@@ -36802,7 +37483,8 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy');
 
@@ -36863,7 +37545,8 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
         '/getRule';
@@ -36933,8 +37616,9 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/securityPolicies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -37048,8 +37732,9 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/securityPolicies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -37166,7 +37851,8 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/listPreconfiguredExpressionSets';
 
     var _response = _requester.request(_url, "GET",
@@ -37180,7 +37866,9 @@ class SecurityPoliciesResourceApi {
             data));
   }
 
-  /// Patches the specified policy with the data included in the request.
+  /// Patches the specified policy with the data included in the request. This
+  /// cannot be used to be update the rules in the policy. Please use the per
+  /// rule methods like addRule, patchRule, and removeRule instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -37243,7 +37931,8 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy');
 
@@ -37308,7 +37997,8 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
         '/patchRule';
@@ -37369,7 +38059,8 @@ class SecurityPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
         '/removeRule';
@@ -37452,7 +38143,8 @@ class SnapshotsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$snapshot');
 
@@ -37507,7 +38199,8 @@ class SnapshotsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$snapshot');
 
@@ -37569,7 +38262,8 @@ class SnapshotsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
@@ -37687,7 +38381,9 @@ class SnapshotsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/snapshots';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -37746,7 +38442,8 @@ class SnapshotsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
@@ -37808,7 +38505,8 @@ class SnapshotsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setLabels';
@@ -37869,7 +38567,8 @@ class SnapshotsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -38005,7 +38704,8 @@ class SslCertificatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/sslCertificates';
 
     var _response = _requester.request(_url, "GET",
@@ -38076,7 +38776,8 @@ class SslCertificatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslCertificates/' +
         commons.Escaper.ecapeVariable('$sslCertificate');
 
@@ -38132,7 +38833,8 @@ class SslCertificatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslCertificates/' +
         commons.Escaper.ecapeVariable('$sslCertificate');
 
@@ -38201,8 +38903,9 @@ class SslCertificatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/sslCertificates';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -38317,8 +39020,9 @@ class SslCertificatesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/sslCertificates';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -38393,7 +39097,8 @@ class SslPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/' +
         commons.Escaper.ecapeVariable('$sslPolicy');
 
@@ -38446,7 +39151,8 @@ class SslPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/' +
         commons.Escaper.ecapeVariable('$sslPolicy');
 
@@ -38515,7 +39221,9 @@ class SslPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslPolicies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/sslPolicies';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -38630,7 +39338,9 @@ class SslPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslPolicies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/sslPolicies';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -38746,7 +39456,8 @@ class SslPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/listAvailableFeatures';
 
     var _response = _requester.request(_url, "GET",
@@ -38821,7 +39532,8 @@ class SslPoliciesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/' +
         commons.Escaper.ecapeVariable('$sslPolicy');
 
@@ -38955,8 +39667,9 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/subnetworks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/subnetworks';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -39032,7 +39745,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -39120,7 +39834,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -39185,7 +39900,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -39256,7 +39972,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -39335,7 +40052,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks';
@@ -39458,7 +40176,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks';
@@ -39575,7 +40294,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/subnetworks/listUsable';
 
     var _response = _requester.request(_url, "GET",
@@ -39589,7 +40309,7 @@ class SubnetworksResourceApi {
   }
 
   /// Patches the specified subnetwork with the data included in the request.
-  /// Only certain fields can up updated with a patch request as indicated in
+  /// Only certain fields can be updated with a patch request as indicated in
   /// the field descriptions. You must specify the current fingerprint of the
   /// subnetwork resource being patched.
   ///
@@ -39674,7 +40394,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -39743,7 +40464,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -39833,7 +40555,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -39905,7 +40628,8 @@ class SubnetworksResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -39986,7 +40710,8 @@ class TargetGrpcProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies/' +
         commons.Escaper.ecapeVariable('$targetGrpcProxy');
 
@@ -40041,7 +40766,8 @@ class TargetGrpcProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies/' +
         commons.Escaper.ecapeVariable('$targetGrpcProxy');
 
@@ -40110,8 +40836,9 @@ class TargetGrpcProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetGrpcProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetGrpcProxies';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -40225,8 +40952,9 @@ class TargetGrpcProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetGrpcProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetGrpcProxies';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -40302,7 +41030,8 @@ class TargetGrpcProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies/' +
         commons.Escaper.ecapeVariable('$targetGrpcProxy');
 
@@ -40439,7 +41168,8 @@ class TargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetHttpProxies';
 
     var _response = _requester.request(_url, "GET",
@@ -40510,7 +41240,8 @@ class TargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy');
 
@@ -40566,7 +41297,8 @@ class TargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy');
 
@@ -40635,8 +41367,9 @@ class TargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetHttpProxies';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -40751,8 +41484,9 @@ class TargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetHttpProxies';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -40829,7 +41563,8 @@ class TargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy');
 
@@ -40905,7 +41640,8 @@ class TargetHttpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy') +
         '/setUrlMap';
@@ -41043,7 +41779,8 @@ class TargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetHttpsProxies';
 
     var _response = _requester.request(_url, "GET",
@@ -41114,7 +41851,8 @@ class TargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy');
 
@@ -41170,7 +41908,8 @@ class TargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy');
 
@@ -41239,7 +41978,8 @@ class TargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies';
 
     var _response = _requester.request(_url, "POST",
@@ -41355,7 +42095,8 @@ class TargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies';
 
     var _response = _requester.request(_url, "GET",
@@ -41432,7 +42173,8 @@ class TargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
         '/setQuicOverride';
@@ -41513,7 +42255,8 @@ class TargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
         '/setSslCertificates';
@@ -41593,7 +42336,8 @@ class TargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
         '/setSslPolicy';
@@ -41671,7 +42415,8 @@ class TargetHttpsProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
         '/setUrlMap';
@@ -41806,7 +42551,8 @@ class TargetInstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetInstances';
 
     var _response = _requester.request(_url, "GET",
@@ -41883,7 +42629,8 @@ class TargetInstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/targetInstances/' +
@@ -41947,7 +42694,8 @@ class TargetInstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/targetInstances/' +
@@ -42025,7 +42773,8 @@ class TargetInstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/targetInstances';
@@ -42149,7 +42898,8 @@ class TargetInstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/targetInstances';
@@ -42242,7 +42992,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -42327,7 +43078,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -42458,8 +43210,9 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/targetPools';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/targetPools';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -42535,7 +43288,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -42599,7 +43353,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -42669,7 +43424,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -42749,7 +43505,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools';
@@ -42873,7 +43630,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools';
@@ -42960,7 +43718,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -43049,7 +43808,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -43139,7 +43899,8 @@ class TargetPoolsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -43220,7 +43981,8 @@ class TargetSslProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy');
 
@@ -43276,7 +44038,8 @@ class TargetSslProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy');
 
@@ -43345,8 +44108,9 @@ class TargetSslProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetSslProxies';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -43461,8 +44225,9 @@ class TargetSslProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetSslProxies';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -43540,7 +44305,8 @@ class TargetSslProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
         '/setBackendService';
@@ -43621,7 +44387,8 @@ class TargetSslProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
         '/setProxyHeader';
@@ -43702,7 +44469,8 @@ class TargetSslProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
         '/setSslCertificates';
@@ -43781,7 +44549,8 @@ class TargetSslProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
         '/setSslPolicy';
@@ -43860,7 +44629,8 @@ class TargetTcpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy');
 
@@ -43916,7 +44686,8 @@ class TargetTcpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy');
 
@@ -43985,8 +44756,9 @@ class TargetTcpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetTcpProxies';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -44101,8 +44873,9 @@ class TargetTcpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetTcpProxies';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -44180,7 +44953,8 @@ class TargetTcpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy') +
         '/setBackendService';
@@ -44261,7 +45035,8 @@ class TargetTcpProxiesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy') +
         '/setProxyHeader';
@@ -44398,7 +45173,8 @@ class TargetVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetVpnGateways';
 
     var _response = _requester.request(_url, "GET",
@@ -44475,7 +45251,8 @@ class TargetVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetVpnGateways/' +
@@ -44539,7 +45316,8 @@ class TargetVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetVpnGateways/' +
@@ -44617,7 +45395,8 @@ class TargetVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetVpnGateways';
@@ -44742,7 +45521,8 @@ class TargetVpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetVpnGateways';
@@ -44878,7 +45658,9 @@ class UrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/urlMaps';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/urlMaps';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -44946,7 +45728,8 @@ class UrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
 
@@ -45001,7 +45784,8 @@ class UrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
 
@@ -45070,7 +45854,9 @@ class UrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/urlMaps';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -45083,6 +45869,9 @@ class UrlMapsResourceApi {
 
   /// Initiates a cache invalidation operation, invalidating the specified path,
   /// scoped to the specified UrlMap.
+  ///
+  /// For more information, see [Invalidating cached
+  /// content](/cdn/docs/invalidating-cached-content).
   ///
   /// [request] - The metadata request object.
   ///
@@ -45145,7 +45934,8 @@ class UrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap') +
         '/invalidateCache';
@@ -45262,7 +46052,9 @@ class UrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/urlMaps';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -45338,7 +46130,8 @@ class UrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
 
@@ -45415,7 +46208,8 @@ class UrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
 
@@ -45477,7 +46271,8 @@ class UrlMapsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap') +
         '/validate';
@@ -45612,8 +46407,9 @@ class VpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/vpnGateways';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/vpnGateways';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -45689,7 +46485,8 @@ class VpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -45753,7 +46550,8 @@ class VpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -45816,7 +46614,8 @@ class VpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -45896,7 +46695,8 @@ class VpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways';
@@ -46020,7 +46820,8 @@ class VpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways';
@@ -46104,7 +46905,8 @@ class VpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -46176,7 +46978,8 @@ class VpnGatewaysResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -46313,7 +47116,9 @@ class VpnTunnelsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/vpnTunnels';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/vpnTunnels';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -46388,7 +47193,8 @@ class VpnTunnelsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnTunnels/' +
@@ -46452,7 +47258,8 @@ class VpnTunnelsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnTunnels/' +
@@ -46530,7 +47337,8 @@ class VpnTunnelsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnTunnels';
@@ -46654,7 +47462,8 @@ class VpnTunnelsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnTunnels';
@@ -46722,7 +47531,8 @@ class ZoneOperationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/operations/' +
@@ -46785,7 +47595,8 @@ class ZoneOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/operations/' +
@@ -46910,7 +47721,8 @@ class ZoneOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/operations';
@@ -46985,7 +47797,8 @@ class ZoneOperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/operations/' +
@@ -47049,7 +47862,8 @@ class ZonesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone');
 
@@ -47165,7 +47979,7 @@ class ZonesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/zones';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -47369,6 +48183,7 @@ class AcceleratorTypeAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -47565,6 +48380,7 @@ class AcceleratorTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -47750,6 +48566,7 @@ class AcceleratorTypesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -48040,6 +48857,9 @@ class Address {
   /// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
   /// - `NAT_AUTO` for addresses that are external IP addresses automatically
   /// reserved for Cloud NAT.
+  /// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that
+  /// are reserved for a VLAN attachment in an IPsec encrypted Interconnect
+  /// configuration. These addresses are regional resources.
   /// Possible string values are:
   /// - "DNS_RESOLVER"
   /// - "GCE_ENDPOINT"
@@ -48240,6 +49060,7 @@ class AddressAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -48434,6 +49255,7 @@ class AddressListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -48619,6 +49441,7 @@ class AddressesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -49451,7 +50274,7 @@ class AuthorizationLoggingOptions {
 ///
 /// Google Compute Engine has two Autoscaler resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/autoscalers) *
+/// * [Zonal](/compute/docs/reference/rest/{$api_version}/autoscalers) *
 /// [Regional](/compute/docs/reference/rest/{$api_version}/regionAutoscalers)
 ///
 /// Use autoscalers to automatically add or delete instances from a managed
@@ -49497,9 +50320,9 @@ class Autoscaler {
   core.String name;
 
   /// [Output Only] Target recommended MIG size (number of instances) computed
-  /// by autoscaler. Autoscaler calculates recommended MIG size even when
-  /// autoscaling policy mode is different from ON. This field is empty when
-  /// autoscaler is not connected to the existing managed instance group or
+  /// by autoscaler. Autoscaler calculates the recommended MIG size even when
+  /// the autoscaling policy mode is different from ON. This field is empty when
+  /// autoscaler is not connected to an existing managed instance group or
   /// autoscaler did not generate its prediction.
   core.int recommendedSize;
 
@@ -49531,7 +50354,8 @@ class Autoscaler {
   /// for examples of status messages you might encounter.
   core.List<AutoscalerStatusDetails> statusDetails;
 
-  /// URL of the managed instance group that this autoscaler will scale.
+  /// URL of the managed instance group that this autoscaler will scale. This
+  /// field is required when creating an autoscaler.
   core.String target;
 
   /// [Output Only] URL of the zone where the instance group resides (for
@@ -49683,6 +50507,7 @@ class AutoscalerAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -49877,6 +50702,7 @@ class AutoscalerListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -50039,7 +50865,7 @@ class AutoscalerStatusDetails {
   /// - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances
   /// in the group won't change automatically. The autoscaling configuration is
   /// preserved.
-  /// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only up" mode.
+  /// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode.
   /// The autoscaler can add instances but not remove any.
   /// - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be
   /// autoscaled because it has more than one backend service attached to it.
@@ -50153,6 +50979,7 @@ class AutoscalersScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -50249,7 +51076,7 @@ class AutoscalersScopedList {
 
 /// Cloud Autoscaler policy.
 class AutoscalingPolicy {
-  /// The number of seconds that the autoscaler should wait before it starts
+  /// The number of seconds that the autoscaler waits before it starts
   /// collecting information from a new instance. This prevents the autoscaler
   /// from collecting information when the instance is initializing, during
   /// which the collected usage would not be reliable. The default time
@@ -50270,14 +51097,14 @@ class AutoscalingPolicy {
   /// Configuration parameters of autoscaling based on load balancer.
   AutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization;
 
-  /// The maximum number of instances that the autoscaler can scale up to. This
+  /// The maximum number of instances that the autoscaler can scale out to. This
   /// is required when creating or updating an autoscaler. The maximum number of
-  /// replicas should not be lower than minimal number of replicas.
+  /// replicas must not be lower than minimal number of replicas.
   core.int maxNumReplicas;
 
-  /// The minimum number of replicas that the autoscaler can scale down to. This
-  /// cannot be less than 0. If not provided, autoscaler will choose a default
-  /// value depending on maximum number of instances allowed.
+  /// The minimum number of replicas that the autoscaler can scale in to. This
+  /// cannot be less than 0. If not provided, autoscaler chooses a default value
+  /// depending on maximum number of instances allowed.
   core.int minNumReplicas;
 
   /// Defines operating mode for this policy.
@@ -50360,17 +51187,17 @@ class AutoscalingPolicy {
 
 /// CPU utilization policy.
 class AutoscalingPolicyCpuUtilization {
-  /// The target CPU utilization that the autoscaler should maintain. Must be a
-  /// float value in the range (0, 1]. If not specified, the default is 0.6.
+  /// The target CPU utilization that the autoscaler maintains. Must be a float
+  /// value in the range (0, 1]. If not specified, the default is 0.6.
   ///
-  /// If the CPU level is below the target utilization, the autoscaler scales
-  /// down the number of instances until it reaches the minimum number of
-  /// instances you specified or until the average CPU of your instances reaches
-  /// the target utilization.
+  /// If the CPU level is below the target utilization, the autoscaler scales in
+  /// the number of instances until it reaches the minimum number of instances
+  /// you specified or until the average CPU of your instances reaches the
+  /// target utilization.
   ///
   /// If the average CPU is above the target utilization, the autoscaler scales
-  /// up until it reaches the maximum number of instances you specified or until
-  /// the average utilization reaches the target utilization.
+  /// out until it reaches the maximum number of instances you specified or
+  /// until the average utilization reaches the target utilization.
   core.double utilizationTarget;
 
   AutoscalingPolicyCpuUtilization();
@@ -50393,20 +51220,65 @@ class AutoscalingPolicyCpuUtilization {
 
 /// Custom utilization metric policy.
 class AutoscalingPolicyCustomMetricUtilization {
+  /// A filter string, compatible with a Stackdriver Monitoring filter string
+  /// for TimeSeries.list API call. This filter is used to select a specific
+  /// TimeSeries for the purpose of autoscaling and to determine whether the
+  /// metric is exporting per-instance or per-group data.
+  ///
+  /// For the filter to be valid for autoscaling purposes, the following rules
+  /// apply:
+  /// - You can only use the AND operator for joining selectors.
+  /// - You can only use direct equality comparison operator (=) without any
+  /// functions for each selector.
+  /// - You can specify the metric in both the filter string and in the metric
+  /// field. However, if specified in both places, the metric must be identical.
+  /// - The monitored resource type determines what kind of values are expected
+  /// for the metric. If it is a gce_instance, the autoscaler expects the metric
+  /// to include a separate TimeSeries for each instance in a group. In such a
+  /// case, you cannot filter on resource labels.
+  /// If the resource type is any other value, the autoscaler expects this
+  /// metric to contain values that apply to the entire autoscaled instance
+  /// group and resource label filtering can be performed to point autoscaler at
+  /// the correct TimeSeries to scale upon. This is called a per-group metric
+  /// for the purpose of autoscaling.
+  ///
+  /// If not specified, the type defaults to gce_instance.
+  ///
+  /// Try to provide a filter that is selective enough to pick just one
+  /// TimeSeries for the autoscaled group or for each of the instances (if you
+  /// are using gce_instance resource type). If multiple TimeSeries are returned
+  /// upon the query execution, the autoscaler will sum their respective values
+  /// to obtain its scaling value.
+  core.String filter;
+
   /// The identifier (type) of the Stackdriver Monitoring metric. The metric
   /// cannot have negative values.
   ///
   /// The metric must have a value type of INT64 or DOUBLE.
   core.String metric;
 
-  /// The target value of the metric that autoscaler should maintain. This must
-  /// be a positive value. A utilization metric scales number of virtual
-  /// machines handling requests to increase or decrease proportionally to the
-  /// metric.
+  /// If scaling is based on a per-group metric value that represents the total
+  /// amount of work to be done or resource usage, set this value to an amount
+  /// assigned for a single instance of the scaled group. Autoscaler keeps the
+  /// number of instances proportional to the value of this metric. The metric
+  /// itself does not change value due to group resizing.
+  ///
+  /// A good metric to use with the target is for example
+  /// pubsub.googleapis.com/subscription/num_undelivered_messages or a custom
+  /// metric exporting the total number of requests coming to your instances.
+  ///
+  /// A bad example would be a metric exporting an average or median latency,
+  /// since this value can't include a chunk assignable to a single instance, it
+  /// could be better used with utilization_target instead.
+  core.double singleInstanceAssignment;
+
+  /// The target value of the metric that autoscaler maintains. This must be a
+  /// positive value. A utilization metric scales number of virtual machines
+  /// handling requests to increase or decrease proportionally to the metric.
   ///
   /// For example, a good metric to use as a utilization_target is
-  /// compute.googleapis.com/instance/network/received_bytes_count. The
-  /// autoscaler will work to keep this value constant for each of the
+  /// https://www.googleapis.com/compute/v1/instance/network/received_bytes_count.
+  /// The autoscaler works to keep this value constant for each of the
   /// instances.
   core.double utilizationTarget;
 
@@ -50421,8 +51293,14 @@ class AutoscalingPolicyCustomMetricUtilization {
   AutoscalingPolicyCustomMetricUtilization();
 
   AutoscalingPolicyCustomMetricUtilization.fromJson(core.Map _json) {
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
     if (_json.containsKey("metric")) {
       metric = _json["metric"];
+    }
+    if (_json.containsKey("singleInstanceAssignment")) {
+      singleInstanceAssignment = _json["singleInstanceAssignment"].toDouble();
     }
     if (_json.containsKey("utilizationTarget")) {
       utilizationTarget = _json["utilizationTarget"].toDouble();
@@ -50435,8 +51313,14 @@ class AutoscalingPolicyCustomMetricUtilization {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
     if (metric != null) {
       _json["metric"] = metric;
+    }
+    if (singleInstanceAssignment != null) {
+      _json["singleInstanceAssignment"] = singleInstanceAssignment;
     }
     if (utilizationTarget != null) {
       _json["utilizationTarget"] = utilizationTarget;
@@ -50451,7 +51335,7 @@ class AutoscalingPolicyCustomMetricUtilization {
 /// Configuration parameters of autoscaling based on load balancing.
 class AutoscalingPolicyLoadBalancingUtilization {
   /// Fraction of backend capacity utilization (set in HTTP(S) load balancing
-  /// configuration) that autoscaler should maintain. Must be a positive float
+  /// configuration) that the autoscaler maintains. Must be a positive float
   /// value. If not defined, the default is 0.8.
   core.double utilizationTarget;
 
@@ -50483,8 +51367,8 @@ class AutoscalingPolicyScaleInControl {
   /// service needs to be prepared to lose that many VMs in one step.
   FixedOrPercent maxScaledInReplicas;
 
-  /// How long back autoscaling should look when computing recommendations to
-  /// include directives regarding slower scale in, as described above.
+  /// How far back autoscaling looks when computing recommendations to include
+  /// directives regarding slower scale in, as described above.
   core.int timeWindowSec;
 
   AutoscalingPolicyScaleInControl();
@@ -50532,21 +51416,22 @@ class Backend {
   /// groups), maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
   ///
   /// If the loadBalancingScheme for the backend service is INTERNAL (internal
-  /// TCP/UDP load balancers), you cannot specify any additional parameters.
+  /// TCP/UDP Load Balancers) or EXTERNAL  (Network Load Balancing), you cannot
+  /// specify any additional parameters.
   ///
   /// - If the load balancing mode is RATE, the load is spread based on the rate
   /// of HTTP requests per second (RPS).
   /// You can use the RATE balancing mode if the protocol for the backend
-  /// service is HTTP or HTTPS. You must specify exactly one of the following
-  /// parameters: maxRate (except for regional managed instance groups),
-  /// maxRatePerInstance, or maxRatePerEndpoint.
+  /// service is HTTP, HTTP2, or HTTPS. You must specify exactly one of the
+  /// following parameters: maxRate (except for regional managed instance
+  /// groups), maxRatePerInstance, or maxRatePerEndpoint.
   ///
   /// - If the load balancing mode is UTILIZATION, the load is spread based on
   /// the backend utilization of instances in an instance group.
   /// You can use the UTILIZATION balancing mode if the loadBalancingScheme of
-  /// the backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or
-  /// INTERNAL_MANAGED and the backends are instance groups. There are no
-  /// restrictions on the backend service protocol.
+  /// the backend service is EXTERNAL (except Network Load Balancing),
+  /// INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance
+  /// groups. There are no restrictions on the backend service protocol.
   /// Possible string values are:
   /// - "CONNECTION"
   /// - "RATE"
@@ -50562,7 +51447,8 @@ class Backend {
   /// cannot configure a setting of 0 when there is only one backend attached to
   /// the backend service.
   ///
-  /// This cannot be used for internal load balancing.
+  /// This cannot be used for Internal TCP/UDP Load Balancing and Network Load
+  /// Balancing.
   core.double capacityScaler;
 
   /// An optional description of this resource. Provide this property when you
@@ -50578,16 +51464,19 @@ class Backend {
   /// depends on the backend service's loadBalancingScheme.
   ///
   ///
-  /// - When the loadBalancingScheme for the backend service is EXTERNAL,
-  /// INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the backend can be either an
-  /// instance group or a NEG. The backends on the backend service must be
-  /// either all instance groups or all NEGs. You cannot mix instance group and
-  /// NEG backends on the same backend service.
+  /// - When the loadBalancingScheme for the backend service is EXTERNAL (except
+  /// Network Load Balancing),  INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED , the
+  /// backend can be either an instance group or a NEG. The backends on the
+  /// backend service must be either all instance groups or all NEGs. You cannot
+  /// mix instance group and NEG backends on the same backend service.
   ///
   ///
-  /// - When the loadBalancingScheme for the backend service is INTERNAL, the
-  /// backend must be an instance group in the same region as the backend
-  /// service. NEGs are not supported.
+  /// - When the loadBalancingScheme for the backend service is EXTERNAL for
+  /// Network Load Balancing or INTERNAL for Internal TCP/UDP Load Balancing,
+  /// the backend must be an instance group. NEGs are not supported.
+  ///
+  /// For regional services, the backend must be in the same region as the
+  /// backend service.
   ///
   /// You must use the fully-qualified URL (starting with
   /// https://www.googleapis.com/) to specify the instance group or NEG. Partial
@@ -50599,26 +51488,27 @@ class Backend {
   /// backends (except for regional managed instance groups). If the backend's
   /// balancingMode is UTILIZATION, this is an optional parameter. If the
   /// backend's balancingMode is CONNECTION, and backend is attached to a
-  /// backend service whose loadBalancingScheme is EXTERNAL, you must specify
-  /// either this parameter, maxConnectionsPerInstance, or
-  /// maxConnectionsPerEndpoint.
+  /// backend service whose loadBalancingScheme is EXTERNAL (except Network Load
+  /// Balancing), you must specify either this parameter,
+  /// maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
   ///
-  /// Not available if the backend's balancingMode is RATE. If the
-  /// loadBalancingScheme is INTERNAL, then maxConnections is not supported,
-  /// even though the backend requires a balancing mode of CONNECTION.
+  /// Not available if the backend's balancingMode is RATE. Cannot be specified
+  /// for Network Load Balancing or Internal TCP/UDP Load Balancing, even though
+  /// those load balancers require a balancing mode of CONNECTION.
   core.int maxConnections;
 
   /// Defines a target maximum number of simultaneous connections for an
   /// endpoint of a NEG. This is multiplied by the number of endpoints in the
   /// NEG to implicitly calculate a maximum number of target maximum
   /// simultaneous connections for the NEG. If the backend's balancingMode is
-  /// CONNECTION, and the backend is attached to a backend service whose
-  /// loadBalancingScheme is EXTERNAL, you must specify either this parameter,
-  /// maxConnections, or maxConnectionsPerInstance.
+  /// CONNECTION, and backend is attached to a backend service whose
+  /// loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must
+  /// specify either this parameter, maxConnections, or
+  /// maxConnectionsPerInstance.
   ///
-  /// Not available if the backend's balancingMode is RATE. Internal TCP/UDP
-  /// load balancing does not support setting maxConnectionsPerEndpoint even
-  /// though its backends require a balancing mode of CONNECTION.
+  /// Not available if the backend's balancingMode is RATE. Cannot be specified
+  /// for Network Load Balancing or Internal TCP/UDP Load Balancing, even though
+  /// those load balancers require a balancing mode of CONNECTION.
   core.int maxConnectionsPerEndpoint;
 
   /// Defines a target maximum number of simultaneous connections for a single
@@ -50627,12 +51517,13 @@ class Backend {
   /// number of simultaneous connections for the whole instance group. If the
   /// backend's balancingMode is UTILIZATION, this is an optional parameter. If
   /// the backend's balancingMode is CONNECTION, and backend is attached to a
-  /// backend service whose loadBalancingScheme is EXTERNAL, you must specify
-  /// either this parameter, maxConnections, or maxConnectionsPerEndpoint.
+  /// backend service whose loadBalancingScheme is EXTERNAL (except Network Load
+  /// Balancing), you must specify either this parameter,  maxConnections, or
+  /// maxConnectionsPerEndpoint.
   ///
-  /// Not available if the backend's balancingMode is RATE. Internal TCP/UDP
-  /// load balancing does not support setting maxConnectionsPerInstance even
-  /// though its backends require a balancing mode of CONNECTION.
+  /// Not available if the backend's balancingMode is RATE. Cannot be specified
+  /// for Network Load Balancing or Internal TCP/UDP Load Balancing, even though
+  /// those load balancers require a balancing mode of CONNECTION.
   core.int maxConnectionsPerInstance;
 
   /// Defines a maximum number of HTTP requests per second (RPS) that the
@@ -50779,6 +51670,9 @@ class BackendBucket {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
+  /// Headers that the HTTP/S load balancer should add to proxied responses.
+  core.List<core.String> customResponseHeaders;
+
   /// An optional textual description of the resource; provided by the client
   /// when the resource is created.
   core.String description;
@@ -50816,6 +51710,10 @@ class BackendBucket {
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
+    if (_json.containsKey("customResponseHeaders")) {
+      customResponseHeaders =
+          (_json["customResponseHeaders"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -50848,6 +51746,9 @@ class BackendBucket {
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
+    if (customResponseHeaders != null) {
+      _json["customResponseHeaders"] = customResponseHeaders;
+    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -50872,6 +51773,56 @@ class BackendBucket {
 
 /// Message containing Cloud CDN configuration for a backend bucket.
 class BackendBucketCdnPolicy {
+  /// Specifies the cache setting for all responses from this backend. The
+  /// possible values are:
+  ///
+  /// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to
+  /// cache content. Responses without these headers will not be cached at
+  /// Google's edge, and will require a full trip to the origin on every
+  /// request, potentially impacting performance and increasing load on the
+  /// origin server.
+  ///
+  /// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or
+  /// "no-cache" directives in Cache-Control response headers. Warning: this may
+  /// result in Cloud CDN caching private, per-user (user identifiable) content.
+  ///
+  /// CACHE_ALL_STATIC Automatically cache static content, including common
+  /// image formats, media (video and audio), and web assets (JavaScript and
+  /// CSS). Requests and responses that are marked as uncacheable, as well as
+  /// dynamic content (including HTML), will not be cached.
+  /// Possible string values are:
+  /// - "CACHE_ALL_STATIC"
+  /// - "FORCE_CACHE_ALL"
+  /// - "INVALID_CACHE_MODE"
+  /// - "USE_ORIGIN_HEADERS"
+  core.String cacheMode;
+
+  /// Specifies a separate client (e.g. browser client) TTL, separate from the
+  /// TTL for Cloud CDN's edge caches. Leaving this empty will use the same
+  /// cache TTL for both Cloud CDN and the client-facing response. The maximum
+  /// allowed value is 86400s (1 day).
+  core.int clientTtl;
+
+  /// Specifies the default TTL for cached content served by this origin for
+  /// responses that do not have an existing valid TTL (max-age or s-max-age).
+  /// Setting a TTL of "0" means "always revalidate". The value of defaultTTL
+  /// cannot be set to a value greater than that of maxTTL, but can be equal.
+  /// When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will
+  /// overwrite the TTL set in all responses. The maximum allowed value is
+  /// 31,622,400s (1 year), noting that infrequently accessed objects may be
+  /// evicted from the cache before the defined TTL.
+  core.int defaultTtl;
+
+  /// Specifies the maximum allowed TTL for cached content served by this
+  /// origin. Cache directives that attempt to set a max-age or s-maxage higher
+  /// than this, or an Expires header more than maxTTL seconds in the future
+  /// will be capped at the value of maxTTL, as if it were the value of an
+  /// s-maxage Cache-Control directive. Headers sent to the client will not be
+  /// modified. Setting a TTL of "0" means "always revalidate". The maximum
+  /// allowed value is 31,622,400s (1 year), noting that infrequently accessed
+  /// objects may be evicted from the cache before the defined TTL.
+  core.int maxTtl;
+
   /// Maximum number of seconds the response to a signed URL request will be
   /// considered fresh. After this time period, the response will be revalidated
   /// before being served. Defaults to 1hr (3600s). When serving responses to
@@ -50887,6 +51838,18 @@ class BackendBucketCdnPolicy {
   BackendBucketCdnPolicy();
 
   BackendBucketCdnPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("cacheMode")) {
+      cacheMode = _json["cacheMode"];
+    }
+    if (_json.containsKey("clientTtl")) {
+      clientTtl = _json["clientTtl"];
+    }
+    if (_json.containsKey("defaultTtl")) {
+      defaultTtl = _json["defaultTtl"];
+    }
+    if (_json.containsKey("maxTtl")) {
+      maxTtl = _json["maxTtl"];
+    }
     if (_json.containsKey("signedUrlCacheMaxAgeSec")) {
       signedUrlCacheMaxAgeSec = _json["signedUrlCacheMaxAgeSec"];
     }
@@ -50899,6 +51862,18 @@ class BackendBucketCdnPolicy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (cacheMode != null) {
+      _json["cacheMode"] = cacheMode;
+    }
+    if (clientTtl != null) {
+      _json["clientTtl"] = clientTtl;
+    }
+    if (defaultTtl != null) {
+      _json["defaultTtl"] = defaultTtl;
+    }
+    if (maxTtl != null) {
+      _json["maxTtl"] = maxTtl;
+    }
     if (signedUrlCacheMaxAgeSec != null) {
       _json["signedUrlCacheMaxAgeSec"] = signedUrlCacheMaxAgeSec;
     }
@@ -50959,6 +51934,7 @@ class BackendBucketListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -51129,7 +52105,8 @@ class BackendService {
   /// The list of backends that serve this BackendService.
   core.List<Backend> backends;
 
-  /// Cloud CDN configuration for this BackendService.
+  /// Cloud CDN configuration for this BackendService. Not available for
+  /// Internal TCP/UDP Load Balancing and Network Load Balancing.
   BackendServiceCdnPolicy cdnPolicy;
 
   /// Settings controlling the volume of connections to a backend service. If
@@ -51172,6 +52149,9 @@ class BackendService {
   /// Headers that the HTTP/S load balancer should add to proxied requests.
   core.List<core.String> customRequestHeaders;
 
+  /// Headers that the HTTP/S load balancer should add to proxied responses.
+  core.List<core.String> customResponseHeaders;
+
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   core.String description;
@@ -51180,9 +52160,9 @@ class BackendService {
   /// loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
   core.bool enableCDN;
 
-  /// Applicable only to Failover for Internal TCP/UDP Load Balancing. Requires
-  /// at least one backend instance group to be defined as a backup (failover)
-  /// backend.
+  /// Applicable only to Failover for Internal TCP/UDP Load Balancing and
+  /// Network Load Balancing. Requires at least one backend instance group to be
+  /// defined as a backup (failover) backend.
   BackendServiceFailoverPolicy failoverPolicy;
 
   /// Fingerprint of this resource. A hash of the contents stored in this
@@ -51212,7 +52192,8 @@ class BackendService {
   /// serverless NEG backends must not have a health check.
   core.List<core.String> healthChecks;
 
-  /// The configurations for Identity-Aware Proxy on this resource.
+  /// The configurations for Identity-Aware Proxy on this resource. Not
+  /// available for Internal TCP/UDP Load Balancing and Network Load Balancing.
   BackendServiceIAP iap;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -51223,11 +52204,11 @@ class BackendService {
   /// services.
   core.String kind;
 
-  /// Specifies the load balancer type. Choose EXTERNAL for load balancers that
-  /// receive traffic from external clients. Choose INTERNAL for Internal
-  /// TCP/UDP Load Balancing. Choose INTERNAL_MANAGED for Internal HTTP(S) Load
-  /// Balancing. Choose INTERNAL_SELF_MANAGED for Traffic Director. A backend
-  /// service created for one type of load balancing cannot be used with
+  /// Specifies the load balancer type. Choose EXTERNAL for external HTTP(S),
+  /// SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for
+  /// Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal
+  /// HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A
+  /// backend service created for one type of load balancer cannot be used with
   /// another. For more information, refer to Choosing a load balancer.
   /// Possible string values are:
   /// - "EXTERNAL"
@@ -51294,7 +52275,7 @@ class BackendService {
   core.String name;
 
   /// The URL of the network to which this backend service belongs. This field
-  /// can only be spcified when the load balancing scheme is set to INTERNAL.
+  /// can only be specified when the load balancing scheme is set to INTERNAL.
   core.String network;
 
   /// Settings controlling the eviction of unhealthy hosts from the load
@@ -51321,15 +52302,15 @@ class BackendService {
 
   /// A named port on a backend instance group representing the port for
   /// communication to the backend VMs in that group. Required when the
-  /// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or
-  /// INTERNAL_SELF_MANAGED and the backends are instance groups. The named port
-  /// must be defined on each backend instance group. This parameter has no
-  /// meaning if the backends are NEGs.
+  /// loadBalancingScheme is EXTERNAL (except Network Load Balancing),
+  /// INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance
+  /// groups. The named port must be defined on each backend instance group.
+  /// This parameter has no meaning if the backends are NEGs.
   ///
   ///
   ///
-  /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP
-  /// Load Balancing).
+  /// Backend services for Internal TCP/UDP Load Balancing and Network Load
+  /// Balancing require you omit port_name.
   core.String portName;
 
   /// The protocol this BackendService uses to communicate with backends.
@@ -51361,15 +52342,25 @@ class BackendService {
   /// this backend service.
   core.String securityPolicy;
 
+  /// This field specifies the security policy that applies to this backend
+  /// service. This field is applicable to either:
+  /// - A regional backend service with the service_protocol set to HTTP, HTTPS,
+  /// or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
+  /// - A global backend service with the load_balancing_scheme set to
+  /// INTERNAL_SELF_MANAGED.
+  SecuritySettings securitySettings;
+
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// Type of session affinity to use. The default is NONE. Session affinity is
-  /// not applicable if the --protocol is UDP.
+  /// Type of session affinity to use. The default is NONE.
   ///
-  /// When the loadBalancingScheme is EXTERNAL, possible values are NONE,
-  /// CLIENT_IP, or GENERATED_COOKIE. You can use GENERATED_COOKIE if the
-  /// protocol is HTTP or HTTPS.
+  /// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing,
+  /// the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or
+  /// CLIENT_IP_PORT_PROTO. * For all other load balancers that use
+  /// loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or
+  /// GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP,
+  /// HTTP2, or HTTPS.
   ///
   /// When the loadBalancingScheme is INTERNAL, possible values are NONE,
   /// CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
@@ -51427,6 +52418,10 @@ class BackendService {
     if (_json.containsKey("customRequestHeaders")) {
       customRequestHeaders =
           (_json["customRequestHeaders"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("customResponseHeaders")) {
+      customResponseHeaders =
+          (_json["customResponseHeaders"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -51487,6 +52482,10 @@ class BackendService {
     if (_json.containsKey("securityPolicy")) {
       securityPolicy = _json["securityPolicy"];
     }
+    if (_json.containsKey("securitySettings")) {
+      securitySettings =
+          new SecuritySettings.fromJson(_json["securitySettings"]);
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -51524,6 +52523,9 @@ class BackendService {
     }
     if (customRequestHeaders != null) {
       _json["customRequestHeaders"] = customRequestHeaders;
+    }
+    if (customResponseHeaders != null) {
+      _json["customResponseHeaders"] = customResponseHeaders;
     }
     if (description != null) {
       _json["description"] = description;
@@ -51581,6 +52583,9 @@ class BackendService {
     }
     if (securityPolicy != null) {
       _json["securityPolicy"] = securityPolicy;
+    }
+    if (securitySettings != null) {
+      _json["securitySettings"] = (securitySettings).toJson();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -51645,6 +52650,7 @@ class BackendServiceAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -51795,6 +52801,56 @@ class BackendServiceCdnPolicy {
   /// The CacheKeyPolicy for this CdnPolicy.
   CacheKeyPolicy cacheKeyPolicy;
 
+  /// Specifies the cache setting for all responses from this backend. The
+  /// possible values are:
+  ///
+  /// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to
+  /// cache content. Responses without these headers will not be cached at
+  /// Google's edge, and will require a full trip to the origin on every
+  /// request, potentially impacting performance and increasing load on the
+  /// origin server.
+  ///
+  /// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or
+  /// "no-cache" directives in Cache-Control response headers. Warning: this may
+  /// result in Cloud CDN caching private, per-user (user identifiable) content.
+  ///
+  /// CACHE_ALL_STATIC Automatically cache static content, including common
+  /// image formats, media (video and audio), and web assets (JavaScript and
+  /// CSS). Requests and responses that are marked as uncacheable, as well as
+  /// dynamic content (including HTML), will not be cached.
+  /// Possible string values are:
+  /// - "CACHE_ALL_STATIC"
+  /// - "FORCE_CACHE_ALL"
+  /// - "INVALID_CACHE_MODE"
+  /// - "USE_ORIGIN_HEADERS"
+  core.String cacheMode;
+
+  /// Specifies a separate client (e.g. browser client) TTL, separate from the
+  /// TTL for Cloud CDN's edge caches. Leaving this empty will use the same
+  /// cache TTL for both Cloud CDN and the client-facing response. The maximum
+  /// allowed value is 86400s (1 day).
+  core.int clientTtl;
+
+  /// Specifies the default TTL for cached content served by this origin for
+  /// responses that do not have an existing valid TTL (max-age or s-max-age).
+  /// Setting a TTL of "0" means "always revalidate". The value of defaultTTL
+  /// cannot be set to a value greater than that of maxTTL, but can be equal.
+  /// When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will
+  /// overwrite the TTL set in all responses. The maximum allowed value is
+  /// 31,622,400s (1 year), noting that infrequently accessed objects may be
+  /// evicted from the cache before the defined TTL.
+  core.int defaultTtl;
+
+  /// Specifies the maximum allowed TTL for cached content served by this
+  /// origin. Cache directives that attempt to set a max-age or s-maxage higher
+  /// than this, or an Expires header more than maxTTL seconds in the future
+  /// will be capped at the value of maxTTL, as if it were the value of an
+  /// s-maxage Cache-Control directive. Headers sent to the client will not be
+  /// modified. Setting a TTL of "0" means "always revalidate". The maximum
+  /// allowed value is 31,622,400s (1 year), noting that infrequently accessed
+  /// objects may be evicted from the cache before the defined TTL.
+  core.int maxTtl;
+
   /// Maximum number of seconds the response to a signed URL request will be
   /// considered fresh. After this time period, the response will be revalidated
   /// before being served. Defaults to 1hr (3600s). When serving responses to
@@ -51813,6 +52869,18 @@ class BackendServiceCdnPolicy {
     if (_json.containsKey("cacheKeyPolicy")) {
       cacheKeyPolicy = new CacheKeyPolicy.fromJson(_json["cacheKeyPolicy"]);
     }
+    if (_json.containsKey("cacheMode")) {
+      cacheMode = _json["cacheMode"];
+    }
+    if (_json.containsKey("clientTtl")) {
+      clientTtl = _json["clientTtl"];
+    }
+    if (_json.containsKey("defaultTtl")) {
+      defaultTtl = _json["defaultTtl"];
+    }
+    if (_json.containsKey("maxTtl")) {
+      maxTtl = _json["maxTtl"];
+    }
     if (_json.containsKey("signedUrlCacheMaxAgeSec")) {
       signedUrlCacheMaxAgeSec = _json["signedUrlCacheMaxAgeSec"];
     }
@@ -51828,6 +52896,18 @@ class BackendServiceCdnPolicy {
     if (cacheKeyPolicy != null) {
       _json["cacheKeyPolicy"] = (cacheKeyPolicy).toJson();
     }
+    if (cacheMode != null) {
+      _json["cacheMode"] = cacheMode;
+    }
+    if (clientTtl != null) {
+      _json["clientTtl"] = clientTtl;
+    }
+    if (defaultTtl != null) {
+      _json["defaultTtl"] = defaultTtl;
+    }
+    if (maxTtl != null) {
+      _json["maxTtl"] = maxTtl;
+    }
     if (signedUrlCacheMaxAgeSec != null) {
       _json["signedUrlCacheMaxAgeSec"] = signedUrlCacheMaxAgeSec;
     }
@@ -51838,34 +52918,33 @@ class BackendServiceCdnPolicy {
   }
 }
 
-/// Applicable only to Failover for Internal TCP/UDP Load Balancing. On failover
-/// or failback, this field indicates whether connection draining will be
-/// honored. GCP has a fixed connection draining timeout of 10 minutes. A
-/// setting of true terminates existing TCP connections to the active pool
-/// during failover and failback, immediately draining traffic. A setting of
-/// false allows existing TCP connections to persist, even on VMs no longer in
-/// the active pool, for up to the duration of the connection draining timeout
-/// (10 minutes).
+/// Applicable only to Failover for Internal TCP/UDP Load Balancing and Network
+/// Load Balancing. On failover or failback, this field indicates whether
+/// connection draining will be honored. GCP has a fixed connection draining
+/// timeout of 10 minutes. A setting of true terminates existing TCP connections
+/// to the active pool during failover and failback, immediately draining
+/// traffic. A setting of false allows existing TCP connections to persist, even
+/// on VMs no longer in the active pool, for up to the duration of the
+/// connection draining timeout (10 minutes).
 class BackendServiceFailoverPolicy {
   /// This can be set to true only if the protocol is TCP.
   ///
   /// The default is false.
   core.bool disableConnectionDrainOnFailover;
 
-  /// Applicable only to Failover for Internal TCP/UDP Load Balancing. If set to
-  /// true, connections to the load balancer are dropped when all primary and
-  /// all backup backend VMs are unhealthy. If set to false, connections are
-  /// distributed among all primary VMs when all primary and all backup backend
-  /// VMs are unhealthy.
-  ///
-  /// The default is false.
+  /// Applicable only to Failover for Internal TCP/UDP Load Balancing and
+  /// Network Load Balancing, If set to true, connections to the load balancer
+  /// are dropped when all primary and all backup backend VMs are unhealthy.If
+  /// set to false, connections are distributed among all primary VMs when all
+  /// primary and all backup backend VMs are unhealthy. The default is false.
   core.bool dropTrafficIfUnhealthy;
 
-  /// Applicable only to Failover for Internal TCP/UDP Load Balancing. The value
-  /// of the field must be in the range [0, 1]. If the value is 0, the load
-  /// balancer performs a failover when the number of healthy primary VMs equals
-  /// zero. For all other values, the load balancer performs a failover when the
-  /// total number of healthy primary VMs is less than this ratio.
+  /// Applicable only to Failover for Internal TCP/UDP Load Balancing and
+  /// Network Load Balancing. The value of the field must be in the range [0,
+  /// 1]. If the value is 0, the load balancer performs a failover when the
+  /// number of healthy primary VMs equals zero. For all other values, the load
+  /// balancer performs a failover when the total number of healthy primary VMs
+  /// is less than this ratio.
   core.double failoverRatio;
 
   BackendServiceFailoverPolicy();
@@ -52050,6 +53129,7 @@ class BackendServiceListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -52294,6 +53374,7 @@ class BackendServicesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -52390,8 +53471,6 @@ class BackendServicesScopedList {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
   core.String bindingId;
 
   /// The condition that is associated with this binding.
@@ -52913,6 +53992,7 @@ class CommitmentAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -53107,6 +54187,7 @@ class CommitmentListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -53292,6 +54373,7 @@ class CommitmentsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -54359,6 +55441,7 @@ class DiskAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -54628,6 +55711,7 @@ class DiskListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -54988,6 +56072,7 @@ class DiskTypeAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -55181,6 +56266,7 @@ class DiskTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -55366,6 +56452,7 @@ class DiskTypesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -55579,6 +56666,7 @@ class DisksScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -55696,7 +56784,7 @@ class DisplayDevice {
 }
 
 class DistributionPolicy {
-  /// Zones where the regional managed instance group will create and manage
+  /// Zones where the regional managed instance group will create and manage its
   /// instances.
   core.List<DistributionPolicyZoneConfiguration> zones;
 
@@ -55898,6 +56986,7 @@ class ExchangedPeeringRoutesListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -56353,6 +57442,7 @@ class ExternalVpnGatewayListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -56933,6 +58023,7 @@ class FirewallListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -57185,10 +58276,11 @@ class ForwardingRule {
   ///
   /// * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in
   /// https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name
-  /// * Partial URL or by name, as in: *
-  /// projects/project_id/regions/region/addresses/address-name *
-  /// regions/region/addresses/address-name * global/addresses/address-name *
-  /// address-name
+  /// * Partial URL or by name, as in:
+  /// - projects/project_id/regions/region/addresses/address-name
+  /// - regions/region/addresses/address-name
+  /// - global/addresses/address-name
+  /// - address-name
   ///
   /// The loadBalancingScheme and the forwarding rule's target determine the
   /// type of IP address that you can use. For detailed information, refer to
@@ -57197,19 +58289,28 @@ class ForwardingRule {
   ///
   /// Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
   /// validateForProxyless field set to true.
+  ///
+  /// For Private Service Connect forwarding rules that forward traffic to
+  /// Google APIs, IP address must be provided.
   core.String IPAddress;
 
-  /// The IP protocol to which this rule applies. For protocol forwarding, valid
-  /// options are TCP, UDP, ESP, AH, SCTP or ICMP.
+  /// The IP protocol to which this rule applies.
   ///
-  /// For Internal TCP/UDP Load Balancing, the load balancing scheme is
-  /// INTERNAL, and one of TCP or UDP are valid. For Traffic Director, the load
-  /// balancing scheme is INTERNAL_SELF_MANAGED, and only TCPis valid. For
-  /// Internal HTTP(S) Load Balancing, the load balancing scheme is
-  /// INTERNAL_MANAGED, and only TCP is valid. For HTTP(S), SSL Proxy, and TCP
-  /// Proxy Load Balancing, the load balancing scheme is EXTERNAL and only TCP
-  /// is valid. For Network TCP/UDP Load Balancing, the load balancing scheme is
-  /// EXTERNAL, and one of TCP or UDP is valid.
+  /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and
+  /// ICMP.
+  ///
+  /// The valid IP protocols are different for different load balancing
+  /// products:
+  /// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL,
+  /// and one of TCP, UDP or ALL is valid.
+  /// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED,
+  /// and only TCP is valid.
+  /// - Internal HTTP(S) Load Balancing: The load balancing scheme is
+  /// INTERNAL_MANAGED, and only TCP is valid.
+  /// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing
+  /// scheme is EXTERNAL and only TCP is valid.
+  /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one
+  /// of TCP or UDP is valid.
   /// Possible string values are:
   /// - "AH"
   /// - "ESP"
@@ -57235,10 +58336,9 @@ class ForwardingRule {
   /// balancer.
   core.bool allowGlobalAccess;
 
-  /// This field is only used for INTERNAL load balancing.
-  ///
-  /// For internal load balancing, this field identifies the BackendService
-  /// resource to receive the matched traffic.
+  /// Identifies the backend service to which the forwarding rule sends traffic.
+  /// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+  /// must be omitted for all other load balancer types.
   core.String backendService;
 
   /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -57296,13 +58396,12 @@ class ForwardingRule {
   /// - EXTERNAL is used for:
   /// - Classic Cloud VPN gateways
   /// - Protocol forwarding to VMs from an external IP address
-  /// - The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network
-  /// TCP/UDP
+  /// - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing
   /// - INTERNAL is used for:
   /// - Protocol forwarding to VMs from an internal IP address
-  /// - Internal TCP/UDP load balancers
+  /// - Internal TCP/UDP Load Balancing
   /// - INTERNAL_MANAGED is used for:
-  /// - Internal HTTP(S) load balancers
+  /// - Internal HTTP(S) Load Balancing
   /// - INTERNAL_SELF_MANAGED is used for:
   /// - Traffic Director
   ///
@@ -57346,9 +58445,12 @@ class ForwardingRule {
 
   /// This field is not used for external load balancing.
   ///
-  /// For internal load balancing, this field identifies the network that the
-  /// load balanced IP should belong to for this Forwarding Rule. If this field
-  /// is not specified, the default network will be used.
+  /// For Internal TCP/UDP Load Balancing, this field identifies the network
+  /// that the load balanced IP should belong to for this Forwarding Rule. If
+  /// this field is not specified, the default network will be used.
+  ///
+  /// For Private Service Connect forwarding rules that forward traffic to
+  /// Google APIs, a network must be provided.
   core.String network;
 
   /// This signifies the networking tier used for configuring this load balancer
@@ -57364,23 +58466,19 @@ class ForwardingRule {
   /// - "STANDARD"
   core.String networkTier;
 
-  /// When the load balancing scheme is EXTERNAL, INTERNAL_SELF_MANAGED and
-  /// INTERNAL_MANAGED, you can specify a port_range. Use with a forwarding rule
-  /// that points to a target proxy or a target pool. Do not use with a
-  /// forwarding rule that points to a backend service. This field is used along
-  /// with the target field for TargetHttpProxy, TargetHttpsProxy,
-  /// TargetSslProxy, TargetTcpProxy, TargetGrpcProxy, TargetVpnGateway,
-  /// TargetPool, TargetInstance.
+  /// This field can be used only if: * Load balancing scheme is one of
+  /// EXTERNAL,  INTERNAL_SELF_MANAGED or INTERNAL_MANAGED, and * IPProtocol is
+  /// one of TCP, UDP, or SCTP.
   ///
-  /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-  /// addressed to ports in the specified range will be forwarded to target.
-  /// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-  /// disjoint port ranges.
+  /// Packets addressed to ports in the specified range will be forwarded to
+  /// target or  backend_service. You can only use one of ports, port_range, or
+  /// allPorts. The three are mutually exclusive. Forwarding rules with the same
+  /// [IPAddress, IPProtocol] pair must have disjoint port ranges.
   ///
   /// Some types of forwarding target have constraints on the acceptable ports:
   /// - TargetHttpProxy: 80, 8080
   /// - TargetHttpsProxy: 443
-  /// - TargetGrpcProxy: Any ports
+  /// - TargetGrpcProxy: no constraints
   /// - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
   /// 1688, 1883, 5222
   /// - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
@@ -57388,20 +58486,21 @@ class ForwardingRule {
   /// - TargetVpnGateway: 500, 4500
   core.String portRange;
 
-  /// This field is used along with the backend_service field for internal load
-  /// balancing.
+  /// The ports field is only supported when the forwarding rule references a
+  /// backend_service directly. Supported load balancing products are Internal
+  /// TCP/UDP Load Balancing and Network Load Balancing. Only packets addressed
+  /// to the specified list of ports are forwarded to backends.
   ///
-  /// When the load balancing scheme is INTERNAL, a list of ports can be
-  /// configured, for example, ['80'], ['8000','9000']. Only packets addressed
-  /// to these ports are forwarded to the backends configured with the
-  /// forwarding rule.
+  /// You can only use one of ports and port_range, or allPorts. The three are
+  /// mutually exclusive.
   ///
-  /// If the forwarding rule's loadBalancingScheme is INTERNAL, you can specify
-  /// ports in one of the following ways:
+  /// You can specify a list of up to five ports, which can be non-contiguous.
   ///
-  /// * A list of up to five ports, which can be non-contiguous * Keyword ALL,
-  /// which causes the forwarding rule to forward traffic on any port of the
-  /// forwarding rule's protocol.
+  /// For Internal TCP/UDP Load Balancing, if you specify allPorts, you should
+  /// not specify ports.
+  ///
+  /// For more information, see [Port
+  /// specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
   core.List<core.String> ports;
 
   /// [Output Only] URL of the region where the regional forwarding rule
@@ -57444,12 +58543,24 @@ class ForwardingRule {
   core.String subnetwork;
 
   /// The URL of the target resource to receive the matched traffic. For
-  /// regional forwarding rules, this target must live in the same region as the
+  /// regional forwarding rules, this target must be in the same region as the
   /// forwarding rule. For global forwarding rules, this target must be a global
   /// load balancing resource. The forwarded traffic must be of a type
-  /// appropriate to the target object. For INTERNAL_SELF_MANAGED load
-  /// balancing, only targetHttpProxy and targetGrpcProxy are valid, not
-  /// targetHttpsProxy.
+  /// appropriate to the target object. For more information, see the "Target"
+  /// column in [Port
+  /// specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+  ///
+  /// For Private Service Connect forwarding rules that forward traffic to
+  /// Google APIs, provide the name of a supported Google API bundle. Currently,
+  /// the supported Google API bundles include:
+  ///
+  ///
+  /// - vpc-sc - GCP APIs that support VPC Service Controls. For more
+  /// information about which APIs support VPC Service Controls, refer to VPC-SC
+  /// supported products and limitations.
+  /// - all-apis - All GCP APIs. For more information about which APIs are
+  /// supported with this bundle, refer to Private Google Access-specific
+  /// domains and VIPs.
   core.String target;
 
   ForwardingRule();
@@ -57667,6 +58778,7 @@ class ForwardingRuleAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -57862,6 +58974,7 @@ class ForwardingRuleListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -58067,6 +59180,7 @@ class ForwardingRulesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -58531,6 +59645,7 @@ class GuestOsFeature {
   /// features to see a list of available options.
   /// Possible string values are:
   /// - "FEATURE_TYPE_UNSPECIFIED"
+  /// - "GVNIC"
   /// - "MULTI_IP_SUBNET"
   /// - "SECURE_BOOT"
   /// - "SEV_CAPABLE"
@@ -58869,14 +59984,22 @@ class HTTPSHealthCheck {
 /// * [Global](/compute/docs/reference/rest/{$api_version}/healthChecks) *
 /// [Regional](/compute/docs/reference/rest/{$api_version}/regionHealthChecks)
 ///
-/// Internal HTTP(S) load balancers must use regional health checks. Internal
-/// TCP/UDP load balancers can use either regional or global health checks. All
-/// other types of GCP load balancers and managed instance group auto-healing
-/// must use global health checks. For more information, read Health Check
-/// Concepts.
+/// Internal HTTP(S) load balancers must use regional health checks
+/// (`compute.v1.regionHealthChecks`).
 ///
-/// To perform health checks on network load balancers, you must use either
-/// httpHealthChecks or httpsHealthChecks.
+/// Traffic Director must use global health checks (`compute.v1.HealthChecks`).
+///
+/// Internal TCP/UDP load balancers can use either regional or global health
+/// checks (`compute.v1.regionHealthChecks` or `compute.v1.HealthChecks`).
+///
+/// External HTTP(S), TCP proxy, and SSL proxy load balancers as well as managed
+/// instance group auto-healing must use global health checks
+/// (`compute.v1.HealthChecks`).
+///
+/// Network load balancers must use legacy HTTP health checks
+/// (httpHealthChecks).
+///
+/// For more information, see Health checks overview.
 class HealthCheck {
   /// How often (in seconds) to send a health check. The default value is 5
   /// seconds.
@@ -58903,6 +60026,9 @@ class HealthCheck {
 
   /// Type of the resource.
   core.String kind;
+
+  /// Configure logging on this health check.
+  HealthCheckLogConfig logConfig;
 
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -58980,6 +60106,9 @@ class HealthCheck {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("logConfig")) {
+      logConfig = new HealthCheckLogConfig.fromJson(_json["logConfig"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -59038,6 +60167,9 @@ class HealthCheck {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (logConfig != null) {
+      _json["logConfig"] = (logConfig).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -59117,6 +60249,7 @@ class HealthCheckListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -59245,6 +60378,31 @@ class HealthCheckList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Configuration of logging on a health check. If logging is enabled, logs will
+/// be exported to Stackdriver.
+class HealthCheckLogConfig {
+  /// Indicates whether or not to export logs. This is false by default, which
+  /// means no health check logging will be done.
+  core.bool enable;
+
+  HealthCheckLogConfig();
+
+  HealthCheckLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enable")) {
+      enable = _json["enable"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enable != null) {
+      _json["enable"] = enable;
     }
     return _json;
   }
@@ -59528,6 +60686,7 @@ class HealthCheckServicesListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -59712,6 +60871,7 @@ class HealthChecksAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -59907,6 +61067,7 @@ class HealthChecksScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -60020,6 +61181,15 @@ class HealthStatus {
   /// The named port of the instance group, not necessarily the port that is
   /// health-checked.
   core.int port;
+  core.String weight;
+
+  ///
+  /// Possible string values are:
+  /// - "INVALID_WEIGHT"
+  /// - "MISSING_WEIGHT"
+  /// - "UNAVAILABLE_WEIGHT"
+  /// - "WEIGHT_NONE"
+  core.String weightError;
 
   HealthStatus();
 
@@ -60040,6 +61210,12 @@ class HealthStatus {
     if (_json.containsKey("port")) {
       port = _json["port"];
     }
+    if (_json.containsKey("weight")) {
+      weight = _json["weight"];
+    }
+    if (_json.containsKey("weightError")) {
+      weightError = _json["weightError"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -60059,6 +61235,12 @@ class HealthStatus {
     }
     if (port != null) {
       _json["port"] = port;
+    }
+    if (weight != null) {
+      _json["weight"] = weight;
+    }
+    if (weightError != null) {
+      _json["weightError"] = weightError;
     }
     return _json;
   }
@@ -60733,6 +61915,7 @@ class HttpHealthCheckListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -61671,6 +62854,7 @@ class HttpsHealthCheckListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -62286,6 +63470,7 @@ class ImageListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -62567,6 +63752,15 @@ class Instance {
   /// setLabels method.
   core.Map<core.String, core.String> labels;
 
+  /// [Output Only] Last start timestamp in RFC3339 text format.
+  core.String lastStartTimestamp;
+
+  /// [Output Only] Last stop timestamp in RFC3339 text format.
+  core.String lastStopTimestamp;
+
+  /// [Output Only] Last suspended timestamp in RFC3339 text format.
+  core.String lastSuspendedTimestamp;
+
   /// Full or partial URL of the machine type resource to use for this instance,
   /// in the format: zones/zone/machineTypes/machine-type. This is provided by
   /// the client when the instance is created. For example, the following is a
@@ -62648,7 +63842,8 @@ class Instance {
 
   /// [Output Only] The status of the instance. One of the following values:
   /// PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED,
-  /// REPAIRING, and TERMINATED.
+  /// REPAIRING, and TERMINATED. For more information about the status of the
+  /// instance, see  Instance life cycle.
   /// Possible string values are:
   /// - "DEPROVISIONING"
   /// - "PROVISIONING"
@@ -62730,6 +63925,15 @@ class Instance {
     }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("lastStartTimestamp")) {
+      lastStartTimestamp = _json["lastStartTimestamp"];
+    }
+    if (_json.containsKey("lastStopTimestamp")) {
+      lastStopTimestamp = _json["lastStopTimestamp"];
+    }
+    if (_json.containsKey("lastSuspendedTimestamp")) {
+      lastSuspendedTimestamp = _json["lastSuspendedTimestamp"];
     }
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
@@ -62847,6 +64051,15 @@ class Instance {
     if (labels != null) {
       _json["labels"] = labels;
     }
+    if (lastStartTimestamp != null) {
+      _json["lastStartTimestamp"] = lastStartTimestamp;
+    }
+    if (lastStopTimestamp != null) {
+      _json["lastStopTimestamp"] = lastStopTimestamp;
+    }
+    if (lastSuspendedTimestamp != null) {
+      _json["lastSuspendedTimestamp"] = lastSuspendedTimestamp;
+    }
     if (machineType != null) {
       _json["machineType"] = machineType;
     }
@@ -62958,6 +64171,7 @@ class InstanceAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -63332,6 +64546,7 @@ class InstanceGroupAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -63528,6 +64743,7 @@ class InstanceGroupListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -63695,8 +64911,8 @@ class InstanceGroupManager {
   /// create the resource.
   core.String description;
 
-  /// Policy specifying intended distribution of instances in regional managed
-  /// instance group.
+  /// Policy specifying the intended distribution of managed instances across
+  /// zones in a regional managed instance group.
   DistributionPolicy distributionPolicy;
 
   /// Fingerprint of this resource. This field may be used in optimistic
@@ -63726,7 +64942,10 @@ class InstanceGroupManager {
 
   /// The URL of the instance template that is specified for this managed
   /// instance group. The group uses this template to create all new instances
-  /// in the managed instance group.
+  /// in the managed instance group. The templates for existing instances in the
+  /// group do not change unless you run recreateInstances, run
+  /// applyUpdatesToInstances, or set the group's updatePolicy.type to
+  /// PROACTIVE.
   core.String instanceTemplate;
 
   /// [Output Only] The resource type, which is always
@@ -63780,7 +64999,7 @@ class InstanceGroupManager {
   /// information, read about canary updates.
   core.List<InstanceGroupManagerVersion> versions;
 
-  /// [Output Only] The URL of the zone where the managed instance group is
+  /// [Output Only] The URL of a zone where the managed instance group is
   /// located (for zonal resources).
   core.String zone;
 
@@ -64108,6 +65327,7 @@ class InstanceGroupManagerAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -64341,6 +65561,7 @@ class InstanceGroupManagerListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -64743,7 +65964,10 @@ class InstanceGroupManagerVersion {
   /// The URL of the instance template that is specified for this managed
   /// instance group. The group uses this template to create new instances in
   /// the managed instance group until the `targetSize` for this version is
-  /// reached.
+  /// reached. The templates for existing instances in the group do not change
+  /// unless you run recreateInstances, run applyUpdatesToInstances, or set the
+  /// group's updatePolicy.type to PROACTIVE; in those cases, existing instances
+  /// are updated until the `targetSize` for this version is reached.
   core.String instanceTemplate;
 
   /// Name of the version. Unique among all versions in the scope of this
@@ -64817,6 +66041,11 @@ class InstanceGroupManagersAbandonInstancesRequest {
 
 /// InstanceGroupManagers.applyUpdatesToInstances
 class InstanceGroupManagersApplyUpdatesRequest {
+  /// Flag to update all instances instead of specified list of ?instances?. If
+  /// the flag is set to true then the instances may not be specified in the
+  /// request.
+  core.bool allInstances;
+
   /// The list of URLs of one or more instances for which you want to apply
   /// updates. Each URL can be a full URL or a partial URL, such as
   /// zones/[ZONE]/instances/[INSTANCE_NAME].
@@ -64857,6 +66086,9 @@ class InstanceGroupManagersApplyUpdatesRequest {
   InstanceGroupManagersApplyUpdatesRequest();
 
   InstanceGroupManagersApplyUpdatesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("allInstances")) {
+      allInstances = _json["allInstances"];
+    }
     if (_json.containsKey("instances")) {
       instances = (_json["instances"] as core.List).cast<core.String>();
     }
@@ -64871,6 +66103,9 @@ class InstanceGroupManagersApplyUpdatesRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (allInstances != null) {
+      _json["allInstances"] = allInstances;
+    }
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -65084,6 +66319,7 @@ class InstanceGroupManagersListPerInstanceConfigsRespWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -65297,6 +66533,7 @@ class InstanceGroupManagersScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -65397,7 +66634,10 @@ class InstanceGroupManagersScopedList {
 class InstanceGroupManagersSetInstanceTemplateRequest {
   /// The URL of the instance template that is specified for this managed
   /// instance group. The group uses this template to create all new instances
-  /// in the managed instance group.
+  /// in the managed instance group. The templates for existing instances in the
+  /// group do not change unless you run recreateInstances, run
+  /// applyUpdatesToInstances, or set the group's updatePolicy.type to
+  /// PROACTIVE.
   core.String instanceTemplate;
 
   InstanceGroupManagersSetInstanceTemplateRequest();
@@ -65568,6 +66808,7 @@ class InstanceGroupsListInstancesWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -65807,6 +67048,7 @@ class InstanceGroupsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -66000,6 +67242,7 @@ class InstanceListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -66184,6 +67427,7 @@ class InstanceListReferrersWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -66888,6 +68132,7 @@ class InstanceTemplateListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -67174,6 +68419,7 @@ class InstancesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -67825,6 +69071,9 @@ class InterconnectAttachment {
   /// customer router subinterface for this interconnect attachment.
   core.String customerRouterIpAddress;
 
+  /// [Output Only] Dataplane version for this InterconnectAttachment.
+  core.int dataplaneVersion;
+
   /// An optional description of this resource.
   core.String description;
 
@@ -67859,6 +69108,11 @@ class InterconnectAttachment {
   /// [Output Only] Type of the resource. Always compute#interconnectAttachment
   /// for interconnect attachments.
   core.String kind;
+
+  /// Maximum Transmission Unit (MTU), in bytes, of packets passing through this
+  /// interconnect attachment. Only 1440 and 1500 are allowed. If not specified,
+  /// the value will default to 1440.
+  core.int mtu;
 
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -67982,6 +69236,9 @@ class InterconnectAttachment {
     if (_json.containsKey("customerRouterIpAddress")) {
       customerRouterIpAddress = _json["customerRouterIpAddress"];
     }
+    if (_json.containsKey("dataplaneVersion")) {
+      dataplaneVersion = _json["dataplaneVersion"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -67999,6 +69256,9 @@ class InterconnectAttachment {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("mtu")) {
+      mtu = _json["mtu"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -68061,6 +69321,9 @@ class InterconnectAttachment {
     if (customerRouterIpAddress != null) {
       _json["customerRouterIpAddress"] = customerRouterIpAddress;
     }
+    if (dataplaneVersion != null) {
+      _json["dataplaneVersion"] = dataplaneVersion;
+    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -68078,6 +69341,9 @@ class InterconnectAttachment {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (mtu != null) {
+      _json["mtu"] = mtu;
     }
     if (name != null) {
       _json["name"] = name;
@@ -68169,6 +69435,7 @@ class InterconnectAttachmentAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -68367,6 +69634,7 @@ class InterconnectAttachmentListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -68628,6 +69896,7 @@ class InterconnectAttachmentsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -69070,6 +70339,7 @@ class InterconnectListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -69447,6 +70717,7 @@ class InterconnectLocationListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -70154,6 +71425,7 @@ class LicensesListResponseWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -70272,6 +71544,48 @@ class LicensesListResponse {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class LocalDisk {
+  /// Specifies the number of such disks.
+  core.int diskCount;
+
+  /// Specifies the size of the disk in base-2 GB.
+  core.int diskSizeGb;
+
+  /// Specifies the desired disk type on the node. This disk type must be a
+  /// local storage type (e.g.: local-ssd). Note that for nodeTemplates, this
+  /// should be the name of the disk type and not its URL.
+  core.String diskType;
+
+  LocalDisk();
+
+  LocalDisk.fromJson(core.Map _json) {
+    if (_json.containsKey("diskCount")) {
+      diskCount = _json["diskCount"];
+    }
+    if (_json.containsKey("diskSizeGb")) {
+      diskSizeGb = _json["diskSizeGb"];
+    }
+    if (_json.containsKey("diskType")) {
+      diskType = _json["diskType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (diskCount != null) {
+      _json["diskCount"] = diskCount;
+    }
+    if (diskSizeGb != null) {
+      _json["diskSizeGb"] = diskSizeGb;
+    }
+    if (diskType != null) {
+      _json["diskType"] = diskType;
     }
     return _json;
   }
@@ -70763,6 +72077,7 @@ class MachineTypeAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -70957,6 +72272,7 @@ class MachineTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -71142,6 +72458,7 @@ class MachineTypesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -72015,8 +73332,9 @@ class NetworkEndpoint {
 ///
 /// A network endpoint group (NEG) defines how a set of endpoints should be
 /// reached, whether they are reachable, and where they are located. For more
-/// information about using NEGs, see  Setting up internet NEGs,  Setting up
-/// zonal NEGs, or  Setting up serverless NEGs. (== resource_for
+/// information about using NEGs, see  Setting up external HTTP(S) Load
+/// Balancing with internet NEGs,  Setting up zonal NEGs, or  Setting up
+/// external HTTP(S) Load Balancing with serverless NEGs. (== resource_for
 /// {$api_version}.networkEndpointGroups ==) (== resource_for
 /// {$api_version}.globalNetworkEndpointGroups ==) (== resource_for
 /// {$api_version}.regionNetworkEndpointGroups ==)
@@ -72264,6 +73582,7 @@ class NetworkEndpointGroupAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -72421,7 +73740,7 @@ class NetworkEndpointGroupAggregatedList {
 class NetworkEndpointGroupAppEngine {
   /// Optional serving service.
   ///
-  /// The service name must be 1-63 characters long, and comply with RFC1035.
+  /// The service name is case-sensitive and must be 1-63 characters long.
   ///
   /// Example value: "default", "my-service".
   core.String service;
@@ -72439,7 +73758,7 @@ class NetworkEndpointGroupAppEngine {
 
   /// Optional serving version.
   ///
-  /// The version must be 1-63 characters long, and comply with RFC1035.
+  /// The version name is case-sensitive and must be 1-100 characters long.
   ///
   /// Example value: "v1", "v2".
   core.String version;
@@ -72634,6 +73953,7 @@ class NetworkEndpointGroupListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -72896,6 +74216,7 @@ class NetworkEndpointGroupsListNetworkEndpointsWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -73075,6 +74396,7 @@ class NetworkEndpointGroupsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -73261,6 +74583,14 @@ class NetworkInterface {
   /// by the system.
   core.String networkIP;
 
+  /// The type of vNIC to be used on this interface. This may be gVNIC or
+  /// VirtioNet.
+  /// Possible string values are:
+  /// - "GVNIC"
+  /// - "UNSPECIFIED_NIC_TYPE"
+  /// - "VIRTIO_NET"
+  core.String nicType;
+
   /// The URL of the Subnetwork resource for this instance. If the network
   /// resource is in legacy mode, do not specify this field. If the network is
   /// in auto subnet mode, specifying the subnetwork is optional. If the network
@@ -73303,6 +74633,9 @@ class NetworkInterface {
     if (_json.containsKey("networkIP")) {
       networkIP = _json["networkIP"];
     }
+    if (_json.containsKey("nicType")) {
+      nicType = _json["nicType"];
+    }
     if (_json.containsKey("subnetwork")) {
       subnetwork = _json["subnetwork"];
     }
@@ -73336,6 +74669,9 @@ class NetworkInterface {
     }
     if (networkIP != null) {
       _json["networkIP"] = networkIP;
+    }
+    if (nicType != null) {
+      _json["nicType"] = nicType;
     }
     if (subnetwork != null) {
       _json["subnetwork"] = subnetwork;
@@ -73394,6 +74730,7 @@ class NetworkListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -73850,6 +75187,7 @@ class NodeGroup {
   /// - "MIGRATE_WITHIN_NODE_GROUP"
   /// - "RESTART_IN_PLACE"
   core.String maintenancePolicy;
+  NodeGroupMaintenanceWindow maintenanceWindow;
 
   /// The name of the resource, provided by the client when initially creating
   /// the resource. The resource name must be 1-63 characters long, and comply
@@ -73906,6 +75244,10 @@ class NodeGroup {
     if (_json.containsKey("maintenancePolicy")) {
       maintenancePolicy = _json["maintenancePolicy"];
     }
+    if (_json.containsKey("maintenanceWindow")) {
+      maintenanceWindow =
+          new NodeGroupMaintenanceWindow.fromJson(_json["maintenanceWindow"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -73949,6 +75291,9 @@ class NodeGroup {
     }
     if (maintenancePolicy != null) {
       _json["maintenancePolicy"] = maintenancePolicy;
+    }
+    if (maintenanceWindow != null) {
+      _json["maintenanceWindow"] = (maintenanceWindow).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -74022,6 +75367,7 @@ class NodeGroupAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -74167,7 +75513,8 @@ class NodeGroupAggregatedList {
 }
 
 class NodeGroupAutoscalingPolicy {
-  /// The maximum number of nodes that the group should have.
+  /// The maximum number of nodes that the group should have. Must be set if
+  /// autoscaling is enabled. Maximum value allowed is 100.
   core.int maxNodes;
 
   /// The minimum number of nodes that the group should have.
@@ -74262,6 +75609,7 @@ class NodeGroupListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -74396,13 +75744,55 @@ class NodeGroupList {
   }
 }
 
+/// Time window specified for daily maintenance operations. GCE's internal
+/// maintenance will be performed within this window.
+class NodeGroupMaintenanceWindow {
+  /// [Output only] A predetermined duration for the window, automatically
+  /// chosen to be the smallest possible in the given scenario.
+  Duration maintenanceDuration;
+
+  /// Start time of the window. This must be in UTC format that resolves to one
+  /// of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5
+  /// and 08:00 are valid.
+  core.String startTime;
+
+  NodeGroupMaintenanceWindow();
+
+  NodeGroupMaintenanceWindow.fromJson(core.Map _json) {
+    if (_json.containsKey("maintenanceDuration")) {
+      maintenanceDuration = new Duration.fromJson(_json["maintenanceDuration"]);
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maintenanceDuration != null) {
+      _json["maintenanceDuration"] = (maintenanceDuration).toJson();
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
 class NodeGroupNode {
+  /// Accelerators for this node.
+  core.List<AcceleratorConfig> accelerators;
+
   /// CPU overcommit.
   /// Possible string values are:
   /// - "CPU_OVERCOMMIT_TYPE_UNSPECIFIED"
   /// - "ENABLED"
   /// - "NONE"
   core.String cpuOvercommitType;
+
+  /// Local disk configurations.
+  core.List<LocalDisk> disks;
 
   /// Instances scheduled on this node.
   core.List<core.String> instances;
@@ -74431,8 +75821,19 @@ class NodeGroupNode {
   NodeGroupNode();
 
   NodeGroupNode.fromJson(core.Map _json) {
+    if (_json.containsKey("accelerators")) {
+      accelerators = (_json["accelerators"] as core.List)
+          .map<AcceleratorConfig>(
+              (value) => new AcceleratorConfig.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("cpuOvercommitType")) {
       cpuOvercommitType = _json["cpuOvercommitType"];
+    }
+    if (_json.containsKey("disks")) {
+      disks = (_json["disks"] as core.List)
+          .map<LocalDisk>((value) => new LocalDisk.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("instances")) {
       instances = (_json["instances"] as core.List).cast<core.String>();
@@ -74457,8 +75858,15 @@ class NodeGroupNode {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accelerators != null) {
+      _json["accelerators"] =
+          accelerators.map((value) => (value).toJson()).toList();
+    }
     if (cpuOvercommitType != null) {
       _json["cpuOvercommitType"] = cpuOvercommitType;
+    }
+    if (disks != null) {
+      _json["disks"] = disks.map((value) => (value).toJson()).toList();
     }
     if (instances != null) {
       _json["instances"] = instances;
@@ -74576,6 +75984,7 @@ class NodeGroupsListNodesWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -74761,6 +76170,7 @@ class NodeGroupsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -74884,6 +76294,8 @@ class NodeGroupsSetNodeTemplateRequest {
 /// more information, read Creating node groups and instances. (== resource_for
 /// {$api_version}.nodeTemplates ==)
 class NodeTemplate {
+  core.List<AcceleratorConfig> accelerators;
+
   /// CPU overcommit.
   /// Possible string values are:
   /// - "CPU_OVERCOMMIT_TYPE_UNSPECIFIED"
@@ -74897,6 +76309,7 @@ class NodeTemplate {
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   core.String description;
+  core.List<LocalDisk> disks;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
   /// defined by the server.
@@ -74961,6 +76374,12 @@ class NodeTemplate {
   NodeTemplate();
 
   NodeTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey("accelerators")) {
+      accelerators = (_json["accelerators"] as core.List)
+          .map<AcceleratorConfig>(
+              (value) => new AcceleratorConfig.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("cpuOvercommitType")) {
       cpuOvercommitType = _json["cpuOvercommitType"];
     }
@@ -74969,6 +76388,11 @@ class NodeTemplate {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("disks")) {
+      disks = (_json["disks"] as core.List)
+          .map<LocalDisk>((value) => new LocalDisk.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -75010,6 +76434,10 @@ class NodeTemplate {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accelerators != null) {
+      _json["accelerators"] =
+          accelerators.map((value) => (value).toJson()).toList();
+    }
     if (cpuOvercommitType != null) {
       _json["cpuOvercommitType"] = cpuOvercommitType;
     }
@@ -75018,6 +76446,9 @@ class NodeTemplate {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (disks != null) {
+      _json["disks"] = disks.map((value) => (value).toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -75106,6 +76537,7 @@ class NodeTemplateAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -75301,6 +76733,7 @@ class NodeTemplateListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -75521,6 +76954,7 @@ class NodeTemplatesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -75798,6 +77232,7 @@ class NodeTypeAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -75992,6 +77427,7 @@ class NodeTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -76177,6 +77613,7 @@ class NodeTypesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -76497,6 +77934,7 @@ class NotificationEndpointListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -76749,6 +78187,7 @@ class OperationWarnings {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -77130,6 +78569,7 @@ class OperationAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -77325,6 +78765,7 @@ class OperationListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -77511,6 +78952,7 @@ class OperationsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -77964,6 +79406,7 @@ class PacketMirroringAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -78123,6 +79566,14 @@ class PacketMirroringFilter {
   /// mirrored.
   core.List<core.String> cidrRanges;
 
+  /// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The
+  /// default is BOTH.
+  /// Possible string values are:
+  /// - "BOTH"
+  /// - "EGRESS"
+  /// - "INGRESS"
+  core.String direction;
+
   PacketMirroringFilter();
 
   PacketMirroringFilter.fromJson(core.Map _json) {
@@ -78131,6 +79582,9 @@ class PacketMirroringFilter {
     }
     if (_json.containsKey("cidrRanges")) {
       cidrRanges = (_json["cidrRanges"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("direction")) {
+      direction = _json["direction"];
     }
   }
 
@@ -78142,6 +79596,9 @@ class PacketMirroringFilter {
     }
     if (cidrRanges != null) {
       _json["cidrRanges"] = cidrRanges;
+    }
+    if (direction != null) {
+      _json["direction"] = direction;
     }
     return _json;
   }
@@ -78230,6 +79687,7 @@ class PacketMirroringListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -78567,6 +80025,7 @@ class PacketMirroringsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -79617,6 +81076,7 @@ class Quota {
   /// - "PREEMPTIBLE_NVIDIA_T4_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_T4_VWS_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_V100_GPUS"
+  /// - "PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK"
   /// - "PUBLIC_ADVERTISED_PREFIXES"
   /// - "PUBLIC_DELEGATED_PREFIXES"
   /// - "REGIONAL_AUTOSCALERS"
@@ -79644,6 +81104,7 @@ class Quota {
   /// - "URL_MAPS"
   /// - "VPN_GATEWAYS"
   /// - "VPN_TUNNELS"
+  /// - "XPN_SERVICE_PROJECTS"
   core.String metric;
 
   /// [Output Only] Owning resource. This is the resource on which this quota is
@@ -79907,6 +81368,7 @@ class RegionAutoscalerListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -80090,6 +81552,7 @@ class RegionDiskTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -80341,6 +81804,7 @@ class RegionInstanceGroupListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -80548,6 +82012,7 @@ class RegionInstanceGroupManagerListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -80766,6 +82231,11 @@ class RegionInstanceGroupManagersAbandonInstancesRequest {
 
 /// RegionInstanceGroupManagers.applyUpdatesToInstances
 class RegionInstanceGroupManagersApplyUpdatesRequest {
+  /// Flag to update all instances instead of specified list of ?instances?. If
+  /// the flag is set to true then the instances may not be specified in the
+  /// request.
+  core.bool allInstances;
+
   /// The list of URLs of one or more instances for which you want to apply
   /// updates. Each URL can be a full URL or a partial URL, such as
   /// zones/[ZONE]/instances/[INSTANCE_NAME].
@@ -80806,6 +82276,9 @@ class RegionInstanceGroupManagersApplyUpdatesRequest {
   RegionInstanceGroupManagersApplyUpdatesRequest();
 
   RegionInstanceGroupManagersApplyUpdatesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("allInstances")) {
+      allInstances = _json["allInstances"];
+    }
     if (_json.containsKey("instances")) {
       instances = (_json["instances"] as core.List).cast<core.String>();
     }
@@ -80820,6 +82293,9 @@ class RegionInstanceGroupManagersApplyUpdatesRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (allInstances != null) {
+      _json["allInstances"] = allInstances;
+    }
     if (instances != null) {
       _json["instances"] = instances;
     }
@@ -80971,6 +82447,7 @@ class RegionInstanceGroupManagersListInstanceConfigsRespWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -81258,6 +82735,7 @@ class RegionInstanceGroupsListInstancesWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -81526,6 +83004,7 @@ class RegionListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -82067,6 +83546,7 @@ class ReservationAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -82261,6 +83741,7 @@ class ReservationListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -82469,6 +83950,7 @@ class ReservationsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -82690,6 +84172,7 @@ class ResourcePoliciesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -82795,7 +84278,7 @@ class ResourcePolicy {
   core.String creationTimestamp;
   core.String description;
 
-  /// Resource policy for instacnes for placement configuration.
+  /// Resource policy for instances for placement configuration.
   ResourcePolicyGroupPlacementPolicy groupPlacementPolicy;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -82955,6 +84438,7 @@ class ResourcePolicyAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -83294,6 +84778,7 @@ class ResourcePolicyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -83566,6 +85051,9 @@ class ResourcePolicySnapshotSchedulePolicySchedule {
 /// Specified snapshot properties for scheduled snapshots created by this
 /// policy.
 class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
+  /// Chain name that the snapshot is created in.
+  core.String chainName;
+
   /// Indication to perform a 'guest aware' snapshot.
   core.bool guestFlush;
 
@@ -83581,6 +85069,9 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
 
   ResourcePolicySnapshotSchedulePolicySnapshotProperties.fromJson(
       core.Map _json) {
+    if (_json.containsKey("chainName")) {
+      chainName = _json["chainName"];
+    }
     if (_json.containsKey("guestFlush")) {
       guestFlush = _json["guestFlush"];
     }
@@ -83596,6 +85087,9 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (chainName != null) {
+      _json["chainName"] = chainName;
+    }
     if (guestFlush != null) {
       _json["guestFlush"] = guestFlush;
     }
@@ -83738,6 +85232,7 @@ class RouteWarnings {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -83811,8 +85306,8 @@ class Route {
   /// create the resource.
   core.String description;
 
-  /// The destination range of outgoing packets that this route applies to. Only
-  /// IPv4 is supported.
+  /// The destination range of outgoing packets that this route applies to. Both
+  /// IPv4 and IPv6 are supported.
   core.String destRange;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -83841,8 +85336,9 @@ class Route {
   core.String nextHopGateway;
 
   /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that
-  /// should handle matching packets. You can only specify the forwarding rule
-  /// as a partial or full URL. For example, the following are all valid URLs:
+  /// should handle matching packets or the IP address of the forwarding Rule.
+  /// For example, the following are all valid URLs:
+  /// - 10.128.0.56
   /// -
   /// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
   /// - regions/region/forwardingRules/forwardingRule
@@ -84056,6 +85552,7 @@ class RouteListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -84417,6 +85914,7 @@ class RouterAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -84903,6 +86401,7 @@ class RouterListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -85046,6 +86545,7 @@ class RouterNat {
   /// static external IPs that have been assigned to the NAT. These IPs should
   /// be used for updating/patching a NAT only.
   core.List<core.String> drainNatIps;
+  core.bool enableEndpointIndependentMapping;
 
   /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
   core.int icmpIdleTimeoutSec;
@@ -85119,6 +86619,10 @@ class RouterNat {
     if (_json.containsKey("drainNatIps")) {
       drainNatIps = (_json["drainNatIps"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("enableEndpointIndependentMapping")) {
+      enableEndpointIndependentMapping =
+          _json["enableEndpointIndependentMapping"];
+    }
     if (_json.containsKey("icmpIdleTimeoutSec")) {
       icmpIdleTimeoutSec = _json["icmpIdleTimeoutSec"];
     }
@@ -85162,6 +86666,10 @@ class RouterNat {
         new core.Map<core.String, core.Object>();
     if (drainNatIps != null) {
       _json["drainNatIps"] = drainNatIps;
+    }
+    if (enableEndpointIndependentMapping != null) {
+      _json["enableEndpointIndependentMapping"] =
+          enableEndpointIndependentMapping;
     }
     if (icmpIdleTimeoutSec != null) {
       _json["icmpIdleTimeoutSec"] = icmpIdleTimeoutSec;
@@ -85668,6 +87176,7 @@ class RoutersScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -85961,6 +87470,11 @@ class Scheduling {
   /// if it is terminated by Compute Engine.
   core.bool automaticRestart;
 
+  /// An opaque location hint used to place the instance close to other
+  /// resources. This field is for use by internal tools that use the public
+  /// API.
+  core.String locationHint;
+
   /// The minimum number of virtual CPUs this instance will consume when running
   /// on a sole-tenant node.
   core.int minNodeCpus;
@@ -85991,6 +87505,9 @@ class Scheduling {
     if (_json.containsKey("automaticRestart")) {
       automaticRestart = _json["automaticRestart"];
     }
+    if (_json.containsKey("locationHint")) {
+      locationHint = _json["locationHint"];
+    }
     if (_json.containsKey("minNodeCpus")) {
       minNodeCpus = _json["minNodeCpus"];
     }
@@ -86013,6 +87530,9 @@ class Scheduling {
         new core.Map<core.String, core.Object>();
     if (automaticRestart != null) {
       _json["automaticRestart"] = automaticRestart;
+    }
+    if (locationHint != null) {
+      _json["locationHint"] = locationHint;
     }
     if (minNodeCpus != null) {
       _json["minNodeCpus"] = minNodeCpus;
@@ -86156,11 +87676,11 @@ class SecurityPoliciesWafConfig {
   }
 }
 
-/// Represents a Cloud Armor Security Policy resource.
+/// Represents a Google Cloud Armor security policy resource.
 ///
 /// Only external backend services that use load balancers can reference a
-/// Security Policy. For more information, read  Cloud Armor Security Policy
-/// Concepts. (== resource_for {$api_version}.securityPolicies ==)
+/// security policy. For more information, see  Google Cloud Armor security
+/// policy overview. (== resource_for {$api_version}.securityPolicies ==)
 class SecurityPolicy {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -86326,6 +87846,7 @@ class SecurityPolicyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -86497,7 +88018,7 @@ class SecurityPolicyRule {
   /// An integer indicating the priority of a rule in the list. The priority
   /// must be a positive value between 0 and 2147483647. Rules are evaluated
   /// from highest to lowest priority where 0 is the highest priority and
-  /// 2147483647 is the lowest prority.
+  /// 2147483647 is the lowest priority.
   core.int priority;
 
   SecurityPolicyRule();
@@ -86616,6 +88137,58 @@ class SecurityPolicyRuleMatcherConfig {
         new core.Map<core.String, core.Object>();
     if (srcIpRanges != null) {
       _json["srcIpRanges"] = srcIpRanges;
+    }
+    return _json;
+  }
+}
+
+/// The authentication and authorization settings for a BackendService.
+class SecuritySettings {
+  /// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource
+  /// that describes how clients should authenticate with this service's
+  /// backends.
+  /// clientTlsPolicy only applies to a global BackendService with the
+  /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  /// If left blank, communications are not encrypted.
+  /// Note: This field currently has no impact.
+  core.String clientTlsPolicy;
+
+  /// Optional. A list of Subject Alternative Names (SANs) that the client
+  /// verifies during a mutual TLS handshake with an server/endpoint for this
+  /// BackendService. When the server presents its X.509 certificate to the
+  /// client, the client inspects the certificate's subjectAltName field. If the
+  /// field contains one of the specified values, the communication continues.
+  /// Otherwise, it fails. This additional check enables the client to verify
+  /// that the server is authorized to run the requested service.
+  /// Note that the contents of the server certificate's subjectAltName field
+  /// are configured by the Public Key Infrastructure which provisions server
+  /// identities.
+  /// Only applies to a global BackendService with loadBalancingScheme set to
+  /// INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached
+  /// clientTlsPolicy with clientCertificate (mTLS mode).
+  /// Note: This field currently has no impact.
+  core.List<core.String> subjectAltNames;
+
+  SecuritySettings();
+
+  SecuritySettings.fromJson(core.Map _json) {
+    if (_json.containsKey("clientTlsPolicy")) {
+      clientTlsPolicy = _json["clientTlsPolicy"];
+    }
+    if (_json.containsKey("subjectAltNames")) {
+      subjectAltNames =
+          (_json["subjectAltNames"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clientTlsPolicy != null) {
+      _json["clientTlsPolicy"] = clientTlsPolicy;
+    }
+    if (subjectAltNames != null) {
+      _json["subjectAltNames"] = subjectAltNames;
     }
     return _json;
   }
@@ -86940,6 +88513,14 @@ class Snapshot {
   /// applying resource policy on the target disk.
   core.bool autoCreated;
 
+  /// Creates the new snapshot in the snapshot chain labeled with the specified
+  /// name. The chain name must be 1-63 characters long and comply with RFC1035.
+  /// This is an uncommon option only for advanced service owners who needs to
+  /// create separate snapshot chains, for example, for chargeback tracking.
+  /// When you describe your snapshot resource, this field is visible only if it
+  /// has a non-empty value.
+  core.String chainName;
+
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
@@ -87066,6 +88647,9 @@ class Snapshot {
     if (_json.containsKey("autoCreated")) {
       autoCreated = _json["autoCreated"];
     }
+    if (_json.containsKey("chainName")) {
+      chainName = _json["chainName"];
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -87136,6 +88720,9 @@ class Snapshot {
         new core.Map<core.String, core.Object>();
     if (autoCreated != null) {
       _json["autoCreated"] = autoCreated;
+    }
+    if (chainName != null) {
+      _json["chainName"] = chainName;
     }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
@@ -87251,6 +88838,7 @@ class SnapshotListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -87651,6 +89239,7 @@ class SslCertificateAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -87846,6 +89435,7 @@ class SslCertificateListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -88116,6 +89706,7 @@ class SslCertificatesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -88260,6 +89851,7 @@ class SslPoliciesListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -88463,6 +90055,7 @@ class SslPolicyWarnings {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -88522,11 +90115,12 @@ class SslPolicyWarnings {
   }
 }
 
-/// Represents a Cloud Armor Security Policy resource.
+/// Represents an SSL Policy resource.
 ///
-/// Only external backend services used by HTTP or HTTPS load balancers can
-/// reference a Security Policy. For more information, read read  Cloud Armor
-/// Security Policy Concepts. (== resource_for {$api_version}.sslPolicies ==)
+/// Use SSL policies to control the SSL features, such as versions and cipher
+/// suites, offered by an HTTPS or SSL Proxy load balancer. For more
+/// information, read  SSL Policy Concepts. (== resource_for
+/// {$api_version}.sslPolicies ==)
 class SslPolicy {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -88932,12 +90526,14 @@ class Subnetwork {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// [Output Only] The state of the subnetwork, which can be one of READY or
-  /// DRAINING. A subnetwork that is READY is ready to be used. The state of
-  /// DRAINING is only applicable to subnetworks that have the purpose set to
+  /// [Output Only] The state of the subnetwork, which can be one of the
+  /// following values: READY: Subnetwork is created and ready to use DRAINING:
+  /// only applicable to subnetworks that have the purpose set to
   /// INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load
   /// balancer are being drained. A subnetwork that is draining cannot be used
-  /// or modified until it reaches a status of READY.
+  /// or modified until it reaches a status of READY CREATING: Subnetwork is
+  /// provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is
+  /// being updated
   /// Possible string values are:
   /// - "DRAINING"
   /// - "READY"
@@ -89129,6 +90725,7 @@ class SubnetworkAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -89323,6 +90920,7 @@ class SubnetworkListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -89663,6 +91261,7 @@ class SubnetworksScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -90109,6 +91708,7 @@ class TargetGrpcProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -90293,6 +91893,7 @@ class TargetHttpProxiesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -90446,6 +92047,19 @@ class TargetHttpProxy {
   /// dash.
   core.String name;
 
+  /// This field only applies when the forwarding rule that references this
+  /// target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  ///
+  /// When this field is set to true, Envoy proxies set up inbound traffic
+  /// interception and bind to the IP address and port specified in the
+  /// forwarding rule. This is generally useful when using Traffic Director to
+  /// configure Envoy as a gateway or middle proxy (in other words, not a
+  /// sidecar proxy). The Envoy proxy listens for inbound requests and handles
+  /// requests when it receives them.
+  ///
+  /// The default is false.
+  core.bool proxyBind;
+
   /// [Output Only] URL of the region where the regional Target HTTP Proxy
   /// resides. This field is not applicable to global Target HTTP Proxies.
   core.String region;
@@ -90478,6 +92092,9 @@ class TargetHttpProxy {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("proxyBind")) {
+      proxyBind = _json["proxyBind"];
+    }
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
@@ -90509,6 +92126,9 @@ class TargetHttpProxy {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (proxyBind != null) {
+      _json["proxyBind"] = proxyBind;
     }
     if (region != null) {
       _json["region"] = region;
@@ -90649,6 +92269,7 @@ class TargetHttpProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -90834,6 +92455,7 @@ class TargetHttpsProxiesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -90998,6 +92620,16 @@ class TargetHttpsProxiesSetSslCertificatesRequest {
 /// Forwarding rule concepts. (== resource_for {$api_version}.targetHttpsProxies
 /// ==) (== resource_for {$api_version}.regionTargetHttpsProxies ==)
 class TargetHttpsProxy {
+  /// Optional. A URL referring to a networksecurity.AuthorizationPolicy
+  /// resource that describes how the proxy should authorize inbound traffic. If
+  /// left blank, access will not be restricted by an authorization policy.
+  /// Refer to the AuthorizationPolicy resource for additional details.
+  /// authorizationPolicy only applies to a global TargetHttpsProxy attached to
+  /// globalForwardingRules with the loadBalancingScheme set to
+  /// INTERNAL_SELF_MANAGED.
+  /// Note: This field currently has no impact.
+  core.String authorizationPolicy;
+
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
@@ -91022,6 +92654,19 @@ class TargetHttpsProxy {
   /// dash.
   core.String name;
 
+  /// This field only applies when the forwarding rule that references this
+  /// target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  ///
+  /// When this field is set to true, Envoy proxies set up inbound traffic
+  /// interception and bind to the IP address and port specified in the
+  /// forwarding rule. This is generally useful when using Traffic Director to
+  /// configure Envoy as a gateway or middle proxy (in other words, not a
+  /// sidecar proxy). The Envoy proxy listens for inbound requests and handles
+  /// requests when it receives them.
+  ///
+  /// The default is false.
+  core.bool proxyBind;
+
   /// Specifies the QUIC override policy for this TargetHttpsProxy resource.
   /// This setting determines whether the load balancer attempts to negotiate
   /// QUIC with clients. You can specify NONE, ENABLE, or DISABLE.
@@ -91045,6 +92690,15 @@ class TargetHttpsProxy {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
+  /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource
+  /// that describes how the proxy should authenticate inbound traffic.
+  /// serverTlsPolicy only applies to a global TargetHttpsProxy attached to
+  /// globalForwardingRules with the loadBalancingScheme set to
+  /// INTERNAL_SELF_MANAGED.
+  /// If left blank, communications are not encrypted.
+  /// Note: This field currently has no impact.
+  core.String serverTlsPolicy;
+
   /// URLs to SslCertificate resources that are used to authenticate connections
   /// between users and the load balancer. At least one SSL certificate must be
   /// specified. Currently, you may specify up to 15 SSL certificates.
@@ -91067,6 +92721,9 @@ class TargetHttpsProxy {
   TargetHttpsProxy();
 
   TargetHttpsProxy.fromJson(core.Map _json) {
+    if (_json.containsKey("authorizationPolicy")) {
+      authorizationPolicy = _json["authorizationPolicy"];
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -91082,6 +92739,9 @@ class TargetHttpsProxy {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("proxyBind")) {
+      proxyBind = _json["proxyBind"];
+    }
     if (_json.containsKey("quicOverride")) {
       quicOverride = _json["quicOverride"];
     }
@@ -91090,6 +92750,9 @@ class TargetHttpsProxy {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("serverTlsPolicy")) {
+      serverTlsPolicy = _json["serverTlsPolicy"];
     }
     if (_json.containsKey("sslCertificates")) {
       sslCertificates =
@@ -91106,6 +92769,9 @@ class TargetHttpsProxy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (authorizationPolicy != null) {
+      _json["authorizationPolicy"] = authorizationPolicy;
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -91121,6 +92787,9 @@ class TargetHttpsProxy {
     if (name != null) {
       _json["name"] = name;
     }
+    if (proxyBind != null) {
+      _json["proxyBind"] = proxyBind;
+    }
     if (quicOverride != null) {
       _json["quicOverride"] = quicOverride;
     }
@@ -91129,6 +92798,9 @@ class TargetHttpsProxy {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (serverTlsPolicy != null) {
+      _json["serverTlsPolicy"] = serverTlsPolicy;
     }
     if (sslCertificates != null) {
       _json["sslCertificates"] = sslCertificates;
@@ -91193,6 +92865,7 @@ class TargetHttpsProxyAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -91388,6 +93061,7 @@ class TargetHttpsProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -91694,6 +93368,7 @@ class TargetInstanceAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -91888,6 +93563,7 @@ class TargetInstanceListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -92072,6 +93748,7 @@ class TargetInstancesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -92173,9 +93850,10 @@ class TargetInstancesScopedList {
 /// and, optionally, a backup target pool. For more information, read Using
 /// target pools. (== resource_for {$api_version}.targetPools ==)
 class TargetPool {
-  /// This field is applicable only when the containing target pool is serving a
-  /// forwarding rule as the primary pool, and its failoverRatio field is
-  /// properly set to a value between [0, 1].
+  /// The server-defined URL for the resource. This field is applicable only
+  /// when the containing target pool is serving a forwarding rule as the
+  /// primary pool, and its failoverRatio field is properly set to a value
+  /// between [0, 1].
   ///
   /// backupPool and failoverRatio together define the fallback behavior of the
   /// primary target pool: if the ratio of the healthy instances in the primary
@@ -92397,6 +94075,7 @@ class TargetPoolAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -92625,6 +94304,7 @@ class TargetPoolListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -92922,6 +94602,7 @@ class TargetPoolsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -93286,6 +94967,7 @@ class TargetSslProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -93622,6 +95304,7 @@ class TargetTcpProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -93945,6 +95628,7 @@ class TargetVpnGatewayAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -94140,6 +95824,7 @@ class TargetVpnGatewayListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -94326,6 +96011,7 @@ class TargetVpnGatewaysScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -94811,6 +96497,7 @@ class UrlMapListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -95120,6 +96807,7 @@ class UrlMapsAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -95314,6 +97002,7 @@ class UrlMapsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -95625,6 +97314,7 @@ class UsableSubnetworksAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -95966,6 +97656,7 @@ class VmEndpointNatMappingsListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -96303,6 +97994,7 @@ class VpnGatewayAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -96497,6 +98189,7 @@ class VpnGatewayListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -96904,6 +98597,7 @@ class VpnGatewaysScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -97335,6 +99029,7 @@ class VpnTunnelAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -97528,6 +99223,7 @@ class VpnTunnelListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -97712,6 +99408,7 @@ class VpnTunnelsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -97990,6 +99687,7 @@ class XpnHostListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -98324,6 +100022,7 @@ class ZoneListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"

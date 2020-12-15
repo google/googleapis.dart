@@ -215,13 +215,13 @@ class BillingAccountsBudgetsResourceApi {
   /// are of the form `billingAccounts/{billingAccountId}`.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of budgets to return per page.
+  /// The default and maximum value are 100.
+  ///
   /// [pageToken] - Optional. The value returned by the last
   /// `ListBudgetsResponse` which indicates that this is a continuation of a
   /// prior `ListBudgets` call, and that the system should return the next page
   /// of data.
-  ///
-  /// [pageSize] - Optional. The maximum number of budgets to return per page.
-  /// The default and maximum value are 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -235,8 +235,8 @@ class BillingAccountsBudgetsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse> list(
       core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -248,11 +248,11 @@ class BillingAccountsBudgetsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -562,6 +562,14 @@ class GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest {
 
 /// A filter for a budget, limiting the scope of the cost to calculate.
 class GoogleCloudBillingBudgetsV1beta1Filter {
+  /// Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS,
+  /// this is a list of credit types to be subtracted from gross cost to
+  /// determine the spend for threshold calculations. If
+  /// Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this
+  /// field must be empty. See [a list of acceptable credit type
+  /// values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
+  core.List<core.String> creditTypes;
+
   /// Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
   /// Possible string values are:
   /// - "CREDIT_TYPES_TREATMENT_UNSPECIFIED"
@@ -569,6 +577,9 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
   /// gross cost to determine the spend for threshold calculations.
   /// - "EXCLUDE_ALL_CREDITS" : All types of credit are added to the net cost to
   /// determine the spend for threshold calculations.
+  /// - "INCLUDE_SPECIFIED_CREDITS" : Credit types specified in the credit_types
+  /// field are subtracted from the gross cost to determine the spend for
+  /// threshold calculations.
   core.String creditTypesTreatment;
 
   /// Optional. A single label and value pair specifying that usage from only
@@ -605,6 +616,9 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
   GoogleCloudBillingBudgetsV1beta1Filter();
 
   GoogleCloudBillingBudgetsV1beta1Filter.fromJson(core.Map _json) {
+    if (_json.containsKey("creditTypes")) {
+      creditTypes = (_json["creditTypes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("creditTypesTreatment")) {
       creditTypesTreatment = _json["creditTypesTreatment"];
     }
@@ -627,6 +641,9 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (creditTypes != null) {
+      _json["creditTypes"] = creditTypes;
+    }
     if (creditTypesTreatment != null) {
       _json["creditTypesTreatment"] = creditTypesTreatment;
     }
@@ -801,7 +818,7 @@ class GoogleProtobufEmpty {
 
 /// Represents an amount of money with its currency type.
 class GoogleTypeMoney {
-  /// The 3-letter currency code defined in ISO 4217.
+  /// The three-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
   /// Number of nano (10^-9) units of the amount. The value must be between

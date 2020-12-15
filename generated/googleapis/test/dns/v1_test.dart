@@ -50,27 +50,27 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed83() {
+buildUnnamed3351() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed83(core.List<api.ResourceRecordSet> o) {
+checkUnnamed3351(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
 }
 
-buildUnnamed84() {
+buildUnnamed3352() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed84(core.List<api.ResourceRecordSet> o) {
+checkUnnamed3352(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -81,8 +81,8 @@ buildChange() {
   var o = new api.Change();
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    o.additions = buildUnnamed83();
-    o.deletions = buildUnnamed84();
+    o.additions = buildUnnamed3351();
+    o.deletions = buildUnnamed3352();
     o.id = "foo";
     o.isServing = true;
     o.kind = "foo";
@@ -96,8 +96,8 @@ buildChange() {
 checkChange(api.Change o) {
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    checkUnnamed83(o.additions);
-    checkUnnamed84(o.deletions);
+    checkUnnamed3351(o.additions);
+    checkUnnamed3352(o.deletions);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isServing, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -107,14 +107,14 @@ checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-buildUnnamed85() {
+buildUnnamed3353() {
   var o = new core.List<api.Change>();
   o.add(buildChange());
   o.add(buildChange());
   return o;
 }
 
-checkUnnamed85(core.List<api.Change> o) {
+checkUnnamed3353(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChange(o[0]);
   checkChange(o[1]);
@@ -125,7 +125,7 @@ buildChangesListResponse() {
   var o = new api.ChangesListResponse();
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    o.changes = buildUnnamed85();
+    o.changes = buildUnnamed3353();
     o.header = buildResponseHeader();
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -137,7 +137,7 @@ buildChangesListResponse() {
 checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    checkUnnamed85(o.changes);
+    checkUnnamed3353(o.changes);
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -145,14 +145,14 @@ checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse--;
 }
 
-buildUnnamed86() {
+buildUnnamed3354() {
   var o = new core.List<api.DnsKeyDigest>();
   o.add(buildDnsKeyDigest());
   o.add(buildDnsKeyDigest());
   return o;
 }
 
-checkUnnamed86(core.List<api.DnsKeyDigest> o) {
+checkUnnamed3354(core.List<api.DnsKeyDigest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKeyDigest(o[0]);
   checkDnsKeyDigest(o[1]);
@@ -166,7 +166,7 @@ buildDnsKey() {
     o.algorithm = "foo";
     o.creationTime = "foo";
     o.description = "foo";
-    o.digests = buildUnnamed86();
+    o.digests = buildUnnamed3354();
     o.id = "foo";
     o.isActive = true;
     o.keyLength = 42;
@@ -185,7 +185,7 @@ checkDnsKey(api.DnsKey o) {
     unittest.expect(o.algorithm, unittest.equals('foo'));
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed86(o.digests);
+    checkUnnamed3354(o.digests);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isActive, unittest.isTrue);
     unittest.expect(o.keyLength, unittest.equals(42));
@@ -243,14 +243,14 @@ checkDnsKeySpec(api.DnsKeySpec o) {
   buildCounterDnsKeySpec--;
 }
 
-buildUnnamed87() {
+buildUnnamed3355() {
   var o = new core.List<api.DnsKey>();
   o.add(buildDnsKey());
   o.add(buildDnsKey());
   return o;
 }
 
-checkUnnamed87(core.List<api.DnsKey> o) {
+checkUnnamed3355(core.List<api.DnsKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKey(o[0]);
   checkDnsKey(o[1]);
@@ -261,7 +261,7 @@ buildDnsKeysListResponse() {
   var o = new api.DnsKeysListResponse();
   buildCounterDnsKeysListResponse++;
   if (buildCounterDnsKeysListResponse < 3) {
-    o.dnsKeys = buildUnnamed87();
+    o.dnsKeys = buildUnnamed3355();
     o.header = buildResponseHeader();
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -273,7 +273,7 @@ buildDnsKeysListResponse() {
 checkDnsKeysListResponse(api.DnsKeysListResponse o) {
   buildCounterDnsKeysListResponse++;
   if (buildCounterDnsKeysListResponse < 3) {
-    checkUnnamed87(o.dnsKeys);
+    checkUnnamed3355(o.dnsKeys);
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -281,27 +281,27 @@ checkDnsKeysListResponse(api.DnsKeysListResponse o) {
   buildCounterDnsKeysListResponse--;
 }
 
-buildUnnamed88() {
+buildUnnamed3356() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed88(core.Map<core.String, core.String> o) {
+checkUnnamed3356(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed89() {
+buildUnnamed3357() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed89(core.List<core.String> o) {
+checkUnnamed3357(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -319,13 +319,14 @@ buildManagedZone() {
     o.forwardingConfig = buildManagedZoneForwardingConfig();
     o.id = "foo";
     o.kind = "foo";
-    o.labels = buildUnnamed88();
+    o.labels = buildUnnamed3356();
     o.name = "foo";
     o.nameServerSet = "foo";
-    o.nameServers = buildUnnamed89();
+    o.nameServers = buildUnnamed3357();
     o.peeringConfig = buildManagedZonePeeringConfig();
     o.privateVisibilityConfig = buildManagedZonePrivateVisibilityConfig();
     o.reverseLookupConfig = buildManagedZoneReverseLookupConfig();
+    o.serviceDirectoryConfig = buildManagedZoneServiceDirectoryConfig();
     o.visibility = "foo";
   }
   buildCounterManagedZone--;
@@ -342,26 +343,27 @@ checkManagedZone(api.ManagedZone o) {
     checkManagedZoneForwardingConfig(o.forwardingConfig);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed88(o.labels);
+    checkUnnamed3356(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nameServerSet, unittest.equals('foo'));
-    checkUnnamed89(o.nameServers);
+    checkUnnamed3357(o.nameServers);
     checkManagedZonePeeringConfig(o.peeringConfig);
     checkManagedZonePrivateVisibilityConfig(o.privateVisibilityConfig);
     checkManagedZoneReverseLookupConfig(o.reverseLookupConfig);
+    checkManagedZoneServiceDirectoryConfig(o.serviceDirectoryConfig);
     unittest.expect(o.visibility, unittest.equals('foo'));
   }
   buildCounterManagedZone--;
 }
 
-buildUnnamed90() {
+buildUnnamed3358() {
   var o = new core.List<api.DnsKeySpec>();
   o.add(buildDnsKeySpec());
   o.add(buildDnsKeySpec());
   return o;
 }
 
-checkUnnamed90(core.List<api.DnsKeySpec> o) {
+checkUnnamed3358(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKeySpec(o[0]);
   checkDnsKeySpec(o[1]);
@@ -372,7 +374,7 @@ buildManagedZoneDnsSecConfig() {
   var o = new api.ManagedZoneDnsSecConfig();
   buildCounterManagedZoneDnsSecConfig++;
   if (buildCounterManagedZoneDnsSecConfig < 3) {
-    o.defaultKeySpecs = buildUnnamed90();
+    o.defaultKeySpecs = buildUnnamed3358();
     o.kind = "foo";
     o.nonExistence = "foo";
     o.state = "foo";
@@ -384,7 +386,7 @@ buildManagedZoneDnsSecConfig() {
 checkManagedZoneDnsSecConfig(api.ManagedZoneDnsSecConfig o) {
   buildCounterManagedZoneDnsSecConfig++;
   if (buildCounterManagedZoneDnsSecConfig < 3) {
-    checkUnnamed90(o.defaultKeySpecs);
+    checkUnnamed3358(o.defaultKeySpecs);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nonExistence, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
@@ -392,14 +394,14 @@ checkManagedZoneDnsSecConfig(api.ManagedZoneDnsSecConfig o) {
   buildCounterManagedZoneDnsSecConfig--;
 }
 
-buildUnnamed91() {
+buildUnnamed3359() {
   var o = new core.List<api.ManagedZoneForwardingConfigNameServerTarget>();
   o.add(buildManagedZoneForwardingConfigNameServerTarget());
   o.add(buildManagedZoneForwardingConfigNameServerTarget());
   return o;
 }
 
-checkUnnamed91(core.List<api.ManagedZoneForwardingConfigNameServerTarget> o) {
+checkUnnamed3359(core.List<api.ManagedZoneForwardingConfigNameServerTarget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZoneForwardingConfigNameServerTarget(o[0]);
   checkManagedZoneForwardingConfigNameServerTarget(o[1]);
@@ -411,7 +413,7 @@ buildManagedZoneForwardingConfig() {
   buildCounterManagedZoneForwardingConfig++;
   if (buildCounterManagedZoneForwardingConfig < 3) {
     o.kind = "foo";
-    o.targetNameServers = buildUnnamed91();
+    o.targetNameServers = buildUnnamed3359();
   }
   buildCounterManagedZoneForwardingConfig--;
   return o;
@@ -421,7 +423,7 @@ checkManagedZoneForwardingConfig(api.ManagedZoneForwardingConfig o) {
   buildCounterManagedZoneForwardingConfig++;
   if (buildCounterManagedZoneForwardingConfig < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed91(o.targetNameServers);
+    checkUnnamed3359(o.targetNameServers);
   }
   buildCounterManagedZoneForwardingConfig--;
 }
@@ -450,14 +452,14 @@ checkManagedZoneForwardingConfigNameServerTarget(
   buildCounterManagedZoneForwardingConfigNameServerTarget--;
 }
 
-buildUnnamed92() {
+buildUnnamed3360() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed92(core.List<api.Operation> o) {
+checkUnnamed3360(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -471,7 +473,7 @@ buildManagedZoneOperationsListResponse() {
     o.header = buildResponseHeader();
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed92();
+    o.operations = buildUnnamed3360();
   }
   buildCounterManagedZoneOperationsListResponse--;
   return o;
@@ -484,7 +486,7 @@ checkManagedZoneOperationsListResponse(
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed92(o.operations);
+    checkUnnamed3360(o.operations);
   }
   buildCounterManagedZoneOperationsListResponse--;
 }
@@ -534,14 +536,14 @@ checkManagedZonePeeringConfigTargetNetwork(
   buildCounterManagedZonePeeringConfigTargetNetwork--;
 }
 
-buildUnnamed93() {
+buildUnnamed3361() {
   var o = new core.List<api.ManagedZonePrivateVisibilityConfigNetwork>();
   o.add(buildManagedZonePrivateVisibilityConfigNetwork());
   o.add(buildManagedZonePrivateVisibilityConfigNetwork());
   return o;
 }
 
-checkUnnamed93(core.List<api.ManagedZonePrivateVisibilityConfigNetwork> o) {
+checkUnnamed3361(core.List<api.ManagedZonePrivateVisibilityConfigNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZonePrivateVisibilityConfigNetwork(o[0]);
   checkManagedZonePrivateVisibilityConfigNetwork(o[1]);
@@ -553,7 +555,7 @@ buildManagedZonePrivateVisibilityConfig() {
   buildCounterManagedZonePrivateVisibilityConfig++;
   if (buildCounterManagedZonePrivateVisibilityConfig < 3) {
     o.kind = "foo";
-    o.networks = buildUnnamed93();
+    o.networks = buildUnnamed3361();
   }
   buildCounterManagedZonePrivateVisibilityConfig--;
   return o;
@@ -564,7 +566,7 @@ checkManagedZonePrivateVisibilityConfig(
   buildCounterManagedZonePrivateVisibilityConfig++;
   if (buildCounterManagedZonePrivateVisibilityConfig < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed93(o.networks);
+    checkUnnamed3361(o.networks);
   }
   buildCounterManagedZonePrivateVisibilityConfig--;
 }
@@ -610,14 +612,60 @@ checkManagedZoneReverseLookupConfig(api.ManagedZoneReverseLookupConfig o) {
   buildCounterManagedZoneReverseLookupConfig--;
 }
 
-buildUnnamed94() {
+core.int buildCounterManagedZoneServiceDirectoryConfig = 0;
+buildManagedZoneServiceDirectoryConfig() {
+  var o = new api.ManagedZoneServiceDirectoryConfig();
+  buildCounterManagedZoneServiceDirectoryConfig++;
+  if (buildCounterManagedZoneServiceDirectoryConfig < 3) {
+    o.kind = "foo";
+    o.namespace = buildManagedZoneServiceDirectoryConfigNamespace();
+  }
+  buildCounterManagedZoneServiceDirectoryConfig--;
+  return o;
+}
+
+checkManagedZoneServiceDirectoryConfig(
+    api.ManagedZoneServiceDirectoryConfig o) {
+  buildCounterManagedZoneServiceDirectoryConfig++;
+  if (buildCounterManagedZoneServiceDirectoryConfig < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkManagedZoneServiceDirectoryConfigNamespace(o.namespace);
+  }
+  buildCounterManagedZoneServiceDirectoryConfig--;
+}
+
+core.int buildCounterManagedZoneServiceDirectoryConfigNamespace = 0;
+buildManagedZoneServiceDirectoryConfigNamespace() {
+  var o = new api.ManagedZoneServiceDirectoryConfigNamespace();
+  buildCounterManagedZoneServiceDirectoryConfigNamespace++;
+  if (buildCounterManagedZoneServiceDirectoryConfigNamespace < 3) {
+    o.deletionTime = "foo";
+    o.kind = "foo";
+    o.namespaceUrl = "foo";
+  }
+  buildCounterManagedZoneServiceDirectoryConfigNamespace--;
+  return o;
+}
+
+checkManagedZoneServiceDirectoryConfigNamespace(
+    api.ManagedZoneServiceDirectoryConfigNamespace o) {
+  buildCounterManagedZoneServiceDirectoryConfigNamespace++;
+  if (buildCounterManagedZoneServiceDirectoryConfigNamespace < 3) {
+    unittest.expect(o.deletionTime, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.namespaceUrl, unittest.equals('foo'));
+  }
+  buildCounterManagedZoneServiceDirectoryConfigNamespace--;
+}
+
+buildUnnamed3362() {
   var o = new core.List<api.ManagedZone>();
   o.add(buildManagedZone());
   o.add(buildManagedZone());
   return o;
 }
 
-checkUnnamed94(core.List<api.ManagedZone> o) {
+checkUnnamed3362(core.List<api.ManagedZone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZone(o[0]);
   checkManagedZone(o[1]);
@@ -630,7 +678,7 @@ buildManagedZonesListResponse() {
   if (buildCounterManagedZonesListResponse < 3) {
     o.header = buildResponseHeader();
     o.kind = "foo";
-    o.managedZones = buildUnnamed94();
+    o.managedZones = buildUnnamed3362();
     o.nextPageToken = "foo";
   }
   buildCounterManagedZonesListResponse--;
@@ -642,7 +690,7 @@ checkManagedZonesListResponse(api.ManagedZonesListResponse o) {
   if (buildCounterManagedZonesListResponse < 3) {
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed94(o.managedZones);
+    checkUnnamed3362(o.managedZones);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterManagedZonesListResponse--;
@@ -723,14 +771,14 @@ checkOperationManagedZoneContext(api.OperationManagedZoneContext o) {
   buildCounterOperationManagedZoneContext--;
 }
 
-buildUnnamed95() {
+buildUnnamed3363() {
   var o = new core.List<api.Policy>();
   o.add(buildPolicy());
   o.add(buildPolicy());
   return o;
 }
 
-checkUnnamed95(core.List<api.Policy> o) {
+checkUnnamed3363(core.List<api.Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicy(o[0]);
   checkPolicy(o[1]);
@@ -744,7 +792,7 @@ buildPoliciesListResponse() {
     o.header = buildResponseHeader();
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.policies = buildUnnamed95();
+    o.policies = buildUnnamed3363();
   }
   buildCounterPoliciesListResponse--;
   return o;
@@ -756,7 +804,7 @@ checkPoliciesListResponse(api.PoliciesListResponse o) {
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed95(o.policies);
+    checkUnnamed3363(o.policies);
   }
   buildCounterPoliciesListResponse--;
 }
@@ -803,14 +851,14 @@ checkPoliciesUpdateResponse(api.PoliciesUpdateResponse o) {
   buildCounterPoliciesUpdateResponse--;
 }
 
-buildUnnamed96() {
+buildUnnamed3364() {
   var o = new core.List<api.PolicyNetwork>();
   o.add(buildPolicyNetwork());
   o.add(buildPolicyNetwork());
   return o;
 }
 
-checkUnnamed96(core.List<api.PolicyNetwork> o) {
+checkUnnamed3364(core.List<api.PolicyNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyNetwork(o[0]);
   checkPolicyNetwork(o[1]);
@@ -828,7 +876,7 @@ buildPolicy() {
     o.id = "foo";
     o.kind = "foo";
     o.name = "foo";
-    o.networks = buildUnnamed96();
+    o.networks = buildUnnamed3364();
   }
   buildCounterPolicy--;
   return o;
@@ -844,12 +892,12 @@ checkPolicy(api.Policy o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed96(o.networks);
+    checkUnnamed3364(o.networks);
   }
   buildCounterPolicy--;
 }
 
-buildUnnamed97() {
+buildUnnamed3365() {
   var o =
       new core.List<api.PolicyAlternativeNameServerConfigTargetNameServer>();
   o.add(buildPolicyAlternativeNameServerConfigTargetNameServer());
@@ -857,7 +905,7 @@ buildUnnamed97() {
   return o;
 }
 
-checkUnnamed97(
+checkUnnamed3365(
     core.List<api.PolicyAlternativeNameServerConfigTargetNameServer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyAlternativeNameServerConfigTargetNameServer(o[0]);
@@ -870,7 +918,7 @@ buildPolicyAlternativeNameServerConfig() {
   buildCounterPolicyAlternativeNameServerConfig++;
   if (buildCounterPolicyAlternativeNameServerConfig < 3) {
     o.kind = "foo";
-    o.targetNameServers = buildUnnamed97();
+    o.targetNameServers = buildUnnamed3365();
   }
   buildCounterPolicyAlternativeNameServerConfig--;
   return o;
@@ -881,7 +929,7 @@ checkPolicyAlternativeNameServerConfig(
   buildCounterPolicyAlternativeNameServerConfig++;
   if (buildCounterPolicyAlternativeNameServerConfig < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed97(o.targetNameServers);
+    checkUnnamed3365(o.targetNameServers);
   }
   buildCounterPolicyAlternativeNameServerConfig--;
 }
@@ -956,14 +1004,14 @@ checkProject(api.Project o) {
   buildCounterProject--;
 }
 
-buildUnnamed98() {
+buildUnnamed3366() {
   var o = new core.List<api.DnsKeySpec>();
   o.add(buildDnsKeySpec());
   o.add(buildDnsKeySpec());
   return o;
 }
 
-checkUnnamed98(core.List<api.DnsKeySpec> o) {
+checkUnnamed3366(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKeySpec(o[0]);
   checkDnsKeySpec(o[1]);
@@ -975,6 +1023,7 @@ buildQuota() {
   buildCounterQuota++;
   if (buildCounterQuota < 3) {
     o.dnsKeysPerManagedZone = 42;
+    o.gkeClustersPerPolicy = 42;
     o.kind = "foo";
     o.managedZones = 42;
     o.managedZonesPerNetwork = 42;
@@ -988,7 +1037,7 @@ buildQuota() {
     o.targetNameServersPerManagedZone = 42;
     o.targetNameServersPerPolicy = 42;
     o.totalRrdataSizePerChange = 42;
-    o.whitelistedKeySpecs = buildUnnamed98();
+    o.whitelistedKeySpecs = buildUnnamed3366();
   }
   buildCounterQuota--;
   return o;
@@ -998,6 +1047,7 @@ checkQuota(api.Quota o) {
   buildCounterQuota++;
   if (buildCounterQuota < 3) {
     unittest.expect(o.dnsKeysPerManagedZone, unittest.equals(42));
+    unittest.expect(o.gkeClustersPerPolicy, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.managedZones, unittest.equals(42));
     unittest.expect(o.managedZonesPerNetwork, unittest.equals(42));
@@ -1011,32 +1061,242 @@ checkQuota(api.Quota o) {
     unittest.expect(o.targetNameServersPerManagedZone, unittest.equals(42));
     unittest.expect(o.targetNameServersPerPolicy, unittest.equals(42));
     unittest.expect(o.totalRrdataSizePerChange, unittest.equals(42));
-    checkUnnamed98(o.whitelistedKeySpecs);
+    checkUnnamed3366(o.whitelistedKeySpecs);
   }
   buildCounterQuota--;
 }
 
-buildUnnamed99() {
+core.int buildCounterRRSetRoutingPolicy = 0;
+buildRRSetRoutingPolicy() {
+  var o = new api.RRSetRoutingPolicy();
+  buildCounterRRSetRoutingPolicy++;
+  if (buildCounterRRSetRoutingPolicy < 3) {
+    o.geoPolicy = buildRRSetRoutingPolicyGeoPolicy();
+    o.kind = "foo";
+    o.wrrPolicy = buildRRSetRoutingPolicyWrrPolicy();
+  }
+  buildCounterRRSetRoutingPolicy--;
+  return o;
+}
+
+checkRRSetRoutingPolicy(api.RRSetRoutingPolicy o) {
+  buildCounterRRSetRoutingPolicy++;
+  if (buildCounterRRSetRoutingPolicy < 3) {
+    checkRRSetRoutingPolicyGeoPolicy(o.geoPolicy);
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkRRSetRoutingPolicyWrrPolicy(o.wrrPolicy);
+  }
+  buildCounterRRSetRoutingPolicy--;
+}
+
+buildUnnamed3367() {
+  var o = new core.List<api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem>();
+  o.add(buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem());
+  o.add(buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem());
+  return o;
+}
+
+checkUnnamed3367(core.List<api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(o[0]);
+  checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(o[1]);
+}
+
+buildUnnamed3368() {
+  var o = new core.List<api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem>();
+  o.add(buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem());
+  o.add(buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem());
+  return o;
+}
+
+checkUnnamed3368(core.List<api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(o[0]);
+  checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(o[1]);
+}
+
+core.int buildCounterRRSetRoutingPolicyGeoPolicy = 0;
+buildRRSetRoutingPolicyGeoPolicy() {
+  var o = new api.RRSetRoutingPolicyGeoPolicy();
+  buildCounterRRSetRoutingPolicyGeoPolicy++;
+  if (buildCounterRRSetRoutingPolicyGeoPolicy < 3) {
+    o.failovers = buildUnnamed3367();
+    o.items = buildUnnamed3368();
+    o.kind = "foo";
+  }
+  buildCounterRRSetRoutingPolicyGeoPolicy--;
+  return o;
+}
+
+checkRRSetRoutingPolicyGeoPolicy(api.RRSetRoutingPolicyGeoPolicy o) {
+  buildCounterRRSetRoutingPolicyGeoPolicy++;
+  if (buildCounterRRSetRoutingPolicyGeoPolicy < 3) {
+    checkUnnamed3367(o.failovers);
+    checkUnnamed3368(o.items);
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterRRSetRoutingPolicyGeoPolicy--;
+}
+
+buildUnnamed3369() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed99(core.List<core.String> o) {
+checkUnnamed3369(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed100() {
+buildUnnamed3370() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed100(core.List<core.String> o) {
+checkUnnamed3370(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem = 0;
+buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem() {
+  var o = new api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem();
+  buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem++;
+  if (buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem < 3) {
+    o.kind = "foo";
+    o.location = "foo";
+    o.rrdatas = buildUnnamed3369();
+    o.signatureRrdatas = buildUnnamed3370();
+  }
+  buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem--;
+  return o;
+}
+
+checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(
+    api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem o) {
+  buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem++;
+  if (buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.location, unittest.equals('foo'));
+    checkUnnamed3369(o.rrdatas);
+    checkUnnamed3370(o.signatureRrdatas);
+  }
+  buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem--;
+}
+
+buildUnnamed3371() {
+  var o = new core.List<api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem>();
+  o.add(buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem());
+  o.add(buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem());
+  return o;
+}
+
+checkUnnamed3371(core.List<api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(o[0]);
+  checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(o[1]);
+}
+
+core.int buildCounterRRSetRoutingPolicyWrrPolicy = 0;
+buildRRSetRoutingPolicyWrrPolicy() {
+  var o = new api.RRSetRoutingPolicyWrrPolicy();
+  buildCounterRRSetRoutingPolicyWrrPolicy++;
+  if (buildCounterRRSetRoutingPolicyWrrPolicy < 3) {
+    o.items = buildUnnamed3371();
+    o.kind = "foo";
+  }
+  buildCounterRRSetRoutingPolicyWrrPolicy--;
+  return o;
+}
+
+checkRRSetRoutingPolicyWrrPolicy(api.RRSetRoutingPolicyWrrPolicy o) {
+  buildCounterRRSetRoutingPolicyWrrPolicy++;
+  if (buildCounterRRSetRoutingPolicyWrrPolicy < 3) {
+    checkUnnamed3371(o.items);
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterRRSetRoutingPolicyWrrPolicy--;
+}
+
+buildUnnamed3372() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3372(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3373() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3373(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem = 0;
+buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem() {
+  var o = new api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem();
+  buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem++;
+  if (buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem < 3) {
+    o.kind = "foo";
+    o.rrdatas = buildUnnamed3372();
+    o.signatureRrdatas = buildUnnamed3373();
+    o.weight = 42.0;
+  }
+  buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem--;
+  return o;
+}
+
+checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(
+    api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem o) {
+  buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem++;
+  if (buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed3372(o.rrdatas);
+    checkUnnamed3373(o.signatureRrdatas);
+    unittest.expect(o.weight, unittest.equals(42.0));
+  }
+  buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem--;
+}
+
+buildUnnamed3374() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3374(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed3375() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3375(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1049,8 +1309,9 @@ buildResourceRecordSet() {
   if (buildCounterResourceRecordSet < 3) {
     o.kind = "foo";
     o.name = "foo";
-    o.rrdatas = buildUnnamed99();
-    o.signatureRrdatas = buildUnnamed100();
+    o.routingPolicy = buildRRSetRoutingPolicy();
+    o.rrdatas = buildUnnamed3374();
+    o.signatureRrdatas = buildUnnamed3375();
     o.ttl = 42;
     o.type = "foo";
   }
@@ -1063,22 +1324,23 @@ checkResourceRecordSet(api.ResourceRecordSet o) {
   if (buildCounterResourceRecordSet < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed99(o.rrdatas);
-    checkUnnamed100(o.signatureRrdatas);
+    checkRRSetRoutingPolicy(o.routingPolicy);
+    checkUnnamed3374(o.rrdatas);
+    checkUnnamed3375(o.signatureRrdatas);
     unittest.expect(o.ttl, unittest.equals(42));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterResourceRecordSet--;
 }
 
-buildUnnamed101() {
+buildUnnamed3376() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed101(core.List<api.ResourceRecordSet> o) {
+checkUnnamed3376(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -1092,7 +1354,7 @@ buildResourceRecordSetsListResponse() {
     o.header = buildResponseHeader();
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.rrsets = buildUnnamed101();
+    o.rrsets = buildUnnamed3376();
   }
   buildCounterResourceRecordSetsListResponse--;
   return o;
@@ -1104,7 +1366,7 @@ checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed101(o.rrsets);
+    checkUnnamed3376(o.rrsets);
   }
   buildCounterResourceRecordSetsListResponse--;
 }
@@ -1260,6 +1522,23 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-ManagedZoneServiceDirectoryConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildManagedZoneServiceDirectoryConfig();
+      var od = new api.ManagedZoneServiceDirectoryConfig.fromJson(o.toJson());
+      checkManagedZoneServiceDirectoryConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-ManagedZoneServiceDirectoryConfigNamespace", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildManagedZoneServiceDirectoryConfigNamespace();
+      var od = new api.ManagedZoneServiceDirectoryConfigNamespace.fromJson(
+          o.toJson());
+      checkManagedZoneServiceDirectoryConfigNamespace(od);
+    });
+  });
+
   unittest.group("obj-schema-ManagedZonesListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildManagedZonesListResponse();
@@ -1364,6 +1643,48 @@ main() {
       var o = buildQuota();
       var od = new api.Quota.fromJson(o.toJson());
       checkQuota(od);
+    });
+  });
+
+  unittest.group("obj-schema-RRSetRoutingPolicy", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildRRSetRoutingPolicy();
+      var od = new api.RRSetRoutingPolicy.fromJson(o.toJson());
+      checkRRSetRoutingPolicy(od);
+    });
+  });
+
+  unittest.group("obj-schema-RRSetRoutingPolicyGeoPolicy", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildRRSetRoutingPolicyGeoPolicy();
+      var od = new api.RRSetRoutingPolicyGeoPolicy.fromJson(o.toJson());
+      checkRRSetRoutingPolicyGeoPolicy(od);
+    });
+  });
+
+  unittest.group("obj-schema-RRSetRoutingPolicyGeoPolicyGeoPolicyItem", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem();
+      var od =
+          new api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(o.toJson());
+      checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(od);
+    });
+  });
+
+  unittest.group("obj-schema-RRSetRoutingPolicyWrrPolicy", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildRRSetRoutingPolicyWrrPolicy();
+      var od = new api.RRSetRoutingPolicyWrrPolicy.fromJson(o.toJson());
+      checkRRSetRoutingPolicyWrrPolicy(od);
+    });
+  });
+
+  unittest.group("obj-schema-RRSetRoutingPolicyWrrPolicyWrrPolicyItem", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem();
+      var od =
+          new api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(o.toJson());
+      checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(od);
     });
   });
 
@@ -1552,9 +1873,9 @@ main() {
       var arg_project = "foo";
       var arg_managedZone = "foo";
       var arg_sortBy = "foo";
-      var arg_sortOrder = "foo";
-      var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_maxResults = 42;
+      var arg_sortOrder = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1606,11 +1927,11 @@ main() {
         }
         unittest.expect(queryMap["sortBy"].first, unittest.equals(arg_sortBy));
         unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1622,9 +1943,9 @@ main() {
       res
           .list(arg_project, arg_managedZone,
               sortBy: arg_sortBy,
-              sortOrder: arg_sortOrder,
-              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              maxResults: arg_maxResults,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChangesListResponse(response);
@@ -1720,9 +2041,9 @@ main() {
       api.DnsKeysResourceApi res = new api.DnsApi(mock).dnsKeys;
       var arg_project = "foo";
       var arg_managedZone = "foo";
-      var arg_digestType = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_digestType = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1772,12 +2093,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["digestType"].first, unittest.equals(arg_digestType));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["digestType"].first, unittest.equals(arg_digestType));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1788,9 +2109,9 @@ main() {
       }), true);
       res
           .list(arg_project, arg_managedZone,
-              digestType: arg_digestType,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              digestType: arg_digestType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDnsKeysListResponse(response);
@@ -2165,9 +2486,9 @@ main() {
       var mock = new HttpServerMock();
       api.ManagedZonesResourceApi res = new api.DnsApi(mock).managedZones;
       var arg_project = "foo";
-      var arg_maxResults = 42;
       var arg_pageToken = "foo";
       var arg_dnsName = "foo";
+      var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2208,12 +2529,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["dnsName"].first, unittest.equals(arg_dnsName));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2224,9 +2545,9 @@ main() {
       }), true);
       res
           .list(arg_project,
-              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               dnsName: arg_dnsName,
+              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkManagedZonesListResponse(response);
@@ -2580,8 +2901,8 @@ main() {
       var mock = new HttpServerMock();
       api.PoliciesResourceApi res = new api.DnsApi(mock).policies;
       var arg_project = "foo";
-      var arg_pageToken = "foo";
       var arg_maxResults = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2622,10 +2943,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2636,8 +2957,8 @@ main() {
       }), true);
       res
           .list(arg_project,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPoliciesListResponse(response);
@@ -2854,9 +3175,9 @@ main() {
       var arg_project = "foo";
       var arg_managedZone = "foo";
       var arg_maxResults = 42;
-      var arg_type = "foo";
-      var arg_name = "foo";
       var arg_pageToken = "foo";
+      var arg_name = "foo";
+      var arg_type = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2908,10 +3229,10 @@ main() {
         }
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
-        unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
+        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2923,9 +3244,9 @@ main() {
       res
           .list(arg_project, arg_managedZone,
               maxResults: arg_maxResults,
-              type: arg_type,
-              name: arg_name,
               pageToken: arg_pageToken,
+              name: arg_name,
+              type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkResourceRecordSetsListResponse(response);

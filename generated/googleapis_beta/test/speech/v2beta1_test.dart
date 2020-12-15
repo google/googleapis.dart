@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed6314() {
+buildUnnamed6210() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed6314(core.List<api.Operation> o) {
+checkUnnamed6210(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -69,7 +69,7 @@ buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed6314();
+    o.operations = buildUnnamed6210();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -79,7 +79,7 @@ checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6314(o.operations);
+    checkUnnamed6210(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -109,14 +109,14 @@ checkLongRunningRecognizeMetadata(api.LongRunningRecognizeMetadata o) {
   buildCounterLongRunningRecognizeMetadata--;
 }
 
-buildUnnamed6315() {
+buildUnnamed6211() {
   var o = new core.List<api.SpeechRecognitionResult>();
   o.add(buildSpeechRecognitionResult());
   o.add(buildSpeechRecognitionResult());
   return o;
 }
 
-checkUnnamed6315(core.List<api.SpeechRecognitionResult> o) {
+checkUnnamed6211(core.List<api.SpeechRecognitionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpeechRecognitionResult(o[0]);
   checkSpeechRecognitionResult(o[1]);
@@ -127,7 +127,7 @@ buildLongRunningRecognizeResponse() {
   var o = new api.LongRunningRecognizeResponse();
   buildCounterLongRunningRecognizeResponse++;
   if (buildCounterLongRunningRecognizeResponse < 3) {
-    o.results = buildUnnamed6315();
+    o.results = buildUnnamed6211();
   }
   buildCounterLongRunningRecognizeResponse--;
   return o;
@@ -136,12 +136,12 @@ buildLongRunningRecognizeResponse() {
 checkLongRunningRecognizeResponse(api.LongRunningRecognizeResponse o) {
   buildCounterLongRunningRecognizeResponse++;
   if (buildCounterLongRunningRecognizeResponse < 3) {
-    checkUnnamed6315(o.results);
+    checkUnnamed6211(o.results);
   }
   buildCounterLongRunningRecognizeResponse--;
 }
 
-buildUnnamed6316() {
+buildUnnamed6212() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -156,7 +156,7 @@ buildUnnamed6316() {
   return o;
 }
 
-checkUnnamed6316(core.Map<core.String, core.Object> o) {
+checkUnnamed6212(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -170,7 +170,7 @@ checkUnnamed6316(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed6317() {
+buildUnnamed6213() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -185,7 +185,7 @@ buildUnnamed6317() {
   return o;
 }
 
-checkUnnamed6317(core.Map<core.String, core.Object> o) {
+checkUnnamed6213(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -206,9 +206,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed6316();
+    o.metadata = buildUnnamed6212();
     o.name = "foo";
-    o.response = buildUnnamed6317();
+    o.response = buildUnnamed6213();
   }
   buildCounterOperation--;
   return o;
@@ -219,21 +219,21 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed6316(o.metadata);
+    checkUnnamed6212(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed6317(o.response);
+    checkUnnamed6213(o.response);
   }
   buildCounterOperation--;
 }
 
-buildUnnamed6318() {
+buildUnnamed6214() {
   var o = new core.List<api.WordInfo>();
   o.add(buildWordInfo());
   o.add(buildWordInfo());
   return o;
 }
 
-checkUnnamed6318(core.List<api.WordInfo> o) {
+checkUnnamed6214(core.List<api.WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWordInfo(o[0]);
   checkWordInfo(o[1]);
@@ -246,7 +246,7 @@ buildSpeechRecognitionAlternative() {
   if (buildCounterSpeechRecognitionAlternative < 3) {
     o.confidence = 42.0;
     o.transcript = "foo";
-    o.words = buildUnnamed6318();
+    o.words = buildUnnamed6214();
   }
   buildCounterSpeechRecognitionAlternative--;
   return o;
@@ -257,19 +257,19 @@ checkSpeechRecognitionAlternative(api.SpeechRecognitionAlternative o) {
   if (buildCounterSpeechRecognitionAlternative < 3) {
     unittest.expect(o.confidence, unittest.equals(42.0));
     unittest.expect(o.transcript, unittest.equals('foo'));
-    checkUnnamed6318(o.words);
+    checkUnnamed6214(o.words);
   }
   buildCounterSpeechRecognitionAlternative--;
 }
 
-buildUnnamed6319() {
+buildUnnamed6215() {
   var o = new core.List<api.SpeechRecognitionAlternative>();
   o.add(buildSpeechRecognitionAlternative());
   o.add(buildSpeechRecognitionAlternative());
   return o;
 }
 
-checkUnnamed6319(core.List<api.SpeechRecognitionAlternative> o) {
+checkUnnamed6215(core.List<api.SpeechRecognitionAlternative> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpeechRecognitionAlternative(o[0]);
   checkSpeechRecognitionAlternative(o[1]);
@@ -280,7 +280,7 @@ buildSpeechRecognitionResult() {
   var o = new api.SpeechRecognitionResult();
   buildCounterSpeechRecognitionResult++;
   if (buildCounterSpeechRecognitionResult < 3) {
-    o.alternatives = buildUnnamed6319();
+    o.alternatives = buildUnnamed6215();
     o.channelTag = 42;
     o.languageCode = "foo";
   }
@@ -291,14 +291,14 @@ buildSpeechRecognitionResult() {
 checkSpeechRecognitionResult(api.SpeechRecognitionResult o) {
   buildCounterSpeechRecognitionResult++;
   if (buildCounterSpeechRecognitionResult < 3) {
-    checkUnnamed6319(o.alternatives);
+    checkUnnamed6215(o.alternatives);
     unittest.expect(o.channelTag, unittest.equals(42));
     unittest.expect(o.languageCode, unittest.equals('foo'));
   }
   buildCounterSpeechRecognitionResult--;
 }
 
-buildUnnamed6320() {
+buildUnnamed6216() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -313,7 +313,7 @@ buildUnnamed6320() {
   return o;
 }
 
-checkUnnamed6320(core.Map<core.String, core.Object> o) {
+checkUnnamed6216(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -327,17 +327,17 @@ checkUnnamed6320(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed6321() {
+buildUnnamed6217() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed6320());
-  o.add(buildUnnamed6320());
+  o.add(buildUnnamed6216());
+  o.add(buildUnnamed6216());
   return o;
 }
 
-checkUnnamed6321(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed6217(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed6320(o[0]);
-  checkUnnamed6320(o[1]);
+  checkUnnamed6216(o[0]);
+  checkUnnamed6216(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -346,7 +346,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed6321();
+    o.details = buildUnnamed6217();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -357,7 +357,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed6321(o.details);
+    checkUnnamed6217(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -513,9 +513,9 @@ main() {
       api.ProjectsLocationsOperationsResourceApi res =
           new api.SpeechApi(mock).projects.locations.operations;
       var arg_name = "foo";
+      var arg_pageToken = "foo";
       var arg_filter = "foo";
       var arg_pageSize = 42;
-      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -548,11 +548,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -563,9 +563,9 @@ main() {
       }), true);
       res
           .list(arg_name,
+              pageToken: arg_pageToken,
               filter: arg_filter,
               pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);

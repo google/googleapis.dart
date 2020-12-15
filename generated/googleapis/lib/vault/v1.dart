@@ -149,6 +149,57 @@ class MattersResourceApi {
     return _response.then((data) => new CloseMatterResponse.fromJson(data));
   }
 
+  /// Counts the artifacts within the context of a matter and returns a detailed
+  /// breakdown of metrics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> count(
+      CountArtifactsRequest request, core.String matterId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':count';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Creates a new matter with the given name and description. The initial
   /// state is open, and the owner is the method caller. Returns the created
   /// matter with default view.
@@ -1017,13 +1068,6 @@ class MattersHoldsResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
-  /// [pageSize] - The number of holds to return in the response, between 0 and
-  /// 100 inclusive. Leaving this empty, or as 0, is the same as page_size =
-  /// 100.
-  ///
-  /// [pageToken] - The pagination token as returned in the response. An empty
-  /// token means start from the beginning.
-  ///
   /// [view] - Specifies which parts of the Hold to return.
   /// Possible string values are:
   /// - "HOLD_VIEW_UNSPECIFIED" : There is no specified view. Defaults to
@@ -1033,6 +1077,13 @@ class MattersHoldsResourceApi {
   /// - "FULL_HOLD" : Full representation of a Hold. Response includes all
   /// fields of 'BASIC' and the entities the Hold applies to, such as accounts,
   /// or OU.
+  ///
+  /// [pageToken] - The pagination token as returned in the response. An empty
+  /// token means start from the beginning.
+  ///
+  /// [pageSize] - The number of holds to return in the response, between 0 and
+  /// 100 inclusive. Leaving this empty, or as 0, is the same as page_size =
+  /// 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1045,9 +1096,9 @@ class MattersHoldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHoldsResponse> list(core.String matterId,
-      {core.int pageSize,
+      {core.String view,
       core.String pageToken,
-      core.String view,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1059,14 +1110,14 @@ class MattersHoldsResourceApi {
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1559,10 +1610,10 @@ class MattersSavedQueriesResourceApi {
   /// [matterId] - The matter ID of the parent matter for which the saved
   /// queries are to be retrieved.
   ///
-  /// [pageSize] - The maximum number of saved queries to return.
-  ///
   /// [pageToken] - The pagination token as returned in the previous response.
   /// An empty token means start from the beginning.
+  ///
+  /// [pageSize] - The maximum number of saved queries to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1575,7 +1626,7 @@ class MattersSavedQueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSavedQueriesResponse> list(core.String matterId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1586,11 +1637,11 @@ class MattersSavedQueriesResourceApi {
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1615,6 +1666,63 @@ class OperationsResourceApi {
   final commons.ApiRequester _requester;
 
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation. The server
+  /// makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern "^operations/.*$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
 
   /// Deletes a long-running operation. This method indicates that the client is
   /// no longer interested in the operation result. It does not cancel the
@@ -1660,6 +1768,194 @@ class OperationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets the latest state of a long-running operation. Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern "^operations/.*$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists operations that match the specified filter in the request. If the
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
+  /// `name` binding allows API services to override the binding to use
+  /// different resource name schemes, such as `users / * /operations`. To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern "^operations$".
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(core.String name,
+      {core.String pageToken,
+      core.String filter,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+}
+
+/// Count number for each account.
+class AccountCount {
+  /// Account owner.
+  UserInfo account;
+
+  /// The number of artifacts found for this account.
+  core.String count;
+
+  AccountCount();
+
+  AccountCount.fromJson(core.Map _json) {
+    if (_json.containsKey("account")) {
+      account = new UserInfo.fromJson(_json["account"]);
+    }
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (account != null) {
+      _json["account"] = (account).toJson();
+    }
+    if (count != null) {
+      _json["count"] = count;
+    }
+    return _json;
+  }
+}
+
+/// An error that occurred when querying a specific account
+class AccountCountError {
+  /// Account owner.
+  UserInfo account;
+
+  /// Account query error.
+  /// Possible string values are:
+  /// - "ERROR_TYPE_UNSPECIFIED" : Default.
+  /// - "WILDCARD_TOO_BROAD" : Permanent - prefix terms expanded to too many
+  /// query terms.
+  /// - "TOO_MANY_TERMS" : Permanent - query contains too many terms.
+  /// - "LOCATION_UNAVAILABLE" : Transient - data in transit between storage
+  /// replicas, temporarily unavailable.
+  /// - "UNKNOWN" : Unrecognized error.
+  /// - "DEADLINE_EXCEEDED" : Deadline exceeded when querying the account.
+  core.String errorType;
+
+  AccountCountError();
+
+  AccountCountError.fromJson(core.Map _json) {
+    if (_json.containsKey("account")) {
+      account = new UserInfo.fromJson(_json["account"]);
+    }
+    if (_json.containsKey("errorType")) {
+      errorType = _json["errorType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (account != null) {
+      _json["account"] = (account).toJson();
+    }
+    if (errorType != null) {
+      _json["errorType"] = errorType;
+    }
+    return _json;
   }
 }
 
@@ -1824,6 +2120,19 @@ class AddMatterPermissionsRequest {
   }
 }
 
+/// The request message for Operations.CancelOperation.
+class CancelOperationRequest {
+  CancelOperationRequest();
+
+  CancelOperationRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Close a matter by ID.
 class CloseMatterRequest {
   CloseMatterRequest();
@@ -1954,6 +2263,9 @@ class CorpusQuery {
   /// Details pertaining to mail holds. If set, corpus must be mail.
   HeldMailQuery mailQuery;
 
+  /// Details pertaining to Voice holds. If set, corpus must be Voice.
+  HeldVoiceQuery voiceQuery;
+
   CorpusQuery();
 
   CorpusQuery.fromJson(core.Map _json) {
@@ -1969,6 +2281,9 @@ class CorpusQuery {
     }
     if (_json.containsKey("mailQuery")) {
       mailQuery = new HeldMailQuery.fromJson(_json["mailQuery"]);
+    }
+    if (_json.containsKey("voiceQuery")) {
+      voiceQuery = new HeldVoiceQuery.fromJson(_json["voiceQuery"]);
     }
   }
 
@@ -1986,6 +2301,140 @@ class CorpusQuery {
     }
     if (mailQuery != null) {
       _json["mailQuery"] = (mailQuery).toJson();
+    }
+    if (voiceQuery != null) {
+      _json["voiceQuery"] = (voiceQuery).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Long running operation metadata for CountArtifacts.
+class CountArtifactsMetadata {
+  /// End time of count operation. Available when operation is done.
+  core.String endTime;
+
+  /// The matter ID of the associated matter.
+  core.String matterId;
+
+  /// The search query from the request.
+  Query query;
+
+  /// Creation time of count operation.
+  core.String startTime;
+
+  CountArtifactsMetadata();
+
+  CountArtifactsMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("matterId")) {
+      matterId = _json["matterId"];
+    }
+    if (_json.containsKey("query")) {
+      query = new Query.fromJson(_json["query"]);
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (matterId != null) {
+      _json["matterId"] = matterId;
+    }
+    if (query != null) {
+      _json["query"] = (query).toJson();
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+/// Count artifacts request.
+class CountArtifactsRequest {
+  /// The search query.
+  Query query;
+
+  /// Specifies the granularity of the count result returned in response.
+  /// Possible string values are:
+  /// - "COUNT_RESULT_VIEW_UNSPECIFIED" : Default. It works the same as
+  /// TOTAL_COUNT.
+  /// - "TOTAL_COUNT" : Response includes: total count, queried accounts count,
+  /// matching accounts count, non-queryable accounts, queried account errors.
+  /// - "ALL" : Response includes additional breakdown of account count.
+  core.String view;
+
+  CountArtifactsRequest();
+
+  CountArtifactsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("query")) {
+      query = new Query.fromJson(_json["query"]);
+    }
+    if (_json.containsKey("view")) {
+      view = _json["view"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (query != null) {
+      _json["query"] = (query).toJson();
+    }
+    if (view != null) {
+      _json["view"] = view;
+    }
+    return _json;
+  }
+}
+
+/// Definition of the response for method CountArtifacts.
+class CountArtifactsResponse {
+  /// Count metrics of Groups.
+  GroupsCountResult groupsCountResult;
+
+  /// Count metrics of Mail.
+  MailCountResult mailCountResult;
+
+  /// Total count of artifacts. For mail and groups, artifacts refers to
+  /// messages.
+  core.String totalCount;
+
+  CountArtifactsResponse();
+
+  CountArtifactsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("groupsCountResult")) {
+      groupsCountResult =
+          new GroupsCountResult.fromJson(_json["groupsCountResult"]);
+    }
+    if (_json.containsKey("mailCountResult")) {
+      mailCountResult = new MailCountResult.fromJson(_json["mailCountResult"]);
+    }
+    if (_json.containsKey("totalCount")) {
+      totalCount = _json["totalCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (groupsCountResult != null) {
+      _json["groupsCountResult"] = (groupsCountResult).toJson();
+    }
+    if (mailCountResult != null) {
+      _json["mailCountResult"] = (mailCountResult).toJson();
+    }
+    if (totalCount != null) {
+      _json["totalCount"] = totalCount;
     }
     return _json;
   }
@@ -2207,6 +2656,9 @@ class ExportOptions {
   /// - "EUROPE" : Europe region.
   core.String region;
 
+  /// Option available for voice export.
+  VoiceExportOptions voiceOptions;
+
   ExportOptions();
 
   ExportOptions.fromJson(core.Map _json) {
@@ -2225,6 +2677,9 @@ class ExportOptions {
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
+    }
+    if (_json.containsKey("voiceOptions")) {
+      voiceOptions = new VoiceExportOptions.fromJson(_json["voiceOptions"]);
     }
   }
 
@@ -2245,6 +2700,9 @@ class ExportOptions {
     }
     if (region != null) {
       _json["region"] = region;
+    }
+    if (voiceOptions != null) {
+      _json["voiceOptions"] = (voiceOptions).toJson();
     }
     return _json;
   }
@@ -2286,6 +2744,76 @@ class ExportStats {
     }
     if (totalArtifactCount != null) {
       _json["totalArtifactCount"] = totalArtifactCount;
+    }
+    return _json;
+  }
+}
+
+/// Groups specific count metrics.
+class GroupsCountResult {
+  /// Error occurred when querying these accounts.
+  core.List<AccountCountError> accountCountErrors;
+
+  /// Subtotal count per matching account that have more than zero messages.
+  core.List<AccountCount> accountCounts;
+
+  /// Total number of accounts that can be queried and have more than zero
+  /// messages.
+  core.String matchingAccountsCount;
+
+  /// When data scope is HELD_DATA in the request Query, these accounts in the
+  /// request are not queried because they are not on hold. For other data
+  /// scope, this field is not set.
+  core.List<core.String> nonQueryableAccounts;
+
+  /// Total number of accounts involved in this count operation.
+  core.String queriedAccountsCount;
+
+  GroupsCountResult();
+
+  GroupsCountResult.fromJson(core.Map _json) {
+    if (_json.containsKey("accountCountErrors")) {
+      accountCountErrors = (_json["accountCountErrors"] as core.List)
+          .map<AccountCountError>(
+              (value) => new AccountCountError.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("accountCounts")) {
+      accountCounts = (_json["accountCounts"] as core.List)
+          .map<AccountCount>((value) => new AccountCount.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("matchingAccountsCount")) {
+      matchingAccountsCount = _json["matchingAccountsCount"];
+    }
+    if (_json.containsKey("nonQueryableAccounts")) {
+      nonQueryableAccounts =
+          (_json["nonQueryableAccounts"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("queriedAccountsCount")) {
+      queriedAccountsCount = _json["queriedAccountsCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountCountErrors != null) {
+      _json["accountCountErrors"] =
+          accountCountErrors.map((value) => (value).toJson()).toList();
+    }
+    if (accountCounts != null) {
+      _json["accountCounts"] =
+          accountCounts.map((value) => (value).toJson()).toList();
+    }
+    if (matchingAccountsCount != null) {
+      _json["matchingAccountsCount"] = matchingAccountsCount;
+    }
+    if (nonQueryableAccounts != null) {
+      _json["nonQueryableAccounts"] = nonQueryableAccounts;
+    }
+    if (queriedAccountsCount != null) {
+      _json["queriedAccountsCount"] = queriedAccountsCount;
     }
     return _json;
   }
@@ -2626,6 +3154,30 @@ class HeldOrgUnit {
   }
 }
 
+/// Query options for Voice holds.
+class HeldVoiceQuery {
+  /// Data covered by this rule. Should be non-empty. Order does not matter and
+  /// duplicates will be ignored.
+  core.List<core.String> coveredData;
+
+  HeldVoiceQuery();
+
+  HeldVoiceQuery.fromJson(core.Map _json) {
+    if (_json.containsKey("coveredData")) {
+      coveredData = (_json["coveredData"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (coveredData != null) {
+      _json["coveredData"] = coveredData;
+    }
+    return _json;
+  }
+}
+
 /// Represents a hold within Vault. A hold restricts purging of artifacts based
 /// on the combination of the query and accounts restrictions. A hold can be
 /// configured to either apply to an explicitly configured set of accounts, or
@@ -2642,6 +3194,7 @@ class Hold {
   /// - "MAIL" : Mail.
   /// - "GROUPS" : Groups.
   /// - "HANGOUTS_CHAT" : Hangouts Chat.
+  /// - "VOICE" : Google Voice.
   core.String corpus;
 
   /// The unique immutable ID of the hold. Assigned during creation.
@@ -2845,6 +3398,41 @@ class ListMattersResponse {
   }
 }
 
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation> operations;
+
+  ListOperationsResponse();
+
+  ListOperationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("operations")) {
+      operations = (_json["operations"] as core.List)
+          .map<Operation>((value) => new Operation.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (operations != null) {
+      _json["operations"] =
+          operations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Definition of the response for method ListSaveQuery.
 class ListSavedQueriesResponse {
   /// Page token to retrieve the next page of results in the list. If this is
@@ -2876,6 +3464,76 @@ class ListSavedQueriesResponse {
     if (savedQueries != null) {
       _json["savedQueries"] =
           savedQueries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Mail specific count metrics.
+class MailCountResult {
+  /// Error occurred when querying these accounts.
+  core.List<AccountCountError> accountCountErrors;
+
+  /// Subtotal count per matching account that have more than zero messages.
+  core.List<AccountCount> accountCounts;
+
+  /// Total number of accounts that can be queried and have more than zero
+  /// messages.
+  core.String matchingAccountsCount;
+
+  /// When data scope is HELD_DATA in the request Query, these accounts in the
+  /// request are not queried because they are not on hold. For other data
+  /// scope, this field is not set.
+  core.List<core.String> nonQueryableAccounts;
+
+  /// Total number of accounts involved in this count operation.
+  core.String queriedAccountsCount;
+
+  MailCountResult();
+
+  MailCountResult.fromJson(core.Map _json) {
+    if (_json.containsKey("accountCountErrors")) {
+      accountCountErrors = (_json["accountCountErrors"] as core.List)
+          .map<AccountCountError>(
+              (value) => new AccountCountError.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("accountCounts")) {
+      accountCounts = (_json["accountCounts"] as core.List)
+          .map<AccountCount>((value) => new AccountCount.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("matchingAccountsCount")) {
+      matchingAccountsCount = _json["matchingAccountsCount"];
+    }
+    if (_json.containsKey("nonQueryableAccounts")) {
+      nonQueryableAccounts =
+          (_json["nonQueryableAccounts"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("queriedAccountsCount")) {
+      queriedAccountsCount = _json["queriedAccountsCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountCountErrors != null) {
+      _json["accountCountErrors"] =
+          accountCountErrors.map((value) => (value).toJson()).toList();
+    }
+    if (accountCounts != null) {
+      _json["accountCounts"] =
+          accountCounts.map((value) => (value).toJson()).toList();
+    }
+    if (matchingAccountsCount != null) {
+      _json["matchingAccountsCount"] = matchingAccountsCount;
+    }
+    if (nonQueryableAccounts != null) {
+      _json["nonQueryableAccounts"] = nonQueryableAccounts;
+    }
+    if (queriedAccountsCount != null) {
+      _json["queriedAccountsCount"] = queriedAccountsCount;
     }
     return _json;
   }
@@ -3048,6 +3706,87 @@ class MatterPermission {
   }
 }
 
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status error;
+
+  /// Service-specific metadata associated with the operation. It typically
+  /// contains progress information and common metadata such as create time.
+  /// Some services might not provide such metadata. Any method that returns a
+  /// long-running operation should document the metadata type, if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it. If you use the default HTTP mapping, the
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  core.String name;
+
+  /// The normal response of the operation in case of success. If the original
+  /// method returns no data on success, such as `Delete`, the response is
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> response;
+
+  Operation();
+
+  Operation.fromJson(core.Map _json) {
+    if (_json.containsKey("done")) {
+      done = _json["done"];
+    }
+    if (_json.containsKey("error")) {
+      error = new Status.fromJson(_json["error"]);
+    }
+    if (_json.containsKey("metadata")) {
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("response")) {
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (done != null) {
+      _json["done"] = done;
+    }
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (response != null) {
+      _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
 /// Org Unit to search
 class OrgUnitInfo {
   /// Org unit to search, as provided by the Admin SDK Directory API.
@@ -3084,6 +3823,7 @@ class Query {
   /// - "MAIL" : Mail.
   /// - "GROUPS" : Groups.
   /// - "HANGOUTS_CHAT" : Hangouts Chat.
+  /// - "VOICE" : Google Voice.
   core.String corpus;
 
   /// The data source to search from.
@@ -3171,6 +3911,9 @@ class Query {
   /// "America/Los_Angeles". For more information, see Time Zone.
   core.String timeZone;
 
+  /// For voice search, specify more options in this field.
+  VoiceOptions voiceOptions;
+
   Query();
 
   Query.fromJson(core.Map _json) {
@@ -3224,6 +3967,9 @@ class Query {
     if (_json.containsKey("timeZone")) {
       timeZone = _json["timeZone"];
     }
+    if (_json.containsKey("voiceOptions")) {
+      voiceOptions = new VoiceOptions.fromJson(_json["voiceOptions"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3276,6 +4022,9 @@ class Query {
     }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;
+    }
+    if (voiceOptions != null) {
+      _json["voiceOptions"] = (voiceOptions).toJson();
     }
     return _json;
   }
@@ -3593,6 +4342,56 @@ class UserInfo {
     }
     if (email != null) {
       _json["email"] = email;
+    }
+    return _json;
+  }
+}
+
+/// The options for voice export.
+class VoiceExportOptions {
+  /// The export format for voice export.
+  /// Possible string values are:
+  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
+  /// - "MBOX" : MBOX as export format.
+  /// - "PST" : PST as export format
+  core.String exportFormat;
+
+  VoiceExportOptions();
+
+  VoiceExportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("exportFormat")) {
+      exportFormat = _json["exportFormat"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exportFormat != null) {
+      _json["exportFormat"] = exportFormat;
+    }
+    return _json;
+  }
+}
+
+/// Voice search options
+class VoiceOptions {
+  /// Datatypes to search
+  core.List<core.String> coveredData;
+
+  VoiceOptions();
+
+  VoiceOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("coveredData")) {
+      coveredData = (_json["coveredData"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (coveredData != null) {
+      _json["coveredData"] = coveredData;
     }
     return _json;
   }

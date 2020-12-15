@@ -103,11 +103,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -120,9 +120,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -134,14 +134,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -437,6 +437,56 @@ class ProjectsLocationsInstancesResourceApi {
     return _response.then((data) => new Instance.fromJson(data));
   }
 
+  /// Gets the AUTH string for a Redis instance. If AUTH is not enabled for the
+  /// instance the response will be empty. This information is not included in
+  /// the details returned to GetInstance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis instance resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstanceAuthString].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstanceAuthString> getAuthString(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/authString';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new InstanceAuthString.fromJson(data));
+  }
+
   /// Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
   /// Redis may stop serving during this operation. Instance state will be
   /// IMPORTING for entire operation. When complete, the instance will contain
@@ -507,14 +557,14 @@ class ProjectsLocationsInstancesResourceApi {
   /// refers to a GCP region.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageToken] - The `next_page_token` value returned from a previous
+  /// ListInstances request, if any.
+  ///
   /// [pageSize] - The maximum number of items to return. If not specified, a
   /// default value of 1000 will be used by the service. Regardless of the
   /// page_size value, the response may include a partial list and a caller
   /// should only rely on response's `next_page_token` to determine if there are
   /// more instances left to be queried.
-  ///
-  /// [pageToken] - The `next_page_token` value returned from a previous
-  /// ListInstances request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -527,7 +577,7 @@ class ProjectsLocationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -538,11 +588,11 @@ class ProjectsLocationsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -849,11 +899,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -866,9 +916,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String filter,
-      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -880,14 +930,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1204,6 +1254,11 @@ class Instance {
   /// it must be a different zone from the one provided in location_id.
   core.String alternativeLocationId;
 
+  /// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If
+  /// set to "true" AUTH is enabled on the instance. Default value is "false"
+  /// meaning AUTH is disabled.
+  core.bool authEnabled;
+
   /// Optional. The full name of the Google Compute Engine
   /// [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is
   /// connected. If left unspecified, the `default` network will be used.
@@ -1289,6 +1344,9 @@ class Instance {
   /// non-overlapping with existing subnets in an authorized network.
   core.String reservedIpRange;
 
+  /// Output only. List of server CA certificates for the instance.
+  core.List<TlsCertificate> serverCaCerts;
+
   /// Output only. The current state of this instance.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not set.
@@ -1318,11 +1376,23 @@ class Instance {
   /// instances
   core.String tier;
 
+  /// Optional. The TLS mode of the Redis instance. If not provided, TLS is
+  /// disabled for the instance.
+  /// Possible string values are:
+  /// - "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED" : Not set.
+  /// - "SERVER_AUTHENTICATION" : Client to Server traffic encryption enabled
+  /// with server authentication.
+  /// - "DISABLED" : TLS is disabled for the instance.
+  core.String transitEncryptionMode;
+
   Instance();
 
   Instance.fromJson(core.Map _json) {
     if (_json.containsKey("alternativeLocationId")) {
       alternativeLocationId = _json["alternativeLocationId"];
+    }
+    if (_json.containsKey("authEnabled")) {
+      authEnabled = _json["authEnabled"];
     }
     if (_json.containsKey("authorizedNetwork")) {
       authorizedNetwork = _json["authorizedNetwork"];
@@ -1370,6 +1440,11 @@ class Instance {
     if (_json.containsKey("reservedIpRange")) {
       reservedIpRange = _json["reservedIpRange"];
     }
+    if (_json.containsKey("serverCaCerts")) {
+      serverCaCerts = (_json["serverCaCerts"] as core.List)
+          .map<TlsCertificate>((value) => new TlsCertificate.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
@@ -1379,6 +1454,9 @@ class Instance {
     if (_json.containsKey("tier")) {
       tier = _json["tier"];
     }
+    if (_json.containsKey("transitEncryptionMode")) {
+      transitEncryptionMode = _json["transitEncryptionMode"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1386,6 +1464,9 @@ class Instance {
         new core.Map<core.String, core.Object>();
     if (alternativeLocationId != null) {
       _json["alternativeLocationId"] = alternativeLocationId;
+    }
+    if (authEnabled != null) {
+      _json["authEnabled"] = authEnabled;
     }
     if (authorizedNetwork != null) {
       _json["authorizedNetwork"] = authorizedNetwork;
@@ -1432,6 +1513,10 @@ class Instance {
     if (reservedIpRange != null) {
       _json["reservedIpRange"] = reservedIpRange;
     }
+    if (serverCaCerts != null) {
+      _json["serverCaCerts"] =
+          serverCaCerts.map((value) => (value).toJson()).toList();
+    }
     if (state != null) {
       _json["state"] = state;
     }
@@ -1440,6 +1525,32 @@ class Instance {
     }
     if (tier != null) {
       _json["tier"] = tier;
+    }
+    if (transitEncryptionMode != null) {
+      _json["transitEncryptionMode"] = transitEncryptionMode;
+    }
+    return _json;
+  }
+}
+
+/// Instance AUTH string details.
+class InstanceAuthString {
+  /// AUTH string set on the instance.
+  core.String authString;
+
+  InstanceAuthString();
+
+  InstanceAuthString.fromJson(core.Map _json) {
+    if (_json.containsKey("authString")) {
+      authString = _json["authString"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (authString != null) {
+      _json["authString"] = authString;
     }
     return _json;
   }
@@ -1793,6 +1904,69 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// TlsCertificate Resource
+class TlsCertificate {
+  /// PEM representation.
+  core.String cert;
+
+  /// Output only. The time when the certificate was created in [RFC
+  /// 3339](https://tools.ietf.org/html/rfc3339) format, for example
+  /// `2020-05-18T00:00:00.094Z`.
+  core.String createTime;
+
+  /// Output only. The time when the certificate expires in [RFC
+  /// 3339](https://tools.ietf.org/html/rfc3339) format, for example
+  /// `2020-05-18T00:00:00.094Z`.
+  core.String expireTime;
+
+  /// Serial number, as extracted from the certificate.
+  core.String serialNumber;
+
+  /// Sha1 Fingerprint of the certificate.
+  core.String sha1Fingerprint;
+
+  TlsCertificate();
+
+  TlsCertificate.fromJson(core.Map _json) {
+    if (_json.containsKey("cert")) {
+      cert = _json["cert"];
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+    if (_json.containsKey("serialNumber")) {
+      serialNumber = _json["serialNumber"];
+    }
+    if (_json.containsKey("sha1Fingerprint")) {
+      sha1Fingerprint = _json["sha1Fingerprint"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cert != null) {
+      _json["cert"] = cert;
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    if (serialNumber != null) {
+      _json["serialNumber"] = serialNumber;
+    }
+    if (sha1Fingerprint != null) {
+      _json["sha1Fingerprint"] = sha1Fingerprint;
     }
     return _json;
   }

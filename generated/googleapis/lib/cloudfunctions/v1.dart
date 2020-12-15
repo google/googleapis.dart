@@ -96,10 +96,7 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of records that should be returned.
-  /// Requested page size cannot exceed 100. If not set, the default page size
-  /// is 100. Pagination is only supported when querying for a specific
-  /// function.
+  /// [name] - Must not be set.
   ///
   /// [filter] - Required. A filter for matching the requested operations. The
   /// supported formats of *filter* are: To query for a specific function:
@@ -110,7 +107,10 @@ class OperationsResourceApi {
   /// returned by a previous list call. Pagination is only supported when
   /// querying for a specific function.
   ///
-  /// [name] - Must not be set.
+  /// [pageSize] - The maximum number of records that should be returned.
+  /// Requested page size cannot exceed 100. If not set, the default page size
+  /// is 100. Pagination is only supported when querying for a specific
+  /// function.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -123,10 +123,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.int pageSize,
+      {core.String name,
       core.String filter,
       core.String pageToken,
-      core.String name,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -135,8 +135,8 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -144,8 +144,8 @@ class OperationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (name != null) {
-      _queryParams["name"] = [name];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -188,11 +188,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -205,9 +205,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String filter,
+      core.int pageSize,
       core.String pageToken,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -219,14 +219,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1957,6 +1957,9 @@ class OperationMetadataV1 {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> request;
 
+  /// A field for Firebase function deployments
+  core.String sourceToken;
+
   /// Target of the operation - for example
   /// projects/project-1/locations/region-1/functions/function-1
   core.String target;
@@ -1985,6 +1988,9 @@ class OperationMetadataV1 {
     if (_json.containsKey("request")) {
       request = (_json["request"] as core.Map).cast<core.String, core.Object>();
     }
+    if (_json.containsKey("sourceToken")) {
+      sourceToken = _json["sourceToken"];
+    }
     if (_json.containsKey("target")) {
       target = _json["target"];
     }
@@ -2007,6 +2013,9 @@ class OperationMetadataV1 {
     }
     if (request != null) {
       _json["request"] = request;
+    }
+    if (sourceToken != null) {
+      _json["sourceToken"] = sourceToken;
     }
     if (target != null) {
       _json["target"] = target;

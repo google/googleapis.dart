@@ -104,11 +104,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -121,9 +121,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String filter,
-      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -135,14 +135,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -390,14 +390,14 @@ class ProjectsLocationsInstancesResourceApi {
   /// [orderBy] - Sort results. Supported values are "name", "name desc" or ""
   /// (unsorted).
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
-  ///
   /// [pageSize] - The maximum number of items to return. If not specified, a
   /// default value of 1000 will be used by the service. Regardless of the
   /// page_size value, the response may include a partial list and a caller
   /// should only rely on response's next_page_token to determine if there are
   /// more instances left to be queried.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
   /// [filter] - List filter. For example, exclude all Memcached instances with
   /// name as my-instance by specifying "name != my-instance".
@@ -414,8 +414,8 @@ class ProjectsLocationsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
       {core.String orderBy,
-      core.String pageToken,
       core.int pageSize,
+      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -431,11 +431,11 @@ class ProjectsLocationsInstancesResourceApi {
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -748,9 +748,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -765,8 +765,8 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -779,11 +779,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -849,6 +849,139 @@ class CancelOperationRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Time window specified for daily operations.
+class DailyCycle {
+  /// Output only. Duration of the time window, set by service producer.
+  core.String duration;
+
+  /// Time within the day to start the operations.
+  TimeOfDay startTime;
+
+  DailyCycle();
+
+  DailyCycle.fromJson(core.Map _json) {
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = new TimeOfDay.fromJson(_json["startTime"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (startTime != null) {
+      _json["startTime"] = (startTime).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents a whole or partial calendar date, such as a birthday. The time of
+/// day and time zone are either specified elsewhere or are insignificant. The
+/// date is relative to the Gregorian Calendar. This can represent one of the
+/// following: * A full date, with non-zero year, month, and day values * A
+/// month and day value, with a zero year, such as an anniversary * A year on
+/// its own, with zero month and day values * A year and month value, with a
+/// zero day, such as a credit card expiration date Related types are
+/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+class Date {
+  /// Day of a month. Must be from 1 to 31 and valid for the year and month, or
+  /// 0 to specify a year by itself or a year and month where the day isn't
+  /// significant.
+  core.int day;
+
+  /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+  /// month and day.
+  core.int month;
+
+  /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+  /// year.
+  core.int year;
+
+  Date();
+
+  Date.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("month")) {
+      month = _json["month"];
+    }
+    if (_json.containsKey("year")) {
+      year = _json["year"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (month != null) {
+      _json["month"] = month;
+    }
+    if (year != null) {
+      _json["year"] = year;
+    }
+    return _json;
+  }
+}
+
+/// DenyMaintenancePeriod definition. Maintenance is forbidden within the deny
+/// period. The start_date must be less than the end_date.
+class DenyMaintenancePeriod {
+  /// Deny period end date. This can be: * A full date, with non-zero year,
+  /// month and day values. * A month and day value, with a zero year. Allows
+  /// recurring deny periods each year. Date matching this period will have to
+  /// be before the end.
+  Date endDate;
+
+  /// Deny period start date. This can be: * A full date, with non-zero year,
+  /// month and day values. * A month and day value, with a zero year. Allows
+  /// recurring deny periods each year. Date matching this period will have to
+  /// be the same or after the start.
+  Date startDate;
+
+  /// Time in UTC when the Blackout period starts on start_date and ends on
+  /// end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+  TimeOfDay time;
+
+  DenyMaintenancePeriod();
+
+  DenyMaintenancePeriod.fromJson(core.Map _json) {
+    if (_json.containsKey("endDate")) {
+      endDate = new Date.fromJson(_json["endDate"]);
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = new Date.fromJson(_json["startDate"]);
+    }
+    if (_json.containsKey("time")) {
+      time = new TimeOfDay.fromJson(_json["time"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endDate != null) {
+      _json["endDate"] = (endDate).toJson();
+    }
+    if (startDate != null) {
+      _json["startDate"] = (startDate).toJson();
+    }
+    if (time != null) {
+      _json["time"] = (time).toJson();
+    }
     return _json;
   }
 }
@@ -994,15 +1127,15 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// strings provided by the user.
   core.Map<core.String, core.String> labels;
 
-  /// The MaintenancePolicies that have been attached to the instance. The key
-  /// must be of the type name of the oneof policy name defined in
-  /// MaintenancePolicy, and the referenced policy must define the same policy
-  /// type. For complete details of MaintenancePolicy, please refer to
-  /// go/cloud-saas-mw-ug.
+  /// Deprecated. The MaintenancePolicies that have been attached to the
+  /// instance. The key must be of the type name of the oneof policy name
+  /// defined in MaintenancePolicy, and the referenced policy must define the
+  /// same policy type. For complete details of MaintenancePolicy, please refer
+  /// to go/cloud-saas-mw-ug.
   core.Map<core.String, core.String> maintenancePolicyNames;
 
   /// The MaintenanceSchedule contains the scheduling information of published
-  /// maintenance schedule.
+  /// maintenance schedule with same key as software_versions.
   core.Map<core.String,
           GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>
       maintenanceSchedules;
@@ -1250,12 +1383,26 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   /// the instance in reported rollout progress as not attempted.
   core.bool exclude;
 
+  /// Optional. The MaintenancePolicies that have been attached to the instance.
+  /// The key must be of the type name of the oneof policy name defined in
+  /// MaintenancePolicy, and the embedded policy must define the same policy
+  /// type. For complete details of MaintenancePolicy, please refer to
+  /// go/cloud-saas-mw-ug. If only the name is needed (like in the deprecated
+  /// Instance.maintenance_policy_names field) then only populate
+  /// MaintenancePolicy.name.
+  core.Map<core.String, MaintenancePolicy> maintenancePolicies;
+
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings();
 
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings.fromJson(
       core.Map _json) {
     if (_json.containsKey("exclude")) {
       exclude = _json["exclude"];
+    }
+    if (_json.containsKey("maintenancePolicies")) {
+      maintenancePolicies = commons.mapMap<core.Map, MaintenancePolicy>(
+          _json["maintenancePolicies"].cast<core.String, core.Map>(),
+          (core.Map item) => new MaintenancePolicy.fromJson(item));
     }
   }
 
@@ -1264,6 +1411,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
         new core.Map<core.String, core.Object>();
     if (exclude != null) {
       _json["exclude"] = exclude;
+    }
+    if (maintenancePolicies != null) {
+      _json["maintenancePolicies"] =
+          commons.mapMap<MaintenancePolicy, core.Map<core.String, core.Object>>(
+              maintenancePolicies, (MaintenancePolicy item) => (item).toJson());
     }
     return _json;
   }
@@ -1956,6 +2108,128 @@ class Location {
   }
 }
 
+/// Defines policies to service maintenance events.
+class MaintenancePolicy {
+  /// Output only. The time when the resource was created.
+  core.String createTime;
+
+  /// Optional. Description of what this policy is for. Create/Update methods
+  /// return INVALID_ARGUMENT if the length is greater than 512.
+  core.String description;
+
+  /// Optional. Resource labels to represent user provided metadata. Each label
+  /// is a key-value pair, where both the key and the value are arbitrary
+  /// strings provided by the user.
+  core.Map<core.String, core.String> labels;
+
+  /// Required. MaintenancePolicy name using the form:
+  /// `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}`
+  /// where {project_id} refers to a GCP consumer project ID, {location_id}
+  /// refers to a GCP region/zone, {maintenance_policy_id} must be 1-63
+  /// characters long and match the regular expression
+  /// `[a-z0-9]([-a-z0-9]*[a-z0-9])?`.
+  core.String name;
+
+  /// Optional. The state of the policy.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "READY" : Resource is ready to be used.
+  /// - "DELETING" : Resource is being deleted. It can no longer be attached to
+  /// instances.
+  core.String state;
+
+  /// Maintenance policy applicable to instance update.
+  UpdatePolicy updatePolicy;
+
+  /// Output only. The time when the resource was updated.
+  core.String updateTime;
+
+  MaintenancePolicy();
+
+  MaintenancePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("updatePolicy")) {
+      updatePolicy = new UpdatePolicy.fromJson(_json["updatePolicy"]);
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (updatePolicy != null) {
+      _json["updatePolicy"] = (updatePolicy).toJson();
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// MaintenanceWindow definition.
+class MaintenanceWindow {
+  /// Daily cycle.
+  DailyCycle dailyCycle;
+
+  /// Weekly cycle.
+  WeeklyCycle weeklyCycle;
+
+  MaintenanceWindow();
+
+  MaintenanceWindow.fromJson(core.Map _json) {
+    if (_json.containsKey("dailyCycle")) {
+      dailyCycle = new DailyCycle.fromJson(_json["dailyCycle"]);
+    }
+    if (_json.containsKey("weeklyCycle")) {
+      weeklyCycle = new WeeklyCycle.fromJson(_json["weeklyCycle"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dailyCycle != null) {
+      _json["dailyCycle"] = (dailyCycle).toJson();
+    }
+    if (weeklyCycle != null) {
+      _json["weeklyCycle"] = (weeklyCycle).toJson();
+    }
+    return _json;
+  }
+}
+
 class MemcacheParameters {
   /// Output only. The unique ID associated with this set of parameters. Users
   /// can use this id to determine if the parameters associated with the
@@ -2178,6 +2452,56 @@ class Operation {
   }
 }
 
+/// Configure the schedule.
+class Schedule {
+  /// Allows to define schedule that runs specified day of the week.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String day;
+
+  /// Output only. Duration of the time window, set by service producer.
+  core.String duration;
+
+  /// Time within the window to start the operations.
+  TimeOfDay startTime;
+
+  Schedule();
+
+  Schedule.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = new TimeOfDay.fromJson(_json["startTime"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (startTime != null) {
+      _json["startTime"] = (startTime).toJson();
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -2233,6 +2557,60 @@ class Status {
   }
 }
 
+/// Represents a time of day. The date and time zone are either not significant
+/// or are specified elsewhere. An API may choose to allow leap seconds. Related
+/// types are google.type.Date and `google.protobuf.Timestamp`.
+class TimeOfDay {
+  /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
+  /// to allow the value "24:00:00" for scenarios like business closing time.
+  core.int hours;
+
+  /// Minutes of hour of day. Must be from 0 to 59.
+  core.int minutes;
+
+  /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+  core.int nanos;
+
+  /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+  /// allow the value 60 if it allows leap-seconds.
+  core.int seconds;
+
+  TimeOfDay();
+
+  TimeOfDay.fromJson(core.Map _json) {
+    if (_json.containsKey("hours")) {
+      hours = _json["hours"];
+    }
+    if (_json.containsKey("minutes")) {
+      minutes = _json["minutes"];
+    }
+    if (_json.containsKey("nanos")) {
+      nanos = _json["nanos"];
+    }
+    if (_json.containsKey("seconds")) {
+      seconds = _json["seconds"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hours != null) {
+      _json["hours"] = hours;
+    }
+    if (minutes != null) {
+      _json["minutes"] = minutes;
+    }
+    if (nanos != null) {
+      _json["nanos"] = nanos;
+    }
+    if (seconds != null) {
+      _json["seconds"] = seconds;
+    }
+    return _json;
+  }
+}
+
 /// Request for UpdateParameters.
 class UpdateParametersRequest {
   /// The parameters to apply to the instance.
@@ -2260,6 +2638,84 @@ class UpdateParametersRequest {
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
+    }
+    return _json;
+  }
+}
+
+/// Maintenance policy applicable to instance updates.
+class UpdatePolicy {
+  /// Optional. Relative scheduling channel applied to resource.
+  /// Possible string values are:
+  /// - "UPDATE_CHANNEL_UNSPECIFIED" : Unspecified channel.
+  /// - "EARLIER" : Early channel within a customer project.
+  /// - "LATER" : Later channel within a customer project.
+  core.String channel;
+
+  /// Deny Maintenance Period that is applied to resource to indicate when
+  /// maintenance is forbidden. User can specify zero or more non-overlapping
+  /// deny periods. For V1, Maximum number of deny_maintenance_periods is
+  /// expected to be one.
+  core.List<DenyMaintenancePeriod> denyMaintenancePeriods;
+
+  /// Optional. Maintenance window that is applied to resources covered by this
+  /// policy.
+  MaintenanceWindow window;
+
+  UpdatePolicy();
+
+  UpdatePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("channel")) {
+      channel = _json["channel"];
+    }
+    if (_json.containsKey("denyMaintenancePeriods")) {
+      denyMaintenancePeriods = (_json["denyMaintenancePeriods"] as core.List)
+          .map<DenyMaintenancePeriod>(
+              (value) => new DenyMaintenancePeriod.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("window")) {
+      window = new MaintenanceWindow.fromJson(_json["window"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (channel != null) {
+      _json["channel"] = channel;
+    }
+    if (denyMaintenancePeriods != null) {
+      _json["denyMaintenancePeriods"] =
+          denyMaintenancePeriods.map((value) => (value).toJson()).toList();
+    }
+    if (window != null) {
+      _json["window"] = (window).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Time window specified for weekly operations.
+class WeeklyCycle {
+  /// User can specify multiple windows in a week. Minimum of 1 window.
+  core.List<Schedule> schedule;
+
+  WeeklyCycle();
+
+  WeeklyCycle.fromJson(core.Map _json) {
+    if (_json.containsKey("schedule")) {
+      schedule = (_json["schedule"] as core.List)
+          .map<Schedule>((value) => new Schedule.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (schedule != null) {
+      _json["schedule"] = schedule.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

@@ -1232,11 +1232,6 @@ class InstancesResourceApi {
   /// [project] - Project ID of the project for which to list Cloud SQL
   /// instances.
   ///
-  /// [pageToken] - A previously-returned page token representing part of the
-  /// larger set of results to view.
-  ///
-  /// [maxResults] - The maximum number of results to return per response.
-  ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression is in the form of field:value. For example,
   /// 'instanceType:CLOUD_SQL_INSTANCE'. Fields can be nested as needed as per
@@ -1244,6 +1239,11 @@ class InstancesResourceApi {
   /// Multiple filter queries are space-separated. For example. 'state:RUNNABLE
   /// instanceType:CLOUD_SQL_INSTANCE'. By default, each expression is an AND
   /// expression. However, you can include AND and OR expressions explicitly.
+  ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of results to view.
+  ///
+  /// [maxResults] - The maximum number of results to return per response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1256,9 +1256,9 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstancesListResponse> list(core.String project,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int maxResults,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1270,14 +1270,14 @@ class InstancesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1978,10 +1978,10 @@ class OperationsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [maxResults] - Maximum number of operations per response.
+  ///
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
-  ///
-  /// [maxResults] - Maximum number of operations per response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1995,8 +1995,8 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<OperationsListResponse> list(core.String project,
       {core.String instance,
-      core.String pageToken,
       core.int maxResults,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2011,11 +2011,11 @@ class OperationsResourceApi {
     if (instance != null) {
       _queryParams["instance"] = [instance];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2118,7 +2118,9 @@ class ProjectsInstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
-  /// [syncMode] - External sync mode
+  /// [skipVerification] - Whether to skip the verification step (VESS).
+  ///
+  /// [syncMode] - External sync mode.
   /// Possible string values are:
   /// - "EXTERNAL_SYNC_MODE_UNSPECIFIED" : Unknown external sync mode, will be
   /// defaulted to ONLINE mode
@@ -2139,7 +2141,7 @@ class ProjectsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> startExternalSync(
       core.String project, core.String instance,
-      {core.String syncMode, core.String $fields}) {
+      {core.bool skipVerification, core.String syncMode, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2152,6 +2154,9 @@ class ProjectsInstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (skipVerification != null) {
+      _queryParams["skipVerification"] = ["${skipVerification}"];
     }
     if (syncMode != null) {
       _queryParams["syncMode"] = [syncMode];
@@ -2615,9 +2620,9 @@ class UsersResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
-  /// [host] - Host of the user in the instance.
-  ///
   /// [name] - Name of the user in the instance.
+  ///
+  /// [host] - Host of the user in the instance.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2630,7 +2635,7 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String instance,
-      {core.String host, core.String name, core.String $fields}) {
+      {core.String name, core.String host, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2644,11 +2649,11 @@ class UsersResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-    if (host != null) {
-      _queryParams["host"] = [host];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
+    }
+    if (host != null) {
+      _queryParams["host"] = [host];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3031,6 +3036,38 @@ class BackupConfiguration {
     }
     if (transactionLogRetentionDays != null) {
       _json["transactionLogRetentionDays"] = transactionLogRetentionDays;
+    }
+    return _json;
+  }
+}
+
+/// Backup context.
+class BackupContext {
+  /// The identifier of the backup.
+  core.String backupId;
+
+  /// This is always *sql#backupContext*.
+  core.String kind;
+
+  BackupContext();
+
+  BackupContext.fromJson(core.Map _json) {
+    if (_json.containsKey("backupId")) {
+      backupId = _json["backupId"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backupId != null) {
+      _json["backupId"] = backupId;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -3714,8 +3751,18 @@ class DatabaseInstance {
   /// Initial root password. Use only on creation.
   core.String rootPassword;
 
+  /// The status indicating if instance satisfies physical zone separation.
+  /// Reserved for future use.
+  core.bool satisfiesPzs;
+
   /// The start time of any upcoming scheduled maintenance for this instance.
   SqlScheduledMaintenance scheduledMaintenance;
+
+  /// The Compute Engine zone that the failover instance is currently serving
+  /// from for a regional instance. This value could be different from the zone
+  /// that was specified when the instance was created if the instance has
+  /// failed over to its secondary/failover zone. Reserved for future use.
+  core.String secondaryGceZone;
 
   /// The URI of this resource.
   core.String selfLink;
@@ -3831,9 +3878,15 @@ class DatabaseInstance {
     if (_json.containsKey("rootPassword")) {
       rootPassword = _json["rootPassword"];
     }
+    if (_json.containsKey("satisfiesPzs")) {
+      satisfiesPzs = _json["satisfiesPzs"];
+    }
     if (_json.containsKey("scheduledMaintenance")) {
       scheduledMaintenance =
           new SqlScheduledMaintenance.fromJson(_json["scheduledMaintenance"]);
+    }
+    if (_json.containsKey("secondaryGceZone")) {
+      secondaryGceZone = _json["secondaryGceZone"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -3927,8 +3980,14 @@ class DatabaseInstance {
     if (rootPassword != null) {
       _json["rootPassword"] = rootPassword;
     }
+    if (satisfiesPzs != null) {
+      _json["satisfiesPzs"] = satisfiesPzs;
+    }
     if (scheduledMaintenance != null) {
       _json["scheduledMaintenance"] = (scheduledMaintenance).toJson();
+    }
+    if (secondaryGceZone != null) {
+      _json["secondaryGceZone"] = secondaryGceZone;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -4268,7 +4327,7 @@ class DiskEncryptionStatus {
   }
 }
 
-/// Options for exporting data as CSV.
+/// Options for exporting data as CSV. *MySQL* and *PostgreSQL* instances only.
 class ExportContextCsvExportOptions {
   /// The select query used to extract the data.
   core.String selectQuery;
@@ -4295,8 +4354,9 @@ class ExportContextCsvExportOptions {
 class ExportContextSqlExportOptionsMysqlExportOptions {
   /// Option to include SQL statement required to set up replication. If set to
   /// *1*, the dump file includes a CHANGE MASTER TO statement with the binary
-  /// log coordinates. If set to *2*, the CHANGE MASTER TO statement is written
-  /// as a SQL comment, and has no effect. All other values are ignored.
+  /// log coordinates, and --set-gtid-purged is set to ON. If set to *2*, the
+  /// CHANGE MASTER TO statement is written as a SQL comment and has no effect.
+  /// If set to any value other than *1*, --set-gtid-purged is set to OFF.
   core.int masterData;
 
   ExportContextSqlExportOptionsMysqlExportOptions();
@@ -4364,7 +4424,8 @@ class ExportContextSqlExportOptions {
 
 /// Database instance export context.
 class ExportContext {
-  /// Options for exporting data as CSV.
+  /// Options for exporting data as CSV. *MySQL* and *PostgreSQL* instances
+  /// only.
   ExportContextCsvExportOptions csvExportOptions;
 
   /// Databases to be exported. *MySQL instances:* If *fileType* is *SQL* and no
@@ -4378,7 +4439,8 @@ class ExportContext {
   core.List<core.String> databases;
 
   /// The file type for the specified uri. *SQL*: The file contains SQL
-  /// statements. *CSV*: The file contains CSV data.
+  /// statements. *CSV*: The file contains CSV data. *BAK*: The file contains
+  /// backup data for a SQL Server instance.
   /// Possible string values are:
   /// - "SQL_FILE_TYPE_UNSPECIFIED" : Unknown file type.
   /// - "SQL" : File containing SQL statements.
@@ -4396,9 +4458,9 @@ class ExportContext {
   ExportContextSqlExportOptions sqlExportOptions;
 
   /// The path to the file in Google Cloud Storage where the export will be
-  /// stored. The URI is in the form *gs: //bucketName/fileName*. If the file
-  /// already exists, the requests // succeeds, but the operation fails. If
-  /// *fileType* is // *SQL* and the filename ends with .gz, the contents are //
+  /// stored. The URI is in the form *gs://bucketName/fileName*. If the file
+  /// already exists, the request succeeds, but the operation fails. If
+  /// *fileType* is *SQL* and the filename ends with .gz, the contents are
   /// compressed.
   core.String uri;
 
@@ -4778,9 +4840,9 @@ class ImportContext {
   /// This is always *sql#importContext*.
   core.String kind;
 
-  /// Path to the import file in Cloud Storage, in the form *gs:
-  /// //bucketName/fileName*. Compressed gzip files (.gz) are supported // when
-  /// *fileType* is *SQL*. The instance must have // write permissions to the
+  /// Path to the import file in Cloud Storage, in the form
+  /// *gs://bucketName/fileName*. Compressed gzip files (.gz) are supported when
+  /// *fileType* is *SQL*. The instance must have write permissions to the
   /// bucket and read access to the file.
   core.String uri;
 
@@ -4835,6 +4897,60 @@ class ImportContext {
     }
     if (uri != null) {
       _json["uri"] = uri;
+    }
+    return _json;
+  }
+}
+
+/// Insights configuration. This specifies when Cloud SQL Insights feature is
+/// enabled and optional configuration.
+class InsightsConfig {
+  /// Whether Query Insights feature is enabled.
+  core.bool queryInsightsEnabled;
+
+  /// Maximum query length stored in bytes. Default value: 1024 bytes. Range:
+  /// 256-4500 bytes. Query length more than this field value will be truncated
+  /// to this value. When unset, query length will be the default value.
+  core.int queryStringLength;
+
+  /// Whether Query Insights will record application tags from query when
+  /// enabled.
+  core.bool recordApplicationTags;
+
+  /// Whether Query Insights will record client address when enabled.
+  core.bool recordClientAddress;
+
+  InsightsConfig();
+
+  InsightsConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("queryInsightsEnabled")) {
+      queryInsightsEnabled = _json["queryInsightsEnabled"];
+    }
+    if (_json.containsKey("queryStringLength")) {
+      queryStringLength = _json["queryStringLength"];
+    }
+    if (_json.containsKey("recordApplicationTags")) {
+      recordApplicationTags = _json["recordApplicationTags"];
+    }
+    if (_json.containsKey("recordClientAddress")) {
+      recordClientAddress = _json["recordClientAddress"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (queryInsightsEnabled != null) {
+      _json["queryInsightsEnabled"] = queryInsightsEnabled;
+    }
+    if (queryStringLength != null) {
+      _json["queryStringLength"] = queryStringLength;
+    }
+    if (recordApplicationTags != null) {
+      _json["recordApplicationTags"] = recordApplicationTags;
+    }
+    if (recordClientAddress != null) {
+      _json["recordClientAddress"] = recordClientAddress;
     }
     return _json;
   }
@@ -5255,6 +5371,10 @@ class LocationPreference {
   /// This is always *sql#locationPreference*.
   core.String kind;
 
+  /// The preferred Compute Engine zone for the secondary/failover (for example:
+  /// us-central1-a, us-central1-b, etc.). Reserved for future use.
+  core.String secondaryZone;
+
   /// The preferred Compute Engine zone (for example: us-central1-a,
   /// us-central1-b, etc.).
   core.String zone;
@@ -5267,6 +5387,9 @@ class LocationPreference {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("secondaryZone")) {
+      secondaryZone = _json["secondaryZone"];
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -5281,6 +5404,9 @@ class LocationPreference {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (secondaryZone != null) {
+      _json["secondaryZone"] = secondaryZone;
     }
     if (zone != null) {
       _json["zone"] = zone;
@@ -5558,8 +5684,11 @@ class OnPremisesConfiguration {
 
 /// An Operation resource. For successful operations that return an Operation
 /// resource, only the fields relevant to the operation are populated in the
-/// resource.
+/// resource. Next field: 18
 class Operation {
+  /// The context for backup operation, if applicable.
+  BackupContext backupContext;
+
   /// The time this operation finished in UTC timezone in RFC 3339 format, for
   /// example *2012-11-15T16:19:00.094Z*.
   core.String endTime;
@@ -5665,6 +5794,9 @@ class Operation {
   Operation();
 
   Operation.fromJson(core.Map _json) {
+    if (_json.containsKey("backupContext")) {
+      backupContext = new BackupContext.fromJson(_json["backupContext"]);
+    }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
@@ -5715,6 +5847,9 @@ class Operation {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (backupContext != null) {
+      _json["backupContext"] = (backupContext).toJson();
+    }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -6073,7 +6208,8 @@ class Settings {
   /// - "ON_DEMAND" : The instance starts upon receiving requests.
   core.String activationPolicy;
 
-  /// Active Directory configuration, for now relevant only for SQL Server
+  /// Active Directory configuration, relevant only for Cloud SQL for SQL
+  /// Server.
   SqlActiveDirectoryConfig activeDirectoryConfig;
 
   /// The App Engine app IDs that can access this instance. (Deprecated) Applied
@@ -6125,6 +6261,9 @@ class Settings {
 
   /// Deny maintenance periods
   core.List<DenyMaintenancePeriod> denyMaintenancePeriods;
+
+  /// Insights configuration, for now relevant only for Postgres.
+  InsightsConfig insightsConfig;
 
   /// The settings for IP Management. This allows to enable or disable the
   /// instance IP and manage which external networks can connect to the
@@ -6238,6 +6377,9 @@ class Settings {
               (value) => new DenyMaintenancePeriod.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("insightsConfig")) {
+      insightsConfig = new InsightsConfig.fromJson(_json["insightsConfig"]);
+    }
     if (_json.containsKey("ipConfiguration")) {
       ipConfiguration = new IpConfiguration.fromJson(_json["ipConfiguration"]);
     }
@@ -6317,6 +6459,9 @@ class Settings {
       _json["denyMaintenancePeriods"] =
           denyMaintenancePeriods.map((value) => (value).toJson()).toList();
     }
+    if (insightsConfig != null) {
+      _json["insightsConfig"] = (insightsConfig).toJson();
+    }
     if (ipConfiguration != null) {
       _json["ipConfiguration"] = (ipConfiguration).toJson();
     }
@@ -6354,12 +6499,12 @@ class Settings {
   }
 }
 
-/// Active Directory configuration, for now relevant only for SQL Server
+/// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 class SqlActiveDirectoryConfig {
-  /// Domain name
+  /// The name of the domain (e.g., mydomain.com).
   core.String domain;
 
-  /// This will be always sql#activeDirectoryConfig.
+  /// This is always sql#activeDirectoryConfig.
   core.String kind;
 
   SqlActiveDirectoryConfig();
@@ -6428,6 +6573,10 @@ class SqlExternalSyncSettingError {
   /// - "UNSUPPORTED_GTID_MODE" : The gtid_mode is not supported, applicable for
   /// MySQL.
   /// - "SQLSERVER_AGENT_NOT_RUNNING" : SQL Server Agent is not running.
+  /// - "UNSUPPORTED_TABLE_DEFINITION" : The table definition is not support due
+  /// to missing primary key or replica identity, applicable for postgres.
+  /// - "UNSUPPORTED_DEFINER" : The customer has a definer that will break EM
+  /// setup.
   core.String type;
 
   SqlExternalSyncSettingError();

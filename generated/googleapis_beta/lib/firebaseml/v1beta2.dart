@@ -198,13 +198,13 @@ class ProjectsModelsResourceApi {
   /// must have the form `projects/{project_id}'
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
+  /// [filter] - A filter for the list e.g. 'tags: abc' to list models which are
+  /// tagged with "abc"
   ///
   /// [pageSize] - The maximum number of items to return
   ///
-  /// [filter] - A filter for the list e.g. 'tags: abc' to list models which are
-  /// tagged with "abc"
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -217,9 +217,9 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListModelsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -231,14 +231,14 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

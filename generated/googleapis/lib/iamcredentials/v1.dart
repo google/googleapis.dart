@@ -16,9 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client iamcredentials/v1';
 
-/// Creates short-lived credentials for impersonating IAM service accounts.
-/// *Note:* This API is tied to the IAM API (iam.googleapis.com). Enabling or
-/// disabling this API will also enable or disable the IAM API.
+/// Creates short-lived credentials for impersonating IAM service accounts. To
+/// enable this API, you must enable the IAM API (iam.googleapis.com).
 class IamcredentialsApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =

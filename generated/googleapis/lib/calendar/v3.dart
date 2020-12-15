@@ -448,11 +448,11 @@ class AclResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
   /// [showDeleted] - Whether to include deleted ACLs in the result. Deleted
   /// ACLs are represented by role equal to "none". Deleted ACLs will always be
   /// included if syncToken is provided. Optional. The default is False.
-  ///
-  /// [pageToken] - Token specifying which result page to return. Optional.
   ///
   /// [syncToken] - Token obtained from the nextSyncToken field returned on the
   /// last page of results from the previous list request. It makes the result
@@ -480,8 +480,8 @@ class AclResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> watch(Channel request, core.String calendarId,
-      {core.bool showDeleted,
-      core.String pageToken,
+      {core.String pageToken,
+      core.bool showDeleted,
       core.String syncToken,
       core.int maxResults,
       core.String $fields}) {
@@ -498,11 +498,11 @@ class AclResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
@@ -679,23 +679,7 @@ class CalendarListResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - Maximum number of entries returned on one result page. By
-  /// default the value is 100 entries. The page size can never be larger than
-  /// 250 entries. Optional.
-  ///
-  /// [showDeleted] - Whether to include deleted calendar list entries in the
-  /// result. Optional. The default is False.
-  ///
-  /// [showHidden] - Whether to show hidden entries. Optional. The default is
-  /// False.
-  ///
-  /// [minAccessRole] - The minimum access role for the user in the returned
-  /// entries. Optional. The default is no restriction.
-  /// Possible string values are:
-  /// - "freeBusyReader" : The user can read free/busy information.
-  /// - "owner" : The user can read and modify events and access control lists.
-  /// - "reader" : The user can read events that are not private.
-  /// - "writer" : The user can read and modify events.
+  /// [pageToken] - Token specifying which result page to return. Optional.
   ///
   /// [syncToken] - Token obtained from the nextSyncToken field returned on the
   /// last page of results from the previous list request. It makes the result
@@ -712,7 +696,23 @@ class CalendarListResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
-  /// [pageToken] - Token specifying which result page to return. Optional.
+  /// [minAccessRole] - The minimum access role for the user in the returned
+  /// entries. Optional. The default is no restriction.
+  /// Possible string values are:
+  /// - "freeBusyReader" : The user can read free/busy information.
+  /// - "owner" : The user can read and modify events and access control lists.
+  /// - "reader" : The user can read events that are not private.
+  /// - "writer" : The user can read and modify events.
+  ///
+  /// [maxResults] - Maximum number of entries returned on one result page. By
+  /// default the value is 100 entries. The page size can never be larger than
+  /// 250 entries. Optional.
+  ///
+  /// [showHidden] - Whether to show hidden entries. Optional. The default is
+  /// False.
+  ///
+  /// [showDeleted] - Whether to include deleted calendar list entries in the
+  /// result. Optional. The default is False.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -725,12 +725,12 @@ class CalendarListResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarList> list(
-      {core.int maxResults,
-      core.bool showDeleted,
-      core.bool showHidden,
-      core.String minAccessRole,
+      {core.String pageToken,
       core.String syncToken,
-      core.String pageToken,
+      core.String minAccessRole,
+      core.int maxResults,
+      core.bool showHidden,
+      core.bool showDeleted,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -739,23 +739,23 @@ class CalendarListResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
-    if (showHidden != null) {
-      _queryParams["showHidden"] = ["${showHidden}"];
-    }
-    if (minAccessRole != null) {
-      _queryParams["minAccessRole"] = [minAccessRole];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (minAccessRole != null) {
+      _queryParams["minAccessRole"] = [minAccessRole];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (showHidden != null) {
+      _queryParams["showHidden"] = ["${showHidden}"];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -899,19 +899,6 @@ class CalendarListResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Token specifying which result page to return. Optional.
-  ///
-  /// [showHidden] - Whether to show hidden entries. Optional. The default is
-  /// False.
-  ///
-  /// [minAccessRole] - The minimum access role for the user in the returned
-  /// entries. Optional. The default is no restriction.
-  /// Possible string values are:
-  /// - "freeBusyReader" : The user can read free/busy information.
-  /// - "owner" : The user can read and modify events and access control lists.
-  /// - "reader" : The user can read events that are not private.
-  /// - "writer" : The user can read and modify events.
-  ///
   /// [syncToken] - Token obtained from the nextSyncToken field returned on the
   /// last page of results from the previous list request. It makes the result
   /// of this list request contain only entries that have changed since then. If
@@ -927,12 +914,25 @@ class CalendarListResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
-  /// [showDeleted] - Whether to include deleted calendar list entries in the
-  /// result. Optional. The default is False.
-  ///
   /// [maxResults] - Maximum number of entries returned on one result page. By
   /// default the value is 100 entries. The page size can never be larger than
   /// 250 entries. Optional.
+  ///
+  /// [showDeleted] - Whether to include deleted calendar list entries in the
+  /// result. Optional. The default is False.
+  ///
+  /// [minAccessRole] - The minimum access role for the user in the returned
+  /// entries. Optional. The default is no restriction.
+  /// Possible string values are:
+  /// - "freeBusyReader" : The user can read free/busy information.
+  /// - "owner" : The user can read and modify events and access control lists.
+  /// - "reader" : The user can read events that are not private.
+  /// - "writer" : The user can read and modify events.
+  ///
+  /// [showHidden] - Whether to show hidden entries. Optional. The default is
+  /// False.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -945,12 +945,12 @@ class CalendarListResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> watch(Channel request,
-      {core.String pageToken,
-      core.bool showHidden,
-      core.String minAccessRole,
-      core.String syncToken,
-      core.bool showDeleted,
+      {core.String syncToken,
       core.int maxResults,
+      core.bool showDeleted,
+      core.String minAccessRole,
+      core.bool showHidden,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -962,23 +962,23 @@ class CalendarListResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (showHidden != null) {
-      _queryParams["showHidden"] = ["${showHidden}"];
-    }
-    if (minAccessRole != null) {
-      _queryParams["minAccessRole"] = [minAccessRole];
-    }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (minAccessRole != null) {
+      _queryParams["minAccessRole"] = [minAccessRole];
+    }
+    if (showHidden != null) {
+      _queryParams["showHidden"] = ["${showHidden}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1462,17 +1462,17 @@ class EventsResourceApi {
   ///
   /// [eventId] - Event identifier.
   ///
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
+  ///
   /// [timeZone] - Time zone used in the response. Optional. The default is the
   /// time zone of the calendar.
   ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
-  ///
-  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
-  /// returned in the email field for the organizer, creator and attendees, even
-  /// if no real email address is available (i.e. a generated, non-working value
-  /// will be provided).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1485,9 +1485,9 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> get(core.String calendarId, core.String eventId,
-      {core.String timeZone,
+      {core.bool alwaysIncludeEmail,
+      core.String timeZone,
       core.int maxAttendees,
-      core.bool alwaysIncludeEmail,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1502,14 +1502,14 @@ class EventsResourceApi {
     if (eventId == null) {
       throw new core.ArgumentError("Parameter eventId is required.");
     }
+    if (alwaysIncludeEmail != null) {
+      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+    }
     if (timeZone != null) {
       _queryParams["timeZone"] = [timeZone];
     }
     if (maxAttendees != null) {
       _queryParams["maxAttendees"] = ["${maxAttendees}"];
-    }
-    if (alwaysIncludeEmail != null) {
-      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1610,13 +1610,6 @@ class EventsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
-  /// [conferenceDataVersion] - Version number of conference data supported by
-  /// the API client. Version 0 assumes no conference data support and ignores
-  /// conference data in the event's body. Version 1 enables support for copying
-  /// of ConferenceData as well as for creating new conferences using the
-  /// createRequest field of conferenceData. The default is 0.
-  /// Value must be between "0" and "1".
-  ///
   /// [sendUpdates] - Whether to send notifications about the creation of the
   /// new event. Note that some emails might still be sent. The default is
   /// false.
@@ -1628,6 +1621,16 @@ class EventsResourceApi {
   /// migration use cases (note that in most migration cases the import method
   /// should be used).
   ///
+  /// [conferenceDataVersion] - Version number of conference data supported by
+  /// the API client. Version 0 assumes no conference data support and ignores
+  /// conference data in the event's body. Version 1 enables support for copying
+  /// of ConferenceData as well as for creating new conferences using the
+  /// createRequest field of conferenceData. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
+  /// [supportsAttachments] - Whether API client performing operation supports
+  /// event attachments. Optional. The default is False.
+  ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
@@ -1637,9 +1640,6 @@ class EventsResourceApi {
   /// Whether to send notifications about the creation of the new event. Note
   /// that some emails might still be sent even if you set the value to false.
   /// The default is false.
-  ///
-  /// [supportsAttachments] - Whether API client performing operation supports
-  /// event attachments. Optional. The default is False.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1652,11 +1652,11 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> insert(Event request, core.String calendarId,
-      {core.int conferenceDataVersion,
-      core.String sendUpdates,
+      {core.String sendUpdates,
+      core.int conferenceDataVersion,
+      core.bool supportsAttachments,
       core.int maxAttendees,
       core.bool sendNotifications,
-      core.bool supportsAttachments,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1671,20 +1671,20 @@ class EventsResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
+    if (sendUpdates != null) {
+      _queryParams["sendUpdates"] = [sendUpdates];
+    }
     if (conferenceDataVersion != null) {
       _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
     }
-    if (sendUpdates != null) {
-      _queryParams["sendUpdates"] = [sendUpdates];
+    if (supportsAttachments != null) {
+      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
     if (maxAttendees != null) {
       _queryParams["maxAttendees"] = ["${maxAttendees}"];
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
-    }
-    if (supportsAttachments != null) {
-      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1712,39 +1712,39 @@ class EventsResourceApi {
   ///
   /// [eventId] - Recurring event identifier.
   ///
-  /// [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
-  /// Optional. The default is not to filter by end time. Must be an RFC3339
-  /// timestamp with mandatory time zone offset.
-  ///
-  /// [maxAttendees] - The maximum number of attendees to include in the
-  /// response. If there are more than the specified number of attendees, only
-  /// the participant is returned. Optional.
-  ///
-  /// [showDeleted] - Whether to include deleted events (with status equals
-  /// "cancelled") in the result. Cancelled instances of recurring events will
-  /// still be included if singleEvents is False. Optional. The default is
-  /// False.
-  ///
   /// [originalStart] - The original start time of the instance in the result.
   /// Optional.
   ///
-  /// [pageToken] - Token specifying which result page to return. Optional.
+  /// [timeZone] - Time zone used in the response. Optional. The default is the
+  /// time zone of the calendar.
+  ///
+  /// [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
+  /// Optional. The default is not to filter by end time. Must be an RFC3339
+  /// timestamp with mandatory time zone offset.
   ///
   /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
   /// by. Optional. The default is not to filter by start time. Must be an
   /// RFC3339 timestamp with mandatory time zone offset.
   ///
-  /// [timeZone] - Time zone used in the response. Optional. The default is the
-  /// time zone of the calendar.
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
   ///
   /// [maxResults] - Maximum number of events returned on one result page. By
   /// default the value is 250 events. The page size can never be larger than
   /// 2500 events. Optional.
   ///
-  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
-  /// returned in the email field for the organizer, creator and attendees, even
-  /// if no real email address is available (i.e. a generated, non-working value
-  /// will be provided).
+  /// [showDeleted] - Whether to include deleted events (with status equals
+  /// "cancelled") in the result. Cancelled instances of recurring events will
+  /// still be included if singleEvents is False. Optional. The default is
+  /// False.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1757,15 +1757,15 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Events> instances(core.String calendarId, core.String eventId,
-      {core.DateTime timeMin,
-      core.int maxAttendees,
-      core.bool showDeleted,
-      core.String originalStart,
-      core.String pageToken,
-      core.DateTime timeMax,
+      {core.String originalStart,
       core.String timeZone,
-      core.int maxResults,
+      core.DateTime timeMin,
+      core.DateTime timeMax,
       core.bool alwaysIncludeEmail,
+      core.int maxAttendees,
+      core.String pageToken,
+      core.int maxResults,
+      core.bool showDeleted,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1780,32 +1780,32 @@ class EventsResourceApi {
     if (eventId == null) {
       throw new core.ArgumentError("Parameter eventId is required.");
     }
-    if (timeMin != null) {
-      _queryParams["timeMin"] = [(timeMin).toIso8601String()];
-    }
-    if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
-    }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
     if (originalStart != null) {
       _queryParams["originalStart"] = [originalStart];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (timeMax != null) {
-      _queryParams["timeMax"] = [(timeMax).toIso8601String()];
     }
     if (timeZone != null) {
       _queryParams["timeZone"] = [timeZone];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (timeMin != null) {
+      _queryParams["timeMin"] = [(timeMin).toIso8601String()];
+    }
+    if (timeMax != null) {
+      _queryParams["timeMax"] = [(timeMax).toIso8601String()];
     }
     if (alwaysIncludeEmail != null) {
       _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+    }
+    if (maxAttendees != null) {
+      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1834,42 +1834,12 @@ class EventsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
-  /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
-  /// by. Optional. The default is not to filter by start time. Must be an
-  /// RFC3339 timestamp with mandatory time zone offset, for example,
-  /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
-  /// provided but are ignored. If timeMin is set, timeMax must be greater than
-  /// timeMin.
+  /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
+  /// the response. Optional.
   ///
-  /// [showDeleted] - Whether to include deleted events (with status equals
-  /// "cancelled") in the result. Cancelled instances of recurring events (but
-  /// not the underlying recurring event) will still be included if showDeleted
-  /// and singleEvents are both False. If showDeleted and singleEvents are both
-  /// True, only single instances of deleted events (but not the underlying
-  /// recurring events) are returned. Optional. The default is False.
-  ///
-  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
-  /// returned in the email field for the organizer, creator and attendees, even
-  /// if no real email address is available (i.e. a generated, non-working value
-  /// will be provided).
-  ///
-  /// [updatedMin] - Lower bound for an event's last modification time (as a
-  /// RFC3339 timestamp) to filter by. When specified, entries deleted since
-  /// this time will always be included regardless of showDeleted. Optional. The
-  /// default is not to filter by last modification time.
-  ///
-  /// [timeZone] - Time zone used in the response. Optional. The default is the
-  /// time zone of the calendar.
-  ///
-  /// [sharedExtendedProperty] - Extended properties constraint specified as
-  /// propertyName=value. Matches only shared properties. This parameter might
-  /// be repeated multiple times to return events that match all given
-  /// constraints.
-  ///
-  /// [privateExtendedProperty] - Extended properties constraint specified as
-  /// propertyName=value. Matches only private properties. This parameter might
-  /// be repeated multiple times to return events that match all given
-  /// constraints.
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
   ///
   /// [timeMin] - Lower bound (exclusive) for an event's end time to filter by.
   /// Optional. The default is not to filter by end time. Must be an RFC3339
@@ -1877,19 +1847,6 @@ class EventsResourceApi {
   /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
   /// provided but are ignored. If timeMax is set, timeMin must be smaller than
   /// timeMax.
-  ///
-  /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
-  /// the response. Optional.
-  ///
-  /// [showHiddenInvitations] - Whether to include hidden invitations in the
-  /// result. Optional. The default is False.
-  ///
-  /// [maxResults] - Maximum number of events returned on one result page. The
-  /// number of events in the resulting page may be less than this value, or
-  /// none at all, even if there are more events matching the query. Incomplete
-  /// pages can be detected by a non-empty nextPageToken field in the response.
-  /// By default the value is 250 events. The page size can never be larger than
-  /// 2500 events. Optional.
   ///
   /// [syncToken] - Token obtained from the nextSyncToken field returned on the
   /// last page of results from the previous list request. It makes the result
@@ -1913,15 +1870,32 @@ class EventsResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
-  /// [pageToken] - Token specifying which result page to return. Optional.
+  /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
+  /// by. Optional. The default is not to filter by start time. Must be an
+  /// RFC3339 timestamp with mandatory time zone offset, for example,
+  /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+  /// provided but are ignored. If timeMin is set, timeMax must be greater than
+  /// timeMin.
+  ///
+  /// [showHiddenInvitations] - Whether to include hidden invitations in the
+  /// result. Optional. The default is False.
+  ///
+  /// [updatedMin] - Lower bound for an event's last modification time (as a
+  /// RFC3339 timestamp) to filter by. When specified, entries deleted since
+  /// this time will always be included regardless of showDeleted. Optional. The
+  /// default is not to filter by last modification time.
   ///
   /// [q] - Free text search terms to find events that match these terms in any
   /// field, except for extended properties. Optional.
   ///
-  /// [singleEvents] - Whether to expand recurring events into instances and
-  /// only return single one-off events and instances of recurring events, but
-  /// not the underlying recurring events themselves. Optional. The default is
-  /// False.
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [maxResults] - Maximum number of events returned on one result page. The
+  /// number of events in the resulting page may be less than this value, or
+  /// none at all, even if there are more events matching the query. Incomplete
+  /// pages can be detected by a non-empty nextPageToken field in the response.
+  /// By default the value is 250 events. The page size can never be larger than
+  /// 2500 events. Optional.
   ///
   /// [orderBy] - The order of the events returned in the result. Optional. The
   /// default is an unspecified, stable order.
@@ -1931,9 +1905,35 @@ class EventsResourceApi {
   /// True)
   /// - "updated" : Order by last modification time (ascending).
   ///
-  /// [maxAttendees] - The maximum number of attendees to include in the
-  /// response. If there are more than the specified number of attendees, only
-  /// the participant is returned. Optional.
+  /// [sharedExtendedProperty] - Extended properties constraint specified as
+  /// propertyName=value. Matches only shared properties. This parameter might
+  /// be repeated multiple times to return events that match all given
+  /// constraints.
+  ///
+  /// [showDeleted] - Whether to include deleted events (with status equals
+  /// "cancelled") in the result. Cancelled instances of recurring events (but
+  /// not the underlying recurring event) will still be included if showDeleted
+  /// and singleEvents are both False. If showDeleted and singleEvents are both
+  /// True, only single instances of deleted events (but not the underlying
+  /// recurring events) are returned. Optional. The default is False.
+  ///
+  /// [timeZone] - Time zone used in the response. Optional. The default is the
+  /// time zone of the calendar.
+  ///
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
+  ///
+  /// [privateExtendedProperty] - Extended properties constraint specified as
+  /// propertyName=value. Matches only private properties. This parameter might
+  /// be repeated multiple times to return events that match all given
+  /// constraints.
+  ///
+  /// [singleEvents] - Whether to expand recurring events into instances and
+  /// only return single one-off events and instances of recurring events, but
+  /// not the underlying recurring events themselves. Optional. The default is
+  /// False.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1946,23 +1946,23 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Events> list(core.String calendarId,
-      {core.DateTime timeMax,
-      core.bool showDeleted,
-      core.bool alwaysIncludeEmail,
-      core.DateTime updatedMin,
-      core.String timeZone,
-      core.List<core.String> sharedExtendedProperty,
-      core.List<core.String> privateExtendedProperty,
-      core.DateTime timeMin,
-      core.String iCalUID,
-      core.bool showHiddenInvitations,
-      core.int maxResults,
-      core.String syncToken,
-      core.String pageToken,
-      core.String q,
-      core.bool singleEvents,
-      core.String orderBy,
+      {core.String iCalUID,
       core.int maxAttendees,
+      core.DateTime timeMin,
+      core.String syncToken,
+      core.DateTime timeMax,
+      core.bool showHiddenInvitations,
+      core.DateTime updatedMin,
+      core.String q,
+      core.String pageToken,
+      core.int maxResults,
+      core.String orderBy,
+      core.List<core.String> sharedExtendedProperty,
+      core.bool showDeleted,
+      core.String timeZone,
+      core.bool alwaysIncludeEmail,
+      core.List<core.String> privateExtendedProperty,
+      core.bool singleEvents,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1974,56 +1974,56 @@ class EventsResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
-    if (timeMax != null) {
-      _queryParams["timeMax"] = [(timeMax).toIso8601String()];
+    if (iCalUID != null) {
+      _queryParams["iCalUID"] = [iCalUID];
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
-    if (alwaysIncludeEmail != null) {
-      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
-    }
-    if (updatedMin != null) {
-      _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
-    }
-    if (timeZone != null) {
-      _queryParams["timeZone"] = [timeZone];
-    }
-    if (sharedExtendedProperty != null) {
-      _queryParams["sharedExtendedProperty"] = sharedExtendedProperty;
-    }
-    if (privateExtendedProperty != null) {
-      _queryParams["privateExtendedProperty"] = privateExtendedProperty;
+    if (maxAttendees != null) {
+      _queryParams["maxAttendees"] = ["${maxAttendees}"];
     }
     if (timeMin != null) {
       _queryParams["timeMin"] = [(timeMin).toIso8601String()];
     }
-    if (iCalUID != null) {
-      _queryParams["iCalUID"] = [iCalUID];
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
+    if (timeMax != null) {
+      _queryParams["timeMax"] = [(timeMax).toIso8601String()];
     }
     if (showHiddenInvitations != null) {
       _queryParams["showHiddenInvitations"] = ["${showHiddenInvitations}"];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (updatedMin != null) {
+      _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
     }
     if (q != null) {
       _queryParams["q"] = [q];
     }
-    if (singleEvents != null) {
-      _queryParams["singleEvents"] = ["${singleEvents}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+    if (sharedExtendedProperty != null) {
+      _queryParams["sharedExtendedProperty"] = sharedExtendedProperty;
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (timeZone != null) {
+      _queryParams["timeZone"] = [timeZone];
+    }
+    if (alwaysIncludeEmail != null) {
+      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
+    }
+    if (privateExtendedProperty != null) {
+      _queryParams["privateExtendedProperty"] = privateExtendedProperty;
+    }
+    if (singleEvents != null) {
+      _queryParams["singleEvents"] = ["${singleEvents}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2053,12 +2053,6 @@ class EventsResourceApi {
   /// [destination] - Calendar identifier of the target calendar where the event
   /// is to be moved to.
   ///
-  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
-  ///
-  /// Whether to send notifications about the change of the event's organizer.
-  /// Note that some emails might still be sent even if you set the value to
-  /// false. The default is false.
-  ///
   /// [sendUpdates] - Guests who should receive notifications about the change
   /// of the event's organizer.
   /// Possible string values are:
@@ -2068,6 +2062,12 @@ class EventsResourceApi {
   /// - "none" : No notifications are sent. This value should only be used for
   /// migration use cases (note that in most migration cases the import method
   /// should be used).
+  ///
+  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
+  ///
+  /// Whether to send notifications about the change of the event's organizer.
+  /// Note that some emails might still be sent even if you set the value to
+  /// false. The default is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2081,8 +2081,8 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future<Event> move(
       core.String calendarId, core.String eventId, core.String destination,
-      {core.bool sendNotifications,
-      core.String sendUpdates,
+      {core.String sendUpdates,
+      core.bool sendNotifications,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2101,11 +2101,11 @@ class EventsResourceApi {
       throw new core.ArgumentError("Parameter destination is required.");
     }
     _queryParams["destination"] = [destination];
-    if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
-    }
     if (sendUpdates != null) {
       _queryParams["sendUpdates"] = [sendUpdates];
+    }
+    if (sendNotifications != null) {
+      _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2138,6 +2138,25 @@ class EventsResourceApi {
   ///
   /// [eventId] - Event identifier.
   ///
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
+  ///
+  /// [conferenceDataVersion] - Version number of conference data supported by
+  /// the API client. Version 0 assumes no conference data support and ignores
+  /// conference data in the event's body. Version 1 enables support for copying
+  /// of ConferenceData as well as for creating new conferences using the
+  /// createRequest field of conferenceData. The default is 0.
+  /// Value must be between "0" and "1".
+  ///
+  /// [supportsAttachments] - Whether API client performing operation supports
+  /// event attachments. Optional. The default is False.
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
   /// [sendUpdates] - Guests who should receive notifications about the event
   /// update (for example, title changes, etc.).
   /// Possible string values are:
@@ -2148,30 +2167,11 @@ class EventsResourceApi {
   /// migration use cases (note that in most migration cases the import method
   /// should be used).
   ///
-  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
-  /// returned in the email field for the organizer, creator and attendees, even
-  /// if no real email address is available (i.e. a generated, non-working value
-  /// will be provided).
-  ///
   /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
   ///
   /// Whether to send notifications about the event update (for example,
   /// description changes, etc.). Note that some emails might still be sent even
   /// if you set the value to false. The default is false.
-  ///
-  /// [conferenceDataVersion] - Version number of conference data supported by
-  /// the API client. Version 0 assumes no conference data support and ignores
-  /// conference data in the event's body. Version 1 enables support for copying
-  /// of ConferenceData as well as for creating new conferences using the
-  /// createRequest field of conferenceData. The default is 0.
-  /// Value must be between "0" and "1".
-  ///
-  /// [maxAttendees] - The maximum number of attendees to include in the
-  /// response. If there are more than the specified number of attendees, only
-  /// the participant is returned. Optional.
-  ///
-  /// [supportsAttachments] - Whether API client performing operation supports
-  /// event attachments. Optional. The default is False.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2185,12 +2185,12 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future<Event> patch(
       Event request, core.String calendarId, core.String eventId,
-      {core.String sendUpdates,
-      core.bool alwaysIncludeEmail,
-      core.bool sendNotifications,
+      {core.bool alwaysIncludeEmail,
       core.int conferenceDataVersion,
-      core.int maxAttendees,
       core.bool supportsAttachments,
+      core.int maxAttendees,
+      core.String sendUpdates,
+      core.bool sendNotifications,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2208,23 +2208,23 @@ class EventsResourceApi {
     if (eventId == null) {
       throw new core.ArgumentError("Parameter eventId is required.");
     }
-    if (sendUpdates != null) {
-      _queryParams["sendUpdates"] = [sendUpdates];
-    }
     if (alwaysIncludeEmail != null) {
       _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
-    }
-    if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
     if (conferenceDataVersion != null) {
       _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
     }
+    if (supportsAttachments != null) {
+      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+    }
     if (maxAttendees != null) {
       _queryParams["maxAttendees"] = ["${maxAttendees}"];
     }
-    if (supportsAttachments != null) {
-      _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+    if (sendUpdates != null) {
+      _queryParams["sendUpdates"] = [sendUpdates];
+    }
+    if (sendNotifications != null) {
+      _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2333,6 +2333,26 @@ class EventsResourceApi {
   ///
   /// [eventId] - Event identifier.
   ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
+  ///
+  /// Whether to send notifications about the event update (for example,
+  /// description changes, etc.). Note that some emails might still be sent even
+  /// if you set the value to false. The default is false.
+  ///
+  /// [sendUpdates] - Guests who should receive notifications about the event
+  /// update (for example, title changes, etc.).
+  /// Possible string values are:
+  /// - "all" : Notifications are sent to all guests.
+  /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
+  /// only.
+  /// - "none" : No notifications are sent. This value should only be used for
+  /// migration use cases (note that in most migration cases the import method
+  /// should be used).
+  ///
   /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
   /// returned in the email field for the organizer, creator and attendees, even
   /// if no real email address is available (i.e. a generated, non-working value
@@ -2348,26 +2368,6 @@ class EventsResourceApi {
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
   ///
-  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
-  ///
-  /// Whether to send notifications about the event update (for example,
-  /// description changes, etc.). Note that some emails might still be sent even
-  /// if you set the value to false. The default is false.
-  ///
-  /// [maxAttendees] - The maximum number of attendees to include in the
-  /// response. If there are more than the specified number of attendees, only
-  /// the participant is returned. Optional.
-  ///
-  /// [sendUpdates] - Guests who should receive notifications about the event
-  /// update (for example, title changes, etc.).
-  /// Possible string values are:
-  /// - "all" : Notifications are sent to all guests.
-  /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
-  /// only.
-  /// - "none" : No notifications are sent. This value should only be used for
-  /// migration use cases (note that in most migration cases the import method
-  /// should be used).
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2380,12 +2380,12 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future<Event> update(
       Event request, core.String calendarId, core.String eventId,
-      {core.bool alwaysIncludeEmail,
+      {core.int maxAttendees,
+      core.bool sendNotifications,
+      core.String sendUpdates,
+      core.bool alwaysIncludeEmail,
       core.int conferenceDataVersion,
       core.bool supportsAttachments,
-      core.bool sendNotifications,
-      core.int maxAttendees,
-      core.String sendUpdates,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2403,6 +2403,15 @@ class EventsResourceApi {
     if (eventId == null) {
       throw new core.ArgumentError("Parameter eventId is required.");
     }
+    if (maxAttendees != null) {
+      _queryParams["maxAttendees"] = ["${maxAttendees}"];
+    }
+    if (sendNotifications != null) {
+      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (sendUpdates != null) {
+      _queryParams["sendUpdates"] = [sendUpdates];
+    }
     if (alwaysIncludeEmail != null) {
       _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
     }
@@ -2411,15 +2420,6 @@ class EventsResourceApi {
     }
     if (supportsAttachments != null) {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
-    }
-    if (sendNotifications != null) {
-      _queryParams["sendNotifications"] = ["${sendNotifications}"];
-    }
-    if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
-    }
-    if (sendUpdates != null) {
-      _queryParams["sendUpdates"] = [sendUpdates];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2449,44 +2449,31 @@ class EventsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
-  /// [q] - Free text search terms to find events that match these terms in any
-  /// field, except for extended properties. Optional.
+  /// [maxResults] - Maximum number of events returned on one result page. The
+  /// number of events in the resulting page may be less than this value, or
+  /// none at all, even if there are more events matching the query. Incomplete
+  /// pages can be detected by a non-empty nextPageToken field in the response.
+  /// By default the value is 250 events. The page size can never be larger than
+  /// 2500 events. Optional.
   ///
-  /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
-  /// by. Optional. The default is not to filter by start time. Must be an
-  /// RFC3339 timestamp with mandatory time zone offset, for example,
+  /// [timeMin] - Lower bound (exclusive) for an event's end time to filter by.
+  /// Optional. The default is not to filter by end time. Must be an RFC3339
+  /// timestamp with mandatory time zone offset, for example,
   /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
-  /// provided but are ignored. If timeMin is set, timeMax must be greater than
-  /// timeMin.
+  /// provided but are ignored. If timeMax is set, timeMin must be smaller than
+  /// timeMax.
   ///
-  /// [pageToken] - Token specifying which result page to return. Optional.
-  ///
-  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
-  /// returned in the email field for the organizer, creator and attendees, even
-  /// if no real email address is available (i.e. a generated, non-working value
-  /// will be provided).
+  /// [showDeleted] - Whether to include deleted events (with status equals
+  /// "cancelled") in the result. Cancelled instances of recurring events (but
+  /// not the underlying recurring event) will still be included if showDeleted
+  /// and singleEvents are both False. If showDeleted and singleEvents are both
+  /// True, only single instances of deleted events (but not the underlying
+  /// recurring events) are returned. Optional. The default is False.
   ///
   /// [sharedExtendedProperty] - Extended properties constraint specified as
   /// propertyName=value. Matches only shared properties. This parameter might
   /// be repeated multiple times to return events that match all given
   /// constraints.
-  ///
-  /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
-  /// the response. Optional.
-  ///
-  /// [showHiddenInvitations] - Whether to include hidden invitations in the
-  /// result. Optional. The default is False.
-  ///
-  /// [timeZone] - Time zone used in the response. Optional. The default is the
-  /// time zone of the calendar.
-  ///
-  /// [orderBy] - The order of the events returned in the result. Optional. The
-  /// default is an unspecified, stable order.
-  /// Possible string values are:
-  /// - "startTime" : Order by the start date/time (ascending). This is only
-  /// available when querying single events (i.e. the parameter singleEvents is
-  /// True)
-  /// - "updated" : Order by last modification time (ascending).
   ///
   /// [syncToken] - Token obtained from the nextSyncToken field returned on the
   /// last page of results from the previous list request. It makes the result
@@ -2510,45 +2497,58 @@ class EventsResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
-  /// [privateExtendedProperty] - Extended properties constraint specified as
-  /// propertyName=value. Matches only private properties. This parameter might
-  /// be repeated multiple times to return events that match all given
-  /// constraints.
+  /// [orderBy] - The order of the events returned in the result. Optional. The
+  /// default is an unspecified, stable order.
+  /// Possible string values are:
+  /// - "startTime" : Order by the start date/time (ascending). This is only
+  /// available when querying single events (i.e. the parameter singleEvents is
+  /// True)
+  /// - "updated" : Order by last modification time (ascending).
   ///
-  /// [showDeleted] - Whether to include deleted events (with status equals
-  /// "cancelled") in the result. Cancelled instances of recurring events (but
-  /// not the underlying recurring event) will still be included if showDeleted
-  /// and singleEvents are both False. If showDeleted and singleEvents are both
-  /// True, only single instances of deleted events (but not the underlying
-  /// recurring events) are returned. Optional. The default is False.
+  /// [q] - Free text search terms to find events that match these terms in any
+  /// field, except for extended properties. Optional.
   ///
-  /// [updatedMin] - Lower bound for an event's last modification time (as a
-  /// RFC3339 timestamp) to filter by. When specified, entries deleted since
-  /// this time will always be included regardless of showDeleted. Optional. The
-  /// default is not to filter by last modification time.
-  ///
-  /// [maxResults] - Maximum number of events returned on one result page. The
-  /// number of events in the resulting page may be less than this value, or
-  /// none at all, even if there are more events matching the query. Incomplete
-  /// pages can be detected by a non-empty nextPageToken field in the response.
-  /// By default the value is 250 events. The page size can never be larger than
-  /// 2500 events. Optional.
-  ///
-  /// [maxAttendees] - The maximum number of attendees to include in the
-  /// response. If there are more than the specified number of attendees, only
-  /// the participant is returned. Optional.
+  /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
+  /// by. Optional. The default is not to filter by start time. Must be an
+  /// RFC3339 timestamp with mandatory time zone offset, for example,
+  /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+  /// provided but are ignored. If timeMin is set, timeMax must be greater than
+  /// timeMin.
   ///
   /// [singleEvents] - Whether to expand recurring events into instances and
   /// only return single one-off events and instances of recurring events, but
   /// not the underlying recurring events themselves. Optional. The default is
   /// False.
   ///
-  /// [timeMin] - Lower bound (exclusive) for an event's end time to filter by.
-  /// Optional. The default is not to filter by end time. Must be an RFC3339
-  /// timestamp with mandatory time zone offset, for example,
-  /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
-  /// provided but are ignored. If timeMax is set, timeMin must be smaller than
-  /// timeMax.
+  /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
+  /// the response. Optional.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [updatedMin] - Lower bound for an event's last modification time (as a
+  /// RFC3339 timestamp) to filter by. When specified, entries deleted since
+  /// this time will always be included regardless of showDeleted. Optional. The
+  /// default is not to filter by last modification time.
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [showHiddenInvitations] - Whether to include hidden invitations in the
+  /// result. Optional. The default is False.
+  ///
+  /// [timeZone] - Time zone used in the response. Optional. The default is the
+  /// time zone of the calendar.
+  ///
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
+  ///
+  /// [privateExtendedProperty] - Extended properties constraint specified as
+  /// propertyName=value. Matches only private properties. This parameter might
+  /// be repeated multiple times to return events that match all given
+  /// constraints.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2561,23 +2561,23 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> watch(Channel request, core.String calendarId,
-      {core.String q,
-      core.DateTime timeMax,
-      core.String pageToken,
-      core.bool alwaysIncludeEmail,
+      {core.int maxResults,
+      core.DateTime timeMin,
+      core.bool showDeleted,
       core.List<core.String> sharedExtendedProperty,
+      core.String syncToken,
+      core.String orderBy,
+      core.String q,
+      core.DateTime timeMax,
+      core.bool singleEvents,
       core.String iCalUID,
+      core.String pageToken,
+      core.DateTime updatedMin,
+      core.int maxAttendees,
       core.bool showHiddenInvitations,
       core.String timeZone,
-      core.String orderBy,
-      core.String syncToken,
+      core.bool alwaysIncludeEmail,
       core.List<core.String> privateExtendedProperty,
-      core.bool showDeleted,
-      core.DateTime updatedMin,
-      core.int maxResults,
-      core.int maxAttendees,
-      core.bool singleEvents,
-      core.DateTime timeMin,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2592,23 +2592,44 @@ class EventsResourceApi {
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (timeMin != null) {
+      _queryParams["timeMin"] = [(timeMin).toIso8601String()];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (sharedExtendedProperty != null) {
+      _queryParams["sharedExtendedProperty"] = sharedExtendedProperty;
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (q != null) {
       _queryParams["q"] = [q];
     }
     if (timeMax != null) {
       _queryParams["timeMax"] = [(timeMax).toIso8601String()];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (alwaysIncludeEmail != null) {
-      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
-    }
-    if (sharedExtendedProperty != null) {
-      _queryParams["sharedExtendedProperty"] = sharedExtendedProperty;
+    if (singleEvents != null) {
+      _queryParams["singleEvents"] = ["${singleEvents}"];
     }
     if (iCalUID != null) {
       _queryParams["iCalUID"] = [iCalUID];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (updatedMin != null) {
+      _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
+    }
+    if (maxAttendees != null) {
+      _queryParams["maxAttendees"] = ["${maxAttendees}"];
     }
     if (showHiddenInvitations != null) {
       _queryParams["showHiddenInvitations"] = ["${showHiddenInvitations}"];
@@ -2616,32 +2637,11 @@ class EventsResourceApi {
     if (timeZone != null) {
       _queryParams["timeZone"] = [timeZone];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+    if (alwaysIncludeEmail != null) {
+      _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
     }
     if (privateExtendedProperty != null) {
       _queryParams["privateExtendedProperty"] = privateExtendedProperty;
-    }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
-    if (updatedMin != null) {
-      _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (maxAttendees != null) {
-      _queryParams["maxAttendees"] = ["${maxAttendees}"];
-    }
-    if (singleEvents != null) {
-      _queryParams["singleEvents"] = ["${singleEvents}"];
-    }
-    if (timeMin != null) {
-      _queryParams["timeMin"] = [(timeMin).toIso8601String()];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2761,11 +2761,11 @@ class SettingsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Token specifying which result page to return. Optional.
-  ///
   /// [maxResults] - Maximum number of entries returned on one result page. By
   /// default the value is 100 entries. The page size can never be larger than
   /// 250 entries. Optional.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
   ///
   /// [syncToken] - Token obtained from the nextSyncToken field returned on the
   /// last page of results from the previous list request. It makes the result
@@ -2787,8 +2787,8 @@ class SettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Settings> list(
-      {core.String pageToken,
-      core.int maxResults,
+      {core.int maxResults,
+      core.String pageToken,
       core.String syncToken,
       core.String $fields}) {
     var _url;
@@ -2798,11 +2798,11 @@ class SettingsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
@@ -2828,8 +2828,6 @@ class SettingsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Token specifying which result page to return. Optional.
-  ///
   /// [syncToken] - Token obtained from the nextSyncToken field returned on the
   /// last page of results from the previous list request. It makes the result
   /// of this list request contain only entries that have changed since then.
@@ -2838,6 +2836,8 @@ class SettingsResourceApi {
   /// synchronization without any syncToken.
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
   ///
   /// [maxResults] - Maximum number of entries returned on one result page. By
   /// default the value is 100 entries. The page size can never be larger than
@@ -2854,8 +2854,8 @@ class SettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> watch(Channel request,
-      {core.String pageToken,
-      core.String syncToken,
+      {core.String syncToken,
+      core.String pageToken,
       core.int maxResults,
       core.String $fields}) {
     var _url;
@@ -2868,11 +2868,11 @@ class SettingsResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -3959,7 +3959,7 @@ class ConferenceSolutionKey {
   /// modifications.
   /// The possible values are:
   /// - "eventHangout" for Hangouts for consumers (http://hangouts.google.com)
-  /// - "eventNamedHangout" for classic Hangouts for G Suite users
+  /// - "eventNamedHangout" for classic Hangouts for Google Workspace users
   /// (http://hangouts.google.com)
   /// - "hangoutsMeet" for Google Meet (http://meet.google.com)
   /// - "addOn" for 3P conference providers

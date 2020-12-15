@@ -41,95 +41,6 @@ class CseResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [dateRestrict] - Restricts results to URLs based on date. Supported values
-  /// include: * `d[number]`: requests results from the specified number of past
-  /// days. * `w[number]`: requests results from the specified number of past
-  /// weeks. * `m[number]`: requests results from the specified number of past
-  /// months. * `y[number]`: requests results from the specified number of past
-  /// years.
-  ///
-  /// [relatedSite] - Specifies that all search results should be pages that are
-  /// related to the specified URL.
-  ///
-  /// [hl] - Sets the user interface language. * Explicitly setting this
-  /// parameter improves the performance and the quality of your search results.
-  /// * See the [Interface
-  /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
-  /// section of [Internationalizing Queries and Results
-  /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
-  /// for more information, and (Supported Interface
-  /// Languages)[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages]
-  /// for a list of supported languages.
-  ///
-  /// [fileType] - Restricts results to files of a specified extension. A list
-  /// of file types indexable by Google can be found in Search Console [Help
-  /// Center](https://support.google.com/webmasters/answer/35287).
-  ///
-  /// [googlehost] - **Deprecated**. Use the `gl` parameter for a similar
-  /// effect. The local Google domain (for example, google.com, google.de, or
-  /// google.fr) to use to perform the search.
-  ///
-  /// [imgType] - Returns images of a type. Acceptable values are: * `"clipart"`
-  /// * `"face"` * `"lineart"` * `"stock"` * `"photo"` * `"animated"`
-  /// Possible string values are:
-  /// - "imgTypeUndefined" : No image type specified.
-  /// - "clipart" : Clipart-style images only.
-  /// - "face" : Images of faces only.
-  /// - "lineart" : Line art images only.
-  /// - "stock" : Stock images only.
-  /// - "photo" : Photo images only.
-  /// - "animated" : Animated images only.
-  ///
-  /// [q] - Query
-  ///
-  /// [imgColorType] - Returns black and white, grayscale, transparent, or color
-  /// images. Acceptable values are: * `"color"` * `"gray"` * `"mono"`: black
-  /// and white * `"trans"`: transparent background
-  /// Possible string values are:
-  /// - "imgColorTypeUndefined" : No image color type specified.
-  /// - "mono" : Black and white images only.
-  /// - "gray" : Grayscale images only.
-  /// - "color" : Color images only.
-  /// - "trans" : Images with transparent background
-  ///
-  /// [rights] - Filters based on licensing. Supported values include:
-  /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,
-  /// `cc_nonderived` and combinations of these. See [typical
-  /// combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration).
-  ///
-  /// [cr] - Restricts search results to documents originating in a particular
-  /// country. You may use [Boolean
-  /// operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)
-  /// in the cr parameter's value. Google Search determines the country of a
-  /// document by analyzing: * the top-level domain (TLD) of the document's URL
-  /// * the geographic location of the Web server's IP address See the [Country
-  /// Parameter
-  /// Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
-  /// page for a list of valid values for this parameter.
-  ///
-  /// [cx] - The Programmable Search Engine ID to use for this request.
-  ///
-  /// [siteSearchFilter] - Controls whether to include or exclude results from
-  /// the site named in the `siteSearch` parameter. Acceptable values are: *
-  /// `"e"`: exclude * `"i"`: include
-  /// Possible string values are:
-  /// - "siteSearchFilterUndefined" : Filter mode unspecified.
-  /// - "e" : Exclude results from the listed sites.
-  /// - "i" : Include only results from the listed sites.
-  ///
-  /// [orTerms] - Provides additional search terms to check for in a document,
-  /// where each document in the search results must contain at least one of the
-  /// additional search terms.
-  ///
-  /// [sort] - The sort expression to apply to the results. The sort parameter
-  /// specifies that the results be sorted according to the specified expression
-  /// i.e. sort by date. [Example:
-  /// sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).
-  ///
-  /// [highRange] - Specifies the ending value for a search range. * Use
-  /// `lowRange` and `highRange` to append an inclusive search range of
-  /// `lowRange...highRange` to the query.
-  ///
   /// [imgDominantColor] - Returns images of a specific dominant color.
   /// Acceptable values are: * `"black"` * `"blue"` * `"brown"` * `"gray"` *
   /// `"green"` * `"orange"` * `"pink"` * `"purple"` * `"red"` * `"teal"` *
@@ -149,6 +60,19 @@ class CseResourceApi {
   /// - "white" : Predominantly white images only.
   /// - "yellow" : Predominantly yellow images only.
   ///
+  /// [orTerms] - Provides additional search terms to check for in a document,
+  /// where each document in the search results must contain at least one of the
+  /// additional search terms.
+  ///
+  /// [filter] - Controls turning on or off the duplicate content filter. * See
+  /// [Automatic
+  /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
+  /// for more information about Google's search results filters. Note that host
+  /// crowding filtering applies only to multi-site searches. * By default,
+  /// Google applies filtering to all search results to improve the quality of
+  /// those results. Acceptable values are: * `0`: Turns off duplicate content
+  /// filter. * `1`: Turns on duplicate content filter.
+  ///
   /// [safe] - Search safety level. Acceptable values are: * `"active"`: Enables
   /// SafeSearch filtering. * `"off"`: Disables SafeSearch filtering. (default)
   /// Possible string values are:
@@ -162,32 +86,109 @@ class CseResourceApi {
   /// [num] - Number of search results to return. * Valid values are integers
   /// between 1 and 10, inclusive.
   ///
-  /// [filter] - Controls turning on or off the duplicate content filter. * See
-  /// [Automatic
-  /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
-  /// for more information about Google's search results filters. Note that host
-  /// crowding filtering applies only to multi-site searches. * By default,
-  /// Google applies filtering to all search results to improve the quality of
-  /// those results. Acceptable values are: * `0`: Turns off duplicate content
-  /// filter. * `1`: Turns on duplicate content filter.
+  /// [cx] - The Programmable Search Engine ID to use for this request.
   ///
-  /// [searchType] - Specifies the search type: `image`. If unspecified, results
-  /// are limited to webpages. Acceptable values are: * `"image"`: custom image
-  /// search.
+  /// [q] - Query
+  ///
+  /// [hq] - Appends the specified query terms to the query, as if they were
+  /// combined with a logical AND operator.
+  ///
+  /// [dateRestrict] - Restricts results to URLs based on date. Supported values
+  /// include: * `d[number]`: requests results from the specified number of past
+  /// days. * `w[number]`: requests results from the specified number of past
+  /// weeks. * `m[number]`: requests results from the specified number of past
+  /// months. * `y[number]`: requests results from the specified number of past
+  /// years.
+  ///
+  /// [imgType] - Returns images of a type. Acceptable values are: * `"clipart"`
+  /// * `"face"` * `"lineart"` * `"stock"` * `"photo"` * `"animated"`
   /// Possible string values are:
-  /// - "searchTypeUndefined" : Search type unspecified (defaults to web
-  /// search).
-  /// - "image" : Image search.
+  /// - "imgTypeUndefined" : No image type specified.
+  /// - "clipart" : Clipart-style images only.
+  /// - "face" : Images of faces only.
+  /// - "lineart" : Line art images only.
+  /// - "stock" : Stock images only.
+  /// - "photo" : Photo images only.
+  /// - "animated" : Animated images only.
   ///
-  /// [exactTerms] - Identifies a phrase that all documents in the search
-  /// results must contain.
+  /// [siteSearch] - Specifies a given site which should always be included or
+  /// excluded from results (see `siteSearchFilter` parameter, below).
   ///
-  /// [linkSite] - Specifies that all search results should contain a link to a
-  /// particular URL.
+  /// [imgColorType] - Returns black and white, grayscale, transparent, or color
+  /// images. Acceptable values are: * `"color"` * `"gray"` * `"mono"`: black
+  /// and white * `"trans"`: transparent background
+  /// Possible string values are:
+  /// - "imgColorTypeUndefined" : No image color type specified.
+  /// - "mono" : Black and white images only.
+  /// - "gray" : Grayscale images only.
+  /// - "color" : Color images only.
+  /// - "trans" : Images with transparent background
   ///
   /// [lowRange] - Specifies the starting value for a search range. Use
   /// `lowRange` and `highRange` to append an inclusive search range of
   /// `lowRange...highRange` to the query.
+  ///
+  /// [fileType] - Restricts results to files of a specified extension. A list
+  /// of file types indexable by Google can be found in Search Console [Help
+  /// Center](https://support.google.com/webmasters/answer/35287).
+  ///
+  /// [hl] - Sets the user interface language. * Explicitly setting this
+  /// parameter improves the performance and the quality of your search results.
+  /// * See the [Interface
+  /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+  /// section of [Internationalizing Queries and Results
+  /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
+  /// for more information, and (Supported Interface
+  /// Languages)[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages]
+  /// for a list of supported languages.
+  ///
+  /// [googlehost] - **Deprecated**. Use the `gl` parameter for a similar
+  /// effect. The local Google domain (for example, google.com, google.de, or
+  /// google.fr) to use to perform the search.
+  ///
+  /// [start] - The index of the first result to return. The default number of
+  /// results per page is 10, so `&start=11` would start at the top of the
+  /// second page of results. **Note**: The JSON API will never return more than
+  /// 100 results, even if more than 100 documents match the query, so setting
+  /// the sum of `start + num` to a number greater than 100 will produce an
+  /// error. Also note that the maximum value for `num` is 10.
+  ///
+  /// [relatedSite] - Specifies that all search results should be pages that are
+  /// related to the specified URL.
+  ///
+  /// [exactTerms] - Identifies a phrase that all documents in the search
+  /// results must contain.
+  ///
+  /// [excludeTerms] - Identifies a word or phrase that should not appear in any
+  /// documents in the search results.
+  ///
+  /// [sort] - The sort expression to apply to the results. The sort parameter
+  /// specifies that the results be sorted according to the specified expression
+  /// i.e. sort by date. [Example:
+  /// sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).
+  ///
+  /// [rights] - Filters based on licensing. Supported values include:
+  /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,
+  /// `cc_nonderived` and combinations of these. See [typical
+  /// combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration).
+  ///
+  /// [siteSearchFilter] - Controls whether to include or exclude results from
+  /// the site named in the `siteSearch` parameter. Acceptable values are: *
+  /// `"e"`: exclude * `"i"`: include
+  /// Possible string values are:
+  /// - "siteSearchFilterUndefined" : Filter mode unspecified.
+  /// - "e" : Exclude results from the listed sites.
+  /// - "i" : Include only results from the listed sites.
+  ///
+  /// [cr] - Restricts search results to documents originating in a particular
+  /// country. You may use [Boolean
+  /// operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)
+  /// in the cr parameter's value. Google Search determines the country of a
+  /// document by analyzing: * the top-level domain (TLD) of the document's URL
+  /// * the geographic location of the Web server's IP address See the [Country
+  /// Parameter
+  /// Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
+  /// page for a list of valid values for this parameter.
   ///
   /// [gl] - Geolocation of end user. * The `gl` parameter value is a two-letter
   /// country code. The `gl` parameter boosts search results whose country of
@@ -198,20 +199,13 @@ class CseResourceApi {
   /// international customers and, even more specifically, for customers in
   /// English- speaking countries other than the United States.
   ///
-  /// [excludeTerms] - Identifies a word or phrase that should not appear in any
-  /// documents in the search results.
+  /// [linkSite] - Specifies that all search results should contain a link to a
+  /// particular URL.
   ///
   /// [c2coff] - Enables or disables [Simplified and Traditional Chinese
   /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).
   /// The default value for this parameter is 0 (zero), meaning that the feature
   /// is enabled. Supported values are: * `1`: Disabled * `0`: Enabled (default)
-  ///
-  /// [start] - The index of the first result to return. The default number of
-  /// results per page is 10, so `&start=11` would start at the top of the
-  /// second page of results. **Note**: The JSON API will never return more than
-  /// 100 results, even if more than 100 documents match the query, so setting
-  /// the sum of `start + num` to a number greater than 100 will produce an
-  /// error. Also note that the maximum value for `num` is 10.
   ///
   /// [lr] - Restricts the search to documents written in a particular language
   /// (e.g., `lr=lang_ja`). Acceptable values are: * `"lang_ar"`: Arabic *
@@ -228,6 +222,18 @@ class CseResourceApi {
   /// `"lang_sv"`: Swedish * `"lang_tr"`: Turkish * `"lang_zh-CN"`: Chinese
   /// (Simplified) * `"lang_zh-TW"`: Chinese (Traditional)
   ///
+  /// [highRange] - Specifies the ending value for a search range. * Use
+  /// `lowRange` and `highRange` to append an inclusive search range of
+  /// `lowRange...highRange` to the query.
+  ///
+  /// [searchType] - Specifies the search type: `image`. If unspecified, results
+  /// are limited to webpages. Acceptable values are: * `"image"`: custom image
+  /// search.
+  /// Possible string values are:
+  /// - "searchTypeUndefined" : Search type unspecified (defaults to web
+  /// search).
+  /// - "image" : Image search.
+  ///
   /// [imgSize] - Returns images of a specified size. Acceptable values are: *
   /// `"huge"` * `"icon"` * `"large"` * `"medium"` * `"small"` * `"xlarge"` *
   /// `"xxlarge"`
@@ -241,12 +247,6 @@ class CseResourceApi {
   /// - "XLARGE" : Only very large images.
   /// - "XXLARGE" : Only extremely large images.
   ///
-  /// [siteSearch] - Specifies a given site which should always be included or
-  /// excluded from results (see `siteSearchFilter` parameter, below).
-  ///
-  /// [hq] - Appends the specified query terms to the query, as if they were
-  /// combined with a logical AND operator.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -258,37 +258,37 @@ class CseResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Search> list(
-      {core.String dateRestrict,
-      core.String relatedSite,
-      core.String hl,
-      core.String fileType,
-      core.String googlehost,
-      core.String imgType,
-      core.String q,
-      core.String imgColorType,
-      core.String rights,
-      core.String cr,
-      core.String cx,
-      core.String siteSearchFilter,
+      {core.String imgDominantColor,
       core.String orTerms,
-      core.String sort,
-      core.String highRange,
-      core.String imgDominantColor,
+      core.String filter,
       core.String safe,
       core.int num,
-      core.String filter,
-      core.String searchType,
-      core.String exactTerms,
-      core.String linkSite,
-      core.String lowRange,
-      core.String gl,
-      core.String excludeTerms,
-      core.String c2coff,
-      core.int start,
-      core.String lr,
-      core.String imgSize,
-      core.String siteSearch,
+      core.String cx,
+      core.String q,
       core.String hq,
+      core.String dateRestrict,
+      core.String imgType,
+      core.String siteSearch,
+      core.String imgColorType,
+      core.String lowRange,
+      core.String fileType,
+      core.String hl,
+      core.String googlehost,
+      core.int start,
+      core.String relatedSite,
+      core.String exactTerms,
+      core.String excludeTerms,
+      core.String sort,
+      core.String rights,
+      core.String siteSearchFilter,
+      core.String cr,
+      core.String gl,
+      core.String linkSite,
+      core.String c2coff,
+      core.String lr,
+      core.String highRange,
+      core.String searchType,
+      core.String imgSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -297,53 +297,14 @@ class CseResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (dateRestrict != null) {
-      _queryParams["dateRestrict"] = [dateRestrict];
-    }
-    if (relatedSite != null) {
-      _queryParams["relatedSite"] = [relatedSite];
-    }
-    if (hl != null) {
-      _queryParams["hl"] = [hl];
-    }
-    if (fileType != null) {
-      _queryParams["fileType"] = [fileType];
-    }
-    if (googlehost != null) {
-      _queryParams["googlehost"] = [googlehost];
-    }
-    if (imgType != null) {
-      _queryParams["imgType"] = [imgType];
-    }
-    if (q != null) {
-      _queryParams["q"] = [q];
-    }
-    if (imgColorType != null) {
-      _queryParams["imgColorType"] = [imgColorType];
-    }
-    if (rights != null) {
-      _queryParams["rights"] = [rights];
-    }
-    if (cr != null) {
-      _queryParams["cr"] = [cr];
-    }
-    if (cx != null) {
-      _queryParams["cx"] = [cx];
-    }
-    if (siteSearchFilter != null) {
-      _queryParams["siteSearchFilter"] = [siteSearchFilter];
+    if (imgDominantColor != null) {
+      _queryParams["imgDominantColor"] = [imgDominantColor];
     }
     if (orTerms != null) {
       _queryParams["orTerms"] = [orTerms];
     }
-    if (sort != null) {
-      _queryParams["sort"] = [sort];
-    }
-    if (highRange != null) {
-      _queryParams["highRange"] = [highRange];
-    }
-    if (imgDominantColor != null) {
-      _queryParams["imgDominantColor"] = [imgDominantColor];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (safe != null) {
       _queryParams["safe"] = [safe];
@@ -351,44 +312,83 @@ class CseResourceApi {
     if (num != null) {
       _queryParams["num"] = ["${num}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (cx != null) {
+      _queryParams["cx"] = [cx];
     }
-    if (searchType != null) {
-      _queryParams["searchType"] = [searchType];
+    if (q != null) {
+      _queryParams["q"] = [q];
     }
-    if (exactTerms != null) {
-      _queryParams["exactTerms"] = [exactTerms];
+    if (hq != null) {
+      _queryParams["hq"] = [hq];
     }
-    if (linkSite != null) {
-      _queryParams["linkSite"] = [linkSite];
+    if (dateRestrict != null) {
+      _queryParams["dateRestrict"] = [dateRestrict];
     }
-    if (lowRange != null) {
-      _queryParams["lowRange"] = [lowRange];
-    }
-    if (gl != null) {
-      _queryParams["gl"] = [gl];
-    }
-    if (excludeTerms != null) {
-      _queryParams["excludeTerms"] = [excludeTerms];
-    }
-    if (c2coff != null) {
-      _queryParams["c2coff"] = [c2coff];
-    }
-    if (start != null) {
-      _queryParams["start"] = ["${start}"];
-    }
-    if (lr != null) {
-      _queryParams["lr"] = [lr];
-    }
-    if (imgSize != null) {
-      _queryParams["imgSize"] = [imgSize];
+    if (imgType != null) {
+      _queryParams["imgType"] = [imgType];
     }
     if (siteSearch != null) {
       _queryParams["siteSearch"] = [siteSearch];
     }
-    if (hq != null) {
-      _queryParams["hq"] = [hq];
+    if (imgColorType != null) {
+      _queryParams["imgColorType"] = [imgColorType];
+    }
+    if (lowRange != null) {
+      _queryParams["lowRange"] = [lowRange];
+    }
+    if (fileType != null) {
+      _queryParams["fileType"] = [fileType];
+    }
+    if (hl != null) {
+      _queryParams["hl"] = [hl];
+    }
+    if (googlehost != null) {
+      _queryParams["googlehost"] = [googlehost];
+    }
+    if (start != null) {
+      _queryParams["start"] = ["${start}"];
+    }
+    if (relatedSite != null) {
+      _queryParams["relatedSite"] = [relatedSite];
+    }
+    if (exactTerms != null) {
+      _queryParams["exactTerms"] = [exactTerms];
+    }
+    if (excludeTerms != null) {
+      _queryParams["excludeTerms"] = [excludeTerms];
+    }
+    if (sort != null) {
+      _queryParams["sort"] = [sort];
+    }
+    if (rights != null) {
+      _queryParams["rights"] = [rights];
+    }
+    if (siteSearchFilter != null) {
+      _queryParams["siteSearchFilter"] = [siteSearchFilter];
+    }
+    if (cr != null) {
+      _queryParams["cr"] = [cr];
+    }
+    if (gl != null) {
+      _queryParams["gl"] = [gl];
+    }
+    if (linkSite != null) {
+      _queryParams["linkSite"] = [linkSite];
+    }
+    if (c2coff != null) {
+      _queryParams["c2coff"] = [c2coff];
+    }
+    if (lr != null) {
+      _queryParams["lr"] = [lr];
+    }
+    if (highRange != null) {
+      _queryParams["highRange"] = [highRange];
+    }
+    if (searchType != null) {
+      _queryParams["searchType"] = [searchType];
+    }
+    if (imgSize != null) {
+      _queryParams["imgSize"] = [imgSize];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -417,10 +417,18 @@ class CseSiterestrictResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [relatedSite] - Specifies that all search results should be pages that are
-  /// related to the specified URL.
+  /// [searchType] - Specifies the search type: `image`. If unspecified, results
+  /// are limited to webpages. Acceptable values are: * `"image"`: custom image
+  /// search.
+  /// Possible string values are:
+  /// - "searchTypeUndefined" : Search type unspecified (defaults to web
+  /// search).
+  /// - "image" : Image search.
   ///
-  /// [cx] - The Programmable Search Engine ID to use for this request.
+  /// [c2coff] - Enables or disables [Simplified and Traditional Chinese
+  /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).
+  /// The default value for this parameter is 0 (zero), meaning that the feature
+  /// is enabled. Supported values are: * `1`: Disabled * `0`: Enabled (default)
   ///
   /// [hl] - Sets the user interface language. * Explicitly setting this
   /// parameter improves the performance and the quality of your search results.
@@ -431,6 +439,82 @@ class CseSiterestrictResourceApi {
   /// for more information, and (Supported Interface
   /// Languages)[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages]
   /// for a list of supported languages.
+  ///
+  /// [fileType] - Restricts results to files of a specified extension. A list
+  /// of file types indexable by Google can be found in Search Console [Help
+  /// Center](https://support.google.com/webmasters/answer/35287).
+  ///
+  /// [googlehost] - **Deprecated**. Use the `gl` parameter for a similar
+  /// effect. The local Google domain (for example, google.com, google.de, or
+  /// google.fr) to use to perform the search.
+  ///
+  /// [safe] - Search safety level. Acceptable values are: * `"active"`: Enables
+  /// SafeSearch filtering. * `"off"`: Disables SafeSearch filtering. (default)
+  /// Possible string values are:
+  /// - "safeUndefined" : SafeSearch mode unspecified. (Falls back to engine's
+  /// configuration.)
+  /// - "active" : Turn SafeSearch on.
+  /// - "high" : Deprecated, equivalent to "active".
+  /// - "medium" : Deprecated, equivalent to "active".
+  /// - "off" : Turn SafeSearch off.
+  ///
+  /// [excludeTerms] - Identifies a word or phrase that should not appear in any
+  /// documents in the search results.
+  ///
+  /// [cx] - The Programmable Search Engine ID to use for this request.
+  ///
+  /// [hq] - Appends the specified query terms to the query, as if they were
+  /// combined with a logical AND operator.
+  ///
+  /// [gl] - Geolocation of end user. * The `gl` parameter value is a two-letter
+  /// country code. The `gl` parameter boosts search results whose country of
+  /// origin matches the parameter value. See the [Country
+  /// Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes)
+  /// page for a list of valid values. * Specifying a `gl` parameter value
+  /// should lead to more relevant results. This is particularly true for
+  /// international customers and, even more specifically, for customers in
+  /// English- speaking countries other than the United States.
+  ///
+  /// [relatedSite] - Specifies that all search results should be pages that are
+  /// related to the specified URL.
+  ///
+  /// [start] - The index of the first result to return. The default number of
+  /// results per page is 10, so `&start=11` would start at the top of the
+  /// second page of results. **Note**: The JSON API will never return more than
+  /// 100 results, even if more than 100 documents match the query, so setting
+  /// the sum of `start + num` to a number greater than 100 will produce an
+  /// error. Also note that the maximum value for `num` is 10.
+  ///
+  /// [siteSearchFilter] - Controls whether to include or exclude results from
+  /// the site named in the `siteSearch` parameter. Acceptable values are: *
+  /// `"e"`: exclude * `"i"`: include
+  /// Possible string values are:
+  /// - "siteSearchFilterUndefined" : Filter mode unspecified.
+  /// - "e" : Exclude results from the listed sites.
+  /// - "i" : Include only results from the listed sites.
+  ///
+  /// [siteSearch] - Specifies a given site which should always be included or
+  /// excluded from results (see `siteSearchFilter` parameter, below).
+  ///
+  /// [imgSize] - Returns images of a specified size. Acceptable values are: *
+  /// `"huge"` * `"icon"` * `"large"` * `"medium"` * `"small"` * `"xlarge"` *
+  /// `"xxlarge"`
+  /// Possible string values are:
+  /// - "imgSizeUndefined" : No image size specified.
+  /// - "HUGE" : Only the largest possible images.
+  /// - "ICON" : Only very small icon-sized images.
+  /// - "LARGE" : Only large images.
+  /// - "MEDIUM" : Only medium images.
+  /// - "SMALL" : Only small images.
+  /// - "XLARGE" : Only very large images.
+  /// - "XXLARGE" : Only extremely large images.
+  ///
+  /// [dateRestrict] - Restricts results to URLs based on date. Supported values
+  /// include: * `d[number]`: requests results from the specified number of past
+  /// days. * `w[number]`: requests results from the specified number of past
+  /// weeks. * `m[number]`: requests results from the specified number of past
+  /// months. * `y[number]`: requests results from the specified number of past
+  /// years.
   ///
   /// [imgType] - Returns images of a type. Acceptable values are: * `"clipart"`
   /// * `"face"` * `"lineart"` * `"stock"` * `"photo"` * `"animated"`
@@ -443,22 +527,6 @@ class CseSiterestrictResourceApi {
   /// - "photo" : Photo images only.
   /// - "animated" : Animated images only.
   ///
-  /// [siteSearch] - Specifies a given site which should always be included or
-  /// excluded from results (see `siteSearchFilter` parameter, below).
-  ///
-  /// [lowRange] - Specifies the starting value for a search range. Use
-  /// `lowRange` and `highRange` to append an inclusive search range of
-  /// `lowRange...highRange` to the query.
-  ///
-  /// [gl] - Geolocation of end user. * The `gl` parameter value is a two-letter
-  /// country code. The `gl` parameter boosts search results whose country of
-  /// origin matches the parameter value. See the [Country
-  /// Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes)
-  /// page for a list of valid values. * Specifying a `gl` parameter value
-  /// should lead to more relevant results. This is particularly true for
-  /// international customers and, even more specifically, for customers in
-  /// English- speaking countries other than the United States.
-  ///
   /// [filter] - Controls turning on or off the duplicate content filter. * See
   /// [Automatic
   /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
@@ -468,21 +536,35 @@ class CseSiterestrictResourceApi {
   /// those results. Acceptable values are: * `0`: Turns off duplicate content
   /// filter. * `1`: Turns on duplicate content filter.
   ///
-  /// [q] - Query
+  /// [linkSite] - Specifies that all search results should contain a link to a
+  /// particular URL.
   ///
-  /// [siteSearchFilter] - Controls whether to include or exclude results from
-  /// the site named in the `siteSearch` parameter. Acceptable values are: *
-  /// `"e"`: exclude * `"i"`: include
+  /// [highRange] - Specifies the ending value for a search range. * Use
+  /// `lowRange` and `highRange` to append an inclusive search range of
+  /// `lowRange...highRange` to the query.
+  ///
+  /// [imgColorType] - Returns black and white, grayscale, transparent, or color
+  /// images. Acceptable values are: * `"color"` * `"gray"` * `"mono"`: black
+  /// and white * `"trans"`: transparent background
   /// Possible string values are:
-  /// - "siteSearchFilterUndefined" : Filter mode unspecified.
-  /// - "e" : Exclude results from the listed sites.
-  /// - "i" : Include only results from the listed sites.
-  ///
-  /// [hq] - Appends the specified query terms to the query, as if they were
-  /// combined with a logical AND operator.
+  /// - "imgColorTypeUndefined" : No image color type specified.
+  /// - "mono" : Black and white images only.
+  /// - "gray" : Grayscale images only.
+  /// - "color" : Color images only.
+  /// - "trans" : Images with transparent background
   ///
   /// [num] - Number of search results to return. * Valid values are integers
   /// between 1 and 10, inclusive.
+  ///
+  /// [cr] - Restricts search results to documents originating in a particular
+  /// country. You may use [Boolean
+  /// operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)
+  /// in the cr parameter's value. Google Search determines the country of a
+  /// document by analyzing: * the top-level domain (TLD) of the document's URL
+  /// * the geographic location of the Web server's IP address See the [Country
+  /// Parameter
+  /// Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
+  /// page for a list of valid values for this parameter.
   ///
   /// [orTerms] - Provides additional search terms to check for in a document,
   /// where each document in the search results must contain at least one of the
@@ -503,82 +585,12 @@ class CseSiterestrictResourceApi {
   /// `"lang_sv"`: Swedish * `"lang_tr"`: Turkish * `"lang_zh-CN"`: Chinese
   /// (Simplified) * `"lang_zh-TW"`: Chinese (Traditional)
   ///
-  /// [rights] - Filters based on licensing. Supported values include:
-  /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,
-  /// `cc_nonderived` and combinations of these. See [typical
-  /// combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration).
-  ///
   /// [sort] - The sort expression to apply to the results. The sort parameter
   /// specifies that the results be sorted according to the specified expression
   /// i.e. sort by date. [Example:
   /// sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).
   ///
-  /// [imgSize] - Returns images of a specified size. Acceptable values are: *
-  /// `"huge"` * `"icon"` * `"large"` * `"medium"` * `"small"` * `"xlarge"` *
-  /// `"xxlarge"`
-  /// Possible string values are:
-  /// - "imgSizeUndefined" : No image size specified.
-  /// - "HUGE" : Only the largest possible images.
-  /// - "ICON" : Only very small icon-sized images.
-  /// - "LARGE" : Only large images.
-  /// - "MEDIUM" : Only medium images.
-  /// - "SMALL" : Only small images.
-  /// - "XLARGE" : Only very large images.
-  /// - "XXLARGE" : Only extremely large images.
-  ///
-  /// [cr] - Restricts search results to documents originating in a particular
-  /// country. You may use [Boolean
-  /// operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)
-  /// in the cr parameter's value. Google Search determines the country of a
-  /// document by analyzing: * the top-level domain (TLD) of the document's URL
-  /// * the geographic location of the Web server's IP address See the [Country
-  /// Parameter
-  /// Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
-  /// page for a list of valid values for this parameter.
-  ///
-  /// [dateRestrict] - Restricts results to URLs based on date. Supported values
-  /// include: * `d[number]`: requests results from the specified number of past
-  /// days. * `w[number]`: requests results from the specified number of past
-  /// weeks. * `m[number]`: requests results from the specified number of past
-  /// months. * `y[number]`: requests results from the specified number of past
-  /// years.
-  ///
-  /// [start] - The index of the first result to return. The default number of
-  /// results per page is 10, so `&start=11` would start at the top of the
-  /// second page of results. **Note**: The JSON API will never return more than
-  /// 100 results, even if more than 100 documents match the query, so setting
-  /// the sum of `start + num` to a number greater than 100 will produce an
-  /// error. Also note that the maximum value for `num` is 10.
-  ///
-  /// [linkSite] - Specifies that all search results should contain a link to a
-  /// particular URL.
-  ///
-  /// [searchType] - Specifies the search type: `image`. If unspecified, results
-  /// are limited to webpages. Acceptable values are: * `"image"`: custom image
-  /// search.
-  /// Possible string values are:
-  /// - "searchTypeUndefined" : Search type unspecified (defaults to web
-  /// search).
-  /// - "image" : Image search.
-  ///
-  /// [fileType] - Restricts results to files of a specified extension. A list
-  /// of file types indexable by Google can be found in Search Console [Help
-  /// Center](https://support.google.com/webmasters/answer/35287).
-  ///
-  /// [highRange] - Specifies the ending value for a search range. * Use
-  /// `lowRange` and `highRange` to append an inclusive search range of
-  /// `lowRange...highRange` to the query.
-  ///
-  /// [exactTerms] - Identifies a phrase that all documents in the search
-  /// results must contain.
-  ///
-  /// [c2coff] - Enables or disables [Simplified and Traditional Chinese
-  /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).
-  /// The default value for this parameter is 0 (zero), meaning that the feature
-  /// is enabled. Supported values are: * `1`: Disabled * `0`: Enabled (default)
-  ///
-  /// [excludeTerms] - Identifies a word or phrase that should not appear in any
-  /// documents in the search results.
+  /// [q] - Query
   ///
   /// [imgDominantColor] - Returns images of a specific dominant color.
   /// Acceptable values are: * `"black"` * `"blue"` * `"brown"` * `"gray"` *
@@ -599,29 +611,17 @@ class CseSiterestrictResourceApi {
   /// - "white" : Predominantly white images only.
   /// - "yellow" : Predominantly yellow images only.
   ///
-  /// [safe] - Search safety level. Acceptable values are: * `"active"`: Enables
-  /// SafeSearch filtering. * `"off"`: Disables SafeSearch filtering. (default)
-  /// Possible string values are:
-  /// - "safeUndefined" : SafeSearch mode unspecified. (Falls back to engine's
-  /// configuration.)
-  /// - "active" : Turn SafeSearch on.
-  /// - "high" : Deprecated, equivalent to "active".
-  /// - "medium" : Deprecated, equivalent to "active".
-  /// - "off" : Turn SafeSearch off.
+  /// [lowRange] - Specifies the starting value for a search range. Use
+  /// `lowRange` and `highRange` to append an inclusive search range of
+  /// `lowRange...highRange` to the query.
   ///
-  /// [imgColorType] - Returns black and white, grayscale, transparent, or color
-  /// images. Acceptable values are: * `"color"` * `"gray"` * `"mono"`: black
-  /// and white * `"trans"`: transparent background
-  /// Possible string values are:
-  /// - "imgColorTypeUndefined" : No image color type specified.
-  /// - "mono" : Black and white images only.
-  /// - "gray" : Grayscale images only.
-  /// - "color" : Color images only.
-  /// - "trans" : Images with transparent background
+  /// [exactTerms] - Identifies a phrase that all documents in the search
+  /// results must contain.
   ///
-  /// [googlehost] - **Deprecated**. Use the `gl` parameter for a similar
-  /// effect. The local Google domain (for example, google.com, google.de, or
-  /// google.fr) to use to perform the search.
+  /// [rights] - Filters based on licensing. Supported values include:
+  /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,
+  /// `cc_nonderived` and combinations of these. See [typical
+  /// combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -634,37 +634,37 @@ class CseSiterestrictResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Search> list(
-      {core.String relatedSite,
-      core.String cx,
+      {core.String searchType,
+      core.String c2coff,
       core.String hl,
-      core.String imgType,
-      core.String siteSearch,
-      core.String lowRange,
-      core.String gl,
-      core.String filter,
-      core.String q,
-      core.String siteSearchFilter,
+      core.String fileType,
+      core.String googlehost,
+      core.String safe,
+      core.String excludeTerms,
+      core.String cx,
       core.String hq,
+      core.String gl,
+      core.String relatedSite,
+      core.int start,
+      core.String siteSearchFilter,
+      core.String siteSearch,
+      core.String imgSize,
+      core.String dateRestrict,
+      core.String imgType,
+      core.String filter,
+      core.String linkSite,
+      core.String highRange,
+      core.String imgColorType,
       core.int num,
+      core.String cr,
       core.String orTerms,
       core.String lr,
-      core.String rights,
       core.String sort,
-      core.String imgSize,
-      core.String cr,
-      core.String dateRestrict,
-      core.int start,
-      core.String linkSite,
-      core.String searchType,
-      core.String fileType,
-      core.String highRange,
-      core.String exactTerms,
-      core.String c2coff,
-      core.String excludeTerms,
+      core.String q,
       core.String imgDominantColor,
-      core.String safe,
-      core.String imgColorType,
-      core.String googlehost,
+      core.String lowRange,
+      core.String exactTerms,
+      core.String rights,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -673,41 +673,74 @@ class CseSiterestrictResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (relatedSite != null) {
-      _queryParams["relatedSite"] = [relatedSite];
+    if (searchType != null) {
+      _queryParams["searchType"] = [searchType];
     }
-    if (cx != null) {
-      _queryParams["cx"] = [cx];
+    if (c2coff != null) {
+      _queryParams["c2coff"] = [c2coff];
     }
     if (hl != null) {
       _queryParams["hl"] = [hl];
     }
-    if (imgType != null) {
-      _queryParams["imgType"] = [imgType];
+    if (fileType != null) {
+      _queryParams["fileType"] = [fileType];
     }
-    if (siteSearch != null) {
-      _queryParams["siteSearch"] = [siteSearch];
+    if (googlehost != null) {
+      _queryParams["googlehost"] = [googlehost];
     }
-    if (lowRange != null) {
-      _queryParams["lowRange"] = [lowRange];
+    if (safe != null) {
+      _queryParams["safe"] = [safe];
     }
-    if (gl != null) {
-      _queryParams["gl"] = [gl];
+    if (excludeTerms != null) {
+      _queryParams["excludeTerms"] = [excludeTerms];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (q != null) {
-      _queryParams["q"] = [q];
-    }
-    if (siteSearchFilter != null) {
-      _queryParams["siteSearchFilter"] = [siteSearchFilter];
+    if (cx != null) {
+      _queryParams["cx"] = [cx];
     }
     if (hq != null) {
       _queryParams["hq"] = [hq];
     }
+    if (gl != null) {
+      _queryParams["gl"] = [gl];
+    }
+    if (relatedSite != null) {
+      _queryParams["relatedSite"] = [relatedSite];
+    }
+    if (start != null) {
+      _queryParams["start"] = ["${start}"];
+    }
+    if (siteSearchFilter != null) {
+      _queryParams["siteSearchFilter"] = [siteSearchFilter];
+    }
+    if (siteSearch != null) {
+      _queryParams["siteSearch"] = [siteSearch];
+    }
+    if (imgSize != null) {
+      _queryParams["imgSize"] = [imgSize];
+    }
+    if (dateRestrict != null) {
+      _queryParams["dateRestrict"] = [dateRestrict];
+    }
+    if (imgType != null) {
+      _queryParams["imgType"] = [imgType];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (linkSite != null) {
+      _queryParams["linkSite"] = [linkSite];
+    }
+    if (highRange != null) {
+      _queryParams["highRange"] = [highRange];
+    }
+    if (imgColorType != null) {
+      _queryParams["imgColorType"] = [imgColorType];
+    }
     if (num != null) {
       _queryParams["num"] = ["${num}"];
+    }
+    if (cr != null) {
+      _queryParams["cr"] = [cr];
     }
     if (orTerms != null) {
       _queryParams["orTerms"] = [orTerms];
@@ -715,56 +748,23 @@ class CseSiterestrictResourceApi {
     if (lr != null) {
       _queryParams["lr"] = [lr];
     }
-    if (rights != null) {
-      _queryParams["rights"] = [rights];
-    }
     if (sort != null) {
       _queryParams["sort"] = [sort];
     }
-    if (imgSize != null) {
-      _queryParams["imgSize"] = [imgSize];
-    }
-    if (cr != null) {
-      _queryParams["cr"] = [cr];
-    }
-    if (dateRestrict != null) {
-      _queryParams["dateRestrict"] = [dateRestrict];
-    }
-    if (start != null) {
-      _queryParams["start"] = ["${start}"];
-    }
-    if (linkSite != null) {
-      _queryParams["linkSite"] = [linkSite];
-    }
-    if (searchType != null) {
-      _queryParams["searchType"] = [searchType];
-    }
-    if (fileType != null) {
-      _queryParams["fileType"] = [fileType];
-    }
-    if (highRange != null) {
-      _queryParams["highRange"] = [highRange];
-    }
-    if (exactTerms != null) {
-      _queryParams["exactTerms"] = [exactTerms];
-    }
-    if (c2coff != null) {
-      _queryParams["c2coff"] = [c2coff];
-    }
-    if (excludeTerms != null) {
-      _queryParams["excludeTerms"] = [excludeTerms];
+    if (q != null) {
+      _queryParams["q"] = [q];
     }
     if (imgDominantColor != null) {
       _queryParams["imgDominantColor"] = [imgDominantColor];
     }
-    if (safe != null) {
-      _queryParams["safe"] = [safe];
+    if (lowRange != null) {
+      _queryParams["lowRange"] = [lowRange];
     }
-    if (imgColorType != null) {
-      _queryParams["imgColorType"] = [imgColorType];
+    if (exactTerms != null) {
+      _queryParams["exactTerms"] = [exactTerms];
     }
-    if (googlehost != null) {
-      _queryParams["googlehost"] = [googlehost];
+    if (rights != null) {
+      _queryParams["rights"] = [rights];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

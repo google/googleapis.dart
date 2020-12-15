@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed5908() {
+buildUnnamed6375() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5908(core.List<core.String> o) {
+checkUnnamed6375(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +69,7 @@ buildGoogleCloudBillingBudgetsV1beta1AllUpdatesRule() {
   buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule < 3) {
     o.disableDefaultIamRecipients = true;
-    o.monitoringNotificationChannels = buildUnnamed5908();
+    o.monitoringNotificationChannels = buildUnnamed6375();
     o.pubsubTopic = "foo";
     o.schemaVersion = "foo";
   }
@@ -82,21 +82,21 @@ checkGoogleCloudBillingBudgetsV1beta1AllUpdatesRule(
   buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule < 3) {
     unittest.expect(o.disableDefaultIamRecipients, unittest.isTrue);
-    checkUnnamed5908(o.monitoringNotificationChannels);
+    checkUnnamed6375(o.monitoringNotificationChannels);
     unittest.expect(o.pubsubTopic, unittest.equals('foo'));
     unittest.expect(o.schemaVersion, unittest.equals('foo'));
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1AllUpdatesRule--;
 }
 
-buildUnnamed5909() {
+buildUnnamed6376() {
   var o = new core.List<api.GoogleCloudBillingBudgetsV1beta1ThresholdRule>();
   o.add(buildGoogleCloudBillingBudgetsV1beta1ThresholdRule());
   o.add(buildGoogleCloudBillingBudgetsV1beta1ThresholdRule());
   return o;
 }
 
-checkUnnamed5909(
+checkUnnamed6376(
     core.List<api.GoogleCloudBillingBudgetsV1beta1ThresholdRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(o[0]);
@@ -114,7 +114,7 @@ buildGoogleCloudBillingBudgetsV1beta1Budget() {
     o.displayName = "foo";
     o.etag = "foo";
     o.name = "foo";
-    o.thresholdRules = buildUnnamed5909();
+    o.thresholdRules = buildUnnamed6376();
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1Budget--;
   return o;
@@ -130,7 +130,7 @@ checkGoogleCloudBillingBudgetsV1beta1Budget(
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5909(o.thresholdRules);
+    checkUnnamed6376(o.thresholdRules);
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1Budget--;
 }
@@ -178,7 +178,20 @@ checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(
   buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest--;
 }
 
-buildUnnamed5910() {
+buildUnnamed6377() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed6377(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed6378() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -193,7 +206,7 @@ buildUnnamed5910() {
   return o;
 }
 
-checkUnnamed5910(core.List<core.Object> o) {
+checkUnnamed6378(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -207,53 +220,53 @@ checkUnnamed5910(core.List<core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5911() {
+buildUnnamed6379() {
   var o = new core.Map<core.String, core.List<core.Object>>();
-  o["x"] = buildUnnamed5910();
-  o["y"] = buildUnnamed5910();
+  o["x"] = buildUnnamed6378();
+  o["y"] = buildUnnamed6378();
   return o;
 }
 
-checkUnnamed5911(core.Map<core.String, core.List<core.Object>> o) {
+checkUnnamed6379(core.Map<core.String, core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed5910(o["x"]);
-  checkUnnamed5910(o["y"]);
+  checkUnnamed6378(o["x"]);
+  checkUnnamed6378(o["y"]);
 }
 
-buildUnnamed5912() {
+buildUnnamed6380() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5912(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed5913() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed5913(core.List<core.String> o) {
+checkUnnamed6380(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5914() {
+buildUnnamed6381() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5914(core.List<core.String> o) {
+checkUnnamed6381(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed6382() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed6382(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -264,11 +277,12 @@ buildGoogleCloudBillingBudgetsV1beta1Filter() {
   var o = new api.GoogleCloudBillingBudgetsV1beta1Filter();
   buildCounterGoogleCloudBillingBudgetsV1beta1Filter++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1Filter < 3) {
+    o.creditTypes = buildUnnamed6377();
     o.creditTypesTreatment = "foo";
-    o.labels = buildUnnamed5911();
-    o.projects = buildUnnamed5912();
-    o.services = buildUnnamed5913();
-    o.subaccounts = buildUnnamed5914();
+    o.labels = buildUnnamed6379();
+    o.projects = buildUnnamed6380();
+    o.services = buildUnnamed6381();
+    o.subaccounts = buildUnnamed6382();
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1Filter--;
   return o;
@@ -278,11 +292,12 @@ checkGoogleCloudBillingBudgetsV1beta1Filter(
     api.GoogleCloudBillingBudgetsV1beta1Filter o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1Filter++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1Filter < 3) {
+    checkUnnamed6377(o.creditTypes);
     unittest.expect(o.creditTypesTreatment, unittest.equals('foo'));
-    checkUnnamed5911(o.labels);
-    checkUnnamed5912(o.projects);
-    checkUnnamed5913(o.services);
-    checkUnnamed5914(o.subaccounts);
+    checkUnnamed6379(o.labels);
+    checkUnnamed6380(o.projects);
+    checkUnnamed6381(o.services);
+    checkUnnamed6382(o.subaccounts);
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1Filter--;
 }
@@ -303,14 +318,14 @@ checkGoogleCloudBillingBudgetsV1beta1LastPeriodAmount(
   buildCounterGoogleCloudBillingBudgetsV1beta1LastPeriodAmount--;
 }
 
-buildUnnamed5915() {
+buildUnnamed6383() {
   var o = new core.List<api.GoogleCloudBillingBudgetsV1beta1Budget>();
   o.add(buildGoogleCloudBillingBudgetsV1beta1Budget());
   o.add(buildGoogleCloudBillingBudgetsV1beta1Budget());
   return o;
 }
 
-checkUnnamed5915(core.List<api.GoogleCloudBillingBudgetsV1beta1Budget> o) {
+checkUnnamed6383(core.List<api.GoogleCloudBillingBudgetsV1beta1Budget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBillingBudgetsV1beta1Budget(o[0]);
   checkGoogleCloudBillingBudgetsV1beta1Budget(o[1]);
@@ -321,7 +336,7 @@ buildGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse() {
   var o = new api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse();
   buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse < 3) {
-    o.budgets = buildUnnamed5915();
+    o.budgets = buildUnnamed6383();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse--;
@@ -332,7 +347,7 @@ checkGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse(
     api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse < 3) {
-    checkUnnamed5915(o.budgets);
+    checkUnnamed6383(o.budgets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse--;
@@ -698,8 +713,8 @@ main() {
       api.BillingAccountsBudgetsResourceApi res =
           new api.BillingbudgetsApi(mock).billingAccounts.budgets;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -732,10 +747,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -747,8 +762,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse(response);

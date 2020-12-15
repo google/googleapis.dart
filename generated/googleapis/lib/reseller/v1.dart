@@ -16,7 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client reseller/v1';
 
-/// Creates and manages your customers and their subscriptions.
+/// Perform common functions that are available on the Channel Services console
+/// at scale, like placing orders and viewing customer information
 class ResellerApi {
   /// Manage users on your domain
   static const AppsOrderScope = "https://www.googleapis.com/auth/apps.order";
@@ -34,8 +35,8 @@ class ResellerApi {
       new SubscriptionsResourceApi(_requester);
 
   ResellerApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "apps/reseller/v1/"})
+      {core.String rootUrl = "https://reseller.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -79,7 +80,8 @@ class CustomersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
+    _url = 'apps/reseller/v1/customers/' +
+        commons.Escaper.ecapeVariable('$customerId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -132,7 +134,7 @@ class CustomersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers';
+    _url = 'apps/reseller/v1/customers';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -143,8 +145,7 @@ class CustomersResourceApi {
     return _response.then((data) => new Customer.fromJson(data));
   }
 
-  /// Update a customer account's settings. This method supports patch
-  /// semantics.
+  /// Patch a customer account's settings via Apiary Patch Orchestration
   ///
   /// [request] - The metadata request object.
   ///
@@ -184,7 +185,8 @@ class CustomersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
+    _url = 'apps/reseller/v1/customers/' +
+        commons.Escaper.ecapeVariable('$customerId');
 
     var _response = _requester.request(_url, "PATCH",
         body: _body,
@@ -235,7 +237,8 @@ class CustomersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
+    _url = 'apps/reseller/v1/customers/' +
+        commons.Escaper.ecapeVariable('$customerId');
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -279,7 +282,7 @@ class ResellernotifyResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'resellernotify/getwatchdetails';
+    _url = 'apps/reseller/v1/resellernotify/getwatchdetails';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -324,7 +327,7 @@ class ResellernotifyResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'resellernotify/register';
+    _url = 'apps/reseller/v1/resellernotify/register';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -368,7 +371,7 @@ class ResellernotifyResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'resellernotify/unregister';
+    _url = 'apps/reseller/v1/resellernotify/unregister';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -430,7 +433,7 @@ class SubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' +
+    _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
@@ -497,7 +500,7 @@ class SubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' +
+    _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
@@ -563,7 +566,7 @@ class SubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' +
+    _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
@@ -628,7 +631,7 @@ class SubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' +
+    _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
@@ -661,9 +664,10 @@ class SubscriptionsResourceApi {
   /// [deletionType] - The deletionType query string enables the cancellation,
   /// downgrade, or suspension of a subscription.
   /// Possible string values are:
+  /// - "deletion_type_undefined"
   /// - "cancel" : Cancels the subscription immediately. This does not apply to
   /// a G Suite subscription.
-  /// - "transfer_to_direct" : Transfers a subscription directly to Google.  The
+  /// - "transfer_to_direct" : Transfers a subscription directly to Google. The
   /// customer is immediately transferred to a direct billing relationship with
   /// Google and is given a short amount of time with no service interruption.
   /// The customer can then choose to set up billing directly with Google by
@@ -703,7 +707,7 @@ class SubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'customers/' +
+    _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId');
@@ -762,7 +766,7 @@ class SubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' +
+    _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId');
@@ -827,7 +831,7 @@ class SubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' +
+    _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions';
 
@@ -851,14 +855,20 @@ class SubscriptionsResourceApi {
   /// page. The default is 20.
   /// Value must be between "1" and "100".
   ///
+  /// [pageToken] - Token to specify next page in the list
+  ///
   /// [customerNamePrefix] - When retrieving all of your subscriptions and
   /// filtering for specific customers, you can enter a prefix for a customer
   /// name. Using an example customer group that includes exam.com,
-  /// example20.com and example.com:
-  /// - exa -- Returns all customer names that start with 'exa' which could
-  /// include exam.com, example20.com, and example.com. A name prefix is similar
-  /// to using a regular expression's asterisk, exa*.
-  /// - example -- Returns example20.com and example.com.
+  /// example20.com and example.com: - exa -- Returns all customer names that
+  /// start with 'exa' which could include exam.com, example20.com, and
+  /// example.com. A name prefix is similar to using a regular expression's
+  /// asterisk, exa*. - example -- Returns example20.com and example.com.
+  ///
+  /// [customerId] - Either the customer's primary domain name or the customer's
+  /// unique identifier. If using the domain name, we do not recommend using a
+  /// customerId as a key for persistent data. If the domain name for a
+  /// customerId is changed, the Google system automatically updates.
   ///
   /// [customerAuthToken] - The customerAuthToken query string is required when
   /// creating a resold account that transfers a direct customer's subscription
@@ -866,13 +876,6 @@ class SubscriptionsResourceApi {
   /// management. This is a hexadecimal authentication token needed to complete
   /// the subscription transfer. For more information, see the administrator
   /// help center.
-  ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// customerId as a key for persistent data. If the domain name for a
-  /// customerId is changed, the Google system automatically updates.
-  ///
-  /// [pageToken] - Token to specify next page in the list
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -886,10 +889,10 @@ class SubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Subscriptions> list(
       {core.int maxResults,
-      core.String customerNamePrefix,
-      core.String customerAuthToken,
-      core.String customerId,
       core.String pageToken,
+      core.String customerNamePrefix,
+      core.String customerId,
+      core.String customerAuthToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -901,23 +904,23 @@ class SubscriptionsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (customerNamePrefix != null) {
       _queryParams["customerNamePrefix"] = [customerNamePrefix];
-    }
-    if (customerAuthToken != null) {
-      _queryParams["customerAuthToken"] = [customerAuthToken];
     }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (customerAuthToken != null) {
+      _queryParams["customerAuthToken"] = [customerAuthToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'subscriptions';
+    _url = 'apps/reseller/v1/subscriptions';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -974,7 +977,7 @@ class SubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' +
+    _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
@@ -1034,7 +1037,7 @@ class SubscriptionsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'customers/' +
+    _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId') +
@@ -1176,14 +1179,11 @@ class ChangePlanRequest {
 
   /// The planName property is required. This is the name of the subscription's
   /// payment plan. For more information about the Google payment plans, see API
-  /// concepts.
-  ///
-  /// Possible values are:
-  /// - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments
-  /// Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.
-  /// - ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments
-  /// - FLEXIBLE - The flexible plan
-  /// - TRIAL - The 30-day free trial plan
+  /// concepts. Possible values are: - ANNUAL_MONTHLY_PAY - The annual
+  /// commitment plan with monthly payments *Caution: *ANNUAL_MONTHLY_PAY is
+  /// returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY - The annual
+  /// commitment plan with yearly payments - FLEXIBLE - The flexible plan -
+  /// TRIAL - The 30-day free trial plan
   core.String planName;
 
   /// This is an optional property. This purchase order (PO) information is for
@@ -1244,7 +1244,7 @@ class Customer {
   /// secondary contact used if something happens to the customer's service such
   /// as service outage or a security issue. This property is required when
   /// creating a new customer and should not use the same domain as
-  /// customerDomain.
+  /// customerDomain .
   core.String alternateEmail;
 
   /// The customer's primary domain name string. customerDomain is required when
@@ -1445,7 +1445,7 @@ class Seats {
   /// FLEXIBLE or TRIAL plans. This property sets the maximum number of licensed
   /// users allowed on a subscription. This quantity can be increased up to the
   /// maximum limit defined in the reseller's contract. The minimum quantity is
-  /// the current number of users in the customer account. Note: G Suite
+  /// the current number of users in the customer account. *Note: *G Suite
   /// subscriptions automatically assign a license to every user.
   core.int maximumNumberOfSeats;
 
@@ -1454,8 +1454,8 @@ class Seats {
   /// maximum number of licenses assignable to users on a subscription. The
   /// reseller can add more licenses, but once set, the numberOfSeats cannot be
   /// reduced until renewal. The reseller is invoiced based on the numberOfSeats
-  /// value regardless of how many of these user licenses are assigned. Note: G
-  /// Suite subscriptions automatically assign a license to every user.
+  /// value regardless of how many of these user licenses are assigned. *Note:
+  /// *G Suite subscriptions automatically assign a license to every user.
   core.int numberOfSeats;
 
   Seats();
@@ -1495,8 +1495,8 @@ class Seats {
 }
 
 /// In this version of the API, annual commitment plan's interval is one year.
-/// Note: When billingMethod value is OFFLINE, the subscription property object
-/// plan.commitmentInterval is omitted in all API responses.
+/// *Note: *When billingMethod value is OFFLINE, the subscription property
+/// object plan.commitmentInterval is omitted in all API responses.
 class SubscriptionPlanCommitmentInterval {
   /// An annual commitment plan's interval's endTime in milliseconds using the
   /// UNIX Epoch format. See an example Epoch converter.
@@ -1536,32 +1536,28 @@ class SubscriptionPlanCommitmentInterval {
 /// concepts.
 class SubscriptionPlan {
   /// In this version of the API, annual commitment plan's interval is one year.
-  /// Note: When billingMethod value is OFFLINE, the subscription property
+  /// *Note: *When billingMethod value is OFFLINE, the subscription property
   /// object plan.commitmentInterval is omitted in all API responses.
   SubscriptionPlanCommitmentInterval commitmentInterval;
 
   /// The isCommitmentPlan property's boolean value identifies the plan as an
-  /// annual commitment plan:
-  /// - true — The subscription's plan is an annual commitment plan.
-  /// - false — The plan is not an annual commitment plan.
+  /// annual commitment plan: - true — The subscription's plan is an annual
+  /// commitment plan. - false — The plan is not an annual commitment plan.
   core.bool isCommitmentPlan;
 
   /// The planName property is required. This is the name of the subscription's
   /// plan. For more information about the Google payment plans, see the API
-  /// concepts.
-  ///
-  /// Possible values are:
-  /// - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments.
-  /// Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.
-  /// - ANNUAL_YEARLY_PAY — The annual commitment plan with yearly payments
-  /// - FLEXIBLE — The flexible plan
-  /// - TRIAL — The 30-day free trial plan. A subscription in trial will be
+  /// concepts. Possible values are: - ANNUAL_MONTHLY_PAY — The annual
+  /// commitment plan with monthly payments. *Caution: *ANNUAL_MONTHLY_PAY is
+  /// returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY — The annual
+  /// commitment plan with yearly payments - FLEXIBLE — The flexible plan -
+  /// TRIAL — The 30-day free trial plan. A subscription in trial will be
   /// suspended after the 30th free day if no payment plan is assigned. Calling
   /// changePlan will assign a payment plan to a trial but will not activate the
   /// plan. A trial will automatically begin its assigned payment plan after its
-  /// 30th free day or immediately after calling startPaidService.
-  /// - FREE — The free plan is exclusive to the Cloud Identity SKU and does not
-  /// incur any billing.
+  /// 30th free day or immediately after calling startPaidService. - FREE — The
+  /// free plan is exclusive to the Cloud Identity SKU and does not incur any
+  /// billing.
   core.String planName;
 
   SubscriptionPlan();
@@ -1635,9 +1631,8 @@ class SubscriptionTransferInfo {
 /// The G Suite annual commitment and flexible payment plans can be in a 30-day
 /// free trial. For more information, see the API concepts.
 class SubscriptionTrialSettings {
-  /// Determines if a subscription's plan is in a 30-day free trial or not:
-  /// - true — The plan is in trial.
-  /// - false — The plan is not in trial.
+  /// Determines if a subscription's plan is in a 30-day free trial or not: -
+  /// true — The plan is in trial. - false — The plan is not in trial.
   core.bool isInTrial;
 
   /// Date when the trial ends. The value is in milliseconds using the UNIX
@@ -1723,13 +1718,13 @@ class Subscription {
 
   /// A required property. The skuId is a unique system identifier for a
   /// product's SKU assigned to a customer in the subscription. For products and
-  /// SKUs available in this version of the API, see  Product and SKU IDs.
+  /// SKUs available in this version of the API, see Product and SKU IDs.
   core.String skuId;
 
   /// Read-only external display name for a product's SKU assigned to a customer
   /// in the subscription. SKU names are subject to change at Google's
   /// discretion. For products and SKUs available in this version of the API,
-  /// see  Product and SKU IDs.
+  /// see Product and SKU IDs.
   core.String skuName;
 
   /// This is an optional property.
@@ -1745,17 +1740,14 @@ class Subscription {
   /// Read-only field containing an enumerable of all the current suspension
   /// reasons for a subscription. It is possible for a subscription to have many
   /// concurrent, overlapping suspension reasons. A subscription's STATUS is
-  /// SUSPENDED until all pending suspensions are removed.
-  ///
-  /// Possible options include:
-  /// - PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the
-  /// G Suite Resold Terms of Services.
-  /// - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their
-  /// service was cancelled at the end of their term.
-  /// - RESELLER_INITIATED - A manual suspension invoked by a Reseller.
-  /// - TRIAL_ENDED - The customer's trial expired without a plan selected.
-  /// - OTHER - The customer is suspended for an internal Google reason (e.g.
-  /// abuse or otherwise).
+  /// SUSPENDED until all pending suspensions are removed. Possible options
+  /// include: - PENDING_TOS_ACCEPTANCE - The customer has not logged in and
+  /// accepted the G Suite Resold Terms of Services. - RENEWAL_WITH_TYPE_CANCEL
+  /// - The customer's commitment ended and their service was cancelled at the
+  /// end of their term. - RESELLER_INITIATED - A manual suspension invoked by a
+  /// Reseller. - TRIAL_ENDED - The customer's trial expired without a plan
+  /// selected. - OTHER - The customer is suspended for an internal Google
+  /// reason (e.g. abuse or otherwise).
   core.List<core.String> suspensionReasons;
 
   /// Read-only transfer related information for the subscription. For more

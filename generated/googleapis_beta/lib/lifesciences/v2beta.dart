@@ -104,11 +104,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -121,9 +121,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String filter,
-      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -135,14 +135,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -283,9 +283,6 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of results to return. The maximum value is
-  /// 256.
-  ///
   /// [filter] - A string for filtering Operations. The following filter fields
   /// are supported: * createTime: The time this job was created * events: The
   /// set of event (names) that have occurred while running the pipeline. The :
@@ -298,6 +295,9 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [pageSize] - The maximum number of results to return. The maximum value is
+  /// 256.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -309,9 +309,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -323,14 +323,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1085,6 +1085,37 @@ class Event {
   }
 }
 
+/// Configuration for an existing disk to be attached to the VM.
+class ExistingDisk {
+  /// If `disk` contains slashes, the Cloud Life Sciences API assumes that it is
+  /// a complete URL for the disk. If `disk` does not contain slashes, the Cloud
+  /// Life Sciences API assumes that the disk is a zonal disk and a URL will be
+  /// generated of the form `zones//disks/`, where `` is the zone in which the
+  /// instance is allocated. The disk must be ext4 formatted. If all `Mount`
+  /// references to this disk have the `read_only` flag set to true, the disk
+  /// will be attached in `read-only` mode and can be shared with other
+  /// instances. Otherwise, the disk will be available for writing but cannot be
+  /// shared.
+  core.String disk;
+
+  ExistingDisk();
+
+  ExistingDisk.fromJson(core.Map _json) {
+    if (_json.containsKey("disk")) {
+      disk = _json["disk"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (disk != null) {
+      _json["disk"] = disk;
+    }
+    return _json;
+  }
+}
+
 /// An event generated when the execution of a pipeline has failed. Note that
 /// other events can continue to occur after this event.
 class FailedEvent {
@@ -1447,6 +1478,29 @@ class Mount {
   }
 }
 
+/// Configuration for an `NFSMount` to be attached to the VM.
+class NFSMount {
+  /// A target NFS mount. The target must be specified as `address:/mount".
+  core.String target;
+
+  NFSMount();
+
+  NFSMount.fromJson(core.Map _json) {
+    if (_json.containsKey("target")) {
+      target = _json["target"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (target != null) {
+      _json["target"] = target;
+    }
+    return _json;
+  }
+}
+
 /// VM networking options.
 class Network {
   /// The network name to attach the VM's network interface to. The value will
@@ -1567,6 +1621,54 @@ class Operation {
     }
     if (response != null) {
       _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
+/// Configuration for a persistent disk to be attached to the VM. See
+/// https://cloud.google.com/compute/docs/disks/performance for more information
+/// about disk type, size, and performance considerations.
+class PersistentDisk {
+  /// The size, in GB, of the disk to attach. If the size is not specified, a
+  /// default is chosen to ensure reasonable I/O performance. If the disk type
+  /// is specified as `local-ssd`, multiple local drives are automatically
+  /// combined to provide the requested size. Note, however, that each physical
+  /// SSD is 375GB in size, and no more than 8 drives can be attached to a
+  /// single instance.
+  core.int sizeGb;
+
+  /// An image to put on the disk before attaching it to the VM.
+  core.String sourceImage;
+
+  /// The Compute Engine disk type. If unspecified, `pd-standard` is used.
+  core.String type;
+
+  PersistentDisk();
+
+  PersistentDisk.fromJson(core.Map _json) {
+    if (_json.containsKey("sizeGb")) {
+      sizeGb = _json["sizeGb"];
+    }
+    if (_json.containsKey("sourceImage")) {
+      sourceImage = _json["sourceImage"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sizeGb != null) {
+      _json["sizeGb"] = sizeGb;
+    }
+    if (sourceImage != null) {
+      _json["sourceImage"] = sourceImage;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -2013,6 +2115,9 @@ class VirtualMachine {
   /// permissions other than those required by the pipeline.
   ServiceAccount serviceAccount;
 
+  /// The list of disks and other storage to create or attach to the VM.
+  core.List<Volume> volumes;
+
   VirtualMachine();
 
   VirtualMachine.fromJson(core.Map _json) {
@@ -2060,6 +2165,11 @@ class VirtualMachine {
     if (_json.containsKey("serviceAccount")) {
       serviceAccount = new ServiceAccount.fromJson(_json["serviceAccount"]);
     }
+    if (_json.containsKey("volumes")) {
+      volumes = (_json["volumes"] as core.List)
+          .map<Volume>((value) => new Volume.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2104,6 +2214,61 @@ class VirtualMachine {
     }
     if (serviceAccount != null) {
       _json["serviceAccount"] = (serviceAccount).toJson();
+    }
+    if (volumes != null) {
+      _json["volumes"] = volumes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Carries information about storage that can be attached to a VM.
+class Volume {
+  /// Configuration for a existing disk.
+  ExistingDisk existingDisk;
+
+  /// Configuration for an NFS mount.
+  NFSMount nfsMount;
+
+  /// Configuration for a persistent disk.
+  PersistentDisk persistentDisk;
+
+  /// A user-supplied name for the volume. Used when mounting the volume into
+  /// `Actions`. The name must contain only upper and lowercase alphanumeric
+  /// characters and hyphens and cannot start with a hyphen.
+  core.String volume;
+
+  Volume();
+
+  Volume.fromJson(core.Map _json) {
+    if (_json.containsKey("existingDisk")) {
+      existingDisk = new ExistingDisk.fromJson(_json["existingDisk"]);
+    }
+    if (_json.containsKey("nfsMount")) {
+      nfsMount = new NFSMount.fromJson(_json["nfsMount"]);
+    }
+    if (_json.containsKey("persistentDisk")) {
+      persistentDisk = new PersistentDisk.fromJson(_json["persistentDisk"]);
+    }
+    if (_json.containsKey("volume")) {
+      volume = _json["volume"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (existingDisk != null) {
+      _json["existingDisk"] = (existingDisk).toJson();
+    }
+    if (nfsMount != null) {
+      _json["nfsMount"] = (nfsMount).toJson();
+    }
+    if (persistentDisk != null) {
+      _json["persistentDisk"] = (persistentDisk).toJson();
+    }
+    if (volume != null) {
+      _json["volume"] = volume;
     }
     return _json;
   }

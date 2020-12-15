@@ -209,13 +209,13 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [name] - The name of the operation's parent resource.
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -228,10 +228,10 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.int pageSize,
-      core.String name,
-      core.String filter,
+      {core.String name,
       core.String pageToken,
+      core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -240,17 +240,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -566,11 +566,11 @@ class ServicesResourceApi {
   /// `projects/123` where `123` is the project number.
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
-  /// [pageSize] - Requested size of the next page of data. Requested page size
-  /// cannot exceed 200. If not set, the default page size is 50.
-  ///
   /// [pageToken] - Token identifying which result to start with, which is
   /// returned by a previous list call.
+  ///
+  /// [pageSize] - Requested size of the next page of data. Requested page size
+  /// cannot exceed 200. If not set, the default page size is 50.
   ///
   /// [filter] - Only list services that conform to the given filter. The
   /// allowed filter strings are `state:ENABLED` and `state:DISABLED`.
@@ -586,8 +586,8 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -600,11 +600,11 @@ class ServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -854,7 +854,7 @@ class AuthProvider {
   /// [OpenID
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
   /// Optional if the key set document: - can be retrieved from [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of
   /// the issuer. - can be inferred from the email domain of the issuer (e.g. a
   /// Google service account). Example:
   /// https://www.googleapis.com/oauth2/v1/certs
@@ -1014,7 +1014,8 @@ class Authentication {
 /// kind of credential in a single request. If a method doesn't have any auth
 /// requirements, request credentials will be ignored.
 class AuthenticationRule {
-  /// If true, the service accepts API keys without any other credential.
+  /// If true, the service accepts API keys without any other credential. This
+  /// flag only applies to HTTP and gRPC requests.
   core.bool allowWithoutCredential;
 
   /// The requirements for OAuth credentials.
@@ -1477,7 +1478,7 @@ class CancelOperationRequest {
 /// google.rpc.context.OriginContext The above specifies that all methods in the
 /// API request `google.rpc.context.ProjectContext` and
 /// `google.rpc.context.OriginContext`. Available context types are defined in
-/// package `google.rpc.context`. This also provides mechanism to whitelist any
+/// package `google.rpc.context`. This also provides mechanism to allowlist any
 /// protobuf message extension that can be sent in grpc metadata using
 /// “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any
 /// service specific protobuf types that can appear in grpc metadata as follows
@@ -2017,14 +2018,15 @@ class EnableServiceResponse {
   }
 }
 
-/// `Endpoint` describes a network endpoint that serves a set of APIs. A service
-/// may expose any number of endpoints, and all endpoints share the same service
-/// configuration, such as quota configuration and monitoring configuration.
-/// Example service configuration: name: library-example.googleapis.com
-/// endpoints: # Below entry makes 'google.example.library.v1.Library' # API be
-/// served from endpoint address library-example.googleapis.com. # It also
-/// allows HTTP OPTIONS calls to be passed to the backend, for # it to decide
-/// whether the subsequent cross-origin request is # allowed to proceed. - name:
+/// `Endpoint` describes a network endpoint of a service that serves a set of
+/// APIs. It is commonly known as a service endpoint. A service may expose any
+/// number of service endpoints, and all service endpoints share the same
+/// service definition, such as quota limits and monitoring metrics. Example
+/// service configuration: name: library-example.googleapis.com endpoints: #
+/// Below entry makes 'google.example.library.v1.Library' # API be served from
+/// endpoint address library-example.googleapis.com. # It also allows HTTP
+/// OPTIONS calls to be passed to the backend, for # it to decide whether the
+/// subsequent cross-origin request is # allowed to proceed. - name:
 /// library-example.googleapis.com allow_cors: true
 class Endpoint {
   /// DEPRECATED: This field is no longer supported. Instead of using aliases,
@@ -2394,10 +2396,7 @@ class GoogleApiService {
   /// Billing configuration.
   Billing billing;
 
-  /// The semantic version of the service configuration. The config version
-  /// affects the interpretation of the service configuration. For example,
-  /// certain features are enabled by default for certain config versions. The
-  /// latest config version is `3`.
+  /// Deprecated. The service config compiler always sets this field to `3`.
   core.int configVersion;
 
   /// Context configuration.
@@ -2676,54 +2675,6 @@ class GoogleApiService {
     }
     if (usage != null) {
       _json["usage"] = (usage).toJson();
-    }
-    return _json;
-  }
-}
-
-/// The per-product per-project service identity for a service. Use this field
-/// to configure per-product per-project service identity. Example of a service
-/// identity configuration. usage: service_identity: - service_account_parent:
-/// "projects/123456789" display_name: "Cloud XXX Service Agent" description:
-/// "Used as the identity of Cloud XXX to access resources"
-class GoogleApiServiceIdentity {
-  /// Optional. A user-specified opaque description of the service account. Must
-  /// be less than or equal to 256 UTF-8 bytes.
-  core.String description;
-
-  /// Optional. A user-specified name for the service account. Must be less than
-  /// or equal to 100 UTF-8 bytes.
-  core.String displayName;
-
-  /// A service account project that hosts the service accounts. An example name
-  /// would be: `projects/123456789`
-  core.String serviceAccountParent;
-
-  GoogleApiServiceIdentity();
-
-  GoogleApiServiceIdentity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
-    }
-    if (_json.containsKey("serviceAccountParent")) {
-      serviceAccountParent = _json["serviceAccountParent"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (displayName != null) {
-      _json["displayName"] = displayName;
-    }
-    if (serviceAccountParent != null) {
-      _json["serviceAccountParent"] = serviceAccountParent;
     }
     return _json;
   }
@@ -3192,10 +3143,6 @@ class HttpRule {
   /// may only be one level deep).
   core.List<HttpRule> additionalBindings;
 
-  /// When this flag is set to true, HTTP requests will be allowed to invoke a
-  /// half-duplex streaming method.
-  core.bool allowHalfDuplex;
-
   /// The name of the request field whose value is mapped to the HTTP request
   /// body, or `*` for mapping all request fields not captured by the path
   /// pattern to the HTTP body, or omitted for not having any HTTP request body.
@@ -3243,9 +3190,6 @@ class HttpRule {
           .map<HttpRule>((value) => new HttpRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("allowHalfDuplex")) {
-      allowHalfDuplex = _json["allowHalfDuplex"];
-    }
     if (_json.containsKey("body")) {
       body = _json["body"];
     }
@@ -3281,9 +3225,6 @@ class HttpRule {
     if (additionalBindings != null) {
       _json["additionalBindings"] =
           additionalBindings.map((value) => (value).toJson()).toList();
-    }
-    if (allowHalfDuplex != null) {
-      _json["allowHalfDuplex"] = allowHalfDuplex;
     }
     if (body != null) {
       _json["body"] = body;
@@ -3827,7 +3768,7 @@ class MetricDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -4049,7 +3990,7 @@ class MetricDescriptorMetadata {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -4242,7 +4183,7 @@ class MonitoredResourceDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -5324,9 +5265,6 @@ class Usage {
   /// service configuration rules follow "last one wins" order.
   core.List<UsageRule> rules;
 
-  /// The configuration of a per-product per-project service identity.
-  GoogleApiServiceIdentity serviceIdentity;
-
   Usage();
 
   Usage.fromJson(core.Map _json) {
@@ -5341,10 +5279,6 @@ class Usage {
           .map<UsageRule>((value) => new UsageRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("serviceIdentity")) {
-      serviceIdentity =
-          new GoogleApiServiceIdentity.fromJson(_json["serviceIdentity"]);
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5358,9 +5292,6 @@ class Usage {
     }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
-    }
-    if (serviceIdentity != null) {
-      _json["serviceIdentity"] = (serviceIdentity).toJson();
     }
     return _json;
   }

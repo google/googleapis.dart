@@ -58,17 +58,6 @@ class ProjectsResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [languageCode] - Deprecated. Use language_codes instead. Optional. The
-  /// language of the query. This is the BCP-47 language code, such as "en-US"
-  /// or "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47). For
-  /// CompletionType.JOB_TITLE type, only open jobs with the same language_code
-  /// are returned. For CompletionType.COMPANY_NAME type, only companies having
-  /// open jobs with the same language_code are returned. For
-  /// CompletionType.COMBINED type, only open jobs with the same language_code
-  /// or companies having open jobs with the same language_code are returned.
-  /// The maximum number of allowed characters is 255.
-  ///
   /// [languageCodes] - Optional. The list of languages of the query. This is
   /// the BCP-47 language code, such as "en-US" or "sr-Latn". For more
   /// information, see [Tags for Identifying
@@ -80,15 +69,16 @@ class ProjectsResourceApi {
   /// or companies having open jobs with the same language_codes are returned.
   /// The maximum number of allowed characters is 255.
   ///
-  /// [companyName] - Optional. If provided, restricts completion to specified
-  /// company. The format is "projects/{project_id}/companies/{company_id}", for
-  /// example, "projects/api-test-project/companies/foo".
+  /// [type] - Optional. The completion topic. The default is
+  /// CompletionType.COMBINED.
+  /// Possible string values are:
+  /// - "COMPLETION_TYPE_UNSPECIFIED" : Default value.
+  /// - "JOB_TITLE" : Only suggest job titles.
+  /// - "COMPANY_NAME" : Only suggest company names.
+  /// - "COMBINED" : Suggest both job titles and company names.
   ///
   /// [query] - Required. The query used to generate suggestions. The maximum
   /// number of allowed characters is 255.
-  ///
-  /// [pageSize] - Required. Completion result count. The maximum allowed page
-  /// size is 10.
   ///
   /// [scope] - Optional. The scope of the completion. The defaults is
   /// CompletionScope.PUBLIC.
@@ -99,13 +89,23 @@ class ProjectsResourceApi {
   /// - "PUBLIC" : Suggestions are based on all jobs data in the system that's
   /// visible to the client
   ///
-  /// [type] - Optional. The completion topic. The default is
-  /// CompletionType.COMBINED.
-  /// Possible string values are:
-  /// - "COMPLETION_TYPE_UNSPECIFIED" : Default value.
-  /// - "JOB_TITLE" : Only suggest job titles.
-  /// - "COMPANY_NAME" : Only suggest company names.
-  /// - "COMBINED" : Suggest both job titles and company names.
+  /// [companyName] - Optional. If provided, restricts completion to specified
+  /// company. The format is "projects/{project_id}/companies/{company_id}", for
+  /// example, "projects/api-test-project/companies/foo".
+  ///
+  /// [pageSize] - Required. Completion result count. The maximum allowed page
+  /// size is 10.
+  ///
+  /// [languageCode] - Deprecated. Use language_codes instead. Optional. The
+  /// language of the query. This is the BCP-47 language code, such as "en-US"
+  /// or "sr-Latn". For more information, see [Tags for Identifying
+  /// Languages](https://tools.ietf.org/html/bcp47). For
+  /// CompletionType.JOB_TITLE type, only open jobs with the same language_code
+  /// are returned. For CompletionType.COMPANY_NAME type, only companies having
+  /// open jobs with the same language_code are returned. For
+  /// CompletionType.COMBINED type, only open jobs with the same language_code
+  /// or companies having open jobs with the same language_code are returned.
+  /// The maximum number of allowed characters is 255.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -118,13 +118,13 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete(core.String name,
-      {core.String languageCode,
-      core.List<core.String> languageCodes,
-      core.String companyName,
-      core.String query,
-      core.int pageSize,
-      core.String scope,
+      {core.List<core.String> languageCodes,
       core.String type,
+      core.String query,
+      core.String scope,
+      core.String companyName,
+      core.int pageSize,
+      core.String languageCode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -136,26 +136,26 @@ class ProjectsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
-    }
     if (languageCodes != null) {
       _queryParams["languageCodes"] = languageCodes;
     }
-    if (companyName != null) {
-      _queryParams["companyName"] = [companyName];
+    if (type != null) {
+      _queryParams["type"] = [type];
     }
     if (query != null) {
       _queryParams["query"] = [query];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (scope != null) {
       _queryParams["scope"] = [scope];
     }
-    if (type != null) {
-      _queryParams["type"] = [type];
+    if (companyName != null) {
+      _queryParams["companyName"] = [companyName];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -395,12 +395,12 @@ class ProjectsCompaniesResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional. The starting indicator from which to return
-  /// results.
-  ///
   /// [requireOpenJobs] - Optional. Set to true if the companies requested must
   /// have open jobs. Defaults to false. If true, at most page_size of companies
   /// are fetched, among which only those with open jobs are returned.
+  ///
+  /// [pageToken] - Optional. The starting indicator from which to return
+  /// results.
   ///
   /// [pageSize] - Optional. The maximum number of companies to be returned, at
   /// most 100. Default is 100 if a non-positive number is provided.
@@ -416,8 +416,8 @@ class ProjectsCompaniesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCompaniesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.bool requireOpenJobs,
+      {core.bool requireOpenJobs,
+      core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -430,11 +430,11 @@ class ProjectsCompaniesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (requireOpenJobs != null) {
       _queryParams["requireOpenJobs"] = ["${requireOpenJobs}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -724,11 +724,6 @@ class ProjectsJobsResourceApi {
   ///
   /// [pageToken] - Optional. The starting point of a query result.
   ///
-  /// [pageSize] - Optional. The maximum number of jobs to be returned per page
-  /// of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum
-  /// allowed page size is 1000. Otherwise, the maximum allowed page size is
-  /// 100. Default is 100 if empty or a number < 1 is specified.
-  ///
   /// [filter] - Required. The filter string specifies the jobs to be
   /// enumerated. Supported operator: =, AND The fields eligible for filtering
   /// are: * `companyName` (Required) * `requisitionId` (Optional) Sample Query:
@@ -752,6 +747,11 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_FULL" : All available attributes are included in the search
   /// results.
   ///
+  /// [pageSize] - Optional. The maximum number of jobs to be returned per page
+  /// of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum
+  /// allowed page size is 1000. Otherwise, the maximum allowed page size is
+  /// 100. Default is 100 if empty or a number < 1 is specified.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -764,9 +764,9 @@ class ProjectsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String parent,
       {core.String pageToken,
-      core.int pageSize,
       core.String filter,
       core.String jobView,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -781,14 +781,14 @@ class ProjectsJobsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (jobView != null) {
       _queryParams["jobView"] = [jobView];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2239,1130 +2239,6 @@ class Empty {
   }
 }
 
-/// The result of JobService.BatchCreateJobs. It's used to replace
-/// google.longrunning.Operation.response in case of success.
-class GoogleCloudTalentV4BatchCreateJobsResponse {
-  /// List of job mutation results from a batch create operation. It can change
-  /// until operation status is FINISHED, FAILED or CANCELLED.
-  core.List<GoogleCloudTalentV4JobResult> jobResults;
-
-  GoogleCloudTalentV4BatchCreateJobsResponse();
-
-  GoogleCloudTalentV4BatchCreateJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobResults")) {
-      jobResults = (_json["jobResults"] as core.List)
-          .map<GoogleCloudTalentV4JobResult>(
-              (value) => new GoogleCloudTalentV4JobResult.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (jobResults != null) {
-      _json["jobResults"] =
-          jobResults.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// The result of JobService.BatchDeleteJobs. It's used to replace
-/// google.longrunning.Operation.response in case of success.
-class GoogleCloudTalentV4BatchDeleteJobsResponse {
-  /// List of job mutation results from a batch delete operation. It can change
-  /// until operation status is FINISHED, FAILED or CANCELLED.
-  core.List<GoogleCloudTalentV4JobResult> jobResults;
-
-  GoogleCloudTalentV4BatchDeleteJobsResponse();
-
-  GoogleCloudTalentV4BatchDeleteJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobResults")) {
-      jobResults = (_json["jobResults"] as core.List)
-          .map<GoogleCloudTalentV4JobResult>(
-              (value) => new GoogleCloudTalentV4JobResult.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (jobResults != null) {
-      _json["jobResults"] =
-          jobResults.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// Metadata used for long running operations returned by CTS batch APIs. It's
-/// used to replace google.longrunning.Operation.metadata.
-class GoogleCloudTalentV4BatchOperationMetadata {
-  /// The time when the batch operation is created.
-  core.String createTime;
-
-  /// The time when the batch operation is finished and
-  /// google.longrunning.Operation.done is set to `true`.
-  core.String endTime;
-
-  /// Count of failed item(s) inside an operation.
-  core.int failureCount;
-
-  /// The state of a long running operation.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value.
-  /// - "INITIALIZING" : The batch operation is being prepared for processing.
-  /// - "PROCESSING" : The batch operation is actively being processed.
-  /// - "SUCCEEDED" : The batch operation is processed, and at least one item
-  /// has been successfully processed.
-  /// - "FAILED" : The batch operation is done and no item has been successfully
-  /// processed.
-  /// - "CANCELLING" : The batch operation is in the process of cancelling after
-  /// google.longrunning.Operations.CancelOperation is called.
-  /// - "CANCELLED" : The batch operation is done after
-  /// google.longrunning.Operations.CancelOperation is called. Any items
-  /// processed before cancelling are returned in the response.
-  core.String state;
-
-  /// More detailed information about operation state.
-  core.String stateDescription;
-
-  /// Count of successful item(s) inside an operation.
-  core.int successCount;
-
-  /// Count of total item(s) inside an operation.
-  core.int totalCount;
-
-  /// The time when the batch operation status is updated. The metadata and the
-  /// update_time is refreshed every minute otherwise cached data is returned.
-  core.String updateTime;
-
-  GoogleCloudTalentV4BatchOperationMetadata();
-
-  GoogleCloudTalentV4BatchOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("failureCount")) {
-      failureCount = _json["failureCount"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-    if (_json.containsKey("stateDescription")) {
-      stateDescription = _json["stateDescription"];
-    }
-    if (_json.containsKey("successCount")) {
-      successCount = _json["successCount"];
-    }
-    if (_json.containsKey("totalCount")) {
-      totalCount = _json["totalCount"];
-    }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (failureCount != null) {
-      _json["failureCount"] = failureCount;
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    if (stateDescription != null) {
-      _json["stateDescription"] = stateDescription;
-    }
-    if (successCount != null) {
-      _json["successCount"] = successCount;
-    }
-    if (totalCount != null) {
-      _json["totalCount"] = totalCount;
-    }
-    if (updateTime != null) {
-      _json["updateTime"] = updateTime;
-    }
-    return _json;
-  }
-}
-
-/// The result of JobService.BatchUpdateJobs. It's used to replace
-/// google.longrunning.Operation.response in case of success.
-class GoogleCloudTalentV4BatchUpdateJobsResponse {
-  /// List of job mutation results from a batch update operation. It can change
-  /// until operation status is FINISHED, FAILED or CANCELLED.
-  core.List<GoogleCloudTalentV4JobResult> jobResults;
-
-  GoogleCloudTalentV4BatchUpdateJobsResponse();
-
-  GoogleCloudTalentV4BatchUpdateJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("jobResults")) {
-      jobResults = (_json["jobResults"] as core.List)
-          .map<GoogleCloudTalentV4JobResult>(
-              (value) => new GoogleCloudTalentV4JobResult.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (jobResults != null) {
-      _json["jobResults"] =
-          jobResults.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// Job compensation details.
-class GoogleCloudTalentV4CompensationInfo {
-  /// Output only. Annualized base compensation range. Computed as base
-  /// compensation entry's CompensationEntry.amount times
-  /// CompensationEntry.expected_units_per_year. See CompensationEntry for
-  /// explanation on compensation annualization.
-  GoogleCloudTalentV4CompensationInfoCompensationRange
-      annualizedBaseCompensationRange;
-
-  /// Output only. Annualized total compensation range. Computed as all
-  /// compensation entries' CompensationEntry.amount times
-  /// CompensationEntry.expected_units_per_year. See CompensationEntry for
-  /// explanation on compensation annualization.
-  GoogleCloudTalentV4CompensationInfoCompensationRange
-      annualizedTotalCompensationRange;
-
-  /// Job compensation information. At most one entry can be of type
-  /// CompensationInfo.CompensationType.BASE, which is referred as **base
-  /// compensation entry** for the job.
-  core.List<GoogleCloudTalentV4CompensationInfoCompensationEntry> entries;
-
-  GoogleCloudTalentV4CompensationInfo();
-
-  GoogleCloudTalentV4CompensationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("annualizedBaseCompensationRange")) {
-      annualizedBaseCompensationRange =
-          new GoogleCloudTalentV4CompensationInfoCompensationRange.fromJson(
-              _json["annualizedBaseCompensationRange"]);
-    }
-    if (_json.containsKey("annualizedTotalCompensationRange")) {
-      annualizedTotalCompensationRange =
-          new GoogleCloudTalentV4CompensationInfoCompensationRange.fromJson(
-              _json["annualizedTotalCompensationRange"]);
-    }
-    if (_json.containsKey("entries")) {
-      entries = (_json["entries"] as core.List)
-          .map<GoogleCloudTalentV4CompensationInfoCompensationEntry>((value) =>
-              new GoogleCloudTalentV4CompensationInfoCompensationEntry.fromJson(
-                  value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (annualizedBaseCompensationRange != null) {
-      _json["annualizedBaseCompensationRange"] =
-          (annualizedBaseCompensationRange).toJson();
-    }
-    if (annualizedTotalCompensationRange != null) {
-      _json["annualizedTotalCompensationRange"] =
-          (annualizedTotalCompensationRange).toJson();
-    }
-    if (entries != null) {
-      _json["entries"] = entries.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// A compensation entry that represents one component of compensation, such as
-/// base pay, bonus, or other compensation type. Annualization: One compensation
-/// entry can be annualized if - it contains valid amount or range. - and its
-/// expected_units_per_year is set or can be derived. Its annualized range is
-/// determined as (amount or range) times expected_units_per_year.
-class GoogleCloudTalentV4CompensationInfoCompensationEntry {
-  /// Compensation amount.
-  Money amount;
-
-  /// Compensation description. For example, could indicate equity terms or
-  /// provide additional context to an estimated bonus.
-  core.String description;
-
-  /// Expected number of units paid each year. If not specified, when
-  /// Job.employment_types is FULLTIME, a default value is inferred based on
-  /// unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY:
-  /// 12 - ANNUAL: 1
-  core.double expectedUnitsPerYear;
-
-  /// Compensation range.
-  GoogleCloudTalentV4CompensationInfoCompensationRange range;
-
-  /// Compensation type. Default is
-  /// CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
-  /// Possible string values are:
-  /// - "COMPENSATION_TYPE_UNSPECIFIED" : Default value.
-  /// - "BASE" : Base compensation: Refers to the fixed amount of money paid to
-  /// an employee by an employer in return for work performed. Base compensation
-  /// does not include benefits, bonuses or any other potential compensation
-  /// from an employer.
-  /// - "BONUS" : Bonus.
-  /// - "SIGNING_BONUS" : Signing bonus.
-  /// - "EQUITY" : Equity.
-  /// - "PROFIT_SHARING" : Profit sharing.
-  /// - "COMMISSIONS" : Commission.
-  /// - "TIPS" : Tips.
-  /// - "OTHER_COMPENSATION_TYPE" : Other compensation type.
-  core.String type;
-
-  /// Frequency of the specified amount. Default is
-  /// CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-  /// Possible string values are:
-  /// - "COMPENSATION_UNIT_UNSPECIFIED" : Default value.
-  /// - "HOURLY" : Hourly.
-  /// - "DAILY" : Daily.
-  /// - "WEEKLY" : Weekly
-  /// - "MONTHLY" : Monthly.
-  /// - "YEARLY" : Yearly.
-  /// - "ONE_TIME" : One time.
-  /// - "OTHER_COMPENSATION_UNIT" : Other compensation units.
-  core.String unit;
-
-  GoogleCloudTalentV4CompensationInfoCompensationEntry();
-
-  GoogleCloudTalentV4CompensationInfoCompensationEntry.fromJson(
-      core.Map _json) {
-    if (_json.containsKey("amount")) {
-      amount = new Money.fromJson(_json["amount"]);
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("expectedUnitsPerYear")) {
-      expectedUnitsPerYear = _json["expectedUnitsPerYear"].toDouble();
-    }
-    if (_json.containsKey("range")) {
-      range = new GoogleCloudTalentV4CompensationInfoCompensationRange.fromJson(
-          _json["range"]);
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-    if (_json.containsKey("unit")) {
-      unit = _json["unit"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (amount != null) {
-      _json["amount"] = (amount).toJson();
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (expectedUnitsPerYear != null) {
-      _json["expectedUnitsPerYear"] = expectedUnitsPerYear;
-    }
-    if (range != null) {
-      _json["range"] = (range).toJson();
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    if (unit != null) {
-      _json["unit"] = unit;
-    }
-    return _json;
-  }
-}
-
-/// Compensation range.
-class GoogleCloudTalentV4CompensationInfoCompensationRange {
-  /// The maximum amount of compensation. If left empty, the value is set to a
-  /// maximal compensation value and the currency code is set to match the
-  /// currency code of min_compensation.
-  Money maxCompensation;
-
-  /// The minimum amount of compensation. If left empty, the value is set to
-  /// zero and the currency code is set to match the currency code of
-  /// max_compensation.
-  Money minCompensation;
-
-  GoogleCloudTalentV4CompensationInfoCompensationRange();
-
-  GoogleCloudTalentV4CompensationInfoCompensationRange.fromJson(
-      core.Map _json) {
-    if (_json.containsKey("maxCompensation")) {
-      maxCompensation = new Money.fromJson(_json["maxCompensation"]);
-    }
-    if (_json.containsKey("minCompensation")) {
-      minCompensation = new Money.fromJson(_json["minCompensation"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (maxCompensation != null) {
-      _json["maxCompensation"] = (maxCompensation).toJson();
-    }
-    if (minCompensation != null) {
-      _json["minCompensation"] = (minCompensation).toJson();
-    }
-    return _json;
-  }
-}
-
-/// Custom attribute values that are either filterable or non-filterable.
-class GoogleCloudTalentV4CustomAttribute {
-  /// If the `filterable` flag is true, the custom field values may be used for
-  /// custom attribute filters JobQuery.custom_attribute_filter. If false, these
-  /// values may not be used for custom attribute filters. Default is false.
-  core.bool filterable;
-
-  /// If the `keyword_searchable` flag is true, the keywords in custom fields
-  /// are searchable by keyword match. If false, the values are not searchable
-  /// by keyword match. Default is false.
-  core.bool keywordSearchable;
-
-  /// Exactly one of string_values or long_values must be specified. This field
-  /// is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`)
-  /// over filterable `long_value`. Currently at most 1 long_values is
-  /// supported.
-  core.List<core.String> longValues;
-
-  /// Exactly one of string_values or long_values must be specified. This field
-  /// is used to perform a string match (`CASE_SENSITIVE_MATCH` or
-  /// `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a
-  /// maximum total number of 200 values is allowed, with each `string_value`
-  /// has a byte size of no more than 500B. For unfilterable `string_values`,
-  /// the maximum total byte size of unfilterable `string_values` is 50KB. Empty
-  /// string isn't allowed.
-  core.List<core.String> stringValues;
-
-  GoogleCloudTalentV4CustomAttribute();
-
-  GoogleCloudTalentV4CustomAttribute.fromJson(core.Map _json) {
-    if (_json.containsKey("filterable")) {
-      filterable = _json["filterable"];
-    }
-    if (_json.containsKey("keywordSearchable")) {
-      keywordSearchable = _json["keywordSearchable"];
-    }
-    if (_json.containsKey("longValues")) {
-      longValues = (_json["longValues"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("stringValues")) {
-      stringValues = (_json["stringValues"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (filterable != null) {
-      _json["filterable"] = filterable;
-    }
-    if (keywordSearchable != null) {
-      _json["keywordSearchable"] = keywordSearchable;
-    }
-    if (longValues != null) {
-      _json["longValues"] = longValues;
-    }
-    if (stringValues != null) {
-      _json["stringValues"] = stringValues;
-    }
-    return _json;
-  }
-}
-
-/// A Job resource represents a job posting (also referred to as a "job listing"
-/// or "job requisition"). A job belongs to a Company, which is the hiring
-/// entity responsible for the job.
-class GoogleCloudTalentV4Job {
-  /// Strongly recommended for the best service experience. Location(s) where
-  /// the employer is looking to hire for this job posting. Specifying the full
-  /// street address(es) of the hiring location enables better API results,
-  /// especially job searches by commute time. At most 50 locations are allowed
-  /// for best search performance. If a job has more locations, it is suggested
-  /// to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA'
-  /// becomes 'ReqA-1', 'ReqA-2', and so on.) as multiple jobs with the same
-  /// company, language_code and requisition_id are not allowed. If the original
-  /// requisition_id must be preserved, a custom field should be used for
-  /// storage. It is also suggested to group the locations that close to each
-  /// other in the same job for better search experience. The maximum number of
-  /// allowed characters is 500.
-  core.List<core.String> addresses;
-
-  /// Job application information.
-  GoogleCloudTalentV4JobApplicationInfo applicationInfo;
-
-  /// Required. The resource name of the company listing the job. The format is
-  /// "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For
-  /// example, "projects/foo/tenants/bar/companies/baz".
-  core.String company;
-
-  /// Output only. Display name of the company listing the job.
-  core.String companyDisplayName;
-
-  /// Job compensation information (a.k.a. "pay rate") i.e., the compensation
-  /// that will paid to the employee.
-  GoogleCloudTalentV4CompensationInfo compensationInfo;
-
-  /// A map of fields to hold both filterable and non-filterable custom job
-  /// attributes that are not covered by the provided structured fields. The
-  /// keys of the map are strings up to 64 bytes and must match the pattern:
-  /// a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100
-  /// filterable and at most 100 unfilterable keys are supported. For filterable
-  /// `string_values`, across all keys at most 200 values are allowed, with each
-  /// string no more than 255 characters. For unfilterable `string_values`, the
-  /// maximum total size of `string_values` across all keys is 50KB.
-  core.Map<core.String, GoogleCloudTalentV4CustomAttribute> customAttributes;
-
-  /// The desired education degrees for the job, such as Bachelors, Masters.
-  core.List<core.String> degreeTypes;
-
-  /// The department or functional area within the company with the open
-  /// position. The maximum number of allowed characters is 255.
-  core.String department;
-
-  /// Output only. Derived details about the job posting.
-  GoogleCloudTalentV4JobDerivedInfo derivedInfo;
-
-  /// Required. The description of the job, which typically includes a
-  /// multi-paragraph description of the company and related information.
-  /// Separate fields are provided on the job object for responsibilities,
-  /// qualifications, and other job characteristics. Use of these separate job
-  /// fields is recommended. This field accepts and sanitizes HTML input, and
-  /// also accepts bold, italic, ordered list, and unordered list markup tags.
-  /// The maximum number of allowed characters is 100,000.
-  core.String description;
-
-  /// The employment type(s) of a job, for example, full time or part time.
-  core.List<core.String> employmentTypes;
-
-  /// A description of bonus, commission, and other compensation incentives
-  /// associated with the job not including salary or pay. The maximum number of
-  /// allowed characters is 10,000.
-  core.String incentives;
-
-  /// The benefits included with the job.
-  core.List<core.String> jobBenefits;
-
-  /// The end timestamp of the job. Typically this field is used for contracting
-  /// engagements. Invalid timestamps are ignored.
-  core.String jobEndTime;
-
-  /// The experience level associated with the job, such as "Entry Level".
-  /// Possible string values are:
-  /// - "JOB_LEVEL_UNSPECIFIED" : The default value if the level isn't
-  /// specified.
-  /// - "ENTRY_LEVEL" : Entry-level individual contributors, typically with less
-  /// than 2 years of experience in a similar role. Includes interns.
-  /// - "EXPERIENCED" : Experienced individual contributors, typically with 2+
-  /// years of experience in a similar role.
-  /// - "MANAGER" : Entry- to mid-level managers responsible for managing a team
-  /// of people.
-  /// - "DIRECTOR" : Senior-level managers responsible for managing teams of
-  /// managers.
-  /// - "EXECUTIVE" : Executive-level managers and above, including C-level
-  /// positions.
-  core.String jobLevel;
-
-  /// The start timestamp of the job in UTC time zone. Typically this field is
-  /// used for contracting engagements. Invalid timestamps are ignored.
-  core.String jobStartTime;
-
-  /// The language of the posting. This field is distinct from any requirements
-  /// for fluency that are associated with the job. Language codes must be in
-  /// BCP-47 format, such as "en-US" or "sr-Latn". For more information, see
-  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:
-  /// class="external" target="_blank" }. If this field is unspecified and
-  /// Job.description is present, detected language code based on
-  /// Job.description is assigned, otherwise defaults to 'en_US'.
-  core.String languageCode;
-
-  /// Required during job update. The resource name for the job. This is
-  /// generated by the service when a job is created. The format is
-  /// "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example,
-  /// "projects/foo/tenants/bar/jobs/baz". Use of this field in job queries and
-  /// API calls is preferred over the use of requisition_id since this value is
-  /// unique.
-  core.String name;
-
-  /// Output only. The timestamp when this job posting was created.
-  core.String postingCreateTime;
-
-  /// Strongly recommended for the best service experience. The expiration
-  /// timestamp of the job. After this timestamp, the job is marked as expired,
-  /// and it no longer appears in search results. The expired job can't be
-  /// listed by the ListJobs API, but it can be retrieved with the GetJob API or
-  /// updated with the UpdateJob API or deleted with the DeleteJob API. An
-  /// expired job can be updated and opened again by using a future expiration
-  /// timestamp. Updating an expired job fails if there is another existing open
-  /// job with same company, language_code and requisition_id. The expired jobs
-  /// are retained in our system for 90 days. However, the overall expired job
-  /// count cannot exceed 3 times the maximum number of open jobs over previous
-  /// 7 days. If this threshold is exceeded, expired jobs are cleaned out in
-  /// order of earliest expire time. Expired jobs are no longer accessible after
-  /// they are cleaned out. Invalid timestamps are ignored, and treated as
-  /// expire time not provided. If the timestamp is before the instant request
-  /// is made, the job is treated as expired immediately on creation. This kind
-  /// of job can not be updated. And when creating a job with past timestamp,
-  /// the posting_publish_time must be set before posting_expire_time. The
-  /// purpose of this feature is to allow other objects, such as Application, to
-  /// refer a job that didn't exist in the system prior to becoming expired. If
-  /// you want to modify a job that was expired on creation, delete it and
-  /// create a new one. If this value isn't provided at the time of job creation
-  /// or is invalid, the job posting expires after 30 days from the job's
-  /// creation time. For example, if the job was created on 2017/01/01 13:00AM
-  /// UTC with an unspecified expiration date, the job expires after 2017/01/31
-  /// 13:00AM UTC. If this value isn't provided on job update, it depends on the
-  /// field masks set by UpdateJobRequest.update_mask. If the field masks
-  /// include job_end_time, or the masks are empty meaning that every field is
-  /// updated, the job posting expires after 30 days from the job's last update
-  /// time. Otherwise the expiration date isn't updated.
-  core.String postingExpireTime;
-
-  /// The timestamp this job posting was most recently published. The default
-  /// value is the time the request arrives at the server. Invalid timestamps
-  /// are ignored.
-  core.String postingPublishTime;
-
-  /// The job PostingRegion (for example, state, country) throughout which the
-  /// job is available. If this field is set, a LocationFilter in a search query
-  /// within the job region finds this job posting if an exact location match
-  /// isn't specified. If this field is set to PostingRegion.NATION or
-  /// PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same
-  /// location level as this field is strongly recommended.
-  /// Possible string values are:
-  /// - "POSTING_REGION_UNSPECIFIED" : If the region is unspecified, the job is
-  /// only returned if it matches the LocationFilter.
-  /// - "ADMINISTRATIVE_AREA" : In addition to exact location matching, job
-  /// posting is returned when the LocationFilter in the search query is in the
-  /// same administrative area as the returned job posting. For example, if a
-  /// `ADMINISTRATIVE_AREA` job is posted in "CA, USA", it's returned if
-  /// LocationFilter has "Mountain View". Administrative area refers to
-  /// top-level administrative subdivision of this country. For example, US
-  /// state, IT region, UK constituent nation and JP prefecture.
-  /// - "NATION" : In addition to exact location matching, job is returned when
-  /// LocationFilter in search query is in the same country as this job. For
-  /// example, if a `NATION_WIDE` job is posted in "USA", it's returned if
-  /// LocationFilter has 'Mountain View'.
-  /// - "TELECOMMUTE" : Job allows employees to work remotely (telecommute). If
-  /// locations are provided with this value, the job is considered as having a
-  /// location, but telecommuting is allowed.
-  core.String postingRegion;
-
-  /// Output only. The timestamp when this job posting was last updated.
-  core.String postingUpdateTime;
-
-  /// Options for job processing.
-  GoogleCloudTalentV4JobProcessingOptions processingOptions;
-
-  /// A promotion value of the job, as determined by the client. The value
-  /// determines the sort order of the jobs returned when searching for jobs
-  /// using the featured jobs search call, with higher promotional values being
-  /// returned first and ties being resolved by relevance sort. Only the jobs
-  /// with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default
-  /// value is 0, and negative values are treated as 0.
-  core.int promotionValue;
-
-  /// A description of the qualifications required to perform the job. The use
-  /// of this field is recommended as an alternative to using the more general
-  /// description field. This field accepts and sanitizes HTML input, and also
-  /// accepts bold, italic, ordered list, and unordered list markup tags. The
-  /// maximum number of allowed characters is 10,000.
-  core.String qualifications;
-
-  /// Required. The requisition ID, also referred to as the posting ID, is
-  /// assigned by the client to identify a job. This field is intended to be
-  /// used by clients for client identification and tracking of postings. A job
-  /// isn't allowed to be created if there is another job with the same company,
-  /// language_code and requisition_id. The maximum number of allowed characters
-  /// is 255.
-  core.String requisitionId;
-
-  /// A description of job responsibilities. The use of this field is
-  /// recommended as an alternative to using the more general description field.
-  /// This field accepts and sanitizes HTML input, and also accepts bold,
-  /// italic, ordered list, and unordered list markup tags. The maximum number
-  /// of allowed characters is 10,000.
-  core.String responsibilities;
-
-  /// Required. The title of the job, such as "Software Engineer" The maximum
-  /// number of allowed characters is 500.
-  core.String title;
-
-  /// Deprecated. The job is only visible to the owner. The visibility of the
-  /// job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
-  /// Possible string values are:
-  /// - "VISIBILITY_UNSPECIFIED" : Default value.
-  /// - "ACCOUNT_ONLY" : The resource is only visible to the GCP account who
-  /// owns it.
-  /// - "SHARED_WITH_GOOGLE" : The resource is visible to the owner and may be
-  /// visible to other applications and processes at Google.
-  /// - "SHARED_WITH_PUBLIC" : The resource is visible to the owner and may be
-  /// visible to all other API clients.
-  core.String visibility;
-
-  GoogleCloudTalentV4Job();
-
-  GoogleCloudTalentV4Job.fromJson(core.Map _json) {
-    if (_json.containsKey("addresses")) {
-      addresses = (_json["addresses"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("applicationInfo")) {
-      applicationInfo = new GoogleCloudTalentV4JobApplicationInfo.fromJson(
-          _json["applicationInfo"]);
-    }
-    if (_json.containsKey("company")) {
-      company = _json["company"];
-    }
-    if (_json.containsKey("companyDisplayName")) {
-      companyDisplayName = _json["companyDisplayName"];
-    }
-    if (_json.containsKey("compensationInfo")) {
-      compensationInfo = new GoogleCloudTalentV4CompensationInfo.fromJson(
-          _json["compensationInfo"]);
-    }
-    if (_json.containsKey("customAttributes")) {
-      customAttributes =
-          commons.mapMap<core.Map, GoogleCloudTalentV4CustomAttribute>(
-              _json["customAttributes"].cast<core.String, core.Map>(),
-              (core.Map item) =>
-                  new GoogleCloudTalentV4CustomAttribute.fromJson(item));
-    }
-    if (_json.containsKey("degreeTypes")) {
-      degreeTypes = (_json["degreeTypes"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("department")) {
-      department = _json["department"];
-    }
-    if (_json.containsKey("derivedInfo")) {
-      derivedInfo =
-          new GoogleCloudTalentV4JobDerivedInfo.fromJson(_json["derivedInfo"]);
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("employmentTypes")) {
-      employmentTypes =
-          (_json["employmentTypes"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("incentives")) {
-      incentives = _json["incentives"];
-    }
-    if (_json.containsKey("jobBenefits")) {
-      jobBenefits = (_json["jobBenefits"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("jobEndTime")) {
-      jobEndTime = _json["jobEndTime"];
-    }
-    if (_json.containsKey("jobLevel")) {
-      jobLevel = _json["jobLevel"];
-    }
-    if (_json.containsKey("jobStartTime")) {
-      jobStartTime = _json["jobStartTime"];
-    }
-    if (_json.containsKey("languageCode")) {
-      languageCode = _json["languageCode"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("postingCreateTime")) {
-      postingCreateTime = _json["postingCreateTime"];
-    }
-    if (_json.containsKey("postingExpireTime")) {
-      postingExpireTime = _json["postingExpireTime"];
-    }
-    if (_json.containsKey("postingPublishTime")) {
-      postingPublishTime = _json["postingPublishTime"];
-    }
-    if (_json.containsKey("postingRegion")) {
-      postingRegion = _json["postingRegion"];
-    }
-    if (_json.containsKey("postingUpdateTime")) {
-      postingUpdateTime = _json["postingUpdateTime"];
-    }
-    if (_json.containsKey("processingOptions")) {
-      processingOptions = new GoogleCloudTalentV4JobProcessingOptions.fromJson(
-          _json["processingOptions"]);
-    }
-    if (_json.containsKey("promotionValue")) {
-      promotionValue = _json["promotionValue"];
-    }
-    if (_json.containsKey("qualifications")) {
-      qualifications = _json["qualifications"];
-    }
-    if (_json.containsKey("requisitionId")) {
-      requisitionId = _json["requisitionId"];
-    }
-    if (_json.containsKey("responsibilities")) {
-      responsibilities = _json["responsibilities"];
-    }
-    if (_json.containsKey("title")) {
-      title = _json["title"];
-    }
-    if (_json.containsKey("visibility")) {
-      visibility = _json["visibility"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (addresses != null) {
-      _json["addresses"] = addresses;
-    }
-    if (applicationInfo != null) {
-      _json["applicationInfo"] = (applicationInfo).toJson();
-    }
-    if (company != null) {
-      _json["company"] = company;
-    }
-    if (companyDisplayName != null) {
-      _json["companyDisplayName"] = companyDisplayName;
-    }
-    if (compensationInfo != null) {
-      _json["compensationInfo"] = (compensationInfo).toJson();
-    }
-    if (customAttributes != null) {
-      _json["customAttributes"] = commons.mapMap<
-              GoogleCloudTalentV4CustomAttribute,
-              core.Map<core.String, core.Object>>(customAttributes,
-          (GoogleCloudTalentV4CustomAttribute item) => (item).toJson());
-    }
-    if (degreeTypes != null) {
-      _json["degreeTypes"] = degreeTypes;
-    }
-    if (department != null) {
-      _json["department"] = department;
-    }
-    if (derivedInfo != null) {
-      _json["derivedInfo"] = (derivedInfo).toJson();
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (employmentTypes != null) {
-      _json["employmentTypes"] = employmentTypes;
-    }
-    if (incentives != null) {
-      _json["incentives"] = incentives;
-    }
-    if (jobBenefits != null) {
-      _json["jobBenefits"] = jobBenefits;
-    }
-    if (jobEndTime != null) {
-      _json["jobEndTime"] = jobEndTime;
-    }
-    if (jobLevel != null) {
-      _json["jobLevel"] = jobLevel;
-    }
-    if (jobStartTime != null) {
-      _json["jobStartTime"] = jobStartTime;
-    }
-    if (languageCode != null) {
-      _json["languageCode"] = languageCode;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (postingCreateTime != null) {
-      _json["postingCreateTime"] = postingCreateTime;
-    }
-    if (postingExpireTime != null) {
-      _json["postingExpireTime"] = postingExpireTime;
-    }
-    if (postingPublishTime != null) {
-      _json["postingPublishTime"] = postingPublishTime;
-    }
-    if (postingRegion != null) {
-      _json["postingRegion"] = postingRegion;
-    }
-    if (postingUpdateTime != null) {
-      _json["postingUpdateTime"] = postingUpdateTime;
-    }
-    if (processingOptions != null) {
-      _json["processingOptions"] = (processingOptions).toJson();
-    }
-    if (promotionValue != null) {
-      _json["promotionValue"] = promotionValue;
-    }
-    if (qualifications != null) {
-      _json["qualifications"] = qualifications;
-    }
-    if (requisitionId != null) {
-      _json["requisitionId"] = requisitionId;
-    }
-    if (responsibilities != null) {
-      _json["responsibilities"] = responsibilities;
-    }
-    if (title != null) {
-      _json["title"] = title;
-    }
-    if (visibility != null) {
-      _json["visibility"] = visibility;
-    }
-    return _json;
-  }
-}
-
-/// Application related details of a job posting.
-class GoogleCloudTalentV4JobApplicationInfo {
-  /// Use this field to specify email address(es) to which resumes or
-  /// applications can be sent. The maximum number of allowed characters for
-  /// each entry is 255.
-  core.List<core.String> emails;
-
-  /// Use this field to provide instructions, such as "Mail your application to
-  /// ...", that a candidate can follow to apply for the job. This field accepts
-  /// and sanitizes HTML input, and also accepts bold, italic, ordered list, and
-  /// unordered list markup tags. The maximum number of allowed characters is
-  /// 3,000.
-  core.String instruction;
-
-  /// Use this URI field to direct an applicant to a website, for example to
-  /// link to an online application form. The maximum number of allowed
-  /// characters for each entry is 2,000.
-  core.List<core.String> uris;
-
-  GoogleCloudTalentV4JobApplicationInfo();
-
-  GoogleCloudTalentV4JobApplicationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("emails")) {
-      emails = (_json["emails"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("instruction")) {
-      instruction = _json["instruction"];
-    }
-    if (_json.containsKey("uris")) {
-      uris = (_json["uris"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (emails != null) {
-      _json["emails"] = emails;
-    }
-    if (instruction != null) {
-      _json["instruction"] = instruction;
-    }
-    if (uris != null) {
-      _json["uris"] = uris;
-    }
-    return _json;
-  }
-}
-
-/// Derived details about the job posting.
-class GoogleCloudTalentV4JobDerivedInfo {
-  /// Job categories derived from Job.title and Job.description.
-  core.List<core.String> jobCategories;
-
-  /// Structured locations of the job, resolved from Job.addresses. locations
-  /// are exactly matched to Job.addresses in the same order.
-  core.List<GoogleCloudTalentV4Location> locations;
-
-  GoogleCloudTalentV4JobDerivedInfo();
-
-  GoogleCloudTalentV4JobDerivedInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("jobCategories")) {
-      jobCategories = (_json["jobCategories"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("locations")) {
-      locations = (_json["locations"] as core.List)
-          .map<GoogleCloudTalentV4Location>(
-              (value) => new GoogleCloudTalentV4Location.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (jobCategories != null) {
-      _json["jobCategories"] = jobCategories;
-    }
-    if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// Options for job processing.
-class GoogleCloudTalentV4JobProcessingOptions {
-  /// If set to `true`, the service does not attempt to resolve a more precise
-  /// address for the job.
-  core.bool disableStreetAddressResolution;
-
-  /// Option for job HTML content sanitization. Applied fields are: *
-  /// description * applicationInfo.instruction * incentives * qualifications *
-  /// responsibilities HTML tags in these fields may be stripped if
-  /// sanitiazation isn't disabled. Defaults to
-  /// HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-  /// Possible string values are:
-  /// - "HTML_SANITIZATION_UNSPECIFIED" : Default value.
-  /// - "HTML_SANITIZATION_DISABLED" : Disables sanitization on HTML input.
-  /// - "SIMPLE_FORMATTING_ONLY" : Sanitizes HTML input, only accepts bold,
-  /// italic, ordered list, and unordered list markup tags.
-  core.String htmlSanitization;
-
-  GoogleCloudTalentV4JobProcessingOptions();
-
-  GoogleCloudTalentV4JobProcessingOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("disableStreetAddressResolution")) {
-      disableStreetAddressResolution = _json["disableStreetAddressResolution"];
-    }
-    if (_json.containsKey("htmlSanitization")) {
-      htmlSanitization = _json["htmlSanitization"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (disableStreetAddressResolution != null) {
-      _json["disableStreetAddressResolution"] = disableStreetAddressResolution;
-    }
-    if (htmlSanitization != null) {
-      _json["htmlSanitization"] = htmlSanitization;
-    }
-    return _json;
-  }
-}
-
-/// Mutation result of a job from a batch operation.
-class GoogleCloudTalentV4JobResult {
-  /// Here Job only contains basic information including name, company,
-  /// language_code and requisition_id, use getJob method to retrieve detailed
-  /// information of the created/updated job.
-  GoogleCloudTalentV4Job job;
-
-  /// The status of the job processed. This field is populated if the processing
-  /// of the job fails.
-  Status status;
-
-  GoogleCloudTalentV4JobResult();
-
-  GoogleCloudTalentV4JobResult.fromJson(core.Map _json) {
-    if (_json.containsKey("job")) {
-      job = new GoogleCloudTalentV4Job.fromJson(_json["job"]);
-    }
-    if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (job != null) {
-      _json["job"] = (job).toJson();
-    }
-    if (status != null) {
-      _json["status"] = (status).toJson();
-    }
-    return _json;
-  }
-}
-
-/// A resource that represents a location with full geographic information.
-class GoogleCloudTalentV4Location {
-  /// An object representing a latitude/longitude pair.
-  LatLng latLng;
-
-  /// The type of a location, which corresponds to the address lines field of
-  /// google.type.PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a
-  /// type of LocationType.NEIGHBORHOOD, and "Kansas City, KS, USA" has a type
-  /// of LocationType.LOCALITY.
-  /// Possible string values are:
-  /// - "LOCATION_TYPE_UNSPECIFIED" : Default value if the type isn't specified.
-  /// - "COUNTRY" : A country level location.
-  /// - "ADMINISTRATIVE_AREA" : A state or equivalent level location.
-  /// - "SUB_ADMINISTRATIVE_AREA" : A county or equivalent level location.
-  /// - "LOCALITY" : A city or equivalent level location.
-  /// - "POSTAL_CODE" : A postal code level location.
-  /// - "SUB_LOCALITY" : A sublocality is a subdivision of a locality, for
-  /// example a city borough, ward, or arrondissement. Sublocalities are usually
-  /// recognized by a local political authority. For example, Manhattan and
-  /// Brooklyn are recognized as boroughs by the City of New York, and are
-  /// therefore modeled as sublocalities.
-  /// - "SUB_LOCALITY_1" : A district or equivalent level location.
-  /// - "SUB_LOCALITY_2" : A smaller district or equivalent level display.
-  /// - "NEIGHBORHOOD" : A neighborhood level location.
-  /// - "STREET_ADDRESS" : A street address level location.
-  core.String locationType;
-
-  /// Postal address of the location that includes human readable information,
-  /// such as postal delivery and payments addresses. Given a postal address, a
-  /// postal service can deliver items to a premises, P.O. Box, or other
-  /// delivery location.
-  PostalAddress postalAddress;
-
-  /// Radius in miles of the job location. This value is derived from the
-  /// location bounding box in which a circle with the specified radius centered
-  /// from google.type.LatLng covers the area associated with the job location.
-  /// For example, currently, "Mountain View, CA, USA" has a radius of 6.17
-  /// miles.
-  core.double radiusMiles;
-
-  GoogleCloudTalentV4Location();
-
-  GoogleCloudTalentV4Location.fromJson(core.Map _json) {
-    if (_json.containsKey("latLng")) {
-      latLng = new LatLng.fromJson(_json["latLng"]);
-    }
-    if (_json.containsKey("locationType")) {
-      locationType = _json["locationType"];
-    }
-    if (_json.containsKey("postalAddress")) {
-      postalAddress = new PostalAddress.fromJson(_json["postalAddress"]);
-    }
-    if (_json.containsKey("radiusMiles")) {
-      radiusMiles = _json["radiusMiles"].toDouble();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (latLng != null) {
-      _json["latLng"] = (latLng).toJson();
-    }
-    if (locationType != null) {
-      _json["locationType"] = locationType;
-    }
-    if (postalAddress != null) {
-      _json["postalAddress"] = (postalAddress).toJson();
-    }
-    if (radiusMiles != null) {
-      _json["radiusMiles"] = radiusMiles;
-    }
-    return _json;
-  }
-}
-
 /// Input only. Histogram facets to be specified in SearchJobsRequest.
 class HistogramFacets {
   /// Optional. Specifies compensation field-based histogram requests. Duplicate
@@ -4311,8 +3187,8 @@ class JobQuery {
   }
 }
 
-/// An object representing a latitude/longitude pair. This is expressed as a
-/// pair of doubles representing degrees latitude and degrees longitude. Unless
+/// An object that represents a latitude/longitude pair. This is expressed as a
+/// pair of doubles to represent degrees latitude and degrees longitude. Unless
 /// specified otherwise, this must conform to the WGS84 standard. Values must be
 /// within normalized ranges.
 class LatLng {
@@ -4701,7 +3577,7 @@ class MendelDebugInput {
 
 /// Represents an amount of money with its currency type.
 class Money {
-  /// The 3-letter currency code defined in ISO 4217.
+  /// The three-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
   /// Number of nano (10^-9) units of the amount. The value must be between
@@ -5694,61 +4570,6 @@ class SpellingCorrection {
     }
     if (correctedText != null) {
       _json["correctedText"] = correctedText;
-    }
-    return _json;
-  }
-}
-
-/// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
-
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
-
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
-
-  Status();
-
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey("code")) {
-      code = _json["code"];
-    }
-    if (_json.containsKey("details")) {
-      details = (_json["details"] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
-          .toList();
-    }
-    if (_json.containsKey("message")) {
-      message = _json["message"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (code != null) {
-      _json["code"] = code;
-    }
-    if (details != null) {
-      _json["details"] = details;
-    }
-    if (message != null) {
-      _json["message"] = message;
     }
     return _json;
   }

@@ -64,15 +64,15 @@ class ActionResultsResourceApi {
   ///
   /// [sizeBytes] - The size of the blob, in bytes.
   ///
-  /// [inlineStdout] - A hint to the server to request inlining stdout in the
-  /// ActionResult message.
-  ///
   /// [inlineStderr] - A hint to the server to request inlining stderr in the
   /// ActionResult message.
   ///
   /// [inlineOutputFiles] - A hint to the server to inline the contents of the
   /// listed output files. Each path needs to exactly match one path in
   /// `output_files` in the Command message.
+  ///
+  /// [inlineStdout] - A hint to the server to request inlining stdout in the
+  /// ActionResult message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -86,9 +86,9 @@ class ActionResultsResourceApi {
   /// this method will complete with the same error.
   async.Future<BuildBazelRemoteExecutionV2ActionResult> get(
       core.String instanceName, core.String hash, core.String sizeBytes,
-      {core.bool inlineStdout,
-      core.bool inlineStderr,
+      {core.bool inlineStderr,
       core.List<core.String> inlineOutputFiles,
+      core.bool inlineStdout,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -106,14 +106,14 @@ class ActionResultsResourceApi {
     if (sizeBytes == null) {
       throw new core.ArgumentError("Parameter sizeBytes is required.");
     }
-    if (inlineStdout != null) {
-      _queryParams["inlineStdout"] = ["${inlineStdout}"];
-    }
     if (inlineStderr != null) {
       _queryParams["inlineStderr"] = ["${inlineStderr}"];
     }
     if (inlineOutputFiles != null) {
       _queryParams["inlineOutputFiles"] = inlineOutputFiles;
+    }
+    if (inlineStdout != null) {
+      _queryParams["inlineStdout"] = ["${inlineStdout}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3309,6 +3309,8 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
   /// to run containers with CreateComputeSystem error that involves an
   /// incorrect parameter (more specific version of
   /// DOCKER_CREATE_COMPUTE_SYSTEM_ERROR that is user-caused).
+  /// - "DOCKER_TOO_MANY_SYMBOLIC_LINK_LEVELS" : Docker failed to create an
+  /// overlay mount because of too many levels of symbolic links.
   core.String code;
 
   /// The error message.
@@ -4057,39 +4059,6 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse {
   }
 }
 
-/// SoleTenancyConfig specifies information required to host a pool on STNs.
-class GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig {
-  /// The sole-tenant node type to host the pool's workers on.
-  core.String nodeType;
-
-  /// Zone in which STNs are reserved.
-  core.String nodesZone;
-
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig();
-
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig.fromJson(
-      core.Map _json) {
-    if (_json.containsKey("nodeType")) {
-      nodeType = _json["nodeType"];
-    }
-    if (_json.containsKey("nodesZone")) {
-      nodesZone = _json["nodesZone"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (nodeType != null) {
-      _json["nodeType"] = nodeType;
-    }
-    if (nodesZone != null) {
-      _json["nodesZone"] = nodesZone;
-    }
-    return _json;
-  }
-}
-
 /// The request used for `UpdateInstance`.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
   /// Specifies the instance to update.
@@ -4238,8 +4207,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// VMs](https://cloud.google.com/preemptible-vms/) for more details.
   core.bool reserved;
 
-  /// Sole-tenant node information for pools hosted on STNs.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig soleTenancy;
+  /// The node type name to be used for sole-tenant nodes.
+  core.String soleTenantNodeType;
 
   /// The name of the image used by each VM.
   core.String vmImage;
@@ -4277,10 +4246,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     if (_json.containsKey("reserved")) {
       reserved = _json["reserved"];
     }
-    if (_json.containsKey("soleTenancy")) {
-      soleTenancy =
-          new GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig
-              .fromJson(_json["soleTenancy"]);
+    if (_json.containsKey("soleTenantNodeType")) {
+      soleTenantNodeType = _json["soleTenantNodeType"];
     }
     if (_json.containsKey("vmImage")) {
       vmImage = _json["vmImage"];
@@ -4317,8 +4284,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     if (reserved != null) {
       _json["reserved"] = reserved;
     }
-    if (soleTenancy != null) {
-      _json["soleTenancy"] = (soleTenancy).toJson();
+    if (soleTenantNodeType != null) {
+      _json["soleTenantNodeType"] = soleTenantNodeType;
     }
     if (vmImage != null) {
       _json["vmImage"] = vmImage;

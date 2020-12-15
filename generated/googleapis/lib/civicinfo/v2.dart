@@ -134,11 +134,6 @@ class ElectionsResourceApi {
   ///
   /// [address] - The registered address of the voter to look up.
   ///
-  /// [returnAllAvailableData] - If set to true, the query will return the
-  /// success code and include any partial information when it is unable to
-  /// determine a matching address or unable to determine the election for
-  /// electionId=0 queries.
-  ///
   /// [officialOnly] - If set to true, only data from official state sources
   /// will be returned.
   ///
@@ -148,6 +143,11 @@ class ElectionsResourceApi {
   /// ID is specified in the query and there is more than one election with data
   /// for the given voter, the additional elections are provided in the
   /// otherElections response field.
+  ///
+  /// [returnAllAvailableData] - If set to true, the query will return the
+  /// success code and include any partial information when it is unable to
+  /// determine a matching address or unable to determine the election for
+  /// electionId=0 queries.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -160,9 +160,9 @@ class ElectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VoterInfoResponse> voterInfoQuery(core.String address,
-      {core.bool returnAllAvailableData,
-      core.bool officialOnly,
+      {core.bool officialOnly,
       core.String electionId,
+      core.bool returnAllAvailableData,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -175,14 +175,14 @@ class ElectionsResourceApi {
       throw new core.ArgumentError("Parameter address is required.");
     }
     _queryParams["address"] = [address];
-    if (returnAllAvailableData != null) {
-      _queryParams["returnAllAvailableData"] = ["${returnAllAvailableData}"];
-    }
     if (officialOnly != null) {
       _queryParams["officialOnly"] = ["${officialOnly}"];
     }
     if (electionId != null) {
       _queryParams["electionId"] = [electionId];
+    }
+    if (returnAllAvailableData != null) {
+      _queryParams["returnAllAvailableData"] = ["${returnAllAvailableData}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -210,20 +210,20 @@ class RepresentativesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [levels] - A list of office levels to filter by. Only offices that serve
-  /// at least one of these levels will be returned. Divisions that don't
-  /// contain a matching office will not be returned.
-  ///
-  /// [includeOffices] - Whether to return information about offices and
-  /// officials. If false, only the top-level district information will be
-  /// returned.
+  /// [address] - The address to look up. May only be specified if the field
+  /// ocdId is not given in the URL
   ///
   /// [roles] - A list of office roles to filter by. Only offices fulfilling one
   /// of these roles will be returned. Divisions that don't contain a matching
   /// office will not be returned.
   ///
-  /// [address] - The address to look up. May only be specified if the field
-  /// ocdId is not given in the URL
+  /// [includeOffices] - Whether to return information about offices and
+  /// officials. If false, only the top-level district information will be
+  /// returned.
+  ///
+  /// [levels] - A list of office levels to filter by. Only offices that serve
+  /// at least one of these levels will be returned. Divisions that don't
+  /// contain a matching office will not be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -236,10 +236,10 @@ class RepresentativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RepresentativeInfoResponse> representativeInfoByAddress(
-      {core.List<core.String> levels,
-      core.bool includeOffices,
+      {core.String address,
       core.List<core.String> roles,
-      core.String address,
+      core.bool includeOffices,
+      core.List<core.String> levels,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -248,17 +248,17 @@ class RepresentativesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (levels != null) {
-      _queryParams["levels"] = levels;
-    }
-    if (includeOffices != null) {
-      _queryParams["includeOffices"] = ["${includeOffices}"];
+    if (address != null) {
+      _queryParams["address"] = [address];
     }
     if (roles != null) {
       _queryParams["roles"] = roles;
     }
-    if (address != null) {
-      _queryParams["address"] = [address];
+    if (includeOffices != null) {
+      _queryParams["includeOffices"] = ["${includeOffices}"];
+    }
+    if (levels != null) {
+      _queryParams["levels"] = levels;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -287,14 +287,14 @@ class RepresentativesResourceApi {
   /// of these roles will be returned. Divisions that don't contain a matching
   /// office will not be returned.
   ///
+  /// [levels] - A list of office levels to filter by. Only offices that serve
+  /// at least one of these levels will be returned. Divisions that don't
+  /// contain a matching office will not be returned.
+  ///
   /// [recursive] - If true, information about all divisions contained in the
   /// division requested will be included as well. For example, if querying
   /// ocd-division/country:us/district:dc, this would also return all DC's wards
   /// and ANCs.
-  ///
-  /// [levels] - A list of office levels to filter by. Only offices that serve
-  /// at least one of these levels will be returned. Divisions that don't
-  /// contain a matching office will not be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -309,8 +309,8 @@ class RepresentativesResourceApi {
   async.Future<RepresentativeInfoData> representativeInfoByDivision(
       core.String ocdId,
       {core.List<core.String> roles,
-      core.bool recursive,
       core.List<core.String> levels,
+      core.bool recursive,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -325,11 +325,11 @@ class RepresentativesResourceApi {
     if (roles != null) {
       _queryParams["roles"] = roles;
     }
-    if (recursive != null) {
-      _queryParams["recursive"] = ["${recursive}"];
-    }
     if (levels != null) {
       _queryParams["levels"] = levels;
+    }
+    if (recursive != null) {
+      _queryParams["recursive"] = ["${recursive}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -353,11 +353,6 @@ class AdministrationRegion {
   /// The election administration body for this area.
   AdministrativeBody electionAdministrationBody;
 
-  /// An ID for this object. IDs may change in future requests and should not be
-  /// cached. Access to this field requires special access that can be requested
-  /// from the Request more link on the Quotas page.
-  core.String id;
-
   /// The city or county that provides election information for this voter. This
   /// object can have the same elements as state.
   AdministrationRegion localJurisdiction;
@@ -375,9 +370,6 @@ class AdministrationRegion {
     if (_json.containsKey("electionAdministrationBody")) {
       electionAdministrationBody =
           new AdministrativeBody.fromJson(_json["electionAdministrationBody"]);
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
     }
     if (_json.containsKey("local_jurisdiction")) {
       localJurisdiction =
@@ -399,9 +391,6 @@ class AdministrationRegion {
     if (electionAdministrationBody != null) {
       _json["electionAdministrationBody"] =
           (electionAdministrationBody).toJson();
-    }
-    if (id != null) {
-      _json["id"] = id;
     }
     if (localJurisdiction != null) {
       _json["local_jurisdiction"] = (localJurisdiction).toJson();
@@ -725,11 +714,6 @@ class Contest {
   /// this contest.
   core.String electorateSpecifications;
 
-  /// An ID for this object. IDs may change in future requests and should not be
-  /// cached. Access to this field requires special access that can be requested
-  /// from the Request more link on the Quotas page.
-  core.String id;
-
   /// The levels of government of the office for this contest. There may be more
   /// than one in cases where a jurisdiction effectively acts at two different
   /// levels of government; for example, the mayor of the District of Columbia
@@ -837,9 +821,6 @@ class Contest {
     if (_json.containsKey("electorateSpecifications")) {
       electorateSpecifications = _json["electorateSpecifications"];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
     if (_json.containsKey("level")) {
       level = (_json["level"] as core.List).cast<core.String>();
     }
@@ -924,9 +905,6 @@ class Contest {
     }
     if (electorateSpecifications != null) {
       _json["electorateSpecifications"] = electorateSpecifications;
-    }
-    if (id != null) {
-      _json["id"] = id;
     }
     if (level != null) {
       _json["level"] = level;
@@ -1512,11 +1490,6 @@ class PollingLocation {
   /// This field is not populated for polling locations.
   core.String endDate;
 
-  /// An ID for this object. IDs may change in future requests and should not be
-  /// cached. Access to this field requires special access that can be requested
-  /// from the Request more link on the Quotas page.
-  core.String id;
-
   /// Latitude of the location, in degrees north of the equator. Note this field
   /// may not be available for some locations.
   core.double latitude;
@@ -1556,9 +1529,6 @@ class PollingLocation {
     if (_json.containsKey("endDate")) {
       endDate = _json["endDate"];
     }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
     if (_json.containsKey("latitude")) {
       latitude = _json["latitude"].toDouble();
     }
@@ -1595,9 +1565,6 @@ class PollingLocation {
     }
     if (endDate != null) {
       _json["endDate"] = endDate;
-    }
-    if (id != null) {
-      _json["id"] = id;
     }
     if (latitude != null) {
       _json["latitude"] = latitude;

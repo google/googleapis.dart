@@ -205,13 +205,13 @@ class ChangesResourceApi {
   /// Possible string values are:
   /// - "changeSequence"
   ///
-  /// [sortOrder] - Sorting order direction: 'ascending' or 'descending'.
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
   ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
   /// unspecified, the server will decide how many results to return.
   ///
-  /// [pageToken] - Optional. A tag returned by a previous list request that was
-  /// truncated. Use this parameter to continue a previous list request.
+  /// [sortOrder] - Sorting order direction: 'ascending' or 'descending'.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -226,9 +226,9 @@ class ChangesResourceApi {
   async.Future<ChangesListResponse> list(
       core.String project, core.String managedZone,
       {core.String sortBy,
-      core.String sortOrder,
-      core.int maxResults,
       core.String pageToken,
+      core.int maxResults,
+      core.String sortOrder,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -246,14 +246,14 @@ class ChangesResourceApi {
     if (sortBy != null) {
       _queryParams["sortBy"] = [sortBy];
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -365,15 +365,15 @@ class DnsKeysResourceApi {
   /// [managedZone] - Identifies the managed zone addressed by this request. Can
   /// be the managed zone name or ID.
   ///
-  /// [digestType] - An optional comma-separated list of digest types to compute
-  /// and display for key signing keys. If omitted, the recommended digest type
-  /// will be computed and displayed.
-  ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
   /// unspecified, the server will decide how many results to return.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
+  ///
+  /// [digestType] - An optional comma-separated list of digest types to compute
+  /// and display for key signing keys. If omitted, the recommended digest type
+  /// will be computed and displayed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -387,9 +387,9 @@ class DnsKeysResourceApi {
   /// this method will complete with the same error.
   async.Future<DnsKeysListResponse> list(
       core.String project, core.String managedZone,
-      {core.String digestType,
-      core.int maxResults,
+      {core.int maxResults,
       core.String pageToken,
+      core.String digestType,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -404,14 +404,14 @@ class DnsKeysResourceApi {
     if (managedZone == null) {
       throw new core.ArgumentError("Parameter managedZone is required.");
     }
-    if (digestType != null) {
-      _queryParams["digestType"] = [digestType];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (digestType != null) {
+      _queryParams["digestType"] = [digestType];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -770,13 +770,13 @@ class ManagedZonesResourceApi {
   ///
   /// [project] - Identifies the project addressed by this request.
   ///
-  /// [maxResults] - Optional. Maximum number of results to be returned. If
-  /// unspecified, the server will decide how many results to return.
-  ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
   ///
   /// [dnsName] - Restricts the list to return only zones with this domain name.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server will decide how many results to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -789,9 +789,9 @@ class ManagedZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ManagedZonesListResponse> list(core.String project,
-      {core.int maxResults,
-      core.String pageToken,
+      {core.String pageToken,
       core.String dnsName,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -803,14 +803,14 @@ class ManagedZonesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (dnsName != null) {
       _queryParams["dnsName"] = [dnsName];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1148,11 +1148,11 @@ class PoliciesResourceApi {
   ///
   /// [project] - Identifies the project addressed by this request.
   ///
-  /// [pageToken] - Optional. A tag returned by a previous list request that was
-  /// truncated. Use this parameter to continue a previous list request.
-  ///
   /// [maxResults] - Optional. Maximum number of results to be returned. If
   /// unspecified, the server will decide how many results to return.
+  ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1165,7 +1165,7 @@ class PoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PoliciesListResponse> list(core.String project,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1176,11 +1176,11 @@ class PoliciesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1404,14 +1404,14 @@ class ResourceRecordSetsResourceApi {
   /// [maxResults] - Optional. Maximum number of results to be returned. If
   /// unspecified, the server will decide how many results to return.
   ///
-  /// [type] - Restricts the list to return only records of this type. If
-  /// present, the "name" parameter must also be present.
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
   ///
   /// [name] - Restricts the list to return only records with this fully
   /// qualified domain name.
   ///
-  /// [pageToken] - Optional. A tag returned by a previous list request that was
-  /// truncated. Use this parameter to continue a previous list request.
+  /// [type] - Restricts the list to return only records of this type. If
+  /// present, the "name" parameter must also be present.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1426,9 +1426,9 @@ class ResourceRecordSetsResourceApi {
   async.Future<ResourceRecordSetsListResponse> list(
       core.String project, core.String managedZone,
       {core.int maxResults,
-      core.String type,
-      core.String name,
       core.String pageToken,
+      core.String name,
+      core.String type,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1446,14 +1446,14 @@ class ResourceRecordSetsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (type != null) {
-      _queryParams["type"] = [type];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (name != null) {
       _queryParams["name"] = [name];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (type != null) {
+      _queryParams["type"] = [type];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1980,6 +1980,10 @@ class ManagedZone {
   /// under private_visibility_config.
   ManagedZoneReverseLookupConfig reverseLookupConfig;
 
+  /// This field links to the associated service directory namespace. This field
+  /// should not be set for public zones or forwarding zones.
+  ManagedZoneServiceDirectoryConfig serviceDirectoryConfig;
+
   /// The zone's visibility: public zones are exposed to the Internet, while
   /// private zones are visible only to Virtual Private Cloud resources.
   /// Possible string values are:
@@ -2037,6 +2041,10 @@ class ManagedZone {
       reverseLookupConfig = new ManagedZoneReverseLookupConfig.fromJson(
           _json["reverseLookupConfig"]);
     }
+    if (_json.containsKey("serviceDirectoryConfig")) {
+      serviceDirectoryConfig = new ManagedZoneServiceDirectoryConfig.fromJson(
+          _json["serviceDirectoryConfig"]);
+    }
     if (_json.containsKey("visibility")) {
       visibility = _json["visibility"];
     }
@@ -2086,6 +2094,9 @@ class ManagedZone {
     }
     if (reverseLookupConfig != null) {
       _json["reverseLookupConfig"] = (reverseLookupConfig).toJson();
+    }
+    if (serviceDirectoryConfig != null) {
+      _json["serviceDirectoryConfig"] = (serviceDirectoryConfig).toJson();
     }
     if (visibility != null) {
       _json["visibility"] = visibility;
@@ -2449,6 +2460,79 @@ class ManagedZoneReverseLookupConfig {
         new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/// Contains information about Service Directory-backed zones.
+class ManagedZoneServiceDirectoryConfig {
+  core.String kind;
+
+  /// Contains information about the namespace associated with the zone.
+  ManagedZoneServiceDirectoryConfigNamespace namespace;
+
+  ManagedZoneServiceDirectoryConfig();
+
+  ManagedZoneServiceDirectoryConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("namespace")) {
+      namespace = new ManagedZoneServiceDirectoryConfigNamespace.fromJson(
+          _json["namespace"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (namespace != null) {
+      _json["namespace"] = (namespace).toJson();
+    }
+    return _json;
+  }
+}
+
+class ManagedZoneServiceDirectoryConfigNamespace {
+  /// The time that the namespace backing this zone was deleted, empty string if
+  /// it still exists. This is in RFC3339 text format. Output only.
+  core.String deletionTime;
+  core.String kind;
+
+  /// The fully qualified URL of the namespace associated with the zone. This
+  /// should be formatted like
+  /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+  core.String namespaceUrl;
+
+  ManagedZoneServiceDirectoryConfigNamespace();
+
+  ManagedZoneServiceDirectoryConfigNamespace.fromJson(core.Map _json) {
+    if (_json.containsKey("deletionTime")) {
+      deletionTime = _json["deletionTime"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("namespaceUrl")) {
+      namespaceUrl = _json["namespaceUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deletionTime != null) {
+      _json["deletionTime"] = deletionTime;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (namespaceUrl != null) {
+      _json["namespaceUrl"] = namespaceUrl;
     }
     return _json;
   }
@@ -3062,6 +3146,9 @@ class Project {
 class Quota {
   /// Maximum allowed number of DnsKeys per ManagedZone.
   core.int dnsKeysPerManagedZone;
+
+  /// Maximum allowed number of GKE clusters per policy.
+  core.int gkeClustersPerPolicy;
   core.String kind;
 
   /// Maximum allowed number of managed zones in the project.
@@ -3113,6 +3200,9 @@ class Quota {
   Quota.fromJson(core.Map _json) {
     if (_json.containsKey("dnsKeysPerManagedZone")) {
       dnsKeysPerManagedZone = _json["dnsKeysPerManagedZone"];
+    }
+    if (_json.containsKey("gkeClustersPerPolicy")) {
+      gkeClustersPerPolicy = _json["gkeClustersPerPolicy"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3167,6 +3257,9 @@ class Quota {
     if (dnsKeysPerManagedZone != null) {
       _json["dnsKeysPerManagedZone"] = dnsKeysPerManagedZone;
     }
+    if (gkeClustersPerPolicy != null) {
+      _json["gkeClustersPerPolicy"] = gkeClustersPerPolicy;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3215,12 +3308,236 @@ class Quota {
   }
 }
 
+/// A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned
+/// dynamically with the response varying based on configured properties such as
+/// geolocation or by weighted random selection.
+class RRSetRoutingPolicy {
+  RRSetRoutingPolicyGeoPolicy geoPolicy;
+  core.String kind;
+  RRSetRoutingPolicyWrrPolicy wrrPolicy;
+
+  RRSetRoutingPolicy();
+
+  RRSetRoutingPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("geoPolicy")) {
+      geoPolicy = new RRSetRoutingPolicyGeoPolicy.fromJson(_json["geoPolicy"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("wrrPolicy")) {
+      wrrPolicy = new RRSetRoutingPolicyWrrPolicy.fromJson(_json["wrrPolicy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (geoPolicy != null) {
+      _json["geoPolicy"] = (geoPolicy).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (wrrPolicy != null) {
+      _json["wrrPolicy"] = (wrrPolicy).toJson();
+    }
+    return _json;
+  }
+}
+
+class RRSetRoutingPolicyGeoPolicy {
+  /// If the health check for the primary target for a geo location returns an
+  /// unhealthy status, the failover target is returned instead. This failover
+  /// configuration is not mandatory. If a failover is not provided, the primary
+  /// target won't be healthchecked - we'll return the primarily configured
+  /// rrdata irrespective of whether it is healthy or not.
+  core.List<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> failovers;
+
+  /// The primary geo routing configuration. If there are multiple items with
+  /// the same location, an error is returned instead.
+  core.List<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> items;
+  core.String kind;
+
+  RRSetRoutingPolicyGeoPolicy();
+
+  RRSetRoutingPolicyGeoPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("failovers")) {
+      failovers = (_json["failovers"] as core.List)
+          .map<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>((value) =>
+              new RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>((value) =>
+              new RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (failovers != null) {
+      _json["failovers"] = failovers.map((value) => (value).toJson()).toList();
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
+  core.String kind;
+
+  /// The geo-location granularity is a GCP region. This location string should
+  /// correspond to a GCP region. e.g "us-east1", "southamerica-east1",
+  /// "asia-east1", etc.
+  core.String location;
+  core.List<core.String> rrdatas;
+
+  /// DNSSEC generated signatures for the above geo_rrdata.
+  core.List<core.String> signatureRrdatas;
+
+  RRSetRoutingPolicyGeoPolicyGeoPolicyItem();
+
+  RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("rrdatas")) {
+      rrdatas = (_json["rrdatas"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("signatureRrdatas")) {
+      signatureRrdatas =
+          (_json["signatureRrdatas"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (rrdatas != null) {
+      _json["rrdatas"] = rrdatas;
+    }
+    if (signatureRrdatas != null) {
+      _json["signatureRrdatas"] = signatureRrdatas;
+    }
+    return _json;
+  }
+}
+
+class RRSetRoutingPolicyWrrPolicy {
+  core.List<RRSetRoutingPolicyWrrPolicyWrrPolicyItem> items;
+  core.String kind;
+
+  RRSetRoutingPolicyWrrPolicy();
+
+  RRSetRoutingPolicyWrrPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>((value) =>
+              new RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
+  core.String kind;
+  core.List<core.String> rrdatas;
+
+  /// DNSSEC generated signatures for the above wrr_rrdata.
+  core.List<core.String> signatureRrdatas;
+
+  /// The weight corresponding to this subset of rrdata. When multiple
+  /// WeightedRoundRobinPolicyItems are configured, the probability of returning
+  /// an rrset is proportional to its weight relative to the sum of weights
+  /// configured for all items. This weight should be a decimal in the range
+  /// [0,1].
+  core.double weight;
+
+  RRSetRoutingPolicyWrrPolicyWrrPolicyItem();
+
+  RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("rrdatas")) {
+      rrdatas = (_json["rrdatas"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("signatureRrdatas")) {
+      signatureRrdatas =
+          (_json["signatureRrdatas"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("weight")) {
+      weight = _json["weight"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (rrdatas != null) {
+      _json["rrdatas"] = rrdatas;
+    }
+    if (signatureRrdatas != null) {
+      _json["signatureRrdatas"] = signatureRrdatas;
+    }
+    if (weight != null) {
+      _json["weight"] = weight;
+    }
+    return _json;
+  }
+}
+
 /// A unit of data that will be returned by the DNS servers.
 class ResourceRecordSet {
   core.String kind;
 
   /// For example, www.example.com.
   core.String name;
+
+  /// Configures dynamic query responses based on geo location of querying user
+  /// or a weighted round robin based routing policy. A ResourceRecordSet should
+  /// only have either rrdata (static) or routing_policy(dynamic). An error is
+  /// returned otherwise.
+  RRSetRoutingPolicy routingPolicy;
 
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
   /// examples.
@@ -3245,6 +3562,9 @@ class ResourceRecordSet {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("routingPolicy")) {
+      routingPolicy = new RRSetRoutingPolicy.fromJson(_json["routingPolicy"]);
+    }
     if (_json.containsKey("rrdatas")) {
       rrdatas = (_json["rrdatas"] as core.List).cast<core.String>();
     }
@@ -3268,6 +3588,9 @@ class ResourceRecordSet {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (routingPolicy != null) {
+      _json["routingPolicy"] = (routingPolicy).toJson();
     }
     if (rrdatas != null) {
       _json["rrdatas"] = rrdatas;

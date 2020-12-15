@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3486() {
+buildUnnamed5108() {
   var o = new core.List<api.Activity>();
   o.add(buildActivity());
   o.add(buildActivity());
   return o;
 }
 
-checkUnnamed3486(core.List<api.Activity> o) {
+checkUnnamed5108(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivity(o[0]);
   checkActivity(o[1]);
@@ -69,7 +69,7 @@ buildActivities() {
   buildCounterActivities++;
   if (buildCounterActivities < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed3486();
+    o.items = buildUnnamed5108();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -81,7 +81,7 @@ checkActivities(api.Activities o) {
   buildCounterActivities++;
   if (buildCounterActivities < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3486(o.items);
+    checkUnnamed5108(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -113,14 +113,14 @@ checkActivityActor(api.ActivityActor o) {
   buildCounterActivityActor--;
 }
 
-buildUnnamed3487() {
+buildUnnamed5109() {
   var o = new core.List<api.NestedParameter>();
   o.add(buildNestedParameter());
   o.add(buildNestedParameter());
   return o;
 }
 
-checkUnnamed3487(core.List<api.NestedParameter> o) {
+checkUnnamed5109(core.List<api.NestedParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNestedParameter(o[0]);
   checkNestedParameter(o[1]);
@@ -131,7 +131,7 @@ buildActivityEventsParametersMessageValue() {
   var o = new api.ActivityEventsParametersMessageValue();
   buildCounterActivityEventsParametersMessageValue++;
   if (buildCounterActivityEventsParametersMessageValue < 3) {
-    o.parameter = buildUnnamed3487();
+    o.parameter = buildUnnamed5109();
   }
   buildCounterActivityEventsParametersMessageValue--;
   return o;
@@ -141,32 +141,32 @@ checkActivityEventsParametersMessageValue(
     api.ActivityEventsParametersMessageValue o) {
   buildCounterActivityEventsParametersMessageValue++;
   if (buildCounterActivityEventsParametersMessageValue < 3) {
-    checkUnnamed3487(o.parameter);
+    checkUnnamed5109(o.parameter);
   }
   buildCounterActivityEventsParametersMessageValue--;
 }
 
-buildUnnamed3488() {
+buildUnnamed5110() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3488(core.List<core.String> o) {
+checkUnnamed5110(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3489() {
+buildUnnamed5111() {
   var o = new core.List<api.NestedParameter>();
   o.add(buildNestedParameter());
   o.add(buildNestedParameter());
   return o;
 }
 
-checkUnnamed3489(core.List<api.NestedParameter> o) {
+checkUnnamed5111(core.List<api.NestedParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNestedParameter(o[0]);
   checkNestedParameter(o[1]);
@@ -177,7 +177,7 @@ buildActivityEventsParametersMultiMessageValue() {
   var o = new api.ActivityEventsParametersMultiMessageValue();
   buildCounterActivityEventsParametersMultiMessageValue++;
   if (buildCounterActivityEventsParametersMultiMessageValue < 3) {
-    o.parameter = buildUnnamed3489();
+    o.parameter = buildUnnamed5111();
   }
   buildCounterActivityEventsParametersMultiMessageValue--;
   return o;
@@ -187,32 +187,32 @@ checkActivityEventsParametersMultiMessageValue(
     api.ActivityEventsParametersMultiMessageValue o) {
   buildCounterActivityEventsParametersMultiMessageValue++;
   if (buildCounterActivityEventsParametersMultiMessageValue < 3) {
-    checkUnnamed3489(o.parameter);
+    checkUnnamed5111(o.parameter);
   }
   buildCounterActivityEventsParametersMultiMessageValue--;
 }
 
-buildUnnamed3490() {
+buildUnnamed5112() {
   var o = new core.List<api.ActivityEventsParametersMultiMessageValue>();
   o.add(buildActivityEventsParametersMultiMessageValue());
   o.add(buildActivityEventsParametersMultiMessageValue());
   return o;
 }
 
-checkUnnamed3490(core.List<api.ActivityEventsParametersMultiMessageValue> o) {
+checkUnnamed5112(core.List<api.ActivityEventsParametersMultiMessageValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityEventsParametersMultiMessageValue(o[0]);
   checkActivityEventsParametersMultiMessageValue(o[1]);
 }
 
-buildUnnamed3491() {
+buildUnnamed5113() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3491(core.List<core.String> o) {
+checkUnnamed5113(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -226,9 +226,9 @@ buildActivityEventsParameters() {
     o.boolValue = true;
     o.intValue = "foo";
     o.messageValue = buildActivityEventsParametersMessageValue();
-    o.multiIntValue = buildUnnamed3488();
-    o.multiMessageValue = buildUnnamed3490();
-    o.multiValue = buildUnnamed3491();
+    o.multiIntValue = buildUnnamed5110();
+    o.multiMessageValue = buildUnnamed5112();
+    o.multiValue = buildUnnamed5113();
     o.name = "foo";
     o.value = "foo";
   }
@@ -242,23 +242,23 @@ checkActivityEventsParameters(api.ActivityEventsParameters o) {
     unittest.expect(o.boolValue, unittest.isTrue);
     unittest.expect(o.intValue, unittest.equals('foo'));
     checkActivityEventsParametersMessageValue(o.messageValue);
-    checkUnnamed3488(o.multiIntValue);
-    checkUnnamed3490(o.multiMessageValue);
-    checkUnnamed3491(o.multiValue);
+    checkUnnamed5110(o.multiIntValue);
+    checkUnnamed5112(o.multiMessageValue);
+    checkUnnamed5113(o.multiValue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterActivityEventsParameters--;
 }
 
-buildUnnamed3492() {
+buildUnnamed5114() {
   var o = new core.List<api.ActivityEventsParameters>();
   o.add(buildActivityEventsParameters());
   o.add(buildActivityEventsParameters());
   return o;
 }
 
-checkUnnamed3492(core.List<api.ActivityEventsParameters> o) {
+checkUnnamed5114(core.List<api.ActivityEventsParameters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityEventsParameters(o[0]);
   checkActivityEventsParameters(o[1]);
@@ -270,7 +270,7 @@ buildActivityEvents() {
   buildCounterActivityEvents++;
   if (buildCounterActivityEvents < 3) {
     o.name = "foo";
-    o.parameters = buildUnnamed3492();
+    o.parameters = buildUnnamed5114();
     o.type = "foo";
   }
   buildCounterActivityEvents--;
@@ -281,20 +281,20 @@ checkActivityEvents(api.ActivityEvents o) {
   buildCounterActivityEvents++;
   if (buildCounterActivityEvents < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3492(o.parameters);
+    checkUnnamed5114(o.parameters);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterActivityEvents--;
 }
 
-buildUnnamed3493() {
+buildUnnamed5115() {
   var o = new core.List<api.ActivityEvents>();
   o.add(buildActivityEvents());
   o.add(buildActivityEvents());
   return o;
 }
 
-checkUnnamed3493(core.List<api.ActivityEvents> o) {
+checkUnnamed5115(core.List<api.ActivityEvents> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityEvents(o[0]);
   checkActivityEvents(o[1]);
@@ -333,7 +333,7 @@ buildActivity() {
   if (buildCounterActivity < 3) {
     o.actor = buildActivityActor();
     o.etag = "foo";
-    o.events = buildUnnamed3493();
+    o.events = buildUnnamed5115();
     o.id = buildActivityId();
     o.ipAddress = "foo";
     o.kind = "foo";
@@ -348,7 +348,7 @@ checkActivity(api.Activity o) {
   if (buildCounterActivity < 3) {
     checkActivityActor(o.actor);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3493(o.events);
+    checkUnnamed5115(o.events);
     checkActivityId(o.id);
     unittest.expect(o.ipAddress, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -357,14 +357,14 @@ checkActivity(api.Activity o) {
   buildCounterActivity--;
 }
 
-buildUnnamed3494() {
+buildUnnamed5116() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3494(core.Map<core.String, core.String> o) {
+checkUnnamed5116(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -379,7 +379,7 @@ buildChannel() {
     o.expiration = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.params = buildUnnamed3494();
+    o.params = buildUnnamed5116();
     o.payload = true;
     o.resourceId = "foo";
     o.resourceUri = "foo";
@@ -397,7 +397,7 @@ checkChannel(api.Channel o) {
     unittest.expect(o.expiration, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3494(o.params);
+    checkUnnamed5116(o.params);
     unittest.expect(o.payload, unittest.isTrue);
     unittest.expect(o.resourceId, unittest.equals('foo'));
     unittest.expect(o.resourceUri, unittest.equals('foo'));
@@ -407,40 +407,40 @@ checkChannel(api.Channel o) {
   buildCounterChannel--;
 }
 
-buildUnnamed3495() {
+buildUnnamed5117() {
   var o = new core.List<core.bool>();
   o.add(true);
   o.add(true);
   return o;
 }
 
-checkUnnamed3495(core.List<core.bool> o) {
+checkUnnamed5117(core.List<core.bool> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.isTrue);
   unittest.expect(o[1], unittest.isTrue);
 }
 
-buildUnnamed3496() {
+buildUnnamed5118() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3496(core.List<core.String> o) {
+checkUnnamed5118(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3497() {
+buildUnnamed5119() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3497(core.List<core.String> o) {
+checkUnnamed5119(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -453,9 +453,9 @@ buildNestedParameter() {
   if (buildCounterNestedParameter < 3) {
     o.boolValue = true;
     o.intValue = "foo";
-    o.multiBoolValue = buildUnnamed3495();
-    o.multiIntValue = buildUnnamed3496();
-    o.multiValue = buildUnnamed3497();
+    o.multiBoolValue = buildUnnamed5117();
+    o.multiIntValue = buildUnnamed5118();
+    o.multiValue = buildUnnamed5119();
     o.name = "foo";
     o.value = "foo";
   }
@@ -468,9 +468,9 @@ checkNestedParameter(api.NestedParameter o) {
   if (buildCounterNestedParameter < 3) {
     unittest.expect(o.boolValue, unittest.isTrue);
     unittest.expect(o.intValue, unittest.equals('foo'));
-    checkUnnamed3495(o.multiBoolValue);
-    checkUnnamed3496(o.multiIntValue);
-    checkUnnamed3497(o.multiValue);
+    checkUnnamed5117(o.multiBoolValue);
+    checkUnnamed5118(o.multiIntValue);
+    checkUnnamed5119(o.multiValue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -504,7 +504,7 @@ checkUsageReportEntity(api.UsageReportEntity o) {
   buildCounterUsageReportEntity--;
 }
 
-buildUnnamed3498() {
+buildUnnamed5120() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -519,7 +519,7 @@ buildUnnamed3498() {
   return o;
 }
 
-checkUnnamed3498(core.Map<core.String, core.Object> o) {
+checkUnnamed5120(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -533,17 +533,17 @@ checkUnnamed3498(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed3499() {
+buildUnnamed5121() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3498());
-  o.add(buildUnnamed3498());
+  o.add(buildUnnamed5120());
+  o.add(buildUnnamed5120());
   return o;
 }
 
-checkUnnamed3499(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed5121(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3498(o[0]);
-  checkUnnamed3498(o[1]);
+  checkUnnamed5120(o[0]);
+  checkUnnamed5120(o[1]);
 }
 
 core.int buildCounterUsageReportParameters = 0;
@@ -554,7 +554,7 @@ buildUsageReportParameters() {
     o.boolValue = true;
     o.datetimeValue = core.DateTime.parse("2002-02-27T14:01:02");
     o.intValue = "foo";
-    o.msgValue = buildUnnamed3499();
+    o.msgValue = buildUnnamed5121();
     o.name = "foo";
     o.stringValue = "foo";
   }
@@ -569,21 +569,21 @@ checkUsageReportParameters(api.UsageReportParameters o) {
     unittest.expect(o.datetimeValue,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.intValue, unittest.equals('foo'));
-    checkUnnamed3499(o.msgValue);
+    checkUnnamed5121(o.msgValue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.stringValue, unittest.equals('foo'));
   }
   buildCounterUsageReportParameters--;
 }
 
-buildUnnamed3500() {
+buildUnnamed5122() {
   var o = new core.List<api.UsageReportParameters>();
   o.add(buildUsageReportParameters());
   o.add(buildUsageReportParameters());
   return o;
 }
 
-checkUnnamed3500(core.List<api.UsageReportParameters> o) {
+checkUnnamed5122(core.List<api.UsageReportParameters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsageReportParameters(o[0]);
   checkUsageReportParameters(o[1]);
@@ -598,7 +598,7 @@ buildUsageReport() {
     o.entity = buildUsageReportEntity();
     o.etag = "foo";
     o.kind = "foo";
-    o.parameters = buildUnnamed3500();
+    o.parameters = buildUnnamed5122();
   }
   buildCounterUsageReport--;
   return o;
@@ -611,19 +611,19 @@ checkUsageReport(api.UsageReport o) {
     checkUsageReportEntity(o.entity);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3500(o.parameters);
+    checkUnnamed5122(o.parameters);
   }
   buildCounterUsageReport--;
 }
 
-buildUnnamed3501() {
+buildUnnamed5123() {
   var o = new core.List<api.UsageReport>();
   o.add(buildUsageReport());
   o.add(buildUsageReport());
   return o;
 }
 
-checkUnnamed3501(core.List<api.UsageReport> o) {
+checkUnnamed5123(core.List<api.UsageReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsageReport(o[0]);
   checkUsageReport(o[1]);
@@ -650,14 +650,14 @@ checkUsageReportsWarningsData(api.UsageReportsWarningsData o) {
   buildCounterUsageReportsWarningsData--;
 }
 
-buildUnnamed3502() {
+buildUnnamed5124() {
   var o = new core.List<api.UsageReportsWarningsData>();
   o.add(buildUsageReportsWarningsData());
   o.add(buildUsageReportsWarningsData());
   return o;
 }
 
-checkUnnamed3502(core.List<api.UsageReportsWarningsData> o) {
+checkUnnamed5124(core.List<api.UsageReportsWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsageReportsWarningsData(o[0]);
   checkUsageReportsWarningsData(o[1]);
@@ -669,7 +669,7 @@ buildUsageReportsWarnings() {
   buildCounterUsageReportsWarnings++;
   if (buildCounterUsageReportsWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed3502();
+    o.data = buildUnnamed5124();
     o.message = "foo";
   }
   buildCounterUsageReportsWarnings--;
@@ -680,20 +680,20 @@ checkUsageReportsWarnings(api.UsageReportsWarnings o) {
   buildCounterUsageReportsWarnings++;
   if (buildCounterUsageReportsWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed3502(o.data);
+    checkUnnamed5124(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterUsageReportsWarnings--;
 }
 
-buildUnnamed3503() {
+buildUnnamed5125() {
   var o = new core.List<api.UsageReportsWarnings>();
   o.add(buildUsageReportsWarnings());
   o.add(buildUsageReportsWarnings());
   return o;
 }
 
-checkUnnamed3503(core.List<api.UsageReportsWarnings> o) {
+checkUnnamed5125(core.List<api.UsageReportsWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsageReportsWarnings(o[0]);
   checkUsageReportsWarnings(o[1]);
@@ -707,8 +707,8 @@ buildUsageReports() {
     o.etag = "foo";
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.usageReports = buildUnnamed3501();
-    o.warnings = buildUnnamed3503();
+    o.usageReports = buildUnnamed5123();
+    o.warnings = buildUnnamed5125();
   }
   buildCounterUsageReports--;
   return o;
@@ -720,8 +720,8 @@ checkUsageReports(api.UsageReports o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3501(o.usageReports);
-    checkUnnamed3503(o.warnings);
+    checkUnnamed5123(o.usageReports);
+    checkUnnamed5125(o.warnings);
   }
   buildCounterUsageReports--;
 }
@@ -863,15 +863,16 @@ main() {
       api.ActivitiesResourceApi res = new api.AdminApi(mock).activities;
       var arg_userKey = "foo";
       var arg_applicationName = "foo";
+      var arg_customerId = "foo";
+      var arg_maxResults = 42;
+      var arg_eventName = "foo";
+      var arg_pageToken = "foo";
       var arg_actorIpAddress = "foo";
       var arg_filters = "foo";
-      var arg_startTime = "foo";
       var arg_orgUnitID = "foo";
+      var arg_groupIdFilter = "foo";
       var arg_endTime = "foo";
-      var arg_pageToken = "foo";
-      var arg_maxResults = 42;
-      var arg_customerId = "foo";
-      var arg_eventName = "foo";
+      var arg_startTime = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -915,24 +916,26 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["customerId"].first, unittest.equals(arg_customerId));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["eventName"].first, unittest.equals(arg_eventName));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["actorIpAddress"].first,
             unittest.equals(arg_actorIpAddress));
         unittest.expect(
             queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
-        unittest.expect(
             queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
+        unittest.expect(queryMap["groupIdFilter"].first,
+            unittest.equals(arg_groupIdFilter));
         unittest.expect(
             queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(
-            queryMap["eventName"].first, unittest.equals(arg_eventName));
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -943,15 +946,16 @@ main() {
       }), true);
       res
           .list(arg_userKey, arg_applicationName,
+              customerId: arg_customerId,
+              maxResults: arg_maxResults,
+              eventName: arg_eventName,
+              pageToken: arg_pageToken,
               actorIpAddress: arg_actorIpAddress,
               filters: arg_filters,
-              startTime: arg_startTime,
               orgUnitID: arg_orgUnitID,
+              groupIdFilter: arg_groupIdFilter,
               endTime: arg_endTime,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
-              customerId: arg_customerId,
-              eventName: arg_eventName,
+              startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkActivities(response);
@@ -964,15 +968,16 @@ main() {
       var arg_request = buildChannel();
       var arg_userKey = "foo";
       var arg_applicationName = "foo";
-      var arg_eventName = "foo";
       var arg_customerId = "foo";
-      var arg_orgUnitID = "foo";
-      var arg_endTime = "foo";
-      var arg_filters = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
-      var arg_actorIpAddress = "foo";
       var arg_startTime = "foo";
+      var arg_filters = "foo";
+      var arg_endTime = "foo";
+      var arg_eventName = "foo";
+      var arg_orgUnitID = "foo";
+      var arg_actorIpAddress = "foo";
+      var arg_groupIdFilter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Channel.fromJson(json);
@@ -1026,23 +1031,25 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["eventName"].first, unittest.equals(arg_eventName));
-        unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(
-            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
-        unittest.expect(
-            queryMap["endTime"].first, unittest.equals(arg_endTime));
-        unittest.expect(
-            queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["actorIpAddress"].first,
-            unittest.equals(arg_actorIpAddress));
         unittest.expect(
             queryMap["startTime"].first, unittest.equals(arg_startTime));
+        unittest.expect(
+            queryMap["filters"].first, unittest.equals(arg_filters));
+        unittest.expect(
+            queryMap["endTime"].first, unittest.equals(arg_endTime));
+        unittest.expect(
+            queryMap["eventName"].first, unittest.equals(arg_eventName));
+        unittest.expect(
+            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
+        unittest.expect(queryMap["actorIpAddress"].first,
+            unittest.equals(arg_actorIpAddress));
+        unittest.expect(queryMap["groupIdFilter"].first,
+            unittest.equals(arg_groupIdFilter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1053,15 +1060,16 @@ main() {
       }), true);
       res
           .watch(arg_request, arg_userKey, arg_applicationName,
-              eventName: arg_eventName,
               customerId: arg_customerId,
-              orgUnitID: arg_orgUnitID,
-              endTime: arg_endTime,
-              filters: arg_filters,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
-              actorIpAddress: arg_actorIpAddress,
               startTime: arg_startTime,
+              filters: arg_filters,
+              endTime: arg_endTime,
+              eventName: arg_eventName,
+              orgUnitID: arg_orgUnitID,
+              actorIpAddress: arg_actorIpAddress,
+              groupIdFilter: arg_groupIdFilter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannel(response);
@@ -1128,9 +1136,9 @@ main() {
       api.CustomerUsageReportsResourceApi res =
           new api.AdminApi(mock).customerUsageReports;
       var arg_date = "foo";
-      var arg_customerId = "foo";
-      var arg_parameters = "foo";
       var arg_pageToken = "foo";
+      var arg_parameters = "foo";
+      var arg_customerId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1166,11 +1174,11 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["parameters"].first, unittest.equals(arg_parameters));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["customerId"].first, unittest.equals(arg_customerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1181,9 +1189,9 @@ main() {
       }), true);
       res
           .get(arg_date,
-              customerId: arg_customerId,
-              parameters: arg_parameters,
               pageToken: arg_pageToken,
+              parameters: arg_parameters,
+              customerId: arg_customerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUsageReports(response);
@@ -1199,9 +1207,9 @@ main() {
       var arg_entityType = "foo";
       var arg_entityKey = "foo";
       var arg_date = "foo";
-      var arg_filters = "foo";
-      var arg_maxResults = 42;
       var arg_parameters = "foo";
+      var arg_maxResults = 42;
+      var arg_filters = "foo";
       var arg_pageToken = "foo";
       var arg_customerId = "foo";
       var arg_$fields = "foo";
@@ -1257,11 +1265,11 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["filters"].first, unittest.equals(arg_filters));
+            queryMap["parameters"].first, unittest.equals(arg_parameters));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["parameters"].first, unittest.equals(arg_parameters));
+            queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
@@ -1276,9 +1284,9 @@ main() {
       }), true);
       res
           .get(arg_entityType, arg_entityKey, arg_date,
-              filters: arg_filters,
-              maxResults: arg_maxResults,
               parameters: arg_parameters,
+              maxResults: arg_maxResults,
+              filters: arg_filters,
               pageToken: arg_pageToken,
               customerId: arg_customerId,
               $fields: arg_$fields)
@@ -1295,11 +1303,12 @@ main() {
           new api.AdminApi(mock).userUsageReport;
       var arg_userKey = "foo";
       var arg_date = "foo";
-      var arg_maxResults = 42;
       var arg_customerId = "foo";
-      var arg_orgUnitID = "foo";
       var arg_parameters = "foo";
+      var arg_orgUnitID = "foo";
+      var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_groupIdFilter = "foo";
       var arg_filters = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1344,16 +1353,18 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
         unittest.expect(
-            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
-        unittest.expect(
             queryMap["parameters"].first, unittest.equals(arg_parameters));
         unittest.expect(
+            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["groupIdFilter"].first,
+            unittest.equals(arg_groupIdFilter));
         unittest.expect(
             queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1366,11 +1377,12 @@ main() {
       }), true);
       res
           .get(arg_userKey, arg_date,
-              maxResults: arg_maxResults,
               customerId: arg_customerId,
-              orgUnitID: arg_orgUnitID,
               parameters: arg_parameters,
+              orgUnitID: arg_orgUnitID,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              groupIdFilter: arg_groupIdFilter,
               filters: arg_filters,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

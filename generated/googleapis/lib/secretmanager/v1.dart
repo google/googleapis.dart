@@ -103,9 +103,9 @@ class ProjectsLocationsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -119,8 +119,8 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
       {core.String pageToken,
-      core.String filter,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -135,11 +135,11 @@ class ProjectsLocationsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -437,12 +437,12 @@ class ProjectsSecretsResourceApi {
   /// Secrets, in the format `projects / * `.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Optional. Pagination token, returned earlier via
+  /// ListSecretsResponse.next_page_token.
+  ///
   /// [pageSize] - Optional. The maximum number of results to be returned in a
   /// single page. If set to 0, the server decides the number of results to
   /// return. If the number is greater than 25000, it is capped at 25000.
-  ///
-  /// [pageToken] - Optional. Pagination token, returned earlier via
-  /// ListSecretsResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -455,7 +455,7 @@ class ProjectsSecretsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSecretsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -466,11 +466,11 @@ class ProjectsSecretsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1181,10 +1181,6 @@ class AutomaticStatus {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -1232,9 +1228,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1249,9 +1242,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }

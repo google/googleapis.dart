@@ -1191,11 +1191,11 @@ class AccountsContainersMoveFoldersResourceApi {
   ///
   /// [folderId] - The GTM Folder ID.
   ///
+  /// [triggerId] - The triggers to be moved to the folder.
+  ///
   /// [variableId] - The variables to be moved to the folder.
   ///
   /// [tagId] - The tags to be moved to the folder.
-  ///
-  /// [triggerId] - The triggers to be moved to the folder.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1207,9 +1207,9 @@ class AccountsContainersMoveFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future update(Folder request, core.String accountId,
       core.String containerId, core.String folderId,
-      {core.List<core.String> variableId,
+      {core.List<core.String> triggerId,
+      core.List<core.String> variableId,
       core.List<core.String> tagId,
-      core.List<core.String> triggerId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1230,14 +1230,14 @@ class AccountsContainersMoveFoldersResourceApi {
     if (folderId == null) {
       throw new core.ArgumentError("Parameter folderId is required.");
     }
+    if (triggerId != null) {
+      _queryParams["triggerId"] = triggerId;
+    }
     if (variableId != null) {
       _queryParams["variableId"] = variableId;
     }
     if (tagId != null) {
       _queryParams["tagId"] = tagId;
-    }
-    if (triggerId != null) {
-      _queryParams["triggerId"] = triggerId;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2446,9 +2446,9 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
-  /// [includeDeleted] - Also retrieve deleted (archived) versions when true.
-  ///
   /// [headers] - Retrieve headers only when true.
+  ///
+  /// [includeDeleted] - Also retrieve deleted (archived) versions when true.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2462,7 +2462,7 @@ class AccountsContainersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListContainerVersionsResponse> list(
       core.String accountId, core.String containerId,
-      {core.bool includeDeleted, core.bool headers, core.String $fields}) {
+      {core.bool headers, core.bool includeDeleted, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2476,11 +2476,11 @@ class AccountsContainersVersionsResourceApi {
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
     }
-    if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
-    }
     if (headers != null) {
       _queryParams["headers"] = ["${headers}"];
+    }
+    if (includeDeleted != null) {
+      _queryParams["includeDeleted"] = ["${includeDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

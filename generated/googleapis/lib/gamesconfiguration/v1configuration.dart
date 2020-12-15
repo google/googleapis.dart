@@ -538,11 +538,11 @@ class LeaderboardConfigurationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [maxResults] - The maximum number of resource configurations to return in
   /// the response, used for paging. For any response, the actual number of
   /// resources returned may be less than the specified `maxResults`.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -556,8 +556,8 @@ class LeaderboardConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardConfigurationListResponse> list(
       core.String applicationId,
-      {core.int maxResults,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -569,11 +569,11 @@ class LeaderboardConfigurationsResourceApi {
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

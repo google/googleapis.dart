@@ -18,10 +18,7 @@ const core.String USER_AGENT = 'dart-api-client iam/v1';
 
 /// Manages identity and access control for Google Cloud Platform resources,
 /// including the creation of service accounts, which you can use to
-/// authenticate to Google and make API calls. *Note:* This API is tied to the
-/// IAM service account credentials API ( iamcredentials.googleapis.com).
-/// Enabling or disabling this API will also enable or disable the IAM service
-/// account credentials API.
+/// authenticate to Google and make API calls.
 class IamApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -386,8 +383,13 @@ class OrganizationsRolesResourceApi {
   /// ID or organization ID.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response. The default is 300, and the maximum is 1,000.
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [view] - Optional view for the returned Role objects. When `FULL` is
   /// specified, the `includedPermissions` field is returned, which includes a
@@ -397,11 +399,6 @@ class OrganizationsRolesResourceApi {
   /// - "BASIC" : Omits the `included_permissions` field. This is the default
   /// value.
   /// - "FULL" : Returns all fields.
-  ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -414,10 +411,10 @@ class OrganizationsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String view,
+      {core.String pageToken,
+      core.int pageSize,
       core.bool showDeleted,
-      core.String pageToken,
+      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -429,17 +426,17 @@ class OrganizationsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -648,12 +645,159 @@ class PermissionsResourceApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
   ProjectsRolesResourceApi get roles =>
       new ProjectsRolesResourceApi(_requester);
   ProjectsServiceAccountsResourceApi get serviceAccounts =>
       new ProjectsServiceAccountsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsResourceApi get workloadIdentityPools =>
+      new ProjectsLocationsWorkloadIdentityPoolsResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsOperationsResourceApi get operations =>
+      new ProjectsLocationsWorkloadIdentityPoolsOperationsResourceApi(
+          _requester);
+  ProjectsLocationsWorkloadIdentityPoolsProvidersResourceApi get providers =>
+      new ProjectsLocationsWorkloadIdentityPoolsProvidersResourceApi(
+          _requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsOperationsResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation. Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsProvidersResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResourceApi
+      get operations =>
+          new ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResourceApi(
+              _requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsProvidersResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation. Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/providers/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class ProjectsRolesResourceApi {
@@ -887,6 +1031,14 @@ class ProjectsRolesResourceApi {
   /// ID or organization ID.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response. The default is 300, and the maximum is 1,000.
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
   /// [view] - Optional view for the returned Role objects. When `FULL` is
   /// specified, the `includedPermissions` field is returned, which includes a
   /// list of all permissions in the role. The default value is `BASIC`, which
@@ -895,14 +1047,6 @@ class ProjectsRolesResourceApi {
   /// - "BASIC" : Omits the `included_permissions` field. This is the default
   /// value.
   /// - "FULL" : Returns all fields.
-  ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
-  ///
-  /// [pageSize] - Optional limit on the number of roles to include in the
-  /// response. The default is 300, and the maximum is 1,000.
-  ///
-  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -915,10 +1059,10 @@ class ProjectsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.String view,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.bool showDeleted,
+      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -930,9 +1074,6 @@ class ProjectsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -941,6 +1082,9 @@ class ProjectsRolesResourceApi {
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2296,6 +2440,8 @@ class RolesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
   /// [parent] - The `parent` parameter's value depends on the target resource
   /// for the request, namely [`roles`](/iam/reference/rest/v1/roles),
   /// [`projects`](/iam/reference/rest/v1/projects.roles), or
@@ -2317,12 +2463,6 @@ class RolesResourceApi {
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
   ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
-  ///
-  /// [pageSize] - Optional limit on the number of roles to include in the
-  /// response. The default is 300, and the maximum is 1,000.
-  ///
   /// [view] - Optional view for the returned Role objects. When `FULL` is
   /// specified, the `includedPermissions` field is returned, which includes a
   /// list of all permissions in the role. The default value is `BASIC`, which
@@ -2332,7 +2472,11 @@ class RolesResourceApi {
   /// value.
   /// - "FULL" : Returns all fields.
   ///
-  /// [showDeleted] - Include Roles that have been deleted.
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response. The default is 300, and the maximum is 1,000.
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2345,11 +2489,11 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(
-      {core.String parent,
-      core.String pageToken,
-      core.int pageSize,
+      {core.bool showDeleted,
+      core.String parent,
       core.String view,
-      core.bool showDeleted,
+      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2358,20 +2502,20 @@ class RolesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
     if (parent != null) {
       _queryParams["parent"] = [parent];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2606,10 +2750,6 @@ class AuditableService {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -2657,9 +2797,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -2674,9 +2811,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -3232,6 +3366,87 @@ class ListServiceAccountsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress. If
+  /// `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status error;
+
+  /// Service-specific metadata associated with the operation. It typically
+  /// contains progress information and common metadata such as create time.
+  /// Some services might not provide such metadata. Any method that returns a
+  /// long-running operation should document the metadata type, if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it. If you use the default HTTP mapping, the
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  core.String name;
+
+  /// The normal response of the operation in case of success. If the original
+  /// method returns no data on success, such as `Delete`, the response is
+  /// `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> response;
+
+  Operation();
+
+  Operation.fromJson(core.Map _json) {
+    if (_json.containsKey("done")) {
+      done = _json["done"];
+    }
+    if (_json.containsKey("error")) {
+      error = new Status.fromJson(_json["error"]);
+    }
+    if (_json.containsKey("metadata")) {
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("response")) {
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (done != null) {
+      _json["done"] = done;
+    }
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (response != null) {
+      _json["response"] = response;
     }
     return _json;
   }
@@ -4010,10 +4225,13 @@ class ServiceAccount {
 /// System-managed keys are automatically rotated by Google, and are used for
 /// signing for a maximum of two weeks. The rotation process is probabilistic,
 /// and usage of the new key will gradually ramp up and down over the key's
-/// lifetime. We recommend caching the public key set for a service account for
-/// no more than 24 hours to ensure you have access to the latest keys. Public
-/// keys for all service accounts are also published at the OAuth2 Service
-/// Account API.
+/// lifetime. If you cache the public key set for a service account, we
+/// recommend that you update the cache every 15 minutes. User-managed keys can
+/// be added and removed at any time, so it is important to update the cache
+/// frequently. For Google-managed keys, Google will publish a key at least 6
+/// hours before it is first used for signing and will keep publishing it for at
+/// least 6 hours after it was last used for signing. Public keys for all
+/// service accounts are also published at the OAuth2 Service Account API.
 class ServiceAccountKey {
   /// Specifies the algorithm (and possibly key size) for the key.
   /// Possible string values are:
@@ -4339,6 +4557,61 @@ class SignJwtResponse {
     }
     if (signedJwt != null) {
       _json["signedJwt"] = signedJwt;
+    }
+    return _json;
+  }
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details. You can
+/// find out more about this error model and how to work with it in the [API
+/// Design Guide](https://cloud.google.com/apis/design/errors).
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int code;
+
+  /// A list of messages that carry the error details. There is a common set of
+  /// message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> details;
+
+  /// A developer-facing error message, which should be in English. Any
+  /// user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("details")) {
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }

@@ -243,14 +243,14 @@ class ProjectsLocationsResourceApi {
   /// be the wildcard '-'), e.g.: `projects/-/locations/US`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
   /// [pageSize] - The maximum number of items to return per page.
   ///
   /// [query] - Please specify resource name as assignee in the query. Examples:
   /// * `assignee=projects/myproject` * `assignee=folders/123` *
   /// `assignee=organizations/456`
-  ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -264,9 +264,9 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<SearchAllAssignmentsResponse> searchAllAssignments(
       core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String query,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -278,14 +278,14 @@ class ProjectsLocationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (query != null) {
       _queryParams["query"] = [query];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -325,14 +325,14 @@ class ProjectsLocationsResourceApi {
   /// project and location), e.g.: `projects/myproject/locations/US`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of items to return per page.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
   /// [query] - Please specify resource name as assignee in the query. Examples:
   /// * `assignee=projects/myproject` * `assignee=folders/123` *
   /// `assignee=organizations/456`
+  ///
+  /// [pageSize] - The maximum number of items to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -345,9 +345,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchAssignmentsResponse> searchAssignments(core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
       core.String query,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -359,14 +359,14 @@ class ProjectsLocationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1265,10 +1265,10 @@ class ProjectsLocationsReservationsAssignmentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of items to return per page.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
+  ///
+  /// [pageSize] - The maximum number of items to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1281,7 +1281,7 @@ class ProjectsLocationsReservationsAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAssignmentsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1292,11 +1292,11 @@ class ProjectsLocationsReservationsAssignmentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

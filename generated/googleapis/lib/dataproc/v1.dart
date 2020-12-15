@@ -292,11 +292,11 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return in each
-  /// response. Must be less than or equal to 1000. Defaults to 100.
-  ///
   /// [pageToken] - Optional. The page token, returned by a previous call, to
   /// request the next page of results.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return in each
+  /// response. Must be less than or equal to 1000. Defaults to 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -309,7 +309,7 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAutoscalingPoliciesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -320,11 +320,11 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1978,6 +1978,78 @@ class ProjectsRegionsClustersResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
+  /// Inject encrypted credentials into all of the VMs in a cluster.The target
+  /// cluster must be a personal auth cluster assigned to the user who is
+  /// issuing the RPC.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. The ID of the Google Cloud Platform project the
+  /// cluster belongs to, of the form projects/.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [region] - Required. The region containing the cluster, of the form
+  /// regions/.
+  /// Value must have pattern "^regions/[^/]+$".
+  ///
+  /// [cluster] - Required. The cluster, in the form clusters/.
+  /// Value must have pattern "^clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> injectCredentials(InjectCredentialsRequest request,
+      core.String project, core.String region, core.String cluster,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (cluster == null) {
+      throw new core.ArgumentError("Parameter cluster is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$project') +
+        '/' +
+        commons.Escaper.ecapeVariableReserved('$region') +
+        '/' +
+        commons.Escaper.ecapeVariableReserved('$cluster') +
+        ':injectCredentials';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Lists all regions/{region}/clusters in a project alphabetically.
   ///
   /// Request parameters:
@@ -1986,10 +2058,6 @@ class ProjectsRegionsClustersResourceApi {
   /// the cluster belongs to.
   ///
   /// [region] - Required. The Dataproc region in which to handle the request.
-  ///
-  /// [pageToken] - Optional. The standard List page token.
-  ///
-  /// [pageSize] - Optional. The standard List page size.
   ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
@@ -2003,6 +2071,10 @@ class ProjectsRegionsClustersResourceApi {
   /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
   /// = mycluster AND labels.env = staging AND labels.starred = *
   ///
+  /// [pageToken] - Optional. The standard List page token.
+  ///
+  /// [pageSize] - Optional. The standard List page size.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2015,9 +2087,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2032,14 +2104,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2084,16 +2156,6 @@ class ProjectsRegionsClustersResourceApi {
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
-  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
-  /// decomissioning. Graceful decommissioning allows removing nodes from the
-  /// cluster without interrupting jobs in progress. Timeout specifies how long
-  /// to wait for jobs in progress to finish before forcefully removing nodes
-  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
-  /// decommission), and the maximum allowed timeout is 1 day. (see JSON
-  /// representation of Duration
-  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only
-  /// supported on Dataproc image versions 1.2 and higher.
-  ///
   /// [updateMask] - Required. Specifies the path, relative to Cluster, of the
   /// field to update. For example, to change the number of workers in a cluster
   /// to 5, the update_mask parameter would be specified as
@@ -2110,6 +2172,16 @@ class ProjectsRegionsClustersResourceApi {
   /// group config.autoscaling_config.policy_uri Use, stop using, or change
   /// autoscaling policies
   ///
+  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
+  /// decomissioning. Graceful decommissioning allows removing nodes from the
+  /// cluster without interrupting jobs in progress. Timeout specifies how long
+  /// to wait for jobs in progress to finish before forcefully removing nodes
+  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
+  /// decommission), and the maximum allowed timeout is 1 day. (see JSON
+  /// representation of Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only
+  /// supported on Dataproc image versions 1.2 and higher.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2123,8 +2195,8 @@ class ProjectsRegionsClustersResourceApi {
   async.Future<Operation> patch(Cluster request, core.String projectId,
       core.String region, core.String clusterName,
       {core.String requestId,
-      core.String gracefulDecommissionTimeout,
       core.String updateMask,
+      core.String gracefulDecommissionTimeout,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2148,13 +2220,13 @@ class ProjectsRegionsClustersResourceApi {
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
     if (gracefulDecommissionTimeout != null) {
       _queryParams["gracefulDecommissionTimeout"] = [
         gracefulDecommissionTimeout
       ];
-    }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2553,21 +2625,8 @@ class ProjectsRegionsJobsResourceApi {
   ///
   /// [region] - Required. The Dataproc region in which to handle the request.
   ///
-  /// [pageToken] - Optional. The page token, returned by a previous call, to
-  /// request the next page of results.
-  ///
   /// [clusterName] - Optional. If set, the returned jobs list includes only
   /// jobs that were submitted to the named cluster.
-  ///
-  /// [jobStateMatcher] - Optional. Specifies enumerated categories of jobs to
-  /// list. (default = match ALL jobs).If filter is provided, jobStateMatcher
-  /// will be ignored.
-  /// Possible string values are:
-  /// - "ALL" : Match all jobs, regardless of state.
-  /// - "ACTIVE" : Only match jobs in non-terminal states: PENDING, RUNNING, or
-  /// CANCEL_PENDING.
-  /// - "NON_ACTIVE" : Only match jobs in terminal states: CANCELLED, DONE, or
-  /// ERROR.
   ///
   /// [filter] - Optional. A filter constraining the jobs to list. Filters are
   /// case-sensitive and have the following syntax:field = value AND field =
@@ -2580,6 +2639,19 @@ class ProjectsRegionsJobsResourceApi {
   ///
   /// [pageSize] - Optional. The number of results to return in each response.
   ///
+  /// [jobStateMatcher] - Optional. Specifies enumerated categories of jobs to
+  /// list. (default = match ALL jobs).If filter is provided, jobStateMatcher
+  /// will be ignored.
+  /// Possible string values are:
+  /// - "ALL" : Match all jobs, regardless of state.
+  /// - "ACTIVE" : Only match jobs in non-terminal states: PENDING, RUNNING, or
+  /// CANCEL_PENDING.
+  /// - "NON_ACTIVE" : Only match jobs in terminal states: CANCELLED, DONE, or
+  /// ERROR.
+  ///
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2591,11 +2663,11 @@ class ProjectsRegionsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
-      {core.String pageToken,
-      core.String clusterName,
-      core.String jobStateMatcher,
+      {core.String clusterName,
       core.String filter,
       core.int pageSize,
+      core.String jobStateMatcher,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2610,20 +2682,20 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (clusterName != null) {
       _queryParams["clusterName"] = [clusterName];
-    }
-    if (jobStateMatcher != null) {
-      _queryParams["jobStateMatcher"] = [jobStateMatcher];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (jobStateMatcher != null) {
+      _queryParams["jobStateMatcher"] = [jobStateMatcher];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3170,9 +3242,9 @@ class ProjectsRegionsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -3187,8 +3259,8 @@ class ProjectsRegionsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -3201,11 +3273,11 @@ class ProjectsRegionsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -4232,10 +4304,6 @@ class BasicYarnAutoscalingConfig {
 
 /// Associates members with a role.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.If the condition
   /// evaluates to true, then this binding applies to the current request.If the
   /// condition evaluates to false, then this binding does not apply to the
@@ -4284,9 +4352,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -4301,9 +4366,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -5219,6 +5281,9 @@ class GceClusterConfig {
   /// https://www.googleapis.com/auth/devstorage.full_control
   core.List<core.String> serviceAccountScopes;
 
+  /// Optional. Shielded Instance Config for clusters using shielded VMs.
+  ShieldedInstanceConfig shieldedInstanceConfig;
+
   /// Optional. The Compute Engine subnetwork to be used for machine
   /// communications. Cannot be specified with network_uri.A full URL, partial
   /// URI, or short name are valid. Examples:
@@ -5270,6 +5335,10 @@ class GceClusterConfig {
       serviceAccountScopes =
           (_json["serviceAccountScopes"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("shieldedInstanceConfig")) {
+      shieldedInstanceConfig =
+          new ShieldedInstanceConfig.fromJson(_json["shieldedInstanceConfig"]);
+    }
     if (_json.containsKey("subnetworkUri")) {
       subnetworkUri = _json["subnetworkUri"];
     }
@@ -5307,6 +5376,9 @@ class GceClusterConfig {
     }
     if (serviceAccountScopes != null) {
       _json["serviceAccountScopes"] = serviceAccountScopes;
+    }
+    if (shieldedInstanceConfig != null) {
+      _json["shieldedInstanceConfig"] = (shieldedInstanceConfig).toJson();
     }
     if (subnetworkUri != null) {
       _json["subnetworkUri"] = subnetworkUri;
@@ -5556,6 +5628,41 @@ class HiveJob {
   }
 }
 
+/// A request to inject credentials into a cluster.
+class InjectCredentialsRequest {
+  /// Required. The cluster UUID.
+  core.String clusterUuid;
+
+  /// Required. The encrypted credentials being injected in to the cluster.The
+  /// client is responsible for encrypting the credentials in a way that is
+  /// supported by the cluster.A wrapped value is used here so that the actual
+  /// contents of the encrypted credentials are not written to audit logs.
+  core.String credentialsCiphertext;
+
+  InjectCredentialsRequest();
+
+  InjectCredentialsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterUuid")) {
+      clusterUuid = _json["clusterUuid"];
+    }
+    if (_json.containsKey("credentialsCiphertext")) {
+      credentialsCiphertext = _json["credentialsCiphertext"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clusterUuid != null) {
+      _json["clusterUuid"] = clusterUuid;
+    }
+    if (credentialsCiphertext != null) {
+      _json["credentialsCiphertext"] = credentialsCiphertext;
+    }
+    return _json;
+  }
+}
+
 /// Configuration for the size bounds of an instance group, including its
 /// proportional size to other groups.
 class InstanceGroupAutoscalingPolicyConfig {
@@ -5782,6 +5889,9 @@ class InstanceReference {
   /// The user-friendly name of the Compute Engine instance.
   core.String instanceName;
 
+  /// The public key used for sharing data with this instance.
+  core.String publicKey;
+
   InstanceReference();
 
   InstanceReference.fromJson(core.Map _json) {
@@ -5790,6 +5900,9 @@ class InstanceReference {
     }
     if (_json.containsKey("instanceName")) {
       instanceName = _json["instanceName"];
+    }
+    if (_json.containsKey("publicKey")) {
+      publicKey = _json["publicKey"];
     }
   }
 
@@ -5801,6 +5914,9 @@ class InstanceReference {
     }
     if (instanceName != null) {
       _json["instanceName"] = instanceName;
+    }
+    if (publicKey != null) {
+      _json["publicKey"] = publicKey;
     }
     return _json;
   }
@@ -6193,11 +6309,19 @@ class JobScheduling {
   /// code 4 times within 10 minute window.Maximum value is 10.
   core.int maxFailuresPerHour;
 
+  /// Optional. Maximum number of times in total a driver may be restarted as a
+  /// result of driver exiting with non-zero code before job is reported failed.
+  /// Maximum value is 240.
+  core.int maxFailuresTotal;
+
   JobScheduling();
 
   JobScheduling.fromJson(core.Map _json) {
     if (_json.containsKey("maxFailuresPerHour")) {
       maxFailuresPerHour = _json["maxFailuresPerHour"];
+    }
+    if (_json.containsKey("maxFailuresTotal")) {
+      maxFailuresTotal = _json["maxFailuresTotal"];
     }
   }
 
@@ -6206,6 +6330,9 @@ class JobScheduling {
         new core.Map<core.String, core.Object>();
     if (maxFailuresPerHour != null) {
       _json["maxFailuresPerHour"] = maxFailuresPerHour;
+    }
+    if (maxFailuresTotal != null) {
+      _json["maxFailuresTotal"] = maxFailuresTotal;
     }
     return _json;
   }
@@ -6332,14 +6459,14 @@ class KerberosConfig {
   /// certificate.
   core.String keystoreUri;
 
-  /// Required. The uri of the KMS key used to encrypt various sensitive files.
+  /// Optional. The uri of the KMS key used to encrypt various sensitive files.
   core.String kmsKeyUri;
 
   /// Optional. The name of the on-cluster Kerberos realm. If not specified, the
   /// uppercased domain of hostnames will be the realm.
   core.String realm;
 
-  /// Required. The Cloud Storage URI of a KMS encrypted file containing the
+  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
   /// root principal password.
   core.String rootPrincipalPasswordUri;
 
@@ -6476,7 +6603,7 @@ class LifecycleConfig {
 
   /// Optional. The duration to keep the cluster alive while idling (when no
   /// jobs are running). Passing this threshold will cause the cluster to be
-  /// deleted. Minimum value is 10 minutes; maximum value is 14 days (see JSON
+  /// deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON
   /// representation of Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json).
   core.String idleDeleteTtl;
@@ -6813,9 +6940,13 @@ class ManagedGroupConfig {
 
 /// Node Group Affinity for clusters using sole-tenant node groups.
 class NodeGroupAffinity {
-  /// Required. The name of a single node group
-  /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) a
-  /// cluster will be created on.
+  /// Required. The URI of a sole-tenant node group resource
+  /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that
+  /// the cluster will be created on.A full URL, partial URI, or node group name
+  /// are valid. Examples:
+  /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1
+  /// projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1
+  /// node-group-1
   core.String nodeGroupUri;
 
   NodeGroupAffinity();
@@ -7649,6 +7780,47 @@ class SetIamPolicyRequest {
   }
 }
 
+/// Shielded Instance Config for clusters using shielded VMs.
+class ShieldedInstanceConfig {
+  /// Optional. Defines whether instances have integrity monitoring enabled.
+  core.bool enableIntegrityMonitoring;
+
+  /// Optional. Defines whether instances have Secure Boot enabled.
+  core.bool enableSecureBoot;
+
+  /// Optional. Defines whether instances have the vTPM enabled.
+  core.bool enableVtpm;
+
+  ShieldedInstanceConfig();
+
+  ShieldedInstanceConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableIntegrityMonitoring")) {
+      enableIntegrityMonitoring = _json["enableIntegrityMonitoring"];
+    }
+    if (_json.containsKey("enableSecureBoot")) {
+      enableSecureBoot = _json["enableSecureBoot"];
+    }
+    if (_json.containsKey("enableVtpm")) {
+      enableVtpm = _json["enableVtpm"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enableIntegrityMonitoring != null) {
+      _json["enableIntegrityMonitoring"] = enableIntegrityMonitoring;
+    }
+    if (enableSecureBoot != null) {
+      _json["enableSecureBoot"] = enableSecureBoot;
+    }
+    if (enableVtpm != null) {
+      _json["enableVtpm"] = enableVtpm;
+    }
+    return _json;
+  }
+}
+
 /// Specifies the selection and config of software inside the cluster.
 class SoftwareConfig {
   /// Optional. The version of software inside the cluster. It must be one of
@@ -8239,6 +8411,17 @@ class WorkflowMetadata {
   /// Output only. The create cluster operation metadata.
   ClusterOperation createCluster;
 
+  /// Output only. DAG end time, only set for workflows with dag_timeout when
+  /// DAG ends.
+  core.String dagEndTime;
+
+  /// Output only. DAG start time, only set for workflows with dag_timeout when
+  /// DAG begins.
+  core.String dagStartTime;
+
+  /// Output only. The timeout duration for the DAG of jobs.
+  core.String dagTimeout;
+
   /// Output only. The delete cluster operation metadata.
   ClusterOperation deleteCluster;
 
@@ -8288,6 +8471,15 @@ class WorkflowMetadata {
     if (_json.containsKey("createCluster")) {
       createCluster = new ClusterOperation.fromJson(_json["createCluster"]);
     }
+    if (_json.containsKey("dagEndTime")) {
+      dagEndTime = _json["dagEndTime"];
+    }
+    if (_json.containsKey("dagStartTime")) {
+      dagStartTime = _json["dagStartTime"];
+    }
+    if (_json.containsKey("dagTimeout")) {
+      dagTimeout = _json["dagTimeout"];
+    }
     if (_json.containsKey("deleteCluster")) {
       deleteCluster = new ClusterOperation.fromJson(_json["deleteCluster"]);
     }
@@ -8326,6 +8518,15 @@ class WorkflowMetadata {
     }
     if (createCluster != null) {
       _json["createCluster"] = (createCluster).toJson();
+    }
+    if (dagEndTime != null) {
+      _json["dagEndTime"] = dagEndTime;
+    }
+    if (dagStartTime != null) {
+      _json["dagStartTime"] = dagStartTime;
+    }
+    if (dagTimeout != null) {
+      _json["dagTimeout"] = dagTimeout;
     }
     if (deleteCluster != null) {
       _json["deleteCluster"] = (deleteCluster).toJson();
@@ -8427,6 +8628,15 @@ class WorkflowNode {
 class WorkflowTemplate {
   /// Output only. The time template was created.
   core.String createTime;
+
+  /// Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h",
+  /// and "d" suffixes for second, minute, hour, and day duration values,
+  /// respectively. The timeout duration must be from 10 minutes ("10m") to 24
+  /// hours ("24h" or "1d"). The timer begins when the first job is submitted.
+  /// If the workflow is running at the end of the timeout period, any remaining
+  /// jobs are cancelled, the workflow is ended, and if the workflow was running
+  /// on a managed cluster, the cluster is deleted.
+  core.String dagTimeout;
   core.String id;
 
   /// Required. The Directed Acyclic Graph of Jobs to submit.
@@ -8478,6 +8688,9 @@ class WorkflowTemplate {
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
+    if (_json.containsKey("dagTimeout")) {
+      dagTimeout = _json["dagTimeout"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -8514,6 +8727,9 @@ class WorkflowTemplate {
         new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
+    }
+    if (dagTimeout != null) {
+      _json["dagTimeout"] = dagTimeout;
     }
     if (id != null) {
       _json["id"] = id;

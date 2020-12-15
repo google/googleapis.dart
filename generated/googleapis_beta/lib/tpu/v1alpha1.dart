@@ -109,9 +109,9 @@ class ProjectsLocationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -125,8 +125,8 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
       {core.String filter,
-      core.String pageToken,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -141,11 +141,11 @@ class ProjectsLocationsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -175,7 +175,7 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/acceleratorTypes/[^/]+$".
   ///
@@ -219,15 +219,15 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name.
+  /// [parent] - Required. The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [orderBy] - Sort results.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
   /// [filter] - List filter.
-  ///
-  /// [orderBy] - Sort results.
   ///
   /// [pageSize] - The maximum number of items to return.
   ///
@@ -242,9 +242,9 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAcceleratorTypesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String orderBy,
+      core.String pageToken,
       core.String filter,
-      core.String orderBy,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -257,14 +257,14 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -300,7 +300,7 @@ class ProjectsLocationsNodesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name.
+  /// [parent] - Required. The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [nodeId] - The unqualified resource name.
@@ -354,7 +354,7 @@ class ProjectsLocationsNodesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -397,7 +397,7 @@ class ProjectsLocationsNodesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -440,13 +440,13 @@ class ProjectsLocationsNodesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name.
+  /// [parent] - Required. The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
-  ///
-  /// [pageSize] - The maximum number of items to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
+  ///
+  /// [pageSize] - The maximum number of items to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -459,7 +459,7 @@ class ProjectsLocationsNodesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNodesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -470,11 +470,11 @@ class ProjectsLocationsNodesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -815,9 +815,9 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -831,8 +831,8 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
       {core.String filter,
-      core.String pageToken,
       core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -847,11 +847,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -881,7 +881,7 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/tensorflowVersions/[^/]+$".
   ///
@@ -925,17 +925,17 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name.
+  /// [parent] - Required. The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
-  ///
-  /// [pageSize] - The maximum number of items to return.
   ///
   /// [filter] - List filter.
   ///
-  /// [orderBy] - Sort results.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
+  ///
+  /// [orderBy] - Sort results.
+  ///
+  /// [pageSize] - The maximum number of items to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -948,10 +948,10 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTensorFlowVersionsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
-      core.String orderBy,
+      {core.String filter,
       core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -963,17 +963,17 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1345,7 +1345,7 @@ class NetworkEndpoint {
 
 /// A TPU instance.
 class Node {
-  /// The type of hardware accelerators associated with this node. Required.
+  /// Required. The type of hardware accelerators associated with this node.
   core.String acceleratorType;
 
   /// The CIDR block that the TPU node will use when selecting an IP address.
@@ -1387,7 +1387,7 @@ class Node {
   /// Resource labels to represent user-provided metadata.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. The immutable name of the TPU
+  /// Output only. Immutable. The name of the TPU
   core.String name;
 
   /// The name of a network they wish to peer the TPU node to. It must be a
@@ -1403,6 +1403,8 @@ class Node {
   /// Output only. DEPRECATED! Use network_endpoints instead. The network port
   /// for the TPU Node as visible to Compute Engine instances.
   core.String port;
+
+  /// The scheduling options for this node.
   SchedulingConfig schedulingConfig;
 
   /// Output only. The service account used to run the tensor flow services
@@ -1436,7 +1438,7 @@ class Node {
   /// Output only. The Symptoms that have occurred to the TPU Node.
   core.List<Symptom> symptoms;
 
-  /// The version of Tensorflow running in the Node. Required.
+  /// Required. The version of Tensorflow running in the Node.
   core.String tensorflowVersion;
 
   /// Whether the VPC peering for the node is set up through Service Networking

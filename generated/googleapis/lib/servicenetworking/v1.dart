@@ -207,9 +207,9 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -224,8 +224,8 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -238,11 +238,11 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -1084,6 +1084,121 @@ class ServicesProjectsGlobalNetworksResourceApi {
 
   ServicesProjectsGlobalNetworksResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Service producers use this method to get the configuration of their
+  /// connection including the import/export of custom routes and subnetwork
+  /// routes with public IP.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the consumer config to retrieve in the format:
+  /// `services/{service}/projects/{project}/global/networks/{network}`.
+  /// {service} is the peering service that is managing connectivity for the
+  /// service producer's organization. For Google services that support this
+  /// functionality, this value is `servicenetworking.googleapis.com`. {project}
+  /// is a project number e.g. `12345` that contains the service consumer's VPC
+  /// network. {network} is the name of the service consumer's VPC network.
+  /// Value must have pattern
+  /// "^services/[^/]+/projects/[^/]+/global/networks/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConsumerConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
+  async.Future<ConsumerConfig> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ConsumerConfig.fromJson(data));
+  }
+
+  /// Service producers use this method to update the configuration of their
+  /// connection including the import/export of custom routes and subnetwork
+  /// routes with public IP.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource identifying the connection for which
+  /// the consumer config is being updated in the format:
+  /// `services/{service}/projects/{project}/global/networks/{network}`
+  /// {service} is the peering service that is managing connectivity for the
+  /// service producer's organization. For Google services that support this
+  /// functionality, this value is `servicenetworking.googleapis.com`. {project}
+  /// is the number of the project that contains the service consumer's VPC
+  /// network e.g. `12345`. {network} is the name of the service consumer's VPC
+  /// network.
+  /// Value must have pattern
+  /// "^services/[^/]+/projects/[^/]+/global/networks/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
+  async.Future<Operation> updateConsumerConfig(
+      UpdateConsumerConfigRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':updateConsumerConfig';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class ServicesProjectsGlobalNetworksPeeredDnsDomainsResourceApi {
@@ -1270,8 +1385,8 @@ class ServicesRolesResourceApi {
 
   /// Service producers can use this method to add roles in the shared VPC host
   /// project. Each role is bound to the provided member. Each role must be
-  /// selected from within a whitelisted set of roles. Each role is applied at
-  /// only the granularity specified in the whitelist.
+  /// selected from within an allowlisted set of roles. Each role is applied at
+  /// only the granularity specified in the allowlist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1596,6 +1711,17 @@ class AddSubnetworkRequest {
   /// range isn't available, the call fails.
   core.String requestedAddress;
 
+  /// Optional. The name of one or more allocated IP address ranges associated
+  /// with this private service access connection. If no range names are
+  /// provided all ranges associated with this connection will be considered. If
+  /// a CIDR range with the specified IP prefix length is not available within
+  /// these ranges, the call fails.
+  core.List<core.String> requestedRanges;
+
+  /// Optional. A list of secondary IP ranges to be created within the new
+  /// subnetwork.
+  core.List<SecondaryIpRangeSpec> secondaryIpRangeSpecs;
+
   /// Required. A name for the new subnet. For information about the naming
   /// requirements, see
   /// [subnetwork](/compute/docs/reference/rest/v1/subnetworks) in the Compute
@@ -1627,6 +1753,16 @@ class AddSubnetworkRequest {
     if (_json.containsKey("requestedAddress")) {
       requestedAddress = _json["requestedAddress"];
     }
+    if (_json.containsKey("requestedRanges")) {
+      requestedRanges =
+          (_json["requestedRanges"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("secondaryIpRangeSpecs")) {
+      secondaryIpRangeSpecs = (_json["secondaryIpRangeSpecs"] as core.List)
+          .map<SecondaryIpRangeSpec>(
+              (value) => new SecondaryIpRangeSpec.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("subnetwork")) {
       subnetwork = _json["subnetwork"];
     }
@@ -1656,6 +1792,13 @@ class AddSubnetworkRequest {
     }
     if (requestedAddress != null) {
       _json["requestedAddress"] = requestedAddress;
+    }
+    if (requestedRanges != null) {
+      _json["requestedRanges"] = requestedRanges;
+    }
+    if (secondaryIpRangeSpecs != null) {
+      _json["secondaryIpRangeSpecs"] =
+          secondaryIpRangeSpecs.map((value) => (value).toJson()).toList();
     }
     if (subnetwork != null) {
       _json["subnetwork"] = subnetwork;
@@ -1811,7 +1954,7 @@ class AuthProvider {
   /// [OpenID
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
   /// Optional if the key set document: - can be retrieved from [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of
   /// the issuer. - can be inferred from the email domain of the issuer (e.g. a
   /// Google service account). Example:
   /// https://www.googleapis.com/oauth2/v1/certs
@@ -1971,7 +2114,8 @@ class Authentication {
 /// kind of credential in a single request. If a method doesn't have any auth
 /// requirements, request credentials will be ignored.
 class AuthenticationRule {
-  /// If true, the service accepts API keys without any other credential.
+  /// If true, the service accepts API keys without any other credential. This
+  /// flag only applies to HTTP and gRPC requests.
   core.bool allowWithoutCredential;
 
   /// The requirements for OAuth credentials.
@@ -2350,6 +2494,147 @@ class Connection {
   }
 }
 
+/// Configuration information for a private service access connection.
+class ConsumerConfig {
+  /// Export custom routes flag value for peering from consumer to producer.
+  core.bool consumerExportCustomRoutes;
+
+  /// Export subnet routes with public ip flag value for peering from consumer
+  /// to producer.
+  core.bool consumerExportSubnetRoutesWithPublicIp;
+
+  /// Import custom routes flag value for peering from consumer to producer.
+  core.bool consumerImportCustomRoutes;
+
+  /// Import subnet routes with public ip flag value for peering from consumer
+  /// to producer.
+  core.bool consumerImportSubnetRoutesWithPublicIp;
+
+  /// Export custom routes flag value for peering from producer to consumer.
+  core.bool producerExportCustomRoutes;
+
+  /// Export subnet routes with public ip flag value for peering from producer
+  /// to consumer.
+  core.bool producerExportSubnetRoutesWithPublicIp;
+
+  /// Import custom routes flag value for peering from producer to consumer.
+  core.bool producerImportCustomRoutes;
+
+  /// Import subnet routes with public ip flag value for peering from producer
+  /// to consumer.
+  core.bool producerImportSubnetRoutesWithPublicIp;
+
+  /// Output only. The VPC host network that is used to host managed service
+  /// instances. In the format, projects/{project}/global/networks/{network}
+  /// where {project} is the project number e.g. '12345' and {network} is the
+  /// network name.
+  core.String producerNetwork;
+
+  /// Output only. The reserved ranges associated with this private service
+  /// access connection.
+  core.List<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>
+      reservedRanges;
+
+  ConsumerConfig();
+
+  ConsumerConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("consumerExportCustomRoutes")) {
+      consumerExportCustomRoutes = _json["consumerExportCustomRoutes"];
+    }
+    if (_json.containsKey("consumerExportSubnetRoutesWithPublicIp")) {
+      consumerExportSubnetRoutesWithPublicIp =
+          _json["consumerExportSubnetRoutesWithPublicIp"];
+    }
+    if (_json.containsKey("consumerImportCustomRoutes")) {
+      consumerImportCustomRoutes = _json["consumerImportCustomRoutes"];
+    }
+    if (_json.containsKey("consumerImportSubnetRoutesWithPublicIp")) {
+      consumerImportSubnetRoutesWithPublicIp =
+          _json["consumerImportSubnetRoutesWithPublicIp"];
+    }
+    if (_json.containsKey("producerExportCustomRoutes")) {
+      producerExportCustomRoutes = _json["producerExportCustomRoutes"];
+    }
+    if (_json.containsKey("producerExportSubnetRoutesWithPublicIp")) {
+      producerExportSubnetRoutesWithPublicIp =
+          _json["producerExportSubnetRoutesWithPublicIp"];
+    }
+    if (_json.containsKey("producerImportCustomRoutes")) {
+      producerImportCustomRoutes = _json["producerImportCustomRoutes"];
+    }
+    if (_json.containsKey("producerImportSubnetRoutesWithPublicIp")) {
+      producerImportSubnetRoutesWithPublicIp =
+          _json["producerImportSubnetRoutesWithPublicIp"];
+    }
+    if (_json.containsKey("producerNetwork")) {
+      producerNetwork = _json["producerNetwork"];
+    }
+    if (_json.containsKey("reservedRanges")) {
+      reservedRanges = (_json["reservedRanges"] as core.List)
+          .map<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>(
+              (value) =>
+                  new GoogleCloudServicenetworkingV1ConsumerConfigReservedRange
+                      .fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumerExportCustomRoutes != null) {
+      _json["consumerExportCustomRoutes"] = consumerExportCustomRoutes;
+    }
+    if (consumerExportSubnetRoutesWithPublicIp != null) {
+      _json["consumerExportSubnetRoutesWithPublicIp"] =
+          consumerExportSubnetRoutesWithPublicIp;
+    }
+    if (consumerImportCustomRoutes != null) {
+      _json["consumerImportCustomRoutes"] = consumerImportCustomRoutes;
+    }
+    if (consumerImportSubnetRoutesWithPublicIp != null) {
+      _json["consumerImportSubnetRoutesWithPublicIp"] =
+          consumerImportSubnetRoutesWithPublicIp;
+    }
+    if (producerExportCustomRoutes != null) {
+      _json["producerExportCustomRoutes"] = producerExportCustomRoutes;
+    }
+    if (producerExportSubnetRoutesWithPublicIp != null) {
+      _json["producerExportSubnetRoutesWithPublicIp"] =
+          producerExportSubnetRoutesWithPublicIp;
+    }
+    if (producerImportCustomRoutes != null) {
+      _json["producerImportCustomRoutes"] = producerImportCustomRoutes;
+    }
+    if (producerImportSubnetRoutesWithPublicIp != null) {
+      _json["producerImportSubnetRoutesWithPublicIp"] =
+          producerImportSubnetRoutesWithPublicIp;
+    }
+    if (producerNetwork != null) {
+      _json["producerNetwork"] = producerNetwork;
+    }
+    if (reservedRanges != null) {
+      _json["reservedRanges"] =
+          reservedRanges.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Metadata provided through GetOperation request for the LRO generated by
+/// UpdateConsumerConfig API.
+class ConsumerConfigMetadata {
+  ConsumerConfigMetadata();
+
+  ConsumerConfigMetadata.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Represents a consumer project.
 class ConsumerProject {
   /// Required. Project number of the consumer that is launching the service
@@ -2380,7 +2665,7 @@ class ConsumerProject {
 /// google.rpc.context.OriginContext The above specifies that all methods in the
 /// API request `google.rpc.context.ProjectContext` and
 /// `google.rpc.context.OriginContext`. Available context types are defined in
-/// package `google.rpc.context`. This also provides mechanism to whitelist any
+/// package `google.rpc.context`. This also provides mechanism to allowlist any
 /// protobuf message extension that can be sent in grpc metadata using
 /// “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any
 /// service specific protobuf types that can appear in grpc metadata as follows
@@ -2933,14 +3218,15 @@ class EnableVpcServiceControlsRequest {
   }
 }
 
-/// `Endpoint` describes a network endpoint that serves a set of APIs. A service
-/// may expose any number of endpoints, and all endpoints share the same service
-/// configuration, such as quota configuration and monitoring configuration.
-/// Example service configuration: name: library-example.googleapis.com
-/// endpoints: # Below entry makes 'google.example.library.v1.Library' # API be
-/// served from endpoint address library-example.googleapis.com. # It also
-/// allows HTTP OPTIONS calls to be passed to the backend, for # it to decide
-/// whether the subsequent cross-origin request is # allowed to proceed. - name:
+/// `Endpoint` describes a network endpoint of a service that serves a set of
+/// APIs. It is commonly known as a service endpoint. A service may expose any
+/// number of service endpoints, and all service endpoints share the same
+/// service definition, such as quota limits and monitoring metrics. Example
+/// service configuration: name: library-example.googleapis.com endpoints: #
+/// Below entry makes 'google.example.library.v1.Library' # API be served from
+/// endpoint address library-example.googleapis.com. # It also allows HTTP
+/// OPTIONS calls to be passed to the backend, for # it to decide whether the
+/// subsequent cross-origin request is # allowed to proceed. - name:
 /// library-example.googleapis.com allow_cors: true
 class Endpoint {
   /// DEPRECATED: This field is no longer supported. Instead of using aliases,
@@ -3244,6 +3530,50 @@ class Field {
   }
 }
 
+/// Allocated IP address ranges for this private service access connection.
+class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange {
+  /// The starting address of the reserved range. The address must be a valid
+  /// IPv4 address in the x.x.x.x format. This value combined with the IP prefix
+  /// length is the CIDR range for the reserved range.
+  core.String address;
+
+  /// The prefix length of the reserved range.
+  core.int ipPrefixLength;
+
+  /// The name of the reserved range.
+  core.String name;
+
+  GoogleCloudServicenetworkingV1ConsumerConfigReservedRange();
+
+  GoogleCloudServicenetworkingV1ConsumerConfigReservedRange.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("address")) {
+      address = _json["address"];
+    }
+    if (_json.containsKey("ipPrefixLength")) {
+      ipPrefixLength = _json["ipPrefixLength"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (address != null) {
+      _json["address"] = address;
+    }
+    if (ipPrefixLength != null) {
+      _json["ipPrefixLength"] = ipPrefixLength;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 /// Represents a subnet that was created or discovered by a private access
 /// management service.
 class GoogleCloudServicenetworkingV1betaSubnetwork {
@@ -3480,10 +3810,6 @@ class HttpRule {
   /// may only be one level deep).
   core.List<HttpRule> additionalBindings;
 
-  /// When this flag is set to true, HTTP requests will be allowed to invoke a
-  /// half-duplex streaming method.
-  core.bool allowHalfDuplex;
-
   /// The name of the request field whose value is mapped to the HTTP request
   /// body, or `*` for mapping all request fields not captured by the path
   /// pattern to the HTTP body, or omitted for not having any HTTP request body.
@@ -3531,9 +3857,6 @@ class HttpRule {
           .map<HttpRule>((value) => new HttpRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("allowHalfDuplex")) {
-      allowHalfDuplex = _json["allowHalfDuplex"];
-    }
     if (_json.containsKey("body")) {
       body = _json["body"];
     }
@@ -3569,9 +3892,6 @@ class HttpRule {
     if (additionalBindings != null) {
       _json["additionalBindings"] =
           additionalBindings.map((value) => (value).toJson()).toList();
-    }
-    if (allowHalfDuplex != null) {
-      _json["allowHalfDuplex"] = allowHalfDuplex;
     }
     if (body != null) {
       _json["body"] = body;
@@ -4057,7 +4377,7 @@ class MetricDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -4279,7 +4599,7 @@ class MetricDescriptorMetadata {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -4472,7 +4792,7 @@ class MonitoredResourceDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don’t have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -4933,7 +5253,7 @@ class PolicyBinding {
   /// serviceAccount:my-service-account@app.gserviceaccount.com
   core.String member;
 
-  /// Required. Role to apply. Only whitelisted roles can be used at the
+  /// Required. Role to apply. Only allowlisted roles can be used at the
   /// specified granularity. The role must be one of the following: -
   /// 'roles/container.hostServiceAgentUser' applied on the shared VPC host
   /// project - 'roles/compute.securityAdmin' applied on the shared VPC host
@@ -5204,6 +5524,13 @@ class RangeReservation {
   /// subnet of the requested size.
   core.int ipPrefixLength;
 
+  /// Optional. The name of one or more allocated IP address ranges associated
+  /// with this private service access connection. If no range names are
+  /// provided all ranges associated with this connection will be considered. If
+  /// a CIDR range with the specified IP prefix length is not available within
+  /// these ranges the validation fails.
+  core.List<core.String> requestedRanges;
+
   /// Optional. DO NOT USE - Under development. The size of the desired
   /// secondary ranges for the subnet. Use usual CIDR range notation. For
   /// example, '30' to find unused x.x.x.x/30 CIDR range. The goal is to
@@ -5217,6 +5544,10 @@ class RangeReservation {
     if (_json.containsKey("ipPrefixLength")) {
       ipPrefixLength = _json["ipPrefixLength"];
     }
+    if (_json.containsKey("requestedRanges")) {
+      requestedRanges =
+          (_json["requestedRanges"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("secondaryRangeIpPrefixLengths")) {
       secondaryRangeIpPrefixLengths =
           (_json["secondaryRangeIpPrefixLengths"] as core.List)
@@ -5229,6 +5560,9 @@ class RangeReservation {
         new core.Map<core.String, core.Object>();
     if (ipPrefixLength != null) {
       _json["ipPrefixLength"] = ipPrefixLength;
+    }
+    if (requestedRanges != null) {
+      _json["requestedRanges"] = requestedRanges;
     }
     if (secondaryRangeIpPrefixLengths != null) {
       _json["secondaryRangeIpPrefixLengths"] = secondaryRangeIpPrefixLengths;
@@ -5468,6 +5802,86 @@ class SearchRangeRequest {
   }
 }
 
+class SecondaryIpRange {
+  /// Secondary IP CIDR range in `x.x.x.x/y` format.
+  core.String ipCidrRange;
+
+  /// Name of the secondary IP range.
+  core.String rangeName;
+
+  SecondaryIpRange();
+
+  SecondaryIpRange.fromJson(core.Map _json) {
+    if (_json.containsKey("ipCidrRange")) {
+      ipCidrRange = _json["ipCidrRange"];
+    }
+    if (_json.containsKey("rangeName")) {
+      rangeName = _json["rangeName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipCidrRange != null) {
+      _json["ipCidrRange"] = ipCidrRange;
+    }
+    if (rangeName != null) {
+      _json["rangeName"] = rangeName;
+    }
+    return _json;
+  }
+}
+
+class SecondaryIpRangeSpec {
+  /// Required. The prefix length of the secondary IP range. Use CIDR range
+  /// notation, such as `30` to provision a secondary IP range with an
+  /// `x.x.x.x/30` CIDR range. The IP address range is drawn from a pool of
+  /// available ranges in the service consumer's allocated range.
+  core.int ipPrefixLength;
+
+  /// Required. A name for the secondary IP range. The name must be 1-63
+  /// characters long, and comply with RFC1035. The name must be unique within
+  /// the subnetwork.
+  core.String rangeName;
+
+  /// Optional. The starting address of a range. The address must be a valid
+  /// IPv4 address in the x.x.x.x format. This value combined with the IP prefix
+  /// range is the CIDR range for the secondary IP range. The range must be
+  /// within the allocated range that is assigned to the private connection. If
+  /// the CIDR range isn't available, the call fails.
+  core.String requestedAddress;
+
+  SecondaryIpRangeSpec();
+
+  SecondaryIpRangeSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("ipPrefixLength")) {
+      ipPrefixLength = _json["ipPrefixLength"];
+    }
+    if (_json.containsKey("rangeName")) {
+      rangeName = _json["rangeName"];
+    }
+    if (_json.containsKey("requestedAddress")) {
+      requestedAddress = _json["requestedAddress"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipPrefixLength != null) {
+      _json["ipPrefixLength"] = ipPrefixLength;
+    }
+    if (rangeName != null) {
+      _json["rangeName"] = rangeName;
+    }
+    if (requestedAddress != null) {
+      _json["requestedAddress"] = requestedAddress;
+    }
+    return _json;
+  }
+}
+
 /// `Service` is the root object of Google service configuration schema. It
 /// describes basic information about a service, such as the name and the title,
 /// and delegates other aspects to sub-sections. Each sub-section is either a
@@ -5496,10 +5910,7 @@ class Service {
   /// Billing configuration.
   Billing billing;
 
-  /// The semantic version of the service configuration. The config version
-  /// affects the interpretation of the service configuration. For example,
-  /// certain features are enabled by default for certain config versions. The
-  /// latest config version is `3`.
+  /// Deprecated. The service config compiler always sets this field to `3`.
   core.int configVersion;
 
   /// Context configuration.
@@ -5783,54 +6194,6 @@ class Service {
   }
 }
 
-/// The per-product per-project service identity for a service. Use this field
-/// to configure per-product per-project service identity. Example of a service
-/// identity configuration. usage: service_identity: - service_account_parent:
-/// "projects/123456789" display_name: "Cloud XXX Service Agent" description:
-/// "Used as the identity of Cloud XXX to access resources"
-class ServiceIdentity {
-  /// Optional. A user-specified opaque description of the service account. Must
-  /// be less than or equal to 256 UTF-8 bytes.
-  core.String description;
-
-  /// Optional. A user-specified name for the service account. Must be less than
-  /// or equal to 100 UTF-8 bytes.
-  core.String displayName;
-
-  /// A service account project that hosts the service accounts. An example name
-  /// would be: `projects/123456789`
-  core.String serviceAccountParent;
-
-  ServiceIdentity();
-
-  ServiceIdentity.fromJson(core.Map _json) {
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("displayName")) {
-      displayName = _json["displayName"];
-    }
-    if (_json.containsKey("serviceAccountParent")) {
-      serviceAccountParent = _json["serviceAccountParent"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (displayName != null) {
-      _json["displayName"] = displayName;
-    }
-    if (serviceAccountParent != null) {
-      _json["serviceAccountParent"] = serviceAccountParent;
-    }
-    return _json;
-  }
-}
-
 /// `SourceContext` represents information about the source of a protobuf
 /// element, like the file in which it is defined.
 class SourceContext {
@@ -5958,6 +6321,9 @@ class Subnetwork {
   /// allocated ranges.
   core.bool outsideAllocation;
 
+  /// List of secondary IP ranges in this subnetwork.
+  core.List<SecondaryIpRange> secondaryIpRanges;
+
   Subnetwork();
 
   Subnetwork.fromJson(core.Map _json) {
@@ -5972,6 +6338,12 @@ class Subnetwork {
     }
     if (_json.containsKey("outsideAllocation")) {
       outsideAllocation = _json["outsideAllocation"];
+    }
+    if (_json.containsKey("secondaryIpRanges")) {
+      secondaryIpRanges = (_json["secondaryIpRanges"] as core.List)
+          .map<SecondaryIpRange>(
+              (value) => new SecondaryIpRange.fromJson(value))
+          .toList();
     }
   }
 
@@ -5989,6 +6361,10 @@ class Subnetwork {
     }
     if (outsideAllocation != null) {
       _json["outsideAllocation"] = outsideAllocation;
+    }
+    if (secondaryIpRanges != null) {
+      _json["secondaryIpRanges"] =
+          secondaryIpRanges.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -6194,6 +6570,31 @@ class Type {
   }
 }
 
+/// Request to update the configuration of a service networking connection
+/// including the import/export of custom routes and subnetwork routes with
+/// public IP.
+class UpdateConsumerConfigRequest {
+  /// Required. The updated peering config.
+  ConsumerConfig consumerConfig;
+
+  UpdateConsumerConfigRequest();
+
+  UpdateConsumerConfigRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("consumerConfig")) {
+      consumerConfig = new ConsumerConfig.fromJson(_json["consumerConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumerConfig != null) {
+      _json["consumerConfig"] = (consumerConfig).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Metadata provided through GetOperation request for the LRO generated by
 /// UpdateDnsRecordSet API
 class UpdateDnsRecordSetMetadata {
@@ -6286,9 +6687,6 @@ class Usage {
   /// service configuration rules follow "last one wins" order.
   core.List<UsageRule> rules;
 
-  /// The configuration of a per-product per-project service identity.
-  ServiceIdentity serviceIdentity;
-
   Usage();
 
   Usage.fromJson(core.Map _json) {
@@ -6303,9 +6701,6 @@ class Usage {
           .map<UsageRule>((value) => new UsageRule.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("serviceIdentity")) {
-      serviceIdentity = new ServiceIdentity.fromJson(_json["serviceIdentity"]);
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6319,9 +6714,6 @@ class Usage {
     }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
-    }
-    if (serviceIdentity != null) {
-      _json["serviceIdentity"] = (serviceIdentity).toJson();
     }
     return _json;
   }

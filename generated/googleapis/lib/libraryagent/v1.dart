@@ -89,13 +89,13 @@ class ShelvesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. Server may return fewer shelves than
-  /// requested. If unspecified, server will pick an appropriate default.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListShelvesResponse.next_page_token returned from the previous call to
   /// `ListShelves` method.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer shelves than
+  /// requested. If unspecified, server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -108,7 +108,7 @@ class ShelvesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleExampleLibraryagentV1ListShelvesResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -116,11 +116,11 @@ class ShelvesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -246,12 +246,12 @@ class ShelvesBooksResourceApi {
   /// [parent] - Required. The name of the shelf whose books we'd like to list.
   /// Value must have pattern "^shelves/[^/]+$".
   ///
-  /// [pageSize] - Requested page size. Server may return fewer books than
-  /// requested. If unspecified, server will pick an appropriate default.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of ListBooksResponse.next_page_token.
   /// returned from the previous call to `ListBooks` method.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer books than
+  /// requested. If unspecified, server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -265,8 +265,8 @@ class ShelvesBooksResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleExampleLibraryagentV1ListBooksResponse> list(
       core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -278,11 +278,11 @@ class ShelvesBooksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

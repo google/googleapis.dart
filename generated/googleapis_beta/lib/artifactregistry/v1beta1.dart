@@ -233,11 +233,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -250,9 +250,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.int pageSize,
+      {core.int pageSize,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -264,14 +264,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -520,10 +520,10 @@ class ProjectsLocationsRepositoriesResourceApi {
   /// listed.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of repositories to return.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
+  ///
+  /// [pageSize] - The maximum number of repositories to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -536,7 +536,7 @@ class ProjectsLocationsRepositoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRepositoriesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -547,11 +547,11 @@ class ProjectsLocationsRepositoriesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -799,7 +799,8 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of files to return.
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
   ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
@@ -809,8 +810,7 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
   /// `owner="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
   /// --> Files owned by the version `1.0` in package `pkg1`.
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request, if any.
+  /// [pageSize] - The maximum number of files to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -823,9 +823,9 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFilesResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
       core.String filter,
-      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -837,14 +837,14 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1182,7 +1182,8 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of tags to return.
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
   ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
@@ -1190,8 +1191,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
   /// `version="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
   /// --> Tags that are applied to the version `1.0` in package `pkg1`.
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request, if any.
+  /// [pageSize] - The maximum number of tags to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1204,9 +1204,9 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTagsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
       core.String filter,
-      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1218,14 +1218,14 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1425,6 +1425,8 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$".
   ///
+  /// [orderBy] - Optional. Sorting field and order
+  ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
   ///
@@ -1449,7 +1451,8 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String orderBy,
+      core.String pageToken,
       core.String view,
       core.int pageSize,
       core.String $fields}) {
@@ -1462,6 +1465,9 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1492,10 +1498,6 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -1543,9 +1545,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1560,9 +1559,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -1767,16 +1763,22 @@ class GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo {
   }
 }
 
-/// Google Cloud Storage location for the input content.
+/// Google Cloud Storage location where the artifacts currently reside.
 class GoogleDevtoolsArtifactregistryV1alpha1GcsSource {
   /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
   core.List<core.String> uris;
+
+  /// Supports URI wildcards for matching multiple objects from a single URI.
+  core.bool useWildcards;
 
   GoogleDevtoolsArtifactregistryV1alpha1GcsSource();
 
   GoogleDevtoolsArtifactregistryV1alpha1GcsSource.fromJson(core.Map _json) {
     if (_json.containsKey("uris")) {
       uris = (_json["uris"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("useWildcards")) {
+      useWildcards = _json["useWildcards"];
     }
   }
 
@@ -1785,6 +1787,9 @@ class GoogleDevtoolsArtifactregistryV1alpha1GcsSource {
         new core.Map<core.String, core.Object>();
     if (uris != null) {
       _json["uris"] = uris;
+    }
+    if (useWildcards != null) {
+      _json["useWildcards"] = useWildcards;
     }
     return _json;
   }
@@ -2487,9 +2492,6 @@ class Repository {
   /// Possible string values are:
   /// - "FORMAT_UNSPECIFIED" : Unspecified package format.
   /// - "DOCKER" : Docker package format.
-  /// - "MAVEN" : Maven package format.
-  /// - "NPM" : NPM package format.
-  /// - "APT" : APT package format.
   core.String format;
 
   /// The Cloud KMS resource name of the customer managed encryption key that’s

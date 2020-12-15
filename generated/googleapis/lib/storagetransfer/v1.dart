@@ -164,8 +164,8 @@ class TransferJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TransferJob> get(core.String jobName,
-      {core.String projectId, core.String $fields}) {
+  async.Future<TransferJob> get(core.String jobName, core.String projectId,
+      {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -176,9 +176,10 @@ class TransferJobsResourceApi {
     if (jobName == null) {
       throw new core.ArgumentError("Parameter jobName is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
     }
+    _queryParams["projectId"] = [projectId];
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -198,16 +199,16 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
-  ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
-  /// the form of: {"project_id":"my_project_id",
-  /// "job_names":["jobid1","jobid2",...],
-  /// "job_statuses":["status1","status2",...]}. Since `job_names` and
-  /// `job_statuses` support multiple values, their values must be specified
-  /// with array notation. `project``_``id` is required. `job_names` and
-  /// `job_statuses` are optional. The valid values for `job_statuses` are
-  /// case-insensitive: ENABLED, DISABLED, and DELETED.
+  /// the form of: `{"projectId":"my_project_id",
+  /// "jobNames":["jobid1","jobid2",...],
+  /// "jobStatuses":["status1","status2",...]}` Since `jobNames` and
+  /// `jobStatuses` support multiple values, their values must be specified with
+  /// array notation. `projectId` is required. `jobNames` and `jobStatuses` are
+  /// optional. The valid values for `jobStatuses` are case-insensitive:
+  /// ENABLED, DISABLED, and DELETED.
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [pageToken] - The list page token.
   ///
@@ -221,11 +222,8 @@ class TransferJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTransferJobsResponse> list(
-      {core.int pageSize,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
+  async.Future<ListTransferJobsResponse> list(core.String filter,
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -233,11 +231,12 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (filter == null) {
+      throw new core.ArgumentError("Parameter filter is required.");
+    }
+    _queryParams["filter"] = [filter];
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -259,9 +258,9 @@ class TransferJobsResourceApi {
   }
 
   /// Updates a transfer job. Updating a job's transfer spec does not affect
-  /// transfer operations that are running already. Updating a job's schedule is
-  /// not allowed. **Note:** The job's status field can be modified using this
-  /// RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).
+  /// transfer operations that are running already. **Note:** The job's status
+  /// field can be modified using this RPC (for example, to set a job's status
+  /// to DELETED, DISABLED, or ENABLED).
   ///
   /// [request] - The metadata request object.
   ///
@@ -436,20 +435,20 @@ class TransferOperationsResourceApi {
   /// [name] - Required. The value `transferOperations`.
   /// Value must have pattern "^transferOperations$".
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
+  /// [filter] - Required. A list of query parameters specified as JSON text in
+  /// the form of: `{"projectId":"my_project_id",
+  /// "jobNames":["jobid1","jobid2",...],
+  /// "operationNames":["opid1","opid2",...],
+  /// "transferStatuses":["status1","status2",...]}` Since `jobNames`,
+  /// `operationNames`, and `transferStatuses` support multiple values, they
+  /// must be specified with array notation. `projectId` is required.
+  /// `jobNames`, `operationNames`, and `transferStatuses` are optional. The
+  /// valid values for `transferStatuses` are case-insensitive: IN_PROGRESS,
+  /// PAUSED, SUCCESS, FAILED, and ABORTED.
   ///
   /// [pageToken] - The list page token.
   ///
-  /// [filter] - Required. A list of query parameters specified as JSON text in
-  /// the form of: {"project_id":"my_project_id",
-  /// "job_names":["jobid1","jobid2",...],
-  /// "operation_names":["opid1","opid2",...],
-  /// "transfer_statuses":["status1","status2",...]}. Since `job_names`,
-  /// `operation_names`, and `transfer_statuses` support multiple values, they
-  /// must be specified with array notation. `project``_``id` is required.
-  /// `job_names`, `operation_names`, and `transfer_statuses` are optional. The
-  /// valid values for `transfer_statuses` are case-insensitive: IN_PROGRESS,
-  /// PAUSED, SUCCESS, FAILED, and ABORTED.
+  /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -461,11 +460,9 @@ class TransferOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
+  async.Future<ListOperationsResponse> list(
+      core.String name, core.String filter,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -476,14 +473,15 @@ class TransferOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter == null) {
+      throw new core.ArgumentError("Parameter filter is required.");
     }
+    _queryParams["filter"] = [filter];
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -603,6 +601,8 @@ class TransferOperationsResourceApi {
 
 /// AWS access key (see [AWS Security
 /// Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
+/// For information on our data retention policy for user credentials, see [User
+/// credentials](data-retention#user-credentials).
 class AwsAccessKey {
   /// Required. AWS access key ID.
   core.String accessKeyId;
@@ -640,7 +640,8 @@ class AwsAccessKey {
 class AwsS3Data {
   /// Required. Input only. AWS access key used to sign the API requests to the
   /// AWS S3 bucket. Permissions on the bucket must be granted to the access ID
-  /// of the AWS access key.
+  /// of the AWS access key. For information on our data retention policy for
+  /// user credentials, see [User credentials](data-retention#user-credentials).
   AwsAccessKey awsAccessKey;
 
   /// Required. S3 Bucket name (see [Creating a
@@ -680,7 +681,8 @@ class AwsS3Data {
 /// name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
 class AzureBlobStorageData {
   /// Required. Input only. Credentials used to authenticate API requests to
-  /// Azure.
+  /// Azure. For information on our data retention policy for user credentials,
+  /// see [User credentials](data-retention#user-credentials).
   AzureCredentials azureCredentials;
 
   /// Required. The container to transfer from the Azure Storage account.
@@ -720,7 +722,8 @@ class AzureBlobStorageData {
   }
 }
 
-/// Azure credentials
+/// Azure credentials For information on our data retention policy for user
+/// credentials, see [User credentials](data-retention#user-credentials).
 class AzureCredentials {
   /// Required. Azure shared access signature. (see [Grant limited access to
   /// Azure Storage resources using shared access signatures
@@ -758,25 +761,25 @@ class CancelOperationRequest {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day and time zone are either specified elsewhere or are not significant. The
-/// date is relative to the Proleptic Gregorian Calendar. This can represent: *
-/// A full date, with non-zero year, month and day values * A month and day
-/// value, with a zero year, e.g. an anniversary * A year on its own, with zero
-/// month and day values * A year and month value, with a zero day, e.g. a
-/// credit card expiration date Related types are google.type.TimeOfDay and
-/// `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, such as a birthday. The time of
+/// day and time zone are either specified elsewhere or are insignificant. The
+/// date is relative to the Gregorian Calendar. This can represent one of the
+/// following: * A full date, with non-zero year, month, and day values * A
+/// month and day value, with a zero year, such as an anniversary * A year on
+/// its own, with zero month and day values * A year and month value, with a
+/// zero day, such as a credit card expiration date Related types are
+/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
-  /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year by itself or a year and month where the day is not
+  /// Day of a month. Must be from 1 to 31 and valid for the year and month, or
+  /// 0 to specify a year by itself or a year and month where the day isn't
   /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
   /// month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
+  /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
   /// year.
   core.int year;
 
@@ -1052,8 +1055,8 @@ class GoogleServiceAccount {
 /// an object does not match the actual size of the object fetched, the object
 /// will not be transferred. * If the specified MD5 does not match the MD5
 /// computed from the transferred bytes, the object transfer will fail. For more
-/// information, see [Generating MD5
-/// hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5)
+/// information, see [Generating MD5 hashes]
+/// (https://cloud.google.com/storage-transfer/docs/create-url-list#md5-checksum)
 /// * Ensure that each URL you specify is publicly accessible. For example, in
 /// Cloud Storage you can [share an object publicly]
 /// (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a
@@ -1437,6 +1440,22 @@ class ResumeTransferOperationRequest {
 
 /// Transfers can be scheduled to recur or to run just once.
 class Schedule {
+  /// The time in UTC that no further transfer operations are scheduled.
+  /// Combined with schedule_end_date, `end_time_of_day` specifies the end date
+  /// and time for starting new transfer operations. This field must be greater
+  /// than or equal to the timestamp corresponding to the combintation of
+  /// schedule_start_date and start_time_of_day, and is subject to the
+  /// following: * If `end_time_of_day` is not set and `schedule_end_date` is
+  /// set, then a default value of `23:59:59` is used for `end_time_of_day`. *
+  /// If `end_time_of_day` is set and `schedule_end_date` is not set, then
+  /// INVALID_ARGUMENT is returned.
+  TimeOfDay endTimeOfDay;
+
+  /// Interval between the start of each scheduled TransferOperation. If
+  /// unspecified, the default value is 24 hours. This value may not be less
+  /// than 1 hour.
+  core.String repeatInterval;
+
   /// The last day a transfer runs. Date boundaries are determined relative to
   /// UTC time. A job will run once per 24 hours within the following
   /// guidelines: * If `schedule_end_date` and schedule_start_date are the same
@@ -1471,6 +1490,12 @@ class Schedule {
   Schedule();
 
   Schedule.fromJson(core.Map _json) {
+    if (_json.containsKey("endTimeOfDay")) {
+      endTimeOfDay = new TimeOfDay.fromJson(_json["endTimeOfDay"]);
+    }
+    if (_json.containsKey("repeatInterval")) {
+      repeatInterval = _json["repeatInterval"];
+    }
     if (_json.containsKey("scheduleEndDate")) {
       scheduleEndDate = new Date.fromJson(_json["scheduleEndDate"]);
     }
@@ -1485,6 +1510,12 @@ class Schedule {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (endTimeOfDay != null) {
+      _json["endTimeOfDay"] = (endTimeOfDay).toJson();
+    }
+    if (repeatInterval != null) {
+      _json["repeatInterval"] = repeatInterval;
+    }
     if (scheduleEndDate != null) {
       _json["scheduleEndDate"] = (scheduleEndDate).toJson();
     }
@@ -1789,6 +1820,11 @@ class TransferJob {
   /// Output only. The time that the transfer job was last modified.
   core.String lastModificationTime;
 
+  /// The name of the most recently started TransferOperation of this JobConfig.
+  /// Present if and only if at least one TransferOperation has been created for
+  /// this JobConfig.
+  core.String latestOperationName;
+
   /// A unique name (within the transfer project) assigned when the job is
   /// created. If this field is empty in a CreateTransferJobRequest, Storage
   /// Transfer Service will assign a unique name. Otherwise, the specified name
@@ -1843,6 +1879,9 @@ class TransferJob {
     if (_json.containsKey("lastModificationTime")) {
       lastModificationTime = _json["lastModificationTime"];
     }
+    if (_json.containsKey("latestOperationName")) {
+      latestOperationName = _json["latestOperationName"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1878,6 +1917,9 @@ class TransferJob {
     }
     if (lastModificationTime != null) {
       _json["lastModificationTime"] = lastModificationTime;
+    }
+    if (latestOperationName != null) {
+      _json["latestOperationName"] = latestOperationName;
     }
     if (name != null) {
       _json["name"] = name;
@@ -2030,7 +2072,10 @@ class TransferOptions {
   /// exclusive.
   core.bool deleteObjectsUniqueInSink;
 
-  /// Whether overwriting objects that already exist in the sink is allowed.
+  /// When to overwrite objects that already exist in the sink. The default is
+  /// that only objects that are different from the source are ovewritten. If
+  /// true, all objects in the sink whose name matches an object in the source
+  /// will be overwritten with the source object.
   core.bool overwriteObjectsAlreadyExistingInSink;
 
   TransferOptions();

@@ -276,10 +276,10 @@ class QueriesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - Optional pagination token.
+  ///
   /// [pageSize] - Maximum number of results per page. Must be between 1 and
   /// 100. Defaults to 100 if unspecified.
-  ///
-  /// [pageToken] - Optional pagination token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -292,7 +292,7 @@ class QueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQueriesResponse> listqueries(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -300,11 +300,11 @@ class QueriesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1061,6 +1061,8 @@ class FilterPair {
   /// - "FILTER_PATH_EVENT_INDEX"
   /// - "FILTER_EVENT_TYPE"
   /// - "FILTER_CHANNEL_GROUPING"
+  /// - "FILTER_OM_SDK_AVAILABLE"
+  /// - "FILTER_DATA_SOURCE"
   core.String type;
 
   /// Filter value.
@@ -1663,6 +1665,8 @@ class PathQueryOptionsFilter {
   /// - "FILTER_PATH_EVENT_INDEX"
   /// - "FILTER_EVENT_TYPE"
   /// - "FILTER_CHANNEL_GROUPING"
+  /// - "FILTER_OM_SDK_AVAILABLE"
+  /// - "FILTER_DATA_SOURCE"
   core.String filter;
 
   /// Indicates how the filter should be matched to the value.
@@ -1962,7 +1966,9 @@ class QuerySchedule {
   /// - "QUARTERLY"
   core.String frequency;
 
-  /// Deprecated. This field has no effect.
+  /// Time of day at which a new report will be generated, represented as
+  /// minutes past midnight. Range is 0 to 1439. Only applies to scheduled
+  /// reports.
   core.int nextRunMinuteOfDay;
 
   /// Canonical timezone code for report generation time. Defaults to

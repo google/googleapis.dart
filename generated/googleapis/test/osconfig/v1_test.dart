@@ -50,27 +50,27 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4477() {
+buildUnnamed1605() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4477(core.List<core.String> o) {
+checkUnnamed1605(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4478() {
+buildUnnamed1606() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4478(core.List<core.String> o) {
+checkUnnamed1606(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -81,8 +81,8 @@ buildAptSettings() {
   var o = new api.AptSettings();
   buildCounterAptSettings++;
   if (buildCounterAptSettings < 3) {
-    o.excludes = buildUnnamed4477();
-    o.exclusivePackages = buildUnnamed4478();
+    o.excludes = buildUnnamed1605();
+    o.exclusivePackages = buildUnnamed1606();
     o.type = "foo";
   }
   buildCounterAptSettings--;
@@ -92,8 +92,8 @@ buildAptSettings() {
 checkAptSettings(api.AptSettings o) {
   buildCounterAptSettings++;
   if (buildCounterAptSettings < 3) {
-    checkUnnamed4477(o.excludes);
-    checkUnnamed4478(o.exclusivePackages);
+    checkUnnamed1605(o.excludes);
+    checkUnnamed1606(o.exclusivePackages);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterAptSettings--;
@@ -150,14 +150,14 @@ checkExecStep(api.ExecStep o) {
   buildCounterExecStep--;
 }
 
-buildUnnamed4479() {
+buildUnnamed1607() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed4479(core.List<core.int> o) {
+checkUnnamed1607(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -168,7 +168,7 @@ buildExecStepConfig() {
   var o = new api.ExecStepConfig();
   buildCounterExecStepConfig++;
   if (buildCounterExecStepConfig < 3) {
-    o.allowedSuccessCodes = buildUnnamed4479();
+    o.allowedSuccessCodes = buildUnnamed1607();
     o.gcsObject = buildGcsObject();
     o.interpreter = "foo";
     o.localPath = "foo";
@@ -180,7 +180,7 @@ buildExecStepConfig() {
 checkExecStepConfig(api.ExecStepConfig o) {
   buildCounterExecStepConfig++;
   if (buildCounterExecStepConfig < 3) {
-    checkUnnamed4479(o.allowedSuccessCodes);
+    checkUnnamed1607(o.allowedSuccessCodes);
     checkGcsObject(o.gcsObject);
     unittest.expect(o.interpreter, unittest.equals('foo'));
     unittest.expect(o.localPath, unittest.equals('foo'));
@@ -278,14 +278,317 @@ checkGooSettings(api.GooSettings o) {
   buildCounterGooSettings--;
 }
 
-buildUnnamed4480() {
+buildUnnamed1608() {
+  var o = new core.Map<core.String, api.InventoryItem>();
+  o["x"] = buildInventoryItem();
+  o["y"] = buildInventoryItem();
+  return o;
+}
+
+checkUnnamed1608(core.Map<core.String, api.InventoryItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkInventoryItem(o["x"]);
+  checkInventoryItem(o["y"]);
+}
+
+core.int buildCounterInventory = 0;
+buildInventory() {
+  var o = new api.Inventory();
+  buildCounterInventory++;
+  if (buildCounterInventory < 3) {
+    o.items = buildUnnamed1608();
+    o.osInfo = buildInventoryOsInfo();
+  }
+  buildCounterInventory--;
+  return o;
+}
+
+checkInventory(api.Inventory o) {
+  buildCounterInventory++;
+  if (buildCounterInventory < 3) {
+    checkUnnamed1608(o.items);
+    checkInventoryOsInfo(o.osInfo);
+  }
+  buildCounterInventory--;
+}
+
+core.int buildCounterInventoryItem = 0;
+buildInventoryItem() {
+  var o = new api.InventoryItem();
+  buildCounterInventoryItem++;
+  if (buildCounterInventoryItem < 3) {
+    o.availablePackage = buildInventorySoftwarePackage();
+    o.createTime = "foo";
+    o.id = "foo";
+    o.installedPackage = buildInventorySoftwarePackage();
+    o.originType = "foo";
+    o.type = "foo";
+    o.updateTime = "foo";
+  }
+  buildCounterInventoryItem--;
+  return o;
+}
+
+checkInventoryItem(api.InventoryItem o) {
+  buildCounterInventoryItem++;
+  if (buildCounterInventoryItem < 3) {
+    checkInventorySoftwarePackage(o.availablePackage);
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    unittest.expect(o.id, unittest.equals('foo'));
+    checkInventorySoftwarePackage(o.installedPackage);
+    unittest.expect(o.originType, unittest.equals('foo'));
+    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(o.updateTime, unittest.equals('foo'));
+  }
+  buildCounterInventoryItem--;
+}
+
+core.int buildCounterInventoryOsInfo = 0;
+buildInventoryOsInfo() {
+  var o = new api.InventoryOsInfo();
+  buildCounterInventoryOsInfo++;
+  if (buildCounterInventoryOsInfo < 3) {
+    o.architecture = "foo";
+    o.hostname = "foo";
+    o.kernelRelease = "foo";
+    o.kernelVersion = "foo";
+    o.longName = "foo";
+    o.osconfigAgentVersion = "foo";
+    o.shortName = "foo";
+    o.version = "foo";
+  }
+  buildCounterInventoryOsInfo--;
+  return o;
+}
+
+checkInventoryOsInfo(api.InventoryOsInfo o) {
+  buildCounterInventoryOsInfo++;
+  if (buildCounterInventoryOsInfo < 3) {
+    unittest.expect(o.architecture, unittest.equals('foo'));
+    unittest.expect(o.hostname, unittest.equals('foo'));
+    unittest.expect(o.kernelRelease, unittest.equals('foo'));
+    unittest.expect(o.kernelVersion, unittest.equals('foo'));
+    unittest.expect(o.longName, unittest.equals('foo'));
+    unittest.expect(o.osconfigAgentVersion, unittest.equals('foo'));
+    unittest.expect(o.shortName, unittest.equals('foo'));
+    unittest.expect(o.version, unittest.equals('foo'));
+  }
+  buildCounterInventoryOsInfo--;
+}
+
+core.int buildCounterInventorySoftwarePackage = 0;
+buildInventorySoftwarePackage() {
+  var o = new api.InventorySoftwarePackage();
+  buildCounterInventorySoftwarePackage++;
+  if (buildCounterInventorySoftwarePackage < 3) {
+    o.aptPackage = buildInventoryVersionedPackage();
+    o.cosPackage = buildInventoryVersionedPackage();
+    o.googetPackage = buildInventoryVersionedPackage();
+    o.qfePackage = buildInventoryWindowsQuickFixEngineeringPackage();
+    o.wuaPackage = buildInventoryWindowsUpdatePackage();
+    o.yumPackage = buildInventoryVersionedPackage();
+    o.zypperPackage = buildInventoryVersionedPackage();
+    o.zypperPatch = buildInventoryZypperPatch();
+  }
+  buildCounterInventorySoftwarePackage--;
+  return o;
+}
+
+checkInventorySoftwarePackage(api.InventorySoftwarePackage o) {
+  buildCounterInventorySoftwarePackage++;
+  if (buildCounterInventorySoftwarePackage < 3) {
+    checkInventoryVersionedPackage(o.aptPackage);
+    checkInventoryVersionedPackage(o.cosPackage);
+    checkInventoryVersionedPackage(o.googetPackage);
+    checkInventoryWindowsQuickFixEngineeringPackage(o.qfePackage);
+    checkInventoryWindowsUpdatePackage(o.wuaPackage);
+    checkInventoryVersionedPackage(o.yumPackage);
+    checkInventoryVersionedPackage(o.zypperPackage);
+    checkInventoryZypperPatch(o.zypperPatch);
+  }
+  buildCounterInventorySoftwarePackage--;
+}
+
+core.int buildCounterInventoryVersionedPackage = 0;
+buildInventoryVersionedPackage() {
+  var o = new api.InventoryVersionedPackage();
+  buildCounterInventoryVersionedPackage++;
+  if (buildCounterInventoryVersionedPackage < 3) {
+    o.architecture = "foo";
+    o.packageName = "foo";
+    o.version = "foo";
+  }
+  buildCounterInventoryVersionedPackage--;
+  return o;
+}
+
+checkInventoryVersionedPackage(api.InventoryVersionedPackage o) {
+  buildCounterInventoryVersionedPackage++;
+  if (buildCounterInventoryVersionedPackage < 3) {
+    unittest.expect(o.architecture, unittest.equals('foo'));
+    unittest.expect(o.packageName, unittest.equals('foo'));
+    unittest.expect(o.version, unittest.equals('foo'));
+  }
+  buildCounterInventoryVersionedPackage--;
+}
+
+core.int buildCounterInventoryWindowsQuickFixEngineeringPackage = 0;
+buildInventoryWindowsQuickFixEngineeringPackage() {
+  var o = new api.InventoryWindowsQuickFixEngineeringPackage();
+  buildCounterInventoryWindowsQuickFixEngineeringPackage++;
+  if (buildCounterInventoryWindowsQuickFixEngineeringPackage < 3) {
+    o.caption = "foo";
+    o.description = "foo";
+    o.hotFixId = "foo";
+    o.installTime = "foo";
+  }
+  buildCounterInventoryWindowsQuickFixEngineeringPackage--;
+  return o;
+}
+
+checkInventoryWindowsQuickFixEngineeringPackage(
+    api.InventoryWindowsQuickFixEngineeringPackage o) {
+  buildCounterInventoryWindowsQuickFixEngineeringPackage++;
+  if (buildCounterInventoryWindowsQuickFixEngineeringPackage < 3) {
+    unittest.expect(o.caption, unittest.equals('foo'));
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.hotFixId, unittest.equals('foo'));
+    unittest.expect(o.installTime, unittest.equals('foo'));
+  }
+  buildCounterInventoryWindowsQuickFixEngineeringPackage--;
+}
+
+buildUnnamed1609() {
+  var o =
+      new core.List<api.InventoryWindowsUpdatePackageWindowsUpdateCategory>();
+  o.add(buildInventoryWindowsUpdatePackageWindowsUpdateCategory());
+  o.add(buildInventoryWindowsUpdatePackageWindowsUpdateCategory());
+  return o;
+}
+
+checkUnnamed1609(
+    core.List<api.InventoryWindowsUpdatePackageWindowsUpdateCategory> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkInventoryWindowsUpdatePackageWindowsUpdateCategory(o[0]);
+  checkInventoryWindowsUpdatePackageWindowsUpdateCategory(o[1]);
+}
+
+buildUnnamed1610() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1610(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed1611() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1611(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterInventoryWindowsUpdatePackage = 0;
+buildInventoryWindowsUpdatePackage() {
+  var o = new api.InventoryWindowsUpdatePackage();
+  buildCounterInventoryWindowsUpdatePackage++;
+  if (buildCounterInventoryWindowsUpdatePackage < 3) {
+    o.categories = buildUnnamed1609();
+    o.description = "foo";
+    o.kbArticleIds = buildUnnamed1610();
+    o.lastDeploymentChangeTime = "foo";
+    o.moreInfoUrls = buildUnnamed1611();
+    o.revisionNumber = 42;
+    o.supportUrl = "foo";
+    o.title = "foo";
+    o.updateId = "foo";
+  }
+  buildCounterInventoryWindowsUpdatePackage--;
+  return o;
+}
+
+checkInventoryWindowsUpdatePackage(api.InventoryWindowsUpdatePackage o) {
+  buildCounterInventoryWindowsUpdatePackage++;
+  if (buildCounterInventoryWindowsUpdatePackage < 3) {
+    checkUnnamed1609(o.categories);
+    unittest.expect(o.description, unittest.equals('foo'));
+    checkUnnamed1610(o.kbArticleIds);
+    unittest.expect(o.lastDeploymentChangeTime, unittest.equals('foo'));
+    checkUnnamed1611(o.moreInfoUrls);
+    unittest.expect(o.revisionNumber, unittest.equals(42));
+    unittest.expect(o.supportUrl, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(o.updateId, unittest.equals('foo'));
+  }
+  buildCounterInventoryWindowsUpdatePackage--;
+}
+
+core.int buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory = 0;
+buildInventoryWindowsUpdatePackageWindowsUpdateCategory() {
+  var o = new api.InventoryWindowsUpdatePackageWindowsUpdateCategory();
+  buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory++;
+  if (buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory < 3) {
+    o.id = "foo";
+    o.name = "foo";
+  }
+  buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory--;
+  return o;
+}
+
+checkInventoryWindowsUpdatePackageWindowsUpdateCategory(
+    api.InventoryWindowsUpdatePackageWindowsUpdateCategory o) {
+  buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory++;
+  if (buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory < 3) {
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory--;
+}
+
+core.int buildCounterInventoryZypperPatch = 0;
+buildInventoryZypperPatch() {
+  var o = new api.InventoryZypperPatch();
+  buildCounterInventoryZypperPatch++;
+  if (buildCounterInventoryZypperPatch < 3) {
+    o.category = "foo";
+    o.patchName = "foo";
+    o.severity = "foo";
+    o.summary = "foo";
+  }
+  buildCounterInventoryZypperPatch--;
+  return o;
+}
+
+checkInventoryZypperPatch(api.InventoryZypperPatch o) {
+  buildCounterInventoryZypperPatch++;
+  if (buildCounterInventoryZypperPatch < 3) {
+    unittest.expect(o.category, unittest.equals('foo'));
+    unittest.expect(o.patchName, unittest.equals('foo'));
+    unittest.expect(o.severity, unittest.equals('foo'));
+    unittest.expect(o.summary, unittest.equals('foo'));
+  }
+  buildCounterInventoryZypperPatch--;
+}
+
+buildUnnamed1612() {
   var o = new core.List<api.PatchDeployment>();
   o.add(buildPatchDeployment());
   o.add(buildPatchDeployment());
   return o;
 }
 
-checkUnnamed4480(core.List<api.PatchDeployment> o) {
+checkUnnamed1612(core.List<api.PatchDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPatchDeployment(o[0]);
   checkPatchDeployment(o[1]);
@@ -297,7 +600,7 @@ buildListPatchDeploymentsResponse() {
   buildCounterListPatchDeploymentsResponse++;
   if (buildCounterListPatchDeploymentsResponse < 3) {
     o.nextPageToken = "foo";
-    o.patchDeployments = buildUnnamed4480();
+    o.patchDeployments = buildUnnamed1612();
   }
   buildCounterListPatchDeploymentsResponse--;
   return o;
@@ -307,19 +610,19 @@ checkListPatchDeploymentsResponse(api.ListPatchDeploymentsResponse o) {
   buildCounterListPatchDeploymentsResponse++;
   if (buildCounterListPatchDeploymentsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4480(o.patchDeployments);
+    checkUnnamed1612(o.patchDeployments);
   }
   buildCounterListPatchDeploymentsResponse--;
 }
 
-buildUnnamed4481() {
+buildUnnamed1613() {
   var o = new core.List<api.PatchJobInstanceDetails>();
   o.add(buildPatchJobInstanceDetails());
   o.add(buildPatchJobInstanceDetails());
   return o;
 }
 
-checkUnnamed4481(core.List<api.PatchJobInstanceDetails> o) {
+checkUnnamed1613(core.List<api.PatchJobInstanceDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPatchJobInstanceDetails(o[0]);
   checkPatchJobInstanceDetails(o[1]);
@@ -331,7 +634,7 @@ buildListPatchJobInstanceDetailsResponse() {
   buildCounterListPatchJobInstanceDetailsResponse++;
   if (buildCounterListPatchJobInstanceDetailsResponse < 3) {
     o.nextPageToken = "foo";
-    o.patchJobInstanceDetails = buildUnnamed4481();
+    o.patchJobInstanceDetails = buildUnnamed1613();
   }
   buildCounterListPatchJobInstanceDetailsResponse--;
   return o;
@@ -342,19 +645,19 @@ checkListPatchJobInstanceDetailsResponse(
   buildCounterListPatchJobInstanceDetailsResponse++;
   if (buildCounterListPatchJobInstanceDetailsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4481(o.patchJobInstanceDetails);
+    checkUnnamed1613(o.patchJobInstanceDetails);
   }
   buildCounterListPatchJobInstanceDetailsResponse--;
 }
 
-buildUnnamed4482() {
+buildUnnamed1614() {
   var o = new core.List<api.PatchJob>();
   o.add(buildPatchJob());
   o.add(buildPatchJob());
   return o;
 }
 
-checkUnnamed4482(core.List<api.PatchJob> o) {
+checkUnnamed1614(core.List<api.PatchJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPatchJob(o[0]);
   checkPatchJob(o[1]);
@@ -366,7 +669,7 @@ buildListPatchJobsResponse() {
   buildCounterListPatchJobsResponse++;
   if (buildCounterListPatchJobsResponse < 3) {
     o.nextPageToken = "foo";
-    o.patchJobs = buildUnnamed4482();
+    o.patchJobs = buildUnnamed1614();
   }
   buildCounterListPatchJobsResponse--;
   return o;
@@ -376,7 +679,7 @@ checkListPatchJobsResponse(api.ListPatchJobsResponse o) {
   buildCounterListPatchJobsResponse++;
   if (buildCounterListPatchJobsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4482(o.patchJobs);
+    checkUnnamed1614(o.patchJobs);
   }
   buildCounterListPatchJobsResponse--;
 }
@@ -493,53 +796,53 @@ checkPatchDeployment(api.PatchDeployment o) {
   buildCounterPatchDeployment--;
 }
 
-buildUnnamed4483() {
+buildUnnamed1615() {
   var o = new core.List<api.PatchInstanceFilterGroupLabel>();
   o.add(buildPatchInstanceFilterGroupLabel());
   o.add(buildPatchInstanceFilterGroupLabel());
   return o;
 }
 
-checkUnnamed4483(core.List<api.PatchInstanceFilterGroupLabel> o) {
+checkUnnamed1615(core.List<api.PatchInstanceFilterGroupLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPatchInstanceFilterGroupLabel(o[0]);
   checkPatchInstanceFilterGroupLabel(o[1]);
 }
 
-buildUnnamed4484() {
+buildUnnamed1616() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4484(core.List<core.String> o) {
+checkUnnamed1616(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4485() {
+buildUnnamed1617() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4485(core.List<core.String> o) {
+checkUnnamed1617(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4486() {
+buildUnnamed1618() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4486(core.List<core.String> o) {
+checkUnnamed1618(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -551,10 +854,10 @@ buildPatchInstanceFilter() {
   buildCounterPatchInstanceFilter++;
   if (buildCounterPatchInstanceFilter < 3) {
     o.all = true;
-    o.groupLabels = buildUnnamed4483();
-    o.instanceNamePrefixes = buildUnnamed4484();
-    o.instances = buildUnnamed4485();
-    o.zones = buildUnnamed4486();
+    o.groupLabels = buildUnnamed1615();
+    o.instanceNamePrefixes = buildUnnamed1616();
+    o.instances = buildUnnamed1617();
+    o.zones = buildUnnamed1618();
   }
   buildCounterPatchInstanceFilter--;
   return o;
@@ -564,22 +867,22 @@ checkPatchInstanceFilter(api.PatchInstanceFilter o) {
   buildCounterPatchInstanceFilter++;
   if (buildCounterPatchInstanceFilter < 3) {
     unittest.expect(o.all, unittest.isTrue);
-    checkUnnamed4483(o.groupLabels);
-    checkUnnamed4484(o.instanceNamePrefixes);
-    checkUnnamed4485(o.instances);
-    checkUnnamed4486(o.zones);
+    checkUnnamed1615(o.groupLabels);
+    checkUnnamed1616(o.instanceNamePrefixes);
+    checkUnnamed1617(o.instances);
+    checkUnnamed1618(o.zones);
   }
   buildCounterPatchInstanceFilter--;
 }
 
-buildUnnamed4487() {
+buildUnnamed1619() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4487(core.Map<core.String, core.String> o) {
+checkUnnamed1619(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -590,7 +893,7 @@ buildPatchInstanceFilterGroupLabel() {
   var o = new api.PatchInstanceFilterGroupLabel();
   buildCounterPatchInstanceFilterGroupLabel++;
   if (buildCounterPatchInstanceFilterGroupLabel < 3) {
-    o.labels = buildUnnamed4487();
+    o.labels = buildUnnamed1619();
   }
   buildCounterPatchInstanceFilterGroupLabel--;
   return o;
@@ -599,7 +902,7 @@ buildPatchInstanceFilterGroupLabel() {
 checkPatchInstanceFilterGroupLabel(api.PatchInstanceFilterGroupLabel o) {
   buildCounterPatchInstanceFilterGroupLabel++;
   if (buildCounterPatchInstanceFilterGroupLabel < 3) {
-    checkUnnamed4487(o.labels);
+    checkUnnamed1619(o.labels);
   }
   buildCounterPatchInstanceFilterGroupLabel--;
 }
@@ -868,40 +1171,40 @@ checkWeeklySchedule(api.WeeklySchedule o) {
   buildCounterWeeklySchedule--;
 }
 
-buildUnnamed4488() {
+buildUnnamed1620() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4488(core.List<core.String> o) {
+checkUnnamed1620(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4489() {
+buildUnnamed1621() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4489(core.List<core.String> o) {
+checkUnnamed1621(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4490() {
+buildUnnamed1622() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4490(core.List<core.String> o) {
+checkUnnamed1622(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -912,9 +1215,9 @@ buildWindowsUpdateSettings() {
   var o = new api.WindowsUpdateSettings();
   buildCounterWindowsUpdateSettings++;
   if (buildCounterWindowsUpdateSettings < 3) {
-    o.classifications = buildUnnamed4488();
-    o.excludes = buildUnnamed4489();
-    o.exclusivePatches = buildUnnamed4490();
+    o.classifications = buildUnnamed1620();
+    o.excludes = buildUnnamed1621();
+    o.exclusivePatches = buildUnnamed1622();
   }
   buildCounterWindowsUpdateSettings--;
   return o;
@@ -923,34 +1226,34 @@ buildWindowsUpdateSettings() {
 checkWindowsUpdateSettings(api.WindowsUpdateSettings o) {
   buildCounterWindowsUpdateSettings++;
   if (buildCounterWindowsUpdateSettings < 3) {
-    checkUnnamed4488(o.classifications);
-    checkUnnamed4489(o.excludes);
-    checkUnnamed4490(o.exclusivePatches);
+    checkUnnamed1620(o.classifications);
+    checkUnnamed1621(o.excludes);
+    checkUnnamed1622(o.exclusivePatches);
   }
   buildCounterWindowsUpdateSettings--;
 }
 
-buildUnnamed4491() {
+buildUnnamed1623() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4491(core.List<core.String> o) {
+checkUnnamed1623(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4492() {
+buildUnnamed1624() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4492(core.List<core.String> o) {
+checkUnnamed1624(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -961,8 +1264,8 @@ buildYumSettings() {
   var o = new api.YumSettings();
   buildCounterYumSettings++;
   if (buildCounterYumSettings < 3) {
-    o.excludes = buildUnnamed4491();
-    o.exclusivePackages = buildUnnamed4492();
+    o.excludes = buildUnnamed1623();
+    o.exclusivePackages = buildUnnamed1624();
     o.minimal = true;
     o.security = true;
   }
@@ -973,61 +1276,61 @@ buildYumSettings() {
 checkYumSettings(api.YumSettings o) {
   buildCounterYumSettings++;
   if (buildCounterYumSettings < 3) {
-    checkUnnamed4491(o.excludes);
-    checkUnnamed4492(o.exclusivePackages);
+    checkUnnamed1623(o.excludes);
+    checkUnnamed1624(o.exclusivePackages);
     unittest.expect(o.minimal, unittest.isTrue);
     unittest.expect(o.security, unittest.isTrue);
   }
   buildCounterYumSettings--;
 }
 
-buildUnnamed4493() {
+buildUnnamed1625() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4493(core.List<core.String> o) {
+checkUnnamed1625(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4494() {
+buildUnnamed1626() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4494(core.List<core.String> o) {
+checkUnnamed1626(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4495() {
+buildUnnamed1627() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4495(core.List<core.String> o) {
+checkUnnamed1627(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4496() {
+buildUnnamed1628() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4496(core.List<core.String> o) {
+checkUnnamed1628(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1038,10 +1341,10 @@ buildZypperSettings() {
   var o = new api.ZypperSettings();
   buildCounterZypperSettings++;
   if (buildCounterZypperSettings < 3) {
-    o.categories = buildUnnamed4493();
-    o.excludes = buildUnnamed4494();
-    o.exclusivePatches = buildUnnamed4495();
-    o.severities = buildUnnamed4496();
+    o.categories = buildUnnamed1625();
+    o.excludes = buildUnnamed1626();
+    o.exclusivePatches = buildUnnamed1627();
+    o.severities = buildUnnamed1628();
     o.withOptional = true;
     o.withUpdate = true;
   }
@@ -1052,10 +1355,10 @@ buildZypperSettings() {
 checkZypperSettings(api.ZypperSettings o) {
   buildCounterZypperSettings++;
   if (buildCounterZypperSettings < 3) {
-    checkUnnamed4493(o.categories);
-    checkUnnamed4494(o.excludes);
-    checkUnnamed4495(o.exclusivePatches);
-    checkUnnamed4496(o.severities);
+    checkUnnamed1625(o.categories);
+    checkUnnamed1626(o.excludes);
+    checkUnnamed1627(o.exclusivePatches);
+    checkUnnamed1628(o.severities);
     unittest.expect(o.withOptional, unittest.isTrue);
     unittest.expect(o.withUpdate, unittest.isTrue);
   }
@@ -1132,6 +1435,82 @@ main() {
       var o = buildGooSettings();
       var od = new api.GooSettings.fromJson(o.toJson());
       checkGooSettings(od);
+    });
+  });
+
+  unittest.group("obj-schema-Inventory", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventory();
+      var od = new api.Inventory.fromJson(o.toJson());
+      checkInventory(od);
+    });
+  });
+
+  unittest.group("obj-schema-InventoryItem", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventoryItem();
+      var od = new api.InventoryItem.fromJson(o.toJson());
+      checkInventoryItem(od);
+    });
+  });
+
+  unittest.group("obj-schema-InventoryOsInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventoryOsInfo();
+      var od = new api.InventoryOsInfo.fromJson(o.toJson());
+      checkInventoryOsInfo(od);
+    });
+  });
+
+  unittest.group("obj-schema-InventorySoftwarePackage", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventorySoftwarePackage();
+      var od = new api.InventorySoftwarePackage.fromJson(o.toJson());
+      checkInventorySoftwarePackage(od);
+    });
+  });
+
+  unittest.group("obj-schema-InventoryVersionedPackage", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventoryVersionedPackage();
+      var od = new api.InventoryVersionedPackage.fromJson(o.toJson());
+      checkInventoryVersionedPackage(od);
+    });
+  });
+
+  unittest.group("obj-schema-InventoryWindowsQuickFixEngineeringPackage", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventoryWindowsQuickFixEngineeringPackage();
+      var od = new api.InventoryWindowsQuickFixEngineeringPackage.fromJson(
+          o.toJson());
+      checkInventoryWindowsQuickFixEngineeringPackage(od);
+    });
+  });
+
+  unittest.group("obj-schema-InventoryWindowsUpdatePackage", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventoryWindowsUpdatePackage();
+      var od = new api.InventoryWindowsUpdatePackage.fromJson(o.toJson());
+      checkInventoryWindowsUpdatePackage(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-InventoryWindowsUpdatePackageWindowsUpdateCategory", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventoryWindowsUpdatePackageWindowsUpdateCategory();
+      var od =
+          new api.InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(
+              o.toJson());
+      checkInventoryWindowsUpdatePackageWindowsUpdateCategory(od);
+    });
+  });
+
+  unittest.group("obj-schema-InventoryZypperPatch", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventoryZypperPatch();
+      var od = new api.InventoryZypperPatch.fromJson(o.toJson());
+      checkInventoryZypperPatch(od);
     });
   });
 
@@ -1473,8 +1852,8 @@ main() {
       api.ProjectsPatchDeploymentsResourceApi res =
           new api.OsconfigApi(mock).projects.patchDeployments;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1507,10 +1886,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1521,8 +1900,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListPatchDeploymentsResponse(response);
@@ -1700,9 +2079,9 @@ main() {
       api.ProjectsPatchJobsResourceApi res =
           new api.OsconfigApi(mock).projects.patchJobs;
       var arg_parent = "foo";
+      var arg_filter = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
-      var arg_filter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1735,11 +2114,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1750,9 +2129,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
+              filter: arg_filter,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListPatchJobsResponse(response);

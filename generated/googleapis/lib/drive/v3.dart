@@ -1179,10 +1179,8 @@ class FilesResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
-  /// for all items to have exactly one parent. This parameter only takes effect
-  /// if the item is not in a shared drive. Requests that specify more than one
-  /// parent fail.
+  /// [enforceSingleParent] - Deprecated. Copying files into multiple folders is
+  /// no longer supported. Use shortcuts instead.
   ///
   /// [ignoreDefaultVisibility] - Whether to ignore the domain's default
   /// visibility settings for the created file. Domain administrators can choose
@@ -1280,10 +1278,8 @@ class FilesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
-  /// for all items to have exactly one parent. This parameter only takes effect
-  /// if the item is not in a shared drive. Requests that specify more than one
-  /// parent fail.
+  /// [enforceSingleParent] - Deprecated. Creating files in multiple folders is
+  /// no longer supported.
   ///
   /// [ignoreDefaultVisibility] - Whether to ignore the domain's default
   /// visibility settings for the created file. Domain administrators can choose
@@ -1407,11 +1403,9 @@ class FilesResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
-  /// for all items to have exactly one parent. This parameter will only take
-  /// effect if the item is not in a shared drive. If an item's last parent is
-  /// deleted but the item itself is not, the item will be placed under its
-  /// owner's root.
+  /// [enforceSingleParent] - Deprecated. If an item is not in a shared drive
+  /// and its last parent is deleted but the item itself is not, the item will
+  /// be placed under its owner's root.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
@@ -1471,11 +1465,9 @@ class FilesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
-  /// for all items to have exactly one parent. This parameter will only take
-  /// effect if the item is not in a shared drive. If an item's last parent is
-  /// deleted but the item itself is not, the item will be placed under its
-  /// owner's root.
+  /// [enforceSingleParent] - Deprecated. If an item is not in a shared drive
+  /// and its last parent is deleted but the item itself is not, the item will
+  /// be placed under its owner's root.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1878,13 +1870,8 @@ class FilesResourceApi {
   ///
   /// [addParents] - A comma-separated list of parent IDs to add.
   ///
-  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
-  /// for all items to have exactly one parent. This parameter only takes effect
-  /// if the item is not in a shared drive. If the item's owner makes a request
-  /// to add a single parent, the item is removed from all current folders and
-  /// placed in the requested folder. Other requests that increase the number of
-  /// parents fail, except when the canAddMyDriveParent file capability is true
-  /// and a single parent is being added.
+  /// [enforceSingleParent] - Deprecated. Adding files to multiple folders is no
+  /// longer supported. Use shortcuts instead.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
   /// permissions to include in the response. Only 'published' is supported.
@@ -2114,18 +2101,13 @@ class PermissionsResourceApi {
   /// [emailMessage] - A plain text custom message to include in the
   /// notification email.
   ///
-  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
-  /// for all items to have exactly one parent. This parameter only takes effect
-  /// if the item is not in a shared drive. See moveToNewOwnersRoot for details.
+  /// [enforceSingleParent] - Deprecated. See moveToNewOwnersRoot for details.
   ///
-  /// [moveToNewOwnersRoot] - This parameter only takes effect if the item is
-  /// not in a shared drive and the request is attempting to transfer the
-  /// ownership of the item. When set to true, the item is moved to the new
+  /// [moveToNewOwnersRoot] - This parameter will only take effect if the item
+  /// is not in a shared drive and the request is attempting to transfer the
+  /// ownership of the item. If set to true, the item will be moved to the new
   /// owner's My Drive root folder and all prior parents removed. If set to
-  /// false, when enforceSingleParent=true, parents are not changed. If set to
-  /// false, when enforceSingleParent=false, existing parents are not changed;
-  /// however, the file will be added to the new owner's My Drive root folder,
-  /// unless it is already in the new owner's My Drive.
+  /// false, parents are not changed.
   ///
   /// [sendNotificationEmail] - Whether to send a notification email when
   /// sharing to users or groups. This defaults to true for users and groups,
@@ -5480,7 +5462,10 @@ class FileVideoMediaMetadata {
 class File {
   /// A collection of arbitrary key-value pairs which are private to the
   /// requesting app.
-  /// Entries with null values are cleared in update and copy requests.
+  /// Entries with null values are cleared in update and copy requests. These
+  /// properties can only be retrieved using an authenticated request. An
+  /// authenticated request uses an access token obtained with a OAuth 2 client
+  /// ID. You cannot use an API key to retrieve private properties.
   core.Map<core.String, core.String> appProperties;
 
   /// Capabilities the current user has on this file. Each capability
@@ -5513,7 +5498,7 @@ class File {
   /// trashed from a parent folder.
   core.bool explicitlyTrashed;
 
-  /// Links for exporting Google Docs to specific formats.
+  /// Links for exporting Docs Editors files to specific formats.
   core.Map<core.String, core.String> exportLinks;
 
   /// The final component of fullFileExtension. This is only available for files
@@ -5645,8 +5630,8 @@ class File {
   /// mimeType field set to application/vnd.google-apps.shortcut.
   FileShortcutDetails shortcutDetails;
 
-  /// The size of the file's content in bytes. This is only applicable to files
-  /// with binary content in Google Drive.
+  /// The size of the file's content in bytes. This is applicable to binary
+  /// files in Google Drive and Google Docs files.
   core.String size;
 
   /// The list of spaces which contain the file. The currently supported values
@@ -5661,7 +5646,8 @@ class File {
 
   /// A short-lived link to the file's thumbnail, if available. Typically lasts
   /// on the order of hours. Only populated when the requesting app can access
-  /// the file's content.
+  /// the file's content. If the file isn't shared publicly, the URL returned in
+  /// Files.thumbnailLink must be fetched using a credentialed request.
   core.String thumbnailLink;
 
   /// The thumbnail version for use in thumbnail cache invalidation.
@@ -6677,7 +6663,7 @@ class ReplyList {
 
 /// The metadata for a revision to a file.
 class Revision {
-  /// Links for exporting Google Docs to specific formats.
+  /// Links for exporting Docs Editors files to specific formats.
   core.Map<core.String, core.String> exportLinks;
 
   /// The ID of the revision.
@@ -6712,18 +6698,19 @@ class Revision {
   core.String originalFilename;
 
   /// Whether subsequent revisions will be automatically republished. This is
-  /// only applicable to Google Docs.
+  /// only applicable to Docs Editors files.
   core.bool publishAuto;
 
-  /// Whether this revision is published. This is only applicable to Google
-  /// Docs.
+  /// Whether this revision is published. This is only applicable to Docs
+  /// Editors files.
   core.bool published;
 
-  /// A link to the published revision.
+  /// A link to the published revision. This is only populated for Google Sites
+  /// files.
   core.String publishedLink;
 
   /// Whether this revision is published outside the domain. This is only
-  /// applicable to Google Docs.
+  /// applicable to Docs Editors files.
   core.bool publishedOutsideDomain;
 
   /// The size of the revision's content in bytes. This is only applicable to

@@ -3941,7 +3941,7 @@ class Presentation {
   /// `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a `BODY`
   /// placeholder shape contains the speaker notes. - The notes master page
   /// properties define the common page properties inherited by all notes pages.
-  /// - Any other shapes on the notes master appears on all notes pages. The
+  /// - Any other shapes on the notes master appear on all notes pages. The
   /// notes master is read-only.
   Page notesMaster;
 
@@ -5685,7 +5685,9 @@ class ShapeBackgroundFill {
 /// The properties of a Shape. If the shape is a placeholder shape as determined
 /// by the placeholder field, then these properties may be inherited from a
 /// parent placeholder shape. Determining the rendered value of the property
-/// depends on the corresponding property_state field value.
+/// depends on the corresponding property_state field value. Any text autofit
+/// settings on the shape are automatically deactivated by requests that can
+/// impact how text fits in the shape.
 class ShapeProperties {
   /// The alignment of the content in the shape. If unspecified, the alignment
   /// is inherited from a parent placeholder if it exists. If the shape has no

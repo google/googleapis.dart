@@ -296,11 +296,11 @@ class ProjectsSnapshotsResourceApi {
   /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Maximum number of snapshots to return.
+  ///
   /// [pageToken] - The value returned by the last `ListSnapshotsResponse`;
   /// indicates that this is a continuation of a prior `ListSnapshots` call, and
   /// that the system should return the next page of data.
-  ///
-  /// [pageSize] - Maximum number of snapshots to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -313,7 +313,7 @@ class ProjectsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSnapshotsResponse> list(core.String project,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -324,11 +324,11 @@ class ProjectsSnapshotsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1131,8 +1131,8 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /// Seeks an existing subscription to a point in time or to a given snapshot,
-  /// whichever is provided in the request. Snapshots are used in [Seek](
-  /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+  /// whichever is provided in the request. Snapshots are used in [Seek]
+  /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
   /// allow you to manage message acknowledgments in bulk. That is, you can set
   /// the acknowledgment state of messages in an existing subscription to the
   /// state captured by a snapshot. Note that both the subscription and the
@@ -1313,8 +1313,8 @@ class ProjectsTopicsResourceApi {
 
   ProjectsTopicsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates the given topic with the given name. See the [resource name
-  /// rules]( https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// Creates the given topic with the given name. See the [resource name rules]
+  /// (https://cloud.google.com/pubsub/docs/admin#resource_names).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1530,11 +1530,11 @@ class ProjectsTopicsResourceApi {
   /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of topics to return.
-  ///
   /// [pageToken] - The value returned by the last `ListTopicsResponse`;
   /// indicates that this is a continuation of a prior `ListTopics` call, and
   /// that the system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of topics to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1547,7 +1547,7 @@ class ProjectsTopicsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTopicsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1558,11 +1558,11 @@ class ProjectsTopicsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1968,10 +1968,6 @@ class AcknowledgeRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -2019,9 +2015,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -2036,9 +2029,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -3446,6 +3436,10 @@ class Topic {
   /// must not start with `"goog"`.
   core.String name;
 
+  /// Reserved for future use. This field is set only in responses from the
+  /// server; it is ignored if it is set in any requests.
+  core.bool satisfiesPzs;
+
   Topic();
 
   Topic.fromJson(core.Map _json) {
@@ -3461,6 +3455,9 @@ class Topic {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("satisfiesPzs")) {
+      satisfiesPzs = _json["satisfiesPzs"];
     }
   }
 
@@ -3478,6 +3475,9 @@ class Topic {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (satisfiesPzs != null) {
+      _json["satisfiesPzs"] = satisfiesPzs;
     }
     return _json;
   }

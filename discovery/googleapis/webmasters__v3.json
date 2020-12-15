@@ -408,6 +408,10 @@
                     "description": "[Optional; Default is 0] Zero-based index of the first row in the response. Must be a non-negative number.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "dataState": {
+                    "description": "[Optional] If \"all\" (case-insensitive), data will include fresh data. If \"final\" (case-insensitive) or if this parameter is omitted, the returned data will include only finalized data.",
+                    "type": "string"
                 }
             },
             "type": "object"

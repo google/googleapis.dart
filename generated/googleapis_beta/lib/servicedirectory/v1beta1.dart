@@ -383,10 +383,7 @@ class ProjectsLocationsNamespacesResourceApi {
   /// namespaces we'd like to list.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [orderBy] - Optional. The order to list result by. General order by string
-  /// syntax: () (,) allows values {"name"} ascending or descending order by .
-  /// If this is left blank, "asc" is used. Note that an empty order_by string
-  /// result in default order, which is order by name in ascending order.
+  /// [pageSize] - Optional. The maximum number of items to return.
   ///
   /// [pageToken] - Optional. The next_page_token value returned from a previous
   /// List request, if any.
@@ -408,7 +405,10 @@ class ProjectsLocationsNamespacesResourceApi {
   /// have a field called "doesnotexist". Since the filter does not match any
   /// Namespaces, it returns no results.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return.
+  /// [orderBy] - Optional. The order to list result by. General order by string
+  /// syntax: () (,) allows values {"name"} ascending or descending order by .
+  /// If this is left blank, "asc" is used. Note that an empty order_by string
+  /// result in default order, which is order by name in ascending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -421,10 +421,10 @@ class ProjectsLocationsNamespacesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNamespacesResponse> list(core.String parent,
-      {core.String orderBy,
+      {core.int pageSize,
       core.String pageToken,
       core.String filter,
-      core.int pageSize,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -436,8 +436,8 @@ class ProjectsLocationsNamespacesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -445,8 +445,8 @@ class ProjectsLocationsNamespacesResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -858,6 +858,8 @@ class ProjectsLocationsNamespacesServicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$".
   ///
+  /// [orderBy] - Optional. The order to list result by.
+  ///
   /// [filter] - Optional. The filter to list result by. General filter string
   /// syntax: () can be "name", or "metadata." for map field. can be "<, >, <=,
   /// >=, !=, =, :". Of which ":" means HAS, and is roughly the same as "=".
@@ -875,12 +877,10 @@ class ProjectsLocationsNamespacesServicesResourceApi {
   /// have a field called "doesnotexist". Since the filter does not match any
   /// Services, it returns no results.
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
-  ///
   /// [pageSize] - Optional. The maximum number of items to return.
   ///
-  /// [orderBy] - Optional. The order to list result by.
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -893,10 +893,10 @@ class ProjectsLocationsNamespacesServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String orderBy,
+      core.String filter,
       core.int pageSize,
-      core.String orderBy,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -908,17 +908,17 @@ class ProjectsLocationsNamespacesServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1326,13 +1326,6 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
   ///
-  /// [orderBy] - Optional. The order to list result by.
-  ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
-  ///
-  /// [pageSize] - Optional. The maximum number of items to return.
-  ///
   /// [filter] - Optional. The filter to list result by. General filter string
   /// syntax: () can be "name", "address", "port" or "metadata." for map field.
   /// can be "<, >, <=, >=, !=, =, :". Of which ":" means HAS, and is roughly
@@ -1352,6 +1345,13 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
   /// have a field called "doesnotexist". Since the filter does not match any
   /// Endpoints, it returns no results.
   ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
+  ///
+  /// [orderBy] - Optional. The order to list result by.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1363,10 +1363,10 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEndpointsResponse> list(core.String parent,
-      {core.String orderBy,
+      {core.String filter,
       core.String pageToken,
+      core.String orderBy,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1378,17 +1378,17 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1467,10 +1467,6 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -1518,9 +1514,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1535,9 +1528,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -1577,9 +1567,20 @@ class Endpoint {
   core.String address;
 
   /// Optional. Metadata for the endpoint. This data can be consumed by service
-  /// clients. The entire metadata dictionary may contain up to 512 characters,
-  /// spread accoss all key-value pairs. Metadata that goes beyond any these
-  /// limits will be rejected.
+  /// clients. Restrictions: - The entire metadata dictionary may contain up to
+  /// 512 characters, spread accoss all key-value pairs. Metadata that goes
+  /// beyond any these limits will be rejected. - Valid metadata keys have two
+  /// segments: an optional prefix and name, separated by a slash (/). The name
+  /// segment is required and must be 63 characters or less, beginning and
+  /// ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-),
+  /// underscores (_), dots (.), and alphanumerics between. The prefix is
+  /// optional. If specified, the prefix must be a DNS subdomain: a series of
+  /// DNS labels separated by dots (.), not longer than 253 characters in total,
+  /// followed by a slash (/). Metadata that fails to meet these requirements
+  /// will be rejected. - The '(*.)google.com/' and '(*.)googleapis.com/'
+  /// prefixes are reserved for system metadata managed by Service Directory. If
+  /// the user tries to write to these keyspaces, those entries will be silently
+  /// ignored by the system.
   core.Map<core.String, core.String> metadata;
 
   /// Immutable. The resource name for the endpoint in the format 'projects / *
@@ -2172,9 +2173,20 @@ class Service {
   core.List<Endpoint> endpoints;
 
   /// Optional. Metadata for the service. This data can be consumed by service
-  /// clients. The entire metadata dictionary may contain up to 2000 characters,
-  /// spread across all key-value pairs. Metadata that goes beyond any these
-  /// limits will be rejected.
+  /// clients. Restrictions: - The entire metadata dictionary may contain up to
+  /// 2000 characters, spread accoss all key-value pairs. Metadata that goes
+  /// beyond any these limits will be rejected. - Valid metadata keys have two
+  /// segments: an optional prefix and name, separated by a slash (/). The name
+  /// segment is required and must be 63 characters or less, beginning and
+  /// ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-),
+  /// underscores (_), dots (.), and alphanumerics between. The prefix is
+  /// optional. If specified, the prefix must be a DNS subdomain: a series of
+  /// DNS labels separated by dots (.), not longer than 253 characters in total,
+  /// followed by a slash (/). Metadata that fails to meet these requirements
+  /// will be rejected. - The '(*.)google.com/' and '(*.)googleapis.com/'
+  /// prefixes are reserved for system metadata managed by Service Directory. If
+  /// the user tries to write to these keyspaces, those entries will be silently
+  /// ignored by the system.
   core.Map<core.String, core.String> metadata;
 
   /// Immutable. The resource name for the service in the format 'projects / *

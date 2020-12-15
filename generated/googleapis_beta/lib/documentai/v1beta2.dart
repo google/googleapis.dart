@@ -411,12 +411,12 @@ class ProjectsOperationsResourceApi {
   }
 }
 
-/// The long running operation metadata for CreateLabelerPool.
-class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
+/// The common metadata for long running operations.
+class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata {
   /// The creation time of the operation.
   core.String createTime;
 
-  /// Used only when Operation.done is false.
+  /// The state of the operation.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "RUNNING" : Operation is still running.
@@ -427,15 +427,14 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
   core.String state;
 
   /// A message providing more details about the current state of processing.
-  /// For example, the error message if the operation is failed.
   core.String stateMessage;
 
   /// The last update time of the operation.
   core.String updateTime;
 
-  GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata();
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata();
 
-  GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata.fromJson(
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
       core.Map _json) {
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -465,6 +464,32 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// The long running operation metadata for CreateLabelerPool.
+class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata();
+
+  GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
     }
     return _json;
   }
@@ -527,58 +552,25 @@ class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata {
 
 /// The long running operation metadata for DeleteLabelerPool.
 class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
-  /// The creation time of the operation.
-  core.String createTime;
-
-  /// Used only when Operation.done is false.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "RUNNING" : Operation is still running.
-  /// - "CANCELLING" : Operation is being cancelled.
-  /// - "SUCCEEDED" : Operation succeeded.
-  /// - "FAILED" : Operation failed.
-  /// - "CANCELLED" : Operation is cancelled.
-  core.String state;
-
-  /// A message providing more details about the current state of processing.
-  /// For example, the error message if the operation is failed.
-  core.String stateMessage;
-
-  /// The last update time of the operation.
-  core.String updateTime;
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata();
 
   GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
-    }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
-    }
-    if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
     }
     return _json;
   }
@@ -586,6 +578,9 @@ class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
 
 /// The long running operation metadata for delete processor method.
 class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+
   /// The creation time of the operation.
   core.String createTime;
 
@@ -610,6 +605,11 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
 
   GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata.fromJson(
       core.Map _json) {
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -627,6 +627,9 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -643,8 +646,77 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
   }
 }
 
+/// The long running operation metadata for delete processor version method.
+class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata();
+
+  GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The long running operation metadata for deploy processor version method.
+class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata();
+
+  GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the deploy processor version method.
+class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse {
+  GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse();
+
+  GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse.fromJson(
+      core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// The long running operation metadata for disable processor method.
 class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+
   /// The creation time of the operation.
   core.String createTime;
 
@@ -671,6 +743,11 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
 
   GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata.fromJson(
       core.Map _json) {
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -688,6 +765,9 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -721,6 +801,9 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse {
 
 /// The long running operation metadata for enable processor method.
 class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+
   /// The creation time of the operation.
   core.String createTime;
 
@@ -747,6 +830,11 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
 
   GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata.fromJson(
       core.Map _json) {
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -764,6 +852,9 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -795,60 +886,95 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse {
   }
 }
 
-/// The long running operation metadata for UpdateLabelerPool.
-class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
-  /// The creation time of the operation.
-  core.String createTime;
+/// The long running operation metadata for the undeploy processor version
+/// method.
+class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
 
-  /// Used only when Operation.done is false.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "RUNNING" : Operation is still running.
-  /// - "CANCELLING" : Operation is being cancelled.
-  /// - "SUCCEEDED" : Operation succeeded.
-  /// - "FAILED" : Operation failed.
-  /// - "CANCELLED" : Operation is cancelled.
-  core.String state;
+  GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata();
 
-  /// A message providing more details about the current state of processing.
-  /// For example, the error message if the operation is failed.
-  core.String stateMessage;
-
-  /// The last update time of the operation.
-  core.String updateTime;
-
-  GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata();
-
-  GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata.fromJson(
+  GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata.fromJson(
       core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-    if (_json.containsKey("stateMessage")) {
-      stateMessage = _json["stateMessage"];
-    }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
     }
-    if (state != null) {
-      _json["state"] = state;
+    return _json;
+  }
+}
+
+/// Response message for the undeploy processor version method.
+class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse {
+  GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse();
+
+  GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse.fromJson(
+      core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// The long running operation metadata for updating the human review
+/// configuration.
+class GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata();
+
+  GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
     }
-    if (stateMessage != null) {
-      _json["stateMessage"] = stateMessage;
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
     }
-    if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+    return _json;
+  }
+}
+
+/// The long running operation metadata for UpdateLabelerPool.
+class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
+  /// The basic metadata of the long running operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata();
+
+  GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("commonMetadata")) {
+      commonMetadata =
+          new GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json["commonMetadata"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (commonMetadata != null) {
+      _json["commonMetadata"] = (commonMetadata).toJson();
     }
     return _json;
   }
@@ -1238,21 +1364,20 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
 
 /// Parsed and normalized entity value.
 class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
-  /// Postal address. See also: https: //github.com/googleapis/googleapis/blob/
-  /// // master/google/type/postal_address.proto
+  /// Postal address. See also:
+  /// https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
   GoogleTypePostalAddress addressValue;
 
-  /// Date value. Includes year, month, day. See also: https:
-  /// //github.com/googleapis/googleapis/blob/master/google/type/date.proto
+  /// Date value. Includes year, month, day. See also:
+  /// https://github.com/googleapis/googleapis/blob/master/google/type/date.proto
   GoogleTypeDate dateValue;
 
-  /// DateTime value. Includes date, time, and timezone. See also: https:
-  /// //github.com/googleapis/googleapis/blob/ //
-  /// master/google/type/datetime.proto
+  /// DateTime value. Includes date, time, and timezone. See also:
+  /// https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto
   GoogleTypeDateTime datetimeValue;
 
-  /// Money value. See also: https: //github.com/googleapis/googleapis/blob/ //
-  /// master/google/type/money.proto
+  /// Money value. See also:
+  /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
   GoogleTypeMoney moneyValue;
 
   /// Required. Normalized entity value stored as a string. This field is
@@ -1581,7 +1706,8 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
   /// - "FORM_FIELD" : References a Page.form_fields element.
   core.String layoutType;
 
-  /// Required. Index into the Document.pages element
+  /// Required. Index into the Document.pages element, for example using
+  /// Document.pages to locate the related page element.
   core.String page;
 
   GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef();
@@ -3690,21 +3816,20 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
 
 /// Parsed and normalized entity value.
 class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
-  /// Postal address. See also: https: //github.com/googleapis/googleapis/blob/
-  /// // master/google/type/postal_address.proto
+  /// Postal address. See also:
+  /// https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
   GoogleTypePostalAddress addressValue;
 
-  /// Date value. Includes year, month, day. See also: https:
-  /// //github.com/googleapis/googleapis/blob/master/google/type/date.proto
+  /// Date value. Includes year, month, day. See also:
+  /// https://github.com/googleapis/googleapis/blob/master/google/type/date.proto
   GoogleTypeDate dateValue;
 
-  /// DateTime value. Includes date, time, and timezone. See also: https:
-  /// //github.com/googleapis/googleapis/blob/ //
-  /// master/google/type/datetime.proto
+  /// DateTime value. Includes date, time, and timezone. See also:
+  /// https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto
   GoogleTypeDateTime datetimeValue;
 
-  /// Money value. See also: https: //github.com/googleapis/googleapis/blob/ //
-  /// master/google/type/money.proto
+  /// Money value. See also:
+  /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
   GoogleTypeMoney moneyValue;
 
   /// Required. Normalized entity value stored as a string. This field is
@@ -4080,7 +4205,8 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
   /// - "FORM_FIELD" : References a Page.form_fields element.
   core.String layoutType;
 
-  /// Required. Index into the Document.pages element
+  /// Required. Index into the Document.pages element, for example using
+  /// Document.pages to locate the related page element.
   core.String page;
 
   GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef();
@@ -6604,25 +6730,25 @@ class GoogleTypeColor {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day and time zone are either specified elsewhere or are not significant. The
-/// date is relative to the Proleptic Gregorian Calendar. This can represent: *
-/// A full date, with non-zero year, month and day values * A month and day
-/// value, with a zero year, e.g. an anniversary * A year on its own, with zero
-/// month and day values * A year and month value, with a zero day, e.g. a
-/// credit card expiration date Related types are google.type.TimeOfDay and
-/// `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, such as a birthday. The time of
+/// day and time zone are either specified elsewhere or are insignificant. The
+/// date is relative to the Gregorian Calendar. This can represent one of the
+/// following: * A full date, with non-zero year, month, and day values * A
+/// month and day value, with a zero year, such as an anniversary * A year on
+/// its own, with zero month and day values * A year and month value, with a
+/// zero day, such as a credit card expiration date Related types are
+/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class GoogleTypeDate {
-  /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year by itself or a year and month where the day is not
+  /// Day of a month. Must be from 1 to 31 and valid for the year and month, or
+  /// 0 to specify a year by itself or a year and month where the day isn't
   /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
   /// month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
+  /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
   /// year.
   core.int year;
 
@@ -6656,15 +6782,21 @@ class GoogleTypeDate {
   }
 }
 
-/// Represents civil time in one of a few possible ways: * When utc_offset is
+/// Represents civil time (or occasionally physical time). This type can
+/// represent a civil time in one of a few possible ways: * When utc_offset is
 /// set and time_zone is unset: a civil time on a calendar day with a particular
 /// offset from UTC. * When time_zone is set and utc_offset is unset: a civil
 /// time on a calendar day in a particular time zone. * When neither time_zone
 /// nor utc_offset is set: a civil time on a calendar day in local time. The
 /// date is relative to the Proleptic Gregorian Calendar. If year is 0, the
 /// DateTime is considered not to have a specific year. month and day must have
-/// valid, non-zero values. This type is more flexible than some applications
-/// may want. Make sure to document and validate your application's limitations.
+/// valid, non-zero values. This type may also be used to represent a physical
+/// time if all the date and time fields are set and either case of the
+/// `time_offset` oneof is set. Consider using `Timestamp` message for physical
+/// time instead. If your use case also would like to store the user's timezone,
+/// that can be done in another field. This type is more flexible than some
+/// applications may want. Make sure to document and validate your application's
+/// limitations.
 class GoogleTypeDateTime {
   /// Required. Day of month. Must be from 1 to 31 and valid for the year and
   /// month.
@@ -6769,7 +6901,7 @@ class GoogleTypeDateTime {
 
 /// Represents an amount of money with its currency type.
 class GoogleTypeMoney {
-  /// The 3-letter currency code defined in ISO 4217.
+  /// The three-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
   /// Number of nano (10^-9) units of the amount. The value must be between

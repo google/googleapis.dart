@@ -50,6 +50,21 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
+core.int buildCounterEmpty = 0;
+buildEmpty() {
+  var o = new api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
 core.int buildCounterLicenseAssignment = 0;
 buildLicenseAssignment() {
   var o = new api.LicenseAssignment();
@@ -102,14 +117,14 @@ checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-buildUnnamed4080() {
+buildUnnamed3467() {
   var o = new core.List<api.LicenseAssignment>();
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-checkUnnamed4080(core.List<api.LicenseAssignment> o) {
+checkUnnamed3467(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -121,7 +136,7 @@ buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed4080();
+    o.items = buildUnnamed3467();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -133,7 +148,7 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4080(o.items);
+    checkUnnamed3467(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -141,6 +156,14 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
 }
 
 main() {
+  unittest.group("obj-schema-Empty", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildEmpty();
+      var od = new api.Empty.fromJson(o.toJson());
+      checkEmpty(od);
+    });
+  });
+
   unittest.group("obj-schema-LicenseAssignment", () {
     unittest.test("to-json--from-json", () {
       var o = buildLicenseAssignment();
@@ -230,12 +253,14 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = "";
+        var resp = convert.json.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_productId, arg_skuId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+          .then(unittest.expectAsync1(((response) {
+        checkEmpty(response);
+      })));
     });
 
     unittest.test("method--get", () {
@@ -465,8 +490,8 @@ main() {
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_customerId = "foo";
-      var arg_pageToken = "foo";
       var arg_maxResults = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -518,10 +543,10 @@ main() {
         }
         unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -532,8 +557,8 @@ main() {
       }), true);
       res
           .listForProductAndSku(arg_productId, arg_skuId, arg_customerId,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLicenseAssignmentList(response);

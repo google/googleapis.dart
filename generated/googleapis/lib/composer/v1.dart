@@ -321,15 +321,16 @@ class ProjectsLocationsEnvironmentsResourceApi {
   /// It is an error to provide both a mask of this form and the "labels" mask.
   /// config.nodeCount Horizontally scale the number of nodes in the
   /// environment. An integer greater than or equal to 3 must be provided in the
-  /// `config.nodeCount` field. config.softwareConfig.airflowConfigOverrides
-  /// Replace all Apache Airflow config overrides. If a replacement config
-  /// overrides map is not included in `environment`, all config overrides are
-  /// cleared. It is an error to provide both this mask and a mask specifying
-  /// one or more individual config overrides.
-  /// config.softwareConfig.airflowConfigOverrides.section-name Override the
-  /// Apache Airflow config property name in the section named section,
-  /// preserving other properties. To delete the property override, include it
-  /// in `updateMask` and omit its mapping in
+  /// `config.nodeCount` field. config.webServerNetworkAccessControl Replace the
+  /// environment's current WebServerNetworkAccessControl.
+  /// config.softwareConfig.airflowConfigOverrides Replace all Apache Airflow
+  /// config overrides. If a replacement config overrides map is not included in
+  /// `environment`, all config overrides are cleared. It is an error to provide
+  /// both this mask and a mask specifying one or more individual config
+  /// overrides. config.softwareConfig.airflowConfigOverrides.section-name
+  /// Override the Apache Airflow config property name in the section named
+  /// section, preserving other properties. To delete the property override,
+  /// include it in `updateMask` and omit its mapping in
   /// `environment.config.softwareConfig.airflowConfigOverrides`. It is an error
   /// to provide both a mask of this form and the
   /// "config.softwareConfig.airflowConfigOverrides" mask.
@@ -397,10 +398,13 @@ class ProjectsLocationsImageVersionsResourceApi {
   /// form: "projects/{projectId}/locations/{locationId}"
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of image_versions to return.
+  ///
+  /// [includePastReleases] - Whether or not image versions from old releases
+  /// should be included.
+  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of image_versions to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -413,7 +417,10 @@ class ProjectsLocationsImageVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListImageVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize,
+      core.bool includePastReleases,
+      core.String pageToken,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -424,11 +431,14 @@ class ProjectsLocationsImageVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (includePastReleases != null) {
+      _queryParams["includePastReleases"] = ["${includePastReleases}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -563,11 +573,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [filter] - The standard list filter.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -580,9 +590,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
       core.int pageSize,
-      core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -594,14 +604,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -617,6 +627,96 @@ class ProjectsLocationsOperationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+}
+
+/// Allowed IP range with user-provided description.
+class AllowedIpRange {
+  /// Optional. User-provided description. It must contain at most 300
+  /// characters.
+  core.String description;
+
+  /// IP address or range, defined using CIDR notation, of requests that this
+  /// rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or
+  /// `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range
+  /// prefixes should be properly truncated. For example, `1.2.3.4/24` should be
+  /// truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be
+  /// truncated to `2001:db8::/32`.
+  core.String value;
+
+  AllowedIpRange();
+
+  AllowedIpRange.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// Represents a whole or partial calendar date, such as a birthday. The time of
+/// day and time zone are either specified elsewhere or are insignificant. The
+/// date is relative to the Gregorian Calendar. This can represent one of the
+/// following: * A full date, with non-zero year, month, and day values * A
+/// month and day value, with a zero year, such as an anniversary * A year on
+/// its own, with zero month and day values * A year and month value, with a
+/// zero day, such as a credit card expiration date Related types are
+/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+class Date {
+  /// Day of a month. Must be from 1 to 31 and valid for the year and month, or
+  /// 0 to specify a year by itself or a year and month where the day isn't
+  /// significant.
+  core.int day;
+
+  /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+  /// month and day.
+  core.int month;
+
+  /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+  /// year.
+  core.int year;
+
+  Date();
+
+  Date.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("month")) {
+      month = _json["month"];
+    }
+    if (_json.containsKey("year")) {
+      year = _json["year"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (month != null) {
+      _json["month"] = month;
+    }
+    if (year != null) {
+      _json["year"] = year;
+    }
+    return _json;
   }
 }
 
@@ -762,6 +862,11 @@ class EnvironmentConfig {
   /// The configuration settings for software inside the environment.
   SoftwareConfig softwareConfig;
 
+  /// Optional. The network-level access control policy for the Airflow web
+  /// server. If unspecified, no network-level access restrictions will be
+  /// applied.
+  WebServerNetworkAccessControl webServerNetworkAccessControl;
+
   EnvironmentConfig();
 
   EnvironmentConfig.fromJson(core.Map _json) {
@@ -786,6 +891,11 @@ class EnvironmentConfig {
     }
     if (_json.containsKey("softwareConfig")) {
       softwareConfig = new SoftwareConfig.fromJson(_json["softwareConfig"]);
+    }
+    if (_json.containsKey("webServerNetworkAccessControl")) {
+      webServerNetworkAccessControl =
+          new WebServerNetworkAccessControl.fromJson(
+              _json["webServerNetworkAccessControl"]);
     }
   }
 
@@ -812,6 +922,10 @@ class EnvironmentConfig {
     }
     if (softwareConfig != null) {
       _json["softwareConfig"] = (softwareConfig).toJson();
+    }
+    if (webServerNetworkAccessControl != null) {
+      _json["webServerNetworkAccessControl"] =
+          (webServerNetworkAccessControl).toJson();
     }
     return _json;
   }
@@ -899,6 +1013,9 @@ class IPAllocationPolicy {
 
 /// ImageVersion information
 class ImageVersion {
+  /// Whether it is impossible to create an environment with the image version.
+  core.bool creationDisabled;
+
   /// The string identifier of the ImageVersion, in the form:
   /// "composer-x.y.z-airflow-a.b(.c)"
   core.String imageVersionId;
@@ -907,35 +1024,60 @@ class ImageVersion {
   /// environment creation if no input ImageVersion is specified.
   core.bool isDefault;
 
+  /// The date of the version release.
+  Date releaseDate;
+
   /// supported python versions
   core.List<core.String> supportedPythonVersions;
+
+  /// Whether it is impossible to upgrade an environment running with the image
+  /// version.
+  core.bool upgradeDisabled;
 
   ImageVersion();
 
   ImageVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("creationDisabled")) {
+      creationDisabled = _json["creationDisabled"];
+    }
     if (_json.containsKey("imageVersionId")) {
       imageVersionId = _json["imageVersionId"];
     }
     if (_json.containsKey("isDefault")) {
       isDefault = _json["isDefault"];
     }
+    if (_json.containsKey("releaseDate")) {
+      releaseDate = new Date.fromJson(_json["releaseDate"]);
+    }
     if (_json.containsKey("supportedPythonVersions")) {
       supportedPythonVersions =
           (_json["supportedPythonVersions"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("upgradeDisabled")) {
+      upgradeDisabled = _json["upgradeDisabled"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (creationDisabled != null) {
+      _json["creationDisabled"] = creationDisabled;
+    }
     if (imageVersionId != null) {
       _json["imageVersionId"] = imageVersionId;
     }
     if (isDefault != null) {
       _json["isDefault"] = isDefault;
     }
+    if (releaseDate != null) {
+      _json["releaseDate"] = (releaseDate).toJson();
+    }
     if (supportedPythonVersions != null) {
       _json["supportedPythonVersions"] = supportedPythonVersions;
+    }
+    if (upgradeDisabled != null) {
+      _json["upgradeDisabled"] = upgradeDisabled;
     }
     return _json;
   }
@@ -1626,6 +1768,32 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Network-level access control policy for the Airflow web server.
+class WebServerNetworkAccessControl {
+  /// A collection of allowed IP ranges with descriptions.
+  core.List<AllowedIpRange> allowedIpRanges;
+
+  WebServerNetworkAccessControl();
+
+  WebServerNetworkAccessControl.fromJson(core.Map _json) {
+    if (_json.containsKey("allowedIpRanges")) {
+      allowedIpRanges = (_json["allowedIpRanges"] as core.List)
+          .map<AllowedIpRange>((value) => new AllowedIpRange.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (allowedIpRanges != null) {
+      _json["allowedIpRanges"] =
+          allowedIpRanges.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

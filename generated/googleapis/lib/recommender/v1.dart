@@ -334,18 +334,18 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+$".
   ///
-  /// [filter] - Filter expression to restrict the recommendations returned.
-  /// Supported filter fields: state_info.state Eg:
-  /// `state_info.state:"DISMISSED" or state_info.state:"FAILED"
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. If not specified, the server
+  /// will determine the number of results to return.
   ///
   /// [pageToken] - Optional. If present, retrieves the next batch of results
   /// from the preceding call to this method. `page_token` must be the value of
   /// `next_page_token` from the previous response. The values of other method
   /// parameters must be identical to those in the previous call.
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. If not specified, the server
-  /// will determine the number of results to return.
+  /// [filter] - Filter expression to restrict the recommendations returned.
+  /// Supported filter fields: state_info.state Eg:
+  /// `state_info.state:"DISMISSED" or state_info.state:"FAILED"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -359,9 +359,9 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
       core.String parent,
-      {core.String filter,
+      {core.int pageSize,
       core.String pageToken,
-      core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -373,14 +373,14 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1103,9 +1103,9 @@ class GoogleCloudRecommenderV1Operation {
   /// tested/modified. This is intended to be an exact match per filter. To
   /// perform advanced matching, use path_value_matchers. * Example: {
   /// "/versions / * /name" : "it-123" "/versions / * /targetSize/percent": 20 }
-  /// * Example: { "/bindings / * /role": "roles/admin" "/bindings / *
-  /// /condition" : null } * Example: { "/bindings / * /role": "roles/admin"
-  /// "/bindings / * /members / * " : ["x@google.com", "y@google.com"] } When
+  /// * Example: { "/bindings / * /role": "roles/owner" "/bindings / *
+  /// /condition" : null } * Example: { "/bindings / * /role": "roles/owner"
+  /// "/bindings / * /members / * " : ["x@example.com", "y@example.com"] } When
   /// both path_filters and path_value_matchers are set, an implicit AND must be
   /// performed.
   ///
@@ -1523,7 +1523,7 @@ class GoogleCloudRecommenderV1ValueMatcher {
 
 /// Represents an amount of money with its currency type.
 class GoogleTypeMoney {
-  /// The 3-letter currency code defined in ISO 4217.
+  /// The three-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
   /// Number of nano (10^-9) units of the amount. The value must be between

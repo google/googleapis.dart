@@ -4912,6 +4912,10 @@ class BucketIamConfiguration {
   /// uniformBucketLevelAccess field to enable and disable the feature.
   BucketIamConfigurationBucketPolicyOnly bucketPolicyOnly;
 
+  /// The bucket's Public Access Prevention configuration. Currently,
+  /// 'unspecified' and 'enforced' are supported.
+  core.String publicAccessPrevention;
+
   /// The bucket's uniform bucket-level access configuration.
   BucketIamConfigurationUniformBucketLevelAccess uniformBucketLevelAccess;
 
@@ -4921,6 +4925,9 @@ class BucketIamConfiguration {
     if (_json.containsKey("bucketPolicyOnly")) {
       bucketPolicyOnly = new BucketIamConfigurationBucketPolicyOnly.fromJson(
           _json["bucketPolicyOnly"]);
+    }
+    if (_json.containsKey("publicAccessPrevention")) {
+      publicAccessPrevention = _json["publicAccessPrevention"];
     }
     if (_json.containsKey("uniformBucketLevelAccess")) {
       uniformBucketLevelAccess =
@@ -4934,6 +4941,9 @@ class BucketIamConfiguration {
         new core.Map<core.String, core.Object>();
     if (bucketPolicyOnly != null) {
       _json["bucketPolicyOnly"] = (bucketPolicyOnly).toJson();
+    }
+    if (publicAccessPrevention != null) {
+      _json["publicAccessPrevention"] = publicAccessPrevention;
     }
     if (uniformBucketLevelAccess != null) {
       _json["uniformBucketLevelAccess"] = (uniformBucketLevelAccess).toJson();

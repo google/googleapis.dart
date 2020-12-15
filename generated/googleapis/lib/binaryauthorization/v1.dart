@@ -368,13 +368,13 @@ class ProjectsAttestorsResourceApi {
   /// attestors, in the format `projects / * `.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListAttestorsResponse.next_page_token returned from the previous call to
   /// the `ListAttestors` method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -387,7 +387,7 @@ class ProjectsAttestorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAttestorsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -398,11 +398,11 @@ class ProjectsAttestorsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -894,7 +894,7 @@ class AdmissionRule {
 /// An admission whitelist pattern exempts images from checks by admission
 /// rules.
 class AdmissionWhitelistPattern {
-  /// An image name pattern to whitelist, in the form `registry/path/to/image`.
+  /// An image name pattern to allowlist, in the form `registry/path/to/image`.
   /// This supports a trailing `*` as a wildcard, but this is allowed only in
   /// text after the `registry/` part.
   core.String namePattern;
@@ -1110,10 +1110,6 @@ class AttestorPublicKey {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -1161,9 +1157,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -1178,9 +1171,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -1511,7 +1501,7 @@ class PkixPublicKey {
 
 /// A policy for container image binary authorization.
 class Policy {
-  /// Optional. Admission policy whitelisting. A matching admission request will
+  /// Optional. Admission policy allowlisting. A matching admission request will
   /// always be permitted. This feature is typically used to exclude Google or
   /// third-party infrastructure images from Binary Authorization policies.
   core.List<AdmissionWhitelistPattern> admissionWhitelistPatterns;

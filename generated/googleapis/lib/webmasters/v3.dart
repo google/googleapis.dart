@@ -628,6 +628,11 @@ class SearchAnalyticsQueryRequest {
   /// the requested type is invalid.
   core.String aggregationType;
 
+  /// [Optional] If "all" (case-insensitive), data will include fresh data. If
+  /// "final" (case-insensitive) or if this parameter is omitted, the returned
+  /// data will include only finalized data.
+  core.String dataState;
+
   /// [Optional] Zero or more filters to apply to the dimension grouping values;
   /// for example, 'query contains "buy"' to see only data where the query
   /// string contains the substring "buy" (not case-sensitive). You can filter
@@ -667,6 +672,9 @@ class SearchAnalyticsQueryRequest {
     if (_json.containsKey("aggregationType")) {
       aggregationType = _json["aggregationType"];
     }
+    if (_json.containsKey("dataState")) {
+      dataState = _json["dataState"];
+    }
     if (_json.containsKey("dimensionFilterGroups")) {
       dimensionFilterGroups = (_json["dimensionFilterGroups"] as core.List)
           .map<ApiDimensionFilterGroup>(
@@ -698,6 +706,9 @@ class SearchAnalyticsQueryRequest {
         new core.Map<core.String, core.Object>();
     if (aggregationType != null) {
       _json["aggregationType"] = aggregationType;
+    }
+    if (dataState != null) {
+      _json["dataState"] = dataState;
     }
     if (dimensionFilterGroups != null) {
       _json["dimensionFilterGroups"] =

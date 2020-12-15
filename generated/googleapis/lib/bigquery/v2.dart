@@ -65,6 +65,8 @@ class BigqueryApi {
   ModelsResourceApi get models => new ModelsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   RoutinesResourceApi get routines => new RoutinesResourceApi(_requester);
+  RowAccessPoliciesResourceApi get rowAccessPolicies =>
+      new RowAccessPoliciesResourceApi(_requester);
   TabledataResourceApi get tabledata => new TabledataResourceApi(_requester);
   TablesResourceApi get tables => new TablesResourceApi(_requester);
 
@@ -249,16 +251,16 @@ class DatasetsResourceApi {
   ///
   /// [all] - Whether to list all datasets, including hidden ones
   ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
+  ///
+  /// [maxResults] - The maximum number of results to return
+  ///
   /// [filter] - An expression for filtering the results of the request by
   /// label. The syntax is "labels.<name>[:<value>]". Multiple filters can be
   /// ANDed together by connecting with a space. Example:
   /// "labels.department:receiving labels.active". See Filtering datasets using
   /// labels for details.
-  ///
-  /// [maxResults] - The maximum number of results to return
-  ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -272,9 +274,9 @@ class DatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future<DatasetList> list(core.String projectId,
       {core.bool all,
-      core.String filter,
-      core.int maxResults,
       core.String pageToken,
+      core.int maxResults,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -289,14 +291,14 @@ class DatasetsResourceApi {
     if (all != null) {
       _queryParams["all"] = ["${all}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -569,20 +571,20 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the query job
   ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
+  ///
   /// [maxResults] - Maximum number of results to read
-  ///
-  /// [startIndex] - Zero-based index of the starting row
-  ///
-  /// [timeoutMs] - How long to wait for the query to complete, in milliseconds,
-  /// before returning. Default is 10 seconds. If the timeout passes before the
-  /// job completes, the 'jobComplete' field in the response will be false
   ///
   /// [location] - The geographic location where the job should run. Required
   /// except for US and EU. See details at
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
+  /// [timeoutMs] - How long to wait for the query to complete, in milliseconds,
+  /// before returning. Default is 10 seconds. If the timeout passes before the
+  /// job completes, the 'jobComplete' field in the response will be false
+  ///
+  /// [startIndex] - Zero-based index of the starting row
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -596,11 +598,11 @@ class JobsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetQueryResultsResponse> getQueryResults(
       core.String projectId, core.String jobId,
-      {core.int maxResults,
-      core.String startIndex,
-      core.int timeoutMs,
+      {core.String pageToken,
+      core.int maxResults,
       core.String location,
-      core.String pageToken,
+      core.int timeoutMs,
+      core.String startIndex,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -615,20 +617,20 @@ class JobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = [startIndex];
-    }
-    if (timeoutMs != null) {
-      _queryParams["timeoutMs"] = ["${timeoutMs}"];
     }
     if (location != null) {
       _queryParams["location"] = [location];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (timeoutMs != null) {
+      _queryParams["timeoutMs"] = ["${timeoutMs}"];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = [startIndex];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -728,18 +730,6 @@ class JobsResourceApi {
   ///
   /// [projectId] - Project ID of the jobs to list
   ///
-  /// [maxCreationTime] - Max value for job creation time, in milliseconds since
-  /// the POSIX epoch. If set, only jobs created before or at this timestamp are
-  /// returned
-  ///
-  /// [maxResults] - Maximum number of results to return
-  ///
-  /// [stateFilter] - Filter for job state
-  ///
-  /// [minCreationTime] - Min value for job creation time, in milliseconds since
-  /// the POSIX epoch. If set, only jobs created after or at this timestamp are
-  /// returned
-  ///
   /// [parentJobId] - If set, retrieves only jobs whose parent is this job.
   /// Otherwise, retrieves only jobs which have no parent
   ///
@@ -748,11 +738,23 @@ class JobsResourceApi {
   /// - "full" : Includes all job data
   /// - "minimal" : Does not include the job configuration
   ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
+  /// [stateFilter] - Filter for job state
   ///
   /// [allUsers] - Whether to display jobs owned by all users in the project.
   /// Default false
+  ///
+  /// [minCreationTime] - Min value for job creation time, in milliseconds since
+  /// the POSIX epoch. If set, only jobs created after or at this timestamp are
+  /// returned
+  ///
+  /// [maxCreationTime] - Max value for job creation time, in milliseconds since
+  /// the POSIX epoch. If set, only jobs created before or at this timestamp are
+  /// returned
+  ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
+  ///
+  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -765,14 +767,14 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<JobList> list(core.String projectId,
-      {core.String maxCreationTime,
-      core.int maxResults,
-      core.List<core.String> stateFilter,
-      core.String minCreationTime,
-      core.String parentJobId,
+      {core.String parentJobId,
       core.String projection,
-      core.String pageToken,
+      core.List<core.String> stateFilter,
       core.bool allUsers,
+      core.String minCreationTime,
+      core.String maxCreationTime,
+      core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -784,29 +786,29 @@ class JobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (maxCreationTime != null) {
-      _queryParams["maxCreationTime"] = [maxCreationTime];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (stateFilter != null) {
-      _queryParams["stateFilter"] = stateFilter;
-    }
-    if (minCreationTime != null) {
-      _queryParams["minCreationTime"] = [minCreationTime];
-    }
     if (parentJobId != null) {
       _queryParams["parentJobId"] = [parentJobId];
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (stateFilter != null) {
+      _queryParams["stateFilter"] = stateFilter;
     }
     if (allUsers != null) {
       _queryParams["allUsers"] = ["${allUsers}"];
+    }
+    if (minCreationTime != null) {
+      _queryParams["minCreationTime"] = [minCreationTime];
+    }
+    if (maxCreationTime != null) {
+      _queryParams["maxCreationTime"] = [maxCreationTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1014,12 +1016,12 @@ class ModelsResourceApi {
   /// [datasetId] - Required. Dataset ID of the models to list.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [pageToken] - Page token, returned by a previous call to request the next
-  /// page of results
-  ///
   /// [maxResults] - The maximum number of results to return in a single
   /// response page. Leverage the page tokens to iterate through the entire
   /// collection.
+  ///
+  /// [pageToken] - Page token, returned by a previous call to request the next
+  /// page of results
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1033,7 +1035,7 @@ class ModelsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListModelsResponse> list(
       core.String projectId, core.String datasetId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1047,11 +1049,11 @@ class ModelsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1197,10 +1199,10 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [maxResults] - Maximum number of results to return
+  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
-  ///
-  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1213,7 +1215,7 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProjectList> list(
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1221,11 +1223,11 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1449,23 +1451,23 @@ class RoutinesResourceApi {
   /// [datasetId] - Required. Dataset ID of the routines to list
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
+  ///
+  /// [filter] - If set, then only the Routines matching this filter are
+  /// returned. The current supported form is either "routine_type:" or
+  /// "routineType:", where is a RoutineType enum. Example:
+  /// "routineType:SCALAR_FUNCTION".
+  ///
   /// [readMask] - If set, then only the Routine fields in the field mask, as
   /// well as project_id, dataset_id and routine_id, are returned in the
   /// response. If unset, then the following Routine fields are returned: etag,
   /// project_id, dataset_id, routine_id, routine_type, creation_time,
   /// last_modified_time, and language.
   ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
-  ///
   /// [maxResults] - The maximum number of results to return in a single
   /// response page. Leverage the page tokens to iterate through the entire
   /// collection.
-  ///
-  /// [filter] - If set, then only the Routines matching this filter are
-  /// returned. The current supported form is either "routine_type:" or
-  /// "routineType:", where is a RoutineType enum. Example:
-  /// "routineType:SCALAR_FUNCTION".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1479,10 +1481,10 @@ class RoutinesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListRoutinesResponse> list(
       core.String projectId, core.String datasetId,
-      {core.String readMask,
-      core.String pageToken,
-      core.int maxResults,
+      {core.String pageToken,
       core.String filter,
+      core.String readMask,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1497,17 +1499,17 @@ class RoutinesResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-    if (readMask != null) {
-      _queryParams["readMask"] = [readMask];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (readMask != null) {
+      _queryParams["readMask"] = [readMask];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1594,6 +1596,89 @@ class RoutinesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Routine.fromJson(data));
+  }
+}
+
+class RowAccessPoliciesResourceApi {
+  final commons.ApiRequester _requester;
+
+  RowAccessPoliciesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all row access policies on the specified table.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. Project ID of the row access policies to list.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Required. Dataset ID of row access policies to list.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [tableId] - Required. Table ID of the table to list row access policies.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response
+  /// page. Leverage the page tokens to iterate through the entire collection.
+  ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRowAccessPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRowAccessPoliciesResponse> list(
+      core.String projectId, core.String datasetId, core.String tableId,
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (tableId == null) {
+      throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/tables/' +
+        commons.Escaper.ecapeVariableReserved('$tableId') +
+        '/rowAccessPolicies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListRowAccessPoliciesResponse.fromJson(data));
   }
 }
 
@@ -1685,13 +1770,13 @@ class TabledataResourceApi {
   ///
   /// [maxResults] - Maximum number of results to return
   ///
+  /// [pageToken] - Page token, returned by a previous call, identifying the
+  /// result set
+  ///
   /// [selectedFields] - List of fields to return (comma-separated). If
   /// unspecified, all fields are returned
   ///
   /// [startIndex] - Zero-based index of the starting row to read
-  ///
-  /// [pageToken] - Page token, returned by a previous call, identifying the
-  /// result set
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1706,9 +1791,9 @@ class TabledataResourceApi {
   async.Future<TableDataList> list(
       core.String projectId, core.String datasetId, core.String tableId,
       {core.int maxResults,
+      core.String pageToken,
       core.String selectedFields,
       core.String startIndex,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1729,14 +1814,14 @@ class TabledataResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (selectedFields != null) {
       _queryParams["selectedFields"] = [selectedFields];
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = [startIndex];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2012,10 +2097,10 @@ class TablesResourceApi {
   ///
   /// [datasetId] - Dataset ID of the tables to list
   ///
+  /// [maxResults] - Maximum number of results to return
+  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
-  ///
-  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2028,7 +2113,7 @@ class TablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TableList> list(core.String projectId, core.String datasetId,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2042,11 +2127,11 @@ class TablesResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3371,6 +3456,8 @@ class BinaryConfusionMatrix {
 
 /// Associates `members` with a `role`.
 class Binding {
+  core.String bindingId;
+
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -3418,6 +3505,9 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("bindingId")) {
+      bindingId = _json["bindingId"];
+    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -3432,6 +3522,9 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bindingId != null) {
+      _json["bindingId"] = bindingId;
+    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -4089,6 +4182,14 @@ class DatasetAccess {
   /// it will be returned back as "OWNER".
   core.String role;
 
+  /// [Pick one] A routine from a different dataset to grant access to. Queries
+  /// executed against that routine will have read access to
+  /// views/tables/routines in this dataset. Only UDF is supported for now. The
+  /// role field is not required when this field is set. If that routine is
+  /// updated by any user, access to the routine needs to be granted again via
+  /// an update operation.
+  RoutineReference routine;
+
   /// [Pick one] A special group to grant access to. Possible values include:
   /// projectOwners: Owners of the enclosing project. projectReaders: Readers of
   /// the enclosing project. projectWriters: Writers of the enclosing project.
@@ -4123,6 +4224,9 @@ class DatasetAccess {
     if (_json.containsKey("role")) {
       role = _json["role"];
     }
+    if (_json.containsKey("routine")) {
+      routine = new RoutineReference.fromJson(_json["routine"]);
+    }
     if (_json.containsKey("specialGroup")) {
       specialGroup = _json["specialGroup"];
     }
@@ -4148,6 +4252,9 @@ class DatasetAccess {
     }
     if (role != null) {
       _json["role"] = role;
+    }
+    if (routine != null) {
+      _json["routine"] = (routine).toJson();
     }
     if (specialGroup != null) {
       _json["specialGroup"] = specialGroup;
@@ -5073,6 +5180,40 @@ class ExplainQueryStep {
   }
 }
 
+/// Explanation for a single feature.
+class Explanation {
+  /// Attribution of feature.
+  core.double attribution;
+
+  /// Full name of the feature. For non-numerical features, will be formatted
+  /// like .. Overall size of feature name will always be truncated to first 120
+  /// characters.
+  core.String featureName;
+
+  Explanation();
+
+  Explanation.fromJson(core.Map _json) {
+    if (_json.containsKey("attribution")) {
+      attribution = _json["attribution"].toDouble();
+    }
+    if (_json.containsKey("featureName")) {
+      featureName = _json["featureName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attribution != null) {
+      _json["attribution"] = attribution;
+    }
+    if (featureName != null) {
+      _json["featureName"] = featureName;
+    }
+    return _json;
+  }
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
 /// are documented at https://github.com/google/cel-spec. Example (Comparison):
@@ -5557,6 +5698,45 @@ class GetServiceAccountResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/// Global explanations containing the top most important features after
+/// training.
+class GlobalExplanation {
+  /// Class label for this set of global explanations. Will be empty/null for
+  /// binary logistic and linear regression models. Sorted alphabetically in
+  /// descending order.
+  core.String classLabel;
+
+  /// A list of the top global explanations. Sorted by absolute value of
+  /// attribution in descending order.
+  core.List<Explanation> explanations;
+
+  GlobalExplanation();
+
+  GlobalExplanation.fromJson(core.Map _json) {
+    if (_json.containsKey("classLabel")) {
+      classLabel = _json["classLabel"];
+    }
+    if (_json.containsKey("explanations")) {
+      explanations = (_json["explanations"] as core.List)
+          .map<Explanation>((value) => new Explanation.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (classLabel != null) {
+      _json["classLabel"] = classLabel;
+    }
+    if (explanations != null) {
+      _json["explanations"] =
+          explanations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -7855,6 +8035,41 @@ class ListRoutinesResponse {
   }
 }
 
+/// Response message for the ListRowAccessPolicies method.
+class ListRowAccessPoliciesResponse {
+  /// A token to request the next page of results.
+  core.String nextPageToken;
+
+  /// Row access policies on the requested table.
+  core.List<RowAccessPolicy> rowAccessPolicies;
+
+  ListRowAccessPoliciesResponse();
+
+  ListRowAccessPoliciesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("rowAccessPolicies")) {
+      rowAccessPolicies = (_json["rowAccessPolicies"] as core.List)
+          .map<RowAccessPolicy>((value) => new RowAccessPolicy.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (rowAccessPolicies != null) {
+      _json["rowAccessPolicies"] =
+          rowAccessPolicies.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// BigQuery-specific metadata about a location. This will be set on
 /// google.cloud.location.Location.metadata in Cloud Location API responses.
 class LocationMetadata {
@@ -9553,6 +9768,75 @@ class Row {
   }
 }
 
+/// Represents access on a subset of rows on the specified table, defined by its
+/// filter predicate. Access to the subset of rows is controlled by its IAM
+/// policy.
+class RowAccessPolicy {
+  /// Output only. The time when this row access policy was created, in
+  /// milliseconds since the epoch.
+  core.String creationTime;
+
+  /// Output only. A hash of this resource.
+  core.String etag;
+
+  /// Required. A SQL boolean expression that represents the rows defined by
+  /// this row access policy, similar to the boolean expression in a WHERE
+  /// clause of a SELECT query on a table. References to other tables, routines,
+  /// and temporary functions are not supported. Examples: region="EU"
+  /// date_field = CAST('2019-9-27' as DATE) nullable_field is not NULL
+  /// numeric_field BETWEEN 1.0 AND 5.0
+  core.String filterPredicate;
+
+  /// Output only. The time when this row access policy was last modified, in
+  /// milliseconds since the epoch.
+  core.String lastModifiedTime;
+
+  /// Required. Reference describing the ID of this row access policy.
+  RowAccessPolicyReference rowAccessPolicyReference;
+
+  RowAccessPolicy();
+
+  RowAccessPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("filterPredicate")) {
+      filterPredicate = _json["filterPredicate"];
+    }
+    if (_json.containsKey("lastModifiedTime")) {
+      lastModifiedTime = _json["lastModifiedTime"];
+    }
+    if (_json.containsKey("rowAccessPolicyReference")) {
+      rowAccessPolicyReference = new RowAccessPolicyReference.fromJson(
+          _json["rowAccessPolicyReference"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (filterPredicate != null) {
+      _json["filterPredicate"] = filterPredicate;
+    }
+    if (lastModifiedTime != null) {
+      _json["lastModifiedTime"] = lastModifiedTime;
+    }
+    if (rowAccessPolicyReference != null) {
+      _json["rowAccessPolicyReference"] = (rowAccessPolicyReference).toJson();
+    }
+    return _json;
+  }
+}
+
 class RowAccessPolicyReference {
   /// [Required] The ID of the dataset containing this row access policy.
   core.String datasetId;
@@ -10085,11 +10369,10 @@ class Table {
 
   /// [Output-only] Describes the table type. The following values are
   /// supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined
-  /// by a SQL query. [TrustedTester] SNAPSHOT: An immutable, read-only table
-  /// that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL
-  /// query whose result is persisted. EXTERNAL: A table that references data
-  /// stored in an external storage system, such as Google Cloud Storage. The
-  /// default value is TABLE.
+  /// by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of
+  /// another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result
+  /// is persisted. EXTERNAL: A table that references data stored in an external
+  /// storage system, such as Google Cloud Storage. The default value is TABLE.
   core.String type;
 
   /// [Optional] The view definition.
@@ -11642,6 +11925,11 @@ class TrainingRun {
   /// end of training.
   EvaluationMetrics evaluationMetrics;
 
+  /// Global explanations for important features of the model. For multi-class
+  /// models, there is one entry for each label class. For other models, there
+  /// is only one entry in the list.
+  core.List<GlobalExplanation> globalExplanations;
+
   /// Output of each iteration run, results.size() <= max_iterations.
   core.List<IterationResult> results;
 
@@ -11661,6 +11949,12 @@ class TrainingRun {
     if (_json.containsKey("evaluationMetrics")) {
       evaluationMetrics =
           new EvaluationMetrics.fromJson(_json["evaluationMetrics"]);
+    }
+    if (_json.containsKey("globalExplanations")) {
+      globalExplanations = (_json["globalExplanations"] as core.List)
+          .map<GlobalExplanation>(
+              (value) => new GlobalExplanation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
@@ -11683,6 +11977,10 @@ class TrainingRun {
     }
     if (evaluationMetrics != null) {
       _json["evaluationMetrics"] = (evaluationMetrics).toJson();
+    }
+    if (globalExplanations != null) {
+      _json["globalExplanations"] =
+          globalExplanations.map((value) => (value).toJson()).toList();
     }
     if (results != null) {
       _json["results"] = results.map((value) => (value).toJson()).toList();

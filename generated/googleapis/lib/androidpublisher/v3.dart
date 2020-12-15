@@ -2651,9 +2651,9 @@ class InappproductsResourceApi {
   ///
   /// [packageName] - Package name of the app.
   ///
-  /// [token] - Pagination token. If empty, list starts at the first product.
-  ///
   /// [maxResults] - How many results the list operation should return.
+  ///
+  /// [token] - Pagination token. If empty, list starts at the first product.
   ///
   /// [startIndex] - The index of the first element to return.
   ///
@@ -2668,8 +2668,8 @@ class InappproductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InappproductsListResponse> list(core.String packageName,
-      {core.String token,
-      core.int maxResults,
+      {core.int maxResults,
+      core.String token,
       core.int startIndex,
       core.String $fields}) {
     var _url;
@@ -2682,11 +2682,11 @@ class InappproductsResourceApi {
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
-    if (token != null) {
-      _queryParams["token"] = [token];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (token != null) {
+      _queryParams["token"] = [token];
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
@@ -3298,6 +3298,9 @@ class PurchasesSubscriptionsResourceApi {
   /// [packageName] - The package name of the application for which this
   /// subscription was purchased (for example, 'com.some.thing').
   ///
+  /// [subscriptionId] - The purchased subscription ID (for example,
+  /// 'monthly001').
+  ///
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
   ///
@@ -3309,7 +3312,8 @@ class PurchasesSubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future cancel(core.String packageName, core.String token,
+  async.Future cancel(
+      core.String packageName, core.String subscriptionId, core.String token,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3320,6 +3324,9 @@ class PurchasesSubscriptionsResourceApi {
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (subscriptionId == null) {
+      throw new core.ArgumentError("Parameter subscriptionId is required.");
     }
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
@@ -3332,7 +3339,9 @@ class PurchasesSubscriptionsResourceApi {
 
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
-        '/purchases/subscriptions/tokens/' +
+        '/purchases/subscriptions/' +
+        commons.Escaper.ecapeVariable('$subscriptionId') +
+        '/tokens/' +
         commons.Escaper.ecapeVariable('$token') +
         ':cancel';
 
@@ -3624,29 +3633,6 @@ class PurchasesVoidedpurchasesResourceApi {
   /// [packageName] - The package name of the application for which voided
   /// purchases need to be returned (for example, 'com.some.thing').
   ///
-  /// [startIndex] - Defines the index of the first element to return. This can
-  /// only be used if indexed paging is enabled.
-  ///
-  /// [maxResults] - Defines how many results the list operation should return.
-  /// The default number depends on the resource collection.
-  ///
-  /// [token] - Defines the token of the page to return, usually taken from
-  /// TokenPagination. This can only be used if token paging is enabled.
-  ///
-  /// [startTime] - The time, in milliseconds since the Epoch, of the oldest
-  /// voided purchase that you want to see in the response. The value of this
-  /// parameter cannot be older than 30 days and is ignored if a pagination
-  /// token is set. Default value is current time minus 30 days. Note: This
-  /// filter is applied on the time at which the record is seen as voided by our
-  /// systems and not the actual voided time returned in the response.
-  ///
-  /// [endTime] - The time, in milliseconds since the Epoch, of the newest
-  /// voided purchase that you want to see in the response. The value of this
-  /// parameter cannot be greater than the current time and is ignored if a
-  /// pagination token is set. Default value is current time. Note: This filter
-  /// is applied on the time at which the record is seen as voided by our
-  /// systems and not the actual voided time returned in the response.
-  ///
   /// [type] - The type of voided purchases that you want to see in the
   /// response. Possible values are: 0. Only voided in-app product purchases
   /// will be returned in the response. This is the default value. 1. Both
@@ -3656,6 +3642,29 @@ class PurchasesVoidedpurchasesResourceApi {
   /// identifies one-time purchases and subscriptions. Otherwise, you will
   /// receive multiple subscription orders with the same PurchaseToken, because
   /// subscription renewal orders share the same PurchaseToken.
+  ///
+  /// [maxResults] - Defines how many results the list operation should return.
+  /// The default number depends on the resource collection.
+  ///
+  /// [token] - Defines the token of the page to return, usually taken from
+  /// TokenPagination. This can only be used if token paging is enabled.
+  ///
+  /// [endTime] - The time, in milliseconds since the Epoch, of the newest
+  /// voided purchase that you want to see in the response. The value of this
+  /// parameter cannot be greater than the current time and is ignored if a
+  /// pagination token is set. Default value is current time. Note: This filter
+  /// is applied on the time at which the record is seen as voided by our
+  /// systems and not the actual voided time returned in the response.
+  ///
+  /// [startIndex] - Defines the index of the first element to return. This can
+  /// only be used if indexed paging is enabled.
+  ///
+  /// [startTime] - The time, in milliseconds since the Epoch, of the oldest
+  /// voided purchase that you want to see in the response. The value of this
+  /// parameter cannot be older than 30 days and is ignored if a pagination
+  /// token is set. Default value is current time minus 30 days. Note: This
+  /// filter is applied on the time at which the record is seen as voided by our
+  /// systems and not the actual voided time returned in the response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3668,12 +3677,12 @@ class PurchasesVoidedpurchasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VoidedPurchasesListResponse> list(core.String packageName,
-      {core.int startIndex,
+      {core.int type,
       core.int maxResults,
       core.String token,
-      core.String startTime,
       core.String endTime,
-      core.int type,
+      core.int startIndex,
+      core.String startTime,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3685,8 +3694,8 @@ class PurchasesVoidedpurchasesResourceApi {
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
+    if (type != null) {
+      _queryParams["type"] = ["${type}"];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -3694,14 +3703,14 @@ class PurchasesVoidedpurchasesResourceApi {
     if (token != null) {
       _queryParams["token"] = [token];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
-    if (type != null) {
-      _queryParams["type"] = ["${type}"];
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3789,13 +3798,13 @@ class ReviewsResourceApi {
   ///
   /// [packageName] - Package name of the app.
   ///
-  /// [translationLanguage] - Language localization code.
-  ///
-  /// [startIndex] - The index of the first element to return.
-  ///
   /// [token] - Pagination token. If empty, list starts at the first review.
   ///
+  /// [translationLanguage] - Language localization code.
+  ///
   /// [maxResults] - How many results the list operation should return.
+  ///
+  /// [startIndex] - The index of the first element to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3808,10 +3817,10 @@ class ReviewsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReviewsListResponse> list(core.String packageName,
-      {core.String translationLanguage,
-      core.int startIndex,
-      core.String token,
+      {core.String token,
+      core.String translationLanguage,
       core.int maxResults,
+      core.int startIndex,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3823,17 +3832,17 @@ class ReviewsResourceApi {
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
-    if (translationLanguage != null) {
-      _queryParams["translationLanguage"] = [translationLanguage];
-    }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = ["${startIndex}"];
-    }
     if (token != null) {
       _queryParams["token"] = [token];
     }
+    if (translationLanguage != null) {
+      _queryParams["translationLanguage"] = [translationLanguage];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = ["${startIndex}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3933,7 +3942,7 @@ class SystemapksVariantsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier of the Android app.
+  /// [packageName] - Package name of the app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
@@ -3990,7 +3999,7 @@ class SystemapksVariantsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier of the Android app.
+  /// [packageName] - Package name of the app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
@@ -4061,7 +4070,7 @@ class SystemapksVariantsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier of the Android app.
+  /// [packageName] - Package name of the app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
@@ -4120,7 +4129,7 @@ class SystemapksVariantsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier of the Android app.
+  /// [packageName] - Package name of the app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
@@ -6225,7 +6234,7 @@ class SubscriptionPurchase {
 
   /// The payment state of the subscription. Possible values are: 0. Payment
   /// pending 1. Payment received 2. Free trial 3. Pending deferred
-  /// upgrade/downgrade
+  /// upgrade/downgrade Not present for canceled, expired subscriptions.
   core.int paymentState;
 
   /// Price of the subscription, not including tax. Price is expressed in

@@ -117,6 +117,10 @@ class ProjectsResourceApi {
   /// can be used, otherwise an INVALID_ARGUMENT (400) error is returned.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [displayLanguageCode] - Optional. The language to use to return localized,
+  /// human readable names of supported languages. If missing, then display
+  /// names are not returned in a response.
+  ///
   /// [model] - Optional. Get supported languages of this model. The format
   /// depends on model type: - AutoML Translation models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
@@ -125,10 +129,6 @@ class ProjectsResourceApi {
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
   /// Returns languages supported by the specified model. If missing, we get
   /// supported languages of Google general base (PBMT) model.
-  ///
-  /// [displayLanguageCode] - Optional. The language to use to return localized,
-  /// human readable names of supported languages. If missing, then display
-  /// names are not returned in a response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -141,8 +141,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SupportedLanguages> getSupportedLanguages(core.String parent,
-      {core.String model,
-      core.String displayLanguageCode,
+      {core.String displayLanguageCode,
+      core.String model,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -154,11 +154,11 @@ class ProjectsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (model != null) {
-      _queryParams["model"] = [model];
-    }
     if (displayLanguageCode != null) {
       _queryParams["displayLanguageCode"] = [displayLanguageCode];
+    }
+    if (model != null) {
+      _queryParams["model"] = [model];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -492,11 +492,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -509,9 +509,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -523,14 +523,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -764,6 +764,10 @@ class ProjectsLocationsGlossariesResourceApi {
   /// glossaries.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - Optional. Requested page size. The server may return fewer
+  /// glossaries than requested. If unspecified, the server picks an appropriate
+  /// default.
+  ///
   /// [pageToken] - Optional. A token identifying a page of results the server
   /// should return. Typically, this is the value of
   /// [ListGlossariesResponse.next_page_token] returned from the previous call
@@ -786,10 +790,6 @@ class ProjectsLocationsGlossariesResourceApi {
   /// contain "en-US" and "zh-CN" in their language set will be picked. If
   /// missing, no filtering is performed.
   ///
-  /// [pageSize] - Optional. Requested page size. The server may return fewer
-  /// glossaries than requested. If unspecified, the server picks an appropriate
-  /// default.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -801,9 +801,9 @@ class ProjectsLocationsGlossariesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGlossariesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -815,14 +815,14 @@ class ProjectsLocationsGlossariesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1014,11 +1014,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
+  /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1031,9 +1031,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
       core.String pageToken,
-      core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1045,14 +1045,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1136,7 +1136,7 @@ class BatchTranslateTextRequest {
   core.Map<core.String, TranslateTextGlossaryConfig> glossaries;
 
   /// Required. Input configurations. The total number of files matched should
-  /// be <= 1000. The total content size should be <= 100M Unicode codepoints.
+  /// be <= 100. The total content size should be <= 100M Unicode codepoints.
   /// The files must use UTF-8 encoding.
   core.List<InputConfig> inputConfigs;
 
@@ -1930,8 +1930,12 @@ class OutputConfig {
   /// tsv. They could also be empty if we have no content to output. Once a row
   /// is present in index.csv, the input/output matching never changes. Callers
   /// should also expect all the content in input_file are processed and ready
-  /// to be consumed (that is, no partial output file is written). The format of
-  /// translations_file (for target language code 'trg') is:
+  /// to be consumed (that is, no partial output file is written). Since
+  /// index.csv will be keeping updated during the process, please make sure
+  /// there is no custom retention policy applied on the output bucket that may
+  /// avoid file updating.
+  /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy)
+  /// The format of translations_file (for target language code 'trg') is:
   /// gs://translation_test/a_b_c_'trg'_translations.[extension] If the input
   /// file extension is tsv, the output has the following columns: Column 1: ID
   /// of the request provided in the input, if it's not provided in the input,
@@ -2149,8 +2153,8 @@ class TranslateTextGlossaryConfig {
 /// The request message for synchronous translation.
 class TranslateTextRequest {
   /// Required. The content of the input in string format. We recommend the
-  /// total content be less than 30k codepoints. Use BatchTranslateText for
-  /// larger text.
+  /// total content be less than 30k codepoints. The max length of this field is
+  /// 1024. Use BatchTranslateText for larger text.
   core.List<core.String> contents;
 
   /// Optional. Glossary to be applied. The glossary must be within the same

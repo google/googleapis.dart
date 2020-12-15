@@ -42,6 +42,8 @@ class GamesApi {
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
   ScoresResourceApi get scores => new ScoresResourceApi(_requester);
   SnapshotsResourceApi get snapshots => new SnapshotsResourceApi(_requester);
+  SnapshotsExtendedResourceApi get snapshotsExtended =>
+      new SnapshotsExtendedResourceApi(_requester);
   StatsResourceApi get stats => new StatsResourceApi(_requester);
 
   GamesApi(http.Client client,
@@ -61,15 +63,15 @@ class AchievementDefinitionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - The maximum number of achievement resources to return in
-  /// the response, used for paging. For any response, the actual number of
-  /// achievement resources returned may be less than the specified
-  /// `maxResults`.
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
-  /// [pageToken] - The token returned by the previous request.
+  /// [maxResults] - The maximum number of achievement resources to return in
+  /// the response, used for paging. For any response, the actual number of
+  /// achievement resources returned may be less than the specified
+  /// `maxResults`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -82,9 +84,9 @@ class AchievementDefinitionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementDefinitionsListResponse> list(
-      {core.int maxResults,
+      {core.String pageToken,
       core.String language,
-      core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -93,14 +95,14 @@ class AchievementDefinitionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (language != null) {
       _queryParams["language"] = [language];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -201,12 +203,12 @@ class AchievementsResourceApi {
   /// - "REVEALED" : List only revealed achievements.
   /// - "UNLOCKED" : List only unlocked achievements.
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [maxResults] - The maximum number of achievement resources to return in
   /// the response, used for paging. For any response, the actual number of
   /// achievement resources returned may be less than the specified
   /// `maxResults`.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
@@ -223,8 +225,8 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<PlayerAchievementListResponse> list(core.String playerId,
       {core.String state,
-      core.int maxResults,
       core.String pageToken,
+      core.int maxResults,
       core.String language,
       core.String $fields}) {
     var _url;
@@ -240,11 +242,11 @@ class AchievementsResourceApi {
     if (state != null) {
       _queryParams["state"] = [state];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -531,6 +533,61 @@ class ApplicationsResourceApi {
     return _response.then((data) => new Application.fromJson(data));
   }
 
+  /// Returns a URL for the requested end point type.
+  ///
+  /// Request parameters:
+  ///
+  /// [endPointType] - Type of endpoint being requested.
+  /// Possible string values are:
+  /// - "END_POINT_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "PROFILE_CREATION" : Request a URL to create a new profile.
+  /// - "PROFILE_SETTINGS" : Request a URL for the Settings view.
+  ///
+  /// [applicationId] - The application ID from the Google Play developer
+  /// console.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EndPoint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EndPoint> getEndPoint(
+      {core.String endPointType,
+      core.String applicationId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (endPointType != null) {
+      _queryParams["endPointType"] = [endPointType];
+    }
+    if (applicationId != null) {
+      _queryParams["applicationId"] = [applicationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'games/v1/applications/getEndPoint';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new EndPoint.fromJson(data));
+  }
+
   /// Indicate that the currently authenticated user is playing your
   /// application.
   ///
@@ -688,10 +745,10 @@ class EventsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
-  ///
-  /// [pageToken] - The token returned by the previous request.
   ///
   /// [maxResults] - The maximum number of event definitions to return in the
   /// response, used for paging. For any response, the actual number of event
@@ -708,8 +765,8 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EventDefinitionListResponse> listDefinitions(
-      {core.String language,
-      core.String pageToken,
+      {core.String pageToken,
+      core.String language,
       core.int maxResults,
       core.String $fields}) {
     var _url;
@@ -719,11 +776,11 @@ class EventsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -854,14 +911,14 @@ class LeaderboardsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The token returned by the previous request.
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [maxResults] - The maximum number of leaderboards to return in the
   /// response. For any response, the actual number of leaderboards returned may
   /// be less than the specified `maxResults`.
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -874,9 +931,9 @@ class LeaderboardsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardListResponse> list(
-      {core.String pageToken,
+      {core.String language,
       core.int maxResults,
-      core.String language,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -885,14 +942,14 @@ class LeaderboardsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (language != null) {
-      _queryParams["language"] = [language];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -966,12 +1023,12 @@ class MetagameResourceApi {
   /// - "COLLECTION_UNSPECIFIED" : Default value. This value is unused.
   /// - "ALL" : Retrieve data for all categories. This is the default.
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
   /// [maxResults] - The maximum number of category resources to return in the
   /// response, used for paging. For any response, the actual number of category
   /// resources returned may be less than the specified `maxResults`.
+  ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -987,8 +1044,8 @@ class MetagameResourceApi {
   /// this method will complete with the same error.
   async.Future<CategoryListResponse> listCategoriesByPlayer(
       core.String playerId, core.String collection,
-      {core.String language,
-      core.int maxResults,
+      {core.int maxResults,
+      core.String language,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -1004,11 +1061,11 @@ class MetagameResourceApi {
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
     }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1101,14 +1158,14 @@ class PlayersResourceApi {
   /// - "FRIENDS_ALL" : Retrieve a list of players who are friends of the user
   /// in alphabetical order.
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
   /// [maxResults] - The maximum number of player resources to return in the
   /// response, used for paging. For any response, the actual number of player
   /// resources returned may be less than the specified `maxResults`.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
+  ///
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1121,9 +1178,9 @@ class PlayersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerListResponse> list(core.String collection,
-      {core.String pageToken,
-      core.int maxResults,
+      {core.int maxResults,
       core.String language,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1135,14 +1192,14 @@ class PlayersResourceApi {
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1258,10 +1315,10 @@ class ScoresResourceApi {
   /// - "SOCIAL" : (Obsolete) Retrieve the social rank.
   /// - "FRIENDS" : Retrieve the rank on the friends collection.
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
+  ///
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1277,8 +1334,8 @@ class ScoresResourceApi {
       core.String playerId, core.String leaderboardId, core.String timeSpan,
       {core.int maxResults,
       core.String includeRankType,
-      core.String pageToken,
       core.String language,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1302,11 +1359,11 @@ class ScoresResourceApi {
     if (includeRankType != null) {
       _queryParams["includeRankType"] = [includeRankType];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1351,12 +1408,12 @@ class ScoresResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
   /// [maxResults] - The maximum number of leaderboard scores to return in the
   /// response. For any response, the actual number of leaderboard scores
   /// returned may be less than the specified `maxResults`.
+  ///
+  /// [language] - The preferred language to use for strings returned by this
+  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1371,8 +1428,8 @@ class ScoresResourceApi {
   async.Future<LeaderboardScores> list(
       core.String leaderboardId, core.String collection, core.String timeSpan,
       {core.String pageToken,
-      core.String language,
       core.int maxResults,
+      core.String language,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1394,11 +1451,11 @@ class ScoresResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1438,12 +1495,9 @@ class ScoresResourceApi {
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [resultsAbove] - The preferred number of scores to return above the
-  /// player's score. More scores may be returned if the player is at the bottom
-  /// of the leaderboard; fewer may be returned if the player is at the top.
-  /// Must be less than or equal to maxResults.
+  /// [maxResults] - The maximum number of leaderboard scores to return in the
+  /// response. For any response, the actual number of leaderboard scores
+  /// returned may be less than the specified `maxResults`.
   ///
   /// [returnTopIfAbsent] - True if the top scores should be returned when the
   /// player is not in the leaderboard. Defaults to true.
@@ -1451,9 +1505,12 @@ class ScoresResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
-  /// [maxResults] - The maximum number of leaderboard scores to return in the
-  /// response. For any response, the actual number of leaderboard scores
-  /// returned may be less than the specified `maxResults`.
+  /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [resultsAbove] - The preferred number of scores to return above the
+  /// player's score. More scores may be returned if the player is at the bottom
+  /// of the leaderboard; fewer may be returned if the player is at the top.
+  /// Must be less than or equal to maxResults.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1467,11 +1524,11 @@ class ScoresResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardScores> listWindow(
       core.String leaderboardId, core.String collection, core.String timeSpan,
-      {core.String pageToken,
-      core.int resultsAbove,
+      {core.int maxResults,
       core.bool returnTopIfAbsent,
       core.String language,
-      core.int maxResults,
+      core.String pageToken,
+      core.int resultsAbove,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1490,11 +1547,8 @@ class ScoresResourceApi {
       throw new core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (resultsAbove != null) {
-      _queryParams["resultsAbove"] = ["${resultsAbove}"];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (returnTopIfAbsent != null) {
       _queryParams["returnTopIfAbsent"] = ["${returnTopIfAbsent}"];
@@ -1502,8 +1556,11 @@ class ScoresResourceApi {
     if (language != null) {
       _queryParams["language"] = [language];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (resultsAbove != null) {
+      _queryParams["resultsAbove"] = ["${resultsAbove}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1766,6 +1823,67 @@ class SnapshotsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new SnapshotListResponse.fromJson(data));
+  }
+}
+
+class SnapshotsExtendedResourceApi {
+  final commons.ApiRequester _requester;
+
+  SnapshotsExtendedResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Resolves any potential conflicts according to the resolution policy
+  /// specified in the request and returns the snapshot head after the
+  /// resolution.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [snapshotName] - Required. Name of the snapshot.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResolveSnapshotHeadResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResolveSnapshotHeadResponse> resolveSnapshotHead(
+      ResolveSnapshotHeadRequest request, core.String snapshotName,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (snapshotName == null) {
+      throw new core.ArgumentError("Parameter snapshotName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'games/v1/snapshotsExtended/' +
+        commons.Escaper.ecapeVariable('$snapshotName') +
+        ':resolveHead';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ResolveSnapshotHeadResponse.fromJson(data));
   }
 }
 
@@ -2682,6 +2800,29 @@ class CategoryListResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Container for a URL end point of the requested type.
+class EndPoint {
+  /// A URL suitable for loading in a web browser for the requested endpoint.
+  core.String url;
+
+  EndPoint();
+
+  EndPoint.fromJson(core.Map _json) {
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (url != null) {
+      _json["url"] = url;
     }
     return _json;
   }
@@ -5022,6 +5163,64 @@ class ProfileSettings {
   }
 }
 
+/// Request for ResolveSnapshotHead RPC.
+class ResolveSnapshotHeadRequest {
+  /// Required. The automatic resolution policy. All conflicts are resolved in
+  /// chronological order, starting from the/ least recent. If the comparison
+  /// metric is equal for the tentative head and the conflict, the head wins.
+  /// Possible string values are:
+  /// - "RESOLUTION_POLICY_UNSPECIFIED" : Safe default, don't use explicitly.
+  /// - "USE_HEAD" : Drops all conflicts and keeps the current head only.
+  /// - "LONGEST_PLAYTIME" : Use the snapshot with the longest played time.
+  /// - "MOST_RECENTLY_MODIFIED" : Use the snapshot that was most recently
+  /// modified.
+  /// - "HIGHEST_PROGRESS" : Use the snapshot with the highest progress value.
+  /// - "NO_AUTOMATIC_RESOLUTION" : Don't resolve conflicts at all. Effectively
+  /// only returns the current head revision of the snapshot. Corresponds to a
+  /// game opening the snapshot with manual resolution policy.
+  core.String resolutionPolicy;
+
+  ResolveSnapshotHeadRequest();
+
+  ResolveSnapshotHeadRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("resolutionPolicy")) {
+      resolutionPolicy = _json["resolutionPolicy"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resolutionPolicy != null) {
+      _json["resolutionPolicy"] = resolutionPolicy;
+    }
+    return _json;
+  }
+}
+
+/// Response for ResolveSnapshotHead RPC.
+class ResolveSnapshotHeadResponse {
+  /// The state of the snapshot.
+  SnapshotExtended snapshot;
+
+  ResolveSnapshotHeadResponse();
+
+  ResolveSnapshotHeadResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("snapshot")) {
+      snapshot = new SnapshotExtended.fromJson(_json["snapshot"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (snapshot != null) {
+      _json["snapshot"] = (snapshot).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A third party checking a revision response.
 class RevisionCheckResponse {
   /// The version of the API this client revision should use when calling API
@@ -5255,6 +5454,219 @@ class Snapshot {
   }
 }
 
+/// Identifies a snapshot cover image resource. The image is provided by the
+/// game.
+class SnapshotCoverImageResource {
+  /// Output only. Hash-like weak identifier of the uploaded image bytes,
+  /// consistent per player per application. The content hash for a given
+  /// resource will not change if the binary data hasn't changed. Except in very
+  /// rare circumstances, the content_hash for matching binary data will be the
+  /// same within a given player and application.
+  core.String contentHash;
+
+  /// Output only. A URL the client can use to download the image. May vary
+  /// across requests, and only guaranteed to be valid for a short time after it
+  /// is returned.
+  core.String downloadUrl;
+
+  /// The height of the image in pixels.
+  core.int height;
+
+  /// The MIME type of the image.
+  core.String mimeType;
+
+  /// The ID of the image resource. It's guaranteed that if two IDs are equal
+  /// then the contents are equal as well. It's not guaranteed that two
+  /// identical blobs coming from separate uploads have the same ID. The
+  /// resource ID can only be used within the application, user and resource
+  /// type it was originally returned for. For example, it's not possible to use
+  /// SnapshotDataResource's resource ID as the resource_id of a
+  /// SnapshotCoverImageResource, even if the blob is a valid image file.
+  core.String resourceId;
+
+  /// The width of the image in pixels.
+  core.int width;
+
+  SnapshotCoverImageResource();
+
+  SnapshotCoverImageResource.fromJson(core.Map _json) {
+    if (_json.containsKey("contentHash")) {
+      contentHash = _json["contentHash"];
+    }
+    if (_json.containsKey("downloadUrl")) {
+      downloadUrl = _json["downloadUrl"];
+    }
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("mimeType")) {
+      mimeType = _json["mimeType"];
+    }
+    if (_json.containsKey("resourceId")) {
+      resourceId = _json["resourceId"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentHash != null) {
+      _json["contentHash"] = contentHash;
+    }
+    if (downloadUrl != null) {
+      _json["downloadUrl"] = downloadUrl;
+    }
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (mimeType != null) {
+      _json["mimeType"] = mimeType;
+    }
+    if (resourceId != null) {
+      _json["resourceId"] = resourceId;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
+/// Identifies a snapshot data resource. The data is provided by the game.
+class SnapshotDataResource {
+  /// Output only. Hash-like weak identifier of the uploaded blob bytes,
+  /// consistent per player per application. The content hash for a given
+  /// resource will not change if the binary data hasn't changed. Except in very
+  /// rare circumstances, the content_hash for matching binary data will be the
+  /// same within a given player and application.
+  core.String contentHash;
+
+  /// Output only. A URL that the client can use to download the blob. May vary
+  /// across requests, and only guaranteed to be valid for a short time after it
+  /// is returned.
+  core.String downloadUrl;
+
+  /// The ID of the blob resource. It's guaranteed that if two IDs are equal
+  /// then the contents are equal as well. It's not guaranteed that two
+  /// identical blobs coming from separate uploads have the same resource ID.
+  /// The resource ID can only be used within the application, user and resource
+  /// type it was originally returned for. For example, it's not possible to use
+  /// SnapshotDataResource's resource ID as the resource_id of a
+  /// SnapshotCoverImageResource, even if the blob is a valid image file.
+  core.String resourceId;
+
+  /// Output only. Size of the saved game blob in bytes.
+  core.String size;
+
+  SnapshotDataResource();
+
+  SnapshotDataResource.fromJson(core.Map _json) {
+    if (_json.containsKey("contentHash")) {
+      contentHash = _json["contentHash"];
+    }
+    if (_json.containsKey("downloadUrl")) {
+      downloadUrl = _json["downloadUrl"];
+    }
+    if (_json.containsKey("resourceId")) {
+      resourceId = _json["resourceId"];
+    }
+    if (_json.containsKey("size")) {
+      size = _json["size"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentHash != null) {
+      _json["contentHash"] = contentHash;
+    }
+    if (downloadUrl != null) {
+      _json["downloadUrl"] = downloadUrl;
+    }
+    if (resourceId != null) {
+      _json["resourceId"] = resourceId;
+    }
+    if (size != null) {
+      _json["size"] = size;
+    }
+    return _json;
+  }
+}
+
+/// A snapshot represents a saved game state referred to using the
+/// developer-provided snapshot_name. The set of attributes and binary data for
+/// a specific state is called a revision. Each revision is itself immutable,
+/// and referred to by a snapshot revision id. At any time, a snapshot has a
+/// "head" revision, and updates are made against that revision. If a snapshot
+/// update is received that isn't against the current head revision, then
+/// instead of changing the head revision it will result in a conflicting
+/// revision that must be specifically resolved.
+class SnapshotExtended {
+  /// A list of conflicting revisions. Only set if explicitly requested (e.g.
+  /// using a field mask or a request flag), or if the RPC guarantees that this
+  /// field is set. The conflicting revisions are sorted chronologically by
+  /// their server creation time (oldest first). If there are too many
+  /// conflicting revisions to return all of them in a single request this will
+  /// only contain the first batch. In such case, the presented conflicting
+  /// revisions must be resolved first in order to fetch the next batch.
+  core.List<SnapshotRevision> conflictingRevisions;
+
+  /// An indicator whether the snapshot has any conflicting revisions or not.
+  /// Always set.
+  core.bool hasConflictingRevisions;
+
+  /// The current head revision (the canonical revision as understood by the
+  /// server).
+  SnapshotRevision headRevision;
+
+  /// An identifier of the snapshot, developer-specified. It must match the
+  /// pattern [0-9a-zA-Z-._~]{1,100}.
+  core.String snapshotName;
+
+  SnapshotExtended();
+
+  SnapshotExtended.fromJson(core.Map _json) {
+    if (_json.containsKey("conflictingRevisions")) {
+      conflictingRevisions = (_json["conflictingRevisions"] as core.List)
+          .map<SnapshotRevision>(
+              (value) => new SnapshotRevision.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("hasConflictingRevisions")) {
+      hasConflictingRevisions = _json["hasConflictingRevisions"];
+    }
+    if (_json.containsKey("headRevision")) {
+      headRevision = new SnapshotRevision.fromJson(_json["headRevision"]);
+    }
+    if (_json.containsKey("snapshotName")) {
+      snapshotName = _json["snapshotName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (conflictingRevisions != null) {
+      _json["conflictingRevisions"] =
+          conflictingRevisions.map((value) => (value).toJson()).toList();
+    }
+    if (hasConflictingRevisions != null) {
+      _json["hasConflictingRevisions"] = hasConflictingRevisions;
+    }
+    if (headRevision != null) {
+      _json["headRevision"] = (headRevision).toJson();
+    }
+    if (snapshotName != null) {
+      _json["snapshotName"] = snapshotName;
+    }
+    return _json;
+  }
+}
+
 /// An image of a snapshot.
 class SnapshotImage {
   /// The height of the image.
@@ -5356,6 +5768,120 @@ class SnapshotListResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Metadata about a snapshot revision. Snapshot metadata is immutable - a
+/// metadata change corresponds to a new snapshot revision.
+class SnapshotMetadata {
+  /// The description of this snapshot.
+  core.String description;
+
+  /// The device that created the current revision.
+  core.String deviceName;
+
+  /// The duration associated with this snapshot. Values with sub-millisecond
+  /// precision can be rounded or trimmed to the closest millisecond.
+  core.String gameplayDuration;
+
+  /// The timestamp of the last modification to this snapshot as provided by the
+  /// client. Values with sub-millisecond precision can be rounded or trimmed to
+  /// the closest millisecond.
+  core.String lastModifyTime;
+
+  /// The progress value (64-bit integer set by developer) associated with this
+  /// snapshot.
+  core.String progressValue;
+
+  SnapshotMetadata();
+
+  SnapshotMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("deviceName")) {
+      deviceName = _json["deviceName"];
+    }
+    if (_json.containsKey("gameplayDuration")) {
+      gameplayDuration = _json["gameplayDuration"];
+    }
+    if (_json.containsKey("lastModifyTime")) {
+      lastModifyTime = _json["lastModifyTime"];
+    }
+    if (_json.containsKey("progressValue")) {
+      progressValue = _json["progressValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (deviceName != null) {
+      _json["deviceName"] = deviceName;
+    }
+    if (gameplayDuration != null) {
+      _json["gameplayDuration"] = gameplayDuration;
+    }
+    if (lastModifyTime != null) {
+      _json["lastModifyTime"] = lastModifyTime;
+    }
+    if (progressValue != null) {
+      _json["progressValue"] = progressValue;
+    }
+    return _json;
+  }
+}
+
+/// A Snapshot revision resource. Snapshot revisions are immutable.
+class SnapshotRevision {
+  /// Reference to the game provided blob for this revision.
+  SnapshotDataResource blob;
+
+  /// Reference to the cover image for this revision.
+  SnapshotCoverImageResource coverImage;
+
+  /// Output only. A server generated identifier of the snapshot revision.
+  core.String id;
+
+  /// Metadata for this snapshot revision.
+  SnapshotMetadata metadata;
+
+  SnapshotRevision();
+
+  SnapshotRevision.fromJson(core.Map _json) {
+    if (_json.containsKey("blob")) {
+      blob = new SnapshotDataResource.fromJson(_json["blob"]);
+    }
+    if (_json.containsKey("coverImage")) {
+      coverImage = new SnapshotCoverImageResource.fromJson(_json["coverImage"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new SnapshotMetadata.fromJson(_json["metadata"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (blob != null) {
+      _json["blob"] = (blob).toJson();
+    }
+    if (coverImage != null) {
+      _json["coverImage"] = (coverImage).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
     }
     return _json;
   }

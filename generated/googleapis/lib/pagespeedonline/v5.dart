@@ -46,6 +46,11 @@ class PagespeedapiResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [url] - Required. The URL to fetch and analyze
+  /// Value must have pattern "(?i)(url:|origin:)?http(s)?://.*".
+  ///
+  /// [captchaToken] - The captcha token passed when filling out a captcha.
+  ///
   /// [strategy] - The analysis strategy (desktop or mobile) to use, and desktop
   /// is the default
   /// Possible string values are:
@@ -53,18 +58,15 @@ class PagespeedapiResourceApi {
   /// - "DESKTOP" : Fetch and analyze the URL for desktop browsers.
   /// - "MOBILE" : Fetch and analyze the URL for mobile devices.
   ///
-  /// [utmCampaign] - Campaign name for analytics.
-  ///
   /// [category] - A Lighthouse category to run; if none are given, only
   /// Performance category will be run
   ///
-  /// [locale] - The locale used to localize formatted results
+  /// [utmCampaign] - Campaign name for analytics.
   ///
-  /// [url] - Required. The URL to fetch and analyze
+  /// [locale] - The locale used to localize formatted results
+  /// Value must have pattern "[a-zA-Z]+((_|-)[a-zA-Z]+)?".
   ///
   /// [utmSource] - Campaign source for analytics.
-  ///
-  /// [captchaToken] - The captcha token passed when filling out a captcha.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -76,14 +78,13 @@ class PagespeedapiResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PagespeedApiPagespeedResponseV5> runpagespeed(
-      {core.String strategy,
-      core.String utmCampaign,
+  async.Future<PagespeedApiPagespeedResponseV5> runpagespeed(core.String url,
+      {core.String captchaToken,
+      core.String strategy,
       core.List<core.String> category,
+      core.String utmCampaign,
       core.String locale,
-      core.String url,
       core.String utmSource,
-      core.String captchaToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -92,26 +93,27 @@ class PagespeedapiResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (url == null) {
+      throw new core.ArgumentError("Parameter url is required.");
+    }
+    _queryParams["url"] = [url];
+    if (captchaToken != null) {
+      _queryParams["captchaToken"] = [captchaToken];
+    }
     if (strategy != null) {
       _queryParams["strategy"] = [strategy];
-    }
-    if (utmCampaign != null) {
-      _queryParams["utm_campaign"] = [utmCampaign];
     }
     if (category != null) {
       _queryParams["category"] = category;
     }
+    if (utmCampaign != null) {
+      _queryParams["utm_campaign"] = [utmCampaign];
+    }
     if (locale != null) {
       _queryParams["locale"] = [locale];
     }
-    if (url != null) {
-      _queryParams["url"] = [url];
-    }
     if (utmSource != null) {
       _queryParams["utm_source"] = [utmSource];
-    }
-    if (captchaToken != null) {
-      _queryParams["captchaToken"] = [captchaToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

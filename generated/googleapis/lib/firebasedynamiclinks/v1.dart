@@ -164,10 +164,10 @@ class V1ResourceApi {
   ///
   /// [dynamicLink] - Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
   ///
-  /// [durationDays] - The span of time requested in days.
-  ///
   /// [sdkVersion] - Google SDK version. Version takes the form
   /// "$major.$minor.$patch"
+  ///
+  /// [durationDays] - The span of time requested in days.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -180,7 +180,7 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DynamicLinkStats> getLinkStats(core.String dynamicLink,
-      {core.String durationDays, core.String sdkVersion, core.String $fields}) {
+      {core.String sdkVersion, core.String durationDays, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -191,11 +191,11 @@ class V1ResourceApi {
     if (dynamicLink == null) {
       throw new core.ArgumentError("Parameter dynamicLink is required.");
     }
-    if (durationDays != null) {
-      _queryParams["durationDays"] = [durationDays];
-    }
     if (sdkVersion != null) {
       _queryParams["sdkVersion"] = [sdkVersion];
+    }
+    if (durationDays != null) {
+      _queryParams["durationDays"] = [durationDays];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

@@ -373,7 +373,10 @@ class DevicesResourceApi {
     return _response.then((data) => new DeviceState.fromJson(data));
   }
 
-  /// Updates the device policy
+  /// Updates the device policy. To ensure the policy is properly enforced, you
+  /// need to prevent unmanaged accounts from accessing Google Play by setting
+  /// the allowed_accounts in the managed configuration for the Google Play
+  /// package. See restrict accounts in Google Play.
   ///
   /// [request] - The metadata request object.
   ///
@@ -502,10 +505,10 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [enterpriseToken] - The Enterprise token appended to the Callback URL.
-  ///
   /// [completionToken] - The Completion token initially returned by
   /// GenerateSignupUrl.
+  ///
+  /// [enterpriseToken] - The Enterprise token appended to the Callback URL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -518,8 +521,8 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> completeSignup(
-      {core.String enterpriseToken,
-      core.String completionToken,
+      {core.String completionToken,
+      core.String enterpriseToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -528,11 +531,11 @@ class EnterprisesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (enterpriseToken != null) {
-      _queryParams["enterpriseToken"] = [enterpriseToken];
-    }
     if (completionToken != null) {
       _queryParams["completionToken"] = [completionToken];
+    }
+    if (enterpriseToken != null) {
+      _queryParams["enterpriseToken"] = [enterpriseToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2857,24 +2860,24 @@ class ProductsResourceApi {
   ///
   /// [enterpriseId] - The ID of the enterprise.
   ///
+  /// [language] - The BCP47 tag for the user's preferred language (e.g.
+  /// "en-US", "de"). Results are returned in the language best matching the
+  /// preferred language.
+  ///
   /// [approved] - Specifies whether to search among all products (false) or
   /// among only products that have been approved (true). Only "true" is
   /// supported, and should be specified.
-  ///
-  /// [maxResults] - Defines how many results the list operation should return.
-  /// The default number depends on the resource collection.
-  ///
-  /// [token] - Defines the token of the page to return, usually taken from
-  /// TokenPagination. This can only be used if token paging is enabled.
   ///
   /// [query] - The search query as typed in the Google Play store search box.
   /// If omitted, all approved apps will be returned (using the pagination
   /// parameters), including apps that are not available in the store (e.g.
   /// unpublished apps).
   ///
-  /// [language] - The BCP47 tag for the user's preferred language (e.g.
-  /// "en-US", "de"). Results are returned in the language best matching the
-  /// preferred language.
+  /// [maxResults] - Defines how many results the list operation should return.
+  /// The default number depends on the resource collection.
+  ///
+  /// [token] - Defines the token of the page to return, usually taken from
+  /// TokenPagination. This can only be used if token paging is enabled.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2887,11 +2890,11 @@ class ProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProductsListResponse> list(core.String enterpriseId,
-      {core.bool approved,
+      {core.String language,
+      core.bool approved,
+      core.String query,
       core.int maxResults,
       core.String token,
-      core.String query,
-      core.String language,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2903,20 +2906,20 @@ class ProductsResourceApi {
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
     }
+    if (language != null) {
+      _queryParams["language"] = [language];
+    }
     if (approved != null) {
       _queryParams["approved"] = ["${approved}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (token != null) {
       _queryParams["token"] = [token];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7416,6 +7419,30 @@ class ProductPolicy {
   /// The auto-install policy for the product.
   AutoInstallPolicy autoInstallPolicy;
 
+  /// The auto-update mode for the product.
+  /// Possible string values are:
+  /// - "autoUpdateModeUnspecified" : Unspecified. Defaults to
+  /// AUTO_UPDATE_DEFAULT.
+  /// - "autoUpdateDefault" : The app is automatically updated with low priority
+  /// to minimize the impact on the user. The app is updated when the following
+  /// constraints are met: * The device is not actively used * The device is
+  /// connected to a Wi-Fi network. * The device is charging * If the system
+  /// update policy is set to `WINDOWED`: the local time of the device is within
+  /// the daily maintenance window The device is notified about a new update
+  /// within 24 hours after it is published by the developer, after which the
+  /// app is updated the next time the constraints above are met.
+  /// - "autoUpdatePostponed" : The app is not automatically updated for a
+  /// maximum of 90 days after the app becomes out of date. 90 days after the
+  /// app becomes out of date, the latest available version is installed
+  /// automatically with low priority (see AUTO_UPDATE_DEFAULT). After the app
+  /// is updated it is not automatically updated again until 90 days after it
+  /// becomes out of date again. The user can still manually update the app from
+  /// the Play Store at any time.
+  /// - "autoUpdateHighPriority" : The app is updated as soon as possible. No
+  /// constraints are applied. The device is notified immediately about a new
+  /// app update after it is published by the developer.
+  core.String autoUpdateMode;
+
   /// The managed configuration for the product.
   ManagedConfiguration managedConfiguration;
 
@@ -7437,6 +7464,9 @@ class ProductPolicy {
       autoInstallPolicy =
           new AutoInstallPolicy.fromJson(_json["autoInstallPolicy"]);
     }
+    if (_json.containsKey("autoUpdateMode")) {
+      autoUpdateMode = _json["autoUpdateMode"];
+    }
     if (_json.containsKey("managedConfiguration")) {
       managedConfiguration =
           new ManagedConfiguration.fromJson(_json["managedConfiguration"]);
@@ -7457,6 +7487,9 @@ class ProductPolicy {
         new core.Map<core.String, core.Object>();
     if (autoInstallPolicy != null) {
       _json["autoInstallPolicy"] = (autoInstallPolicy).toJson();
+    }
+    if (autoUpdateMode != null) {
+      _json["autoUpdateMode"] = autoUpdateMode;
     }
     if (managedConfiguration != null) {
       _json["managedConfiguration"] = (managedConfiguration).toJson();

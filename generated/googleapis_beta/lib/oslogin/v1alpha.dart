@@ -70,9 +70,9 @@ class UsersResourceApi {
   /// - "LINUX" : Linux user account information.
   /// - "WINDOWS" : Windows user account information.
   ///
-  /// [projectId] - The project ID of the Google Cloud Platform project.
-  ///
   /// [systemId] - A system ID for filtering the results of the request.
+  ///
+  /// [projectId] - The project ID of the Google Cloud Platform project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -86,8 +86,8 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<LoginProfile> getLoginProfile(core.String name,
       {core.String operatingSystemType,
-      core.String projectId,
       core.String systemId,
+      core.String projectId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -102,11 +102,11 @@ class UsersResourceApi {
     if (operatingSystemType != null) {
       _queryParams["operatingSystemType"] = [operatingSystemType];
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (systemId != null) {
       _queryParams["systemId"] = [systemId];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

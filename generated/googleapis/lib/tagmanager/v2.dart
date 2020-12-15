@@ -2398,9 +2398,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
   ///
-  /// [variableId] - The variables to be moved to the folder.
-  ///
   /// [triggerId] - The triggers to be moved to the folder.
+  ///
+  /// [variableId] - The variables to be moved to the folder.
   ///
   /// [tagId] - The tags to be moved to the folder.
   ///
@@ -2413,8 +2413,8 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future moveEntitiesToFolder(Folder request, core.String path,
-      {core.List<core.String> variableId,
-      core.List<core.String> triggerId,
+      {core.List<core.String> triggerId,
+      core.List<core.String> variableId,
       core.List<core.String> tagId,
       core.String $fields}) {
     var _url;
@@ -2430,11 +2430,11 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
     }
-    if (variableId != null) {
-      _queryParams["variableId"] = variableId;
-    }
     if (triggerId != null) {
       _queryParams["triggerId"] = triggerId;
+    }
+    if (variableId != null) {
+      _queryParams["variableId"] = variableId;
     }
     if (tagId != null) {
       _queryParams["tagId"] = tagId;
@@ -5243,6 +5243,9 @@ class ContainerVersionHeader {
   /// Container version display name.
   core.String name;
 
+  /// Number of clients in the container version.
+  core.String numClients;
+
   /// Number of custom templates in the container version.
   core.String numCustomTemplates;
 
@@ -5284,6 +5287,9 @@ class ContainerVersionHeader {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("numClients")) {
+      numClients = _json["numClients"];
     }
     if (_json.containsKey("numCustomTemplates")) {
       numCustomTemplates = _json["numCustomTemplates"];
@@ -5328,6 +5334,9 @@ class ContainerVersionHeader {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (numClients != null) {
+      _json["numClients"] = numClients;
     }
     if (numCustomTemplates != null) {
       _json["numCustomTemplates"] = numCustomTemplates;
@@ -5586,7 +5595,10 @@ class Entity {
   /// - "updated" : The entity has been updated in the workspace.
   core.String changeStatus;
 
-  /// The Folder being represented by the entity.
+  /// The client being represented by the entity.
+  Client client;
+
+  /// The folder being represented by the entity.
   Folder folder;
 
   /// The tag being represented by the entity.
@@ -5603,6 +5615,9 @@ class Entity {
   Entity.fromJson(core.Map _json) {
     if (_json.containsKey("changeStatus")) {
       changeStatus = _json["changeStatus"];
+    }
+    if (_json.containsKey("client")) {
+      client = new Client.fromJson(_json["client"]);
     }
     if (_json.containsKey("folder")) {
       folder = new Folder.fromJson(_json["folder"]);
@@ -5623,6 +5638,9 @@ class Entity {
         new core.Map<core.String, core.Object>();
     if (changeStatus != null) {
       _json["changeStatus"] = changeStatus;
+    }
+    if (client != null) {
+      _json["client"] = (client).toJson();
     }
     if (folder != null) {
       _json["folder"] = (folder).toJson();

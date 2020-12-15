@@ -555,13 +555,13 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results to be returned. This
-  /// should be a `next_page_token` value returned from a previous List request.
-  /// If unspecified, the first page of results is returned.
-  ///
   /// [pageSize] - The maximum number of CrawledUrls to return, can be limited
   /// by server. If not specified or not positive, the implementation will
   /// select a reasonable value.
+  ///
+  /// [pageToken] - A token identifying a page of results to be returned. This
+  /// should be a `next_page_token` value returned from a previous List request.
+  /// If unspecified, the first page of results is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -574,7 +574,7 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCrawledUrlsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -585,11 +585,11 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -733,12 +733,12 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
   /// server. If not specified or not positive, the implementation will select a
   /// reasonable value.
   ///
-  /// [filter] - The filter expression. The expression must be in the format: .
-  /// Supported field: 'finding_type'. Supported operator: '='.
-  ///
   /// [pageToken] - A token identifying a page of results to be returned. This
   /// should be a `next_page_token` value returned from a previous List request.
   /// If unspecified, the first page of results is returned.
+  ///
+  /// [filter] - The filter expression. The expression must be in the format: .
+  /// Supported field: 'finding_type'. Supported operator: '='.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -752,8 +752,8 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFindingsResponse> list(core.String parent,
       {core.int pageSize,
-      core.String filter,
       core.String pageToken,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -768,11 +768,11 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

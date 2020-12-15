@@ -367,16 +367,16 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   /// projects/{project_number/id}/brands/{brand}.
   /// Value must have pattern "^projects/[^/]+/brands/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of clients to return. The service may
+  /// return fewer than this value. If unspecified, at most 100 clients will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
   /// [pageToken] - A page token, received from a previous
   /// `ListIdentityAwareProxyClients` call. Provide this to retrieve the
   /// subsequent page. When paginating, all other parameters provided to
   /// `ListIdentityAwareProxyClients` must match the call that provided the page
   /// token.
-  ///
-  /// [pageSize] - The maximum number of clients to return. The service may
-  /// return fewer than this value. If unspecified, at most 100 clients will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -389,7 +389,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIdentityAwareProxyClientsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -400,11 +400,11 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -887,10 +887,6 @@ class ApplicationSettings {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding. If the condition
   /// evaluates to `true`, then this binding applies to the current request. If
   /// the condition evaluates to `false`, then this binding does not apply to
@@ -938,9 +934,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey("bindingId")) {
-      bindingId = _json["bindingId"];
-    }
     if (_json.containsKey("condition")) {
       condition = new Expr.fromJson(_json["condition"]);
     }
@@ -955,9 +948,6 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (bindingId != null) {
-      _json["bindingId"] = bindingId;
-    }
     if (condition != null) {
       _json["condition"] = (condition).toJson();
     }
@@ -1404,15 +1394,6 @@ class ListIdentityAwareProxyClientsResponse {
 /// Configuration for OAuth login&consent flow behavior as well as for OAuth
 /// Credentials.
 class OAuthSettings {
-  /// OAuth 2.0 client ID used in the OAuth flow to generate an access token. If
-  /// this field is set, you can skip obtaining the OAuth credentials in this
-  /// step:
-  /// https://developers.google.com/identity/protocols/OAuth2?hl=en_US#1.-obtain-oauth-2.0-credentials-from-the-google-api-console.
-  /// However, this could allow for client sharing. The risks of client sharing
-  /// are outlined here:
-  /// https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.
-  core.String clientId;
-
   /// Domain hint to send as hd=? parameter in OAuth request flow. Enables
   /// redirect to primary IDP by skipping Google's login screen.
   /// https://developers.google.com/identity/protocols/OpenIDConnect#hd-param
@@ -1423,9 +1404,6 @@ class OAuthSettings {
   OAuthSettings();
 
   OAuthSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("clientId")) {
-      clientId = _json["clientId"];
-    }
     if (_json.containsKey("loginHint")) {
       loginHint = _json["loginHint"];
     }
@@ -1434,9 +1412,6 @@ class OAuthSettings {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (clientId != null) {
-      _json["clientId"] = clientId;
-    }
     if (loginHint != null) {
       _json["loginHint"] = loginHint;
     }

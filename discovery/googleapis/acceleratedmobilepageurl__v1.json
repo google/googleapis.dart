@@ -16,47 +16,10 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "callback": {
             "description": "JSONP",
             "location": "query",
             "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
         },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
@@ -73,6 +36,48 @@
             "location": "query",
             "type": "string"
         },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -83,11 +88,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         }
@@ -113,9 +113,63 @@
             }
         }
     },
-    "revision": "20201007",
+    "revision": "20201213",
     "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
     "schemas": {
+        "AmpUrl": {
+            "description": "AMP URL response for a requested URL.",
+            "id": "AmpUrl",
+            "properties": {
+                "originalUrl": {
+                    "description": "The original non-AMP URL.",
+                    "type": "string"
+                },
+                "ampUrl": {
+                    "description": "The AMP URL pointing to the publisher's web server.",
+                    "type": "string"
+                },
+                "cdnAmpUrl": {
+                    "description": "The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AmpUrlError": {
+            "description": "AMP URL Error resource for a requested URL that couldn't be found.",
+            "id": "AmpUrlError",
+            "properties": {
+                "errorMessage": {
+                    "description": "An optional descriptive error message.",
+                    "type": "string"
+                },
+                "errorCode": {
+                    "description": "The error code of an API call.",
+                    "enum": [
+                        "ERROR_CODE_UNSPECIFIED",
+                        "INPUT_URL_NOT_FOUND",
+                        "NO_AMP_URL",
+                        "APPLICATION_ERROR",
+                        "URL_IS_VALID_AMP",
+                        "URL_IS_INVALID_AMP"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified error.",
+                        "Indicates the requested URL is not found in the index, possibly because it's unable to be found, not able to be accessed by Googlebot, or some other error.",
+                        "Indicates no AMP URL has been found that corresponds to the requested URL.",
+                        "Indicates some kind of application error occurred at the server. Client advised to retry.",
+                        "DEPRECATED: Indicates the requested URL is a valid AMP URL. This is a non-error state, should not be relied upon as a sign of success or failure. It will be removed in future versions of the API.",
+                        "Indicates that an AMP URL has been found that corresponds to the request URL, but it is not valid AMP HTML."
+                    ],
+                    "type": "string"
+                },
+                "originalUrl": {
+                    "description": "The original non-AMP URL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "BatchGetAmpUrlsRequest": {
             "description": "AMP URL request for a batch of URLs.",
             "id": "BatchGetAmpUrlsRequest",
@@ -146,73 +200,19 @@
             "description": "Batch AMP URL response.",
             "id": "BatchGetAmpUrlsResponse",
             "properties": {
-                "urlErrors": {
-                    "description": "The errors for requested URLs that have no AMP URL.",
-                    "items": {
-                        "$ref": "AmpUrlError"
-                    },
-                    "type": "array"
-                },
                 "ampUrls": {
                     "description": "For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only once.",
                     "items": {
                         "$ref": "AmpUrl"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "AmpUrlError": {
-            "description": "AMP URL Error resource for a requested URL that couldn't be found.",
-            "id": "AmpUrlError",
-            "properties": {
-                "errorCode": {
-                    "description": "The error code of an API call.",
-                    "enum": [
-                        "ERROR_CODE_UNSPECIFIED",
-                        "INPUT_URL_NOT_FOUND",
-                        "NO_AMP_URL",
-                        "APPLICATION_ERROR",
-                        "URL_IS_VALID_AMP",
-                        "URL_IS_INVALID_AMP"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified error.",
-                        "Indicates the requested URL is not found in the index, possibly because it's unable to be found, not able to be accessed by Googlebot, or some other error.",
-                        "Indicates no AMP URL has been found that corresponds to the requested URL.",
-                        "Indicates some kind of application error occurred at the server. Client advised to retry.",
-                        "DEPRECATED: Indicates the requested URL is a valid AMP URL. This is a non-error state, should not be relied upon as a sign of success or failure. It will be removed in future versions of the API.",
-                        "Indicates that an AMP URL has been found that corresponds to the request URL, but it is not valid AMP HTML."
-                    ],
-                    "type": "string"
                 },
-                "errorMessage": {
-                    "description": "An optional descriptive error message.",
-                    "type": "string"
-                },
-                "originalUrl": {
-                    "description": "The original non-AMP URL.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "AmpUrl": {
-            "description": "AMP URL response for a requested URL.",
-            "id": "AmpUrl",
-            "properties": {
-                "ampUrl": {
-                    "description": "The AMP URL pointing to the publisher's web server.",
-                    "type": "string"
-                },
-                "originalUrl": {
-                    "description": "The original non-AMP URL.",
-                    "type": "string"
-                },
-                "cdnAmpUrl": {
-                    "description": "The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache.",
-                    "type": "string"
+                "urlErrors": {
+                    "description": "The errors for requested URLs that have no AMP URL.",
+                    "items": {
+                        "$ref": "AmpUrlError"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

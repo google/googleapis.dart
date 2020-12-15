@@ -533,26 +533,16 @@ class AccountUserProfilesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [subaccountId] - Select only user profiles with the specified subaccount
-  /// ID.
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
   ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [userRoleId] - Select only user profiles with the specified user role ID.
+  /// [active] - Select only active user profiles.
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
+  /// [userRoleId] - Select only user profiles with the specified user role ID.
+  ///
   /// [ids] - Select only user profiles with these IDs.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [active] - Select only active user profiles.
   ///
   /// [searchString] - Allows searching for objects by name, ID or email.
   /// Wildcards (*) are allowed. For example, "user profile*2015" will return
@@ -562,8 +552,18 @@ class AccountUserProfilesResourceApi {
   /// example, a search string of "user profile" will match objects with name
   /// "my user profile", "user profile 2015", or simply "user profile".
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [subaccountId] - Select only user profiles with the specified subaccount
+  /// ID.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -576,15 +576,15 @@ class AccountUserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountUserProfilesListResponse> list(core.String profileId,
-      {core.String subaccountId,
-      core.String sortOrder,
-      core.String userRoleId,
-      core.String pageToken,
-      core.List<core.String> ids,
-      core.String sortField,
+      {core.int maxResults,
       core.bool active,
+      core.String pageToken,
+      core.String userRoleId,
+      core.List<core.String> ids,
       core.String searchString,
-      core.int maxResults,
+      core.String sortOrder,
+      core.String subaccountId,
+      core.String sortField,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -596,32 +596,32 @@ class AccountUserProfilesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (subaccountId != null) {
-      _queryParams["subaccountId"] = [subaccountId];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (userRoleId != null) {
-      _queryParams["userRoleId"] = [userRoleId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (active != null) {
       _queryParams["active"] = ["${active}"];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (userRoleId != null) {
+      _queryParams["userRoleId"] = [userRoleId];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -814,6 +814,19 @@ class AccountsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [active] - Select only active accounts. Don't set this field to select
+  /// both active and non-active accounts.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
@@ -823,23 +836,10 @@ class AccountsResourceApi {
   /// end of the search string. For example, a search string of "account" will
   /// match objects with name "my account", "account 2015", or simply "account".
   ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
+  /// [ids] - Select only accounts with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "1000".
-  ///
-  /// [ids] - Select only accounts with these IDs.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [active] - Select only active accounts. Don't set this field to select
-  /// both active and non-active accounts.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -852,13 +852,13 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountsListResponse> list(core.String profileId,
-      {core.String pageToken,
-      core.String searchString,
+      {core.bool active,
       core.String sortField,
-      core.int maxResults,
-      core.List<core.String> ids,
       core.String sortOrder,
-      core.bool active,
+      core.String pageToken,
+      core.String searchString,
+      core.List<core.String> ids,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -870,26 +870,26 @@ class AccountsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
+    if (active != null) {
+      _queryParams["active"] = ["${active}"];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (active != null) {
-      _queryParams["active"] = ["${active}"];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1127,14 +1127,64 @@ class AdsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [placementIds] - Select only ads with these placement IDs assigned.
+  /// [creativeIds] - Select only ads with these creative IDs assigned.
   ///
-  /// [campaignIds] - Select only ads with these campaign IDs.
+  /// [remarketingListIds] - Select only ads whose list targeting expression use
+  /// these remarketing list IDs.
+  ///
+  /// [sslRequired] - Select only ads that require SSL.
   ///
   /// [dynamicClickTracker] - Select only dynamic click trackers. Applicable
   /// when type is AD_SERVING_CLICK_TRACKER. If true, select dynamic click
   /// trackers. If false, select static click trackers. Leave unset to select
   /// both.
+  ///
+  /// [campaignIds] - Select only ads with these campaign IDs.
+  ///
+  /// [ids] - Select only ads with these IDs.
+  ///
+  /// [overriddenEventTagId] - Select only ads with this event tag override ID.
+  ///
+  /// [sslCompliant] - Select only ads that are SSL-compliant.
+  ///
+  /// [landingPageIds] - Select only ads with these landing page IDs.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
+  /// are allowed. For example, "ad*2015" will return objects with names like
+  /// "ad June 2015", "ad April 2015", or simply "ad 2015". Most of the searches
+  /// also add wildcards implicitly at the start and the end of the search
+  /// string. For example, a search string of "ad" will match objects with name
+  /// "my ad", "ad 2015", or simply "ad".
+  ///
+  /// [creativeOptimizationConfigurationIds] - Select only ads with these
+  /// creative optimization configuration IDs.
+  ///
+  /// [advertiserId] - Select only ads with this advertiser ID.
+  ///
+  /// [archived] - Select only archived ads.
+  ///
+  /// [sizeIds] - Select only ads with these size IDs.
+  ///
+  /// [placementIds] - Select only ads with these placement IDs assigned.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [type] - Select only ads with these types.
+  ///
+  /// [active] - Select only active ads.
+  ///
+  /// [audienceSegmentIds] - Select only ads with these audience segment IDs.
   ///
   /// [compatibility] - Select default ads with the specified compatibility.
   /// Applicable when type is AD_SERVING_DEFAULT_AD. DISPLAY and
@@ -1150,57 +1200,7 @@ class AdsResourceApi {
   /// - "IN_STREAM_VIDEO"
   /// - "IN_STREAM_AUDIO"
   ///
-  /// [type] - Select only ads with these types.
-  ///
-  /// [ids] - Select only ads with these IDs.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [archived] - Select only archived ads.
-  ///
-  /// [audienceSegmentIds] - Select only ads with these audience segment IDs.
-  ///
-  /// [active] - Select only active ads.
-  ///
-  /// [remarketingListIds] - Select only ads whose list targeting expression use
-  /// these remarketing list IDs.
-  ///
-  /// [sizeIds] - Select only ads with these size IDs.
-  ///
-  /// [creativeOptimizationConfigurationIds] - Select only ads with these
-  /// creative optimization configuration IDs.
-  ///
-  /// [advertiserId] - Select only ads with this advertiser ID.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [sslCompliant] - Select only ads that are SSL-compliant.
-  ///
-  /// [landingPageIds] - Select only ads with these landing page IDs.
-  ///
-  /// [creativeIds] - Select only ads with these creative IDs assigned.
-  ///
-  /// [overriddenEventTagId] - Select only ads with this event tag override ID.
-  ///
-  /// [sslRequired] - Select only ads that require SSL.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
-  /// are allowed. For example, "ad*2015" will return objects with names like
-  /// "ad June 2015", "ad April 2015", or simply "ad 2015". Most of the searches
-  /// also add wildcards implicitly at the start and the end of the search
-  /// string. For example, a search string of "ad" will match objects with name
-  /// "my ad", "ad 2015", or simply "ad".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1213,29 +1213,29 @@ class AdsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdsListResponse> list(core.String profileId,
-      {core.List<core.String> placementIds,
-      core.List<core.String> campaignIds,
-      core.bool dynamicClickTracker,
-      core.String compatibility,
-      core.List<core.String> type,
-      core.List<core.String> ids,
-      core.String sortOrder,
-      core.bool archived,
-      core.List<core.String> audienceSegmentIds,
-      core.bool active,
+      {core.List<core.String> creativeIds,
       core.List<core.String> remarketingListIds,
-      core.List<core.String> sizeIds,
-      core.List<core.String> creativeOptimizationConfigurationIds,
-      core.String advertiserId,
-      core.int maxResults,
-      core.String pageToken,
+      core.bool sslRequired,
+      core.bool dynamicClickTracker,
+      core.List<core.String> campaignIds,
+      core.List<core.String> ids,
+      core.String overriddenEventTagId,
       core.bool sslCompliant,
       core.List<core.String> landingPageIds,
-      core.List<core.String> creativeIds,
-      core.String overriddenEventTagId,
-      core.bool sslRequired,
-      core.String sortField,
+      core.int maxResults,
+      core.String sortOrder,
       core.String searchString,
+      core.List<core.String> creativeOptimizationConfigurationIds,
+      core.String advertiserId,
+      core.bool archived,
+      core.List<core.String> sizeIds,
+      core.List<core.String> placementIds,
+      core.String sortField,
+      core.List<core.String> type,
+      core.bool active,
+      core.List<core.String> audienceSegmentIds,
+      core.String compatibility,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1247,41 +1247,41 @@ class AdsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (placementIds != null) {
-      _queryParams["placementIds"] = placementIds;
-    }
-    if (campaignIds != null) {
-      _queryParams["campaignIds"] = campaignIds;
-    }
-    if (dynamicClickTracker != null) {
-      _queryParams["dynamicClickTracker"] = ["${dynamicClickTracker}"];
-    }
-    if (compatibility != null) {
-      _queryParams["compatibility"] = [compatibility];
-    }
-    if (type != null) {
-      _queryParams["type"] = type;
-    }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (archived != null) {
-      _queryParams["archived"] = ["${archived}"];
-    }
-    if (audienceSegmentIds != null) {
-      _queryParams["audienceSegmentIds"] = audienceSegmentIds;
-    }
-    if (active != null) {
-      _queryParams["active"] = ["${active}"];
+    if (creativeIds != null) {
+      _queryParams["creativeIds"] = creativeIds;
     }
     if (remarketingListIds != null) {
       _queryParams["remarketingListIds"] = remarketingListIds;
     }
-    if (sizeIds != null) {
-      _queryParams["sizeIds"] = sizeIds;
+    if (sslRequired != null) {
+      _queryParams["sslRequired"] = ["${sslRequired}"];
+    }
+    if (dynamicClickTracker != null) {
+      _queryParams["dynamicClickTracker"] = ["${dynamicClickTracker}"];
+    }
+    if (campaignIds != null) {
+      _queryParams["campaignIds"] = campaignIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (overriddenEventTagId != null) {
+      _queryParams["overriddenEventTagId"] = [overriddenEventTagId];
+    }
+    if (sslCompliant != null) {
+      _queryParams["sslCompliant"] = ["${sslCompliant}"];
+    }
+    if (landingPageIds != null) {
+      _queryParams["landingPageIds"] = landingPageIds;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
     }
     if (creativeOptimizationConfigurationIds != null) {
       _queryParams["creativeOptimizationConfigurationIds"] =
@@ -1290,32 +1290,32 @@ class AdsResourceApi {
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (sizeIds != null) {
+      _queryParams["sizeIds"] = sizeIds;
     }
-    if (sslCompliant != null) {
-      _queryParams["sslCompliant"] = ["${sslCompliant}"];
-    }
-    if (landingPageIds != null) {
-      _queryParams["landingPageIds"] = landingPageIds;
-    }
-    if (creativeIds != null) {
-      _queryParams["creativeIds"] = creativeIds;
-    }
-    if (overriddenEventTagId != null) {
-      _queryParams["overriddenEventTagId"] = [overriddenEventTagId];
-    }
-    if (sslRequired != null) {
-      _queryParams["sslRequired"] = ["${sslRequired}"];
+    if (placementIds != null) {
+      _queryParams["placementIds"] = placementIds;
     }
     if (sortField != null) {
       _queryParams["sortField"] = [sortField];
     }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
+    if (type != null) {
+      _queryParams["type"] = type;
+    }
+    if (active != null) {
+      _queryParams["active"] = ["${active}"];
+    }
+    if (audienceSegmentIds != null) {
+      _queryParams["audienceSegmentIds"] = audienceSegmentIds;
+    }
+    if (compatibility != null) {
+      _queryParams["compatibility"] = [compatibility];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1604,6 +1604,21 @@ class AdvertiserGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [ids] - Select only advertiser groups with these IDs.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "advertiser*2015" will return objects with names
   /// like "advertiser group June 2015", "advertiser group April 2015", or
@@ -1611,21 +1626,6 @@ class AdvertiserGroupsResourceApi {
   /// implicitly at the start and the end of the search string. For example, a
   /// search string of "advertisergroup" will match objects with name "my
   /// advertisergroup", "advertisergroup 2015", or simply "advertisergroup".
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [ids] - Select only advertiser groups with these IDs.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -1640,11 +1640,11 @@ class AdvertiserGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdvertiserGroupsListResponse> list(core.String profileId,
-      {core.String searchString,
-      core.int maxResults,
-      core.List<core.String> ids,
-      core.String sortOrder,
+      {core.List<core.String> ids,
       core.String sortField,
+      core.int maxResults,
+      core.String sortOrder,
+      core.String searchString,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -1657,20 +1657,20 @@ class AdvertiserGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
-    }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1916,28 +1916,14 @@ class AdvertiserLandingPagesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [subaccountId] - Select only landing pages that belong to this subaccount.
-  ///
-  /// [campaignIds] - Select only landing pages that are associated with these
-  /// campaigns.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [advertiserIds] - Select only landing pages that belong to these
-  /// advertisers.
+  /// [ids] - Select only landing pages with these IDs.
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
   /// [archived] - Select only archived landing pages. Don't set this field to
   /// select both archived and non-archived landing pages.
+  ///
+  /// [subaccountId] - Select only landing pages that belong to this subaccount.
   ///
   /// [searchString] - Allows searching for landing pages by name or ID.
   /// Wildcards (*) are allowed. For example, "landingpage*2017" will return
@@ -1950,7 +1936,21 @@ class AdvertiserLandingPagesResourceApi {
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "1000".
   ///
-  /// [ids] - Select only landing pages with these IDs.
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [campaignIds] - Select only landing pages that are associated with these
+  /// campaigns.
+  ///
+  /// [advertiserIds] - Select only landing pages that belong to these
+  /// advertisers.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1963,16 +1963,16 @@ class AdvertiserLandingPagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdvertiserLandingPagesListResponse> list(core.String profileId,
-      {core.String subaccountId,
-      core.List<core.String> campaignIds,
-      core.String sortOrder,
-      core.List<core.String> advertiserIds,
+      {core.List<core.String> ids,
       core.String pageToken,
-      core.String sortField,
       core.bool archived,
+      core.String subaccountId,
       core.String searchString,
       core.int maxResults,
-      core.List<core.String> ids,
+      core.String sortField,
+      core.String sortOrder,
+      core.List<core.String> campaignIds,
+      core.List<core.String> advertiserIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1984,26 +1984,17 @@ class AdvertiserLandingPagesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (subaccountId != null) {
-      _queryParams["subaccountId"] = [subaccountId];
-    }
-    if (campaignIds != null) {
-      _queryParams["campaignIds"] = campaignIds;
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (advertiserIds != null) {
-      _queryParams["advertiserIds"] = advertiserIds;
+    if (ids != null) {
+      _queryParams["ids"] = ids;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
     if (archived != null) {
       _queryParams["archived"] = ["${archived}"];
+    }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
     }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
@@ -2011,8 +2002,17 @@ class AdvertiserLandingPagesResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (campaignIds != null) {
+      _queryParams["campaignIds"] = campaignIds;
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2254,34 +2254,6 @@ class AdvertisersResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [subaccountId] - Select only advertisers with these subaccount IDs.
-  ///
-  /// [ids] - Select only advertisers with these IDs.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [status] - Select only advertisers with the specified status.
-  /// Possible string values are:
-  /// - "APPROVED"
-  /// - "ON_HOLD"
-  ///
-  /// [onlyParent] - Select only advertisers which use another advertiser's
-  /// floodlight configuration.
-  ///
-  /// [floodlightConfigurationIds] - Select only advertisers with these
-  /// floodlight configuration IDs.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "advertiser*2015" will return objects with names
   /// like "advertiser June 2015", "advertiser April 2015", or simply
@@ -2290,13 +2262,41 @@ class AdvertisersResourceApi {
   /// of "advertiser" will match objects with name "my advertiser", "advertiser
   /// 2015", or simply "advertiser" .
   ///
-  /// [advertiserGroupIds] - Select only advertisers with these advertiser group
-  /// IDs.
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  /// [subaccountId] - Select only advertisers with these subaccount IDs.
   ///
   /// [includeAdvertisersWithoutGroupsOnly] - Select only advertisers which do
   /// not belong to any advertiser group.
+  ///
+  /// [advertiserGroupIds] - Select only advertisers with these advertiser group
+  /// IDs.
+  ///
+  /// [status] - Select only advertisers with the specified status.
+  /// Possible string values are:
+  /// - "APPROVED"
+  /// - "ON_HOLD"
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [floodlightConfigurationIds] - Select only advertisers with these
+  /// floodlight configuration IDs.
+  ///
+  /// [ids] - Select only advertisers with these IDs.
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [onlyParent] - Select only advertisers which use another advertiser's
+  /// floodlight configuration.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2309,18 +2309,18 @@ class AdvertisersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdvertisersListResponse> list(core.String profileId,
-      {core.int maxResults,
+      {core.String searchString,
       core.String subaccountId,
+      core.bool includeAdvertisersWithoutGroupsOnly,
+      core.List<core.String> advertiserGroupIds,
+      core.String status,
+      core.String sortField,
+      core.int maxResults,
+      core.List<core.String> floodlightConfigurationIds,
       core.List<core.String> ids,
       core.String sortOrder,
-      core.String status,
-      core.bool onlyParent,
-      core.List<core.String> floodlightConfigurationIds,
-      core.String sortField,
-      core.String searchString,
-      core.List<core.String> advertiserGroupIds,
       core.String pageToken,
-      core.bool includeAdvertisersWithoutGroupsOnly,
+      core.bool onlyParent,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2332,11 +2332,31 @@ class AdvertisersResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
     }
     if (subaccountId != null) {
       _queryParams["subaccountId"] = [subaccountId];
+    }
+    if (includeAdvertisersWithoutGroupsOnly != null) {
+      _queryParams["includeAdvertisersWithoutGroupsOnly"] = [
+        "${includeAdvertisersWithoutGroupsOnly}"
+      ];
+    }
+    if (advertiserGroupIds != null) {
+      _queryParams["advertiserGroupIds"] = advertiserGroupIds;
+    }
+    if (status != null) {
+      _queryParams["status"] = [status];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (floodlightConfigurationIds != null) {
+      _queryParams["floodlightConfigurationIds"] = floodlightConfigurationIds;
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
@@ -2344,31 +2364,11 @@ class AdvertisersResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (status != null) {
-      _queryParams["status"] = [status];
-    }
-    if (onlyParent != null) {
-      _queryParams["onlyParent"] = ["${onlyParent}"];
-    }
-    if (floodlightConfigurationIds != null) {
-      _queryParams["floodlightConfigurationIds"] = floodlightConfigurationIds;
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
-    if (advertiserGroupIds != null) {
-      _queryParams["advertiserGroupIds"] = advertiserGroupIds;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (includeAdvertisersWithoutGroupsOnly != null) {
-      _queryParams["includeAdvertisersWithoutGroupsOnly"] = [
-        "${includeAdvertisersWithoutGroupsOnly}"
-      ];
+    if (onlyParent != null) {
+      _queryParams["onlyParent"] = ["${onlyParent}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2624,6 +2624,8 @@ class CampaignCreativeAssociationsResourceApi {
   ///
   /// [campaignId] - Campaign ID in this association.
   ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "1000".
   ///
@@ -2631,8 +2633,6 @@ class CampaignCreativeAssociationsResourceApi {
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2646,9 +2646,9 @@ class CampaignCreativeAssociationsResourceApi {
   /// this method will complete with the same error.
   async.Future<CampaignCreativeAssociationsListResponse> list(
       core.String profileId, core.String campaignId,
-      {core.int maxResults,
+      {core.String pageToken,
+      core.int maxResults,
       core.String sortOrder,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2663,14 +2663,14 @@ class CampaignCreativeAssociationsResourceApi {
     if (campaignId == null) {
       throw new core.ArgumentError("Parameter campaignId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2806,28 +2806,7 @@ class CampaignsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [archived] - Select only archived campaigns. Don't set this field to
-  /// select both archived and non-archived campaigns.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [ids] - Select only campaigns with these IDs.
-  ///
-  /// [atLeastOneOptimizationActivity] - Select only campaigns that have at
-  /// least one optimization activity.
-  ///
-  /// [excludedIds] - Exclude campaigns with these IDs.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// [subaccountId] - Select only campaigns that belong to this subaccount.
   ///
   /// [searchString] - Allows searching for campaigns by name or ID. Wildcards
   /// (*) are allowed. For example, "campaign*2015" will return campaigns with
@@ -2837,17 +2816,38 @@ class CampaignsResourceApi {
   /// "campaign" will match campaigns with name "my campaign", "campaign 2015",
   /// or simply "campaign".
   ///
-  /// [advertiserGroupIds] - Select only campaigns whose advertisers belong to
-  /// these advertiser groups.
+  /// [archived] - Select only archived campaigns. Don't set this field to
+  /// select both archived and non-archived campaigns.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [advertiserIds] - Select only campaigns that belong to these advertisers.
+  ///
+  /// [atLeastOneOptimizationActivity] - Select only campaigns that have at
+  /// least one optimization activity.
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [overriddenEventTagId] - Select only campaigns that have overridden this
   /// event tag ID.
   ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  /// [ids] - Select only campaigns with these IDs.
   ///
-  /// [subaccountId] - Select only campaigns that belong to this subaccount.
+  /// [excludedIds] - Exclude campaigns with these IDs.
   ///
-  /// [advertiserIds] - Select only campaigns that belong to these advertisers.
+  /// [advertiserGroupIds] - Select only campaigns whose advertisers belong to
+  /// these advertiser groups.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2860,19 +2860,19 @@ class CampaignsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CampaignsListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.bool archived,
-      core.String sortField,
-      core.List<core.String> ids,
-      core.bool atLeastOneOptimizationActivity,
-      core.List<core.String> excludedIds,
-      core.String sortOrder,
+      {core.String subaccountId,
       core.String searchString,
-      core.List<core.String> advertiserGroupIds,
-      core.String overriddenEventTagId,
-      core.String pageToken,
-      core.String subaccountId,
+      core.bool archived,
+      core.int maxResults,
       core.List<core.String> advertiserIds,
+      core.bool atLeastOneOptimizationActivity,
+      core.String pageToken,
+      core.String overriddenEventTagId,
+      core.List<core.String> ids,
+      core.List<core.String> excludedIds,
+      core.List<core.String> advertiserGroupIds,
+      core.String sortField,
+      core.String sortOrder,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2884,46 +2884,46 @@ class CampaignsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
     }
     if (archived != null) {
       _queryParams["archived"] = ["${archived}"];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
     }
     if (atLeastOneOptimizationActivity != null) {
       _queryParams["atLeastOneOptimizationActivity"] = [
         "${atLeastOneOptimizationActivity}"
       ];
     }
-    if (excludedIds != null) {
-      _queryParams["excludedIds"] = excludedIds;
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
-    if (advertiserGroupIds != null) {
-      _queryParams["advertiserGroupIds"] = advertiserGroupIds;
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (overriddenEventTagId != null) {
       _queryParams["overriddenEventTagId"] = [overriddenEventTagId];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (ids != null) {
+      _queryParams["ids"] = ids;
     }
-    if (subaccountId != null) {
-      _queryParams["subaccountId"] = [subaccountId];
+    if (excludedIds != null) {
+      _queryParams["excludedIds"] = excludedIds;
     }
-    if (advertiserIds != null) {
-      _queryParams["advertiserIds"] = advertiserIds;
+    if (advertiserGroupIds != null) {
+      _queryParams["advertiserGroupIds"] = advertiserGroupIds;
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3112,26 +3112,6 @@ class ChangeLogsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [action] - Select only change logs with the specified action.
-  /// Possible string values are:
-  /// - "ACTION_CREATE"
-  /// - "ACTION_UPDATE"
-  /// - "ACTION_DELETE"
-  /// - "ACTION_ENABLE"
-  /// - "ACTION_DISABLE"
-  /// - "ACTION_ADD"
-  /// - "ACTION_REMOVE"
-  /// - "ACTION_MARK_AS_DEFAULT"
-  /// - "ACTION_ASSOCIATE"
-  /// - "ACTION_ASSIGN"
-  /// - "ACTION_UNASSIGN"
-  /// - "ACTION_SEND"
-  /// - "ACTION_LINK"
-  /// - "ACTION_UNLINK"
-  /// - "ACTION_PUSH"
-  /// - "ACTION_EMAIL_TAGS"
-  /// - "ACTION_SHARE"
-  ///
   /// [objectType] - Select only change logs with the specified object type.
   /// Possible string values are:
   /// - "OBJECT_ADVERTISER"
@@ -3175,19 +3155,32 @@ class ChangeLogsResourceApi {
   /// - "OBJECT_SEARCH_LIFT_STUDY"
   /// - "OBJECT_FLOODLIGHT_DV360_LINK"
   ///
-  /// [maxChangeTime] - Select only change logs whose change time is before the
-  /// specified maxChangeTime.The time should be formatted as an RFC3339
-  /// date/time string. For example, for 10:54 PM on July 18th, 2015, in the
-  /// America/New York time zone, the format is "2015-07-18T22:54:00-04:00". In
-  /// other words, the year, month, day, the letter T, the hour (24-hour clock
-  /// system), minute, second, and then the time zone offset.
+  /// [ids] - Select only change logs with these IDs.
   ///
-  /// [objectIds] - Select only change logs with these object IDs.
+  /// [searchString] - Select only change logs whose object ID, user name, old
+  /// or new values match the search string.
   ///
-  /// [userProfileIds] - Select only change logs with these user profile IDs.
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
+  /// [action] - Select only change logs with the specified action.
+  /// Possible string values are:
+  /// - "ACTION_CREATE"
+  /// - "ACTION_UPDATE"
+  /// - "ACTION_DELETE"
+  /// - "ACTION_ENABLE"
+  /// - "ACTION_DISABLE"
+  /// - "ACTION_ADD"
+  /// - "ACTION_REMOVE"
+  /// - "ACTION_MARK_AS_DEFAULT"
+  /// - "ACTION_ASSOCIATE"
+  /// - "ACTION_ASSIGN"
+  /// - "ACTION_UNASSIGN"
+  /// - "ACTION_SEND"
+  /// - "ACTION_LINK"
+  /// - "ACTION_UNLINK"
+  /// - "ACTION_PUSH"
+  /// - "ACTION_EMAIL_TAGS"
+  /// - "ACTION_SHARE"
   ///
   /// [minChangeTime] - Select only change logs whose change time is after the
   /// specified minChangeTime.The time should be formatted as an RFC3339
@@ -3196,12 +3189,19 @@ class ChangeLogsResourceApi {
   /// other words, the year, month, day, the letter T, the hour (24-hour clock
   /// system), minute, second, and then the time zone offset.
   ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  /// [maxChangeTime] - Select only change logs whose change time is before the
+  /// specified maxChangeTime.The time should be formatted as an RFC3339
+  /// date/time string. For example, for 10:54 PM on July 18th, 2015, in the
+  /// America/New York time zone, the format is "2015-07-18T22:54:00-04:00". In
+  /// other words, the year, month, day, the letter T, the hour (24-hour clock
+  /// system), minute, second, and then the time zone offset.
   ///
-  /// [searchString] - Select only change logs whose object ID, user name, old
-  /// or new values match the search string.
+  /// [userProfileIds] - Select only change logs with these user profile IDs.
   ///
-  /// [ids] - Select only change logs with these IDs.
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [objectIds] - Select only change logs with these object IDs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3214,16 +3214,16 @@ class ChangeLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChangeLogsListResponse> list(core.String profileId,
-      {core.String action,
-      core.String objectType,
+      {core.String objectType,
+      core.List<core.String> ids,
+      core.String searchString,
+      core.String pageToken,
+      core.String action,
+      core.String minChangeTime,
       core.String maxChangeTime,
-      core.List<core.String> objectIds,
       core.List<core.String> userProfileIds,
       core.int maxResults,
-      core.String minChangeTime,
-      core.String pageToken,
-      core.String searchString,
-      core.List<core.String> ids,
+      core.List<core.String> objectIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3235,17 +3235,26 @@ class ChangeLogsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (action != null) {
-      _queryParams["action"] = [action];
-    }
     if (objectType != null) {
       _queryParams["objectType"] = [objectType];
     }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (action != null) {
+      _queryParams["action"] = [action];
+    }
+    if (minChangeTime != null) {
+      _queryParams["minChangeTime"] = [minChangeTime];
+    }
     if (maxChangeTime != null) {
       _queryParams["maxChangeTime"] = [maxChangeTime];
-    }
-    if (objectIds != null) {
-      _queryParams["objectIds"] = objectIds;
     }
     if (userProfileIds != null) {
       _queryParams["userProfileIds"] = userProfileIds;
@@ -3253,17 +3262,8 @@ class ChangeLogsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (minChangeTime != null) {
-      _queryParams["minChangeTime"] = [minChangeTime];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
+    if (objectIds != null) {
+      _queryParams["objectIds"] = objectIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3294,11 +3294,11 @@ class CitiesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [countryDartIds] - Select only cities from these countries.
-  ///
   /// [namePrefix] - Select only cities with names starting with this prefix.
   ///
   /// [dartIds] - Select only cities with these DART IDs.
+  ///
+  /// [countryDartIds] - Select only cities from these countries.
   ///
   /// [regionDartIds] - Select only cities from these regions.
   ///
@@ -3313,9 +3313,9 @@ class CitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CitiesListResponse> list(core.String profileId,
-      {core.List<core.String> countryDartIds,
-      core.String namePrefix,
+      {core.String namePrefix,
       core.List<core.String> dartIds,
+      core.List<core.String> countryDartIds,
       core.List<core.String> regionDartIds,
       core.String $fields}) {
     var _url;
@@ -3328,14 +3328,14 @@ class CitiesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (countryDartIds != null) {
-      _queryParams["countryDartIds"] = countryDartIds;
-    }
     if (namePrefix != null) {
       _queryParams["namePrefix"] = [namePrefix];
     }
     if (dartIds != null) {
       _queryParams["dartIds"] = dartIds;
+    }
+    if (countryDartIds != null) {
+      _queryParams["countryDartIds"] = countryDartIds;
     }
     if (regionDartIds != null) {
       _queryParams["regionDartIds"] = regionDartIds;
@@ -3627,10 +3627,22 @@ class ContentCategoriesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [ids] - Select only content categories with these IDs.
+  ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
   ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "contentcategory*2015" will return objects with
@@ -3639,18 +3651,6 @@ class ContentCategoriesResourceApi {
   /// implicitly at the start and the end of the search string. For example, a
   /// search string of "contentcategory" will match objects with name "my
   /// contentcategory", "contentcategory 2015", or simply "contentcategory".
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [ids] - Select only content categories with these IDs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3663,12 +3663,12 @@ class ContentCategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContentCategoriesListResponse> list(core.String profileId,
-      {core.String sortOrder,
-      core.String searchString,
-      core.int maxResults,
+      {core.String sortField,
       core.String pageToken,
-      core.String sortField,
       core.List<core.String> ids,
+      core.String sortOrder,
+      core.int maxResults,
+      core.String searchString,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3680,23 +3680,23 @@ class ContentCategoriesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
     if (ids != null) {
       _queryParams["ids"] = ids;
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4306,25 +4306,25 @@ class CreativeFieldValuesResourceApi {
   ///
   /// [creativeFieldId] - Creative field ID for this creative field value.
   ///
-  /// [searchString] - Allows searching for creative field values by their
-  /// values. Wildcards (e.g. *) are not allowed.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "VALUE"
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [ids] - Select only creative field values with these IDs.
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
+  ///
+  /// [searchString] - Allows searching for creative field values by their
+  /// values. Wildcards (e.g. *) are not allowed.
+  ///
+  /// [ids] - Select only creative field values with these IDs.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "VALUE"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4338,12 +4338,12 @@ class CreativeFieldValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<CreativeFieldValuesListResponse> list(
       core.String profileId, core.String creativeFieldId,
-      {core.String searchString,
-      core.String sortField,
-      core.int maxResults,
-      core.String pageToken,
-      core.List<core.String> ids,
+      {core.String pageToken,
       core.String sortOrder,
+      core.String searchString,
+      core.List<core.String> ids,
+      core.int maxResults,
+      core.String sortField,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4358,23 +4358,23 @@ class CreativeFieldValuesResourceApi {
     if (creativeFieldId == null) {
       throw new core.ArgumentError("Parameter creativeFieldId is required.");
     }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4685,6 +4685,8 @@ class CreativeFieldsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [ids] - Select only creative fields with these IDs.
+  ///
   /// [searchString] - Allows searching for creative fields by name or ID.
   /// Wildcards (*) are allowed. For example, "creativefield*2015" will return
   /// creative fields with names like "creativefield June 2015", "creativefield
@@ -4694,25 +4696,23 @@ class CreativeFieldsResourceApi {
   /// with the name "my creativefield", "creativefield 2015", or simply
   /// "creativefield".
   ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [advertiserIds] - Select only creative fields that belong to these
-  /// advertisers.
-  ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
-  /// [ids] - Select only creative fields with these IDs.
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [advertiserIds] - Select only creative fields that belong to these
+  /// advertisers.
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4725,13 +4725,13 @@ class CreativeFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeFieldsListResponse> list(core.String profileId,
-      {core.String searchString,
-      core.String pageToken,
-      core.int maxResults,
-      core.String sortField,
-      core.List<core.String> advertiserIds,
+      {core.List<core.String> ids,
+      core.String searchString,
       core.String sortOrder,
-      core.List<core.String> ids,
+      core.int maxResults,
+      core.List<core.String> advertiserIds,
+      core.String pageToken,
+      core.String sortField,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -4743,26 +4743,26 @@ class CreativeFieldsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (advertiserIds != null) {
-      _queryParams["advertiserIds"] = advertiserIds;
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5005,21 +5005,25 @@ class CreativeGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
   /// [groupNumber] - Select only creative groups that belong to this subgroup.
   /// Value must be between "1" and "2".
+  ///
+  /// [ids] - Select only creative groups with these IDs.
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
   ///
   /// [sortField] - Field by which to sort the list.
   /// Possible string values are:
   /// - "ID"
   /// - "NAME"
-  ///
-  /// [ids] - Select only creative groups with these IDs.
-  ///
-  /// [advertiserIds] - Select only creative groups that belong to these
-  /// advertisers.
   ///
   /// [searchString] - Allows searching for creative groups by name or ID.
   /// Wildcards (*) are allowed. For example, "creativegroup*2015" will return
@@ -5030,12 +5034,8 @@ class CreativeGroupsResourceApi {
   /// with the name "my creativegroup", "creativegroup 2015", or simply
   /// "creativegroup".
   ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// [advertiserIds] - Select only creative groups that belong to these
+  /// advertisers.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5048,14 +5048,14 @@ class CreativeGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeGroupsListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.int groupNumber,
-      core.String sortField,
+      {core.int groupNumber,
       core.List<core.String> ids,
-      core.List<core.String> advertiserIds,
-      core.String searchString,
-      core.String pageToken,
       core.String sortOrder,
+      core.String pageToken,
+      core.int maxResults,
+      core.String sortField,
+      core.String searchString,
+      core.List<core.String> advertiserIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5067,29 +5067,29 @@ class CreativeGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (groupNumber != null) {
       _queryParams["groupNumber"] = ["${groupNumber}"];
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
-    if (advertiserIds != null) {
-      _queryParams["advertiserIds"] = advertiserIds;
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5331,26 +5331,13 @@ class CreativesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [creativeFieldIds] - Select only creatives with these creative field IDs.
-  ///
-  /// [types] - Select only creatives with these creative types.
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [sizeIds] - Select only creatives with these size IDs.
   ///
-  /// [campaignId] - Select only creatives with this campaign ID.
+  /// [ids] - Select only creatives with these IDs.
   ///
-  /// [advertiserId] - Select only creatives with this advertiser ID.
-  ///
-  /// [active] - Select only active creatives. Leave blank to select active and
-  /// inactive creatives.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
+  /// [renderingIds] - Select only creatives with these rendering IDs.
   ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "creative*2015" will return objects with names
@@ -5360,25 +5347,38 @@ class CreativesResourceApi {
   /// will match objects with name "my creative", "creative 2015", or simply
   /// "creative".
   ///
-  /// [studioCreativeId] - Select only creatives corresponding to this Studio
-  /// creative ID.
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [ids] - Select only creatives with these IDs.
-  ///
-  /// [companionCreativeIds] - Select only in-stream video creatives with these
-  /// companion IDs.
-  ///
-  /// [renderingIds] - Select only creatives with these rendering IDs.
-  ///
-  /// [archived] - Select only archived creatives. Leave blank to select
-  /// archived and unarchived creatives.
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
+  ///
+  /// [studioCreativeId] - Select only creatives corresponding to this Studio
+  /// creative ID.
+  ///
+  /// [types] - Select only creatives with these creative types.
+  ///
+  /// [companionCreativeIds] - Select only in-stream video creatives with these
+  /// companion IDs.
+  ///
+  /// [archived] - Select only archived creatives. Leave blank to select
+  /// archived and unarchived creatives.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [advertiserId] - Select only creatives with this advertiser ID.
+  ///
+  /// [active] - Select only active creatives. Leave blank to select active and
+  /// inactive creatives.
+  ///
+  /// [creativeFieldIds] - Select only creatives with these creative field IDs.
+  ///
+  /// [campaignId] - Select only creatives with this campaign ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5391,22 +5391,22 @@ class CreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativesListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.List<core.String> creativeFieldIds,
-      core.List<core.String> types,
+      {core.String pageToken,
       core.List<core.String> sizeIds,
-      core.String campaignId,
+      core.List<core.String> ids,
+      core.List<core.String> renderingIds,
+      core.String searchString,
+      core.int maxResults,
+      core.String sortOrder,
+      core.String studioCreativeId,
+      core.List<core.String> types,
+      core.List<core.String> companionCreativeIds,
+      core.bool archived,
+      core.String sortField,
       core.String advertiserId,
       core.bool active,
-      core.String sortField,
-      core.String searchString,
-      core.String studioCreativeId,
-      core.String pageToken,
-      core.List<core.String> ids,
-      core.List<core.String> companionCreativeIds,
-      core.List<core.String> renderingIds,
-      core.bool archived,
-      core.String sortOrder,
+      core.List<core.String> creativeFieldIds,
+      core.String campaignId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5418,20 +5418,41 @@ class CreativesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (creativeFieldIds != null) {
-      _queryParams["creativeFieldIds"] = creativeFieldIds;
-    }
-    if (types != null) {
-      _queryParams["types"] = types;
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (sizeIds != null) {
       _queryParams["sizeIds"] = sizeIds;
     }
-    if (campaignId != null) {
-      _queryParams["campaignId"] = [campaignId];
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (renderingIds != null) {
+      _queryParams["renderingIds"] = renderingIds;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (studioCreativeId != null) {
+      _queryParams["studioCreativeId"] = [studioCreativeId];
+    }
+    if (types != null) {
+      _queryParams["types"] = types;
+    }
+    if (companionCreativeIds != null) {
+      _queryParams["companionCreativeIds"] = companionCreativeIds;
+    }
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -5439,32 +5460,11 @@ class CreativesResourceApi {
     if (active != null) {
       _queryParams["active"] = ["${active}"];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
+    if (creativeFieldIds != null) {
+      _queryParams["creativeFieldIds"] = creativeFieldIds;
     }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
-    if (studioCreativeId != null) {
-      _queryParams["studioCreativeId"] = [studioCreativeId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
-    }
-    if (companionCreativeIds != null) {
-      _queryParams["companionCreativeIds"] = companionCreativeIds;
-    }
-    if (renderingIds != null) {
-      _queryParams["renderingIds"] = renderingIds;
-    }
-    if (archived != null) {
-      _queryParams["archived"] = ["${archived}"];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (campaignId != null) {
+      _queryParams["campaignId"] = [campaignId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5660,7 +5660,7 @@ class DimensionValuesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [pageToken] - The value of the nextToken from the previous result page.
   ///
@@ -5831,31 +5831,20 @@ class DirectorySitesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [acceptsPublisherPaidPlacements] - Select only directory sites that accept
-  /// publisher paid placements. This field can be left blank.
+  /// [acceptsInterstitialPlacements] - This search filter is no longer
+  /// supported and will have no effect on the results returned.
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [sortField] - Field by which to sort the list.
   /// Possible string values are:
   /// - "ID"
   /// - "NAME"
   ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
   /// [ids] - Select only directory sites with these IDs.
   ///
-  /// [active] - Select only active directory sites. Leave blank to retrieve
-  /// both active and inactive directory sites.
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [acceptsInStreamVideoPlacements] - This search filter is no longer
-  /// supported and will have no effect on the results returned.
+  /// [acceptsPublisherPaidPlacements] - Select only directory sites that accept
+  /// publisher paid placements. This field can be left blank.
   ///
   /// [searchString] - Allows searching for objects by name, ID or URL.
   /// Wildcards (*) are allowed. For example, "directory site*2015" will return
@@ -5865,10 +5854,21 @@ class DirectorySitesResourceApi {
   /// example, a search string of "directory site" will match objects with name
   /// "my directory site", "directory site 2015" or simply, "directory site".
   ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
   /// [dfpNetworkCode] - Select only directory sites with this Ad Manager
   /// network code.
   ///
-  /// [acceptsInterstitialPlacements] - This search filter is no longer
+  /// [active] - Select only active directory sites. Leave blank to retrieve
+  /// both active and inactive directory sites.
+  ///
+  /// [acceptsInStreamVideoPlacements] - This search filter is no longer
   /// supported and will have no effect on the results returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5882,17 +5882,17 @@ class DirectorySitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DirectorySitesListResponse> list(core.String profileId,
-      {core.bool acceptsPublisherPaidPlacements,
-      core.String sortField,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.bool active,
+      {core.bool acceptsInterstitialPlacements,
       core.String pageToken,
-      core.int maxResults,
-      core.bool acceptsInStreamVideoPlacements,
+      core.String sortField,
+      core.List<core.String> ids,
+      core.bool acceptsPublisherPaidPlacements,
       core.String searchString,
+      core.int maxResults,
+      core.String sortOrder,
       core.String dfpNetworkCode,
-      core.bool acceptsInterstitialPlacements,
+      core.bool active,
+      core.bool acceptsInStreamVideoPlacements,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -5904,43 +5904,43 @@ class DirectorySitesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
+    if (acceptsInterstitialPlacements != null) {
+      _queryParams["acceptsInterstitialPlacements"] = [
+        "${acceptsInterstitialPlacements}"
+      ];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
     if (acceptsPublisherPaidPlacements != null) {
       _queryParams["acceptsPublisherPaidPlacements"] = [
         "${acceptsPublisherPaidPlacements}"
       ];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
-    }
-    if (active != null) {
-      _queryParams["active"] = ["${active}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (acceptsInStreamVideoPlacements != null) {
-      _queryParams["acceptsInStreamVideoPlacements"] = [
-        "${acceptsInStreamVideoPlacements}"
-      ];
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if (dfpNetworkCode != null) {
       _queryParams["dfpNetworkCode"] = [dfpNetworkCode];
     }
-    if (acceptsInterstitialPlacements != null) {
-      _queryParams["acceptsInterstitialPlacements"] = [
-        "${acceptsInterstitialPlacements}"
+    if (active != null) {
+      _queryParams["active"] = ["${active}"];
+    }
+    if (acceptsInStreamVideoPlacements != null) {
+      _queryParams["acceptsInStreamVideoPlacements"] = [
+        "${acceptsInStreamVideoPlacements}"
       ];
     }
     if ($fields != null) {
@@ -6101,6 +6101,8 @@ class DynamicTargetingKeysResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [names] - Select only dynamic targeting keys exactly matching these names.
+  ///
   /// [objectType] - Select only dynamic targeting keys with this object type.
   /// Possible string values are:
   /// - "OBJECT_ADVERTISER"
@@ -6109,8 +6111,6 @@ class DynamicTargetingKeysResourceApi {
   /// - "OBJECT_PLACEMENT"
   ///
   /// [objectId] - Select only dynamic targeting keys with this object ID.
-  ///
-  /// [names] - Select only dynamic targeting keys exactly matching these names.
   ///
   /// [advertiserId] - Select only dynamic targeting keys whose object has this
   /// advertiser ID.
@@ -6126,9 +6126,9 @@ class DynamicTargetingKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DynamicTargetingKeysListResponse> list(core.String profileId,
-      {core.String objectType,
+      {core.List<core.String> names,
+      core.String objectType,
       core.String objectId,
-      core.List<core.String> names,
       core.String advertiserId,
       core.String $fields}) {
     var _url;
@@ -6141,14 +6141,14 @@ class DynamicTargetingKeysResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
+    if (names != null) {
+      _queryParams["names"] = names;
+    }
     if (objectType != null) {
       _queryParams["objectType"] = [objectType];
     }
     if (objectId != null) {
       _queryParams["objectId"] = [objectId];
-    }
-    if (names != null) {
-      _queryParams["names"] = names;
     }
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
@@ -6335,14 +6335,14 @@ class EventTagsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [definitionsOnly] - Examine only the specified campaign or advertiser's
-  /// event tags for matching selector criteria. When set to false, the parent
-  /// advertiser and parent campaign of the specified ad or campaign is examined
-  /// as well. In addition, when set to false, the status field is examined as
-  /// well, along with the enabledByDefault field. This parameter can not be set
-  /// to true when adId is specified as ads do not define their own even tags.
+  /// [ids] - Select only event tags with these IDs.
   ///
   /// [adId] - Select only event tags that belong to this ad.
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
   ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "eventtag*2015" will return objects with names
@@ -6352,15 +6352,6 @@ class EventTagsResourceApi {
   /// will match objects with name "my eventtag", "eventtag 2015", or simply
   /// "eventtag".
   ///
-  /// [advertiserId] - Select only event tags that belong to this advertiser.
-  ///
-  /// [ids] - Select only event tags with these IDs.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
   /// [enabled] - Select only enabled event tags. What is considered enabled or
   /// disabled depends on the definitionsOnly parameter. When definitionsOnly is
   /// set to true, only the specified advertiser or campaign's event tags'
@@ -6369,17 +6360,26 @@ class EventTagsResourceApi {
   /// campaign's event tags' enabledByDefault and status fields are examined as
   /// well.
   ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
   /// [eventTagTypes] - Select only event tags with the specified event tag
   /// types. Event tag types can be used to specify whether to use a third-party
   /// pixel, a third-party JavaScript URL, or a third-party click-through URL
   /// for either impression or click tracking.
   ///
+  /// [advertiserId] - Select only event tags that belong to this advertiser.
+  ///
   /// [campaignId] - Select only event tags that belong to this campaign.
   ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// [definitionsOnly] - Examine only the specified campaign or advertiser's
+  /// event tags for matching selector criteria. When set to false, the parent
+  /// advertiser and parent campaign of the specified ad or campaign is examined
+  /// as well. In addition, when set to false, the status field is examined as
+  /// well, along with the enabledByDefault field. This parameter can not be set
+  /// to true when adId is specified as ads do not define their own even tags.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6392,16 +6392,16 @@ class EventTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EventTagsListResponse> list(core.String profileId,
-      {core.bool definitionsOnly,
+      {core.List<core.String> ids,
       core.String adId,
-      core.String searchString,
-      core.String advertiserId,
-      core.List<core.String> ids,
-      core.String sortField,
-      core.bool enabled,
-      core.List<core.String> eventTagTypes,
-      core.String campaignId,
       core.String sortOrder,
+      core.String searchString,
+      core.bool enabled,
+      core.String sortField,
+      core.List<core.String> eventTagTypes,
+      core.String advertiserId,
+      core.String campaignId,
+      core.bool definitionsOnly,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6413,35 +6413,35 @@ class EventTagsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (definitionsOnly != null) {
-      _queryParams["definitionsOnly"] = ["${definitionsOnly}"];
+    if (ids != null) {
+      _queryParams["ids"] = ids;
     }
     if (adId != null) {
       _queryParams["adId"] = [adId];
     }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
-    }
-    if (advertiserId != null) {
-      _queryParams["advertiserId"] = [advertiserId];
-    }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
     }
     if (enabled != null) {
       _queryParams["enabled"] = ["${enabled}"];
     }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
     if (eventTagTypes != null) {
       _queryParams["eventTagTypes"] = eventTagTypes;
+    }
+    if (advertiserId != null) {
+      _queryParams["advertiserId"] = [advertiserId];
     }
     if (campaignId != null) {
       _queryParams["campaignId"] = [campaignId];
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (definitionsOnly != null) {
+      _queryParams["definitionsOnly"] = ["${definitionsOnly}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6646,13 +6646,7 @@ class FilesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA profile ID.
-  ///
-  /// [scope] - The scope that defines which results are returned.
-  /// Possible string values are:
-  /// - "ALL" : All files in account.
-  /// - "MINE" : My files.
-  /// - "SHARED_WITH_ME" : Files shared with me.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [pageToken] - The value of the nextToken from the previous result page.
   ///
@@ -6661,13 +6655,19 @@ class FilesResourceApi {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "10".
+  ///
+  /// [scope] - The scope that defines which results are returned.
+  /// Possible string values are:
+  /// - "ALL" : All files in account.
+  /// - "MINE" : My files.
+  /// - "SHARED_WITH_ME" : Files shared with me.
+  ///
   /// [sortField] - The field by which to sort the list.
   /// Possible string values are:
   /// - "ID" : Sort by file ID.
   /// - "LAST_MODIFIED_TIME" : Sort by 'lastmodifiedAt' field.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "10".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6680,11 +6680,11 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FileList> list(core.String profileId,
-      {core.String scope,
-      core.String pageToken,
+      {core.String pageToken,
       core.String sortOrder,
-      core.String sortField,
       core.int maxResults,
+      core.String scope,
+      core.String sortField,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -6696,20 +6696,20 @@ class FilesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (scope != null) {
-      _queryParams["scope"] = [scope];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (scope != null) {
+      _queryParams["scope"] = [scope];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6949,50 +6949,19 @@ class FloodlightActivitiesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [advertiserId] - Select only floodlight activities for the specified
-  /// advertiser ID. Must specify either ids, advertiserId, or
-  /// floodlightConfigurationId for a non-empty result.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [floodlightActivityGroupIds] - Select only floodlight activities with the
-  /// specified floodlight activity group IDs.
-  ///
-  /// [floodlightConfigurationId] - Select only floodlight activities for the
-  /// specified floodlight configuration ID. Must specify either ids,
-  /// advertiserId, or floodlightConfigurationId for a non-empty result.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
   /// [ids] - Select only floodlight activities with the specified IDs. Must
   /// specify either ids, advertiserId, or floodlightConfigurationId for a
   /// non-empty result.
   ///
-  /// [tagString] - Select only floodlight activities with the specified tag
-  /// string.
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [floodlightActivityGroupName] - Select only floodlight activities with the
-  /// specified floodlight activity group name.
+  /// [advertiserId] - Select only floodlight activities for the specified
+  /// advertiser ID. Must specify either ids, advertiserId, or
+  /// floodlightConfigurationId for a non-empty result.
   ///
   /// [floodlightActivityGroupTagString] - Select only floodlight activities
   /// with the specified floodlight activity group tag string.
   ///
-  /// [floodlightActivityGroupType] - Select only floodlight activities with the
-  /// specified floodlight activity group type.
-  /// Possible string values are:
-  /// - "COUNTER"
-  /// - "SALE"
+  /// [floodlightActivityGroupName] - Select only floodlight activities with the
+  /// specified floodlight activity group name.
   ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "floodlightactivity*2015" will return objects
@@ -7002,6 +6971,37 @@ class FloodlightActivitiesResourceApi {
   /// example, a search string of "floodlightactivity" will match objects with
   /// name "my floodlightactivity activity", "floodlightactivity 2015", or
   /// simply "floodlightactivity".
+  ///
+  /// [tagString] - Select only floodlight activities with the specified tag
+  /// string.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [floodlightConfigurationId] - Select only floodlight activities for the
+  /// specified floodlight configuration ID. Must specify either ids,
+  /// advertiserId, or floodlightConfigurationId for a non-empty result.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [floodlightActivityGroupType] - Select only floodlight activities with the
+  /// specified floodlight activity group type.
+  /// Possible string values are:
+  /// - "COUNTER"
+  /// - "SALE"
+  ///
+  /// [floodlightActivityGroupIds] - Select only floodlight activities with the
+  /// specified floodlight activity group IDs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7014,19 +7014,19 @@ class FloodlightActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivitiesListResponse> list(core.String profileId,
-      {core.String advertiserId,
-      core.String sortField,
-      core.String sortOrder,
-      core.List<core.String> floodlightActivityGroupIds,
-      core.String floodlightConfigurationId,
-      core.int maxResults,
-      core.List<core.String> ids,
-      core.String tagString,
-      core.String pageToken,
-      core.String floodlightActivityGroupName,
+      {core.List<core.String> ids,
+      core.String advertiserId,
       core.String floodlightActivityGroupTagString,
-      core.String floodlightActivityGroupType,
+      core.String floodlightActivityGroupName,
       core.String searchString,
+      core.String tagString,
+      core.int maxResults,
+      core.String floodlightConfigurationId,
+      core.String sortField,
+      core.String pageToken,
+      core.String sortOrder,
+      core.String floodlightActivityGroupType,
+      core.List<core.String> floodlightActivityGroupIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7038,50 +7038,50 @@ class FloodlightActivitiesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (advertiserId != null) {
-      _queryParams["advertiserId"] = [advertiserId];
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (floodlightActivityGroupIds != null) {
-      _queryParams["floodlightActivityGroupIds"] = floodlightActivityGroupIds;
-    }
-    if (floodlightConfigurationId != null) {
-      _queryParams["floodlightConfigurationId"] = [floodlightConfigurationId];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
-    if (tagString != null) {
-      _queryParams["tagString"] = [tagString];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (floodlightActivityGroupName != null) {
-      _queryParams["floodlightActivityGroupName"] = [
-        floodlightActivityGroupName
-      ];
+    if (advertiserId != null) {
+      _queryParams["advertiserId"] = [advertiserId];
     }
     if (floodlightActivityGroupTagString != null) {
       _queryParams["floodlightActivityGroupTagString"] = [
         floodlightActivityGroupTagString
       ];
     }
+    if (floodlightActivityGroupName != null) {
+      _queryParams["floodlightActivityGroupName"] = [
+        floodlightActivityGroupName
+      ];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (tagString != null) {
+      _queryParams["tagString"] = [tagString];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (floodlightConfigurationId != null) {
+      _queryParams["floodlightConfigurationId"] = [floodlightConfigurationId];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
     if (floodlightActivityGroupType != null) {
       _queryParams["floodlightActivityGroupType"] = [
         floodlightActivityGroupType
       ];
     }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
+    if (floodlightActivityGroupIds != null) {
+      _queryParams["floodlightActivityGroupIds"] = floodlightActivityGroupIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7327,30 +7327,18 @@ class FloodlightActivityGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [advertiserId] - Select only floodlight activity groups with the specified
-  /// advertiser ID. Must specify either advertiserId or
-  /// floodlightConfigurationId for a non-empty result.
+  /// [ids] - Select only floodlight activity groups with the specified IDs.
+  /// Must specify either advertiserId or floodlightConfigurationId for a
+  /// non-empty result.
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
-  /// [ids] - Select only floodlight activity groups with the specified IDs.
-  /// Must specify either advertiserId or floodlightConfigurationId for a
-  /// non-empty result.
-  ///
-  /// [floodlightConfigurationId] - Select only floodlight activity groups with
-  /// the specified floodlight configuration ID. Must specify either
-  /// advertiserId, or floodlightConfigurationId for a non-empty result.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
+  /// [advertiserId] - Select only floodlight activity groups with the specified
+  /// advertiser ID. Must specify either advertiserId or
+  /// floodlightConfigurationId for a non-empty result.
   ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "floodlightactivitygroup*2015" will return
@@ -7370,6 +7358,18 @@ class FloodlightActivityGroupsResourceApi {
   /// - "COUNTER"
   /// - "SALE"
   ///
+  /// [floodlightConfigurationId] - Select only floodlight activity groups with
+  /// the specified floodlight configuration ID. Must specify either
+  /// advertiserId, or floodlightConfigurationId for a non-empty result.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7381,15 +7381,15 @@ class FloodlightActivityGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroupsListResponse> list(core.String profileId,
-      {core.String advertiserId,
+      {core.List<core.String> ids,
       core.String sortOrder,
-      core.List<core.String> ids,
-      core.String floodlightConfigurationId,
-      core.String sortField,
-      core.int maxResults,
+      core.String advertiserId,
       core.String searchString,
       core.String pageToken,
       core.String type,
+      core.String floodlightConfigurationId,
+      core.int maxResults,
+      core.String sortField,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -7401,23 +7401,14 @@ class FloodlightActivityGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (advertiserId != null) {
-      _queryParams["advertiserId"] = [advertiserId];
+    if (ids != null) {
+      _queryParams["ids"] = ids;
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
-    }
-    if (floodlightConfigurationId != null) {
-      _queryParams["floodlightConfigurationId"] = [floodlightConfigurationId];
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (advertiserId != null) {
+      _queryParams["advertiserId"] = [advertiserId];
     }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
@@ -7427,6 +7418,15 @@ class FloodlightActivityGroupsResourceApi {
     }
     if (type != null) {
       _queryParams["type"] = [type];
+    }
+    if (floodlightConfigurationId != null) {
+      _queryParams["floodlightConfigurationId"] = [floodlightConfigurationId];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7849,19 +7849,19 @@ class InventoryItemsResourceApi {
   ///
   /// [projectId] - Project ID for order documents.
   ///
-  /// [inPlan] - Select only inventory items that are in plan.
-  ///
-  /// [orderId] - Select only inventory items that belong to specified orders.
-  ///
   /// [siteId] - Select only inventory items that are associated with these
   /// sites.
   ///
-  /// [ids] - Select only inventory items with these IDs.
+  /// [orderId] - Select only inventory items that belong to specified orders.
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [inPlan] - Select only inventory items that are in plan.
   ///
   /// [sortField] - Field by which to sort the list.
   /// Possible string values are:
@@ -7871,7 +7871,7 @@ class InventoryItemsResourceApi {
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "1000".
   ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  /// [ids] - Select only inventory items with these IDs.
   ///
   /// [type] - Select only inventory items with this type.
   /// Possible string values are:
@@ -7890,14 +7890,14 @@ class InventoryItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<InventoryItemsListResponse> list(
       core.String profileId, core.String projectId,
-      {core.bool inPlan,
+      {core.List<core.String> siteId,
       core.List<core.String> orderId,
-      core.List<core.String> siteId,
-      core.List<core.String> ids,
       core.String sortOrder,
+      core.String pageToken,
+      core.bool inPlan,
       core.String sortField,
       core.int maxResults,
-      core.String pageToken,
+      core.List<core.String> ids,
       core.String type,
       core.String $fields}) {
     var _url;
@@ -7913,20 +7913,20 @@ class InventoryItemsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (inPlan != null) {
-      _queryParams["inPlan"] = ["${inPlan}"];
+    if (siteId != null) {
+      _queryParams["siteId"] = siteId;
     }
     if (orderId != null) {
       _queryParams["orderId"] = orderId;
     }
-    if (siteId != null) {
-      _queryParams["siteId"] = siteId;
-    }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
-    }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (inPlan != null) {
+      _queryParams["inPlan"] = ["${inPlan}"];
     }
     if (sortField != null) {
       _queryParams["sortField"] = [sortField];
@@ -7934,8 +7934,8 @@ class InventoryItemsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (ids != null) {
+      _queryParams["ids"] = ids;
     }
     if (type != null) {
       _queryParams["type"] = [type];
@@ -8127,7 +8127,10 @@ class MobileAppsResourceApi {
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
-  /// [directories] - Select only apps from these directories.
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [ids] - Select only apps with these IDs.
   ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "app*2015" will return objects with names like
@@ -8136,10 +8139,7 @@ class MobileAppsResourceApi {
   /// string. For example, a search string of "app" will match objects with name
   /// "my app", "app 2018", or simply "app".
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [ids] - Select only apps with these IDs.
+  /// [directories] - Select only apps from these directories.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8153,10 +8153,10 @@ class MobileAppsResourceApi {
   /// this method will complete with the same error.
   async.Future<MobileAppsListResponse> list(core.String profileId,
       {core.String pageToken,
-      core.List<core.String> directories,
-      core.String searchString,
       core.int maxResults,
       core.List<core.String> ids,
+      core.String searchString,
+      core.List<core.String> directories,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -8171,17 +8171,17 @@ class MobileAppsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (directories != null) {
-      _queryParams["directories"] = directories;
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (directories != null) {
+      _queryParams["directories"] = directories;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8586,28 +8586,13 @@ class OrderDocumentsResourceApi {
   ///
   /// [projectId] - Project ID for order documents.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [approved] - Select only order documents that have been approved by at
-  /// least one user.
+  /// [siteId] - Select only order documents that are associated with these
+  /// sites.
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
-  ///
-  /// [orderId] - Select only order documents for specified orders.
-  ///
-  /// [siteId] - Select only order documents that are associated with these
-  /// sites.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
   ///
   /// [searchString] - Allows searching for order documents by name or ID.
   /// Wildcards (*) are allowed. For example, "orderdocument*2015" will return
@@ -8618,7 +8603,22 @@ class OrderDocumentsResourceApi {
   /// with name "my orderdocument", "orderdocument 2015", or simply
   /// "orderdocument".
   ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [orderId] - Select only order documents for specified orders.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
   /// [ids] - Select only order documents with these IDs.
+  ///
+  /// [approved] - Select only order documents that have been approved by at
+  /// least one user.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8632,15 +8632,15 @@ class OrderDocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<OrderDocumentsListResponse> list(
       core.String profileId, core.String projectId,
-      {core.int maxResults,
-      core.String pageToken,
-      core.bool approved,
+      {core.List<core.String> siteId,
       core.String sortOrder,
-      core.List<core.String> orderId,
-      core.List<core.String> siteId,
-      core.String sortField,
       core.String searchString,
+      core.String pageToken,
+      core.List<core.String> orderId,
+      core.int maxResults,
       core.List<core.String> ids,
+      core.bool approved,
+      core.String sortField,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -8655,32 +8655,32 @@ class OrderDocumentsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (approved != null) {
-      _queryParams["approved"] = ["${approved}"];
+    if (siteId != null) {
+      _queryParams["siteId"] = siteId;
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (orderId != null) {
-      _queryParams["orderId"] = orderId;
-    }
-    if (siteId != null) {
-      _queryParams["siteId"] = siteId;
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderId != null) {
+      _queryParams["orderId"] = orderId;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (ids != null) {
       _queryParams["ids"] = ids;
+    }
+    if (approved != null) {
+      _queryParams["approved"] = ["${approved}"];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8776,17 +8776,15 @@ class OrdersResourceApi {
   ///
   /// [projectId] - Project ID for orders.
   ///
+  /// [siteId] - Select only orders that are associated with these site IDs.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [searchString] - Allows searching for orders by name or ID. Wildcards (*)
   /// are allowed. For example, "order*2015" will return orders with names like
@@ -8795,12 +8793,14 @@ class OrdersResourceApi {
   /// search string. For example, a search string of "order" will match orders
   /// with name "my order", "order 2015", or simply "order".
   ///
-  /// [siteId] - Select only orders that are associated with these site IDs.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [ids] - Select only orders with these IDs.
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8814,13 +8814,13 @@ class OrdersResourceApi {
   /// this method will complete with the same error.
   async.Future<OrdersListResponse> list(
       core.String profileId, core.String projectId,
-      {core.String sortOrder,
-      core.String sortField,
-      core.String pageToken,
-      core.String searchString,
-      core.List<core.String> siteId,
+      {core.List<core.String> siteId,
       core.int maxResults,
+      core.String sortOrder,
+      core.String searchString,
+      core.String pageToken,
       core.List<core.String> ids,
+      core.String sortField,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -8835,26 +8835,26 @@ class OrdersResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
     if (siteId != null) {
       _queryParams["siteId"] = siteId;
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (ids != null) {
       _queryParams["ids"] = ids;
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8990,11 +8990,23 @@ class PlacementGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [siteIds] - Select only placement groups that are associated with these
+  /// sites.
+  ///
   /// [placementStrategyIds] - Select only placement groups that are associated
   /// with these placement strategies.
   ///
+  /// [pricingTypes] - Select only placement groups with these pricing types.
+  ///
+  /// [minEndDate] - Select only placements or placement groups whose end date
+  /// is on or after the specified minEndDate. The date should be formatted as
+  /// "yyyy-MM-dd".
+  ///
   /// [contentCategoryIds] - Select only placement groups that are associated
   /// with these content categories.
+  ///
+  /// [advertiserIds] - Select only placement groups that belong to these
+  /// advertisers.
   ///
   /// [searchString] - Allows searching for placement groups by name or ID.
   /// Wildcards (*) are allowed. For example, "placement*2015" will return
@@ -9005,40 +9017,10 @@ class PlacementGroupsResourceApi {
   /// groups with name "my placementgroup", "placementgroup 2015", or simply
   /// "placementgroup".
   ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [advertiserIds] - Select only placement groups that belong to these
-  /// advertisers.
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [campaignIds] - Select only placement groups that belong to these
   /// campaigns.
-  ///
-  /// [minEndDate] - Select only placements or placement groups whose end date
-  /// is on or after the specified minEndDate. The date should be formatted as
-  /// "yyyy-MM-dd".
-  ///
-  /// [archived] - Select only archived placements. Don't set this field to
-  /// select both archived and non-archived placements.
-  ///
-  /// [directorySiteIds] - Select only placement groups that are associated with
-  /// these directory sites.
-  ///
-  /// [siteIds] - Select only placement groups that are associated with these
-  /// sites.
-  ///
-  /// [pricingTypes] - Select only placement groups with these pricing types.
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [ids] - Select only placement groups with these IDs.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
   ///
   /// [placementGroupType] - Select only placement groups belonging with this
   /// group type. A package is a simple group of placements that acts as a
@@ -9051,6 +9033,16 @@ class PlacementGroupsResourceApi {
   /// - "PLACEMENT_PACKAGE"
   /// - "PLACEMENT_ROADBLOCK"
   ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [directorySiteIds] - Select only placement groups that are associated with
+  /// these directory sites.
+  ///
+  /// [ids] - Select only placement groups with these IDs.
+  ///
   /// [maxEndDate] - Select only placements or placement groups whose end date
   /// is on or before the specified maxEndDate. The date should be formatted as
   /// "yyyy-MM-dd".
@@ -9058,13 +9050,21 @@ class PlacementGroupsResourceApi {
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "800".
   ///
-  /// [minStartDate] - Select only placements or placement groups whose start
-  /// date is on or after the specified minStartDate. The date should be
-  /// formatted as "yyyy-MM-dd".
+  /// [archived] - Select only archived placements. Don't set this field to
+  /// select both archived and non-archived placements.
   ///
   /// [maxStartDate] - Select only placements or placement groups whose start
   /// date is on or before the specified maxStartDate. The date should be
   /// formatted as "yyyy-MM-dd".
+  ///
+  /// [minStartDate] - Select only placements or placement groups whose start
+  /// date is on or after the specified minStartDate. The date should be
+  /// formatted as "yyyy-MM-dd".
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9077,25 +9077,25 @@ class PlacementGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementGroupsListResponse> list(core.String profileId,
-      {core.List<core.String> placementStrategyIds,
-      core.List<core.String> contentCategoryIds,
-      core.String searchString,
-      core.String sortField,
-      core.List<core.String> advertiserIds,
-      core.List<core.String> campaignIds,
-      core.String minEndDate,
-      core.bool archived,
-      core.List<core.String> directorySiteIds,
-      core.List<core.String> siteIds,
+      {core.List<core.String> siteIds,
+      core.List<core.String> placementStrategyIds,
       core.List<core.String> pricingTypes,
+      core.String minEndDate,
+      core.List<core.String> contentCategoryIds,
+      core.List<core.String> advertiserIds,
+      core.String searchString,
       core.String pageToken,
-      core.List<core.String> ids,
-      core.String sortOrder,
+      core.List<core.String> campaignIds,
       core.String placementGroupType,
+      core.String sortField,
+      core.List<core.String> directorySiteIds,
+      core.List<core.String> ids,
       core.String maxEndDate,
       core.int maxResults,
-      core.String minStartDate,
+      core.bool archived,
       core.String maxStartDate,
+      core.String minStartDate,
+      core.String sortOrder,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -9107,50 +9107,44 @@ class PlacementGroupsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (placementStrategyIds != null) {
-      _queryParams["placementStrategyIds"] = placementStrategyIds;
-    }
-    if (contentCategoryIds != null) {
-      _queryParams["contentCategoryIds"] = contentCategoryIds;
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (advertiserIds != null) {
-      _queryParams["advertiserIds"] = advertiserIds;
-    }
-    if (campaignIds != null) {
-      _queryParams["campaignIds"] = campaignIds;
-    }
-    if (minEndDate != null) {
-      _queryParams["minEndDate"] = [minEndDate];
-    }
-    if (archived != null) {
-      _queryParams["archived"] = ["${archived}"];
-    }
-    if (directorySiteIds != null) {
-      _queryParams["directorySiteIds"] = directorySiteIds;
-    }
     if (siteIds != null) {
       _queryParams["siteIds"] = siteIds;
+    }
+    if (placementStrategyIds != null) {
+      _queryParams["placementStrategyIds"] = placementStrategyIds;
     }
     if (pricingTypes != null) {
       _queryParams["pricingTypes"] = pricingTypes;
     }
+    if (minEndDate != null) {
+      _queryParams["minEndDate"] = [minEndDate];
+    }
+    if (contentCategoryIds != null) {
+      _queryParams["contentCategoryIds"] = contentCategoryIds;
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (campaignIds != null) {
+      _queryParams["campaignIds"] = campaignIds;
     }
     if (placementGroupType != null) {
       _queryParams["placementGroupType"] = [placementGroupType];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (directorySiteIds != null) {
+      _queryParams["directorySiteIds"] = directorySiteIds;
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
     }
     if (maxEndDate != null) {
       _queryParams["maxEndDate"] = [maxEndDate];
@@ -9158,11 +9152,17 @@ class PlacementGroupsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (minStartDate != null) {
-      _queryParams["minStartDate"] = [minStartDate];
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
     }
     if (maxStartDate != null) {
       _queryParams["maxStartDate"] = [maxStartDate];
+    }
+    if (minStartDate != null) {
+      _queryParams["minStartDate"] = [minStartDate];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9460,6 +9460,16 @@ class PlacementStrategiesResourceApi {
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "1000".
   ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "placementstrategy*2015" will return objects
   /// with names like "placementstrategy June 2015", "placementstrategy April
@@ -9469,19 +9479,9 @@ class PlacementStrategiesResourceApi {
   /// name "my placementstrategy", "placementstrategy 2015", or simply
   /// "placementstrategy".
   ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
   /// [ids] - Select only placement strategies with these IDs.
   ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9495,11 +9495,11 @@ class PlacementStrategiesResourceApi {
   /// this method will complete with the same error.
   async.Future<PlacementStrategiesListResponse> list(core.String profileId,
       {core.int maxResults,
-      core.String searchString,
-      core.String pageToken,
-      core.List<core.String> ids,
-      core.String sortOrder,
       core.String sortField,
+      core.String sortOrder,
+      core.String searchString,
+      core.List<core.String> ids,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -9514,20 +9514,20 @@ class PlacementStrategiesResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9837,23 +9837,10 @@ class PlacementsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [archived] - Select only archived placements. Don't set this field to
-  /// select both archived and non-archived placements.
+  /// [contentCategoryIds] - Select only placements that are associated with
+  /// these content categories.
   ///
-  /// [campaignIds] - Select only placements that belong to these campaigns.
-  ///
-  /// [maxEndDate] - Select only placements or placement groups whose end date
-  /// is on or before the specified maxEndDate. The date should be formatted as
-  /// "yyyy-MM-dd".
-  ///
-  /// [compatibilities] - Select only placements that are associated with these
-  /// compatibilities. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering
-  /// either on desktop or on mobile devices for regular or interstitial ads
-  /// respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.
-  /// IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with
-  /// the VAST standard.
-  ///
-  /// [advertiserIds] - Select only placements that belong to these advertisers.
+  /// [pricingTypes] - Select only placements with these pricing types.
   ///
   /// [minEndDate] - Select only placements or placement groups whose end date
   /// is on or after the specified minEndDate. The date should be formatted as
@@ -9864,14 +9851,43 @@ class PlacementsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
-  /// [siteIds] - Select only placements that are associated with these sites.
+  /// [archived] - Select only archived placements. Don't set this field to
+  /// select both archived and non-archived placements.
+  ///
+  /// [maxStartDate] - Select only placements or placement groups whose start
+  /// date is on or before the specified maxStartDate. The date should be
+  /// formatted as "yyyy-MM-dd".
+  ///
+  /// [directorySiteIds] - Select only placements that are associated with these
+  /// directory sites.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [ids] - Select only placements with these IDs.
+  ///
+  /// [minStartDate] - Select only placements or placement groups whose start
+  /// date is on or after the specified minStartDate. The date should be
+  /// formatted as "yyyy-MM-dd".
+  ///
+  /// [maxEndDate] - Select only placements or placement groups whose end date
+  /// is on or before the specified maxEndDate. The date should be formatted as
+  /// "yyyy-MM-dd".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [campaignIds] - Select only placements that belong to these campaigns.
   ///
   /// [sortField] - Field by which to sort the list.
   /// Possible string values are:
   /// - "ID"
   /// - "NAME"
+  ///
+  /// [sizeIds] - Select only placements that are associated with these sizes.
+  ///
+  /// [siteIds] - Select only placements that are associated with these sites.
+  ///
+  /// [advertiserIds] - Select only placements that belong to these advertisers.
   ///
   /// [searchString] - Allows searching for placements by name or ID. Wildcards
   /// (*) are allowed. For example, "placement*2015" will return placements with
@@ -9881,35 +9897,19 @@ class PlacementsResourceApi {
   /// of "placement" will match placements with name "my placement", "placement
   /// 2015", or simply "placement" .
   ///
-  /// [groupIds] - Select only placements that belong to these placement groups.
-  ///
-  /// [contentCategoryIds] - Select only placements that are associated with
-  /// these content categories.
-  ///
-  /// [pricingTypes] - Select only placements with these pricing types.
-  ///
-  /// [maxStartDate] - Select only placements or placement groups whose start
-  /// date is on or before the specified maxStartDate. The date should be
-  /// formatted as "yyyy-MM-dd".
-  ///
-  /// [directorySiteIds] - Select only placements that are associated with these
-  /// directory sites.
-  ///
   /// [paymentSource] - Select only placements with this payment source.
   /// Possible string values are:
   /// - "PLACEMENT_AGENCY_PAID"
   /// - "PLACEMENT_PUBLISHER_PAID"
   ///
-  /// [ids] - Select only placements with these IDs.
+  /// [compatibilities] - Select only placements that are associated with these
+  /// compatibilities. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering
+  /// either on desktop or on mobile devices for regular or interstitial ads
+  /// respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.
+  /// IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with
+  /// the VAST standard.
   ///
-  /// [minStartDate] - Select only placements or placement groups whose start
-  /// date is on or after the specified minStartDate. The date should be
-  /// formatted as "yyyy-MM-dd".
-  ///
-  /// [sizeIds] - Select only placements that are associated with these sizes.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
+  /// [groupIds] - Select only placements that belong to these placement groups.
   ///
   /// [placementStrategyIds] - Select only placements that are associated with
   /// these placement strategies.
@@ -9925,27 +9925,27 @@ class PlacementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementsListResponse> list(core.String profileId,
-      {core.bool archived,
-      core.List<core.String> campaignIds,
-      core.String maxEndDate,
-      core.List<core.String> compatibilities,
-      core.List<core.String> advertiserIds,
+      {core.List<core.String> contentCategoryIds,
+      core.List<core.String> pricingTypes,
       core.String minEndDate,
       core.String sortOrder,
-      core.List<core.String> siteIds,
-      core.String pageToken,
-      core.String sortField,
-      core.String searchString,
-      core.List<core.String> groupIds,
-      core.List<core.String> contentCategoryIds,
-      core.List<core.String> pricingTypes,
+      core.bool archived,
       core.String maxStartDate,
       core.List<core.String> directorySiteIds,
-      core.String paymentSource,
+      core.int maxResults,
       core.List<core.String> ids,
       core.String minStartDate,
+      core.String maxEndDate,
+      core.String pageToken,
+      core.List<core.String> campaignIds,
+      core.String sortField,
       core.List<core.String> sizeIds,
-      core.int maxResults,
+      core.List<core.String> siteIds,
+      core.List<core.String> advertiserIds,
+      core.String searchString,
+      core.String paymentSource,
+      core.List<core.String> compatibilities,
+      core.List<core.String> groupIds,
       core.List<core.String> placementStrategyIds,
       core.String $fields}) {
     var _url;
@@ -9958,20 +9958,11 @@ class PlacementsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (archived != null) {
-      _queryParams["archived"] = ["${archived}"];
+    if (contentCategoryIds != null) {
+      _queryParams["contentCategoryIds"] = contentCategoryIds;
     }
-    if (campaignIds != null) {
-      _queryParams["campaignIds"] = campaignIds;
-    }
-    if (maxEndDate != null) {
-      _queryParams["maxEndDate"] = [maxEndDate];
-    }
-    if (compatibilities != null) {
-      _queryParams["compatibilities"] = compatibilities;
-    }
-    if (advertiserIds != null) {
-      _queryParams["advertiserIds"] = advertiserIds;
+    if (pricingTypes != null) {
+      _queryParams["pricingTypes"] = pricingTypes;
     }
     if (minEndDate != null) {
       _queryParams["minEndDate"] = [minEndDate];
@@ -9979,26 +9970,8 @@ class PlacementsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (siteIds != null) {
-      _queryParams["siteIds"] = siteIds;
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
-    }
-    if (groupIds != null) {
-      _queryParams["groupIds"] = groupIds;
-    }
-    if (contentCategoryIds != null) {
-      _queryParams["contentCategoryIds"] = contentCategoryIds;
-    }
-    if (pricingTypes != null) {
-      _queryParams["pricingTypes"] = pricingTypes;
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
     }
     if (maxStartDate != null) {
       _queryParams["maxStartDate"] = [maxStartDate];
@@ -10006,8 +9979,8 @@ class PlacementsResourceApi {
     if (directorySiteIds != null) {
       _queryParams["directorySiteIds"] = directorySiteIds;
     }
-    if (paymentSource != null) {
-      _queryParams["paymentSource"] = [paymentSource];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
@@ -10015,11 +9988,38 @@ class PlacementsResourceApi {
     if (minStartDate != null) {
       _queryParams["minStartDate"] = [minStartDate];
     }
+    if (maxEndDate != null) {
+      _queryParams["maxEndDate"] = [maxEndDate];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (campaignIds != null) {
+      _queryParams["campaignIds"] = campaignIds;
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
     if (sizeIds != null) {
       _queryParams["sizeIds"] = sizeIds;
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (siteIds != null) {
+      _queryParams["siteIds"] = siteIds;
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (paymentSource != null) {
+      _queryParams["paymentSource"] = [paymentSource];
+    }
+    if (compatibilities != null) {
+      _queryParams["compatibilities"] = compatibilities;
+    }
+    if (groupIds != null) {
+      _queryParams["groupIds"] = groupIds;
     }
     if (placementStrategyIds != null) {
       _queryParams["placementStrategyIds"] = placementStrategyIds;
@@ -10417,24 +10417,7 @@ class ProjectsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [advertiserIds] - Select only projects with these advertiser IDs.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [ids] - Select only projects with these IDs.
-  ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
   ///
   /// [searchString] - Allows searching for projects by name or ID. Wildcards
   /// (*) are allowed. For example, "project*2015" will return projects with
@@ -10443,6 +10426,23 @@ class ProjectsResourceApi {
   /// the end of the search string. For example, a search string of "project"
   /// will match projects with name "my project", "project 2015", or simply
   /// "project".
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [advertiserIds] - Select only projects with these advertiser IDs.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [ids] - Select only projects with these IDs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10455,13 +10455,13 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProjectsListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.List<core.String> advertiserIds,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.String pageToken,
-      core.String sortField,
+      {core.String pageToken,
       core.String searchString,
+      core.String sortOrder,
+      core.List<core.String> advertiserIds,
+      core.int maxResults,
+      core.String sortField,
+      core.List<core.String> ids,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -10473,26 +10473,26 @@ class ProjectsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
-    if (advertiserIds != null) {
-      _queryParams["advertiserIds"] = advertiserIds;
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (sortField != null) {
       _queryParams["sortField"] = [sortField];
     }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
+    if (ids != null) {
+      _queryParams["ids"] = ids;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10848,6 +10848,22 @@ class RemarketingListsResourceApi {
   ///
   /// [advertiserId] - Select only remarketing lists owned by this advertiser.
   ///
+  /// [name] - Allows searching for objects by name or ID. Wildcards (*) are
+  /// allowed. For example, "remarketing list*2015" will return objects with
+  /// names like "remarketing list June 2015", "remarketing list April 2015", or
+  /// simply "remarketing list 2015". Most of the searches also add wildcards
+  /// implicitly at the start and the end of the search string. For example, a
+  /// search string of "remarketing list" will match objects with name "my
+  /// remarketing list", "remarketing list 2015", or simply "remarketing list".
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [floodlightActivityId] - Select only remarketing lists that have this
+  /// floodlight activity ID.
+  ///
   /// [sortField] - Field by which to sort the list.
   /// Possible string values are:
   /// - "ID"
@@ -10858,23 +10874,7 @@ class RemarketingListsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
-  /// [floodlightActivityId] - Select only remarketing lists that have this
-  /// floodlight activity ID.
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
   /// [active] - Select only active or only inactive remarketing lists.
-  ///
-  /// [name] - Allows searching for objects by name or ID. Wildcards (*) are
-  /// allowed. For example, "remarketing list*2015" will return objects with
-  /// names like "remarketing list June 2015", "remarketing list April 2015", or
-  /// simply "remarketing list 2015". Most of the searches also add wildcards
-  /// implicitly at the start and the end of the search string. For example, a
-  /// search string of "remarketing list" will match objects with name "my
-  /// remarketing list", "remarketing list 2015", or simply "remarketing list".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10888,13 +10888,13 @@ class RemarketingListsResourceApi {
   /// this method will complete with the same error.
   async.Future<RemarketingListsListResponse> list(
       core.String profileId, core.String advertiserId,
-      {core.String sortField,
-      core.String sortOrder,
-      core.String floodlightActivityId,
+      {core.String name,
       core.String pageToken,
       core.int maxResults,
+      core.String floodlightActivityId,
+      core.String sortField,
+      core.String sortOrder,
       core.bool active,
-      core.String name,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -10910,14 +10910,8 @@ class RemarketingListsResourceApi {
       throw new core.ArgumentError("Parameter advertiserId is required.");
     }
     _queryParams["advertiserId"] = [advertiserId];
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (floodlightActivityId != null) {
-      _queryParams["floodlightActivityId"] = [floodlightActivityId];
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -10925,11 +10919,17 @@ class RemarketingListsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (floodlightActivityId != null) {
+      _queryParams["floodlightActivityId"] = [floodlightActivityId];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
     if (active != null) {
       _queryParams["active"] = ["${active}"];
-    }
-    if (name != null) {
-      _queryParams["name"] = [name];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11072,7 +11072,7 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -11123,7 +11123,7 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -11176,7 +11176,7 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11224,28 +11224,28 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING" : Ascending order.
-  /// - "DESCENDING" : Descending order.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [scope] - The scope that defines which results are returned.
   /// Possible string values are:
   /// - "ALL" : All reports in account.
   /// - "MINE" : My reports.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "10".
-  ///
-  /// [pageToken] - The value of the nextToken from the previous result page.
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [sortField] - The field by which to sort the list.
   /// Possible string values are:
   /// - "ID" : Sort by report ID.
   /// - "LAST_MODIFIED_TIME" : Sort by 'lastModifiedTime' field.
   /// - "NAME" : Sort by name of reports.
+  ///
+  /// [pageToken] - The value of the nextToken from the previous result page.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "10".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11258,11 +11258,11 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReportList> list(core.String profileId,
-      {core.String sortOrder,
-      core.String scope,
-      core.int maxResults,
-      core.String pageToken,
+      {core.String scope,
+      core.String sortOrder,
       core.String sortField,
+      core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -11274,20 +11274,20 @@ class ReportsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
     if (scope != null) {
       _queryParams["scope"] = [scope];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11367,7 +11367,7 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -11426,7 +11426,7 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -11492,7 +11492,7 @@ class ReportsCompatibleFieldsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11547,7 +11547,7 @@ class ReportsFilesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -11623,24 +11623,24 @@ class ReportsFilesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the parent report.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "10".
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
-  /// [pageToken] - The value of the nextToken from the previous result page.
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "10".
   ///
   /// [sortField] - The field by which to sort the list.
   /// Possible string values are:
   /// - "ID"
   /// - "LAST_MODIFIED_TIME"
+  ///
+  /// [pageToken] - The value of the nextToken from the previous result page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11653,10 +11653,10 @@ class ReportsFilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FileList> list(core.String profileId, core.String reportId,
-      {core.int maxResults,
-      core.String sortOrder,
-      core.String pageToken,
+      {core.String sortOrder,
+      core.int maxResults,
       core.String sortField,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -11671,17 +11671,17 @@ class ReportsFilesResourceApi {
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (sortField != null) {
       _queryParams["sortField"] = [sortField];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -11815,24 +11815,13 @@ class SitesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [unmappedSite] - Select only sites that have not been mapped to a
-  /// directory site.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// [acceptsPublisherPaidPlacements] - Select only sites that accept publisher
+  /// paid placements.
   ///
   /// [acceptsInStreamVideoPlacements] - This search filter is no longer
   /// supported and will have no effect on the results returned.
   ///
-  /// [acceptsPublisherPaidPlacements] - Select only sites that accept publisher
-  /// paid placements.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [campaignIds] - Select only sites with these campaign IDs.
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [searchString] - Allows searching for objects by name, ID or keyName.
   /// Wildcards (*) are allowed. For example, "site*2015" will return objects
@@ -11841,25 +11830,36 @@ class SitesResourceApi {
   /// the end of the search string. For example, a search string of "site" will
   /// match objects with name "my site", "site 2015", or simply "site".
   ///
+  /// [subaccountId] - Select only sites with this subaccount ID.
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [campaignIds] - Select only sites with these campaign IDs.
+  ///
   /// [directorySiteIds] - Select only sites with these directory site IDs.
   ///
-  /// [adWordsSite] - Select only AdWords sites.
+  /// [unmappedSite] - Select only sites that have not been mapped to a
+  /// directory site.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
   ///
   /// [approved] - Select only approved sites.
   ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
   ///
   /// [ids] - Select only sites with these IDs.
   ///
   /// [acceptsInterstitialPlacements] - This search filter is no longer
   /// supported and will have no effect on the results returned.
   ///
-  /// [subaccountId] - Select only sites with this subaccount ID.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
+  /// [adWordsSite] - Select only AdWords sites.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11872,21 +11872,21 @@ class SitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SitesListResponse> list(core.String profileId,
-      {core.bool unmappedSite,
-      core.String sortOrder,
+      {core.bool acceptsPublisherPaidPlacements,
       core.bool acceptsInStreamVideoPlacements,
-      core.bool acceptsPublisherPaidPlacements,
-      core.int maxResults,
-      core.List<core.String> campaignIds,
-      core.String searchString,
-      core.List<core.String> directorySiteIds,
-      core.bool adWordsSite,
-      core.bool approved,
       core.String pageToken,
+      core.String searchString,
+      core.String subaccountId,
+      core.String sortOrder,
+      core.List<core.String> campaignIds,
+      core.List<core.String> directorySiteIds,
+      core.bool unmappedSite,
+      core.int maxResults,
+      core.bool approved,
+      core.String sortField,
       core.List<core.String> ids,
       core.bool acceptsInterstitialPlacements,
-      core.String subaccountId,
-      core.String sortField,
+      core.bool adWordsSite,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -11898,42 +11898,45 @@ class SitesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (unmappedSite != null) {
-      _queryParams["unmappedSite"] = ["${unmappedSite}"];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
+    if (acceptsPublisherPaidPlacements != null) {
+      _queryParams["acceptsPublisherPaidPlacements"] = [
+        "${acceptsPublisherPaidPlacements}"
+      ];
     }
     if (acceptsInStreamVideoPlacements != null) {
       _queryParams["acceptsInStreamVideoPlacements"] = [
         "${acceptsInStreamVideoPlacements}"
       ];
     }
-    if (acceptsPublisherPaidPlacements != null) {
-      _queryParams["acceptsPublisherPaidPlacements"] = [
-        "${acceptsPublisherPaidPlacements}"
-      ];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (campaignIds != null) {
-      _queryParams["campaignIds"] = campaignIds;
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
     }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (campaignIds != null) {
+      _queryParams["campaignIds"] = campaignIds;
+    }
     if (directorySiteIds != null) {
       _queryParams["directorySiteIds"] = directorySiteIds;
     }
-    if (adWordsSite != null) {
-      _queryParams["adWordsSite"] = ["${adWordsSite}"];
+    if (unmappedSite != null) {
+      _queryParams["unmappedSite"] = ["${unmappedSite}"];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (approved != null) {
       _queryParams["approved"] = ["${approved}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
@@ -11943,11 +11946,8 @@ class SitesResourceApi {
         "${acceptsInterstitialPlacements}"
       ];
     }
-    if (subaccountId != null) {
-      _queryParams["subaccountId"] = [subaccountId];
-    }
-    if (sortField != null) {
-      _queryParams["sortField"] = [sortField];
+    if (adWordsSite != null) {
+      _queryParams["adWordsSite"] = ["${adWordsSite}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12188,15 +12188,15 @@ class SizesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [iabStandard] - Select only IAB standard sizes.
+  ///
+  /// [ids] - Select only sizes with these IDs.
+  ///
   /// [height] - Select only sizes with this height.
   /// Value must be between "0" and "32767".
   ///
-  /// [iabStandard] - Select only IAB standard sizes.
-  ///
   /// [width] - Select only sizes with this width.
   /// Value must be between "0" and "32767".
-  ///
-  /// [ids] - Select only sizes with these IDs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12209,10 +12209,10 @@ class SizesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SizesListResponse> list(core.String profileId,
-      {core.int height,
-      core.bool iabStandard,
-      core.int width,
+      {core.bool iabStandard,
       core.List<core.String> ids,
+      core.int height,
+      core.int width,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -12224,17 +12224,17 @@ class SizesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (height != null) {
-      _queryParams["height"] = ["${height}"];
-    }
     if (iabStandard != null) {
       _queryParams["iabStandard"] = ["${iabStandard}"];
     }
-    if (width != null) {
-      _queryParams["width"] = ["${width}"];
-    }
     if (ids != null) {
       _queryParams["ids"] = ids;
+    }
+    if (height != null) {
+      _queryParams["height"] = ["${height}"];
+    }
+    if (width != null) {
+      _queryParams["width"] = ["${width}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12378,14 +12378,14 @@ class SubaccountsResourceApi {
   /// of "subaccount" will match objects with name "my subaccount", "subaccount
   /// 2015", or simply "subaccount" .
   ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
   /// [ids] - Select only subaccounts with these IDs.
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [sortField] - Field by which to sort the list.
   /// Possible string values are:
@@ -12405,9 +12405,9 @@ class SubaccountsResourceApi {
   async.Future<SubaccountsListResponse> list(core.String profileId,
       {core.int maxResults,
       core.String searchString,
+      core.String pageToken,
       core.String sortOrder,
       core.List<core.String> ids,
-      core.String pageToken,
       core.String sortField,
       core.String $fields}) {
     var _url;
@@ -12426,14 +12426,14 @@ class SubaccountsResourceApi {
     if (searchString != null) {
       _queryParams["searchString"] = [searchString];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (sortField != null) {
       _queryParams["sortField"] = [sortField];
@@ -12637,6 +12637,9 @@ class TargetableRemarketingListsResourceApi {
   /// - "ID"
   /// - "NAME"
   ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
   /// - "ASCENDING"
@@ -12655,9 +12658,6 @@ class TargetableRemarketingListsResourceApi {
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -12671,11 +12671,11 @@ class TargetableRemarketingListsResourceApi {
   async.Future<TargetableRemarketingListsListResponse> list(
       core.String profileId, core.String advertiserId,
       {core.String sortField,
+      core.int maxResults,
       core.String sortOrder,
       core.bool active,
       core.String name,
       core.String pageToken,
-      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -12694,6 +12694,9 @@ class TargetableRemarketingListsResourceApi {
     if (sortField != null) {
       _queryParams["sortField"] = [sortField];
     }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
@@ -12705,9 +12708,6 @@ class TargetableRemarketingListsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -12843,13 +12843,24 @@ class TargetingTemplatesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
   /// [sortField] - Field by which to sort the list.
   /// Possible string values are:
   /// - "ID"
   /// - "NAME"
+  ///
+  /// [ids] - Select only targeting templates with these IDs.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [advertiserId] - Select only targeting templates with this advertiser ID.
   ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "template*2015" will return objects with names
@@ -12858,17 +12869,6 @@ class TargetingTemplatesResourceApi {
   /// the end of the search string. For example, a search string of "template"
   /// will match objects with name "my template", "template 2015", or simply
   /// "template".
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [advertiserId] - Select only targeting templates with this advertiser ID.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [ids] - Select only targeting templates with these IDs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12881,13 +12881,13 @@ class TargetingTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetingTemplatesListResponse> list(core.String profileId,
-      {core.int maxResults,
-      core.String sortField,
-      core.String searchString,
+      {core.String sortField,
+      core.List<core.String> ids,
+      core.int maxResults,
+      core.String sortOrder,
       core.String pageToken,
       core.String advertiserId,
-      core.String sortOrder,
-      core.List<core.String> ids,
+      core.String searchString,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -12899,14 +12899,17 @@ class TargetingTemplatesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (sortField != null) {
       _queryParams["sortField"] = [sortField];
     }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -12914,11 +12917,8 @@ class TargetingTemplatesResourceApi {
     if (advertiserId != null) {
       _queryParams["advertiserId"] = [advertiserId];
     }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
-    if (ids != null) {
-      _queryParams["ids"] = ids;
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -13511,22 +13511,22 @@ class UserRolesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [subaccountId] - Select only user roles that belong to this subaccount.
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
   /// [ids] - Select only user roles with the specified IDs.
   ///
-  /// [accountUserRoleOnly] - Select only account level user roles not
-  /// associated with any specific subaccount.
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [sortField] - Field by which to sort the list.
   /// Possible string values are:
   /// - "ID"
   /// - "NAME"
+  ///
+  /// [accountUserRoleOnly] - Select only account level user roles not
+  /// associated with any specific subaccount.
+  ///
+  /// [subaccountId] - Select only user roles that belong to this subaccount.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
   ///
   /// [searchString] - Allows searching for objects by name or ID. Wildcards (*)
   /// are allowed. For example, "userrole*2015" will return objects with names
@@ -13536,10 +13536,10 @@ class UserRolesResourceApi {
   /// will match objects with name "my userrole", "userrole 2015", or simply
   /// "userrole".
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13552,14 +13552,14 @@ class UserRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserRolesListResponse> list(core.String profileId,
-      {core.String subaccountId,
-      core.String sortOrder,
-      core.List<core.String> ids,
-      core.bool accountUserRoleOnly,
-      core.String sortField,
-      core.String searchString,
-      core.int maxResults,
+      {core.List<core.String> ids,
       core.String pageToken,
+      core.String sortField,
+      core.bool accountUserRoleOnly,
+      core.String subaccountId,
+      core.int maxResults,
+      core.String searchString,
+      core.String sortOrder,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -13571,29 +13571,29 @@ class UserRolesResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (subaccountId != null) {
-      _queryParams["subaccountId"] = [subaccountId];
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
-    }
     if (ids != null) {
       _queryParams["ids"] = ids;
     }
-    if (accountUserRoleOnly != null) {
-      _queryParams["accountUserRoleOnly"] = ["${accountUserRoleOnly}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (sortField != null) {
       _queryParams["sortField"] = [sortField];
     }
-    if (searchString != null) {
-      _queryParams["searchString"] = [searchString];
+    if (accountUserRoleOnly != null) {
+      _queryParams["accountUserRoleOnly"] = ["${accountUserRoleOnly}"];
+    }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -16953,7 +16953,7 @@ class CompanionSetting {
   /// Whether companions are disabled for this placement.
   core.bool companionsDisabled;
 
-  /// Whitelist of companion sizes to be served to this placement. Set this list
+  /// Allowlist of companion sizes to be served to this placement. Set this list
   /// to null or empty to serve all companion sizes.
   core.List<Size> enabledSizes;
 
@@ -17937,6 +17937,7 @@ class Creative {
   /// - "CREATIVE_AUTHORING_SOURCE_DCM"
   /// - "CREATIVE_AUTHORING_SOURCE_DBM"
   /// - "CREATIVE_AUTHORING_SOURCE_STUDIO"
+  /// - "CREATIVE_AUTHORING_SOURCE_GWD"
   core.String authoringSource;
 
   /// Authoring tool for HTML5 banner creatives. This is a read-only field.
@@ -26714,8 +26715,8 @@ class Placement {
   /// Lookback window settings for this placement.
   LookbackConfiguration lookbackConfiguration;
 
-  /// Name of this placement.This is a required field and must be less than 256
-  /// characters long.
+  /// Name of this placement.This is a required field and must be less than or
+  /// equal to 256 characters long.
   core.String name;
 
   /// Whether payment was approved for this placement. This is a read-only field
@@ -30604,7 +30605,7 @@ class SiteCompanionSetting {
   /// Whether companions are disabled for this site template.
   core.bool companionsDisabled;
 
-  /// Whitelist of companion sizes to be served via this site template. Set this
+  /// Allowlist of companion sizes to be served via this site template. Set this
   /// list to null or empty to serve all companion sizes.
   core.List<Size> enabledSizes;
 
@@ -30886,7 +30887,7 @@ class SiteSkippableSetting {
 
 /// Transcode Settings
 class SiteTranscodeSetting {
-  /// Whitelist of video formats to be served to this site template. Set this
+  /// Allowlist of video formats to be served to this site template. Set this
   /// list to null or empty to serve all video formats.
   core.List<core.int> enabledVideoFormats;
 
@@ -32143,7 +32144,7 @@ class ThirdPartyTrackingUrl {
 
 /// Transcode Settings
 class TranscodeSetting {
-  /// Whitelist of video formats to be served to this placement. Set this list
+  /// Allowlist of video formats to be served to this placement. Set this list
   /// to null or empty to serve all video formats.
   core.List<core.int> enabledVideoFormats;
 

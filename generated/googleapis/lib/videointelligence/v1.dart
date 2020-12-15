@@ -236,145 +236,11 @@ class ProjectsResourceApi {
 class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsCorporaResourceApi get corpora =>
-      new ProjectsLocationsCorporaResourceApi(_requester);
-  ProjectsLocationsCorpuraResourceApi get corpura =>
-      new ProjectsLocationsCorpuraResourceApi(_requester);
   ProjectsLocationsOperationsResourceApi get operations =>
       new ProjectsLocationsOperationsResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
-}
-
-class ProjectsLocationsCorporaResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsCorporaOperationsResourceApi get operations =>
-      new ProjectsLocationsCorporaOperationsResourceApi(_requester);
-
-  ProjectsLocationsCorporaResourceApi(commons.ApiRequester client)
-      : _requester = client;
-}
-
-class ProjectsLocationsCorporaOperationsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsCorporaOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/corpora/[^/]+/operations/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
-  }
-}
-
-class ProjectsLocationsCorpuraResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsCorpuraOperationsResourceApi get operations =>
-      new ProjectsLocationsCorpuraOperationsResourceApi(_requester);
-
-  ProjectsLocationsCorpuraResourceApi(commons.ApiRequester client)
-      : _requester = client;
-}
-
-class ProjectsLocationsCorpuraOperationsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsCorpuraOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/corpura/[^/]+/operations/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
-  }
 }
 
 class ProjectsLocationsOperationsResourceApi {
@@ -553,11 +419,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -570,9 +436,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.int pageSize,
+      core.String pageToken,
       core.String filter,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -584,14 +450,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1050,6 +916,222 @@ class GoogleCloudVideointelligenceV1ExplicitContentFrame {
     }
     if (timeOffset != null) {
       _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1FaceAnnotation {
+  /// All video frames where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1FaceFrame> frames;
+
+  /// All video segments where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1FaceSegment> segments;
+
+  /// Thumbnail of a representative face view (in JPEG format).
+  core.String thumbnail;
+  core.List<core.int> get thumbnailAsBytes {
+    return convert.base64.decode(thumbnail);
+  }
+
+  set thumbnailAsBytes(core.List<core.int> _bytes) {
+    thumbnail =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  GoogleCloudVideointelligenceV1FaceAnnotation();
+
+  GoogleCloudVideointelligenceV1FaceAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1FaceFrame>((value) =>
+              new GoogleCloudVideointelligenceV1FaceFrame.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1FaceSegment>((value) =>
+              new GoogleCloudVideointelligenceV1FaceSegment.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("thumbnail")) {
+      thumbnail = _json["thumbnail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (thumbnail != null) {
+      _json["thumbnail"] = thumbnail;
+    }
+    return _json;
+  }
+}
+
+/// Face detection annotation.
+class GoogleCloudVideointelligenceV1FaceDetectionAnnotation {
+  /// The thumbnail of a person's face.
+  core.String thumbnail;
+  core.List<core.int> get thumbnailAsBytes {
+    return convert.base64.decode(thumbnail);
+  }
+
+  set thumbnailAsBytes(core.List<core.int> _bytes) {
+    thumbnail =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// The face tracks with attributes.
+  core.List<GoogleCloudVideointelligenceV1Track> tracks;
+
+  /// Feature version.
+  core.String version;
+
+  GoogleCloudVideointelligenceV1FaceDetectionAnnotation();
+
+  GoogleCloudVideointelligenceV1FaceDetectionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("thumbnail")) {
+      thumbnail = _json["thumbnail"];
+    }
+    if (_json.containsKey("tracks")) {
+      tracks = (_json["tracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1Track>((value) =>
+              new GoogleCloudVideointelligenceV1Track.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (thumbnail != null) {
+      _json["thumbnail"] = thumbnail;
+    }
+    if (tracks != null) {
+      _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Config for FACE_DETECTION.
+class GoogleCloudVideointelligenceV1FaceDetectionConfig {
+  /// Whether to enable face attributes detection, such as glasses,
+  /// dark_glasses, mouth_open etc. Ignored if 'include_bounding_boxes' is set
+  /// to false.
+  core.bool includeAttributes;
+
+  /// Whether bounding boxes are included in the face annotation output.
+  core.bool includeBoundingBoxes;
+
+  /// Model to use for face detection. Supported values: "builtin/stable" (the
+  /// default if unset) and "builtin/latest".
+  core.String model;
+
+  GoogleCloudVideointelligenceV1FaceDetectionConfig();
+
+  GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("includeAttributes")) {
+      includeAttributes = _json["includeAttributes"];
+    }
+    if (_json.containsKey("includeBoundingBoxes")) {
+      includeBoundingBoxes = _json["includeBoundingBoxes"];
+    }
+    if (_json.containsKey("model")) {
+      model = _json["model"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (includeAttributes != null) {
+      _json["includeAttributes"] = includeAttributes;
+    }
+    if (includeBoundingBoxes != null) {
+      _json["includeBoundingBoxes"] = includeBoundingBoxes;
+    }
+    if (model != null) {
+      _json["model"] = model;
+    }
+    return _json;
+  }
+}
+
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1FaceFrame {
+  /// Normalized Bounding boxes in a frame. There can be more than one boxes if
+  /// the same face is detected in multiple locations within the current frame.
+  core.List<GoogleCloudVideointelligenceV1NormalizedBoundingBox>
+      normalizedBoundingBoxes;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// video frame for this location.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1FaceFrame();
+
+  GoogleCloudVideointelligenceV1FaceFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("normalizedBoundingBoxes")) {
+      normalizedBoundingBoxes = (_json["normalizedBoundingBoxes"] as core.List)
+          .map<GoogleCloudVideointelligenceV1NormalizedBoundingBox>((value) =>
+              new GoogleCloudVideointelligenceV1NormalizedBoundingBox.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (normalizedBoundingBoxes != null) {
+      _json["normalizedBoundingBoxes"] =
+          normalizedBoundingBoxes.map((value) => (value).toJson()).toList();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for face detection.
+class GoogleCloudVideointelligenceV1FaceSegment {
+  /// Video segment where a face was detected.
+  GoogleCloudVideointelligenceV1VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1FaceSegment();
+
+  GoogleCloudVideointelligenceV1FaceSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
     }
     return _json;
   }
@@ -1580,6 +1662,87 @@ class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
     }
     if (timeOffset != null) {
       _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Person detection annotation per video.
+class GoogleCloudVideointelligenceV1PersonDetectionAnnotation {
+  /// The detected tracks of a person.
+  core.List<GoogleCloudVideointelligenceV1Track> tracks;
+
+  /// Feature version.
+  core.String version;
+
+  GoogleCloudVideointelligenceV1PersonDetectionAnnotation();
+
+  GoogleCloudVideointelligenceV1PersonDetectionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("tracks")) {
+      tracks = (_json["tracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1Track>((value) =>
+              new GoogleCloudVideointelligenceV1Track.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tracks != null) {
+      _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Config for PERSON_DETECTION.
+class GoogleCloudVideointelligenceV1PersonDetectionConfig {
+  /// Whether to enable person attributes detection, such as cloth color (black,
+  /// blue, etc), type (coat, dress, etc), pattern (plain, floral, etc), hair,
+  /// etc. Ignored if 'include_bounding_boxes' is set to false.
+  core.bool includeAttributes;
+
+  /// Whether bounding boxes are included in the person detection annotation
+  /// output.
+  core.bool includeBoundingBoxes;
+
+  /// Whether to enable pose landmarks detection. Ignored if
+  /// 'include_bounding_boxes' is set to false.
+  core.bool includePoseLandmarks;
+
+  GoogleCloudVideointelligenceV1PersonDetectionConfig();
+
+  GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("includeAttributes")) {
+      includeAttributes = _json["includeAttributes"];
+    }
+    if (_json.containsKey("includeBoundingBoxes")) {
+      includeBoundingBoxes = _json["includeBoundingBoxes"];
+    }
+    if (_json.containsKey("includePoseLandmarks")) {
+      includePoseLandmarks = _json["includePoseLandmarks"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (includeAttributes != null) {
+      _json["includeAttributes"] = includeAttributes;
+    }
+    if (includeBoundingBoxes != null) {
+      _json["includeBoundingBoxes"] = includeBoundingBoxes;
+    }
+    if (includePoseLandmarks != null) {
+      _json["includePoseLandmarks"] = includePoseLandmarks;
     }
     return _json;
   }
@@ -2159,10 +2322,12 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
   /// flower.
   /// - "SHOT_CHANGE_DETECTION" : Shot change detection.
   /// - "EXPLICIT_CONTENT_DETECTION" : Explicit content detection.
+  /// - "FACE_DETECTION" : Human face detection.
   /// - "SPEECH_TRANSCRIPTION" : Speech transcription.
   /// - "TEXT_DETECTION" : OCR text detection and tracking.
   /// - "OBJECT_TRACKING" : Object detection and tracking.
   /// - "LOGO_RECOGNITION" : Logo detection, tracking, and recognition.
+  /// - "PERSON_DETECTION" : Person detection.
   core.String feature;
 
   /// Video file location in [Cloud Storage](https://cloud.google.com/storage/).
@@ -2241,6 +2406,13 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
   /// Explicit content annotation.
   GoogleCloudVideointelligenceV1ExplicitContentAnnotation explicitAnnotation;
 
+  /// Deprecated. Please use `face_detection_annotations` instead.
+  core.List<GoogleCloudVideointelligenceV1FaceAnnotation> faceAnnotations;
+
+  /// Face detection annotations.
+  core.List<GoogleCloudVideointelligenceV1FaceDetectionAnnotation>
+      faceDetectionAnnotations;
+
   /// Label annotations on frame level. There is exactly one element for each
   /// unique label.
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation>
@@ -2256,6 +2428,10 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
   /// Annotations for list of objects detected and tracked in video.
   core.List<GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>
       objectAnnotations;
+
+  /// Person detection annotations.
+  core.List<GoogleCloudVideointelligenceV1PersonDetectionAnnotation>
+      personDetectionAnnotations;
 
   /// Video segment on which the annotation is run.
   GoogleCloudVideointelligenceV1VideoSegment segment;
@@ -2310,6 +2486,20 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
           new GoogleCloudVideointelligenceV1ExplicitContentAnnotation.fromJson(
               _json["explicitAnnotation"]);
     }
+    if (_json.containsKey("faceAnnotations")) {
+      faceAnnotations = (_json["faceAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1FaceAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1FaceAnnotation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("faceDetectionAnnotations")) {
+      faceDetectionAnnotations = (_json["faceDetectionAnnotations"]
+              as core.List)
+          .map<GoogleCloudVideointelligenceV1FaceDetectionAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1FaceDetectionAnnotation
+                  .fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("frameLabelAnnotations")) {
       frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
@@ -2333,6 +2523,15 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
           .map<GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>(
               (value) =>
                   new GoogleCloudVideointelligenceV1ObjectTrackingAnnotation
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("personDetectionAnnotations")) {
+      personDetectionAnnotations = (_json["personDetectionAnnotations"]
+              as core.List)
+          .map<GoogleCloudVideointelligenceV1PersonDetectionAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1PersonDetectionAnnotation
                       .fromJson(value))
           .toList();
     }
@@ -2396,6 +2595,14 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
     if (explicitAnnotation != null) {
       _json["explicitAnnotation"] = (explicitAnnotation).toJson();
     }
+    if (faceAnnotations != null) {
+      _json["faceAnnotations"] =
+          faceAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (faceDetectionAnnotations != null) {
+      _json["faceDetectionAnnotations"] =
+          faceDetectionAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (frameLabelAnnotations != null) {
       _json["frameLabelAnnotations"] =
           frameLabelAnnotations.map((value) => (value).toJson()).toList();
@@ -2410,6 +2617,10 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
     if (objectAnnotations != null) {
       _json["objectAnnotations"] =
           objectAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (personDetectionAnnotations != null) {
+      _json["personDetectionAnnotations"] =
+          personDetectionAnnotations.map((value) => (value).toJson()).toList();
     }
     if (segment != null) {
       _json["segment"] = (segment).toJson();
@@ -2454,11 +2665,17 @@ class GoogleCloudVideointelligenceV1VideoContext {
   GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig
       explicitContentDetectionConfig;
 
+  /// Config for FACE_DETECTION.
+  GoogleCloudVideointelligenceV1FaceDetectionConfig faceDetectionConfig;
+
   /// Config for LABEL_DETECTION.
   GoogleCloudVideointelligenceV1LabelDetectionConfig labelDetectionConfig;
 
   /// Config for OBJECT_TRACKING.
   GoogleCloudVideointelligenceV1ObjectTrackingConfig objectTrackingConfig;
+
+  /// Config for PERSON_DETECTION.
+  GoogleCloudVideointelligenceV1PersonDetectionConfig personDetectionConfig;
 
   /// Video segments to annotate. The segments may overlap and are not required
   /// to be contiguous or span the whole video. If unspecified, each video is
@@ -2484,6 +2701,11 @@ class GoogleCloudVideointelligenceV1VideoContext {
           new GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig
               .fromJson(_json["explicitContentDetectionConfig"]);
     }
+    if (_json.containsKey("faceDetectionConfig")) {
+      faceDetectionConfig =
+          new GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(
+              _json["faceDetectionConfig"]);
+    }
     if (_json.containsKey("labelDetectionConfig")) {
       labelDetectionConfig =
           new GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(
@@ -2493,6 +2715,11 @@ class GoogleCloudVideointelligenceV1VideoContext {
       objectTrackingConfig =
           new GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(
               _json["objectTrackingConfig"]);
+    }
+    if (_json.containsKey("personDetectionConfig")) {
+      personDetectionConfig =
+          new GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(
+              _json["personDetectionConfig"]);
     }
     if (_json.containsKey("segments")) {
       segments = (_json["segments"] as core.List)
@@ -2524,11 +2751,17 @@ class GoogleCloudVideointelligenceV1VideoContext {
       _json["explicitContentDetectionConfig"] =
           (explicitContentDetectionConfig).toJson();
     }
+    if (faceDetectionConfig != null) {
+      _json["faceDetectionConfig"] = (faceDetectionConfig).toJson();
+    }
     if (labelDetectionConfig != null) {
       _json["labelDetectionConfig"] = (labelDetectionConfig).toJson();
     }
     if (objectTrackingConfig != null) {
       _json["objectTrackingConfig"] = (objectTrackingConfig).toJson();
+    }
+    if (personDetectionConfig != null) {
+      _json["personDetectionConfig"] = (personDetectionConfig).toJson();
     }
     if (segments != null) {
       _json["segments"] = segments.map((value) => (value).toJson()).toList();
@@ -2928,6 +3161,180 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame {
     }
     if (timeOffset != null) {
       _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1beta2FaceAnnotation {
+  /// All video frames where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1beta2FaceFrame> frames;
+
+  /// All video segments where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1beta2FaceSegment> segments;
+
+  /// Thumbnail of a representative face view (in JPEG format).
+  core.String thumbnail;
+  core.List<core.int> get thumbnailAsBytes {
+    return convert.base64.decode(thumbnail);
+  }
+
+  set thumbnailAsBytes(core.List<core.int> _bytes) {
+    thumbnail =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  GoogleCloudVideointelligenceV1beta2FaceAnnotation();
+
+  GoogleCloudVideointelligenceV1beta2FaceAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2FaceFrame>((value) =>
+              new GoogleCloudVideointelligenceV1beta2FaceFrame.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2FaceSegment>((value) =>
+              new GoogleCloudVideointelligenceV1beta2FaceSegment.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("thumbnail")) {
+      thumbnail = _json["thumbnail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (thumbnail != null) {
+      _json["thumbnail"] = thumbnail;
+    }
+    return _json;
+  }
+}
+
+/// Face detection annotation.
+class GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation {
+  /// The thumbnail of a person's face.
+  core.String thumbnail;
+  core.List<core.int> get thumbnailAsBytes {
+    return convert.base64.decode(thumbnail);
+  }
+
+  set thumbnailAsBytes(core.List<core.int> _bytes) {
+    thumbnail =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// The face tracks with attributes.
+  core.List<GoogleCloudVideointelligenceV1beta2Track> tracks;
+
+  /// Feature version.
+  core.String version;
+
+  GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation();
+
+  GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("thumbnail")) {
+      thumbnail = _json["thumbnail"];
+    }
+    if (_json.containsKey("tracks")) {
+      tracks = (_json["tracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2Track>((value) =>
+              new GoogleCloudVideointelligenceV1beta2Track.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (thumbnail != null) {
+      _json["thumbnail"] = thumbnail;
+    }
+    if (tracks != null) {
+      _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1beta2FaceFrame {
+  /// Normalized Bounding boxes in a frame. There can be more than one boxes if
+  /// the same face is detected in multiple locations within the current frame.
+  core.List<GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox>
+      normalizedBoundingBoxes;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// video frame for this location.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1beta2FaceFrame();
+
+  GoogleCloudVideointelligenceV1beta2FaceFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("normalizedBoundingBoxes")) {
+      normalizedBoundingBoxes = (_json["normalizedBoundingBoxes"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (normalizedBoundingBoxes != null) {
+      _json["normalizedBoundingBoxes"] =
+          normalizedBoundingBoxes.map((value) => (value).toJson()).toList();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for face detection.
+class GoogleCloudVideointelligenceV1beta2FaceSegment {
+  /// Video segment where a face was detected.
+  GoogleCloudVideointelligenceV1beta2VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1beta2FaceSegment();
+
+  GoogleCloudVideointelligenceV1beta2FaceSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
     }
     return _json;
   }
@@ -3366,6 +3773,42 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
   }
 }
 
+/// Person detection annotation per video.
+class GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation {
+  /// The detected tracks of a person.
+  core.List<GoogleCloudVideointelligenceV1beta2Track> tracks;
+
+  /// Feature version.
+  core.String version;
+
+  GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation();
+
+  GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("tracks")) {
+      tracks = (_json["tracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2Track>((value) =>
+              new GoogleCloudVideointelligenceV1beta2Track.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tracks != null) {
+      _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
   /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
@@ -3729,10 +4172,12 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
   /// flower.
   /// - "SHOT_CHANGE_DETECTION" : Shot change detection.
   /// - "EXPLICIT_CONTENT_DETECTION" : Explicit content detection.
+  /// - "FACE_DETECTION" : Human face detection.
   /// - "SPEECH_TRANSCRIPTION" : Speech transcription.
   /// - "TEXT_DETECTION" : OCR text detection and tracking.
   /// - "OBJECT_TRACKING" : Object detection and tracking.
   /// - "LOGO_RECOGNITION" : Logo detection, tracking, and recognition.
+  /// - "PERSON_DETECTION" : Person detection.
   core.String feature;
 
   /// Video file location in [Cloud Storage](https://cloud.google.com/storage/).
@@ -3812,6 +4257,13 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation
       explicitAnnotation;
 
+  /// Deprecated. Please use `face_detection_annotations` instead.
+  core.List<GoogleCloudVideointelligenceV1beta2FaceAnnotation> faceAnnotations;
+
+  /// Face detection annotations.
+  core.List<GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation>
+      faceDetectionAnnotations;
+
   /// Label annotations on frame level. There is exactly one element for each
   /// unique label.
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
@@ -3827,6 +4279,10 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   /// Annotations for list of objects detected and tracked in video.
   core.List<GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>
       objectAnnotations;
+
+  /// Person detection annotations.
+  core.List<GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation>
+      personDetectionAnnotations;
 
   /// Video segment on which the annotation is run.
   GoogleCloudVideointelligenceV1beta2VideoSegment segment;
@@ -3882,6 +4338,22 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
           new GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation
               .fromJson(_json["explicitAnnotation"]);
     }
+    if (_json.containsKey("faceAnnotations")) {
+      faceAnnotations = (_json["faceAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2FaceAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1beta2FaceAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("faceDetectionAnnotations")) {
+      faceDetectionAnnotations = (_json["faceDetectionAnnotations"]
+              as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation
+                      .fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("frameLabelAnnotations")) {
       frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
@@ -3906,6 +4378,15 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
           .map<GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>(
               (value) =>
                   new GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("personDetectionAnnotations")) {
+      personDetectionAnnotations = (_json["personDetectionAnnotations"]
+              as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation
                       .fromJson(value))
           .toList();
     }
@@ -3977,6 +4458,14 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     if (explicitAnnotation != null) {
       _json["explicitAnnotation"] = (explicitAnnotation).toJson();
     }
+    if (faceAnnotations != null) {
+      _json["faceAnnotations"] =
+          faceAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (faceDetectionAnnotations != null) {
+      _json["faceDetectionAnnotations"] =
+          faceDetectionAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (frameLabelAnnotations != null) {
       _json["frameLabelAnnotations"] =
           frameLabelAnnotations.map((value) => (value).toJson()).toList();
@@ -3991,6 +4480,10 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     if (objectAnnotations != null) {
       _json["objectAnnotations"] =
           objectAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (personDetectionAnnotations != null) {
+      _json["personDetectionAnnotations"] =
+          personDetectionAnnotations.map((value) => (value).toJson()).toList();
     }
     if (segment != null) {
       _json["segment"] = (segment).toJson();
@@ -4413,6 +4906,181 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame {
     }
     if (timeOffset != null) {
       _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1p1beta1FaceAnnotation {
+  /// All video frames where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1p1beta1FaceFrame> frames;
+
+  /// All video segments where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1p1beta1FaceSegment> segments;
+
+  /// Thumbnail of a representative face view (in JPEG format).
+  core.String thumbnail;
+  core.List<core.int> get thumbnailAsBytes {
+    return convert.base64.decode(thumbnail);
+  }
+
+  set thumbnailAsBytes(core.List<core.int> _bytes) {
+    thumbnail =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  GoogleCloudVideointelligenceV1p1beta1FaceAnnotation();
+
+  GoogleCloudVideointelligenceV1p1beta1FaceAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1FaceFrame>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1FaceFrame.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1FaceSegment>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1FaceSegment.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("thumbnail")) {
+      thumbnail = _json["thumbnail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (thumbnail != null) {
+      _json["thumbnail"] = thumbnail;
+    }
+    return _json;
+  }
+}
+
+/// Face detection annotation.
+class GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation {
+  /// The thumbnail of a person's face.
+  core.String thumbnail;
+  core.List<core.int> get thumbnailAsBytes {
+    return convert.base64.decode(thumbnail);
+  }
+
+  set thumbnailAsBytes(core.List<core.int> _bytes) {
+    thumbnail =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// The face tracks with attributes.
+  core.List<GoogleCloudVideointelligenceV1p1beta1Track> tracks;
+
+  /// Feature version.
+  core.String version;
+
+  GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation();
+
+  GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("thumbnail")) {
+      thumbnail = _json["thumbnail"];
+    }
+    if (_json.containsKey("tracks")) {
+      tracks = (_json["tracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1Track>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1Track.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (thumbnail != null) {
+      _json["thumbnail"] = thumbnail;
+    }
+    if (tracks != null) {
+      _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1p1beta1FaceFrame {
+  /// Normalized Bounding boxes in a frame. There can be more than one boxes if
+  /// the same face is detected in multiple locations within the current frame.
+  core.List<GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox>
+      normalizedBoundingBoxes;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// video frame for this location.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p1beta1FaceFrame();
+
+  GoogleCloudVideointelligenceV1p1beta1FaceFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("normalizedBoundingBoxes")) {
+      normalizedBoundingBoxes = (_json["normalizedBoundingBoxes"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (normalizedBoundingBoxes != null) {
+      _json["normalizedBoundingBoxes"] =
+          normalizedBoundingBoxes.map((value) => (value).toJson()).toList();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for face detection.
+class GoogleCloudVideointelligenceV1p1beta1FaceSegment {
+  /// Video segment where a face was detected.
+  GoogleCloudVideointelligenceV1p1beta1VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1p1beta1FaceSegment();
+
+  GoogleCloudVideointelligenceV1p1beta1FaceSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
     }
     return _json;
   }
@@ -4854,6 +5522,42 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
   }
 }
 
+/// Person detection annotation per video.
+class GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation {
+  /// The detected tracks of a person.
+  core.List<GoogleCloudVideointelligenceV1p1beta1Track> tracks;
+
+  /// Feature version.
+  core.String version;
+
+  GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation();
+
+  GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("tracks")) {
+      tracks = (_json["tracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1Track>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1Track.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tracks != null) {
+      _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
   /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
@@ -5222,10 +5926,12 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
   /// flower.
   /// - "SHOT_CHANGE_DETECTION" : Shot change detection.
   /// - "EXPLICIT_CONTENT_DETECTION" : Explicit content detection.
+  /// - "FACE_DETECTION" : Human face detection.
   /// - "SPEECH_TRANSCRIPTION" : Speech transcription.
   /// - "TEXT_DETECTION" : OCR text detection and tracking.
   /// - "OBJECT_TRACKING" : Object detection and tracking.
   /// - "LOGO_RECOGNITION" : Logo detection, tracking, and recognition.
+  /// - "PERSON_DETECTION" : Person detection.
   core.String feature;
 
   /// Video file location in [Cloud Storage](https://cloud.google.com/storage/).
@@ -5305,6 +6011,14 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation
       explicitAnnotation;
 
+  /// Deprecated. Please use `face_detection_annotations` instead.
+  core.List<GoogleCloudVideointelligenceV1p1beta1FaceAnnotation>
+      faceAnnotations;
+
+  /// Face detection annotations.
+  core.List<GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation>
+      faceDetectionAnnotations;
+
   /// Label annotations on frame level. There is exactly one element for each
   /// unique label.
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
@@ -5320,6 +6034,10 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   /// Annotations for list of objects detected and tracked in video.
   core.List<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>
       objectAnnotations;
+
+  /// Person detection annotations.
+  core.List<GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation>
+      personDetectionAnnotations;
 
   /// Video segment on which the annotation is run.
   GoogleCloudVideointelligenceV1p1beta1VideoSegment segment;
@@ -5376,6 +6094,22 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
           new GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation
               .fromJson(_json["explicitAnnotation"]);
     }
+    if (_json.containsKey("faceAnnotations")) {
+      faceAnnotations = (_json["faceAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1FaceAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1FaceAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("faceDetectionAnnotations")) {
+      faceDetectionAnnotations = (_json["faceDetectionAnnotations"]
+              as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation
+                      .fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("frameLabelAnnotations")) {
       frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>((value) =>
@@ -5400,6 +6134,15 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
           .map<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>(
               (value) =>
                   new GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("personDetectionAnnotations")) {
+      personDetectionAnnotations = (_json["personDetectionAnnotations"]
+              as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation
                       .fromJson(value))
           .toList();
     }
@@ -5471,6 +6214,14 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     if (explicitAnnotation != null) {
       _json["explicitAnnotation"] = (explicitAnnotation).toJson();
     }
+    if (faceAnnotations != null) {
+      _json["faceAnnotations"] =
+          faceAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (faceDetectionAnnotations != null) {
+      _json["faceDetectionAnnotations"] =
+          faceDetectionAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (frameLabelAnnotations != null) {
       _json["frameLabelAnnotations"] =
           frameLabelAnnotations.map((value) => (value).toJson()).toList();
@@ -5485,6 +6236,10 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     if (objectAnnotations != null) {
       _json["objectAnnotations"] =
           objectAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (personDetectionAnnotations != null) {
+      _json["personDetectionAnnotations"] =
+          personDetectionAnnotations.map((value) => (value).toJson()).toList();
     }
     if (segment != null) {
       _json["segment"] = (segment).toJson();
@@ -5907,6 +6662,181 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame {
     }
     if (timeOffset != null) {
       _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1p2beta1FaceAnnotation {
+  /// All video frames where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1p2beta1FaceFrame> frames;
+
+  /// All video segments where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1p2beta1FaceSegment> segments;
+
+  /// Thumbnail of a representative face view (in JPEG format).
+  core.String thumbnail;
+  core.List<core.int> get thumbnailAsBytes {
+    return convert.base64.decode(thumbnail);
+  }
+
+  set thumbnailAsBytes(core.List<core.int> _bytes) {
+    thumbnail =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  GoogleCloudVideointelligenceV1p2beta1FaceAnnotation();
+
+  GoogleCloudVideointelligenceV1p2beta1FaceAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p2beta1FaceFrame>((value) =>
+              new GoogleCloudVideointelligenceV1p2beta1FaceFrame.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p2beta1FaceSegment>((value) =>
+              new GoogleCloudVideointelligenceV1p2beta1FaceSegment.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("thumbnail")) {
+      thumbnail = _json["thumbnail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (thumbnail != null) {
+      _json["thumbnail"] = thumbnail;
+    }
+    return _json;
+  }
+}
+
+/// Face detection annotation.
+class GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation {
+  /// The thumbnail of a person's face.
+  core.String thumbnail;
+  core.List<core.int> get thumbnailAsBytes {
+    return convert.base64.decode(thumbnail);
+  }
+
+  set thumbnailAsBytes(core.List<core.int> _bytes) {
+    thumbnail =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// The face tracks with attributes.
+  core.List<GoogleCloudVideointelligenceV1p2beta1Track> tracks;
+
+  /// Feature version.
+  core.String version;
+
+  GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation();
+
+  GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("thumbnail")) {
+      thumbnail = _json["thumbnail"];
+    }
+    if (_json.containsKey("tracks")) {
+      tracks = (_json["tracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p2beta1Track>((value) =>
+              new GoogleCloudVideointelligenceV1p2beta1Track.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (thumbnail != null) {
+      _json["thumbnail"] = thumbnail;
+    }
+    if (tracks != null) {
+      _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1p2beta1FaceFrame {
+  /// Normalized Bounding boxes in a frame. There can be more than one boxes if
+  /// the same face is detected in multiple locations within the current frame.
+  core.List<GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox>
+      normalizedBoundingBoxes;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// video frame for this location.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p2beta1FaceFrame();
+
+  GoogleCloudVideointelligenceV1p2beta1FaceFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("normalizedBoundingBoxes")) {
+      normalizedBoundingBoxes = (_json["normalizedBoundingBoxes"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (normalizedBoundingBoxes != null) {
+      _json["normalizedBoundingBoxes"] =
+          normalizedBoundingBoxes.map((value) => (value).toJson()).toList();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for face detection.
+class GoogleCloudVideointelligenceV1p2beta1FaceSegment {
+  /// Video segment where a face was detected.
+  GoogleCloudVideointelligenceV1p2beta1VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1p2beta1FaceSegment();
+
+  GoogleCloudVideointelligenceV1p2beta1FaceSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
     }
     return _json;
   }
@@ -6348,6 +7278,42 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
   }
 }
 
+/// Person detection annotation per video.
+class GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation {
+  /// The detected tracks of a person.
+  core.List<GoogleCloudVideointelligenceV1p2beta1Track> tracks;
+
+  /// Feature version.
+  core.String version;
+
+  GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation();
+
+  GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("tracks")) {
+      tracks = (_json["tracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p2beta1Track>((value) =>
+              new GoogleCloudVideointelligenceV1p2beta1Track.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tracks != null) {
+      _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
   /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
@@ -6716,10 +7682,12 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
   /// flower.
   /// - "SHOT_CHANGE_DETECTION" : Shot change detection.
   /// - "EXPLICIT_CONTENT_DETECTION" : Explicit content detection.
+  /// - "FACE_DETECTION" : Human face detection.
   /// - "SPEECH_TRANSCRIPTION" : Speech transcription.
   /// - "TEXT_DETECTION" : OCR text detection and tracking.
   /// - "OBJECT_TRACKING" : Object detection and tracking.
   /// - "LOGO_RECOGNITION" : Logo detection, tracking, and recognition.
+  /// - "PERSON_DETECTION" : Person detection.
   core.String feature;
 
   /// Video file location in [Cloud Storage](https://cloud.google.com/storage/).
@@ -6799,6 +7767,14 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
   GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation
       explicitAnnotation;
 
+  /// Deprecated. Please use `face_detection_annotations` instead.
+  core.List<GoogleCloudVideointelligenceV1p2beta1FaceAnnotation>
+      faceAnnotations;
+
+  /// Face detection annotations.
+  core.List<GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation>
+      faceDetectionAnnotations;
+
   /// Label annotations on frame level. There is exactly one element for each
   /// unique label.
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
@@ -6814,6 +7790,10 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
   /// Annotations for list of objects detected and tracked in video.
   core.List<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>
       objectAnnotations;
+
+  /// Person detection annotations.
+  core.List<GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation>
+      personDetectionAnnotations;
 
   /// Video segment on which the annotation is run.
   GoogleCloudVideointelligenceV1p2beta1VideoSegment segment;
@@ -6870,6 +7850,22 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
           new GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation
               .fromJson(_json["explicitAnnotation"]);
     }
+    if (_json.containsKey("faceAnnotations")) {
+      faceAnnotations = (_json["faceAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p2beta1FaceAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p2beta1FaceAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("faceDetectionAnnotations")) {
+      faceDetectionAnnotations = (_json["faceDetectionAnnotations"]
+              as core.List)
+          .map<GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation
+                      .fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("frameLabelAnnotations")) {
       frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>((value) =>
@@ -6894,6 +7890,15 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
           .map<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>(
               (value) =>
                   new GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("personDetectionAnnotations")) {
+      personDetectionAnnotations = (_json["personDetectionAnnotations"]
+              as core.List)
+          .map<GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation
                       .fromJson(value))
           .toList();
     }
@@ -6965,6 +7970,14 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
     if (explicitAnnotation != null) {
       _json["explicitAnnotation"] = (explicitAnnotation).toJson();
     }
+    if (faceAnnotations != null) {
+      _json["faceAnnotations"] =
+          faceAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (faceDetectionAnnotations != null) {
+      _json["faceDetectionAnnotations"] =
+          faceDetectionAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (frameLabelAnnotations != null) {
       _json["frameLabelAnnotations"] =
           frameLabelAnnotations.map((value) => (value).toJson()).toList();
@@ -6979,6 +7992,10 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
     if (objectAnnotations != null) {
       _json["objectAnnotations"] =
           objectAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (personDetectionAnnotations != null) {
+      _json["personDetectionAnnotations"] =
+          personDetectionAnnotations.map((value) => (value).toJson()).toList();
     }
     if (segment != null) {
       _json["segment"] = (segment).toJson();
@@ -7532,6 +8549,63 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame {
   }
 }
 
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1p3beta1FaceAnnotation {
+  /// All video frames where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1p3beta1FaceFrame> frames;
+
+  /// All video segments where a face was detected.
+  core.List<GoogleCloudVideointelligenceV1p3beta1FaceSegment> segments;
+
+  /// Thumbnail of a representative face view (in JPEG format).
+  core.String thumbnail;
+  core.List<core.int> get thumbnailAsBytes {
+    return convert.base64.decode(thumbnail);
+  }
+
+  set thumbnailAsBytes(core.List<core.int> _bytes) {
+    thumbnail =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  GoogleCloudVideointelligenceV1p3beta1FaceAnnotation();
+
+  GoogleCloudVideointelligenceV1p3beta1FaceAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1FaceFrame>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1FaceFrame.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1FaceSegment>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1FaceSegment.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("thumbnail")) {
+      thumbnail = _json["thumbnail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (thumbnail != null) {
+      _json["thumbnail"] = thumbnail;
+    }
+    return _json;
+  }
+}
+
 /// Face detection annotation.
 class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
   /// The thumbnail of a person's face.
@@ -7580,6 +8654,71 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
     }
     if (version != null) {
       _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Deprecated. No effect.
+class GoogleCloudVideointelligenceV1p3beta1FaceFrame {
+  /// Normalized Bounding boxes in a frame. There can be more than one boxes if
+  /// the same face is detected in multiple locations within the current frame.
+  core.List<GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox>
+      normalizedBoundingBoxes;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// video frame for this location.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p3beta1FaceFrame();
+
+  GoogleCloudVideointelligenceV1p3beta1FaceFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("normalizedBoundingBoxes")) {
+      normalizedBoundingBoxes = (_json["normalizedBoundingBoxes"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (normalizedBoundingBoxes != null) {
+      _json["normalizedBoundingBoxes"] =
+          normalizedBoundingBoxes.map((value) => (value).toJson()).toList();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for face detection.
+class GoogleCloudVideointelligenceV1p3beta1FaceSegment {
+  /// Video segment where a face was detected.
+  GoogleCloudVideointelligenceV1p3beta1VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1p3beta1FaceSegment();
+
+  GoogleCloudVideointelligenceV1p3beta1FaceSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
     }
     return _json;
   }
@@ -8239,11 +9378,15 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse {
 }
 
 /// Streaming annotation results corresponding to a portion of the video that is
-/// currently being processed.
+/// currently being processed. Only ONE type of annotation will be specified in
+/// the response.
 class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
   /// Explicit content annotation results.
   GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
       explicitAnnotation;
+
+  /// Timestamp of the processed frame in microseconds.
+  core.String frameTimestamp;
 
   /// Label annotation results.
   core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
@@ -8264,6 +9407,9 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
       explicitAnnotation =
           new GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
               .fromJson(_json["explicitAnnotation"]);
+    }
+    if (_json.containsKey("frameTimestamp")) {
+      frameTimestamp = _json["frameTimestamp"];
     }
     if (_json.containsKey("labelAnnotations")) {
       labelAnnotations = (_json["labelAnnotations"] as core.List)
@@ -8294,6 +9440,9 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
         new core.Map<core.String, core.Object>();
     if (explicitAnnotation != null) {
       _json["explicitAnnotation"] = (explicitAnnotation).toJson();
+    }
+    if (frameTimestamp != null) {
+      _json["frameTimestamp"] = frameTimestamp;
     }
     if (labelAnnotations != null) {
       _json["labelAnnotations"] =
@@ -8672,6 +9821,10 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
   GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
       explicitAnnotation;
 
+  /// Deprecated. Please use `face_detection_annotations` instead.
+  core.List<GoogleCloudVideointelligenceV1p3beta1FaceAnnotation>
+      faceAnnotations;
+
   /// Face detection annotations.
   core.List<GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>
       faceDetectionAnnotations;
@@ -8755,6 +9908,13 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
       explicitAnnotation =
           new GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
               .fromJson(_json["explicitAnnotation"]);
+    }
+    if (_json.containsKey("faceAnnotations")) {
+      faceAnnotations = (_json["faceAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1FaceAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1FaceAnnotation.fromJson(
+                  value))
+          .toList();
     }
     if (_json.containsKey("faceDetectionAnnotations")) {
       faceDetectionAnnotations = (_json["faceDetectionAnnotations"]
@@ -8872,6 +10032,10 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
     }
     if (explicitAnnotation != null) {
       _json["explicitAnnotation"] = (explicitAnnotation).toJson();
+    }
+    if (faceAnnotations != null) {
+      _json["faceAnnotations"] =
+          faceAnnotations.map((value) => (value).toJson()).toList();
     }
     if (faceDetectionAnnotations != null) {
       _json["faceDetectionAnnotations"] =

@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed40() {
+buildUnnamed1202() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed40(core.Map<core.String, core.String> o) {
+checkUnnamed1202(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -69,7 +69,7 @@ buildAndroidConfig() {
   buildCounterAndroidConfig++;
   if (buildCounterAndroidConfig < 3) {
     o.collapseKey = "foo";
-    o.data = buildUnnamed40();
+    o.data = buildUnnamed1202();
     o.directBootOk = true;
     o.fcmOptions = buildAndroidFcmOptions();
     o.notification = buildAndroidNotification();
@@ -85,7 +85,7 @@ checkAndroidConfig(api.AndroidConfig o) {
   buildCounterAndroidConfig++;
   if (buildCounterAndroidConfig < 3) {
     unittest.expect(o.collapseKey, unittest.equals('foo'));
-    checkUnnamed40(o.data);
+    checkUnnamed1202(o.data);
     unittest.expect(o.directBootOk, unittest.isTrue);
     checkAndroidFcmOptions(o.fcmOptions);
     checkAndroidNotification(o.notification);
@@ -115,40 +115,40 @@ checkAndroidFcmOptions(api.AndroidFcmOptions o) {
   buildCounterAndroidFcmOptions--;
 }
 
-buildUnnamed41() {
+buildUnnamed1203() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed41(core.List<core.String> o) {
+checkUnnamed1203(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed42() {
+buildUnnamed1204() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed42(core.List<core.String> o) {
+checkUnnamed1204(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed43() {
+buildUnnamed1205() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed43(core.List<core.String> o) {
+checkUnnamed1205(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -160,7 +160,7 @@ buildAndroidNotification() {
   buildCounterAndroidNotification++;
   if (buildCounterAndroidNotification < 3) {
     o.body = "foo";
-    o.bodyLocArgs = buildUnnamed41();
+    o.bodyLocArgs = buildUnnamed1203();
     o.bodyLocKey = "foo";
     o.channelId = "foo";
     o.clickAction = "foo";
@@ -180,9 +180,9 @@ buildAndroidNotification() {
     o.tag = "foo";
     o.ticker = "foo";
     o.title = "foo";
-    o.titleLocArgs = buildUnnamed42();
+    o.titleLocArgs = buildUnnamed1204();
     o.titleLocKey = "foo";
-    o.vibrateTimings = buildUnnamed43();
+    o.vibrateTimings = buildUnnamed1205();
     o.visibility = "foo";
   }
   buildCounterAndroidNotification--;
@@ -193,7 +193,7 @@ checkAndroidNotification(api.AndroidNotification o) {
   buildCounterAndroidNotification++;
   if (buildCounterAndroidNotification < 3) {
     unittest.expect(o.body, unittest.equals('foo'));
-    checkUnnamed41(o.bodyLocArgs);
+    checkUnnamed1203(o.bodyLocArgs);
     unittest.expect(o.bodyLocKey, unittest.equals('foo'));
     unittest.expect(o.channelId, unittest.equals('foo'));
     unittest.expect(o.clickAction, unittest.equals('foo'));
@@ -213,28 +213,28 @@ checkAndroidNotification(api.AndroidNotification o) {
     unittest.expect(o.tag, unittest.equals('foo'));
     unittest.expect(o.ticker, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
-    checkUnnamed42(o.titleLocArgs);
+    checkUnnamed1204(o.titleLocArgs);
     unittest.expect(o.titleLocKey, unittest.equals('foo'));
-    checkUnnamed43(o.vibrateTimings);
+    checkUnnamed1205(o.vibrateTimings);
     unittest.expect(o.visibility, unittest.equals('foo'));
   }
   buildCounterAndroidNotification--;
 }
 
-buildUnnamed44() {
+buildUnnamed1206() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed44(core.Map<core.String, core.String> o) {
+checkUnnamed1206(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed45() {
+buildUnnamed1207() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -249,7 +249,7 @@ buildUnnamed45() {
   return o;
 }
 
-checkUnnamed45(core.Map<core.String, core.Object> o) {
+checkUnnamed1207(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -269,8 +269,8 @@ buildApnsConfig() {
   buildCounterApnsConfig++;
   if (buildCounterApnsConfig < 3) {
     o.fcmOptions = buildApnsFcmOptions();
-    o.headers = buildUnnamed44();
-    o.payload = buildUnnamed45();
+    o.headers = buildUnnamed1206();
+    o.payload = buildUnnamed1207();
   }
   buildCounterApnsConfig--;
   return o;
@@ -280,8 +280,8 @@ checkApnsConfig(api.ApnsConfig o) {
   buildCounterApnsConfig++;
   if (buildCounterApnsConfig < 3) {
     checkApnsFcmOptions(o.fcmOptions);
-    checkUnnamed44(o.headers);
-    checkUnnamed45(o.payload);
+    checkUnnamed1206(o.headers);
+    checkUnnamed1207(o.payload);
   }
   buildCounterApnsConfig--;
 }
@@ -374,14 +374,14 @@ checkLightSettings(api.LightSettings o) {
   buildCounterLightSettings--;
 }
 
-buildUnnamed46() {
+buildUnnamed1208() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed46(core.Map<core.String, core.String> o) {
+checkUnnamed1208(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -395,7 +395,7 @@ buildMessage() {
     o.android = buildAndroidConfig();
     o.apns = buildApnsConfig();
     o.condition = "foo";
-    o.data = buildUnnamed46();
+    o.data = buildUnnamed1208();
     o.fcmOptions = buildFcmOptions();
     o.name = "foo";
     o.notification = buildNotification();
@@ -413,7 +413,7 @@ checkMessage(api.Message o) {
     checkAndroidConfig(o.android);
     checkApnsConfig(o.apns);
     unittest.expect(o.condition, unittest.equals('foo'));
-    checkUnnamed46(o.data);
+    checkUnnamed1208(o.data);
     checkFcmOptions(o.fcmOptions);
     unittest.expect(o.name, unittest.equals('foo'));
     checkNotification(o.notification);
@@ -468,33 +468,33 @@ checkSendMessageRequest(api.SendMessageRequest o) {
   buildCounterSendMessageRequest--;
 }
 
-buildUnnamed47() {
+buildUnnamed1209() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed47(core.Map<core.String, core.String> o) {
+checkUnnamed1209(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed48() {
+buildUnnamed1210() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed48(core.Map<core.String, core.String> o) {
+checkUnnamed1210(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed49() {
+buildUnnamed1211() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -509,7 +509,7 @@ buildUnnamed49() {
   return o;
 }
 
-checkUnnamed49(core.Map<core.String, core.Object> o) {
+checkUnnamed1211(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -528,10 +528,10 @@ buildWebpushConfig() {
   var o = new api.WebpushConfig();
   buildCounterWebpushConfig++;
   if (buildCounterWebpushConfig < 3) {
-    o.data = buildUnnamed47();
+    o.data = buildUnnamed1209();
     o.fcmOptions = buildWebpushFcmOptions();
-    o.headers = buildUnnamed48();
-    o.notification = buildUnnamed49();
+    o.headers = buildUnnamed1210();
+    o.notification = buildUnnamed1211();
   }
   buildCounterWebpushConfig--;
   return o;
@@ -540,10 +540,10 @@ buildWebpushConfig() {
 checkWebpushConfig(api.WebpushConfig o) {
   buildCounterWebpushConfig++;
   if (buildCounterWebpushConfig < 3) {
-    checkUnnamed47(o.data);
+    checkUnnamed1209(o.data);
     checkWebpushFcmOptions(o.fcmOptions);
-    checkUnnamed48(o.headers);
-    checkUnnamed49(o.notification);
+    checkUnnamed1210(o.headers);
+    checkUnnamed1211(o.notification);
   }
   buildCounterWebpushConfig--;
 }

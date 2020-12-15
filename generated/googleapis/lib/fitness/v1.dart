@@ -64,6 +64,16 @@ class FitnessApi {
   static const FitnessBodyTemperatureWriteScope =
       "https://www.googleapis.com/auth/fitness.body_temperature.write";
 
+  /// See your heart rate data in Google Fit. I consent to Google sharing my
+  /// heart rate information with this app.
+  static const FitnessHeartRateReadScope =
+      "https://www.googleapis.com/auth/fitness.heart_rate.read";
+
+  /// See and add to your heart rate data in Google Fit. I consent to Google
+  /// sharing my heart rate information with this app.
+  static const FitnessHeartRateWriteScope =
+      "https://www.googleapis.com/auth/fitness.heart_rate.write";
+
   /// See your Google Fit speed and distance data
   static const FitnessLocationReadScope =
       "https://www.googleapis.com/auth/fitness.location.read";
@@ -99,6 +109,16 @@ class FitnessApi {
   /// to Google sharing my reproductive health information with this app.
   static const FitnessReproductiveHealthWriteScope =
       "https://www.googleapis.com/auth/fitness.reproductive_health.write";
+
+  /// See your sleep data in Google Fit. I consent to Google sharing my sleep
+  /// information with this app.
+  static const FitnessSleepReadScope =
+      "https://www.googleapis.com/auth/fitness.sleep.read";
+
+  /// See and add to your sleep data in Google Fit. I consent to Google sharing
+  /// my sleep information with this app.
+  static const FitnessSleepWriteScope =
+      "https://www.googleapis.com/auth/fitness.sleep.write";
 
   final commons.ApiRequester _requester;
 
@@ -607,15 +627,17 @@ class UsersDataSourcesDatasetsResourceApi {
   /// nanoseconds from the epoch. The ID is formatted like: "startTime-endTime"
   /// where startTime and endTime are 64 bit integers.
   ///
+  /// [limit] - If specified, no more than this many data points will be
+  /// included in the dataset. If there are more data points in the dataset,
+  /// nextPageToken will be set in the dataset response. The limit is applied
+  /// from the end of the time range. That is, if pageToken is absent, the limit
+  /// most recent data points will be returned.
+  ///
   /// [pageToken] - The continuation token, which is used to page through large
   /// datasets. To get the next page of a dataset, set this parameter to the
   /// value of nextPageToken from the previous response. Each subsequent call
   /// will yield a partial dataset with data point end timestamps that are
   /// strictly smaller than those in the previous partial response.
-  ///
-  /// [limit] - If specified, no more than this many data points will be
-  /// included in the dataset. If there are more data points in the dataset,
-  /// nextPageToken will be set in the dataset response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -629,7 +651,7 @@ class UsersDataSourcesDatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Dataset> get(
       core.String userId, core.String dataSourceId, core.String datasetId,
-      {core.String pageToken, core.int limit, core.String $fields}) {
+      {core.int limit, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -646,11 +668,11 @@ class UsersDataSourcesDatasetsResourceApi {
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (limit != null) {
       _queryParams["limit"] = ["${limit}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -878,16 +900,13 @@ class UsersSessionsResourceApi {
   /// [userId] - List sessions for the person identified. Use me to indicate the
   /// authenticated user. Only me is supported at this time.
   ///
+  /// [includeDeleted] - If true, and if both startTime and endTime are omitted,
+  /// session deletions will be returned.
+  ///
   /// [endTime] - An RFC3339 timestamp. Only sessions ending between the start
   /// and end times will be included in the response. If this time is omitted
   /// but startTime is specified, all sessions from startTime to the end of time
   /// will be returned.
-  ///
-  /// [activityType] - If non-empty, only sessions with these activity types
-  /// should be returned.
-  ///
-  /// [includeDeleted] - If true, and if both startTime and endTime are omitted,
-  /// session deletions will be returned.
   ///
   /// [pageToken] - The continuation token, which is used for incremental
   /// syncing. To get the next batch of changes, set this parameter to the value
@@ -895,6 +914,9 @@ class UsersSessionsResourceApi {
   /// either start or end time is specified. If none of start time, end time,
   /// and the page token is specified, sessions modified in the last 30 days are
   /// returned.
+  ///
+  /// [activityType] - If non-empty, only sessions with these activity types
+  /// should be returned.
   ///
   /// [startTime] - An RFC3339 timestamp. Only sessions ending between the start
   /// and end times will be included in the response. If this time is omitted
@@ -912,10 +934,10 @@ class UsersSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String userId,
-      {core.String endTime,
-      core.List<core.int> activityType,
-      core.bool includeDeleted,
+      {core.bool includeDeleted,
+      core.String endTime,
       core.String pageToken,
+      core.List<core.int> activityType,
       core.String startTime,
       core.String $fields}) {
     var _url;
@@ -928,18 +950,18 @@ class UsersSessionsResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
+    if (includeDeleted != null) {
+      _queryParams["includeDeleted"] = ["${includeDeleted}"];
+    }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (activityType != null) {
       _queryParams["activityType"] =
           activityType.map((item) => "${item}").toList();
-    }
-    if (includeDeleted != null) {
-      _queryParams["includeDeleted"] = ["${includeDeleted}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];

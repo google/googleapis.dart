@@ -187,7 +187,7 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource name. Uses the form:
+  /// [parent] - Required. The parent resource name, in the following form:
   /// `projects/{project}/locations/{location}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
@@ -244,8 +244,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server delpoyment to delete. Uses
-  /// the form:
+  /// [name] - Required. The name of the game server delpoyment to delete, in
+  /// the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
@@ -294,7 +294,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server delpoyment. Uses the form:
+  /// [name] - Required. The name of the game server delpoyment, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
@@ -347,8 +348,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server delpoyment to retrieve.
-  /// Uses the form:
+  /// [name] - Required. The name of the game server delpoyment to retrieve, in
+  /// the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
@@ -457,8 +458,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server delpoyment to retrieve.
-  /// Uses the form:
+  /// [name] - Required. The name of the game server delpoyment to retrieve, in
+  /// the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
@@ -506,12 +507,12 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource name. Uses the form:
+  /// [parent] - Required. The parent resource name, in the following form:
   /// `projects/{project}/locations/{location}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
+  /// [orderBy] - Optional. Specifies the ordering of results following syntax
+  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
   /// unspecified, the server will pick an appropriate default. The server may
@@ -521,8 +522,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
-  /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -535,10 +536,10 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGameServerDeploymentsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String orderBy,
       core.int pageSize,
       core.String filter,
-      core.String orderBy,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -550,8 +551,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -559,8 +560,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -586,7 +587,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the game server deployment. Uses the form:
+  /// [name] - The resource name of the game server deployment, in the following
+  /// form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
@@ -648,8 +650,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the game server deployment rollout. Uses the
-  /// form:
+  /// [name] - The resource name of the game server deployment rollout, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
@@ -842,8 +844,8 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the game server deployment rollout. Uses the
-  /// form:
+  /// [name] - The resource name of the game server deployment rollout, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
@@ -916,7 +918,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource name. Uses the form:
+  /// [parent] - Required. The parent resource name, in the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
@@ -974,8 +976,8 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server config to delete. Uses the
-  /// form:
+  /// [name] - Required. The name of the game server config to delete, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+/configs/[^/]+$".
@@ -1020,8 +1022,8 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server config to retrieve. Uses
-  /// the form:
+  /// [name] - Required. The name of the game server config to retrieve, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+/configs/[^/]+$".
@@ -1067,11 +1069,17 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource name. Uses the form:
+  /// [parent] - Required. The parent resource name, in the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs
   /// / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request, if any.
+  ///
+  /// [orderBy] - Optional. Specifies the ordering of results following syntax
+  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
   /// unspecified, server will pick an appropriate default. Server may return
@@ -1079,13 +1087,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   /// next_page_token to determine if there are more GameServerConfigs left to
   /// be queried.
   ///
-  /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
-  ///
   /// [filter] - Optional. The filter to apply to list results.
-  ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1098,10 +1100,10 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGameServerConfigsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
       core.String orderBy,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1113,17 +1115,17 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1317,11 +1319,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1334,9 +1336,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String filter,
+      core.int pageSize,
       core.String pageToken,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1348,14 +1350,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1390,7 +1392,7 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource name. Uses the form:
+  /// [parent] - Required. The parent resource name, in the following form:
   /// `projects/{project}/locations/{location}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
@@ -1445,7 +1447,7 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the realm to delete. Uses the form:
+  /// [name] - Required. The name of the realm to delete, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
@@ -1489,8 +1491,8 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the realm to retrieve. Uses the form:
-  /// `projects/{project}/locations/{location}/realms/{realm}`.
+  /// [name] - Required. The name of the realm to retrieve, in the following
+  /// form: `projects/{project}/locations/{location}/realms/{realm}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1533,22 +1535,22 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource name. Uses the form:
+  /// [parent] - Required. The parent resource name, in the following form:
   /// `projects/{project}/locations/{location}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of items to return. If
-  /// unspecified, server will pick an appropriate default. Server may return
-  /// fewer items than requested. A caller should only rely on response's
-  /// next_page_token to determine if there are more realms left to be queried.
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
   /// [orderBy] - Optional. Specifies the ordering of results following syntax
   /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, server will pick an appropriate default. Server may return
+  /// fewer items than requested. A caller should only rely on response's
+  /// next_page_token to determine if there are more realms left to be queried.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1561,10 +1563,10 @@ class ProjectsLocationsRealmsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRealmsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
       core.String filter,
       core.String orderBy,
-      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1576,8 +1578,8 @@ class ProjectsLocationsRealmsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -1585,8 +1587,8 @@ class ProjectsLocationsRealmsResourceApi {
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1611,7 +1613,7 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the realm. Uses the form:
+  /// [name] - The resource name of the realm, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
   /// `projects/my-project/locations/{location}/realms/my-realm`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
@@ -1670,7 +1672,7 @@ class ProjectsLocationsRealmsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the realm. Uses the form:
+  /// [name] - The resource name of the realm, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
   /// `projects/my-project/locations/{location}/realms/my-realm`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
@@ -1746,7 +1748,7 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource name. Uses the form:
+  /// [parent] - Required. The parent resource name, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm-id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
@@ -1802,8 +1804,8 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server cluster to delete. Uses the
-  /// form:
+  /// [name] - Required. The name of the game server cluster to delete, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
@@ -1848,8 +1850,8 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server cluster to retrieve. Uses
-  /// the form:
+  /// [name] - Required. The name of the game server cluster to retrieve, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/realms/{realm-id}/gameServerClusters/{cluster}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
@@ -1894,23 +1896,23 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource name. Uses the form:
+  /// [parent] - Required. The parent resource name, in the following form:
   /// "projects/{project}/locations/{location}/realms/{realm}".
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
+  ///
+  /// [filter] - Optional. The filter to apply to list results.
+  ///
+  /// [orderBy] - Optional. Specifies the ordering of results following syntax
+  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// List request, if any.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
   /// unspecified, the server will pick an appropriate default. The server may
   /// return fewer items than requested. A caller should only rely on response's
   /// next_page_token to determine if there are more GameServerClusters left to
   /// be queried.
-  ///
-  /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
-  ///
-  /// [filter] - Optional. The filter to apply to list results.
-  ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1923,10 +1925,10 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGameServerClustersResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String filter,
       core.String orderBy,
-      core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1938,17 +1940,17 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1974,8 +1976,8 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the game server cluster. Uses the
-  /// form:
+  /// [name] - Required. The resource name of the game server cluster, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
   /// For example,
   /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
@@ -2037,7 +2039,7 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource name. Uses the form:
+  /// [parent] - Required. The parent resource name, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
   ///
@@ -2102,8 +2104,8 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server cluster to delete. Uses the
-  /// form:
+  /// [name] - Required. The name of the game server cluster to delete, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
@@ -2161,8 +2163,8 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the game server cluster. Uses the
-  /// form:
+  /// [name] - Required. The resource name of the game server cluster, in the
+  /// following form:
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
   /// For example,
   /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
@@ -2368,8 +2370,6 @@ class AuthorizationLoggingOptions {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
   core.String bindingId;
 
   /// The condition that is associated with this binding. If the condition
@@ -2545,7 +2545,8 @@ class Condition {
   /// supported. It is not permitted to grant access based on the *absence* of a
   /// credentials type, so the conditions can only be used in a "positive"
   /// context (e.g., ALLOW/IN or DENY/NOT_IN).
-  /// - "CREDS_ASSERTION" : EXPERIMENTAL -- DO NOT USE.
+  /// - "CREDS_ASSERTION" : EXPERIMENTAL -- DO NOT USE. The conditions can only
+  /// be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
   core.String iam;
 
   /// An operator to apply the subject with.
@@ -3150,7 +3151,8 @@ class GameServerCluster {
   /// key-value pair.
   core.Map<core.String, core.String> labels;
 
-  /// Required. The resource name of the game server cluster. Uses the form:
+  /// Required. The resource name of the game server cluster, in the following
+  /// form:
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
   /// For example,
   /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
@@ -3265,7 +3267,7 @@ class GameServerConfig {
   /// key-value pair.
   core.Map<core.String, core.String> labels;
 
-  /// The resource name of the game server config. Uses the form:
+  /// The resource name of the game server config, in the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
@@ -3384,7 +3386,7 @@ class GameServerDeployment {
   /// key-value pair.
   core.Map<core.String, core.String> labels;
 
-  /// The resource name of the game server deployment. Uses the form:
+  /// The resource name of the game server deployment, in the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
@@ -3460,7 +3462,8 @@ class GameServerDeploymentRollout {
   /// of the list is not processed.
   core.List<GameServerConfigOverride> gameServerConfigOverrides;
 
-  /// The resource name of the game server deployment rollout. Uses the form:
+  /// The resource name of the game server deployment rollout, in the following
+  /// form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
@@ -4492,7 +4495,7 @@ class Realm {
   /// The labels associated with this realm. Each label is a key-value pair.
   core.Map<core.String, core.String> labels;
 
-  /// The resource name of the realm. Uses the form:
+  /// The resource name of the realm, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
   /// `projects/my-project/locations/{location}/realms/my-realm`.
   core.String name;
