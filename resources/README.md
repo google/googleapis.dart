@@ -27,7 +27,7 @@ dependencies:
 Create a service account in the Google Cloud Console and save the credential
 information.
 
-Then create a Dart application to list files in a spececific project. *In the
+Then create a Dart application to list files in a specific project. *In the
 example below, files from the `dart-on-cloud` project are listed.*
 
 ```dart
