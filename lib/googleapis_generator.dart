@@ -4,9 +4,9 @@
 
 library googleapis_generator;
 
-import "dart:async";
-import "dart:convert";
-import "dart:io";
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 import 'package:http/http.dart' as http;
@@ -16,16 +16,18 @@ import 'package:pool/pool.dart';
 import 'src/package_configuration.dart';
 
 Future<List<DirectoryListItems>> _listAllApis() {
-  var client = new http.Client();
-  return _discoveryClient(client).apis.list().then((DirectoryList list) {
-    return list.items;
-  }).whenComplete(() => client.close());
+  final client = http.Client();
+  return _discoveryClient(client)
+      .apis
+      .list()
+      .then((DirectoryList list) => list.items)
+      .whenComplete(client.close);
 }
 
 Future<List<RestDescription>> downloadDiscoveryDocuments(String outputDir,
     {List<String> ids}) {
   return fetchDiscoveryDocuments(ids: ids).then((List<RestDescription> apis) {
-    var directory = new Directory(outputDir);
+    final directory = Directory(outputDir);
     if (directory.existsSync()) {
       print('Deleting directory $outputDir.');
       directory.deleteSync(recursive: true);
@@ -33,9 +35,10 @@ Future<List<RestDescription>> downloadDiscoveryDocuments(String outputDir,
     directory.createSync(recursive: true);
 
     for (var description in apis) {
-      var name = '$outputDir/${description.name}__${description.version}.json';
-      var file = new File(name);
-      var encoder = new JsonEncoder.withIndent('    ');
+      final name =
+          '$outputDir/${description.name}__${description.version}.json';
+      final file = File(name);
+      final encoder = JsonEncoder.withIndent('    ');
       file.writeAsStringSync(encoder.convert(description.toJson()));
       print('Wrote: $name');
     }
@@ -45,14 +48,14 @@ Future<List<RestDescription>> downloadDiscoveryDocuments(String outputDir,
 
 Future<List<RestDescription>> fetchDiscoveryDocuments(
     {List<String> ids}) async {
-  var client = new http.Client();
+  final client = http.Client();
 
   try {
-    var discovery = _discoveryClient(client);
+    final discovery = _discoveryClient(client);
 
-    var list = await discovery.apis.list();
+    final list = await discovery.apis.list();
 
-    var pool = Pool(10);
+    final pool = Pool(10);
     try {
       var count = 0;
       return await pool
@@ -77,28 +80,28 @@ Future<List<RestDescription>> fetchDiscoveryDocuments(
       await pool.close();
     }
   } finally {
-    await client.close();
+    client.close();
   }
 }
 
 List<RestDescription> loadDiscoveryDocuments(String directory) {
-  var apiDescriptions = new Directory(directory)
+  final apiDescriptions = Directory(directory)
       .listSync()
       .where((fse) => fse is File && fse.path.endsWith('.json'))
       .map((FileSystemEntity file) {
-    return new RestDescription.fromJson(
+    return RestDescription.fromJson(
         json.decode((file as File).readAsStringSync()));
   }).toList();
   return apiDescriptions;
 }
 
 Future downloadFromConfiguration(String configFile) async {
-  var items = await _listAllApis();
+  final items = await _listAllApis();
 
-  var configuration = new DiscoveryPackagesConfiguration(configFile);
+  final configuration = DiscoveryPackagesConfiguration(configFile);
 
   // Generate the packages.
-  var configFileUri = new Uri.file(configFile);
+  final configFileUri = Uri.file(configFile);
   await configuration.download(configFileUri.resolve('discovery').path, items);
 
   // Print warnings for APIs not mentioned.
@@ -113,12 +116,12 @@ Future downloadFromConfiguration(String configFile) async {
 }
 
 void generateFromConfiguration(String configFile) {
-  var configuration = new DiscoveryPackagesConfiguration(configFile);
+  final configuration = DiscoveryPackagesConfiguration(configFile);
 
   // Generate the packages.
-  var configFileUri = new Uri.file(configFile);
+  final configFileUri = Uri.file(configFile);
   return configuration.generate(configFileUri.resolve('discovery').path,
       configFileUri.resolve('generated').path);
 }
 
-DiscoveryApi _discoveryClient(http.Client client) => new DiscoveryApi(client);
+DiscoveryApi _discoveryClient(http.Client client) => DiscoveryApi(client);
